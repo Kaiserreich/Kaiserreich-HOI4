@@ -189,7 +189,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed COL_officer_schools"
 			army_experience = 25
 			add_daily_mastery = {
-				name = COL_modern_divisons
+				name = COL_modern_divisions
 				amount = 0.1
 				days = 365
 				folder = land
@@ -230,7 +230,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = COL_modern_divisons
+		id = COL_modern_divisions
 		icon = GFX_goal_generic_army_cooperation
 		cost = 5
 
@@ -249,10 +249,10 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed COL_modern_divisons"
+			log = "[GetLogRoot]: Focus Completed COL_modern_divisions"
 			army_experience = 25
 			add_mastery_bonus = {
-				name = COL_modern_divisons
+				name = COL_modern_divisions
 				bonus = 0.1
 				days = 365
 				folder = land
@@ -370,7 +370,7 @@ focus_tree = {
 		x = -5
 		y = 5
 
-		prerequisite = { focus = COL_spart focus = COL_modern_divisons focus = COL_support_brigades }
+		prerequisite = { focus = COL_spart focus = COL_modern_divisions focus = COL_support_brigades }
 
 		ai_will_do = {
 			factor = 10
@@ -402,7 +402,7 @@ focus_tree = {
 		x = -3
 		y = 5
 
-		prerequisite = { focus = COL_spart focus = COL_modern_divisons focus = COL_support_brigades }
+		prerequisite = { focus = COL_spart focus = COL_modern_divisions focus = COL_support_brigades }
 
 		ai_will_do = {
 			factor = 10
@@ -1529,7 +1529,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = COL_safety_comitee
+		id = COL_safety_committee
 		icon = GFX_goal_generic_martial_law
 		cost = 8
 
@@ -1545,7 +1545,7 @@ focus_tree = {
 		ai_will_do = { factor = 15 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed COL_safety_comitee"
+			log = "[GetLogRoot]: Focus Completed COL_safety_committee"
 			add_stability = 0.1
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -2675,7 +2675,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = COL_national_defense_comittee
+		id = COL_national_defense_committee
 		icon = GFX_goal_national_arsenal
 		cost = 10
 
@@ -2688,7 +2688,7 @@ focus_tree = {
 		ai_will_do = { factor = 15 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed COL_national_defense_comittee"
+			log = "[GetLogRoot]: Focus Completed COL_national_defense_committee"
 			add_political_power = 100
 			add_manpower = 100000
 		}
@@ -2704,7 +2704,7 @@ focus_tree = {
 		x = -1
 		y = 3
 
-		prerequisite = { focus = COL_national_defense_comittee }
+		prerequisite = { focus = COL_national_defense_committee }
 		mutually_exclusive = { focus = COL_reichspakt_arms_trade }
 
 		ai_will_do = { factor = 15 }
@@ -2739,7 +2739,7 @@ focus_tree = {
 		x = 1
 		y = 3
 
-		prerequisite = { focus = COL_national_defense_comittee }
+		prerequisite = { focus = COL_national_defense_committee }
 		mutually_exclusive = { focus = COL_entente_arms_trade }
 
 		ai_will_do = { factor = 15 }
@@ -2763,7 +2763,7 @@ focus_tree = {
 		x = 0
 		y = 2
 
-		prerequisite = { focus = COL_national_defense_comittee }
+		prerequisite = { focus = COL_national_defense_committee }
 
 		ai_will_do = { factor = 1500 }
 

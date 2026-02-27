@@ -455,6 +455,15 @@ shared_focus = {
 		factor = 500
 
 		modifier = {
+			factor = 0
+			has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_UPC }
+			NOT = { has_completed_focus = UPC_smash_the_league }
+			ANQ = {
+				exists = yes
+				is_subject = no
+			}
+		}
+		modifier = {
 			factor = 5
 			CHN_ai_factor_pressure_to_act_trigger = yes
 		}
@@ -533,6 +542,15 @@ shared_focus = {
 			OR = {
 				has_country_flag = china_attack_decision_one_month_cooldown
 				country_is_in_dangerous_war = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_UPC }
+			NOT = { has_completed_focus = UPC_smash_the_league }
+			ANQ = {
+				exists = yes
+				is_subject = no
 			}
 		}
 		modifier = {
@@ -837,7 +855,16 @@ shared_focus = {
 		y = 12
 		trigger = {
 			tag = SZC
-			china_is_aligned_with_federalists = yes
+			SZC_federalists_in_exile = yes
+		}
+	}
+
+	offset = {
+		x = -8
+		y = 0
+		trigger = {
+			tag = SZC
+			SZC_federalists_in_exile = no
 		}
 	}
 

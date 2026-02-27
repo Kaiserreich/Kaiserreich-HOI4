@@ -98,6 +98,14 @@ country_event = { #The Mwami has seized control
 	option = { #Colonial rule is overthrown
 		log = "[GetLogInfo]: event katanga_events.20 option katanga_events.20.a"
 		name = katanga_events.20.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = KTG_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = KTG_path option = KTG_PATH_PATAUT } }
+			}
+		}
 		country_event = { id = katanga_events.28 days = 3 }
 		set_country_flag = KTG_Mwami_Rules
 		set_cosmetic_tag = KTG_kingdom
@@ -115,6 +123,13 @@ country_event = { #The Mwami has seized control
 	option = { #Defence of Lumumbashi
 		log = "[GetLogInfo]: event katanga_events.20 option katanga_events.20.b"
 		name = katanga_events.20.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = KTG_path option = KTG_PATH_PATAUT }
+			}
+		}
 	#	trigger = {
 	#		NOT = { MAF = { has_completed_focus = MAF_vital_industries } }
 	#	}
@@ -1063,7 +1078,14 @@ country_event = { #Elections Elisabethville
 	option = { #Catholics
 		log = "[GetLogInfo]: event katanga_events.70 option katanga_events.70.a"
 		name = katanga_events.70.a
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = KTG_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = KTG_path option = KTG_PATH_SOCCON } }
+			}
+		}
 		set_politics = {
 			ruling_party = social_conservative
 		}
@@ -1075,7 +1097,14 @@ country_event = { #Elections Elisabethville
 	option = { #UMHK
 		log = "[GetLogInfo]: event katanga_events.70 option katanga_events.70.b"
 		name = katanga_events.70.b
-		ai_chance = { base = 40 }
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = KTG_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = KTG_path option = KTG_PATH_SOCLIB } }
+			}
+		}
 		set_politics = {
 			ruling_party = social_liberal
 		}
@@ -1087,7 +1116,14 @@ country_event = { #Elections Elisabethville
 	option = { #AWP
 		log = "[GetLogInfo]: event katanga_events.70 option katanga_events.70.c"
 		name = katanga_events.70.c
-		ai_chance = { base = 10 }
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = KTG_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = KTG_path option = KTG_PATH_SOCDEM } }
+			}
+		}
 		set_politics = {
 			ruling_party = social_democrat
 		}
@@ -1401,7 +1437,13 @@ country_event = { #Mutiny in the Elisabethville Barracks
 	option = {
 		log = "[GetLogInfo]: event katanga_flavour_events.11 option katanga_flavour_events.11.b"
 		name = katanga_flavour_events.11.b
-		ai_chance = { base = 40 }
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = KTG_path option = DEFAULT } }
+			}
+		}
 		clr_country_flag = KTG_COLONIAL_RULE
 		set_politics = {
 			ruling_party = social_democrat

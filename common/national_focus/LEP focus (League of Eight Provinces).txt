@@ -17,8 +17,8 @@ focus_tree = {
 	}
 	default = no
 	continuous_focus_position = {
-		x = 1250
-		y = 800
+		x = 3250
+		y = 1800
 	}
 
 	shared_focus = CHS_provisional_government
@@ -27,17 +27,33 @@ focus_tree = {
 	shared_focus = CHS_southern_fleets_legacy
 
 	focus = {
-		id = LEP_qi_rules_nanjing
-		icon = GFX_goal_LEP_qi_rules_nanjing
-		cost = 0
+		id = LEP_suns_year_of_glory
+		icon = GFX_goal_QIE_rat
+		cost = 7
 
 		x = 13
 		y = 0
 
-		allow_branch = {
-			china_generic_unification_tree_allow_branch = no
+		ai_will_do = { factor = 1000 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed LEP_suns_year_of_glory"
+			custom_effect_tooltip = LEP_sun_chuanfang_year_tt
+			hidden_effect = {
+				add_political_power = 80
+			}
 		}
+	}
 
+	focus = {
+		id = LEP_qi_rules_nanjing
+		icon = GFX_goal_LEP_qi_rules_nanjing
+		cost = 0
+
+		relative_position_id = LEP_suns_year_of_glory
+		x = 0
+		y = 1
+
+		prerequisite = { focus = LEP_suns_year_of_glory }
 		ai_will_do = { factor = 1000 }
 		available = { hidden_trigger = { always = no } }
 		completion_reward = {
@@ -376,10 +392,17 @@ focus_tree = {
 		icon = GFX_goal_ANQ_five_stars_five_provinces
 		cost = 0
 
-		x = 19
-		y = 0
+		relative_position_id = LEP_aog_gun_shipments
+		x = 0
+		y = 1
 
 		ai_will_do = { factor = 100 }
+		prerequisite = {
+			focus = LEP_enforce_officer_loyalty
+			focus = LEP_aog_gun_shipments
+			focus = LEP_enforce_media_controls
+		}
+
 		available = {
 			hidden_trigger = { always = no }
 		}
@@ -454,6 +477,11 @@ focus_tree = {
 			QIE = { china_is_aligned_with_zhili = yes }
 			set_temp_variable = { target = QIE }
 			at_peace_or_same_enemies_as_TARGET = yes
+			OR = {
+				has_global_flag = CHN_south_china_war_started
+				CHN_south_china_war_over_trigger = yes
+				date > 1938.1.1
+			}
 		}
 		mutually_exclusive = { focus = LEP_deepen_the_zhili_schism }
 		completion_reward = {
@@ -513,6 +541,11 @@ focus_tree = {
 			NOT = { has_country_flag = LEP_league_war_flag }
 			CHN_no_aligned_unifier_exists_trigger = yes
 			is_subject = no
+			OR = {
+				has_global_flag = CHN_south_china_war_started
+				CHN_south_china_war_over_trigger = yes
+				date > 1938.1.1
+			}
 		}
 		mutually_exclusive = { focus = LEP_two_marshals_under_the_sky }
 		completion_reward = {
@@ -1009,8 +1042,9 @@ focus_tree = {
 		icon = GFX_goal_LEP_coercion
 		cost = 2
 
-		x = 26
-		y = 0
+		relative_position_id = LEP_suns_year_of_glory
+		x = 9
+		y = 1
 
 		ai_will_do = { base = 125 }
 		available = {
@@ -1021,6 +1055,9 @@ focus_tree = {
 			log = "[GetLogRoot]: Select Focus LEP_government_by_coercion"
 			country_event = { id = league_events.100 days = 2 }
 		}
+
+		prerequisite = { focus = LEP_suns_year_of_glory }
+
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LEP_government_by_coercion"
 			swap_ideas = {
@@ -1029,6 +1066,70 @@ focus_tree = {
 			}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+
+	focus = {
+		id = LEP_the_new_beiyang
+		icon = GFX_focus_CHI_cradle_of_civilization
+		cost = 5
+
+		relative_position_id = LEP_heir_to_the_jade_marshal
+		x = 1
+		y = 1
+
+		available = { china_is_the_unifier_of_china_trigger = yes }
+
+		ai_will_do = { factor = 5000 }
+		prerequisite = {
+			focus = LEP_heir_to_the_jade_marshal
+			focus = LEP_last_son_of_the_family
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed LEP_the_new_beiyang"
+			activate_targeted_decision = { decision = CHN_found_our_faction_decision target = ROOT }
+			custom_effect_tooltip = tooltip_white_line
+			china_add_research_slots = yes
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = LEP_jinbao_tt
+			custom_effect_tooltip = tooltip_white_line
+			QIE = {
+				QIE_wellington_koo = { CHN_recruit_character_effect = yes }
+				QIE_yuan_naikuan = { CHN_recruit_character_effect = yes }
+				QIE_peng_yunyi = { CHN_recruit_character_effect = yes }
+				QIE_wang_kemin = { CHN_recruit_character_effect = yes }
+				QIE_xiong_bingqi = { CHN_recruit_character_effect = yes }
+				QIE_bian_shoujing = { CHN_recruit_character_effect = yes }
+				QIE_wang_tan = { CHN_recruit_character_effect = yes }
+				QIE_liu_menggeng = { CHN_recruit_character_effect = yes }
+				QIE_tang_zaili = { CHN_recruit_character_effect = yes }
+				QIE_wang_chengbin = { CHN_recruit_character_effect = yes }
+				QIE_cai_chengxun = { CHN_recruit_character_effect = yes }
+				QIE_wu_yulin = { CHN_recruit_character_effect = yes }
+				QIE_wang_huaiqing = { CHN_recruit_character_effect = yes }
+				QIE_sa_zhenbing = { CHN_recruit_character_effect = yes }
+				QIE_zeng_qi = { CHN_recruit_character_effect = yes }
+				QIE_li_huang = {
+					CHN_recruit_character_effect = yes
+					add_advisor_role = {
+						advisor = {
+							slot = political_advisor
+							idea_token = QIE_li_huang_advisor
+							desc = QIE_li_huang_sic_desc
+							traits = { KR_pragmatic_statesman }
+						}
+					}
+				}
+			}
+			HNN = {
+				HNN_tang_xiangming = { CHN_recruit_character_effect = yes }
+				HNN_zuo_shunsheng = { CHN_recruit_character_effect = yes }
+			}
+			GXC = {
+				GXC_zhang_junmai = { CHN_recruit_character_effect = yes }
+				GXC_zhang_jiaao = { CHN_recruit_character_effect = yes }
+				GXC_zhu_jiahua = { CHN_recruit_character_effect = yes }
+			}
+		}
 	}
 
 	focus = {
@@ -2675,8 +2776,9 @@ focus_tree = {
 		icon = GFX_goal_LEP_collapse
 		cost = 5
 
-		x = 4
-		y = 0
+		relative_position_id = LEP_suns_year_of_glory
+		x = -9
+		y = 1
 
 		ai_will_do = {
 			base = 95
@@ -2690,6 +2792,8 @@ focus_tree = {
 			has_country_leader = { character = LEP_qi_xieyuan }
 			NOT = { has_country_flag = LEP_league_war_flag }
 		}
+
+		prerequisite = { focus = LEP_suns_year_of_glory }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LEP_fallout_of_the_league_war"

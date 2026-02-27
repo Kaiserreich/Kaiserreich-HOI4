@@ -4486,7 +4486,7 @@ RUS_create_economic_treaty = {
 			var:icon = { set_character_name = "GFX_goal_RUS_moscow_economic_council" }
 			var:desc = { set_character_name = RUS_default_moscow_treaty_desc }
 			set_variable = { red = 0 }
-			set_variable = { green = 0.496 }
+			set_variable = { green = 0.498 }
 			set_variable = { blue = 0.055 }
 		}
 	}
@@ -4629,15 +4629,18 @@ RUS_puppet_setup = {
 				}
 				drop_cosmetic_tag = yes
 			}
-			if = {
-				limit = { overlord = { tag = JAP } }
+			else_if = {
+				limit = {
+					overlord = { tag = JAP }
+					FER = { has_character = RUS_pavel_bermondt_avalov }
+				}
 				set_politics = {
 					ruling_party = paternal_autocrat
 					elections_allowed = no
 					name = FER_paternal_autocrat_party_JAP
 					long_name = FER_paternal_autocrat_party_JAP_long
 				}
-				RUS_oi_shigemoto = {
+				RUS_pavel_bermondt_avalov = {
 					if = {
 						limit = { has_ideology = paternal_autocrat_subtype }
 						promote_character = paternal_autocrat_subtype
@@ -4645,7 +4648,7 @@ RUS_puppet_setup = {
 					else = {
 						add_country_leader_role = {
 							country_leader = {
-								desc = RUS_oi_shigemoto_leader_desc
+								desc = RUS_pavel_bermondt_avalov_high_command_desc
 								ideology = paternal_autocrat_subtype
 							}
 							promote_leader = yes
@@ -5160,6 +5163,7 @@ RUS_create_natpop_vonsyatsky = {
 }
 
 RUS_create_postwar_monarchy = {
+	RUS_create_monarchy = yes
 	set_politics = {
 		ruling_party = social_conservative
 		elections_allowed = yes

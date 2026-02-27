@@ -739,8 +739,8 @@ political_actions = {
 					country_is_in_dangerous_war = yes
 					FROM = { default_attack_AI_trigger = yes }
 					AND = {
-						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
-						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
+						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
 					}
 					AND = {
 						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_HND }
@@ -1668,12 +1668,18 @@ SIA_diplomatic_matters_category = {
 			base = 100
 			modifier = {
 				factor = 0
-				NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_INT } }
 				country_exists = HND
+				NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_INT } }
 			}
 			modifier = {
 				factor = 0
 				INT = { surrender_progress > 0.3 }
+				NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_INT } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SIA_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_INT } }
 			}
 		}
 
@@ -1773,6 +1779,10 @@ SIA_diplomatic_matters_category = {
 				add = 1000
 				has_war_with = GER
 				JAP = { has_war_with = GER }
+			}
+			modifier = {
+				add = 1000
+				has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_JAP }
 			}
 		}
 

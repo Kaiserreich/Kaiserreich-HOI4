@@ -62,6 +62,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_begin_GCC"
+			add_political_power = 100
+			add_stability = 0.1
 			custom_effect_tooltip = GRU_begin_GCC_tt
 		}
 	}
@@ -318,6 +320,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_socialists"
+			add_stability = 0.05
+			add_political_power = 100
 			add_popularity = {
 				ideology = radical_socialist
 				popularity = 0.05
@@ -455,6 +459,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_councilists"
+			add_stability = 0.05
+			add_political_power = 100
 			add_popularity = {
 				ideology = syndicalist
 				popularity = 0.10
@@ -587,6 +593,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_communists"
+			add_stability = 0.05
+			add_political_power = 100
 			add_popularity = {
 				ideology = totalist
 				popularity = 0.20
@@ -859,13 +867,15 @@ focus_tree = {
 			has_completed_focus = GRU_KAPD_election
 		}
 
-		ai_will_do = { base = 100 }
+		ai_will_do = { base = 500 }
 
 		on_uncomplete = {
 			remove_ideas = GRU_volkswehrmacht_1
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_remilitarization"
+			add_war_support = 0.05
+			add_manpower = 300000
 			swap_ideas = {
 				remove_idea = disarmed_nation
 				add_idea = volunteer_only
@@ -935,13 +945,14 @@ focus_tree = {
 
 		prerequisite = { focus = GRU_remilitarization }
 
-		ai_will_do = { base = 100 }
+		ai_will_do = { base = 500 }
 
 		on_uncomplete = {
 			remove_ideas = GRU_volkswehrmacht_2
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_expand_police_force"
+			add_manpower = 200000
 			swap_ideas = {
 				remove_idea = GRU_volkswehrmacht_1
 				add_idea = GRU_volkswehrmacht_2
@@ -1026,7 +1037,7 @@ focus_tree = {
 
 		prerequisite = { focus = GRU_expand_police_force }
 
-		ai_will_do = { base = 100 }
+		ai_will_do = { base = 500 }
 
 		on_uncomplete = {
 			remove_ideas = GRU_volkswehrmacht_3

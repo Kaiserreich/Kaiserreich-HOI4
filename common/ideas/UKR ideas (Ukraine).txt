@@ -684,6 +684,7 @@ ideas = {
 				army_morale_factor = 0.1
 				war_support_factor = 0.1
 				training_time_army_factor = -0.1
+				conscription_factor = 0.05
 			}
 		}
 		UKR_territory_patriotism_2 = {
@@ -695,6 +696,7 @@ ideas = {
 				army_morale_factor = 0.1
 				war_support_factor = 0.1
 				training_time_army_factor = -0.1
+				conscription_factor = 0.1
 			}
 		}
 		UKR_revolutionary_leftism_suppression = {
@@ -1124,6 +1126,7 @@ ideas = {
 				mobilization_laws_cost_factor = -0.2
 				conscription_factor = 0.1
 				org_loss_at_low_org_factor = -0.1
+				resistance_target_on_our_occupied_states = 0.1
 			}
 			equipment_bonus = {
 				infantry_equipment = {
@@ -1146,6 +1149,7 @@ ideas = {
 				army_core_attack_factor = 0.05
 				army_core_defence_factor = 0.1
 				org_loss_at_low_org_factor = -0.1
+				resistance_target_on_our_occupied_states = 0.1
 				training_time_army_factor = -0.05
 				mobilization_laws_cost_factor = -0.2
 				combat_width_factor = -0.1
@@ -1189,7 +1193,7 @@ ideas = {
 			picture = generic_officer
 			modifier = {
 				army_org_factor = 0.1
-				army_speed_factor = 0.05
+				army_speed_factor = 0.1
 				army_attack_factor = 0.1
 				conscription_factor = -0.15
 				ground_attack_factor = 0.1
@@ -2184,7 +2188,7 @@ ideas = {
 		UKR_industrialisation_protofis_7 = { # fantastic Industrialisation Progress - Hetmanate + Protofis
 			on_add = { log = "[GetLogRoot]: add idea UKR_industrialisation_protofis_7" }
 			name = UKR_industrialisation
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			modifier = {
 				production_speed_arms_factory_factor = 0.10
 				industrial_capacity_factory = 0.10
@@ -2254,7 +2258,7 @@ ideas = {
 		UKR_industrialisation_hetmanate_7 = { # fantastic Industrialisation Progress - Hetmanate (no Protofis)
 			on_add = { log = "[GetLogRoot]: add idea UKR_industrialisation_hetmanate_7" }
 			name = UKR_industrialisation
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			modifier = {
 				production_speed_buildings_factor = 0.1
 				production_factory_start_efficiency_factor = 0.06
@@ -2339,7 +2343,7 @@ ideas = {
 		UKR_industrialisation_republic_7 = { # fantastic Industrialisation Progress - Republican
 			on_add = { log = "[GetLogRoot]: add idea UKR_industrialisation_republic_7" }
 			name = UKR_industrialisation
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			modifier = {
 				research_speed_factor = 0.1
 				production_factory_efficiency_gain_factor = 0.07
@@ -2417,7 +2421,7 @@ ideas = {
 		UKR_industrialisation_leftist_7 = { # fantastic Industrialisation Progress - Leftist
 			on_add = { log = "[GetLogRoot]: add idea UKR_industrialisation_leftist_7" }
 			name = UKR_industrialisation
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			modifier = {
 				research_speed_factor = 0.12
 				production_factory_max_efficiency_factor = 0.1

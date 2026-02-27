@@ -23,8 +23,6 @@ set_stability = 0.7
 set_war_support = 0.4
 starting_train_buffer = 1
 
-save_global_event_target_as = original_liangguang #SLATE
-
 ### THIS NEEDS TO BE HERE DUE TO LOAD ORDER ###
 QIE = {
 	set_autonomy = {
@@ -113,6 +111,8 @@ china_add_poor_army = yes
 
 ###- Events -###
 country_event = { id = GXC.introgame.100 days = 14 } #A Shared Future for the Two Guangs
+
+#Black Monday Fires Around February 4th (about 35 days in) so we want this event to fire a few weeks before.
 every_country = {
 	limit = {
 		OR = {
@@ -121,7 +121,7 @@ every_country = {
 			tag = JAP
 		}
 	}
-	country_event = { id = GXC.introgame.050 days = 10 random_days = 40 } #Our Interests in Guangzhou
+	country_event = { id = GXC.introgame.050 days = 14 random_days = 14 } #Our Interests in Guangzhou
 }
 every_country = {
 	limit = {
@@ -131,11 +131,11 @@ every_country = {
 			tag = LEP
 		}
 	}
-	country_event = { id = GXC.introgame.055 days = 10 random_days = 40 } #Shen Hongying, Governor of Guangdong?
+	country_event = { id = GXC.introgame.055 days = 14 random_days = 14 } #Shen Hongying, Governor of Guangdong?
 }
-YUN = { country_event = { id = GXC.introgame.060 days = 10 random_days = 40 } } #Yunnan's Ambitions in Guangxi
-HNN = { country_event = { id = GXC.introgame.065 days = 10 random_days = 40 } } #Our Southern Neighbours
-CHI = { country_event = { id = GXC.introgame.070 days = 10 random_days = 40 } } #Chen Mingshu Requests Funds
+YUN = { country_event = { id = GXC.introgame.060 days = 14 random_days = 14 } } #Yunnan's Ambitions in Guangxi
+HNN = { country_event = { id = GXC.introgame.065 days = 14 random_days = 14 } } #Our Southern Neighbours
+CHI = { country_event = { id = GXC.introgame.070 days = 14 random_days = 14 } } #Chen Mingshu Requests Funds
 country_event = {
 	id = china_events.70 #National Day of the Republic of China
 	days = 282 #Should Fire 10/10

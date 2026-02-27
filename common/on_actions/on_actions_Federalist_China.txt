@@ -6,23 +6,17 @@ on_actions = {
 					tag = GXC
 					china_is_aligned_with_federalists = yes
 				}
-				#Internal Chinese BOP Related Events
+				#Li Jishen and KMT Defectors
 				if = {
 					limit = {
-						GXC_is_phase_3_trigger = yes
+						owns_state = 613 #Nanjing
+						owns_state = 1046 #Longyan (For MinGan significance - Fujian)
+						owns_state = 1044 #Nanchang (For MinGan significance - Jiangxi)
+						ANQ = { exists = no }
+						LEP = { exists = no }
+						CHI = { exists = no }
 					}
-					#Li Jishen and KMT Defectors
-					if = {
-						limit = {
-							owns_state = 613 #Nanjing
-							owns_state = 1046 #Longyan (For MinGan significance - Fujian)
-							owns_state = 1044 #Nanchang (For MinGan significance - Jiangxi)
-							ANQ = { exists = no }
-							LEP = { exists = no }
-							CHI = { exists = no }
-						}
-						country_event = { id = GXC.midgame.680 days = 7 } #Li Jishen and the KMT Defectors
-					}
+					country_event = { id = GXC.midgame.680 days = 7 } #Li Jishen and the KMT Defectors
 				}
 			}
 			if = {

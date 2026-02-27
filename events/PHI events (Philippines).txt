@@ -1361,6 +1361,10 @@ country_event = { #President Quezon Cruises to Reelection
 
 	is_triggered_only = yes #Triggered by effect PHI_1939_election_outcome_effect
 
+	trigger = {
+		is_subject = no #So if PHI gets puppeted they don't elect Quezon
+	}
+
 	option = {
 		name = philippines_political_events.200.a #Congratulations President Quezon
 		log = "[GetLogInfo]: event philippines_political_events.200 option philippines_political_events.200.a"
@@ -2025,7 +2029,7 @@ country_event = {
 		log = "[GetLogInfo]: event philippines_military_events.065 option philippines_military_events.065.a"
 		name = philippines_military_events.065.a #A modern division for modern war!
 		if = {
-			limit = { NOT = { has_country_flag = PHI_created_foreign_divison } }
+			limit = { NOT = { has_country_flag = PHI_created_foreign_division } }
 			custom_override_tooltip = {
 				tooltip = {
 					localization_key = tooltip_create_division_template
@@ -2061,7 +2065,7 @@ country_event = {
 					}
 				}
 			}
-			set_country_flag = PHI_created_foreign_divison
+			set_country_flag = PHI_created_foreign_division
 			custom_effect_tooltip = PHI_create_locked_division
 		}
 		random_owned_controlled_state = {

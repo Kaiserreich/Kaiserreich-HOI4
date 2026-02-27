@@ -35,18 +35,20 @@ FIN_INF_01 = {
 	name = div_infantry_division
 	for_countries = { FIN }
 	division_types = { "infantry" }
-	fallback_name = "%d. Jalkaväkidivisioona"
+	fallback_name = "%d. Divisioona"
 	ordered = {
-		1 = { "%d. Jalkaväkidivisioona 'Ilvesdivisioona'" }
-		2 = { "%d. Jalkaväkidivisioona 'Iskevä Kiila'" }
-		3 = { "%d. Jalkaväkidivisioona 'Murtajadivisioona'" }
-		4 = { "%d. Jalkaväkidivisioona 'Kalpadivisioona'" }
-		5 = { "%d. Jalkaväkidivisioona" }
-		6 = { "%d. Jalkaväkidivisioona" }
-		7 = { "%d. Jalkaväkidivisioona" }
-		8 = { "%d. Jalkaväkidivisioona" }
-		9 = { "%d. Jalkaväkidivisioona" }
-		10 = { "%d. Jalkaväkidivisioona" }
+		1 = { "%d. Divisioona " }
+		2 = { "%d. Divisioona 'Murtajadivisioona'" }
+		3 = { "%d. Divisioona " }
+		4 = { "%d. Divisioona " }
+		5 = { "%d. Divisioona 'Ilvesdivisioona'" }
+		6 = { "%d. Divisioona" }
+		7 = { "%d. Divisioona 'Kalpadivisioona'" }
+		8 = { "%d. Divisioona 'Kolmen kannaksen koukkaajat'" }
+		9 = { "%d. Divisioona" }
+		10 = { "%d. Divisioona" }
+		11 = { "%d. Divisioona 'Iskevä Kiila'" }
+		17 = { "%d. Divisioona 'Tammidivisioona'" }
 	}
 }
 
@@ -55,7 +57,7 @@ FIN_INF_02 = {
 	for_countries = { FIN }
 	division_types = { "infantry" }
 	link_numbering_with = { FIN_INF_01 }
-	fallback_name = "%d. Prikaati"
+	fallback_name = "%d. Jalkaväkiprikaati"
 	ordered = {
 		1 = { "Taipals. Prikaati" }
 		2 = { "Taivalal. Prikaati" }
@@ -74,12 +76,11 @@ FIN_INF_02 = {
 		15 = { "Pohjois-Savon Prikaati" }
 		16 = { "Kajaanin Sissiprikaati" }
 		17 = { "Suomussalmen Prikaati" }
-		18 = { "%d. Prikaati" }
 	}
 }
 
 FIN_INF_03 = {
-	name = div_light_infantry_division
+	name = div_FIN_light_infantry_units
 	for_countries = { FIN }
 	division_types = { "infantry" "mountaineers" "paratrooper" "marine" }
 	fallback_name = "Sissiosasto %d"
@@ -103,7 +104,7 @@ FIN_CAV_01 = {
 	division_types = { "cavalry" }
 	fallback_name = "%d. Ratsuväkiprikaati"
 	ordered = {
-		1 = { "Ratsuväkiprikaati" }
+		1 = { "%d. Ratsuväkiprikaati" }
 		2 = { "%d. Ratsuväkiprikaati" }
 		3 = { "%d. Ratsuväkiprikaati" }
 		4 = { "%d. Ratsuväkiprikaati" }

@@ -133,7 +133,7 @@ focus_tree = {
 				tooltip = {
 					localization_key = tooltip_create_division_template
 					NAME = "Lianhe Bubing"
-					LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 8 }
+					LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 8 }
 				}
 				if = {
 					limit = { has_template = "Lianhe Bubing" }
@@ -2464,6 +2464,8 @@ focus_tree = {
 				uses = 1
 				category = air_doctrine
 			}
+			custom_effect_tooltip = tooltip_white_line
+			country_event = { id = GXC.earlygame.042 days = 21 }
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_AIRFORCE_BONUS }
 	}
@@ -2505,6 +2507,8 @@ focus_tree = {
 				surname = "Lei"
 				callsign = "Dedication"
 			}
+			custom_effect_tooltip = tooltip_white_line
+			country_event = { id = GXC.earlygame.043 days = 21 }
 		}
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
 	}
@@ -2594,6 +2598,8 @@ focus_tree = {
 				uses = 1
 				category = naval_doctrine
 			}
+			custom_effect_tooltip = tooltip_white_line
+			country_event = { id = GXC.earlygame.044 days = 21 }
 		}
 		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_NAVY_XP }
 	}
@@ -3101,7 +3107,14 @@ focus_tree = {
 		y = 1
 		ai_will_do = {
 			base = 100
-
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				AND = {
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+					NOT = { is_ally_with = AGJ }
+				}
+			}
 			modifier = {
 				factor = 1.5
 				GXC_ai_factor_prioritize_economic_focuses_trigger = yes
@@ -3368,6 +3381,17 @@ focus_tree = {
 			modifier = {
 				factor = 1.5
 				GXC_ai_factor_prioritize_economic_focuses_trigger = yes
+			}
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
 			}
 		}
 		relative_position_id = GXC_the_good_earth
@@ -4461,6 +4485,24 @@ focus_tree = {
 				factor = 5
 				GXC_ai_factor_prioritize_forming_a_government_focus_trigger = yes
 			}
+			modifier = {
+				factor = 15
+				OR = {
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+						NPA = { exists = no }
+					}
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
 		}
 
 		completion_reward = {
@@ -4486,6 +4528,16 @@ focus_tree = {
 			modifier = {
 				factor = 5
 				GXC_ai_factor_prioritize_forming_a_government_focus_trigger = yes
+			}
+			modifier = {
+				factor = 15
+				OR = {
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+						NPA = { exists = no }
+					}
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
+				}
 			}
 		}
 		prerequisite = { focus = GXC_heirs_of_lu_rongting }
@@ -4526,6 +4578,16 @@ focus_tree = {
 				factor = 5
 				GXC_ai_factor_prioritize_forming_a_government_focus_trigger = yes
 			}
+			modifier = {
+				factor = 15
+				OR = {
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+						NPA = { exists = no }
+					}
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
+				}
+			}
 		}
 		prerequisite = { focus = GXC_heirs_of_lu_rongting }
 		completion_reward = {
@@ -4556,6 +4618,16 @@ focus_tree = {
 			modifier = {
 				factor = 5
 				GXC_ai_factor_prioritize_forming_a_government_focus_trigger = yes
+			}
+			modifier = {
+				factor = 15
+				OR = {
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+						NPA = { exists = no }
+					}
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
+				}
 			}
 		}
 		prerequisite = { focus = GXC_heirs_of_lu_rongting }
@@ -4640,6 +4712,16 @@ focus_tree = {
 				factor = 5
 				GXC_ai_factor_prioritize_forming_a_government_focus_trigger = yes
 			}
+			modifier = {
+				factor = 15
+				OR = {
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+						NPA = { exists = no }
+					}
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
+				}
+			}
 		}
 		prerequisite = { focus = GXC_legacy_of_the_cohong }
 		prerequisite = { focus = GXC_putting_down_the_spectre_of_1927 }
@@ -4670,7 +4752,24 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = GXC_legacy_of_the_cohong
-		ai_will_do = { base = 100 }
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
+		}
 		prerequisite = { focus = GXC_legacy_of_the_cohong }
 		prerequisite = { focus = GXC_approaching_the_yue_clique }
 		completion_reward = {
@@ -4694,7 +4793,24 @@ focus_tree = {
 		x = 0
 		y = 2
 		relative_position_id = GXC_putting_down_the_spectre_of_1927
-		ai_will_do = { base = 100 }
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		prerequisite = { focus = GXC_putting_down_the_spectre_of_1927 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_salutations_to_the_kingmakers"
@@ -4778,14 +4894,37 @@ focus_tree = {
 				factor = 5
 				GXC_ai_factor_prioritize_forming_a_government_focus_trigger = yes
 			}
+			modifier = {
+				factor = 15
+				OR = {
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+						NPA = { exists = no }
+					}
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC } }
+				NOT = { has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA } }
+			}
 		}
 		prerequisite = { focus = GXC_blending_confucianism_and_progress }
 		available = {
 			controls_state = 592 #Canton - we do controls not owns state for Beijing so just keeping the same logic. Hopefully the below 2 will prevent any overlap.
-			CHN_no_aligned_unifier_exists_trigger = yes
-			authoritarian_democrat > 0.35
+			if = {
+				limit = { CHN_no_aligned_unifier_exists_trigger = yes }
+				CHN_no_aligned_unifier_exists_trigger = yes
+				authoritarian_democrat > 0.35
+			}
+			else = {
+				NPA = { exists = yes }
+			}
 		}
 		cancel_if_invalid = no
+		continue_if_invalid = yes
 		allow_branch = {
 			china_is_aligned_with_federalists = no
 			china_is_aligned_with_kmt = no
@@ -4804,14 +4943,29 @@ focus_tree = {
 		}
 		select_effect = {
 			log = "[GetLogRoot]: Select Focus GXC_liangguangs_destiny"
-			country_event = { id = GXC.midgame.800 days = 1 } #The Conference in Guangzhou
+			if = {
+				limit = { CHN_no_aligned_unifier_exists_trigger = yes }
+				country_event = { id = GXC.midgame.800 days = 1 } #The Conference in Guangzhou
+			}
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_liangguangs_destiny"
 			add_stability = 0.10
 			add_war_support = 0.10
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = china_can_core_through_compliance
+			if = {
+				limit = { CHN_no_aligned_unifier_exists_trigger = yes }
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = china_can_core_through_compliance
+			}
+			else_if = {
+				limit = {
+					NPA = {
+						exists = yes
+						NOT = { tag = ROOT }
+					}
+				}
+				unlock_decision_tooltip = CHN_join_NPA_decision
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -5609,7 +5763,7 @@ focus_tree = {
 				NOT = { has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC } }
 				NOT = {
 					AND = {
-						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKMT }
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
 						country_exists = CHI
 					}
 				}
@@ -10610,9 +10764,12 @@ focus_tree = {
 			add_war_support = -0.10
 			add_political_power = 40
 			add_stability = 0.05
-			QIE = {
-				QIE_shen_junru = { CHN_recruit_character_effect = yes }
-				QIE_hu_shih = { CHN_recruit_character_effect = yes }
+			if = {
+				limit = { QIE = { exists = no } }
+				QIE = {
+					QIE_shen_junru = { CHN_recruit_character_effect = yes }
+					QIE_hu_shih = { CHN_recruit_character_effect = yes }
+				}
 			}
 			if = {
 				limit = { SZC = { exists = no } }
@@ -11795,9 +11952,9 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GXC_showdown_with_the_yue_army"
 			if = {
 				limit = {
+					is_ai = yes
 					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_YE_JU_AUTDEM }
 				}
-				custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 				UPC_sub_enthusiasm_giga_effect = yes
 				UPC_sub_enthusiasm_giga_effect = yes
 				UPC_sub_enthusiasm_giga_effect = yes
@@ -12723,7 +12880,10 @@ focus_tree = {
 			change_ruling_party_popularity = yes
 			custom_effect_tooltip = tooltip_white_line
 			reduce_propaganda_decision_cost_twenty_five_percent = yes
-			custom_effect_tooltip = reduce_propaganda_decision_cost_twenty_five_percent_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_propaganda_decision_cost_tt
+				NUMBER = 25%
+			}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
 	}
@@ -13496,7 +13656,10 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_disarming_provincial_warlords"
 			GXC = { set_variable = { generic_raise_stability_decision_cost = 75 } }
-			custom_effect_tooltip = reduce_stability_decision_cost_twenty_five_percent_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_stability_decision_cost_tt
+				NUMBER = 25%
+			}
 			custom_effect_tooltip = tooltip_white_line
 			set_temp_variable = { ideology_change_var = 0.10 }
 			change_ruling_party_popularity = yes
@@ -14176,15 +14339,23 @@ focus_tree = {
 			custom_effect_tooltip = GXC_HSBC_bank_upgrade_tt
 			show_ideas_tooltip = GXC_hsbc_bank_2
 			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = GXC_AOG_bank_upgrade_tt
+			show_ideas_tooltip = GXC_AOG_bank_2
+			custom_effect_tooltip = tooltip_white_line
 			CHN_improve_economic_devastation_effect = yes
 			custom_effect_tooltip = tooltip_white_line
 			add_political_power = 45
 			GXC_CMC_large_effect = yes
 			hidden_effect = {
 				592 = { set_state_flag = GXC_improved_HSBC_bank }
+				set_country_flag = GXC_improved_AOG_bank
 				if = {
 					limit = { has_idea = GXC_hsbc_bank }
 					add_ideas = GXC_hsbc_bank_2
+				}
+				if = {
+					limit = { has_idea = GXC_AOG_bank }
+					add_ideas = GXC_AOG_bank_2
 				}
 			}
 		}
@@ -16487,9 +16658,20 @@ focus_tree = {
 			GXC_new_republic_effect = yes
 			add_stability = 0.08
 			add_war_support = 0.08
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.08
+			if = {
+				limit = {
+					GXC_ma_ji = { is_second_in_command = yes }
+				}
+				add_popularity = {
+					ideology = paternal_autocrat
+					popularity = 0.08
+				}
+			}
+			else = {
+				add_popularity = {
+					ideology = authoritarian_democrat
+					popularity = 0.08
+				}
 			}
 			custom_effect_tooltip = tooltip_white_line
 			every_character = {
@@ -20701,7 +20883,10 @@ focus_tree = {
 					social_liberal > 0.10
 					social_conservative > 0.10
 				}
-				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
+				hidden_trigger = {
+					is_ai = yes
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
+				}
 			}
 		}
 		mutually_exclusive = { focus = GXC_promise_a_thorough_tutelage }

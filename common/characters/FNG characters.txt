@@ -1573,11 +1573,9 @@ characters = {
 			traits = { FNG_age_and_wisdom }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = FNG }
-						FNG_JAP_spend_medium = yes
-					}
+				if = {
+					limit = { ROOT = { tag = FNG } }
+					FNG_JAP_spend_medium = yes
 				}
 			}
 		}
@@ -1596,11 +1594,9 @@ characters = {
 			traits = { FNG_on_daring_wings }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = FNG }
-						FNG_JAP_spend_medium = yes
-					}
+				if = {
+					limit = { ROOT = { tag = FNG } }
+					FNG_JAP_spend_medium = yes
 				}
 			}
 		}
@@ -1619,11 +1615,9 @@ characters = {
 			traits = { FNG_spirit_and_steel }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = FNG }
-						FNG_JAP_investment_medium = yes
-					}
+				if = {
+					limit = { ROOT = { tag = FNG } }
+					FNG_JAP_investment_medium = yes
 				}
 			}
 		}

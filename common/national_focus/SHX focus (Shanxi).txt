@@ -1754,10 +1754,10 @@ focus_tree = {## Early Game Tree
 			hidden_effect = {
 				622 = {
 					build_railway = {
-						path = { 7301 5007 1575 1034 1531 4174 10838 12300 10507 7041 12432 }
+						path = { 7301 12713 6932 1575 7571 4634 1115 1962 4469 10507 7041 12432 }
 						start_state = 799
 						target_state = 615
-						level = 1
+						level = 2
 						fallback = yes
 					}
 				}
@@ -1974,6 +1974,7 @@ focus_tree = {## Early Game Tree
 			hidden_effect = {
 				1072 = {
 					build_railway = {
+						path = { 1962 4469 10507 7041 12432 1590 6904 9843 }
 						level = 2
 						start_state = 1072
 						target_state = 608
@@ -3151,12 +3152,17 @@ focus_tree = {## Early Game Tree
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SHX_renovate_the_taiyuan_arsenal"
-			1072 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
+			if = {
+				limit = {
+					owns_state = 1072 #Taiyuan
+				}
+				1072 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
 				}
 			}
 			###Backup if you lose Taiyuan somehow ###
@@ -4130,6 +4136,10 @@ focus_tree = {## Early Game Tree
 				factor = 2
 				date > 1939.01.01
 			}
+			modifier = {	# Beeline forpol if set to in game rules
+				factor = 10
+				SHX_forpol_game_rule_set = yes
+			}
 		}
 		available = {
 			has_war_support > 0.5
@@ -4206,7 +4216,13 @@ focus_tree = {## Early Game Tree
 		x = -3
 		y = 1
 
-		ai_will_do = { base = 100 }
+		ai_will_do = {
+			base = 100
+			modifier = {	# Beeline forpol if set to in game rules
+				factor = 10
+				SHX_forpol_game_rule_set = yes
+			}
+		}
 		prerequisite = {
 			focus = SHX_out_of_beijing
 		}
@@ -4419,7 +4435,7 @@ focus_tree = {## Early Game Tree
 					CHI = {
 						exists = yes
 						is_subject = no
-						china_is_aligned_with_republicans = yes
+						china_is_aligned_with_southern_republicans = yes
 					}
 				}
 				activate_targeted_decision = { target = CHI decision = SHX_joint_strike_decision }
@@ -4429,7 +4445,7 @@ focus_tree = {## Early Game Tree
 					YUN = {
 						exists = yes
 						is_subject = no
-						china_is_aligned_with_republicans = yes
+						china_is_aligned_with_southern_republicans = yes
 					}
 				}
 				activate_targeted_decision = { target = YUN decision = SHX_joint_strike_decision }
@@ -4439,7 +4455,7 @@ focus_tree = {## Early Game Tree
 					GXC = {
 						exists = yes
 						is_subject = no
-						china_is_aligned_with_republicans = yes
+						china_is_aligned_with_southern_republicans = yes
 					}
 				}
 				activate_targeted_decision = { target = GXC decision = SHX_joint_strike_decision }
@@ -4480,7 +4496,13 @@ focus_tree = {## Early Game Tree
 				}
 			}
 		}
-		ai_will_do = { base = 75 }
+		ai_will_do = {
+			base = 75
+			modifier = {	# Beeline forpol if set to in game rules
+				factor = 10
+				SHX_forpol_game_rule_set = yes
+			}
+		}
 		prerequisite = {
 			focus = SHX_destiny
 		}
@@ -4555,6 +4577,11 @@ focus_tree = {## Early Game Tree
 			modifier = {
 				factor = 0
 				has_war = yes
+				SHX_forpol_game_rule_set = no
+			}
+			modifier = {	# Beeline forpol if set to in game rules
+				factor = 10
+				SHX_forpol_game_rule_set = yes
 			}
 		}
 		prerequisite = {
@@ -4592,7 +4619,13 @@ focus_tree = {## Early Game Tree
 		x = 2
 		y = 1
 
-		ai_will_do = { base = 75 }
+		ai_will_do = {
+			base = 75
+			modifier = {	# Beeline forpol if set to in game rules
+				factor = 10
+				SHX_forpol_game_rule_set = yes
+			}
+		}
 		prerequisite = {
 			focus = SHX_destiny
 		}
@@ -4639,6 +4672,10 @@ focus_tree = {## Early Game Tree
 					1048 #Wuhan
 				}
 			}
+			modifier = {	# Beeline forpol if set to in game rules
+				factor = 10
+				SHX_forpol_game_rule_set = yes
+			}
 		}
 		prerequisite = {
 			focus = SHX_war_plan
@@ -4681,6 +4718,7 @@ focus_tree = {## Early Game Tree
 			modifier = {
 				factor = 0
 				has_war = yes
+				SHX_forpol_game_rule_set = no
 			}
 			modifier = {
 				factor = 10
@@ -4689,6 +4727,10 @@ focus_tree = {## Early Game Tree
 					613 #Nanjing
 					1048 #Wuhan
 				}
+			}
+			modifier = {	# Beeline forpol if set to in game rules
+				factor = 10
+				SHX_forpol_game_rule_set = yes
 			}
 		}
 		available = {
@@ -4715,6 +4757,45 @@ focus_tree = {## Early Game Tree
 			add_war_support = 0.15
 			country_event = shanxi_zhifeng_events.26
 			custom_effect_tooltip = SHX_beyond_borders_tt
+			if = {
+				limit = { NPA = { exists = yes } }
+				unlock_decision_tooltip = CHN_join_NPA_decision
+			}
+			if = {
+				limit = {
+					has_country_leader = { character = SHX_yan_xishan }
+					NZH = {
+						exists = yes
+						NOT = { original_tag = QIE }
+					}
+				}
+				unlock_decision_tooltip = CHN_join_NZH_decision
+			}
+			if = {
+				limit = {
+					has_country_leader = { character = SHX_yan_xishan }
+					AGJ = { exists = yes }
+				}
+				unlock_decision_tooltip = CHN_join_AGJ_decision
+			}
+			if = {
+				limit = {
+					has_country_leader = { character = SHX_feng_yuxiang }
+					UPC = { exists = yes }
+				}
+				unlock_decision_tooltip = CHN_join_UPC_decision
+			}
+			if = {
+				limit = {
+					has_country_leader = { character = SHX_feng_yuxiang }
+					LKT = { exists = yes }
+				}
+				unlock_decision_tooltip = CHN_join_LKT_decision
+			}
+			if = {
+				limit = { RKT = { exists = yes } }
+				unlock_decision_tooltip = CHN_join_RKT_decision
+			}
 		}
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 	}

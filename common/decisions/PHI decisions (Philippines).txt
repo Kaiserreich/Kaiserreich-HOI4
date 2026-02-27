@@ -33,11 +33,11 @@ foreign_politics = {
 				limit = { FROM = { tag = ENT } }
 				FROM = {
 					OR = {
-						#Having the gamerule for PHI to join the Entente will bypass all these restrictions because tbh PHI wouldn't join otherwise.
+						#Having the game rule for PHI to join the Entente will bypass all these restrictions because tbh PHI wouldn't join otherwise.
 						tag = AST
 						is_ally_with = AST #Needs Australia to have any chance of influence
 						hidden_trigger = {
-							has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_ENT }
+							has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_ENT }
 						}
 					}
 				}
@@ -63,9 +63,9 @@ foreign_politics = {
 				}
 				hidden_trigger = {
 					AND = {
-						#Having the gamerule for PHI to join the Entente will bypass all these restrictions because tbh PHI wouldn't join otherwise.
+						#Having the game rule for PHI to join the Entente will bypass all these restrictions because tbh PHI wouldn't join otherwise.
 						FROM = { tag = ENT }
-						has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_ENT }
+						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_ENT }
 					}
 				}
 			}
@@ -154,9 +154,9 @@ foreign_politics = {
 
 			modifier = {
 				add = 100
-				#PHI Will Join ENT ASAP If Has Gamerule On
+				#PHI Will Join ENT ASAP If Has Game rule On
 				FROM = { tag = ENT }
-				has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_ENT }
+				has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_ENT }
 			}
 		}
 
@@ -276,12 +276,12 @@ foreign_politics = {
 				factor = 0
 				OR = {
 					AND = {
-						has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_HND }
+						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_HND }
 						INT = { NOT = { is_in_faction_with = HND } }
 					}
 					AND = {
-						has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_CHI }
-						CHI = { NOT = { is_in_faction_with = HND } }
+						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN }
+						CHN = { NOT = { is_in_faction_with = HND } }
 					}
 				}
 			}
@@ -1314,7 +1314,7 @@ PHI_fight_for_the_philippines_decision_cat = {
 
 			modifier = {
 				add = 100
-				PHI_forpol_gamerule_needs_IND_trigger = yes
+				PHI_forpol_game_rule_needs_IND_trigger = yes
 			}
 
 			modifier = {
@@ -1362,7 +1362,7 @@ PHI_fight_for_the_philippines_decision_cat = {
 
 			modifier = {
 				add = 100
-				PHI_forpol_gamerule_needs_IND_trigger = yes
+				PHI_forpol_game_rule_needs_IND_trigger = yes
 			}
 
 			modifier = {
@@ -1404,7 +1404,7 @@ PHI_fight_for_the_philippines_decision_cat = {
 					check_variable = { PHI_GEA_alignment_var > PHI_IND_alignment_var }
 					check_variable = { PHI_CPS_alignment_var > PHI_IND_alignment_var }
 				}
-				PHI_forpol_gamerule_needs_IND_trigger = yes
+				PHI_forpol_game_rule_needs_IND_trigger = yes
 			}
 
 			modifier = {
@@ -1452,7 +1452,7 @@ PHI_fight_for_the_philippines_decision_cat = {
 					check_variable = { PHI_GEA_alignment_var > PHI_IND_alignment_var }
 					check_variable = { PHI_CPS_alignment_var > PHI_IND_alignment_var }
 				}
-				PHI_forpol_gamerule_needs_IND_trigger = yes
+				PHI_forpol_game_rule_needs_IND_trigger = yes
 			}
 
 			modifier = {
@@ -1506,7 +1506,7 @@ PHI_fight_for_the_philippines_decision_cat = {
 			#Ai will never do this unless game-ruled
 			modifier = {
 				add = 100
-				has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_USA }
+				has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_USA }
 			}
 
 			modifier = {
@@ -1552,7 +1552,7 @@ PHI_fight_for_the_philippines_decision_cat = {
 			#Ai will never do this unless game-ruled
 			modifier = {
 				add = 100
-				has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_GER }
+				has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_GER }
 			}
 
 			modifier = {
@@ -1598,7 +1598,7 @@ PHI_fight_for_the_philippines_decision_cat = {
 			#Ai will never do this unless game-ruled
 			modifier = {
 				add = 100
-				has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_JAP }
+				has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_JAP }
 			}
 
 			modifier = {

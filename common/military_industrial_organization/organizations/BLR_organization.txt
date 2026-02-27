@@ -14,19 +14,30 @@ BLR_minsk_automobile_plant_organisation = {
 		FROM = { owns_state = 206 } #Minsk
 	}
 }
-
-##################
-### Naval MIOs ###
-##################
-BLR_pinsk_shipyard_organisation = {
-	include = generic_refurbishment_repair_dockyard_organization
-	name = pinsk_shipyard
-	icon = GFX_idea_pinsk_shipyard
+BLR_krupp_weissruthenien = {
+	include = generic_infantry_tank_organization
+	name = BLR_krupp_whr
+	icon = GFX_idea_krupp
 	allowed = {
 		original_tag = BLR
 	}
 	available = {
-		FROM = { owns_state = 95 } #Pinsk
+		GER_export_mio_trigger = yes
+	}
+}
+
+##################
+### Naval MIOs ###
+##################
+BLR_klaipeda_shipyard_organisation = {
+	include = generic_refurbishment_repair_dockyard_organization
+	name = BLR_klaipeda_shipyard
+	icon = GFX_idea_klaipeda_shipyard
+	allowed = {
+		original_tag = BLR
+	}
+	available = {
+		FROM = { owns_state = 188 } #Klaipeda or Memel
 	}
 }
 
@@ -44,14 +55,10 @@ BLR_baranovichi_aviation_repair_plant_organisation = {
 		FROM = { owns_state = 204 } #Novogrudok
 	}
 }
-
-#####################
-### Materiel MIOs ###
-#####################
-BLR_mov_organisation = {
-	include = generic_infantry_equipment_organization
-	name = mov
-	icon = GFX_idea_generic_infantry_equipment_manufacturer_2
+BLR_slutsk_military_aviation_workshop = {
+	include = generic_multi_role_aircraft_organization
+	name = slutsk_military_aviation_workshop
+	icon = GFX_idea_generic_air_manufacturer_3 # TODO
 	allowed = {
 		original_tag = BLR
 	}
@@ -59,15 +66,36 @@ BLR_mov_organisation = {
 		FROM = { owns_state = 206 } #Minsk
 	}
 }
-BLR_krupp_organisation = { #copy from GER
-	include = generic_artillery_organization
-	name = krupp
-	icon = GFX_idea_krupp
+BLR_dornier_organisation = { #copy from GER
+	include = generic_medium_aircraft_organization
+	name = dornier
+	icon = GFX_idea_dornier
+
 	allowed = {
 		original_tag = BLR
 	}
 	available = {
 		GER_export_mio_trigger = yes
+	}
+}
+
+#####################
+### Materiel MIOs ###
+#####################
+BLR_national_arsenal_organisation = {
+	include = generic_infantry_equipment_organization
+	name = belarusian_national_arsenal
+	icon = GFX_idea_belarusian_national_arsenal
+	allowed = {
+		original_tag = BLR
+	}
+}
+BLR_national_arsenal_organisation_artillery = {
+	include = generic_artillery_organization
+	name = belarusian_national_arsenal_art
+	icon = GFX_idea_belarusian_national_arsenal_art
+	allowed = {
+		original_tag = BLR
 	}
 }
 BLR_maaz_organisation = {

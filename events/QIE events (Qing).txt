@@ -2610,7 +2610,7 @@ country_event = { #tang shengzhi takes over Hunan, should we assist Tang Xiangmi
 				factor = 0
 				OR = {
 					has_game_rule = { rule = HNN_path option = HNN_PATH_SOCDEM }
-					has_game_rule = { rule = HNN_path option = HNN_PATH_AUTDEM }
+					has_game_rule = { rule = HNN_path option = HNN_PATH_RKMT_AUTDEM }
 				}
 			}
 		}
@@ -3199,7 +3199,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				QIE = { has_country_flag = SHD_no_help_sent } #Qu wont help if he got no aid
-				NOT = { has_game_rule = { rule = QIE_coup_friend option = QIE_COUP_FRIEND_QU_ACCEPTS } } #Bypass if Qu is gameruled to back the coup
+				NOT = { has_game_rule = { rule = QIE_coup_friend option = QIE_COUP_FRIEND_QU_ACCEPTS } } #Bypass if Qu is game ruled to back the coup
 			}
 			modifier = {
 				factor = 0

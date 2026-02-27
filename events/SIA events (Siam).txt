@@ -452,9 +452,9 @@ country_event = { # Pridi and his Yellow Cover Book
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PATAUT }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_BOWORADET_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_RADSOC }
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP }
 				}
@@ -541,9 +541,9 @@ country_event = { # Prajadhipok strikes back!
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PATAUT }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_BOWORADET_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_RADSOC }
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP }
 				}
@@ -621,9 +621,9 @@ country_event = { # Prajadhipok sued!
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PATAUT }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_BOWORADET_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_RADSOC }
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP }
 				}
@@ -717,7 +717,7 @@ country_event = { # Luang Phibunsongkhram's Dilemma
 				factor = 0
 				OR = {
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_RADSOC }
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP }
 				}
@@ -758,8 +758,8 @@ country_event = { # Luang Phibunsongkhram's Dilemma
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PATAUT }
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_BOWORADET_PATAUT }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP }
 				}
@@ -802,7 +802,7 @@ country_event = { # Luang Phibunsongkhram's Dilemma
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PATAUT }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_BOWORADET_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_RADSOC }
 				}
 			}
@@ -874,7 +874,7 @@ country_event = { # War it is then (All)
 			base = 15
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PATAUT }
+				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_BOWORADET_PATAUT }
 			}
 		}
 
@@ -1117,7 +1117,7 @@ country_event = { # Down the NatPop path or liberalise?
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP }
 				}
@@ -1664,12 +1664,29 @@ country_event = { # Attack Burma or Not? - Plaek not only Protecc but also Attac
 			base = 80
 			modifier = {
 				factor = 0
-				NOT = { has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP } }
+				NOT = { has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP } }
 				NOT = { has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT } }
 				NOT = { has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP } }
 				OR = {
 					country_is_in_dangerous_war = yes
 					FROM = { default_attack_AI_trigger = yes }
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_JAP }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_JAP }
+					}
+					AND = {
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_GER }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_GER }
+					}
+					AND = {
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
+					}
 				}
 			}
 		}
@@ -1697,12 +1714,29 @@ country_event = { # Attack Burma or Not? - Plaek not only Protecc but also Attac
 			base = 40
 			modifier = {
 				factor = 0
-				NOT = { has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP } }
+				NOT = { has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP } }
 				NOT = { has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT } }
 				NOT = { has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP } }
 				OR = {
 					country_is_in_dangerous_war = yes
 					FROM = { default_attack_AI_trigger = yes }
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_JAP }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_JAP }
+					}
+					AND = {
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_GER }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_GER }
+					}
+					AND = {
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
+					}
 				}
 			}
 		}
@@ -1728,9 +1762,23 @@ country_event = { # Attack Burma or Not? - Plaek not only Protecc but also Attac
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP }
+				}
+				NOT = {
+					AND = {
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_JAP }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_JAP }
+					}
+					AND = {
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_GER }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_GER }
+					}
+					AND = {
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
+					}
 				}
 			}
 		}
@@ -2202,7 +2250,7 @@ country_event = { # General Discontent post-Ratthaniyom Implementation
 			base = 5
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 			}
 			modifier = {
 				add = 75
@@ -2276,7 +2324,7 @@ country_event = { # Decree 2 - New National Anthem, The merging of other Tai rac
 			base = 80
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 			}
 		}
 		add_stability = 0.05
@@ -2321,7 +2369,7 @@ country_event = { # Decree 3 - Thaification program and ban on Chinese-run and M
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_SARIT_PATAUT }
 					has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PHAO_NATPOP }
 				}
@@ -2353,7 +2401,7 @@ country_event = { # Decree 3 - Thaification program and ban on Chinese-run and M
 			base = 10
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 			}
 		}
 		add_stability = -0.03
@@ -2485,7 +2533,7 @@ country_event = { # Plaek's Assassination trigger 1 (hidden)
 		log = "[GetLogInfo]: event siam_events.46 option 1"
 		if = {
 			limit = {
-				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 			}
 			country_event = siam_events.48
 		}
@@ -2575,7 +2623,7 @@ country_event = { # Plaek's Assassination trigger 1 (hidden)
 		log = "[GetLogInfo]: event siam_events.49 option 1"
 		if = {
 			limit = {
-				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_NATPOP }
+				has_game_rule = { rule = SIA_civil_war option = SIA_CIVIL_WAR_PLAEK_NATPOP }
 			}
 			country_event = siam_events.48
 		}
@@ -5251,7 +5299,7 @@ country_event = { # Death of Rama VIII - xxxxxxx
 	}
 }
 
-country_event = { # Death of Paribatra Sukhumbhand (Paribatra Line of Sucession) - xxxxxxx
+country_event = { # Death of Paribatra Sukhumbhand (Paribatra Line of Succession) - xxxxxxx
 	id = siam_events.6033
 	title = siam_events.6033.t
 	desc = siam_events.6033.d
@@ -5270,7 +5318,7 @@ country_event = { # Death of Paribatra Sukhumbhand (Paribatra Line of Sucession)
 		SIA_paribatra_sukhumbhand = { kill_character = yes }
 	}
 }
-country_event = { # Death of Chumbhotbongs Paribatra (Paribatra Line of Sucession) - xxxxxxx
+country_event = { # Death of Chumbhotbongs Paribatra (Paribatra Line of Succession) - xxxxxxx
 	id = siam_events.6034
 	title = siam_events.6034.t
 	desc = siam_events.6034.d

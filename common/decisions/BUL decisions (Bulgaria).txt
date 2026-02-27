@@ -788,6 +788,11 @@ foreign_politics = {
 				NOT = { has_game_rule = { rule = BUL_forpol option = DEFAULT } }
 				NOT = { has_game_rule = { rule = BUL_forpol option = BUL_FORPOL_RUS } }
 			}
+			modifier = {
+				factor = 0
+				GER = { has_country_flag = SER_supported_bulgaria }
+				NOT = { has_game_rule = { rule = BUL_forpol option = BUL_FORPOL_RUS } }
+			}
 		}
 
 		complete_effect = {
@@ -1138,7 +1143,7 @@ foreign_politics = {
 								OR = {
 									has_game_rule = { rule = GRE_referendum option = GRE_REFERENDUM_SYNDIE }
 									has_game_rule = { rule = GRE_referendum option = GRE_REFERENDUM_TOTALIST }
-									has_game_rule = { rule = GRE_election option = GRE_ELECTION_RADSOC_SYNDIE }
+									has_game_rule = { rule = GRE_election option = GRE_ELECTION_SOC }
 								}
 							}
 							AND = {

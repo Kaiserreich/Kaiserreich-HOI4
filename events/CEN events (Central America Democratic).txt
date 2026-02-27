@@ -1,0 +1,2846 @@
+#####################################
+##Democratic Central America Events##
+##		  By Drozdovite            ##
+#####################################
+
+add_namespace = central_america_democratic_events
+
+### Intro Events
+country_event = { #the confederation happens
+	id = central_america_democratic_events.1
+	title = central_america_democratic_events.1.t
+	desc = central_america_democratic_events.1.d
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event central_america_democratic_events.1 option central_america_democratic_events.1.a"
+		name = central_america_democratic_events.1.a
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.2 days = 3 }
+			set_temp_variable = { days_to_event = 1976 }
+			calculate_days_since_game_start = yes
+			country_event = { id = central_america_democratic_events.106 days = days_to_event } #The Book "El Presidente" is published
+		}
+	}
+}
+
+country_event = { #Formation of the Partido Unionista
+	id = central_america_democratic_events.2
+	title = central_america_democratic_events.2.t
+	desc = central_america_democratic_events.2.d
+
+	is_triggered_only = yes
+
+	option = { #The first of many
+		log = "[GetLogInfo]: event central_america_democratic_events.2 option central_america_democratic_events.2.a"
+		name = central_america_democratic_events.2.a
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.03
+		}
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.4 days = 4 }
+		}
+	}
+}
+
+country_event = { #Formation of the Partido de Unificación Democratica
+	id = central_america_democratic_events.3
+	title = central_america_democratic_events.3.t
+	desc = central_america_democratic_events.3.d
+
+	is_triggered_only = yes
+
+	option = { #Choose José Ángel Zuñiga
+		log = "[GetLogInfo]: event central_america_democratic_events.3 option central_america_democratic_events.3.a"
+		name = central_america_democratic_events.3.a
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		promote_character = {
+			character = HON_jose_angel_zuniga_huete
+			ideology = market_liberal_subtype
+		}
+	}
+	option = { #Choose Jose Maria Moncada
+		log = "[GetLogInfo]: event central_america_democratic_events.3 option central_america_democratic_events.3.b"
+		name = central_america_democratic_events.3.b
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+		if = {
+			limit = { HON_jose_maria_moncada_tapia = { has_ideology = market_liberal_subtype } }
+			promote_character = {
+				character = HON_jose_maria_moncada_tapia
+				ideology = market_liberal_subtype
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = HON_jose_maria_moncada_tapia
+				country_leader = {
+					desc = HON_jose_ramon_adolfo_villeda_morales_leader_desc
+					ideology = market_liberal_subtype
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	after = {
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.5 days = 4 }
+		}
+	}
+}
+
+country_event = { #Formation of the Partido Liberal
+	id = central_america_democratic_events.4
+	title = central_america_democratic_events.4.t
+	desc = central_america_democratic_events.4.d
+
+	is_triggered_only = yes
+
+	option = { #The Flame of liberalism continues to shine
+		log = "[GetLogInfo]: event central_america_democratic_events.4 option central_america_democratic_events.4.a"
+		name = central_america_democratic_events.4.a
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
+		promote_character = {
+			character = NIC_juan_bautista_sacasa
+			ideology = social_liberal_subtype
+		}
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.3 days = 4 }
+			country_event = { id = central_america_democratic_events.31 months = 36 }
+		}
+	}
+}
+
+country_event = { #Formation of the Partido del Trabajo
+	id = central_america_democratic_events.5
+	title = central_america_democratic_events.5.t
+	desc = central_america_democratic_events.5.d
+
+	is_triggered_only = yes
+
+	option = { #The Red Rose takes root in Central America with Araujo
+		log = "[GetLogInfo]: event central_america_democratic_events.5 option central_america_democratic_events.5.a"
+		name = central_america_democratic_events.5.a
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.03
+		}
+		promote_character = {
+			character = ELS_arturo_araujo
+			ideology = social_democrat_subtype
+		}
+	}
+	option = { #The Red Rose takes root in Central America with Moreno
+		log = "[GetLogInfo]: event central_america_democratic_events.5 option central_america_democratic_events.5.b"
+		name = central_america_democratic_events.5.b
+		trigger = {
+			has_character = NIC_francisco_sequeira_moreno
+		}
+		set_country_flag = CEN_moreno_leads
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.01
+		}
+		promote_character = {
+			character = NIC_francisco_sequeira_moreno
+			ideology = social_democrat_subtype
+		}
+	}
+	after = {
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.18 days = 4 }
+			country_event = { id = central_america_democratic_events.32 months = 36 }
+		}
+	}
+}
+country_event = { #Formation of the Partido Nacional Revolucionario
+	id = central_america_democratic_events.18
+	title = central_america_democratic_events.18.t
+	desc = central_america_democratic_events.18.d
+
+	is_triggered_only = yes
+
+	option = { #The reds are back
+		log = "[GetLogInfo]: event central_america_democratic_events.18 option central_america_democratic_events.18.a"
+		name = central_america_democratic_events.18.a
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.02
+		}
+		promote_character = {
+			character = GUA_silverio_ortiz
+			ideology = radical_socialist_subtype
+		}
+		hidden_effect = {
+			GUA_silverio_ortiz = {
+				if = {
+					limit = { NOT = { has_ideology = social_democrat_subtype } }
+					add_country_leader_role = {
+						country_leader = {
+							desc = GUA_silverio_ortiz_leader_desc
+							ideology = social_democrat_subtype
+						}
+					}
+				}
+			}
+			country_event = { id = central_america_democratic_events.6 days = 2 }
+		}
+	}
+}
+
+country_event = { #The Council Starts
+	id = central_america_democratic_events.6
+	title = central_america_democratic_events.6.t
+	desc = central_america_democratic_events.6.d
+	picture = GFX_report_event_ELS_government_house
+
+	is_triggered_only = yes
+
+	option = { #We welcome you all
+		log = "[GetLogInfo]: event central_america_democratic_events.6 option central_america_democratic_events.6.a"
+		name = central_america_democratic_events.6.a
+		add_political_power = 100
+		country_event = { id = central_america_democratic_events.7 days = 7 }
+	}
+}
+
+country_event = { #What to do with our old enemies
+	id = central_america_democratic_events.7
+	title = central_america_democratic_events.7.t
+	desc = central_america_democratic_events.7.d
+
+	is_triggered_only = yes
+
+	option = { #Exile
+		log = "[GetLogInfo]: event central_america_democratic_events.7 option central_america_democratic_events.7.a"
+		name = central_america_democratic_events.7.a
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.025
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.015
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+	}
+	option = { #Prison
+		log = "[GetLogInfo]: event central_america_democratic_events.7 option central_america_democratic_events.7.b"
+		name = central_america_democratic_events.7.b
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+	}
+	option = { #Forced labour
+		log = "[GetLogInfo]: event central_america_democratic_events.7 option central_america_democratic_events.7.c"
+		name = central_america_democratic_events.7.c
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+	}
+	after = {
+		country_event = { id = central_america_democratic_events.8 days = 7 }
+	}
+}
+
+country_event = { #Second Decision: Executive power President/Congress
+	id = central_america_democratic_events.8
+	title = central_america_democratic_events.8.t
+	desc = central_america_democratic_events.8.d
+
+	is_triggered_only = yes
+
+	option = { #The President
+		log = "[GetLogInfo]: event central_america_democratic_events.8 option central_america_democratic_events.8.a"
+		name = central_america_democratic_events.8.a
+		add_political_power = 20
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+	}
+	option = { #The Congress
+		log = "[GetLogInfo]: event central_america_democratic_events.8 option central_america_democratic_events.8.b"
+		name = central_america_democratic_events.8.b
+		add_stability = 0.02
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+	}
+	after = {
+		country_event = { id = central_america_democratic_events.9 days = 3 }
+	}
+}
+
+country_event = { #Third Decision: Constitutional supremacy, or local flexibility?
+	id = central_america_democratic_events.9
+	title = central_america_democratic_events.9.t
+	desc = central_america_democratic_events.9.d
+
+	is_triggered_only = yes
+
+	option = { #Constitution shall be absolute
+		log = "[GetLogInfo]: event central_america_democratic_events.9 option central_america_democratic_events.9.a"
+		name = central_america_democratic_events.9.a
+		add_political_power = 50
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.025
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.025
+		}
+	}
+	option = { #Flexible laws
+		log = "[GetLogInfo]: event central_america_democratic_events.9 option central_america_democratic_events.9.b"
+		name = central_america_democratic_events.9.b
+		add_stability = 0.05
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.025
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.025
+		}
+	}
+	after = {
+		country_event = { id = central_america_democratic_events.10 days = 3 }
+	}
+}
+country_event = { #Fourth Decision: Completely centralized Capital/ Splitting the capitals
+	id = central_america_democratic_events.10
+	title = central_america_democratic_events.10.t
+	desc = central_america_democratic_events.10.d
+
+	is_triggered_only = yes
+
+	option = { #Centralized Capital
+		log = "[GetLogInfo]: event central_america_democratic_events.10 option central_america_democratic_events.10.a"
+		name = central_america_democratic_events.10.a
+		add_political_power = 50
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.02
+		}
+		country_event = { id = central_america_democratic_events.11 days = 3 }
+	}
+	option = { #Separate Capitals
+		log = "[GetLogInfo]: event central_america_democratic_events.10 option central_america_democratic_events.10.b"
+		name = central_america_democratic_events.10.b
+		add_stability = 0.05
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		set_country_flag = CEN_Guatemala_chosen
+		set_country_flag = CEN_San_Salvador_chosen
+		set_country_flag = CEN_Tegucigalpa_chosen
+		set_country_flag = CEN_Managua_chosen
+		country_event = { id = central_america_democratic_events.12 days = 3 }
+	}
+}
+
+country_event = { #Fifth Decision A: Completely centralized Capital election
+	id = central_america_democratic_events.11
+	title = central_america_democratic_events.11.t
+	desc = central_america_democratic_events.11.d
+
+	is_triggered_only = yes
+
+	option = { #Ciudad de Guatemala
+		log = "[GetLogInfo]: event central_america_democratic_events.11 option central_america_democratic_events.11.a"
+		name = central_america_democratic_events.11.a
+		trigger = { owns_state = 313 }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.015
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+		set_capital = { state = 313 remember_old_capital = no }
+	}
+	option = { #El Salvador
+		log = "[GetLogInfo]: event central_america_democratic_events.11 option central_america_democratic_events.11.b"
+		name = central_america_democratic_events.11.b
+		trigger = { owns_state = 314 }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+		set_capital = { state = 314 remember_old_capital = no }
+	}
+	option = { #Tegucigalpa
+		log = "[GetLogInfo]: event central_america_democratic_events.11 option central_america_democratic_events.11.c"
+		name = central_america_democratic_events.11.c
+		trigger = { owns_state = 312 }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.015
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.015
+		}
+		set_capital = { state = 312 remember_old_capital = no }
+	}
+	option = { #Managua
+		log = "[GetLogInfo]: event central_america_democratic_events.11 option central_america_democratic_events.11.e"
+		name = central_america_democratic_events.11.e
+		trigger = { owns_state = 317 }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.015
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.015
+		}
+		set_capital = { state = 317 remember_old_capital = no }
+	}
+	after = {
+		country_event = { id = central_america_democratic_events.15 days = 3 }
+	}
+}
+
+country_event = { #Fifth Decision B: Executive Capital election
+	id = central_america_democratic_events.12
+	title = central_america_democratic_events.12.t
+	desc = central_america_democratic_events.12.d
+
+	is_triggered_only = yes
+
+	option = { #Ciudad de Guatemala
+		log = "[GetLogInfo]: event central_america_democratic_events.12 option central_america_democratic_events.12.a"
+		name = central_america_democratic_events.12.a
+		trigger = { owns_state = 313 }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+		set_capital = { state = 313 remember_old_capital = no }
+		clr_country_flag = CEN_Guatemala_chosen
+	}
+	option = { #El Salvador
+		log = "[GetLogInfo]: event central_america_democratic_events.12 option central_america_democratic_events.12.b"
+		name = central_america_democratic_events.12.b
+		trigger = { owns_state = 314 }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		set_capital = { state = 314 remember_old_capital = no }
+		clr_country_flag = CEN_San_Salvador_chosen
+	}
+	option = { #Tegucigalpa
+		log = "[GetLogInfo]: event central_america_democratic_events.12 option central_america_democratic_events.12.c"
+		name = central_america_democratic_events.12.c
+		trigger = { owns_state = 312 }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.015
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.015
+		}
+		set_capital = { state = 312 remember_old_capital = no }
+		clr_country_flag = CEN_Tegucigalpa_chosen
+	}
+	option = { #Managua
+		log = "[GetLogInfo]: event central_america_democratic_events.12 option central_america_democratic_events.12.e"
+		name = central_america_democratic_events.12.e
+		trigger = { owns_state = 317 }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+		set_capital = { state = 317 remember_old_capital = no }
+		clr_country_flag = CEN_Managua_chosen
+	}
+	after = {
+		country_event = { id = central_america_democratic_events.13 days = 3 }
+	}
+}
+country_event = { #Sixth Decision B: Judicial Capital election
+	id = central_america_democratic_events.13
+	title = central_america_democratic_events.13.t
+	desc = central_america_democratic_events.13.d
+
+	is_triggered_only = yes
+
+	option = { #Ciudad de Guatemala
+		log = "[GetLogInfo]: event central_america_democratic_events.13 option central_america_democratic_events.13.a"
+		name = central_america_democratic_events.13.a
+		trigger = {
+			has_country_flag = CEN_Guatemala_chosen
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+		clr_country_flag = CEN_Guatemala_chosen
+	}
+	option = { #El Salvador
+		log = "[GetLogInfo]: event central_america_democratic_events.13 option central_america_democratic_events.13.b"
+		name = central_america_democratic_events.13.b
+		trigger = {
+			has_country_flag = CEN_San_Salvador_chosen
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		clr_country_flag = CEN_San_Salvador_chosen
+	}
+	option = { #Tegucigalpa
+		log = "[GetLogInfo]: event central_america_democratic_events.13 option central_america_democratic_events.13.c"
+		name = central_america_democratic_events.13.c
+		trigger = {
+			has_country_flag = CEN_Tegucigalpa_chosen
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+		clr_country_flag = CEN_Tegucigalpa_chosen
+	}
+	option = { #Managua
+		log = "[GetLogInfo]: event central_america_democratic_events.13 option central_america_democratic_events.13.e"
+		name = central_america_democratic_events.13.e
+		trigger = {
+			has_country_flag = CEN_Managua_chosen
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		clr_country_flag = CEN_Managua_chosen
+	}
+	after = {
+		country_event = { id = central_america_democratic_events.14 days = 3 }
+	}
+}
+
+country_event = { #Sixth Decision B: Legislative Capital Election
+	id = central_america_democratic_events.14
+	title = central_america_democratic_events.14.t
+	desc = central_america_democratic_events.14.d
+
+	is_triggered_only = yes
+
+	option = { #Ciudad de Guatemala
+		log = "[GetLogInfo]: event central_america_democratic_events.14 option central_america_democratic_events.14.a"
+		name = central_america_democratic_events.14.a
+		trigger = {
+			has_country_flag = CEN_Guatemala_chosen
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.01
+		}
+		clr_country_flag = CEN_Guatemala_chosen
+	}
+	option = { #El Salvador
+		log = "[GetLogInfo]: event central_america_democratic_events.14 option central_america_democratic_events.14.b"
+		name = central_america_democratic_events.14.b
+		trigger = {
+			has_country_flag = CEN_San_Salvador_chosen
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		clr_country_flag = CEN_San_Salvador_chosen
+	}
+	option = { #Tegucigalpa
+		log = "[GetLogInfo]: event central_america_democratic_events.14 option central_america_democratic_events.14.c"
+		name = central_america_democratic_events.14.c
+		trigger = {
+			has_country_flag = CEN_Tegucigalpa_chosen
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+		clr_country_flag = CEN_Tegucigalpa_chosen
+	}
+	option = { #Managua
+		log = "[GetLogInfo]: event central_america_democratic_events.14 option central_america_democratic_events.14.e"
+		name = central_america_democratic_events.14.e
+		trigger = {
+			has_country_flag = CEN_Managua_chosen
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		clr_country_flag = CEN_Managua_chosen
+	}
+	after = {
+		country_event = { id = central_america_democratic_events.15 days = 3 }
+	}
+}
+
+country_event = { #Status of the Armed forces Centralized approach/Decentralized Approach
+	id = central_america_democratic_events.15
+	title = central_america_democratic_events.15.t
+	desc = central_america_democratic_events.15.d
+
+	is_triggered_only = yes
+
+	immediate = {
+		clr_country_flag = CENdem_confederate_army
+		clr_country_flag = CENdem_middle_option_army
+		clr_country_flag = CENdem_federal_army
+	}
+
+	option = { #Confederate Army
+		log = "[GetLogInfo]: event central_america_democratic_events.15 option central_america_democratic_events.15.a"
+		name = central_america_democratic_events.15.a
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		add_war_support = 0.05
+		set_country_flag = CENdem_confederate_army
+	}
+	option = { #Middle Ground
+		log = "[GetLogInfo]: event central_america_democratic_events.15 option central_america_democratic_events.15.b"
+		name = central_america_democratic_events.15.b
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+		add_stability = 0.05
+		set_country_flag = CENdem_middle_option_army
+	}
+	option = { #Federal Army
+		log = "[GetLogInfo]: event central_america_democratic_events.15 option central_america_democratic_events.15.c"
+		name = central_america_democratic_events.15.c
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.025
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.025
+		}
+		add_political_power = 50
+		set_country_flag = CENdem_federal_army
+	}
+	after = {
+		country_event = { id = central_america_democratic_events.16 days = 3 }
+	}
+}
+
+country_event = { #Provisional Cabinet Formation
+	id = central_america_democratic_events.16
+	title = central_america_democratic_events.16.t
+	desc = central_america_democratic_events.16.d
+
+	is_triggered_only = yes
+
+	option = { #It is a temporary solution until a formal Election is made
+		log = "[GetLogInfo]: event central_america_democratic_events.16 option central_america_democratic_events.16.a"
+		name = central_america_democratic_events.16.a
+	}
+}
+
+country_event = { #Getting a president elected and unlocking the rest of the content
+	id = central_america_democratic_events.17
+	title = central_america_democratic_events.20.t
+	desc = central_america_democratic_events.19.d
+
+	is_triggered_only = yes
+
+	immediate = {
+		CEN_restore_socdem_president = yes
+	}
+
+	option = {
+		log = "[GetLogInfo]: event central_america_democratic_events.17 option central_america_democratic_events.19.a"
+		name = central_america_democratic_events.19.a
+		trigger = { has_government = social_democrat }
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.09
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.01
+		}
+		unlock_national_focus = CENdem_the_labour_party_wins
+	}
+	option = {
+		log = "[GetLogInfo]: event central_america_democratic_events.17 option central_america_democratic_events.19.b"
+		name = central_america_democratic_events.19.b
+		trigger = { has_government = social_liberal }
+		set_temp_variable = { coalition_partner_var = token:market_liberal }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.09
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+		unlock_national_focus = CENdem_the_liberal_party_wins
+	}
+	option = {
+		log = "[GetLogInfo]: event central_america_democratic_events.17 option central_america_democratic_events.19.c"
+		name = central_america_democratic_events.19.c
+		trigger = { has_government = market_liberal }
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.09
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		unlock_national_focus = CENdem_the_democratic_unification_party_wins
+	}
+	option = {
+		log = "[GetLogInfo]: event central_america_democratic_events.17 option central_america_democratic_events.19.e"
+		name = central_america_democratic_events.19.e
+		trigger = { has_government = social_conservative }
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.09
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		unlock_national_focus = CENdem_the_unionist_paty_wins
+	}
+	after = {
+		hidden_effect = {
+			promote_character = {
+				character = GUA_jose_azmitia_gonzalez
+				ideology = social_conservative_subtype
+			}
+		}
+	}
+}
+
+country_event = { #The snap election
+	id = central_america_democratic_events.19
+	title = central_america_democratic_events.19.t
+	desc = central_america_democratic_events.19.d
+	picture = GFX_report_event_election_vote
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Soc. Dems. win
+		log = "[GetLogInfo]: event central_america_democratic_events.19 option central_america_democratic_events.19.a"
+		name = central_america_democratic_events.19.a
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_LABOUR_SOCDEM } }
+			}
+		}
+		CEN_restore_socdem_president = yes
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_democrat
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 48
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+		unlock_national_focus = CENdem_the_labour_party_wins
+	}
+	option = { #Soc. Libs win
+		log = "[GetLogInfo]: event central_america_democratic_events.19 option central_america_democratic_events.19.b"
+		name = central_america_democratic_events.19.b
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_SOCLIB } }
+			}
+		}
+		CEN_restore_socdem_president = yes
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_liberal
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 48
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		set_temp_variable = { coalition_partner_var = token:market_liberal }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		unlock_national_focus = CENdem_the_liberal_party_wins
+	}
+	option = { #Mar.libs win
+		log = "[GetLogInfo]: event central_america_democratic_events.19 option central_america_democratic_events.19.c"
+		name = central_america_democratic_events.19.c
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_MARLIB } }
+			}
+		}
+		CEN_restore_socdem_president = yes
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = market_liberal
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 48
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		unlock_national_focus = CENdem_the_democratic_unification_party_wins
+	}
+	option = { #Soc.Cons win
+		log = "[GetLogInfo]: event central_america_democratic_events.19 option central_america_democratic_events.19.e"
+		name = central_america_democratic_events.19.e
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_SOCCON } }
+			}
+		}
+		CEN_restore_socdem_president = yes
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_conservative
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 48
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		unlock_national_focus = CENdem_the_unionist_paty_wins
+	}
+	option = { #Rad.socs. win
+		log = "[GetLogInfo]: event central_america_democratic_events.19 option central_america_democratic_events.19.f"
+		name = central_america_democratic_events.19.f
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_REVOLUTIONARY_SOCDEM } }
+			}
+		}
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_democrat
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 48
+					elections_allowed = yes
+					name = CEN_radical_socialist_party
+					long_name = CEN_radical_socialist_party_long
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		promote_character = {
+			character = GUA_silverio_ortiz
+			ideology = social_democrat_subtype
+		}
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.1
+		}
+		unlock_national_focus = CENdem_the_national_revolutionaries_win
+	}
+	after = {
+		hidden_effect = {
+			promote_character = {
+				character = GUA_jose_azmitia_gonzalez
+				ideology = social_conservative_subtype
+			}
+		}
+	}
+}
+
+country_event = { #Elections of [GetYear]
+	id = central_america_democratic_events.20
+	title = central_america_democratic_events.20.t
+	desc = central_america_democratic_events.19.d
+	picture = GFX_report_event_election_vote
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_elected_government = yes
+	}
+
+	option = { #Soc. Dems. win
+		log = "[GetLogInfo]: event central_america_democratic_events.20 option central_america_democratic_events.19.a"
+		name = central_america_democratic_events.19.a
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_LABOUR_SOCDEM } }
+			}
+		}
+		CEN_restore_socdem_president = yes
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = yes
+		}
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+		unlock_national_focus = CENdem_the_labour_party_wins
+	}
+	option = { #Soc. Libs win
+		log = "[GetLogInfo]: event central_america_democratic_events.20 option central_america_democratic_events.19.b"
+		name = central_america_democratic_events.19.b
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_SOCLIB } }
+			}
+		}
+		CEN_restore_socdem_president = yes
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		set_temp_variable = { coalition_partner_var = token:market_liberal }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		unlock_national_focus = CENdem_the_liberal_party_wins
+	}
+	option = { #Mar.libs win
+		log = "[GetLogInfo]: event central_america_democratic_events.20 option central_america_democratic_events.19.c"
+		name = central_america_democratic_events.19.c
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_MARLIB } }
+			}
+		}
+		CEN_restore_socdem_president = yes
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		unlock_national_focus = CENdem_the_democratic_unification_party_wins
+	}
+	option = { #Soc.Cons win
+		log = "[GetLogInfo]: event central_america_democratic_events.20 option central_america_democratic_events.19.e"
+		name = central_america_democratic_events.19.e
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_SOCCON } }
+			}
+		}
+		CEN_restore_socdem_president = yes
+		set_politics = {
+			ruling_party = social_conservative
+			elections_allowed = yes
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		unlock_national_focus = CENdem_the_unionist_paty_wins
+	}
+	option = { #Rad.socs. win
+		log = "[GetLogInfo]: event central_america_democratic_events.20 option central_america_democratic_events.19.f"
+		name = central_america_democratic_events.19.f
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CEN_dem_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CEN_dem_path option = CEN_DEM_PATH_REVOLUTIONARY_SOCDEM } }
+			}
+		}
+		if = {
+			limit = { has_country_flag = CEN_arbenz_leads }
+			if = {
+				limit = { NOT = { has_country_leader = { character = GUA_jacobo_arbenz } } }
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = yes
+					name = CEN_radical_socialist_party
+					long_name = CEN_radical_socialist_party_long
+				}
+				promote_character = GUA_jacobo_arbenz
+			}
+		}
+		else = {
+			if = {
+				limit = { NOT = { has_country_leader = { character = GUA_silverio_ortiz } } }
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = yes
+					name = CEN_radical_socialist_party
+					long_name = CEN_radical_socialist_party_long
+				}
+				promote_character = {
+					character = GUA_silverio_ortiz
+					ideology = social_democrat_subtype
+				}
+			}
+		}
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.1
+		}
+		unlock_national_focus = CENdem_the_national_revolutionaries_win
+	}
+	after = {
+		hidden_effect = { CEN_setup_new_presidents = yes }
+	}
+}
+
+country_event = { #Changes in the parties, Soc.Dem.
+	id = central_america_democratic_events.30
+	title = central_america_democratic_events.30.t
+	desc = central_america_democratic_events.30.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Choose Jacobo Arbenz
+		log = "[GetLogInfo]: event central_america_democratic_events.30 option central_america_democratic_events.30.a"
+		name = central_america_democratic_events.30.a
+		ai_chance = { base = 60 }
+		if = {
+			limit = { has_government = social_democrat }
+			set_country_flag = CEN_create_arbenz
+		}
+		else = {
+			GUA_jacobo_arbenz = {
+				if = {
+					limit = { has_ideology = social_democrat_subtype }
+					promote_character = social_democrat_subtype
+				}
+				else = {
+					add_country_leader_role = {
+						country_leader = {
+							desc = GUA_jacobo_arbenz_leader_desc
+							ideology = social_democrat_subtype
+						}
+						promote_leader = yes
+					}
+				}
+			}
+		}
+	}
+	option = { #Choose Juan José Arévalo
+		log = "[GetLogInfo]: event central_america_democratic_events.30 option central_america_democratic_events.30.b"
+		name = central_america_democratic_events.30.b
+		ai_chance = { base = 40 }
+		if = {
+			limit = { has_government = social_democrat }
+			set_country_flag = CEN_create_arevalo
+		}
+		else = {
+			promote_character = {
+				character = GUA_juan_jose_arevalo_bermejo
+				ideology = social_democrat_subtype
+			}
+		}
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.34 days = 400 }
+		}
+	}
+	after = {
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+		add_political_power = 25
+	}
+}
+
+country_event = { #Changes in the parties, Soc.libs
+	id = central_america_democratic_events.31
+	title = central_america_democratic_events.31.t
+	desc = central_america_democratic_events.31.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Sacassa remains as the leader
+		log = "[GetLogInfo]: event central_america_democratic_events.31 option central_america_democratic_events.31.a"
+		name = central_america_democratic_events.31.a
+		ai_chance = { base = 70 }
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		add_political_power = 25
+	}
+	option = { #Molinas becomes the new leader
+		log = "[GetLogInfo]: event central_america_democratic_events.31 option central_america_democratic_events.31.b"
+		name = central_america_democratic_events.31.b
+		ai_chance = { base = 30 }
+		if = {
+			limit = { has_government = social_liberal }
+			set_country_flag = CEN_create_molina
+		}
+		else = {
+			promote_character = ELS_alfonso_quinonez_molina
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.05
+		}
+		add_political_power = -25
+		add_stability = -0.05
+	}
+}
+
+country_event = { #Changes in the parties, Soc.dems.
+	id = central_america_democratic_events.32
+	title = central_america_democratic_events.32.t
+	desc = central_america_democratic_events.32.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Choose Ramon Villeda Morales
+		log = "[GetLogInfo]: event central_america_democratic_events.32 option central_america_democratic_events.32.a"
+		name = central_america_democratic_events.32.a
+		if = {
+			limit = { has_government = social_democrat }
+			set_country_flag = CEN_create_morales
+		}
+		else = {
+			promote_character = HON_jose_ramon_adolfo_villeda_morales
+		}
+	}
+	option = { #Choose Francisco Moreno
+		log = "[GetLogInfo]: event central_america_democratic_events.32 option central_america_democratic_events.32.b"
+		name = central_america_democratic_events.32.b
+		trigger = {
+			has_character = NIC_francisco_sequeira_moreno
+		}
+		if = {
+			limit = { has_government = social_democrat }
+			set_country_flag = CEN_create_moreno
+		}
+		else = {
+			promote_character = {
+				character = NIC_francisco_sequeira_moreno
+				ideology = social_democrat_subtype
+			}
+		}
+	}
+	after = {
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+		add_political_power = 25
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.30 months = 36 }
+		}
+	}
+}
+
+country_event = { #Arbenz Joins the Rad.socs.
+	id = central_america_democratic_events.34
+	title = central_america_democratic_events.34.t
+	desc = central_america_democratic_events.34.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #He's welcome
+		log = "[GetLogInfo]: event central_america_democratic_events.34 option central_america_democratic_events.34.a"
+		name = central_america_democratic_events.34.a
+		add_political_power = 25
+		set_country_flag = CEN_arbenz_leads
+		promote_character = GUA_jacobo_arbenz
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.01
+		}
+	}
+}
+
+#Flavour stuff for the Tree
+country_event = { #Partido del Trabajo protests!
+	id = central_america_democratic_events.37
+	title = central_america_democratic_events.37.t
+	desc = central_america_democratic_events.37.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Damn socialists
+		log = "[GetLogInfo]: event central_america_democratic_events.37 option central_america_democratic_events.37.a"
+		name = central_america_democratic_events.37.a
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		add_political_power = -50
+		add_stability = -0.05
+	}
+}
+
+country_event = { #Central America requests closer ties
+	id = central_america_democratic_events.39
+	title = central_america_democratic_events.39.t
+	desc = central_america_democratic_events.39.d
+
+	is_triggered_only = yes
+
+	option = { #Agree to their demands
+		log = "[GetLogInfo]: event central_america_democratic_events.39 option central_america_democratic_events.39.a"
+		name = central_america_democratic_events.39.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = COS_forpol option = COS_FORPOL_GER }
+					AND = {
+						has_game_rule = { rule = COS_forpol option = COS_FORPOL_ENT }
+						NOT = {
+							has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
+							has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+							CEN = { is_in_faction_with = ENT }
+						}
+					}
+					AND = {
+						has_game_rule = { rule = COS_forpol option = COS_FORPOL_CEN }
+						has_game_rule = { rule = COS_path option = COS_PATH_FERRER_SOCDEM }
+						OR = {
+							has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
+							has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+						}
+					}
+					COS = { is_faction_leader = yes }
+				}
+			}
+		}
+		add_ideas = COS_CEN_ties
+		if = {
+			limit = {
+				CEN = { is_faction_leader = yes }
+				NOT = { is_in_faction_with = CEN }
+			}
+			FROM = { add_to_faction = ROOT }
+		}
+		set_country_flag = COS_CEN_begun_integration
+		FROM = { country_event = { id = central_america_democratic_events.42 days = 3 } }
+	}
+
+	option = { #Refuse to join them
+		log = "[GetLogInfo]: event central_america_democratic_events.39 option central_america_democratic_events.39.b"
+		name = central_america_democratic_events.39.b
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				OR = {
+					has_game_rule = { rule = COS_forpol option = COS_FORPOL_GER }
+					AND = {
+						has_game_rule = { rule = COS_forpol option = COS_FORPOL_ENT }
+						NOT = {
+							has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
+							has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+							CEN = { is_in_faction_with = ENT }
+						}
+					}
+					AND = {
+						has_game_rule = { rule = COS_forpol option = COS_FORPOL_CEN }
+						has_game_rule = { rule = COS_path option = COS_PATH_FERRER_SOCDEM }
+						OR = {
+							has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
+							has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+						}
+					}
+					COS = { is_faction_leader = yes }
+				}
+			}
+		}
+		FROM = { country_event = { id = central_america_democratic_events.41 days = 3 } }
+	}
+}
+
+country_event = { #Furthering Ties
+	id = central_america_democratic_events.40
+	title = central_america_democratic_events.40.t
+	desc = {
+		text = central_america_democratic_events.40.d_level_2
+		trigger = { has_idea = COS_CEN_ties }
+	}
+	desc = {
+		text = central_america_democratic_events.40.d_level_3
+		trigger = { has_idea = COS_CEN_ties_2 }
+	}
+
+	is_triggered_only = yes
+
+	option = { #Wonderful!
+		log = "[GetLogInfo]: event central_america_democratic_events.40 option central_america_democratic_events.40.a"
+		name = central_america_democratic_events.40.a
+		if = {
+			limit = { has_idea = COS_CEN_ties }
+			swap_ideas = {
+				remove_idea = COS_CEN_ties
+				add_idea = COS_CEN_ties_2
+			}
+			set_temp_variable = { cos_UFC_change = -5 }
+			update_UFC_influence = yes
+			set_temp_variable = { cos_ZKG_change = -5 }
+			update_ZKG_influence = yes
+		}
+		else_if = {
+			limit = { has_idea = COS_CEN_ties_2 }
+			swap_ideas = {
+				remove_idea = COS_CEN_ties_2
+				add_idea = COS_CEN_ties_3
+			}
+			set_temp_variable = { ideology_change_var = -0.05 }
+			change_ruling_party_popularity = yes
+			get_current_government_type = yes
+			CEN = { puppet = COS }
+			restore_previous_government_type = yes
+		}
+	}
+}
+
+country_event = { #Costa Rica refuses to join
+	id = central_america_democratic_events.41
+	title = central_america_democratic_events.41.t
+	desc = central_america_democratic_events.41.d
+
+	is_triggered_only = yes
+
+	option = { #Well, it is what it is
+		log = "[GetLogInfo]: event central_america_democratic_events.41 option central_america_democratic_events.41.a"
+		name = central_america_democratic_events.41.a
+		ai_chance = { base = 100 }
+	}
+
+	option = { #We won't let this stand!
+		log = "[GetLogInfo]: event central_america_democratic_events.41 option central_america_democratic_events.41.b"
+		name = central_america_democratic_events.41.b
+		ai_chance = { base = 0 }
+		add_state_claim = 316
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+		}
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.104 days = 7 }
+		}
+	}
+}
+
+country_event = { #Costa Rica accepts our request
+	id = central_america_democratic_events.42
+	title = central_america_democratic_events.42.t
+	desc = central_america_democratic_events.42.d
+
+	is_triggered_only = yes
+
+	option = { #Yay
+		log = "[GetLogInfo]: event central_america_democratic_events.42 option central_america_democratic_events.42.a"
+		name = central_america_democratic_events.42.a
+	}
+}
+
+country_event = { #Central America requests our integration
+	id = central_america_democratic_events.43
+	title = central_america_democratic_events.39.t
+	desc = central_america_democratic_events.39.d
+
+	is_triggered_only = yes
+
+	option = { #Agree to their demands
+		log = "[GetLogInfo]: event central_america_democratic_events.43 option central_america_democratic_events.43.a"
+		name = central_america_democratic_events.43.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_ENT }
+				NOT = {
+					has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
+					has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+					CEN = {
+						has_elected_government = yes
+						is_in_faction_with = ENT
+					}
+				}
+			}
+		}
+		add_ideas = COS_CEN_ties
+		if = {
+			limit = {
+				CEN = { is_faction_leader = yes }
+				NOT = { is_in_faction_with = CEN }
+			}
+			FROM = { add_to_faction = ROOT }
+		}
+		FROM = { country_event = { id = central_america_democratic_events.46 days = 3 } }
+	}
+
+	option = { #Refuse to join them
+		log = "[GetLogInfo]: event central_america_democratic_events.43 option central_america_democratic_events.43.b"
+		name = central_america_democratic_events.43.b
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_ENT }
+				NOT = {
+					has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
+					has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+					CEN = {
+						has_elected_government = yes
+						is_in_faction_with = ENT
+					}
+				}
+			}
+		}
+		FROM = { country_event = { id = central_america_democratic_events.45 days = 3 } }
+	}
+}
+
+country_event = { #Furthering Ties
+	id = central_america_democratic_events.44
+	title = central_america_democratic_events.40.t
+	desc = {
+		text = central_america_democratic_events.40.d_level_2
+		trigger = { has_idea = COS_CEN_ties }
+	}
+	desc = {
+		text = central_america_democratic_events.40.d_level_3
+		trigger = { has_idea = COS_CEN_ties_2 }
+	}
+
+	is_triggered_only = yes
+
+	option = { #Wonderful!
+		log = "[GetLogInfo]: event central_america_democratic_events.44 option central_america_democratic_events.44.a"
+		name = central_america_democratic_events.44.a
+		if = {
+			limit = { has_idea = COS_CEN_ties }
+			swap_ideas = {
+				remove_idea = COS_CEN_ties
+				add_idea = COS_CEN_ties_2
+			}
+		}
+		else_if = {
+			limit = { has_idea = COS_CEN_ties_2 }
+			swap_ideas = {
+				remove_idea = COS_CEN_ties_2
+				add_idea = COS_CEN_ties_3
+			}
+			set_temp_variable = { ideology_change_var = -0.05 }
+			change_ruling_party_popularity = yes
+			get_current_government_type = yes
+			CEN = { puppet = PAN }
+			restore_previous_government_type = yes
+		}
+	}
+}
+
+country_event = { #Panama refuses to join
+	id = central_america_democratic_events.45
+	title = central_america_democratic_events.41.t
+	desc = central_america_democratic_events.45.d
+
+	is_triggered_only = yes
+
+	option = { #Well, it is what it is
+		log = "[GetLogInfo]: event central_america_democratic_events.45 option central_america_democratic_events.41.a"
+		name = central_america_democratic_events.41.a
+		ai_chance = { base = 100 }
+	}
+
+	option = { #We won't let this stand!
+		log = "[GetLogInfo]: event central_america_democratic_events.45 option central_america_democratic_events.41.b"
+		name = central_america_democratic_events.41.b
+		ai_chance = { base = 0 }
+		add_state_claim = 304
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+		}
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.104 days = 7 }
+		}
+	}
+}
+
+country_event = { #Panama accepts our Request
+	id = central_america_democratic_events.46
+	title = central_america_democratic_events.42.t
+	desc = central_america_democratic_events.42.d
+
+	is_triggered_only = yes
+
+	option = { #Very well
+		log = "[GetLogInfo]: event central_america_democratic_events.46 option central_america_democratic_events.42.a"
+		name = central_america_democratic_events.42.a
+	}
+}
+##Flavour stuff
+#Opening Universities in Central America
+country_event = { #Foundation of the Universidad Zamorano
+	id = central_america_democratic_events.100
+	title = central_america_democratic_events.100.t
+	desc = central_america_democratic_events.100.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Great!
+		log = "[GetLogInfo]: event central_america_democratic_events.100 option central_america_democratic_events.100.a"
+		name = central_america_democratic_events.100.a
+		add_political_power = 25
+		country_event = { id = central_america_democratic_events.101 days = 45 }
+	}
+}
+
+country_event = { #Foundation of the Universidad Centroamericana
+	id = central_america_democratic_events.101
+	title = central_america_democratic_events.101.t
+	desc = central_america_democratic_events.101.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #The Spirit of the Union is spreading
+		log = "[GetLogInfo]: event central_america_democratic_events.101 option central_america_democratic_events.101.a"
+		name = central_america_democratic_events.101.a
+		add_political_power = 25
+		country_event = { id = central_america_democratic_events.102 days = 45 }
+	}
+}
+
+country_event = { #Construction of the Ciudad Universitaria 'Dr. Fabio Castillo Figueroa'
+	id = central_america_democratic_events.102
+	title = central_america_democratic_events.102.t
+	desc = central_america_democratic_events.102.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #El Salvador will be a place of knowledge, rather than reaction!
+		log = "[GetLogInfo]: event central_america_democratic_events.102 option central_america_democratic_events.102.a"
+		name = central_america_democratic_events.102.a
+		add_political_power = 25
+		country_event = { id = central_america_democratic_events.103 days = 45 }
+	}
+}
+
+country_event = { #Autonomization of the Universidad Nacional Autónoma de Honduras
+	id = central_america_democratic_events.103
+	title = central_america_democratic_events.103.t
+	desc = central_america_democratic_events.103.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Honduras has its education freed from oppression
+		log = "[GetLogInfo]: event central_america_democratic_events.103 option central_america_democratic_events.103.a"
+		name = central_america_democratic_events.103.a
+		add_political_power = 25
+		country_event = { id = central_america_democratic_events.105 days = 45 }
+	}
+}
+
+country_event = { #Democrats Protest our intervention!
+	id = central_america_democratic_events.104
+	title = central_america_democratic_events.104.t
+	desc = central_america_democratic_events.104.d
+	is_triggered_only = yes
+
+	option = { #Damnit!
+		log = "[GetLogInfo]: event central_america_democratic_events.104 option central_america_democratic_events.104.a"
+		name = central_america_democratic_events.104.a
+		add_political_power = -100
+		add_stability = -0.30
+		add_popularity = {
+			ideology = social_conservative
+			popularity = -0.20
+		}
+	}
+}
+
+country_event = { #Universidad de San Carlos de Guatemala becomes autonomous after years of state oppression
+	id = central_america_democratic_events.105
+	title = central_america_democratic_events.105.t
+	desc = central_america_democratic_events.105.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Great!
+		log = "[GetLogInfo]: event central_america_democratic_events.105 option central_america_democratic_events.105.a"
+		name = central_america_democratic_events.105.a
+		add_political_power = 25
+	}
+}
+
+country_event = { #The Book "El Presidente" is published
+	id = central_america_democratic_events.106
+	title = central_america_democratic_events.106.t
+	desc = central_america_democratic_events.106.d
+
+	trigger = {
+		has_elected_government = yes
+	}
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #A great work of literature!
+		log = "[GetLogInfo]: event central_america_democratic_events.106 option central_america_democratic_events.106.a"
+		name = central_america_democratic_events.106.a
+		add_political_power = 10
+	}
+}
+
+country_event = { #Expenditure of a new passport with Central American Identity
+	id = central_america_democratic_events.107
+	title = central_america_democratic_events.107.t
+	desc = central_america_democratic_events.107.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Another step to unite our nation
+		log = "[GetLogInfo]: event central_america_democratic_events.107 option central_america_democratic_events.107.a"
+		name = central_america_democratic_events.107.a
+		add_stability = 0.10
+		add_political_power = 25
+	}
+}
+
+country_event = { #The Central American Bank is founded!
+	id = central_america_democratic_events.108
+	title = central_america_democratic_events.108.t
+	desc = central_america_democratic_events.108.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Uniting our efforts, we can truly achieve greatness
+		log = "[GetLogInfo]: event central_america_democratic_events.108 option central_america_democratic_events.108.a"
+		name = central_america_democratic_events.108.a
+		add_political_power = 200
+	}
+}
+
+country_event = { #Our Farmers are suffering from our autarky efforts
+	id = central_america_democratic_events.109
+	title = central_america_democratic_events.109.t
+	desc = central_america_democratic_events.109.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Dammit
+		log = "[GetLogInfo]: event central_america_democratic_events.109 option central_america_democratic_events.109.a"
+		name = central_america_democratic_events.109.a
+		add_political_power = -25
+	}
+}
+
+country_event = { #No Resources have been found in order to stop depending on Exports
+	id = central_america_democratic_events.110
+	title = central_america_democratic_events.110.t
+	desc = central_america_democratic_events.110.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Dammit!
+		log = "[GetLogInfo]: event central_america_democratic_events.110 option central_america_democratic_events.110.a"
+		name = central_america_democratic_events.110.a
+		add_political_power = -25
+	}
+}
+
+country_event = { #Industry grew, but not to the level we expected
+	id = central_america_democratic_events.111
+	title = central_america_democratic_events.111.t
+	desc = central_america_democratic_events.111.d
+
+	trigger = {
+		has_completed_focus = CENdem_generous_tax_cuts_for_industry
+		has_completed_focus = CENdem_harshly_tax_cash_crops
+		has_completed_focus = CENdem_the_central_american_bank
+	}
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Dammit, it seems autarky is impossible
+		log = "[GetLogInfo]: event central_america_democratic_events.111 option central_america_democratic_events.111.a"
+		name = central_america_democratic_events.111.a
+		add_political_power = -25
+	}
+}
+
+country_event = { #Equal laws for an equal people
+	id = central_america_democratic_events.112
+	title = central_america_democratic_events.112.t
+	desc = central_america_democratic_events.112.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Diversity is not a weakness, it's a strength!
+		log = "[GetLogInfo]: event central_america_democratic_events.112 option central_america_democratic_events.112.a"
+		name = central_america_democratic_events.112.a
+		add_political_power = -25
+	}
+}
+
+country_event = { #New set of laws put in place to sideline the military
+	id = central_america_democratic_events.113
+	title = central_america_democratic_events.113.t
+	desc = central_america_democratic_events.113.d
+	is_triggered_only = yes
+
+	option = { #We seek to avoid the errors of the past
+		log = "[GetLogInfo]: event central_america_democratic_events.113 option central_america_democratic_events.113.a"
+		name = central_america_democratic_events.113.a
+		add_political_power = 100
+	}
+}
+
+country_event = { #Corruption Trials start
+	id = central_america_democratic_events.114
+	title = central_america_democratic_events.114.t
+	desc = central_america_democratic_events.114.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Money can't save you from the swift hammer of Justice!
+		log = "[GetLogInfo]: event central_america_democratic_events.114 option central_america_democratic_events.114.a"
+		name = central_america_democratic_events.114.a
+		add_political_power = 25
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.116 days = 70 }
+		}
+	}
+}
+
+country_event = { #Corruption Trials end
+	id = central_america_democratic_events.116
+	title = central_america_democratic_events.116.t
+	desc = central_america_democratic_events.116.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Jesus, THAT'S A LOT OF NAMES
+		log = "[GetLogInfo]: event central_america_democratic_events.116 option central_america_democratic_events.116.a"
+		name = central_america_democratic_events.116.a
+		add_political_power = 100
+	}
+}
+
+country_event = { #Nationalization laws create controversy
+	id = central_america_democratic_events.115
+	title = central_america_democratic_events.115.t
+	desc = central_america_democratic_events.115.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Our friends in the PT stand with us, regardless of the others' opinion
+		log = "[GetLogInfo]: event central_america_democratic_events.115 option central_america_democratic_events.115.a"
+		name = central_america_democratic_events.115.a
+		add_political_power = -25
+	}
+}
+
+country_event = { #Goals of our land reform
+	id = central_america_democratic_events.117
+	title = central_america_democratic_events.117.t
+	desc = central_america_democratic_events.117.d
+	picture = GFX_report_event_generic_conference4
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Let's continue with our initial goals
+		log = "[GetLogInfo]: event central_america_democratic_events.117 option central_america_democratic_events.117.a"
+		name = central_america_democratic_events.117.a
+		add_stability = -0.1
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = CENdem_moderate_land_reform_scaling
+		set_country_flag = CENdem_moderate_land_reform
+		hidden_effect = {
+			if = {
+				limit = { CEN = { owns_state = 311 } }
+				activate_targeted_decision = { target = 311 decision = CENdem_moderate_land_reform_decision }
+			}
+			activate_targeted_decision = { target = 313 decision = CENdem_moderate_land_reform_decision }
+			activate_targeted_decision = { target = 314 decision = CENdem_moderate_land_reform_decision }
+			activate_targeted_decision = { target = 312 decision = CENdem_moderate_land_reform_decision }
+			activate_targeted_decision = { target = 317 decision = CENdem_moderate_land_reform_decision }
+			activate_targeted_decision = { target = 316 decision = CENdem_moderate_land_reform_decision }
+			activate_targeted_decision = { target = 304 decision = CENdem_moderate_land_reform_decision }
+		}
+	}
+
+	option = { #A large reoganization of big companies, landowners and government owned land
+		log = "[GetLogInfo]: event central_america_democratic_events.117 option central_america_democratic_events.117.b"
+		name = central_america_democratic_events.117.b
+		add_political_power = -100
+		add_stability = -0.2
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = CENdem_radical_land_reform_scaling
+		set_country_flag = CENdem_radical_land_reform
+		hidden_effect = {
+			if = {
+				limit = { CEN = { owns_state = 311 } }
+				activate_targeted_decision = { target = 311 decision = CENdem_radical_land_reform_decision }
+			}
+			activate_targeted_decision = { target = 313 decision = CENdem_radical_land_reform_decision }
+			activate_targeted_decision = { target = 314 decision = CENdem_radical_land_reform_decision }
+			activate_targeted_decision = { target = 312 decision = CENdem_radical_land_reform_decision }
+			activate_targeted_decision = { target = 317 decision = CENdem_radical_land_reform_decision }
+			activate_targeted_decision = { target = 316 decision = CENdem_radical_land_reform_decision }
+			activate_targeted_decision = { target = 304 decision = CENdem_radical_land_reform_decision }
+		}
+	}
+}
+
+#Friendship Events
+country_event = { #hidden event to auto-refuse if they become hostile (donotlog)
+	id = central_america_democratic_events.200
+
+	trigger = {
+		NOT = { has_war_with = FROM }
+	}
+
+	is_triggered_only = yes
+	hidden = yes
+
+	option = {
+		if = {
+			limit = { at_war_with_or_justifying_wargoal_against_FROM = yes }
+			FROM = { country_event = { id = central_america_democratic_events.203 days = 2 } }
+		}
+		else = {
+			country_event = central_america_democratic_events.201
+		}
+	}
+}
+
+country_event = { #Central America wants to become friends
+	id = central_america_democratic_events.201
+	title = central_america_democratic_events.201.t
+	desc = central_america_democratic_events.201.d
+
+	is_triggered_only = yes
+
+	option = { #Pleasure doing business
+		log = "[GetLogInfo]: event central_america_democratic_events.201 option central_america_democratic_events.201.a"
+		name = central_america_democratic_events.201.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_any_authoritarian_government = yes
+				FROM.FROM = { any_owned_state = { is_claimed_by = ROOT } }
+			}
+			modifier = {
+				factor = 0
+				has_government = totalist
+				FROM.FROM = { has_socialist_government = no }
+			}
+		}
+		FROM.FROM = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = KR_pleased
+			}
+			every_owned_state = {
+				limit = { is_claimed_by = ROOT }
+				remove_claim_by = ROOT
+			}
+			country_event = { id = central_america_democratic_events.202 days = 2 }
+		}
+	}
+
+	option = { #I'm a bad player who enjoys the suffering of Central America
+		log = "[GetLogInfo]: event central_america_democratic_events.201 option central_america_democratic_events.201.b"
+		name = central_america_democratic_events.201.b
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				has_any_authoritarian_government = yes
+				FROM.FROM = { any_owned_state = { is_claimed_by = ROOT } }
+			}
+			modifier = {
+				add = 1
+				has_government = totalist
+				FROM.FROM = { has_socialist_government = no }
+			}
+		}
+		add_political_power = -50
+		FROM.FROM = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = KR_disapproves_of_govt
+			}
+			country_event = { id = central_america_democratic_events.203 days = 2 }
+		}
+	}
+}
+
+country_event = { #Friendship with Costa Rica accepted
+	id = central_america_democratic_events.202
+	title = central_america_democratic_events.202.t
+	desc = central_america_democratic_events.202.d
+
+	trigger = {
+		at_war_with_or_justifying_wargoal_against_FROM = no
+	}
+
+	is_triggered_only = yes
+
+	option = { #Yaaay
+		log = "[GetLogInfo]: event central_america_democratic_events.202 option central_america_democratic_events.202.a"
+		name = central_america_democratic_events.202.a
+		add_political_power = 25
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+		}
+		FROM = {
+			every_owned_state = {
+				limit = { is_claimed_by = ROOT }
+				remove_claim_by = ROOT
+			}
+		}
+	}
+}
+
+country_event = { #Friendship with Costa Rica Refused
+	id = central_america_democratic_events.203
+	title = central_america_democratic_events.203.t
+	desc = central_america_democratic_events.203.d
+
+	trigger = {
+		at_war_with_or_justifying_wargoal_against_FROM = no
+	}
+
+	is_triggered_only = yes
+
+	option = { #Welp
+		log = "[GetLogInfo]: event central_america_democratic_events.203 option central_america_democratic_events.203.a"
+		name = central_america_democratic_events.203.a
+		effect_tooltip = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = KR_disapproves_of_govt
+			}
+		}
+	}
+}
+
+country_event = { ### Negotiations with WIF
+	id = central_america_democratic_events.220
+	title = central_america_democratic_events.220.t
+	desc = central_america_democratic_events.220.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { ### Give back British Honduras, join the entente later
+		log = "[GetLogInfo]: event central_america_democratic_events.220 option central_america_democratic_events.220.a"
+		name = central_america_democratic_events.220.a
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 20
+				has_global_flag = USA_civil_war_over_flag
+				country_exists = WCA
+			}
+			modifier = {
+				factor = 0
+				WIF = {
+					NOT = {
+						is_in_faction_with = CAN
+					}
+				}
+				NOT = { has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
+			}
+		}
+		WIF = {
+			transfer_state = 311
+			add_political_power = 50
+		}
+		custom_effect_tooltip = CENdem_no_belize_entente
+		hidden_effect = {
+			set_country_flag = CENdem_successful_negotiation
+		}
+	}
+	option = { ### Negotiate to keep it and promise to join the entente in return
+		log = "[GetLogInfo]: event central_america_democratic_events.220 option central_america_democratic_events.220.b"
+		name = central_america_democratic_events.220.b
+		ai_chance = {
+			base = 95
+			modifier = {
+				factor = 0
+				AND = {
+					has_global_flag = USA_civil_war_over_flag
+					country_exists = WCA
+				}
+				NOT = { has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT } }
+			}
+			modifier = {
+				factor = 0
+				WIF = {
+					NOT = {
+						is_in_faction_with = CAN
+					}
+				}
+				NOT = { has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+			}
+		}
+		WIF = {
+			country_event = { id = central_america_democratic_events.221 days = 2 }
+		}
+	}
+}
+
+country_event = { ### For WIF : CEN negotiates give up claim
+	id = central_america_democratic_events.221
+	title = central_america_democratic_events.221.t
+	desc = central_america_democratic_events.221.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { ### yeah, whatever
+		log = "[GetLogInfo]: event central_america_democratic_events.221 option central_america_democratic_events.221.a"
+		name = central_america_democratic_events.221.a
+		ai_chance = { base = 100 }
+		remove_state_core = 311
+		remove_state_claim = 311
+		add_opinion_modifier = {
+			target = CEN
+			modifier = CENmil_renounced_claims_trade
+		}
+		add_opinion_modifier = {
+			target = CEN
+			modifier = CENmil_renounced_claims
+		}
+		hidden_effect = {
+			reverse_add_opinion_modifier = {
+				target = CEN
+				modifier = CENmil_renounced_claims_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = CEN
+				modifier = CENmil_renounced_claims
+			}
+			CEN = {
+				country_event = { id = central_america_democratic_events.223 days = 2 }
+			}
+		}
+	}
+	option = { # no
+		log = "[GetLogInfo]: event central_america_democratic_events.221 option central_america_democratic_events.221.b"
+		name = central_america_democratic_events.221.b
+		ai_chance = { base = 0 }
+		CEN = {
+			country_event = { id = central_america_democratic_events.222 days = 2 }
+		}
+	}
+}
+
+country_event = { ### WIF tells us to fuck off
+	id = central_america_democratic_events.222
+	title = central_america_democratic_events.222.t
+	desc = central_america_democratic_events.222.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { ### not cool bro
+		log = "[GetLogInfo]: event central_america_democratic_events.222 option central_america_democratic_events.222.a"
+		name = central_america_democratic_events.222.a
+		add_political_power = -20
+		311 = { enable_state_integration_80_compliance = yes }
+	}
+}
+
+country_event = { ### WIF gives up claim
+	id = central_america_democratic_events.223
+	title = central_america_democratic_events.223.t
+	desc = central_america_democratic_events.223.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { ### woo
+		log = "[GetLogInfo]: event central_america_democratic_events.223 option central_america_democratic_events.223.a"
+		name = central_america_democratic_events.223.a
+		add_political_power = 20
+		311 = { remove_claim_and_add_core_of_ROOT = yes }
+		custom_effect_tooltip = CENdem_no_belize_entente
+		hidden_effect = {
+			set_country_flag = CENdem_successful_negotiation
+		}
+	}
+}
+
+country_event = { #Democratic Central America asks to join the Entente
+	id = central_america_democratic_events.226
+	title = central_america_democratic_events.226.t
+	desc = central_america_democratic_events.226.d
+
+	is_triggered_only = yes
+
+	option = { #Pleasure doing bussiness
+		log = "[GetLogInfo]: event central_america_democratic_events.226 option central_america_democratic_events.226.a"
+		name = central_america_democratic_events.226.a
+		FROM = { country_event = central_america_democratic_events.227 }
+	}
+
+	option = { #Fuck Central America
+		log = "[GetLogInfo]: event central_america_democratic_events.226 option central_america_democratic_events.226.b"
+		name = central_america_democratic_events.226.b
+		ai_chance = { base = 0 }
+		FROM = { country_event = central_america_democratic_events.228 }
+	}
+}
+
+country_event = { #Canadians accept
+	id = central_america_democratic_events.227
+	title = central_america_democratic_events.227.t
+	desc = central_america_democratic_events.227.d
+
+	is_triggered_only = yes
+
+	option = { #Yaaay
+		log = "[GetLogInfo]: event central_america_democratic_events.227 option central_america_democratic_events.227.a"
+		name = central_america_democratic_events.227.a
+		add_political_power = 25
+		FROM = { add_to_faction = ROOT }
+	}
+}
+country_event = { #Canadians refuse
+	id = central_america_democratic_events.228
+	title = central_america_democratic_events.228.t
+	desc = central_america_democratic_events.228.d
+
+	is_triggered_only = yes
+
+	option = { # :(
+		log = "[GetLogInfo]: event central_america_democratic_events.228 option central_america_democratic_events.228.a"
+		name = central_america_democratic_events.228.a
+		add_political_power = -25
+	}
+}
+
+country_event = { #Settleing the Belize dispute
+	id = central_america_democratic_events.229
+	title = central_america_democratic_events.229.t
+	desc = central_america_democratic_events.229.d
+
+	is_triggered_only = yes
+
+	option = { # Give them belize as good gesture
+		log = "[GetLogInfo]: event central_america_democratic_events.229 option central_america_democratic_events.229.a"
+		name = central_america_democratic_events.229.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
+			}
+		}
+		add_political_power = 100
+		add_opinion_modifier = {
+			target = IMP
+			modifier = CEN_accepted_friendship
+		}
+		hidden_effect = {
+			reverse_add_opinion_modifier = {
+				target = IMP
+				modifier = CEN_accepted_friendship
+			}
+			IMP = { set_country_flag = CEN_belize_back }
+		}
+	}
+	option = { # Isn't us joining enough?
+		log = "[GetLogInfo]: event central_america_democratic_events.229 option central_america_democratic_events.229.b"
+		name = central_america_democratic_events.229.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+			}
+		}
+	}
+	after = {
+		hidden_effect = {
+			IMP = { country_event = { id = central_america_democratic_events.230 days = 2 } }
+		}
+	}
+}
+
+country_event = { #Central America approaches us
+	id = central_america_democratic_events.230
+	title = central_america_democratic_events.226.t
+	desc = {
+		text = central_america_democratic_events.230.d.nobelize
+		trigger = { NOT = { has_country_flag = CEN_belize_back } }
+	}
+	desc = {
+		text = central_america_democratic_events.230.d.belize
+		trigger = { has_country_flag = CEN_belize_back }
+	}
+
+	is_triggered_only = yes
+
+	option = { # Let them in
+		log = "[GetLogInfo]: event central_america_democratic_events.230 option central_america_democratic_events.230.a"
+		name = central_america_democratic_events.230.a
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+			}
+		}
+		if = {
+			limit = { has_country_flag = CEN_belize_back }
+			if = {
+				limit = {
+					WIF = { NOT = { is_in_faction_with = IMP } }
+				}
+				IMP = {
+					add_state_claim = 311
+					transfer_state = 311
+				}
+			}
+			else = { WIF = { transfer_state = 311 } }
+			add_political_power = 20
+		}
+		hidden_effect = {
+			CEN = {
+				country_event = { id = central_america_democratic_events.231 days = 2 }
+			}
+		}
+	}
+	option = { # We don't need more dinky countries
+		log = "[GetLogInfo]: event central_america_democratic_events.230 option central_america_democratic_events.230.b"
+		name = central_america_democratic_events.230.b
+		ai_chance = { base = 0 }
+		hidden_effect = {
+			CEN = {
+				country_event = { id = central_america_democratic_events.232 days = 2 }
+			}
+		}
+	}
+	option = { # Ask for belize back
+		log = "[GetLogInfo]: event central_america_democratic_events.230 option central_america_democratic_events.230.c"
+		name = central_america_democratic_events.230.c
+		trigger = { NOT = { has_country_flag = CEN_belize_back } }
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 10
+				has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT_BELIZE }
+			}
+		}
+		add_political_power = -50
+		hidden_effect = {
+			CEN = {
+				country_event = { id = central_america_democratic_events.233 days = 2 }
+			}
+		}
+	}
+	after = {
+		clr_country_flag = CEN_belize_back
+	}
+}
+
+country_event = { #Canadians accept
+	id = central_america_democratic_events.231
+	title = central_america_democratic_events.231.t
+	desc = central_america_democratic_events.231.d
+
+	is_triggered_only = yes
+
+	option = { #Yaaay
+		log = "[GetLogInfo]: event central_america_democratic_events.231 option central_america_democratic_events.231.a"
+		name = central_america_democratic_events.231.a
+		add_political_power = 25
+		if = {
+			limit = {
+				CEN = { owns_state = 311 }
+			}
+			311 = { remove_claim_and_add_core_of_ROOT = yes }
+		}
+		FROM = { add_to_faction = ROOT }
+	}
+}
+
+country_event = { #Canadians refuse
+	id = central_america_democratic_events.232
+	title = central_america_democratic_events.232.t
+	desc = central_america_democratic_events.232.d
+
+	is_triggered_only = yes
+
+	option = { # :(
+		log = "[GetLogInfo]: event central_america_democratic_events.232 option central_america_democratic_events.232.a"
+		name = central_america_democratic_events.232.a
+		add_political_power = -25
+		311 = { enable_state_integration_80_compliance = yes }
+	}
+}
+
+country_event = { #Canada asks for Belize back
+	id = central_america_democratic_events.233
+	title = central_america_democratic_events.233.t
+	desc = central_america_democratic_events.233.d
+
+	is_triggered_only = yes
+
+	option = { # no
+		log = "[GetLogInfo]: event central_america_democratic_events.233 option central_america_democratic_events.233.a"
+		name = central_america_democratic_events.233.a
+		ai_chance = { base = 0 }
+		311 = { enable_state_integration_80_compliance = yes }
+		hidden_effect = {
+			IMP = {
+				country_event = { id = central_america_democratic_events.2341 days = 2 }
+			}
+		}
+	}
+	option = { # yeah, whatever, stop being so annoying
+		log = "[GetLogInfo]: event central_america_democratic_events.233 option central_america_democratic_events.233.b"
+		name = central_america_democratic_events.233.b
+		effect_tooltip = {
+			if = {
+				limit = {
+					WIF = { NOT = { is_in_faction_with = IMP } }
+				}
+				IMP = {
+					add_state_claim = 311
+					transfer_state = 311
+				}
+			}
+			else = { WIF = { transfer_state = 311 } }
+		}
+		hidden_effect = {
+			IMP = {
+				country_event = { id = central_america_democratic_events.2342 days = 2 }
+			}
+		}
+	}
+}
+
+country_event = { #Central america refuses
+	id = central_america_democratic_events.2341
+	title = central_america_democratic_events.2341.t
+	desc = central_america_democratic_events.2341.d
+
+	is_triggered_only = yes
+
+	option = { # we blew it
+		log = "[GetLogInfo]: event central_america_democratic_events.2341 option central_america_democratic_events.2341.a"
+		name = central_america_democratic_events.2341.a
+		add_political_power = -25
+	}
+}
+
+country_event = { #Central america agress
+	id = central_america_democratic_events.2342
+	title = central_america_democratic_events.2342.t
+	desc = central_america_democratic_events.2342.d
+
+	is_triggered_only = yes
+
+	option = { # yay
+		log = "[GetLogInfo]: event central_america_democratic_events.2342 option central_america_democratic_events.2342.a"
+		name = central_america_democratic_events.2342.a
+		add_political_power = 25
+		if = {
+			limit = {
+				WIF = { NOT = { is_in_faction_with = IMP } }
+			}
+			IMP = {
+				add_state_claim = 311
+				transfer_state = 311
+			}
+		}
+		else = { WIF = { transfer_state = 311 } }
+		ROOT = { add_to_faction = FROM }
+	}
+}
+
+country_event = { #Central America Wants our support to stay neutral
+	id = central_america_democratic_events.235
+	title = central_america_democratic_events.235.t
+	desc = central_america_democratic_events.235.d
+
+	is_triggered_only = yes
+
+	option = { #Pleasure doing bussiness
+		log = "[GetLogInfo]: event central_america_democratic_events.235 option central_america_democratic_events.235.a"
+		name = central_america_democratic_events.235.a
+		add_opinion_modifier = {
+			target = CEN
+			modifier = CEN_accepted_friendship
+		}
+		hidden_effect = {
+			reverse_add_opinion_modifier = {
+				target = CEN
+				modifier = CEN_accepted_friendship
+			}
+			CEN = {
+				country_event = { id = central_america_democratic_events.236 days = 2 }
+			}
+		}
+	}
+	option = { #I'm a bad player who enjoys the suffering of Central America
+		log = "[GetLogInfo]: event central_america_democratic_events.235 option central_america_democratic_events.235.b"
+		name = central_america_democratic_events.235.b
+		ai_chance = { base = 0 }
+		add_political_power = -50
+		add_opinion_modifier = {
+			target = CEN
+			modifier = KR_outraged
+		}
+		hidden_effect = {
+			reverse_add_opinion_modifier = {
+				target = CEN
+				modifier = KR_outraged
+			}
+			CEN = {
+				country_event = { id = central_america_democratic_events.237 days = 2 }
+			}
+		}
+	}
+}
+
+country_event = { #Guarantee Accepted
+	id = central_america_democratic_events.236
+	title = central_america_democratic_events.236.t
+	desc = central_america_democratic_events.236.d
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event central_america_democratic_events.236 option central_america_democratic_events.236.a"
+		name = central_america_democratic_events.236.a
+		add_political_power = 25
+		FROM = { give_guarantee = ROOT }
+	}
+}
+
+country_event = { # Guarantee Refused
+	id = central_america_democratic_events.237
+	title = central_america_democratic_events.237.t
+	desc = central_america_democratic_events.237.d
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event central_america_democratic_events.237 option central_america_democratic_events.237.a"
+		name = central_america_democratic_events.237.a
+		add_political_power = -25
+	}
+}
+
+country_event = { #Military Parades Nationwide
+	id = central_america_democratic_events.241
+	title = central_america_democratic_events.241.t
+	desc = central_america_democratic_events.241.d
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = central_america_democratic_events.241 days = 365 }
+		}
+	}
+
+	option = { #Yaaay
+		log = "[GetLogInfo]: event central_america_democratic_events.241 option central_america_democratic_events.241.a"
+		name = central_america_democratic_events.241.a
+		add_political_power = 25
+		add_war_support = 0.05
+	}
+}
+
+country_event = { #Central America prepares to Invade us
+	id = central_america_democratic_events.242
+	title = central_america_democratic_events.242.t
+	desc = central_america_democratic_events.242.d
+
+	is_triggered_only = yes
+
+	option = { #We need to prepare
+		log = "[GetLogInfo]: event central_america_democratic_events.242 option central_america_democratic_events.242.a"
+		name = central_america_democratic_events.242.a
+	}
+}
+
+country_event = { #Formation of the Democratic Alliance of the Caribbean
+	id = central_america_democratic_events.243
+	title = central_america_democratic_events.243.t
+	desc = central_america_democratic_events.243.d
+	picture = GFX_report_event_generic_diplomacy1
+
+	is_triggered_only = yes
+
+	option = { #For a brighter future for Central America
+		log = "[GetLogInfo]: event central_america_democratic_events.243 option central_america_democratic_events.243.a"
+		name = central_america_democratic_events.243.a
+	}
+}
+
+country_event = { #Central America asks to remove our claim (WIF)
+	id = central_america_democratic_events.244
+	title = central_america_democratic_events.244.t
+	desc = central_america_democratic_events.244.d
+
+	is_triggered_only = yes
+
+	option = { #Yeah
+		log = "[GetLogInfo]: event central_america_democratic_events.244 option central_america_democratic_events.244.a"
+		name = central_america_democratic_events.244.a
+		ai_chance = { base = 3 }
+		hidden_effect = {
+			FROM = { country_event = central_america_democratic_events.246 }
+		}
+	}
+	option = { #No
+		log = "[GetLogInfo]: event central_america_democratic_events.244 option central_america_democratic_events.244.b"
+		name = central_america_democratic_events.244.b
+		ai_chance = { base = 7 }
+		add_opinion_modifier = {
+			target = FROM
+			modifier = KR_disapproves_of_govt
+		}
+		hidden_effect = {
+			reverse_add_opinion_modifier = {
+				target = FROM
+				modifier = KR_disapproves_of_govt
+			}
+			FROM = { country_event = central_america_democratic_events.245 }
+		}
+	}
+}
+
+country_event = { #WIF says no
+	id = central_america_democratic_events.245
+	title = central_america_democratic_events.245.t
+	desc = central_america_democratic_events.245.d
+	picture = GFX_report_event_generic_diplomacy1
+
+	is_triggered_only = yes
+
+	option = { #Oh well
+		log = "[GetLogInfo]: event central_america_democratic_events.245 option central_america_democratic_events.245.a"
+		name = central_america_democratic_events.245.a
+		311 = { enable_state_integration_80_compliance = yes }
+	}
+}
+
+country_event = { #WIF says yes
+	id = central_america_democratic_events.246
+	title = central_america_democratic_events.246.t
+	desc = central_america_democratic_events.246.d
+	picture = GFX_report_event_generic_diplomacy1
+
+	is_triggered_only = yes
+
+	option = { #Thanks
+		log = "[GetLogInfo]: event central_america_democratic_events.246 option central_america_democratic_events.246.a"
+		name = central_america_democratic_events.246.a
+		WIF = { 311 = { remove_claim_and_core_of_PREV = yes } }
+		311 = { remove_claim_and_add_core_of_ROOT = yes }
+	}
+}
+
+country_event = {
+	id = central_america_democratic_events.250
+	title = central_america_democratic_events.250.t
+	desc = central_america_democratic_events.250.d
+	picture = GFX_report_event_COS_parliament
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event central_america_democratic_events.250 option central_america_democratic_events.250.a"
+		name = central_america_democratic_events.250.a
+		# Spawn CEN, set up its content, transfer characters and tech
+		CEN_initiate_unification = yes
+		# If COS if faction leader, transfer factions before annexing tags to avoid CTD on Linux/MacOS
+		hidden_effect = {
+			if = {
+				limit = { is_faction_leader = yes }
+				set_global_flag = TEMPORARY_DISABLED_FACTION_POPUP
+				add_to_faction = CEN
+				if = {
+					limit = { has_country_flag = COS_legion_faction }
+					CEN = {
+						set_country_flag = COS_legion_faction
+						add_ideas = CENdem_beacon_democracy
+					}
+					clr_country_flag = COS_legion_faction
+				}
+				CEN = { set_faction_leader = yes }
+				if = {
+					limit = { COS = { has_idea = COS_car_economic_bloc_idea } }
+					CEN = { add_ideas = COS_car_economic_bloc_idea }
+				}
+			}
+		}
+	}
+
+	after = {
+		# Set up CEN cores, annex all relevant tags, tag switch
+		CEN_complete_unification = yes
+	}
+}
+

@@ -3,126 +3,109 @@
 on_actions = {
 	on_startup = {
 		effect = {
-			### Dev main branch
-			if = {
-				limit = {
-					has_global_flag = KR_models_enabled_main_branch
-					OR = {
-						# NOT = { has_dlc = "Axis Armor Pack" }
-						NOT = { has_dlc = "Arms Against Tyranny" }
-						NOT = { has_dlc = "La Resistance" }
-						NOT = { has_dlc = "By Blood Alone" }
-						NOT = { has_dlc = "Gotterdammerung" }
-						# NOT = { has_dlc = "Eastern Front Planes Pack" }
-						# NOT = { has_dlc = "Allied Armor Pack" }
-						NOT = { has_dlc = "Battle for the Bosporus" }
-						NOT = { has_dlc = "No Step Back" }
-						NOT = { has_dlc = "Trial of Allegiance" }
+			every_country = {
+				limit = { is_ai = no }
+				### Dev main branch
+				if = {
+					limit = {
+						has_global_flag = KR_models_enabled_main_branch
+						OR = {
+							# NOT = { has_dlc = "Axis Armor Pack" }
+							NOT = { has_dlc = "Arms Against Tyranny" }
+							NOT = { has_dlc = "La Resistance" }
+							NOT = { has_dlc = "By Blood Alone" }
+							NOT = { has_dlc = "Gotterdammerung" }
+							# NOT = { has_dlc = "Eastern Front Planes Pack" }
+							# NOT = { has_dlc = "Allied Armor Pack" }
+							NOT = { has_dlc = "Battle for the Bosporus" }
+							NOT = { has_dlc = "No Step Back" }
+							NOT = { has_dlc = "Trial of Allegiance" }
+						}
 					}
-				}
-				every_country = {
-					limit = { is_ai = no }
 					country_event = models_warning_events.1
 				}
-			}
-			### LaR
-			if = {
-				limit = {
-					has_global_flag = KR_models_enabled_lar
-					NOT = { has_dlc = "La Resistance" }
-				}
-				every_country = {
-					limit = { is_ai = no }
+				### LaR
+				if = {
+					limit = {
+						has_lar_models_submod = yes
+						NOT = { has_dlc = "La Resistance" }
+					}
 					country_event = models_warning_events.028
 				}
-			}
-			### BBA
-			if = {
-				limit = {
-					has_global_flag = KR_models_enabled_bba
-					NOT = { has_dlc = "By Blood Alone" }
-				}
-				every_country = {
-					limit = { is_ai = no }
+				### BBA
+				if = {
+					limit = {
+						has_bba_models_submod = yes
+						NOT = { has_dlc = "By Blood Alone" }
+					}
 					country_event = models_warning_events.036
 				}
-			}
-			### GTD
-			if = {
-				limit = {
-					has_global_flag = KR_models_enabled_gtd
-					NOT = { has_dlc = "Gotterdammerung" }
-				}
-				every_country = {
-					limit = { is_ai = no }
+				### GTD
+				if = {
+					limit = {
+						has_gtd_models_submod = yes
+						NOT = { has_dlc = "Gotterdammerung" }
+					}
 					country_event = models_warning_events.043
 				}
-			}
-			### Axis Armor Pack
-			# if = {
-			# 	limit = {
-			# 		has_global_flag = KR_models_enabled_axis_armor_pack
-			# 		NOT = { has_dlc = "Axis Armor Pack" }
-			# 	}
-			# 	every_country = {
-			# 		limit = { is_ai = no }
-			# 		country_event = models_warning_events.025
-			# 	}
-			# }
-			### BTFB
-			if = {
-				limit = {
-					has_global_flag = KR_models_enabled_bftb
-					NOT = { has_dlc = "Battle for the Bosporus" }
-				}
-				every_country = {
-					limit = { is_ai = no }
+				### Axis Armor Pack
+				# if = {
+				# 	limit = {
+				# 		has_axis_armor_pack_models_submod = yes
+				# 		NOT = { has_dlc = "Axis Armor Pack" }
+				# 	}
+				# 	country_event = models_warning_events.025
+				# }
+				### BTFB
+				if = {
+					limit = {
+						has_bftb_models_submod = yes
+						NOT = { has_dlc = "Battle for the Bosporus" }
+					}
 					country_event = models_warning_events.031
 				}
-			}
-			### NSB
-			if = {
-				limit = {
-					has_global_flag = KR_models_enabled_nsb
-					NOT = { has_dlc = "No Step Back" }
-				}
-				every_country = {
-					limit = { is_ai = no }
+				### NSB
+				if = {
+					limit = {
+						has_nsb_models_submod = yes
+						NOT = { has_dlc = "No Step Back" }
+					}
 					country_event = models_warning_events.034
 				}
-			}
-			### ToA
-			if = {
-				limit = {
-					has_global_flag = KR_models_enabled_toa
-					NOT = { has_dlc = "Trial of Allegiance" }
+				### AAT
+				if = {
+					limit = {
+						has_aat_models_submod = yes
+						NOT = { has_dlc = "Arms Against Tyranny" }
+					}
+					country_event = models_warning_events.038
 				}
-				every_country = {
-					limit = { is_ai = no }
+				### ToA
+				if = {
+					limit = {
+						has_toa_models_submod = yes
+						NOT = { has_dlc = "Trial of Allegiance" }
+					}
 					country_event = models_warning_events.040
 				}
-			}
-			### Non-DLC submod missing
-			if = {
-				limit = {
-					OR = {
-						has_global_flag = KR_models_enabled_lar
-						has_global_flag = KR_models_enabled_bba
-						has_global_flag = KR_models_enabled_gtd
-						has_global_flag = KR_models_enabled_bftb
-						has_global_flag = KR_models_enabled_nsb
-						has_global_flag = KR_models_enabled_toa
+				### Non-DLC submod missing
+				if = {
+					limit = {
+						OR = {
+							has_lar_models_submod = yes
+							has_bftb_models_submod = yes
+							has_nsb_models_submod = yes
+							has_bba_models_submod = yes
+							has_aat_models_submod = yes
+							has_toa_models_submod = yes
+							has_gtd_models_submod = yes
 
-						has_global_flag = KR_models_enabled_allied_armor_pack
-						has_global_flag = KR_models_enabled_axis_armor_pack
-						has_global_flag = KR_models_enabled_eastern_front_planes_pack
+							has_allied_armor_pack_models_submod = yes
+							has_axis_armor_pack_models_submod = yes
+							has_eastern_front_planes_pack_models_submod = yes
+						}
+						has_base_game_models_submod = no
 					}
-					NOT = {
-						has_global_flag = KR_models_enabled_non_dlc
-					}
-				}
-				every_country = {
-					limit = { is_ai = no }
 					country_event = models_warning_events.2
 				}
 			}

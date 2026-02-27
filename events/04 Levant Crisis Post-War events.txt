@@ -24,6 +24,7 @@ country_event = { #Levant Crisis setup event
 	option = {
 		log = "[GetLogInfo]: event levant_crisis_events.0 option 1"
 		set_global_flag = OTT_cairo_pact_war
+		set_global_flag = OTT_cairo_pact_war_ongoing
 		log = "KR_Event_Logging;LEVANT CRISIS"
 		EGY = {
 			add_named_threat = {
@@ -169,6 +170,7 @@ country_event = { #Victory in the Mashriq
 
 			### Set OTT defeat flag
 			set_global_flag = OTT_defeat_levant
+			clr_global_flag = OTT_cairo_pact_war_ongoing
 
 			### EGY focus
 			complete_national_focus = EGY_Victory_Levant

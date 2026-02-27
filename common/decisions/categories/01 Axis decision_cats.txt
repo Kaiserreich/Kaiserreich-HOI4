@@ -10,11 +10,7 @@ Ottoman_Cairo_Pact_decisions = {
 	}
 
 	visible = {
-		has_idea = OTT_Ottoman_Stand
-		OR = {
-			has_war_with = EGY
-			has_war_with = PER
-		}
+		has_global_flag = OTT_cairo_pact_war_ongoing
 	}
 }
 
@@ -36,7 +32,7 @@ Cairo_Pact_decisions = {
 
 	visible = {
 		has_war_with = OTT
-		OTT = { has_idea = OTT_Ottoman_Stand }
+		has_global_flag = OTT_cairo_pact_war_ongoing
 	}
 
 	on_map_area = {

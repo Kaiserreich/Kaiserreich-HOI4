@@ -386,28 +386,32 @@ LIT_change_LAF_threat = {
 		hidden_effect = {
 			if = {
 				limit = {
-					check_variable = { LIT_LAF_threat < 1 }
-					LIT_king_assassinated = yes
-				}
-				country_event = { id = lithuania_events.318 days = 1 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { LIT_LAF_threat < 1 }
-					NOT = {
-						has_active_mission = LIT_the_fraying_front
-						has_country_flag = LIT_can_capture_laf_leaders
+					OR = {
+						is_ai = no
 						AND = {
 							is_ai = yes
-							OR = {
-								has_game_rule = { rule = LIT_path option = LIT_PATH_VOLDEMARAS_NATPOP }
-								has_game_rule = { rule = LIT_path option = LIT_PATH_ALANTAS_NATPOP }
-								has_game_rule = { rule = LIT_path option = LIT_PATH_MACEINA_NATPOP }
-							}
+							NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_VOLDEMARAS_NATPOP } }
+							NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_ALANTAS_NATPOP } }
+							NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_MACEINA_NATPOP } }
 						}
 					}
 				}
-				activate_mission = LIT_the_fraying_front
+				if = {
+					limit = { check_variable = { LIT_LAF_threat < 1 } }
+					if = {
+						limit = { LIT_king_assassinated = yes }
+						country_event = { id = lithuania_events.318 days = 1 }
+					}
+					else_if = {
+						limit = {
+							NOT = {
+								has_active_mission = LIT_the_fraying_front
+								has_country_flag = LIT_can_capture_laf_leaders
+							}
+						}
+						activate_mission = LIT_the_fraying_front
+					}
+				}
 			}
 		}
 	}

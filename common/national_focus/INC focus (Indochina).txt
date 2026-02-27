@@ -1225,7 +1225,16 @@ focus_tree = {
 				popularity = -0.05
 			}
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = { rule = INC_path option = INC_PATH_AUTDEM }
+					has_game_rule = { rule = INC_path option = INC_PATH_PATAUT }
+				}
+			}
+		}
 	}
 
 	focus = {
@@ -3569,16 +3578,16 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 100
-				CHI = { is_ai = no }
+				CHN = { is_ai = no }
 				OR = {
 					has_game_rule = { rule = INC_forpol option = DEFAULT }
-					has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
+					has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
 				}
 			}
 			modifier = {
 				factor = 0
 				NOT = { has_game_rule = { rule = INC_forpol option = DEFAULT } }
-				NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI } }
+				NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN } }
 				is_in_faction = no
 			}
 		}
@@ -4193,6 +4202,13 @@ focus_tree = {
 				factor = 0
 				NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_INT } }
 				country_exists = HND
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = INC_path option = INC_PATH_AUTDEM }
+					has_game_rule = { rule = INC_path option = INC_PATH_PATAUT }
+				}
 			}
 		}
 		will_lead_to_war_with = GEA

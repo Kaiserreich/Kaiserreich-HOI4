@@ -835,22 +835,18 @@ characters = {
 			visible = { has_power_balance = { id = SZC_baoding_power_balance } }
 			traits = { KR_conniving_opportunist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = SZC }
-						SZC_diarchy_increase_xihou_small = yes
-						set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
-						add_to_coalition = yes
-					}
+				if = {
+					limit = { ROOT = { tag = SZC } }
+					SZC_diarchy_increase_xihou_small = yes
+					set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+					add_to_coalition = yes
 				}
 			}
 			on_remove = {
-				ROOT = {
-					if = {
-						limit = { tag = SZC }
-						set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
-						remove_from_coalition = yes
-					}
+				if = {
+					limit = { ROOT = { tag = SZC } }
+					set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+					remove_from_coalition = yes
 				}
 			}
 		}
@@ -864,22 +860,18 @@ characters = {
 			traits = { KR_MHC_cavalry_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = SZC }
-						SZC_diarchy_increase_xihou_small = yes
-						set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
-						add_to_coalition = yes
-					}
+				if = {
+					limit = { ROOT = { tag = SZC } }
+					SZC_diarchy_increase_xihou_small = yes
+					set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+					add_to_coalition = yes
 				}
 			}
 			on_remove = {
-				ROOT = {
-					if = {
-						limit = { tag = SZC }
-						set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
-						remove_from_coalition = yes
-					}
+				if = {
+					limit = { ROOT = { tag = SZC } }
+					set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+					remove_from_coalition = yes
 				}
 			}
 		}

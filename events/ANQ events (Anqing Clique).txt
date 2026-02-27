@@ -4006,7 +4006,7 @@ country_event = { # final decision commitment reclamation war
 			modifier = { #Anqing having a anti Fengtian rule makes ai weight to commit go to 0
 				factor = 0
 				NOT = { has_game_rule = { rule = ANQ_forpol option = DEFAULT } }
-				NOT = { has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_FNG } }
+				NOT = { has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_AGJ } }
 			}
 		}
 		custom_effect_tooltip = anq_commit_fengtian_tt
@@ -4061,12 +4061,12 @@ country_event = { # final decision commitment reclamation war
 				}
 				OR = {
 					has_game_rule = { rule = ANQ_forpol option = DEFAULT }
-					has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_FNG }
+					has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_AGJ }
 				}
 			}
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_FNG } #Anqing having a pro Fengtian rule makes ai weight to abandon go to 0
+				has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_AGJ } #Anqing having a pro Fengtian rule makes ai weight to abandon go to 0
 			}
 		}
 		custom_effect_tooltip = anq_abandon_fengtian_tt
@@ -4170,7 +4170,7 @@ country_event = { # fengtian tolerates us
 			modifier = {
 				factor = 0
 				NOT = { has_game_rule = { rule = ANQ_forpol option = DEFAULT } }
-				NOT = { has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_FNG } }
+				NOT = { has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_AGJ } }
 			}
 		}
 		if = {

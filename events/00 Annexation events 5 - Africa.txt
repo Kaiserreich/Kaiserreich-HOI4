@@ -6236,7 +6236,7 @@ country_event = { #Fate of Ogaden
 			if = {
 				limit = {
 					any_state_of = {
-						target = { 559 934 1094 } #Mogadishu, Hararghe, Bale
+						target = { 559 944 1094 } #Mogadishu, Hararghe, Bale
 						is_claim_or_core_of_ROOT = yes
 					}
 				}
@@ -6254,7 +6254,7 @@ country_event = { #Fate of Ogaden
 			}
 			else_if = {
 				limit = {
-					934 = { #Hararghe
+					944 = { #Hararghe
 						annexations_state_owner_is_valid_grant_target = yes
 						owner = {
 							NOT = { tag = event_target:somalia }
@@ -6262,7 +6262,7 @@ country_event = { #Fate of Ogaden
 						}
 					}
 				}
-				var:934.owner = { save_event_target_as = ethiopia add_to_array = { ROOT.potential_grant_targets = THIS } }
+				var:944.owner = { save_event_target_as = ethiopia add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 			else_if = {
 				limit = {

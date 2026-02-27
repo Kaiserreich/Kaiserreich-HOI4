@@ -500,7 +500,10 @@ focus_tree = {
 		id = MAL_satu_untuk_semua_semua_untuk_satu
 		icon = {
 			trigger = {
-				overlord = { china_is_aligned_with_kmt = yes }
+				overlord = {
+					china_is_aligned_with_kmt = yes
+					china_alignment_chinese_southern_republican = no
+				}
 			}
 			value = GFX_goal_chi_the_party_state
 		}
@@ -515,7 +518,10 @@ focus_tree = {
 		available = {
 			OR = {
 				has_socialist_government = yes
-				overlord = { china_is_aligned_with_kmt = yes }
+				overlord = {
+					china_is_aligned_with_kmt = yes
+					china_alignment_chinese_southern_republican = no
+				}
 			}
 		}
 
@@ -939,7 +945,9 @@ focus_tree = {
 		}
 
 		available = {
-			overlord = { china_is_aligned_with_kmt = yes }
+			overlord = {
+				china_is_aligned_with_kmt = yes
+			}
 		}
 
 		mutually_exclusive = {

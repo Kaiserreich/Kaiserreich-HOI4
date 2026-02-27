@@ -106,7 +106,7 @@ country_event = { #FROM demands ROOT submit
 							china_alignment_right_kuomintang = yes
 						}
 					}
-					has_country_leader = { character = SZC_liu_wenhui }
+					has_country_leader = { character = SZC_xiong_kewu }
 					NOT = { country_exists = UPC }
 				}
 			}
@@ -127,7 +127,7 @@ country_event = { #FROM demands ROOT submit
 				}
 				FROM = {
 					NOT = { tag = QIE }
-					china_is_aligned_with_republicans = no
+					china_is_aligned_with_southern_republicans = no
 					china_is_aligned_with_zhili = no
 				}
 			}
@@ -145,7 +145,7 @@ country_event = { #FROM demands ROOT submit
 						FROM = { china_is_aligned_with_federalists = no }
 					}
 					AND = { #check for FNG
-						has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_FNG }
+						has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_AGJ }
 						FROM = { china_is_aligned_with_fengtian = no }
 					}
 					AND = { #check for NPA
@@ -157,7 +157,7 @@ country_event = { #FROM demands ROOT submit
 						FROM = { NOT = { tag = QIE } }
 					}
 					AND = { #check for Zhili Exiles
-						has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_ZHL }
+						has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_NZH }
 						FROM = { china_is_aligned_with_zhili = no }
 					}
 					#outright refuse if independent
@@ -171,21 +171,19 @@ country_event = { #FROM demands ROOT submit
 				NOT = { has_game_rule = { rule = GXC_forpol option = DEFAULT } }
 				OR = {
 					AND = { #check for FNG
-						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_FNG }
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
 						FROM = { china_is_aligned_with_fengtian = no }
 					}
 					AND = { #check for LKMT
-						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKMT }
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
 						FROM = { china_is_aligned_with_left_kmt = no }
 					}
 					AND = { #check for NPA
-						OR = {
-							has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
-						}
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
 						FROM = { NOT = { tag = NPA } }
 					}
 					AND = { #check for Zhili
-						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_ZHL }
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
 						FROM = { china_is_aligned_with_zhili = no }
 					}
 					#outright refuse if independent
@@ -203,7 +201,7 @@ country_event = { #FROM demands ROOT submit
 						FROM = { NOT = { tag = QIE } }
 					}
 					AND = { #check for Zhili Exiles
-						has_game_rule = { rule = LEP_forpol option = LEP_FORPOL_ZHL }
+						has_game_rule = { rule = LEP_forpol option = LEP_FORPOL_NZH }
 						FROM = { china_is_aligned_with_zhili = no }
 					}
 					#outright refuse if independent
@@ -221,15 +219,15 @@ country_event = { #FROM demands ROOT submit
 						FROM = { china_is_aligned_with_federalists = no }
 					}
 					AND = { #check for FNG
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_FNG }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_AGJ }
 						FROM = { china_is_aligned_with_fengtian = no }
 					}
 					AND = { #check for RKMT
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKMT }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKT }
 						FROM = { china_is_aligned_with_right_kmt = no }
 					}
 					AND = { #check for LKMT
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKMT }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKT }
 						FROM = { china_is_aligned_with_left_kmt = no }
 					}
 					AND = { #check for NPA
@@ -241,7 +239,7 @@ country_event = { #FROM demands ROOT submit
 						FROM = { NOT = { tag = QIE } }
 					}
 					AND = { #check for Zhili Exiles
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_ZHL }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_NZH }
 						FROM = { china_is_aligned_with_zhili = no }
 					}
 					#outright refuse if independent
@@ -254,7 +252,7 @@ country_event = { #FROM demands ROOT submit
 				tag = SHD
 				OR = {
 					AND = { #check for FNG
-						has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_FNG }
+						has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_AGJ }
 						FROM = { china_is_aligned_with_fengtian = no }
 					}
 					AND = { #check for NPA
@@ -271,19 +269,22 @@ country_event = { #FROM demands ROOT submit
 				tag = SZC
 				OR = {
 					AND = { #check for Feds
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC }
+						OR = {
+							has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC }
+							has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_EXILE_UPC }
+						}
 						FROM = { china_is_aligned_with_federalists = no }
 					}
 					AND = { #check for FNG
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_FNG }
+						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ }
 						FROM = { china_is_aligned_with_fengtian = no }
 					}
 					AND = { #check for RKMT
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKMT }
+						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKT }
 						FROM = { china_is_aligned_with_right_kmt = no }
 					}
 					AND = { #check for LKMT
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKMT }
+						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKT }
 						FROM = { china_is_aligned_with_left_kmt = no }
 					}
 					AND = { #check for NPA
@@ -299,36 +300,56 @@ country_event = { #FROM demands ROOT submit
 					}
 					#outright refuse if independent
 					has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_SZC }
-				}
-				OR = {
-					AND = { #Xiong Kewu/Li Jiayu will not join the KMT if UPC exists
+					#the following check for specific characters always declining alignment on certain occasions, unless rules are set
+					AND = { #Xiong Kewu/Li Jiayu will not join the KMT if UPC exists, unless rule is set
 						OR = {
 							has_country_leader = { character = SZC_xiong_kewu }
 							has_country_leader = { character = SZC_li_jiayu }
 						}
-						FROM = { china_is_aligned_with_kmt = yes }
+						OR = {
+							AND = {
+								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKT } }
+								FROM = { china_is_aligned_with_right_kmt = yes }
+							}
+							AND = {
+								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKT } }
+								FROM = { china_is_aligned_with_left_kmt = yes }
+							}
+						}
 						country_exists = UPC
 					}
-					AND = {
-						has_country_leader = { character = SZC_xiong_kewu } #Xiong Kewu will not join LKT if RKT exists and is lead by Hu Hanmin
+					AND = {	#Xiong Kewu will not join LKT if RKT exists and is lead by Hu Hanmin, unless rules are set
+						has_country_leader = { character = SZC_xiong_kewu }
 						FROM = { china_alignment_left_kuomintang = yes }
-						country_exists = RKT
-						RKT = { has_country_leader = { character = GXC_hu_hanmin } }
-					}
-					AND = { #Li Jiayu will not join the LKT
-						has_country_leader = { character = SZC_li_jiayu }
-						FROM = { china_alignment_left_kuomintang = yes }
-					}
-					AND = { #Liu Xiang/Liu Wenhui will not join the KMT
-						OR = {
-							has_country_leader = { character = SZC_liu_xiang }
-							has_country_leader = { character = SZC_liu_wenhui }
+						NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKT } }
+						RKT = {
+							exists = yes
+							has_country_leader = { character = GXC_hu_hanmin }
 						}
+					}
+					AND = { #Liu Wenhui will not join the LKMT, even with rules set
+						has_country_leader = { character = SZC_liu_wenhui }
+						FROM = { china_is_aligned_with_left_kmt = yes }
+					}
+					AND = { #Liu Xiang will not join the KMT, even with rules set
+						has_country_leader = { character = SZC_liu_xiang }
 						FROM = { china_is_aligned_with_kmt = yes }
 					}
-					AND = { #Liu Wenhui will not join Beiyang if UPC exists
-						has_country_leader = { character = SZC_liu_xiang }
-						FROM = { china_is_aligned_with_beiyang = yes }
+					AND = { #Liu Wenhui will not join Beiyang if UPC exists, unless rules are set
+						has_country_leader = { character = SZC_liu_wenhui }
+						OR = {
+							AND = {
+								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE } }
+								FROM = {
+									tag = QIE
+									china_is_aligned_with_manchu = no
+								}
+							}
+							AND = {
+								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ } }
+								FROM = { china_is_aligned_with_fengtian = yes }
+							}
+						}
 						country_exists = UPC
 					}
 				}
@@ -341,11 +362,11 @@ country_event = { #FROM demands ROOT submit
 				OR = {
 					has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_YUN }
 					AND = { #check for RKMT
-						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKMT }
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKT }
 						FROM = { china_is_aligned_with_right_kmt = no }
 					}
 					AND = { #check for LKMT
-						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKMT }
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKT }
 						FROM = { china_is_aligned_with_left_kmt = no }
 					}
 					AND = { #check for UPC
@@ -357,8 +378,58 @@ country_event = { #FROM demands ROOT submit
 						FROM = { NOT = { tag = NPA } }
 					}
 					AND = { #check for Zhili
-						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_ZHL }
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NZH }
 						FROM = { china_is_aligned_with_zhili = no }
+					}
+					AND = { #check for Anguojun
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_AGJ }
+						FROM = { china_is_aligned_with_fengtian = no }
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				###check if they have a non-fitting South China War rule set
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = DEFAULT } }
+				OR = {
+					AND = {
+						tag = GXC
+						OR = {
+							AND = {
+								FROM = { tag = HNN }
+								NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_YUN_BOTH } }
+							}
+							AND = {
+								FROM = { tag = YUN }
+								NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_BOTH } }
+							}
+						}
+					}
+					AND = {
+						tag = HNN
+						OR = {
+							AND = {
+								FROM = { tag = GXC }
+								NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_YUN_BOTH } }
+							}
+							AND = {
+								FROM = { tag = YUN }
+								NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_BOTH } }
+							}
+						}
+					}
+					AND = {
+						tag = YUN
+						OR = {
+							AND = {
+								FROM = { tag = GXC }
+								NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_BOTH } }
+							}
+							AND = {
+								FROM = { tag = HNN }
+								NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_BOTH } }
+							}
+						}
 					}
 				}
 			}
@@ -445,7 +516,7 @@ country_event = { #FROM demands ROOT submit
 							china_alignment_right_kuomintang = yes
 						}
 					}
-					has_country_leader = { character = SZC_liu_wenhui }
+					has_country_leader = { character = SZC_xiong_kewu }
 					NOT = { country_exists = UPC }
 				}
 			}
@@ -464,7 +535,7 @@ country_event = { #FROM demands ROOT submit
 						FROM = { china_is_aligned_with_federalists = yes }
 					}
 					AND = { #check for FNG
-						has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_FNG }
+						has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_AGJ }
 						FROM = { china_is_aligned_with_fengtian = yes }
 					}
 					AND = { #check for NPA
@@ -476,8 +547,33 @@ country_event = { #FROM demands ROOT submit
 						FROM = { tag = QIE }
 					}
 					AND = { #check for Zhili Exiles
-						has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_ZHL }
+						has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_NZH }
 						FROM = { china_is_aligned_with_zhili = yes }
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				###check if they are GXC and have a non-fitting forpol rule set
+				tag = GXC
+				NOT = { has_game_rule = { rule = GXC_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC } }
+				OR = {
+					AND = { #check for FNG
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						FROM = { china_is_aligned_with_fengtian = yes }
+					}
+					AND = { #check for NPA
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
+						FROM = { tag = NPA }
+					}
+					AND = { #check for QIE
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						FROM = { china_is_aligned_with_zhili = yes }
+					}
+					AND = { #check for Zhili Exiles
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
+						FROM = { china_is_aligned_with_left_kmt = yes }
 					}
 				}
 			}
@@ -493,7 +589,7 @@ country_event = { #FROM demands ROOT submit
 						FROM = { tag = QIE }
 					}
 					AND = { #check for Zhili Exiles
-						has_game_rule = { rule = LEP_forpol option = LEP_FORPOL_ZHL }
+						has_game_rule = { rule = LEP_forpol option = LEP_FORPOL_NZH }
 						FROM = { china_is_aligned_with_zhili = yes }
 					}
 				}
@@ -510,15 +606,15 @@ country_event = { #FROM demands ROOT submit
 						FROM = { china_is_aligned_with_federalists = yes }
 					}
 					AND = { #check for FNG
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_FNG }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_AGJ }
 						FROM = { china_is_aligned_with_fengtian = yes }
 					}
 					AND = { #check for RKMT
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKMT }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKT }
 						FROM = { china_is_aligned_with_right_kmt = yes }
 					}
 					AND = { #check for LKMT
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKMT }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKT }
 						FROM = { china_is_aligned_with_left_kmt = yes }
 					}
 					AND = { #check for NPA
@@ -531,7 +627,7 @@ country_event = { #FROM demands ROOT submit
 						FROM = { china_is_aligned_with_manchu = no }
 					}
 					AND = { #check for Zhili Exiles
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_ZHL }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_NZH }
 						FROM = { china_is_aligned_with_zhili = yes }
 					}
 				}
@@ -544,7 +640,7 @@ country_event = { #FROM demands ROOT submit
 				NOT = { has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_SHD } }
 				OR = {
 					AND = { #check for FNG
-						has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_FNG }
+						has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_AGJ }
 						FROM = { china_is_aligned_with_fengtian = yes }
 					}
 					AND = { #check for NPA
@@ -561,19 +657,22 @@ country_event = { #FROM demands ROOT submit
 				NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_SZC } }
 				OR = {
 					AND = { #check for Feds
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC }
+						OR = {
+							has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC }
+							has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_EXILE_UPC }
+						}
 						FROM = { china_is_aligned_with_federalists = yes }
 					}
 					AND = { #check for FNG
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_FNG }
+						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ }
 						FROM = { china_is_aligned_with_fengtian = yes }
 					}
 					AND = { #check for RKMT
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKMT }
+						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKT }
 						FROM = { china_is_aligned_with_right_kmt = yes }
 					}
 					AND = { #check for LKMT
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKMT }
+						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKT }
 						FROM = { china_is_aligned_with_left_kmt = yes }
 					}
 					AND = { #check for NPA
@@ -592,17 +691,73 @@ country_event = { #FROM demands ROOT submit
 			}
 			modifier = {
 				factor = 0
+				tag = SZC
+				has_game_rule = { rule = SZC_forpol option = DEFAULT }
+				OR = {
+					AND = { #Xiong Kewu/Li Jiayu will not join the KMT if UPC exists, unless rule is set
+						OR = {
+							has_country_leader = { character = SZC_xiong_kewu }
+							has_country_leader = { character = SZC_li_jiayu }
+						}
+						OR = {
+							FROM = { tag = UPC }
+							AND = {
+								FROM = { china_is_aligned_with_kmt = yes }
+								UPC = { exists = no }
+							}
+						}
+					}
+					AND = {	#Xiong Kewu will not join LKT if RKT exists and is lead by Hu Hanmin, unless rules are set
+						has_country_leader = { character = SZC_xiong_kewu }
+						FROM = {
+							tag = RKT
+							has_country_leader = { character = GXC_hu_hanmin }
+						}
+						UPC = { exists = no }
+					}
+					AND = {	#Xiong Kewu will not join LKT if RKT exists and is lead by Hu Hanmin, unless rules are set
+						has_country_leader = { character = SZC_xiong_kewu }
+						FROM = { china_is_aligned_with_left_kmt = yes }
+						UPC = { exists = no }
+						NOT = {
+							RKT = {
+								exists = yes
+								has_country_leader = { character = GXC_hu_hanmin }
+							}
+						}
+					}
+					AND = { #Liu Wenhui will not join Beiyang if UPC exists, unless rules are set
+						has_country_leader = { character = SZC_liu_wenhui }
+						OR = {
+							AND = {
+								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE } }
+								FROM = {
+									tag = QIE
+									china_is_aligned_with_manchu = no
+								}
+							}
+							AND = {
+								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ } }
+								FROM = { china_is_aligned_with_fengtian = yes }
+							}
+						}
+						country_exists = UPC
+					}
+				}
+			}
+			modifier = {
+				factor = 0
 				###check if they are YUN and have a non-fitting forpol rule set
 				tag = YUN
 				NOT = { has_game_rule = { rule = YUN_forpol option = DEFAULT } }
 				OR = {
 					has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_YUN }
 					AND = { #check for RKMT
-						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKMT }
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKT }
 						FROM = { china_is_aligned_with_right_kmt = yes }
 					}
 					AND = { #check for LKMT
-						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKMT }
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKT }
 						FROM = { china_is_aligned_with_left_kmt = yes }
 					}
 					AND = { #check for UPC
@@ -614,8 +769,12 @@ country_event = { #FROM demands ROOT submit
 						FROM = { tag = NPA }
 					}
 					AND = { #check for Zhili Exiles
-						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_ZHL }
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NZH }
 						FROM = { china_is_aligned_with_zhili = yes }
+					}
+					AND = { #check for Anguojun
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_AGJ }
+						FROM = { china_is_aligned_with_fengtian = yes }
 					}
 				}
 			}
@@ -726,7 +885,7 @@ country_event = { #FROM demands ROOT submit
 									china_alignment_right_kuomintang = yes
 								}
 							}
-							has_country_leader = { character = SZC_liu_wenhui }
+							has_country_leader = { character = SZC_xiong_kewu }
 							NOT = { country_exists = UPC }
 						}
 					}
@@ -1105,75 +1264,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 			}
 			modifier = {
 				factor = 0
-				###check if they are SZC and have a non-fitting forpol rule/leader combination set
-				tag = SZC
-				OR = {
-					AND = { #check for Feds
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC }
-						FROM = { china_is_aligned_with_federalists = no }
-					}
-					AND = { #check for FNG
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_FNG }
-						FROM = { china_is_aligned_with_fengtian = no }
-					}
-					AND = { #check for RKMT
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKMT }
-						FROM = { china_is_aligned_with_right_kmt = no }
-					}
-					AND = { #check for LKMT
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKMT }
-						FROM = { china_is_aligned_with_left_kmt = no }
-					}
-					AND = { #check for NPA
-						OR = {
-							has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_FORM_NPA }
-							has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_NPA }
-						}
-						FROM = { NOT = { tag = NPA } }
-					}
-					AND = { #check for QIE
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE }
-						FROM = { NOT = { tag = QIE } }
-					}
-					#outright refuse if independent
-					has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_SZC }
-				}
-				OR = {
-					AND = { #Xiong Kewu/Li Jiayu will not join the KMT if UPC exists
-						OR = {
-							has_country_leader = { character = SZC_xiong_kewu }
-							has_country_leader = { character = SZC_li_jiayu }
-						}
-						FROM = { china_is_aligned_with_kmt = yes }
-						country_exists = UPC
-					}
-					AND = {
-						has_country_leader = { character = SZC_xiong_kewu } #Xiong Kewu will not join LKT if RKT exists and is lead by Hu Hanmin
-						FROM = { china_alignment_left_kuomintang = yes }
-						country_exists = RKT
-						RKT = { has_country_leader = { character = GXC_hu_hanmin } }
-					}
-					AND = { #Li Jiayu will not join the LKT
-						has_country_leader = { character = SZC_li_jiayu }
-						FROM = { china_alignment_left_kuomintang = yes }
-					}
-					AND = { #Liu Xiang/Liu Wenhui will not join the KMT
-						OR = {
-							has_country_leader = { character = SZC_liu_xiang }
-							has_country_leader = { character = SZC_liu_wenhui }
-						}
-						FROM = { china_is_aligned_with_kmt = yes }
-					}
-					AND = { #Liu Wenhui will not join Beiyang if UPC exists
-						has_country_leader = { character = SZC_liu_xiang }
-						FROM = { china_is_aligned_with_beiyang = yes }
-						country_exists = UPC
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				china_same_alignment_as_FROM = no #Same alignment tags are supposed to ally each other no matter what forpol rule was set
+				#china_same_alignment_as_FROM = no #Same alignment tags are supposed to ally each other no matter what forpol rule was set - gonna cancel this so game rules can do game rules things.
 				OR = {
 					###check for ANQ rules
 					AND = {
@@ -1184,7 +1275,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { china_is_aligned_with_federalists = no }
 							}
 							AND = { #check for FNG
-								has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_FNG }
+								has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = no }
 							}
 							AND = { #check for NPA
@@ -1196,7 +1287,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { NOT = { tag = QIE } }
 							}
 							AND = { #check for Zhili Exiles
-								has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_ZHL }
+								has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = no }
 							}
 							#outright refuse if independent
@@ -1209,21 +1300,19 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 						NOT = { has_game_rule = { rule = GXC_forpol option = DEFAULT } }
 						OR = {
 							AND = { #check for FNG
-								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_FNG }
+								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = no }
 							}
 							AND = { #check for LKMT
-								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKMT }
+								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
 								FROM = { china_is_aligned_with_left_kmt = no }
 							}
 							AND = { #check for NPA
-								OR = {
-									has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
-								}
+								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
 								FROM = { NOT = { tag = NPA } }
 							}
 							AND = { #check for Zhili
-								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_ZHL }
+								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = no }
 							}
 							#outright refuse if independent
@@ -1241,7 +1330,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { NOT = { tag = QIE } }
 							}
 							AND = { #check for Zhili Exiles
-								has_game_rule = { rule = LEP_forpol option = LEP_FORPOL_ZHL }
+								has_game_rule = { rule = LEP_forpol option = LEP_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = no }
 							}
 							#outright refuse if independent
@@ -1258,15 +1347,15 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { china_is_aligned_with_federalists = no }
 							}
 							AND = { #check for FNG
-								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_FNG }
+								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = no }
 							}
 							AND = { #check for RKMT
-								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKMT }
+								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKT }
 								FROM = { china_is_aligned_with_right_kmt = no }
 							}
 							AND = { #check for LKMT
-								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKMT }
+								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKT }
 								FROM = { china_is_aligned_with_left_kmt = no }
 							}
 							AND = { #check for NPA
@@ -1278,7 +1367,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { NOT = { tag = QIE } }
 							}
 							AND = { #check for Zhili Exiles
-								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_ZHL }
+								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = no }
 							}
 							#outright refuse if independent
@@ -1290,7 +1379,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 						tag = SHD
 						OR = {
 							AND = { #check for FNG
-								has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_FNG }
+								has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = no }
 							}
 							AND = { #check for NPA
@@ -1304,53 +1393,24 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 					###check if they are SZC and have a non-fitting forpol rule set
 					AND = {
 						tag = SZC
-						NOT = { #Ignore forpol rules under the following conditions to prevent the player from doing stuff they're not supposed to
-							AND = { #Xiong Kewu is leader, LKMT are FROM, and RKMT doesn't have Hu Hanmin
-								has_country_leader = { character = SZC_xiong_kewu }
-								FROM = { china_alignment_left_kuomintang = yes }
-								NOT = { RKT = { has_country_leader = { character = GXC_hu_hanmin } } }
-							}
-							AND = { #Xiong Kewu is leader and RKMT are FROM, Hu Hanmin is leader
-								has_country_leader = { character = SZC_xiong_kewu }
-								FROM = { china_alignment_right_kuomintang = yes }
-								RKT = { has_country_leader = { character = GXC_hu_hanmin } }
-							}
-							AND = { #Li Jiayu, Liu Wenhui, or Deng Xihou are leader and Feds are FROM
-								OR = {
-									has_country_leader = { character = SZC_li_jiayu }
-									has_country_leader = { character = SZC_liu_wenhui }
-									has_country_leader = { character = SZC_deng_xihou }
-								}
-								FROM = { china_alignment_federalists = yes }
-							}
-							AND = { #Li Jiayu, is leader and KMT are FROM AND UPC is not around
-								has_country_leader = { character = SZC_li_jiayu }
-								FROM = { china_is_aligned_with_kmt = yes }
-								NOT = { country_exists = UPC }
-							}
-							AND = { # Liu Wenhui or Deng Xihou are leader and Beiyang are FROM
-								OR = {
-									has_country_leader = { character = SZC_liu_wenhui }
-									has_country_leader = { character = SZC_deng_xihou }
-								}
-								FROM = { china_alignment_beiyang = yes }
-							}
-						}
 						OR = {
 							AND = { #check for Feds
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC }
+								OR = {
+									has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC }
+									has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_EXILE_UPC }
+								}
 								FROM = { china_is_aligned_with_federalists = no }
 							}
 							AND = { #check for FNG
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_FNG }
+								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = no }
 							}
 							AND = { #check for RKMT
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKMT }
+								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKT }
 								FROM = { china_is_aligned_with_right_kmt = no }
 							}
 							AND = { #check for LKMT
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKMT }
+								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKT }
 								FROM = { china_is_aligned_with_left_kmt = no }
 							}
 							AND = { #check for NPA
@@ -1366,6 +1426,58 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 							}
 							#outright refuse if independent
 							has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_SZC }
+							#the following check for specific characters always declining alignment on certain occasions, unless rules are set
+							AND = { #Xiong Kewu/Li Jiayu will not join the KMT if UPC exists, unless rule is set
+								OR = {
+									has_country_leader = { character = SZC_xiong_kewu }
+									has_country_leader = { character = SZC_li_jiayu }
+								}
+								OR = {
+									AND = {
+										NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKT } }
+										FROM = { china_is_aligned_with_right_kmt = yes }
+									}
+									AND = {
+										NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKT } }
+										FROM = { china_is_aligned_with_left_kmt = yes }
+									}
+								}
+								country_exists = UPC
+							}
+							AND = {	#Xiong Kewu will not join LKT if RKT exists and is lead by Hu Hanmin, unless rules are set
+								has_country_leader = { character = SZC_xiong_kewu }
+								FROM = { china_alignment_left_kuomintang = yes }
+								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKT } }
+								RKT = {
+									exists = yes
+									has_country_leader = { character = GXC_hu_hanmin }
+								}
+							}
+							AND = { #Liu Wenhui will not join the LKMT, even with rules set
+								has_country_leader = { character = SZC_liu_wenhui }
+								FROM = { china_is_aligned_with_left_kmt = yes }
+							}
+							AND = { #Liu Xiang will not join the KMT, even with rules set
+								has_country_leader = { character = SZC_liu_xiang }
+								FROM = { china_is_aligned_with_kmt = yes }
+							}
+							AND = { #Liu Wenhui will not join Beiyang if UPC exists, unless rules are set
+								has_country_leader = { character = SZC_liu_wenhui }
+								OR = {
+									AND = {
+										NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE } }
+										FROM = {
+											tag = QIE
+											china_is_aligned_with_manchu = no
+										}
+									}
+									AND = {
+										NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ } }
+										FROM = { china_is_aligned_with_fengtian = yes }
+									}
+								}
+								country_exists = UPC
+							}
 						}
 					}
 					###check if they are YUN and have a non-fitting forpol rule set
@@ -1375,11 +1487,11 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 						OR = {
 							has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_YUN }
 							AND = { #check for RKMT
-								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKMT }
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKT }
 								FROM = { china_is_aligned_with_right_kmt = no }
 							}
 							AND = { #check for LKMT
-								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKMT }
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKT }
 								FROM = { china_is_aligned_with_left_kmt = no }
 							}
 							AND = { #check for UPC
@@ -1391,8 +1503,12 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { NOT = { tag = NPA } }
 							}
 							AND = { #check for Zhili
-								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_ZHL }
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = no }
+							}
+							AND = { #check for Anguojun
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_AGJ }
+								FROM = { china_is_aligned_with_fengtian = no }
 							}
 						}
 					}
@@ -1410,11 +1526,50 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 		name = china_events.7.b #No
 		ai_chance = {
 			base = 50
+
 			modifier = {
-				#Will always say yes if you have identical alignments.
+				#Should never say no if you share alignments unless you have game rules set
 				factor = 0
 				china_same_alignment_as_FROM = yes
+				NOT = {
+					###check for ANQ rules
+					AND = {
+						tag = ANQ
+						has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_ANQ }
+					}
+					###check for GXC rules
+					AND = {
+						tag = GXC
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					###check for LEP rules
+					AND = {
+						tag = LEP
+						has_game_rule = { rule = LEP_forpol option = LEP_FORPOL_LEP }
+					}
+					###check for SHX rules
+					AND = {
+						tag = SHX
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_SHX }
+					}
+					###check for SHD rules
+					AND = {
+						tag = SHD
+						has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_SHD }
+					}
+					###check for SZC rules
+					AND = {
+						tag = SZC
+						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_SZC }
+					}
+					###check for YUN rules
+					AND = {
+						tag = YUN
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_YUN }
+					}
+				}
 			}
+
 			modifier = {
 				factor = 0.5
 				#Tags that own a major city are less likely to naturally align.
@@ -1440,15 +1595,26 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 				factor = 0
 				tag = HNN
 				OR = {
-					AND = { #Zhao Hengti is leader, FROM are the Northern Zhili in Beijing, the other federalists aren't around
+					AND = { #Zhao Hengti is leader, and the other federalists aren't around, and FROM are the Northern Zhili in Beijing, or FROM are Fengtian and Northern Zhili are no longer in Beijing
 						china_alignment_federalists = yes
-						FROM = {
-							tag = QIE
-							china_alignment_northern_zhili = yes
+						GXC = { china_is_aligned_with_federalists = no }
+						SZC = { china_is_aligned_with_federalists = no }
+						YUN = { china_is_aligned_with_federalists = no }
+						OR = {
+							FROM = {
+								tag = QIE
+								china_alignment_northern_zhili = yes
+							}
+							AND = {
+								FROM = { tag = FNG }
+								QIE = {
+									OR = {
+										china_alignment_northern_zhili = no
+										exists = no
+									}
+								}
+							}
 						}
-						NOT = { GXC = { china_is_aligned_with_federalists = yes } }
-						NOT = { SZC = { china_is_aligned_with_federalists = yes } }
-						NOT = { YUN = { china_is_aligned_with_federalists = yes } }
 					}
 					AND = { #Tang Shengzhi is leader and
 						china_alignment_left_kuomintang = yes
@@ -1481,14 +1647,11 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 				}
 			}
 			modifier = {
-				#Sichuan should always accept alliance under the following conditions
+				#Sichuan should always accept alliance under the following conditions, with no game rules set
 				factor = 0
 				tag = SZC
+				has_game_rule = { rule = SZC_forpol option = DEFAULT }
 				OR = {
-					AND = { #Xiong Kewu is leader and UPC are FROM
-						has_country_leader = { character = SZC_xiong_kewu }
-						FROM = { china_alignment_federalists = yes }
-					}
 					AND = { #Xiong Kewu is leader and LKT are FROM, RKT does not have Hu Hanmin as leader
 						has_country_leader = { character = SZC_xiong_kewu }
 						FROM = { china_alignment_left_kuomintang = yes }
@@ -1500,8 +1663,9 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 						CHI = { exists = no }
 						RKT = { has_country_leader = { character = GXC_hu_hanmin } }
 					}
-					AND = { #Li Jiayu, Liu Wenhui or Deng Xihou are leader and Feds are FROM
+					AND = { #Xiong Kewu, Li Jiayu, Liu Wenhui or Deng Xihou are leader and Feds are FROM
 						OR = {
+							has_country_leader = { character = SZC_xiong_kewu }
 							has_country_leader = { character = SZC_li_jiayu }
 							has_country_leader = { character = SZC_liu_wenhui }
 							has_country_leader = { character = SZC_deng_xihou }
@@ -1513,12 +1677,20 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 						FROM = { china_is_aligned_with_kmt = yes }
 						NOT = { country_exists = UPC }
 					}
-					AND = { #Liu Wenhui or Deng Xihou are leader and Beiyang are FROM
-						OR = {
-							has_country_leader = { character = SZC_liu_wenhui }
-							has_country_leader = { character = SZC_deng_xihou }
-						}
+					AND = { #Deng Xihou is leader and Beiyang are FROM
+						has_country_leader = { character = SZC_deng_xihou }
 						FROM = { china_alignment_beiyang = yes }
+					}
+					AND = { #Yang Sen or Liu Cunhou are leader and Zhili are FROM
+						OR = {
+							has_country_leader = { character = SZC_yang_sen }
+							has_country_leader = { character = SZC_liu_cunhou }
+						}
+						FROM = { china_is_aligned_with_zhili = yes }
+					}
+					AND = { #Liu Xiang is leader and Anguojun are FROM
+						has_country_leader = { character = SZC_liu_xiang }
+						FROM = { china_is_aligned_with_fengtian = yes }
 					}
 				}
 			}
@@ -1537,7 +1709,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { china_is_aligned_with_federalists = yes }
 							}
 							AND = { #check for FNG
-								has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_FNG }
+								has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = yes }
 							}
 							AND = { #check for NPA
@@ -1549,7 +1721,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { tag = QIE }
 							}
 							AND = { #check for Zhili Exiles
-								has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_ZHL }
+								has_game_rule = { rule = ANQ_forpol option = ANQ_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = yes }
 							}
 						}
@@ -1561,21 +1733,19 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 						NOT = { has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC } }
 						OR = {
 							AND = { #check for FNG
-								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_FNG }
+								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = yes }
 							}
 							AND = { #check for LKMT
-								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKMT }
+								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
 								FROM = { china_is_aligned_with_left_kmt = yes }
 							}
 							AND = { #check for NPA
-								OR = {
-									has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
-								}
+								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NPA }
 								FROM = { tag = NPA }
 							}
 							AND = { #check for Zhili
-								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_ZHL }
+								has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = yes }
 							}
 						}
@@ -1591,7 +1761,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { tag = QIE }
 							}
 							AND = { #check for Zhili Exiles
-								has_game_rule = { rule = LEP_forpol option = LEP_FORPOL_ZHL }
+								has_game_rule = { rule = LEP_forpol option = LEP_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = yes }
 							}
 						}
@@ -1607,15 +1777,15 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { china_is_aligned_with_federalists = yes }
 							}
 							AND = { #check for FNG
-								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_FNG }
+								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = yes }
 							}
 							AND = { #check for RKMT
-								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKMT }
+								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKT }
 								FROM = { china_is_aligned_with_right_kmt = yes }
 							}
 							AND = { #check for LKMT
-								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKMT }
+								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKT }
 								FROM = { china_is_aligned_with_left_kmt = yes }
 							}
 							AND = { #check for NPA
@@ -1627,7 +1797,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { tag = QIE }
 							}
 							AND = { #check for Zhili Exiles
-								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_ZHL }
+								has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = yes }
 							}
 						}
@@ -1639,7 +1809,7 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 						NOT = { has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_SHD } }
 						OR = {
 							AND = { #check for FNG
-								has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_FNG }
+								has_game_rule = { rule = SHD_forpol option = SHD_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = yes }
 							}
 							AND = { #check for NPA
@@ -1651,42 +1821,26 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 					###check if they are SZC and have a non-fitting forpol rule set
 					AND = {
 						tag = SZC
-						NOT = {
-							AND = { #Xiong Kewu/Li Jiayu will not join the KMT if UPC exists
-								OR = {
-									has_country_leader = { character = SZC_xiong_kewu }
-									has_country_leader = { character = SZC_li_jiayu }
-								}
-								FROM = { china_is_aligned_with_kmt = yes }
-								country_exists = UPC
-							}
-							AND = {
-								OR = { #Xiong Kewu, Liu Wenhui, and Li Jiayu will not join the LKMT if RKT exists
-									has_country_leader = { character = SZC_xiong_kewu }
-									has_country_leader = { character = SZC_li_jiayu }
-									has_country_leader = { character = SZC_liu_wenhui }
-								}
-								FROM = { china_alignment_left_kuomintang = yes }
-								country_exists = RKT
-							}
-						}
 						NOT = { has_game_rule = { rule = SZC_forpol option = DEFAULT } }
 						NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_SZC } }
 						OR = {
 							AND = { #check for Feds
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC }
+								OR = {
+									has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC }
+									has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_EXILE_UPC }
+								}
 								FROM = { china_is_aligned_with_federalists = yes }
 							}
 							AND = { #check for FNG
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_FNG }
+								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ }
 								FROM = { china_is_aligned_with_fengtian = yes }
 							}
 							AND = { #check for RKMT
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKMT }
+								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_RKT }
 								FROM = { china_is_aligned_with_right_kmt = yes }
 							}
 							AND = { #check for LKMT
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKMT }
+								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_LKT }
 								FROM = { china_is_aligned_with_left_kmt = yes }
 							}
 							AND = { #check for NPA
@@ -1709,11 +1863,11 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 						OR = {
 							has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_YUN }
 							AND = { #check for RKMT
-								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKMT }
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKT }
 								FROM = { china_is_aligned_with_right_kmt = yes }
 							}
 							AND = { #check for LKMT
-								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKMT }
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKT }
 								FROM = { china_is_aligned_with_left_kmt = yes }
 							}
 							AND = { #check for UPC
@@ -1725,8 +1879,12 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								FROM = { tag = NPA }
 							}
 							AND = { #check for Zhili
-								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_ZHL }
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NZH }
 								FROM = { china_is_aligned_with_zhili = yes }
+							}
+							AND = { #check for Anguojun
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_AGJ }
+								FROM = { china_is_aligned_with_fengtian = yes }
 							}
 						}
 					}
@@ -3174,7 +3332,7 @@ country_event = { #Choice of capital
 			base = 20
 			modifier = {
 				add = 2
-				china_is_aligned_with_republicans = yes
+				china_is_aligned_with_southern_republicans = yes
 			}
 		}
 		set_capital = { state = 1048 remember_old_capital = no }
@@ -3486,10 +3644,6 @@ country_event = { #National Day of the Republic of China
 					QIE = { is_monarchy = yes }
 				}
 			}
-			OR = {
-				china_alignment_northern_zhili = yes
-				china_alignment_southern_zhili = yes
-			}
 		}
 	}
 	desc = {
@@ -3527,8 +3681,6 @@ country_event = { #National Day of the Republic of China
 			NOT = {
 				china_alignment_right_kuomintang = yes
 				china_alignment_left_kuomintang = yes
-				china_alignment_northern_zhili = yes
-				china_alignment_southern_zhili = yes
 			}
 		}
 	}
@@ -8585,12 +8737,13 @@ news_event = {
 			OR = {
 				has_socialist_government = yes
 				is_subject_of = LKT
+				tag = LKT
 			}
 		}
 	}
 
 	option = {
-		name = china_events.308.c
+		name = china_events.308.b
 		trigger = {
 			NOT = { is_subject_of = LKT }
 			has_elected_government = yes
@@ -8601,7 +8754,7 @@ news_event = {
 	}
 
 	option = {
-		name = china_events.308.b
+		name = china_events.308.c
 		trigger = {
 			NOT = { is_subject_of = LKT }
 			has_socialist_government = no
@@ -8834,17 +8987,11 @@ news_event = { #Elders Clique
 	desc = china_events.344.d
 	picture = GFX_news_event_GXC_hu_hanmin
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.344.a
@@ -8858,17 +9005,11 @@ news_event = { #New Guangdong
 	desc = china_events.345.d
 	picture = GFX_news_event_GXC_chen_jitang
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.345.a
@@ -8882,17 +9023,11 @@ news_event = { #New Guangxi
 	desc = china_events.346.d
 	picture = GFX_news_event_GXC_new_guangxi
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.346.a
@@ -8906,17 +9041,11 @@ news_event = { #Western Hills Clique
 	desc = china_events.347.d
 	picture = GFX_news_event_GXC_western_hills_clique
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.347.a
@@ -8930,17 +9059,11 @@ news_event = { #Reconstruction Faction
 	desc = china_events.348.d
 	picture = GFX_news_event_GXC_sun_fo
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.348.a
@@ -8954,17 +9077,11 @@ news_event = { #The Fourth Army Putsch in China
 	desc = china_events.349.d
 	picture = GFX_news_event_GXC_fourth_army
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.349.a
@@ -8977,17 +9094,11 @@ news_event = { #Chinese Agrarians Topple KMT
 	desc = china_events.350.d
 	picture = GFX_news_event_GXC_peasant_movement
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.350.a
@@ -9001,17 +9112,11 @@ news_event = { #The New Chinese Revolution
 	desc = china_events.3500.d
 	picture = GFX_news_event_GXC_tan_pingshan
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.3500.a
@@ -9025,17 +9130,11 @@ news_event = { #The Whampoa Clique Returns
 	desc = china_events.351.d
 	picture = GFX_news_event_YUN_he_yingqin_unification
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.351.a
@@ -9060,17 +9159,11 @@ news_event = { #Rise of the Civil Engineering Clique
 	}
 	picture = GFX_news_event_YUN_chen_cheng
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.352.a
@@ -9084,17 +9177,11 @@ news_event = { #The Blueshirt Revolution
 	desc = china_events.353.d
 	picture = GFX_news_event_YUN_blueshirts
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.353.a
@@ -9108,17 +9195,11 @@ news_event = { #Zhejiang Revolutionaries Prevail
 	desc = china_events.354.d
 	picture = GFX_news_event_YUN_dai_jitao
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.354.a
@@ -9132,17 +9213,11 @@ news_event = { #The Chinese Meiji Restoration
 	desc = china_events.355.d
 	picture = GFX_news_event_YUN_zhang_qun
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.355.a
@@ -9156,17 +9231,11 @@ news_event = { #Rule of the Revolution's Most Loyal Soldier
 	desc = china_events.356.d
 	picture = GFX_news_event_YUN_zhu_peide_takes_over
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.356.a
@@ -9180,17 +9249,11 @@ news_event = { #A Yunnan Thermidor?
 	desc = china_events.357.d
 	picture = GFX_news_event_YUN_zhu_de_takes_over
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.357.a
@@ -9204,17 +9267,11 @@ news_event = { #Guangdong's Federalists Unite China
 	desc = china_events.358.d
 	picture = GFX_news_event_GXC_federalist_unification
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.358.a
@@ -9228,17 +9285,11 @@ news_event = { #Chen Jiongming Unites China
 	desc = china_events.359.d
 	picture = GFX_news_event_GXC_chen_jiongming
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.359.a
@@ -9252,17 +9303,11 @@ news_event = { #Yunnan Federalists Unite China
 	desc = china_events.360.d
 	picture = GFX_news_event_YUN_tang_unifcation
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.360.a
@@ -9276,17 +9321,11 @@ news_event = { #Guangxi Warlords Unite China
 	desc = china_events.361.d
 	picture = GFX_news_event_GXC_soldiers_guangzhou
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.361.a
@@ -9300,17 +9339,11 @@ news_event = { #Guangxi Warlords Unite China (Shen)
 	desc = china_events.3610.d
 	picture = GFX_news_event_GXC_li_yaohan
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.3610.a
@@ -9324,17 +9357,11 @@ news_event = { #Cantonese Merchants Unite China
 	desc = china_events.362.d
 	picture = GFX_news_event_GXC_chen_lianbo
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.362.a
@@ -9348,17 +9375,11 @@ news_event = { #Yunnan Warlords Unite China
 	desc = china_events.363.d
 	picture = GFX_news_event_YUN_yunnan_soldiers
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.363.a
@@ -9372,17 +9393,11 @@ news_event = { #Sichuan Democrats Unite China
 	desc = china_events.364.d
 	picture = GFX_news_event_china_china_democratic_league
 
-	trigger = {
-		wants_world_news = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-
-	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_asia_news = yes
-	}
+	major = yes
 
 	option = {
 		name = china_events.364.a
@@ -9801,24 +9816,18 @@ country_event = {
 			#Game Rules
 			modifier = {
 				factor = 0
-				FROM = {
-					tag = INC
-					has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
-				}
+				FROM = { tag = INC }
+				has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
 			}
 			modifier = {
 				factor = 0
-				FROM = {
-					tag = INS
-					has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI }
-				}
+				FROM = { tag = INS }
+				has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN }
 			}
 			modifier = {
 				factor = 0
-				FROM = {
-					tag = SIA
-					has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
-				}
+				FROM = { tag = SIA }
+				has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
 			}
 		}
 		FROM = { country_event = china_events.424 }
@@ -9879,7 +9888,7 @@ country_event = { #invite from CHN
 			modifier = {
 				factor = 0
 				has_opinion = { target = FROM value < 0 }
-				NOT = { #Bypass the opinion requirement if a CHI forpol gamerule is set. This basically applies to Feng Yuxiang only since these paths are for socialists.
+				NOT = { #Bypass the opinion requirement if a CHN forpol game rule is set. This basically applies to Feng Yuxiang only since these paths are for socialists.
 					AND = {
 						tag = ARM
 						has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
@@ -9887,44 +9896,44 @@ country_event = { #invite from CHN
 					}
 					AND = {
 						tag = BRM
-						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
 					}
 					AND = {
 						tag = HAW
-						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI }
+						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN }
 					}
 					AND = {
 						tag = HND
-						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 					}
 					AND = {
 						tag = INC
-						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
+						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
 					}
 					AND = {
 						tag = INS
-						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI }
+						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN }
 					}
 					AND = {
 						tag = PER
-						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI }
+						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
 					}
 					AND = {
 						tag = PHI
-						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI }
+						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN }
 					}
 					AND = {
 						tag = SIA
-						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
 					}
 					AND = {
 						tag = TUR
-						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI }
+						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN }
 					}
 				}
 			}
 			modifier = {
-				add = 100 #Add a bunch of bonus reasons to join if a CHI forpol gamerule is set
+				add = 100 #Add a bunch of bonus reasons to join if a CHN forpol game rule is set
 				OR = {
 					AND = {
 						tag = ARM
@@ -9933,45 +9942,45 @@ country_event = { #invite from CHN
 					}
 					AND = {
 						tag = BRM
-						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
 					}
 					AND = {
 						tag = HAW
-						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI }
+						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN }
 					}
 					AND = {
 						tag = HND
-						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 						NOT = { has_government = radical_socialist } #The Radsocs in HND are isolationists
 					}
 					AND = {
 						tag = INC
-						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
+						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
 					}
 					AND = {
 						tag = INS
-						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI }
+						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN }
 					}
 					AND = {
 						tag = PER
-						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI }
+						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
 					}
 					AND = {
 						tag = PHI
-						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI }
+						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN }
 					}
 					AND = {
 						tag = SIA
-						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
 					}
 					AND = {
 						tag = TUR
-						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI }
+						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN }
 					}
 				}
 			}
 			modifier = {
-				factor = 0 #Give 0 reason to join if a tag has a non CHI forpol gamerule set
+				factor = 0 #Give 0 reason to join if a tag has a non CHN forpol game rule set
 				OR = {
 					AND = {
 						tag = ARM
@@ -9986,47 +9995,47 @@ country_event = { #invite from CHN
 					AND = {
 						tag = BRM
 						NOT = { has_game_rule = { rule = BRM_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HAW
 						NOT = { has_game_rule = { rule = HAW_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HND
 						NOT = { has_game_rule = { rule = HND_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INC
 						NOT = { has_game_rule = { rule = INC_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INS
 						NOT = { has_game_rule = { rule = INS_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PER
 						NOT = { has_game_rule = { rule = PER_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PHI
 						NOT = { has_game_rule = { rule = PHI_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN } }
 					}
 					AND = {
 						tag = SIA
 						NOT = { has_game_rule = { rule = SIA_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN } }
 					}
 					AND = {
 						tag = TUR
 						NOT = { has_game_rule = { rule = TUR_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN } }
 					}
 				}
 			}
@@ -10049,7 +10058,7 @@ country_event = { #invite from CHN
 			modifier = {
 				factor = 0
 				has_opinion = { target = FROM value > 95 }
-				NOT = { #Bypass +95 opinion making joining guaranteed if a non CHI forpol gamerule is set
+				NOT = { #Bypass +95 opinion making joining guaranteed if a non CHN forpol game rule is set
 					AND = {
 						tag = ARM
 						NOT = { has_game_rule = { rule = ARM_forpol option = DEFAULT } }
@@ -10063,52 +10072,52 @@ country_event = { #invite from CHN
 					AND = {
 						tag = BRM
 						NOT = { has_game_rule = { rule = BRM_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HAW
 						NOT = { has_game_rule = { rule = HAW_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HND
 						NOT = { has_game_rule = { rule = HND_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INC
 						NOT = { has_game_rule = { rule = INC_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INS
 						NOT = { has_game_rule = { rule = INS_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PER
 						NOT = { has_game_rule = { rule = PER_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PHI
 						NOT = { has_game_rule = { rule = PHI_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN } }
 					}
 					AND = {
 						tag = SIA
 						NOT = { has_game_rule = { rule = SIA_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN } }
 					}
 					AND = {
 						tag = TUR
 						NOT = { has_game_rule = { rule = TUR_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN } }
 					}
 				}
 			}
 			modifier = {
-				add = 100 #Add a bunch of bonus reasons to deny if a non CHI forpol gamerule is set
+				add = 100 #Add a bunch of bonus reasons to deny if a non CHN forpol game rule is set
 				OR = {
 					AND = {
 						tag = ARM
@@ -10123,52 +10132,52 @@ country_event = { #invite from CHN
 					AND = {
 						tag = BRM
 						NOT = { has_game_rule = { rule = BRM_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HAW
 						NOT = { has_game_rule = { rule = HAW_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HND
 						NOT = { has_game_rule = { rule = HND_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INC
 						NOT = { has_game_rule = { rule = INC_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INS
 						NOT = { has_game_rule = { rule = INS_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PER
 						NOT = { has_game_rule = { rule = PER_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PHI
 						NOT = { has_game_rule = { rule = PHI_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN } }
 					}
 					AND = {
 						tag = SIA
 						NOT = { has_game_rule = { rule = SIA_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN } }
 					}
 					AND = {
 						tag = TUR
 						NOT = { has_game_rule = { rule = TUR_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN } }
 					}
 				}
 			}
 			modifier = {
-				factor = 0 #Give them 0 reason to deny if they have a pro CHI forpol gamerule
+				factor = 0 #Give them 0 reason to deny if they have a pro CHN forpol game rule
 				OR = {
 					AND = {
 						tag = ARM
@@ -10177,40 +10186,40 @@ country_event = { #invite from CHN
 					}
 					AND = {
 						tag = BRM
-						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
 					}
 					AND = {
 						tag = HAW
-						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI }
+						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN }
 					}
 					AND = {
 						tag = HND
-						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 						NOT = { has_government = radical_socialist } #The Radsocs in HND are isolationists
 					}
 					AND = {
 						tag = INC
-						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
+						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
 					}
 					AND = {
 						tag = INS
-						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI }
+						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN }
 					}
 					AND = {
 						tag = PER
-						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI }
+						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
 					}
 					AND = {
 						tag = PHI
-						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI }
+						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN }
 					}
 					AND = {
 						tag = SIA
-						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
 					}
 					AND = {
 						tag = TUR
-						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI }
+						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN }
 					}
 				}
 			}
@@ -10523,7 +10532,7 @@ country_event = { #The Southern Standoff
 		custom_effect_tooltip = china_events.450_tt
 	}
 }
-country_event = { #A War for the South? [GXC Variant]
+country_event = { #A War for the South? [GXC Variant]	# Not available in current content, maybe in the future
 	id = china_events.451
 	title = china_events.451.t
 	desc = china_events.451.d
@@ -10544,15 +10553,20 @@ country_event = { #A War for the South? [GXC Variant]
 			base = 20
 			modifier = {
 				factor = 0
-				OR = {
-					HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					NOT = {
-						#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
-						HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
-						YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					}
-				}
+				HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
+			#	NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_BOTH } }
 			}
+			modifier = {
+				factor = 0
+				#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
+				HNN = { ROOT = { china_same_alignment_as_PREV = no } }
+				YUN = { ROOT = { china_same_alignment_as_PREV = no } }
+			#	NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_BOTH } }
+			}
+		#	modifier = {	# Not available in current content, maybe in the future
+		#		factor = 0
+		#		has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_YUN }
+		#	}
 		}
 		if = {
 			limit = { HNN = { ROOT = { china_same_alignment_as_PREV = yes } } }
@@ -10580,15 +10594,20 @@ country_event = { #A War for the South? [GXC Variant]
 			base = 20
 			modifier = {
 				factor = 0
-				OR = {
-					YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					NOT = {
-						#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
-						HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
-						YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					}
-				}
+				YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
+			#	NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_YUN_BOTH } }
 			}
+			modifier = {
+				factor = 0
+				#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
+				HNN = { ROOT = { china_same_alignment_as_PREV = no } }
+				YUN = { ROOT = { china_same_alignment_as_PREV = no } }
+			#	NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_YUN_BOTH } }
+			}
+		#	modifier = {	# Not available in current content, maybe in the future
+		#		factor = 0
+		#		has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_YUN }
+		#	}
 		}
 		if = {
 			limit = { YUN = { ROOT = { china_same_alignment_as_PREV = yes } } }
@@ -10620,7 +10639,12 @@ country_event = { #A War for the South? [GXC Variant]
 					HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
 					YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
 				}
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN_YUN } }
 			}
+		#	modifier = {	# Not available in current content, maybe in the future
+		#		factor = 0
+		#		has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_YUN }
+		#	}
 		}
 		if = {
 			limit = {
@@ -10677,6 +10701,11 @@ country_event = { #A War for the South? [GXC Variant]
 						YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
 					}
 				}
+			#	NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_YUN } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN_YUN }
 			}
 		}
 		set_country_flag = CHN_SCW_neutral_flag
@@ -10704,14 +10733,19 @@ country_event = { #A War for the South? [HNN Variant]
 			base = 50
 			modifier = {
 				factor = 0
-				OR = {
-					GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
-					NOT = {
-						#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
-						GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
-						YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					}
-				}
+				GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_BOTH } }
+			}
+			modifier = {
+				factor = 0
+				#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
+				GXC = { ROOT = { china_same_alignment_as_PREV = no } }
+				YUN = { ROOT = { china_same_alignment_as_PREV = no } }
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_BOTH } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_YUN }
 			}
 		}
 		if = {
@@ -10740,14 +10774,19 @@ country_event = { #A War for the South? [HNN Variant]
 			base = 25
 			modifier = {
 				factor = 0
-				OR = {
-					YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					NOT = {
-						#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
-						GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
-						YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					}
-				}
+				YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_YUN_BOTH } }
+			}
+			modifier = {
+				factor = 0
+				#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
+				GXC = { ROOT = { china_same_alignment_as_PREV = no } }
+				YUN = { ROOT = { china_same_alignment_as_PREV = no } }
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_YUN_BOTH } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_YUN }
 			}
 		}
 		if = {
@@ -10780,6 +10819,11 @@ country_event = { #A War for the South? [HNN Variant]
 					GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
 					YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
 				}
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN_YUN } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_YUN }
 			}
 		}
 		if = {
@@ -10837,6 +10881,11 @@ country_event = { #A War for the South? [HNN Variant]
 						YUN = { ROOT = { china_same_alignment_as_PREV = yes } }
 					}
 				}
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_YUN } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN_YUN }
 			}
 		}
 		set_country_flag = CHN_SCW_neutral_flag
@@ -10864,14 +10913,19 @@ country_event = { #A War for the South? [YUN Variant]
 			base = 50
 			modifier = {
 				factor = 0
-				OR = {
-					GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
-					NOT = {
-						#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
-						GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
-						HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					}
-				}
+				GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_BOTH } }
+			}
+			modifier = {
+				factor = 0
+				#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
+				GXC = { ROOT = { china_same_alignment_as_PREV = no } }
+				HNN = { ROOT = { china_same_alignment_as_PREV = no } }
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_BOTH } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
 			}
 		}
 		if = {
@@ -10900,14 +10954,19 @@ country_event = { #A War for the South? [YUN Variant]
 			base = 25
 			modifier = {
 				factor = 0
-				OR = {
-					HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					NOT = {
-						#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
-						GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
-						HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
-					}
-				}
+				HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_BOTH } }
+			}
+			modifier = {
+				factor = 0
+				#If HNN and YUN are not aligned with you, will steer AI to declare war on both or stay neutral.
+				GXC = { ROOT = { china_same_alignment_as_PREV = no } }
+				HNN = { ROOT = { china_same_alignment_as_PREV = no } }
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_HNN_BOTH } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
 			}
 		}
 		if = {
@@ -10940,6 +10999,11 @@ country_event = { #A War for the South? [YUN Variant]
 					GXC = { ROOT = { china_same_alignment_as_PREV = yes } }
 					HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
 				}
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN_YUN } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
 			}
 		}
 		if = {
@@ -10997,6 +11061,21 @@ country_event = { #A War for the South? [YUN Variant]
 						HNN = { ROOT = { china_same_alignment_as_PREV = yes } }
 					}
 				}
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN_YUN }
+			}
+			modifier = {
+				factor = 0	# YUN will not stay neutral if set to join ZHL, AGJ or NPA in their forpol rule, and the South China War rule is not set
+				tag = YUN
+				has_game_rule = { rule = CHN_south_china_war option = DEFAULT }
+				OR = {
+					has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NZH }
+					has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_AGJ }
+					has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NPA }
+				}
 			}
 		}
 		set_country_flag = CHN_SCW_neutral_flag
@@ -11014,9 +11093,8 @@ news_event = { #The South China War [Three Way]
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		name = china_events.460.a #We will emerge victorious.
@@ -11054,9 +11132,8 @@ news_event = { #The South China War [All Against GXC]
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		name = china_events.461.a #We will emerge victorious.
@@ -11094,9 +11171,8 @@ news_event = { #The South China War [All Against HNN]
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		name = china_events.462.a #We will emerge victorious.
@@ -11134,9 +11210,8 @@ news_event = { #The South China War [All Against YUN]
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		name = china_events.463.a #We will emerge victorious.
@@ -11274,105 +11349,100 @@ country_event = { #invite from CHI
 			modifier = {
 				factor = 0
 				has_opinion = { target = FROM value < 0 }
-				if = {
-					limit = { tag = LKT }
-					NOT = { #Bypass the opinion requirement if a CHI forpol gamerule is set
-						AND = {
-							tag = ARM
-							has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
-							PER = { is_in_faction_with = CHI }
-						}
-						AND = {
-							tag = BRM
-							has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI }
-						}
-						AND = {
-							tag = HAW
-							has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI }
-						}
-						AND = {
-							tag = HND
-							has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
-							NOT = { has_government = radical_socialist } #The Radsocs in HND are isolationists
-						}
-						AND = {
-							tag = INC
-							has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
-						}
-						AND = {
-							tag = INS
-							has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI }
-						}
-						AND = {
-							tag = PER
-							has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI }
-						}
-						AND = {
-							tag = PHI
-							has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI }
-						}
-						AND = {
-							tag = SIA
-							has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
-						}
-						AND = {
-							tag = TUR
-							has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI }
-						}
-					}
-				}
-			}
-			modifier = {
-				add = 100 #Add a bunch of bonus reasons to join if a CHI forpol gamerule is set
-				FROM = { tag = LKT }
-				OR = {
+				NOT = { #Bypass the opinion requirement if a CHN forpol game rule is set
 					AND = {
 						tag = ARM
 						has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
-						PER = { is_in_faction_with = CHI }
+						PER = { is_in_faction_with = FROM }
 					}
 					AND = {
 						tag = BRM
-						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
 					}
 					AND = {
 						tag = HAW
-						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI }
+						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN }
 					}
 					AND = {
 						tag = HND
-						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 						NOT = { has_government = radical_socialist } #The Radsocs in HND are isolationists
 					}
 					AND = {
 						tag = INC
-						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
+						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
 					}
 					AND = {
 						tag = INS
-						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI }
+						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN }
 					}
 					AND = {
 						tag = PER
-						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI }
+						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
 					}
 					AND = {
 						tag = PHI
-						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI }
+						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN }
 					}
 					AND = {
 						tag = SIA
-						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
 					}
 					AND = {
 						tag = TUR
-						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI }
+						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN }
 					}
 				}
 			}
 			modifier = {
-				factor = 0 #Give 0 reason to join if a tag has a non CHI forpol gamerule set
-				FROM = { tag = LKT }
+				add = 100 #Add a bunch of bonus reasons to join if a CHN forpol game rule is set
+				OR = {
+					AND = {
+						tag = ARM
+						has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
+						PER = { is_in_faction_with = FROM }
+					}
+					AND = {
+						tag = BRM
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
+					}
+					AND = {
+						tag = HAW
+						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN }
+					}
+					AND = {
+						tag = HND
+						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
+						NOT = { has_government = radical_socialist } #The Radsocs in HND are isolationists
+					}
+					AND = {
+						tag = INC
+						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
+					}
+					AND = {
+						tag = INS
+						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN }
+					}
+					AND = {
+						tag = PER
+						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
+					}
+					AND = {
+						tag = PHI
+						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN }
+					}
+					AND = {
+						tag = SIA
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
+					}
+					AND = {
+						tag = TUR
+						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN }
+					}
+				}
+			}
+			modifier = {
+				factor = 0 #Give 0 reason to join if a tag has a non CHN forpol game rule set
 				OR = {
 					AND = {
 						tag = ARM
@@ -11380,54 +11450,54 @@ country_event = { #invite from CHI
 						NOT = {
 							AND = {
 								has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
-								PER = { is_in_faction_with = CHI }
+								PER = { is_in_faction_with = FROM }
 							}
 						}
 					}
 					AND = {
 						tag = BRM
 						NOT = { has_game_rule = { rule = BRM_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HAW
 						NOT = { has_game_rule = { rule = HAW_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HND
 						NOT = { has_game_rule = { rule = HND_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INC
 						NOT = { has_game_rule = { rule = INC_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INS
 						NOT = { has_game_rule = { rule = INS_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PER
 						NOT = { has_game_rule = { rule = PER_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PHI
 						NOT = { has_game_rule = { rule = PHI_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN } }
 					}
 					AND = {
 						tag = SIA
 						NOT = { has_game_rule = { rule = SIA_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN } }
 					}
 					AND = {
 						tag = TUR
 						NOT = { has_game_rule = { rule = TUR_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN } }
 					}
 				}
 			}
@@ -11447,75 +11517,71 @@ country_event = { #invite from CHI
 			}
 			modifier = {
 				factor = 0
-				JAP = { is_subject_of = FROM } #Give 0 reason to join if CHI fully defeated JAP
+				JAP = { is_subject_of = FROM } #Give 0 reason to join if CHN fully defeated JAP
 			}
 			modifier = {
 				factor = 0
 				has_opinion = { target = FROM value > 95 }
-				if = {
-					limit = { tag = LKT }
-					NOT = { #Bypass +95 opinion making joining guaranteed if a non CHI forpol gamerule is set
-						AND = {
-							tag = ARM
-							NOT = { has_game_rule = { rule = ARM_forpol option = DEFAULT } }
-							NOT = {
-								AND = {
-									has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
-									PER = { is_in_faction_with = FROM }
-								}
+				NOT = { #Bypass +95 opinion making joining guaranteed if a non CHN forpol game rule is set
+					AND = {
+						tag = ARM
+						NOT = { has_game_rule = { rule = ARM_forpol option = DEFAULT } }
+						NOT = {
+							AND = {
+								has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
+								PER = { is_in_faction_with = FROM }
 							}
 						}
-						AND = {
-							tag = BRM
-							NOT = { has_game_rule = { rule = BRM_forpol option = DEFAULT } }
-							NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI } }
-						}
-						AND = {
-							tag = HAW
-							NOT = { has_game_rule = { rule = HAW_forpol option = DEFAULT } }
-							NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI } }
-						}
-						AND = {
-							tag = HND
-							NOT = { has_game_rule = { rule = HND_forpol option = DEFAULT } }
-							NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI } }
-						}
-						AND = {
-							tag = INC
-							NOT = { has_game_rule = { rule = INC_forpol option = DEFAULT } }
-							NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI } }
-						}
-						AND = {
-							tag = INS
-							NOT = { has_game_rule = { rule = INS_forpol option = DEFAULT } }
-							NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI } }
-						}
-						AND = {
-							tag = PER
-							NOT = { has_game_rule = { rule = PER_forpol option = DEFAULT } }
-							NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI } }
-						}
-						AND = {
-							tag = PHI
-							NOT = { has_game_rule = { rule = PHI_forpol option = DEFAULT } }
-							NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI } }
-						}
-						AND = {
-							tag = SIA
-							NOT = { has_game_rule = { rule = SIA_forpol option = DEFAULT } }
-							NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI } }
-						}
-						AND = {
-							tag = TUR
-							NOT = { has_game_rule = { rule = TUR_forpol option = DEFAULT } }
-							NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI } }
-						}
+					}
+					AND = {
+						tag = BRM
+						NOT = { has_game_rule = { rule = BRM_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN } }
+					}
+					AND = {
+						tag = HAW
+						NOT = { has_game_rule = { rule = HAW_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN } }
+					}
+					AND = {
+						tag = HND
+						NOT = { has_game_rule = { rule = HND_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN } }
+					}
+					AND = {
+						tag = INC
+						NOT = { has_game_rule = { rule = INC_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN } }
+					}
+					AND = {
+						tag = INS
+						NOT = { has_game_rule = { rule = INS_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN } }
+					}
+					AND = {
+						tag = PER
+						NOT = { has_game_rule = { rule = PER_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN } }
+					}
+					AND = {
+						tag = PHI
+						NOT = { has_game_rule = { rule = PHI_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN } }
+					}
+					AND = {
+						tag = SIA
+						NOT = { has_game_rule = { rule = SIA_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN } }
+					}
+					AND = {
+						tag = TUR
+						NOT = { has_game_rule = { rule = TUR_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN } }
 					}
 				}
 			}
 			modifier = {
-				add = 100 #Add a bunch of bonus reasons to deny if a non CHI forpol gamerule is set
-				FROM = { tag = LKT }
+				add = 100 #Add a bunch of bonus reasons to deny if a non CHN forpol game rule is set
 				OR = {
 					AND = {
 						tag = ARM
@@ -11523,102 +11589,101 @@ country_event = { #invite from CHI
 						NOT = {
 							AND = {
 								has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
-								PER = { is_in_faction_with = CHI }
+								PER = { is_in_faction_with = FROM }
 							}
 						}
 					}
 					AND = {
 						tag = BRM
 						NOT = { has_game_rule = { rule = BRM_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HAW
 						NOT = { has_game_rule = { rule = HAW_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN } }
 					}
 					AND = {
 						tag = HND
 						NOT = { has_game_rule = { rule = HND_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INC
 						NOT = { has_game_rule = { rule = INC_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INS
 						NOT = { has_game_rule = { rule = INS_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PER
 						NOT = { has_game_rule = { rule = PER_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN } }
 					}
 					AND = {
 						tag = PHI
 						NOT = { has_game_rule = { rule = PHI_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN } }
 					}
 					AND = {
 						tag = SIA
 						NOT = { has_game_rule = { rule = SIA_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN } }
 					}
 					AND = {
 						tag = TUR
 						NOT = { has_game_rule = { rule = TUR_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN } }
 					}
 				}
 			}
 			modifier = {
-				factor = 0 #Give them 0 reason to deny if they have a pro CHI forpol gamerule
-				FROM = { tag = LKT }
+				factor = 0 #Give them 0 reason to deny if they have a pro CHN forpol game rule
 				OR = {
 					AND = {
 						tag = ARM
 						has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
-						PER = { is_in_faction_with = CHI }
+						PER = { is_in_faction_with = FROM }
 					}
 					AND = {
 						tag = BRM
-						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI }
+						has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
 					}
 					AND = {
 						tag = HAW
-						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI }
+						has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN }
 					}
 					AND = {
 						tag = HND
-						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 						NOT = { has_government = radical_socialist } #The Radsocs in HND are isolationists
 					}
 					AND = {
 						tag = INC
-						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
+						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
 					}
 					AND = {
 						tag = INS
-						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI }
+						has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN }
 					}
 					AND = {
 						tag = PER
-						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI }
+						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
 					}
 					AND = {
 						tag = PHI
-						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI }
+						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN }
 					}
 					AND = {
 						tag = SIA
-						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
+						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
 					}
 					AND = {
 						tag = TUR
-						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHI }
+						has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN }
 					}
 				}
 			}
@@ -12013,9 +12078,7 @@ news_event = { #Foundation of the Chinese Faction
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		always = yes
-	}
+	trigger = { wants_world_news = yes } #Global news event
 
 	option = {
 		log = "[GetLogInfo]: event CHN.foreignpolicy.200 option CHN.foreignpolicy.200.a"
@@ -13539,6 +13602,7 @@ country_event = { #The Reformation of the Republic
 							}
 						}
 					}
+					set_potential_national_government = yes
 				}
 			}
 		}
@@ -13620,6 +13684,7 @@ country_event = { #The Reformation of the Republic
 					}
 					GEA = { country_event = german_east_asia_events.214 }
 				}
+				set_potential_national_government = yes
 			}
 		}
 	}

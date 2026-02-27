@@ -46,7 +46,7 @@ unit_leader_event = { #The Enemy of My Enemy
 			country_event = russia_far_east_events.150 #AI chooses either Semyonov or Diterikhs
 			if = {
 				limit = { has_global_flag = allow_sound_events_flag }
-				scoped_play_song = "march_of_the_siberian_riflemen"
+				scoped_play_song = march_of_the_siberian_riflemen
 			}
 		}
 	}
@@ -1739,7 +1739,7 @@ country_event = { #Siberian Atamanate
 		log = "[GetLogInfo]: event russia_far_east_events.62 option russia_far_east_events.62.a"
 		name = russia_far_east_events.62.a
 		add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
-		activate_advisor = RUS_sergey_tashkin_sic
+		activate_advisor = RUS_sergey_taskin_sic
 	}
 }
 country_event = { #"Elections" of Siberian Republic
@@ -1752,7 +1752,7 @@ country_event = { #"Elections" of Siberian Republic
 	option = {
 		log = "[GetLogInfo]: event russia_far_east_events.63 option russia_far_east_events.63.a"
 		name = russia_far_east_events.63.a
-		activate_advisor = RUS_sergey_tashkin_sic
+		activate_advisor = RUS_sergey_taskin_sic
 		add_popularity = { ideology = authoritarian_democrat popularity = 0.1 }
 		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
 		add_to_coalition = yes

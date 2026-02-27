@@ -1,7 +1,17 @@
 on_actions = {
+	#ROOT is winner #FROM gets annexed - For civil wars on_civil_war_end is also fired
+	on_annex = {
+		effect = {
+			### Fire Armenia's victory event in case the Ottomans are annexed without the Levant Crisis scripted peace firing
+			if = {
+				limit = { FROM = { tag = TUR } }
+				ARM = { country_event = armenia_events.26 }
+			}
+		}
+	}
+
 	on_new_term_election = {
 		effect = {
-			### Armenia ###
 			if = {
 				limit = { tag = ARM }
 				country_event = armenia_events.115

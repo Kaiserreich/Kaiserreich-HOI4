@@ -1106,7 +1106,7 @@ country_event = { #The Great Decision
 				factor = 0
 				OR = {
 					has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_CONCESSIONS_JAP }
-					has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_FNG }
+					has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_CUF }
 				}
 			}
 		}
@@ -1129,8 +1129,13 @@ country_event = { #The Great Decision
 		trigger = {
 			OR = {
 				#Rig it if you have game rules
-				has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_CONCESSIONS_JAP }
-				has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_FNG }
+				AND = {
+					is_ai = yes
+					OR = {
+						has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_CONCESSIONS_JAP }
+						has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_CUF }
+					}
+				}
 				#Actual Trigger
 				NOT = {
 					FNG_mantetsu_level_high = yes
@@ -1160,15 +1165,6 @@ country_event = { #The Great Decision
 		}
 		JAP = { country_event = { id = fengtian_beijing_conference_events.200 days = 7 } } #Zhang Demands the Concessions
 		custom_effect_tooltip = FNG_split_from_japan
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_CONCESSIONS_JAP }
-					has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_FNG }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		}
 	}
 }
 
@@ -1375,7 +1371,7 @@ country_event = { #Zhang Demands the Concessions
 
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_FNG }
+				has_game_rule = { rule = FNG_forpol option = FNG_FORPOL_CUF }
 			}
 		}
 		JAP_add_FNG_to_faction_effect = yes
@@ -1449,6 +1445,18 @@ country_event = { #The Yalu Incident (FNG)
 				declare_war_on = {
 					target = FNG
 					type = annex_everything
+				}
+			}
+			every_other_country = {
+				limit = {
+					is_chinese_tag = yes
+					NOT = { is_ally_with = JAP }
+				}
+				JAP = {
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
 				}
 			}
 		}

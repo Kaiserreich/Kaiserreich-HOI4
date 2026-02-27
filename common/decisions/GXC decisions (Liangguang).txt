@@ -315,19 +315,23 @@ GXC_trouble_in_the_twin_provinces_decision_category = {
 						random_list = {
 							35 = {
 								modifier = {
+									factor = 0
+									has_country_flag = GXC_introminigame_KMT_eliminated_flag
+								}
+								modifier = {
 									factor = 2
 									OR = {
 										800 = { GXC_introgame_KMT_state_total_control_trigger = yes } #Shaoguan
 										591 = { GXC_introgame_KMT_state_total_control_trigger = yes } #Haikou
 									}
 								}
-								modifier = {
-									factor = 0
-									has_country_flag = GXC_introminigame_KMT_eliminated_flag
-								}
 								set_country_flag = GXC_introminigame_random_gain_guangdong_KMT
 							}
 							35 = {
+								modifier = {
+									factor = 0
+									has_country_flag = GXC_introminigame_UPC_eliminated_flag
+								}
 								modifier = {
 									factor = 2
 									OR = {
@@ -335,23 +339,19 @@ GXC_trouble_in_the_twin_provinces_decision_category = {
 										591 = { GXC_introgame_UPC_state_total_control_trigger = yes } #Haikou
 									}
 								}
-								modifier = {
-									factor = 0
-									has_country_flag = GXC_introminigame_UPC_eliminated_flag
-								}
 								set_country_flag = GXC_introminigame_random_gain_guangdong_UPC
 							}
 							30 = {
+								modifier = {
+									factor = 0
+									has_country_flag = GXC_introminigame_NPA_eliminated_flag
+								}
 								modifier = {
 									factor = 2
 									OR = {
 										800 = { GXC_introgame_NPA_state_total_control_trigger = yes } #Shaoguan
 										591 = { GXC_introgame_NPA_state_total_control_trigger = yes } #Haikou
 									}
-								}
-								modifier = {
-									factor = 0
-									has_country_flag = GXC_introminigame_NPA_eliminated_flag
 								}
 								set_country_flag = GXC_introminigame_random_gain_guangdong_NPA
 							}
@@ -452,19 +452,23 @@ GXC_trouble_in_the_twin_provinces_decision_category = {
 						random_list = {
 							35 = {
 								modifier = {
+									factor = 0
+									has_country_flag = GXC_introminigame_KMT_eliminated_flag
+								}
+								modifier = {
 									factor = 2
 									OR = {
 										1054 = { GXC_introgame_KMT_state_total_control_trigger = yes } #Baise
 										599 = { GXC_introgame_KMT_state_total_control_trigger = yes } #Guilin
 									}
 								}
-								modifier = {
-									factor = 0
-									has_country_flag = GXC_introminigame_KMT_eliminated_flag
-								}
 								set_country_flag = GXC_introminigame_random_gain_guangxi_KMT
 							}
 							35 = {
+								modifier = {
+									factor = 0
+									has_country_flag = GXC_introminigame_UPC_eliminated_flag
+								}
 								modifier = {
 									factor = 2
 									OR = {
@@ -472,23 +476,19 @@ GXC_trouble_in_the_twin_provinces_decision_category = {
 										599 = { GXC_introgame_UPC_state_total_control_trigger = yes } #Guilin
 									}
 								}
-								modifier = {
-									factor = 0
-									has_country_flag = GXC_introminigame_UPC_eliminated_flag
-								}
 								set_country_flag = GXC_introminigame_random_gain_guangxi_UPC
 							}
 							30 = {
+								modifier = {
+									factor = 0
+									has_country_flag = GXC_introminigame_NPA_eliminated_flag
+								}
 								modifier = {
 									factor = 2
 									OR = {
 										1054 = { GXC_introgame_NPA_state_total_control_trigger = yes } #Baise
 										599 = { GXC_introgame_NPA_state_total_control_trigger = yes } #Guilin
 									}
-								}
-								modifier = {
-									factor = 0
-									has_country_flag = GXC_introminigame_NPA_eliminated_flag
 								}
 								set_country_flag = GXC_introminigame_random_gain_guangxi_NPA
 							}
@@ -1408,12 +1408,9 @@ GXC_KMT_clash_for_canton_decision_category = {
 				add = 100
 				GXC_ai_factor_prioritize_helping_LKMT_coup_trigger = yes
 			}
-
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
-				}
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
 			}
 		}
 		custom_cost_trigger = {
@@ -1450,6 +1447,15 @@ GXC_KMT_clash_for_canton_decision_category = {
 				GXC_ai_factor_prioritize_helping_LKMT_coup_trigger = yes
 				has_political_power > 99
 			}
+			modifier = {
+				add = 100
+				social_democrat < 0.3
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
 		}
 		cost = 10
 		days_remove = 30
@@ -1482,6 +1488,17 @@ GXC_KMT_clash_for_canton_decision_category = {
 				GXC_ai_factor_prioritize_forming_a_government_focus_trigger = yes
 				GXC_ai_factor_prioritize_helping_LKMT_coup_trigger = no
 			}
+			modifier = {
+				add = 100
+				CHI = { exists = yes }
+				authoritarian_democrat < 0.3
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+			modifier = {
+				factor = 0
+				CHI = { exists = yes }
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
+			}
 		}
 		cost = 10
 		days_remove = 30
@@ -1512,6 +1529,15 @@ GXC_KMT_clash_for_canton_decision_category = {
 				add = 100 #Higher Priority than Others
 				GXC_ai_factor_prioritize_helping_LKMT_coup_trigger = yes
 				has_stability > 0.30
+			}
+			modifier = {
+				add = 100
+				social_democrat < 0.3
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
 			}
 		}
 		custom_cost_trigger = {
@@ -1548,6 +1574,12 @@ GXC_KMT_clash_for_canton_decision_category = {
 				GXC_ai_factor_prioritize_helping_LKMT_coup_trigger = no
 				has_stability > 0.30
 			}
+			modifier = {
+				add = 100
+				CHI = { exists = yes }
+				authoritarian_democrat < 0.3
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
 		}
 		custom_cost_trigger = {
 			has_stability > 0.03
@@ -1581,6 +1613,15 @@ GXC_KMT_clash_for_canton_decision_category = {
 				add = 100 #Higher Priority than Others
 				GXC_ai_factor_prioritize_helping_LKMT_coup_trigger = yes
 				has_war_support > 0.30
+			}
+			modifier = {
+				add = 100
+				social_democrat < 0.3
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
 			}
 		}
 		custom_cost_trigger = {
@@ -1616,6 +1657,15 @@ GXC_KMT_clash_for_canton_decision_category = {
 				GXC_ai_factor_prioritize_forming_a_government_focus_trigger = yes
 				GXC_ai_factor_prioritize_helping_LKMT_coup_trigger = no
 				has_war_support > 0.30
+			}
+			modifier = {
+				add = 100
+				authoritarian_democrat < 0.3
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
 			}
 		}
 		custom_cost_trigger = {
@@ -1685,6 +1735,15 @@ GXC_KMT_clash_for_canton_decision_category = {
 				}
 				authoritarian_democrat < 0.3
 			}
+			modifier = {
+				add = 100
+				authoritarian_democrat < 0.3
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
+			}
 		}
 		custom_cost_trigger = {
 			NOT = { has_equipment = { infantry_equipment < 250 } }
@@ -1720,6 +1779,15 @@ GXC_KMT_clash_for_canton_decision_category = {
 			modifier = {
 				add = 200 #AI should be spamming the CP decisions since they are relatively "free"
 				GXC_ai_factor_prioritize_helping_LKMT_coup_trigger = yes
+			}
+			modifier = {
+				add = 100
+				social_democrat < 0.3
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
 			}
 		}
 		custom_cost_trigger = {
@@ -1759,6 +1827,14 @@ GXC_KMT_clash_for_canton_decision_category = {
 				GXC_ai_factor_prioritize_forming_a_government_focus_trigger = yes
 				GXC_ai_factor_prioritize_helping_LKMT_coup_trigger = no
 			}
+			modifier = {
+				add = 100
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
+			}
 		}
 		custom_cost_trigger = {
 			NOT = { command_power < 10 }
@@ -1794,6 +1870,20 @@ GXC_NPA_intrigue_in_lingnan_decision_category = {
 		ai_will_do = {
 			base = 0
 			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+			modifier = {
 				add = 100
 				OR = {
 					AND = {
@@ -1804,6 +1894,11 @@ GXC_NPA_intrigue_in_lingnan_decision_category = {
 					}
 					has_political_power > 99
 				}
+			}
+			modifier = {
+				add = 100
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+				china_is_potential_government = no
 			}
 		}
 		cost = 20
@@ -1834,6 +1929,17 @@ GXC_NPA_intrigue_in_lingnan_decision_category = {
 		priority = 100
 		ai_will_do = {
 			base = 0
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
 			modifier = {
 				add = 100
 				OR = {
@@ -1873,6 +1979,17 @@ GXC_NPA_intrigue_in_lingnan_decision_category = {
 		priority = 100
 		ai_will_do = {
 			base = 0
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+				}
+			}
 			modifier = {
 				add = 100
 				OR = {
@@ -1920,6 +2037,21 @@ GXC_NPA_intrigue_in_lingnan_decision_category = {
 		ai_will_do = {
 			base = 0
 			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+			modifier = {
 				add = 100
 				has_political_power > 99
 				has_stability < 0.50
@@ -1952,6 +2084,21 @@ GXC_NPA_intrigue_in_lingnan_decision_category = {
 		priority = 100
 		ai_will_do = {
 			base = 0
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
 			modifier = {
 				add = 100
 				has_political_power > 99
@@ -2014,9 +2161,7 @@ GXC_NPA_intrigue_in_lingnan_decision_category = {
 			is_subject = no
 			GXC = {
 				if = {
-					limit = {
-						ROOT = { tag = AGJ }
-					}
+					limit = { ROOT = { tag = AGJ } }
 					GXC_popularity_join_fengtian_trigger = yes
 				}
 				else = {
@@ -2043,20 +2188,21 @@ GXC_NPA_intrigue_in_lingnan_decision_category = {
 
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+				GXC = { is_ai = yes }
+				NOT = { has_game_rule = { rule = GXC_forpol option = DEFAULT } }
+				NOT = {
 					AND = {
-						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_ZHL }
-						NOT = {
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						OR = {
 							china_is_aligned_with_northern_zhili = yes
 							china_is_aligned_with_southern_zhili = yes
 						}
 					}
+				}
+				NOT = {
 					AND = {
-						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_FNG }
-						NOT = {
-							china_is_aligned_with_fengtian = yes
-						}
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						china_is_aligned_with_fengtian = yes
 					}
 				}
 			}
@@ -2074,9 +2220,7 @@ GXC_NPA_intrigue_in_lingnan_decision_category = {
 				GXC = { country_event = GXC.earlygame.870 }
 			}
 			if = {
-				limit = {
-					tag = AGJ
-				}
+				limit = { tag = AGJ }
 				GXC = { country_event = GXC.earlygame.871 }
 			}
 			if = {
@@ -2690,7 +2834,7 @@ GXC_three_year_plan_decision_category = {
 				add_building_construction = {
 					type = dam
 					level = 1
-					province = 731
+					province = 1120
 					instant_build = yes
 				}
 			}

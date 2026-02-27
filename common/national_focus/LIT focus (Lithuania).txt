@@ -222,6 +222,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY FOCUS_FILTER_PRODUCTION FOCUS_FILTER_INTERNAL_AFFAIRS }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_long_road_to_pluralism"
+			add_stability = 0.1
 			custom_override_tooltip = {
 				tooltip = {
 					localization_key = tooltip_add_dynmod
@@ -830,6 +831,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNAL_AFFAIRS }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_optimal_system"
+			add_stability = 0.1
 			add_political_power = 75
 			unlock_decision_category_tooltip = LIT_optimal_system_decisions
 			hidden_effect = {
@@ -1442,6 +1444,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNAL_AFFAIRS }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_towards_an_unitary_state"
+			add_stability = 0.1
 			add_political_power = 75
 			add_popularity = {
 				ideology = authoritarian_democrat
@@ -3028,7 +3031,6 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_codify_the_regency"
-			add_stability = -0.1
 			swap_ideas = {
 				remove_idea = LIT_asis_reg_0
 				add_idea = LIT_asis_reg_1
@@ -3071,7 +3073,7 @@ focus_tree = {
 		prerequisite = {
 			focus = LIT_seek_southern_support
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 50 }
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_promote_the_krajowcy"
@@ -3102,7 +3104,7 @@ focus_tree = {
 		prerequisite = {
 			focus = LIT_loyalty_to_the_kingdom
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 50 }
 		select_effect = {
 			log = "[GetLogRoot]: Select Focus LIT_narutowicz_plan"
 			country_event = { id = lithuania_events.338 days = 5 }
@@ -3132,7 +3134,7 @@ focus_tree = {
 		prerequisite = {
 			focus = LIT_narutowicz_plan
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 30 }
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_focus_on_the_economy"
@@ -3298,7 +3300,7 @@ focus_tree = {
 		prerequisite = {
 			focus = LIT_light_industrial_development
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 30 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_a_formal_arrangement"
@@ -3318,7 +3320,7 @@ focus_tree = {
 		prerequisite = {
 			focus = LIT_a_formal_arrangement
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 30 }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_balanced_industrial_focus"
@@ -3994,7 +3996,7 @@ focus_tree = {
 		prerequisite = {
 			focus = LIT_declare_martial_law
 		}
-		ai_will_do = { factor = 50 }
+		ai_will_do = { factor = 100 }
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNAL_AFFAIRS }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_secure_rural_areas"
@@ -4020,7 +4022,7 @@ focus_tree = {
 		bypass = {
 			NOT = { has_active_mission = LIT_LAF_guerilla_activity }
 		}
-		ai_will_do = { factor = 50 }
+		ai_will_do = { factor = 100 }
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY FOCUS_FILTER_INTERNAL_AFFAIRS }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_war_on_laf"
@@ -4048,7 +4050,7 @@ focus_tree = {
 		bypass = {
 			NOT = { has_active_mission = LIT_LAF_guerilla_activity }
 		}
-		ai_will_do = { factor = 50 }
+		ai_will_do = { factor = 100 }
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_working_together"
@@ -4077,7 +4079,7 @@ focus_tree = {
 		bypass = {
 			NOT = { has_active_mission = LIT_LAF_guerilla_activity }
 		}
-		ai_will_do = { factor = 50 }
+		ai_will_do = { factor = 100 }
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_loyalty_to_plechavicius"
@@ -4106,7 +4108,7 @@ focus_tree = {
 		prerequisite = {
 			focus = LIT_working_together
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 500 }
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_restore_peace"
@@ -5398,7 +5400,13 @@ shared_focus = {
 	prerequisite = {
 		focus = LIT_gustaitis_initiative
 	}
-	ai_will_do = { factor = 10 }
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 10
+			date > 1941.1.1
+		}
+	}
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed LIT_reestablish_aviacijos_mokykla"
@@ -5520,7 +5528,13 @@ shared_focus = {
 	prerequisite = {
 		focus = LIT_gustaitis_initiative
 	}
-	ai_will_do = { factor = 10 }
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 10
+			date > 1941.1.1
+		}
+	}
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed LIT_fund_the_army_aviation_workshops"
@@ -5609,11 +5623,19 @@ shared_focus = {
 			add = 10
 			date > 1937.06.01
 		}
+		modifier = {
+			add = 30
+			date > 1938.01.01
+		}
+		modifier = {
+			add = 100
+			date > 1939.01.01
+		}
 	}
 	search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS }
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed LIT_48_hour_mobilisation"
-		add_war_support = 0.05
+		add_war_support = 0.1
 		swap_ideas = {
 			remove_idea = LIT_disorganised_army_2
 			add_idea = LIT_disorganised_army_3
@@ -5644,6 +5666,14 @@ shared_focus = {
 		modifier = {
 			add = 10
 			date > 1937.06.01
+		}
+		modifier = {
+			add = 30
+			date > 1938.01.01
+		}
+		modifier = {
+			add = 100
+			date > 1939.01.01
 		}
 	}
 	search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS }
@@ -5678,7 +5708,21 @@ shared_focus = {
 	prerequisite = {
 		focus = LIT_48_hour_mobilisation
 	}
-	ai_will_do = { factor = 10 }
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 10
+			date > 1937.06.01
+		}
+		modifier = {
+			add = 30
+			date > 1938.01.01
+		}
+		modifier = {
+			add = 100
+			date > 1939.01.01
+		}
+	}
 	search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS }
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed LIT_instil_a_fighting_spirit"
@@ -5714,7 +5758,21 @@ shared_focus = {
 	prerequisite = {
 		focus = LIT_instil_a_fighting_spirit
 	}
-	ai_will_do = { factor = 10 }
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 10
+			date > 1937.06.01
+		}
+		modifier = {
+			add = 30
+			date > 1938.01.01
+		}
+		modifier = {
+			add = 100
+			date > 1939.01.01
+		}
+	}
 	search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS }
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed LIT_complete_the_army_reform"
@@ -5739,7 +5797,21 @@ shared_focus = {
 	prerequisite = {
 		focus = LIT_complete_the_army_reform
 	}
-	ai_will_do = { factor = 7 }
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 10
+			date > 1937.06.01
+		}
+		modifier = {
+			add = 30
+			date > 1938.01.01
+		}
+		modifier = {
+			add = 100
+			date > 1939.01.01
+		}
+	}
 	search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed LIT_integrate_the_riflemen_union"
@@ -5791,11 +5863,25 @@ shared_focus = {
 	bypass = {
 		is_in_faction_with = var:global.russia
 	}
-	ai_will_do = { factor = 10 }
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 10
+			date > 1937.06.01
+		}
+		modifier = {
+			add = 30
+			date > 1938.01.01
+		}
+		modifier = {
+			add = 100
+			date > 1939.01.01
+		}
+	}
 	search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS }
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed LIT_death_or_dishonour"
-		add_war_support = 0.05
+		add_manpower = 50000
 		add_ideas = LIT_death_or_dishonour_idea
 	}
 }
@@ -6131,13 +6217,17 @@ shared_focus = {
 	ai_will_do = {
 		base = 0
 		modifier = {
-			add = 10
+			add = 30
 			date > 1937.01.01
 		}
 	}
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed LIT_local_rifle_manufacturing"
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 2000
+		}
 		add_tech_bonus = {
 			name = LIT_local_rifle_manufacturing
 			bonus = 1

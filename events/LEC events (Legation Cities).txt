@@ -131,8 +131,14 @@ country_event = { # We can't vote
 	option = {
 		log = "[GetLogInfo]: event legation_cities_events.3 option legation_cities_events.3.a"
 		name = legation_cities_events.3.a
-		add_political_power = 5
+		trigger = { NOT = { tag = GEA } }
 	}
+	option = {
+		log = "[GetLogInfo]: event legation_cities_events.3 option legation_cities_events.3.b"
+		name = legation_cities_events.3.b
+		trigger = { tag = GEA }
+	}
+	after = { add_political_power = 5 }
 }
 
 country_event = { #A Legation Navy?

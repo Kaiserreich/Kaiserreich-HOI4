@@ -1763,7 +1763,7 @@ country_event = { #Great Protest of '36
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REBELLION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REBELLION }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COLLAPSE }
 				}
 			}
@@ -1789,7 +1789,7 @@ country_event = { #Great Protest of '36
 			modifier = {
 				factor = 0
 				NOT = { has_game_rule = { rule = BEL_flawal_path option = DEFAULT } }
-				NOT = { has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REBELLION } }
+				NOT = { has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REBELLION } }
 				NOT = { has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COLLAPSE } }
 			}
 		}
@@ -1907,7 +1907,7 @@ country_event = { #Cut Communications?
 			base = 20
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REBELLION }
+				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REBELLION }
 			}
 		}
 		set_country_flag = BEL_rebels_separated
@@ -2243,7 +2243,7 @@ country_event = { #Syndicalist Reaction to the Flemish Victory
 			base = 10
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REBELLION }
+				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REBELLION }
 			}
 		}
 		add_popularity = {
@@ -3161,7 +3161,7 @@ country_event = { #Flemish receive unification request from Wallonia
 			base = 40
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REBELLION }
+				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REBELLION }
 			}
 		}
 		add_popularity = {
@@ -4399,10 +4399,10 @@ country_event = { #Start Investigation
 				factor = 0
 				OR = {
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFORM_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_FLANDERS_REVOLT_INTERVENTION }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_FLANDERS_REVOLT_ACQUIESCENCE }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INTERVENTION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ACQUIESCENCE }
 				}
 			}
 		}
@@ -4578,10 +4578,10 @@ country_event = { #Deurne Investigation
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -4633,10 +4633,10 @@ country_event = { #Ghent peace protest
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -4686,8 +4686,8 @@ country_event = { #Mayday (Aggressive Protest)
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
 				}
 			}
 		}
@@ -4714,8 +4714,8 @@ country_event = { #Mayday (Aggressive Protest)
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -4759,8 +4759,8 @@ country_event = { #Bloodbath at Seraing
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -4837,8 +4837,8 @@ country_event = { #Hendrik Elias announces candidacy for mayorship Gent
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -4886,8 +4886,8 @@ country_event = { #Alfred Vander Stegen wins the elections
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -5007,8 +5007,8 @@ country_event = { #Train Crash 3
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFORM_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFORM_MARLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFORM_SOCLIB }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
 				}
 			}
 		}
@@ -5041,8 +5041,8 @@ country_event = { #Vlaamse Wacht Escalation 1
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -5062,8 +5062,8 @@ country_event = { #Vlaamse Wacht Escalation 1
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFORM_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFORM_MARLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFORM_SOCLIB }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
 				}
 			}
 		}
@@ -5249,8 +5249,8 @@ country_event = { #Following leads
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_FLANDERS_REVOLT_INTERVENTION }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_FLANDERS_REVOLT_ACQUIESCENCE }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INTERVENTION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ACQUIESCENCE }
 				}
 			}
 		}
@@ -5269,10 +5269,10 @@ country_event = { #Following leads
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -5403,10 +5403,10 @@ country_event = { #Growth Verdinaso
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -5439,8 +5439,8 @@ country_event = { #Creation of the Landwacht
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -5456,8 +5456,8 @@ country_event = { #Creation of the Landwacht
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
 				}
 			}
 		}
@@ -5502,8 +5502,8 @@ country_event = { #Clash of the 1st of May
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCDEM }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_SOCLIB }
 					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_AUTDEM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 				}
 			}
 		}
@@ -5562,7 +5562,7 @@ country_event = { #Flemish Coup 2
 			modifier = {
 				factor = 0
 				NOT = { has_game_rule = { rule = BEL_flawal_path option = DEFAULT } }
-				NOT = { has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION } }
+				NOT = { has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION } }
 			}
 		}
 		country_event = flanders_wallonia_events.31
@@ -5574,7 +5574,7 @@ country_event = { #Flemish Coup 2
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_ABDICATION }
+				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ABDICATION }
 			}
 		}
 		country_event = flanders_wallonia_events.37
@@ -5823,7 +5823,7 @@ country_event = { #Council declares the Duchy of Flanders!
 			}
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_FLANDERS_REVOLT_ACQUIESCENCE }
+				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_ACQUIESCENCE }
 			}
 		}
 		add_stability = -0.050
@@ -5866,7 +5866,7 @@ country_event = { #Council declares the Duchy of Flanders!
 			base = 30
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_FLANDERS_REVOLT_INTERVENTION }
+				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INTERVENTION }
 			}
 		}
 		add_stability = -0.050
@@ -5908,7 +5908,7 @@ country_event = { #Council takes Control
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT }
+				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT }
 			}
 		}
 		hidden_effect = {
@@ -5924,7 +5924,7 @@ country_event = { #Council takes Control
 			modifier = {
 				factor = 0
 				NOT = { has_game_rule = { rule = BEL_flawal_path option = DEFAULT } }
-				NOT = { has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_COUP_PATAUT } }
+				NOT = { has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_PATAUT } }
 			}
 		}
 		set_politics = {
@@ -6120,8 +6120,8 @@ country_event = { #Protests in Gent and Antwerpen
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
 				}
 			}
 		}
@@ -6171,8 +6171,8 @@ country_event = { #Nationalist Rally in Brussel
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
-					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
+					has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
 				}
 			}
 		}
@@ -6264,7 +6264,7 @@ country_event = { #Referendum for the Reinstatement of the Kingdom of Belgium (G
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM_CRACKDOWN }
+				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_CRACKDOWN }
 			}
 		}
 		BEL = {
@@ -6278,7 +6278,7 @@ country_event = { #Referendum for the Reinstatement of the Kingdom of Belgium (G
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_INDEPENDENCE_REFERENDUM }
+				has_game_rule = { rule = BEL_flawal_path option = BEL_FLAWAL_PATH_REFERENDUM }
 			}
 		}
 		set_global_flag = BEL_SYNDIE

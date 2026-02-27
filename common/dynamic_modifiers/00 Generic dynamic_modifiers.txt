@@ -29,3 +29,10 @@ annexation_resistance_target = {
 
 	resistance_target = 0.4
 }
+
+generic_development_efforts_modifier = {
+	icon = "GFX_modifiers_generic_construction"
+	enable = { is_controlled_by = owner }
+
+	state_production_speed_buildings_factor = ROOT.generic_development_efforts_var #Set in history file or before use for your tag
+}

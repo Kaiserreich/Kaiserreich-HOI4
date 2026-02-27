@@ -215,9 +215,9 @@ china_is_aligned_with_kmt = {
 	}
 }
 
-china_is_aligned_with_republicans = {
+china_is_aligned_with_southern_republicans = {
 	custom_override_tooltip = {
-		tooltip = china_is_aligned_with_republicans
+		tooltip = china_is_aligned_with_southern_republicans
 		OR = {
 			china_is_aligned_with_left_kmt = yes
 			china_is_aligned_with_right_kmt = yes
@@ -326,7 +326,10 @@ is_controlled_by_ROOT_owner_defeated_japan_or_mutual_enemy = {
 }
 
 china_is_potential_government = {
-	has_country_flag = china_is_potential_government
+	custom_override_tooltip = {
+		tooltip = china_is_potential_government
+		has_country_flag = china_is_potential_government
+	}
 }
 
 china_refused_alliance = {
@@ -679,6 +682,8 @@ china_is_chinese_core_trigger = {
 		has_state_flag = suiyuan_province_state
 		has_state_flag = chahar_province_state
 		has_state_flag = taiwan_province_state
+		has_state_flag = mongolia_province_state
+		has_state_flag = tibet_province_state
 	}
 }
 
@@ -955,27 +960,22 @@ CHN_generic_foreign_policy_tree_available = {
 		AND = {
 			tag = GXC
 			GXC_is_phase_5_trigger = yes
-			NOT = {
-				china_alignment_left_kuomintang = yes
-				china_alignment_right_kuomintang = yes
-			}
+			china_alignment_left_kuomintang = no
+			china_alignment_right_kuomintang = no
 		}
 		AND = {
 			tag = YUN
 			YUN_is_phase_5_trigger = yes
-			NOT = {
-				china_alignment_left_kuomintang = yes
-				china_alignment_right_kuomintang = yes
-			}
+			china_alignment_left_kuomintang = no
+			china_alignment_right_kuomintang = no
 		}
 		AND = {
 			tag = SZC
 			china_is_aligned_with_federalists = yes
+			SZC_federalists_in_exile = yes #To be allowed to other paths later
 			china_generic_unification_tree_allow_branch = yes
-			NOT = {
-				china_alignment_left_kuomintang = yes
-				china_alignment_right_kuomintang = yes
-			}
+			china_alignment_left_kuomintang = no
+			china_alignment_right_kuomintang = no
 		}
 	}
 }
@@ -1397,5 +1397,12 @@ CHN_south_china_war_over_trigger = {
 				has_war_with = HNN
 			}
 		}
+	}
+}
+
+CHN_has_revolted = {
+	custom_override_tooltip = {
+		has_country_flag = CHN_has_revolted_flag
+		tooltip = CHN_has_revolted
 	}
 }

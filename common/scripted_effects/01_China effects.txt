@@ -187,112 +187,115 @@ RKT_set_leader_effect = {
 	#This is super annoying because set_power_balance doesnt accept variables for the set_value = <decimal>.
 	hidden_effect = {
 		if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var = 1.0 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 1.0 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = 1.0
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			limit = { NOT = { tag = HNN } } #PLACEHOLDER - REMOVE IF HNN RECEIVES A REWORK
+			if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var = 1.0 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 1.0 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = 1.0
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else_if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.89 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.9 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = 0.8
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else_if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.89 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.9 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = 0.8
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else_if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.79 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.8 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = 0.6
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else_if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.79 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.8 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = 0.6
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else_if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.69 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.7 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = 0.4
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else_if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.69 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.7 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = 0.4
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else_if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.59 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.6 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = 0.2
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else_if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.59 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.6 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = 0.2
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else_if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.49 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.5 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = 0.0
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else_if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.49 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.5 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = 0.0
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else_if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.39 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.4 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = -0.2
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else_if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.39 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.4 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = -0.2
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else_if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.29 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.3 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = -0.4
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else_if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.29 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.3 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = -0.4
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else_if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.19 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.2 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = -0.6
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else_if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.19 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.2 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = -0.6
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else_if = {
-			limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.09 } }
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.1 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = -0.8
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else_if = {
+				limit = { check_variable = { global.RKT_revolutionary_zeal_var > 0.09 } }
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.1 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = -0.8
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
-		}
-		else = {
-			set_variable = { global.RKT_revolutionary_zeal_var = 0.05 }
-			set_power_balance = {
-				id = RKT_power_balance
-				set_value = -0.9
-				left_side = RKT_low_zeal_side
-				right_side = RKT_high_zeal_side
+			else = {
+				set_variable = { global.RKT_revolutionary_zeal_var = 0.05 }
+				set_power_balance = {
+					id = RKT_power_balance
+					set_value = -0.9
+					left_side = RKT_low_zeal_side
+					right_side = RKT_high_zeal_side
+				}
 			}
 		}
 	}
@@ -1324,24 +1327,27 @@ CHN_add_to_civil_war_preparation_effect = {
 	if = {
 		limit = { is_chinese_or_potential_chinese_tag = yes }
 		if = {
-			limit = { CHN_has_civil_war_prep_trigger = yes }
-			add_to_variable = {
-				var = CHN_civil_war_preparation_var
-				value = 1
-				tooltip = CHN_add_to_civil_war_preparation_tt
+			limit = { is_subject = yes }
+			if = {
+				limit = { CHN_has_civil_war_prep_trigger = yes }
+				add_to_variable = {
+					var = CHN_civil_war_preparation_var
+					value = 1
+					tooltip = CHN_add_to_civil_war_preparation_tt
+				}
 			}
+			else = {
+				add_to_variable = {
+					var = CHN_civil_war_preparation_var
+					value = 1
+					tooltip = CHN_begin_civil_war_preparation_tt
+				}
+				ROOT.overlord = {
+					country_event = { id = china_events.62 days = 3 }
+				}
+			}
+			#The formula should be 1 via generic decision + 1 via overlord's event chain + 2 via satellite content. 5 and up should be due to unplanend stuff.
 		}
-		else = {
-			add_to_variable = {
-				var = CHN_civil_war_preparation_var
-				value = 1
-				tooltip = CHN_begin_civil_war_preparation_tt
-			}
-			ROOT.overlord = {
-				country_event = { id = china_events.62 days = 3 }
-			}
-		}
-		#The formula should be 1 via generic decision + 1 via overlord's event chain + 2 via satellite content. 5 and up should be due to unplanend stuff.
 	}
 }
 
@@ -1571,10 +1577,11 @@ china_puppet_ROOT_effect = {
 				ROOT = {
 					tag = GXC
 					china_is_aligned_with_right_kmt = yes
+					is_ai = yes
 				}
 				#Rig it so Chen Mingshu will win the Clash for Canton if you have the game rules up.
 				OR = {
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE }
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
 				}
@@ -2449,7 +2456,7 @@ china_enable_non_main_government_demand_submission_decisions = { #Main governmen
 			limit = {
 				can_declare_war_on = ANQ
 				OR = {
-					ANQ = { china_is_aligned_with_republicans = no }
+					ANQ = { china_is_aligned_with_southern_republicans = no }
 					ANQ = { china_alignment_chinese_southern_republican = yes }
 				}
 				OR = {
@@ -2463,7 +2470,7 @@ china_enable_non_main_government_demand_submission_decisions = { #Main governmen
 			limit = {
 				can_declare_war_on = GXC
 				OR = {
-					GXC = { china_is_aligned_with_republicans = no }
+					GXC = { china_is_aligned_with_southern_republicans = no }
 					GXC = { china_alignment_chinese_southern_republican = yes }
 				}
 				OR = {
@@ -2477,7 +2484,7 @@ china_enable_non_main_government_demand_submission_decisions = { #Main governmen
 			limit = {
 				can_declare_war_on = HNN
 				OR = {
-					HNN = { china_is_aligned_with_republicans = no }
+					HNN = { china_is_aligned_with_southern_republicans = no }
 					HNN = { china_alignment_chinese_southern_republican = yes }
 				}
 				OR = {
@@ -2491,7 +2498,7 @@ china_enable_non_main_government_demand_submission_decisions = { #Main governmen
 			limit = {
 				can_declare_war_on = LEP
 				OR = {
-					LEP = { china_is_aligned_with_republicans = no }
+					LEP = { china_is_aligned_with_southern_republicans = no }
 					LEP = { china_alignment_chinese_southern_republican = yes }
 				}
 				OR = {
@@ -2505,7 +2512,7 @@ china_enable_non_main_government_demand_submission_decisions = { #Main governmen
 			limit = {
 				can_declare_war_on = SHD
 				OR = {
-					SHD = { china_is_aligned_with_republicans = no }
+					SHD = { china_is_aligned_with_southern_republicans = no }
 					SHD = { china_alignment_chinese_southern_republican = yes }
 				}
 				OR = {
@@ -2519,7 +2526,7 @@ china_enable_non_main_government_demand_submission_decisions = { #Main governmen
 			limit = {
 				can_declare_war_on = SHX
 				OR = {
-					SHX = { china_is_aligned_with_republicans = no }
+					SHX = { china_is_aligned_with_southern_republicans = no }
 					SHX = { china_alignment_chinese_southern_republican = yes }
 				}
 				OR = {
@@ -2533,7 +2540,7 @@ china_enable_non_main_government_demand_submission_decisions = { #Main governmen
 			limit = {
 				can_declare_war_on = SZC
 				OR = {
-					SZC = { china_is_aligned_with_republicans = no }
+					SZC = { china_is_aligned_with_southern_republicans = no }
 					SZC = { china_alignment_chinese_southern_republican = yes }
 				}
 				OR = {
@@ -2547,7 +2554,7 @@ china_enable_non_main_government_demand_submission_decisions = { #Main governmen
 			limit = {
 				can_declare_war_on = YUN
 				OR = {
-					YUN = { china_is_aligned_with_republicans = no }
+					YUN = { china_is_aligned_with_southern_republicans = no }
 					YUN = { china_alignment_chinese_southern_republican = yes }
 				}
 				OR = {
@@ -2563,7 +2570,7 @@ china_enable_non_main_government_demand_submission_decisions = { #Main governmen
 			limit = {
 				is_chinese_tag = yes
 				OR = {
-					china_is_aligned_with_republicans = no
+					china_is_aligned_with_southern_republicans = no
 					china_alignment_chinese_southern_republican = yes
 				}
 				NOT = { original_tag = QIE } #Main Government
@@ -3581,6 +3588,7 @@ CHN_add_civilian_industry_effect = {
 	if = {
 		limit = { 592 = { is_controlled_by_ROOT_or_subject = yes } } #Canton
 		592 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3591,6 +3599,7 @@ CHN_add_civilian_industry_effect = {
 	if = {
 		limit = { 613 = { is_controlled_by_ROOT_or_subject = yes } } #Nanjing
 		613 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3601,6 +3610,7 @@ CHN_add_civilian_industry_effect = {
 	if = {
 		limit = { 1048 = { is_controlled_by_ROOT_or_subject = yes } } #Wuhan
 		1048 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3611,6 +3621,7 @@ CHN_add_civilian_industry_effect = {
 	if = {
 		limit = { 608 = { is_controlled_by_ROOT_or_subject = yes } } #Beijing
 		608 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3621,6 +3632,7 @@ CHN_add_civilian_industry_effect = {
 	if = {
 		limit = { 602 = { is_controlled_by_ROOT_or_subject = yes } } #Changsha
 		602 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3631,6 +3643,7 @@ CHN_add_civilian_industry_effect = {
 	if = {
 		limit = { 650 = { is_controlled_by_ROOT_or_subject = yes } } #Chongqing
 		650 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3641,6 +3654,7 @@ CHN_add_civilian_industry_effect = {
 	if = {
 		limit = { 594 = { is_controlled_by_ROOT_or_subject = yes } } #Nanning
 		594 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3654,6 +3668,7 @@ CHN_add_civilian_industry_northerner_effect = {
 	if = {
 		limit = { 1062 = { is_controlled_by_ROOT_or_subject = yes } } #Baoding
 		1062 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3664,6 +3679,7 @@ CHN_add_civilian_industry_northerner_effect = {
 	if = {
 		limit = { 613 = { is_controlled_by_ROOT_or_subject = yes } } #Nanjing
 		613 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3674,6 +3690,7 @@ CHN_add_civilian_industry_northerner_effect = {
 	if = {
 		limit = { 1048 = { is_controlled_by_ROOT_or_subject = yes } } #Wuhan
 		1048 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3684,6 +3701,7 @@ CHN_add_civilian_industry_northerner_effect = {
 	if = {
 		limit = { 608 = { is_controlled_by_ROOT_or_subject = yes } } #Beijing
 		608 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3694,6 +3712,7 @@ CHN_add_civilian_industry_northerner_effect = {
 	if = {
 		limit = { 716 = { is_controlled_by_ROOT_or_subject = yes } } #Shenyang
 		716 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3704,6 +3723,7 @@ CHN_add_civilian_industry_northerner_effect = {
 	if = {
 		limit = { 597 = { is_controlled_by_ROOT_or_subject = yes } } #Jinan
 		597 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1
@@ -3714,6 +3734,7 @@ CHN_add_civilian_industry_northerner_effect = {
 	if = {
 		limit = { 1072 = { is_controlled_by_ROOT_or_subject = yes } } #Taiyuan
 		1072 = {
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
 				level = 1

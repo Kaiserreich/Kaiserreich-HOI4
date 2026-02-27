@@ -761,10 +761,10 @@ focus_tree = {
 						}
 					}
 					AND = {
-						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI }
+						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
 						country_exists = CHI
 						NOT = {
-							has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+							has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 							HND = { is_in_faction_with = CHI }
 						}
 					}
@@ -848,7 +848,7 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				country_exists = CHI
-				has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI }
+				has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
 				NOT = { CHI = { is_in_faction_with = INT } }
 			}
 		}

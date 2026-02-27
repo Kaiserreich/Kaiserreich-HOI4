@@ -483,6 +483,19 @@ on_actions = {
 
 			524 = { set_state_flag = taiwan_province_state } #Taiwan
 
+			329 = { set_state_flag = mongolia_province_state } #Tuva
+			330 = { set_state_flag = mongolia_province_state } #Urga
+			1084 = { set_state_flag = mongolia_province_state } #Uliastai
+			1114 = { set_state_flag = mongolia_province_state } #Gobi Desert
+			1115 = { set_state_flag = mongolia_province_state } #Moron
+			1116 = { set_state_flag = mongolia_province_state } #Bayan Tumen
+
+			322 = { set_state_flag = tibet_province_state } #Lhasa
+			693 = { set_state_flag = tibet_province_state } #Chamdo
+			748 = { set_state_flag = tibet_province_state } #Tsonyi
+			858 = { set_state_flag = tibet_province_state } #Tawang
+			1086 = { set_state_flag = tibet_province_state } #Gartok
+
 			#Initialise state modifiers
 			every_state = {
 				limit = {
@@ -1071,97 +1084,100 @@ on_actions = {
 
 			# South China War Mechanics
 			if = {
-				limit = {
-					OR = {
-						AND = {
-							ROOT = {
-								tag = HNN
-								is_subject = no
+				limit = { NOT = { has_global_flag = china_united } }
+				if = {
+					limit = {
+						OR = {
+							AND = {
+								ROOT = {
+									tag = HNN
+									is_subject = no
+								}
+								FROM = {
+									tag = YUN
+									is_subject = no
+								}
 							}
-							FROM = {
-								tag = YUN
-								is_subject = no
+							AND = {
+								ROOT = {
+									tag = YUN
+									is_subject = no
+								}
+								FROM = {
+									tag = HNN
+									is_subject = no
+								}
 							}
 						}
-						AND = {
-							ROOT = {
-								tag = YUN
-								is_subject = no
-							}
-							FROM = {
-								tag = HNN
-								is_subject = no
-							}
+						GXC = {
+							is_subject = no
+							has_war = no
 						}
 					}
-					GXC = {
-						is_subject = no
-						has_war = no
-					}
+					GXC = { country_event = china_events.451 } #A War for the South? [GXC Variant]
 				}
-				GXC = { country_event = china_events.451 } #A War for the South? [GXC Variant]
-			}
-			else_if = {
-				limit = {
-					OR = {
-						AND = {
-							ROOT = {
-								tag = GXC
-								is_subject = no
+				else_if = {
+					limit = {
+						OR = {
+							AND = {
+								ROOT = {
+									tag = GXC
+									is_subject = no
+								}
+								FROM = {
+									tag = YUN
+									is_subject = no
+								}
 							}
-							FROM = {
-								tag = YUN
-								is_subject = no
+							AND = {
+								ROOT = {
+									tag = YUN
+									is_subject = no
+								}
+								FROM = {
+									tag = GXC
+									is_subject = no
+								}
 							}
 						}
-						AND = {
-							ROOT = {
-								tag = YUN
-								is_subject = no
-							}
-							FROM = {
-								tag = GXC
-								is_subject = no
-							}
+						HNN = {
+							is_subject = no
+							has_war = no
 						}
 					}
-					HNN = {
-						is_subject = no
-						has_war = no
-					}
+					HNN = { country_event = china_events.452 } #A War for the South? [HNN Variant]
 				}
-				HNN = { country_event = china_events.452 } #A War for the South? [HNN Variant]
-			}
-			else_if = {
-				limit = {
-					OR = {
-						AND = {
-							ROOT = {
-								tag = GXC
-								is_subject = no
+				else_if = {
+					limit = {
+						OR = {
+							AND = {
+								ROOT = {
+									tag = GXC
+									is_subject = no
+								}
+								FROM = {
+									tag = HNN
+									is_subject = no
+								}
 							}
-							FROM = {
-								tag = HNN
-								is_subject = no
+							AND = {
+								ROOT = {
+									tag = HNN
+									is_subject = no
+								}
+								FROM = {
+									tag = GXC
+									is_subject = no
+								}
 							}
 						}
-						AND = {
-							ROOT = {
-								tag = HNN
-								is_subject = no
-							}
-							FROM = {
-								tag = GXC
-								is_subject = no
-							}
+						YUN = {
+							is_subject = no
+							has_war = no
 						}
 					}
-					YUN = {
-						is_subject = no
-						has_war = no
-					}
+					YUN = { country_event = china_events.453 } #A War for the South? [YUN Variant]
 				}
-				YUN = { country_event = china_events.453 } #A War for the South? [YUN Variant]
 			}
 		}
 	}
@@ -2324,6 +2340,7 @@ on_actions = {
 								state = 613 #Nanjing
 								state = 1048 #Wuhan
 							}
+							NOT = { SHX = { has_active_mission = QIE_SHX_intervention_visual_only } }
 						}
 					}
 					SHX = { country_event = { id = shanxi_endgame_events.1 days = 3 } } #A Rising Power in the North

@@ -395,16 +395,16 @@ characters = {
 			traits = { KR_army_breakthrough_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							OR = {
 								original_tag = QIE
 								original_tag = SZC
 							}
 						}
-						hidden_effect = { country_event = qing_flavour_events.52 }
 					}
+					hidden_effect = { ROOT = { country_event = qing_flavour_events.52 } }
 				}
 			}
 		}
@@ -590,11 +590,9 @@ characters = {
 			idea_token = QIE_bai_jianwu_advisor
 			traits = { QIE_wus_little_think_tank }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = QIE }
-						hidden_effect = { country_event = qing_flavour_events.50 }
-					}
+				if = {
+					limit = { ROOT = { original_tag = QIE } }
+					hidden_effect = { ROOT = { country_event = qing_flavour_events.50 } }
 				}
 			}
 		}
@@ -1019,21 +1017,21 @@ characters = {
 			traits = { KR_army_management_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							OR = {
 								original_tag = QIE
 								original_tag = SZC
 							}
 						}
-						hidden_effect = { country_event = qing_flavour_events.51 }
 					}
-					if = {
-						limit = { tag = GXC }
-						owner = { hidden_effect = { GXC_DSP_medium_effect = yes } }
-						custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
-					}
+					hidden_effect = { ROOT = { country_event = qing_flavour_events.51 } }
+				}
+				if = {
+					limit = { ROOT = { tag = GXC } }
+					owner = { hidden_effect = { GXC_DSP_medium_effect = yes } }
+					custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
 				}
 			}
 		}

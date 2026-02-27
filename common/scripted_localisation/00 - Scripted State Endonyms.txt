@@ -1584,15 +1584,19 @@ defined_text = {
 defined_text = {
 	name = GetStateName_120
 	text = {
-		trigger = { original_tag = SCO }
-		localization_key = STATE_120_SCOTTISH #Hielands
-	}
-	text = {
 		trigger = {
 			original_tag = IRE
 			has_global_flag = IRE_gaelicisation
 		}
 		localization_key = STATE_120_IRISH #Ardchríocha na hAlban
+	}
+	text = {
+		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
+		localization_key = STATE_120 #Scottish Highlands
+	}
+	text = {
+		trigger = { original_tag = SCO }
+		localization_key = STATE_120_SCOTTISH #Hielands
 	}
 	text = {
 		localization_key = STATE_120 #Scottish Highlands
@@ -1822,10 +1826,6 @@ defined_text = {
 	text = {
 		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
 		localization_key = STATE_145 #Åland
-	}
-	text = {
-		trigger = { original_tag = FIN }
-		localization_key = STATE_145_FINNISH #Ahvenanmaa
 	}
 	text = {
 		trigger = { is_russian_tag = yes }
@@ -2548,13 +2548,12 @@ defined_text = {
 		localization_key = STATE_196 #Taurida
 	}
 	text = {
-		trigger = {
-			OR = {
-				original_tag = UKR
-				is_russian_tag = yes
-			}
-		}
+		trigger = { original_tag = UKR }
 		localization_key = STATE_196_UKRAINIAN #Tavrida
+	}
+	text = {
+		trigger = { is_russian_tag = yes }
+		localization_key = STATE_196_RUSSIAN #Tavrida
 	}
 	text = {
 		localization_key = STATE_196 #Taurida
@@ -3499,7 +3498,7 @@ defined_text = {
 defined_text = {
 	name = GetStateName_311
 	text = {
-		localization_key = STATE_311 #Belize
+		localization_key = "[GetVictoryPointName_2077]"
 	}
 }
 defined_text = {
@@ -3545,8 +3544,8 @@ defined_text = {
 		localization_key = STATE_318 #Haiti
 	}
 	text = {
-		trigger = { is_spanish_speaking_tag = yes }
-		localization_key = STATE_318_SPANISH #Haïti
+		trigger = { is_french_speaking_tag = yes }
+		localization_key = STATE_318_FRENCH #Haïti
 	}
 	text = {
 		localization_key = STATE_318 #Haiti
@@ -6201,14 +6200,6 @@ defined_text = {
 		localization_key = STATE_610_MONGOLIAN #Khaluungol
 	}
 	text = {
-		trigger = { original_tag = JAP }
-		localization_key = STATE_610_JAPANESE #Netsuka
-	}
-	text = {
-		trigger = { original_tag = KOR }
-		localization_key = STATE_610_KOREAN #Yeolha
-	}
-	text = {
 		trigger = { is_russian_tag = yes }
 		localization_key = STATE_610_RUSSIAN #Zhekhe
 	}
@@ -7405,29 +7396,13 @@ defined_text = {
 defined_text = {
 	name = GetStateName_703
 	text = {
-		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
-		localization_key = STATE_703 #Ascension
-	}
-	text = {
-		trigger = { is_german_tag = yes }
-		localization_key = STATE_703_GERMAN #Himmelfahrtsinsel
-	}
-	text = {
-		localization_key = STATE_703 #Ascension
+		localization_key = "[GetVictoryPointName_13013]"
 	}
 }
 defined_text = {
 	name = GetStateName_704
 	text = {
-		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
-		localization_key = STATE_704 #Saint Helena
-	}
-	text = {
-		trigger = { is_german_tag = yes }
-		localization_key = STATE_704_GERMAN #Sankt Helena
-	}
-	text = {
-		localization_key = STATE_704 #Saint Helena
+		localization_key = "[GetVictoryPointName_13016]"
 	}
 }
 defined_text = {
@@ -7553,14 +7528,6 @@ defined_text = {
 		localization_key = STATE_715 #Liaobei
 	}
 	text = {
-		trigger = { original_tag = JAP }
-		localization_key = STATE_715_JAPANESE #Ryōhoku
-	}
-	text = {
-		trigger = { original_tag = KOR }
-		localization_key = STATE_715_KOREAN #Yobuk
-	}
-	text = {
 		trigger = { is_russian_tag = yes }
 		localization_key = STATE_715_RUSSIAN #Lyaobei
 	}
@@ -7575,14 +7542,6 @@ defined_text = {
 		localization_key = STATE_716 #Liaoning
 	}
 	text = {
-		trigger = { original_tag = JAP }
-		localization_key = STATE_716_JAPANESE #Ryōnei
-	}
-	text = {
-		trigger = { original_tag = KOR }
-		localization_key = STATE_716_KOREAN #Yoryeong
-	}
-	text = {
 		trigger = { is_russian_tag = yes }
 		localization_key = STATE_716_RUSSIAN #Lyaonin
 	}
@@ -7595,14 +7554,6 @@ defined_text = {
 	text = {
 		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
 		localization_key = STATE_717 #Hejiang
-	}
-	text = {
-		trigger = { original_tag = JAP }
-		localization_key = STATE_717_JAPANESE #Gōkō
-	}
-	text = {
-		trigger = { original_tag = KOR }
-		localization_key = STATE_717_KOREAN #Hapgang
 	}
 	text = {
 		trigger = { is_russian_tag = yes }
@@ -7963,6 +7914,14 @@ defined_text = {
 }
 defined_text = {
 	name = GetStateName_745
+	text = {
+		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
+		localization_key = STATE_745 #Dalian
+	}
+	text = {
+		trigger = { original_tag = JAP }
+		localization_key = STATE_745_JAPANESE #Dairen
+	}
 	text = {
 		localization_key = "[GetVictoryPointName_1150]"
 	}
@@ -9678,10 +9637,6 @@ defined_text = {
 		localization_key = "[GetVictoryPointName_7832]"
 	}
 	text = {
-		trigger = { original_tag = JAP }
-		localization_key = STATE_883_JAPANESE #Kokuryūkō
-	}
-	text = {
 		localization_key = "[GetVictoryPointName_7832]"
 	}
 }
@@ -9700,14 +9655,6 @@ defined_text = {
 		localization_key = STATE_884_CHINESE #Hulunbei'er
 	}
 	text = {
-		trigger = { original_tag = JAP }
-		localization_key = STATE_884_JAPANESE #Furunboiru
-	}
-	text = {
-		trigger = { original_tag = KOR }
-		localization_key = STATE_884_KOREAN #Hulunbeieol
-	}
-	text = {
 		trigger = { is_russian_tag = yes }
 		localization_key = STATE_884_RUSSIAN #Khulunbuir
 	}
@@ -9720,14 +9667,6 @@ defined_text = {
 	text = {
 		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
 		localization_key = STATE_885 #Songjiang
-	}
-	text = {
-		trigger = { original_tag = JAP }
-		localization_key = STATE_885_JAPANESE #Shōkō
-	}
-	text = {
-		trigger = { original_tag = KOR }
-		localization_key = STATE_885_KOREAN #Songgang
 	}
 	text = {
 		trigger = { is_russian_tag = yes }
@@ -10999,14 +10938,6 @@ defined_text = {
 	text = {
 		trigger = { is_chinese_tag = yes }
 		localization_key = STATE_996_CHINESE #Ba'erhu
-	}
-	text = {
-		trigger = { original_tag = JAP }
-		localization_key = STATE_996_JAPANESE #Baruga
-	}
-	text = {
-		trigger = { original_tag = KOR }
-		localization_key = STATE_996_KOREAN #Bareuga
 	}
 	text = {
 		localization_key = STATE_996 #Barga
@@ -12475,7 +12406,7 @@ defined_text = {
 			original_tag = IRE
 			has_global_flag = IRE_gaelicisation
 		}
-		localization_key = STATE_1124_IRISH #Mannin
+		localization_key = STATE_1124_IRISH #Oiléan Mhannan
 	}
 	text = {
 		localization_key = STATE_1124 #Isle of Man

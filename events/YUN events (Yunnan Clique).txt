@@ -219,7 +219,7 @@ country_event = { #Tang Jiyao’s Gambit
 		ai_chance = {
 			base = 100
 			modifier = {
-				#Rig it if you set gamerules so they will always win.
+				#Rig it if you set game rules so they will always win.
 				factor = 0
 				has_game_rule = { rule = YUN_path option = YUN_PATH_SOCCON }
 			}
@@ -235,7 +235,7 @@ country_event = { #Tang Jiyao’s Gambit
 		ai_chance = {
 			base = 100
 			modifier = {
-				#Rig it if you set gamerules so they will always win.
+				#Rig it if you set game rules so they will always win.
 				factor = 0
 				has_game_rule = { rule = YUN_path option = YUN_PATH_AUTDEM }
 			}
@@ -648,7 +648,7 @@ country_event = { #Our Interests in Dian-Qian [SZC POV Event]
 			OR = {
 				china_is_aligned_with_kmt = yes
 				china_is_aligned_with_federalists = yes
-				china_is_aligned_with_republicans = yes
+				china_is_aligned_with_southern_republicans = yes
 			}
 		}
 	}
@@ -916,15 +916,6 @@ country_event = { #The Late-Autumn Offensive
 		add_war_support = -0.25
 		add_stability = -0.25
 		add_manpower = -25000
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = YUN_path option = YUN_PATH_SOCCON }
-					has_game_rule = { rule = YUN_path option = YUN_PATH_SOCCON }
-				}
-			}
-			custom_effect_tooltip = YUN_introgame_minigame_rigged_warning_tt
-		}
 		random_list = {
 			50 = {
 				#YUN will generally go the way the player wants to even if they had massive skill issue.
@@ -962,8 +953,9 @@ country_event = { #The Late-Autumn Offensive
 					check_variable = { YUN.YUN_UPC_introminigame_external_help_var > 3 }
 				}
 				modifier = {
-					#Rig it if you set gamerules so they will always win.
+					#Rig it if you set game rules so they will always win.
 					factor = 0
+					is_ai = yes
 					has_game_rule = { rule = YUN_path option = YUN_PATH_SOCCON }
 				}
 				country_event = { id = YUN.introgame.101 days = 7 } #The Yunnan Army Overruns Guizhou
@@ -1012,8 +1004,9 @@ country_event = { #The Late-Autumn Offensive
 					check_variable = { YUN.YUN_KMT_introminigame_external_help_var > 3 }
 				}
 				modifier = {
-					#Rig it if you set gamerules so they will always win.
+					#Rig it if you set game rules so they will always win.
 					factor = 0
+					is_ai = yes
 					has_game_rule = { rule = YUN_path option = YUN_PATH_AUTDEM }
 				}
 				country_event = { id = YUN.introgame.102 days = 7 } #The Zhaotong Incident
@@ -2425,9 +2418,8 @@ news_event = { #Kuomintang Forces Invade Yunnan!
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	trigger = { wants_world_news = yes }
+	show_major = { regional_china_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event YUN.earlygame.4000 option YUN.earlygame.4000.a"
@@ -2628,9 +2620,8 @@ news_event = { #Yunnanese Forces Storm Guizhou
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	trigger = { wants_world_news = yes }
+	show_major = { regional_china_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event YUN.earlygame.601 option YUN.earlygame.601.a"
@@ -2957,6 +2948,7 @@ country_event = {
 				OR = {
 					owns_state = 594 #Nanning
 					is_ally_with = var:594.owner #Nanning
+					overlord = { has_subject = var:594.owner } #Nanning
 				}
 			}
 			white_peace = YUN #YUN should not have any puppets at this phase
@@ -3202,9 +3194,8 @@ news_event = { #Yunnan Federalists Unite the South
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	trigger = { wants_world_news = yes }
+	show_major = { regional_china_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event YUN.midgame.106 option YUN.midgame.106.a"
@@ -4378,9 +4369,8 @@ news_event = { #The Guizhou KMT Return to Guangzhou
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	trigger = { wants_world_news = yes }
+	show_major = { regional_china_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event YUN.midgame.405 option YUN.midgame.405.a"
@@ -5099,7 +5089,12 @@ country_event = {
 		}
 	}
 
-	trigger = { YUN_is_phase_5_trigger = no }
+	trigger = {
+		OR = {
+			YUN_is_phase_5_trigger = no
+			NOT = { has_country_leader = { character = CHI_zhang_Bojun } }
+		}
+	}
 
 	option = {
 		log = "[GetLogInfo]: event YUN.midgame.441 option YUN.midgame.441.a"
@@ -7365,6 +7360,11 @@ country_event = { #The Fall of Hunan
 		ai_chance = { base = 100 }
 		YUN_MCC_medium_effect = yes
 		RKT_ctr_zeal_medium_effect = yes
+		HNN = {
+			HNN_qin_zhen = { CHN_recruit_character_effect = yes }
+			HNN_lu_dao = { CHN_recruit_character_effect = yes }
+			HNN_li_shizhang = { CHN_recruit_character_effect = yes }
+		}
 	}
 	option = {
 		log = "[GetLogInfo]: event YUN.midgame.581 option YUN.midgame.581.b"
@@ -7372,6 +7372,12 @@ country_event = { #The Fall of Hunan
 		ai_chance = { base = 100 }
 		YUN_MCC_medium_effect = yes
 		RKT_ext_zeal_medium_effect = yes
+		HNN = {
+			HNN_song_xilian = { CHN_recruit_character_effect = yes }
+			HNN_cheng_qian = { CHN_recruit_character_effect = yes }
+			HNN_yang_jie = { CHN_recruit_character_effect = yes }
+			HNN_li_minghao = { CHN_recruit_character_effect = yes }
+		}
 	}
 	option = {
 		log = "[GetLogInfo]: event YUN.midgame.581 option YUN.midgame.581.c"
@@ -7379,6 +7385,13 @@ country_event = { #The Fall of Hunan
 		ai_chance = { base = 100 }
 		YUN_CEC_large_effect = yes
 		#Could have this gives favourable governor but Tan probably would've Chiang on the Hu Hanmin Crisis
+		HNN = {
+			HNN_tan_yankai = { CHN_recruit_character_effect = yes }
+			HNN_zhang_huizan = { CHN_recruit_character_effect = yes }
+			HNN_lu_diping = { CHN_recruit_character_effect = yes }
+			HNN_lu_dangping = { CHN_recruit_character_effect = yes }
+			HNN_tan_daoyuan = { CHN_recruit_character_effect = yes }
+		}
 	}
 	option = {
 		log = "[GetLogInfo]: event YUN.midgame.581 option YUN.midgame.581.e"
@@ -7387,6 +7400,12 @@ country_event = { #The Fall of Hunan
 		YUN_WPC_medium_effect = yes
 		YUN_PSC_medium_effect = yes
 		set_country_flag = YUN_KMT_favourable_governor_hunan
+		HNN = {
+			HNN_he_jian = { CHN_recruit_character_effect = yes }
+			HNN_liu_jianxu = { CHN_recruit_character_effect = yes }
+			HNN_liu_xing = { CHN_recruit_character_effect = yes }
+			HNN_li_pinxian = { CHN_recruit_character_effect = yes }
+		}
 	}
 }
 
@@ -7522,9 +7541,8 @@ news_event = { #Yunnan Generals Stage Coup in Kunming
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	trigger = { wants_world_news = yes }
+	show_major = { regional_china_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event YUN.midgame.701 option YUN.midgame.701.a"
@@ -9891,6 +9909,10 @@ country_event = {
 	after = {
 		CHN_setup_lategame_debuffs_effect = yes
 		set_country_flag = YUN_phase_4_begins_flag
+		if = {
+			limit = { NOT = { has_completed_focus = YUN_developing_the_civilian_party } }
+			complete_national_focus = YUN_developing_the_civilian_party #Always autocomplete these to avoid lockouts
+		}
 		mark_focus_tree_layout_dirty = yes
 	}
 }
@@ -10464,10 +10486,10 @@ country_event = {
 		#Rig it if you have game rules on
 		if = {
 			limit = {
+				is_ai = yes
 				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_QUN_MARLIB }
 			}
 			set_variable = { YUN_PSC_aligned_delegates_variable = 502 } #Start with 502
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		}
 
 		custom_effect_tooltip = YUN_zhang_qun_gambit_tt
@@ -10509,13 +10531,13 @@ country_event = {
 		#Rig it if you have game rules on
 		if = {
 			limit = {
+				is_ai = yes
 				OR = {
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LIFU_AUTDEM }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_JITAO_AUTDEM }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_AUTDEM }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_JITAO_PATAUT }
 				}
 			}
 			set_variable = { YUN_CCC_aligned_delegates_variable = 502 } #Start with 502
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		}
 		custom_effect_tooltip = YUN_dai_jitao_and_the_CC_clique_plot_tt
 		hidden_effect = {
@@ -12615,6 +12637,10 @@ country_event = { #Lushan Conference
 				limit = { tag = YUN }
 				country_event = { id = YUN.lategame.491 days = 120 random_days = 40 } #Social Education
 			}
+			if = {
+				limit = { has_country_leader = { character = YUN_he_yingqin } }
+				country_event = { id = YUN.lategame.494 days = 60 } #Predictions of the Dharma Assembly
+			}
 		}
 	}
 	is_triggered_only = yes #Triggered by on action, 21 days after war with Japan
@@ -12697,6 +12723,26 @@ country_event = { #The Conscription Debate
 		increase_conscription = yes
 	}
 }
+
+country_event = { #Predictions of the Dharma Assembly
+	id = YUN.lategame.494
+	title = YUN.lategame.494.t
+	desc = YUN.lategame.494.d
+	picture = GFX_report_event_YUN_dai_jitao_1
+	is_triggered_only = yes #TRIGGERED BY EVENT YUN.lategame.490
+
+	trigger = {
+		has_war_with_major = yes
+	}
+
+	option = { #We march to see Master Xuyun's predictions through!
+		log = "[GetLogInfo]: event YUN.lategame.494 option YUN.lategame.494.a"
+		name = YUN.lategame.494.a
+		add_political_power = 75
+		add_war_support = 0.05
+	}
+}
+
 #KMT Satellite Narrative Events (500-539)
 country_event = { #The Malformed Decapitation
 	id = YUN.lategame.500
@@ -15052,16 +15098,6 @@ country_event = { #The Luliang Uprising
 		ai_chance = { base = 100 }
 		custom_effect_tooltip = YUN_satellite_manual_tt
 		custom_effect_tooltip = YUN_UPC_civil_war_tt
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_SOCDEM }
-					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_MARLIB }
-					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_XIAOYING_AUTDEM }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		}
 		hidden_effect = {
 			YUN_UPC_satellite_civil_war_winner_effect = yes
 		}
@@ -15294,11 +15330,11 @@ country_event = { #Telegram From Kunming
 				factor = 0
 				NOT = {
 					check_variable = { YUN.party_popularity@social_democrat > YUN.party_popularity@social_conservative }
-					#AI will take this if has game rules set
-					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_SOCDEM }
-					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_MARLIB }
-					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_XIAOYING_AUTDEM }
 				}
+				#AI will take this if has game rules set
+				NOT = { has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_SOCDEM } }
+				NOT = { has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_MARLIB } }
+				NOT = { has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_XIAOYING_AUTDEM } }
 			}
 		}
 		#For every non-Soc Dem popularity in YUN, costs 0.50 pp (max 50 since YUN is peripherary).
@@ -15326,7 +15362,6 @@ country_event = { #Telegram From Kunming
 			}
 			modifier = {
 				factor = 0
-
 				OR = {
 					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_SOCDEM }
 					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_MARLIB }
@@ -15410,18 +15445,6 @@ country_event = { #[UPC.Capital.GetCapitalVictoryPointName] Orders Tang to Stand
 		add_war_support = 0.05
 	}
 
-	after = {
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_SOCDEM }
-					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_MARLIB }
-					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_XIAOYING_AUTDEM }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		}
-	}
 }
 
 country_event = { #[UPC.Capital.GetCapitalVictoryPointName] Reaffirms Tang’s Authority
@@ -16155,7 +16178,6 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
-			log = "KR_Event_Logging;YUN GAME PROGRESS - YUN NPA Reaches Beijing"
 			set_country_flag = YUN_phase_4_begins_flag
 			mark_focus_tree_layout_dirty = yes
 			#Devastation effects since we're in phase IV
@@ -16238,8 +16260,13 @@ country_event = {
 		trigger = {
 			OR = {
 				#Rig it if you have game rules
-				has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_PATAUT }
-				has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_AUTDEM }
+				AND = {
+					is_ai = yes
+					OR = {
+						has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_PATAUT }
+						has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_AUTDEM }
+					}
+				}
 				#Normal triggers
 				NOT = {
 					AND = {
@@ -16254,10 +16281,10 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_PATAUT }
-					has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_AUTDEM }
 					check_variable = { YUN.party_popularity@authoritarian_democrat > YUN.party_popularity@paternal_autocrat }
 				}
+				NOT = { has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_PATAUT } }
+				NOT = { has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_AUTDEM } }
 			}
 			modifier = {
 				factor = 0
@@ -16308,17 +16335,6 @@ country_event = {
 	}
 	after = {
 		custom_effect_tooltip = focus_tree_will_change_tt
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_PATAUT }
-					has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_AUTDEM }
-					has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_HU_RUOYU_PATAUT }
-					has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LU_HAN_AUTDEM }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		}
 	}
 }
 
@@ -16333,9 +16349,8 @@ news_event = { #Long Yun Toppled in a Coup
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	trigger = { wants_world_news = yes }
+	show_major = { regional_china_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event YUN.lategame.802 option YUN.lategame.802.a"
@@ -16355,9 +16370,8 @@ news_event = { #Long Yun Purges His Generals
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	trigger = { wants_world_news = yes }
+	show_major = { regional_china_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event YUN.lategame.803 option YUN.lategame.803.a"
@@ -16548,9 +16562,8 @@ news_event = { #The National Protection Alliance Reforms
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	trigger = { wants_world_news = yes }
+	show_major = { regional_china_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event YUN.lategame.841 option YUN.lategame.841.a"
@@ -17051,6 +17064,9 @@ country_event = { #Land Reform in Whampoa’s China
 	option = {
 		log = "[GetLogInfo]: event YUN.endgame.006 option YUN.endgame.006.a"
 		name = YUN.endgame.006.a #The private sector...with some government regulation will resolve things on its own.
+		trigger = {
+			NOT = { has_government = social_democrat }
+		}
 		ai_chance = { base = 100 }
 		add_popularity = { ideology = market_liberal popularity = 0.05 }
 		add_political_power = 100
@@ -17059,6 +17075,9 @@ country_event = { #Land Reform in Whampoa’s China
 	option = {
 		log = "[GetLogInfo]: event YUN.endgame.006 option YUN.endgame.006.b"
 		name = YUN.endgame.006.b #Success will only occur through careful investments and cooperation with the gentry.
+		trigger = {
+			NOT = { has_government = social_democrat }
+		}
 		ai_chance = { base = 100 }
 		add_popularity = { ideology = authoritarian_democrat popularity = 0.05 }
 		KMT_set_conservative_land_reform_effect = yes
@@ -17072,16 +17091,16 @@ country_event = { #Land Reform in Whampoa’s China
 		set_country_flag = YUN_chen_cheng_land_reform_begins_flag
 		set_variable = { YUN_chen_cheng_land_reform_progress_var = 0 }
 	}
-	option = {
-		log = "[GetLogInfo]: event YUN.endgame.006 option YUN.endgame.006.e"
-		name = YUN.endgame.006.e #Truly there will be no democracy until the land and the peasants are free!
-		trigger = {
-			has_government = social_democrat
-		}
-		ai_chance = { base = 100 }
-		add_popularity = { ideology = radical_socialist popularity = 0.05 }
-		KMT_set_radical_land_reform_effect = yes
-	}
+	#option = {
+	#	log = "[GetLogInfo]: event YUN.endgame.006 option YUN.endgame.006.e"
+	#	name = YUN.endgame.006.e #Truly there will be no democracy until the land and the peasants are free!
+	#	trigger = {
+	#		has_government = social_democrat
+	#	}
+	#	ai_chance = { base = 100 }
+	#	add_popularity = { ideology = radical_socialist popularity = 0.05 }
+	#	KMT_set_radical_land_reform_effect = yes
+	#}
 }
 
 country_event = { #Chen Cheng’s Land Reform

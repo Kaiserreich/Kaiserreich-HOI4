@@ -1,37 +1,292 @@
-#vanilla TFV RAJ Milita (usually on cavalry) model
+#vanilla TFV RAJ Milita model
+
+#####
+#
+# Infantry
+#
+#####
+
+#1
 
 entity = {
 	name = "RAJ_infantry_entity"
-	pdxmesh = "KR_RAJ_infantry_rifle_mesh"
+	pdxmesh = "RAJ_infantry_rifle_mesh"
 	clone = "KR_infantry_BR1_entity"
 }
 
 entity = {
 	name = "RAJ_infantry_entity_desert"
-	pdxmesh = "KR_RAJ_infantry_rifle_desert_mesh"
+	pdxmesh = "RAJ_infantry_rifle_desert_mesh"
 	clone = "KR_infantry_BR1_entity"
 }
 
 entity = {
+	name = "RAJ_infantry_entity_snow"
+	pdxmesh = "RAJ_infantry_rifle_snow_mesh"
+	clone = "KR_infantry_BR1_entity"
+}
+
+#2
+
+entity = {
 	name = "RAJ_infantry_2_entity"
-	pdxmesh = "KR_RAJ_infantry_mg_mesh"
+	pdxmesh = "RAJ_infantry_mg_mesh"
 	clone = "KR_infantry_BR2_entity"
 }
 
 entity = {
 	name = "RAJ_infantry_2_entity_desert"
-	pdxmesh = "KR_RAJ_infantry_mg_desert_mesh"
+	pdxmesh = "RAJ_infantry_mg_desert_mesh"
 	clone = "KR_infantry_BR2_entity"
 }
 
 entity = {
+	name = "RAJ_infantry_2_entity_snow"
+	pdxmesh = "RAJ_infantry_mg_snow_mesh"
+	clone = "KR_infantry_BR2_entity"
+}
+
+#3
+
+entity = {
 	name = "RAJ_infantry_3_entity"
-	pdxmesh = "KR_RAJ_infantry_rifle_mesh"
+	pdxmesh = "RAJ_infantry_rifle_mesh"
 	clone = "KR_infantry_BR3_entity"
 }
 
 entity = {
 	name = "RAJ_infantry_3_entity_desert"
-	pdxmesh = "KR_RAJ_infantry_rifle_desert_mesh"
+	pdxmesh = "RAJ_infantry_rifle_desert_mesh"
 	clone = "KR_infantry_BR3_entity"
+}
+
+entity = {
+	name = "RAJ_infantry_3_entity_snow"
+	pdxmesh = "RAJ_infantry_rifle_snow_mesh"
+	clone = "KR_infantry_BR3_entity"
+}
+
+############
+#
+# Cavalry
+#
+############
+
+entity = {
+	clone = "infantry_rider_entity"
+	name = "RAJ_infantry_rider_entity"
+	pdxmesh = "RAJ_infantry_rifle_mesh"
+
+	attach = { name = "rifle1"	Right_Hand_node = "MI_ENG_infantry_weapon_rifle_No4_right_entity" }
+	attach = { name = "rifle2"	Left_Hand_node = "MI_ENG_infantry_weapon_rifle_No4_left_entity" }
+	attach = { name = "rifle4"	Root_node_2 = "MI_ENG_infantry_weapon_rifle_No4_right_entity" }
+}
+
+entity = {
+	clone = "generic_infantry_mg_rider_entity"
+	name = "RAJ_infantry_mg_rider_entity"
+	pdxmesh = "RAJ_infantry_mg_mesh"
+
+	attach = { name = "rifle1"	Right_Hand_node = "MI_ENG_infantry_weapon_mg_Sten_right_entity" }
+	attach = { name = "rifle2"	Left_Hand_node = "MI_ENG_infantry_weapon_mg_Sten_left_entity" }
+	attach = { name = "rifle4"	Root_node_2 = "MI_ENG_infantry_weapon_rifle_No4_right_entity" }
+}
+
+entity = {
+	clone = "generic_cavalry_rifle_combined_entity"
+	name = "RAJ_cavalry_rifle_combined_entity"
+
+	attach = { name = "infantry_unit"		Saddle_Node = "RAJ_infantry_rider_entity" }
+}
+
+entity = {
+	clone = "generic_cavalry_mg_combined_entity"
+	name = "RAJ_cavalry_mg_combined_entity"
+
+	attach = { name = "infantry_unit"		Saddle_Node = "RAJ_infantry_mg_rider_entity" }
+}
+
+entity = {
+	clone = "cavalry_entity"
+	name = "RAJ_cavalry_entity"
+
+	attach = { name = "infantry"		infantry = "RAJ_infantry_rider_entity" }
+	attach = { name = "cavalry"			cavalry = "RAJ_cavalry_rifle_combined_entity" }
+}
+
+entity = {
+	clone = "cavalry_entity"
+	name = "RAJ_cavalry_2_entity"
+
+	attach = { name = "infantry"		infantry = "RAJ_infantry_mg_rider_entity" }
+	attach = { name = "cavalry"			cavalry = "RAJ_cavalry_mg_combined_entity" }
+}
+
+#####
+#
+# Camelry
+#
+#####
+
+entity = {
+	name = "RAJ_camelry_entity"
+	pdxmesh = "infantry_cavalry_horse_frame_mesh"
+
+	default_state = "idle"
+	state = { name = "idle"						animation = "idle" 		animation_blend_time = 0.0 }
+	state = { name = "move"						animation = "move" 		animation_blend_time = 0.0 }
+	state = { name = "attack"					animation = "attack" 	animation_blend_time = 0.0 }
+	state = { name = "support_attack"			animation = "attack" 	animation_blend_time = 0.0 }
+	state = { name = "defend"					animation = "attack" 	animation_blend_time = 0.0 }
+	state = { name = "retreat"					animation = "move" 		animation_blend_time = 0.0 }
+	state = { name = "training"					animation = "attack" 	animation_blend_time = 0.0 }
+
+	attach = { name = "infantry"			infantry = "RAJ_infantry_rider_entity" }
+	attach = { name = "cavalry"			cavalry = "RAJ_camelry_rifle_combined_entity" }
+	attach = { name = "horse"				horse = "infantry_cavalry_camel_entity" }
+
+	scale = 0.95
+}
+
+entity = {
+	name = "RAJ_camelry_rifle_combined_entity"
+	pdxmesh = "infantry_cavalry_camel_mesh"
+
+	default_state = "idle"
+	state = { name = "idle"						animation = "cavalry_idle" 		animation_blend_time = 0.0 }
+	state = { name = "move"						animation = "cavalry_move" 		animation_blend_time = 0.0 }
+	state = { name = "retreat"					animation = "cavalry_move" 		animation_blend_time = 0.0 }
+	state = { name = "training"					animation = "cavalry_idle" 		animation_blend_time = 0.0 }
+
+	attach = { name = "infantry_unit"			Saddle_Node = "RAJ_infantry_rider_entity" }
+
+	scale = 0.65
+}
+
+entity = {
+	name = "RAJ_camelry_2_entity"
+	pdxmesh = "infantry_cavalry_horse_frame_mesh"
+
+	default_state = "idle"
+	state = { name = "idle"						animation = "idle" 			animation_blend_time = 0.0 }
+	state = { name = "move"						animation = "move" 			animation_blend_time = 0.0 }
+	state = { name = "attack"					animation = "attack" 		animation_blend_time = 0.0 }
+	state = { name = "support_attack"			animation = "attack" 		animation_blend_time = 0.0 }
+	state = { name = "defend"					animation = "attack" 		animation_blend_time = 0.0 }
+	state = { name = "retreat"					animation = "move" 			animation_blend_time = 0.0 }
+	state = { name = "training"					animation = "attack" 		animation_blend_time = 0.0 }
+
+	attach = { name = "infantry"			infantry = "RAJ_infantry_mg_rider_entity" }
+	attach = { name = "cavalry"			cavalry = "RAJ_camelry_mg_combined_entity" }
+	attach = { name = "horse"				horse = "infantry_cavalry_camel_entity" }
+
+	scale = 0.95
+}
+
+entity = {
+	name = "RAJ_camelry_mg_combined_entity"
+	pdxmesh = "infantry_cavalry_camel_mesh"
+
+	default_state = "idle"
+	state = { name = "idle"						animation = "cavalry_idle" 		animation_blend_time = 0.0 }
+	state = { name = "move"						animation = "cavalry_move" 		animation_blend_time = 0.0 }
+	state = { name = "retreat"					animation = "cavalry_move" 		animation_blend_time = 0.0 }
+	state = { name = "training"					animation = "cavalry_idle" 		animation_blend_time = 0.0 }
+	state = { name = "attack"					animation = "cavalry_idle" 		animation_blend_time = 0.0 }
+	state = { name = "support_attack"			animation = "cavalry_idle" 		animation_blend_time = 0.0 }
+	state = { name = "defend"					animation = "cavalry_idle" 		animation_blend_time = 0.0 }
+
+	attach = { name = "infantry_unit"			Saddle_Node = "RAJ_infantry_mg_rider_entity" }
+
+	scale = 0.65
+}
+
+############
+#
+# Vehicles
+#
+############
+
+entity = {
+	clone = "motorized_entity"
+	name = "RAJ_motorized_entity"
+
+	attach = { name = "infantry" 	infantry = "RAJ_infantry_entity" }
+}
+
+entity = {
+	clone = "motorized_entity"
+	name = "RAJ_mechanized_entity"
+
+	attach = { name = "vehicle" 	vehicle = "mechanized_vehicle_0_entity" }
+	attach = { name = "infantry" 	infantry = "RAJ_infantry_entity" }
+}
+
+entity = {
+	clone = "artillery_entity"
+	name = "RAJ_artillery_entity"
+
+	attach = { name = infantry		infantry = "RAJ_infantry_entity" }
+}
+
+entity = {
+	clone = "anti_tank_entity"
+	name = "RAJ_anti_tank_entity"
+
+	attach = { name = infantry			infantry = "RAJ_infantry_entity" }
+}
+
+############
+#
+# B I C Y C L E S
+#
+############
+
+entity = {
+	clone = "bicycle_entity"
+	name = "RAJ_bicycle_entity"
+
+	attach = { name = "infantry"		infantry = "RAJ_bicycle_rider_rifle_entity" }
+	attach = { name = "combined"		combined = "RAJ_bicycle_rifle_combined_entity" }
+}
+
+entity = {
+	clone = "bicycle_rifle_combined_entity"
+	name = "RAJ_bicycle_rifle_combined_entity"
+
+	attach = { name = "rider"	bike_center = "RAJ_bicycle_rider_rifle_entity" }
+}
+
+entity = {
+	clone = "bicycle_rider_rifle_entity"
+	name = "RAJ_bicycle_rider_rifle_entity"
+	pdxmesh = "RAJ_infantry_rifle_mesh"
+
+	attach = { name = "rifle1"	Right_Hand_node = "MI_ENG_infantry_weapon_rifle_No4_right_entity" }
+	attach = { name = "rifle2"	Left_Hand_node = "MI_ENG_infantry_weapon_rifle_No4_left_entity" }
+	attach = { name = "rifle4"	Root_node_2 = "MI_ENG_infantry_weapon_rifle_No4_right_entity" }
+}
+
+entity = {
+	clone = "bicycle_2_entity"
+	name = "RAJ_bicycle_2_entity"
+
+	attach = { name = "infantry"		infantry = "RAJ_bicycle_rider_mg_entity" }
+	attach = { name = "combined"		combined = "RAJ_bicycle_mg_combined_entity" }
+}
+
+entity = {
+	clone = "bicycle_mg_combined_entity"
+	name = "RAJ_bicycle_mg_combined_entity"
+
+	attach = { name = "rider"	bike_center = "RAJ_bicycle_rider_mg_entity" }
+}
+
+entity = {
+	clone = "bicycle_rider_mg_entity"
+	name = "RAJ_bicycle_rider_mg_entity"
+	pdxmesh = "RAJ_infantry_mg_mesh"
+
+	attach = { name = "rifle1"	Right_Hand_node = "MI_ENG_infantry_weapon_mg_Sten_right_entity" }
+	attach = { name = "rifle2"	Left_Hand_node = "MI_ENG_infantry_weapon_mg_Sten_left_entity" }
 }

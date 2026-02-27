@@ -1050,7 +1050,17 @@ LIT_LAF_insurgency_decisions = {
 		days_remove = 90
 		fire_only_once = yes
 
-		ai_will_do = { base = 2000 }
+		ai_will_do = {
+			base = 2000
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = LIT_path option = LIT_PATH_VOLDEMARAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_ALANTAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MACEINA_NATPOP }
+				}
+			}
+		}
 
 		cancel_effect = {
 			log = "[GetLogRoot]: Decision cancel LIT_secure_maceinas_cooperation"
@@ -1075,7 +1085,17 @@ LIT_LAF_insurgency_decisions = {
 		days_remove = 90
 		fire_only_once = yes
 
-		ai_will_do = { base = 2000 }
+		ai_will_do = {
+			base = 2000
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = LIT_path option = LIT_PATH_VOLDEMARAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_ALANTAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MACEINA_NATPOP }
+				}
+			}
+		}
 
 		cancel_effect = {
 			log = "[GetLogRoot]: Decision cancel LIT_capture_alantas"
@@ -1161,6 +1181,14 @@ LIT_LAF_insurgency_decisions = {
 			modifier = {
 				factor = LIT_LAF_threat
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = LIT_path option = LIT_PATH_VOLDEMARAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_ALANTAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MACEINA_NATPOP }
+				}
+			}
 		}
 
 		cancel_effect = {
@@ -1208,6 +1236,14 @@ LIT_LAF_insurgency_decisions = {
 			modifier = {
 				factor = LIT_LAF_threat
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = LIT_path option = LIT_PATH_VOLDEMARAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_ALANTAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MACEINA_NATPOP }
+				}
+			}
 		}
 
 		cancel_effect = {
@@ -1252,6 +1288,14 @@ LIT_LAF_insurgency_decisions = {
 			modifier = {
 				factor = LIT_LAF_threat
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = LIT_path option = LIT_PATH_VOLDEMARAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_ALANTAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MACEINA_NATPOP }
+				}
+			}
 		}
 
 		cancel_effect = {
@@ -1295,6 +1339,14 @@ LIT_LAF_insurgency_decisions = {
 			modifier = {
 				factor = 0
 				check_variable = { LIT_LAF_threat < 15 }
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = LIT_path option = LIT_PATH_VOLDEMARAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_ALANTAS_NATPOP }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MACEINA_NATPOP }
+				}
 			}
 		}
 

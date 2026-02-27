@@ -1292,12 +1292,12 @@ focus_tree = {
 		available = {
 			950 = { #Lourenço Marques
 				owner = {
-					both_socialist_or_both_not_socialist = yes
 					NOT = { has_war_with = ROOT }
 					NOT = { has_wargoal_against = ROOT }
 					NOT = { is_justifying_wargoal_against = ROOT }
 					NOT = { ROOT = { has_wargoal_against = PREV } }
 					NOT = { ROOT = { is_justifying_wargoal_against = PREV } }
+					ROOT = { both_socialist_or_both_not_socialist = yes }
 				}
 			}
 		}

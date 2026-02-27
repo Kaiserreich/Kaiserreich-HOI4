@@ -2833,7 +2833,7 @@ focus_tree = {
 					path = { 7199 1053 10112 1006 12084 7071 }
 					start_state = 600 #Ganzhou
 					target_state = 802 #Xiamen
-					level = 1
+					level = 2
 					fallback = yes
 				}
 			}
@@ -3619,6 +3619,7 @@ focus_tree = {
 			OR = {
 				has_global_flag = JAP_defeated_by_china
 				JAP = { is_subject = yes }  #edge case if you paradrop japan
+				JAP = { is_in_faction = no } #there's a bunch of chicanery that can lead to this outcome but yeah.
 				NOT = { country_exists = JAP }
 			}
 			has_war = no
@@ -6571,7 +6572,19 @@ focus_tree = {
 		x = 4
 		y = 1
 
-		available = { social_liberal > 0.25 }
+		available = {
+			if = {
+				limit = {
+					is_ai = yes
+					is_subject = no
+					has_game_rule = { rule = CHI_path option = CHI_PATH_ETERNAL_PREMIER_QINGLING_RADSOC }
+				}
+				hidden_trigger = { always = yes }
+			}
+			else = {
+				social_liberal > 0.25
+			}
+		}
 		prerequisite = { focus = CHI_initiate_land_to_the_tiller }
 		mutually_exclusive = { focus = CHI_red_napoleon }
 		mutually_exclusive = { focus = CHI_convene_the_peoples_congress }
@@ -6589,6 +6602,12 @@ focus_tree = {
 				factor = 0
 				social_liberal < party_popularity@radical_socialist
 				social_liberal < party_popularity@syndicalist
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_ETERNAL_PREMIER_QINGLING_RADSOC } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_ETERNAL_PREMIER_QINGLING_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -6989,7 +7008,22 @@ focus_tree = {
 		x = -3
 		y = 1
 
-		available = { syndicalist > 0.25 }
+		available = {
+			if = {
+				limit = {
+					is_ai = yes
+					is_subject = no
+					OR = {
+						has_game_rule = { rule = CHI_path option = CHI_PATH_TRUE_LOVE_QINGLING_RADSOC }
+						has_game_rule = { rule = CHI_path option = CHI_PATH_UNITY_QINGLING_RADSOC }
+					}
+				}
+				hidden_trigger = { always = yes }
+			}
+			else = {
+				syndicalist > 0.25
+			}
+		}
 		prerequisite = { focus = CHI_initiate_land_to_the_tiller }
 		mutually_exclusive = { focus = CHI_red_napoleon }
 		mutually_exclusive = { focus = CHI_initiate_consultative_conference }
@@ -7007,6 +7041,14 @@ focus_tree = {
 				factor = 0
 				syndicalist < party_popularity@radical_socialist
 				syndicalist < party_popularity@social_liberal
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_TRUE_LOVE_QINGLING_RADSOC } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_UNITY_QINGLING_RADSOC } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_TRUE_LOVE_QINGLING_RADSOC } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_UNITY_QINGLING_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -7078,7 +7120,19 @@ focus_tree = {
 		y = 1
 
 		prerequisite = { focus = CHI_workplace_democracy }
-		available = { has_country_flag = CHI_LCS_WRD_dom_flag }
+		available = {
+			if = {
+				limit = {
+					is_ai = yes
+					is_subject = no
+					has_game_rule = { rule = CHI_path option = CHI_PATH_TRUE_LOVE_QINGLING_RADSOC }
+				}
+				hidden_trigger = { always = yes }
+			}
+			else = {
+				has_country_flag = CHI_LCS_WRD_dom_flag
+			}
+		}
 		mutually_exclusive = { focus = CHI_strengthen_the_unions }
 		ai_will_do = {
 			base = 100
@@ -7089,6 +7143,11 @@ focus_tree = {
 			modifier = {
 				factor = 0.5
 				has_war = yes
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_TRUE_LOVE_QINGLING_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -7217,7 +7276,19 @@ focus_tree = {
 
 		prerequisite = { focus = CHI_workplace_democracy }
 		mutually_exclusive = { focus = CHI_revolution_for_all_peoples }
-		available = { has_country_flag = CHI_LCS_ORT_dom_flag }
+		available = {
+			if = {
+				limit = {
+					is_ai = yes
+					is_subject = no
+					has_game_rule = { rule = CHI_path option = CHI_PATH_UNITY_QINGLING_RADSOC }
+				}
+				hidden_trigger = { always = yes }
+			}
+			else = {
+				has_country_flag = CHI_LCS_ORT_dom_flag
+			}
+		}
 		ai_will_do = {
 			base = 100
 			modifier = {
@@ -7227,6 +7298,11 @@ focus_tree = {
 			modifier = {
 				factor = 0.5
 				has_war = yes
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_UNITY_QINGLING_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -7491,10 +7567,17 @@ focus_tree = {
 			modifier = {
 				factor = 0.10
 				social_liberal > 0.25
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_RED_NAPOLEON_QINGLING_RADSOC } }
 			}
 			modifier = {
 				factor = 0.10
 				syndicalist > 0.25
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_RED_NAPOLEON_QINGLING_RADSOC } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_RED_NAPOLEON_QINGLING_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -7916,7 +7999,25 @@ focus_tree = {
 		y = 1
 
 		prerequisite = { focus = CHI_heir_to_the_revolution }
-		available = { social_democrat > 0.25 NOT = { OR = { has_completed_focus = CHI_empowering_the_presidential_camarilla has_completed_focus = CHI_towards_radical_reorganisation } } }
+		available = {
+			if = {
+				limit = {
+					is_ai = yes
+					is_subject = no
+					has_game_rule = { rule = CHI_path option = CHI_PATH_STATESMAN_JINGWEI_RADSOC }
+				}
+				hidden_trigger = { always = yes }
+			}
+			else = {
+				social_democrat > 0.25
+				NOT = {
+					OR = {
+						has_completed_focus = CHI_empowering_the_presidential_camarilla
+						has_completed_focus = CHI_towards_radical_reorganisation
+					}
+				}
+			}
+		}
 		mutually_exclusive = { focus = CHI_empowering_the_presidential_camarilla }
 		ai_will_do = {
 			base = 100
@@ -7932,6 +8033,12 @@ focus_tree = {
 				factor = 0
 				social_democrat < party_popularity@radical_socialist
 				social_democrat < party_popularity@totalist
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_STATESMAN_JINGWEI_RADSOC } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_STATESMAN_JINGWEI_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -8388,10 +8495,17 @@ focus_tree = {
 			modifier = {
 				factor = 0.1
 				social_democrat > 0.25
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_CHAIRMAN_JINGWEI_RADSOC } }
 			}
 			modifier = {
 				factor = 0.1
 				totalist > 0.25
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_CHAIRMAN_JINGWEI_RADSOC } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_CHAIRMAN_JINGWEI_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -8743,7 +8857,25 @@ focus_tree = {
 		y = 1
 
 		prerequisite = { focus = CHI_heir_to_the_revolution }
-		available = { totalist > 0.25 NOT = { OR = { has_completed_focus = CHI_empowering_the_presidential_camarilla has_completed_focus = CHI_promises_of_a_provisional_constitution } } }
+		available = {
+			if = {
+				limit = {
+					is_ai = yes
+					is_subject = no
+					has_game_rule = { rule = CHI_path option = CHI_PATH_REVOLUTIONARY_JINGWEI_RADSOC }
+				}
+				hidden_trigger = { always = yes }
+			}
+			else = {
+				totalist > 0.25
+				NOT = {
+					OR = {
+						has_completed_focus = CHI_empowering_the_presidential_camarilla
+						has_completed_focus = CHI_promises_of_a_provisional_constitution
+					}
+				}
+			}
+		}
 		mutually_exclusive = { focus = CHI_empowering_the_presidential_camarilla }
 		ai_will_do = {
 			base = 100
@@ -8759,6 +8891,12 @@ focus_tree = {
 				factor = 0
 				totalist < party_popularity@radical_socialist
 				totalist < party_popularity@social_democrat
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_REVOLUTIONARY_JINGWEI_RADSOC } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_REVOLUTIONARY_JINGWEI_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -10091,6 +10229,12 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				totalist > party_popularity@radical_socialist
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_GONGBO_RADSOC } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_GONGBO_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -10236,7 +10380,19 @@ focus_tree = {
 
 		prerequisite = { focus = CHI_fulfill_the_union_of_party_and_state }
 		mutually_exclusive = { focus = CHI_the_great_premier }
-		available = { totalist > 0.40 }
+		available = {
+			if = {
+				limit = {
+					is_ai = yes
+					is_subject = no
+					has_game_rule = { rule = CHI_path option = CHI_PATH_ZHONGMING_RADSOC }
+				}
+				hidden_trigger = { always = yes }
+			}
+			else = {
+				totalist > 0.40
+			}
+		}
 		ai_will_do = {
 			base = 250
 			modifier = {
@@ -10246,6 +10402,11 @@ focus_tree = {
 			modifier = {
 				factor = 0.5
 				has_war = yes
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_ZHONGMING_RADSOC } }
 			}
 		}
 		completion_reward = {
@@ -10552,20 +10713,58 @@ focus_tree = {
 			}
 			add_war_support = 0.1
 			custom_effect_tooltip = tooltip_white_line
-			YUN = {
-				YUN_teng_jie = { custom_effect_tooltip = character_becomes_a_general }
-				YUN_liu_jianqun = {
-					add_corps_commander_role = {
-						desc = YUN_liu_jianqun_sic_desc
-						traits = { CHN_RKT_officer_trait light_infantry_officer politically_connected harsh_leader }
-						skill = 1
-						attack_skill = 1
-						defense_skill = 1
-						planning_skill = 1
-						logistics_skill = 1
+			if = {
+				limit = { NOT = { has_character = YUN_teng_jie } }
+				YUN = { YUN_teng_jie = { custom_effect_tooltip = character_becomes_a_general } }
+				hidden_effect = {
+					YUN = {
+						YUN_teng_jie = {
+							remove_second_in_command_role = yes
+							CHN_recruit_character_effect = yes
+							if = {
+								limit = { has_ideology = national_populist_subtype }
+								promote_character = national_populist_subtype
+							}
+							else = {
+								add_country_leader_role = {
+									country_leader = {
+										desc = YUN_teng_jie_leader_desc
+										ideology = national_populist_subtype
+										traits = { CHN_right_kuomintang_aligned }
+									}
+									promote_leader = yes
+								}
+							}
+						}
 					}
 				}
-				YUN_li_shizhen = { custom_effect_tooltip = character_becomes_a_general }
+			}
+			if = {
+				limit = { NOT = { has_character = YUN_liu_jianqun } }
+				YUN = { YUN_liu_jianqun = { custom_effect_tooltip = character_becomes_a_general } }
+				hidden_effect = {
+					YUN = {
+						YUN_liu_jianqun = {
+							CHN_recruit_character_effect = yes
+							add_corps_commander_role = {
+								desc = YUN_liu_jianqun_sic_desc
+								traits = { CHN_RKT_officer_trait light_infantry_officer politically_connected harsh_leader }
+								skill = 1
+								attack_skill = 1
+								defense_skill = 1
+								planning_skill = 1
+								logistics_skill = 1
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = YUN_li_shizhen } }
+				YUN = { YUN_li_shizhen = { custom_effect_tooltip = character_becomes_a_general } }
+				hidden_effect = {
+					YUN = { YUN_li_shizhen = { CHN_recruit_character_effect = yes } }
+				}
 			}
 			add_popularity = {
 				ideology = national_populist
@@ -10575,33 +10774,6 @@ focus_tree = {
 			hidden_effect = {
 				country_event = { id = CHI.endgame.629 days = 10 }
 				set_party_name = { ideology = national_populist name = CHI_BSS_party long_name = CHI_BSS_party_long }
-				if = {
-					limit = {
-						OR = {
-							exists = no
-							tag = CHI
-							NOT = { has_character = YUN_teng_jie } #Check to see if he's been retired
-						}
-					}
-					YUN_teng_jie = {
-						remove_second_in_command_role = yes
-						CHN_recruit_character_effect = yes
-						if = {
-							limit = { has_ideology = national_populist_subtype }
-							promote_character = national_populist_subtype
-						}
-						else = {
-							add_country_leader_role = {
-								country_leader = {
-									desc = YUN_teng_jie_leader_desc
-									ideology = national_populist_subtype
-									traits = { CHN_right_kuomintang_aligned }
-								}
-								promote_leader = yes
-							}
-						}
-					}
-				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
@@ -10982,6 +11154,12 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				social_liberal > 0.25
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_REGENERATION_TOTALIST } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_REGENERATION_TOTALIST } }
 			}
 		}
 		completion_reward = {
@@ -11051,6 +11229,11 @@ focus_tree = {
 			modifier = {
 				factor = 0.5
 				has_war = yes
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_RED_GENERALISSIMO_TOTALIST } }
 			}
 		}
 		completion_reward = {
@@ -11159,15 +11342,6 @@ focus_tree = {
 					YUN_xu_tingyao = { CHN_recruit_character_effect = yes }
 					YUN_gu_zhutong = { CHN_recruit_character_effect = yes }
 					YUN_wei_lihuang = { CHN_recruit_character_effect = yes }
-				}
-				if = {
-					limit = {
-						OR = {
-							exists = no
-							tag = CHI
-							NOT = { has_character = YUN_chen_cheng } #Check to see if he's been retired
-						}
-					}
 					YUN_chen_cheng = {
 						remove_second_in_command_role = yes
 						CHN_recruit_character_effect = yes
@@ -11283,7 +11457,17 @@ focus_tree = {
 
 		available = {
 			has_idea = KR_CHI_popular_support_5
-			totalist > 0.35
+			if = {
+				limit = {
+					is_ai = yes
+					is_subject = no
+					has_game_rule = { rule = CHI_path option = CHI_PATH_REGENERATION_TOTALIST }
+				}
+				hidden_trigger = { always = yes }
+			}
+			else = {
+				totalist > 0.35
+			}
 		}
 		prerequisite = { focus = CHI_towards_the_idea_of_true_freedom }
 		prerequisite = { focus = CHI_maintain_extraordinary_powers }
@@ -11301,6 +11485,12 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				totalist < 0.50
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_REGENERATION_TOTALIST } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_REGENERATION_TOTALIST } }
 			}
 		}
 		completion_reward = {
@@ -11443,6 +11633,12 @@ focus_tree = {
 			modifier = {
 				factor = 0.1
 				totalist > 0.50
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_RED_GENERALISSIMO_TOTALIST } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = CHI_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = CHI_path option = CHI_PATH_RED_GENERALISSIMO_TOTALIST } }
 			}
 		}
 		completion_reward = {

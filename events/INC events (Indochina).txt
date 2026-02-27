@@ -2605,6 +2605,7 @@ country_event = {
 	option = { # The Second Revoution succeeded！
 		log = "[GetLogInfo]: event indochina_events.37 option indochina_events.37.a"
 		name = indochina_events.37.a
+		trigger = { radical_socialist < 0.6 }
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -2614,9 +2615,6 @@ country_event = {
 					has_game_rule = { rule = INC_path option = INC_PATH_PATAUT }
 				}
 			}
-		}
-		trigger = {
-			radical_socialist < 0.6
 		}
 		country_event = { id = indochina_events.38 days = 3 }
 		add_stability = -0.2

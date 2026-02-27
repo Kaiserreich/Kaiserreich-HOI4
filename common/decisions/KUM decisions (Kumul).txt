@@ -390,17 +390,7 @@ KUM_foreign_category = {
 		cancel_if_not_visible = yes
 		war_with_target_on_remove = yes
 
-		ai_will_do = {
-			factor = 10000
-			modifier = {
-				factor = 0
-				OR = {
-					country_is_in_dangerous_war = yes
-					FROM = { dont_start_major_faction_wars = yes }
-					FROM = { default_attack_AI_trigger = yes }
-				}
-			}
-		}
+		ai_will_do = { factor = 0 }
 
 		cancel_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision cancel KUM_zhongying_war_on_xsm_decision"
@@ -450,20 +440,7 @@ KUM_foreign_category = {
 		cancel_if_not_visible = yes
 		war_with_target_on_remove = yes
 
-		ai_will_do = {
-			factor = 10000
-			modifier = {
-				factor = 0
-				OR = {
-					country_is_in_dangerous_war = yes
-					FROM = { dont_start_major_faction_wars = yes }
-					FROM = { default_attack_AI_trigger = yes }
-					FROM = { is_guaranteed_by = RUS }
-					FROM = { is_subject_of = RUS }
-					FROM = { is_in_faction_with = RUS }
-				}
-			}
-		}
+		ai_will_do = { factor = 0 }
 
 		cancel_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision cancel KUM_zhongying_war_on_mon_decision"
@@ -518,17 +495,7 @@ KUM_foreign_category = {
 		cancel_if_not_visible = yes
 		war_with_target_on_remove = yes
 
-		ai_will_do = {
-			factor = 10000
-			modifier = {
-				factor = 0
-				OR = {
-					country_is_in_dangerous_war = yes
-					FROM = { dont_start_major_faction_wars = yes }
-					FROM = { default_attack_AI_trigger = yes }
-				}
-			}
-		}
+		ai_will_do = { factor = 0 }
 
 		cancel_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision cancel KUM_zhongying_war_on_tib_decision"

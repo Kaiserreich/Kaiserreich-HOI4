@@ -1674,12 +1674,7 @@ country_event = { #Fate of the Russian Far East
 			583 = { retain_state = yes } #Petropavlovsk
 			588 = { retain_state = yes } #Pavlodar
 			if = {
-				limit = {
-					any_state_of = {
-						target = { 582 408 } #Orsk, Vladivostok
-						is_claim_or_core_of_ROOT = yes
-					}
-				}
+				limit = { is_russian_tag = yes }
 				save_event_target_as = can_annex
 			}
 			if = {
@@ -1691,7 +1686,6 @@ country_event = { #Fate of the Russian Far East
 							is_monarchy = yes
 						}
 						has_completed_focus = QIE_we_win
-						# has_country_leader = { character = CHI_hu_zongnan }
 					}
 					OR = {
 						408 = { is_valid_annexation_state = yes } #Vladivostok
@@ -2112,6 +2106,7 @@ country_event = { #Fate of China
 		trigger = {
 			NOT = { has_event_target = china }
 			NOT = { has_event_target = japan_forced_return }
+			is_subject = no
 			CHN_puppet_has_potential_chinese_allies_trigger = yes
 		}
 		ai_chance = {
@@ -3021,6 +3016,7 @@ country_event = { #Fate of Manchuria
 		trigger = {
 			NOT = { has_event_target = china }
 			NOT = { has_event_target = japan_forced_return }
+			is_subject = no
 			CHN_puppet_has_potential_chinese_allies_trigger = yes
 		}
 		ai_chance = { base = 0 }
@@ -5570,6 +5566,7 @@ country_event = { #Fate of Malaysia
 			if = {
 				limit = {
 					china_is_aligned_with_kmt = yes
+					china_alignment_chinese_southern_republican = no
 				}
 				country_event = GXC.endgame.900 #The White Sun in Kuala Lumpur
 			}
@@ -9858,7 +9855,7 @@ country_event = { #Fate of Andhra
 				limit = {
 					any_state_of = {
 						target = { 320 425 427 868 889 } #Madras, Mysore, Hyderabad, Kolhapur, Vizagapatnam
-						is_valid_annexation_state = yes
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -15598,7 +15595,7 @@ country_event = { #Fate of the Andaman and Nicobar Islands
 					OR = {
 						any_state_of = {
 							target = { 320 423 424 426 431 } #Madras, Madura, Andhra, Orissa, West Bengal
-							is_valid_annexation_state = yes
+							is_claim_or_core_of_ROOT = yes
 						}
 						annexations_britain_can_annex_overseas = yes
 						original_tag = GEA

@@ -32,21 +32,21 @@ characters = {
 			traits = { KR_army_chief_morale_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_8th_aligned_advisor_tt
-						hidden_effect = { HNN_eight_army_medium_effect = yes }
 					}
+					custom_effect_tooltip = HNN_add_8th_aligned_advisor_tt
+					hidden_effect = { HNN_eight_army_medium_effect = yes }
 				}
 			}
 		}
@@ -89,21 +89,23 @@ characters = {
 			traits = { KR_army_chief_manoeuvre_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_8th_radical_aligned_advisor_tt
-						hidden_effect = {
-							HNN_eight_army_medium_effect = yes
+					}
+					custom_effect_tooltip = HNN_add_8th_radical_aligned_advisor_tt
+					hidden_effect = {
+						HNN_eight_army_medium_effect = yes
+						ROOT = {
 							add_popularity = {
 								ideology = radical_socialist
 								popularity = 0.03
@@ -155,21 +157,21 @@ characters = {
 			traits = { KR_MHC_artillery_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
-						hidden_effect = { HNN_sixth_army_medium_effect = yes }
 					}
+					custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
+					hidden_effect = { HNN_sixth_army_medium_effect = yes }
 				}
 			}
 		}
@@ -217,11 +219,16 @@ characters = {
 			}
 			traits = { KR_establishment_navigator }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_fed_aligned_advisor_tt
-						hidden_effect = { add_popularity = { ideology = market_liberal popularity = 0.05 } }
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_fed_aligned_advisor_tt
+					hidden_effect = {
+						ROOT = {
+							add_popularity = {
+								ideology = market_liberal
+								popularity = 0.05
+							}
+						}
 					}
 				}
 			}
@@ -278,15 +285,15 @@ characters = {
 			cost = 100
 			can_be_fired = no
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							has_country_leader = { character = GXC_zhang_junmai }
 						}
-						owner = { hidden_effect = { GXC_DSP_medium_effect = yes } }
-						custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
 					}
+					custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
+					owner = { hidden_effect = { GXC_DSP_medium_effect = yes } }
 				}
 			}
 		}
@@ -304,15 +311,15 @@ characters = {
 			traits = { KR_navy_chief_decisive_battle_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							has_country_leader = { character = GXC_zhang_junmai }
 						}
-						owner = { hidden_effect = { GXC_DSP_medium_effect = yes } }
-						custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
 					}
+					owner = { hidden_effect = { GXC_DSP_medium_effect = yes } }
+					custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
 				}
 			}
 		}
@@ -367,26 +374,28 @@ characters = {
 			traits = { KR_army_chief_drill_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
-						hidden_effect = {
-							GXC_SAF_medium_effect = yes
-						}
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
+					hidden_effect = {
+						GXC_SAF_medium_effect = yes
+					}
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = YUN
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
-						hidden_effect = {
-							YUN_HRY_medium_effect = yes
-						}
+					}
+					custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
+					hidden_effect = {
+						YUN_HRY_medium_effect = yes
 					}
 				}
 			}
@@ -412,16 +421,16 @@ characters = {
 			}
 			traits = { KR_social_revolutionary }
 			on_add = {
-				ROOT = {
-					custom_effect_tooltip = HNN_ren_bishi_add_tooltip
-					hidden_effect = {
+				custom_effect_tooltip = HNN_ren_bishi_add_tooltip
+				hidden_effect = {
+					ROOT = {
 						add_popularity = {
 							ideology = totalist
 							popularity = 0.03
 						}
 					}
-					custom_effect_tooltip = HNN_add_CSPR_aligned_advisor_tt
 				}
+				custom_effect_tooltip = HNN_add_CSPR_aligned_advisor_tt
 			}
 		}
 		country_leader = {
@@ -446,16 +455,16 @@ characters = {
 			}
 			traits = { KR_red_star }
 			on_add = {
-				ROOT = {
-					custom_effect_tooltip = HNN_cai_hesen_add_tooltip
-					hidden_effect = {
+				custom_effect_tooltip = HNN_cai_hesen_add_tooltip
+				hidden_effect = {
+					ROOT = {
 						add_popularity = {
 							ideology = syndicalist
 							popularity = 0.03
 						}
 					}
-					custom_effect_tooltip = HNN_add_CSP_aligned_advisor_tt
 				}
+				custom_effect_tooltip = HNN_add_CSP_aligned_advisor_tt
 			}
 		}
 		country_leader = {
@@ -507,11 +516,9 @@ characters = {
 			idea_token = HNN_tan_yankai_advisor
 			traits = { KR_pious_intellectual }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = HNN }
-						custom_effect_tooltip = HNN_tan_yankai_add_tooltip
-					}
+				if = {
+					limit = { ROOT = { tag = HNN } }
+					custom_effect_tooltip = HNN_tan_yankai_add_tooltip
 					if = {
 						limit = {
 							china_is_aligned_with_kmt = yes
@@ -519,9 +526,11 @@ characters = {
 						}
 						custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
 						hidden_effect = {
-							add_popularity = {
-								ideology = social_conservative
-								popularity = 0.05
+							ROOT = {
+								add_popularity = {
+									ideology = social_conservative
+									popularity = 0.05
+								}
 							}
 							if = {
 								limit = {
@@ -631,11 +640,9 @@ characters = {
 			traits = { KR_king_of_xiangxi }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_chen_quzhen_add_tooltip
-					}
+				if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_chen_quzhen_add_tooltip
 					hidden_effect = {
 						if = {
 							limit = { HNN_tian_yingzhao = { is_hired_as_advisor = yes } }
@@ -695,11 +702,9 @@ characters = {
 			traits = { KR_emperor_of_xiangxi }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_tian_yingzhao_add_tooltip
-					}
+				if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_tian_yingzhao_add_tooltip
 					hidden_effect = {
 						if = {
 							limit = { HNN_chen_quzhen = { is_hired_as_advisor = yes } }
@@ -787,26 +792,28 @@ characters = {
 			traits = { KR_the_executioner }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
-						hidden_effect = {
-							GXC_SAF_small_effect = yes
-						}
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
+					hidden_effect = {
+						GXC_SAF_small_effect = yes
+					}
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = YUN
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
-						hidden_effect = {
-							YUN_HRY_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
+					hidden_effect = {
+						YUN_HRY_small_effect = yes
 					}
 				}
 			}
@@ -821,26 +828,28 @@ characters = {
 			traits = { KR_MHC_army_Staffer_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
-						hidden_effect = {
-							GXC_SAF_small_effect = yes
-						}
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
+					hidden_effect = {
+						GXC_SAF_small_effect = yes
+					}
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = YUN
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
-						hidden_effect = {
-							YUN_HRY_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
+					hidden_effect = {
+						YUN_HRY_small_effect = yes
 					}
 				}
 			}
@@ -893,11 +902,9 @@ characters = {
 			}
 			traits = { KR_backroom_backstabber }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_zhao_yusong_add_tooltip
-					}
+				if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_zhao_yusong_add_tooltip
 				}
 			}
 		}
@@ -1110,21 +1117,23 @@ characters = {
 			}
 			traits = { KR_defiant_guerilla }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_8th_radical_aligned_advisor_tt
-						hidden_effect = {
-							HNN_eight_army_medium_effect = yes
+					}
+					custom_effect_tooltip = HNN_add_8th_radical_aligned_advisor_tt
+					hidden_effect = {
+						HNN_eight_army_medium_effect = yes
+						ROOT = {
 							add_popularity = {
 								ideology = radical_socialist
 								popularity = 0.03
@@ -1144,21 +1153,23 @@ characters = {
 			traits = { KR_MHC_irregular_3 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_8th_radical_aligned_advisor_tt
-						hidden_effect = {
-							HNN_eight_army_medium_effect = yes
+					}
+					custom_effect_tooltip = HNN_add_8th_radical_aligned_advisor_tt
+					hidden_effect = {
+						HNN_eight_army_medium_effect = yes
+						ROOT = {
 							add_popularity = {
 								ideology = radical_socialist
 								popularity = 0.03
@@ -1215,32 +1226,34 @@ characters = {
 			}
 			traits = { KR_paramilitary_leader }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_he_jian_add_tooltip
-						custom_effect_tooltip = HNN_add_pp_aligned_advisor_tt
-						hidden_effect = {
-							HNN_sixth_army_small_effect = yes
+					}
+					custom_effect_tooltip = HNN_he_jian_add_tooltip
+					custom_effect_tooltip = HNN_add_pp_aligned_advisor_tt
+					hidden_effect = {
+						HNN_sixth_army_small_effect = yes
+						ROOT = {
 							add_popularity = {
 								ideology = paternal_autocrat
 								popularity = 0.05
 							}
 						}
 					}
-					else_if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_he_jian_add_tooltip
-					}
+				}
+				else_if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_he_jian_add_tooltip
 				}
 			}
 		}
@@ -1251,21 +1264,23 @@ characters = {
 			ledger = army
 			traits = { KR_MHC_infantry_2 }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_pp_aligned_advisor_tt
-						hidden_effect = {
-							HNN_sixth_army_small_effect = yes
+					}
+					custom_effect_tooltip = HNN_add_pp_aligned_advisor_tt
+					hidden_effect = {
+						HNN_sixth_army_small_effect = yes
+						ROOT = {
 							add_popularity = {
 								ideology = paternal_autocrat
 								popularity = 0.05
@@ -1312,21 +1327,23 @@ characters = {
 			traits = { KR_MHC_army_regrouping_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_pp_aligned_advisor_tt
-						hidden_effect = {
-							HNN_sixth_army_small_effect = yes
+					}
+					custom_effect_tooltip = HNN_add_pp_aligned_advisor_tt
+					hidden_effect = {
+						HNN_sixth_army_small_effect = yes
+						ROOT = {
 							add_popularity = {
 								ideology = paternal_autocrat
 								popularity = 0.03
@@ -1361,32 +1378,32 @@ characters = {
 			traits = { KR_army_chief_offensive_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_non_part_advisor_tt
-						hidden_effect = { CHI_sub_rad_large_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_non_part_advisor_tt
+					hidden_effect = { CHI_sub_rad_large_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
-						hidden_effect = {
-							if = {
-								limit = {
-									HNN_sixth_winning_trigger = yes
-								}
-								HNN_eight_army_small_effect = yes
+					}
+					custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
+					hidden_effect = {
+						if = {
+							limit = {
+								HNN_sixth_winning_trigger = yes
 							}
-							if = {
-								limit = {
-									HNN_eighth_winning_trigger = yes
-								}
-								HNN_sixth_army_small_effect = yes
+							HNN_eight_army_small_effect = yes
+						}
+						if = {
+							limit = {
+								HNN_eighth_winning_trigger = yes
 							}
+							HNN_sixth_army_small_effect = yes
 						}
 					}
 				}
@@ -1417,19 +1434,21 @@ characters = {
 			ledger = army
 			traits = { KR_MHC_army_surveyor_1 }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_CSP_aligned_advisor_tt
+					}
+					custom_effect_tooltip = HNN_add_CSP_aligned_advisor_tt
+					ROOT = {
 						add_popularity = {
 							ideology = syndicalist
 							popularity = 0.03
@@ -1464,21 +1483,21 @@ characters = {
 			traits = { KR_MHC_army_logistics_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_8th_aligned_advisor_tt
-						hidden_effect = { HNN_eight_army_small_effect = yes }
 					}
+					custom_effect_tooltip = HNN_add_8th_aligned_advisor_tt
+					hidden_effect = { HNN_eight_army_small_effect = yes }
 				}
 			}
 		}
@@ -1508,21 +1527,21 @@ characters = {
 			traits = { KR_MHC_army_regrouping_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_8th_aligned_advisor_tt
-						hidden_effect = { HNN_eight_army_small_effect = yes }
 					}
+					custom_effect_tooltip = HNN_add_8th_aligned_advisor_tt
+					hidden_effect = { HNN_eight_army_small_effect = yes }
 				}
 			}
 		}
@@ -1555,26 +1574,26 @@ characters = {
 			traits = { KR_young_guard }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_song_xilian_add_tooltip
-						custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
-						hidden_effect = { HNN_sixth_army_small_effect = yes }
 					}
-					else_if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_song_xilian_add_tooltip
-					}
+					custom_effect_tooltip = HNN_song_xilian_add_tooltip
+					custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
+					hidden_effect = { HNN_sixth_army_small_effect = yes }
+				}
+				else_if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_song_xilian_add_tooltip
 				}
 			}
 		}
@@ -1601,24 +1620,24 @@ characters = {
 			slot = theorist
 			idea_token = HNN_yang_jie_theorist
 			ledger = army
-			traits = { QIE_iron_and_blood }
+			traits = { HNN_the_essentials_of_warfare }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
-						hidden_effect = { HNN_sixth_army_small_effect = yes }
 					}
+					custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
+					hidden_effect = { HNN_sixth_army_small_effect = yes }
 				}
 			}
 		}
@@ -1647,21 +1666,21 @@ characters = {
 			traits = { KR_army_chief_organisational_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
-						hidden_effect = { HNN_sixth_army_medium_effect = yes }
 					}
+					custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
+					hidden_effect = { HNN_sixth_army_medium_effect = yes }
 				}
 			}
 		}
@@ -1844,21 +1863,21 @@ characters = {
 			}
 			traits = { KR_staunch_constitutionalist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_qin_zhen_add_tooltip
-						custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
-						hidden_effect = { HNN_sixth_army_small_effect = yes }
 					}
-					else_if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_qin_zhen_add_tooltip
-					}
+					custom_effect_tooltip = HNN_qin_zhen_add_tooltip
+					custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
+					hidden_effect = { HNN_sixth_army_small_effect = yes }
+				}
+				else_if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_qin_zhen_add_tooltip
 				}
 			}
 		}
@@ -1879,21 +1898,21 @@ characters = {
 			}
 			traits = { KR_silent_workhorse }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_li_shizhang_add_tooltip
-						custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
-						hidden_effect = { HNN_sixth_army_small_effect = yes }
 					}
-					else_if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_li_shizhang_add_tooltip
-					}
+					custom_effect_tooltip = HNN_li_shizhang_add_tooltip
+					custom_effect_tooltip = HNN_add_6th_aligned_advisor_tt
+					hidden_effect = { HNN_sixth_army_small_effect = yes }
+				}
+				else_if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_li_shizhang_add_tooltip
 				}
 			}
 		}
@@ -1915,27 +1934,27 @@ characters = {
 			}
 			traits = { KR_popular_figurehead }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
-						hidden_effect = {
-							if = {
-								limit = {
-									HNN_sixth_winning_trigger = yes
-								}
-								HNN_eight_army_small_effect = yes
+					}
+					custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
+					hidden_effect = {
+						if = {
+							limit = {
+								HNN_sixth_winning_trigger = yes
 							}
-							if = {
-								limit = {
-									HNN_eighth_winning_trigger = yes
-								}
-								HNN_sixth_army_small_effect = yes
+							HNN_eight_army_small_effect = yes
+						}
+						if = {
+							limit = {
+								HNN_eighth_winning_trigger = yes
 							}
+							HNN_sixth_army_small_effect = yes
 						}
 					}
 				}
@@ -1962,21 +1981,21 @@ characters = {
 			}
 			traits = { KR_cultural_organiser }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_huang_gonglue_add_tooltip
-						custom_effect_tooltip = HNN_add_8th_radical_aligned_advisor_tt
-						hidden_effect = { HNN_eight_army_small_effect = yes }
 					}
-					else_if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_huang_gonglue_add_tooltip
-					}
+					custom_effect_tooltip = HNN_huang_gonglue_add_tooltip
+					custom_effect_tooltip = HNN_add_8th_radical_aligned_advisor_tt
+					hidden_effect = { HNN_eight_army_small_effect = yes }
+				}
+				else_if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_huang_gonglue_add_tooltip
 				}
 			}
 		}
@@ -2018,16 +2037,16 @@ characters = {
 			traits = { KR_MHC_cavalry_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_8th_aligned_advisor_tt
-						hidden_effect = { HNN_eight_army_small_effect = yes }
 					}
+					custom_effect_tooltip = HNN_add_8th_aligned_advisor_tt
+					hidden_effect = { HNN_eight_army_small_effect = yes }
 				}
 			}
 		}
@@ -2067,38 +2086,40 @@ characters = {
 			idea_token = HNN_zhang_huizan_advisor
 			traits = { KR_secret_police_chief }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
-						hidden_effect = {
+					}
+					custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
+					hidden_effect = {
+						ROOT = {
 							add_popularity = {
 								ideology = social_conservative
 								popularity = 0.03
 							}
-							if = {
-								limit = {
-									HNN_sixth_winning_trigger = yes
-								}
-								HNN_eight_army_small_effect = yes
-							}
-							if = {
-								limit = {
-									HNN_eighth_winning_trigger = yes
-								}
-								HNN_sixth_army_small_effect = yes
-							}
 						}
-						custom_effect_tooltip = HNN_zhang_huizan_add_tooltip
+						if = {
+							limit = {
+								HNN_sixth_winning_trigger = yes
+							}
+							HNN_eight_army_small_effect = yes
+						}
+						if = {
+							limit = {
+								HNN_eighth_winning_trigger = yes
+							}
+							HNN_sixth_army_small_effect = yes
+						}
 					}
-					else_if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_zhang_huizan_add_tooltip
-					}
+					custom_effect_tooltip = HNN_zhang_huizan_add_tooltip
+				}
+				else_if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_zhang_huizan_add_tooltip
 				}
 			}
 		}
@@ -2116,31 +2137,33 @@ characters = {
 			idea_token = HNN_tan_daoyuan_advisor
 			traits = { KR_general_staffer }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
-						hidden_effect = {
+					}
+					custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
+					hidden_effect = {
+						ROOT = {
 							add_popularity = {
 								ideology = social_conservative
 								popularity = 0.03
 							}
-							if = {
-								limit = {
-									HNN_sixth_winning_trigger = yes
-								}
-								HNN_eight_army_small_effect = yes
+						}
+						if = {
+							limit = {
+								HNN_sixth_winning_trigger = yes
 							}
-							if = {
-								limit = {
-									HNN_eighth_winning_trigger = yes
-								}
-								HNN_sixth_army_small_effect = yes
+							HNN_eight_army_small_effect = yes
+						}
+						if = {
+							limit = {
+								HNN_eighth_winning_trigger = yes
 							}
+							HNN_sixth_army_small_effect = yes
 						}
 					}
 				}
@@ -2161,38 +2184,40 @@ characters = {
 			traits = { KR_plodding_bureaucrat }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { has_power_balance = { id = HNN_power_balance } }
 						}
-						custom_effect_tooltip = HNN_lu_diping_add_tooltip
-						custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
-						hidden_effect = {
+					}
+					custom_effect_tooltip = HNN_lu_diping_add_tooltip
+					custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
+					hidden_effect = {
+						ROOT = {
 							add_popularity = {
 								ideology = social_conservative
 								popularity = 0.03
 							}
-							if = {
-								limit = {
-									HNN_sixth_winning_trigger = yes
-								}
-								HNN_eight_army_small_effect = yes
+						}
+						if = {
+							limit = {
+								HNN_sixth_winning_trigger = yes
 							}
-							if = {
-								limit = {
-									HNN_eighth_winning_trigger = yes
-								}
-								HNN_sixth_army_small_effect = yes
+							HNN_eight_army_small_effect = yes
+						}
+						if = {
+							limit = {
+								HNN_eighth_winning_trigger = yes
 							}
+							HNN_sixth_army_small_effect = yes
 						}
 					}
-					else_if = {
-						limit = { original_tag = HNN }
-						custom_effect_tooltip = HNN_lu_diping_add_tooltip
-					}
+				}
+				else_if = {
+					limit = { ROOT = { original_tag = HNN } }
+					custom_effect_tooltip = HNN_lu_diping_add_tooltip
 				}
 			}
 		}
@@ -2210,31 +2235,33 @@ characters = {
 			idea_token = HNN_lu_dangping_advisor
 			traits = { KR_legalist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = {
+				if = {
+					limit = {
+						ROOT = {
 							original_tag = HNN
 							china_is_aligned_with_kmt = yes
 							HNN = { HNN = { HNN = { has_power_balance = { id = HNN_power_balance } } } }
 						}
-						custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
-						hidden_effect = {
+					}
+					custom_effect_tooltip = HNN_add_tan_aligned_advisor_tt
+					hidden_effect = {
+						ROOT = {
 							add_popularity = {
 								ideology = social_conservative
 								popularity = 0.03
 							}
-							if = {
-								limit = {
-									HNN_sixth_winning_trigger = yes
-								}
-								HNN_eight_army_small_effect = yes
+						}
+						if = {
+							limit = {
+								HNN_sixth_winning_trigger = yes
 							}
-							if = {
-								limit = {
-									HNN_eighth_winning_trigger = yes
-								}
-								HNN_sixth_army_small_effect = yes
+							HNN_eight_army_small_effect = yes
+						}
+						if = {
+							limit = {
+								HNN_eighth_winning_trigger = yes
 							}
+							HNN_sixth_army_small_effect = yes
 						}
 					}
 				}

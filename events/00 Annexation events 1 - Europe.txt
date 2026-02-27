@@ -1972,6 +1972,19 @@ country_event = { #Fate of East Prussia
 			hidden_effect = { remove_claim_by = var:tag_to_release }
 		}
 		release_targeted_tag = yes
+		hidden_effect = {
+			var:tag_to_release = {
+				if = {
+					limit = { NOT = { has_character = GER_erich_wollenberg } }
+					GER_erich_wollenberg = {
+						set_nationality = PREV
+						promote_character = totalist_subtype
+						promote_character = syndicalist_subtype
+						promote_character = radical_socialist_subtype
+					}
+				}
+			}
+		}
 	}
 
 	option = { #Give to German owner of Hither Pomerania

@@ -128,3 +128,42 @@ SHX_not_zhongyuan_flag_check = {
 		has_cosmetic_tag = united_china
 	}
 }
+
+SHX_forpol_game_rule_set = {
+	is_subject = no
+	OR = {
+		AND = {
+			has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_NPA }
+			NPA = { exists = yes }
+		}
+		AND = {
+			has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_NZH }
+			NZH = {
+				exists = yes
+				NOT = { original_tag = QIE }
+			}
+		}
+		AND = {
+			has_country_leader = { character = SHX_yan_xishan }
+			has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_AGJ }
+			AGJ = { exists = yes }
+		}
+		AND = {
+			has_country_leader = { character = SHX_feng_yuxiang }
+			OR = {
+				AND = {
+					has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_UPC }
+					UPC = { exists = yes }
+				}
+				AND = {
+					has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKT }
+					LKT = { exists = yes }
+				}
+			}
+		}
+		AND = {
+			has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKT }
+			RKT = { exists = yes }
+		}
+	}
+}

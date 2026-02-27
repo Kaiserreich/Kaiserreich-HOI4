@@ -3845,14 +3845,14 @@ country_event = { # Reassess American Commitment
 					has_war_together_with = USA
 				}
 			}
-			modifier = { #Don't support NEE if gamerule was set to only declare on WCA, or to never declare
+			modifier = { #Don't support NEE if game rule was set to only declare on WCA, or to never declare
 				factor = 0
 				OR = {
 					has_game_rule = { rule = CAN_acw_intervene option = CAN_ACW_INTERVENE_NO }
 					has_game_rule = { rule = CAN_acw_intervene option = CAN_ACW_INTERVENE_DECLARE_WCA }
 				}
 			}
-			modifier = { #Don't support NEE if gamerule is set to support a specific side (unless they don't exist), or to support no one
+			modifier = { #Don't support NEE if game rule is set to support a specific side (unless they don't exist), or to support no one
 				factor = 0
 				OR = {
 					has_game_rule = { rule = CAN_acw_support option = CAN_ACW_SUPPORT_NONE }
@@ -4077,14 +4077,14 @@ country_event = { # Reassess American Commitment - Repeatable until CAN says yes
 					is_in_faction_with = USA
 				}
 			}
-			modifier = { #Don't support NEE if gamerule was set to only declare on WCA, or to never declare
+			modifier = { #Don't support NEE if game rule was set to only declare on WCA, or to never declare
 				factor = 0
 				OR = {
 					has_game_rule = { rule = CAN_acw_intervene option = CAN_ACW_INTERVENE_NO }
 					has_game_rule = { rule = CAN_acw_intervene option = CAN_ACW_INTERVENE_DECLARE_WCA }
 				}
 			}
-			modifier = { #Don't support NEE if gamerule is set to support a specific side (unless they don't exist), or to support no one
+			modifier = { #Don't support NEE if game rule is set to support a specific side (unless they don't exist), or to support no one
 				factor = 0
 				OR = {
 					has_game_rule = { rule = CAN_acw_support option = CAN_ACW_SUPPORT_NONE }

@@ -2,33 +2,48 @@
 #     Left Kuomintang Scripted Triggers    #
 ############################################
 
-#Gamerules Triggers
-CHI_gamerule_wang_victory = {
-	has_game_rule = { rule = CHI_path option = CHI_PATH_JINGWEI_RADSOC }
-}
-
-CHI_gamerule_song_victory = {
-	has_game_rule = { rule = CHI_path option = CHI_PATH_QINGLING_RADSOC }
-}
-
-CHI_gamerule_hu_victory = {
-	has_game_rule = { rule = CHI_path option = CHI_PATH_TOTALIST }
-}
-
-CHI_gamerule_chen_victory = {
-	has_game_rule = { rule = CHI_path option = CHI_PATH_GONGBO_RADSOC }
-}
-
-CHI_gamerule_RCA_victory = {
+#Game Rule Triggers
+CHI_game_rule_wang_victory = {
 	OR = {
-		has_game_rule = { rule = CHI_path option = CHI_PATH_JINGWEI_RADSOC }
-		has_game_rule = { rule = CHI_path option = CHI_PATH_GONGBO_RADSOC }
+		has_game_rule = { rule = CHI_path option = CHI_PATH_CHAIRMAN_JINGWEI_RADSOC }
+		has_game_rule = { rule = CHI_path option = CHI_PATH_REVOLUTIONARY_JINGWEI_RADSOC }
+		has_game_rule = { rule = CHI_path option = CHI_PATH_STATESMAN_JINGWEI_RADSOC }
 	}
 }
-CHI_gamerule_scenario_3 = {
+
+CHI_game_rule_song_victory = {
 	OR = {
-		has_game_rule = { rule = CHI_path option = CHI_PATH_TOTALIST }
+		has_game_rule = { rule = CHI_path option = CHI_PATH_RED_NAPOLEON_QINGLING_RADSOC }
+		has_game_rule = { rule = CHI_path option = CHI_PATH_ETERNAL_PREMIER_QINGLING_RADSOC }
+		has_game_rule = { rule = CHI_path option = CHI_PATH_TRUE_LOVE_QINGLING_RADSOC }
+		has_game_rule = { rule = CHI_path option = CHI_PATH_UNITY_QINGLING_RADSOC }
+	}
+}
+
+CHI_game_rule_hu_victory = {
+	OR = {
+		has_game_rule = { rule = CHI_path option = CHI_PATH_RED_GENERALISSIMO_TOTALIST }
+		has_game_rule = { rule = CHI_path option = CHI_PATH_REGENERATION_TOTALIST }
+	}
+}
+
+CHI_game_rule_chen_victory = {
+	OR = {
 		has_game_rule = { rule = CHI_path option = CHI_PATH_GONGBO_RADSOC }
+		has_game_rule = { rule = CHI_path option = CHI_PATH_ZHONGMING_RADSOC }
+	}
+}
+
+CHI_game_rule_RCA_victory = {
+	OR = {
+		CHI_game_rule_wang_victory = yes
+		CHI_game_rule_chen_victory = yes
+	}
+}
+CHI_game_rule_scenario_3 = {
+	OR = {
+		CHI_game_rule_hu_victory = yes
+		CHI_game_rule_chen_victory = yes
 	}
 }
 
@@ -302,7 +317,7 @@ CHI_gov_won_civil_war_trigger = {
 			check_variable = { CHI_gov_civ_war_var > CHI_rca_civ_war_var }
 		}
 		AND = {
-			CHI_gamerule_song_victory = yes
+			CHI_game_rule_song_victory = yes
 			is_ai = yes
 		}
 	}
@@ -320,7 +335,7 @@ CHI_crs_won_civil_war_trigger = {
 			check_variable = { CHI_crs_civ_war_var > CHI_rca_civ_war_var }
 		}
 		AND = {
-			CHI_gamerule_hu_victory = yes
+			CHI_game_rule_hu_victory = yes
 			is_ai = yes
 		}
 	}
@@ -338,7 +353,7 @@ CHI_rca_won_civil_war_trigger = {
 			check_variable = { CHI_rca_civ_war_var > CHI_pac_civ_war_var }
 		}
 		AND = {
-			CHI_gamerule_chen_victory = yes
+			CHI_game_rule_chen_victory = yes
 			is_ai = yes
 		}
 	}
@@ -357,7 +372,7 @@ CHI_pac_won_civil_war_trigger = {
 			CHI_rca_won_civil_war_trigger = no
 		}
 		AND = {
-			CHI_gamerule_song_victory = yes
+			CHI_game_rule_song_victory = yes
 			is_ai = yes
 		}
 	}

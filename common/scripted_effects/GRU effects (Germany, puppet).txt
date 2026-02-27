@@ -54,6 +54,7 @@ german_puppet_setup = {
 		hidden_effect = {
 			set_cosmetic_tag = GRU_socialist
 			GRU_create_socialist_occupation_leader = yes
+			GRU_create_socialist_military_roster = yes
 			create_socialist_german_government = yes
 		}
 	}
@@ -332,6 +333,33 @@ GRU_create_socialist_occupation_leader = {
 	}
 }
 
+GRU_create_socialist_military_roster = {
+	EPR = {
+		GER_erich_wollenberg = {
+			if = {
+				limit = {
+					OR = {
+						is_country_leader = no
+						owner = { exists = no }
+					}
+				}
+				set_nationality = PREV.PREV
+			}
+		}
+	}
+	GER = {
+		GER_august_creutzburg = { set_nationality = PREV.PREV }
+		GER_ernst_schneller = { set_nationality = PREV.PREV }
+		GER_ernst_thalmann = { set_nationality = PREV.PREV }
+		GER_hans_kahle = { set_nationality = PREV.PREV }
+		GER_heinrich_fomferra = { set_nationality = PREV.PREV }
+		GER_ludwig_renn = { set_nationality = PREV.PREV }
+		GER_otto_braun_communist = { set_nationality = PREV.PREV }
+		GER_theodor_neubauer = { set_nationality = PREV.PREV }
+		GER_wilhelm_zaisser = { set_nationality = PREV.PREV }
+	}
+}
+
 GRU_reset_focus_tree_and_ideas = {
 	set_political_power = 0
 	set_stability = 0.3
@@ -500,9 +528,12 @@ create_socialist_german_government = {
 			civilian_economy
 
 			GRU_occupation_government
-			GRU_scars_of_2wk
 			GRU_lingering_reactionary_influence_1
 			GRU_no_standing_army
+		}
+		add_timed_idea = {
+			idea = GRU_scars_of_2wk
+			days = 730
 		}
 	}
 }
@@ -514,9 +545,12 @@ create_non_socialist_german_government = {
 			civilian_economy
 
 			GRU_occupation_government
-			GRU_scars_of_2wk
 			GRU_socialist_resistance_1
 			GRU_no_standing_army
+		}
+		add_timed_idea = {
+			idea = GRU_scars_of_2wk
+			days = 730
 		}
 	}
 	if = {

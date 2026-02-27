@@ -1152,8 +1152,9 @@ focus_tree = {
 				NOT = { has_idea = SER_konspiracija_idea }
 				SER_konspiracija_under_level_2 = yes
 			}
-			NOT = {
-				has_country_flag = SER_reassured_vasic
+			custom_override_tooltip = {
+				tooltip = SER_reassured_vasic_NOT
+				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
 		ai_will_do = { factor = 10 }
@@ -1227,8 +1228,9 @@ focus_tree = {
 				NOT = { has_idea = SER_konspiracija_idea }
 				SER_konspiracija_under_level_1 = yes
 			}
-			NOT = {
-				has_country_flag = SER_reassured_vasic
+			custom_override_tooltip = {
+				tooltip = SER_reassured_vasic_NOT
+				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
 		ai_will_do = { factor = 10 }
@@ -1317,8 +1319,9 @@ focus_tree = {
 				NOT = { has_idea = SER_konspiracija_idea }
 				SER_konspiracija_under_level_1 = yes
 			}
-			NOT = {
-				has_country_flag = SER_reassured_vasic
+			custom_override_tooltip = {
+				tooltip = SER_reassured_vasic_NOT
+				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
 		ai_will_do = { factor = 10 }
@@ -1382,8 +1385,9 @@ focus_tree = {
 				NOT = { has_idea = SER_konspiracija_idea }
 				SER_konspiracija_under_level_1 = yes
 			}
-			NOT = {
-				has_country_flag = SER_reassured_vasic
+			custom_override_tooltip = {
+				tooltip = SER_reassured_vasic_NOT
+				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
 		ai_will_do = { factor = 10 }
@@ -1422,8 +1426,9 @@ focus_tree = {
 				NOT = { has_idea = SER_konspiracija_idea }
 				SER_konspiracija_under_level_1 = yes
 			}
-			NOT = {
-				has_country_flag = SER_reassured_vasic
+			custom_override_tooltip = {
+				tooltip = SER_reassured_vasic_NOT
+				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
 		ai_will_do = { factor = 10 }
@@ -11166,7 +11171,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SER_create_the_banking_comittee
+		id = SER_create_the_banking_committee
 		icon = GFX_goal_generic_banking_legislation
 		cost = 5.00
 
@@ -11179,7 +11184,7 @@ focus_tree = {
 		available = { is_subject_of = BUL }
 		ai_will_do = { factor = 12 }
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed SER_create_the_banking_comittee"
+			log = "[GetLogRoot]: Focus Completed SER_create_the_banking_committee"
 			add_ideas = SER_central_banking_committee
 		}
 	}
@@ -11196,7 +11201,7 @@ focus_tree = {
 			focus = SER_standardize_the_dinar
 		}
 		prerequisite = {
-			focus = SER_create_the_banking_comittee
+			focus = SER_create_the_banking_committee
 		}
 		available = { is_subject_of = BUL }
 		ai_will_do = { factor = 12 }

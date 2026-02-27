@@ -66,6 +66,16 @@ on_actions = {
 						limit = { tag = UPC }
 						country_event = { id = YUN.lategame.600 days = 3 } #Cai E’s Crusade Completed
 					}
+					else_if = {
+						limit = {
+							OR = {
+								has_country_leader = { character = YUN_long_yun }
+								has_country_leader = { character = YUN_hu_ruoyu }
+								has_country_leader = { character = YUN_lu_han }
+							}
+						}
+						log = "KR_Event_Logging;YUN GAME PROGRESS - YUN NPA Reaches Beijing"
+					}
 				}
 			}
 		}

@@ -322,6 +322,27 @@ recruit_character = GER_wilhelm_list
 recruit_character = GER_maximilian_von_weichs
 recruit_character = GER_hermann_balck
 
+### Socialist Puppet Commanders ###
+recruit_character = GER_august_creutzburg
+recruit_character = GER_ernst_schneller
+recruit_character = GER_ernst_thalmann
+recruit_character = GER_hans_kahle
+recruit_character = GER_heinrich_fomferra
+recruit_character = GER_ludwig_renn
+recruit_character = GER_otto_braun_communist
+recruit_character = GER_theodor_neubauer
+recruit_character = GER_wilhelm_zaisser
+
+retire_character = GER_august_creutzburg
+retire_character = GER_ernst_schneller
+retire_character = GER_ernst_thalmann
+retire_character = GER_hans_kahle
+retire_character = GER_heinrich_fomferra
+retire_character = GER_ludwig_renn
+retire_character = GER_otto_braun_communist
+retire_character = GER_theodor_neubauer
+retire_character = GER_wilhelm_zaisser
+
 ### Admirals ###
 recruit_character = GER_karl_donitz
 recruit_character = GER_erich_raeder
@@ -1128,9 +1149,9 @@ var:economic_sphere = {
 	set_character_flag = has_custom_script_handle
 	var:desc = { set_character_name = MIT_mitteleuropa_modifier_desc }
 	var:icon = { set_character_name = "GFX_goal_GER_mitteleuropa" }
-	set_variable = { red = 0.292 }
-	set_variable = { green = 0.292 }
-	set_variable = { blue = 0.232 }
+	set_variable = { red = 0.365 }
+	set_variable = { green = 0.365 }
+	set_variable = { blue = 0.239 }
 }
 
 GER_add_to_mitteleuropa = yes #Germany needs to be the first index in the array
@@ -1163,10 +1184,6 @@ every_country = {
 		}
 	}
 	GER_add_to_mitteleuropa = yes
-}
-every_country = {
-	limit = { is_ally_with = GER }
-	add_to_tech_sharing_group = german_research
 }
 
 set_variable = { global.MIT_small_value = 1 }

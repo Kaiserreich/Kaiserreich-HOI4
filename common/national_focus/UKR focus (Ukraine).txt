@@ -2139,7 +2139,7 @@ focus_tree = {
 				country_event = { id = ukraine_events.101 days = 200 }
 			}
 		}
-		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIR_XP }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIRFORCE_BONUS }
 	}
 
 	focus = {
@@ -2197,12 +2197,18 @@ focus_tree = {
 					remove_idea = UKR_elite_army_4_lun
 					add_idea = UKR_elite_army_5_lun
 				}
+				enable_tech_forest_warfare = yes
+				custom_effect_tooltip = tooltip_white_line
+				enable_tech_marsh_warfare = yes
+				custom_effect_tooltip = tooltip_white_line
+				enable_tech_urban_warfare = yes
+				custom_effect_tooltip = tooltip_white_line
 			}
 			hidden_effect = {
 				country_event = { id = ukraine_events.103 days = 200 }
 			}
 		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER FOCUS_FILTER_RESISTANCE }
 	}
 
 	focus = {
@@ -2217,7 +2223,6 @@ focus_tree = {
 		ai_will_do = { base = 50 }
 
 		prerequisite = { focus = UKR_total_dedication }
-		prerequisite = { focus = UKR_national_mobilisation }
 
 		available = {
 			custom_override_tooltip = {
@@ -2233,7 +2238,7 @@ focus_tree = {
 				add_idea = UKR_elite_army_6_lun
 			}
 		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
 	}
 
 	focus = {
@@ -3260,9 +3265,13 @@ focus_tree = {
 		prerequisite = { focus = UKR_ncos }
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = UKR_national_defence_act_passed_tt
-				has_country_flag = UKR_national_defence_act_passed_flag
+			OR = {
+				custom_override_tooltip = {
+					tooltip = UKR_national_defence_act_passed_tt
+					has_country_flag = UKR_national_defence_act_passed_flag
+				}
+				has_completed_focus = UKR_the_young_hetman
+				has_socialist_government = yes
 			}
 		}
 		completion_reward = {
@@ -3614,7 +3623,6 @@ focus_tree = {
 
 		ai_will_do = { base = 50 }
 
-		prerequisite = { focus = UKR_review_structure }
 		prerequisite = { focus = UKR_empower_local_command }
 
 		available = {
@@ -18021,7 +18029,7 @@ focus_tree = {
 
 		available = {
 			check_variable = {
-				tooltip = UKR_democratization_not_succesful
+				tooltip = UKR_democratization_not_successful
 				UKR_reforms_passed < 2
 			}
 		}

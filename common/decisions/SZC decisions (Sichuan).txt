@@ -1551,6 +1551,13 @@ chinese_unification = {
 					GXC = { china_is_aligned_with_federalists = yes }
 					HNN = { china_is_aligned_with_federalists = yes }
 				}
+				NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_EXILE_UPC } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SZC_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_UPC } }
+				NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_EXILE_UPC } }
 			}
 		}
 

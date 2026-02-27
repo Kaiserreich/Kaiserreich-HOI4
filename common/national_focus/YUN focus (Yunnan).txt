@@ -1612,10 +1612,6 @@ focus_tree = {
 		}
 
 		prerequisite = {
-			focus = YUN_merchants_under_the_state
-		}
-
-		prerequisite = {
 			focus = YUN_guangzhou_kunming_rail
 		}
 
@@ -8012,7 +8008,7 @@ focus_tree = {
 				category = cat_production
 			}
 			custom_effect_tooltip = tooltip_white_line
-			add_research_slot_until_six = yes
+			add_research_slot_until_five = yes
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = YUN_liang_shiqiu_advisor
@@ -9013,6 +9009,8 @@ focus_tree = {
 				custom_effect_tooltip = tooltip_white_line
 				CHN_improve_military_disarray_effect = yes
 			}
+			custom_effect_tooltip = tooltip_white_line
+			YUN_improve_dian_qian_divide_effect = yes
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -10925,7 +10923,10 @@ focus_tree = {
 			change_ruling_party_popularity = yes
 			custom_effect_tooltip = tooltip_white_line
 			reduce_propaganda_decision_cost_twenty_five_percent = yes
-			custom_effect_tooltip = reduce_propaganda_decision_cost_twenty_five_percent_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_propaganda_decision_cost_tt
+				NUMBER = 25%
+			}
 			custom_effect_tooltip = tooltip_white_line
 			YUN_UPC_improve_popular_support_effect = yes
 			hidden_effect = {
@@ -11357,11 +11358,23 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_the_liangist_ideal"
-			custom_effect_tooltip = {
-				localization_key = CHN_deduct_stab_relative_to_ideology_tt
-				IDEOLOGY = social_conservative_coloured
+			if = {
+				limit = {
+					has_country_flag = YUN_UPC_satellite_election_path_flag
+				}
+				custom_effect_tooltip = {
+					localization_key = CHN_deduct_stab_relative_to_ideology_tt
+					IDEOLOGY = market_liberal_coloured
+				}
+				set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@market_liberal }
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@social_conservative }
+			else = {
+				custom_effect_tooltip = {
+					localization_key = CHN_deduct_stab_relative_to_ideology_tt
+					IDEOLOGY = social_conservative_coloured
+				}
+				set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@social_conservative }
+			}
 			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
 			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.75 }
 			clamp_temp_variable = {
@@ -11480,7 +11493,7 @@ focus_tree = {
 			add_political_power = 100
 			swap_ideas = {
 				remove_idea = YUN_UPC_popular_support_5
-				add_idea = YUN_UPC_popular_support_masters_of_the_eastern_continent
+				add_idea = YUN_UPC_popular_support_bearers_of_our_fathers_torches
 			}
 			hidden_effect = {
 				country_event = { id = YUN.endgame.464 days = 3 } #Sins of the Father
@@ -11904,11 +11917,11 @@ focus_tree = {
 				OR = {
 					AND = {
 						country_exists = CHI
-						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKMT }
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKT }
 					}
 					AND = {
 						country_exists = RKT
-						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKMT }
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_RKT }
 					}
 				}
 			}
@@ -12572,6 +12585,8 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed YUN_our_nation_supreme_and_sacred"
 			YUN_BSS_large_effect = yes
 			add_stability = 0.05
+			custom_effect_tooltip = tooltip_white_line
+			YUN_improve_dian_qian_divide_effect = yes
 			custom_effect_tooltip = tooltip_white_line
 			add_timed_idea = {
 				idea = YUN_total_adherence_to_the_party
@@ -14996,8 +15011,8 @@ focus_tree = {
 			RKT_add_zeal_small_effect = yes
 			YUN_CEC_small_effect = yes
 			if = {
-				limit = { YUN_kong_xiangxi = { is_political_advisor = yes } }
-				custom_effect_tooltip = YUN_chen_guofu_will_be_helpful_tt
+				limit = { YUN_chen_guofu = { is_political_advisor = yes } }
+				custom_effect_tooltip = YUN_chen_guofu_was_helpful_tt
 				custom_effect_tooltip = tooltip_white_line
 				add_timed_idea = {
 					idea = YUN_union_of_class_and_society_idea
@@ -15005,7 +15020,7 @@ focus_tree = {
 				}
 			}
 			else = {
-				custom_effect_tooltip = YUN_chen_guofu_was_helpful_tt
+				custom_effect_tooltip = YUN_chen_guofu_will_be_helpful_tt
 				custom_effect_tooltip = tooltip_white_line
 				add_timed_idea = {
 					idea = YUN_union_of_class_and_society_idea
@@ -15425,7 +15440,7 @@ focus_tree = {
 	focus = {
 		id = YUN_create_the_chinese_engineering_society
 		icon = GFX_focus_generic_public_works
-		cost = 6
+		cost = 8
 
 		relative_position_id = YUN_expand_the_central_banking_system
 		x = 0
@@ -15454,6 +15469,9 @@ focus_tree = {
 				}
 				add_extra_state_shared_building_slots = 1
 			}
+			custom_effect_tooltip = tooltip_white_line
+			add_political_power = 100
+			china_generic_land_reform_setup = yes
 			hidden_effect = {
 				country_event = { id = YUN.endgame.104 days = 3 } #Land Reform
 			}
@@ -15625,7 +15643,7 @@ focus_tree = {
 			base = 100
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LIFU_AUTDEM }
+				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_AUTDEM }
 			}
 		}
 		completion_reward = {
@@ -15766,7 +15784,7 @@ focus_tree = {
 			base = 100
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_JITAO_AUTDEM }
+				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_JITAO_PATAUT }
 			}
 		}
 		completion_reward = {
@@ -16803,7 +16821,7 @@ focus_tree = {
 		available = {
 			OR = {
 				social_democrat > 0.20
-				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_PEOPLES_PATAUT }
+				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_PEOPLES_YINGQIN_PATAUT }
 			}
 		}
 
@@ -16820,11 +16838,11 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_PEOPLES_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_REVOLUTIONARY_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LUCKY_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LIBERAL_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_BLUE_SHIRT_PATAUT }
+					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_PEOPLES_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_REVOLUTIONARY_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LUCKY_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LIBERAL_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_BLUE_SHIRT_YINGQIN_PATAUT }
 				}
 			}
 		}
@@ -17155,6 +17173,8 @@ focus_tree = {
 				category = air_doctrine
 				uses = 3
 			}
+			custom_effect_tooltip = tooltip_white_line
+			remove_ideas = YUN_political_dysfunctionalism_2
 			hidden_effect = {
 				country_event = { id = YUN.endgame.041 days = 14 } #The Neo-Confucian Society
 			}
@@ -17186,7 +17206,7 @@ focus_tree = {
 		available = {
 			OR = {
 				authoritarian_democrat > 0.20
-				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_REVOLUTIONARY_PATAUT }
+				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_REVOLUTIONARY_YINGQIN_PATAUT }
 			}
 		}
 
@@ -17196,11 +17216,11 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_PEOPLES_PATAUT }
-					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_REVOLUTIONARY_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LUCKY_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LIBERAL_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_BLUE_SHIRT_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_PEOPLES_YINGQIN_PATAUT }
+					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_REVOLUTIONARY_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LUCKY_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LIBERAL_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_BLUE_SHIRT_YINGQIN_PATAUT }
 				}
 			}
 		}
@@ -17379,11 +17399,11 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_PEOPLES_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_REVOLUTIONARY_PATAUT }
-					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LUCKY_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LIBERAL_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_BLUE_SHIRT_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_PEOPLES_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_REVOLUTIONARY_YINGQIN_PATAUT }
+					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LUCKY_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LIBERAL_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_BLUE_SHIRT_YINGQIN_PATAUT }
 				}
 			}
 		}
@@ -17518,7 +17538,7 @@ focus_tree = {
 		available = {
 			OR = {
 				market_liberal > 0.20
-				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LIBERAL_PATAUT }
+				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LIBERAL_YINGQIN_PATAUT }
 			}
 		}
 
@@ -17535,11 +17555,11 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_PEOPLES_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_REVOLUTIONARY_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LUCKY_PATAUT }
-					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LIBERAL_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_BLUE_SHIRT_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_PEOPLES_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_REVOLUTIONARY_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LUCKY_YINGQIN_PATAUT }
+					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LIBERAL_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_BLUE_SHIRT_YINGQIN_PATAUT }
 				}
 			}
 		}
@@ -17747,7 +17767,7 @@ focus_tree = {
 		available = {
 			OR = {
 				national_populist > 0.20
-				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_BLUE_SHIRT_PATAUT }
+				has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_BLUE_SHIRT_YINGQIN_PATAUT }
 			}
 		}
 
@@ -17764,11 +17784,11 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_PEOPLES_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_REVOLUTIONARY_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LUCKY_PATAUT }
-					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_LIBERAL_PATAUT }
-					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_YINGQIN_BLUE_SHIRT_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_PEOPLES_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_REVOLUTIONARY_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LUCKY_YINGQIN_PATAUT }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_LIBERAL_YINGQIN_PATAUT }
+					#has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_BLUE_SHIRT_YINGQIN_PATAUT }
 				}
 			}
 		}
@@ -18366,8 +18386,10 @@ focus_tree = {
 						SHX = { exists = no }
 					}
 					custom_effect_tooltip = tooltip_white_line
-					SHX_shang_zhen = { custom_effect_tooltip = character_becomes_a_general }
-					hidden_effect = { SHX = { SHX_shang_zhen = { CHI_recruit_shang_zhen_effect = yes } } }
+					SHX = {
+						SHX_shang_zhen = { custom_effect_tooltip = character_becomes_a_general }
+						hidden_effect = { SHX_shang_zhen = { CHI_recruit_shang_zhen_effect = yes } }
+					}
 				}
 				if = {
 					limit = {
@@ -18375,20 +18397,26 @@ focus_tree = {
 						SHX = { exists = no }
 					}
 					custom_effect_tooltip = tooltip_white_line
-					SHX_fu_zuoyi = { custom_effect_tooltip = character_becomes_a_general }
-					hidden_effect = { SHX = { SHX_fu_zuoyi = { CHI_recruit_shang_zhen_effect = yes } } }
+					SHX = {
+						SHX_fu_zuoyi = { custom_effect_tooltip = character_becomes_a_general }
+						hidden_effect = { SHX_fu_zuoyi = { CHI_recruit_fu_zuoyi_effect = yes } }
+					}
 				}
 				if = {
 					limit = { NOT = { has_character = GXC_liu_zhenhuan } }
 					custom_effect_tooltip = tooltip_white_line
-					GXC_liu_zhenhuan = { custom_effect_tooltip = character_becomes_a_general }
-					hidden_effect = { GXC = { GXC_liu_zhenhuan = { CHN_recruit_character_effect = yes } } }
+					GXC = {
+						GXC_liu_zhenhuan = { custom_effect_tooltip = character_becomes_a_general }
+						hidden_effect = { GXC_liu_zhenhuan = { CHN_recruit_character_effect = yes } }
+					}
 				}
 				if = {
 					limit = { NOT = { has_character = ANQ_sun_liren } }
 					custom_effect_tooltip = tooltip_white_line
-					ANQ_sun_liren = { custom_effect_tooltip = character_becomes_a_general }
-					hidden_effect = { ANQ = { ANQ_sun_liren = { CHI_recruit_sun_liren_effect = yes } } }
+					ANQ = {
+						ANQ_sun_liren = { custom_effect_tooltip = character_becomes_a_general }
+						hidden_effect = { ANQ_sun_liren = { CHI_recruit_sun_liren_effect = yes } }
+					}
 				}
 			}
 			else = {
@@ -18397,24 +18425,30 @@ focus_tree = {
 						NOT = { has_character = GXC_zhou_shidi }
 					}
 					custom_effect_tooltip = tooltip_white_line
-					GXC_zhou_shidi = { custom_effect_tooltip = character_becomes_a_general }
-					hidden_effect = { GXC = { GXC_zhou_shidi = { CHI_recruit_sun_liren_effect = yes } } }
+					GXC = {
+						GXC_zhou_shidi = { custom_effect_tooltip = character_becomes_a_general }
+						hidden_effect = { GXC_zhou_shidi = { CHN_recruit_character_effect = yes } }
+					}
 				}
 				if = {
 					limit = {
 						NOT = { has_character = GXC_ye_jizhuang }
 					}
 					custom_effect_tooltip = tooltip_white_line
-					GXC_ye_jizhuang = { custom_effect_tooltip = character_becomes_a_general }
-					hidden_effect = { GXC = { GXC_ye_jizhuang = { CHI_recruit_sun_liren_effect = yes } } }
+					GXC = {
+						GXC_ye_jizhuang = { custom_effect_tooltip = character_becomes_a_general }
+						hidden_effect = { GXC_ye_jizhuang = { CHN_recruit_character_effect = yes } }
+					}
 				}
 				if = {
 					limit = {
 						NOT = { has_character = GXC_gu_dacun }
 					}
 					custom_effect_tooltip = tooltip_white_line
-					GXC_gu_dacun = { custom_effect_tooltip = character_becomes_a_general }
-					hidden_effect = { GXC = { GXC_gu_dacun = { CHI_recruit_sun_liren_effect = yes } } }
+					GXC = {
+						GXC_gu_dacun = { custom_effect_tooltip = character_becomes_a_general }
+						hidden_effect = { GXC_gu_dacun = { CHN_recruit_character_effect = yes } }
+					}
 				}
 				if = {
 					limit = {
@@ -18422,8 +18456,10 @@ focus_tree = {
 						HNN = { exists = no }
 					}
 					custom_effect_tooltip = tooltip_white_line
-					HNN_he_long = { custom_effect_tooltip = character_becomes_a_general }
-					hidden_effect = { HNN = { HNN_he_long = { CHI_recruit_sun_liren_effect = yes } } }
+					HNN = {
+						HNN_he_long = { custom_effect_tooltip = character_becomes_a_general }
+						hidden_effect = { HNN_he_long = { CHN_recruit_character_effect = yes } }
+					}
 				}
 				if = {
 					limit = {
@@ -18431,8 +18467,10 @@ focus_tree = {
 						HNN = { exists = no }
 					}
 					custom_effect_tooltip = tooltip_white_line
-					HNN_peng_dehuai = { custom_effect_tooltip = character_becomes_a_general }
-					hidden_effect = { HNN = { HNN_peng_dehuai = { CHI_recruit_sun_liren_effect = yes } } }
+					HNN = {
+						HNN_peng_dehuai = { custom_effect_tooltip = character_becomes_a_general }
+						hidden_effect = { HNN_peng_dehuai = { CHN_recruit_character_effect = yes } }
+					}
 				}
 			}
 		}
@@ -19581,7 +19619,17 @@ focus_tree = {
 		relative_position_id = YUN_order_in_guizhou
 		x = -3
 		y = -4
-		ai_will_do = { base = 100 }
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 5
+				NPA = {
+					NOT = { is_ally_with = ROOT }
+					exists = yes
+				}
+				has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NPA }
+			}
+		}
 		allow_branch = {
 			OR = {
 				YUN_is_phase_3_trigger = yes
@@ -19621,7 +19669,17 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUN_to_save_yunnan_from_itself
 		prerequisite = { focus = YUN_to_save_yunnan_from_itself }
-		ai_will_do = { base = 100 }
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 5
+				NPA = {
+					NOT = { is_ally_with = ROOT }
+					exists = yes
+				}
+				has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NPA }
+			}
+		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_retreating_into_isolation"
 			YUN_isolation_effect = yes
@@ -19815,7 +19873,17 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUN_retreating_into_isolation
 		prerequisite = { focus = YUN_retreating_into_isolation }
-		ai_will_do = { base = 100 }
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 5
+				NPA = {
+					NOT = { is_ally_with = ROOT }
+					exists = yes
+				}
+				has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NPA }
+			}
+		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_handling_external_affairs"
 			add_war_support = 0.05
@@ -19834,6 +19902,15 @@ focus_tree = {
 			}
 			else = {
 				unlock_decision_tooltip = YUN_acknowledge_zhili_authority_decision
+			}
+			if = {
+				limit = {
+					NPA = {
+						exists = yes
+						NOT = { is_ally_with = ROOT }
+					}
+				}
+				unlock_decision_tooltip = CHN_join_NPA_decision
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -21260,7 +21337,10 @@ focus_tree = {
 			}
 			custom_effect_tooltip = tooltip_white_line
 			YUN = { set_variable = { generic_raise_stability_decision_cost = 75 } }
-			custom_effect_tooltip = reduce_stability_decision_cost_twenty_five_percent_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_stability_decision_cost_tt
+				NUMBER = 25%
+			}
 			custom_effect_tooltip = tooltip_white_line
 			YUN = {
 				YUN_kong_xiangxi = { CHN_recruit_character_effect = yes }
@@ -21381,7 +21461,10 @@ focus_tree = {
 			}
 			custom_effect_tooltip = tooltip_white_line
 			reduce_propaganda_decision_cost_twenty_five_percent = yes
-			custom_effect_tooltip = reduce_propaganda_decision_cost_twenty_five_percent_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_propaganda_decision_cost_tt
+				NUMBER = 25%
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}

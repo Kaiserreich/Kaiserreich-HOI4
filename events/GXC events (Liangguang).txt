@@ -92,21 +92,42 @@ country_event = { #Crumbling Hegemonies in China
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.001 option GXC.introgame.001.a"
 		name = GXC.introgame.001.a #Reinforce Liu Zhilu in Guilin in case Sun and Shen get any funny ideas.
-		ai_chance = { base = 30 }
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM } }
+			}
+		}
 		599 = { GXC_introgame_NPA_add_state_strength_effect = yes } #Guilin
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.001 option GXC.introgame.001.b"
 		name = GXC.introgame.001.b #Can we even trust General Liu to manage Guilin anymore?
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM } }
+			}
+		}
 		599 = { GXC_introgame_KMT_add_state_strength_effect = yes } #Guilin
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.001 option GXC.introgame.001.c"
 		name = GXC.introgame.001.c #Our tacit alliance with Governor Zhao of Hunan keeps Sun at bay.
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM } }
+			}
+		}
 		599 = { GXC_introgame_UPC_add_state_strength_effect = yes } #Guilin
 	}
 }
@@ -122,21 +143,42 @@ country_event = { #Warring Factions in Eastern Guangdong
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.002 option GXC.introgame.002.a"
 		name = GXC.introgame.002.a #Lu Yuguang has arrived in Shaoguan to soothe tensions with Shen.
-		ai_chance = { base = 30 }
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM } }
+			}
+		}
 		800 = { GXC_introgame_NPA_add_state_strength_effect = yes } #Shaoguan
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.002 option GXC.introgame.002.b"
 		name = GXC.introgame.002.b #Chen Jiongming tours the southeast to rally Yue Army loyalists.
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM } }
+			}
+		}
 		800 = { GXC_introgame_UPC_add_state_strength_effect = yes } #Shaoguan
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.002 option GXC.introgame.002.c"
 		name = GXC.introgame.002.c #Peng Pai sends messengers to MinGan to coordinate operations.
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM } }
+			}
+		}
 		800 = { GXC_introgame_KMT_add_state_strength_effect = yes } #Shaoguan
 	}
 }
@@ -158,14 +200,26 @@ country_event = { #Anti-Concessionist Violence in Canton
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.003 option GXC.introgame.003.a"
 		name = GXC.introgame.003.a #The radicals’ demands for armed revolution inflames the masses.
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
+			}
+		}
 		592 = { GXC_introgame_KMT_add_state_strength_effect = yes } #Guangzhou
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.003 option GXC.introgame.003.b"
 		name = GXC.introgame.003.b #The reformers’ calls for measured changes take root among the protesters.
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
+			}
+		}
 		592 = { GXC_introgame_UPC_add_state_strength_effect = yes } #Guangzhou
 	}
 
@@ -191,14 +245,26 @@ country_event = { #Shifting Loyalties in Southern Liangguang
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.004 option GXC.introgame.004.a"
 		name = GXC.introgame.004.a #Amid uncertain gales, the petty warlords prize stability.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
+			}
+		}
 		591 = { GXC_introgame_NPA_add_state_strength_effect = yes } #Haikou
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.004 option GXC.introgame.004.b"
 		name = GXC.introgame.004.b #The reformers’ calls for measured changes take root among the protesters.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
+			}
+		}
 		591 = { GXC_introgame_UPC_add_state_strength_effect = yes } #Haikou
 	}
 }
@@ -214,14 +280,26 @@ country_event = { #The Baise Borderlands
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.005 option GXC.introgame.005.a"
 		name = GXC.introgame.005.a #A newer, younger garrison commander is needed in Baise.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
+			}
+		}
 		1054 = { GXC_introgame_NPA_add_state_strength_effect = yes } #Baise
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.005 option GXC.introgame.005.b"
 		name = GXC.introgame.005.b #New Guangxi Generals have been taking careful notes each time.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
+			}
+		}
 		1054 = { GXC_introgame_KMT_add_state_strength_effect = yes } #Baise
 	}
 }
@@ -237,21 +315,42 @@ country_event = { #The Young Guangxi War Council
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.006 option GXC.introgame.006.a"
 		name = GXC.introgame.006.a #The council decides a show of strength will keep external problems away from Liangguang.
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM } }
+			}
+		}
 		594 = { GXC_introgame_KMT_add_state_strength_effect = yes } #Nanning
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.006 option GXC.introgame.006.b"
 		name = GXC.introgame.006.b #The council decides a cohesive message of anti-concessionism will win back defectors.
-		ai_chance = { base = 30 }
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM } }
+			}
+		}
 		594 = { GXC_introgame_NPA_add_state_strength_effect = yes } #Nanning
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.006 option GXC.introgame.006.c"
 		name = GXC.introgame.006.c #More councils and assemblies should be called to navigate this crisis.
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM } }
+			}
+		}
 		594 = { GXC_introgame_UPC_add_state_strength_effect = yes } #Nanning
 	}
 }
@@ -267,14 +366,26 @@ country_event = { #Black Monday Devastates Canton
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.007 option GXC.introgame.007.a"
 		name = GXC.introgame.007.a #The Merchants Corps will simply have to step up and defend the city.
-		ai_chance = { base = 55 }
+		ai_chance = {
+			base = 55
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
+			}
+		}
 		592 = { GXC_introgame_KMT_add_state_strength_effect = yes } #Guangzhou
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.007 option GXC.introgame.007.b"
 		name = GXC.introgame.007.b #The Merchants will need to cough up money for the common good.
-		ai_chance = { base = 45 }
+		ai_chance = {
+			base = 45
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
+			}
+		}
 		592 = { GXC_introgame_NPA_add_state_strength_effect = yes } #Guangzhou
 	}
 
@@ -301,14 +412,26 @@ country_event = { #The Smiling Tiger Falls
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.008 option GXC.introgame.008.a"
 		name = GXC.introgame.008.a #Shen Hongying reasserts his control during a conference in Shaoguan.
-		ai_chance = { base = 45 }
+		ai_chance = {
+			base = 45
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
+			}
+		}
 		800 = { GXC_introgame_NPA_add_state_strength_effect = yes } #Shaoguan
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.008 option GXC.introgame.008.b"
 		name = GXC.introgame.008.b #Ye Ju brokers an agreement with Hong Zhaolin on Chen Jiongming’s behalf.
-		ai_chance = { base = 55 }
+		ai_chance = {
+			base = 55
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
+			}
+		}
 		800 = { GXC_introgame_UPC_add_state_strength_effect = yes } #Shaoguan
 	}
 }
@@ -331,14 +454,26 @@ country_event = { #A War on Two Fronts
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.009 option GXC.introgame.009.a"
 		name = GXC.introgame.009.a #Guangdong is less stable, wealthier, and needs reinforcements.
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
+			}
+		}
 		594 = { GXC_introgame_KMT_add_state_strength_effect = yes } #Nanning
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.009 option GXC.introgame.009.b"
 		name = GXC.introgame.009.b #To lose Guangxi is to lose the heart of the Old Guangxi Clique.
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
+			}
+		}
 		592 = { GXC_introgame_UPC_add_state_strength_effect = yes } #Guangzhou
 	}
 }
@@ -353,30 +488,12 @@ country_event = { #Turning Point in Guangzhou
 
 	immediate = {
 		#Mainly for ease of debugging
-		if = {
-			limit = { has_country_flag = GXC_introminigame_choose_KMT_side_flag }
-			clr_country_flag = GXC_introminigame_choose_KMT_side_flag
-		}
-		if = {
-			limit = { has_country_flag = GXC_introminigame_choose_UPC_side_flag }
-			clr_country_flag = GXC_introminigame_choose_UPC_side_flag
-		}
-		if = {
-			limit = { has_country_flag = GXC_introminigame_choose_NPA_side_flag }
-			clr_country_flag = GXC_introminigame_choose_NPA_side_flag
-		}
-		if = {
-			limit = { has_country_flag = GXC_introminigame_KMT_eliminated_flag }
-			clr_country_flag = GXC_introminigame_KMT_eliminated_flag
-		}
-		if = {
-			limit = { has_country_flag = GXC_introminigame_UPC_eliminated_flag }
-			clr_country_flag = GXC_introminigame_UPC_eliminated_flag
-		}
-		if = {
-			limit = { has_country_flag = GXC_introminigame_NPA_eliminated_flag }
-			clr_country_flag = GXC_introminigame_NPA_eliminated_flag
-		}
+		clr_country_flag = GXC_introminigame_choose_KMT_side_flag
+		clr_country_flag = GXC_introminigame_choose_UPC_side_flag
+		clr_country_flag = GXC_introminigame_choose_NPA_side_flag
+		clr_country_flag = GXC_introminigame_KMT_eliminated_flag
+		clr_country_flag = GXC_introminigame_UPC_eliminated_flag
+		clr_country_flag = GXC_introminigame_NPA_eliminated_flag
 	}
 
 	option = {
@@ -410,11 +527,8 @@ country_event = { #Turning Point in Guangzhou
 
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
-					#has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
-					has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
-				}
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM } }
 			}
 		}
 		custom_effect_tooltip = GXC.introgame.010_UPC_tt
@@ -452,11 +566,8 @@ country_event = { #Turning Point in Guangzhou
 
 			modifier = {
 				factor = 0
-				OR = {
-					#has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
-					has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
-					has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
-				}
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM } }
 			}
 		}
 		custom_effect_tooltip = GXC.introgame.010_NPA_tt
@@ -494,11 +605,8 @@ country_event = { #Turning Point in Guangzhou
 
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
-					has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
-					#has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
-				}
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM } }
 			}
 		}
 		custom_effect_tooltip = GXC.introgame.010_KMT_tt
@@ -528,7 +636,18 @@ country_event = { #Turning Point in Guangzhou
 country_event = { #Our Interests in Guangzhou
 	id = GXC.introgame.050
 	title = GXC.introgame.050.t
-	desc = GXC.introgame.050.d
+	desc = {
+		text = GXC.introgame.050.d.china
+		trigger = {
+			tag = FNG
+		}
+	}
+	desc = {
+		text = GXC.introgame.050.d.external
+		trigger = {
+			NOT = { tag = FNG } #Japan and LEC
+		}
+	}
 	picture = GFX_report_event_GXC_chen_lianbo_1
 
 	is_triggered_only = yes #Triggered by [GXC History FIle] for JAP, FNG, LEC
@@ -601,7 +720,20 @@ country_event = { #[FROM.GetNameDefCap] Supports Chen Lianbo
 country_event = { #Shen Hongying, Governor of Guangdong?
 	id = GXC.introgame.055
 	title = GXC.introgame.055.t
-	desc = GXC.introgame.055.d
+	desc = {
+		text = GXC.introgame.055.d.china
+		trigger = {
+			NOT = {
+				tag = GEA
+			}
+		}
+	}
+	desc = {
+		text = GXC.introgame.055.d.external
+		trigger = {
+			tag = GEA
+		}
+	}
 	picture = GFX_report_event_GXC_shen_hongying
 
 	is_triggered_only = yes #Triggered by [GXC History FIle] for GEA, QIE, LEP
@@ -1073,7 +1205,14 @@ country_event = { #A Shared Future for the Two Guangs
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.100 option GXC.introgame.100.a"
 		name = GXC.introgame.100.a #The future belongs to the heirs of Lu Rongting!
-		ai_chance = { base = 30 }
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM } }
+			}
+		}
 		592 = { GXC_introgame_NPA_add_state_strength_effect = yes } #Guangzhou
 		594 = { GXC_introgame_NPA_add_state_strength_effect = yes } #Nanning
 	}
@@ -1081,14 +1220,28 @@ country_event = { #A Shared Future for the Two Guangs
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.100 option GXC.introgame.100.b"
 		name = GXC.introgame.100.b #Sun Yat-sen’s revolution continues to burn bright!
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM } }
+			}
+		}
 		592 = { GXC_introgame_KMT_add_state_strength_effect = yes } #Guangzhou
 		594 = { GXC_introgame_KMT_add_state_strength_effect = yes } #Nanning
 	}
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.100 option GXC.introgame.100.c"
 		name = GXC.introgame.100.c #It is time for Chen Jiongming to get a fair chance to rule.
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM } }
+			}
+		}
 		592 = { GXC_introgame_UPC_add_state_strength_effect = yes } #Guangzhou
 		594 = { GXC_introgame_UPC_add_state_strength_effect = yes } #Nanning
 	}
@@ -2453,7 +2606,26 @@ country_event = { #Clearing the Banditry
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.011 option GXC.earlygame.011.a"
 		name = GXC.earlygame.011.a #Provide Clemency
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_stability = 0.03
 		army_experience = 30
 		if = {
@@ -2477,7 +2649,25 @@ country_event = { #Clearing the Banditry
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.011 option GXC.earlygame.011.b"
 		name = GXC.earlygame.011.b #Acquire new recruits
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_political_power = 25
 		add_equipment_to_stockpile = {
 			type = infantry_equipment
@@ -2505,7 +2695,25 @@ country_event = { #Clearing the Banditry
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.011 option GXC.earlygame.011.c"
 		name = GXC.earlygame.011.c #No mercy for bandits
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
+		}
 		add_war_support = 0.05
 		if = {
 			limit = {
@@ -2548,7 +2756,16 @@ country_event = { #The Cadet's new Curriculum
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.012 option GXC.earlygame.012.a"
 		name = GXC.earlygame.012.a #Expand the Military Portion
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		army_experience = 30
 		if = {
 			limit = {
@@ -2571,7 +2788,17 @@ country_event = { #The Cadet's new Curriculum
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.012 option GXC.earlygame.012.b"
 		name = GXC.earlygame.012.b #Include political indoctrination
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		add_stability = 0.03
 		if = {
 			limit = {
@@ -2626,7 +2853,17 @@ country_event = { #Our Prospective Advisors
 		log = "[GetLogInfo]: event GXC.earlygame.021 option GXC.earlygame.021.a"
 		name = GXC.earlygame.021.a #Go with the Steadfast Germans
 		trigger = { NOT = { has_war_with = GER } }
-		ai_chance = { base = 40 }
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		add_ideas = GXC_german_advisors_idea
 		if = {
 			limit = { china_is_aligned_with_federalists = yes }
@@ -2640,7 +2877,17 @@ country_event = { #Our Prospective Advisors
 		log = "[GetLogInfo]: event GXC.earlygame.021 option GXC.earlygame.021.b"
 		name = GXC.earlygame.021.b #Acquire Japanese Expertise
 		trigger = { NOT = { has_war_with = JAP } }
-		ai_chance = { base = 40 }
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		add_ideas = GXC_japanese_advisors_idea
 		if = {
 			limit = { china_is_aligned_with_federalists = yes }
@@ -2653,7 +2900,26 @@ country_event = { #Our Prospective Advisors
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.021 option GXC.earlygame.021.c"
 		name = GXC.earlygame.021.c #The Anglo-Americans have precedence
-		ai_chance = { base = 20 }
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_ideas = GXC_anglo_american_advisors_idea
 		if = {
 			limit = { china_is_aligned_with_federalists = yes }
@@ -2922,7 +3188,17 @@ country_event = { #Foreign Arms Licensing
 		trigger = {
 			NOT = { has_war_with = GER }
 		}
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		add_equipment_to_stockpile = {
 			type = infantry_equipment
 			amount = 1000
@@ -2944,7 +3220,17 @@ country_event = { #Foreign Arms Licensing
 		trigger = {
 			NOT = { has_war_with = JAP }
 		}
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		add_equipment_to_stockpile = {
 			type = infantry_equipment
 			amount = 1000
@@ -2969,7 +3255,26 @@ country_event = { #Foreign Arms Licensing
 				NOT = { has_war_with = 361.owner } #Maryland
 			}
 		}
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		if = {
 			limit = { NOT = { has_war_with = 361.owner } }
 			add_equipment_to_stockpile = {
@@ -3024,7 +3329,25 @@ country_event = { #Our Domestic Daredevils
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.042 option GXC.earlygame.042.a"
 		name = GXC.earlygame.042.a #Stricter Discipline
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
+		}
 		air_experience = 50
 		if = {
 			limit = { china_is_aligned_with_right_kmt = yes }
@@ -3049,7 +3372,17 @@ country_event = { #Our Domestic Daredevils
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.042 option GXC.earlygame.042.b"
 		name = GXC.earlygame.042.b #Start from Scratch
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		add_doctrine_cost_reduction = {
 			name = GXC.earlygame.042.t
 			cost_reduction = 0.95
@@ -3091,7 +3424,17 @@ country_event = { #Liangguang Air Force Program
 		trigger = {
 			NOT = { has_war_with = GER }
 		}
-		ai_chance = { base = 40 }
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		add_tech_bonus = {
 			name = GXC.earlygame.043.t
 			bonus = 0.5
@@ -3112,7 +3455,17 @@ country_event = { #Liangguang Air Force Program
 		trigger = {
 			NOT = { has_war_with = JAP }
 		}
-		ai_chance = { base = 40 }
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		add_doctrine_cost_reduction = {
 			name = GXC.earlygame.043.t
 			cost_reduction = 0.5
@@ -3136,7 +3489,26 @@ country_event = { #Liangguang Air Force Program
 				NOT = { has_war_with = USA }
 			}
 		}
-		ai_chance = { base = 20 }
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_doctrine_cost_reduction = {
 			name = GXC.earlygame.043.t
 			cost_reduction = 0.25
@@ -3176,7 +3548,17 @@ country_event = { #Patrolling the South China Sea
 		trigger = {
 			NOT = { has_war_with = GER }
 		}
-		ai_chance = { base = 40 }
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		add_tech_bonus = {
 			name = GXC.earlygame.044.t
 			bonus = 1
@@ -3208,7 +3590,17 @@ country_event = { #Patrolling the South China Sea
 		trigger = {
 			NOT = { has_war_with = JAP }
 		}
-		ai_chance = { base = 40 }
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		add_tech_bonus = {
 			name = GXC.earlygame.044.t
 			bonus = 1.0
@@ -3243,7 +3635,26 @@ country_event = { #Patrolling the South China Sea
 				NOT = { has_war_with = USA }
 			}
 		}
-		ai_chance = { base = 20 }
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_tech_bonus = {
 			name = GXC.earlygame.044.t
 			bonus = 1
@@ -4045,13 +4456,30 @@ country_event = { #Role of the Zizhijun Model
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.116 option GXC.earlygame.116.a"
 		name = GXC.earlygame.116.a #Mobility and bravery can beat all odds!
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		GXC_SAF_large_effect = yes
 	}
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.116 option GXC.earlygame.116.b"
 		name = GXC.earlygame.116.b #The Model Battalion shall be retained as a shock unit.
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		GXC_YGF_medium_effect = yes
 		GXC_lu_yuguang = {
 			gain_xp = 500
@@ -4074,14 +4502,41 @@ country_event = { #Autonomy at Home, Autonomy in the Army
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.117 option GXC.earlygame.117.a"
 		name = GXC.earlygame.117.a #Military Provincialism is at least better than County Regionalism.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		GXC_YGF_medium_effect = yes
 		GXC_CMC_medium_effect = yes
 	}
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.117 option GXC.earlygame.117.b"
 		name = GXC.earlygame.117.b #Consolidation will only hurt matters.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+
+			}
+		}
 		GXC_SAF_medium_effect = yes
 		GXC_GIM_medium_effect = yes
 	}
@@ -4100,13 +4555,41 @@ country_event = { #Reconstituting the German Military Mission
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.121 option GXC.earlygame.121.a"
 		name = GXC.earlygame.121.a #A fruitful partnership between Eagle and Dragon!
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		GXC_SAF_large_effect = yes
 	}
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.121 option GXC.earlygame.121.b"
 		name = GXC.earlygame.121.b #Ensure they do not become too comfortable.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		GXC_YGF_medium_effect = yes
 		GXC_CMC_small_effect = yes
 		GXC_PSC_small_effect = yes
@@ -4124,13 +4607,40 @@ country_event = { #Auftragstaktik, and Military-Industrial Victory
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.122 option GXC.earlygame.122.a"
 		name = GXC.earlygame.122.a #The Prussia of the East!
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		GXC_SAF_large_effect = yes
 	}
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.122 option GXC.earlygame.122.b"
 		name = GXC.earlygame.122.b #We need not kowtow to them either.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		GXC_YGF_medium_effect = yes
 		GXC_CMC_small_effect = yes
 		GXC_PSC_small_effect = yes
@@ -4153,7 +4663,16 @@ country_event = { #Rice Glut
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.200 option GXC.earlygame.200.a"
 		name = GXC.earlygame.200.a #We must grease the wheels of progress!
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		add_political_power = -30
 		if = {
 			limit = { china_is_aligned_with_kmt = yes }
@@ -4181,7 +4700,17 @@ country_event = { #Rice Glut
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.200 option GXC.earlygame.200.b"
 		name = GXC.earlygame.200.b #Change is coming, but we must conserve our political capital.
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		add_political_power = 15
 		if = {
 			limit = { china_is_aligned_with_kmt = yes }
@@ -4224,7 +4753,16 @@ country_event = { #The Strife of Guangzhou
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.201 option GXC.earlygame.201.a"
 		name = GXC.earlygame.201.a #A careful partnership with cooperation with industry leaders, financiers, and traders.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		add_stability = 0.05
 		if = {
 			limit = { china_is_aligned_with_kmt = yes }
@@ -4243,7 +4781,17 @@ country_event = { #The Strife of Guangzhou
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.201 option GXC.earlygame.201.b"
 		name = GXC.earlygame.201.b #A rousing nationalist program aimed at lessening Liangguang's dependence on outsiders.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		add_war_support = 0.05
 		if = {
 			limit = { china_is_aligned_with_kmt = yes }
@@ -4285,7 +4833,26 @@ country_event = { #Youth Education Program
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.202 option GXC.earlygame.202.a"
 		name = GXC.earlygame.202.a
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		if = {
 			limit = {
 				china_is_aligned_with_kmt = yes
@@ -4307,7 +4874,16 @@ country_event = { #Youth Education Program
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.202 option GXC.earlygame.202.b"
 		name = GXC.earlygame.202.b
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		if = {
 			limit = {
 				china_is_aligned_with_kmt = yes
@@ -4338,7 +4914,16 @@ country_event = { #The Tax Incentive
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.203 option GXC.earlygame.203.a"
 		name = GXC.earlygame.203.a
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		add_political_power = 25
 		add_stability = -0.03
 		if = {
@@ -4362,7 +4947,26 @@ country_event = { #The Tax Incentive
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.203 option GXC.earlygame.203.b"
 		name = GXC.earlygame.203.b
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = AGJ }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_political_power = 10
 		add_war_support = -0.02
 		if = {
@@ -4410,7 +5014,26 @@ country_event = { #Road Building Competitions
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.221 option GXC.earlygame.221.a"
 		name = GXC.earlygame.221.a #We will improve conditions for those poor workers!
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_political_power = -30
 		add_war_support = 0.03
 		if = {
@@ -4436,7 +5059,16 @@ country_event = { #Road Building Competitions
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.221 option GXC.earlygame.221.b"
 		name = GXC.earlygame.221.b #Those men should be thankful to receive any work at all!
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		add_political_power = 10
 		if = {
 			limit = {
@@ -4469,7 +5101,26 @@ country_event = { #Granary System
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.222 option GXC.earlygame.222.a"
 		name = GXC.earlygame.222.a #We will begin improvements on the Granary System immediately.
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_political_power = -30
 		add_stability = 0.03
 		if = {
@@ -4494,7 +5145,16 @@ country_event = { #Granary System
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.222 option GXC.earlygame.222.b"
 		name = GXC.earlygame.222.b #The system is ancient, we should allocate resources to better projects.
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		add_political_power = 10
 		if = {
 			limit = {
@@ -4526,7 +5186,16 @@ country_event = { #Sugar Industry Schemes
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.223 option GXC.earlygame.223.a"
 		name = GXC.earlygame.223.a #Is the sky blue?
-		ai_chance = { base = 75 }
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		add_political_power = 25
 		if = {
 			limit = {
@@ -4550,7 +5219,17 @@ country_event = { #Sugar Industry Schemes
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.223 option GXC.earlygame.223.b"
 		name = GXC.earlygame.223.b #Even I have my limits...
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		add_political_power = 10
 		if = {
 			limit = {
@@ -4594,7 +5273,30 @@ country_event = { #Dealing with the Dealing with the King of Peasants
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.224 option GXC.earlygame.224.a"
 		name = GXC.earlygame.224.a #We can come to an arrangement.
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_political_power = 25
 		if = {
 			limit = {
@@ -4728,7 +5430,25 @@ country_event = { #Merchant Affairs
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.242 option GXC.earlygame.242.a"
 		name = GXC.earlygame.242.a #Chen Lianbo may be a greedy merchant, but he's our greedy merchant!
-		ai_chance = { base = 60 }
+		ai_chance = {
+			base = 60
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
+		}
 		add_political_power = -35
 		if = {
 			limit = {
@@ -4750,7 +5470,17 @@ country_event = { #Merchant Affairs
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.242 option GXC.earlygame.242.b"
 		name = GXC.earlygame.242.b #The Merchant Corps must be curtailed immediately!
-		ai_chance = { base = 40 }
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		remove_ideas = GXC_merchant_alliance
 		if = {
 			limit = {
@@ -5740,9 +6470,8 @@ news_event = { #Kuomintang Revolution in Liangguang
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		name = GXC.earlygame.401.a #Our comrades prove their tenacity
@@ -5901,15 +6630,6 @@ country_event = {
 		GXC_PPP_medium_effect = yes
 		GXC_SPO_small_effect = yes
 		GXC_SPR_small_effect = yes
-	}
-
-	after = {
-		custom_effect_tooltip = available_political_advisor
-		show_ideas_tooltip = GXC_deng_zhongxia_advisor
-		custom_effect_tooltip = tooltip_white_line
-		show_ideas_tooltip = GXC_zhang_tailei_advisor
-		set_country_flag = GXC_zhang_tailei_advisor_flag
-		set_country_flag = GXC_deng_zhongxia_advisor_flag
 	}
 }
 
@@ -6219,7 +6939,7 @@ country_event = {
 			}
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKMT }
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_LKT }
 			}
 		}
 	}
@@ -6275,11 +6995,9 @@ country_event = {
 		name = GXC.earlygame.462.a #Li Marches Out!
 		trigger = {
 			FROM = { tag = CHI }
-			NOT = {
-				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
-				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
-				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
-			}
+			NOT = { has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE } }
+			NOT = { has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC } }
+			NOT = { has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM } }
 		}
 		ai_chance = { base = 0 }
 		set_country_flag = china_refused_alliance_@FROM
@@ -6354,6 +7072,13 @@ country_event = {
 		GXC_NGD_purge_advisors_effect = yes
 		CHI = { china_puppet_ROOT_effect = yes }
 		set_country_flag = GXC_phase_3_begins_flag
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = GXC_deng_zhongxia_advisor
+		custom_effect_tooltip = tooltip_white_line
+		show_ideas_tooltip = GXC_zhang_tailei_advisor
+		set_country_flag = GXC_zhang_tailei_advisor_flag
+		set_country_flag = GXC_deng_zhongxia_advisor_flag
 		hidden_effect = {
 			every_character = {
 				limit = {
@@ -6381,6 +7106,7 @@ country_event = {
 				}
 				retire = yes
 			}
+			GXC_huang_guangrui = { clr_character_flag = GXC_NGD_character_flag }
 		}
 		log = "KR_Event_Logging;GXC GAME PROGRESS - GXC KMT Submit to LKT"
 	}
@@ -6849,9 +7575,8 @@ news_event = { #Federalist Revival in Liangguang
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.601 option GXC.earlygame.601.a"
@@ -7256,9 +7981,8 @@ news_event = { #Regionalist Powers Hold Onto Liangguang
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.801 option GXC.earlygame.801.a"
@@ -7314,7 +8038,15 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.802 option GXC.earlygame.802.a"
 		name = GXC.earlygame.802.a #We welcome these emissaries of peace.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		GXC_CMC_large_effect = yes
 		GXC_SAF_large_effect = yes
 	}
@@ -7322,7 +8054,25 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.802 option GXC.earlygame.802.b"
 		name = GXC.earlygame.802.b #We must find our own path towards unification.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_war_support = 0.05
 		GXC_YGF_large_effect = yes
 	}
@@ -7354,7 +8104,29 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.803 option GXC.earlygame.803.b"
 		name = GXC.earlygame.803.b #We need to present a vision of our own.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_popularity = { ideology = radical_socialist popularity = 0.01 }
 		GXC_DSP_medium_effect = yes
 		GXC_PIP_small_effect = yes
@@ -7379,7 +8151,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.804 option GXC.earlygame.804.a"
 		name = GXC.earlygame.804.a #The PSC has the connections needed to survive.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		add_political_power = 35
 		GXC_PSC_large_effect = yes
 	}
@@ -7387,7 +8168,24 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.804 option GXC.earlygame.804.b"
 		name = GXC.earlygame.804.b #The JXS mirrors the world’s hegemon.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_war_support = 0.05
 		GXC_SAF_large_effect = yes
 	}
@@ -7395,7 +8193,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.804 option GXC.earlygame.804.c"
 		name = GXC.earlygame.804.c #The Democrats give scholars hope for the future.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		add_stability = 0.05
 		GXC_DSP_medium_effect = yes
 		GXC_PIP_medium_effect = yes
@@ -7419,7 +8226,24 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.805 option GXC.earlygame.805.a"
 		name = GXC.earlygame.805.a #We are the force of modern change in China.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+					}
+				}
+			}
+		}
 		GXC_DSP_medium_effect = yes
 		GXC_PSC_medium_effect = yes
 		GXC_CMC_large_effect = yes
@@ -7428,7 +8252,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.805 option GXC.earlygame.805.b"
 		name = GXC.earlygame.805.b #We will uphold China’s traditional values.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		GXC_YGF_large_effect = yes
 		GXC_SAF_large_effect = yes
 	}
@@ -7460,21 +8293,55 @@ country_event = { #Halls of Jade, Lorded by Tigers
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.831 option GXC.earlygame.831.a"
 		name = GXC.earlygame.831.a #Perhaps Wu Peifu still retains fondness for Ma Ji?
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		GXC_YGF_large_effect = yes
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.831 option GXC.earlygame.831.b"
 		name = GXC.earlygame.831.b #They may be bandits, but they’re our bandits.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		GXC_SAF_large_effect = yes
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.831 option GXC.earlygame.831.c"
 		name = GXC.earlygame.831.c #The Zhili opt to support the Two Yangs.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
+		}
 		GXC_yang_ruxuan = {
 			gain_xp = 500
 			add_attack = 1
@@ -7497,7 +8364,15 @@ country_event = { #Crushing the Kuomintang
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.832 option GXC.earlygame.832.a"
 		name = GXC.earlygame.832.a #Let there be no rest for these rebels...
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		GXC_SAF_medium_effect = yes
 		GXC_CMC_medium_effect = yes
 		add_popularity = { ideology = national_populist popularity = 0.05 } #RKMT Remnants Fight On
@@ -7506,7 +8381,25 @@ country_event = { #Crushing the Kuomintang
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.832 option GXC.earlygame.832.b"
 		name = GXC.earlygame.832.b #...because we need them in this fight.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_popularity = { ideology = radical_socialist popularity = 0.03 } #LKMT Remnants fight on
 		GXC_YGF_medium_effect = yes
 		GXC_PSC_medium_effect = yes #Okay this is weak but I guess all the ex-KMTists end up hiding with PSC leaders
@@ -7524,21 +8417,73 @@ country_event = { #Dismantling the Yue Clique
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.833 option GXC.earlygame.833.a"
 		name = GXC.earlygame.833.a #Chen Lianbo is the natural beneficiary of Chen’s fall.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
+		}
 		GXC_CMC_large_effect = yes
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.833 option GXC.earlygame.833.b"
 		name = GXC.earlygame.833.b #Lu Yuguang will consolidate control over the south.
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		GXC_YGF_large_effect = yes
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.833 option GXC.earlygame.833.c"
 		name = GXC.earlygame.833.c #Shen Hongying’s forces move into the north.
-		ai_chance = { base = 25 }
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		GXC_SAF_large_effect = yes
 	}
 }
@@ -8172,7 +9117,15 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.901 option GXC.earlygame.901.a"
 		name = GXC.earlygame.901.a #Shen Hongying and his close companions consolidate around Guilin.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		add_political_power = -25
 		GXC_SAF_mega_effect = yes
 	}
@@ -8180,7 +9133,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.901 option GXC.earlygame.901.b"
 		name = GXC.earlygame.901.b #Without the Zhili, he needs Lu Yuguang to help control his subordinates.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		GXC_YGF_large_effect = yes
 		GXC_SAF_large_effect = yes
 	}
@@ -8188,7 +9150,24 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.901 option GXC.earlygame.901.c"
 		name = GXC.earlygame.901.c #Governor Shen deepens his Guangzhou contacts to press his leadership.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
+		}
 		GXC_PSC_large_effect = yes
 		GXC_SAF_large_effect = yes
 	}
@@ -8217,7 +9196,24 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.902 option GXC.earlygame.902.a"
 		name = GXC.earlygame.902.a #Chen Lianbo prepares Guangzhou for a protracted conflict.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
+		}
 		add_political_power = -25
 		GXC_CMC_mega_effect = yes
 	}
@@ -8225,7 +9221,29 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.902 option GXC.earlygame.902.b"
 		name = GXC.earlygame.902.b #The AACSG cooperates with other civilian groups for legitimacy.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		GXC_CMC_medium_effect = yes
 		GXC_PSC_medium_effect = yes
 		GXC_DSP_medium_effect = yes
@@ -8235,7 +9253,17 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.902 option GXC.earlygame.902.c"
 		name = GXC.earlygame.902.c #Cutting deals with warlords and foreigners is the only way to survive.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				GXC_has_regionalist_government = yes
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		GXC_CMC_large_effect = yes
 		GXC_YGF_medium_effect = yes
 		GXC_SAF_medium_effect = yes
@@ -8265,7 +9293,24 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.903 option GXC.earlygame.903.a"
 		name = GXC.earlygame.903.a #The flexible PSC ally with the Merchants, for now.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+				}
+			}
+		}
 		GXC_CMC_large_effect = yes
 		GXC_PSC_large_effect = yes
 	}
@@ -8273,7 +9318,24 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.903 option GXC.earlygame.903.b"
 		name = GXC.earlygame.903.b #The Shen Army Faction absorbs Chen Jiongming’s territory.
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		GXC_SAF_large_effect = yes
 		GXC_PIP_large_effect = yes
 	}
@@ -8281,7 +9343,25 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.903 option GXC.earlygame.903.c"
 		name = GXC.earlygame.903.c #The Young Guangxi Faction takes some risks for legitimacy...
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		GXC_YGF_large_effect = yes
 		GXC_DSP_medium_effect = yes
 		add_popularity = { ideology = radical_socialist popularity = 0.03 }
@@ -8311,7 +9391,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.904 option GXC.earlygame.904.a"
 		name = GXC.earlygame.904.a #The German-trained Shen Army overruns Merchant Militias.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		add_stability = 0.05
 		GXC_SAF_large_effect = yes
 	}
@@ -8319,7 +9408,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.904 option GXC.earlygame.904.b"
 		name = GXC.earlygame.904.b #Yue Army veterans unite with their fellow provincials against Guangxi.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		GXC_CMC_mega_effect = yes
 	}
 }
@@ -8347,7 +9445,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.905 option GXC.earlygame.905.a"
 		name = GXC.earlygame.905.a #Lu Rongting’s memory keeps Guangxi united.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				paternal_autocrat < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+				NOT = { is_ally_with = NZH }
+			}
+		}
 		add_political_power = 25
 		GXC_YGF_large_effect = yes
 	}
@@ -8355,7 +9462,15 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.905 option GXC.earlygame.905.b"
 		name = GXC.earlygame.905.b #Lu Rongting’s memory keeps Guangxi united.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		GXC_SAF_mega_effect = yes
 	}
 }
@@ -8383,14 +9498,31 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.906 option GXC.earlygame.906.a"
 		name = GXC.earlygame.906.a #Nanning will dismantle Li Fulin’s network to demonstrate superiority.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		GXC_YGF_mega_effect = yes
 	}
 
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.906 option GXC.earlygame.906.b"
 		name = GXC.earlygame.906.b #Diplomacy with Guangzhou will end this ceaseless Chinese infighting.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		add_war_support = 0.05
 		GXC_CMC_large_effect = yes
 	}
@@ -8419,7 +9551,24 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.907 option GXC.earlygame.907.a"
 		name = GXC.earlygame.907.a #It is time we cut our losses in the south.
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						authoritarian_democrat < 0.35
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+					}
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+				}
+			}
+		}
 		GXC_CMC_large_effect = yes
 		GXC_PSC_large_effect = yes
 	}
@@ -8427,7 +9576,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.907 option GXC.earlygame.907.b"
 		name = GXC.earlygame.907.b #The Old Guangxi Clique will enforce its rule!
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				social_conservative < 0.25
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
+			}
+		}
 		GXC_YGF_large_effect = yes
 		GXC_SAF_large_effect = yes
 	}
@@ -8456,7 +9614,25 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.908 option GXC.earlygame.908.a"
 		name = GXC.earlygame.908.a #We must unite under Marshal Lu first if we are to unite the nation!
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_war_support = 0.06
 		GXC_YGF_large_effect = yes
 	}
@@ -8464,7 +9640,15 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.908 option GXC.earlygame.908.b"
 		name = GXC.earlygame.908.b #How can we expect self-rule if we cannot rule ourselves?
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		GXC_CMC_large_effect = yes
 		GXC_SAF_large_effect = yes
 	}
@@ -8487,7 +9671,25 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.909 option GXC.earlygame.909.a"
 		name = GXC.earlygame.909.a #It is only through modernisation that we save our nation!
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				OR = {
+					AND = {
+						paternal_autocrat < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_NZH }
+						NOT = { is_ally_with = NZH }
+					}
+					AND = {
+						social_conservative < 0.25
+						has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+						NOT = { is_ally_with = AGJ }
+					}
+				}
+			}
+		}
 		add_war_support = 0.05
 		GXC_YGF_medium_effect = yes
 		GXC_DSP_medium_effect = yes
@@ -8496,7 +9698,15 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event GXC.earlygame.909 option GXC.earlygame.909.b"
 		name = GXC.earlygame.909.b #We fight to save not only our nation but our culture!
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				china_is_potential_government = no
+				authoritarian_democrat < 0.35
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
+			}
+		}
 		GXC_CMC_medium_effect = yes
 		GXC_SAF_medium_effect = yes
 		GXC_PSC_medium_effect = yes
@@ -8578,9 +9788,8 @@ news_event = { #The Guangzhou Nationalist Government
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		name = GXC.midgame.4000.a #I suppose he will expect us to send emissaries soon.
@@ -9413,7 +10622,7 @@ country_event = {
 
 	option = {
 		log = "[GetLogInfo]: event GXC.midgame.439 option GXC.midgame.439.a"
-		name = GXC.midgame.439.a #An embarassing display
+		name = GXC.midgame.439.a #An embarrassing display
 		ai_chance = { base = 50 }
 		GXC_NGX_large_effect = yes
 		GXC_WHC_medium_effect = yes
@@ -10395,6 +11604,7 @@ country_event = {
 		#Rig outcome if you have game rules
 		if = {
 			limit = {
+				is_ai = yes
 				OR = {
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCLIB }
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCCON }
@@ -10402,17 +11612,16 @@ country_event = {
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
 				}
 			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 			country_event = { id = GXC.midgame.508 days = 3 } #The Chairman Prevails! - Unlocks the high zeal ending
 		}
 		else_if = {
 			limit = {
+				is_ai = yes
 				OR = {
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_DIARCHY_AUTDEM }
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PATAUT }
 				}
 			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 			country_event = { id = GXC.midgame.509 days = 3 } #The Chairman Falls! - Unlocks low zeal ending
 		}
 		#Normal way this works
@@ -11527,7 +12736,6 @@ country_event = {
 	}
 
 	after = {
-		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		hidden_effect = {
 			GXC_LKMT_decide_phase_iv_effect = yes
 		}
@@ -11813,11 +13021,8 @@ country_event = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
-					#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
-				}
+				NOT = { has_game_rule = { rule = GXC_KMT_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE } }
 			}
 		}
 		#For every non-Syndicalist party popularity in GXC, costs 1pp (max 100).
@@ -11846,11 +13051,8 @@ country_event = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
-					#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
-				}
+				NOT = { has_game_rule = { rule = GXC_KMT_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC } }
 			}
 		}
 		#For every non-Rad Soc party popularity in GXC, costs 1pp (max 100).
@@ -11878,11 +13080,8 @@ country_event = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
-					#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
-				}
+				NOT = { has_game_rule = { rule = GXC_KMT_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM } }
 			}
 		}
 		#For every non-Soc Dem party popularity in GXC, costs 1pp (max 100).
@@ -13374,9 +14573,8 @@ news_event = { #The Guangzhou Federalist Government
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		name = GXC.midgame.601.a #Our representatives there will keep an eye on the situation.
@@ -14594,9 +15792,9 @@ country_event = { #Li Jishen and KMT Defectors
 
 	is_triggered_only = yes #Triggered by [On Action]: Completes Peace Conference while owning Nanjing and Jiangxi/Fujian, LEP/ANQ/CHI don’t exist.
 
-	trigger = {
-		GXC_is_phase_3_trigger = yes
-	}
+	#trigger = {
+	#	GXC_is_phase_3_trigger = yes - this check exists for some reason, but meant that Feds could potentially be locked out of Li Jishen so gonna comment it out for now.
+	#}
 
 	fire_only_once = yes
 
@@ -14715,9 +15913,8 @@ news_event = { #The China National Protection Government
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		name = GXC.midgame.801.a #But will they achieve what their predecessors could not?
@@ -17437,12 +18634,14 @@ country_event = { #Faceoff in [ROOT.Capital.GetCapitalVictoryPointName]
 			#Rig it if you have game rules
 			if = {
 				limit = {
+					is_ai = yes
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_DIARCHY_AUTDEM }
 				}
 				country_event = { id = GXC.lategame.512 days = 14 } #New Guangdong Overthrows the Government
 			}
 			else_if = {
 				limit = {
+					is_ai = yes
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PATAUT }
 				}
 				country_event = { id = GXC.lategame.511 days = 14 } #New Guangxi Smashes the Opposition
@@ -17496,6 +18695,7 @@ country_event = { #Faceoff in [ROOT.Capital.GetCapitalVictoryPointName]
 			#Rig it if you have game rules
 			if = {
 				limit = {
+					is_ai = yes
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_DIARCHY_AUTDEM }
 				}
 				country_event = { id = GXC.lategame.514 days = 14 } #Revenge of the Cantonese
@@ -17512,18 +18712,6 @@ country_event = { #Faceoff in [ROOT.Capital.GetCapitalVictoryPointName]
 				limit = { is_chinese_or_potential_chinese_tag = yes }
 				country_event = { id = GXC.lategame.516 days = 1 random_days = 2 } #A Last Gasp of Civilian Rule
 			}
-		}
-	}
-
-	after = {
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_DIARCHY_AUTDEM }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PATAUT }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		}
 	}
 }
@@ -18914,9 +20102,8 @@ news_event = { #A New Canton Government
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		name = GXC.lategame.5910.a #Revolutionaries shall unite once again!
@@ -19340,11 +20527,16 @@ country_event = {
 					id = UPC_power_balance
 					range > UPC_bop_developing_realism
 				}
-				has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_FIRST_SOCDEM }
-				has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_SECOND_SOCDEM }
-				has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_SECOND_SOCLIB }
-				has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_FIRST_SOCLIB }
-				has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_YE_JU_AUTDEM }
+				AND = {
+					is_ai = yes
+					OR = {
+						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_FIRST_SOCDEM }
+						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_SECOND_SOCDEM }
+						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_SECOND_SOCLIB }
+						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_FIRST_SOCLIB }
+						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_YE_JU_AUTDEM }
+					}
+				}
 			}
 		}
 		ai_chance = {
@@ -19381,18 +20573,6 @@ country_event = {
 			}
 			custom_effect_tooltip = GXC_UPC_lategame_dem_enthusiam_too_high_tt
 		}
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_FIRST_SOCDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_SECOND_SOCDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_SECOND_SOCLIB }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_FIRST_SOCLIB }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_YE_JU_AUTDEM }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		}
 
 		hidden_effect = {
 			country_event = { id = GXC.lategame.630 days = 1 } #The [GetYear] Chinese Federal Elections
@@ -19412,10 +20592,15 @@ country_event = {
 					id = UPC_power_balance
 					range < UPC_bop_growing_idealism
 				}
-				has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_JISHEN_TUTELAGE_AUTDEM }
-				has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_JISHEN_RENAISSANCE_AUTDEM }
-				has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_QIYOU_AUTDEM }
-				has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_YE_JU_PATAUT }
+				AND = {
+					is_ai = yes
+					OR = {
+						has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_JISHEN_TUTELAGE_AUTDEM }
+						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_JISHEN_RENAISSANCE_AUTDEM }
+						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_QIYOU_AUTDEM }
+						has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_YE_JU_PATAUT }
+					}
+				}
 			}
 		}
 		ai_chance = {
@@ -19443,17 +20628,6 @@ country_event = {
 				}
 			}
 			custom_effect_tooltip = GXC_UPC_lategame_dem_enthusiam_too_low_tt
-		}
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_JISHEN_TUTELAGE_AUTDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_JISHEN_RENAISSANCE_AUTDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_QIYOU_AUTDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_YE_JU_PATAUT }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		}
 		hidden_effect = {
 			country_event = { id = GXC.lategame.660 days = 3 } #The National Unity Cabinet
@@ -20162,7 +21336,7 @@ country_event = { #The Federalist Resistance
 			modifier = {
 				factor = 1.5
 				OR = {
-					china_is_aligned_with_republicans = yes
+					china_is_aligned_with_southern_republicans = yes
 					china_is_aligned_with_kmt = yes
 				}
 			}
@@ -21119,9 +22293,8 @@ news_event = { #Chen Lianbo’s Coup
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event GXC.lategame.903 option GXC.lategame.903.a"
@@ -21141,9 +22314,8 @@ news_event = { #Shen Hongying’s Coup
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event GXC.lategame.904 option GXC.lategame.904.a"
@@ -21163,9 +22335,8 @@ news_event = { #Lu Yuguang survives coup
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event GXC.lategame.905 option GXC.lategame.905.a"
@@ -21584,9 +22755,8 @@ news_event = { #[GXC.GetLeader] Claims Leadership
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		regional_china_news = yes
-	}
+	show_major = { regional_china_news = yes }
+	trigger = { wants_world_news = yes }
 
 	option = {
 		log = "[GetLogInfo]: event GXC.lategame.971 option GXC.lategame.971.a"
@@ -24907,21 +26077,11 @@ country_event = { #Crisis in Nanning
 		UPC_GRA_large_effect = yes
 		UPC_add_enthusiasm_large_effect = yes
 		add_stability = -0.10
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_JISHEN_TUTELAGE_AUTDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_JISHEN_RENAISSANCE_AUTDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_YE_JU_PATAUT }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_QIYOU_AUTDEM }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		}
 		hidden_effect = {
 			#Rig it if you have games rules on
 			if = {
 				limit = {
+					is_ai = yes
 					OR = {
 						has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_JISHEN_TUTELAGE_AUTDEM }
 						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_JISHEN_RENAISSANCE_AUTDEM }
@@ -24932,6 +26092,7 @@ country_event = { #Crisis in Nanning
 			}
 			else_if = {
 				limit = {
+					is_ai = yes
 					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_QIYOU_AUTDEM }
 				}
 				country_event = { id = GXC.endgame.515 days = 14 } #The Nanning Negotiations
@@ -24966,21 +26127,11 @@ country_event = { #Crisis in Nanning
 		custom_effect_tooltip = GXC_nanning_crisis_tt
 		UPC_STA_large_effect = yes
 		UPC_sub_enthusiasm_large_effect = yes
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_JISHEN_TUTELAGE_AUTDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_JISHEN_RENAISSANCE_AUTDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_YE_JU_PATAUT }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_QIYOU_AUTDEM }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		}
 		hidden_effect = {
 			#Rig it if you have games rules on
 			if = {
 				limit = {
+					is_ai = yes
 					OR = {
 						has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_JISHEN_TUTELAGE_AUTDEM }
 						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_JISHEN_RENAISSANCE_AUTDEM }
@@ -24991,6 +26142,7 @@ country_event = { #Crisis in Nanning
 			}
 			else_if = {
 				limit = {
+					is_ai = yes
 					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_QIYOU_AUTDEM }
 				}
 				country_event = { id = GXC.endgame.515 days = 14 } #The Nanning Negotiations
@@ -25031,20 +26183,11 @@ country_event = { #The Nanning Incident
 		log = "[GetLogInfo]: event GXC.endgame.510 option GXC.endgame.510.a"
 		name = GXC.endgame.510.a
 		add_stability = -0.10
-		if = {
-			limit = {
-				OR = {
-					has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_JISHEN_TUTELAGE_AUTDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_JISHEN_RENAISSANCE_AUTDEM }
-					has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_YE_JU_PATAUT }
-				}
-			}
-			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		}
 		hidden_effect = {
 			#Rig it if you have game rules on
 			if = {
 				limit = {
+					is_ai = yes
 					OR = {
 						has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_JISHEN_TUTELAGE_AUTDEM }
 						has_game_rule = { rule = GXC_UPC_path option = GXC_UPC_PATH_JISHEN_RENAISSANCE_AUTDEM }
@@ -25054,6 +26197,7 @@ country_event = { #The Nanning Incident
 			}
 			else_if = {
 				limit = {
+					is_ai = yes
 					has_game_rule = { rule = GXC_UPC_path option = GXC_GXC_UPC_PATH_YE_JU_PATAUT }
 				}
 				country_event = { id = GXC.endgame.512 days = 3 } #The Yue Army Declares Martial Law

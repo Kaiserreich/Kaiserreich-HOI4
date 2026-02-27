@@ -153,7 +153,7 @@ CENdem_status_of_belize = {
 			}
 			at_peace_or_same_enemies_as_FROM = yes
 			OR = {
-				has_country_flag = CENdem_succesful_negotiation
+				has_country_flag = CENdem_successful_negotiation
 				WIF = {
 					NOT = {
 						is_in_faction_with = ENT
@@ -212,8 +212,8 @@ CENdem_status_of_belize = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete CENdem_joining_the_Entente"
 			FROM = { country_event = central_america_democratic_events.226 }
 			if = {
-				limit = { has_country_flag = CENdem_succesful_negotiation }
-				clr_country_flag = CENdem_succesful_negotiation
+				limit = { has_country_flag = CENdem_successful_negotiation }
+				clr_country_flag = CENdem_successful_negotiation
 			}
 			else = {
 				if = {

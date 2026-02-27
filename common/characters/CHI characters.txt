@@ -148,12 +148,10 @@ characters = {
 			traits = { KR_army_chief_entrenchment_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-						hidden_effect = { CHI_CRS_large_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+					hidden_effect = { CHI_CRS_large_effect = yes }
 				}
 			}
 		}
@@ -207,11 +205,9 @@ characters = {
 			cost = 0
 			can_be_fired = no
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { country_event = { id = CHI.midgame.606 days = 5 random_days = 15 } }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					hidden_effect = { ROOT = { country_event = { id = CHI.midgame.606 days = 5 random_days = 15 } } }
 				}
 			}
 		}
@@ -244,11 +240,9 @@ characters = {
 			cost = 0
 			can_be_fired = no
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { country_event = { id = CHI.midgame.610 days = 5 random_days = 15 } } #The Crown Prince's Clique
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					hidden_effect = { ROOT = { country_event = { id = CHI.midgame.610 days = 5 random_days = 15 } } } #The Crown Prince's Clique
 				}
 			}
 		}
@@ -277,13 +271,11 @@ characters = {
 			}
 			traits = { KR_kuomintang_crown_prince }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes } #Double-tap with event
-						hidden_effect = { country_event = { id = CHI.midgame.610 days = 5 random_days = 15 } } #The Crown Prince's Clique
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes } #Double-tap with event
+					hidden_effect = { ROOT = { country_event = { id = CHI.midgame.610 days = 5 random_days = 15 } } } #The Crown Prince's Clique
 				}
 			}
 		}
@@ -384,12 +376,10 @@ characters = {
 			}
 			traits = { KR_compassionate_gentleman }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { CHI_RCA_small_effect = yes }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_RCA_small_effect = yes }
 				}
 			}
 		}
@@ -490,13 +480,11 @@ characters = {
 			}
 			traits = { KR_state_capitalist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes } #Double-tap with event
-						hidden_effect = { country_event = { id = CHI.midgame.613 days = 5 random_days = 15 } } #The China Development Finance Corporation
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes } #Double-tap with event
+					hidden_effect = { ROOT = { country_event = { id = CHI.midgame.613 days = 5 random_days = 15 } } } #The China Development Finance Corporation
 				}
 			}
 		}
@@ -542,14 +530,10 @@ characters = {
 			cost = 0
 			can_be_fired = no
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = {
-							CHI_PAC_medium_effect = yes
-						}
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_medium_effect = yes }
 				}
 			}
 		}
@@ -569,13 +553,11 @@ characters = {
 			traits = { KR_army_chief_morale_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_large_effect = yes }
-						hidden_effect = { country_event = { id = CHI.midgame.605 days = 5 random_days = 15 } } #Whampoa Military Academy Revolutionary Classmates Association
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_large_effect = yes }
+					hidden_effect = { ROOT = { country_event = { id = CHI.midgame.605 days = 5 random_days = 15 } } } #Whampoa Military Academy Revolutionary Classmates Association
 				}
 			}
 		}
@@ -720,22 +702,24 @@ characters = {
 			traits = { KR_army_chief_planning_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_non_part_advisor_tt
-						hidden_effect = { CHI_sub_rad_large_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_non_part_advisor_tt
+					hidden_effect = { CHI_sub_rad_large_effect = yes }
 					else_if = {
 						limit = {
-							tag = GXC
-							china_is_aligned_with_kmt = no
+							ROOT = {
+								tag = GXC
+								china_is_aligned_with_kmt = no
+							}
 						}
 						custom_effect_tooltip = GXC_add_radical_aligned_advisor_tt
 						hidden_effect = {
-							add_popularity = {
-								ideology = radical_socialist
-								popularity = 0.03
+							ROOT = {
+								add_popularity = {
+									ideology = radical_socialist
+									popularity = 0.03
+								}
 							}
 						}
 					}
@@ -767,12 +751,10 @@ characters = {
 			traits = { KR_MHC_concealment_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { CHI_PAC_small_effect = yes }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
 				}
 			}
 		}
@@ -811,12 +793,10 @@ characters = {
 			traits = { KR_army_chief_reform_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						hidden_effect = { CHI_RCA_large_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_RCA_large_effect = yes }
 				}
 			}
 		}
@@ -877,12 +857,10 @@ characters = {
 				}
 				traits = { KR_head_of_intelligence }
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { original_tag = CHI }
-							owner = { hidden_effect = { CHI_RCA_small_effect = yes } }
-							custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						}
+					if = {
+						limit = { ROOT = { original_tag = CHI } }
+						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+						owner = { hidden_effect = { CHI_RCA_small_effect = yes } }
 					}
 				}
 			}
@@ -896,12 +874,10 @@ characters = {
 				traits = { KR_MHC_army_regrouping_2 }
 				cost = 100
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { original_tag = CHI }
-							owner = { hidden_effect = { CHI_RCA_small_effect = yes } }
-							custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						}
+					if = {
+						limit = { ROOT = { original_tag = CHI } }
+						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+						owner = { hidden_effect = { CHI_RCA_small_effect = yes } }
 					}
 				}
 			}
@@ -942,12 +918,10 @@ characters = {
 				}
 				traits = { KR_patriotic_socialist }
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { original_tag = CHI }
-							owner = { hidden_effect = { CHI_RCA_small_effect = yes } }
-							custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						}
+					if = {
+						limit = { ROOT = { original_tag = CHI } }
+						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+						owner = { hidden_effect = { CHI_RCA_small_effect = yes } }
 					}
 				}
 			}
@@ -961,12 +935,10 @@ characters = {
 				traits = { KR_MHC_army_regrouping_2 }
 				cost = 100
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { original_tag = CHI }
-							owner = { hidden_effect = { CHI_RCA_small_effect = yes } }
-							custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						}
+					if = {
+						limit = { ROOT = { original_tag = CHI } }
+						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+						owner = { hidden_effect = { CHI_RCA_small_effect = yes } }
 					}
 				}
 			}
@@ -995,12 +967,10 @@ characters = {
 			traits = { KR_navy_chief_manoeuvre_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_LCS_medium_effect = yes } }
-						custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_LCS_medium_effect = yes } }
 				}
 			}
 		}
@@ -1032,12 +1002,10 @@ characters = {
 			traits = { KR_navy_chief_commerce_raiding_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_RCF_medium_effect = yes } }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_RCF_medium_effect = yes } }
 				}
 			}
 		}
@@ -1053,12 +1021,10 @@ characters = {
 			traits = { KR_naval_theorist }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_RCF_medium_effect = yes } }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_RCF_medium_effect = yes } }
 				}
 			}
 		}
@@ -1087,12 +1053,10 @@ characters = {
 			traits = { KR_MHC_screen_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
 				}
 			}
 		}
@@ -1121,12 +1085,10 @@ characters = {
 			traits = { KR_MHC_commando_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_PAC_small_effect = yes } }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_PAC_small_effect = yes } }
 				}
 			}
 		}
@@ -1164,12 +1126,10 @@ characters = {
 			traits = { KR_army_chief_offensive_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_large_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_large_effect = yes }
 				}
 			}
 		}
@@ -1247,12 +1207,10 @@ characters = {
 			traits = { KR_MHC_concealment_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_RCA_medium_effect = yes } }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_RCA_medium_effect = yes } }
 				}
 			}
 		}
@@ -1320,12 +1278,10 @@ characters = {
 			traits = { KR_MHC_infantry_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_CRS_small_effect = yes } }
-						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_CRS_small_effect = yes } }
 				}
 			}
 		}
@@ -1372,12 +1328,10 @@ characters = {
 			traits = { KR_MHC_entrenchment_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_PAC_small_effect = yes } }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_PAC_small_effect = yes } }
 				}
 			}
 		}
@@ -1406,12 +1360,10 @@ characters = {
 			traits = { KR_MHC_CombinedArms_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_RCF_small_effect = yes } }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_RCF_small_effect = yes } }
 				}
 			}
 		}
@@ -1431,12 +1383,10 @@ characters = {
 			traits = { KR_MHC_army_logistics_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_CRS_small_effect = yes } }
-						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_CRS_small_effect = yes } }
 				}
 			}
 		}
@@ -1471,12 +1421,10 @@ characters = {
 			traits = { KR_mass_assault_expert }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { CHI_PAC_medium_effect = yes }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_medium_effect = yes }
 				}
 			}
 		}
@@ -1576,12 +1524,10 @@ characters = {
 			traits = { KR_grand_battle_plan_expert }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_PAC_medium_effect = yes } }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_PAC_medium_effect = yes } }
 				}
 			}
 		}
@@ -1610,12 +1556,10 @@ characters = {
 			traits = { KR_MHC_armoured_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						owner = { hidden_effect = { CHI_CRS_small_effect = yes } }
-						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+					owner = { hidden_effect = { CHI_CRS_small_effect = yes } }
 				}
 			}
 		}
@@ -1684,23 +1628,23 @@ characters = {
 			idea_token = CHI_cai_yuanpei_advisor
 			traits = { KR_education_reformer }
 			on_add = {
-				ROOT = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
 					if = {
-						limit = { original_tag = CHI }
-						if = {
-							limit = { has_completed_focus = CHI_revolution_for_all_peoples }
-							hidden_effect = {
+						limit = { ROOT = { has_completed_focus = CHI_revolution_for_all_peoples } }
+						custom_effect_tooltip = CHI_add_wrd_aligned_advisor_tt
+						hidden_effect = {
+							ROOT = {
 								add_popularity = {
 									ideology = social_conservative
 									popularity = 0.03
 								}
 							}
-							custom_effect_tooltip = CHI_add_wrd_aligned_advisor_tt
 						}
-						else = {
-							CHI_WRD_SOC_effect = yes
-							hidden_effect = { country_event = { id = CHI.midgame.611 days = 5 random_days = 15 } } #The National Labour University
-						}
+					}
+					else = {
+						CHI_WRD_SOC_effect = yes
+						hidden_effect = { ROOT = { country_event = { id = CHI.midgame.611 days = 5 random_days = 15 } } } #The National Labour University
 					}
 				}
 			}
@@ -1728,12 +1672,11 @@ characters = {
 			available = { not_already_hired_except_as = political_advisor }
 			traits = { KR_collectivisation_specialist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { country_event = { id = CHI.midgame.608 days = 5 random_days = 15 } CHI_RCA_small_effect = yes }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_RCA_small_effect = yes }
+					hidden_effect = { ROOT = { country_event = { id = CHI.midgame.608 days = 5 random_days = 15 } } }
 				}
 			}
 		}
@@ -1751,12 +1694,10 @@ characters = {
 			idea_token = CHI_wang_faqin_advisor
 			traits = { KR_influential_intellectual }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { CHI_RCA_small_effect = yes }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_RCA_small_effect = yes }
 				}
 			}
 		}
@@ -1774,12 +1715,10 @@ characters = {
 			idea_token = CHI_chen_bijun_advisor
 			traits = { KR_madame_wang }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { CHI_RCA_medium_effect = yes }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_RCA_medium_effect = yes }
 				}
 			}
 		}
@@ -1805,12 +1744,10 @@ characters = {
 			}
 			traits = { KR_health_and_safety_adherent }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { CHI_RCA_small_effect = yes }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_RCA_small_effect = yes }
 				}
 			}
 		}
@@ -1827,12 +1764,10 @@ characters = {
 			idea_token = CHI_liu_butong_advisor
 			traits = { KR_young_guard }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { CHI_CRS_small_effect = yes }
-						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+					hidden_effect = { CHI_CRS_small_effect = yes }
 				}
 			}
 		}
@@ -1849,16 +1784,16 @@ characters = {
 			idea_token = CHI_chen_youren_advisor
 			traits = { KR_anti_imperialist_crusader }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { CHI_PAC_small_effect = yes }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { country_event = { id = CHI.midgame.609 days = 5 random_days = 15 } } #Wheeling and Dealing in Shanghai
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					ROOT = {
 						unlock_decision_tooltip = CHI_KOR_liberation_army_decision
 						unlock_decision_tooltip = CHI_MAL_liberation_army_decision
 						unlock_decision_tooltip = CHI_INC_liberation_army_decision
 					}
+					hidden_effect = { CHI_PAC_small_effect = yes }
+					hidden_effect = { ROOT = { country_event = { id = CHI.midgame.609 days = 5 random_days = 15 } } } #Wheeling and Dealing in Shanghai
 				}
 			}
 		}
@@ -1881,12 +1816,10 @@ characters = {
 			idea_token = CHI_zhang_bojun_advisor
 			traits = { KR_agricultural_economist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { CHI_PAC_small_effect = yes }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
 				}
 			}
 		}
@@ -1935,13 +1868,11 @@ characters = {
 				}
 				traits = { KR_shadowy_laoban_lar }
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { original_tag = CHI }
-							custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-							hidden_effect = { CHI_CRS_small_effect = yes } #Double-tap with event
-							hidden_effect = { country_event = { id = CHI.midgame.612 days = 5 random_days = 15 } } #The Labour of Hound and Horse
-						}
+					if = {
+						limit = { ROOT = { original_tag = CHI } }
+						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+						hidden_effect = { CHI_CRS_small_effect = yes } #Double-tap with event
+						hidden_effect = { ROOT = { country_event = { id = CHI.midgame.612 days = 5 random_days = 15 } } } #The Labour of Hound and Horse
 					}
 				}
 			}
@@ -1986,13 +1917,11 @@ characters = {
 				}
 				traits = { KR_shadowy_laoban }
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { original_tag = CHI }
-							custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-							hidden_effect = { CHI_CRS_small_effect = yes } #Double-tap with event
-							hidden_effect = { country_event = { id = CHI.midgame.612 days = 5 random_days = 15 } } #The Labour of Hound and Horse
-						}
+					if = {
+						limit = { ROOT = { original_tag = CHI } }
+						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+						hidden_effect = { CHI_CRS_small_effect = yes } #Double-tap with event
+						hidden_effect = { ROOT = { country_event = { id = CHI.midgame.612 days = 5 random_days = 15 } } } #The Labour of Hound and Horse
 					}
 				}
 			}
@@ -2022,12 +1951,10 @@ characters = {
 			}
 			traits = { KR_social_revolutionary }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
-						hidden_effect = { CHI_LCS_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
+					hidden_effect = { CHI_LCS_small_effect = yes }
 				}
 			}
 		}
@@ -2056,12 +1983,10 @@ characters = {
 			}
 			traits = { KR_backroom_backstabber }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						hidden_effect = { CHI_rca_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_rca_small_effect = yes }
 				}
 			}
 		}
@@ -2087,12 +2012,10 @@ characters = {
 			}
 			traits = { KR_chinese_feminist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						hidden_effect = { CHI_rca_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_rca_small_effect = yes }
 				}
 			}
 		}
@@ -2115,12 +2038,10 @@ characters = {
 			}
 			traits = { KR_prince_of_terror }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						hidden_effect = { CHI_rca_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_rca_small_effect = yes }
 				}
 			}
 		}
@@ -2147,12 +2068,10 @@ characters = {
 			}
 			traits = { KR_political_specialist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						hidden_effect = { CHI_rca_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_rca_small_effect = yes }
 				}
 			}
 		}
@@ -2179,12 +2098,10 @@ characters = {
 			}
 			traits = { KR_industrialiser }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						hidden_effect = { CHI_rca_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_rca_small_effect = yes }
 				}
 			}
 		}
@@ -2221,12 +2138,10 @@ characters = {
 			}
 			traits = { KR_council_communist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
-						hidden_effect = { CHI_LCS_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
+					hidden_effect = { CHI_LCS_small_effect = yes }
 				}
 			}
 		}
@@ -2252,12 +2167,10 @@ characters = {
 			}
 			traits = { KR_popular_figurehead }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
 				}
 			}
 		}
@@ -2285,11 +2198,12 @@ characters = {
 			}
 			traits = { KR_chinese_feminist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						hidden_effect = { country_event = CHI.midgame.607 CHI_PAC_small_effect = yes }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = {
+						ROOT = { country_event = CHI.midgame.607 }
+						CHI_PAC_small_effect = yes
 					}
 				}
 			}
@@ -2314,12 +2228,10 @@ characters = {
 			}
 			traits = { KR_man_of_the_people }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
 				}
 			}
 		}
@@ -2345,12 +2257,10 @@ characters = {
 			}
 			traits = { KR_secret_police_chief }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-						hidden_effect = { CHI_CRS_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+					hidden_effect = { CHI_CRS_small_effect = yes }
 				}
 			}
 		}
@@ -2374,12 +2284,10 @@ characters = {
 			}
 			traits = { KR_ultranationalist_agitator }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-						hidden_effect = { CHI_CRS_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+					hidden_effect = { CHI_CRS_small_effect = yes }
 				}
 			}
 		}
@@ -2403,12 +2311,10 @@ characters = {
 			}
 			traits = { KR_economic_reformer }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-						hidden_effect = { CHI_CRS_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+					hidden_effect = { CHI_CRS_small_effect = yes }
 				}
 			}
 		}
@@ -2446,12 +2352,10 @@ characters = {
 			}
 			traits = { KR_ambitious_union_boss }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
-						hidden_effect = { CHI_LCS_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
+					hidden_effect = { CHI_LCS_small_effect = yes }
 				}
 			}
 		}
@@ -2492,12 +2396,10 @@ characters = {
 			traits = { KR_air_chief_reform_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_medium_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_medium_effect = yes }
 				}
 			}
 		}
@@ -2515,12 +2417,10 @@ characters = {
 			traits = { KR_air_chief_ground_support_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
-						hidden_effect = { CHI_CRS_medium_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_crs_aligned_advisor_tt
+					hidden_effect = { CHI_CRS_medium_effect = yes }
 				}
 			}
 		}
@@ -2538,12 +2438,10 @@ characters = {
 			traits = { KR_air_chief_all_weather_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
-						hidden_effect = { CHI_RCA_medium_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_rca_aligned_advisor_tt
+					hidden_effect = { CHI_RCA_medium_effect = yes }
 				}
 			}
 		}
@@ -2573,15 +2471,12 @@ characters = {
 			traits = { KR_council_of_theorists }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
-						hidden_effect = { CHI_LCS_medium_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_lcs_aligned_advisor_tt
+					hidden_effect = { CHI_LCS_medium_effect = yes }
 					if = {
 						limit = {
-							original_tag = CHI
 							OR = {
 								CHI_is_phase_two_trigger = yes
 								CHI_is_phase_three_trigger = yes

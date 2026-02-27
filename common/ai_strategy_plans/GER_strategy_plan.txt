@@ -386,8 +386,8 @@ GER_wartime_ai_plan = {
 	name = "GER_wartime_ai_plan"
 	enable = {
 		OR = {
-			has_completed_focus = GER_france_invaded
-			has_completed_focus = GER_invade_france
+			has_war_with = RUS
+			has_war_with = FRA
 		}
 	}
 	abort = {
@@ -395,6 +395,7 @@ GER_wartime_ai_plan = {
 	}
 
 	ai_national_focuses = {
+		GER_france_invaded
 		GER_wartime_mobilisation
 		GER_combat_defeatism
 		GER_anti_sedition_laws

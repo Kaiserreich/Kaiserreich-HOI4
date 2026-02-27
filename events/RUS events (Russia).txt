@@ -206,7 +206,7 @@ country_event = { #This is how AI picks if it will do Wrangel path, and what sub
 			modifier = {
 				factor = 0
 				NOT = { has_game_rule = { rule = RUS_path option = DEFAULT } }
-				NOT = { has_game_rule = { rule = RUS_path option = RUS_PATH_SHULGIN_AUTDEM } }
+				NOT = { has_game_rule = { rule = RUS_path option = RUS_PATH_AUTDEM } }
 			}
 		}
 		set_country_flag = RUS_wrangel_ai
@@ -8882,9 +8882,6 @@ country_event = { #The Circle of St. George
 		}
 		FER = {
 			every_army_leader = {
-				limit = {
-					NOT = { is_character = RUS_oi_shigemoto }
-				}
 				hidden_effect = {
 					remove_political_advisor_role = yes
 					remove_high_command_role = yes
@@ -17158,7 +17155,7 @@ country_event = { #[ROOT.GetLeader]'s Government
 		name = russia_democratic_events.44.b
 		trigger = { RUS_fondaminsky = yes }
 		activate_advisor = RUS_vladimir_zenzinov_sic
-		set_temp_variable = { coalition_partner_var = token:market_liberal }
+		set_temp_variable = { coalition_partner_var = token:social_conservative }
 		add_to_coalition = yes
 		add_popularity = { ideology = market_liberal popularity = 0.05 }
 		add_popularity = { ideology = social_conservative popularity = 0.05 }
@@ -22388,7 +22385,7 @@ unit_leader_event = { #Wrangel's regency
 		hidden_effect = {
 			if = {
 				limit = { has_global_flag = allow_sound_events_flag }
-				scoped_play_song = "god_save_the_tsar"
+				scoped_play_song = god_save_the_tsar
 			}
 			set_party_name = {
 				ideology = paternal_autocrat
@@ -25927,6 +25924,7 @@ country_event = { #Appointment of the Interior Minister
 				has_free_political_advisor_slot = yes
 				NOT = { RUS_andrey_kolegayev = { is_hired_as_advisor = yes } }
 			}
+			set_country_flag = RUS_appointed_kolegayev
 			activate_advisor = RUS_andrey_kolegayev_advisor
 		}
 		else = {
@@ -27108,7 +27106,6 @@ country_event = { #The Tambov Experiment
 		log = "[GetLogInfo]: event russia_socialist_events.165 option russia_socialist_events.165.a"
 		name = russia_socialist_events.165.a
 		activate_mission = RUS_complete_the_tambov_experiment
-		activate_targeted_decision = { target = THIS decision = RUS_devolution_of_authority }
 		activate_targeted_decision = { target = THIS decision = RUS_incentivise_creation_of_rural_enterprises }
 		activate_targeted_decision = { target = THIS decision = RUS_modernisation_of_agricultural_communes }
 		activate_targeted_decision = { target = THIS decision = RUS_mordva_autonomies }
@@ -33700,7 +33697,7 @@ country_event = { #GER meddling in elections
 		text = russia_boldyrev_events.46.d.dem
 	}
 	is_triggered_only = yes
-	trigger = { is_ai = no }
+	#trigger = { is_ai = no }
 
 	option = {
 		log = "[GetLogInfo]: event russia_boldyrev_events.46 option russia_boldyrev_events.46.a"
@@ -33709,11 +33706,13 @@ country_event = { #GER meddling in elections
 	option = {
 		log = "[GetLogInfo]: event russia_boldyrev_events.46 option russia_boldyrev_events.46.b"
 		name = russia_boldyrev_events.46.b
+		ai_chance = { base = 0 }
 		RSA = { set_country_flag = GER_supports_boldyrev }
 	}
 	option = {
 		log = "[GetLogInfo]: event russia_boldyrev_events.46 option russia_boldyrev_events.46.c"
 		name = russia_boldyrev_events.46.c
+		ai_chance = { base = 0 }
 		RSA = { set_country_flag = GER_supports_opposition }
 	}
 	option = {
@@ -33721,7 +33720,14 @@ country_event = { #GER meddling in elections
 		name = russia_boldyrev_events.46.e
 		trigger = {
 			GER_is_swr_path = yes
-			#NOT = { has_global_flag = RUS_socrus_happened }
+			RSA = { is_ai = yes }
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				RSA = { has_global_flag = RUS_socrus_happened } #In this scenario, Boldyrev leads conservatives, so restoration doesn't make sense
+			}
 		}
 		RSA = { set_country_flag = GER_supports_monarchy }
 	}
@@ -43271,7 +43277,7 @@ country_event = { #Solonevich Attacked!
 			country_event = russia_flavour_events.92 #Solonevich Fights
 			if = {
 				limit = { has_global_flag = allow_sound_events_flag }
-				scoped_play_song = "kazachya_pesnya"
+				scoped_play_song = kazachya_pesnya
 			}
 		}
 		custom_effect_tooltip = russia_flavour_events.90.a.tt
@@ -44702,12 +44708,6 @@ country_event = { #Victory in the Second Weltkrieg
 		log = "[GetLogInfo]: event russia_flavour_events.134 option russia_flavour_events.134.a"
 		name = russia_flavour_events.134.a
 		trigger = { RUS_savinkov = yes }
-		hidden_effect = {
-			if = {
-				limit = { has_global_flag = allow_sound_events_flag }
-				scoped_play_song = "slavsya"
-			}
-		}
 		add_popularity = {
 			ideology = national_populist
 			popularity = 0.01
@@ -44720,12 +44720,6 @@ country_event = { #Victory in the Second Weltkrieg
 			RUS_ivan_solonevich = { is_second_in_command = yes }
 			is_monarchy = yes
 		}
-		hidden_effect = {
-			if = {
-				limit = { has_global_flag = allow_sound_events_flag }
-				scoped_play_song = "slavsya"
-			}
-		}
 	}
 	option = {
 		log = "[GetLogInfo]: event russia_flavour_events.134 option russia_flavour_events.134.c"
@@ -44734,23 +44728,6 @@ country_event = { #Victory in the Second Weltkrieg
 			OR = {
 				has_elected_government = yes
 				has_socialist_government = yes
-			}
-		}
-		if = {
-			limit = { has_socialist_government = no }
-			hidden_effect = {
-				if = {
-					limit = { has_global_flag = allow_sound_events_flag }
-					scoped_play_song = "slavsya"
-				}
-			}
-		}
-		else = {
-			hidden_effect = {
-				if = {
-					limit = { has_global_flag = allow_sound_events_flag }
-					scoped_play_song = "workers_marseillaise"
-				}
 			}
 		}
 		if = {
@@ -44768,10 +44745,17 @@ country_event = { #Victory in the Second Weltkrieg
 		log = "[GetLogInfo]: event russia_flavour_events.134 option russia_flavour_events.134.e"
 		name = russia_flavour_events.134.e
 		trigger = { RUS_wrangel_path = yes }
+	}
+
+	after = {
 		hidden_effect = {
 			if = {
 				limit = { has_global_flag = allow_sound_events_flag }
-				scoped_play_song = "slavsya"
+				if = {
+					limit = { has_socialist_government = yes }
+					scoped_play_song = workers_marseillaise
+				}
+				else = { scoped_play_song = slavsya }
 			}
 		}
 	}
@@ -44904,7 +44888,7 @@ country_event = { #The Death of Purpose
 		hidden_effect = {
 			if = {
 				limit = { has_global_flag = allow_sound_events_flag }
-				scoped_play_song = "dark_is_the_night"
+				scoped_play_song = dark_is_the_night
 			}
 		}
 	}

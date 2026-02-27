@@ -2,8 +2,8 @@ capital = 431
 oob = "HND"
 set_naval_oob = "HND_naval"
 set_research_slots = 3
-set_stability = 0.3
-set_war_support = 0.4
+set_stability = 0.35
+set_war_support = 0.5
 set_convoys = 20
 starting_train_buffer = 2
 set_cosmetic_tag = HND_civil_war
@@ -131,6 +131,8 @@ add_ideas = {
 	HND_influence_of_the_mahatma
 	HND_army_reform_1
 }
+
+set_variable = { HND.generic_development_efforts_var = 0.1 }
 
 diplomatic_relation = { country = FRA relation = non_aggression_pact }
 add_opinion_modifier = { target = FRA modifier = KR_supported_us }

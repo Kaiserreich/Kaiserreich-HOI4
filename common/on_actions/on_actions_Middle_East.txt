@@ -74,11 +74,12 @@ on_actions = {
 					}
 				}
 
-				#Remove CYP cores on the Aegean
+				#Remove CYP cores on the Aegean, Greek general going home
 				else_if = {
 					limit = { tag = CYP }
 					remove_state_core = 187
 					remove_state_core = 164
+					GRE = { country_event = { id = cyprus_events.4 days = 2 } }
 				}
 
 				#Fire OTT events
@@ -90,11 +91,6 @@ on_actions = {
 					limit = { tag = KDR }
 					TUR = { country_event = { id = ottomans_kemalist_events.34 days = 2 } }
 				}
-				# Greek general going home
-				else_if = {
-					limit = { tag = CYP }
-					GRE = { country_event = { id = cyprus_events.4 days = 2 } }
-				}
 				else_if = {
 					limit = { tag = EGY }
 					OTT_wins_levantine_war = yes
@@ -102,6 +98,12 @@ on_actions = {
 				else_if = {
 					limit = { tag = PER }
 					OTT_wins_levantine_war = yes
+				}
+
+				# Clear ongoing LC war status
+				if = {
+					limit = { tag = TUR }
+					clr_global_flag = OTT_cairo_pact_war_ongoing
 				}
 
 				# revert Arab Federation scripts
@@ -674,6 +676,7 @@ on_actions = {
 				if = {
 					limit = { FROM = { tag = EGY } }
 					country_event = { id = ottomans_foreign_policy_events.48 days = 5 } #The Port Said Straits Convention
+					remove_ideas = OTT_Ottoman_Stand
 				}
 			}
 
@@ -694,6 +697,7 @@ on_actions = {
 						NOT = { has_global_flag = RUSSIAN_OTTOMAN_DEAL_PER_BUFFER }
 					}
 					set_global_flag = OTT_defeat_levant
+					clr_global_flag = OTT_cairo_pact_war_ongoing
 					PER_forpol_setup = yes
 				}
 			}

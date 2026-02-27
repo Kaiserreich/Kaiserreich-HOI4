@@ -564,11 +564,13 @@ foreign_politics = {
 				OR = {
 					AND = {
 						FROM = { tag = PRF }
-						has_game_rule = { rule = NEP_forpol option = NEP_FORPOL_JAP }
+						NOT = { has_game_rule = { rule = NEP_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = NEP_forpol option = NEP_FORPOL_PRF } }
 					}
 					AND = {
 						FROM = { tag = JAP }
-						has_game_rule = { rule = NEP_forpol option = NEP_FORPOL_PRF }
+						NOT = { has_game_rule = { rule = NEP_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = NEP_forpol option = NEP_FORPOL_JAP } }
 					}
 				}
 			}

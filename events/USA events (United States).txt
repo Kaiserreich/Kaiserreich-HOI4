@@ -1427,6 +1427,34 @@ country_event = { # Floyd Olson Passes Away
 		USA_floyd_olson = { kill_character = yes }
 	}
 }
+### MacArthur Junta Election Events ###
+
+country_event = { # 1940
+	id = united_states_events.198
+	title = united_states_events.198.t
+
+	desc = united_states_events.198.d
+
+	picture = GFX_report_event_USA_macarthur
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = paternal_autocrat
+		date < 1941.1.1
+	}
+
+	option = {
+		log = "[GetLogInfo]: event united_states_events.198 option united_states_events.198.a"
+		name = united_states_events.198.a
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+		}
+		add_stability = -0.05
+		add_political_power = 25
+	}
+}
 
 ### 1940 Elections ###
 country_event = {

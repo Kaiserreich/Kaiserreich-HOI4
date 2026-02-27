@@ -149,7 +149,7 @@ focus_tree = {
 			build_railway = { start_province = 8087 target_province = 10278 level = 2 }
 			427 = {
 				add_dynamic_modifier = {
-					modifier = HND_development_efforts_modifier
+					modifier = generic_development_efforts_modifier
 					days = 180
 				}
 			}
@@ -213,7 +213,7 @@ focus_tree = {
 			build_railway = { start_province = 1349 target_province = 8011 level = 2 }
 			429 = {
 				add_dynamic_modifier = {
-					modifier = HND_development_efforts_modifier
+					modifier = generic_development_efforts_modifier
 					days = 180
 				}
 			}
@@ -5015,6 +5015,7 @@ focus_tree = {
 				limit = { has_idea = JAP_india_support }
 				remove_ideas = JAP_india_support
 			}
+			log = "KR_Event_Logging;PRF FOREIGN POLICY - SOUTH ASIAN ASSOCIATION"
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}

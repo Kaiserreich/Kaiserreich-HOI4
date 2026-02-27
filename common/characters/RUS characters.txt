@@ -705,9 +705,9 @@ characters = {
 			visible = { RUS_is_demrus = yes }
 			traits = { KR_cons_zemstvoist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { has_active_mission = RUS_titov_kadet_demands }
+				if = {
+					limit = { ROOT = { has_active_mission = RUS_titov_kadet_demands } }
+					RUS = {
 						add_days_mission_timeout = {
 							mission = RUS_titov_kadet_demands
 							days = 90
@@ -2120,21 +2120,17 @@ characters = {
 			traits = { KR_MHC_organiser }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = RUS }
-						set_temp_variable = { RUS_relation_change = 1 }
-						RUS_RKP_relation = yes
-					}
+				if = {
+					limit = { ROOT = { original_tag = RUS } }
+					set_temp_variable = { RUS_relation_change = 1 }
+					RUS_RKP_relation = yes
 				}
 			}
 			on_remove = {
-				ROOT = {
-					if = {
-						limit = { original_tag = RUS }
-						set_temp_variable = { RUS_relation_change = -1 }
-						RUS_RKP_relation = yes
-					}
+				if = {
+					limit = { ROOT = { original_tag = RUS } }
+					set_temp_variable = { RUS_relation_change = -1 }
+					RUS_RKP_relation = yes
 				}
 			}
 		}
@@ -2903,16 +2899,16 @@ characters = {
 			}
 		}
 	}
-	RUS_sergey_tashkin = { #Semyonov's SiC
-		name = RUS_sergey_tashkin
+	RUS_sergey_taskin = { #Semyonov's SiC
+		name = RUS_sergey_taskin
 		portraits = {
 			civilian = {
-				small = GFX_portrait_RUS_sergey_tashkin_civilian_small
+				small = GFX_portrait_RUS_sergey_taskin_civilian_small
 			}
 		}
 		advisor = {
 			slot = second_in_command
-			idea_token = RUS_sergey_tashkin_sic
+			idea_token = RUS_sergey_taskin_sic
 			traits = { KR_administrative_genius_sic }
 			cost = 0
 			can_be_fired = no
@@ -3165,15 +3161,6 @@ characters = {
 		}
 	}
 	#If admiral is needed, add Aleksandr Frolov
-	RUS_oi_shigemoto = {
-		name = RUS_oi_shigemoto
-		portraits = {
-			army = {
-				large = GFX_portrait_RUS_oi_shigemoto_army_large
-				small = GFX_portrait_RUS_oi_shigemoto_army_small
-			}
-		}
-	}
 	RUS_pyotr_nikiforov = {
 		name = RUS_pyotr_nikiforov
 		portraits = {
@@ -5434,7 +5421,10 @@ characters = {
 				not_already_hired_except_as = political_advisor
 				if = {
 					limit = { RUS_PLSR = yes }
-					has_completed_focus = RUS_embolden_the_revolutionary_spirit
+					OR = {
+						has_completed_focus = RUS_embolden_the_revolutionary_spirit
+						has_country_flag = RUS_appointed_kolegayev
+					}
 				}
 				else = {
 					has_country_flag = RUS_VST_MAX_deal

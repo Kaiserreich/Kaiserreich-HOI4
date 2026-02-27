@@ -1422,9 +1422,12 @@ JAP_FNG_clear_reinforcements_modifier_effect = {
 FNG_enrich_the_country_effect = {
 	set_country_flag = enrich_country
 	custom_effect_tooltip = FNG_enrichment_path
-	reduce_focus_completion_cost = {
-		focus = { FNG_Develop_the_Three_Northeast_Provinces FNG_Yamato_Hotel_Licenses FNG_Mantetsu_Collaboration FNG_Wang_Yongjiangs_Legacy FNG_Found_the_Northeast_IDC FNG_Reorganise_the_NTC FNG_Mantetsu_Research_Wing FNG_Japanese_Electrical_Expertise FNG_Expand_the_Anshan_Mines FNG_Develop_the_Northern_Frontier FNG_Fengtian_Society_for_Light_Metals FNG_Support_Sino-Japanese_Joint_Companies FNG_Establish_the_Jinzhou_Industrial_Zone }
-		cost = 7
+	custom_effect_tooltip = FNG_enrich_the_country_cover_tooltip
+	hidden_effect = {
+		reduce_focus_completion_cost = {
+			focus = { FNG_Develop_the_Three_Northeast_Provinces FNG_Yamato_Hotel_Licenses FNG_Mantetsu_Collaboration FNG_Wang_Yongjiangs_Legacy FNG_Found_the_Northeast_IDC FNG_Reorganise_the_NTC FNG_Mantetsu_Research_Wing FNG_Japanese_Electrical_Expertise FNG_Expand_the_Anshan_Mines FNG_Develop_the_Northern_Frontier FNG_Fengtian_Society_for_Light_Metals FNG_Support_Sino-Japanese_Joint_Companies FNG_Establish_the_Jinzhou_Industrial_Zone }
+			cost = 7
+		}
 	}
 	reduce_focus_completion_cost = {
 		focus = { FNG_Mantetsu_Civil_Engineering_Projects FNG_Expand_the_Fushun_Mines FNG_Yalu_and_Songhua_Hydroelectricity FNG_Japanese_Coal_Gasification_Methods FNG_Yingkou_Commercial_Development }

@@ -4191,7 +4191,7 @@ focus_tree = {
 				factor = 0
 				OR = {
 					has_game_rule = { rule = NFA_path option = NFA_PATH_SUS_SOCCON }
-					has_game_rule = { rule = NFA_path option = NFA_PATH_SOCCON }
+					has_game_rule = { rule = NFA_path option = NFA_PATH_PSF_SOCCON }
 				}
 			}
 		}
@@ -4964,7 +4964,7 @@ focus_tree = {
 				factor = 0
 				OR = {
 					has_game_rule = { rule = NFA_path option = NFA_PATH_MARLIB }
-					has_game_rule = { rule = NFA_path option = NFA_PATH_SOCCON }
+					has_game_rule = { rule = NFA_path option = NFA_PATH_PSF_SOCCON }
 				}
 			}
 		}
@@ -6504,8 +6504,49 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NATFRA_Science_Amnesty"
 			add_political_power = -25
-			add_stability = 0.05
 			add_research_slot_until_five = yes
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = {
+					has_elected_government = yes
+					is_monarchy = no
+				}
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_available_scientist
+						CHARACTER = FRA_irene_joliot_curie
+					}
+					FRA = { FRA_irene_joliot_curie = { set_nationality = ROOT } }
+				}
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_available_scientist
+						CHARACTER = FRA_frederic_joliot_curie
+					}
+					FRA = { FRA_frederic_joliot_curie = { set_nationality = ROOT } }
+				}
+			}
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_available_scientist
+					CHARACTER = FRA_robert_esnault_pelterie
+				}
+				FRA = { FRA_robert_esnault_pelterie = { set_nationality = ROOT } }
+			}
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_available_scientist
+					CHARACTER = FRA_francois_hussenot
+				}
+				FRA = { FRA_francois_hussenot = { set_nationality = ROOT } }
+			}
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_available_scientist
+					CHARACTER = FRA_pierre_david
+				}
+				FRA = { FRA_pierre_david = { set_nationality = ROOT } }
+			}
 		}
 	}
 

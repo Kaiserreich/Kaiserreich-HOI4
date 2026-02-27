@@ -104,33 +104,6 @@ GER_is_possible_reichstag_target = {
 	}
 }
 
-build_bm_total_cards = {
-	all_of = {
-		array = GER_bm_cardgame_cards_array
-
-		meta_trigger = {
-			text = {
-				add_to_temp_variable = { [GER_CARD_ID]_total_cards = 1 }
-			}
-
-			GER_CARD_ID = "[?v.GetName]"
-		}
-	}
-}
-
-build_bm_hand_cards = {
-	all_of = {
-		array = GER_bm_cardgame_cards_drawn_array
-
-		meta_trigger = {
-			text = {
-				add_to_temp_variable = { [GER_CARD_ID]_total_cards = 1 }
-			}
-
-			GER_CARD_ID = "[?v.GetName]"
-		}
-	}
-}
 GER_is_schleicher_path = {
 	custom_override_tooltip = {
 		tooltip = GER_is_schleicher_path_tt

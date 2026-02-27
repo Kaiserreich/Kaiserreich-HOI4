@@ -523,3 +523,101 @@ defined_text = {
 		localization_key = FNG_japanese_influence_expelled_desc
 	}
 }
+
+#Eco tree if FNG Breaks with JAP
+
+defined_text = {
+	name = FNG_Yamato_Hotel_Licenses_focus_name
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = yes
+		}
+		localization_key = FNG_Yamato_Hotel_Licenses_name
+	}
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = no
+		}
+		localization_key = FNG_Repurpose_Yamato_Hotel_Franchises
+	}
+}
+
+defined_text = {
+	name = FNG_Yamato_Hotel_Licenses_focus_desc
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = yes
+		}
+		localization_key = FNG_Yamato_Hotel_Licenses_normal_desc
+	}
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = no
+		}
+		localization_key = FNG_Repurpose_Yamato_Hotel_Franchises_desc
+	}
+}
+
+defined_text = {
+	name = FNG_Mantetsu_Research_Wing_focus_name
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = yes
+		}
+		localization_key = FNG_Mantetsu_Research_Wing_name
+	}
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = no
+		}
+		localization_key = FNG_Expand_Northeastern_University
+	}
+}
+
+defined_text = {
+	name = FNG_Mantetsu_Research_Wing_focus_desc
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = yes
+		}
+		localization_key = FNG_Mantetsu_Research_Wing_normal_desc
+	}
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = no
+		}
+		localization_key = FNG_Expand_Northeastern_University_desc
+	}
+}
+
+defined_text = {
+	name = FNG_Mantetsu_Collaboration_focus_name
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = yes
+		}
+		localization_key = FNG_Mantetsu_Collaboration_name
+	}
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = no
+		}
+		localization_key = FNG_Seize_Mantetsu_Assets
+	}
+}
+
+defined_text = {
+	name = FNG_Mantetsu_Collaboration_focus_desc
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = yes
+		}
+		localization_key = FNG_Mantetsu_Collaboration_normal_desc
+	}
+	text = {
+		trigger = {
+			FNG_JAP_influence_active = no
+		}
+		localization_key = FNG_Seize_Mantetsu_Assets_desc
+	}
+}

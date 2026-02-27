@@ -691,38 +691,38 @@ PHI_1939_election_outcome_effect = {
 		limit = {
 			has_game_rule = { rule = PHI_path option = PHI_PATH_MARLIB }
 		}
-		custom_effect_tooltip = PHI_gamerules_were_set_tt
+		custom_effect_tooltip = PHI_game_rules_were_set_tt
 		PHI = { country_event = philippines_political_events.200 } #President Quezon Cruises to Reelection
 	}
 	else_if = {
 		limit = {
 			has_game_rule = { rule = PHI_path option = PHI_PATH_ROXAS_AUTDEM }
 		}
-		custom_effect_tooltip = PHI_gamerules_were_set_tt
+		custom_effect_tooltip = PHI_game_rules_were_set_tt
 		PHI = { country_event = philippines_political_events.300 } #Roxas and the Elite reassert Control
 	}
 	else_if = {
 		limit = {
 			has_game_rule = { rule = PHI_path option = PHI_PATH_SOCLIB }
-			has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_GER }
+			has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_GER }
 		}
-		custom_effect_tooltip = PHI_gamerules_were_set_tt
+		custom_effect_tooltip = PHI_game_rules_were_set_tt
 		PHI = { country_event = philippines_political_events.500 } #Recto Rallies Populist Forces
 	}
 	else_if = {
 		limit = {
 			has_game_rule = { rule = PHI_path option = PHI_PATH_AGUINALDO_AUTDEM }
-			has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_JAP }
+			has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_JAP }
 		}
-		custom_effect_tooltip = PHI_gamerules_were_set_tt
+		custom_effect_tooltip = PHI_game_rules_were_set_tt
 		PHI = { country_event = philippines_political_events.400 } #Aguinaldo Upsets the Establishment
 	}
 	else_if = {
 		limit = {
 			has_game_rule = { rule = PHI_path option = PHI_PATH_SYNDIE }
-			PHI_forpol_gamerule_needs_IND_trigger = yes
+			PHI_forpol_game_rule_needs_IND_trigger = yes
 		}
-		custom_effect_tooltip = PHI_gamerules_were_set_tt
+		custom_effect_tooltip = PHI_game_rules_were_set_tt
 		PHI = { country_event = philippines_political_events.600 } #Evangelista Leads a Socialist Revolution
 	}
 	else_if = {
@@ -767,28 +767,28 @@ PHI_1939_election_outcome_effect = {
 	#Decide Which Alignment PHI goes down a few days later - start with the game rules
 	if = {
 		limit = {
-			PHI_forpol_gamerule_needs_IND_trigger = yes
+			PHI_forpol_game_rule_needs_IND_trigger = yes
 		}
-		custom_effect_tooltip = PHI_gamerules_were_set_tt
+		custom_effect_tooltip = PHI_game_rules_were_set_tt
 		PHI = { country_event = { id = philippines_political_events.070 days = 3 } } #The Philippines Entrenches its Neutrality
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_JAP }
+			has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_JAP }
 		}
-		custom_effect_tooltip = PHI_gamerules_were_set_tt
+		custom_effect_tooltip = PHI_game_rules_were_set_tt
 		JAP = { country_event = { id = philippines_political_events.110 days = 3 } } #Our Triumph in Manila (JAP Edition)
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_GER }
+			has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_GER }
 		}
-		custom_effect_tooltip = PHI_gamerules_were_set_tt
+		custom_effect_tooltip = PHI_game_rules_were_set_tt
 		GER = { country_event = { id = philippines_political_events.090 days = 3 } } #Our Triumph in Manila (GER Edition)
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_USA }
+			has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_USA }
 			#Still need to make sure USA and PHI are compatible though
 			OR = {
 				AND = {
@@ -813,7 +813,7 @@ PHI_1939_election_outcome_effect = {
 				}
 			}
 		}
-		custom_effect_tooltip = PHI_gamerules_were_set_tt
+		custom_effect_tooltip = PHI_game_rules_were_set_tt
 		var:361.owner = { country_event = { id = philippines_political_events.130 days = 3 } } #Our Triumph in Manila (USA Edition)
 	}
 	else_if = {
@@ -861,12 +861,12 @@ PHI_cleanup_elections_mechanic_effect = {
 	remove_power_balance = { id = PHI_power_balance }
 	PHI = { clr_country_flag = PHI_fight_for_the_philippines_active_flag }
 	if = {
-		limit = { has_country_flag = PHI_created_foreign_divison }
+		limit = { has_country_flag = PHI_created_foreign_division }
 		set_division_template_lock = {
 			division_template = "Foreign-Equipped Division"
 			is_locked = no
 		}
-		clr_country_flag = PHI_created_foreign_divison
+		clr_country_flag = PHI_created_foreign_division
 	}
 }
 

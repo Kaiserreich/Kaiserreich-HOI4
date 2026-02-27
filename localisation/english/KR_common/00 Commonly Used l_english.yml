@@ -63,8 +63,9 @@
 
  kill_character_tt: "dies."
 
- reduce_stability_decision_cost_twenty_five_percent_tt: "Reduce the £pol_power §Y$POLITICAL_POWER$§! cost of £GFX_decision_icon_small §Y$generic_raise_stability$§! by §G25%§!"
- reduce_propaganda_decision_cost_twenty_five_percent_tt: "Reduce the £pol_power §Y$POLITICAL_POWER$§! cost of £GFX_decision_icon_small §Y$war_propaganda$§!, £GFX_decision_icon_small §Y$war_propaganda_casualties$§!, £GFX_decision_icon_small §Y$war_propaganda_convoys$§!, and £GFX_decision_icon_small §Y$war_propaganda_bombing$§! by §G25%§!"
+ reduce_stability_decision_cost_tt: "Reduce the £pol_power §Y$POLITICAL_POWER$§! cost of £GFX_decision_icon_small §Y$generic_raise_stability$§! by $NUMBER|G$"
+ reduce_support_decision_cost_tt: "Reduce the £pol_power §Y$POLITICAL_POWER$§! cost of £GFX_decision_icon_small §Y$generic_raise_support$§! by $NUMBER|G$"
+ reduce_propaganda_decision_cost_tt: "Reduce the £pol_power §Y$POLITICAL_POWER$§! cost of £GFX_decision_icon_small §Y$war_propaganda$§!, £GFX_decision_icon_small §Y$war_propaganda_casualties$§!, £GFX_decision_icon_small §Y$war_propaganda_convoys$§!, and £GFX_decision_icon_small §Y$war_propaganda_bombing$§! by $NUMBER|G$"
 
  # used to generate tooltips in dockyard or naval base foci when the country doesn't own any coastal states
  random_owned_controlled_coastal_state: "A random owned and controlled coastal state"
@@ -82,6 +83,9 @@
  tooltip_if_focus_not_completed: "§CIf $FOCUS|Y$ was §RNOT§! completed:§!"
  tooltip_if_two_foci_completed: "§CIf $FOCUS1|Y$ or $FOCUS2|Y$ were completed:§!"
  tooltip_if_two_foci_not_completed: "§CIf $FOCUS1|Y$ and $FOCUS2|Y$ were §RNOT§! completed:§!"
+
+ tooltip_focus_completed_invalid_tt: "£trigger_no §CIf $FOCUS|Y$ has been completed:§!"
+ tooltip_focus_completed_valid_tt: "£trigger_yes §CIf $FOCUS|Y$ has been completed:§!"
 
  tooltip_extra_effect_from_focus_completion: "§CExtra Effect from completion of $FOCUS|Y$:§!"
  tooltip_strengthen_focus: "§GStrengthens§! the effects of the national focus $FOCUS|Y$."
@@ -336,6 +340,9 @@
 
  trade_opinion_factor_tooltip: "$MODIFIER_TRADE_OPINION_FACTOR$: $RIGHT|Y=%$"
  min_export_tooltip: "$MODIFIER_MIN_EXPORT_FACTOR$: $RIGHT|=Y%0$"
+
+ opinion_gain_monthly_factor_tooltip: "$MODIFIER_OPINION_GAIN_MONTHLY_FACTOR$: $RIGHT|+=%$"
+ improve_relations_maintain_cost_factor_tooltip: "$MODIFIER_IMPROVE_RELATIONS_MAINTAIN_COST_FACTOR$: $RIGHT|-=%$"
 
  production_factory_max_efficiency_factor_tooltip: "$MODIFIER_PRODUCTION_FACTORY_MAX_EFFICIENCY_FACTOR$: $RIGHT|=%+$"
  production_factory_start_efficiency_factor_tooltip: "$MODIFIER_PRODUCTION_FACTORY_START_EFFICIENCY_FACTOR$: $RIGHT|=%+$"

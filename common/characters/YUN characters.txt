@@ -126,12 +126,10 @@ characters = {
 			}
 			traits = { KR_ambitious_union_boss }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_YSP_aligned_advisor_tt
-						hidden_effect = { YUN_YSP_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_YSP_aligned_advisor_tt
+					hidden_effect = { YUN_YSP_small_effect = yes }
 				}
 			}
 		}
@@ -223,28 +221,30 @@ characters = {
 			traits = { KR_army_chief_reform_3 }
 			cost = 200
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_gpa_aligned_advisor_tt
-						hidden_effect = { GXC_GPA_medium_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_gpa_aligned_advisor_tt
+					hidden_effect = { GXC_GPA_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
-						hidden_effect = { YUN_3AL_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
+					hidden_effect = { YUN_3AL_medium_effect = yes }
 				}
 			}
 		}
@@ -266,28 +266,30 @@ characters = {
 			traits = { YUN_mobility_and_envelopment }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_gpa_aligned_advisor_tt
-						hidden_effect = { GXC_GPA_medium_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_gpa_aligned_advisor_tt
+					hidden_effect = { GXC_GPA_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
-						hidden_effect = { YUN_3AL_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
+					hidden_effect = { YUN_3AL_medium_effect = yes }
 				}
 			}
 		}
@@ -317,28 +319,30 @@ characters = {
 			traits = { KR_MHC_irregular_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_gpa_aligned_advisor_tt
-						hidden_effect = { GXC_GPA_medium_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_gpa_aligned_advisor_tt
+					hidden_effect = { GXC_GPA_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
-						hidden_effect = { YUN_3AL_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
+					hidden_effect = { YUN_3AL_medium_effect = yes }
 				}
 			}
 		}
@@ -367,28 +371,30 @@ characters = {
 			desc = YUN_zeng_wanzhong_commander_desc
 			traits = { KR_man_of_the_people }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_gpa_aligned_advisor_tt
-						hidden_effect = { GXC_GPA_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_gpa_aligned_advisor_tt
+					hidden_effect = { GXC_GPA_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
-						hidden_effect = { YUN_3AL_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
+					hidden_effect = { YUN_3AL_small_effect = yes }
 				}
 			}
 		}
@@ -418,28 +424,30 @@ characters = {
 			traits = { KR_MHC_army_logistics_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
-						hidden_effect = { CHI_PAC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+					hidden_effect = { CHI_PAC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_ppp_aligned_advisor_tt
-						hidden_effect = { GXC_GPA_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_ppp_aligned_advisor_tt
+					hidden_effect = { GXC_GPA_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
-						hidden_effect = { YUN_3AL_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_3AL_aligned_advisor_tt
+					hidden_effect = { YUN_3AL_small_effect = yes }
 				}
 			}
 		}
@@ -499,28 +507,30 @@ characters = {
 			}
 			traits = { KR_administrative_genius }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_non_part_advisor_tt
-						hidden_effect = { CHI_sub_rad_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_non_part_advisor_tt
+					hidden_effect = { CHI_sub_rad_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_ppp_aligned_advisor_tt
-						hidden_effect = { GXC_PPP_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_ppp_aligned_advisor_tt
+					hidden_effect = { GXC_PPP_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_CEC_aligned_advisor_tt
-						hidden_effect = { YUN_CEC_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_CEC_aligned_advisor_tt
+					hidden_effect = { YUN_CEC_medium_effect = yes }
 				}
 			}
 		}
@@ -535,28 +545,30 @@ characters = {
 			traits = { KR_MHC_artillery_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_non_part_advisor_tt
-						hidden_effect = { CHI_sub_rad_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_non_part_advisor_tt
+					hidden_effect = { CHI_sub_rad_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_ppp_aligned_advisor_tt
-						hidden_effect = { GXC_PPP_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_ppp_aligned_advisor_tt
+					hidden_effect = { GXC_PPP_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_CEC_aligned_advisor_tt
-						hidden_effect = { YUN_CEC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_CEC_aligned_advisor_tt
+					hidden_effect = { YUN_CEC_small_effect = yes }
 				}
 			}
 		}
@@ -595,28 +607,30 @@ characters = {
 			}
 			traits = { KR_general_staffer }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_ppp_aligned_advisor_tt
-						hidden_effect = { GXC_PPP_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_ppp_aligned_advisor_tt
+					hidden_effect = { GXC_PPP_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_CEC_aligned_advisor_tt
-						hidden_effect = { YUN_CEC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_CEC_aligned_advisor_tt
+					hidden_effect = { YUN_CEC_small_effect = yes }
 				}
 			}
 		}
@@ -665,28 +679,30 @@ characters = {
 			traits = { KR_army_chief_offensive_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
-						hidden_effect = { GXC_RCF_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
+					hidden_effect = { GXC_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_CEC_aligned_advisor_tt
-						hidden_effect = { YUN_CEC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_CEC_aligned_advisor_tt
+					hidden_effect = { YUN_CEC_small_effect = yes }
 				}
 			}
 		}
@@ -735,28 +751,30 @@ characters = {
 			}
 			traits = { KR_armaments_organiser }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
-						hidden_effect = { GXC_RCF_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
+					hidden_effect = { GXC_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_PSC_aligned_advisor_tt
-						hidden_effect = { YUN_PSC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_PSC_aligned_advisor_tt
+					hidden_effect = { YUN_PSC_small_effect = yes }
 				}
 			}
 		}
@@ -788,28 +806,30 @@ characters = {
 			}
 			traits = { KR_silent_workhorse }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
-						hidden_effect = { GXC_RCF_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
+					hidden_effect = { GXC_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_PSC_aligned_advisor_tt
-						hidden_effect = { YUN_PSC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_PSC_aligned_advisor_tt
+					hidden_effect = { YUN_PSC_small_effect = yes }
 				}
 			}
 		}
@@ -839,28 +859,30 @@ characters = {
 			}
 			traits = { KR_austere_finance_advocate }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
-						hidden_effect = { GXC_RCF_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
+					hidden_effect = { GXC_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_PSC_aligned_advisor_tt
-						hidden_effect = { YUN_PSC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_PSC_aligned_advisor_tt
+					hidden_effect = { YUN_PSC_small_effect = yes }
 				}
 			}
 		}
@@ -905,28 +927,30 @@ characters = {
 			}
 			traits = { KR_old_general }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
-						hidden_effect = { GXC_RCF_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
+					hidden_effect = { GXC_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_PSC_aligned_advisor_tt
-						hidden_effect = { YUN_PSC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_PSC_aligned_advisor_tt
+					hidden_effect = { YUN_PSC_small_effect = yes }
 				}
 			}
 		}
@@ -1022,28 +1046,30 @@ characters = {
 			traits = { KR_army_chief_drill_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_medium_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_3AR_aligned_advisor_tt
-						hidden_effect = { YUN_3AR_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_3AR_aligned_advisor_tt
+					hidden_effect = { YUN_3AR_medium_effect = yes }
 				}
 			}
 		}
@@ -1073,28 +1099,30 @@ characters = {
 			traits = { KR_MHC_infantry_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_non_part_advisor_tt
-						hidden_effect = { CHI_sub_rad_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_non_part_advisor_tt
+					hidden_effect = { CHI_sub_rad_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
-						hidden_effect = { GXC_RCF_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_rcf_aligned_advisor_tt
+					hidden_effect = { GXC_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_3AR_aligned_advisor_tt
-						hidden_effect = { YUN_3AR_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_3AR_aligned_advisor_tt
+					hidden_effect = { YUN_3AR_small_effect = yes }
 				}
 			}
 		}
@@ -1124,28 +1152,30 @@ characters = {
 			traits = { KR_MHC_army_regrouping_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_3AR_aligned_advisor_tt
-						hidden_effect = { YUN_3AR_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_3AR_aligned_advisor_tt
+					hidden_effect = { YUN_3AR_small_effect = yes }
 				}
 			}
 		}
@@ -1212,20 +1242,20 @@ characters = {
 			}
 			traits = { KR_spiritual_leader }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = GXC }
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = GXC } }
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
-						hidden_effect = { YUN_CCC_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
+					hidden_effect = { YUN_CCC_medium_effect = yes }
 				}
 			}
 		}
@@ -1257,20 +1287,20 @@ characters = {
 				}
 				traits = { YUN_energetic_brainwasher_lar }
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { original_tag = GXC }
-							custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-							hidden_effect = { GXC_EDC_small_effect = yes }
-						}
-						else_if = {
-							limit = {
+					if = {
+						limit = { ROOT = { original_tag = GXC } }
+						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+						hidden_effect = { GXC_EDC_small_effect = yes }
+					}
+					else_if = {
+						limit = {
+							ROOT = {
 								original_tag = YUN
 								china_is_aligned_with_kmt = yes
 							}
-							custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
-							hidden_effect = { YUN_CCC_medium_effect = yes }
 						}
+						custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
+						hidden_effect = { YUN_CCC_medium_effect = yes }
 					}
 				}
 			}
@@ -1300,20 +1330,20 @@ characters = {
 				}
 				traits = { YUN_energetic_brainwasher }
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { original_tag = GXC }
-							custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-							hidden_effect = { GXC_EDC_small_effect = yes }
-						}
-						else_if = {
-							limit = {
+					if = {
+						limit = { ROOT = { original_tag = GXC } }
+						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+						hidden_effect = { GXC_EDC_small_effect = yes }
+					}
+					else_if = {
+						limit = {
+							ROOT = {
 								original_tag = YUN
 								china_is_aligned_with_kmt = yes
 							}
-							custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
-							hidden_effect = { YUN_CCC_medium_effect = yes }
 						}
+						custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
+						hidden_effect = { YUN_CCC_medium_effect = yes }
 					}
 				}
 			}
@@ -1344,20 +1374,20 @@ characters = {
 			}
 			traits = { KR_backroom_backstabber }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = GXC }
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = GXC } }
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
-						hidden_effect = { YUN_CCC_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
+					hidden_effect = { YUN_CCC_medium_effect = yes }
 				}
 			}
 		}
@@ -1412,20 +1442,20 @@ characters = {
 			}
 			traits = { KR_war_propagandist }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = GXC }
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = GXC } }
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
-						hidden_effect = { YUN_CCC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
+					hidden_effect = { YUN_CCC_small_effect = yes }
 				}
 			}
 		}
@@ -1443,20 +1473,20 @@ characters = {
 			idea_token = YUN_pan_gongzhan_advisor
 			traits = { KR_combative_press_magnate }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = GXC }
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = GXC } }
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
-						hidden_effect = { YUN_CCC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
+					hidden_effect = { YUN_CCC_small_effect = yes }
 				}
 			}
 		}
@@ -1486,20 +1516,20 @@ characters = {
 			traits = { KR_navy_chief_reform_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = GXC }
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = GXC } }
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
-						hidden_effect = { YUN_CCC_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_CCC_aligned_advisor_tt
+					hidden_effect = { YUN_CCC_medium_effect = yes }
 				}
 			}
 		}
@@ -1541,28 +1571,30 @@ characters = {
 			traits = { KR_army_chief_organisational_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_medium_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_medium_effect = yes }
 				}
 			}
 		}
@@ -1608,28 +1640,30 @@ characters = {
 			traits = { KR_MHC_entrenchment_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_small_effect = yes }
 				}
 			}
 		}
@@ -1665,28 +1699,30 @@ characters = {
 			}
 			traits = { KR_adventurous_daredevil }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_small_effect = yes }
 				}
 			}
 		}
@@ -1757,28 +1793,30 @@ characters = {
 			traits = { KR_air_superiority_proponent }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_small_effect = yes }
 				}
 			}
 		}
@@ -1792,28 +1830,30 @@ characters = {
 			traits = { KR_victory_through_airpower }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_medium_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_medium_effect = yes }
 				}
 			}
 		}
@@ -1846,28 +1886,30 @@ characters = {
 			traits = { KR_MHC_armoured_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_small_effect = yes }
 				}
 			}
 		}
@@ -1882,28 +1924,30 @@ characters = {
 			traits = { KR_armour_theorist }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_medium_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_medium_effect = yes }
 				}
 			}
 		}
@@ -1955,28 +1999,30 @@ characters = {
 			traits = { KR_MHC_amphibious_assault_1 }
 			cost = 50
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_ngd_aligned_advisor_tt
-						hidden_effect = { GXC_NGD_small_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_ngd_aligned_advisor_tt
+					hidden_effect = { GXC_NGD_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_small_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_small_effect = yes }
 				}
 			}
 		}
@@ -1991,28 +2037,30 @@ characters = {
 			traits = { KR_naval_theorist }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_ngd_aligned_advisor_tt
-						hidden_effect = { GXC_NGD_medium_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_ngd_aligned_advisor_tt
+					hidden_effect = { GXC_NGD_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_medium_effect = yes }
 				}
 			}
 		}
@@ -2032,28 +2080,30 @@ characters = {
 			traits = { KR_air_chief_reform_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
-						hidden_effect = { CHI_RCF_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_RCF_aligned_advisor_tt
+					hidden_effect = { CHI_RCF_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = GXC
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
-						hidden_effect = { GXC_EDC_medium_effect = yes }
 					}
-					else_if = {
-						limit = {
+					custom_effect_tooltip = GXC_add_edc_aligned_advisor_tt
+					hidden_effect = { GXC_EDC_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							original_tag = YUN
 							china_is_aligned_with_kmt = yes
 						}
-						custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
-						hidden_effect = { YUN_WPC_medium_effect = yes }
 					}
+					custom_effect_tooltip = YUN_add_WPC_aligned_advisor_tt
+					hidden_effect = { YUN_WPC_medium_effect = yes }
 				}
 			}
 		}
@@ -2111,12 +2161,10 @@ characters = {
 			}
 			traits = { KR_ultranationalist_agitator }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = YUN }
-						custom_effect_tooltip = YUN_add_BSS_aligned_advisor_tt
-						hidden_effect = { YUN_BSS_medium_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = YUN } }
+					custom_effect_tooltip = YUN_add_BSS_aligned_advisor_tt
+					hidden_effect = { YUN_BSS_medium_effect = yes }
 				}
 			}
 		}
@@ -2145,12 +2193,10 @@ characters = {
 			desc = YUN_li_shizhen_commander_desc
 			traits = { KR_secret_police_chief }
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { original_tag = YUN }
-						custom_effect_tooltip = YUN_add_BSS_aligned_advisor_tt
-						hidden_effect = { YUN_BSS_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { original_tag = YUN } }
+					custom_effect_tooltip = YUN_add_BSS_aligned_advisor_tt
+					hidden_effect = { YUN_BSS_small_effect = yes }
 				}
 			}
 		}
@@ -2199,26 +2245,26 @@ characters = {
 			traits = { KR_army_chief_offensive_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
-						hidden_effect = { YUN_TJY_large_effect = yes }
-					}
-					else_if = {
-						limit = { original_tag = CHI }
-						custom_effect_tooltip = CHI_add_fed_aligned_advisor_tt
-						hidden_effect = { add_popularity = { ideology = market_liberal popularity = 0.03 } }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
+					hidden_effect = { YUN_TJY_large_effect = yes }
+				}
+				else_if = {
+					limit = { ROOT = { original_tag = CHI } }
+					custom_effect_tooltip = CHI_add_fed_aligned_advisor_tt
+					hidden_effect = { ROOT = { add_popularity = { ideology = market_liberal popularity = 0.03 } } }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_yue_aligned_advisor_tt
-						hidden_effect = {
-							GXC_YUE_medium_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_yue_aligned_advisor_tt
+					hidden_effect = {
+						GXC_YUE_medium_effect = yes
 					}
 				}
 			}
@@ -2319,21 +2365,21 @@ characters = {
 				traits = { KR_head_of_intelligence }
 				cost = 150
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { tag = YUN }
-							custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
-							hidden_effect = { YUN_TJY_small_effect = yes }
-						}
-						else_if = {
-							limit = {
+					if = {
+						limit = { ROOT = { tag = YUN } }
+						custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
+						hidden_effect = { YUN_TJY_small_effect = yes }
+					}
+					else_if = {
+						limit = {
+							ROOT = {
 								tag = GXC
 								china_is_aligned_with_kmt = no
 							}
-							custom_effect_tooltip = GXC_add_yue_aligned_advisor_tt
-							hidden_effect = {
-								GXC_YUE_small_effect = yes
-							}
+						}
+						custom_effect_tooltip = GXC_add_yue_aligned_advisor_tt
+						hidden_effect = {
+							GXC_YUE_small_effect = yes
 						}
 					}
 				}
@@ -2357,21 +2403,21 @@ characters = {
 				traits = { KR_MHC_army_surveyor_3 }
 				cost = 100
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { tag = YUN }
-							custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
-							hidden_effect = { YUN_TJY_small_effect = yes }
-						}
-						else_if = {
-							limit = {
+					if = {
+						limit = { ROOT = { tag = YUN } }
+						custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
+						hidden_effect = { YUN_TJY_small_effect = yes }
+					}
+					else_if = {
+						limit = {
+							ROOT = {
 								tag = GXC
 								china_is_aligned_with_kmt = no
 							}
-							custom_effect_tooltip = GXC_add_yue_aligned_advisor_tt
-							hidden_effect = {
-								GXC_YUE_small_effect = yes
-							}
+						}
+						custom_effect_tooltip = GXC_add_yue_aligned_advisor_tt
+						hidden_effect = {
+							GXC_YUE_small_effect = yes
 						}
 					}
 				}
@@ -2396,12 +2442,10 @@ characters = {
 				traits = { KR_general_staffer }
 				cost = 150
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { tag = YUN }
-							custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
-							hidden_effect = { YUN_TJY_small_effect = yes }
-						}
+					if = {
+						limit = { ROOT = { tag = YUN } }
+						custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
+						hidden_effect = { YUN_TJY_small_effect = yes }
 					}
 				}
 			}
@@ -2424,12 +2468,10 @@ characters = {
 				traits = { KR_MHC_army_surveyor_3 }
 				cost = 100
 				on_add = {
-					ROOT = {
-						if = {
-							limit = { tag = YUN }
-							custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
-							hidden_effect = { YUN_TJY_small_effect = yes }
-						}
+					if = {
+						limit = { ROOT = { tag = YUN } }
+						custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
+						hidden_effect = { YUN_TJY_small_effect = yes }
 					}
 				}
 			}
@@ -2501,12 +2543,10 @@ characters = {
 			traits = { KR_MHC_artillery_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
-						hidden_effect = { YUN_TJY_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
+					hidden_effect = { YUN_TJY_small_effect = yes }
 				}
 			}
 		}
@@ -2594,21 +2634,21 @@ characters = {
 			traits = { KR_dynamic_journalist }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_PGP_aligned_advisor_tt
-						hidden_effect = { YUN_PGP_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_PGP_aligned_advisor_tt
+					hidden_effect = { YUN_PGP_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_pip_aligned_advisor_tt
-						hidden_effect = {
-							GXC_PIP_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_pip_aligned_advisor_tt
+					hidden_effect = {
+						GXC_PIP_small_effect = yes
 					}
 				}
 			}
@@ -2629,12 +2669,10 @@ characters = {
 			traits = { KR_conscientious_diplomat }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_PGP_aligned_advisor_tt
-						hidden_effect = { YUN_PGP_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_PGP_aligned_advisor_tt
+					hidden_effect = { YUN_PGP_small_effect = yes }
 				}
 			}
 		}
@@ -2654,12 +2692,10 @@ characters = {
 			traits = { KR_education_reformer }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_PGP_aligned_advisor_tt
-						hidden_effect = { YUN_PGP_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_PGP_aligned_advisor_tt
+					hidden_effect = { YUN_PGP_small_effect = yes }
 				}
 			}
 		}
@@ -2679,12 +2715,10 @@ characters = {
 			traits = { KR_regional_traditionalist_leader }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
-						hidden_effect = { YUN_TJY_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_TJY_aligned_advisor_tt
+					hidden_effect = { YUN_TJY_small_effect = yes }
 				}
 			}
 		}
@@ -2717,12 +2751,10 @@ characters = {
 			traits = { KR_influential_intellectual }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
-						hidden_effect = { YUN_CMS_large_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
+					hidden_effect = { YUN_CMS_large_effect = yes }
 				}
 			}
 		}
@@ -2759,21 +2791,21 @@ characters = {
 			traits = { KR_mixed_economy_proponent }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
-						hidden_effect = { YUN_CMS_large_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
+					hidden_effect = { YUN_CMS_large_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
-						hidden_effect = {
-							GXC_DSP_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
+					hidden_effect = {
+						GXC_DSP_small_effect = yes
 					}
 				}
 			}
@@ -2805,12 +2837,10 @@ characters = {
 			traits = { KR_worldly_intellectual }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
-						hidden_effect = { YUN_CMS_medium_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
+					hidden_effect = { YUN_CMS_medium_effect = yes }
 				}
 			}
 		}
@@ -2830,21 +2860,21 @@ characters = {
 			traits = { KR_disciple_of_humanism }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
-						hidden_effect = { YUN_CMS_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
+					hidden_effect = { YUN_CMS_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
-						hidden_effect = {
-							GXC_DSP_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
+					hidden_effect = {
+						GXC_DSP_small_effect = yes
 					}
 				}
 			}
@@ -2876,21 +2906,21 @@ characters = {
 			traits = { KR_essence_of_crescent_moon }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
-						hidden_effect = { YUN_CMS_large_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
+					hidden_effect = { YUN_CMS_large_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
-						hidden_effect = {
-							GXC_DSP_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_dsp_aligned_advisor_tt
+					hidden_effect = {
+						GXC_DSP_small_effect = yes
 					}
 				}
 			}
@@ -2911,12 +2941,10 @@ characters = {
 			traits = { KR_centrist_educator }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
-						hidden_effect = { YUN_CMS_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
+					hidden_effect = { YUN_CMS_small_effect = yes }
 				}
 			}
 		}
@@ -2946,12 +2974,10 @@ characters = {
 			traits = { KR_army_chief_reform_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
-						hidden_effect = { YUN_CMS_medium_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_CMS_aligned_advisor_tt
+					hidden_effect = { YUN_CMS_medium_effect = yes }
 				}
 			}
 		}
@@ -3004,21 +3030,21 @@ characters = {
 			traits = { KR_army_chief_manoeuvre_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
-						hidden_effect = { YUN_LYC_large_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
+					hidden_effect = { YUN_LYC_large_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
-						hidden_effect = {
-							GXC_SAF_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
+					hidden_effect = {
+						GXC_SAF_small_effect = yes
 					}
 				}
 			}
@@ -3034,12 +3060,10 @@ characters = {
 			traits = { KR_MHC_army_staffer_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
-						hidden_effect = { YUN_LYC_large_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
+					hidden_effect = { YUN_LYC_large_effect = yes }
 				}
 			}
 		}
@@ -3117,21 +3141,21 @@ characters = {
 			traits = { KR_resource_industrialist }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
-						hidden_effect = { YUN_LYC_small_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
+					hidden_effect = { YUN_LYC_small_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
-						hidden_effect = {
-							GXC_SAF_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
+					hidden_effect = {
+						GXC_SAF_small_effect = yes
 					}
 				}
 			}
@@ -3163,12 +3187,10 @@ characters = {
 			traits = { KR_backroom_backstabber }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
-						hidden_effect = { YUN_LYC_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
+					hidden_effect = { YUN_LYC_small_effect = yes }
 				}
 			}
 		}
@@ -3188,12 +3210,10 @@ characters = {
 			traits = { KR_economic_reformer }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
-						hidden_effect = { YUN_LYC_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
+					hidden_effect = { YUN_LYC_small_effect = yes }
 				}
 			}
 		}
@@ -3213,12 +3233,10 @@ characters = {
 			traits = { KR_master_engineer }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
-						hidden_effect = { YUN_LYC_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_LYC_aligned_advisor_tt
+					hidden_effect = { YUN_LYC_small_effect = yes }
 				}
 			}
 		}
@@ -3263,21 +3281,21 @@ characters = {
 			traits = { KR_army_chief_organisational_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
-						hidden_effect = { YUN_HRY_large_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
+					hidden_effect = { YUN_HRY_large_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
-						hidden_effect = {
-							GXC_SAF_medium_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
+					hidden_effect = {
+						GXC_SAF_medium_effect = yes
 					}
 				}
 			}
@@ -3309,21 +3327,21 @@ characters = {
 			traits = { KR_MHC_infantry_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
-						hidden_effect = { YUN_HRY_medium_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
+					hidden_effect = { YUN_HRY_medium_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
-						hidden_effect = {
-							GXC_SAF_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
+					hidden_effect = {
+						GXC_SAF_small_effect = yes
 					}
 				}
 			}
@@ -3355,21 +3373,21 @@ characters = {
 			traits = { KR_MHC_army_regrouping_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
-						hidden_effect = { YUN_HRY_large_effect = yes }
-					}
-					else_if = {
-						limit = {
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
+					hidden_effect = { YUN_HRY_large_effect = yes }
+				}
+				else_if = {
+					limit = {
+						ROOT = {
 							tag = GXC
 							china_is_aligned_with_kmt = no
 						}
-						custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
-						hidden_effect = {
-							GXC_SAF_small_effect = yes
-						}
+					}
+					custom_effect_tooltip = GXC_add_warlord_aligned_advisor_tt
+					hidden_effect = {
+						GXC_SAF_small_effect = yes
 					}
 				}
 			}
@@ -3392,12 +3410,10 @@ characters = {
 			traits = { KR_resource_industrialist }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
-						hidden_effect = { YUN_HRY_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
+					hidden_effect = { YUN_HRY_small_effect = yes }
 				}
 			}
 		}
@@ -3437,12 +3453,10 @@ characters = {
 			traits = { KR_MHC_irregular_2 }
 			cost = 100
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
-						hidden_effect = { YUN_HRY_small_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_HRY_aligned_advisor_tt
+					hidden_effect = { YUN_HRY_small_effect = yes }
 				}
 			}
 		}
@@ -3482,12 +3496,10 @@ characters = {
 			traits = { KR_administrative_genius }
 			cost = 150
 			on_add = {
-				ROOT = {
-					if = {
-						limit = { tag = YUN }
-						custom_effect_tooltip = YUN_add_YCC_aligned_advisor_tt
-						hidden_effect = { YUN_YCC_large_effect = yes }
-					}
+				if = {
+					limit = { ROOT = { tag = YUN } }
+					custom_effect_tooltip = YUN_add_YCC_aligned_advisor_tt
+					hidden_effect = { YUN_YCC_large_effect = yes }
 				}
 			}
 		}

@@ -604,8 +604,8 @@ country_event = { #Fate of Canada
 					}
 				}
 				if = {
-					limit = { CAN_andrew_mccaughton = { character_is_regent = yes } }
-					CAN_andrew_mccaughton = {
+					limit = { CAN_andrew_mcnaughton = { character_is_regent = yes } }
+					CAN_andrew_mcnaughton = {
 						set_character_as_republican = yes
 						remove_all_country_leader_roles = yes
 					}
@@ -1754,6 +1754,7 @@ country_event = { #Fate of Puerto Rico
 				OR = {
 					original_tag = WIF
 					is_american_tag = yes
+					original_tag = SPA
 				}
 			}
 			save_event_target_as = can_annex
@@ -3258,8 +3259,8 @@ country_event = { #Fate of Ecuador
 				annexations_can_annex = yes
 			}
 		}
-		set_temp_variable = { tag_to_release = ECU }
-		release_targeted_tag = yes
+		set_temp_variable = { tag_to_release = event_target:ecuador }
+		649 = { transfer_state_and_notify = yes } #Galapagos Islands
 	}
 
 	option = { #Give to overlord

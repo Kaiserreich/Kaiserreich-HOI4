@@ -3,64 +3,6 @@ pataut_pop_high = { #Paternal Autocrat/Zhang Clique - Pop High
 	paternal_autocrat < 0.45
 }
 
-FNG_can_attend_unification_conference = {
-	OR = {
-		china_is_aligned_with_fengtian = yes
-		has_country_leader = { character = SZC_deng_xihou }
-		has_country_leader = { character = SZC_liu_wenhui }
-		has_country_leader = { character = SZC_liu_xiang }
-		has_country_leader = { character = SHX_yan_xishan }
-		has_country_leader = { character = YUN_long_yun }
-		AND = {
-			OR = {
-				has_country_leader = { character = ANQ_chen_tiaoyuan }
-				has_country_leader = { character = SHD_zhang_zongchang }
-				has_country_leader = { character = GXC_ma_ji }
-				has_country_leader = { character = GXC_chen_lianbo }
-			}
-			china_is_unaligned = yes
-		}
-		AND = {
-			has_country_leader = { character = HNN_zhao_hengti }
-			has_global_flag = QIE_manchu_restoration
-			NOT = { GXC = { has_country_leader = { character = GXC_chen_jiongming } } }
-			NOT = { SZC = { has_country_leader = { character = GXC_chen_jiongming } } }
-			NOT = { YUN = { has_country_leader = { character = YUN_tang_jiyao } } }
-		}
-		AND = {
-			has_global_flag = northwest_conflict_ended
-			OR = {
-				AND = {
-					tag = XSM
-					OR = {
-						has_country_leader = { character = XSM_ma_bufang }
-						AND = {
-							has_country_leader = { character = XSM_ma_hongkui }
-							has_global_flag = QIE_manchu_restoration
-							SZC = { SZC_zhili_in_exile = no }
-						}
-					}
-				}
-				AND = {
-					NOT = { has_war_with = SIK }
-					NOT = { has_war_with = KUM }
-					NOT = { has_war_with = ETS }
-					OR = {
-						has_country_leader = { character = SIK_jin_shuren }
-						has_country_leader = { character = SIK_ma_shaowu }
-						has_country_leader = { character = XSM_ma_zhongying }
-						AND = {
-							has_country_leader = { character = SIK_fan_yaonan }
-							has_global_flag = QIE_manchu_restoration
-							SZC = { SZC_zhili_in_exile = no }
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
 FNG_JAP_hostile = {
 	has_global_flag = FNG_relations_JAP_broke
 }
@@ -119,10 +61,6 @@ FNG_JAP_influence_active = {
 		exists = yes
 		NOT = { has_war_with = FNG }
 	}
-}
-
-FNG_JAP_influence_max_check = {
-	check_variable = { FNG.FNG_JAP_influence_variable < 100 }
 }
 
 FNG_JAP_mission_complete_trigger = {

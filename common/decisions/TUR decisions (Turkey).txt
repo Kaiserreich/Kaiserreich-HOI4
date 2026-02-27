@@ -695,6 +695,17 @@ TUR_after_defeat_foreign = {
 				factor = 0
 				FROM = { surrender_progress > 0.1 }
 			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN }
+				CHN = { is_subject = no }
+				NOT = {
+					AND = {
+						CHN = { is_in_faction_but_not_leader = yes }
+						CHN = { is_in_faction_with = JAP }
+					}
+				}
+			}
 		}
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete TUR_join_internationale"

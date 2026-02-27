@@ -20,7 +20,12 @@ foreign_politics = {
 				create_faction_from_template = { template = faction_template_china_generic name = faction_FNG_wuxing_protocol } #Wuxing Means 5-Star
 			}
 			else_if = {
-				limit = { tag = QIE }
+				limit = {
+					OR = {
+						tag = QIE
+						tag = LEP
+					}
+				}
 				create_faction_from_template = { template = faction_template_china_generic name = faction_QIE_league_of_free_asian_states }
 			}
 			else_if = {
@@ -312,8 +317,13 @@ UPC_elections_decision_category = {
 						}
 						#Needs to be above a certain threshold
 						OR = {
-							has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_XIAOYING_AUTDEM }
-							has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_JIYAO_AUTDEM }
+							AND = {
+								is_ai = yes
+								OR = {
+									has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_XIAOYING_AUTDEM }
+									has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_JIYAO_AUTDEM }
+								}
+							}
 							AND = {
 								NOT = { has_country_flag = UPC_depoliticise_the_military_flag }
 								is_power_balance_in_range = {
@@ -328,13 +338,6 @@ UPC_elections_decision_category = {
 						}
 					}
 					country_event = YUN.endgame.320 #Widely contested elections
-					if = {
-						limit = {
-							has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_XIAOYING_AUTDEM }
-							has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_JIYAO_AUTDEM }
-						}
-						custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-					}
 				}
 				else_if = {
 					limit = {
@@ -346,7 +349,10 @@ UPC_elections_decision_category = {
 						}
 						#Needs to be above a certain threshold - gotta be emerging -30 -> +30
 						OR = {
-							has_game_rule = { rule = SZC_UPC_path option = SZC_UPC_PATH_AUTDEM }
+							AND = {
+								is_ai = yes
+								has_game_rule = { rule = SZC_UPC_path option = SZC_UPC_PATH_AUTDEM }
+							}
 							AND = {
 								NOT = { has_country_flag = UPC_depoliticise_the_military_flag }
 								OR = {
@@ -372,12 +378,6 @@ UPC_elections_decision_category = {
 						}
 					}
 					country_event = sichuan_events.620 #Last Light of Chinese Democracy
-					if = {
-						limit = {
-							has_game_rule = { rule = SZC_UPC_path option = SZC_UPC_PATH_AUTDEM }
-						}
-						custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-					}
 				}
 				else = {
 					country_event = UPC.federalelections.001 #The National Assembly is Elected
@@ -536,6 +536,7 @@ UPC_elections_decision_category = {
 				owns_state = FROM #Do not count states owned by puppets just so we don't have to take into account their politics
 				FROM = { state = 326 } #Hong Kong, represents the diaspora
 			}
+			has_active_mission = UPC_upcoming_federal_elections_timer
 		}
 		available = {
 			if = {
@@ -1782,7 +1783,19 @@ UPC_enthusiasm_decision_category = {
 		}
 		cancel_if_not_visible = yes
 		fire_only_once = no
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 100
+				tag = YUN
+				has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_YUN }
+			}
+			modifier = {
+				factor = 0
+				tag = YUN
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
+			}
+		}
 
 		cost = 50
 

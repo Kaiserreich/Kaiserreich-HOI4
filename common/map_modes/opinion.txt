@@ -3,7 +3,7 @@ scripted_map_modes = {
 		top = {
 			type = country
 			color = {
-				set_temp_variable = { alpha = 0.5 }
+				set_temp_variable = { alpha = 0.9 }
 				FROM = {
 					if = {
 						limit = { tag = ROOT }
@@ -15,7 +15,7 @@ scripted_map_modes = {
 						set_temp_variable = { red = 0.35 }
 						set_temp_variable = { green = 0.35 }
 						set_temp_variable = { blue = 0.35 }
-						set_temp_variable = { alpha = 0.25 }
+						set_temp_variable = { alpha = 0.45 }
 					}
 					else = {
 						set_temp_variable = { red = opinion@ROOT }
@@ -29,6 +29,16 @@ scripted_map_modes = {
 				}
 			}
 			thickness = yes
+		}
+
+		bottom = {
+			type = country
+			color = {
+				set_temp_variable = { red = 0.45 }
+				set_temp_variable = { blue = 0.45 }
+				set_temp_variable = { green = 0.45 }
+				set_temp_variable = { alpha = 0.45 }
+			}
 		}
 
 		far_text = country

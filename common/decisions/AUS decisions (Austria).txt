@@ -598,18 +598,13 @@ political_actions = {
 			BPL = { is_faction_leader = yes }
 		}
 
-		target_trigger = {
-			is_in_faction_with = BPL
-			BPL = { is_faction_leader = yes }
-		}
-
 		cost = 0
 		fire_only_once = yes
 
 		ai_will_do = { factor = 100 }
 
 		complete_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision complete CZE_leave_belgrade_pact"
+			log = "[GetLogRoot]: Decision complete CZE_leave_belgrade_pact"
 			hidden_effect = {
 				every_owned_state = {
 					teleport_armies = {
@@ -834,7 +829,7 @@ SER_The_Road_To_Unification_decisions = {
 			is_subject = no
 			is_in_faction = yes
 			can_declare_war_on = FROM
-			NOT = { has_country_flag = balkan_war_loss_temp_flag }
+			hidden_trigger = { NOT = { has_country_flag = balkan_war_loss_temp_flag } } # Hidden for cancel_if_not_visible
 		}
 
 		cancel_trigger = {

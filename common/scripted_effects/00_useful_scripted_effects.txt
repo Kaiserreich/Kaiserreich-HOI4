@@ -1935,7 +1935,7 @@ invite_country_to_faction = {
 }
 
 invite_decision_target_to_faction = {
-	FROM = { invite_country_to_faction = yes }
+	FROM = { country_event = { id = generic_events.18 hours = 4 random_hours = 4 } }
 	custom_effect_tooltip = if_they_accept_tt
 	effect_tooltip = {
 		if = {

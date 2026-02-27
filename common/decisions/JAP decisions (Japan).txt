@@ -759,13 +759,13 @@ JAP_influence_china = {
 			#Rig it if you have game rules
 			if = {
 				limit = {
+					FNG = { is_ai = yes }
 					OR = {
 						has_game_rule = { rule = FNG_path option = FNG_PATH_GAMBIT_PATAUT }
 						has_game_rule = { rule = FNG_path option = FNG_PATH_CONCORD_PATAUT }
 					}
 				}
 				effect_tooltip = { country_event = fengtian_japan_mechanic_events.004 } #The Huanggutun Incident
-				custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 			}
 			#Actual code
 			else = {
@@ -777,6 +777,7 @@ JAP_influence_china = {
 			#Rig it if you have game rules
 			if = {
 				limit = {
+					FNG = { is_ai = yes }
 					OR = {
 						has_game_rule = { rule = FNG_path option = FNG_PATH_RECOVERY_AUTDEM }
 						has_game_rule = { rule = FNG_path option = FNG_PATH_COMMUNICATIONS_AUTDEM }
@@ -784,7 +785,6 @@ JAP_influence_china = {
 					}
 				}
 				effect_tooltip = { country_event = fengtian_japan_mechanic_events.003 } #The Fengtian-Japanese Alliance Victorious?
-				custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 			}
 			#Actual code
 			else = {

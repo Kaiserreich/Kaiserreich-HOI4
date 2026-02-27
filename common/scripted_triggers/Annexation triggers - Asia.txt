@@ -169,10 +169,7 @@ can_release_408 = { #Vladivostok
 	ROOT = {
 		OR = {
 			is_subject = yes
-			any_state_of = {
-				target = { 582 408 } #Orsk, Vladivostok
-				is_claim_or_core_of_ROOT = yes
-			}
+			is_russian_tag = yes
 
 			NOT = { country_exists = FER }
 			582 = { #Orsk
@@ -187,7 +184,6 @@ can_release_408 = { #Vladivostok
 				is_monarchy = yes
 			}
 			has_completed_focus = QIE_we_win
-			has_country_leader = { character = CHI_hu_zongnan }
 			MAN = { ROOT_can_grant_land = yes }
 		}
 	}

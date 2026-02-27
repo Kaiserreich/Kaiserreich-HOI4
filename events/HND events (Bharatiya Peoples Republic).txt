@@ -1262,8 +1262,8 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
+					has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 					has_game_rule = { rule = HND_forpol option = HND_FORPOL_HND }
-					has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
 				}
 			}
 		}
@@ -1274,6 +1274,7 @@ country_event = {
 			}
 			save_global_event_target_as = KR_internationale_leader
 			create_faction_from_template = { template = faction_template_internationale name = faction_fourth_internationale }
+			log = "KR_Event_Logging;HND FOREIGN POLICY - EASTERN SYNDICALIST UNION"
 			NEP_join_overlord_faction_effect = yes
 			hidden_effect = { news_event = world_news_events.484 }
 		}
@@ -1314,13 +1315,38 @@ country_event = {
 			leave_faction = yes
 			create_faction_from_template = { template = faction_template_generic name = eastern_syndicalist_union }
 			NEP_join_overlord_faction_effect = yes
+			log = "KR_Event_Logging;HND FOREIGN POLICY - EASTERN SYNDICALIST UNION"
 		}
 		add_ideas = HND_bulwark_of_the_asian_revolution
-		if = {
-			limit = {
-				CHI = { exists = yes }
+		effect_tooltip = {
+			#Present it this way so there's only one tooltip
+			activate_targeted_decision = { target = CHN decision = HND_propose_the_sino_indian_bloc }
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					CHI = { exists = yes }
+				}
+				activate_targeted_decision = { target = CHI decision = HND_propose_the_sino_indian_bloc }
 			}
-			activate_targeted_decision = { target = CHI decision = HND_propose_the_sino_indian_bloc }
+			if = {
+				limit = {
+					GXC = { exists = yes }
+				}
+				activate_targeted_decision = { target = GXC decision = HND_propose_the_sino_indian_bloc }
+			}
+			if = {
+				limit = {
+					SHX = { exists = yes }
+				}
+				activate_targeted_decision = { target = SHX decision = HND_propose_the_sino_indian_bloc }
+			}
+			if = {
+				limit = {
+					YUN = { exists = yes }
+				}
+				activate_targeted_decision = { target = YUN decision = HND_propose_the_sino_indian_bloc }
+			}
 		}
 	}
 }
@@ -1406,7 +1432,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				has_government = totalist
-				NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI } }
+				NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN } }
 			}
 		}
 		HND_LKT_form_faction_effect = yes
@@ -1421,13 +1447,13 @@ country_event = {
 				factor = 0
 				OR = {
 					has_country_leader = { character = CHI_song_qingling }
-					has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+					has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 				}
 			}
 			modifier = {
 				add = 25
 				has_government = totalist
-				NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI } }
+				NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN } }
 			}
 		}
 		FROM = { country_event = { id = socialist_india_events.104 days = 1 } }
@@ -1441,7 +1467,7 @@ country_event = {
 			modifier = {
 				add = 25
 				has_government = totalist
-				NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI } }
+				NOT = { has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN } }
 			}
 		}
 		add_political_power = -50
@@ -1508,7 +1534,7 @@ country_event = {
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+				has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 			}
 		}
 		add_political_power = 100
@@ -1666,7 +1692,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				FROM = { tag = TIB }
-				has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+				has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 				CHI = { exists = yes }
 			}
 		}
@@ -1677,6 +1703,7 @@ country_event = {
 				limit = { is_in_faction = no }
 				create_faction_from_template = { template = faction_template_generic name = eastern_syndicalist_union }
 				NEP_join_overlord_faction_effect = yes
+				log = "KR_Event_Logging;HND FOREIGN POLICY - EASTERN SYNDICALIST UNION"
 			}
 			hidden_effect = {
 				every_other_country = {
@@ -1704,6 +1731,7 @@ country_event = {
 			create_faction_from_template = { template = faction_template_generic name = eastern_syndicalist_union }
 			add_to_faction = FROM
 			NEP_join_overlord_faction_effect = yes
+			log = "KR_Event_Logging;HND FOREIGN POLICY - EASTERN SYNDICALIST UNION"
 		}
 		if = {
 			limit = {
@@ -1728,7 +1756,7 @@ country_event = {
 			modifier = {
 				add = 100
 				FROM = { tag = TIB }
-				has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+				has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 				CHI = { exists = yes }
 			}
 		}

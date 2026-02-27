@@ -412,6 +412,7 @@ FNG_fixing_the_economy_category = { # Wang Yongjiang's Legacy
 		}
 
 		visible = {
+			FNG_JAP_hostile = no
 			OR = {
 				has_idea = FNG_Investment_Dearth
 				has_idea = FNG_Limited_Investment
@@ -419,6 +420,7 @@ FNG_fixing_the_economy_category = { # Wang Yongjiang's Legacy
 		}
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		cost = 20
 		days_remove = 15
@@ -639,6 +641,186 @@ FNG_fixing_the_economy_category = { # Wang Yongjiang's Legacy
 		fixed_random_seed = no
 	}
 
+	FNG_Encourage_Russian_Investment = { #Solicit Russian Investment
+		icon = GFX_decision_give_cash
+
+		allowed = { always = no }
+
+		available = {
+			NOT = {
+				has_country_flag = FNG_already_soliciting_investment
+				has_war_with = 408.owner
+			}
+			OR = {
+				has_country_flag = reserve_full
+				has_country_flag = fengtian_dollar_reintroduced
+			}
+		}
+
+		visible = {
+			FNG_JAP_hostile = yes
+			OR = {
+				has_idea = FNG_Investment_Dearth
+				has_idea = FNG_Limited_Investment
+			}
+		}
+
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+
+		cost = 35
+		days_remove = 60
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				has_political_power < 60
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete FNG_Encourage_Russian_Investment"
+			hidden_effect = {
+				set_country_flag = FNG_already_soliciting_investment
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove FNG_Encourage_Russian_Investment"
+			if = {
+				limit = {
+					has_country_flag = enrich_country
+				}
+				hidden_effect = {
+					add_political_power = 30
+				}
+				custom_effect_tooltip = BONUS_PP_30
+			}
+			custom_effect_tooltip = FNG_remove_investment_dearth
+			if = {
+				limit = {
+					has_idea = FNG_Limited_Investment
+				}
+				remove_ideas = FNG_Limited_Investment
+				country_event = fengtian_events.33
+				else_if = {
+					limit = {
+						has_idea = FNG_Investment_Dearth
+					}
+					swap_ideas = {
+						remove_idea = FNG_Investment_Dearth
+						add_idea = FNG_Limited_Investment
+					}
+				}
+				else = {
+					remove_ideas = FNG_Limited_Investment
+				}
+			}
+			activate_targeted_decision = { target = 408.owner decision = FNG_Upgrade_Harbin_Port_Facilities }
+			activate_targeted_decision = { target = 408.owner decision = FNG_Amur_Minerals_Deal }
+			clr_country_flag = FNG_already_soliciting_investment
+		}
+		fixed_random_seed = no
+	}
+
+	FNG_Upgrade_Harbin_Port_Facilities = {
+		icon = GFX_decision_generic_naval_base
+
+		available = {
+			controls_state = 885
+			NOT = {
+				has_country_flag = FNG_already_soliciting_investment
+				has_idea = FNG_Investment_Dearth
+				has_war_with = 408.owner
+			}
+		}
+
+		allowed = { always = no }
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 100
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				has_political_power < 50
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete FNG_Upgrade_Harbin_Port_Facilities"
+			set_country_flag = { flag = FNG_already_soliciting_investment days = 90 value = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove FNG_Upgrade_Harbin_Port_Facilities"
+			885 = { #Harbin
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 10
+				producer = RUS
+			}
+			hidden_effect = {
+				clr_country_flag = FNG_already_soliciting_investment
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	FNG_Amur_Minerals_Deal = {
+		icon = GFX_decision_gre_investment_decisions
+
+		available = {
+			controls_state = 884
+			NOT = {
+				has_country_flag = FNG_already_soliciting_investment
+				has_idea = FNG_Investment_Dearth
+				has_war_with = 408.owner
+			}
+		}
+
+		allowed = { always = no }
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 100
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				has_political_power < 50
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete FNG_Amur_Minerals_Deal"
+			set_country_flag = { flag = FNG_already_soliciting_investment days = 90 value = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove FNG_Amur_Minerals_Deal"
+			add_resource = {
+				type = tungsten
+				amount = 6
+				state = 884
+			}
+			FNG_JAP_investment_large = yes
+			clr_country_flag = FNG_already_soliciting_investment
+		}
+		fixed_random_seed = no
+	}
+
 	FNG_Encourage_Japanese_Investment = { #Solicit Japanese Investment
 		icon = GFX_decision_give_cash
 
@@ -655,7 +837,13 @@ FNG_fixing_the_economy_category = { # Wang Yongjiang's Legacy
 			}
 		}
 
+		visible = {
+			FNG_JAP_hostile = no
+			has_war = no
+		}
+
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		cost = 35
 		days_remove = 60
@@ -3331,13 +3519,13 @@ FNG_foreign_policy = { #The Road to Reclamation
 			#Rig it if you have game rules
 			if = {
 				limit = {
+					is_ai = yes
 					OR = {
 						has_game_rule = { rule = FNG_path option = FNG_PATH_GAMBIT_PATAUT }
 						has_game_rule = { rule = FNG_path option = FNG_PATH_CONCORD_PATAUT }
 					}
 				}
 				country_event = fengtian_japan_mechanic_events.004 #The Huanggutun Incident
-				custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 			}
 			#Actual code
 			else = {
@@ -3351,6 +3539,7 @@ FNG_foreign_policy = { #The Road to Reclamation
 			#Rig it if you have game rules
 			if = {
 				limit = {
+					is_ai = yes
 					OR = {
 						has_game_rule = { rule = FNG_path option = FNG_PATH_RECOVERY_AUTDEM }
 						has_game_rule = { rule = FNG_path option = FNG_PATH_COMMUNICATIONS_AUTDEM }
@@ -3359,7 +3548,6 @@ FNG_foreign_policy = { #The Road to Reclamation
 				}
 				country_event = fengtian_japan_mechanic_events.003 #The Fengtian-Japanese Alliance Victorious?
 				country_event = { id = fengtian_beijing_conference_events.000 days = 3 } #The Beijing Conference
-				custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 			}
 			#Actual code
 			else = {
@@ -3383,12 +3571,16 @@ FNG_foreign_policy = { #The Road to Reclamation
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 100 #Higher Priority than Others
-				has_political_power > 150 #AI shouldn't use this unless they have room to spare
+				factor = 0
+				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
 			}
 			modifier = {
 				factor = 0
-				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
+				FNG = { surrender_progress > 0.10 } #AI should stop delaying if they're losing ground
+			}
+			modifier = {
+				add = 100 #Higher Priority than Others
+				has_political_power > 150 #AI shouldn't use this unless they have room to spare
 			}
 		}
 		cost = 30
@@ -3420,12 +3612,16 @@ FNG_foreign_policy = { #The Road to Reclamation
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 100 #Higher Priority than Others
-				has_stability > 0.50
+				factor = 0
+				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
 			}
 			modifier = {
 				factor = 0
-				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
+				FNG = { surrender_progress > 0.10 } #AI should stop delaying if they're losing ground
+			}
+			modifier = {
+				add = 100 #Higher Priority than Others
+				has_stability > 0.50
 			}
 		}
 		custom_cost_trigger = {
@@ -3463,12 +3659,16 @@ FNG_foreign_policy = { #The Road to Reclamation
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 100 #Higher Priority than Others
-				has_war_support > 0.50
+				factor = 0
+				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
 			}
 			modifier = {
 				factor = 0
-				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
+				FNG = { surrender_progress > 0.10 } #AI should stop delaying if they're losing ground
+			}
+			modifier = {
+				add = 100 #Higher Priority than Others
+				has_war_support > 0.50
 			}
 		}
 		custom_cost_trigger = {
@@ -3506,12 +3706,16 @@ FNG_foreign_policy = { #The Road to Reclamation
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 50
-				has_political_power > 100 #AI shouldn't use this unless they have room to spare
+				factor = 0
+				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
 			}
 			modifier = {
 				factor = 0
-				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
+				FNG = { surrender_progress > 0.10 } #AI should stop delaying if they're losing ground
+			}
+			modifier = {
+				add = 50
+				has_political_power > 100 #AI shouldn't use this unless they have room to spare
 			}
 		}
 		cost = 10
@@ -3543,12 +3747,16 @@ FNG_foreign_policy = { #The Road to Reclamation
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 50
-				command_power > 100 #AI shouldn't use this unless they have room to spare
+				factor = 0
+				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
 			}
 			modifier = {
 				factor = 0
-				has_country_flag = FNG_is_playing_FNG_JAP_minigame_flag
+				FNG = { surrender_progress > 0.10 } #AI should stop delaying if they're losing ground
+			}
+			modifier = {
+				add = 50
+				command_power > 100 #AI shouldn't use this unless they have room to spare
 			}
 		}
 		custom_cost_trigger = {

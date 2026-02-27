@@ -1488,7 +1488,7 @@ country_event = { # National Legionaries
 			base = 40
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BUL_loss_path option = BUL_LOSS_PATH_AUTDEM }
+				has_game_rule = { rule = BUL_loss_path option = BUL_LOSS_PATH_MON_AUTDEM }
 			}
 		}
 		end_coalition = yes
@@ -2126,7 +2126,7 @@ country_event = { # Church Attack
 			base = 75
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BUL_loss_path option = BUL_LOSS_PATH_AUTDEM }
+				has_game_rule = { rule = BUL_loss_path option = BUL_LOSS_PATH_MON_AUTDEM }
 			}
 		}
 		add_stability = -0.25
@@ -2150,7 +2150,7 @@ country_event = { # Church Attack
 			modifier = {
 				factor = 0
 				NOT = { has_game_rule = { rule = BUL_loss_path option = DEFAULT } }
-				NOT = { has_game_rule = { rule = BUL_loss_path option = BUL_LOSS_PATH_AUTDEM } }
+				NOT = { has_game_rule = { rule = BUL_loss_path option = BUL_LOSS_PATH_MON_AUTDEM } }
 			}
 		}
 		add_stability = -0.25
@@ -2664,7 +2664,7 @@ country_event = { # What do we dooo
 			base = 65
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = BUL_loss_path option = BUL_LOSS_PATH_AGRARIANS_AUTDEM }
+				has_game_rule = { rule = BUL_loss_path option = BUL_LOSS_PATH_REP_AUTDEM }
 			}
 		}
 		hidden_effect = {
@@ -3514,6 +3514,13 @@ country_event = { #Germany proposes deal with Bulgaria
 	option = {
 		log = "[GetLogInfo]: event bulgaria_foreign_events.18 option bulgaria_foreign_events.18.a"
 		name = bulgaria_foreign_events.18.a #Support Bulgaria
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = BUL_forpol option = BUL_FORPOL_RUS }
+			}
+		}
 		add_equipment_to_stockpile = {
 			type = infantry_equipment
 			amount = -1000
@@ -3528,7 +3535,16 @@ country_event = { #Germany proposes deal with Bulgaria
 	option = {
 		log = "[GetLogInfo]: event bulgaria_foreign_events.18 option bulgaria_foreign_events.18.b"
 		name = bulgaria_foreign_events.18.b #Meh
-		ai_chance = { base = 0 }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { FROM = { has_government = paternal_autocrat } }
+					FROM = { is_ai = no }
+				}
+			}
+		}
 		add_war_support = -0.02
 		FROM = { country_event = bulgaria_foreign_events.20 }
 	}
@@ -3863,11 +3879,11 @@ country_event = { #White peace for Bulgaria vs. Ottomans
 
 	desc = {
 		text = bulgaria_foreign_events.35.d.cairo_pact
-		trigger = { has_idea = OTT_Ottoman_Stand }
+		trigger = { has_global_flag = OTT_cairo_pact_war_ongoing }
 	}
 	desc = {
 		text = bulgaria_foreign_events.35.d
-		trigger = { NOT = { has_idea = OTT_Ottoman_Stand } }
+		trigger = { NOT = { has_global_flag = OTT_cairo_pact_war_ongoing } }
 	}
 
 	trigger = {
@@ -3932,13 +3948,13 @@ country_event = { #Bulgaria decides on the peace offer
 	desc = {
 		text = bulgaria_foreign_events.36.d.cairo_pact
 		trigger = {
-			FROM = { has_idea = OTT_Ottoman_Stand }
+			FROM = { has_global_flag = OTT_cairo_pact_war_ongoing }
 		}
 	}
 	desc = {
 		text = bulgaria_foreign_events.36.d
 		trigger = {
-			NOT = { FROM = { has_idea = OTT_Ottoman_Stand } }
+			NOT = { has_global_flag = OTT_cairo_pact_war_ongoing }
 		}
 	}
 

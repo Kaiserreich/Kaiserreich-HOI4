@@ -275,11 +275,21 @@ focus_tree = {
 					exists = yes
 					china_compatible_alignment_to_PREV = yes
 				}
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN } }
 			}
 			modifier = { #Hunan will not do this focus if they are a subject and GXC is already a subject of another tag
 				factor = 0
 				is_subject = yes
 				GXC = { is_subject = yes }
+			}
+			modifier = {
+				factor = 2
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
+			}
+			modifier = {
+				factor = 10
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
+				date > 1937.12.1
 			}
 		}
 		available = {
@@ -1041,10 +1051,20 @@ focus_tree = {
 					exists = yes
 					china_compatible_alignment_to_PREV = yes
 				}
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN } }
 			}
 			modifier = {
 				factor = 2
 				is_subject = yes
+			}
+			modifier = {
+				factor = 2
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
+			}
+			modifier = {
+				factor = 10
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
+				date > 1937.12.1
 			}
 		}
 		available = {
@@ -1322,6 +1342,11 @@ focus_tree = {
 			modifier = {
 				factor = 5
 				CHN_ai_factor_pressure_to_act_trigger = yes
+			}
+			modifier = {
+				factor = 0
+				SZC = { china_is_aligned_with_federalists = yes }
+				has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_EXILE_UPC }
 			}
 		}
 		available = {
@@ -3054,10 +3079,22 @@ focus_tree = {
 					exists = yes
 					china_compatible_alignment_to_PREV = yes
 				}
+				NOT = { has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN } }
 			}
 			modifier = {
 				factor = 2
 				is_subject = yes
+			}
+			modifier = {
+				factor = 2
+				is_subject = no
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
+			}
+			modifier = {
+				factor = 10
+				is_subject = no
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
+				date > 1937.12.1
 			}
 		}
 		bypass = {

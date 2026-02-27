@@ -929,8 +929,7 @@ country_event = {  # Mulcahy takeover
 			set_country_flag = IRE_govt_sf_mulcahy
 			IRE_richard_mulcahy_add_hos = yes
 			remove_country_leader_trait = IRE_the_reformer
-			IRE_gearoid_osullivan_add_sic = yes
-			activate_advisor = IRE_gearoid_osullivan_sic
+			IRE_gearoid_osullivan_activate_and_add_sic = yes
 			IRE_richard_mulcahy = { remove_second_in_command_role = yes }
 		}
 	}
@@ -1385,8 +1384,7 @@ country_event = {  # 1937 Election event
 		hidden_effect = {
 			IRE_remove_elecpath = yes
 			IRE_load_temp_advisors = yes
-			IRE_dail_eireann_add_sic = yes
-			activate_advisor = IRE_dail_eireann_sic
+			IRE_dail_eireann_activate_and_add_sic = yes
 			complete_national_focus = IRE_saorstat_criostuil
 		}
 	}
@@ -1418,8 +1416,7 @@ country_event = {  # 1937 Election event
 		hidden_effect = {
 			IRE_remove_elecpath = yes
 			IRE_load_temp_advisors = yes
-			IRE_dail_eireann_add_sic = yes
-			activate_advisor = IRE_dail_eireann_sic
+			IRE_dail_eireann_activate_and_add_sic = yes
 			complete_national_focus = IRE_labour
 		}
 	}
@@ -3755,8 +3752,7 @@ country_event = {	# End of the Gateway to the Atlantic. 28/03/38. Triggered by m
 						IRE_remove_govt_flag = yes
 						set_country_flag = IRE_govt_parliamentary_an
 						IRE_load_parliamentary_an_govt_advisors = yes
-						IRE_john_j_okelly_add_sic = yes
-						activate_advisor = IRE_john_j_okelly_sic
+						IRE_john_j_okelly_activate_and_add_sic = yes
 						IRE_eoin_oduffy = {
 							remove_country_leader_role_paternal_autocrat = yes
 							remove_second_in_command_role = yes
@@ -3808,8 +3804,7 @@ country_event = {	# End of the Gateway to the Atlantic. 28/03/38. Triggered by m
 						}
 						IRE_remove_govt_flag = yes
 						set_country_flag = IRE_govt_abstentionist_an
-						IRE_jj_walsh_add_sic = yes
-						activate_advisor = IRE_jj_walsh_sic
+						IRE_jj_walsh_activate_and_add_sic = yes
 						IRE_gearoid_o_cuinneagain = { remove_second_in_command_role = yes }
 						IRE_eoin_oduffy = {
 							remove_unit_leader_role = yes
@@ -4207,19 +4202,20 @@ country_event = {  # Who are the Germans gonna put in charge?. Note please don't
 		ai_chance = {
 			base = 0
 			modifier = {
-				add = 2630
-				IRE = { has_country_flag = IRE_had_govt_blueshirt_coup }
-			}
-			modifier = {
-				add = 769
-				IRE = { has_country_flag = IRE_had_govt_cursed_coalition }
-			}
-			modifier = {
-				add = 203
+				add = 822
 				IRE = { has_country_flag = IRE_had_govt_sc_ndp }
 			}
 			modifier = {
-				add = 143
+				add = 1347
+				IRE = {
+					OR = {
+						has_country_flag = IRE_had_govt_cursed_coalition
+						has_country_flag = IRE_had_govt_blueshirt_coup
+					}
+				}
+			}
+			modifier = {
+				add = 642
 				IRE = {
 					OR = {
 						has_country_flag = IRE_had_govt_labour_ndp_cnat
@@ -4337,19 +4333,20 @@ country_event = {  # Who are the Germans gonna put in charge?. Note please don't
 		ai_chance = {
 			base = 0
 			modifier = {
-				add = 9590
-				IRE = { has_country_flag = IRE_had_govt_blueshirt_coup }
-			}
-			modifier = {
-				add = 2146
-				IRE = { has_country_flag = IRE_had_govt_cursed_coalition }
-			}
-			modifier = {
-				add = 725
+				add = 3288
 				IRE = { has_country_flag = IRE_had_govt_sc_ndp }
 			}
 			modifier = {
-				add = 1936
+				add = 5386
+				IRE = {
+					OR = {
+						has_country_flag = IRE_had_govt_cursed_coalition
+						has_country_flag = IRE_had_govt_blueshirt_coup
+					}
+				}
+			}
+			modifier = {
+				add = 2569
 				IRE = {
 					OR = {
 						has_country_flag = IRE_had_govt_labour_ndp_cnat
@@ -4444,8 +4441,7 @@ country_event = {  # Who are the Germans gonna put in charge?. Note please don't
 				IRE_remove_recorded_govt = yes
 				set_country_flag = IRE_govt_sf_mulcahy
 				IRE_load_sf_advisors = yes
-				IRE_gearoid_osullivan_add_sic = yes
-				activate_advisor = IRE_gearoid_osullivan_sic
+				IRE_gearoid_osullivan_activate_and_add_sic = yes
 				IRE_dail_eireann = { remove_second_in_command_role = yes }
 				IRE_richard_mulcahy = { remove_second_in_command_role = yes }
 				set_country_flag = IRE_spindler_event
@@ -4469,19 +4465,20 @@ country_event = {  # Who are the Germans gonna put in charge?. Note please don't
 		ai_chance = {
 			base = 0
 			modifier = {
-				add = 1771
-				IRE = { has_country_flag = IRE_had_govt_sf_collins }
+				add = 5513
+				IRE = {
+					OR = {
+						has_country_flag = IRE_had_govt_sf_collins
+						has_country_flag = IRE_had_govt_sf_mulcahy
+					}
+				}
 			}
 			modifier = {
-				add = 5138
-				IRE = { has_country_flag = IRE_had_govt_sf_mulcahy }
-			}
-			modifier = {
-				add = 1247
+				add = 5890
 				IRE = { has_country_flag = IRE_had_govt_sc_ndp }
 			}
 			modifier = {
-				add = 3772
+				add = 4601
 				IRE = {
 					OR = {
 						has_country_flag = IRE_had_govt_labour_ndp_cnat
@@ -4622,15 +4619,16 @@ country_event = {  # Who are the Germans gonna put in charge?. Note please don't
 		ai_chance = {
 			base = 0
 			modifier = {
-				add = 636
-				IRE = { has_country_flag = IRE_had_govt_sf_collins }
+				add = 2620
+				IRE = {
+					OR = {
+						has_country_flag = IRE_had_govt_sf_collins
+						has_country_flag = IRE_had_govt_sf_mulcahy
+					}
+				}
 			}
 			modifier = {
-				add = 2196
-				IRE = { has_country_flag = IRE_had_govt_sf_mulcahy }
-			}
-			modifier = {
-				add = 2852
+				add = 2187
 				IRE = {
 					OR = {
 						has_country_flag = IRE_had_govt_labour_ndp_cnat
@@ -4793,20 +4791,22 @@ country_event = {  # Who are the Germans gonna put in charge?. Note please don't
 		ai_chance = {
 			base = 0
 			modifier = {
-				add = 639
-				IRE = { has_country_flag = IRE_had_govt_sf_collins }
+				add = 1867
+				IRE = {
+					OR = {
+						has_country_flag = IRE_had_govt_sf_collins
+						has_country_flag = IRE_had_govt_sf_mulcahy
+					}
+				}
 			}
 			modifier = {
-				add = 2196
-				IRE = { has_country_flag = IRE_had_govt_sf_mulcahy }
-			}
-			modifier = {
-				add = 5179
-				IRE = { has_country_flag = IRE_had_govt_blueshirt_coup }
-			}
-			modifier = {
-				add = 526
-				IRE = { has_country_flag = IRE_had_govt_cursed_coalition }
+				add = 3267
+				IRE = {
+					OR = {
+						has_country_flag = IRE_had_govt_cursed_coalition
+						has_country_flag = IRE_had_govt_blueshirt_coup
+					}
+				}
 			}
 			modifier = {
 				factor = 1.5
@@ -5218,8 +5218,7 @@ country_event = {  # Who are the Brits gonna put in charge?
 				IRE_remove_extremepolpath = yes
 				set_country_flag = IRE_govt_plp
 				IRE_load_plp_govt_advisors = yes
-				IRE_robert_n_tweedy_add_sic = yes
-				activate_advisor = IRE_robert_n_tweedy_sic
+				IRE_robert_n_tweedy_activate_and_add_sic = yes
 				IRE_owen_sheehy_skeffington = { remove_second_in_command_role = yes }
 				IRE_dail_eireann = { remove_second_in_command_role = yes }
 				set_variable = { IRE_legitimacy = 65 }
@@ -9242,8 +9241,7 @@ country_event = {  # 1941+ Elections
 
 	immediate = {
 		hidden_effect = {
-			IRE_dail_eireann_add_sic = yes
-			activate_advisor = IRE_dail_eireann_sic
+			IRE_dail_eireann_activate_and_add_sic = yes
 			if = {
 				limit = { NOT = { has_completed_focus = IRE_second_election } }
 				unlock_national_focus = IRE_second_election
@@ -9551,7 +9549,7 @@ country_event = {  # 1941+ Elections
 		name = ireland_events.2500.e
 		trigger = {
 			IRE_has_socdem_in_coalition = yes
-			NOT = { is_in_faction_with = INT }
+			NOT = { var:faction_leader = { has_socialist_government = yes } }
 		}
 		ai_chance = {
 			base = 100
@@ -9749,7 +9747,11 @@ country_event = {  # 1941+ Elections
 				IRE_dail_eireann = { remove_second_in_command_role = yes }
 			}
 			else = {
-				activate_advisor = IRE_james_dillon_sic
+				if = {
+					limit = { IRE_james_dillon = { has_advisor_role = second_in_command } }
+					activate_advisor = IRE_james_dillon_sic
+				}
+				else = { IRE_james_dillon_activate_and_add_sic = yes }
 				IRE_dail_eireann = { remove_second_in_command_role = yes }
 			}
 		}
@@ -9759,7 +9761,7 @@ country_event = {  # 1941+ Elections
 		name = ireland_events.2500.g
 		trigger = {
 			IRE_has_soclib_in_coalition = yes
-			NOT = { is_in_faction_with = INT }
+			NOT = { var:faction_leader = { has_socialist_government = yes } }
 		}
 		ai_chance = {
 			base = 100
@@ -9814,13 +9816,6 @@ country_event = {  # 1941+ Elections
 		}
 		custom_effect_tooltip = tooltip_white_line
 		IRE_william_obrien_add_sic_tt = yes
-		if = {
-			limit = { has_character = NIR_basil_brooke }
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = ireland_events.2570.a.tt
-			add_stability = -0.1
-			hidden_effect = { IRE_remove_basil_brooke_advisor = yes }
-		}
 		if = {
 			limit = { IRE_started_41_tree = no }
 			custom_effect_tooltip = tooltip_white_line
@@ -10117,9 +10112,15 @@ country_event = {  # 1941+ Elections
 			add_to_coalition = yes
 			set_temp_variable = { coalition_partner_var = token:social_liberal }
 			add_to_coalition = yes
-			IRE_robert_n_tweedy_add_elected_sic = yes
-			activate_advisor = IRE_robert_n_tweedy_elected_sic
+			if = {
+				limit = { IRE_robert_n_tweedy = { has_advisor_role = second_in_command } }
+				activate_advisor = IRE_robert_n_tweedy_elected_sic
+			}
+			else = {
+				IRE_robert_n_tweedy_elected_activate_and_add_sic = yes
+			}
 			IRE_owen_sheehy_skeffington = { remove_second_in_command_role = yes }
+			IRE_dail_eireann = { remove_second_in_command_role = yes }
 			set_country_flag = { flag = IRE_socialist_bandwagon days = 3 value = 1 }
 			news_event = ireland_events.4325
 		}
@@ -10146,8 +10147,7 @@ country_event = {  # 1941+ Elections Parlrep
 
 	immediate = {
 		hidden_effect = {
-			IRE_dail_eireann_add_sic = yes
-			activate_advisor = IRE_dail_eireann_sic
+			IRE_dail_eireann_activate_and_add_sic = yes
 			if = {
 				limit = { NOT = { has_completed_focus = IRE_second_election } }
 				unlock_national_focus = IRE_second_election
@@ -10170,7 +10170,10 @@ country_event = {  # 1941+ Elections Parlrep
 		}
 		if = {
 			limit = {
-				NOT = { has_country_flag = IRE_govt_sf_mulcahy }
+				OR = {
+					has_country_flag = IRE_govt_sf_collins
+					has_country_flag = IRE_govt_sf_megacollins
+				}
 			}
 			IRE_michael_collins_parlrep_sic_tt = yes
 			hidden_effect = {
@@ -10425,7 +10428,7 @@ country_event = {  # 1941+ Elections Parlrep
 		name = ireland_events.2501.e
 		trigger = {
 			IRE_has_socdem_in_coalition = yes
-			NOT = { is_in_faction_with = INT }
+			NOT = { var:faction_leader = { has_socialist_government = yes } }
 		}
 		ai_chance = {
 			base = 100
@@ -10615,7 +10618,7 @@ country_event = {  # 1941+ Elections Parlrep
 		name = ireland_events.2501.g
 		trigger = {
 			IRE_has_soclib_in_coalition = yes
-			NOT = { is_in_faction_with = INT }
+			NOT = { var:faction_leader = { has_socialist_government = yes } }
 		}
 		ai_chance = {
 			base = 100
@@ -10958,6 +10961,7 @@ country_event = {  # 1941+ Elections Parlrep
 			country_event = { id = ireland_events.2512 days = 5 }
 			IRE_remove_govt_flag = yes
 			set_country_flag = IRE_govt_labour_cnat_plp
+			IRE_load_labour_cnat_plp_govt_advisors = yes
 			set_cosmetic_tag = IRE_elected_radsocs # prevents name change
 			set_politics = {
 				ruling_party = radical_socialist
@@ -11011,7 +11015,12 @@ country_event = {  # 1941+ Príomh Aire
 	title = ireland_events.2503.t
 
 	desc = {
-		trigger = { has_country_flag = IRE_govt_sf_collins }
+		trigger = {
+			OR = {
+				has_country_flag = IRE_govt_sf_collins
+				has_country_flag = IRE_govt_sf_megacollins
+			}
+		}
 		text = ireland_events.2503.d1
 	}
 	desc = {
@@ -11033,11 +11042,21 @@ country_event = {  # 1941+ Príomh Aire
 	option = {
 		log = "[GetLogInfo]: event ireland_events.2503 option ireland_events.2503.a"
 		name = ireland_events.2503.a  # Collins MarLib SF
-		trigger = { has_country_flag = IRE_govt_sf_collins }
+		trigger = {
+			OR = {
+				has_country_flag = IRE_govt_sf_collins
+				has_country_flag = IRE_govt_sf_megacollins
+			}
+		}
 		IRE_richard_mulcahy_add_sic_tt = yes
 		hidden_effect = {
-			IRE_richard_mulcahy_add_sic = yes
-			activate_advisor = IRE_richard_mulcahy_sic
+			if = {
+				limit = { IRE_richard_mulcahy = { has_advisor_role = second_in_command } }
+				activate_advisor = IRE_richard_mulcahy_sic
+			}
+			else = {
+				IRE_richard_mulcahy_activate_and_add_sic = yes
+			}
 			IRE_dail_eireann = { remove_second_in_command_role = yes }
 			IRE_sean_lemass = { remove_second_in_command_role = yes }
 		}
@@ -11048,8 +11067,13 @@ country_event = {  # 1941+ Príomh Aire
 		trigger = { has_country_flag = IRE_govt_sf_mulcahy }
 		IRE_gearoid_osullivan_add_sic_tt = yes
 		hidden_effect = {
-			IRE_gearoid_osullivan_add_sic = yes
-			activate_advisor = IRE_gearoid_osullivan_sic
+			if = {
+				limit = { IRE_gearoid_osullivan = { has_advisor_role = second_in_command } }
+				activate_advisor = IRE_gearoid_osullivan_sic
+			}
+			else = {
+				IRE_gearoid_osullivan_activate_and_add_sic = yes
+			}
 			IRE_dail_eireann = { remove_second_in_command_role = yes }
 			IRE_sean_lemass = { remove_second_in_command_role = yes }
 		}
@@ -11077,8 +11101,13 @@ country_event = {  # 1941+ Príomh Aire
 			}
 		}
 		hidden_effect = {
-			IRE_sean_lemass_add_sic = yes
-			activate_advisor = IRE_sean_lemass_sic
+			if = {
+				limit = { IRE_sean_lemass = { has_advisor_role = second_in_command } }
+				activate_advisor = IRE_sean_lemass_sic
+			}
+			else = {
+				IRE_sean_lemass_activate_and_add_sic = yes
+			}
 			IRE_dail_eireann = { remove_second_in_command_role = yes }
 			if = {
 				limit = { has_country_flag = IRE_sf_marlib }
@@ -11852,13 +11881,11 @@ country_event = {	# Post-War SF turn MarLib?
 					limit = { has_country_flag = IRE_parlrep }
 					var:IRE.IRE_former_president = { promote_character = authoritarian_democrat_subtype }
 					IRE_michael_collins = { remove_all_country_leader_roles = yes }
-					IRE_michael_collins_add_success_sic = yes
-					activate_advisor = IRE_michael_collins_sic
+					IRE_michael_collins_activate_and_add_sic = yes
 					clear_variable = IRE_former_president
 				}
 				else = {
-					IRE_dail_eireann_add_sic = yes
-					activate_advisor = IRE_dail_eireann_sic
+					IRE_dail_eireann_activate_and_add_sic = yes
 				}
 			}
 		}
@@ -11918,8 +11945,7 @@ country_event = {	# Post-War SF turn MarLib?
 					limit = { has_country_flag = IRE_parlrep }
 					var:IRE.IRE_former_president = { promote_character = authoritarian_democrat_subtype }
 					IRE_michael_collins = { remove_all_country_leader_roles = yes }
-					IRE_michael_collins_add_success_sic = yes
-					activate_advisor = IRE_michael_collins_sic
+					IRE_michael_collins_activate_and_add_sic = yes
 					clear_variable = IRE_former_president
 				}
 				else = {
@@ -12207,8 +12233,7 @@ country_event = {	# Steele leaves / MegaCollins ends due to war with Entente
 					limit = { has_country_flag = IRE_parlrep }
 					var:IRE.IRE_former_president = { promote_character = authoritarian_democrat_subtype }
 					IRE_michael_collins = { remove_all_country_leader_roles = yes }
-					IRE_michael_collins_add_success_sic = yes
-					activate_advisor = IRE_michael_collins_sic
+					IRE_michael_collins_activate_and_add_sic = yes
 					clear_variable = IRE_former_president
 				}
 				else = {
@@ -12267,8 +12292,7 @@ country_event = {	# Steele leaves / MegaCollins ends due to war with Entente
 						limit = { has_country_flag = IRE_parlrep }
 						var:IRE.IRE_former_president = { promote_character = authoritarian_democrat_subtype }
 						IRE_michael_collins = { remove_all_country_leader_roles = yes }
-						IRE_michael_collins_add_success_sic = yes
-						activate_advisor = IRE_michael_collins_sic
+						IRE_michael_collins_activate_and_add_sic = yes
 						clear_variable = IRE_former_president
 					}
 					else = {
@@ -13645,8 +13669,7 @@ country_event = {  # EOD SIC choice from executive decree
 			}
 		}
 		hidden_effect = {
-			IRE_ned_cronin_add_sic = yes
-			activate_advisor = IRE_ned_cronin_sic
+			IRE_ned_cronin_activate_and_add_sic = yes
 			IRE_john_j_okelly = { remove_second_in_command_role = yes }
 		}
 	}
@@ -13778,7 +13801,7 @@ country_event = {  # English will be gotten rid of in 5 years time
 	}
 }
 
-country_event = {  # Emigration must be banned so that Ireland suceeds in the future!
+country_event = {  # Emigration must be banned so that Ireland succeeds in the future!
 	id = ireland_events.3240
 	title = ireland_events.3240.t
 	desc = ireland_events.3240.d
@@ -13966,8 +13989,7 @@ country_event = {  # Aodh gets the boot when there's no more monarchies on the g
 			complete_national_focus = IRE_the_regency
 			hidden_effect = {
 				IRE_aodh_o_neill = { remove_country_leader_role_national_populist = yes }
-				IRE_jj_walsh_add_sic = yes
-				activate_advisor = IRE_jj_walsh_sic
+				IRE_jj_walsh_activate_and_add_sic = yes
 				IRE_gearoid_o_cuinneagain = {
 					set_character_as_republican = yes
 					remove_second_in_command_role = yes
@@ -14093,6 +14115,7 @@ country_event = {  # Ireland owns the two states it has claims on
 				set_state_name = STATE_120_IRISH
 				set_province_name = { id = 284 name = VICTORY_POINTS_284_IRISH }
 				set_province_name = { id = 6062 name = VICTORY_POINTS_6062_IRISH }
+				set_province_name = { id = 9075 name = VICTORY_POINTS_9075_IRISH }
 			}
 			rename_state_effect = yes
 		}
@@ -15832,15 +15855,11 @@ country_event = {  # Griffith Statue
 	desc = {
 		trigger = {
 			if = {
-				limit = {
-					NOT = { has_country_flag = IRE_parlrep }
-				}
+				limit = { NOT = { has_country_flag = IRE_parlrep } }
 				has_country_leader = { character = IRE_michael_collins }
 			}
 			else = {
-				IRE_michael_collins = {
-					is_second_in_command = yes
-				}
+				IRE_michael_collins = { is_second_in_command = yes }
 			}
 		}
 		text = ireland_events.4600.d.mc
@@ -15848,15 +15867,11 @@ country_event = {  # Griffith Statue
 	desc = {
 		trigger = {
 			if = {
-				limit = {
-					NOT = { has_country_flag = IRE_parlrep }
-				}
+				limit = { NOT = { has_country_flag = IRE_parlrep } }
 				has_country_leader = { character = IRE_richard_mulcahy }
 			}
 			else = {
-				IRE_richard_mulcahy = {
-					is_second_in_command = yes
-				}
+				IRE_richard_mulcahy = { is_second_in_command = yes }
 			}
 		}
 		text = ireland_events.4600.d.rm
@@ -16311,11 +16326,13 @@ country_event = {  # This determines who will be intended to win the '41 electio
 			modifier = {
 				OR = {
 					has_country_flag = IRE_elecpath_cursed
-					has_country_flag = IRE_gateway_GER_victory
-				}
-				OR = {
-					has_game_rule = { rule = IRE_path option = IRE_PATH_AUTDEM }
-					GER = { GER_is_du_path = no }
+					AND = {
+						has_country_flag = IRE_gateway_GER_victory
+						OR = {
+							GER = { GER_is_du_path = no }
+							has_game_rule = { rule = IRE_path option = IRE_PATH_AUTDEM }
+						}
+					}
 				}
 				add = 65
 			}

@@ -1074,7 +1074,7 @@ focus_tree = {
 		}
 		available = {
 			NOT = { has_government = totalist }
-			NOT = { has_country_leader = { character = ARM_garegin_nzdeh } }
+			NOT = { has_country_leader = { character = ARM_garegin_nzhdeh } }
 		}
 		ai_will_do = { factor = 20 }
 		completion_reward = {
@@ -1633,7 +1633,7 @@ focus_tree = {
 		y = 1
 
 		available = {
-			has_country_leader = { character = ARM_garegin_nzdeh }
+			has_country_leader = { character = ARM_garegin_nzhdeh }
 		}
 		bypass = {
 			has_completed_focus = ARM_personality_cult
@@ -2032,7 +2032,7 @@ focus_tree = {
 			has_government = national_populist
 		}
 		bypass = {
-			NOT = { has_country_leader = { character = ARM_garegin_nzdeh } }
+			NOT = { has_country_leader = { character = ARM_garegin_nzhdeh } }
 		}
 		prerequisite = {
 			focus = ARM_armenia_above_all
@@ -2041,8 +2041,8 @@ focus_tree = {
 
 		on_uncomplete = {
 			if = {
-				limit = { has_character = ARM_garegin_nzdeh }
-				ARM_garegin_nzdeh = {
+				limit = { has_character = ARM_garegin_nzhdeh }
+				ARM_garegin_nzhdeh = {
 					remove_trait = { trait = ARM_armenian_guide ideology = national_populist_subtype }
 				}
 			}

@@ -850,8 +850,8 @@ ideas = {
 
 	#### General ####
 	industrial_concern = {
-		white_ruthenia_state_university = {
-			on_add = { log = "[GetLogRoot]: add idea white_ruthenia_state_university" }
+		minsk_pharmaceutical_company = {
+			on_add = { log = "[GetLogRoot]: add idea minsk_pharmaceutical_company" }
 			allowed = {
 				original_tag = BLR
 			}
@@ -864,12 +864,12 @@ ideas = {
 			}
 		}
 
-		gomel_radio_plant = {
-			on_add = { log = "[GetLogRoot]: add idea gomel_radio_plant" }
+		belarusian_national_university = {
+			on_add = { log = "[GetLogRoot]: add idea belarusian_national_university" }
 			allowed = {
 				original_tag = BLR
 			}
-			available = { owns_state = 241 } #Homel
+			available = { owns_state = 206 } #Minsk
 			traits = {
 				electronics_manufacturer
 			}
@@ -878,8 +878,8 @@ ideas = {
 			}
 		}
 
-		belarusian_railway = {
-			on_add = { log = "[GetLogRoot]: add idea belarusian_railway" }
+		babruysk_tractor_factory = {
+			on_add = { log = "[GetLogRoot]: add idea babruysk_tractor_factory" }
 			allowed = {
 				original_tag = BLR
 			}
@@ -898,19 +898,24 @@ ideas = {
 	materiel_manufacturer = {
 		designer = yes
 
-		mov = {
-			on_add = { log = "[GetLogRoot]: add idea mov" }
-			picture = generic_infantry_equipment_manufacturer_2
+		belarusian_national_arsenal = {
+			on_add = { log = "[GetLogRoot]: add idea belarusian_national_arsenal" }
 			allowed = {
 				original_tag = BLR
-			}
-			available = {
-				has_completed_focus = BLR_Minsk_Arms_Plant
-				owns_state = 206 #Minsk
 			}
 			traits = { infantry_equipment_manufacturer_cheap }
 			research_bonus = {
 				infantry_weapons = 0.15
+			}
+		}
+		belarusian_national_arsenal_art = {
+			on_add = { log = "[GetLogRoot]: add idea belarusian_national_arsenal_art" }
+			allowed = {
+				original_tag = BLR
+			}
+			traits = { artillery_equipment_manufacturer_cheap }
+			research_bonus = {
+				artillery = 0.15
 			}
 		}
 
@@ -928,22 +933,6 @@ ideas = {
 			}
 			research_bonus = {
 				motorized_equipment = 0.15
-			}
-		}
-
-		krupp4_BLR = {
-			on_add = { log = "[GetLogRoot]: add idea krupp4_BLR" }
-			name = krupp
-			picture = krupp
-			allowed = { original_tag = BLR }
-			available = {
-				has_completed_focus = BLR_Krupp_Contacts
-				country_exists = GER
-				NOT = { has_war_with = GER }
-			}
-			traits = { artillery_equipment_manufacturer_offence }
-			research_bonus = {
-				artillery = 0.15
 			}
 		}
 	}
@@ -968,14 +957,31 @@ ideas = {
 				armor = 0.15
 			}
 		}
+		BLR_krupp_whr = {
+			on_add = { log = "[GetLogRoot]: add idea BLR_krupp_whr" }
+			allowed = {
+				original_tag = BLR
+			}
+			available = {
+				has_completed_focus = BLR_Krupp_Contacts
+				country_exists = GER
+				NOT = { has_war_with = GER }
+			}
+			traits = {
+				infantry_tank_manufacturer
+			}
+			research_bonus = {
+				armor = 0.15
+			}
+		}
 	}
 
 	#### Air and Naval Manufacturer ####
 	naval_manufacturer = {
 		designer = yes
 
-		pinsk_shipyard = {
-			on_add = { log = "[GetLogRoot]: add idea pinsk_shipyard" }
+		BLR_klaipeda_shipyard = {
+			on_add = { log = "[GetLogRoot]: add idea BLR_klaipeda_shipyard" }
 			allowed = {
 				original_tag = BLR
 			}
@@ -1003,6 +1009,40 @@ ideas = {
 			}
 			traits = {
 				general_aircraft_manufacturer
+			}
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		slutsk_military_aviation_workshop = {
+			on_add = { log = "[GetLogRoot]: add idea slutsk_military_aviation_workshop" }
+			allowed = {
+				original_tag = BLR
+			}
+			available = {
+				owns_state = 206 #Minsk
+			}
+			traits = {
+				multi_role_aircraft_manufacturer
+			}
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+
+		BLR_dornier = {
+			on_add = { log = "[GetLogRoot]: add idea BLR_dornier" }
+			picture = dornier
+			allowed = {
+				original_tag = BLR
+			}
+			available = {
+				has_completed_focus = BLR_Krupp_Contacts
+				country_exists = GER
+				NOT = { has_war_with = GER }
+			}
+			traits = {
+				medium_aircraft_manufacturer_improved
 			}
 			research_bonus = {
 				air_equipment = 0.15

@@ -136,3 +136,19 @@ defined_text = {
 		localization_key = SZC_diarchy_increase_xihou_tooltip_yellow
 	}
 }
+
+defined_text = {
+	name = SZC_NPA_form_loc
+	text = {
+		trigger = {
+			OR = {
+				has_completed_focus = SZC_Form_The_National_Protection_Alliance
+				NOT = { country_exists = NPA }
+			}
+		}
+		localization_key = SZC_NPA_form
+	}
+	text = {
+		localization_key = SZC_NPA_join
+	}
+}

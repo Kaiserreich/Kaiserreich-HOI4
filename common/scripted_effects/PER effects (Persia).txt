@@ -264,7 +264,12 @@ PER_forpol_setup = {
 				set_country_flag = PER_align_with_RUS
 			}
 			else_if = {
-				limit = { has_game_rule = { rule = PER_forpol option = PER_FORPOL_NEUT } }
+				limit = {
+					OR = {
+						has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
+						has_game_rule = { rule = PER_forpol option = PER_FORPOL_NEUT }
+					}
+				}
 				set_country_flag = PER_neutrality
 			}
 			else = {

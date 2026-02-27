@@ -652,7 +652,7 @@ ideas = {
 		}
 		GXC_liangguangs_developing_economy4a = {
 			on_add = { log = "[GetLogRoot]: add idea GXC_liangguangs_developing_economy4a" }
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			allowed = { always = no }
 			modifier = {
 				consumer_goods_factor = 0.1
@@ -663,7 +663,7 @@ ideas = {
 		}
 		GXC_liangguangs_developing_economy4b = {
 			on_add = { log = "[GetLogRoot]: add idea GXC_liangguangs_developing_economy4b" }
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			allowed = { always = no }
 			modifier = {
 				production_speed_buildings_factor = -0.1
@@ -673,7 +673,7 @@ ideas = {
 		}
 		GXC_liangguangs_developing_economy5a = {
 			on_add = { log = "[GetLogRoot]: add idea GXC_liangguangs_developing_economy5a" }
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			allowed = { always = no }
 			modifier = {
 				production_speed_buildings_factor = 0.1
@@ -683,7 +683,7 @@ ideas = {
 		}
 		GXC_liangguangs_developing_economy5b = {
 			on_add = { log = "[GetLogRoot]: add idea GXC_liangguangs_developing_economy5b" }
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			allowed = { always = no }
 			modifier = {
 				consumer_goods_factor = -0.15
@@ -788,7 +788,7 @@ ideas = {
 		}
 		GXC_peasant_and_autarkic_reform = {
 			on_add = { log = "[GetLogRoot]: add idea GXC_peasant_and_autarkic_reform" }
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			allowed = { always = no }
 			cancel = {
 				china_is_the_unifier_of_china_trigger = yes
@@ -809,7 +809,7 @@ ideas = {
 		}
 		GXC_peasant_and_free_trade_reform = {
 			on_add = { log = "[GetLogRoot]: add idea GXC_peasant_and_free_trade_reform" }
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			allowed = { always = no }
 			cancel = {
 				china_is_the_unifier_of_china_trigger = yes
@@ -829,7 +829,7 @@ ideas = {
 		}
 		GXC_modernized_and_autarkic_reform = {
 			on_add = { log = "[GetLogRoot]: add idea GXC_modernized_and_autarkic_reform" }
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			allowed = { always = no }
 			cancel = {
 				china_is_the_unifier_of_china_trigger = yes
@@ -849,7 +849,7 @@ ideas = {
 		}
 		GXC_modernized_and_free_trade_reform = {
 			on_add = { log = "[GetLogRoot]: add idea GXC_modernized_and_free_trade_reform" }
-			picture = POL_succesful_four_year_plan
+			picture = POL_successful_four_year_plan
 			allowed = { always = no }
 			cancel = {
 				china_is_the_unifier_of_china_trigger = yes
@@ -3470,6 +3470,62 @@ ideas = {
 			}
 			research_bonus = {
 				industry = 0.1
+			}
+		}
+
+		GXC_AOG_bank = {
+			on_add = { log = "[GetLogRoot]: add idea GXC_AOG_bank" }
+			picture = GEA_AOG_BONUS
+			allowed = { original_tag = GXC }
+			available = {
+				NOT = { china_is_aligned_with_kmt = yes }
+			}
+			visible = {
+				NOT = { has_country_flag = GXC_improved_AOG_bank }
+			}
+			targeted_modifier = {
+				tag = GER
+				trade_cost_for_target_factor = -0.2
+				extra_trade_to_target_factor = 0.2
+				cic_to_target_factor = 0.05
+			}
+			traits = { industrial_manufacturer }
+			modifier = {
+				production_speed_arms_factory_factor = 0.15
+				production_speed_industrial_complex_factor = 0.15
+				political_power_cost = 0.20
+			}
+			research_bonus = {
+				industry = 0.15
+			}
+		}
+
+		GXC_AOG_bank_2 = {
+			on_add = { log = "[GetLogRoot]: add idea GXC_AOG_bank_2" }
+			picture = GEA_AOG_BONUS
+			name = GXC_AOG_bank
+			allowed = { original_tag = GXC }
+			available = {
+				NOT = { china_is_aligned_with_kmt = yes }
+			}
+			visible = {
+				has_country_flag = GXC_improved_AOG_bank
+			}
+			targeted_modifier = {
+				tag = GER
+				trade_cost_for_target_factor = -0.2
+				extra_trade_to_target_factor = 0.2
+				cic_to_target_factor = 0.05
+			}
+			traits = { industrial_manufacturer }
+			modifier = {
+				consumer_goods_factor = -0.10
+				production_speed_arms_factory_factor = 0.2
+				production_speed_industrial_complex_factor = 0.2
+				political_power_cost = 0.10
+			}
+			research_bonus = {
+				industry = 0.2
 			}
 		}
 	}

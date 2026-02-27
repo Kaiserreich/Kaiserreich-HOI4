@@ -391,6 +391,18 @@ YUN_GXC_increase_morale_effect = {
 YUN_GXC_decrease_morale_effect = {
 	if = {
 		limit = {
+			is_ai = yes
+			has_war_support > 0.60
+			OR = {
+				has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NZH }
+				has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NPA }
+				NOT = { has_game_rule = { rule = YUN_NPA_path option = DEFAULT } }
+			}
+		}
+		add_war_support = -0.10
+	}
+	if = {
+		limit = {
 			has_idea = YUN_GXC_war_morale_idea_2
 			has_war_support < 0.20
 		}
@@ -1829,7 +1841,7 @@ YUN_transition_to_NPA_army_tree_effect = {
 
 YUN_improve_dian_qian_divide_effect = {
 	if = {
-		limit = { has_idea = YUN_dian_qian_divide_1 }
+		limit = { has_idea = YUN_dian_qian_divide_1 } #YUN_dian_qian_divide_0 -> is done via a manual idea swap to start political content for YUN
 		swap_ideas = {
 			remove_idea = YUN_dian_qian_divide_1
 			add_idea = YUN_dian_qian_divide_2
@@ -3684,6 +3696,7 @@ YUN_UPC_satellite_civil_war_winner_effect = {
 	#Rig it if game rules are set
 	if = {
 		limit = {
+			is_ai = yes
 			OR = {
 				has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_SOCDEM }
 				has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_MARLIB }

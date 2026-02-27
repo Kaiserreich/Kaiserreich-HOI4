@@ -1558,10 +1558,10 @@ SHX_xishan_fuxiang_power_struggle = {
 			log = "[GetLogRoot]: Decision remove SHX_connect_yanan"
 
 			build_railway = {
-				path = { 12356 1458 1531 1115 1962 }
+				path = { 12356 1458 10367 10838 1962 }
 				start_state = 622
 				target_state = 1072
-				level = 1
+				level = 2
 				fallback = yes
 			}
 			if = {
@@ -4259,11 +4259,11 @@ SHX_zhi_feng_war = {
 						QIE = { owns_state = 608 }
 					}
 					AND = {
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_FNG }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_AGJ }
 						FNG = { owns_state = 608 }
 					}
 					AND = {
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_ZHL }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_NZH }
 						SZC = { owns_state = 608 }
 						SZC = { SZC_zhili_in_exile = yes }
 					}
@@ -4272,11 +4272,11 @@ SHX_zhi_feng_war = {
 						var:608.owner = { china_is_aligned_with_federalists = yes }
 					}
 					AND = {
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKMT }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_LKT }
 						var:608.owner = { china_is_aligned_with_left_kmt = yes }
 					}
 					AND = {
-						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKMT }
+						has_game_rule = { rule = SHX_forpol option = SHX_FORPOL_RKT }
 						var:608.owner = { china_is_aligned_with_right_kmt = yes }
 					}
 					AND = {

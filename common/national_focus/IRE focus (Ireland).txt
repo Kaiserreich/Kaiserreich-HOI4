@@ -563,6 +563,10 @@ focus_tree = {
 		ai_will_do = {
 			factor = 100
 			modifier = {
+				factor = 5
+				IRE_has_bm = no
+			}
+			modifier = {
 				factor = 0
 				OR = {
 					has_country_flag = IRE_polpath_41_sc
@@ -1011,6 +1015,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 5
+				IRE_has_bm = no
+			}
 			modifier = {
 				factor = 0
 				OR = {
@@ -7931,7 +7939,10 @@ focus_tree = {
 			is_subject = no
 			has_full_control_of_state = 119
 			hidden_trigger = {
-				NOT = { has_country_leader = { character = IRE_frank_macdermot } }
+				NOT = {
+					has_country_leader_with_trait = IRE_collaborator
+					has_country_leader_with_trait = IRE_governor_general
+				}
 			}
 		}
 

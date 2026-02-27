@@ -221,7 +221,7 @@ focus_tree = {
 			}
 			890 = {
 				add_dynamic_modifier = {
-					modifier = HND_development_efforts_modifier
+					modifier = generic_development_efforts_modifier
 					days = 180
 				}
 			}
@@ -267,7 +267,7 @@ focus_tree = {
 			}
 			441 = {
 				add_dynamic_modifier = {
-					modifier = HND_development_efforts_modifier
+					modifier = generic_development_efforts_modifier
 					days = 180
 				}
 			}
@@ -394,7 +394,10 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed RAJ_crush_the_karachi_dockworker_strike"
 			RAJ = { set_variable = { generic_raise_stability_decision_cost = 75 } }
-			custom_effect_tooltip = reduce_stability_decision_cost_twenty_five_percent_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_stability_decision_cost_tt
+				NUMBER = 25%
+			}
 			custom_effect_tooltip = tooltip_white_line
 			remove_ideas = RAJ_karachi_strike
 			country_event = dominion_of_india_events.8

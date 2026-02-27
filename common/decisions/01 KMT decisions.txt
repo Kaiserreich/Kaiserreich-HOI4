@@ -83,9 +83,11 @@ KMT_liberation_of_asia_category = {
 							}
 						}
 					}
-					activate_targeted_decision = { target = HAW decision = KMT_invite_countries_to_faction } #Hawaii should be able to join too
-					#Kemalist Turkey apparently should be able to join
-					activate_targeted_decision = { target = TUR decision = KMT_invite_countries_to_faction }
+					if = {
+						limit = { has_socialist_government = no }
+						activate_targeted_decision = { target = HAW decision = KMT_invite_countries_to_faction } #Hawaii should be able to join LKMT too
+					}
+					activate_targeted_decision = { target = TUR decision = KMT_invite_countries_to_faction } #Kemalist Turkey apparently should be able to join
 					activate_targeted_decision = { target = PER decision = KMT_invite_countries_to_faction }
 					activate_targeted_decision = { target = ARM decision = KMT_invite_countries_to_faction } #ARM can follow PERs foreign policy
 				}
@@ -151,12 +153,12 @@ KMT_liberation_of_asia_category = {
 					}
 					AND = {
 						original_tag = HND
-						is_faction_leader = yes
+						is_faction_leader = yes		# Eastern Syndicalist Union
 						NOT = { is_in_faction_with = INT }
 					}
 					AND = {
 						original_tag = PER
-						is_faction_leader = yes
+						is_faction_leader = yes		# Tabriz Accords
 						NOT = { is_in_faction_with = INT }
 					}
 				}
@@ -406,7 +408,19 @@ RKT_zeal_decision_category = {
 		}
 		cancel_if_not_visible = yes
 		fire_only_once = no
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 100
+				tag = YUN
+				has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_YUN }
+			}
+			modifier = {
+				factor = 0
+				tag = YUN
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
+			}
+		}
 
 		cost = 50
 
@@ -720,7 +734,19 @@ LKT_decision_category = {
 		}
 		cancel_if_not_visible = yes
 		fire_only_once = no
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 100
+				tag = YUN
+				has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_YUN }
+			}
+			modifier = {
+				factor = 0
+				tag = YUN
+				has_game_rule = { rule = CHN_south_china_war option = CHN_SOUTH_CHINA_WAR_GXC_HNN }
+			}
+		}
 
 		cost = 50
 

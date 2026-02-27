@@ -2031,7 +2031,7 @@ focus_tree = {
 				country_event = russia_events.321 #Operation Arkhangel
 				if = {
 					limit = { has_global_flag = allow_sound_events_flag }
-					scoped_play_song = "tchaikovsky_1812_overture"
+					scoped_play_song = tchaikovsky_1812_overture
 				}
 				every_country = {
 					limit = { has_socialist_government = yes }
@@ -8360,7 +8360,7 @@ focus_tree = {
 			factor = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = RUS_path option = RUS_PATH_SHULGIN_AUTDEM }
+				has_game_rule = { rule = RUS_path option = RUS_PATH_AUTDEM }
 			}
 		}
 		completion_reward = {
@@ -13452,7 +13452,7 @@ focus_tree = {
 			RUS_VST_left = yes
 			if = {
 				limit = { has_country_leader = { character = RUS_lev_kamenev } }
-				set_temp_variable = { RUS_left_radicalism_check = 8 }
+				set_temp_variable = { RUS_left_radicalism_check = 7 }
 				RUS_vst_left_radicalism_check = yes
 				set_temp_variable = { current_vst_left_radicalism = vst_left_radicalism }
 				multiply_temp_variable = { current_vst_left_radicalism = 10 }
@@ -14739,7 +14739,7 @@ focus_tree = {
 			hidden_effect = {
 				if = {
 					limit = { has_global_flag = allow_sound_events_flag }
-					scoped_play_song = "rus_katyusha"
+					scoped_play_song = rus_katyusha
 				}
 				RUS_fifth_column_effects = yes
 				if = {
@@ -17731,7 +17731,10 @@ focus_tree = {
 				name = RUS_propaganda_bureau_of_army
 			}
 			reduce_propaganda_decision_cost_twenty_five_percent = yes
-			custom_effect_tooltip = reduce_propaganda_decision_cost_twenty_five_percent_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_propaganda_decision_cost_tt
+				NUMBER = 25%
+			}
 			custom_effect_tooltip = tooltip_white_line
 			add_war_support = 0.1
 			custom_effect_tooltip = tooltip_white_line
@@ -20703,18 +20706,18 @@ focus_tree = {
 					limit = { has_global_flag = allow_sound_events_flag }
 					if = {
 						limit = { has_government = national_populist }
-						scoped_play_song = "slavsya"
+						scoped_play_song = slavsya
 					}
 					else_if = {
 						limit = { is_monarchy = yes }
-						scoped_play_song = "march_of_the_siberian_riflemen"
+						scoped_play_song = march_of_the_siberian_riflemen
 					}
 					else_if = {
 						limit = { has_socialist_government = yes }
-						scoped_play_song = "rus_katyusha"
+						scoped_play_song = rus_katyusha
 					}
 					else = {
-						scoped_play_song = "farewell_of_slavianka"
+						scoped_play_song = farewell_of_slavianka
 					}
 				}
 				RUS_fifth_column_effects = yes

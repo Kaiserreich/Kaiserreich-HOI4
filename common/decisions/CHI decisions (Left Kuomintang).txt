@@ -131,7 +131,7 @@ foreign_politics = {
 				}
 			}
 			modifier = {
-				factor = 0 #Give 0 reason to join if a tag has a non CHI forpol gamerule set
+				factor = 0 #Give 0 reason to join if a tag has a non CHN forpol game rule set
 				OR = {
 					AND = {
 						tag = ARM
@@ -166,7 +166,7 @@ foreign_politics = {
 					AND = {
 						tag = HAW
 						NOT = { has_game_rule = { rule = HAW_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI } }
+						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN } }
 					}
 					AND = {
 						tag = INC
@@ -348,7 +348,7 @@ foreign_politics = {
 
 			#Game Rules
 			modifier = {
-				add = 1000 #Add a bunch of bonus reasons to join if a CHI forpol gamerule is set
+				add = 1000 #Add a bunch of bonus reasons to join if a CHN forpol game rule is set
 				OR = {
 					AND = {
 						tag = ARM
@@ -366,7 +366,7 @@ foreign_politics = {
 					AND = {
 						tag = BRM
 						OR = {
-							has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI }
+							has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
 							AND = {
 								has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_INT }
 								CHI = { is_in_faction_with = INT }
@@ -376,7 +376,7 @@ foreign_politics = {
 					AND = {
 						tag = HAW
 						OR = {
-							has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHI }
+							has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN }
 							AND = {
 								has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_INT }
 								CHI = { is_in_faction_with = INT }
@@ -386,7 +386,7 @@ foreign_politics = {
 					AND = {
 						tag = INC
 						OR = {
-							has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
+							has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
 							AND = {
 								has_game_rule = { rule = INC_forpol option = INC_FORPOL_HND }
 								CHI = { is_in_faction_with = HND }
@@ -400,7 +400,7 @@ foreign_politics = {
 					AND = {
 						tag = INS
 						OR = {
-							has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI }
+							has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN }
 							AND = {
 								has_game_rule = { rule = INS_forpol option = INS_FORPOL_HND }
 								CHI = { is_in_faction_with = HND }
@@ -414,7 +414,7 @@ foreign_politics = {
 					AND = {
 						tag = PHI
 						OR = {
-							has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI }
+							has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN }
 							AND = {
 								has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_HND }
 								CHI = { is_in_faction_with = HND }
@@ -428,7 +428,7 @@ foreign_politics = {
 					AND = {
 						tag = SIA
 						OR = {
-							has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
+							has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
 							AND = {
 								has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_HND }
 								CHI = { is_in_faction_with = HND }
@@ -1705,9 +1705,7 @@ GXC_KMT_clash_for_canton_decision_category = {
 
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
-				}
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_GXC }
 			}
 		}
 		custom_cost_trigger = {

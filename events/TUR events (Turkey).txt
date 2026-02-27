@@ -1702,7 +1702,7 @@ country_event = { #Militarists takes power
 	trigger = {
 		original_tag = TUR
 		is_monarchy = no
-		has_idea = TUR_independante_army
+		has_idea = TUR_independent_army
 		NOT = { has_completed_focus = TUR_the_new_turkish_identity }
 		set_temp_variable = { value = 40 }
 		TUR_higher_traditionalist_resistance_than_VALUE = yes
@@ -1749,7 +1749,7 @@ country_event = { #Militarists takes power
 			remove_ideas = TUR_social_nationalism_idea
 			remove_ideas = TUR_welfare_state
 			remove_ideas = TUR_kadroist_party
-			remove_ideas = TUR_independante_army
+			remove_ideas = TUR_independent_army
 			remove_ideas = TUR_integrated_army
 			remove_ideas = TUR_new_nationalist_army
 			TUR_disable_traditionalist_resistance = yes
@@ -1813,7 +1813,7 @@ country_event = { #the statu of the army
 		}
 		swap_ideas = {
 			remove_idea = TUR_new_nationalist_army
-			add_idea = TUR_independante_army
+			add_idea = TUR_independent_army
 		}
 		add_popularity = {
 			ideology = paternal_autocrat
@@ -3248,10 +3248,18 @@ country_event = { #Election of Kadroist leadership
 	option = { ###Keep Recep###
 		log = "[GetLogInfo]: event turkey_events.111 option turkey_events.111.a"
 		name = turkey_events.111.a
+		ai_chance = { base = 100 }
 	}
 	option = { ###Yakup Kadri###
 		log = "[GetLogInfo]: event turkey_events.111 option turkey_events.111.b"
 		name = turkey_events.111.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = TUR_forpol option = TUR_FORPOL_CHN }
+			}
+		}
 		if = {
 			limit = { TUR_yakup_kadri_karaosmanoglu = { has_ideology = totalist_subtype } }
 			promote_character = {

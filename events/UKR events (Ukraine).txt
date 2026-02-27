@@ -2489,6 +2489,11 @@ country_event = { #Army reform event for removing Total Dedication
 			add_idea = UKR_elite_army_5_lun
 		}
 		remove_dynamic_modifier = { modifier = UKR_army_reorganisation }
+		enable_tech_forest_warfare = yes
+		custom_effect_tooltip = tooltip_white_line
+		enable_tech_marsh_warfare = yes
+		custom_effect_tooltip = tooltip_white_line
+		enable_tech_urban_warfare = yes
 	}
 }
 
@@ -10001,7 +10006,7 @@ country_event = { #Socialist-Revolutionaries/Council-Revolutionary Bloc takeover
 		}
 		if = {
 			limit = { has_global_flag = allow_sound_events_flag }
-			hidden_effect = { scoped_play_song = vichnyy_revolyutsioner }
+			hidden_effect = { scoped_play_song = vichnyi_revoliutsioner }
 		}
 	}
 }
@@ -23013,11 +23018,9 @@ country_event = { #Nestor Makhno Returns to Ukraine
 		log = "[GetLogInfo]: event ukraine_borotbyst_events.119 option ukraine_borotbyst_events.119.a"
 		name = ukraine_borotbyst_events.119.a
 		FRA = { FRA_nestor_makhno = { set_nationality = UKR } }
-		hidden_effect = {
-			if = {
-				limit = { UKR = { is_ai = no } }
-				play_song = anarchia
-			}
+		if = {
+			limit = { has_global_flag = allow_sound_events_flag }
+			hidden_effect = { scoped_play_song = anarchia }
 		}
 	}
 }

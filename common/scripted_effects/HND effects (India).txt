@@ -60,7 +60,10 @@ india_claim_ceylon_effect = {
 			}
 		}
 		if = {
-			limit = { is_in_faction_with = GER }
+			limit = {
+				is_in_faction_with = GER
+				NOT = { owns_state = 422 }
+			}
 			custom_effect_tooltip = tooltip_white_line
 			GER = { country_event = india_events.61 }
 			custom_effect_tooltip = if_they_accept_tt

@@ -149,8 +149,8 @@ foreign_politics = {
 								NOT = { HND = { is_in_faction_with = INT } }
 							}
 							AND = {
-								has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI }
-								NOT = { HND = { is_in_faction_with = CHI } }
+								has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
+								NOT = { HND = { is_in_faction_with = CHN } }
 							}
 						}
 					}
@@ -162,8 +162,8 @@ foreign_politics = {
 								NOT = { HND = { is_in_faction_with = INT } }
 							}
 							AND = {
-								has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHI }
-								NOT = { HND = { is_in_faction_with = CHI } }
+								has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
+								NOT = { HND = { is_in_faction_with = CHN } }
 							}
 						}
 					}
@@ -175,8 +175,8 @@ foreign_politics = {
 								NOT = { HND = { is_in_faction_with = INT } }
 							}
 							AND = {
-								has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHI }
-								NOT = { HND = { is_in_faction_with = CHI } }
+								has_game_rule = { rule = INS_forpol option = INS_FORPOL_CHN }
+								NOT = { HND = { is_in_faction_with = CHN } }
 							}
 						}
 					}
@@ -192,8 +192,8 @@ foreign_politics = {
 								}
 							}
 							AND = {
-								has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHI }
-								NOT = { HND = { is_in_faction_with = CHI } }
+								has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
+								NOT = { HND = { is_in_faction_with = CHN } }
 							}
 						}
 					}
@@ -205,8 +205,8 @@ foreign_politics = {
 								NOT = { HND = { is_in_faction_with = INT } }
 							}
 							AND = {
-								has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHI }
-								NOT = { HND = { is_in_faction_with = CHI } }
+								has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_CHN }
+								NOT = { HND = { is_in_faction_with = CHN } }
 							}
 						}
 					}
@@ -218,14 +218,14 @@ foreign_politics = {
 								NOT = { HND = { is_in_faction_with = INT } }
 							}
 							AND = {
-								has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHI }
-								NOT = { HND = { is_in_faction_with = CHI } }
+								has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
+								NOT = { HND = { is_in_faction_with = CHN } }
 							}
 						}
 					}
 					AND = {
 						tag = TIB
-						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+						has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 						CHI = { exists = yes }
 					}
 				}
@@ -264,9 +264,15 @@ foreign_politics = {
 
 		available = {
 			at_peace_or_same_enemies_as_FROM = yes
-			CHI = {
+			FROM = {
 				is_faction_leader = yes
-				has_completed_focus = KMT_lead_the_liberation_of_asia
+				if = {
+					limit = { tag = SHX }
+					has_completed_focus = SHX_from_china_to_world
+				}
+				else = {
+					has_completed_focus = KMT_lead_the_liberation_of_asia
+				}
 			}
 			NOT = {
 				is_ally_with = TIB
@@ -277,17 +283,10 @@ foreign_politics = {
 
 		visible = {
 			has_socialist_government = yes
-			CHI = { exists = yes }
-		}
-
-		targets = { CHI }
-		target_root_trigger = {
-			has_socialist_government = yes
 			is_subject = no
 			NOT = { is_in_faction_with = INT }
-		}
-		target_trigger = {
 			FROM = {
+				exists = yes
 				has_socialist_government = yes
 				is_subject = no
 				NOT = { has_war_with = ROOT }
@@ -309,13 +308,13 @@ foreign_politics = {
 			}
 			modifier = {
 				factor = 1000
-				has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+				has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 			}
 		}
 
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete HND_propose_the_sino_indian_bloc"
-			CHI = { country_event = { id = socialist_india_events.103 days = 1 } }
+			FROM = { country_event = { id = socialist_india_events.103 days = 1 } }
 		}
 		fixed_random_seed = no
 	}

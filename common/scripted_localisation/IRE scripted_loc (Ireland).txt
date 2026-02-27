@@ -2122,7 +2122,7 @@ defined_text = {
 	name = IRE_loc_loas_focus_pol
 	text = {
 		trigger = {
-			faction_leader = {
+			var:faction_leader = {
 				NOT = { tag = APG }
 				has_democratic_government = yes
 			}
@@ -2130,7 +2130,7 @@ defined_text = {
 		localization_key = IRE_loas_focus_pol_dem
 	}
 	text = {
-		trigger = { faction_leader = { has_authoritarian_government = yes } }
+		trigger = { var:faction_leader = { has_authoritarian_government = yes } }
 		localization_key = IRE_loas_focus_pol_aut
 	}
 	text = {

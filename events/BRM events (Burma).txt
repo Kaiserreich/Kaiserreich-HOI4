@@ -326,18 +326,18 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event burma_events.6 option burma_events.6.a"
 		name = burma_events.6.a # Align with HND
+		trigger = {
+			HND = {
+				exists = yes
+				has_socialist_government = yes
+			}
+		}
 		ai_chance = {
 			base = 40
 			modifier = {
 				factor = 0
 				NOT = { has_game_rule = { rule = BRM_forpol option = DEFAULT } }
 				NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_HND } }
-			}
-		}
-		trigger = {
-			HND = {
-				exists = yes
-				has_socialist_government = yes
 			}
 		}
 		activate_targeted_decision = { target = HND decision = Join_HNDs_faction_decision }
@@ -349,6 +349,12 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event burma_events.6 option burma_events.6.b"
 		name = burma_events.6.b # Align with Internationale
+		trigger = {
+			INT = {
+				is_faction_leader = yes
+				has_socialist_government = yes
+			}
+		}
 		ai_chance = {
 			base = 0
 			modifier = {
@@ -357,14 +363,8 @@ country_event = {
 					has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_INT }
 					NOT = { country_exists = HND }
 				}
-				NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI } }
+				NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN } }
 				NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_NEUT } }
-			}
-		}
-		trigger = {
-			INT = {
-				is_faction_leader = yes
-				has_socialist_government = yes
 			}
 		}
 		INT = {
@@ -378,15 +378,15 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event burma_events.6 option burma_events.6.c"
 		name = burma_events.6.c # Align with CHI
+		trigger = {
+			country_exists = CHI
+		}
 		ai_chance = {
 			base = 0
 			modifier = {
 				add = 10
-				has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHI }
+				has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN }
 			}
-		}
-		trigger = {
-			country_exists = CHI
 		}
 		activate_targeted_decision = { target = CHI decision = Join_CHIs_faction_decision }
 	}

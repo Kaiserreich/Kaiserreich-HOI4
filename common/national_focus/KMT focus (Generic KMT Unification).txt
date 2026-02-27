@@ -1578,7 +1578,7 @@ shared_focus = {
 			factor = 0
 			has_country_leader = { character = CHI_song_qingling }
 			country_exists = HND
-			has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHI }
+			has_game_rule = { rule = HND_forpol option = HND_FORPOL_CHN }
 		}
 	}
 	completion_reward = {
@@ -2215,8 +2215,16 @@ shared_focus = {
 			#Outer Sphere - Just needs to be not socialist
 			custom_override_tooltip = {
 				tooltip = RKT_freed_india_tt
-				RAJ = { exists = no }
-				PRF = { exists = no }
+				OR = {
+					AND = {
+						RAJ = { exists = no }
+						PRF = { exists = no }
+					}
+					AND = {
+						RAJ = { exists = no }
+						HND = { exists = no }
+					}
+				}
 				var:320.owner = { CHN_is_rkmt_aligned_or_allied_trigger = yes } #Madras
 				var:321.owner = { CHN_is_rkmt_aligned_or_allied_trigger = yes } #Goa
 				var:323.owner = { CHN_is_rkmt_aligned_or_allied_trigger = yes } #Nepal

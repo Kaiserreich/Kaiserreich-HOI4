@@ -127,7 +127,10 @@ GXC_EDC_purge_advisors_effect = {
 
 GXC_NGD_purge_advisors_effect = {
 	every_character = {
-		limit = { has_character_flag = GXC_NGD_character_flag }
+		limit = {
+			has_character_flag = GXC_NGD_character_flag
+			NOT = { is_character = GXC_huang_guangrui }
+		}
 		retire = yes
 	}
 }
@@ -243,6 +246,14 @@ GXC_introgame_declare_victor_scripted_effect = {
 	if = {
 		limit = {
 			NOT = { check_variable = { GXC.GXC_introgame_total_KMT_points_var < GXC.GXC_introgame_total_points_var } }
+			OR = {
+				GXC = { is_ai = no }
+				AND = {
+					GXC = { is_ai = yes }
+					NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM } }
+					NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM } }
+				}
+			}
 		}
 		GXC = {
 			country_event = { id = GXC.earlygame.400 days = 0 } #The Kuomintang Return to Liangguang
@@ -275,6 +286,14 @@ GXC_introgame_declare_victor_scripted_effect = {
 	else_if = {
 		limit = {
 			NOT = { check_variable = { GXC.GXC_introgame_total_UPC_points_var < GXC.GXC_introgame_total_points_var } }
+			OR = {
+				GXC = { is_ai = no }
+				AND = {
+					GXC = { is_ai = yes }
+					NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM } }
+					NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM } }
+				}
+			}
 		}
 		GXC = {
 			country_event = GXC.earlygame.600 #The Federalists Seize Liangguang
@@ -307,6 +326,14 @@ GXC_introgame_declare_victor_scripted_effect = {
 	else_if = {
 		limit = {
 			NOT = { check_variable = { GXC.GXC_introgame_total_NPA_points_var < GXC.GXC_introgame_total_points_var } }
+			OR = {
+				GXC = { is_ai = no }
+				AND = {
+					GXC = { is_ai = yes }
+					NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM } }
+					NOT = { has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM } }
+				}
+			}
 		}
 		GXC = {
 			country_event = { id = GXC.earlygame.800 days = 0 } #The Old Order Holds in Liangguang
@@ -546,41 +573,38 @@ GXC_introgame_eliminate_the_weakest_faction_scripted_effect = {
 	#If you set a game rule, the game is rigged.
 	if = {
 		limit = {
-			has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
+			is_ai = yes
+			NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
 		}
-		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		if = {
-			limit = { check_variable = { GXC.GXC_introgame_total_KMT_points_var < GXC.GXC_introgame_total_UPC_points_var } }
-			GXC_introgame_eliminate_kuomintang_scripted_effect = yes
+			limit = { has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM } }
+			if = {
+				limit = { check_variable = { GXC.GXC_introgame_total_KMT_points_var < GXC.GXC_introgame_total_UPC_points_var } }
+				GXC_introgame_eliminate_kuomintang_scripted_effect = yes
+			}
+			else = {
+				GXC_introgame_eliminate_federalists_scripted_effect = yes
+			}
 		}
-		else = {
-			GXC_introgame_eliminate_federalists_scripted_effect = yes
+		else_if = {
+			limit = { has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM } }
+			if = {
+				limit = { check_variable = { GXC.GXC_introgame_total_KMT_points_var < GXC.GXC_introgame_total_NPA_points_var } }
+				GXC_introgame_eliminate_kuomintang_scripted_effect = yes
+			}
+			else = {
+				GXC_introgame_eliminate_regionalists_scripted_effect = yes
+			}
 		}
-	}
-	else_if = {
-		limit = {
-			has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
-		}
-		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		if = {
-			limit = { check_variable = { GXC.GXC_introgame_total_KMT_points_var < GXC.GXC_introgame_total_NPA_points_var } }
-			GXC_introgame_eliminate_kuomintang_scripted_effect = yes
-		}
-		else = {
-			GXC_introgame_eliminate_regionalists_scripted_effect = yes
-		}
-	}
-	else_if = {
-		limit = {
-			has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
-		}
-		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		if = {
-			limit = { check_variable = { GXC.GXC_introgame_total_UPC_points_var < GXC.GXC_introgame_total_NPA_points_var } }
-			GXC_introgame_eliminate_federalists_scripted_effect = yes
-		}
-		else = {
-			GXC_introgame_eliminate_regionalists_scripted_effect = yes
+		else_if = {
+			limit = { has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM } }
+			if = {
+				limit = { check_variable = { GXC.GXC_introgame_total_UPC_points_var < GXC.GXC_introgame_total_NPA_points_var } }
+				GXC_introgame_eliminate_federalists_scripted_effect = yes
+			}
+			else = {
+				GXC_introgame_eliminate_regionalists_scripted_effect = yes
+			}
 		}
 	}
 	#Okay here are the actual effects
@@ -655,24 +679,21 @@ GXC_introgame_eliminate_both_weaker_factions_scripted_effect = {
 	#If you set a game rule, the game is rigged.
 	if = {
 		limit = {
-			has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
+			is_ai = yes
+			NOT = { has_game_rule = { rule = GXC_path option = DEFAULT } }
 		}
-		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		GXC_introgame_eliminate_both_non_regionalist_factions_effect = yes
-	}
-	else_if = {
-		limit = {
-			has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
+		if = {
+			limit = { has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM } }
+			GXC_introgame_eliminate_both_non_regionalist_factions_effect = yes
 		}
-		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		GXC_introgame_eliminate_both_non_federalist_factions_effect = yes
-	}
-	else_if = {
-		limit = {
-			has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
+		else_if = {
+			limit = { has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM } }
+			GXC_introgame_eliminate_both_non_federalist_factions_effect = yes
 		}
-		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
-		GXC_introgame_eliminate_both_non_kuomintang_factions_effect = yes
+		else_if = {
+			limit = { has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM } }
+			GXC_introgame_eliminate_both_non_kuomintang_factions_effect = yes
+		}
 	}
 	#Okay here are the actual effects
 	#For ease of coding, we use rock, paper, scissors. KMT beats UPC, UPC beats NPA, NPA beats KMT when all else is equal.
@@ -1720,9 +1741,21 @@ GXC_SAF_giga_effect = {
 
 #Strengthening YGF
 GXC_add_YGF_effect = {
-	add_popularity = {
-		ideology = authoritarian_democrat
-		popularity = var:GXC_size_var
+	if = {
+		limit = {
+			has_completed_focus = GXC_a_young_face_for_an_ancient_civilisation
+			GXC_ma_ji = { is_second_in_command = yes }
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = var:GXC_size_var
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = var:GXC_size_var
+		}
 	}
 }
 GXC_YGF_mechanic_event_effect = {
@@ -2472,24 +2505,28 @@ GXC_LKMT_decide_phase_iv_effect = {
 	#Rig it if you have game rules active
 	if = {
 		limit = {
-			has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
+			is_ai = yes
+			OR = {
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE }
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
+			}
 		}
-		GXC = { country_event = { id = GXC.midgame.548 days = 3 } } #The Fourth Guangzhou Uprising
-		CHI = { country_event = { id = GXC.midgame.548 days = 5 } } #The Fourth Guangzhou Uprising
-	}
-	else_if = {
-		limit = {
-			has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
+		if = {
+			limit = { has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE } }
+			GXC = { country_event = { id = GXC.midgame.548 days = 3 } } #The Fourth Guangzhou Uprising
+			CHI = { country_event = { id = GXC.midgame.548 days = 5 } } #The Fourth Guangzhou Uprising
 		}
-		GXC = { country_event = { id = GXC.midgame.549 days = 3 } } #The Liangguang Agrarian Revolution
-		CHI = { country_event = { id = GXC.midgame.549 days = 5 } } #The Liangguang Agrarian Revolution
-	}
-	else_if = {
-		limit = {
-			has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
+		else_if = {
+			limit = { has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC } }
+			GXC = { country_event = { id = GXC.midgame.549 days = 3 } } #The Liangguang Agrarian Revolution
+			CHI = { country_event = { id = GXC.midgame.549 days = 5 } } #The Liangguang Agrarian Revolution
 		}
-		GXC = { country_event = { id = GXC.midgame.550 days = 3 } } #The Iron Army Restores Order
-		CHI = { country_event = { id = GXC.midgame.550 days = 5 } } #The Iron Army Restores Order
+		else_if = {
+			limit = { has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM } }
+			GXC = { country_event = { id = GXC.midgame.550 days = 3 } } #The Iron Army Restores Order
+			CHI = { country_event = { id = GXC.midgame.550 days = 5 } } #The Iron Army Restores Order
+		}
 	}
 	#The actual way this will work
 	else_if = {

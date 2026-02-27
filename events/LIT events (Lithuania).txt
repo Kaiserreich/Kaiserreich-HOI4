@@ -38,7 +38,7 @@ country_event = { #Black Monday Hits
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.6 option lithuania_events.6.a"
 		name = lithuania_events.6.a
-		add_stability = -0.25
+		add_stability = -0.1
 		add_political_power = -50
 		effect_tooltip = { add_ideas = LIT_black_monday_1 }
 		hidden_effect = {
@@ -71,6 +71,7 @@ country_event = { #Black Monday Hits - Big Troubles in Little Białystok
 	option = { #Ne
 		log = "[GetLogInfo]: event lithuania_events.7 option lithuania_events.7.b"
 		name = lithuania_events.7.b
+		ai_chance = { base = 0 }
 		add_popularity = {
 			ideology = social_liberal
 			popularity = 0.05
@@ -442,7 +443,7 @@ country_event = { #The Polish Dilemma
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = LIT_path option = LIT_PATH_SOCCON }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MON_SOCCON }
 					has_game_rule = { rule = LIT_path option = LIT_PATH_AUTDEM }
 				}
 			}
@@ -483,7 +484,7 @@ country_event = { #The Polish Dilemma
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = LIT_path option = LIT_PATH_SOCDEM }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MON_SOCDEM }
 					has_game_rule = { rule = LIT_path option = LIT_PATH_RADSOC }
 					has_game_rule = { rule = LIT_path option = LIT_PATH_AUTDEM }
 				}
@@ -519,8 +520,8 @@ country_event = { #The Polish Dilemma
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = LIT_path option = LIT_PATH_SOCCON }
-					has_game_rule = { rule = LIT_path option = LIT_PATH_SOCDEM }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MON_SOCCON }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MON_SOCDEM }
 					has_game_rule = { rule = LIT_path option = LIT_PATH_RADSOC }
 				}
 			}
@@ -655,8 +656,8 @@ country_event = { #Inauguration of the new Seimas
 			modifier = {
 				factor = 0
 				NOT = { has_game_rule = { rule = LIT_path option = DEFAULT } }
-				NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_SOCCON } }
-				NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_SOCDEM } }
+				NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_MON_SOCCON } }
+				NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_MON_SOCDEM } }
 				NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_RADSOC } }
 				NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_VOLDEMARAS_NATPOP } }
 				NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_ALANTAS_NATPOP } }
@@ -2608,7 +2609,7 @@ country_event = { #The King steps in
 			AND = {
 				is_ai = yes
 				OR = {
-					has_game_rule = { rule = LIT_path option = LIT_PATH_SOCDEM }
+					has_game_rule = { rule = LIT_path option = LIT_PATH_MON_SOCDEM }
 					has_game_rule = { rule = LIT_path option = LIT_PATH_RADSOC }
 				}
 			}
@@ -5071,6 +5072,7 @@ country_event = { #By-Elections in Naujoji Vilnia
 	option = {
 		log = "[GetLogInfo]: event lithuania_flavour_events.3 option lithuania_flavour_events.3.a"
 		name = lithuania_flavour_events.3.a
+		ai_chance = { base = 0 }
 		add_popularity = {
 			ideology = social_conservative
 			popularity = 0.03
@@ -5138,6 +5140,7 @@ country_event = { #Abstinence Movement
 	option = {
 		log = "[GetLogInfo]: event lithuania_flavour_events.6 option lithuania_flavour_events.6.a"
 		name = lithuania_flavour_events.6.a
+		ai_chance = { base = 0 }
 		add_political_power = 25
 	}
 	option = {

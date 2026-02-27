@@ -285,6 +285,10 @@ characters = {
 			civilian = {
 				large = GFX_portrait_GER_erich_wollenberg_civilian_large
 			}
+			army = {
+				large = GFX_portrait_GER_erich_wollenberg_army_large
+				small = GFX_portrait_GER_erich_wollenberg_army_small
+			}
 		}
 		country_leader = {
 			desc = GER_erich_wollenberg_leader_desc
@@ -297,6 +301,18 @@ characters = {
 		country_leader = {
 			desc = GER_erich_wollenberg_leader_desc
 			ideology = radical_socialist_subtype
+		}
+		corps_commander = {
+			desc = GER_erich_wollenberg_leader_desc
+			traits = { brilliant_strategist armor_officer panzer_leader }
+			skill = 3
+			attack_skill = 4
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			visible = {
+				has_socialist_government = yes
+			}
 		}
 	}
 	GER_ernst_siehr = { #East Prussia
@@ -1002,6 +1018,180 @@ characters = {
 			attack_skill = 2
 			defense_skill = 2
 			planning_skill = 2
+			logistics_skill = 1
+		}
+	}
+
+	###################################
+	### SOCIALIST PUPPET COMMANDERS ###
+	###################################
+
+	GER_august_creutzburg = {
+		name = GER_august_creutzburg
+		portraits = {
+			army = {
+				large = GFX_portrait_GER_august_creutzburg_army_large
+				small = GFX_portrait_GER_august_creutzburg_army_small
+			}
+		}
+		corps_commander = {
+			desc = GER_august_creutzburg_commander_desc
+			traits = { inflexible_strategist rising_star }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 1
+		}
+	}
+
+	GER_ernst_schneller = {
+		name = GER_ernst_schneller
+		portraits = {
+			army = {
+				large = GFX_portrait_GER_ernst_schneller_army_large
+				small = GFX_portrait_GER_ernst_schneller_army_small
+			}
+		}
+		corps_commander = {
+			desc = GER_ernst_schneller_commander_desc
+			traits = { skilled_staffer militias_officer }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+		}
+	}
+
+	GER_ernst_thalmann = {
+		name = GER_ernst_thalmann
+		portraits = {
+			army = {
+				large = GFX_portrait_GER_ernst_thalmann_army_large
+				small = GFX_portrait_GER_ernst_thalmann_army_small
+			}
+		}
+		field_marshal = {
+			desc = GER_ernst_thalmann_commander_desc
+			traits = { politically_connected militias_officer }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+
+	GER_hans_kahle = {
+		name = GER_hans_kahle
+		portraits = {
+			army = {
+				large = GFX_portrait_GER_hans_kahle_army_large
+				small = GFX_portrait_GER_hans_kahle_army_small
+			}
+		}
+		corps_commander = {
+			desc = GER_hans_kahle_commander_desc
+			traits = { career_officer infantry_officer }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 2
+		}
+	}
+
+	GER_heinrich_fomferra = {
+		name = GER_heinrich_fomferra
+		portraits = {
+			army = {
+				large = GFX_portrait_GER_heinrich_fomferra_army_large
+				small = GFX_portrait_GER_heinrich_fomferra_army_small
+			}
+		}
+		corps_commander = {
+			desc = GER_heinrich_fomferra_commander_desc
+			traits = { ranger urban_assault_specialist adaptable }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+
+	GER_ludwig_renn = {
+		name = GER_ludwig_renn
+		portraits = {
+			army = {
+				large = GFX_portrait_GER_ludwig_renn_army_large
+				small = GFX_portrait_GER_ludwig_renn_army_small
+			}
+		}
+		field_marshal = {
+			desc = GER_ludwig_renn_commander_desc
+			traits = { inspirational_leader infantry_officer infantry_leader }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+		}
+	}
+
+	GER_otto_braun_communist = {
+		name = GER_otto_braun_communist
+		portraits = {
+			army = {
+				large = GFX_portrait_GER_otto_braun_communist_army_large
+				small = GFX_portrait_GER_otto_braun_communist_army_small
+			}
+		}
+		corps_commander = {
+			desc = GER_otto_braun_communist_commander_desc
+			traits = { harsh_leader }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+
+	GER_theodor_neubauer = {
+		name = GER_theodor_neubauer
+		portraits = {
+			army = {
+				large = GFX_portrait_GER_theodor_neubauer_army_large
+				small = GFX_portrait_GER_theodor_neubauer_army_small
+			}
+		}
+		corps_commander = {
+			desc = GER_theodor_neubauer_commander_desc
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+
+	GER_wilhelm_zaisser = {
+		name = GER_wilhelm_zaisser
+		portraits = {
+			army = {
+				large = GFX_portrait_GER_wilhelm_zaisser_army_large
+				small = GFX_portrait_GER_wilhelm_zaisser_army_small
+			}
+		}
+		corps_commander = {
+			desc = GER_wilhelm_zaisser_commander_desc
+			traits = { politically_connected }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
 			logistics_skill = 1
 		}
 	}

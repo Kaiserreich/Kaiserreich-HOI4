@@ -239,6 +239,7 @@ focus_tree = {
 				activate_targeted_decision = { target = THIS decision = FNG_Fill_the_Silver_Reserve }
 				activate_targeted_decision = { target = THIS decision = FNG_Encourage_Japanese_Investment }
 				activate_targeted_decision = { target = THIS decision = FNG_Encourage_Chinese_Investment }
+				activate_targeted_decision = { target = THIS decision = FNG_Encourage_Russian_Investment }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -248,6 +249,7 @@ focus_tree = {
 		id = FNG_Yamato_Hotel_Licenses
 		icon = GFX_goal_yamato_hotel
 		cost = 5
+		dynamic = yes
 
 		relative_position_id = FNG_Develop_the_Three_Northeast_Provinces
 		x = -4
@@ -255,10 +257,6 @@ focus_tree = {
 
 		prerequisite = {
 			focus = FNG_Develop_the_Three_Northeast_Provinces
-		}
-		available = {
-			FNG_JAP_hostile = no
-			JAP = { is_faction_leader = yes }
 		}
 		ai_will_do = { factor = 50 }
 		completion_reward = {
@@ -268,9 +266,18 @@ focus_tree = {
 				custom_effect_tooltip = BONUS_PP_30
 				hidden_effect = { add_political_power = 30 }
 			}
-			add_stability = 0.10
-			country_event = fengtian_events.58
-			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { FNG_JAP_hostile = no }
+				custom_effect_tooltip = FNG_jpn_hostile_econ_notice
+				custom_effect_tooltip = tooltip_white_line
+				add_stability = 0.10
+				country_event = fengtian_events.58
+				custom_effect_tooltip = tooltip_white_line
+			}
+			else = {
+				add_political_power = 30
+			}
+
 			if = {
 				limit = { has_dlc_aat = no }
 				custom_effect_tooltip = available_designer
@@ -302,8 +309,15 @@ focus_tree = {
 
 	focus = {
 		id = FNG_Mantetsu_Research_Wing
-		icon = GFX_focus_generic_university_3
+		icon = {
+			trigger = { FNG_JAP_hostile = yes }
+			value = GFX_focus_generic_university_2
+		}
+		icon = {
+			value = GFX_focus_generic_university_3
+		}
 		cost = 6
+		dynamic = yes
 
 		relative_position_id = FNG_Yamato_Hotel_Licenses
 		x = 0
@@ -312,23 +326,35 @@ focus_tree = {
 		prerequisite = {
 			focus = FNG_Yamato_Hotel_Licenses
 		}
-		available = {
-			FNG_JAP_hostile = no
-			JAP = { is_faction_leader = yes }
-		}
+
 		ai_will_do = { factor = 90 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FNG_Mantetsu_Research_Wing"
-			country_event = fengtian_events.60
-			china_add_research_slots = yes
+			if = {
+				limit = { FNG_JAP_hostile = no }
+				custom_effect_tooltip = FNG_jpn_hostile_econ_notice
+				custom_effect_tooltip = tooltip_white_line
+				country_event = fengtian_events.60
+				china_add_research_slots = yes
+			}
+			else = {
+				china_add_research_slots = yes
+			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
 
 	focus = {
 		id = FNG_Mantetsu_Collaboration
-		icon = GFX_goal_mantetsu_collaboration
+		icon = {
+			trigger = { FNG_JAP_hostile = yes }
+			value = GFX_goal_generic_seize_money
+		}
+		icon = {
+			value = GFX_goal_mantetsu_collaboration
+		}
 		cost = 5
+		dynamic = yes
 
 		relative_position_id = FNG_Develop_the_Three_Northeast_Provinces
 		x = -2
@@ -337,36 +363,46 @@ focus_tree = {
 		prerequisite = {
 			focus = FNG_Develop_the_Three_Northeast_Provinces
 		}
-		available = {
-			FNG_JAP_hostile = no
-			JAP = { is_faction_leader = yes }
-		}
+
 		ai_will_do = { factor = 80 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FNG_Mantetsu_Collaboration"
-			add_stability = 0.10
-			custom_effect_tooltip = FNG_mantetsu_collaboration_unlock
-			custom_effect_tooltip = tooltip_white_line
-			add_offsite_building = {
-				type = industrial_complex
-				level = 1
-			}
-			add_opinion_modifier = {
-				target = JAP
-				modifier = FNG_mantetsu_collab
-			}
-			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { ZCPOP = -5 }
-			FNG_ZCPOP = yes
-			FNG_JAP_investment_large = yes
 			if = {
-				limit = { has_dlc_lar = yes }
-				JAP = {
-					add_intel = {
-						target = FNG
-						civilian_intel = 5
+				limit = { FNG_JAP_hostile = no }
+				custom_effect_tooltip = FNG_jpn_hostile_econ_notice
+				custom_effect_tooltip = tooltip_white_line
+				add_stability = 0.10
+				custom_effect_tooltip = FNG_mantetsu_collaboration_unlock
+				custom_effect_tooltip = tooltip_white_line
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+				add_opinion_modifier = {
+					target = JAP
+					modifier = FNG_mantetsu_collab
+				}
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { ZCPOP = -5 }
+				FNG_ZCPOP = yes
+				FNG_JAP_investment_large = yes
+				if = {
+					limit = { has_dlc_lar = yes }
+					JAP = {
+						add_intel = {
+							target = FNG
+							civilian_intel = 5
+						}
 					}
 				}
+			}
+			else = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+				set_temp_variable = { CCPOP = 3 }
+				FNG_CCPOP = yes
 			}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
@@ -387,6 +423,12 @@ focus_tree = {
 		available = {
 			FNG_JAP_hostile = no
 			JAP = { is_faction_leader = yes }
+		}
+		bypass = {
+			OR = {
+				FNG_JAP_hostile = yes
+				JAP = { is_faction_leader = no }
+			}
 		}
 		ai_will_do = { factor = 80 }
 		completion_reward = {
@@ -590,8 +632,6 @@ focus_tree = {
 		}
 		available = {
 			716 = { is_owned_and_controlled_by = ROOT }
-			FNG_JAP_hostile = no
-			JAP = { is_faction_leader = yes }
 		}
 		ai_will_do = { factor = 60 }
 		bypass = {
@@ -633,6 +673,12 @@ focus_tree = {
 		available = {
 			FNG_JAP_hostile = no
 			JAP = { is_faction_leader = yes }
+		}
+		bypass = {
+			OR = {
+				FNG_JAP_hostile = yes
+				JAP = { is_faction_leader = no }
+			}
 		}
 		ai_will_do = { factor = 60 }
 		completion_reward = {
@@ -2942,14 +2988,20 @@ focus_tree = {
 		}
 
 		available = {
-			OR = {
+			if = {
+				limit = {
+					OR = {
+						is_ai = no
+						NOT = { has_game_rule = { rule = FNG_path option = FNG_PATH_GAMBIT_PATAUT } }
+					}
+				}
 				custom_override_tooltip = {
 					tooltip = FNG_JAP_influence_below_50_tooltip
 					FNG_mantetsu_level_very_high = no
 					FNG_mantetsu_level_high = no
 				}
-				has_game_rule = { rule = FNG_path option = FNG_PATH_GAMBIT_PATAUT }
 			}
+			else = { always = yes }
 		}
 
 		ai_will_do = {
@@ -2980,12 +3032,9 @@ focus_tree = {
 			FNG_JAP_spend_mega = yes
 			custom_effect_tooltip = tooltip_white_line
 			reduce_propaganda_decision_cost_twenty_five_percent = yes
-			custom_effect_tooltip = reduce_propaganda_decision_cost_twenty_five_percent_tt
-			if = {
-				limit = {
-					has_game_rule = { rule = FNG_path option = FNG_PATH_GAMBIT_PATAUT }
-				}
-				custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_propaganda_decision_cost_tt
+				NUMBER = 25%
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -4134,9 +4183,6 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = FNG_Zhang_Clique
-		}
-		bypass = {
-			FNG_JAP_hostile = yes
 		}
 		ai_will_do = { factor = 70 }
 		completion_reward = {

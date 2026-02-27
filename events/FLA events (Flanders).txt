@@ -1074,7 +1074,7 @@ country_event = { #Division within the Liberation Army
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = FLA_path option = FLA_PATH_MON_AUTDEM }
+					has_game_rule = { rule = FLA_path option = FLA_PATH_AUTDEM }
 					has_game_rule = { rule = FLA_path option = FLA_PATH_MON_SOCCON }
 					has_game_rule = { rule = FLA_path option = FLA_PATH_MON_SOCDEM }
 					has_game_rule = { rule = FLA_path option = FLA_PATH_MON_MARLIB }
@@ -1132,7 +1132,7 @@ country_event = { #Clash between the Vlaamse Wacht and the Secret Legion
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = FLA_path option = FLA_PATH_MON_AUTDEM }
+					has_game_rule = { rule = FLA_path option = FLA_PATH_AUTDEM }
 					has_game_rule = { rule = FLA_path option = FLA_PATH_MON_SOCCON }
 					has_game_rule = { rule = FLA_path option = FLA_PATH_MON_SOCDEM }
 					has_game_rule = { rule = FLA_path option = FLA_PATH_MON_MARLIB }
@@ -1393,7 +1393,7 @@ country_event = { #The Aristocracy increases it's power
 		}
 		if = {
 			limit = {
-				has_game_rule = { rule = FLA_path option = FLA_PATH_MON_AUTDEM }
+				has_game_rule = { rule = FLA_path option = FLA_PATH_AUTDEM }
 			}
 			WAL = { country_event = { id = flanders_revolution_events.652 days = 14 } }
 			else = {
@@ -1411,7 +1411,7 @@ country_event = { #The Aristocracy increases it's power
 			base = 40
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = FLA_path option = FLA_PATH_MON_AUTDEM }
+				has_game_rule = { rule = FLA_path option = FLA_PATH_AUTDEM }
 			}
 		}
 	}

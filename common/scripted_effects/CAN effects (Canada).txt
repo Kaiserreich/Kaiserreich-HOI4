@@ -783,8 +783,8 @@ CAN_create_governor_general = {
 		}
 	}
 	else_if = {
-		limit = { has_character = CAN_andrew_mccaughton } #prevents error log flood
-		CAN_andrew_mccaughton = {
+		limit = { has_character = CAN_andrew_mcnaughton } #prevents error log flood
+		CAN_andrew_mcnaughton = {
 			set_character_as_regent = yes
 			remove_all_country_leader_roles = yes
 			for_each_loop = {
@@ -795,7 +795,7 @@ CAN_create_governor_general = {
 						text = {
 							add_country_leader_role = {
 								country_leader = {
-									desc = CAN_andrew_mccaughton_leader_desc
+									desc = CAN_andrew_mcnaughton_leader_desc
 									ideology = [IDEOLOGY]
 								}
 								promote_leader = yes
@@ -1028,62 +1028,45 @@ CAN_create_republic = {
 		limit = { has_cosmetic_tag = CAN_entente }
 		set_cosmetic_tag = CAN
 	}
-	if = {
-		limit = { CAN_major_james_coldwell = { can_be_country_leader = yes } }
-		CAN_major_james_coldwell = { promote_character = yes }
-	}
-	else = {
-		CAN_james_shaver_woodsworth = { promote_character = yes }
-	}
-	CAN_louis_st_laurent = { promote_character = yes }
-	if = {
-		limit = { has_character = CAN_william_lyon_mackenzie_king }
-		CAN_william_lyon_mackenzie_king = { promote_character = yes }
-	}
-	else = {
-		CAN_charles_gavan_power = { promote_character = yes }
-	}
-	if = {
-		limit = { CAN_john_bracken = { can_be_country_leader = yes } }
-		CAN_john_bracken = { promote_character = yes }
-	}
-	else_if = {
-		limit = { CAN_robert_manion = { can_be_country_leader = yes } }
-		CAN_robert_manion = { promote_character = yes }
-	}
-	else = {
-		CAN_richard_bedford_bennett = { promote_character = yes }
-	}
-	if = {
-		limit = { has_character = CAN_hugh_guthrie }
-		CAN_hugh_guthrie = { promote_character = yes }
-	}
-	if = {
-		limit = {
-			has_character = GBR_albert_windsor
-			GBR_albert_windsor = { can_be_country_leader = yes }
+	hidden_effect = {
+		if = {
+			limit = { has_character = CAN_john_buchan }
+			CAN_john_buchan = { remove_all_country_leader_roles = yes }
 		}
+		if = {
+			limit = { has_character = CAN_ernest_makins }
+			CAN_ernest_makins = { remove_all_country_leader_roles = yes }
+		}
+		if = {
+			limit = { has_character = CAN_andrew_mcnaughton }
+			CAN_andrew_mcnaughton = { remove_all_country_leader_roles = yes }
+		}
+	}
+	if = {
+		limit = { has_character = GBR_albert_windsor }
 		custom_effect_tooltip = tooltip_white_line
 		GBR_albert_windsor = {
 			set_character_name = GBR_albert_windsor
+			set_character_as_monarch = yes
+			hidden_effect = { remove_all_country_leader_roles = yes }
 			set_nationality = GBR
 		}
 	}
-	else_if = {
-		limit = {
-			has_character = GBR_louis_mountbatten
-			GBR_louis_mountbatten = { can_be_country_leader = yes }
-		}
+	if = {
+		limit = { has_character = GBR_louis_mountbatten }
 		custom_effect_tooltip = tooltip_white_line
-		GBR_louis_mountbatten = { set_nationality = GBR }
+		GBR_louis_mountbatten = {
+			hidden_effect = { remove_all_country_leader_roles = yes }
+			set_nationality = GBR
+		}
 	}
-	else_if = {
-		limit = {
-			has_character = GBR_john_vereker
-			GBR_john_vereker = { can_be_country_leader = yes }
-		}
+	if = {
+		limit = { has_character = GBR_john_vereker }
 		custom_effect_tooltip = tooltip_white_line
-		GBR_john_vereker = { set_nationality = GBR }
+		GBR_john_vereker = {
+			hidden_effect = { remove_all_country_leader_roles = yes }
+			set_nationality = GBR
+		}
 	}
 }
 

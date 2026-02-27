@@ -690,7 +690,7 @@ on_actions = {
 							else = {
 								add_country_leader_role = {
 									country_leader = {
-										desc = PRF_sultan_muhammed_shah_advisor_desc
+										desc = PJB_sultan_muhammed_shah_advisor_desc
 										ideology = social_conservative_subtype
 									}
 									promote_leader = yes
@@ -703,7 +703,7 @@ on_actions = {
 							else = {
 								add_country_leader_role = {
 									country_leader = {
-										desc = PRF_sultan_muhammed_shah_advisor_desc
+										desc = PJB_sultan_muhammed_shah_advisor_desc
 										ideology = authoritarian_democrat_subtype
 									}
 									promote_leader = yes
@@ -860,6 +860,18 @@ on_actions = {
 					}
 				}
 				PRF = { set_faction_leader = yes }
+			}
+		}
+	}
+	on_offer_join_faction = { #Faction logging
+		effect = {
+			if = {
+				limit = { tag = PRF }
+				log = "KR_Event_Logging;PRF FOREIGN POLICY - [FROM.GetTag]"
+			}
+			if = {
+				limit = { tag = HND }
+				log = "KR_Event_Logging;HND FOREIGN POLICY - [FROM.GetTag]"
 			}
 		}
 	}

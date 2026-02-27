@@ -1811,7 +1811,14 @@ focus_tree = {
 
 		prerequisite = { focus = KTG_Colonial_Rule }
 
-		ai_will_do = { factor = 80 }
+		ai_will_do = {
+			factor = 80
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = KTG_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = KTG_path option = KTG_PATH_AUTDEM } }
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed KTG_Dominer_Pour_Servir"
@@ -1895,7 +1902,13 @@ focus_tree = {
 
 		prerequisite = { focus = KTG_Colonial_Rule }
 
-		ai_will_do = { factor = 80 }
+		ai_will_do = {
+			factor = 80
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = KTG_path option = KTG_PATH_AUTDEM }
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed KTG_Reward_The_Evolues"

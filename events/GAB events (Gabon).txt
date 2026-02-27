@@ -16,7 +16,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event gabon_events.1 option gabon_events.1.a"
 		name = gabon_events.1.a
-		ai_chance = { base = 85 }
+		ai_chance = {
+			base = 85
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GAB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_RADSOC } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_SYNDIE } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_TOTALIST } }
+			}
+		}
 		set_politics = {
 			ruling_party = radical_socialist
 			elections_allowed = no
@@ -30,7 +39,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event gabon_events.1 option gabon_events.1.b"
 		name = gabon_events.1.b
-		ai_chance = { base = 15 }
+		ai_chance = {
+			base = 15
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GAB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_SOCCON } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_MARLIB } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_SOCLIB } }
+			}
+		}
 		add_political_power = 50
 	}
 }
@@ -106,6 +124,14 @@ country_event = { # First Gabon Elections Event
 	option = {
 		log = "[GetLogInfo]: event gabon_events.15 option gabon_events.15.a"
 		name = gabon_events.15.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GAB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_SOCCON } }
+			}
+		}
 		add_political_power = 50
 		meta_effect = {
 			text = {
@@ -122,6 +148,14 @@ country_event = { # First Gabon Elections Event
 	option = {
 		log = "[GetLogInfo]: event gabon_events.15 option gabon_events.15.b"
 		name = gabon_events.15.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GAB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_MARLIB } }
+			}
+		}
 		add_political_power = 25
 		meta_effect = {
 			text = {
@@ -139,6 +173,14 @@ country_event = { # First Gabon Elections Event
 	option = {
 		log = "[GetLogInfo]: event gabon_events.15 option gabon_events.15.c"
 		name = gabon_events.15.c
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GAB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_SOCLIB } }
+			}
+		}
 		add_political_power = 25
 		meta_effect = {
 			text = {
@@ -165,6 +207,14 @@ country_event = { # First Gabon Syndie Convention
 	option = {
 		log = "[GetLogInfo]: event gabon_events.16 option gabon_events.16.a"
 		name = gabon_events.16.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GAB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_RADSOC } }
+			}
+		}
 		add_political_power = 50
 		meta_effect = {
 			text = {
@@ -181,6 +231,14 @@ country_event = { # First Gabon Syndie Convention
 	option = {
 		log = "[GetLogInfo]: event gabon_events.16 option gabon_events.16.b"
 		name = gabon_events.16.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GAB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_SYNDIE } }
+			}
+		}
 		add_political_power = 25
 		meta_effect = {
 			text = {
@@ -198,6 +256,14 @@ country_event = { # First Gabon Syndie Convention
 	option = {
 		log = "[GetLogInfo]: event gabon_events.16 option gabon_events.16.c"
 		name = gabon_events.16.c
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = GAB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = GAB_path option = GAB_PATH_TOTALIST } }
+			}
+		}
 		add_political_power = -25
 		set_politics = {
 			ruling_party = totalist

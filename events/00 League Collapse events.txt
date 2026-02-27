@@ -1958,6 +1958,10 @@ country_event = { #Liangguang Secedes!
 				autonomy_state = autonomy_free
 			}
 		}
+		GEA = {
+			add_to_variable = { GEA_AOG_CITIES = 0.1 }
+			add_to_variable = { GEA_AOG_CITIES_number = -1 }
+		}
 	}
 }
 
@@ -2006,6 +2010,11 @@ country_event = { #Hunan Secedes
 			country_event = { id = league_collapse_flavour_events.9 days = 2 }
 			QIE = { country_event = { id = qing_foreign_policy_events.104 days = 2 } }
 			LEC = { country_event = { id = legation_cities_events.17 days = 5 } }
+
+			#The Southern Standoff - Set up the South China War
+			GXC = { country_event = { id = china_events.450 days = 3 } }
+			HNN = { country_event = { id = china_events.450 days = 3 } }
+			YUN = { country_event = { id = china_events.450 days = 3 } }
 		}
 	}
 

@@ -4508,17 +4508,9 @@ IRE_parlrep_add_sic = { ### IRE TEMP - wait for scripted loc fix
 				has_country_flag = IRE_govt_sf_megacollins
 			}
 		}
-		if = {
-			limit = { NOT = { has_country_flag = IRE_collins_success } }
-			IRE_michael_collins_parlrep_sic_tt = yes
-			hidden_effect = { IRE_michael_collins_add_sic = yes }
-		}
-		else = {
-			IRE_michael_collins_success_parlrep_sic_tt = yes
-			hidden_effect = { IRE_michael_collins_add_success_sic = yes }
-		}
+		IRE_michael_collins_parlrep_sic_tt = yes
 		hidden_effect = {
-			activate_advisor = IRE_michael_collins_sic
+			IRE_michael_collins_activate_and_add_sic = yes
 			IRE_richard_mulcahy = { remove_second_in_command_role = yes }
 		}
 	}
@@ -4626,26 +4618,28 @@ IRE_eamon_de_valera_parlrep_sic_tt = {
 }
 
 IRE_michael_collins_parlrep_sic_tt = {
-	effect_tooltip = {
-		add_advisor_role = {
-			character = IRE_michael_collins
-			advisor = {
-				slot = second_in_command
-				idea_token = IRE_michael_collins_sic
-				traits = { IRE_big_fellow_1 }
+	if = {
+		limit = { has_country_flag = IRE_collins_success }
+		effect_tooltip = {
+			add_advisor_role = {
+				character = IRE_michael_collins
+				advisor = {
+					slot = second_in_command
+					idea_token = IRE_michael_collins_sic
+					traits = { IRE_big_fellow_2 }
+				}
 			}
 		}
 	}
-}
-
-IRE_michael_collins_success_parlrep_sic_tt = {
-	effect_tooltip = {
-		add_advisor_role = {
-			character = IRE_michael_collins
-			advisor = {
-				slot = second_in_command
-				idea_token = IRE_michael_collins_sic
-				traits = { IRE_big_fellow_2 }
+	else = {
+		effect_tooltip = {
+			add_advisor_role = {
+				character = IRE_michael_collins
+				advisor = {
+					slot = second_in_command
+					idea_token = IRE_michael_collins_sic
+					traits = { IRE_big_fellow_1 }
+				}
 			}
 		}
 	}
@@ -4887,7 +4881,7 @@ IRE_gearoid_o_cuinneagain_change_sic_trait = {
 	}
 }
 
-IRE_robert_n_tweedy_add_sic = {	### IRE TEMP - wait for scripted loc fix
+IRE_robert_n_tweedy_activate_and_add_sic = {	### IRE TEMP - wait for scripted loc fix
 	IRE_robert_n_tweedy = {
 		add_advisor_role = {
 			advisor = {
@@ -4897,11 +4891,12 @@ IRE_robert_n_tweedy_add_sic = {	### IRE TEMP - wait for scripted loc fix
 				cost = 0
 				can_be_fired = no
 			}
+			activate = yes
 		}
 	}
 }
 
-IRE_robert_n_tweedy_add_elected_sic = {	### IRE TEMP - wait for scripted loc fix
+IRE_robert_n_tweedy_elected_activate_and_add_sic = {	### IRE TEMP - wait for scripted loc fix
 	IRE_robert_n_tweedy = {
 		add_advisor_role = {
 			advisor = {
@@ -4911,11 +4906,12 @@ IRE_robert_n_tweedy_add_elected_sic = {	### IRE TEMP - wait for scripted loc fix
 				cost = 0
 				can_be_fired = no
 			}
+			activate = yes
 		}
 	}
 }
 
-IRE_james_dillon_add_sic = {
+IRE_james_dillon_activate_and_add_sic = {
 	IRE_james_dillon = {
 		add_advisor_role = {
 			advisor = {
@@ -4925,11 +4921,12 @@ IRE_james_dillon_add_sic = {
 				cost = 0
 				can_be_fired = no
 			}
+			activate = yes
 		}
 	}
 }
 
-IRE_sean_lemass_add_sic = {
+IRE_sean_lemass_activate_and_add_sic = {
 	IRE_sean_lemass = {
 		if = {
 			limit = { NOT = { has_advisor_role = second_in_command } }
@@ -4941,12 +4938,13 @@ IRE_sean_lemass_add_sic = {
 					cost = 0
 					can_be_fired = no
 				}
+				activate = yes
 			}
 		}
 	}
 }
 
-IRE_gearoid_osullivan_add_sic = {
+IRE_gearoid_osullivan_activate_and_add_sic = {
 	IRE_gearoid_osullivan = {
 		if = {
 			limit = { NOT = { has_advisor_role = second_in_command } }
@@ -4958,40 +4956,45 @@ IRE_gearoid_osullivan_add_sic = {
 					cost = 0
 					can_be_fired = no
 				}
+				activate = yes
 			}
 		}
 	}
 }
 
-IRE_michael_collins_add_sic = {
-	IRE_michael_collins = {
-		add_advisor_role = {
-			advisor = {
-				slot = second_in_command
-				idea_token = IRE_michael_collins_sic
-				traits = { IRE_big_fellow_1 }
-				cost = 0
-				can_be_fired = no
+IRE_michael_collins_activate_and_add_sic = {
+	if = {
+		limit = { has_country_flag = IRE_collins_success }
+		IRE_michael_collins = {
+			add_advisor_role = {
+				advisor = {
+					slot = second_in_command
+					idea_token = IRE_michael_collins_sic
+					traits = { IRE_big_fellow_2 }
+					cost = 0
+					can_be_fired = no
+				}
+				activate = yes
+			}
+		}
+	}
+	else = {
+		IRE_michael_collins = {
+			add_advisor_role = {
+				advisor = {
+					slot = second_in_command
+					idea_token = IRE_michael_collins_sic
+					traits = { IRE_big_fellow_1 }
+					cost = 0
+					can_be_fired = no
+				}
+				activate = yes
 			}
 		}
 	}
 }
 
-IRE_michael_collins_add_success_sic = {
-	IRE_michael_collins = {
-		add_advisor_role = {
-			advisor = {
-				slot = second_in_command
-				idea_token = IRE_michael_collins_sic
-				traits = { IRE_big_fellow_2 }
-				cost = 0
-				can_be_fired = no
-			}
-		}
-	}
-}
-
-IRE_richard_mulcahy_add_sic = {
+IRE_richard_mulcahy_activate_and_add_sic = {
 	IRE_richard_mulcahy = {
 		if = {
 			limit = { NOT = { has_advisor_role = second_in_command } }
@@ -5003,6 +5006,7 @@ IRE_richard_mulcahy_add_sic = {
 					cost = 0
 					can_be_fired = no
 				}
+				activate = yes
 			}
 		}
 	}
@@ -5025,7 +5029,25 @@ IRE_john_j_okelly_add_sic = {
 	}
 }
 
-IRE_ned_cronin_add_sic = {	# If editing this trait, be sure to edit the loc tooltip aswell
+IRE_john_j_okelly_activate_and_add_sic = {
+	IRE_john_j_okelly = {
+		if = {
+			limit = { NOT = { has_advisor_role = second_in_command } }
+			add_advisor_role = {
+				advisor = {
+					slot = second_in_command
+					idea_token = IRE_john_j_okelly_sic
+					traits = { IRE_traditionalist }
+					cost = 0
+					can_be_fired = no
+				}
+				activate = yes
+			}
+		}
+	}
+}
+
+IRE_ned_cronin_activate_and_add_sic = {	# If editing this trait, be sure to edit the loc tooltip aswell
 	IRE_ned_cronin = {
 		if = {
 			limit = { NOT = { has_advisor_role = second_in_command } }
@@ -5037,12 +5059,13 @@ IRE_ned_cronin_add_sic = {	# If editing this trait, be sure to edit the loc tool
 					cost = 0
 					can_be_fired = no
 				}
+				activate = yes
 			}
 		}
 	}
 }
 
-IRE_jj_walsh_add_sic = {
+IRE_jj_walsh_activate_and_add_sic = {
 	IRE_jj_walsh = {
 		add_advisor_role = {
 			advisor = {
@@ -5052,11 +5075,12 @@ IRE_jj_walsh_add_sic = {
 				cost = 0
 				can_be_fired = no
 			}
+			activate = yes
 		}
 	}
 }
 
-IRE_dail_eireann_add_sic = {	## This is supposed to be a placeholder during election chains etc
+IRE_dail_eireann_activate_and_add_sic = {	## This is supposed to be a placeholder during election chains etc
 	IRE_dail_eireann = {
 		add_advisor_role = {
 			advisor = {
@@ -5066,6 +5090,7 @@ IRE_dail_eireann_add_sic = {	## This is supposed to be a placeholder during elec
 				cost = 0
 				can_be_fired = no
 			}
+			activate = yes
 		}
 	}
 }
@@ -5722,7 +5747,7 @@ IRE_move_back_basil_brooke = {
 					cost = 50
 				}
 			}
-			NIR_basil_brooke = { remove_second_in_command_role = yes }
+			remove_second_in_command_role = yes
 			set_nationality = NIR
 		}
 	}
@@ -5942,8 +5967,7 @@ IRE_military_govt_setup = {
 		}
 		IRE_record_previous_govt = yes
 		IRE_remove_govt_flag = yes
-		IRE_dail_eireann_add_sic = yes
-		activate_advisor = IRE_dail_eireann_sic
+		IRE_dail_eireann_activate_and_add_sic = yes
 	}
 }
 
@@ -6854,8 +6878,14 @@ IRE_create_govt_marlib_puppet = {
 		}
 		IRE_remove_gateway_decisions = yes
 		IRE_frank_macdermot_add_puppet_hos = yes		### here you go Borkerman
-		IRE_james_dillon_add_sic = yes
-		activate_advisor = IRE_james_dillon_sic
+		if = {
+			limit = { IRE_james_dillon = { has_advisor_role = second_in_command } }
+			if = {
+				limit = { IRE_james_dillon = { is_second_in_command = no } }
+				activate_advisor = IRE_james_dillon_sic
+			}
+		}
+		else = { IRE_james_dillon_activate_and_add_sic = yes }
 		IRE_load_sc_ndp_govt_advisors = yes
 		IRE_load_nonsf_dem_generals = yes
 		set_popularities = {
@@ -6903,10 +6933,13 @@ IRE_create_govt_pataut_puppet = {
 		IRE_remove_gateway_decisions = yes
 		IRE_hugo_macneill_add_puppet_hos = yes
 		if = {
-			limit = { IRE_gearoid_osullivan = { is_second_in_command = no } }
-			IRE_gearoid_osullivan_add_sic = yes
-			activate_advisor = IRE_gearoid_osullivan_sic
+			limit = { IRE_gearoid_osullivan = { has_advisor_role = second_in_command } }
+			if = {
+				limit = { IRE_gearoid_osullivan = { is_second_in_command = no } }
+				activate_advisor = IRE_gearoid_osullivan_sic
+			}
 		}
+		else = { IRE_gearoid_osullivan_activate_and_add_sic = yes }
 		IRE_load_parliamentary_an_advisors = yes
 		IRE_load_pataut_generals = yes
 		set_popularities = {

@@ -6182,7 +6182,7 @@ country_event = { #Invited into economic sphere (via decision)
 					is_ally_with = FROM
 					has_country_flag = tokyo_conference_trade_ally
 				}
-				NOT = { #Bypass JAP allies and Tokyo Confrence allies guaranteed accepting if a non JAP forpol gamerule is set
+				NOT = { #Bypass JAP allies and Tokyo Confrence allies guaranteed accepting if a non JAP forpol game rule is set
 					AND = {
 						tag = BRM
 						NOT = {
@@ -6254,7 +6254,7 @@ country_event = { #Invited into economic sphere (via decision)
 				has_opinion = { target = FROM value < -100 }
 			}
 			modifier = {
-				add = 100 #Add a bunch of bonus reasons to refuse if a non JAP forpol gamerule is set
+				add = 100 #Add a bunch of bonus reasons to refuse if a non JAP forpol game rule is set
 				OR = {
 					AND = {
 						tag = BRM
@@ -8017,12 +8017,8 @@ news_event = { #World News: Japan Seizes the Legations
 
 	major = yes
 	fire_for_sender = yes
-	show_major = {
-		OR = {
-			regional_asia_news = yes
-			LEC_original_legation_members_trigger = yes
-		}
-	}
+
+	trigger = { wants_world_news = yes } #Global news event
 
 	option = {
 		name = japan_legations_crisis_events.005.a #Our forces triumphantly enter the city!
@@ -8128,10 +8124,13 @@ news_event = { #World News: Japan Strikes the Legations
 
 	major = yes
 	fire_for_sender = yes
+	trigger = { wants_world_news = yes }
 	show_major = {
 		OR = {
 			regional_asia_news = yes
-			LEC_original_legation_members_trigger = yes
+			LEC_is_legation_council_member = yes
+			is_in_faction_with = ENT
+			should_get_city_capture_events = yes
 		}
 	}
 
@@ -8178,10 +8177,13 @@ news_event = { #World News: The Legation Crisis Defuses
 
 	major = yes
 	fire_for_sender = yes
+	trigger = { wants_world_news = yes }
 	show_major = {
 		OR = {
 			regional_asia_news = yes
-			LEC_original_legation_members_trigger = yes
+			LEC_is_legation_council_member = yes
+			is_in_faction_with = ENT
+			should_get_city_capture_events = yes
 		}
 	}
 
@@ -8779,7 +8781,7 @@ country_event = { #JAP: The Fate of the Legations
 		}
 		add_political_power = -25
 		add_war_support = -0.05
-		LEC = { news_event = { id = japan_legations_crisis_events.034 days = 1 } } #(LEC) Tokyo Leaves the Legations Alone
+		news_event = { id = japan_legations_crisis_events.034 days = 1 } #(LEC) Tokyo Leaves the Legations Alone
 	}
 }
 
@@ -8832,10 +8834,13 @@ news_event = { #World News: Japan Ends the Legations
 
 	major = yes
 	fire_for_sender = yes
+	trigger = { wants_world_news = yes }
 	show_major = {
 		OR = {
 			regional_asia_news = yes
-			LEC_original_legation_members_trigger = yes
+			LEC_is_legation_council_member = yes
+			is_in_faction_with = ENT
+			should_get_city_capture_events = yes
 		}
 	}
 
@@ -8880,6 +8885,18 @@ news_event = { #LEC: Tokyo Leaves the Legations Alone
 	picture = GFX_news_event_LEC_asia_diplomacy
 
 	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.031
+
+	major = yes
+	fire_for_sender = yes
+	trigger = { wants_world_news = yes }
+	show_major = {
+		OR = {
+			regional_asia_news = yes
+			LEC_is_legation_council_member = yes
+			is_in_faction_with = ENT
+			should_get_city_capture_events = yes
+		}
+	}
 
 	option = {
 		name = japan_legations_crisis_events.034.a #The Legations live to see another day.

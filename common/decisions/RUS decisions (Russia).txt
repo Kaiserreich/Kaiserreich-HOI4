@@ -12342,6 +12342,7 @@ RUS_russian_sphere_decisions = {
 				FROM = { is_in_faction = yes }
 				is_faction_leader = no
 				has_war_with_major = yes
+				has_guaranteed = FROM
 			}
 		}
 
@@ -15749,32 +15750,11 @@ RUS_sr_parliamentarian_decision_cat = {
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = RUS_kamkov_requirements
 			hidden_effect = {
-				remove_targeted_decision = { target = THIS decision = RUS_devolution_of_authority }
 				remove_targeted_decision = { target = THIS decision = RUS_incentivise_creation_of_rural_enterprises }
 				remove_targeted_decision = { target = THIS decision = RUS_modernisation_of_agricultural_communes }
 				remove_targeted_decision = { target = THIS decision = RUS_mordva_autonomies }
 				remove_targeted_decision = { target = THIS decision = RUS_peoples_militia_reform }
 			}
-		}
-		fixed_random_seed = no
-	}
-	RUS_devolution_of_authority = {
-		allowed = { always = no }
-		icon = GFX_decision_scales
-		cost = RUS_tambov_experiment_cost_var
-		ai_will_do = { base = 0 }
-		modifier = {
-			political_power_factor = -0.2
-		}
-		days_remove = 150
-		fire_only_once = yes
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete RUS_devolution_of_authority"
-			add_to_variable = { RUS_tambov_experiment_cost_var = -15 }
-			custom_effect_tooltip = RUS_devolution_of_authority_effect_tt
-		}
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove RUS_devolution_of_authority"
 		}
 		fixed_random_seed = no
 	}

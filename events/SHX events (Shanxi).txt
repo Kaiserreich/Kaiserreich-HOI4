@@ -12151,6 +12151,7 @@ news_event = {
 	picture = GFX_news_event_SIK_western_china
 	is_triggered_only = yes #Triggered by decision SHX_suiyuan_begin_northwestern_expedition
 
+	trigger = { wants_world_news = yes }
 	major = yes
 	show_major = {
 		OR = {
@@ -13097,6 +13098,12 @@ country_event = { #The National Army and the Nationalist Party
 				ideology = authoritarian_democrat
 				long_name = SHX_kuomintang_feng_long
 				name = SHX_kuomintang_feng
+			}
+			set_country_leader_description = {
+				desc = SHX_feng_yuxiang_president_leader_desc
+			}
+			SHX_feng_yuxiang = {
+				add_trait = { trait = SHX_christian_general ideology = radical_socialist_subtype }
 			}
 		}
 

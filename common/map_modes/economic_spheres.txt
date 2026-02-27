@@ -6,21 +6,24 @@ scripted_map_modes = {
 		bottom = {
 			type = country
 			color = {
-				set_temp_variable = { alpha = 0.7 }
 				FROM = {
 					if = {
 						limit = { is_in_economic_sphere = no }
-						set_temp_variable = { red = 0.5 }
-						set_temp_variable = { green = 0.5 }
-						set_temp_variable = { blue = 0.5 }
-						set_temp_variable = { alpha = 0.35 }
+						set_temp_variable = { red = 0.7 }
+						set_temp_variable = { blue = 0.7 }
+						set_temp_variable = { green = 0.7 }
+						set_temp_variable = { alpha = 0.7 }
 					}
 					else = {
 						var:economic_sphere = {
 							set_temp_variable = { red = THIS.red }
+							multiply_temp_variable = { red = 0.7 }
 							set_temp_variable = { green = THIS.green }
+							multiply_temp_variable = { green = 0.7 }
 							set_temp_variable = { blue = THIS.blue }
+							multiply_temp_variable = { blue = 0.7 }
 						}
+						set_temp_variable = { alpha = 1 }
 					}
 				}
 			}

@@ -3923,7 +3923,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				has_game_rule = { rule = SZC_path option = SZC_PATH_LIU_WENHUI_SOCCON }
+				has_game_rule = { rule = SZC_path option = SZC_PATH_WENHUI_SOCCON }
 				factor = 0
 			}
 		}
@@ -4063,7 +4063,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				has_game_rule = { rule = SZC_path option = SZC_PATH_LIU_WENHUI_SOCCON }
+				has_game_rule = { rule = SZC_path option = SZC_PATH_WENHUI_SOCCON }
 				factor = 0
 			}
 		}
@@ -4093,7 +4093,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				has_game_rule = { rule = SZC_path option = SZC_PATH_LIU_WENHUI_SOCCON }
+				has_game_rule = { rule = SZC_path option = SZC_PATH_WENHUI_SOCCON }
 				factor = 0
 			}
 		}
@@ -4263,7 +4263,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				has_game_rule = { rule = SZC_path option = SZC_PATH_DENG_XIHOU_SOCCON }
+				has_game_rule = { rule = SZC_path option = SZC_PATH_XIHOU_SOCCON }
 				factor = 0
 			}
 		}
@@ -4314,7 +4314,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				has_game_rule = { rule = SZC_path option = SZC_PATH_DENG_XIHOU_SOCCON }
+				has_game_rule = { rule = SZC_path option = SZC_PATH_XIHOU_SOCCON }
 				factor = 0
 			}
 		}
@@ -4663,6 +4663,9 @@ focus_tree = {
 			is_in_faction = no
 			NOT = { has_idea = SZC_two_lius_war }
 		}
+
+		dynamic = yes
+
 		bypass = {
 			china_is_potential_government = yes
 		}
@@ -4675,6 +4678,11 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 4
+			modifier = {
+				factor = 10
+				has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_NPA }
+				country_exists = NPA
+			}
 			modifier = {
 				factor = 0
 				has_dynamic_modifier = { modifier = SZC_major_famine }
@@ -8975,8 +8983,7 @@ focus_tree = {
 			UPC_GRA_small_effect = yes
 			UPC_REP_small_effect = yes
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { coalition_partner_var = token:social_conservative }
-			add_to_coalition = yes
+			UPC_DCP_joins_governing_coalition_effect = yes
 			custom_effect_tooltip = tooltip_white_line
 			if = {
 				limit = { NOT = { has_character = YUN_luo_longji } }
@@ -9134,9 +9141,9 @@ focus_tree = {
 			}
 			remove_ideas = SZC_obscurations_on_military_loyalties_2
 			custom_effect_tooltip = tooltip_white_line
-			UPC_election_ban_REG_effect = yes
-			custom_effect_tooltip = tooltip_white_line
 			UPC_STA_leaves_governing_coalition_effect = yes
+			custom_effect_tooltip = tooltip_white_line
+			UPC_election_ban_REG_effect = yes
 		}
 	}
 
@@ -9325,7 +9332,7 @@ focus_tree = {
 					advisor = {
 						slot = political_advisor
 						idea_token = SZC_tian_songyao_advisor
-						desc = SZC_deng_xihou_commander_desc
+						desc = SZC_tian_songyao_high_command_desc
 						traits = { KR_baoding_kingmaker }
 						cost = 0
 						can_be_fired = no
@@ -9476,7 +9483,10 @@ focus_tree = {
 			remove_ideas = SZC_nonsensical_economic_situation_2
 			custom_effect_tooltip = tooltip_white_line
 			SZC = { set_variable = { generic_raise_stability_decision_cost = 75 } }
-			custom_effect_tooltip = reduce_stability_decision_cost_twenty_five_percent_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_stability_decision_cost_tt
+				NUMBER = 25%
+			}
 			custom_effect_tooltip = tooltip_white_line
 			SZC_the_push_for_efficiency_effect = yes
 		}
@@ -9862,7 +9872,10 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			UPC_sub_enthusiasm_medium_effect = yes
 			SZC = { set_variable = { generic_raise_stability_decision_cost = 75 } }
-			custom_effect_tooltip = reduce_stability_decision_cost_twenty_five_percent_tt
+			custom_effect_tooltip = {
+				localization_key = reduce_stability_decision_cost_tt
+				NUMBER = 25%
+			}
 		}
 	}
 

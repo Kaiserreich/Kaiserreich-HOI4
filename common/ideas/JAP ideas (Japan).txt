@@ -2464,21 +2464,6 @@ ideas = {
 				cic_to_overlord_factor = 0.25
 			}
 		}
-		JAP_war_reparations_chi_overlord_idea = {
-			on_add = { log = "[GetLogRoot]: add idea JAP_war_reparations_chi_overlord_idea" }
-			picture = generic_coins
-			allowed = { always = no }
-			cancel = {
-				OR = {
-					has_war_with = LKT
-					NOT = { country_exists = LKT }
-				}
-			}
-			targeted_modifier = {
-				tag = LKT
-				cic_to_target_factor = 0.15
-			}
-		}
 		JAP_chinese_construction_crews_idea = {
 			on_add = { log = "[GetLogRoot]: add idea JAP_chinese_construction_crews_idea" }
 			picture = economic_control_icon

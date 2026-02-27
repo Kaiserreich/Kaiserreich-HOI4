@@ -202,8 +202,10 @@ IRE_ulster_revolt = {
 		}
 		if = {
 			limit = {
-				133 = { is_claimed_by = ROOT }
-				120 = { is_claimed_by = ROOT }
+				OR = {
+					120 = { is_claimed_by = ROOT } #Scottish Highlands
+					1124 = { is_claimed_by = ROOT } #Isle of Man
+				}
 			}
 			every_state = {
 				limit = { is_claimed_by = ROOT }
@@ -6273,7 +6275,7 @@ IRE_remove_incompatibles = {
 	IRE_remove_american_guarantee_decisions = yes
 	remove_targeted_decision = { target = 119 decision = IRE_improve_nationalist_discontent }
 	remove_targeted_decision = { target = 119 decision = IRE_improve_loyalist_anger }
-	remove_targeted_decision = { target = var:133.owner decision = IRE_reclaim_gaelic_lands }
+	remove_targeted_decision = { target = var:120.owner decision = IRE_reclaim_gaelic_lands }
 	clear_variable = IRE_improve_loyalist_anger_cost
 	clear_variable = IRE_improve_nationalist_discontent_cost
 	clear_variable = IRE_former_president
@@ -6284,7 +6286,7 @@ IRE_remove_incompatibles = {
 		remove_claim_by = IRE
 	}
 	120 = { rename_state_effect = yes } #Scottish Highlands
-	133 = { rename_state_effect = yes } #Lanark
+	133 = { rename_state_effect = yes } #Strathclyde
 	remove_targeted_decision = { target = IRE decision = IRE_form_celtic_confederation }
 	if = {
 		limit = { NOT = { has_country_leader = { character = IRE_hugo_macneill } } }

@@ -859,11 +859,14 @@ NEP_surviving_the_indian_nightmare_category = {
 		ai_will_do = { factor = 10 }
 
 		complete_effect = {
-			log = "[GetLogRoot]: Decision complete NEP_pilfer_the_depots"
+			log = "[GetLogRoot][GetLogFrom]: Decision complete NEP_pilfer_the_depots"
 			add_equipment_to_stockpile = {
 				type = infantry_equipment_0
 				amount = 1000
 				producer = GBR
+			}
+			hidden_effect = {
+				remove_targeted_decision = { decision = NEP_pilfer_the_depots target = FROM }
 			}
 		}
 		fixed_random_seed = no
@@ -885,32 +888,54 @@ NEP_surviving_the_indian_nightmare_category = {
 		}
 
 		remove_effect = {
-			log = "[GetLogRoot]: Decision remove NEP_emergency_military_production"
+			log = "[GetLogRoot][GetLogFrom]: Decision remove NEP_emergency_military_production"
+			hidden_effect = {
+				remove_targeted_decision = { decision = NEP_emergency_military_production target = FROM }
+			}
 		}
 		fixed_random_seed = no
 	}
 
 	NEP_fortify_uttaranchal = {
 		icon = GFX_decision_generic_mountain_fortification
+
 		allowed = { always = no } #Activated Manually
+
 		available = {
-			FROM = { is_fully_controlled_by = owner } #Uttaranchal
+			FROM = { is_fully_controlled_by = owner }
 			OR = {
 				has_war_with = RAJ
 				has_war = no
 			}
 		}
 
-		cancel_trigger = {
-			NOT = {
-				FROM = { is_fully_controlled_by = owner } #Uttaranchal
+		visible = {
+			OR = {
+				owns_state = FROM
+				AND = {
+					is_subject = yes
+					overlord = { owns_state = FROM }
+				}
 			}
 		}
 
+		cancel_trigger = {
+			NOT = { FROM = { is_fully_controlled_by = owner } }
+		}
+
 		state_target = yes
+		target_trigger = {
+			OR = {
+				owns_state = FROM
+				AND = {
+					is_subject = yes
+					overlord = { owns_state = FROM }
+				}
+			}
+		}
 
 		cost = 40
-		fire_only_once = yes
+
 		ai_will_do = { factor = 10 }
 
 		cancel_effect = {
@@ -921,16 +946,35 @@ NEP_surviving_the_indian_nightmare_category = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove NEP_fortify_uttaranchal"
 			FROM = {
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = bunker
+						province = 5157
+						level = 2
+						instant_build = yes
+					}
+					tooltip = {
+						localization_key = tooltip_add_building_on_victory_point
+						BUILDING = bunker
+						NUMBER = 2
+						VP = 5157
+					}
+				}
 				add_building_construction = {
 					type = bunker
-					province = {
-						id = 3989
-						id = 5157
-						id = 5002
-					}
+					province = 3989
 					level = 2
 					instant_build = yes
 				}
+				add_building_construction = {
+					type = bunker
+					province = 5002
+					level = 2
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				remove_targeted_decision = { decision = NEP_fortify_uttaranchal target = FROM }
 			}
 		}
 		fixed_random_seed = no
@@ -938,24 +982,44 @@ NEP_surviving_the_indian_nightmare_category = {
 
 	NEP_fortify_darjeeling = {
 		icon = GFX_decision_fortress
+
 		allowed = { always = no } #Activated Manually
+
 		available = {
-			FROM = { is_fully_controlled_by = owner } #Darjeeling
+			FROM = { is_fully_controlled_by = owner }
 			OR = {
 				has_war_with = HND
 				has_war = no
 			}
 		}
-		cancel_trigger = {
-			NOT = {
-				FROM = { is_fully_controlled_by = owner } #Darjeeling
+
+		visible = {
+			OR = {
+				owns_state = FROM
+				AND = {
+					is_subject = yes
+					overlord = { owns_state = FROM }
+				}
 			}
 		}
 
+		cancel_trigger = {
+			NOT = { FROM = { is_fully_controlled_by = owner } }
+		}
+
 		state_target = yes
+		target_trigger = {
+			OR = {
+				owns_state = FROM
+				AND = {
+					is_subject = yes
+					overlord = { owns_state = FROM }
+				}
+			}
+		}
 
 		cost = 40
-		fire_only_once = yes
+
 		ai_will_do = { factor = 10 }
 
 		cancel_effect = {
@@ -966,15 +1030,25 @@ NEP_surviving_the_indian_nightmare_category = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove NEP_fortify_darjeeling"
 			FROM = {
-				add_building_construction = {
-					type = bunker
-					province = {
-						id = 12338
-						id = 10389
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = bunker
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+						level = 2
+						instant_build = yes
 					}
-					level = 2
-					instant_build = yes
+					tooltip = {
+						localization_key = tooltip_add_building_on_border_provinces
+						BUILDING = bunker
+						NUMBER = 2
+					}
 				}
+			}
+			hidden_effect = {
+				remove_targeted_decision = { decision = NEP_fortify_darjeeling target = FROM }
 			}
 		}
 		fixed_random_seed = no
@@ -1003,8 +1077,14 @@ NEP_surviving_the_indian_nightmare_category = {
 		days_remove = 60
 
 		complete_effect = {
-			log = "[GetLogRoot]: Decision complete NEP_retreat_to_kathmandu"
+			log = "[GetLogRoot][GetLogFrom]: Decision complete NEP_retreat_to_kathmandu"
 			hidden_effect = { add_command_power = -25 }
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove NEP_retreat_to_kathmandu"
+			hidden_effect = {
+				remove_targeted_decision = { decision = NEP_retreat_to_kathmandu target = FROM }
+			}
 		}
 
 		fixed_random_seed = no

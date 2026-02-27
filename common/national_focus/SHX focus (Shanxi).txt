@@ -5770,12 +5770,7 @@ focus_tree = {## Early Game Tree
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SHX_airborne_special_forces"
 			if = {
-				limit = {
-					NOT = { has_tech = paratroopers }
-				}
-				set_technology = { paratroopers = 1 }
-			}
-			else = {
+				limit = { has_tech = paratroopers }
 				add_tech_bonus = {
 					name = SHX_airborne_special_forces
 					bonus = 1
@@ -5783,31 +5778,7 @@ focus_tree = {## Early Game Tree
 					category = para_tech
 				}
 			}
-			custom_override_tooltip = {
-				tooltip = {
-					localization_key = tooltip_create_division_template
-					NAME = "Kongjiang bing jun"
-					LINE_1 = { localization_key = line_battalion_tt NAME = paratrooper ICON = GFX_unit_paratrooper_icon_small COUNT = 4 }
-					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-				}
-				if = {
-					limit = { has_template = "Kongjiang bing jun" }
-					delete_unit_template_and_units = { division_template = "Kongjiang bing jun" disband = yes } #no cheating
-				}
-				division_template = {
-					name = "Kongjiang bing jun" #Paratroopers
-					division_names_group = CHYN_INF_01
-					regiments = {
-						paratrooper = { x = 0 y = 0 }
-						paratrooper = { x = 0 y = 1 }
-						paratrooper = { x = 1 y = 0 }
-						paratrooper = { x = 1 y = 1 }
-					}
-					support = {
-						engineer = { x = 0 y = 0 }
-					}
-				}
-			}
+			china_create_paratrooper_template = yes
 			random_owned_controlled_state = {
 				prioritize = { 613 }
 				limit = {
@@ -5821,7 +5792,6 @@ focus_tree = {## Early Game Tree
 					}
 					create_unit = {
 						division = "name = \"Di jiu lan\" division_template = \"Kongjiang bing jun\" start_experience_factor = 1.0"
-						prioritize_location = 1046
 						owner = ROOT
 					}
 				}
@@ -6973,31 +6943,7 @@ focus_tree = {## Early Game Tree
 				uses = 1
 				category = tp_tech
 			}
-			custom_override_tooltip = {
-				tooltip = {
-					localization_key = tooltip_create_division_template
-					NAME = "Haijun lu zhan dui"
-					LINE_1 = { localization_key = line_battalion_tt NAME = marine ICON = GFX_unit_marine_icon_small COUNT = 4 }
-					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-				}
-				if = {
-					limit = { has_template = "Haijun lu zhan dui" }
-					delete_unit_template_and_units = { division_template = "Haijun lu zhan dui" disband = yes } #no cheating
-				}
-				division_template = {
-					name = "Haijun lu zhan dui" #Marine Corps
-					division_names_group = CHYN_INF_01
-					regiments = {
-						marine = { x = 0 y = 0 }
-						marine = { x = 0 y = 1 }
-						marine = { x = 1 y = 0 }
-						marine = { x = 1 y = 1 }
-					}
-					support = {
-						engineer = { x = 0 y = 0 }
-					}
-				}
-			}
+			china_create_marine_template = yes
 			random_owned_controlled_state = {
 				prioritize = { 1072 }
 				limit = {
@@ -7011,7 +6957,6 @@ focus_tree = {## Early Game Tree
 					}
 					create_unit = {
 						division = "name = \"Di san tuan kuobian.\" division_template = \"Haijun lu zhan dui\" start_experience_factor = 1.0" #The Third Regiment
-						prioritize_location = 1046
 						owner = ROOT
 					}
 				}

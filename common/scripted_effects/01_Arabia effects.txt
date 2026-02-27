@@ -1099,7 +1099,7 @@ JBS_update_HEJ_leader = {
 								text = {
 									add_country_leader_role = {
 										country_leader = {
-											desc = JBS_muhammad_ibn_talil_al_rashid_commander_desc
+											desc = JBS_muhammad_ibn_talal_al_rashid_commander_desc
 											ideology = [IDEOLOGY]
 										}
 										promote_leader = yes
@@ -1137,7 +1137,7 @@ JBS_update_HEJ_leader = {
 				}
 			}
 			else_if = {
-				limit = { has_country_leader = { character = JBS_muhammad_ibn_talil_al_rashid } }
+				limit = { has_country_leader = { character = JBS_muhammad_ibn_talal_al_rashid } }
 				HEJ_muhammad_ibn_talil_al_rashid = {
 					set_nationality = HEJ
 					remove_all_country_leader_roles = yes
@@ -1345,7 +1345,7 @@ JBS_create_abdallah_ibn_mitab = {
 
 JBS_create_muhammad_ibn_talil_al_rashid = {
 	JBS = {
-		JBS_muhammad_ibn_talil_al_rashid = {
+		JBS_muhammad_ibn_talal_al_rashid = {
 			character_becomes_leader_of_ruling_party_effect_tooltip = yes
 			hidden_effect = {
 				set_nationality = PREV.PREV
@@ -1358,7 +1358,7 @@ JBS_create_muhammad_ibn_talil_al_rashid = {
 							text = {
 								add_country_leader_role = {
 									country_leader = {
-										desc = JBS_muhammad_ibn_talil_al_rashid_commander_desc
+										desc = JBS_muhammad_ibn_talal_al_rashid_commander_desc
 										ideology = [IDEOLOGY]
 									}
 									promote_leader = yes
@@ -1454,8 +1454,8 @@ JBS_remove_rashids = {
 		}
 	}
 	if = {
-		limit = { has_character = JBS_muhammad_ibn_talil_al_rashid }
-		JBS_muhammad_ibn_talil_al_rashid = {
+		limit = { has_character = JBS_muhammad_ibn_talal_al_rashid }
+		JBS_muhammad_ibn_talal_al_rashid = {
 			hidden_effect = { remove_all_country_leader_roles = yes }
 			retire = yes
 		}
@@ -1499,7 +1499,7 @@ JBS_restore_rashids = {
 		JBS_create_abdallah_ibn_mitab = yes
 	}
 	else_if = {
-		limit = { JBS = { JBS_muhammad_ibn_talil_al_rashid = { is_dead = no } } }
+		limit = { JBS = { JBS_muhammad_ibn_talal_al_rashid = { is_dead = no } } }
 		JBS_create_muhammad_ibn_talil_al_rashid = yes
 	}
 	custom_effect_tooltip = tooltip_white_line

@@ -4,8 +4,10 @@ can_release_1080 = { #Abkhazia
 	ROOT = {
 		OR = {
 			is_subject = yes
-			231 = { is_claim_or_core_of_ROOT = yes } #Georgia
-			233 = { is_claim_or_core_of_ROOT = yes } #Vladikavkaz
+			any_state_of = {
+				target = { 231 233 } #Georgia, Vladikavkaz
+				is_claim_or_core_of_ROOT = yes
+			}
 			231 = { #Georgia
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -99,9 +101,10 @@ can_release_982 = { #Asir
 	ROOT = {
 		OR = {
 			is_subject = yes
-			679 = { is_claim_or_core_of_ROOT = yes } #Mecca
-			293 = { is_claim_or_core_of_ROOT = yes } #Yemen
-			292 = { is_claim_or_core_of_ROOT = yes } #Jabal Tuwaiq
+			any_state_of = {
+				target = { 679 293 292 } #Mecca, Yemen, Jabal Tuwaiq
+				is_claim_or_core_of_ROOT = yes
+			}
 			679 = { #Mecca
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -130,8 +133,10 @@ can_release_418 = { #Ashkhabad
 	ROOT = {
 		OR = {
 			is_subject = yes
-			416 = { is_claim_or_core_of_ROOT = yes } #Khorasan
-			584 = { is_claim_or_core_of_ROOT = yes } #Karakum
+			any_state_of = {
+				target = { 416 584 } #Khorasan, Karakum
+				is_claim_or_core_of_ROOT = yes
+			}
 			416 = { #Khorasan
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -166,9 +171,10 @@ can_release_907 = { #Bahrain
 	ROOT = {
 		OR = {
 			is_subject = yes
-			412 = { is_claim_or_core_of_ROOT = yes } #Fars
-			656 = { is_claim_or_core_of_ROOT = yes } #Hasa
-			993 = { is_claim_or_core_of_ROOT = yes } #Qatar
+			any_state_of = {
+				target = { 412 656 993 } #Fars, Hasa, Qatar
+				is_claim_or_core_of_ROOT = yes
+			}
 			412 = { #Fars
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -197,8 +203,10 @@ can_release_812 = { #Basra
 	ROOT = {
 		OR = {
 			is_subject = yes
-			291 = { is_claim_or_core_of_ROOT = yes } #Baghdad
-			413 = { is_claim_or_core_of_ROOT = yes } #Khuzestan
+			any_state_of = {
+				target = { 291 413 } #Baghdad, Khuzestan
+				is_claim_or_core_of_ROOT = yes
+			}
 			291 = { #Baghdad
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land_ignore_ideology = yes }
@@ -218,8 +226,10 @@ can_release_585 = { #Batumi
 		OR = {
 			is_subject = yes
 			original_tag = ARM
-			231 = { is_claim_or_core_of_ROOT = yes } #Georgia
-			354 = { is_claim_or_core_of_ROOT = yes } #Erzurum
+			any_state_of = {
+				target = { 231 354 } #Georgia, Erzurum
+				is_claim_or_core_of_ROOT = yes
+			}
 
 			231 = { #Georgia
 				annexations_state_owner_is_valid_grant_target = yes
@@ -334,8 +344,10 @@ can_release_998 = { #Karabagh
 	ROOT = {
 		OR = {
 			is_subject = yes
-			230 = { is_claim_or_core_of_ROOT = yes } #Yerevan
-			229 = { is_claim_or_core_of_ROOT = yes } #Azerbaijan
+			any_state_of = {
+				target = { 230 229 } #Yerevan, Azerbaijan
+				is_claim_or_core_of_ROOT = yes
+			}
 
 			230 = { #Yerevan
 				annexations_state_owner_is_valid_grant_target = yes
@@ -360,8 +372,10 @@ can_release_1000 = { #Kars
 	ROOT = {
 		OR = {
 			is_subject = yes
-			230 = { is_claim_or_core_of_ROOT = yes } #Yerevan
-			354 = { is_claim_or_core_of_ROOT = yes } #Erzurum
+			any_state_of = {
+				target = { 230 354 } #Yerevan, Erzurum
+				is_claim_or_core_of_ROOT = yes
+			}
 
 			230 = { #Yerevan
 				annexations_state_owner_is_valid_grant_target = yes
@@ -386,9 +400,10 @@ can_release_347 = { #Khasab
 	ROOT = {
 		OR = {
 			is_subject = yes
-			294 = { is_claim_or_core_of_ROOT = yes } #Muscat
-			412 = { is_claim_or_core_of_ROOT = yes } #Fars
-			658 = { is_claim_or_core_of_ROOT = yes } #Abu Dhabi
+			any_state_of = {
+				target = { 294 412 658 } #Muscat, Fars, Abu Dhabi
+				is_claim_or_core_of_ROOT = yes
+			}
 			294 = { #Muscat
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -586,8 +601,10 @@ can_release_413 = { #Khuzestan
 	ROOT = {
 		OR = {
 			is_subject = yes
-			266 = { is_claim_or_core_of_ROOT = yes } #Teheran
-			291 = { is_claim_or_core_of_ROOT = yes } #Baghdad
+			any_state_of = {
+				target = { 266 291 } #Teheran, Baghdad
+				is_claim_or_core_of_ROOT = yes
+			}
 
 			266 = { #Teheran
 				annexations_state_owner_is_valid_grant_target = yes
@@ -612,8 +629,10 @@ can_release_453 = { #Sinai
 	ROOT = {
 		OR = {
 			is_subject = yes
-			446 = { is_claim_or_core_of_ROOT = yes } #Cairo
-			454 = { is_claim_or_core_of_ROOT = yes } #Jerusalem
+			any_state_of = {
+				target = { 446 454 } #Cairo, Jerusalem
+				is_claim_or_core_of_ROOT = yes
+			}
 			446 = { #Cairo
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -641,8 +660,10 @@ can_release_753 = { #Suez Canal
 				NOT = { country_exists = PAL }
 				has_socialist_government = no
 			}
-			446 = { is_claim_or_core_of_ROOT = yes } #Cairo
-			453 = { is_claim_or_core_of_ROOT = yes } #Sinai
+			any_state_of = {
+				target = { 446 453 } #Cairo, Sinai
+				is_claim_or_core_of_ROOT = yes
+			}
 			annexations_AI_wants_to_own_suez = yes
 			annexations_major_can_annex_strategic_territories = yes
 			446 = { #Cairo

@@ -81,7 +81,7 @@ country_event = { #Crumbling Hegemonies in China
 	desc = GXC.introgame.001.d
 	picture = GFX_report_event_GXC_liu_zhilu
 
-	is_triggered_only = yes #Triggered by EVENT: league_collapse.1. #Sun Chuanfang meets with Governors // Fires Jan 05 1936
+	is_triggered_only = yes #Triggered by EVENT: league_collapse_events.1. #Sun Chuanfang meets with Governors // Fires Jan 05 1936
 
 	immediate = {
 		hidden_effect = {
@@ -147,7 +147,7 @@ country_event = { #Anti-Concessionist Violence in Canton
 	desc = GXC.introgame.003.d
 	picture = GFX_report_event_GXC_KMT_anti_warlord_poster_1
 
-	is_triggered_only = yes #Triggered by [EVENT] league_collapse.5 #Attacks on Foreigners // Fires Jan 18 1936
+	is_triggered_only = yes #Triggered by [EVENT] league_collapse_events.5 #Attacks on Foreigners // Fires Jan 18 1936
 
 	immediate = {
 		hidden_effect = {
@@ -232,7 +232,7 @@ country_event = { #The Young Guangxi War Council
 	desc = GXC.introgame.006.d
 	picture = GFX_report_event_GXC_lu_yuguang
 
-	is_triggered_only = yes #Triggered by [EVENT] league_collapse.11 #Anqing Refuses Further Cooperation // Fires Jan 30 1936
+	is_triggered_only = yes #Triggered by [EVENT] league_collapse_events.11 #Anqing Refuses Further Cooperation // Fires Jan 30 1936
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.006 option GXC.introgame.006.a"
@@ -262,7 +262,7 @@ country_event = { #Black Monday Devastates Canton
 	desc = GXC.introgame.007.d
 	picture = GFX_report_event_GXC_guangdong_troops_2
 
-	is_triggered_only = yes #Triggered by [EVENT] league_collapse.50 #Black Monday Reaches the East// Fires Feb 07 1936
+	is_triggered_only = yes #Triggered by [EVENT] league_collapse_events.50 #Black Monday Reaches the East// Fires Feb 07 1936
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.007 option GXC.introgame.007.a"
@@ -296,7 +296,7 @@ country_event = { #The Smiling Tiger Falls
 	desc = GXC.introgame.008.d
 	picture = GFX_report_event_GXC_li_yaohan_yang_chisheng_and_yang_ruxuan
 
-	is_triggered_only = yes #Triggered by [EVENT] league_collapse.52 #A Heinous Crime // Fires Feb 15 1936
+	is_triggered_only = yes #Triggered by [EVENT] league_collapse_events.52 #A Heinous Crime // Fires Feb 15 1936
 
 	option = {
 		log = "[GetLogInfo]: event GXC.introgame.008 option GXC.introgame.008.a"
@@ -319,7 +319,7 @@ country_event = { #A War on Two Fronts
 	desc = GXC.introgame.009.d
 	picture = GFX_report_event_GXC_guangdong_troops_artillery
 
-	is_triggered_only = yes #Triggered by [EVENT] league_collapse.59 #Governor Qi Assumes Control // Fires Feb 22 1936
+	is_triggered_only = yes #Triggered by [EVENT] league_collapse_events.59 #Governor Qi Assumes Control // Fires Feb 22 1936
 
 	immediate = {
 		hidden_effect = {
@@ -411,9 +411,9 @@ country_event = { #Turning Point in Guangzhou
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = GXC_PATH option = GXC_PATH_NPA_AUTDEM }
-					#has_game_rule = { rule = GXC_PATH option = GXC_PATH_UPC_AUTDEM }
-					has_game_rule = { rule = GXC_PATH option = GXC_PATH_KMT_AUTDEM }
+					has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
+					#has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
+					has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
 				}
 			}
 		}
@@ -453,9 +453,9 @@ country_event = { #Turning Point in Guangzhou
 			modifier = {
 				factor = 0
 				OR = {
-					#has_game_rule = { rule = GXC_PATH option = GXC_PATH_NPA_AUTDEM }
-					has_game_rule = { rule = GXC_PATH option = GXC_PATH_UPC_AUTDEM }
-					has_game_rule = { rule = GXC_PATH option = GXC_PATH_KMT_AUTDEM }
+					#has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
+					has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
+					has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
 				}
 			}
 		}
@@ -495,9 +495,9 @@ country_event = { #Turning Point in Guangzhou
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = GXC_PATH option = GXC_PATH_NPA_AUTDEM }
-					has_game_rule = { rule = GXC_PATH option = GXC_PATH_UPC_AUTDEM }
-					#has_game_rule = { rule = GXC_PATH option = GXC_PATH_KMT_AUTDEM }
+					has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
+					has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
+					#has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
 				}
 			}
 		}
@@ -710,7 +710,10 @@ country_event = { #Yunnan's Ambitions in Guangxi
 		ai_chance = { base = 20 }
 		add_political_power = -30
 		add_command_power = 30
-		YUN = { activate_targeted_decision = { decision = GXC_introminigame_secure_state_external_UPC_decision target = 594 } }
+		YUN = {
+			activate_targeted_decision = { decision = GXC_introminigame_secure_state_external_UPC_decision target = 594 }
+			set_country_flag = GXC_supporting_UPC
+		}
 		GXC = { country_event = { id = GXC.introgame.061 days = 3 random_days = 4 } } #Liu Zhenhuan’s Schemes in Guangxi
 	}
 
@@ -720,7 +723,10 @@ country_event = { #Yunnan's Ambitions in Guangxi
 		ai_chance = { base = 15 }
 		add_political_power = -30
 		add_command_power = 30
-		YUN = { activate_targeted_decision = { decision = GXC_introminigame_secure_state_external_KMT_decision target = 594 } }
+		YUN = {
+			activate_targeted_decision = { decision = GXC_introminigame_secure_state_external_KMT_decision target = 594 }
+			set_country_flag = GXC_supporting_KMT
+		}
 		GXC = { country_event = { id = GXC.introgame.062 days = 3 random_days = 4 } } #Li Zongren Steps Up His Raids
 	}
 
@@ -2814,8 +2820,17 @@ country_event = { #The Mobile Corps Dilemma
 		log = "[GetLogInfo]: event GXC.earlygame.032 option GXC.earlygame.032.a"
 		name = GXC.earlygame.032.a #Semi-motorization
 		ai_chance = { base = 25 }
-		if = {
-			limit = { NOT = { has_template = "Motuo Hua" } }
+		custom_override_tooltip = {
+			tooltip = {
+				localization_key = tooltip_create_division_template
+				NAME = "Motuo Hua"
+				LINE_1 = { localization_key = line_battalion_tt NAME = cavalry ICON = GFX_unit_cavalry_icon_small COUNT = 2 }
+				LINE_2 = { localization_key = line_battalion_tt NAME = motorized ICON = GFX_unit_motorized_icon_small COUNT = 2 }
+			}
+			if = {
+				limit = { has_template = "Motuo Hua" }
+				delete_unit_template_and_units = { division_template = "Motuo Hua" disband = yes }
+			}
 			division_template = {
 				name = "Motuo Hua"
 				division_names_group = GXC_MOT_01
@@ -2826,12 +2841,6 @@ country_event = { #The Mobile Corps Dilemma
 					motorized = { x = 1 y = 1 }
 				}
 			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Motuo Hua"
-				LINE_1 = { localization_key = line_battalion_tt NAME = cavalry ICON = GFX_unit_cavalry_icon_small COUNT = 2 }
-				LINE_2 = { localization_key = line_battalion_tt NAME = motorized ICON = GFX_unit_motorized_icon_small COUNT = 2 }
-			}
 		}
 		random_owned_controlled_state = {
 			prioritize = { 592 }
@@ -2839,10 +2848,15 @@ country_event = { #The Mobile Corps Dilemma
 				is_core_of = ROOT
 				is_in_home_area = yes
 			}
-			create_unit = {
-				division = "division_template = \"Motuo Hua\" start_experience_factor = 0.3"
-				owner = ROOT
-				count = 1
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_spawn_unit
+					TYPE = "Motuo Hua"
+				}
+				create_unit = {
+					division = "division_template = \"Motuo Hua\" start_experience_factor = 0.3"
+					owner = ROOT
+				}
 			}
 		}
 	}
@@ -2850,22 +2864,25 @@ country_event = { #The Mobile Corps Dilemma
 		log = "[GetLogInfo]: event GXC.earlygame.032 option GXC.earlygame.032.b"
 		name = GXC.earlygame.032.b #Cavalry First
 		ai_chance = { base = 75 }
-		if = {
-			limit = { NOT = { has_template = "Qibing Xie" } }
+		custom_override_tooltip = {
+			tooltip = {
+				localization_key = tooltip_create_division_template
+				NAME = "Qibing Xie"
+				LINE_1 = { localization_key = line_battalion_tt NAME = cavalry ICON = GFX_unit_cavalry_icon_small COUNT = 4 }
+			}
+			if = {
+				limit = { has_template = "Qibing Xie" }
+				delete_unit_template_and_units = { division_template = "Qibing Xie" disband = yes }
+			}
 			division_template = {
 				name = "Qibing Xie" #Cavalry
-				division_names_group = "GXC_CAV_01"
+				division_names_group = GXC_CAV_01
 				regiments = {
 					cavalry = { x = 0 y = 0 }
 					cavalry = { x = 0 y = 1 }
 					cavalry = { x = 1 y = 0 }
 					cavalry = { x = 1 y = 1 }
 				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Qibing Xie"
-				LINE_1 = { localization_key = line_battalion_tt NAME = cavalry ICON = GFX_unit_cavalry_icon_small COUNT = 4 }
 			}
 		}
 		random_owned_controlled_state = {
@@ -2874,10 +2891,17 @@ country_event = { #The Mobile Corps Dilemma
 				is_core_of = ROOT
 				is_in_home_area = yes
 			}
-			create_unit = {
-				division = "division_template = \"Qibing Xie\" start_experience_factor = 0.3"
-				owner = ROOT
-				count = 2
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_spawn_units
+					COUNT = 2
+					TYPE = "Qibing Xie"
+				}
+				create_unit = {
+					division = "division_template = \"Qibing Xie\" start_experience_factor = 0.3"
+					owner = ROOT
+					count = 2
+				}
 			}
 		}
 	}
@@ -2906,7 +2930,7 @@ country_event = { #Foreign Arms Licensing
 		}
 		add_equipment_to_stockpile = {
 			type = support_equipment
-			amount = 200
+			amount = 400
 			producer = GER
 		}
 		if = {
@@ -2928,7 +2952,7 @@ country_event = { #Foreign Arms Licensing
 		}
 		add_equipment_to_stockpile = {
 			type = artillery_equipment
-			amount = 200
+			amount = 400
 			producer = JAP
 		}
 		if = {
@@ -2950,7 +2974,7 @@ country_event = { #Foreign Arms Licensing
 			limit = { NOT = { has_war_with = 361.owner } }
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 1000
+				amount = 1500
 				producer = USA
 			}
 		}
@@ -2958,7 +2982,7 @@ country_event = { #Foreign Arms Licensing
 			limit = { NOT = { has_war_with = IMP } }
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 1000
+				amount = 1500
 				producer = IMP
 			}
 		}
@@ -6341,6 +6365,13 @@ country_event = {
 						has_character_flag = GXC_YGF_character_flag
 						has_character_flag = GXC_YUE_character_flag
 						has_character_flag = GXC_DSP_character_flag
+						is_character = GXC_zhong_xiunan
+						is_character = GXC_ge_zhaohuang
+						is_character = GXC_luo_xianxiang
+						is_character = GXC_lin_douwen
+						is_character = GXC_zhang_gan
+						is_character = GXC_yang_chisheng
+						is_character = GXC_yang_ruxuan
 					}
 					NOT = {
 						is_character = GXC_ding_ying
@@ -6410,8 +6441,16 @@ country_event = {
 				teleport_armies = { to_state = 593 } #GXC division in Canton gets teleported to Qingyuan
 			}
 		}
-		if = {
-			limit = { NOT = { has_template = "Guangdong Geming Minbing Lu" } }
+		custom_override_tooltip = {
+			tooltip = {
+				localization_key = tooltip_create_division_template
+				NAME = "Guangdong Geming Minbing Lu"
+				LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 4 }
+			}
+			if = {
+				limit = { has_template = "Guangdong Geming Minbing Lu" }
+				delete_unit_template_and_units = { division_template = "Guangdong Geming Minbing Lu" disband = yes }
+			}
 			division_template = {
 				name = "Guangdong Geming Minbing Lu" #Guangdong Revolutionary Militia
 				division_names_group = CHI_MIL_01
@@ -6422,16 +6461,17 @@ country_event = {
 					irregular_infantry = { x = 1 y = 1 }
 				}
 			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Guangdong Geming Minbing Lu"
-				LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 4 }
-			}
 		}
-		592 = {
-			create_unit = {
-				division = "name = \"10 Bubing Shi\" division_template = \"Guangdong Geming Minbing Lu\" start_experience_factor = 0.60"
-				owner = CHI
+		592 = { #Guangzhou
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_spawn_unit
+					TYPE = "Guangdong Geming Minbing Lu"
+				}
+				create_unit = {
+					division = "name = \"10 Bubing Shi\" division_template = \"Guangdong Geming Minbing Lu\" start_experience_factor = 0.60"
+					owner = CHI
+				}
 			}
 		}
 		GXC = {
@@ -6447,8 +6487,16 @@ country_event = {
 		ai_chance = { base = 10 }
 		add_war_support = -0.10
 		CHI_add_rad_large_effect = yes
-		if = {
-			limit = { NOT = { has_template = "Guangdong Geming Minbing Lu" } }
+		custom_override_tooltip = {
+			tooltip = {
+				localization_key = tooltip_create_division_template
+				NAME = "Guangdong Geming Minbing Lu"
+				LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 4 }
+			}
+			if = {
+				limit = { has_template = "Guangdong Geming Minbing Lu" }
+				delete_unit_template_and_units = { division_template = "Guangdong Geming Minbing Lu" disband = yes }
+			}
 			division_template = {
 				name = "Guangdong Geming Minbing Lu" #Guangdong Revolutionary Militia
 				division_names_group = CHI_MIL_01
@@ -6459,16 +6507,17 @@ country_event = {
 					irregular_infantry = { x = 1 y = 1 }
 				}
 			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Guangdong Geming Minbing Lu"
-				LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 4 }
-			}
 		}
-		1046 = {
-			create_unit = {
-				division = "name = \"10 Bubing Shi\" division_template = \"Guangdong Geming Minbing Lu\" start_experience_factor = 0.60"
-				owner = CHI
+		1046 = { #Longyan
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_spawn_unit
+					TYPE = "Guangdong Geming Minbing Lu"
+				}
+				create_unit = {
+					division = "name = \"10 Bubing Shi\" division_template = \"Guangdong Geming Minbing Lu\" start_experience_factor = 0.60"
+					owner = CHI
+				}
 			}
 		}
 		GXC = {
@@ -8789,6 +8838,9 @@ country_event = {
 				limit = { has_character_flag = GXC_PPP_character_flag }
 				CHN_recruit_character_effect = yes
 			}
+			GXC_li_zhangda = { CHN_recruit_character_effect = yes }
+			GXC_xie_wenbing = { CHN_recruit_character_effect = yes }
+			GXC_li_minxin = { CHN_recruit_character_effect = yes }
 		}
 		CHI_PAC_medium_effect = yes
 		if = {
@@ -10346,8 +10398,8 @@ country_event = {
 				OR = {
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCLIB }
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCCON }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_PRINCIPLED_AUTDEM }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_REVOLUTIONARY_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PRINCIPLED_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
 				}
 			}
 			custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
@@ -10356,7 +10408,7 @@ country_event = {
 		else_if = {
 			limit = {
 				OR = {
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_DIARCHY_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_DIARCHY_AUTDEM }
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PATAUT }
 				}
 			}
@@ -10440,6 +10492,10 @@ country_event = {
 		name = GXC.midgame.508.a #Li can enjoy commanding the kitchen staff.
 		ai_chance = { base = 50 }
 		add_political_power = -50
+		#He literally tried to kill your government
+		custom_effect_tooltip = tooltip_white_line
+		retire_character = GXC_li_zongren
+		retire_character = GXC_bai_chongxi
 		add_command_power = -50
 		if = {
 			limit = { GXC_li_zongren = { is_second_in_command = yes } }
@@ -10759,7 +10815,7 @@ country_event = {
 			CHI_gu_mengyu = { CHN_recruit_character_effect = yes }
 			CHI_chu_minyi = { CHN_recruit_character_effect = yes }
 		}
-		add_stability = -0.05
+		add_stability = -0.10
 		add_political_power = -35
 		GXC_PPP_mega_effect = yes
 		GXC_RCF_medium_effect = yes
@@ -10820,7 +10876,7 @@ country_event = {
 			CHI_chen_youren = { CHN_recruit_character_effect = yes }
 			CHI_song_ziwen = { CHN_recruit_character_effect = yes }
 		}
-		add_stability = -0.05
+		add_stability = -0.10
 		add_political_power = -35
 		GXC_GFA_large_effect = yes
 		GXC_PPP_small_effect = yes
@@ -10864,7 +10920,7 @@ country_event = {
 				promote_character = { ideology = syndicalist_subtype }
 			}
 		}
-		add_stability = -0.05
+		add_stability = -0.10
 		add_political_power = -15
 		GXC_SPO_medium_effect = yes
 		GXC_EDC_small_effect = yes
@@ -10919,7 +10975,7 @@ country_event = {
 			CHI_dai_chunfeng = { CHN_recruit_character_effect = yes }
 			CHI_mao_renfeng = { CHN_recruit_character_effect = yes }
 		}
-		add_stability = -0.05
+		add_stability = -0.10
 		add_political_power = -15
 		GXC_SPR_medium_effect = yes
 		GXC_NGX_small_effect = yes
@@ -10992,7 +11048,7 @@ country_event = {
 			YUN_zhang_qun = { CHN_recruit_character_effect = yes }
 			YUN_dai_jitao = { CHN_recruit_character_effect = yes }
 		}
-		add_stability = -0.15
+		add_stability = -0.10
 		add_political_power = -45
 		RKT_add_zeal_large_effect = yes
 	}
@@ -11033,8 +11089,8 @@ country_event = {
 		log = "[GetLogInfo]: event GXC.midgame.531 option GXC.midgame.531.a"
 		name = GXC.midgame.531.a #Does the old tiger have any bite left?
 		ai_chance = { base = 100 }
-		add_political_power = -30
-		RKT_sub_zeal_medium_effect = yes
+		add_political_power = -20
+		RKT_add_zeal_small_effect = yes
 		GXC_EDC_medium_effect = yes
 		GXC_WHC_medium_effect = yes
 		GXC_RCF_small_effect = yes
@@ -11051,7 +11107,7 @@ country_event = {
 		log = "[GetLogInfo]: event GXC.midgame.531 option GXC.midgame.531.b"
 		name = GXC.midgame.531.b #At best, splitters. At worst, traitors.
 		ai_chance = { base = 0 }
-		RKT_add_zeal_small_effect = yes
+		RKT_sub_zeal_small_effect = yes
 		add_war_support = 0.05
 		GXC_NGX_medium_effect = yes
 	}
@@ -14963,7 +15019,7 @@ country_event = { #Chen Lianbo, the Merchant Prince
 		ai_chance = { base = 50 }
 		add_equipment_to_stockpile = {
 			type = infantry_equipment
-			amount = 500
+			amount = 700
 			producer = LEC
 		}
 	}
@@ -15761,6 +15817,61 @@ country_event = { #Favouritism in Whampoa
 ###- Section 4b (200-399): Late Game Economic Events -###
 
 ###Shared Economic Events (200-249)
+country_event = { #Liangguang Beyond Its Borders
+	id = GXC.lategame.200
+	title = GXC.lategame.200.t
+	desc = GXC.lategame.200.d
+	picture = GFX_report_event_CHN_industry
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #May our economy serve as the national model!
+		log = "[GetLogInfo]: event GXC.lategame.200 option GXC.lategame.200.a"
+		name = GXC.lategame.200.a
+		add_one_random_military_factory = yes
+		add_one_random_military_factory = yes
+		custom_effect_tooltip = tooltip_white_line
+		if = {
+			limit = { has_idea = GXC_modernized_and_free_trade_reform }
+			hidden_effect = {
+				remove_ideas = GXC_modernized_and_free_trade_reform
+			}
+			add_timed_idea = {
+				idea = GXC_modernized_and_free_trade_reform
+				days = 730
+			}
+		}
+		else_if = {
+			limit = { has_idea = GXC_modernized_and_autarkic_reform }
+			hidden_effect = {
+				remove_ideas = GXC_modernized_and_autarkic_reform
+			}
+			add_timed_idea = {
+				idea = GXC_modernized_and_autarkic_reform
+				days = 730
+			}
+		}
+		else_if = {
+			limit = { has_idea = GXC_peasant_and_free_trade_reform }
+			hidden_effect = {
+				remove_ideas = GXC_peasant_and_free_trade_reform
+			}
+			add_timed_idea = {
+				idea = GXC_peasant_and_free_trade_reform
+				days = 730
+			}
+		}
+		else = {
+			hidden_effect = {
+				remove_ideas = GXC_peasant_and_autarkic_reform
+			}
+			add_timed_idea = {
+				idea = GXC_peasant_and_autarkic_reform
+				days = 730
+			}
+		}
+	}
+}
 
 ###KMT Unique Economic Events (250-299)
 
@@ -16051,7 +16162,18 @@ country_event = { #White, Red, and Blue-Blooded
 country_event = { #The Chairman and the Party-State
 	id = GXC.lategame.404
 	title = GXC.lategame.404.t
-	desc = GXC.lategame.404.d
+	desc = {
+		text = GXC.lategame.404.d.Hu_ruling
+		trigger = {
+			has_country_leader = { character = GXC_hu_hanmin }
+		}
+	}
+	desc = {
+		text = GXC.lategame.404.d.Hu_not_ruling
+		trigger = {
+			NOT = { has_country_leader = { character = GXC_hu_hanmin } }
+		}
+	}
 	picture = GFX_report_event_GXC_hu_hanmin_11
 
 	is_triggered_only = yes #Event: GXC.midgame.403
@@ -16252,8 +16374,8 @@ country_event = { #The Democratic Awakening
 				OR = {
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCLIB }
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCCON }
-					#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_PRINCIPLED_AUTDEM }
-					#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_REVOLUTIONARY_AUTDEM }
+					#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PRINCIPLED_AUTDEM }
+					#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
 				}
 			}
 		}
@@ -16293,8 +16415,8 @@ country_event = { #The Democratic Awakening
 				OR = {
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCLIB }
 					#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCCON }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_PRINCIPLED_AUTDEM }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_REVOLUTIONARY_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PRINCIPLED_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
 				}
 			}
 		}
@@ -16334,8 +16456,8 @@ country_event = { #The Democratic Awakening
 				OR = {
 					#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCLIB }
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCCON }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_PRINCIPLED_AUTDEM }
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_REVOLUTIONARY_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PRINCIPLED_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
 				}
 			}
 		}
@@ -16637,6 +16759,7 @@ country_event = { #A New Mandate for the Old Chairman
 			elections_allowed = no
 		}
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = GXC_the_might_of_the_revolution
 	}
@@ -16671,6 +16794,7 @@ country_event = { #Ju Zheng Wins the Vote
 			elections_allowed = no
 		}
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = GXC_the_tutelage_softens
 	}
@@ -16701,6 +16825,7 @@ country_event = { #Sun Fo the Dark Horse Victor
 			elections_allowed = no
 		}
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = GXC_the_tutelage_softens
 	}
@@ -16852,6 +16977,16 @@ country_event = { #A Party Democracy?
 				OR = {
 					has_country_leader = { character = SHX_feng_yuxiang }
 					#This might be all tbh that would rebel in this scenario
+				}
+			}
+
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_RADSOC }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCDEM }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_GENYUAN_MARLIB }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCCON }
 				}
 			}
 		}
@@ -17302,7 +17437,7 @@ country_event = { #Faceoff in [ROOT.Capital.GetCapitalVictoryPointName]
 			#Rig it if you have game rules
 			if = {
 				limit = {
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_DIARCHY_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_DIARCHY_AUTDEM }
 				}
 				country_event = { id = GXC.lategame.512 days = 14 } #New Guangdong Overthrows the Government
 			}
@@ -17361,7 +17496,7 @@ country_event = { #Faceoff in [ROOT.Capital.GetCapitalVictoryPointName]
 			#Rig it if you have game rules
 			if = {
 				limit = {
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_DIARCHY_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_DIARCHY_AUTDEM }
 				}
 				country_event = { id = GXC.lategame.514 days = 14 } #Revenge of the Cantonese
 			}
@@ -17384,7 +17519,7 @@ country_event = { #Faceoff in [ROOT.Capital.GetCapitalVictoryPointName]
 		if = {
 			limit = {
 				OR = {
-					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_DIARCHY_AUTDEM }
+					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_DIARCHY_AUTDEM }
 					has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PATAUT }
 				}
 			}
@@ -17649,6 +17784,7 @@ country_event = { #New Guangxi Smashes the Opposition
 			elections_allowed = no
 		}
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = GXC_the_might_of_the_revolution
 		GXC_EDC_purge_advisors_effect = yes
@@ -17686,6 +17822,7 @@ country_event = { #Ju Zheng Wins the Vote
 			elections_allowed = no
 		}
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = GXC_the_might_of_the_revolution
 		GXC_NGX_purge_advisors_effect = yes
@@ -17721,6 +17858,7 @@ country_event = { #The Western Hills Strikes Back
 			elections_allowed = no
 		}
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = GXC_the_tutelage_softens
 		GXC_NGX_purge_advisors_effect = yes
@@ -17756,6 +17894,7 @@ country_event = { #Revenge of the Cantonese
 			elections_allowed = no
 		}
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = GXC_the_might_of_the_revolution
 		GXC_NGX_purge_advisors_effect = yes
@@ -17900,6 +18039,17 @@ country_event = { #The Republic Teeters to the Brink
 					china_alignment_left_kuomintang = yes
 					has_country_leader = { character = SHX_feng_yuxiang }
 					has_country_leader = { character = HNN_tan_yankai }
+				}
+			}
+
+			modifier = {
+				factor = 0
+				tag = YUN
+				OR = {
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_RADSOC }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCDEM }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_GENYUAN_MARLIB }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCCON }
 				}
 			}
 		}
@@ -18057,6 +18207,17 @@ country_event = { #A Last Gasp of Civilian Rule
 					china_alignment_left_kuomintang = yes
 					has_country_leader = { character = SHX_feng_yuxiang }
 					has_country_leader = { character = HNN_cheng_qian }
+				}
+			}
+
+			modifier = {
+				factor = 0
+				tag = YUN
+				OR = {
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_RADSOC }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCDEM }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_GENYUAN_MARLIB }
+					has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCCON }
 				}
 			}
 		}
@@ -18813,6 +18974,7 @@ country_event = { #A Challenger Appears
 		GXC_huang_hanliang = { CHN_recruit_character_effect = yes }
 		custom_effect_tooltip = tooltip_white_line
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = GXC_the_might_of_the_revolution
 		unlock_national_focus = GXC_complete_the_revolutionary_mission
@@ -18840,7 +19002,14 @@ country_event = { #Dawn of the Third Party
 	option = { #We marched to save the Kuomintang from itself.
 		log = "[GetLogInfo]: event GXC.lategame.593 option GXC.lategame.593.a"
 		name = GXC.lategame.593.a
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE } #Game Rule has a specific party name in it so if game-ruled will always choose one party name.
+			}
+		}
 		set_cosmetic_tag = CHI_pac_worker
 		hidden_effect = {
 			set_party_name = {
@@ -18853,7 +19022,14 @@ country_event = { #Dawn of the Third Party
 	option = { #The LCS deserves a new breed of leadership.
 		log = "[GetLogInfo]: event GXC.lategame.593 option GXC.lategame.593.b"
 		name = GXC.lategame.593.b
-		ai_chance = { base = 33 }
+		ai_chance = {
+			base = 33
+
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE } #Game Rule has a specific party name in it so if game-ruled will always choose one party name.
+			}
+		}
 		set_cosmetic_tag = LKT_united_china #Ironically, choosing the default would actually let you have the CSP flag
 		hidden_effect = {
 			set_party_name = {
@@ -18888,7 +19064,14 @@ country_event = { #The Liangguang Tiger Leaps
 	option = { #We will open the Kuomintang's eyes!
 		log = "[GetLogInfo]: event GXC.lategame.594 option GXC.lategame.594.a"
 		name = GXC.lategame.594.a
-		ai_chance = { base = 30 }
+		ai_chance = {
+			base = 30
+
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC } #Game Rule has a specific party name in it so if game-ruled will always choose one party name.
+			}
+		}
 		set_cosmetic_tag = CHI_pac
 		hidden_effect = {
 			set_party_name = {
@@ -18923,7 +19106,14 @@ country_event = { #Changing the Narrative
 	option = { #As soldiers of the revolution, we pledged to defend from enemies within and without!
 		log = "[GetLogInfo]: event GXC.lategame.595 option GXC.lategame.595.a"
 		name = GXC.lategame.595.a
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM } #Game Rule has a specific party name in it so if game-ruled will always choose one party name.
+			}
+		}
 		set_cosmetic_tag = LKT_united_china
 		hidden_effect = {
 			set_party_name = {
@@ -21553,7 +21743,9 @@ country_event = { #The Shattered Remnant
 			GXC_hu_hanmin = { is_country_leader = yes }
 		}
 		ai_chance = { base = 100 }
+		add_stability = -0.05
 		GXC_huang_xuchu = { CHN_recruit_character_effect = yes }
+		GXC_bai_chongxi = { CHN_recruit_character_effect = yes }
 		GXC_dai_ji = { CHN_recruit_character_effect = yes }
 		GXC_NGX_mega_effect = yes
 		GXC_PPP_mega_effect = yes
@@ -21707,6 +21899,7 @@ country_event = { #Hu Hanmin and the Dawn of a New Era
 
 	immediate = {
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 	}
 
 	option = {
@@ -22987,6 +23180,7 @@ country_event = { #The Red Piedmont
 		log = "[GetLogInfo]: event GXC.endgame.200 option GXC.endgame.200.a"
 		name = GXC.endgame.200.a
 		set_country_flag = GXC_phase_5_begins_flag
+		GXC_clear_phase2_debuffs = yes
 		mark_focus_tree_layout_dirty = yes
 		custom_effect_tooltip = focus_tree_will_change_tt
 		CHN_setup_lategame_debuffs_effect = yes
@@ -23787,6 +23981,7 @@ country_event = { #The Hour of Federal Democracy?
 	immediate = {
 		hidden_effect = {
 			set_country_flag = GXC_phase_5_begins_flag
+			GXC_clear_phase2_debuffs = yes
 			mark_focus_tree_layout_dirty = yes
 
 			country_event = { id = GXC.endgame.301 days = 3 }
@@ -24061,6 +24256,15 @@ country_event = { #Dawn of a Federal Democracy?
 					has_country_leader = { character = SHX_feng_yuxiang }
 				}
 			}
+			modifier = {
+				factor = 0
+				tag = YUN
+				OR = {
+					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_SOCDEM }
+					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_MARLIB }
+					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_XIAOYING_AUTDEM }
+				}
+			}
 		}
 		effect_tooltip = { china_integrate_ally_effect = yes }
 		GXC = { change_tag_from = ROOT }
@@ -24182,6 +24386,15 @@ country_event = { #Chen Jiongming Retires
 	}
 	after = {
 		GXC_chen_jiongming = { retire = yes }
+		promote_character = {
+			character = GXC_chen_qiyou
+			ideology = social_liberal_subtype
+		}
+		set_country_flag = UPC_Chen_Jiongming_Retires_flag
+		if = {
+			limit = { has_government = social_liberal }
+			activate_advisor = GXC_chen_yansheng_sic
+		}
 	}
 }
 
@@ -24570,6 +24783,7 @@ country_event = { #Triumph of the Yue Army
 	immediate = {
 		hidden_effect = {
 			set_country_flag = GXC_phase_5_begins_flag
+			GXC_clear_phase2_debuffs = yes
 			mark_focus_tree_layout_dirty = yes
 			country_event = { id = GXC.endgame.501 days = 3 }
 			if = {
@@ -25101,6 +25315,15 @@ country_event = { #The Nanning Insurrection
 					has_country_leader = { character = YUN_tang_jiyao }
 				}
 			}
+			modifier = {
+				factor = 0
+				tag = YUN
+				OR = {
+					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_SOCDEM }
+					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_PATH_MARLIB }
+					has_game_rule = { rule = YUN_UPC_path option = YUN_UPC_XIAOYING_AUTDEM }
+				}
+			}
 		}
 		effect_tooltip = { china_integrate_ally_effect = yes }
 		GXC = { change_tag_from = ROOT }
@@ -25121,9 +25344,6 @@ country_event = { #The Nanning Insurrection
 	option = {
 		log = "[GetLogInfo]: event GXC.endgame.520 option GXC.endgame.520.c"
 		name = GXC.endgame.520.c #They have shown the folly of their ways! At arms!
-		trigger = {
-			CHN_has_civil_war_prep_trigger = yes
-		}
 		ai_chance = {
 			base = 25
 			modifier = {
@@ -25537,6 +25757,7 @@ country_event = { #A New Age Under Liangguang
 	immediate = {
 		hidden_effect = {
 			set_country_flag = GXC_phase_5_begins_flag
+			GXC_clear_phase2_debuffs = yes
 			mark_focus_tree_layout_dirty = yes
 			country_event = { id = GXC.endgame.601 days = 3 }
 			every_subject_country = {
@@ -26523,7 +26744,7 @@ country_event = { #The White Sun in Kuala Lumpur
 		text = GXC.endgame.900.d.RKMT
 		trigger = {
 			OR = {
-				tag = RKT
+				china_is_aligned_with_right_kmt = yes
 				has_country_leader = { character = GXC_chen_mingshu }
 				has_country_leader = { character = HNN_tang_shengzhi }
 				has_country_leader = { character = YUN_chen_cheng }

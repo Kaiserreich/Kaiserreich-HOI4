@@ -1469,7 +1469,7 @@ SZC_add_all_accelerated_liu_xiang_characters = {
 		SZC_wang_zuanxu = { CHN_recruit_character_effect = yes }
 		SZC_wang_lingji = { CHN_recruit_character_effect = yes }
 		SZC_guo_xunqi = { CHN_recruit_character_effect = yes }
-		SZC_xu_shaozhong = { CHN_recruit_character_effect = yes }
+		SZC_xu_shaozong = { CHN_recruit_character_effect = yes }
 		SZC_pan_changyou = { CHN_recruit_character_effect = yes }
 		SZC_deng_hanxiang = { CHN_recruit_character_effect = yes }
 		SZC_liu_congyun = { CHN_recruit_character_effect = yes }
@@ -2150,19 +2150,11 @@ SZC_new_style_education_effect = {
 	}
 	else_if = {
 		limit = {
-			OR = {
-				AND = {
-					SZC_xiong_zhefan = { is_political_advisor = yes }
-					YUN = { YUN_luo_longji = { is_political_advisor = yes } }
-				}
-				AND = {
-					SZC_xiong_zhefan = { is_political_advisor = yes }
-					QIE = { QIE_shen_junru = { is_political_advisor = yes } }
-				}
-				AND = {
-					QIE = { QIE_shen_junru = { is_political_advisor = yes } }
-					YUN = { YUN_luo_longji = { is_political_advisor = yes } }
-				}
+			count_triggers = {
+				amount = 2
+				SZC_xiong_zhefan = { is_political_advisor = yes }
+				QIE = { QIE_shen_junru = { is_political_advisor = yes } }
+				YUN = { YUN_luo_longji = { is_political_advisor = yes } }
 			}
 		}
 		add_timed_idea = {

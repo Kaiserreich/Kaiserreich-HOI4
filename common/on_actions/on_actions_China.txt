@@ -874,7 +874,6 @@ on_actions = {
 				limit = {
 					num_subjects > 0
 					is_chinese_tag = yes
-					NOT = { is_in_faction_with = CUF } #Governments in the United Front stay united.
 					FROM = { is_chinese_tag = yes }
 				}
 				every_subject_country = {
@@ -918,14 +917,17 @@ on_actions = {
 						}
 					}
 
-					#Free the Puppet
-					overlord = {
-						set_autonomy = {
-							target = PREV
-							autonomy_state = autonomy_free
+					if = {
+						limit = { ROOT = { NOT = { is_in_faction_with = CUF } } } #Governments in the United Front stay united.
+						#Free the Puppet
+						overlord = {
+							set_autonomy = {
+								target = PREV
+								autonomy_state = autonomy_free
+							}
 						}
+						set_variable = { former_overlord = ROOT }
 					}
-					set_variable = { former_overlord = ROOT }
 				}
 			}
 
@@ -1549,10 +1551,10 @@ on_actions = {
 			}
 
 			### LEP war system events
-			country_event = league_war.15 #LEP dead
-			country_event = league_war.16 #CHI dead
-			country_event = league_war.17 #ANQ dead
-			country_event = league_war.18 #SHD out
+			country_event = league_war_events.15 #LEP dead
+			country_event = league_war_events.16 #CHI dead
+			country_event = league_war_events.17 #ANQ dead
+			country_event = league_war_events.18 #SHD out
 
 			### Sets a flag for LEP beating CHI, for ANQ events (located in the FNG event file).
 			if = {
@@ -2360,7 +2362,6 @@ on_actions = {
 					limit = {
 						is_in_faction_with = CUF
 						is_faction_leader = no
-						is_subject = no
 						surrender_progress < 0.85
 						is_chinese_tag = yes
 						NOT = { original_tag = SIK }
@@ -2470,33 +2471,6 @@ on_actions = {
 				FROM = { set_country_flag = LEC_war_backer }
 			}
 
-			if = {
-				limit = {
-					has_global_flag = LEP_war
-					OR = {
-						tag = LEP
-						FROM = { tag = LEP }
-					}
-				}
-				if = {
-					limit = {
-						OR = {
-							tag = CHI
-							FROM = { tag = CHI }
-						}
-					}
-					LEP = { activate_mission = LEP_jiangxi_governor }
-				}
-				else_if = {
-					limit = {
-						OR = {
-							tag = SHD
-							FROM = { tag = SHD }
-						}
-					}
-					LEP = { activate_mission = LEP_jiangsu_governor }
-				}
-			}
 			if = {
 				limit = {
 					NOT = { has_global_flag = FNG_zhifeng_war_happened }

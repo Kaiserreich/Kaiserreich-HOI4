@@ -1694,24 +1694,13 @@ defined_text = {
 defined_text = {
 	name = GetStateName_132
 	text = {
-		localization_key = STATE_132 #Lancashire
+		localization_key = STATE_132 #Salfordshire
 	}
 }
 defined_text = {
 	name = GetStateName_133
 	text = {
-		trigger = { original_tag = SCO }
-		localization_key = STATE_133_SCOTTISH #Lanrik
-	}
-	text = {
-		trigger = {
-			original_tag = IRE
-			has_global_flag = IRE_gaelicisation
-		}
-		localization_key = STATE_133_IRISH #Lannraig
-	}
-	text = {
-		localization_key = STATE_133 #Lanark
+		localization_key = STATE_133 #Strathclyde
 	}
 }
 defined_text = {
@@ -1737,14 +1726,14 @@ defined_text = {
 	name = GetStateName_136
 	text = {
 		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
-		localization_key = STATE_136 #Aberdeenshire
+		localization_key = STATE_136 #Grampian
 	}
 	text = {
 		trigger = { original_tag = SCO }
-		localization_key = STATE_136_SCOTTISH #Aiberdeenshire
+		localization_key = STATE_136_SCOTTISH #Roinn a' Mhonaidh
 	}
 	text = {
-		localization_key = STATE_136 #Aberdeenshire
+		localization_key = STATE_136 #Grampian
 	}
 }
 defined_text = {
@@ -3804,7 +3793,7 @@ defined_text = {
 defined_text = {
 	name = GetStateName_338
 	text = {
-		localization_key = STATE_338 #Gloucestershire
+		localization_key = STATE_338 #Avon
 	}
 }
 defined_text = {
@@ -5838,15 +5827,7 @@ defined_text = {
 defined_text = {
 	name = GetStateName_561
 	text = {
-		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
-		localization_key = STATE_561 #Amur
-	}
-	text = {
-		trigger = { is_chinese_tag = yes }
-		localization_key = STATE_561_CHINESE #Wai Heilongjiang
-	}
-	text = {
-		localization_key = STATE_561 #Amur
+		localization_key = "[GetVictoryPointName_7851]"
 	}
 }
 defined_text = {
@@ -12467,5 +12448,36 @@ defined_text = {
 	name = GetStateName_1120
 	text = {
 		localization_key = "[GetVictoryPointName_10724]"
+	}
+}
+defined_text = {
+	name = GetStateName_1121
+	text = {
+		localization_key = STATE_1121 #Aireshire
+	}
+}
+defined_text = {
+	name = GetStateName_1122
+	text = {
+		localization_key = STATE_1122 #Wessex
+	}
+}
+defined_text = {
+	name = GetStateName_1123
+	text = {
+		localization_key = STATE_1123 #West Country
+	}
+}
+defined_text = {
+	name = GetStateName_1124
+	text = {
+		trigger = {
+			original_tag = IRE
+			has_global_flag = IRE_gaelicisation
+		}
+		localization_key = STATE_1124_IRISH #Mannin
+	}
+	text = {
+		localization_key = STATE_1124 #Isle of Man
 	}
 }

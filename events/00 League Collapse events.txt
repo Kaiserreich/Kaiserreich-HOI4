@@ -1,47 +1,47 @@
 ### League War Event Chain ###
 
-add_namespace = league_collapse
-add_namespace = league_collapse_flavour
-add_namespace = league_war
+add_namespace = league_collapse_events
+add_namespace = league_collapse_flavour_events
+add_namespace = league_war_events
 
 ### Table of Contents ###
 # Section 1 and Section 2 are separate event chains that fire alongside each other
 
 ### Section 1 - Starting Event Chain and determinants of ANQ, LEP and QIE paths ###
-# (league_collapse.1) - (league_collapse.49)
-# NOTE: EVENT CHAIN HERE MUST CONCLUDE BEFORE EVENT league_collapse.59 fires!
+# (league_collapse_events.1) - (league_collapse_events.49)
+# NOTE: EVENT CHAIN HERE MUST CONCLUDE BEFORE EVENT league_collapse_events.59 fires!
 
 ### Section 2 - Black Monday Event Chain and Start of the League War ###
-# (league_collapse.50) - (league_collapse.99)
-# Note: league_collapse.59 determines the paths for ANQ, LEP and QIE
+# (league_collapse_events.50) - (league_collapse_events.99)
+# Note: league_collapse_events.59 determines the paths for ANQ, LEP and QIE
 
 ### Section 3 - League War Defections and Secessions of HNN and GXC ###
-# (league_collapse.100) - (league_collapse.150)
+# (league_collapse_events.100) - (league_collapse_events.150)
 # Note: is part of Section 2 event chain
 
 ### Section 4 - Flavour Events About the Collapse ###
-# (league_collapse_flavour.1) - (league_collapse_flavour.9)
+# (league_collapse_flavour_events.1) - (league_collapse_flavour_events.9)
 # These are part of all above event chains
 
 ### Section 5 - League War Events ###
-# (league_war.1) - (league_war.100)
+# (league_war_events.1) - (league_war_events.100)
 
 #################################################################################
 
 ### Section 1 - Starting Event Chain and determinants of ANQ, LEP and QIE paths ###
-# (league_collapse.1) - (league_collapse.49)
+# (league_collapse_events.1) - (league_collapse_events.49)
 
 country_event = { # Sun Chuanfang meets with Governors
-	id = league_collapse.1
-	title = league_collapse.1.t
-	desc = league_collapse.1.d
+	id = league_collapse_events.1
+	title = league_collapse_events.1.t
+	desc = league_collapse_events.1.d
 	picture = GFX_report_event_LEP_sun_old_2
 
 	is_triggered_only = yes # Triggered by history file
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.2 days = 4 } # The ZheGan Railway
+			country_event = { id = league_collapse_events.2 days = 4 } # The ZheGan Railway
 			GXC = {
 				country_event = { id = GXC.introgame.001 days = 1 } #Crumbling Hegemonies in China
 			}
@@ -49,30 +49,30 @@ country_event = { # Sun Chuanfang meets with Governors
 	}
 
 	option = { # Interesting
-		log = "[GetLogInfo]: event league_collapse.1 option league_collapse.1.a"
-		name = league_collapse.1.a
+		log = "[GetLogInfo]: event league_collapse_events.1 option league_collapse_events.1.a"
+		name = league_collapse_events.1.a
 		add_stability = 0.01
 		add_political_power = 30
 	}
 }
 
 country_event = { # The ZheGan Railway
-	id = league_collapse.2
-	title = league_collapse.2.t
-	desc = league_collapse.2.d
+	id = league_collapse_events.2
+	title = league_collapse_events.2.t
+	desc = league_collapse_events.2.d
 	picture = GFX_report_event_CHN_china_generic_train_2
 
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.3 days = 3 } # An Unexpected Announcement
+			country_event = { id = league_collapse_events.3 days = 3 } # An Unexpected Announcement
 		}
 	}
 
 	option = { # Railways bring Prosperity!
-		log = "[GetLogInfo]: event league_collapse.2 option league_collapse.2.a"
-		name = league_collapse.2.a
+		log = "[GetLogInfo]: event league_collapse_events.2 option league_collapse_events.2.a"
+		name = league_collapse_events.2.a
 		add_political_power = 20
 		add_stability = 0.03
 		# ZheGan Railway (Nanchang-Shanghai)
@@ -91,18 +91,18 @@ country_event = { # The ZheGan Railway
 }
 
 country_event = { # An Unexpected Announcement
-	id = league_collapse.3
-	title = league_collapse.3.t
-	desc = league_collapse.3.d
+	id = league_collapse_events.3
+	title = league_collapse_events.3.t
+	desc = league_collapse_events.3.d
 	picture = GFX_report_event_FNG_railway_construction_1
 
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.4 days = 2 } # Unrest Spreads
+			country_event = { id = league_collapse_events.4 days = 2 } # Unrest Spreads
 			QIE = { #QIE reaction
-				country_event = { id = league_collapse_flavour.1 days = 3 }
+				country_event = { id = league_collapse_flavour_events.1 days = 3 }
 			}
 			GEA = { #GEA reaction
 				country_event = { id = german_east_asia_events.207 days = 1 }
@@ -112,23 +112,23 @@ country_event = { # An Unexpected Announcement
 	}
 
 	option = { # An unpleasant surprise...
-		log = "[GetLogInfo]: event league_collapse.3 option league_collapse.3.a"
-		name = league_collapse.3.a
+		log = "[GetLogInfo]: event league_collapse_events.3 option league_collapse_events.3.a"
+		name = league_collapse_events.3.a
 		add_ideas = LEP_low_level_unrest
 	}
 }
 
 country_event = { # Unrest Spreads
-	id = league_collapse.4
-	title = league_collapse.4.t
-	desc = league_collapse.4.d
+	id = league_collapse_events.4
+	title = league_collapse_events.4.t
+	desc = league_collapse_events.4.d
 	picture = GFX_report_event_LEP_sun_and_fellows
 
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.5 days = 4 } # Attacks on Foreigners
+			country_event = { id = league_collapse_events.5 days = 4 } # Attacks on Foreigners
 			SZC = {
 				country_event = { id = sichuan_events.5 days = 4 } # Unrest in the South
 			}
@@ -139,24 +139,24 @@ country_event = { # Unrest Spreads
 	}
 
 	option = { # Do they have nothing better to do?
-		log = "[GetLogInfo]: event league_collapse.4 option league_collapse.4.a"
-		name = league_collapse.4.a
+		log = "[GetLogInfo]: event league_collapse_events.4 option league_collapse_events.4.a"
+		name = league_collapse_events.4.a
 		add_political_power = -10
 		add_stability = -0.01
 	}
 }
 
 country_event = { # Attacks on Foreigners
-	id = league_collapse.5
-	title = league_collapse.5.t
-	desc = league_collapse.5.d
+	id = league_collapse_events.5
+	title = league_collapse_events.5.t
+	desc = league_collapse_events.5.d
 	picture = GFX_report_event_LEC_shanghai_police_patrol
 
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.6 days = 2 } # Boycotts and Beijing
+			country_event = { id = league_collapse_events.6 days = 2 } # Boycotts and Beijing
 			GXC = {
 				country_event = { id = GXC.introgame.003 days = 1 } #Anti-Concessionist Violence in Canton
 			}
@@ -164,31 +164,31 @@ country_event = { # Attacks on Foreigners
 	}
 
 	option = { # Troubling
-		log = "[GetLogInfo]: event league_collapse.5 option league_collapse.5.a"
-		name = league_collapse.5.a
+		log = "[GetLogInfo]: event league_collapse_events.5 option league_collapse_events.5.a"
+		name = league_collapse_events.5.a
 		add_stability = -0.01
 		add_manpower = -1500
 	}
 }
 
 country_event = { # Boycotts and Beijing
-	id = league_collapse.6
-	title = league_collapse.6.t
-	desc = league_collapse.6.d
+	id = league_collapse_events.6
+	title = league_collapse_events.6.t
+	desc = league_collapse_events.6.d
 	picture = GFX_report_event_LEP_sun_dress_1
 
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.7 days = 2 } # Railway Bombings
+			country_event = { id = league_collapse_events.7 days = 2 } # Railway Bombings
 			CHI = { country_event = CHI.introgame.005 }
 		}
 	}
 
 	option = { #Use maximum force
-		log = "[GetLogInfo]: event league_collapse.6 option league_collapse.6.a"
-		name = league_collapse.6.a
+		log = "[GetLogInfo]: event league_collapse_events.6 option league_collapse_events.6.a"
+		name = league_collapse_events.6.a
 		add_political_power = -50
 		add_stability = 0.05
 		add_war_support = -0.05
@@ -197,8 +197,8 @@ country_event = { # Boycotts and Beijing
 	}
 
 	option = { #Punish only the violent
-		log = "[GetLogInfo]: event league_collapse.6 option league_collapse.6.b"
-		name = league_collapse.6.b
+		log = "[GetLogInfo]: event league_collapse_events.6 option league_collapse_events.6.b"
+		name = league_collapse_events.6.b
 		add_political_power = -20
 		add_stability = 0.01
 		add_war_support = -0.01
@@ -207,22 +207,22 @@ country_event = { # Boycotts and Beijing
 }
 
 country_event = { # Railway Bombings
-	id = league_collapse.7
-	title = league_collapse.7.t
-	desc = league_collapse.7.d
+	id = league_collapse_events.7
+	title = league_collapse_events.7.t
+	desc = league_collapse_events.7.d
 	picture = GFX_report_event_LEP_sun_zhejiang
 
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.8 days = 3 } # Reports from North and South
+			country_event = { id = league_collapse_events.8 days = 3 } # Reports from North and South
 		}
 	}
 
 	option = { # Terrorism!
-		log = "[GetLogInfo]: event league_collapse.7 option league_collapse.7.a"
-		name = league_collapse.7.a
+		log = "[GetLogInfo]: event league_collapse_events.7 option league_collapse_events.7.a"
+		name = league_collapse_events.7.a
 		add_stability = -0.01
 		add_manpower = -800
 		1044 = { # Nanchang
@@ -250,22 +250,22 @@ country_event = { # Railway Bombings
 }
 
 country_event = { # Reports from North and South
-	id = league_collapse.8
-	title = league_collapse.8.t
-	desc = league_collapse.8.d
+	id = league_collapse_events.8
+	title = league_collapse_events.8.t
+	desc = league_collapse_events.8.d
 	picture = GFX_report_event_LEP_sun_coat
 
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.9 days = 2 } # A Telegram from Beijing
+			country_event = { id = league_collapse_events.9 days = 2 } # A Telegram from Beijing
 		}
 	}
 
 	option = { # Temporary Setbacks...
-		log = "[GetLogInfo]: event league_collapse.8 option league_collapse.8.a"
-		name = league_collapse.8.a
+		log = "[GetLogInfo]: event league_collapse_events.8 option league_collapse_events.8.a"
+		name = league_collapse_events.8.a
 		1047 = { #Xuzhou
 			damage_building = {
 				type = infrastructure
@@ -296,29 +296,29 @@ country_event = { # Reports from North and South
 }
 
 country_event = { # A Telegram from Beijing
-	id = league_collapse.9
-	title = league_collapse.9.t
-	desc = league_collapse.9.d
+	id = league_collapse_events.9
+	title = league_collapse_events.9.t
+	desc = league_collapse_events.9.d
 	picture = GFX_report_event_LEP_sun_old
 
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.10 days = 2 } # The Wuhu Incident
+			country_event = { id = league_collapse_events.10 days = 2 } # The Wuhu Incident
 		}
 	}
 
 	option = { #Everything is under control
-		log = "[GetLogInfo]: event league_collapse.9 option league_collapse.9.a"
-		name = league_collapse.9.a
+		log = "[GetLogInfo]: event league_collapse_events.9 option league_collapse_events.9.a"
+		name = league_collapse_events.9.a
 	}
 }
 
 country_event = { # The Wuhu Incident
-	id = league_collapse.10
-	title = league_collapse.10.t
-	desc = league_collapse.10.d
+	id = league_collapse_events.10
+	title = league_collapse_events.10.t
+	desc = league_collapse_events.10.d
 	picture = GFX_report_event_CHN_riot
 
 	is_triggered_only = yes
@@ -326,14 +326,14 @@ country_event = { # The Wuhu Incident
 	immediate = {
 		hidden_effect = {
 			CHI = { country_event = CHI.introgame.006 }
-			country_event = { id = league_collapse.11 days = 2 } # Anqing Refuses Further Cooperation
-			QIE = { country_event = { id = league_collapse_flavour.3 days = 1 } } #QIE informed of ANQ breakaway
+			country_event = { id = league_collapse_events.11 days = 2 } # Anqing Refuses Further Cooperation
+			QIE = { country_event = { id = league_collapse_flavour_events.3 days = 1 } } #QIE informed of ANQ breakaway
 		}
 	}
 
 	option = { #Could things get any worse?
-		log = "[GetLogInfo]: event league_collapse.10 option league_collapse.10.a"
-		name = league_collapse.10.a
+		log = "[GetLogInfo]: event league_collapse_events.10 option league_collapse_events.10.a"
+		name = league_collapse_events.10.a
 		add_political_power = -30
 		add_stability = -0.03
 		add_manpower = -240
@@ -341,9 +341,9 @@ country_event = { # The Wuhu Incident
 }
 
 country_event = { # Anqing Refuses Further Cooperation
-	id = league_collapse.11
-	title = league_collapse.11.t
-	desc = league_collapse.11.d
+	id = league_collapse_events.11
+	title = league_collapse_events.11.t
+	desc = league_collapse_events.11.d
 	picture = GFX_report_event_ANQ_chen_tiaoyuan
 	timeout_days = 3
 
@@ -373,7 +373,7 @@ country_event = { # Anqing Refuses Further Cooperation
 				}
 			}
 			set_country_flag = LEP_league_war_flag
-			country_event = { id = league_collapse.12 days = 15 }
+			country_event = { id = league_collapse_events.12 days = 15 }
 			GXC = {
 				country_event = { id = GXC.introgame.006 days = 1 } #The Young Guangxi War Council
 			}
@@ -384,17 +384,17 @@ country_event = { # Anqing Refuses Further Cooperation
 	}
 
 	option = { #We must bide our time
-		log = "[GetLogInfo]: event league_collapse.11 option league_collapse.11.a"
-		name = league_collapse.11.a
+		log = "[GetLogInfo]: event league_collapse_events.11 option league_collapse_events.11.a"
+		name = league_collapse_events.11.a
 		add_political_power = -30
 		add_stability = -0.03
 		ANQ_spawn_anqing_clique = yes
 	}
 
 	option = { #Let us join Governor Chen!
-		log = "[GetLogInfo]: event league_collapse.11 option league_collapse.11.b"
+		log = "[GetLogInfo]: event league_collapse_events.11 option league_collapse_events.11.b"
 		ai_chance = { base = 0 }
-		name = league_collapse.11.b
+		name = league_collapse_events.11.b
 		add_political_power = -30
 		add_stability = -0.03
 		ANQ_spawn_anqing_clique = yes
@@ -407,17 +407,17 @@ country_event = { # Anqing Refuses Further Cooperation
 			add_idea = LEP_the_disunited_armies_1
 		}
 		hidden_effect = {
-			ANQ = { country_event = { id = league_collapse.13 hours = 5 } }
-			QIE = { country_event = { id = league_collapse_flavour.4 hours = 12 } }
+			ANQ = { country_event = { id = league_collapse_events.13 hours = 5 } }
+			QIE = { country_event = { id = league_collapse_flavour_events.4 hours = 12 } }
 			FNG = { country_event = { id = fengtian_events.114 hours = 12 } }
 		}
 	}
 }
 
-country_event = { # Negotiate with Yunxiang
-	id = league_collapse.12
-	title = league_collapse.12.t
-	desc = league_collapse.12.d
+country_event = { # Viper in the Tiger's Den
+	id = league_collapse_events.12
+	title = league_collapse_events.12.t
+	desc = league_collapse_events.12.d
 	picture = GFX_report_event_LEP_shangguan_yunxiang
 
 	fire_only_once = yes
@@ -436,31 +436,19 @@ country_event = { # Negotiate with Yunxiang
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.12 option league_collapse.12.a"
-		name = league_collapse.12.a #offer him Hangzhou
-		ai_chance = { base = 0 }
-		add_political_power = -25
-	}
-	option = {
-		log = "[GetLogInfo]: event league_collapse.12 option league_collapse.12.b"
-		name = league_collapse.12.b #offer him Hangzhou and Anhui
-		ai_chance = { base = 100 }
+		log = "[GetLogInfo]: event league_collapse_events.12 option league_collapse_events.12.a"
+		name = league_collapse_events.12.a #I know he's plotting something!
 		add_political_power = -50
 		hidden_effect = {
 			set_country_flag = LEP_Shangguan_Yunxiang_is_our_boy_flag
 		}
 	}
-	option = {
-		log = "[GetLogInfo]: event league_collapse.12 option league_collapse.12.c"
-		name = league_collapse.12.c #offer him nothing
-		ai_chance = { base = 0 }
-	}
 }
 
 country_event = { #Intro - Tension on the Yangtze
-	id = league_collapse.13
-	title = league_collapse.13.t
-	desc = league_collapse.13.d
+	id = league_collapse_events.13
+	title = league_collapse_events.13.t
+	desc = league_collapse_events.13.d
 	picture = GFX_report_event_LEC_shanghai_river
 	fire_only_once = yes
 
@@ -468,27 +456,27 @@ country_event = { #Intro - Tension on the Yangtze
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.14 days = 2 }
+			country_event = { id = league_collapse_events.14 days = 2 }
 			country_event = { id = anqing_events.34 days = 40 random_days = 30 } # war profiteering
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.13 option league_collapse.13.a"
-		name = league_collapse.13.a #Long live the Governor!
+		log = "[GetLogInfo]: event league_collapse_events.13 option league_collapse_events.13.a"
+		name = league_collapse_events.13.a #Long live the Governor!
 		add_political_power = 50
 	}
 }
 
 country_event = { #Anqing asks Wu Peifu for help paying troops.
-	id = league_collapse.14
-	title = league_collapse.14.t
-	desc = league_collapse.14.d
+	id = league_collapse_events.14
+	title = league_collapse_events.14.t
+	desc = league_collapse_events.14.d
 	picture = GFX_report_event_QIE_wu_old_3
 
 	immediate = {
 		hidden_effect = {
-			QIE = { country_event = { id = league_collapse.15 days = 2 } }
+			QIE = { country_event = { id = league_collapse_events.15 days = 2 } }
 		}
 	}
 
@@ -497,16 +485,16 @@ country_event = { #Anqing asks Wu Peifu for help paying troops.
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.14 option league_collapse.14.a"
-		name = league_collapse.14.a #ask for help
+		log = "[GetLogInfo]: event league_collapse_events.14 option league_collapse_events.14.a"
+		name = league_collapse_events.14.a #ask for help
 	}
 }
 
 ### ANQ-QIE Negotations Event Chain ###
 country_event = { #chen tiaoyuan asks for help
-	id = league_collapse.15
-	title = league_collapse.15.t
-	desc = league_collapse.15.d
+	id = league_collapse_events.15
+	title = league_collapse_events.15.t
+	desc = league_collapse_events.15.d
 	picture = GFX_report_event_ANQ_chen_tiaoyuan
 	timeout_days = 3
 
@@ -515,7 +503,7 @@ country_event = { #chen tiaoyuan asks for help
 		# Event fires about a day after QIE gets the event about a telegram of Sun's death
 		hidden_effect = {
 			QIE = {
-				country_event = { id = league_collapse.25 days = 14 } #qi approaches wu, outcome depends on response to Chen
+				country_event = { id = league_collapse_events.25 days = 14 } #qi approaches wu, outcome depends on response to Chen
 			}
 		}
 	}
@@ -523,8 +511,8 @@ country_event = { #chen tiaoyuan asks for help
 	is_triggered_only = yes
 
 	option = { #Wu promises support for Chen
-		log = "[GetLogInfo]: event league_collapse.15 option league_collapse.15.a"
-		name = league_collapse.15.a
+		log = "[GetLogInfo]: event league_collapse_events.15 option league_collapse_events.15.a"
+		name = league_collapse_events.15.a
 		ai_chance = {
 			base = 25 #QIE has 25% chance to go Anti-Concessionist
 			modifier = {
@@ -545,14 +533,14 @@ country_event = { #chen tiaoyuan asks for help
 		add_stability = 0.05
 		hidden_effect = {
 			ANQ = {
-				country_event = { id = league_collapse.16 days = 1 } #wu says yes
+				country_event = { id = league_collapse_events.16 days = 1 } #wu says yes
 			}
 		}
 	}
 
 	option = { #Wu says no, Chen goes to the Japanese
-		log = "[GetLogInfo]: event league_collapse.15 option league_collapse.15.b"
-		name = league_collapse.15.b
+		log = "[GetLogInfo]: event league_collapse_events.15 option league_collapse_events.15.b"
+		name = league_collapse_events.15.b
 		ai_chance = {
 			base = 75
 			modifier = {
@@ -563,24 +551,24 @@ country_event = { #chen tiaoyuan asks for help
 		add_stability = -0.03
 		hidden_effect = {
 			ANQ = {
-				country_event = { id = league_collapse.19 days = 1 }
+				country_event = { id = league_collapse_events.19 days = 1 }
 			}
 		}
 	}
 }
 
 country_event = { #wu says yes
-	id = league_collapse.16
-	title = league_collapse.16.t
-	desc = league_collapse.16.d
+	id = league_collapse_events.16
+	title = league_collapse_events.16.t
+	desc = league_collapse_events.16.d
 	fire_only_once = yes
 	picture = GFX_report_event_QIE_wu_1926_2
 	is_triggered_only = yes
 	timeout_days = 3
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.16 option league_collapse.16.a"
-		name = league_collapse.16.a #excellent!
+		log = "[GetLogInfo]: event league_collapse_events.16 option league_collapse_events.16.a"
+		name = league_collapse_events.16.a #excellent!
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -592,12 +580,12 @@ country_event = { #wu says yes
 		add_stability = 0.05
 		QIE = {
 			set_country_flag = QIE_wu_backs_chen
-			country_event = { id = league_collapse.17 days = 2 } #thanks Wu
+			country_event = { id = league_collapse_events.17 days = 2 } #thanks Wu
 		}
 	}
 	option = {
-		log = "[GetLogInfo]: event league_collapse.16 option league_collapse.16.b"
-		name = league_collapse.16.b #this is not enough
+		log = "[GetLogInfo]: event league_collapse_events.16 option league_collapse_events.16.b"
+		name = league_collapse_events.16.b #this is not enough
 		ai_chance = {
 			base = 0
 			modifier = {
@@ -608,84 +596,84 @@ country_event = { #wu says yes
 		add_political_power = -100
 		set_country_flag = ANQ_chen_betrays_wu
 		hidden_effect = {
-			country_event = { id = league_collapse.20 days = 3 } #Chen Yi approaches Chen Tiaoyuan
+			country_event = { id = league_collapse_events.20 days = 3 } #Chen Yi approaches Chen Tiaoyuan
 		}
 		QIE = {
-			country_event = { id = league_collapse.18 days = 2 } #betrayed Wu
+			country_event = { id = league_collapse_events.18 days = 2 } #betrayed Wu
 		}
 	}
 }
 
 country_event = { #chen totally believes in us
-	id = league_collapse.17
-	title = league_collapse.17.t
-	desc = league_collapse.17.d
+	id = league_collapse_events.17
+	title = league_collapse_events.17.t
+	desc = league_collapse_events.17.d
 	picture = GFX_report_event_ANQ_chen_tiaoyuan
 	is_triggered_only = yes
 
 	option = { #excellent!
-		log = "[GetLogInfo]: event league_collapse.17 option league_collapse.17.a"
-		name = league_collapse.17.a
+		log = "[GetLogInfo]: event league_collapse_events.17 option league_collapse_events.17.a"
+		name = league_collapse_events.17.a
 	}
 }
 
 country_event = { #chen secretly contacted the Japanese
-	id = league_collapse.18
-	title = league_collapse.18.t
-	desc = league_collapse.18.d
+	id = league_collapse_events.18
+	title = league_collapse_events.18.t
+	desc = league_collapse_events.18.d
 	picture = GFX_report_event_LEP_chen_yi_speech
 	is_triggered_only = yes
 
 	option = { #bad news
-		log = "[GetLogInfo]: event league_collapse.18 option league_collapse.18.a"
-		name = league_collapse.18.a
+		log = "[GetLogInfo]: event league_collapse_events.18 option league_collapse_events.18.a"
+		name = league_collapse_events.18.a
 	}
 }
 
 country_event = { #wu says no
-	id = league_collapse.19
-	title = league_collapse.19.t
-	desc = league_collapse.19.d
+	id = league_collapse_events.19
+	title = league_collapse_events.19.t
+	desc = league_collapse_events.19.d
 	picture = GFX_report_event_QIE_wu_peifu_stare
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.20 days = 3 } #Chen Yi approaches Chen Tiaoyuan
+			country_event = { id = league_collapse_events.20 days = 3 } #Chen Yi approaches Chen Tiaoyuan
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.19 option league_collapse.19.a"
-		name = league_collapse.19.a #time to contact Japanese
+		log = "[GetLogInfo]: event league_collapse_events.19 option league_collapse_events.19.a"
+		name = league_collapse_events.19.a #time to contact Japanese
 	}
 }
 
 country_event = { #Chen Yi approaches Chen Tiaoyuan and asks him to switch to Fengtian/Japan
-	id = league_collapse.20
-	title = league_collapse.20.t
-	desc = league_collapse.20.d
+	id = league_collapse_events.20
+	title = league_collapse_events.20.t
+	desc = league_collapse_events.20.d
 	picture = GFX_report_event_LEP_chen_yi_hat
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			FNG = { country_event = league_collapse.21 }
+			FNG = { country_event = league_collapse_events.21 }
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.20 option league_collapse.20.a"
-		name = league_collapse.20.a #our only hope
+		log = "[GetLogInfo]: event league_collapse_events.20 option league_collapse_events.20.a"
+		name = league_collapse_events.20.a #our only hope
 	}
 }
 
 country_event = { #Anqing Asks Our Support (FNG)
-	id = league_collapse.21
-	title = league_collapse.21.t
-	desc = league_collapse.21.d
+	id = league_collapse_events.21
+	title = league_collapse_events.21.t
+	desc = league_collapse_events.21.d
 	picture = GFX_report_event_ANQ_chen_tiaoyuan
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -694,22 +682,22 @@ country_event = { #Anqing Asks Our Support (FNG)
 		hidden_effect = {
 			if = {
 				limit = { ANQ = { NOT = { has_country_flag = ANQ_chen_betrays_wu } } }
-				QIE = { country_event = league_collapse.22 } #Second attempt at Chen
+				QIE = { country_event = league_collapse_events.22 } #Second attempt at Chen
 			}
 			ANQ = { clr_country_flag = ANQ_chen_betrays_wu }
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.21 option league_collapse.21.a"
-		name = league_collapse.21.a #excellent
+		log = "[GetLogInfo]: event league_collapse_events.21 option league_collapse_events.21.a"
+		name = league_collapse_events.21.a #excellent
 	}
 }
 
 country_event = { #Second attempt at Chen
-	id = league_collapse.22
-	title = league_collapse.22.t
-	desc = league_collapse.22.d
+	id = league_collapse_events.22
+	title = league_collapse_events.22.t
+	desc = league_collapse_events.22.d
 	picture = GFX_report_event_ANQ_chen_tiaoyuan
 	timeout_days = 3
 
@@ -717,17 +705,17 @@ country_event = { #Second attempt at Chen
 	is_triggered_only = yes
 
 	option = {	#try again, goes to chen
-		log = "[GetLogInfo]: event league_collapse.22 option league_collapse.22.a"
-		name = league_collapse.22.a
+		log = "[GetLogInfo]: event league_collapse_events.22 option league_collapse_events.22.a"
+		name = league_collapse_events.22.a
 		ai_chance = { base = 0 }
 		ANQ = {
-			country_event = { id = league_collapse.23 days = 1 }
+			country_event = { id = league_collapse_events.23 days = 1 }
 		}
 	}
 
 	option = {	#sit it out
-		log = "[GetLogInfo]: event league_collapse.22 option league_collapse.22.b"
-		name = league_collapse.22.b
+		log = "[GetLogInfo]: event league_collapse_events.22 option league_collapse_events.22.b"
+		name = league_collapse_events.22.b
 		ai_chance = { base = 100 }
 		add_war_support = -0.05
 		add_political_power = -50
@@ -735,24 +723,24 @@ country_event = { #Second attempt at Chen
 }
 
 country_event = { #Wu Peifu reconsiders his position
-	id = league_collapse.23
-	title = league_collapse.23.t
-	desc = league_collapse.23.d
+	id = league_collapse_events.23
+	title = league_collapse_events.23.t
+	desc = league_collapse_events.23.d
 	picture = GFX_report_event_QIE_wu_1921
 	fire_only_once = yes
 	is_triggered_only = yes
 	timeout_days = 3
 
 	option = { #Who says he won't betray us a second time?
-		log = "[GetLogInfo]: event league_collapse.23 option league_collapse.23.a"
-		name = league_collapse.23.a
+		log = "[GetLogInfo]: event league_collapse_events.23 option league_collapse_events.23.a"
+		name = league_collapse_events.23.a
 		ai_chance = { base = 30 }
 		subtract_from_temp_variable = { ANQ_credibility_factor_change = 10 tooltip = ANQ_decrease_credibility_tt }
 		ANQ_recalculate_chens_credibility = yes
 	}
 	option = { #We are grateful for his support
-		log = "[GetLogInfo]: event league_collapse.23 option league_collapse.23.b"
-		name = league_collapse.23.b
+		log = "[GetLogInfo]: event league_collapse_events.23 option league_collapse_events.23.b"
+		name = league_collapse_events.23.b
 		ai_chance = {
 			base = 70
 			modifier = {
@@ -764,59 +752,59 @@ country_event = { #Wu Peifu reconsiders his position
 	}
 	after = {
 		hidden_effect = {
-			QIE = { country_event = { id = league_collapse.24 days = 1 } } #Outcome of earlier decision
+			QIE = { country_event = { id = league_collapse_events.24 days = 1 } } #Outcome of earlier decision
 		}
 	}
 }
 
 country_event = { #ANQ's decision
-	id = league_collapse.24
+	id = league_collapse_events.24
 	title = {
 		trigger = { NOT = { has_country_flag = QIE_wu_backs_chen } }
-		text = league_collapse.24.t1
+		text = league_collapse_events.24.t1
 	}
 	title = {
 		trigger = { has_country_flag = QIE_wu_backs_chen }
-		text = league_collapse.24.t2
+		text = league_collapse_events.24.t2
 	}
 	desc = {
 		trigger = { NOT = { has_country_flag = QIE_wu_backs_chen } }
-		text = league_collapse.24.d1
+		text = league_collapse_events.24.d1
 	}
 	desc = {
 		trigger = { has_country_flag = QIE_wu_backs_chen }
-		text = league_collapse.24.d2
+		text = league_collapse_events.24.d2
 	}
 	picture = GFX_report_event_ANQ_chen_tiaoyuan
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.24 option league_collapse.24.a"
-		name = league_collapse.24.a
+		log = "[GetLogInfo]: event league_collapse_events.24 option league_collapse_events.24.a"
+		name = league_collapse_events.24.a
 		trigger = { NOT = { has_country_flag = QIE_wu_backs_chen } }
 		add_war_support = -0.05
 		add_political_power = -50
 	}
 	option = {
-		log = "[GetLogInfo]: event league_collapse.24 option league_collapse.24.b"
-		name = league_collapse.24.b
+		log = "[GetLogInfo]: event league_collapse_events.24 option league_collapse_events.24.b"
+		name = league_collapse_events.24.b
 		trigger = { has_country_flag = QIE_wu_backs_chen }
 		add_political_power = 10
 	}
 }
 
 ### LEP-QIE Negotations Event Chain ###
-country_event = { #qi asks wu for support, triggered from league_collapse.15
-	id = league_collapse.25
-	title = league_collapse.25.t
+country_event = { #qi asks wu for support, triggered from league_collapse_events.15
+	id = league_collapse_events.25
+	title = league_collapse_events.25.t
 	desc = {
 		trigger = { NOT = { has_country_flag = QIE_wu_backs_chen } }
-		text = league_collapse.25.d1
+		text = league_collapse_events.25.d1
 	}
 	desc = {
 		trigger = { has_country_flag = QIE_wu_backs_chen }
-		text = league_collapse.25.d2
+		text = league_collapse_events.25.d2
 	}
 	picture = GFX_report_event_LEP_qi_xieyuan_suit
 	timeout_days = 3
@@ -824,8 +812,8 @@ country_event = { #qi asks wu for support, triggered from league_collapse.15
 	is_triggered_only = yes
 
 	option = { #Give him support
-		log = "[GetLogInfo]: event league_collapse.25 option league_collapse.25.a"
-		name = league_collapse.25.a
+		log = "[GetLogInfo]: event league_collapse_events.25 option league_collapse_events.25.a"
+		name = league_collapse_events.25.a
 		trigger = { NOT = { has_country_flag = QIE_wu_backs_chen } }
 		ai_chance = {
 			modifier = {
@@ -843,13 +831,13 @@ country_event = { #qi asks wu for support, triggered from league_collapse.15
 		}
 		hidden_effect = {
 			set_country_flag = QIE_wu_backs_qi
-			LEP = { country_event = { id = league_collapse.26 days = 1 } } #wu says yes
+			LEP = { country_event = { id = league_collapse_events.26 days = 1 } } #wu says yes
 		}
 	}
 
 	option = { #Wu says no, leads to coup
-		log = "[GetLogInfo]: event league_collapse.25 option league_collapse.25.b"
-		name = league_collapse.25.b
+		log = "[GetLogInfo]: event league_collapse_events.25 option league_collapse_events.25.b"
+		name = league_collapse_events.25.b
 		trigger = { NOT = { has_country_flag = QIE_wu_backs_chen } }
 		ai_chance = {
 			base = 2
@@ -861,7 +849,7 @@ country_event = { #qi asks wu for support, triggered from league_collapse.15
 				}
 			}
 		}
-		LEP = { country_event = { id = league_collapse.27 days = 1 } }
+		LEP = { country_event = { id = league_collapse_events.27 days = 1 } }
 		add_war_support = -0.10
 		add_stability = -0.05
 		add_political_power = -100
@@ -869,24 +857,24 @@ country_event = { #qi asks wu for support, triggered from league_collapse.15
 	}
 
 	option = {	#we'll think about it (but won't since working with chen)
-		log = "[GetLogInfo]: event league_collapse.25 option league_collapse.25.c"
-		name = league_collapse.25.c
+		log = "[GetLogInfo]: event league_collapse_events.25 option league_collapse_events.25.c"
+		name = league_collapse_events.25.c
 		trigger = { has_country_flag = QIE_wu_backs_chen }
-		LEP = { country_event = { id = league_collapse.27 days = 1 } }
+		LEP = { country_event = { id = league_collapse_events.27 days = 1 } }
 	}
 }
 
 country_event = { #EVENT FOR LEP, Wu said yes
-	id = league_collapse.26
-	title = league_collapse.26.t
-	desc = league_collapse.26.d
+	id = league_collapse_events.26
+	title = league_collapse_events.26.t
+	desc = league_collapse_events.26.d
 	picture = GFX_report_event_QIE_wu_1926_2
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {	#nice
-		log = "[GetLogInfo]: event league_collapse.26 option league_collapse.26.a"
-		name = league_collapse.26.a
+		log = "[GetLogInfo]: event league_collapse_events.26 option league_collapse_events.26.a"
+		name = league_collapse_events.26.a
 		set_party_name = {
 			ideology = market_liberal
 			long_name = LEP_qing_help_party_long
@@ -902,26 +890,26 @@ country_event = { #EVENT FOR LEP, Wu said yes
 }
 
 country_event = { #EVENT FOR LEP, Wu said no
-	id = league_collapse.27
-	title = league_collapse.27.t
-	desc = league_collapse.27.d
+	id = league_collapse_events.27
+	title = league_collapse_events.27.t
+	desc = league_collapse_events.27.d
 	picture = GFX_report_event_QIE_wu_1926_2
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {	#shit
-		log = "[GetLogInfo]: event league_collapse.27 option league_collapse.27.a"
-		name = league_collapse.27.a
+		log = "[GetLogInfo]: event league_collapse_events.27 option league_collapse_events.27.a"
+		name = league_collapse_events.27.a
 	}
 }
 
 ### Section 2 - Black Monday Event Chain and Start of the League War ###
-# (league_collapse.50) - (league_collapse.99)
+# (league_collapse_events.50) - (league_collapse_events.99)
 
 country_event = { # Black Monday Reaches the East
-	id = league_collapse.50
-	title = league_collapse.50.t
-	desc = league_collapse.50.d
+	id = league_collapse_events.50
+	title = league_collapse_events.50.t
+	desc = league_collapse_events.50.d
 	picture = GFX_report_event_LEP_sun_desk
 
 	is_triggered_only = yes # Triggered by black monday file
@@ -933,7 +921,7 @@ country_event = { # Black Monday Reaches the East
 				remove_idea = LEP_Crippled_Industry3
 				add_idea = LEP_Crippled_Industry2
 			}
-			country_event = { id = league_collapse.51 days = 5 } # Dissension in the Ranks
+			country_event = { id = league_collapse_events.51 days = 5 } # Dissension in the Ranks
 			HNN = { country_event = { id = hunan_economy_events.1 days = 10 } } #Ripples of Black Monday
 			CHI = { country_event = { id = CHI.introgame.007 days = 5 } }
 			GXC = { country_event = { id = GXC.introgame.007 days = 1 } }
@@ -942,8 +930,8 @@ country_event = { # Black Monday Reaches the East
 	}
 
 	option = { #How will we pay the troops?
-		log = "[GetLogInfo]: event league_collapse.50 option league_collapse.50.a"
-		name = league_collapse.50.a
+		log = "[GetLogInfo]: event league_collapse_events.50 option league_collapse_events.50.a"
+		name = league_collapse_events.50.a
 		effect_tooltip = {
 			swap_ideas = {
 				remove_idea = LEP_Crippled_Industry3
@@ -954,9 +942,9 @@ country_event = { # Black Monday Reaches the East
 }
 
 country_event = { # Dissension in the Ranks
-	id = league_collapse.51
-	title = league_collapse.51.t
-	desc = league_collapse.51.d
+	id = league_collapse_events.51
+	title = league_collapse_events.51.t
+	desc = league_collapse_events.51.d
 	picture = GFX_report_event_CHN_china_troops
 
 	is_triggered_only = yes
@@ -964,13 +952,13 @@ country_event = { # Dissension in the Ranks
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.52 days = 3 } # A Heinous Crime
+			country_event = { id = league_collapse_events.52 days = 3 } # A Heinous Crime
 		}
 	}
 
 	option = { #Rebellion will be punished!
-		log = "[GetLogInfo]: event league_collapse.51 option league_collapse.51.a"
-		name = league_collapse.51.a
+		log = "[GetLogInfo]: event league_collapse_events.51 option league_collapse_events.51.a"
+		name = league_collapse_events.51.a
 		if = {
 			limit = { has_template = "Jiangxi Bubing Xie" }
 			delete_unit_template_and_units = { division_template = "Jiangxi Bubing Xie" }
@@ -987,9 +975,9 @@ country_event = { # Dissension in the Ranks
 }
 
 country_event = { # A Heinous Crime
-	id = league_collapse.52
-	title = league_collapse.52.t
-	desc = league_collapse.52.d
+	id = league_collapse_events.52
+	title = league_collapse_events.52.t
+	desc = league_collapse_events.52.d
 	picture = GFX_report_event_LEP_sun_old_3
 
 	is_triggered_only = yes
@@ -997,7 +985,7 @@ country_event = { # A Heinous Crime
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.54 days = 2 } # Spreading Insubordination
+			country_event = { id = league_collapse_events.54 days = 2 } # Spreading Insubordination
 			SZC = {
 				country_event = { id = sichuan_events.6 days = 3 } # Sun Chuanfang Shot!
 			}
@@ -1006,7 +994,7 @@ country_event = { # A Heinous Crime
 			}
 			remove_unit_leader_role = { character = LEP_sun_chuanfang }
 			QIE = { #event about it happening, will trigger further qi going to wu for help
-				country_event = { id = league_collapse.53 hours = 12 }
+				country_event = { id = league_collapse_events.53 hours = 12 }
 			}
 			CHI = { country_event = { id = CHI.introgame.008 days = 2 } } #Smiling Tiger Downed
 			country_event = { id = league_events.5 days = 45 }
@@ -1016,8 +1004,8 @@ country_event = { # A Heinous Crime
 	}
 
 	option = { #Who could be responsible?
-		log = "[GetLogInfo]: event league_collapse.52 option league_collapse.52.a"
-		name = league_collapse.52.a
+		log = "[GetLogInfo]: event league_collapse_events.52 option league_collapse_events.52.a"
+		name = league_collapse_events.52.a
 		add_political_power = -30
 		add_stability = -0.03
 		add_war_support = -0.03
@@ -1025,9 +1013,9 @@ country_event = { # A Heinous Crime
 }
 
 country_event = { #sun is shot. big f
-	id = league_collapse.53
-	title = league_collapse.53.t
-	desc = league_collapse.53.d
+	id = league_collapse_events.53
+	title = league_collapse_events.53.t
+	desc = league_collapse_events.53.d
 	picture = GFX_report_event_LEP_sun_time_magazine
 
 	immediate = {
@@ -1040,15 +1028,15 @@ country_event = { #sun is shot. big f
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.53 option league_collapse.53.a"
-		name = league_collapse.53.a #God help us all
+		log = "[GetLogInfo]: event league_collapse_events.53 option league_collapse_events.53.a"
+		name = league_collapse_events.53.a #God help us all
 	}
 }
 
 country_event = { # Spreading Insubordination
-	id = league_collapse.54
-	title = league_collapse.54.t
-	desc = league_collapse.54.d
+	id = league_collapse_events.54
+	title = league_collapse_events.54.t
+	desc = league_collapse_events.54.d
 	picture = GFX_report_event_LEP_sun_time_magazine
 
 	is_triggered_only = yes
@@ -1056,9 +1044,9 @@ country_event = { # Spreading Insubordination
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.56 days = 2 } # Riots reach the Marshal's Palace
+			country_event = { id = league_collapse_events.56 days = 2 } # Riots reach the Marshal's Palace
 			QIE = {
-				country_event = { id = league_collapse.55 hours = 10 } #navy flees nanjing due to riots
+				country_event = { id = league_collapse_events.55 hours = 10 } #navy flees nanjing due to riots
 			}
 			if = {
 				limit = { has_template = "Jiangsu Bubing Xie" }
@@ -1068,8 +1056,8 @@ country_event = { # Spreading Insubordination
 	}
 
 	option = { # Marshal Sun must wake soon...
-		log = "[GetLogInfo]: event league_collapse.54 option league_collapse.54.a"
-		name = league_collapse.54.a
+		log = "[GetLogInfo]: event league_collapse_events.54 option league_collapse_events.54.a"
+		name = league_collapse_events.54.a
 		custom_effect_tooltip = LEP_dissension_jiangsu
 		#custom_effect_tooltip = LEP_lost_contact_jiangxi
 		#custom_effect_tooltip = LEP_deng_disappears
@@ -1079,17 +1067,17 @@ country_event = { # Spreading Insubordination
 }
 
 country_event = { #docking access removed due to chaos in Nanjing, fleet retreats north
-	id = league_collapse.55
-	title = league_collapse.55.t
-	desc = league_collapse.55.d
+	id = league_collapse_events.55
+	title = league_collapse_events.55.t
+	desc = league_collapse_events.55.d
 	picture = GFX_report_event_JAP_battleship_kongo
 
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.55 option league_collapse.55.a"
-		name = league_collapse.55.a
+		log = "[GetLogInfo]: event league_collapse_events.55 option league_collapse_events.55.a"
+		name = league_collapse_events.55.a
 		add_political_power = -15
 		614 = {
 			add_extra_state_shared_building_slots = 1
@@ -1102,9 +1090,9 @@ country_event = { #docking access removed due to chaos in Nanjing, fleet retreat
 }
 
 country_event = { # Riots reach the Marshal's Palace
-	id = league_collapse.56
-	title = league_collapse.56.t
-	desc = league_collapse.56.d
+	id = league_collapse_events.56
+	title = league_collapse_events.56.t
+	desc = league_collapse_events.56.d
 	picture = GFX_report_event_LEP_sun_uniform
 
 	is_triggered_only = yes
@@ -1112,13 +1100,13 @@ country_event = { # Riots reach the Marshal's Palace
 
 	immediate = {
 		hidden_effect = {
-			QIE = { country_event = { id = league_collapse.57 days = 1 } } # The Illusion Shatters
+			QIE = { country_event = { id = league_collapse_events.57 days = 1 } } # The Illusion Shatters
 		}
 	}
 
 	option = { # What are we to do?
-		log = "[GetLogInfo]: event league_collapse.56 option league_collapse.56.a"
-		name = league_collapse.56.a
+		log = "[GetLogInfo]: event league_collapse_events.56 option league_collapse_events.56.a"
+		name = league_collapse_events.56.a
 		custom_effect_tooltip = LEP_nanjing_defection
 		add_political_power = -20
 		hidden_effect = {
@@ -1147,9 +1135,9 @@ country_event = { # Riots reach the Marshal's Palace
 }
 
 country_event = {
-	id = league_collapse.57
-	title = league_collapse.57.t
-	desc = league_collapse.57.d
+	id = league_collapse_events.57
+	title = league_collapse_events.57.t
+	desc = league_collapse_events.57.d
 	picture = GFX_report_event_CHN_official_announcement
 
 	is_triggered_only = yes
@@ -1180,7 +1168,7 @@ country_event = {
 			set_global_flag = LEP_collapse_happened
 			LEP = {
 				set_global_flag = LEP_collapse
-				country_event = { id = league_collapse.58 days = 2 }
+				country_event = { id = league_collapse_events.58 days = 2 }
 				activate_targeted_decision = { target = THIS decision = LEP_emergency_troop_training_decision }
 				activate_targeted_decision = { target = THIS decision = LEP_emergency_evaluate_doctrines_decision }
 				activate_targeted_decision = { target = THIS decision = LEP_seize_the_heartland_decision }
@@ -1194,13 +1182,13 @@ country_event = {
 			SHX = { country_event = { id = shanxi_events.5 days = 5 } }
 			XSM = { country_event = { id = ma_clique_events.5 days = 2 } }
 			FNG = { country_event = { id = fengtian_japan_mechanic_events.000 days = 5 } }
-			news_event = league_collapse_flavour.8
+			news_event = league_collapse_flavour_events.8
 		}
 	}
 
 	option = { #Terrible news
-		log = "[GetLogInfo]: event league_collapse.57 option league_collapse.57.a"
-		name = league_collapse.57.a
+		log = "[GetLogInfo]: event league_collapse_events.57 option league_collapse_events.57.a"
+		name = league_collapse_events.57.a
 		effect_tooltip = {
 			every_other_country = {
 				limit = { has_country_flag = QIE_was_puppet }
@@ -1221,9 +1209,9 @@ country_event = {
 }
 
 country_event = { #Uprisings in Fujian
-	id = league_collapse.58
-	title = league_collapse.58.t
-	desc = league_collapse.58.d
+	id = league_collapse_events.58
+	title = league_collapse_events.58.t
+	desc = league_collapse_events.58.d
 	picture = GFX_report_event_CHI_wang_jingwei_plane_takeoff
 
 	is_triggered_only = yes
@@ -1255,14 +1243,14 @@ country_event = { #Uprisings in Fujian
 	}
 
 	option = { # Syndicalist scum!
-		log = "[GetLogInfo]: event league_collapse.58 option league_collapse.58.a"
-		name = league_collapse.58.a
+		log = "[GetLogInfo]: event league_collapse_events.58 option league_collapse_events.58.a"
+		name = league_collapse_events.58.a
 		CHI_spawn_fujian_revolt = yes
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.58 option league_collapse.58.b"
-		name = league_collapse.58.b
+		log = "[GetLogInfo]: event league_collapse_events.58 option league_collapse_events.58.b"
+		name = league_collapse_events.58.b
 		ai_chance = { base = 0 }
 		CHI_spawn_fujian_revolt = yes
 		custom_effect_tooltip = tooltip_white_line
@@ -1271,14 +1259,14 @@ country_event = { #Uprisings in Fujian
 
 	after = {
 		hidden_effect = { CHI = { country_event = CHI.earlygame.000 } }
-		country_event = { id = league_collapse.59 hours = 19 } #General Qi Assumes Control
+		country_event = { id = league_collapse_events.59 hours = 19 } #General Qi Assumes Control
 	}
 }
 
 country_event = { # General Qi Assumes Control
-	id = league_collapse.59
-	title = league_collapse.59.t
-	desc = league_collapse.59.d
+	id = league_collapse_events.59
+	title = league_collapse_events.59.t
+	desc = league_collapse_events.59.d
 	picture = GFX_report_event_LEP_qi_xieyuan_dress_uniform_2
 	timeout_days = 3
 
@@ -1308,7 +1296,7 @@ country_event = { # General Qi Assumes Control
 					#ANQ pro qing
 					limit = { has_country_flag = QIE_wu_backs_chen }
 					ANQ = { ANQ_create_QIE_support_units = yes }
-					country_event = { id = league_collapse.64 days = 1 }
+					country_event = { id = league_collapse_events.64 days = 1 }
 					#fang benren offers help to whoever is against wu
 					LEP = { country_event = { id = league_events.215 days = 6 } }
 				}
@@ -1317,16 +1305,16 @@ country_event = { # General Qi Assumes Control
 						#LEP pro qing
 						limit = { has_country_flag = QIE_wu_backs_qi }
 						LEP = { LEP_create_QIE_support_units = yes }
-						country_event = { id = league_collapse.61 days = 1 }
+						country_event = { id = league_collapse_events.61 days = 1 }
 					}
 					else = {
 						#Qing neutral
-						country_event = { id = league_collapse.60 days = 3 } #Coup event chain starts
+						country_event = { id = league_collapse_events.60 days = 3 } #Coup event chain starts
 					}
 
 					#ANQ formally pro Fengtian
 					ANQ = {
-						country_event = { id = league_collapse.68 days = 1 } #Fires war event
+						country_event = { id = league_collapse_events.68 days = 1 } #Fires war event
 						#fang benren offers help to whoever is against wu
 						country_event = { id = league_events.215 days = 6 }
 					}
@@ -1339,8 +1327,8 @@ country_event = { # General Qi Assumes Control
 	fire_only_once = yes
 
 	option = { #A coup in all but name?
-		log = "[GetLogInfo]: event league_collapse.59 option league_collapse.59.a"
-		name = league_collapse.59.a
+		log = "[GetLogInfo]: event league_collapse_events.59 option league_collapse_events.59.a"
+		name = league_collapse_events.59.a
 		custom_effect_tooltip = LEP_qi_marshal
 		custom_effect_tooltip = LEP_qi_reinforcements
 		add_stability = 0.1
@@ -1363,17 +1351,17 @@ country_event = { # General Qi Assumes Control
 
 ### Results in Manchu Coup ###
 country_event = { #widespread rioting and looting following non-intervention
-	id = league_collapse.60
-	title = league_collapse.60.t
-	desc = league_collapse.60.d
+	id = league_collapse_events.60
+	title = league_collapse_events.60.t
+	desc = league_collapse_events.60.d
 	picture = GFX_report_event_CHN_protest
 
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = { #damn it!
-		log = "[GetLogInfo]: event league_collapse.60 option league_collapse.60.a"
-		name = league_collapse.60.a
+		log = "[GetLogInfo]: event league_collapse_events.60 option league_collapse_events.60.a"
+		name = league_collapse_events.60.a
 		add_political_power = -50
 		add_stability = -0.05
 		add_ideas = QIE_big_protests
@@ -1387,17 +1375,17 @@ country_event = { #widespread rioting and looting following non-intervention
 
 ### QIE Pro LEP Events ###
 country_event = { #Qing pro LEP
-	id = league_collapse.61
-	title = league_collapse.61.t
-	desc = league_collapse.61.d
+	id = league_collapse_events.61
+	title = league_collapse_events.61.t
+	desc = league_collapse_events.61.d
 	picture = GFX_report_event_LEP_qi_xieyuan_coat
 
 	immediate = {
 		hidden_effect = {
 			set_country_flag = wu_intervenes_proLEP
 			clr_country_flag = QIE_wu_backs_qi
-			country_event = { id = league_collapse.62 hours = 1 } #domestic unrest
-			country_event = { id = league_collapse.63 days = 5 } #german support
+			country_event = { id = league_collapse_events.62 hours = 1 } #domestic unrest
+			country_event = { id = league_collapse_events.63 days = 5 } #german support
 			reverse_add_opinion_modifier = {
 				target = LEP
 				modifier = KR_friendly
@@ -1417,8 +1405,8 @@ country_event = { #Qing pro LEP
 	is_triggered_only = yes
 
 	option = {	#indirect
-		log = "[GetLogInfo]: event league_collapse.61 option league_collapse.61.a"
-		name = league_collapse.61.a
+		log = "[GetLogInfo]: event league_collapse_events.61 option league_collapse_events.61.a"
+		name = league_collapse_events.61.a
 		add_ideas = QIE_support_LEP_idea
 		add_war_support = 0.02
 		add_stability = -0.05
@@ -1427,17 +1415,17 @@ country_event = { #Qing pro LEP
 }
 
 country_event = { #assembly pissed at wu intervening pro-LEP
-	id = league_collapse.62
-	title = league_collapse.62.t
-	desc = league_collapse.62.d
+	id = league_collapse_events.62
+	title = league_collapse_events.62.t
+	desc = league_collapse_events.62.d
 	picture = GFX_report_event_QIE_hu_shih_speech_2
 
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	option = { #damn!
-		log = "[GetLogInfo]: event league_collapse.62 option league_collapse.62.a"
-		name = league_collapse.62.a
+		log = "[GetLogInfo]: event league_collapse_events.62 option league_collapse_events.62.a"
+		name = league_collapse_events.62.a
 		add_popularity = {
 			ideology = social_democrat
 			popularity = 0.03
@@ -1463,17 +1451,17 @@ country_event = { #assembly pissed at wu intervening pro-LEP
 }
 
 country_event = { #germany gives support to Wu for intervening pro-LEP
-	id = league_collapse.63
-	title = league_collapse.63.t
-	desc = league_collapse.63.d
+	id = league_collapse_events.63
+	title = league_collapse_events.63.t
+	desc = league_collapse_events.63.d
 	picture = GFX_report_event_GEA_coltroops
 
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	option = { #at least somebody likes us...
-		log = "[GetLogInfo]: event league_collapse.63 option league_collapse.63.a"
-		name = league_collapse.63.a
+		log = "[GetLogInfo]: event league_collapse_events.63 option league_collapse_events.63.a"
+		name = league_collapse_events.63.a
 		add_political_power = 50
 		add_popularity = {
 			ideology = market_liberal
@@ -1487,9 +1475,9 @@ country_event = { #germany gives support to Wu for intervening pro-LEP
 
 ### QIE Pro ANQ Events ###
 country_event = { #Qing launches intervention pro-ANQ
-	id = league_collapse.64
-	title = league_collapse.64.t
-	desc = league_collapse.64.d
+	id = league_collapse_events.64
+	title = league_collapse_events.64.t
+	desc = league_collapse_events.64.d
 	picture = GFX_report_event_QIE_soldiers_mobilize
 	timeout_days = 3
 
@@ -1497,9 +1485,9 @@ country_event = { #Qing launches intervention pro-ANQ
 		hidden_effect = {
 			set_country_flag = wu_intervenes_proANQ
 			clr_country_flag = QIE_wu_backs_chen
-			country_event = { id = league_collapse.65 hours = 2 }
-			country_event = { id = league_collapse.66 days = 4 }
-			ANQ = { country_event = { id = league_collapse.67 days = 1 } } #War trigger
+			country_event = { id = league_collapse_events.65 hours = 2 }
+			country_event = { id = league_collapse_events.66 days = 4 }
+			ANQ = { country_event = { id = league_collapse_events.67 days = 1 } } #War trigger
 			random_other_country = {
 				limit = { is_ai = yes }
 				news_event = { id = qing_news_events.1 days = 2 }
@@ -1521,8 +1509,8 @@ country_event = { #Qing launches intervention pro-ANQ
 	is_triggered_only = yes
 
 	option = {	#indirect
-		log = "[GetLogInfo]: event league_collapse.64 option league_collapse.64.a"
-		name = league_collapse.64.a
+		log = "[GetLogInfo]: event league_collapse_events.64 option league_collapse_events.64.a"
+		name = league_collapse_events.64.a
 		add_war_support = 0.05
 		add_ideas = QIE_support_ANQ_idea
 		add_timed_idea = {
@@ -1530,32 +1518,32 @@ country_event = { #Qing launches intervention pro-ANQ
 			days = 60
 		}
 		effect_tooltip = {
-			ANQ = { country_event = { id = league_collapse.67 days = 1 } } #War trigger
+			ANQ = { country_event = { id = league_collapse_events.67 days = 1 } } #War trigger
 		}
 	}
 }
 
 country_event = { #popular support for wu
-	id = league_collapse.65
-	title = league_collapse.65.t
-	desc = league_collapse.65.d
+	id = league_collapse_events.65
+	title = league_collapse_events.65.t
+	desc = league_collapse_events.65.d
 	picture = GFX_report_event_CHN_china_five_colour_flag_crowd
 
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.65 option league_collapse.65.a"
-		name = league_collapse.65.a #excellent!
+		log = "[GetLogInfo]: event league_collapse_events.65 option league_collapse_events.65.a"
+		name = league_collapse_events.65.a #excellent!
 		add_political_power = 50
 		add_stability = 0.03
 	}
 }
 
 country_event = { #germans pissed at wu for interveneing Pro-ANQ
-	id = league_collapse.66
-	title = league_collapse.66.t
-	desc = league_collapse.66.d
+	id = league_collapse_events.66
+	title = league_collapse_events.66.t
+	desc = league_collapse_events.66.d
 	picture = GFX_report_event_QIE_huang_fu
 
 	immediate = {
@@ -1583,8 +1571,8 @@ country_event = { #germans pissed at wu for interveneing Pro-ANQ
 	fire_only_once = yes
 
 	option = { #we don't need their support anyways!
-		log = "[GetLogInfo]: event league_collapse.66 option league_collapse.66.a"
-		name = league_collapse.66.a
+		log = "[GetLogInfo]: event league_collapse_events.66 option league_collapse_events.66.a"
+		name = league_collapse_events.66.a
 		add_stability = 0.05
 		add_popularity = {
 			ideology = market_liberal
@@ -1624,9 +1612,9 @@ country_event = { #germans pissed at wu for interveneing Pro-ANQ
 }
 
 country_event = { #Qing pledges support (or abandoned), attack now
-	id = league_collapse.67
-	title = league_collapse.67.t
-	desc = league_collapse.67.d
+	id = league_collapse_events.67
+	title = league_collapse_events.67.t
+	desc = league_collapse_events.67.d
 	picture = GFX_report_event_QIE_imperial_guard
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -1646,10 +1634,7 @@ country_event = { #Qing pledges support (or abandoned), attack now
 			}
 			if = {
 				limit = { LEP = { has_country_flag = LEP_Shangguan_Yunxiang_is_our_boy_flag } }
-				LEP = { country_event = { id = league_collapse.101 hours = 12 } }
-			}
-			else = {
-				country_event = { id = league_collapse.102 hours = 12 }
+				LEP = { country_event = { id = league_collapse_events.101 hours = 12 } }
 			}
 
 			declare_war_on = {
@@ -1665,8 +1650,8 @@ country_event = { #Qing pledges support (or abandoned), attack now
 			}
 
 			LEP = {
-				country_event = league_collapse.104 #chen declares war event
-				country_event = { id = league_collapse.100 days = 60 }
+				country_event = league_collapse_events.104 #chen declares war event
+				country_event = { id = league_collapse_events.100 days = 60 }
 				LEP_create_starting_league_war_units = yes
 			}
 
@@ -1679,8 +1664,8 @@ country_event = { #Qing pledges support (or abandoned), attack now
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.67 option league_collapse.67.a"
-		name = league_collapse.67.a #roll the dice, declare war
+		log = "[GetLogInfo]: event league_collapse_events.67 option league_collapse_events.67.a"
+		name = league_collapse_events.67.a #roll the dice, declare war
 		# QIE influence setup
 		set_temp_variable = { ANQ_beijing_influence_change = 0.03 }
 		custom_override_tooltip = {
@@ -1700,9 +1685,9 @@ country_event = { #Qing pledges support (or abandoned), attack now
 
 ### ANQ Pro FNG Events ###
 country_event = { #Fengtian has pledged support, attack now
-	id = league_collapse.68
-	title = league_collapse.68.t
-	desc = league_collapse.68.d
+	id = league_collapse_events.68
+	title = league_collapse_events.68.t
+	desc = league_collapse_events.68.d
 	picture = GFX_report_event_FNG_army1
 
 	immediate = {
@@ -1731,10 +1716,7 @@ country_event = { #Fengtian has pledged support, attack now
 
 			if = {
 				limit = { LEP = { has_country_flag = LEP_Shangguan_Yunxiang_is_our_boy_flag } }
-				LEP = { country_event = { id = league_collapse.101 hours = 12 } }
-			}
-			else = {
-				country_event = { id = league_collapse.102 hours = 12 }
+				LEP = { country_event = { id = league_collapse_events.101 hours = 12 } }
 			}
 			if = {
 				limit = {
@@ -1753,7 +1735,7 @@ country_event = { #Fengtian has pledged support, attack now
 				}
 			}
 			FNG = { country_event = { id = anqing_events.59 hours = 2 } }
-			JAP = { country_event = { id = league_collapse.69 hours = 2 } }
+			JAP = { country_event = { id = league_collapse_events.69 hours = 2 } }
 
 			declare_war_on = {
 				target = LEP
@@ -1768,8 +1750,8 @@ country_event = { #Fengtian has pledged support, attack now
 			}
 
 			LEP = {
-				country_event = league_collapse.104 #chen declares war event
-				country_event = { id = league_collapse.100 days = 60 }
+				country_event = league_collapse_events.104 #chen declares war event
+				country_event = { id = league_collapse_events.100 days = 60 }
 				LEP_create_starting_league_war_units = yes
 			}
 
@@ -1785,8 +1767,8 @@ country_event = { #Fengtian has pledged support, attack now
 	is_triggered_only = yes
 
 	option = {	#roll the dice, declare war
-		log = "[GetLogInfo]: event league_collapse.68 option league_collapse.68.a"
-		name = league_collapse.68.a
+		log = "[GetLogInfo]: event league_collapse_events.68 option league_collapse_events.68.a"
+		name = league_collapse_events.68.a
 		effect_tooltip = {
 			set_politics = {
 				ruling_party = paternal_autocrat
@@ -1809,24 +1791,24 @@ country_event = { #Fengtian has pledged support, attack now
 }
 
 country_event = { # Chen Sides with Fengtian
-	id = league_collapse.69
-	title = league_collapse.69.t
-	desc = league_collapse.69.d
+	id = league_collapse_events.69
+	title = league_collapse_events.69.t
+	desc = league_collapse_events.69.d
 	picture = GFX_report_event_ANQ_chen_tiaoyuan
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = { # We will watch with interest
-		log = "[GetLogInfo]: event league_collapse.69 option league_collapse.69.a"
-		name = league_collapse.69.a
+		log = "[GetLogInfo]: event league_collapse_events.69 option league_collapse_events.69.a"
+		name = league_collapse_events.69.a
 	}
 }
 
 ### Section 3 - League War Defections and Secessions of HNN and GXC ###
-# (league_collapse.100) - (league_collapse.150)
+# (league_collapse_events.100) - (league_collapse_events.150)
 
 country_event = { # Nanjing Re-Organised
-	id = league_collapse.100
+	id = league_collapse_events.100
 	hidden = yes
 
 	fire_only_once = yes
@@ -1842,31 +1824,16 @@ country_event = { # Nanjing Re-Organised
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.100 option 1"
+		log = "[GetLogInfo]: event league_collapse_events.100 option 1"
 		set_temp_variable = { change_league_war_morale_by = 25 }
 		china_update_morale = yes
 	}
 }
 
 country_event = { #zhejiang loyalty
-	id = league_collapse.101
-	title = {
-		text = league_collapse.101.t_1
-		trigger = { ANQ_is_profengtian = no }
-	}
-	desc = {
-		text = league_collapse.101.d_1
-		trigger = { ANQ_is_profengtian = no }
-	}
-
-	title = {
-		text = league_collapse.101.t_2
-		trigger = { ANQ_is_profengtian = yes }
-	}
-	desc = {
-		text = league_collapse.101.d_2
-		trigger = { ANQ_is_profengtian = yes }
-	}
+	id = league_collapse_events.101
+	title = league_collapse_events.101.t
+	desc = league_collapse_events.101.d
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -1876,176 +1843,39 @@ country_event = { #zhejiang loyalty
 			random_owned_controlled_state = { #Sides opposite Chen Yi, will have moved from Jinhua
 				prioritize = { 1014 }
 				create_unit = {
-					division = "name = \"Shangguan's Bubing Xie\" division_template = \"Bubing Zhen\" start_experience_factor = 0.15 start_equipment_factor = 0.81"
+					division = "name = \"Zhejiang Bubing Xie\" division_template = \"Bubing Zhen\" start_experience_factor = 0.15 start_equipment_factor = 0.81"
 					owner = LEP
 					prioritize_location = 7191
 				}
 				create_unit = {
-					division = "name = \"Shangguan's Bubing Xie 2\" division_template = \"Bubing Zhen\" start_experience_factor = 0.15 start_equipment_factor = 0.81"
+					division = "name = \"Zhejiang Bubing Xie 2\" division_template = \"Bubing Zhen\" start_experience_factor = 0.15 start_equipment_factor = 0.81"
 					owner = LEP
 					prioritize_location = 7191
 				}
 			}
+			LEP = { LEP_zhou_fengqi = { set_nationality = ANQ } }
 		}
 	}
 
-	option = {	#our ally
-		log = "[GetLogInfo]: event league_collapse.101 option league_collapse.101.a"
-		name = league_collapse.101.a
+	option = {	#Chen Yi and Lu Xiangting know right from wrong!
+		log = "[GetLogInfo]: event league_collapse_events.101 option league_collapse_events.101.a"
+		name = league_collapse_events.101.a
+		add_stability = 0.05
+		add_war_support = 0.05
 	}
 }
 
-country_event = { #zhejiang rising
-	id = league_collapse.102
-	title = {
-		text = league_collapse.102.t_1
-		trigger = { ANQ_is_profengtian = no }
-	}
-	desc = {
-		text = league_collapse.102.d_1
-		trigger = { ANQ_is_profengtian = no }
-	}
-
-	title = {
-		text = league_collapse.102.t_2
-		trigger = { ANQ_is_profengtian = yes }
-	}
-	desc = {
-		text = league_collapse.102.d_2
-		trigger = { ANQ_is_profengtian = yes }
-	}
-
-	fire_only_once = yes
-	is_triggered_only = yes
-	picture = GFX_report_event_LEP_chen_yi_4
-	immediate = {
-		hidden_effect = {
-			if = {
-				#ANQ is projapan, chen yi rises
-				limit = { ANQ_is_profengtian = yes }
-
-				#ANQ is profengtian, chen yi rises in hangzhou
-				set_country_flag = LEP_zhejiang_defected
-				transfer_state = 596
-				set_province_controller = 1096
-				set_province_controller = 11991
-				set_province_controller = 7191
-				set_province_controller = 10101
-				set_province_controller = 10014
-				random_owned_controlled_state = {
-					prioritize = { 596 }
-					#Zhejiang
-					create_unit = {
-						division = "name = \"Hangzhou Bubing Zhen\" division_template = \"Bubing Zhen\" start_experience_factor = 0.1"
-						owner = ANQ
-						prioritize_location = 7191
-						allow_spawning_on_enemy_provs = yes
-					}
-					#Militia
-					create_unit = {
-						division = "name = \"Hangzhou Minbing\" division_template = \"Bubing Xie\" start_equipment_factor = 0.86"
-						owner = ANQ
-						prioritize_location = 11991
-						allow_spawning_on_enemy_provs = yes
-					}
-				}
-				add_timed_idea = {
-					idea = ANQ_chen_yi
-					days = 100
-				}
-			}
-			else = {
-				#ANQ is not projapan, shangguan rises
-				transfer_state = 1067
-				set_province_controller = 10086
-				set_province_controller = 11920
-				set_province_controller = 12059
-				add_timed_idea = {
-					idea = ANQ_shangguan
-					days = 100
-				}
-				random_owned_controlled_state = { #Sides opposite Chen Yi, will have moved from Jinhua
-					prioritize = { 1014 }
-					create_unit = {
-						division = "name = \"Shangguan's Bubing Xie\" division_template = \"Bubing Zhen\" start_experience_factor = 0.15 start_equipment_factor = 0.81"
-						owner = ANQ
-						prioritize_location = 1125
-						allow_spawning_on_enemy_provs = yes
-					}
-					create_unit = {
-						division = "name = \"Shangguan's Bubing Xie 2\" division_template = \"Bubing Zhen\" start_experience_factor = 0.15 start_equipment_factor = 0.81"
-						owner = ANQ
-						prioritize_location = 1125
-						allow_spawning_on_enemy_provs = yes
-					}
-				}
-			}
-
-			LEP = {
-				country_event = { id = league_collapse.103 hours = 5 }
-			}
-		}
-	}
-
-	option = {	#our ally
-		log = "[GetLogInfo]: event league_collapse.102 option league_collapse.102.a"
-		name = league_collapse.102.a
-	}
-}
-
-country_event = { #General Shangguan Rises in Zhejiang/General Chen Rises in Zhejiang!
-	id = league_collapse.103
-
-	title = {
-		text = league_collapse.103.t_1
-		trigger = { ANQ_is_profengtian = no }
-	}
-	desc = {
-		text = league_collapse.103.d_1
-		trigger = { ANQ_is_profengtian = no }
-	}
-
-	title = {
-		text = league_collapse.103.t_2
-		trigger = { ANQ_is_profengtian = yes }
-	}
-	desc = {
-		text = league_collapse.103.d_2
-		trigger = { ANQ_is_profengtian = yes }
-	}
-
-	picture = GFX_report_event_LEP_chen_yi_speech
-
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event league_collapse.103 option league_collapse.103.a"
-		name = league_collapse.103.a
-		if = {
-			limit = { ANQ_is_profengtian = yes }
-			LEP = { LEP_chen_yi = { set_nationality = ANQ } }
-			LEP = { LEP_ge_jingen = { set_nationality = ANQ } }
-			LEP = { LEP_tang_enbo = { set_nationality = ANQ } }
-			activate_mission = LEP_zhejiang_governor_chen_traitor
-		}
-		else = {
-			LEP = { LEP_shangguan_yunxiang = { set_nationality = ANQ } }
-			activate_mission = LEP_zhejiang_governor
-		}
-	}
-}
-
-country_event = { #Chen Tiaoyuan Declares War, triggered by league_collapse.67/league_collapse.68
-	id = league_collapse.104
-	title = league_collapse.104.t
-	desc = league_collapse.104.d
+country_event = { #Chen Tiaoyuan Declares War, triggered by league_collapse_events.67/league_collapse_events.68
+	id = league_collapse_events.104
+	title = league_collapse_events.104.t
+	desc = league_collapse_events.104.d
 	picture = GFX_report_event_FNG_troops
 
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse.105 days = 3 }
+			country_event = { id = league_collapse_events.105 days = 3 }
 			drop_cosmetic_tag = yes
 
 			ANQ = {
@@ -2064,8 +1894,8 @@ country_event = { #Chen Tiaoyuan Declares War, triggered by league_collapse.67/l
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.104 option league_collapse.104.a"
-		name = league_collapse.104.a
+		log = "[GetLogInfo]: event league_collapse_events.104 option league_collapse_events.104.a"
+		name = league_collapse_events.104.a
 		swap_ideas = {
 			remove_idea = LEP_Anti-Concessions_Movement
 			add_idea = LEP_Rampant_Disorder
@@ -2074,9 +1904,9 @@ country_event = { #Chen Tiaoyuan Declares War, triggered by league_collapse.67/l
 }
 
 country_event = { #Liangguang Secedes!
-	id = league_collapse.105
-	title = league_collapse.105.t
-	desc = league_collapse.105.d
+	id = league_collapse_events.105
+	title = league_collapse_events.105.t
+	desc = league_collapse_events.105.d
 	picture = GFX_report_event_GXC_federalist_party_2
 
 	is_triggered_only = yes
@@ -2114,14 +1944,14 @@ country_event = { #Liangguang Secedes!
 				}
 				separate_peace_all_wars = yes
 			}
-			country_event = { id = league_collapse.106 days = 1 }
+			country_event = { id = league_collapse_events.106 days = 1 }
 			QIE = { country_event = { id = qing_foreign_policy_events.109 hours = 1 } }
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.105 option league_collapse.105.a"
-		name = league_collapse.105.a
+		log = "[GetLogInfo]: event league_collapse_events.105 option league_collapse_events.105.a"
+		name = league_collapse_events.105.a
 		effect_tooltip = {
 			set_autonomy = {
 				target = GXC
@@ -2132,9 +1962,9 @@ country_event = { #Liangguang Secedes!
 }
 
 country_event = { #Hunan Secedes
-	id = league_collapse.106
-	title = league_collapse.106.t
-	desc = league_collapse.106.d
+	id = league_collapse_events.106
+	title = league_collapse_events.106.t
+	desc = league_collapse_events.106.d
 	picture = GFX_report_event_HNN_zhao_military
 
 	is_triggered_only = yes
@@ -2173,15 +2003,15 @@ country_event = { #Hunan Secedes
 				separate_peace_all_wars = yes
 				country_event = hunan_events.1
 			}
-			country_event = { id = league_collapse_flavour.9 days = 2 }
+			country_event = { id = league_collapse_flavour_events.9 days = 2 }
 			QIE = { country_event = { id = qing_foreign_policy_events.104 days = 2 } }
 			LEC = { country_event = { id = legation_cities_events.17 days = 5 } }
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse.106 option league_collapse.106.a"
-		name = league_collapse.106.a
+		log = "[GetLogInfo]: event league_collapse_events.106 option league_collapse_events.106.a"
+		name = league_collapse_events.106.a
 		effect_tooltip = {
 			set_autonomy = {
 				target = HNN
@@ -2192,12 +2022,12 @@ country_event = { #Hunan Secedes
 }
 
 ### Section 4 - Flavour Events About the Collapse ###
-# (league_collapse_flavour.1) - (league_collapse_flavour.9)
+# (league_collapse_flavour_events.1) - (league_collapse_flavour_events.9)
 
 country_event = { #ZheGan railroad sale and unrest
-	id = league_collapse_flavour.1
-	title = league_collapse_flavour.1.t
-	desc = league_collapse_flavour.1.d
+	id = league_collapse_flavour_events.1
+	title = league_collapse_flavour_events.1.t
+	desc = league_collapse_flavour_events.1.d
 	picture = GFX_report_event_FNG_railway_construction_1
 
 	is_triggered_only = yes
@@ -2205,71 +2035,71 @@ country_event = { #ZheGan railroad sale and unrest
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse_flavour.2 days = 8 }
+			country_event = { id = league_collapse_flavour_events.2 days = 8 }
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse_flavour.1 option league_collapse_flavour.1.a"
-		name = league_collapse_flavour.1.a #we need to keep our eye on this
+		log = "[GetLogInfo]: event league_collapse_flavour_events.1 option league_collapse_flavour_events.1.a"
+		name = league_collapse_flavour_events.1.a #we need to keep our eye on this
 		add_political_power = -25
 	}
 }
 
 country_event = { #increasing attacks on foreigners and bombings
-	id = league_collapse_flavour.2
-	title = league_collapse_flavour.2.t
-	desc = league_collapse_flavour.2.d
+	id = league_collapse_flavour_events.2
+	title = league_collapse_flavour_events.2.t
+	desc = league_collapse_flavour_events.2.d
 	picture = GFX_report_event_LEP_sun_1926
 
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse_flavour.2 option league_collapse_flavour.2.a"
-		name = league_collapse_flavour.2.a #draft a letter to Sun immediately
+		log = "[GetLogInfo]: event league_collapse_flavour_events.2 option league_collapse_flavour_events.2.a"
+		name = league_collapse_flavour_events.2.a #draft a letter to Sun immediately
 		add_political_power = -15
 		add_war_support = -0.10
 	}
 }
 
 country_event = { #wuhu incident (contrary to name not a fun thing)
-	id = league_collapse_flavour.3
-	title = league_collapse_flavour.3.t
-	desc = league_collapse_flavour.3.d
+	id = league_collapse_flavour_events.3
+	title = league_collapse_flavour_events.3.t
+	desc = league_collapse_flavour_events.3.d
 	picture = GFX_report_event_LEP_sun_smiling
 
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse_flavour.3 option league_collapse_flavour.3.a"
-		name = league_collapse_flavour.3.a #it seems our letter fell on deaf ears...
+		log = "[GetLogInfo]: event league_collapse_flavour_events.3 option league_collapse_flavour_events.3.a"
+		name = league_collapse_flavour_events.3.a #it seems our letter fell on deaf ears...
 		add_political_power = -30
 	}
 }
 
 country_event = { #anqing breaks free
-	id = league_collapse_flavour.4
-	title = league_collapse_flavour.4.t
-	desc = league_collapse_flavour.4.d
+	id = league_collapse_flavour_events.4
+	title = league_collapse_flavour_events.4.t
+	desc = league_collapse_flavour_events.4.d
 	picture = GFX_report_event_CHN_warlord_observer
 
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse_flavour.4 option league_collapse_flavour.4.a"
-		name = league_collapse_flavour.4.a #prepare the southern garrisons
+		log = "[GetLogInfo]: event league_collapse_flavour_events.4 option league_collapse_flavour_events.4.a"
+		name = league_collapse_flavour_events.4.a #prepare the southern garrisons
 		add_war_support = 0.03
 		hidden_effect = {
-			country_event = { id = league_collapse_flavour.5 days = 3 }
+			country_event = { id = league_collapse_flavour_events.5 days = 3 }
 		}
 	}
 }
 
 country_event = { #flavor #1, refugees flee north
-	id = league_collapse_flavour.5
-	title = league_collapse_flavour.5.t
-	desc = league_collapse_flavour.5.d
+	id = league_collapse_flavour_events.5
+	title = league_collapse_flavour_events.5.t
+	desc = league_collapse_flavour_events.5.d
 	picture = GFX_report_event_CHN_economic
 
 	fire_only_once = yes
@@ -2277,52 +2107,52 @@ country_event = { #flavor #1, refugees flee north
 
 	immediate = {
 		hidden_effect = {
-			country_event = { id = league_collapse_flavour.6 days = 10 }
+			country_event = { id = league_collapse_flavour_events.6 days = 10 }
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse_flavour.5 option league_collapse_flavour.5.a"
-		name = league_collapse_flavour.5.a #divert resources south to care for the refugees
+		log = "[GetLogInfo]: event league_collapse_flavour_events.5 option league_collapse_flavour_events.5.a"
+		name = league_collapse_flavour_events.5.a #divert resources south to care for the refugees
 		add_political_power = -25
 	}
 	option = {
-		log = "[GetLogInfo]: event league_collapse_flavour.5 option league_collapse_flavour.5.b"
-		name = league_collapse_flavour.5.b #who cares?
+		log = "[GetLogInfo]: event league_collapse_flavour_events.5 option league_collapse_flavour_events.5.b"
+		name = league_collapse_flavour_events.5.b #who cares?
 		add_stability = -0.05
 	}
 }
 
 country_event = { #flavor #2 southern qing governors close railways, leads to riots/shootings
-	id = league_collapse_flavour.6
-	title = league_collapse_flavour.6.t
-	desc = league_collapse_flavour.6.d
+	id = league_collapse_flavour_events.6
+	title = league_collapse_flavour_events.6.t
+	desc = league_collapse_flavour_events.6.d
 	picture = GFX_report_event_CHN_china_five_colour_guard
 
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse_flavour.6 option league_collapse_flavour.6.a"
-		name = league_collapse_flavour.6.a
+		log = "[GetLogInfo]: event league_collapse_flavour_events.6 option league_collapse_flavour_events.6.a"
+		name = league_collapse_flavour_events.6.a
 		add_political_power = -25
 		hidden_effect = {
-			country_event = { id = league_collapse_flavour.7 days = 12 }
+			country_event = { id = league_collapse_flavour_events.7 days = 12 }
 		}
 	}
 }
 
 country_event = {  #flavor #3 yunnan/guanxi/shanxi governors cut contact with Qing
-	id = league_collapse_flavour.7
-	title = league_collapse_flavour.7.t
-	desc = league_collapse_flavour.7.d
+	id = league_collapse_flavour_events.7
+	title = league_collapse_flavour_events.7.t
+	desc = league_collapse_flavour_events.7.d
 	picture = GFX_report_event_CHN_china_five_colour_speech
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse_flavour.7 option league_collapse_flavour.7.a"
-		name = league_collapse_flavour.7.a
+		log = "[GetLogInfo]: event league_collapse_flavour_events.7 option league_collapse_flavour_events.7.a"
+		name = league_collapse_flavour_events.7.a
 		add_political_power = -25
 		add_stability = -0.05
 	}
@@ -2330,31 +2160,31 @@ country_event = {  #flavor #3 yunnan/guanxi/shanxi governors cut contact with Qi
 
 # The Illusion Shatters
 news_event = {
-	id = league_collapse_flavour.8
-	immediate = { log = "[GetLogInfo]: event league_collapse_flavour.8" }
-	title = league_collapse.57.t
+	id = league_collapse_flavour_events.8
+	immediate = { log = "[GetLogInfo]: event league_collapse_flavour_events.8" }
+	title = league_collapse_events.57.t
 	desc = {
-		text = league_collapse.57.d_qie
+		text = league_collapse_events.57.d_qie
 		trigger = { tag = QIE }
 	}
 	desc = {
-		text = league_collapse.57.d_fng
+		text = league_collapse_events.57.d_fng
 		trigger = { tag = FNG }
 	}
 	desc = {
-		text = league_collapse.57.d_anq
+		text = league_collapse_events.57.d_anq
 		trigger = { tag = ANQ }
 	}
 	desc = {
-		text = league_collapse.57.d_shd
+		text = league_collapse_events.57.d_shd
 		trigger = { tag = SHD }
 	}
 	desc = {
-		text = league_collapse.57.d_szc
+		text = league_collapse_events.57.d_szc
 		trigger = { tag = SZC }
 	}
 	desc = {
-		text = league_collapse.57.d_sik
+		text = league_collapse_events.57.d_sik
 		trigger = {
 			OR = {
 				tag = SIK
@@ -2363,19 +2193,19 @@ news_event = {
 		}
 	}
 	desc = {
-		text = league_collapse.57.d_tib
+		text = league_collapse_events.57.d_tib
 		trigger = { tag = TIB }
 	}
 	desc = {
-		text = league_collapse.57.d_mon
+		text = league_collapse_events.57.d_mon
 		trigger = { tag = MON }
 	}
 	desc = {
-		text = league_collapse.57.d_jap
+		text = league_collapse_events.57.d_jap
 		trigger = { tag = JAP }
 	}
 	desc = {
-		text = league_collapse.57.d
+		text = league_collapse_events.57.d
 		trigger = {
 			NOT = {
 				tag = QIE
@@ -2401,7 +2231,7 @@ news_event = {
 	is_triggered_only = yes
 
 	option = { #Terrible news
-		name = league_collapse.57.a
+		name = league_collapse_events.57.a
 		trigger = {
 			OR = {
 				tag = LEP
@@ -2414,7 +2244,7 @@ news_event = {
 	}
 
 	option = { #Wonderful news
-		name = league_collapse.57.b
+		name = league_collapse_events.57.b
 		trigger = {
 			OR = {
 				tag = FNG
@@ -2424,7 +2254,7 @@ news_event = {
 	}
 
 	option = { #Interesting
-		name = league_collapse.57.c
+		name = league_collapse_events.57.c
 		trigger = {
 			NOT = {
 				tag = LEP
@@ -2449,34 +2279,34 @@ news_event = {
 }
 
 country_event = { #Sun Chuanfang Dies
-	id = league_collapse_flavour.9
-	title = league_collapse_flavour.9.t
-	desc = league_collapse_flavour.9.d
+	id = league_collapse_flavour_events.9
+	title = league_collapse_flavour_events.9.t
+	desc = league_collapse_flavour_events.9.d
 	picture = GFX_report_event_LEP_sun_sitting
 
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_collapse_flavour.9 option league_collapse_flavour.9.a"
-		name = league_collapse_flavour.9.a
+		log = "[GetLogInfo]: event league_collapse_flavour_events.9 option league_collapse_flavour_events.9.a"
+		name = league_collapse_flavour_events.9.a
 		LEP_sun_chuanfang = { kill_character = yes }
 	}
 }
 
 ### Section 5 - League War Events ###
-# (league_war.1) - (league_war.100)
+# (league_war_events.1) - (league_war_events.100)
 
 country_event = { # Our Men Defect!
-	id = league_war.1
-	title = league_war.1.t
-	desc = league_war.1.desc
+	id = league_war_events.1
+	title = league_war_events.1.t
+	desc = league_war_events.1.desc
 	picture = GFX_report_event_china_infiltration
 
 	is_triggered_only = yes
 
 	option = { # Damn them!
-		log = "[GetLogInfo]: event league_war.1 option league_war.1.a"
-		name = league_war.1.a
+		log = "[GetLogInfo]: event league_war_events.1 option league_war_events.1.a"
+		name = league_war_events.1.a
 		custom_effect_tooltip = china_men_will_begin_to_defect_tt
 		hidden_effect = {
 			disband_twenty_percent_units_delete_equipment = yes
@@ -2485,7 +2315,7 @@ country_event = { # Our Men Defect!
 }
 
 country_event = { # Bounce Event for Morale Events
-	id = league_war.2
+	id = league_war_events.2
 	hidden = yes
 	immediate = {
 		hidden_effect = {
@@ -2495,7 +2325,7 @@ country_event = { # Bounce Event for Morale Events
 				min = 35
 				max = 50
 			}
-			country_event = { id = league_war.2 days = days_to_fire_temp }
+			country_event = { id = league_war_events.2 days = days_to_fire_temp }
 		}
 	}
 
@@ -2503,38 +2333,38 @@ country_event = { # Bounce Event for Morale Events
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_war.2 option 1"
+		log = "[GetLogInfo]: event league_war_events.2 option 1"
 		ai_chance = { base = 34 }
-		country_event = league_war.3
+		country_event = league_war_events.3
 	}
 	option = {
-		log = "[GetLogInfo]: event league_war.2 option 2"
+		log = "[GetLogInfo]: event league_war_events.2 option 2"
 		ai_chance = { base = 33 }
-		country_event = league_war.4
+		country_event = league_war_events.4
 	}
 	option = {
-		log = "[GetLogInfo]: event league_war.2 option 3"
+		log = "[GetLogInfo]: event league_war_events.2 option 3"
 		ai_chance = { base = 33 }
-		country_event = league_war.5
+		country_event = league_war_events.5
 	}
 }
 
 country_event = { # Motivated Soldiers/Increasing Desertions
-	id = league_war.3
+	id = league_war_events.3
 	title = {
-		text = league_war.3.t.good
+		text = league_war_events.3.t.good
 		trigger = { check_variable = { china_league_war_morale > 50 } }
 	}
 	title = {
-		text = league_war.3.t.bad
+		text = league_war_events.3.t.bad
 		trigger = { NOT = { check_variable = { china_league_war_morale > 50 } } }
 	}
 	desc = {
-		text = league_war.3.desc.good
+		text = league_war_events.3.desc.good
 		trigger = { check_variable = { china_league_war_morale > 50 } }
 	}
 	desc = {
-		text = league_war.3.desc.bad
+		text = league_war_events.3.desc.bad
 		trigger = { NOT = { check_variable = { china_league_war_morale > 50 } } }
 	}
 	picture = GFX_report_event_chinese_soldiers_02
@@ -2543,8 +2373,8 @@ country_event = { # Motivated Soldiers/Increasing Desertions
 	trigger = { NOT = { has_global_flag = LEP_league_war_over } }
 
 	option = { # Well done
-		log = "[GetLogInfo]: event league_war.3 option league_war.3.a"
-		name = league_war.3.a
+		log = "[GetLogInfo]: event league_war_events.3 option league_war_events.3.a"
+		name = league_war_events.3.a
 		trigger = { check_variable = { china_league_war_morale > 50 } }
 
 		add_timed_idea = {
@@ -2554,8 +2384,8 @@ country_event = { # Motivated Soldiers/Increasing Desertions
 	}
 
 	option = { # Terrible..
-		log = "[GetLogInfo]: event league_war.3 option league_war.3.b"
-		name = league_war.3.b
+		log = "[GetLogInfo]: event league_war_events.3 option league_war_events.3.b"
+		name = league_war_events.3.b
 		trigger = { NOT = { check_variable = { china_league_war_morale > 50 } } }
 
 		add_timed_idea = {
@@ -2566,21 +2396,21 @@ country_event = { # Motivated Soldiers/Increasing Desertions
 }
 
 country_event = { # Enemy Stockpile Captured/Equipment Losses
-	id = league_war.4
+	id = league_war_events.4
 	title = {
-		text = league_war.4.t.good
+		text = league_war_events.4.t.good
 		trigger = { check_variable = { china_league_war_morale > 50 } }
 	}
 	title = {
-		text = league_war.4.t.bad
+		text = league_war_events.4.t.bad
 		trigger = { NOT = { check_variable = { china_league_war_morale > 50 } } }
 	}
 	desc = {
-		text = league_war.4.desc.good
+		text = league_war_events.4.desc.good
 		trigger = { check_variable = { china_league_war_morale > 50 } }
 	}
 	desc = {
-		text = league_war.4.desc.bad
+		text = league_war_events.4.desc.bad
 		trigger = { NOT = { check_variable = { china_league_war_morale > 50 } } }
 	}
 	picture = GFX_report_event_CHN_machinegun_fighting
@@ -2589,8 +2419,8 @@ country_event = { # Enemy Stockpile Captured/Equipment Losses
 	trigger = { NOT = { has_global_flag = LEP_league_war_over } }
 
 	option = { # Well done
-		log = "[GetLogInfo]: event league_war.4 option league_war.4.a.good"
-		name = league_war.4.a.good
+		log = "[GetLogInfo]: event league_war_events.4 option league_war_events.4.a.good"
+		name = league_war_events.4.a.good
 		trigger = { check_variable = { china_league_war_morale > 50 } }
 
 		add_equipment_to_stockpile = {
@@ -2610,8 +2440,8 @@ country_event = { # Enemy Stockpile Captured/Equipment Losses
 		}
 	}
 	option = { # Terrible..
-		log = "[GetLogInfo]: event league_war.4 option league_war.4.b.bad"
-		name = league_war.4.b.bad
+		log = "[GetLogInfo]: event league_war_events.4 option league_war_events.4.b.bad"
+		name = league_war_events.4.b.bad
 		trigger = { NOT = { check_variable = { china_league_war_morale > 50 } } }
 
 		add_equipment_to_stockpile = {
@@ -2630,21 +2460,21 @@ country_event = { # Enemy Stockpile Captured/Equipment Losses
 }
 
 country_event = { # [THIS.GetLeader] Praised/[THIS.GetLeader] Attacked
-	id = league_war.5
+	id = league_war_events.5
 	title = {
-		text = league_war.5.t.good
+		text = league_war_events.5.t.good
 		trigger = { check_variable = { china_league_war_morale > 50 } }
 	}
 	title = {
-		text = league_war.5.t.bad
+		text = league_war_events.5.t.bad
 		trigger = { NOT = { check_variable = { china_league_war_morale > 50 } } }
 	}
 	desc = {
-		text = league_war.5.desc.good
+		text = league_war_events.5.desc.good
 		trigger = { check_variable = { china_league_war_morale > 50 } }
 	}
 	desc = {
-		text = league_war.5.desc.bad
+		text = league_war_events.5.desc.bad
 		trigger = { NOT = { check_variable = { china_league_war_morale > 50 } } }
 	}
 
@@ -2652,15 +2482,15 @@ country_event = { # [THIS.GetLeader] Praised/[THIS.GetLeader] Attacked
 	trigger = { NOT = { has_global_flag = LEP_league_war_over } }
 
 	option = { # It's only right
-		log = "[GetLogInfo]: event league_war.5 option league_war.5.a"
-		name = league_war.5.a
+		log = "[GetLogInfo]: event league_war_events.5 option league_war_events.5.a"
+		name = league_war_events.5.a
 		trigger = { check_variable = { china_league_war_morale > 50 } }
 
 		add_political_power = 25
 	}
 	option = { # Can't they just shut up
-		log = "[GetLogInfo]: event league_war.5 option league_war.5.b"
-		name = league_war.5.b
+		log = "[GetLogInfo]: event league_war_events.5 option league_war_events.5.b"
+		name = league_war_events.5.b
 		trigger = { NOT = { check_variable = { china_league_war_morale > 50 } } }
 
 		add_political_power = -25
@@ -2668,16 +2498,16 @@ country_event = { # [THIS.GetLeader] Praised/[THIS.GetLeader] Attacked
 }
 
 country_event = { # Former Warlords Join Us!
-	id = league_war.6
-	title = league_war.6.t
-	desc = league_war.6.desc
+	id = league_war_events.6
+	title = league_war_events.6.t
+	desc = league_war_events.6.desc
 	picture = GFX_report_event_CHN_warlord_battle
 
 	is_triggered_only = yes
 
 	option = { # Welcome!
-		log = "[GetLogInfo]: event league_war.6 option league_war.6.a"
-		name = league_war.6.a
+		log = "[GetLogInfo]: event league_war_events.6 option league_war_events.6.a"
+		name = league_war_events.6.a
 		set_temp_variable = { change_league_war_morale_by = 20 }
 		china_update_morale = yes
 		LEP_create_militia_template = yes
@@ -2701,16 +2531,16 @@ country_event = { # Former Warlords Join Us!
 }
 
 country_event = { #Anqing is victorious, time to draw them closer (for QIE)
-	id = league_war.10
-	title = league_war.10.t
-	desc = league_war.10.d
+	id = league_war_events.10
+	title = league_war_events.10.t
+	desc = league_war_events.10.d
 	picture = GFX_report_event_ANQ_chen_tiaoyuan
 
 	fire_only_once = yes
 	is_triggered_only = yes
 	option = { #great!
-		log = "[GetLogInfo]: event league_war.10 option league_war.10.a"
-		name = league_war.10.a
+		log = "[GetLogInfo]: event league_war_events.10 option league_war_events.10.a"
+		name = league_war_events.10.a
 		add_political_power = 75
 		give_guarantee = ANQ
 		remove_ideas = QIE_support_ANQ_idea
@@ -2727,16 +2557,16 @@ country_event = { #Anqing is victorious, time to draw them closer (for QIE)
 }
 
 country_event = { #LEP is victorious, time to guarantee them (for QIE)
-	id = league_war.11
-	title = league_war.11.t
-	desc = league_war.11.d
+	id = league_war_events.11
+	title = league_war_events.11.t
+	desc = league_war_events.11.d
 
 	fire_only_once = yes
 	is_triggered_only = yes
 	picture = GFX_report_event_LEP_qi_xieyuan_suit_2
 	option = {
-		log = "[GetLogInfo]: event league_war.11 option league_war.11.a"
-		name = league_war.11.a
+		log = "[GetLogInfo]: event league_war_events.11 option league_war_events.11.a"
+		name = league_war_events.11.a
 		add_political_power = 75
 		give_guarantee = LEP #you can get them in faction later, need to wrangle with germany
 		remove_ideas = QIE_support_LEP_idea
@@ -2755,9 +2585,9 @@ country_event = { #LEP is victorious, time to guarantee them (for QIE)
 }
 
 country_event = { #we backed LEP and they lose (for QIE)
-	id = league_war.12
-	title = league_war.12.t
-	desc = league_war.12.d
+	id = league_war_events.12
+	title = league_war_events.12.t
+	desc = league_war_events.12.d
 	picture = GFX_report_event_LEP_qi_xieyuan_arrest
 
 	fire_only_once = yes
@@ -2765,8 +2595,8 @@ country_event = { #we backed LEP and they lose (for QIE)
 	is_triggered_only = yes
 
 	option = { #damn
-		log = "[GetLogInfo]: event league_war.12 option league_war.12.a"
-		name = league_war.12.a
+		log = "[GetLogInfo]: event league_war_events.12 option league_war_events.12.a"
+		name = league_war_events.12.a
 		add_political_power = -100
 		remove_ideas = QIE_support_LEP_idea
 		add_manpower = 10000
@@ -2782,15 +2612,15 @@ country_event = { #we backed LEP and they lose (for QIE)
 }
 
 country_event = { #we backed ANQ and they lose (FOR QIE)
-	id = league_war.13
-	title = league_war.13.t
-	desc = league_war.13.d
+	id = league_war_events.13
+	title = league_war_events.13.t
+	desc = league_war_events.13.d
 	picture = GFX_report_event_LEP_sun_chuanfang_troops
 	is_triggered_only = yes
 
 	option = { #damn
-		log = "[GetLogInfo]: event league_war.13 option league_war.13.a"
-		name = league_war.13.a
+		log = "[GetLogInfo]: event league_war_events.13 option league_war_events.13.a"
+		name = league_war_events.13.a
 		add_political_power = -100
 		remove_ideas = QIE_support_ANQ_idea
 		add_manpower = 10000
@@ -2803,9 +2633,9 @@ country_event = { #we backed ANQ and they lose (FOR QIE)
 }
 
 country_event = { # Defeated ANQ (as LEP)
-	id = league_war.14
-	title = league_war.14.t
-	desc = league_war.14.d
+	id = league_war_events.14
+	title = league_war_events.14.t
+	desc = league_war_events.14.d
 	picture = GFX_report_event_LEP_qi_xieyuan_4
 
 	fire_only_once = yes
@@ -2813,15 +2643,15 @@ country_event = { # Defeated ANQ (as LEP)
 	is_triggered_only = yes
 
 	option = {
-		log = "[GetLogInfo]: event league_war.14 option league_war.14.a"
-		name = league_war.14.a #yay we win!
+		log = "[GetLogInfo]: event league_war_events.14 option league_war_events.14.a"
+		name = league_war_events.14.a #yay we win!
 		add_political_power = 100
 		add_war_support = 0.05
 	}
 }
 
 country_event = { # LEP collapse - LEP dead
-	id = league_war.15
+	id = league_war_events.15
 
 	hidden = yes
 	fire_only_once = yes
@@ -2834,7 +2664,7 @@ country_event = { # LEP collapse - LEP dead
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_war.15 option 1"
+		log = "[GetLogInfo]: event league_war_events.15 option 1"
 		LEP_league_war_find_victor = yes
 		LEP = {
 			LEP_remove_collapse_dm = yes
@@ -2843,7 +2673,7 @@ country_event = { # LEP collapse - LEP dead
 		QIE = {
 			if = {
 				limit = { has_country_flag = wu_intervenes_proLEP }
-				country_event = { id = league_war.12 days = 2 hours = 6 }
+				country_event = { id = league_war_events.12 days = 2 hours = 6 }
 				country_event = { id = qing_foreign_policy_events.153 days = 7 }
 			}
 		}
@@ -2935,7 +2765,7 @@ country_event = { # LEP collapse - LEP dead
 }
 
 country_event = { # LEP collapse - CHI dead
-	id = league_war.16
+	id = league_war_events.16
 
 	hidden = yes
 	fire_only_once = yes
@@ -2948,7 +2778,7 @@ country_event = { # LEP collapse - CHI dead
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_war.16 option 1"
+		log = "[GetLogInfo]: event league_war_events.16 option 1"
 		LEP_league_war_find_victor = yes
 		CHI = {
 			LEP_remove_collapse_dm = yes
@@ -2983,7 +2813,7 @@ country_event = { # LEP collapse - CHI dead
 }
 
 country_event = { # LEP collapse - ANQ dead
-	id = league_war.17
+	id = league_war_events.17
 
 	hidden = yes
 	fire_only_once = yes
@@ -2996,19 +2826,19 @@ country_event = { # LEP collapse - ANQ dead
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_war.17 option 1"
+		log = "[GetLogInfo]: event league_war_events.17 option 1"
 		LEP_league_war_find_victor = yes
 		ANQ = {
 			LEP_remove_collapse_dm = yes
 		}
 		if = {
 			limit = { country_exists = LEP }
-			LEP = { country_event = league_war.14 }
+			LEP = { country_event = league_war_events.14 }
 		}
 		QIE = {
 			if = {
 				limit = { has_country_flag = wu_intervenes_proANQ }
-				country_event = { id = league_war.13 days = 2 hours = 6 }
+				country_event = { id = league_war_events.13 days = 2 hours = 6 }
 			}
 		}
 		if = {
@@ -3025,7 +2855,7 @@ country_event = { # LEP collapse - ANQ dead
 						NOT = { QIE = { has_completed_focus = QIE_overtures_to_the_assembly } }
 						has_government = paternal_autocrat
 					}
-					country_event = league_war.6
+					country_event = league_war_events.6
 				}
 			}
 		}
@@ -3064,8 +2894,11 @@ country_event = { # LEP collapse - ANQ dead
 		else_if = {
 			limit = { country_exists = CHI }
 			ANQ = {
-				CHI_recruit_sun_liren_effect = yes
-				ANQ_sun_liren = { unit_leader_event = league_war_character_events.34 }
+				CHI_recruit_sun_liren_effect = yes #Uniform swap and demotion
+				ANQ_sun_liren = {
+					set_nationality = CHI #Needs to happen on top of prior effect as ROOT is always LEP
+					unit_leader_event = league_war_character_events.34
+				}
 				ANQ_ma_dengying = {
 					remove_second_in_command_role = yes
 					set_nationality = HNN
@@ -3111,7 +2944,7 @@ country_event = { # LEP collapse - ANQ dead
 }
 
 country_event = { # LEP collapse - SHD out
-	id = league_war.18
+	id = league_war_events.18
 
 	hidden = yes
 	fire_only_once = yes
@@ -3140,7 +2973,7 @@ country_event = { # LEP collapse - SHD out
 	}
 
 	option = {
-		log = "[GetLogInfo]: event league_war.18 option 1"
+		log = "[GetLogInfo]: event league_war_events.18 option 1"
 		set_global_flag = LEP_collapse_SHD_out
 		hidden_effect = {
 			#If SHD should change their mind, their opponents will get the ability to strike back.

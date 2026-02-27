@@ -1183,10 +1183,13 @@ CAN_returning_home_decisions = {
 				FROM = { has_war_with = GER }
 				NOT = { country_exists = GER }
 			}
+			NOT = { has_non_aggression_pact_with = FROM }
+			NOT = { has_truce_with = FROM }
 		}
 
 		visible = {
 			can_declare_war_on = FROM
+			NOT = { has_wargoal_against = FROM }
 			is_monarchy = yes
 			is_subject = no
 			NOT = { country_exists = GBR }
@@ -1199,9 +1202,9 @@ CAN_returning_home_decisions = {
 		targets = { ENG GBP }
 		target_trigger = {
 			can_declare_war_on = FROM
+			NOT = { has_wargoal_against = FROM }
 			is_monarchy = yes
 			is_subject = no
-			NOT = { country_exists = GBR }
 		}
 
 		ai_will_do = {
@@ -1276,10 +1279,6 @@ CAN_returning_home_decisions = {
 				NOT = { is_in_faction_with = RSA }
 			}
 			modifier = {
-				factor = 100
-				FROM = { has_war_with = GER }
-			}
-			modifier = {
 				factor = 0
 				has_global_flag = tilsit_peace_success
 				RUS = { NOT = { has_war_with = INT } }
@@ -1318,7 +1317,7 @@ CAN_returning_home_decisions = {
 							has_war_with = GER
 						}
 					}
-					news_event = { id = worldnews.471 days = 1 }
+					news_event = { id = world_news_events.471 days = 1 }
 				}
 			}
 		}

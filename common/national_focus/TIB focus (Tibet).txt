@@ -1158,6 +1158,7 @@ focus_tree = {
 				category = land_doctrine
 			}
 			add_command_power = 10
+			add_war_support = 0.10
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }
 	}
@@ -1180,7 +1181,8 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed TIB_reinforce_army"
 			army_experience = 50
-			add_command_power = 10
+			add_war_support = 0.10
+			increase_conscription = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH }
 	}
@@ -1203,7 +1205,8 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed TIB_Protect_the_Monasteries"
 			add_war_support = 0.15
-			add_manpower = 30000
+			add_manpower = 50000
+			increase_conscription = yes
 		}
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_INDUSTRY }
 	}

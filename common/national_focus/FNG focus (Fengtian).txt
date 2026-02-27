@@ -19,7 +19,7 @@ focus_tree = {
 	focus = {
 		id = FNG_Preservation_of_the_Xinhai_Order
 		icon = GFX_goal_ANQ_fengtian_loyalty
-		cost = 10
+		cost = 8
 
 		x = 15
 		y = 0
@@ -27,16 +27,8 @@ focus_tree = {
 		ai_will_do = { factor = 90 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FNG_Preservation_of_the_Xinhai_Order"
-			add_political_power = 20
-			#FNG's Starting Slots are Limited, Add These As "Mantetsu" Stuff
-			add_offsite_building = {
-				type = industrial_complex
-				level = 3
-			}
-			add_offsite_building = {
-				type = arms_factory
-				level = 3
-			}
+			add_political_power = 35
+			army_experience = 10
 			#Allow FNG to ally with SHD
 			effect_tooltip = { activate_targeted_decision = { decision = china_offer_alliance target = SHD } }
 			add_to_array = { china_possible_allies_array = SHD }
@@ -200,6 +192,11 @@ focus_tree = {
 			unlock_decision_tooltip = FNG_Liaoning_Infrastructure
 			unlock_decision_tooltip = FNG_Liaobei_Jilin_Infrastructure
 			unlock_decision_tooltip = FNG_Nenjiang_Songjiang_Infrastructure
+			custom_effect_tooltip = tooltip_white_line
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -349,10 +346,16 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed FNG_Mantetsu_Collaboration"
 			add_stability = 0.10
 			custom_effect_tooltip = FNG_mantetsu_collaboration_unlock
+			custom_effect_tooltip = tooltip_white_line
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
 			add_opinion_modifier = {
 				target = JAP
 				modifier = FNG_mantetsu_collab
 			}
+			custom_effect_tooltip = tooltip_white_line
 			set_temp_variable = { ZCPOP = -5 }
 			FNG_ZCPOP = yes
 			FNG_JAP_investment_large = yes
@@ -425,9 +428,14 @@ focus_tree = {
 				uses = 1
 				category = industry
 			}
+			custom_effect_tooltip = tooltip_white_line
 			set_temp_variable = { CCPOP = 5 }
 			FNG_CCPOP = yes
 			FNG_JAP_investment_large = yes
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
 	}
@@ -705,6 +713,11 @@ focus_tree = {
 		ai_will_do = { factor = 70 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FNG_Establish_the_Jinzhou_Industrial_Zone"
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			custom_effect_tooltip = tooltip_white_line
 			country_event = fengtian_events.69
 			if = {
 				limit = {
@@ -3539,56 +3552,64 @@ focus_tree = {
 			add_stability = 0.06
 			add_war_support = 0.06
 			custom_effect_tooltip = tooltip_white_line
-			division_template = {
-				name = "Heping Jianguojun"
-				division_names_group = "FNG_INF_01"
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
-					infantry = { x = 2 y = 0 }
-					infantry = { x = 2 y = 1 }
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Heping Jianguojun"
+					LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 8 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
 				}
-				support = {
-					engineer = { x = 0 y = 0 }
-					artillery = { x = 0 y = 1 }
+				if = {
+					limit = { has_template = "Heping Jianguojun" }
+					delete_unit_template_and_units = { division_template = "Heping Jianguojun" disband = yes } #No cheating
 				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Heping Jianguojun"
-				LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 8 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-				SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				division_template = {
+					name = "Heping Jianguojun"
+					division_names_group = FNG_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						artillery = { x = 0 y = 1 }
+					}
+				}
 			}
 			random_owned_controlled_state = {
-				create_unit = {
-					division = "name = \"Heping Jianguojun Di 1 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
-					owner = ROOT
-					count = 1
-				}
-				create_unit = {
-					division = "name = \"Heping Jianguojun Di 2 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
-					owner = ROOT
-					count = 1
-				}
-				create_unit = {
-					division = "name = \"Heping Jianguojun Di 3 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
-					owner = ROOT
-					count = 1
-				}
-				create_unit = {
-					division = "name = \"Heping Jianguojun Di 4 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
-					owner = ROOT
-					count = 1
-				}
-				create_unit = {
-					division = "name = \"Heping Jianguojun Di 5 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
-					owner = ROOT
-					count = 1
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 5
+						TYPE = "Heping Jianguojun"
+					}
+					create_unit = {
+						division = "name = \"Heping Jianguojun Di 1 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Heping Jianguojun Di 2 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Heping Jianguojun Di 3 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Heping Jianguojun Di 4 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Heping Jianguojun Di 5 Shi\" division_template = \"Heping Jianguojun\" start_equipment_factor = 0.5 start_experience_factor = 0.1"
+						owner = ROOT
+					}
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -4081,7 +4102,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed FNG_Found_the_Shenyang_National_Academy"
 			add_political_power = 50
 			add_command_power = 50
-			add_war_support = 0.10
+			add_war_support = 0.05
 			army_experience = 15
 			add_doctrine_cost_reduction = {
 				name = FNG_Found_the_Shenyang_National_Academy
@@ -4283,7 +4304,6 @@ focus_tree = {
 				custom_effect_tooltip = BONUS_PP_50
 			}
 			army_experience = 50
-			add_war_support = 0.10
 			add_mastery_bonus = {
 				name = FNG_Obtain_Japanese_Instructors
 				bonus = 0.1
@@ -4329,6 +4349,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FNG_Modernized_Curriculum"
 			army_experience = 25
+			add_war_support = 0.10
 			china_add_research_slots = yes
 			if = {
 				limit = {
@@ -5258,6 +5279,11 @@ focus_tree = {
 				}
 				custom_effect_tooltip = BONUS_PP_50
 			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			custom_effect_tooltip = tooltip_white_line
 			unlock_decision_tooltip = FNG_Request_Japanese_Small_Arms
 			unlock_decision_tooltip = FNG_Request_Japanese_Artillery
 			unlock_decision_tooltip = FNG_Request_Japanese_Tanks
@@ -5669,6 +5695,10 @@ focus_tree = {
 				custom_effect_tooltip = BONUS_PP_30
 			}
 			add_one_random_military_factory = yes
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
 	}

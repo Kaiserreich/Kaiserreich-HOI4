@@ -52,8 +52,7 @@ ideas = {
 			picture = generic_syndicalist_manpower
 			allowed = { always = no }
 			modifier = {
-				conscription_factor = 0.2
-				army_org_factor = -0.05
+				conscription_factor = 0.1
 			}
 		}
 		CEN_breadbasket_idea = {
@@ -81,7 +80,7 @@ ideas = {
 			allowed = { always = no }
 			modifier = {
 				production_speed_buildings_factor = 0.05
-				global_building_slots_factor = 0.1
+				global_building_slots_factor = 0.2
 			}
 		}
 		CEN_industrial_idea2 = {
@@ -91,7 +90,7 @@ ideas = {
 			allowed = { always = no }
 			modifier = {
 				production_speed_buildings_factor = 0.1
-				global_building_slots_factor = 0.2
+				global_building_slots_factor = 0.25
 			}
 		}
 
@@ -554,16 +553,6 @@ ideas = {
 				production_factory_max_efficiency_factor = 0.1
 			}
 		}
-		CEN_spread_revo_idea = {
-			on_add = { log = "[GetLogRoot]: add idea CEN_spread_revo_idea" }
-			picture = jap_the_unthinkable_option
-			allowed = { always = no }
-			modifier = {
-				army_morale_factor = 0.1
-				army_org_factor = 0.05
-				conscription_factor = 0.1
-			}
-		}
 		CEN_army_restructure = {
 			on_add = { log = "[GetLogRoot]: add idea CEN_army_restructure" }
 			picture = PER_untrained_officer
@@ -579,17 +568,29 @@ ideas = {
 			picture = generic_reserve_divisions
 			allowed = { always = no }
 			modifier = {
-				army_org_factor = 0.1
 				max_planning = 0.1
 				conscription_factor = 0.1
 			}
 		}
-		CEN_moving_jungle_idea = {
-			on_add = { log = "[GetLogRoot]: add idea CEN_moving_jungle_idea" }
-			picture = CZE_planning_bonus
+		CEN_professional_army_2 = {
+			on_add = { log = "[GetLogRoot]: add idea CEN_professional_army_2" }
+			picture = generic_reserve_divisions
+			name = CEN_professional_army
 			allowed = { always = no }
 			modifier = {
+				army_org_factor = 0.1
+				max_planning = 0.1
+				conscription_factor = 0.1
 				army_leader_start_logistics_level = 1
+			}
+		}
+		CEN_arming_forces_idea = {
+			on_add = { log = "[GetLogRoot]: add idea CEN_arming_forces_idea" }
+			picture = HOL_booming_economy
+			allowed = { always = no }
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.15
+				consumer_goods_factor = 0.2
 			}
 		}
 		CEN_professional_army_0_1 = {
@@ -601,6 +602,7 @@ ideas = {
 				army_org_factor = 0.1
 				max_planning = 0.1
 				conscription_factor = 0.1
+				army_leader_start_logistics_level = 1
 				land_reinforce_rate = 0.03
 			}
 		}
@@ -613,11 +615,12 @@ ideas = {
 				army_org_factor = 0.1
 				max_planning = 0.1
 				conscription_factor = 0.1
+				army_leader_start_logistics_level = 1
 				experience_loss_factor = -0.1
 			}
 		}
-		CEN_professional_army_1_1 = {
-			on_add = { log = "[GetLogRoot]: add idea CEN_professional_army_1_1" }
+		CEN_professional_army_3 = {
+			on_add = { log = "[GetLogRoot]: add idea CEN_professional_army_3" }
 			picture = generic_reserve_divisions
 			name = CEN_professional_army
 			allowed = { always = no }
@@ -625,8 +628,19 @@ ideas = {
 				army_org_factor = 0.1
 				max_planning = 0.1
 				conscription_factor = 0.1
+				army_leader_start_logistics_level = 1
 				experience_loss_factor = -0.1
 				land_reinforce_rate = 0.03
+			}
+		}
+		CEN_spread_revo_idea = {
+			on_add = { log = "[GetLogRoot]: add idea CEN_spread_revo_idea" }
+			picture = jap_the_unthinkable_option
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.1
+				army_org_factor = 0.05
+				conscription_factor = 0.1
 			}
 		}
 		CEN_new_generals_idea = {
@@ -643,7 +657,8 @@ ideas = {
 			picture = ROM_king_carol_emptied_accounts
 			allowed = { always = no }
 			modifier = {
-				supply_consumption_factor = -0.10
+				supply_consumption_factor = -0.1
+				army_morale_factor = 0.1
 			}
 		}
 		CEN_conscription_idea = {
@@ -660,8 +675,10 @@ ideas = {
 			picture = generic_communist_army
 			allowed = { always = no }
 			modifier = {
-				supply_consumption_factor = -0.10
-				training_time_army_factor = -0.10
+				supply_consumption_factor = -0.1
+				army_morale_factor = 0.1
+				training_time_army_factor = -0.1
+				land_reinforce_rate = 0.03
 			}
 		}
 		CEN_dig_in_idea = {
@@ -680,7 +697,8 @@ ideas = {
 			modifier = {
 				max_dig_in_factor = 0.1
 				dig_in_speed_factor = 0.05
-				army_core_defence_factor = 0.15
+				army_core_defence_factor = 0.1
+				land_night_attack = 0.1
 			}
 		}
 		CEN_increased_motorised_production = {
@@ -950,7 +968,7 @@ ideas = {
 			allowed = { always = no }
 			equipment_bonus = {
 				capital_ship = {
-					build_cost_ic = -0.2
+					build_cost_ic = -0.15
 					instant = yes
 				}
 				carrier = {
@@ -968,7 +986,8 @@ ideas = {
 			picture = debts
 			allowed = { always = no }
 			modifier = {
-				political_power_factor = -0.05
+				political_power_factor = -0.1
+				consumer_goods_factor = 0.15
 			}
 		}
 		CEN_naval_start_idea2a = {
@@ -981,7 +1000,7 @@ ideas = {
 			}
 			equipment_bonus = {
 				capital_ship = {
-					build_cost_ic = -0.2
+					build_cost_ic = -0.15
 					instant = yes
 				}
 				carrier = {
@@ -1004,7 +1023,7 @@ ideas = {
 			}
 			equipment_bonus = {
 				capital_ship = {
-					build_cost_ic = -0.2
+					build_cost_ic = -0.15
 					instant = yes
 				}
 				carrier = {
@@ -1028,7 +1047,7 @@ ideas = {
 			}
 			equipment_bonus = {
 				capital_ship = {
-					build_cost_ic = -0.2
+					build_cost_ic = -0.15
 					instant = yes
 				}
 				carrier = {
@@ -1053,7 +1072,7 @@ ideas = {
 			}
 			equipment_bonus = {
 				capital_ship = {
-					build_cost_ic = -0.2
+					build_cost_ic = -0.15
 					instant = yes
 				}
 				carrier = {
@@ -1081,12 +1100,12 @@ ideas = {
 			picture = generic_coastal_defense_ships2
 			allowed = { always = no }
 			modifier = {
-				political_power_factor = -0.08
+				political_power_factor = -0.1
 				industrial_capacity_dockyard = 0.3
 			}
 			equipment_bonus = {
 				capital_ship = {
-					build_cost_ic = -0.2
+					build_cost_ic = -0.15
 					instant = yes
 				}
 				carrier = {

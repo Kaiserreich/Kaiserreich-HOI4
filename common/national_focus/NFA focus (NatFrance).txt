@@ -5354,14 +5354,20 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NATFRA_Reconstruction_Commission"
+			add_war_support = -0.2
 			add_ideas = NATFRA_Reconstruction_Commission
-			hidden_effect = {
-				for_each_scope_loop = {
-					array = global.france_states_array
-					ROOT = {
-						activate_targeted_decision = { decision = NFA_Integrate_Metropole target = PREV }
+			set_country_flag = NFA_reconstruction_active
+			custom_effect_tooltip = tooltip_white_line
+			every_state = {
+				limit = {
+					OR = {
+						is_france = yes
+						is_wallonia = yes
+						is_luxembourg = yes
+						state = 1003 #Aosta Valley
 					}
 				}
+				enable_state_integration_80_compliance = yes
 			}
 			# If FRP was created, the AI is now allowed to justify claims
 			if = {
@@ -5713,13 +5719,11 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
 		available = {
 			has_war = no
-			custom_override_tooltip = {
-				tooltip = NFA_Metropole_Cored_tt
-				all_of_scopes = {
-					array = FRA.core_states
+			FRA = {
+				all_core_state = {
 					OR = {
-						NOT = { is_owned_by = ROOT }
 						is_core_of = ROOT
+						NOT = { is_owned_by = ROOT }
 					}
 				}
 			}

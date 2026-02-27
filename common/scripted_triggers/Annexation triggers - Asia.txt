@@ -11,9 +11,10 @@ can_release_1042 = { #Badakhshan
 	ROOT = {
 		OR = {
 			is_subject = yes
-			586 = { is_claim_or_core_of_ROOT = yes } #Kokand
-			619 = { is_claim_or_core_of_ROOT = yes } #Kashgar
-			1118 = { is_claim_or_core_of_ROOT = yes } #Qataghan
+			any_state_of = {
+				target = { 586 619 1118 } #Kokand, Kashgar, Qataghan
+				is_claim_or_core_of_ROOT = yes
+			}
 			586 = { #Kokand
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -46,9 +47,10 @@ can_release_825 = { #Battambang
 	ROOT = {
 		OR = {
 			is_subject = yes
-			750 = { is_claim_or_core_of_ROOT = yes } #Phnom Penh
-			823 = { is_claim_or_core_of_ROOT = yes } #Isan
-			824 = { is_claim_or_core_of_ROOT = yes } #Rayong
+			any_state_of = {
+				target = { 750 823 824 } #Phnom Penh, Isan, Rayong
+				is_claim_or_core_of_ROOT = yes
+			}
 			750 = { #Phnom Penh
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -167,8 +169,10 @@ can_release_408 = { #Vladivostok
 	ROOT = {
 		OR = {
 			is_subject = yes
-			582 = { is_claim_or_core_of_ROOT = yes } #Orsk
-			408 = { is_claim_or_core_of_ROOT = yes } #Vladivostok
+			any_state_of = {
+				target = { 582 408 } #Orsk, Vladivostok
+				is_claim_or_core_of_ROOT = yes
+			}
 
 			NOT = { country_exists = FER }
 			582 = { #Orsk
@@ -197,8 +201,10 @@ can_release_583 = { #Petropavlovsk
 	ROOT = {
 		OR = {
 			is_subject = yes
-			571 = { is_claim_or_core_of_ROOT = yes } #Omsk
-			590 = { is_claim_or_core_of_ROOT = yes } #Akmolinsk
+			any_state_of = {
+				target = { 571 590 } #Omsk, Akmolinsk
+				is_claim_or_core_of_ROOT = yes
+			}
 			571 = { #Omsk
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -331,8 +337,10 @@ can_release_555 = { #Kuril Islands
 	ROOT = {
 		OR = {
 			is_subject = yes
-			536 = { is_claim_or_core_of_ROOT = yes } #Hokkaido
-			637 = { is_claim_or_core_of_ROOT = yes } #Kamchatka
+			any_state_of = {
+				target = { 536 637 } #Hokkaido, Kamchatka
+				is_claim_or_core_of_ROOT = yes
+			}
 			536 = { #Hokkaido
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -512,8 +520,10 @@ can_release_831 = { #Moulmein
 	ROOT = {
 		OR = {
 			is_subject = yes
-			288 = { is_claim_or_core_of_ROOT = yes } #Rangoon
-			822 = { is_claim_or_core_of_ROOT = yes } #Lan Na
+			any_state_of = {
+				target = { 288 822 } #Rangoon, Lan Na
+				is_claim_or_core_of_ROOT = yes
+			}
 			288 = { #Rangoon
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -537,8 +547,10 @@ can_release_1111 = { #Hukawng Valley
 	ROOT = {
 		OR = {
 			is_subject = yes
-			701 = { is_claim_or_core_of_ROOT = yes } #Kachin
-			816 = { is_claim_or_core_of_ROOT = yes } #Dali
+			any_state_of = {
+				target = { 701 816 } #Kachin, Dali
+				is_claim_or_core_of_ROOT = yes
+			}
 			701 = { #Kachin
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -670,8 +682,10 @@ can_release_882 = { #Samabuli
 	ROOT = {
 		OR = {
 			is_subject = yes
-			670 = { is_claim_or_core_of_ROOT = yes } #Laos
-			822 = { is_claim_or_core_of_ROOT = yes } #Lan Na
+			any_state_of = {
+				target = { 670 822 } #Laos, Lan Na
+				is_claim_or_core_of_ROOT = yes
+			}
 			670 = { #Laos
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -749,8 +763,10 @@ can_release_743 = { #Shanghai
 				NOT = { has_global_flag = JAP_defeated_by_china }
 			}
 			china_is_potential_government = yes
-			596 = { is_claim_or_core_of_ROOT = yes } #Hangzhou
-			613 = { is_claim_or_core_of_ROOT = yes } #Nanjing
+			any_state_of = {
+				target = { 596 613 } #Hangzhou, Nanjing
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				has_socialist_government = no
 				NOT = { country_exists = LEC }
@@ -804,9 +820,10 @@ can_release_336 = { #Singapore
 	ROOT = {
 		OR = {
 			is_subject = yes
-			has_socialist_government = no
-			846 = { is_claim_or_core_of_ROOT = yes } #Johore
-			1020 = { is_claim_or_core_of_ROOT = yes } #Batavia
+			any_state_of = {
+				target = { 846 1020 } #Johore, Batavia
+				is_claim_or_core_of_ROOT = yes
+			}
 			annexations_AI_wants_to_own_singapore = yes
 			annexations_major_can_annex_strategic_territories = yes
 			846 = { #Johore
@@ -832,8 +849,10 @@ can_release_826 = { #Stung Treng
 	ROOT = {
 		OR = {
 			is_subject = yes
-			286 = { is_claim_or_core_of_ROOT = yes } #Cochinchina
-			750 = { is_claim_or_core_of_ROOT = yes } #Phnom Penh
+			any_state_of = {
+				target = { 286 750 } #Cochinchina, Phnom Penh
+				is_claim_or_core_of_ROOT = yes
+			}
 			286 = { #Cochinchina
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }

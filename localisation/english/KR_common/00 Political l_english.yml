@@ -144,38 +144,35 @@
  unit_limit_factor: "Division Limit"
  unit_limit_factor_tooltip: "$unit_limit_factor$: $RIGHT|+=0%$"
 
- unit_limit_subject_bonus: "Added Division Limit for Overlord"
+ unit_limit_subject_bonus: "Division Limit Contribution for Overlord"
 
  unit_limit_breakdown: "[unit_limit_breakdown]"
- unit_limit_breakdown_default: "§HMaximum Supported Divisions§!\nCurrent Maximum: [?uncapped_max_divisions|H0][unit_limit_reached_floor][unit_limit_reached_ceiling]\n[unit_limit_base_value][unit_limit_core_population][unit_limit_noncore_population][unit_limit_subject_population_bonus][unit_limit_states][unit_limit_subject_state_bonus]\n[unit_limit_factory_count_multiplier][unit_limit_additional_multipliers][unit_limit_faction_leader][unit_limit_factor]\n\nAdditional Modifiers:[unit_limit_base][unit_limit_economy_law][unit_limit_bonus][unit_limit_above_limit]"
+ unit_limit_breakdown_default: "§HMaximum Supported Divisions§!\nCurrent Maximum: [?uncapped_max_divisions|H0][unit_limit_reached_floor]\n[unit_limit_base_value][unit_limit_core_population][unit_limit_noncore_population][unit_limit_states][unit_limit_factories][unit_limit_subject_bonus][unit_limit_additional_multipliers][unit_limit_faction_leader][unit_limit_factor]\n\nAdditional Modifiers:[unit_limit_base][unit_limit_economy_law][unit_limit_bonus][unit_limit_above_limit]"
 
  unit_limit_list_item: "\n   - "
+ unit_limit_list_item_detailed: "\n      - "
 
- unit_limit_reached_floor_desc: "\n(Capped to a minimum of [?floor|H0])"
- unit_limit_reached_ceiling_desc: "\n(Capped to a maximum of [?ceiling|H0])"
+ unit_limit_reached_floor_desc: "\n(Capped to a minimum of [?constant:unit_limits.min|H0])"
  unit_limit_base_value_desc: "\nBase Value: [?base_units|G2]"
- unit_limit_core_population_desc: "$unit_limit_list_item$From Core Population: [?core_base|G2]"
- unit_limit_noncore_population_desc: "$unit_limit_list_item$From Non-Core Population: [?non_core_base|G2]"
- unit_limit_subject_population_bonus_desc: "$unit_limit_list_item$From §HSubject§! Population: [?subject_base_units|G2]"
- unit_limit_states_desc: "$unit_limit_list_item$From Owned States: [?num_owned_states|G0]"
- unit_limit_subject_state_bonus_desc: "$unit_limit_list_item$From §HSubject§! States: [?subject_states|G0]"
- unit_limit_factory_count_multiplier_desc: "\nFactory Count Multiplier: [?industry_factor|H%3]"
+ unit_limit_core_population_desc: "$unit_limit_list_item$Core Population: [?core_base|G2=]"
+ unit_limit_noncore_population_desc: "$unit_limit_list_item$Non-Core Population: [?non_core_base|G2=]"
+ unit_limit_states_desc: "$unit_limit_list_item$Owned States: [?num_owned_states|G0=]"
+ unit_limit_factories_low_desc: "$unit_limit_list_item$[?factory_delta|R0]/[?factory_cutoff|R0] Factories: [?base_factories|R2=]"
+ unit_limit_factories_high_desc: "$unit_limit_list_item$[?factory_delta|G0]/[?factory_cutoff|G0] Factories: [?base_factories|G2=]"
+ unit_limit_subject_bonus_desc: "$unit_limit_list_item$§HSubjects§!: [?base_subjects|G2=][unit_limit_subject_bonus_breakdown]"
+ unit_limit_subject_bonus_breakdown_desc: "$unit_limit_list_item_detailed$[?scope.GetNameWithFlag]: [?scope:divisions_from_subject|G2=][unit_limit_subject_bonus_breakdown]"
  unit_limit_additional_multipliers_desc: "\n\nAdditional Multipliers:"
- unit_limit_faction_leader_desc: "$unit_limit_list_item$Faction Leader: [?modifier|+=%0]"
+ unit_limit_faction_leader_desc: "$unit_limit_list_item$Faction Leader: [?constant:unit_limits.faction_leader_bonus|+=%0]"
  unit_limit_factor_desc: "$unit_limit_list_item$£pol_idea National Spirits: [?modifier@unit_limit_factor|=+0%]"
- unit_limit_base_desc: "$unit_limit_list_item$Base: [?base|=+0]"
+ unit_limit_base_desc: "$unit_limit_list_item$Base: [?constant:unit_limits.base|=+0]"
+ unit_limit_economy_law_desc: "$unit_limit_list_item$£pol_idea §H[?law.GetTokenLocalizedKey]§!: [?modifier@unit_limit_law_bonus|+=0]"
  unit_limit_bonus_desc: "$unit_limit_list_item$£pol_idea National Spirits: [?modifier@unit_limit_bonus|=+0]"
-
- unit_limit_low_economic_mobilisation: "$unit_limit_list_item$£pol_idea §H$low_economic_mobilisation$§!: [?modifier@unit_limit_law_bonus|+=0]"
- unit_limit_partial_economic_mobilisation: "$unit_limit_list_item$£pol_idea §H$partial_economic_mobilisation$§!: [?modifier@unit_limit_law_bonus|+=0]"
- unit_limit_war_economy: "$unit_limit_list_item$£pol_idea §H$war_economy$§!: [?modifier@unit_limit_law_bonus|+=0]"
- unit_limit_tot_economic_mobilisation: "$unit_limit_list_item$£pol_idea §H$tot_economic_mobilisation$§!: [?modifier@unit_limit_law_bonus|+=0]"
 
  unit_limit_above_limit_desc: "\n--------------\n$unit_limit_above_limit_text$"
  unit_limit_above_limit_text: "§RWe have currently exceeded our capacity, and the only way to alleviate the stress on our country will be to disband some of our divisions.§!\n\n$MODIFIER_ARMY_ORG_FACTOR$: [?mobilisation_penalty_var|+=%1]\n$MODIFIER_CONSUMER_GOODS_FACTOR$: [?mobilisation_penalty_var_positive|=%H1]\n$MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$: [?mobilisation_penalty_var|+=%]\n$MODIFIER_TRAINING_TIME_ARMY_FACTOR$: [?mobilisation_penalty_var_positive|-=%]\n$MODIFIER_LAND_REINFORCE_RATE$: [?mobilisation_penalty_var|+=%1]"
 
  unit_limit_breakdown_desc: "[unit_limit_breakdown_desc]"
- unit_limit_breakdown_desc_enabled: "Every country only has the ability to support a certain number of individual military divisions before their economy and infrastructure struggle to maintain them.\n\nThe maximum number of supported units is based on the country's §Hpopulation§! and §Hnumber of owned states§!, and is then multiplied by a ratio of this value to the §Hnumber of factories§! in the states.\n\nIn §Hcivil wars§!, the base values are calculated from the sum of all states owned by all participants."
+ unit_limit_breakdown_desc_enabled: "Every country only has the ability to support a certain number of individual military divisions before their economy and infrastructure struggle to maintain them.\n\nThe maximum number of supported units is based on the country's §Ypopulation§!, §Ynumber of owned states§!, and its §Yfactory count§! relative to the former two.\n\nIn §Hcivil wars§!, the base values are calculated from the sum of all states owned by all participants."
  unit_limit_breakdown_desc_disabled: "§HMaximum Supported Divisions§! has been disabled by game rules."
 
 ### Tooltips ###

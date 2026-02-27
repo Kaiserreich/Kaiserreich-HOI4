@@ -2,6 +2,8 @@ on_actions = {
 	on_startup = {
 		effect = {
 			GEA = {
+				set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+				add_to_coalition = yes
 				set_rule = { can_send_volunteers = no }
 				add_relation_rule_override = {
 					can_send_volunteers = yes

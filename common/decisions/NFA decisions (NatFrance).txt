@@ -1063,6 +1063,8 @@ NFA_reclaim_metropole_cat = {
 				FROM = { has_war_with = GER }
 				NOT = { country_exists = GER }
 			}
+			NOT = { has_non_aggression_pact_with = FROM }
+			NOT = { has_truce_with = FROM }
 		}
 
 		visible = {
@@ -1079,6 +1081,7 @@ NFA_reclaim_metropole_cat = {
 
 		priority = 100
 		days_remove = 30
+		days_re_enable = 30
 		cancel_if_not_visible = yes
 		war_with_target_on_remove = yes
 
@@ -1140,33 +1143,42 @@ NFA_reclaim_metropole_cat = {
 		cancel_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision cancel NFA_La_Lutte_Finale"
 			clear_decision_attack_AI = yes
+			clr_country_flag = NFA_delay_la_lutte_finale
 		}
 
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete NFA_La_Lutte_Finale"
 			setup_decision_attack_AI = yes
 			hidden_effect = {
-				FROM = { country_event = french_republic_events.110 } #warning event
 				if = {
 					limit = {
 						is_ai = yes
-						is_in_faction_with = CAN
-						CAN = { is_ai = no }
+						is_in_faction = yes
+						faction_leader = { is_ai = no }
 					}
-					CAN = { country_event = french_republic_events.140 } #A player CAN can decide if NFA attacks or not
+					faction_leader = { country_event = french_republic_events.140 } #A player CAN can decide if NFA attacks or not
+				}
+				else = {
+					FROM = { country_event = french_republic_events.110 } #warning event
 				}
 			}
 		}
 
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove NFA_La_Lutte_Finale"
-			log = "KR_Event_Logging;ENTENTE ENTERS 2WK"
 			clear_decision_attack_AI = yes
-			set_global_flag = entente_reclamation_wars_threat
-			declare_war_on = { target = FROM type = annex_everything }
-			add_named_threat = {
-				threat = 15
-				name = NFA_la_lutte_finale_war_threat
+			if = {
+				limit = { has_country_flag = NFA_delay_la_lutte_finale }
+				clr_country_flag = NFA_delay_la_lutte_finale
+			}
+			else = {
+				log = "KR_Event_Logging;ENTENTE ENTERS 2WK"
+				set_global_flag = entente_reclamation_wars_threat
+				declare_war_on = { target = FROM type = annex_everything }
+				add_named_threat = {
+					threat = 15
+					name = NFA_la_lutte_finale_war_threat
+				}
 			}
 		}
 		fixed_random_seed = no
@@ -2495,6 +2507,10 @@ NFA_rebuild_legitimacy_cat = {
 			NOT = { has_decision = NFA_Large_Scale_Effort }
 		}
 
+		visible = {
+			has_country_flag = NFA_reconstruction_active
+		}
+
 		modifier = {
 			political_power_gain = -0.2
 			war_support_weekly = -0.003
@@ -2544,6 +2560,10 @@ NFA_rebuild_legitimacy_cat = {
 		available = {
 			political_power_daily > 0.5
 			NOT = { has_decision = NFA_Small_Propaganda }
+		}
+
+		visible = {
+			has_country_flag = NFA_reconstruction_active
 		}
 
 		modifier = {
@@ -2598,11 +2618,13 @@ NFA_rebuild_legitimacy_cat = {
 
 		available = {
 			controls_state = FROM #NFA controls Paris
-			FROM = { NOT = { has_state_flag = currently_being_cored } }
 		}
 
 		state_target = yes
 		targets = { 16 }
+		target_root_trigger = {
+			has_country_flag = NFA_reconstruction_active
+		}
 		target_trigger = {
 			FROM = {
 				is_owned_by = ROOT
@@ -2630,11 +2652,13 @@ NFA_rebuild_legitimacy_cat = {
 
 		available = {
 			controls_state = FROM #NFA controls Provence
-			FROM = { NOT = { has_state_flag = currently_being_cored } }
 		}
 
 		state_target = yes
 		targets = { 21 }
+		target_root_trigger = {
+			has_country_flag = NFA_reconstruction_active
+		}
 		target_trigger = {
 			FROM = {
 				is_owned_by = ROOT
@@ -2662,11 +2686,13 @@ NFA_rebuild_legitimacy_cat = {
 
 		available = {
 			controls_state = FROM #NFA controls Lyonnais
-			FROM = { NOT = { has_state_flag = currently_being_cored } }
 		}
 
 		state_target = yes
 		targets = { 20 }
+		target_root_trigger = {
+			has_country_flag = NFA_reconstruction_active
+		}
 		target_trigger = {
 			FROM = {
 				is_owned_by = ROOT
@@ -2694,11 +2720,13 @@ NFA_rebuild_legitimacy_cat = {
 
 		available = {
 			controls_state = FROM #NFA controls Bordeaux
-			FROM = { NOT = { has_state_flag = currently_being_cored } }
 		}
 
 		state_target = yes
 		targets = { 19 }
+		target_root_trigger = {
+			has_country_flag = NFA_reconstruction_active
+		}
 		target_trigger = {
 			FROM = {
 				is_owned_by = ROOT
@@ -2726,11 +2754,13 @@ NFA_rebuild_legitimacy_cat = {
 
 		available = {
 			controls_state = FROM #NFA controls Lille
-			FROM = { NOT = { has_state_flag = currently_being_cored } }
 		}
 
 		state_target = yes
 		targets = { 980 }
+		target_root_trigger = {
+			has_country_flag = NFA_reconstruction_active
+		}
 		target_trigger = {
 			FROM = {
 				is_owned_by = ROOT
@@ -2837,248 +2867,6 @@ NFA_rebuild_legitimacy_cat = {
 		}
 		fixed_random_seed = no
 	}
-
-	NFA_Integrate_Metropole = {
-		name = integrate_state
-		icon = eng_trade_unions_demand
-
-		allowed = { always = no } #activated by effect
-
-		available = {
-			has_political_power > 0
-			has_full_control_of_state = FROM
-			if = {
-				limit = { is_ai = yes }
-				FROM = { compliance > 70 }
-				FROM = { resistance < 30 }
-			}
-			else = {
-				FROM = { compliance > 80 }
-				FROM = { resistance < 10 }
-			}
-		}
-
-		visible = {
-			owns_state = FROM
-		}
-
-		cancel_trigger = {
-			NOT = { has_full_control_of_state = FROM }
-		}
-
-		cost = 0
-		days_remove = 75
-		cancel_if_not_visible = yes
-		on_map_mode = map_only
-		state_target = yes
-
-		ai_will_do = { factor = 1000 }
-
-		complete_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision complete NFA_Integrate_Metropole"
-			FROM = { set_state_flag = currently_being_cored }
-			NFA_dynamic_metropole_coring_cost = yes
-		}
-
-		remove_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision remove NFA_Integrate_Metropole"
-			FROM = { clr_state_flag = currently_being_cored }
-			hidden_effect = { remove_state_claim = FROM }
-			add_state_core = FROM
-			FROM = {
-				if = {
-					limit = { has_dynamic_modifier = { modifier = NFA_Communard_Resistance } }
-					remove_dynamic_modifier = { modifier = NFA_Communard_Resistance }
-				}
-			}
-			if = {
-				limit = {
-					FROM = {
-						state = 16
-						is_capital = no
-					}
-				}
-				set_capital = { state = 16 remember_old_capital = no }
-				country_event = french_republic_events.524 #Flavour about capital change
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 21
-						is_capital = no
-					}
-					NOT = { owns_state = 16 }
-				}
-				set_capital = { state = 21 remember_old_capital = no }
-				country_event = french_republic_events.525 #Flavour about capital change
-			}
-			set_temp_variable = { NFA_owned_france_states = 0 }
-			set_temp_variable = { NFA_cored_france_states = 0 }
-			hidden_effect = {
-				for_each_scope_loop = {
-					array = FRA.core_states
-					if = {
-						limit = { is_owned_by = ROOT }
-						add_to_temp_variable = { NFA_owned_france_states = 1 }
-					}
-					if = {
-						limit = { is_core_of = ROOT }
-						add_to_temp_variable = { NFA_cored_france_states = 1 }
-					}
-				}
-			}
-			divide_temp_variable = { NFA_cored_france_states = NFA_owned_france_states }
-			if = {
-				limit = {
-					has_idea = NFA_communard_influence_1
-					check_variable = { NFA_cored_france_states > 0.9 }
-				}
-				remove_ideas = NFA_communard_influence_1
-			}
-			else_if = {
-				limit = {
-					has_idea = NFA_communard_influence_2
-					check_variable = { NFA_cored_france_states > 0.5 }
-				}
-				swap_ideas = {
-					remove_idea = NFA_communard_influence_2
-					add_idea = NFA_communard_influence_1
-				}
-			}
-			hidden_effect = {
-				remove_targeted_decision = { decision = NFA_Integrate_Metropole target = FROM }
-			}
-		}
-		fixed_random_seed = no
-	}
-}
-
-NFA_Integration_decisions = {
-	NFA_Integrate_State = {
-		name = integrate_state
-		icon = eng_trade_unions_demand
-
-		available = {
-			FROM = {
-				is_fully_controlled_by = ROOT
-				compliance > 80
-				resistance < 10
-			}
-		}
-
-		visible = {
-			FROM = {
-				is_owned_by = ROOT
-				NOT = { is_core_of = ROOT }
-			}
-		}
-
-		cancel_trigger = {
-			NOT = {
-				FROM = {
-					is_fully_controlled_by = ROOT
-				}
-			}
-		}
-
-		cost = 30
-		days_remove = 100
-		cancel_if_not_visible = yes
-		fire_only_once = yes
-
-		state_target = yes
-		targets = { 760 34 948 741 8 1003 }
-		target_root_trigger = {
-			16 = {
-				is_core_of = ROOT
-			}
-		}
-		target_trigger = {
-			FROM = {
-				is_owned_by = ROOT
-				NOT = { is_core_of = ROOT }
-			}
-		}
-
-		modifier = {
-			political_power_cost = 0.15
-		}
-
-		ai_will_do = { factor = 1000 }
-
-		remove_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision remove NFA_Integrate_State"
-			hidden_effect = { remove_state_claim = FROM }
-			add_state_core = FROM
-		}
-		fixed_random_seed = no
-	}
-
-	NFA_Integrate_Overseas_State = {
-		icon = eng_trade_unions_demand
-
-		available = {
-			FROM = {
-				is_fully_controlled_by = ROOT
-			}
-		}
-
-		visible = {
-			FROM = {
-				is_owned_by = ROOT
-				NOT = { is_core_of = ROOT }
-			}
-		}
-
-		cancel_trigger = {
-			NOT = {
-				FROM = {
-					is_fully_controlled_by = ROOT
-				}
-			}
-		}
-
-		cost = 30
-		days_remove = 300
-		cancel_if_not_visible = yes
-		fire_only_once = yes
-
-		state_target = yes
-		targets = { 310 694 706 635 641 }
-		target_root_trigger = {
-			16 = {
-				is_core_of = ROOT
-			}
-		}
-		target_trigger = {
-			FROM = {
-				is_owned_by = ROOT
-				NOT = { is_core_of = ROOT }
-			}
-		}
-
-		modifier = {
-			political_power_cost = 0.15
-		}
-
-		ai_will_do = { factor = 1000 }
-
-		remove_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision remove NFA_Integrate_Overseas_State"
-			hidden_effect = { remove_state_claim = FROM }
-			add_state_core = FROM
-			if = { #Core the Jungle with the coast
-				limit = {
-					FROM = {
-						state = 310
-					}
-				}
-				hidden_effect = { remove_state_claim = 1037 }
-				add_state_core = 1037
-			}
-		}
-		fixed_random_seed = no
-	}
 }
 
 NFA_rebuild_metropole_cat = {
@@ -3136,22 +2924,16 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			17 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			controls_state = 17
 		}
 		visible = {
 			owns_state = 17
-			17 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 		}
 		modifier = {
 			civilian_factory_use = 3
@@ -3182,34 +2964,21 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			30 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			33 = {
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 4
-			controls_state = 30
-			controls_state = 33
 		}
 		visible = {
-			30 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
-			33 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 30
 			owns_state = 33
 		}
@@ -3255,21 +3024,15 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			15 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 4
-			controls_state = 15
 		}
 		visible = {
-			15 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 15
 		}
 		modifier = {
@@ -3320,34 +3083,22 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			27 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			785 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 4
-			controls_state = 27
-			controls_state = 785
 		}
 		visible = {
-			27 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
-			785 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 27
 			owns_state = 785
 		}
@@ -3393,21 +3144,15 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			18 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 4
-			controls_state = 18
 		}
 		visible = {
-			18 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 18
 		}
 		modifier = {
@@ -3439,21 +3184,15 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			21 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 4
-			controls_state = 21
 		}
 		visible = {
-			21 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 21
 		}
 		modifier = {
@@ -3505,21 +3244,15 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			21 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			controls_state = 21
 		}
 		visible = {
-			21 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 21
 		}
 		modifier = {
@@ -3551,21 +3284,15 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			23 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 4
-			controls_state = 23
 		}
 		visible = {
-			23 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 23
 		}
 		modifier = {
@@ -3617,21 +3344,15 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			19 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			controls_state = 19
 		}
 		visible = {
-			19 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 19
 		}
 		modifier = {
@@ -3663,21 +3384,15 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			19 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			controls_state = 19
 		}
 		visible = {
-			19 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 19
 		}
 		modifier = {
@@ -3709,21 +3424,15 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			20 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 4
-			controls_state = 20
 		}
 		visible = {
-			20 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 20
 		}
 		modifier = {
@@ -3761,21 +3470,15 @@ NFA_rebuild_metropole_cat = {
 		}
 		available = {
 			20 = {
+				is_controlled_by = ROOT
 				OR = {
 					compliance > 60
-					is_core_of = NFA
+					is_core_of = ROOT
 				}
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			controls_state = 20
 		}
 		visible = {
-			20 = {
-				OR = {
-					compliance > 30
-					is_core_of = NFA
-				}
-			}
 			owns_state = 20
 		}
 		modifier = {

@@ -859,8 +859,10 @@ country_event = { #Fate of the Suez Canal
 		if = {
 			limit = {
 				OR = {
-					446 = { is_claim_or_core_of_ROOT = yes } #Cairo
-					453 = { is_claim_or_core_of_ROOT = yes } #Sinai
+					any_state_of = {
+						target = { 446 453 } #Cairo, Sinai
+						is_claim_or_core_of_ROOT = yes
+					}
 					annexations_AI_wants_to_own_suez = yes
 				}
 			}
@@ -989,9 +991,9 @@ country_event = { #Fate of Sinai
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					446 = { is_claim_or_core_of_ROOT = yes } #Cairo
-					454 = { is_claim_or_core_of_ROOT = yes } #Jerusalem
+				any_state_of = {
+					target = { 446 454 } #Cairo, Jerusalem
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -1522,6 +1524,10 @@ country_event = { #Fate of Georgia
 						owner = {
 							owns_state = 233 #Vladikavkaz
 							ROOT_can_grant_land = yes
+							OR = {
+								is_subject = no
+								RUS_can_integrate = yes
+							}
 						}
 					}
 				}
@@ -1831,6 +1837,10 @@ country_event = { #Fate of Azerbaijan
 						owner = {
 							owns_state = 232 #Dagestan
 							ROOT_can_grant_land = yes
+							OR = {
+								is_subject = no
+								RUS_can_integrate = yes
+							}
 						}
 					}
 				}
@@ -1983,9 +1993,9 @@ country_event = { #Fate of Karabakh
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					230 = { is_claim_or_core_of_ROOT = yes } #Yerevan
-					229 = { is_claim_or_core_of_ROOT = yes } #Azerbaijan
+				any_state_of = {
+					target = { 230 229 } #Yerevan, Azerbaijan
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -2165,6 +2175,10 @@ country_event = { #Fate of Armenia
 					var:231.owner = { #Georgia
 						is_russian_tag = yes
 						ROOT_can_grant_land = yes
+						OR = {
+							is_subject = no
+							RUS_can_integrate = yes
+						}
 					}
 				}
 				var:231.owner = { save_event_target_as = russia add_to_array = { ROOT.potential_grant_targets = THIS } }
@@ -2175,6 +2189,10 @@ country_event = { #Fate of Armenia
 						is_russian_tag = yes
 						ROOT_can_grant_land = yes
 						998 = { annexations_required_state_is_owned_by_either_side = yes } #Karabakh
+						OR = {
+							is_subject = no
+							RUS_can_integrate = yes
+						}
 					}
 				}
 				var:229.owner = { save_event_target_as = russia add_to_array = { ROOT.potential_grant_targets = THIS } }
@@ -2318,9 +2336,9 @@ country_event = { #Fate of Kars
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					230 = { is_claim_or_core_of_ROOT = yes } #Yerevan
-					354 = { is_claim_or_core_of_ROOT = yes } #Erzurum
+				any_state_of = {
+					target = { 230 354 } #Yerevan, Erzurum
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -2933,8 +2951,10 @@ country_event = { #Fate of the Trucial States
 		if = {
 			limit = {
 				OR = {
-					656 = { is_claim_or_core_of_ROOT = yes } #Hasa
-					812 = { is_claim_or_core_of_ROOT = yes } #Basra
+					any_state_of = {
+						target = { 656 812 } #Hasa, Basra
+						is_claim_or_core_of_ROOT = yes
+					}
 					AND = {
 						991 = { is_claim_or_core_of_ROOT = yes } #Summan
 						owns_state = 656 #Hasa
@@ -4326,10 +4346,9 @@ country_event = { #Fate of Asir
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						679 = { is_claim_or_core_of_ROOT = yes } #Mecca
-						293 = { is_claim_or_core_of_ROOT = yes } #Yemen
-						292 = { is_claim_or_core_of_ROOT = yes } #Jabal Tuwaiq
+					any_state_of = {
+						target = { 679 293 292 } #Mecca, Yemen, Jabal Tuwaiq
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -4501,8 +4520,10 @@ country_event = { #Fate of Batumi
 			limit = {
 				OR = {
 					original_tag = ARM
-					231 = { is_claim_or_core_of_ROOT = yes } #Georgia
-					354 = { is_claim_or_core_of_ROOT = yes } #Erzurum
+					any_state_of = {
+						target = { 231 354 } #Georgia, Erzurum
+						is_claim_or_core_of_ROOT = yes
+					}
 				}
 			}
 			save_event_target_as = can_annex
@@ -4746,9 +4767,9 @@ country_event = { #Fate of Basra
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					291 = { is_claim_or_core_of_ROOT = yes } #Baghdad
-					413 = { is_claim_or_core_of_ROOT = yes } #Khuzestan
+				any_state_of = {
+					target = { 291 413 } #Baghdad, Khuzestan
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -4822,9 +4843,9 @@ country_event = { #Fate of Khuzestan
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					266 = { is_claim_or_core_of_ROOT = yes } #Teheran
-					291 = { is_claim_or_core_of_ROOT = yes } #Baghdad
+				any_state_of = {
+					target = { 266 291 } #Teheran, Baghdad
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -4945,9 +4966,9 @@ country_event = { #Fate of Abkhazia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					231 = { is_claim_or_core_of_ROOT = yes } #Georgia
-					233 = { is_claim_or_core_of_ROOT = yes } #Vladikavkaz
+				any_state_of = {
+					target = { 231 233 } #Georgia, Vladikavkaz
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -5361,10 +5382,9 @@ country_event = { #Fate of Bahrain
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						412 = { is_claim_or_core_of_ROOT = yes } #Fars
-						656 = { is_claim_or_core_of_ROOT = yes } #Hasa
-						993 = { is_claim_or_core_of_ROOT = yes } #Qatar
+					any_state_of = {
+						target = { 412 656 993 } #Fars, Hasa, Qatar
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -5535,10 +5555,9 @@ country_event = { #Fate of Khasab
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						294 = { is_claim_or_core_of_ROOT = yes } #Muscat
-						412 = { is_claim_or_core_of_ROOT = yes } #Fars
-						658 = { is_claim_or_core_of_ROOT = yes } #Abu Dhabi
+					any_state_of = {
+						target = { 294 412 658 } #Muscat, Fars, Abu Dhabi
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -5968,9 +5987,9 @@ country_event = { #Fate of Ashkhabad
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					416 = { is_claim_or_core_of_ROOT = yes } #Khorasan
-					584 = { is_claim_or_core_of_ROOT = yes } #Karakum
+				any_state_of = {
+					target = { 416 584 } #Khorasan, Karakum
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex

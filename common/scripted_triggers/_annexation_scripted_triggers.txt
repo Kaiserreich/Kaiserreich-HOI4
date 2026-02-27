@@ -203,6 +203,21 @@ annexations_is_valid_annexation_region = {
 	}
 }
 
+annexations_is_valid_annexation_region_for_faction = {
+	if = {
+		limit = { NOT = { has_variable = annexation_target:annexation_extra_states^num } }
+		owner = { is_ally_with = ROOT }
+		is_allowed_annexation_state_for_owner = yes
+	}
+	else = {
+		any_of_scopes = {
+			array = annexation_target:annexation_extra_states
+			owner = { is_ally_with = ROOT }
+			is_allowed_annexation_state_for_owner = yes
+		}
+	}
+}
+
 add_state_to_resistance_target_array = {
 	if = {
 		limit = { NOT = { is_in_array = { resistance_target_states = annexation_target } } }

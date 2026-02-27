@@ -6746,7 +6746,7 @@ UKR_republic_decisions = {
 			if = {
 				limit = { is_faction_leader = yes } #== took over the Reichspakt
 				custom_effect_tooltip = UKR_reichspakt_collapse_warning
-				effect_tooltip = { create_faction_from_template = { template = faction_template_generic name = small_pact } }
+				effect_tooltip = { create_faction_from_template = { template = faction_template_generic name = faction_small_pact } }
 				hidden_effect = {
 					every_other_country = {
 						limit = {
@@ -6761,7 +6761,7 @@ UKR_republic_decisions = {
 					}
 					leave_faction = yes
 					MIE_remove_from_intermarium = yes
-					create_faction_from_template = { template = faction_template_generic name = small_pact }
+					create_faction_from_template = { template = faction_template_generic name = faction_small_pact }
 					for_each_loop = {
 						array = small_pact_members_from_reichspakt
 						set_global_flag = TEMPORARY_DISABLED_FACTION_POPUP
@@ -6774,7 +6774,11 @@ UKR_republic_decisions = {
 				}
 			}
 			else = {
-				create_faction_from_template = { template = faction_template_generic name = small_pact }
+				create_faction_from_template = { template = faction_template_generic name = faction_small_pact }
+			}
+			hidden_effect = {
+				set_faction_rule = joining_rule_same_continent_only
+				set_faction_manifest = faction_manifest_liberation_of_europe
 			}
 			every_other_country = {
 				display_individual_scopes = yes

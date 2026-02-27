@@ -4,9 +4,10 @@ can_release_855 = { #Acre
 	ROOT = {
 		OR = {
 			is_subject = yes
-			495 = { is_claim_or_core_of_ROOT = yes } #Amazonas
-			494 = { is_claim_or_core_of_ROOT = yes } #Cuzco
-			847 = { is_claim_or_core_of_ROOT = yes } #Beni
+			any_state_of = {
+				target = { 495 494 847 } #Amazonas, Cuzco, Beni
+				is_claim_or_core_of_ROOT = yes
+			}
 			495 = { #Amazonas
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -43,8 +44,10 @@ can_release_506 = { #Antofagasta
 	ROOT = {
 		OR = {
 			is_subject = yes
-			848 = { is_claim_or_core_of_ROOT = yes } #Potosí
-			874 = { is_claim_or_core_of_ROOT = yes } #Atacama
+			any_state_of = {
+				target = { 848 874 } #Potosí, Atacama
+				is_claim_or_core_of_ROOT = yes
+			}
 			848 = { #Potosí
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -110,8 +113,10 @@ can_release_1074 = { #Misiones
 	ROOT = {
 		OR = {
 			is_subject = yes
-			510 = { is_claim_or_core_of_ROOT = yes } #La Mesopotamia
-			301 = { is_claim_or_core_of_ROOT = yes } #Paraguay
+			any_state_of = {
+				target = { 510 301 } #La Mesopotamia, Paraguay
+				is_claim_or_core_of_ROOT = yes
+			}
 			510 = { #La Mesopotamia
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -287,7 +292,17 @@ can_release_310 = { #Cayenne
 #Ecuador - annexation_ecuador
 can_release_305 = { #Quito
 	305 = { annexations_state_is_tied_to_annexation_decision = yes } #Quito
-	NOT = { country_exists = ECU }
+	ROOT = {
+		OR = {
+			is_subject = yes
+			NOT = { country_exists = ECU }
+			has_cosmetic_tag = GCL
+			305 = { #Quito
+				annexations_state_owner_is_valid_grant_target = yes
+				owner = { ROOT_can_grant_land = yes }
+			}
+		}
+	}
 	add_state_to_resistance_target_array = yes
 }
 
@@ -304,8 +319,10 @@ can_release_falkland_islands = {
 	ROOT = {
 		OR = {
 			is_subject = yes
-			278 = { is_claim_or_core_of_ROOT = yes } #Buenos Aires
-			1029 = { is_claim_or_core_of_ROOT = yes } #Santa Cruz
+			any_state_of = {
+				target = { 278 1029 } #Buenos Aires, Santa Cruz
+				is_claim_or_core_of_ROOT = yes
+			}
 			annexations_britain_can_annex_overseas = yes
 			278 = { #Buenos Aires
 				annexations_state_owner_is_valid_grant_target = yes
@@ -355,8 +372,10 @@ can_release_1078 = { #Barima
 	ROOT = {
 		OR = {
 			is_subject = yes
-			687 = { is_claim_or_core_of_ROOT = yes } #Demerara
-			912 = { is_claim_or_core_of_ROOT = yes } #Bolivar
+			any_state_of = {
+				target = { 687 912 } #Demerara, Bolivar
+				is_claim_or_core_of_ROOT = yes
+			}
 			687 = { #Demerara
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -380,9 +399,10 @@ can_release_1041 = { #Iguassú
 	ROOT = {
 		OR = {
 			is_subject = yes
-			503 = { is_claim_or_core_of_ROOT = yes } #Paraná
-			301 = { is_claim_or_core_of_ROOT = yes } #Paraguay
-			1074 = { is_claim_or_core_of_ROOT = yes } #Misiones
+			any_state_of = {
+				target = { 503 301 1074 } #Paraná, Paraguay, Misiones
+				is_claim_or_core_of_ROOT = yes
+			}
 			503 = { #Paraná
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -426,8 +446,10 @@ can_release_490 = { #Pastaza
 	ROOT = {
 		OR = {
 			is_subject = yes
-			305 = { is_claim_or_core_of_ROOT = yes } #Quito
-			491 = { is_claim_or_core_of_ROOT = yes } #Loreto
+			any_state_of = {
+				target = { 305 491 } #Quito, Loreto
+				is_claim_or_core_of_ROOT = yes
+			}
 			305 = { #Quito
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -466,8 +488,10 @@ can_release_1043 = { #Ponta Porã
 	ROOT = {
 		OR = {
 			is_subject = yes
-			504 = { is_claim_or_core_of_ROOT = yes } #Campo Grande
-			301 = { is_claim_or_core_of_ROOT = yes } #Paraguay
+			any_state_of = {
+				target = { 504 301 } #Campo Grande, Paraguay
+				is_claim_or_core_of_ROOT = yes
+			}
 			504 = { #Campo Grande
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -492,8 +516,10 @@ can_release_854 = { #Putumayo
 	ROOT = {
 		OR = {
 			is_subject = yes
-			851 = { is_claim_or_core_of_ROOT = yes } #Caquetá
-			490 = { is_claim_or_core_of_ROOT = yes } #Pastaza
+			any_state_of = {
+				target = { 851 490 } #Caquetá, Pastaza
+				is_claim_or_core_of_ROOT = yes
+			}
 			851 = { #Caquetá
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -549,8 +575,10 @@ can_release_873 = { #Tarapacá
 				492 = { is_claim_or_core_of_ROOT = yes } #Arequipa
 				owns_state = 872 #Arica
 			}
-			506 = { is_claim_or_core_of_ROOT = yes } #Antofagasta
-			848 = { is_claim_or_core_of_ROOT = yes } #Potosí
+			any_state_of = {
+				target = { 506 848 } #Antofagasta, Potosí
+				is_claim_or_core_of_ROOT = yes
+			}
 			492 = { #Arequipa
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = {
@@ -582,9 +610,10 @@ can_release_1028 = { #Tierra del Fuego
 	ROOT = {
 		OR = {
 			is_subject = yes
-			278 = { is_claim_or_core_of_ROOT = yes } #Buenos Aires
-			507 = { is_claim_or_core_of_ROOT = yes } #Magallanes
-			1029 = { is_claim_or_core_of_ROOT = yes } #Santa Cruz
+			any_state_of = {
+				target = { 278 507 1029 } #Buenos Aires, Magallanes, Santa Cruz
+				is_claim_or_core_of_ROOT = yes
+			}
 			278 = { #Buenos Aires
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }

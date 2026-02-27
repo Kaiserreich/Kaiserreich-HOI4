@@ -104,7 +104,7 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed AFR_modern_african_army"
 		if = {
-			limit = { has_idea = MAF_modern_african_army }
+			limit = { has_idea = MAF_post_collapse_army }
 			swap_ideas = {
 				add_idea = MAF_modern_african_army
 				remove_idea = MAF_post_collapse_army
@@ -362,7 +362,10 @@ shared_focus = {
 
 	available = {
 		if = {
-			limit = { tag = GAB }
+			limit = {
+				tag = GAB
+				is_subject = no
+			}
 			OR = {
 				has_completed_focus = GAB_Democracy_Remains
 				has_completed_focus = GAB_Socialist_Coup
@@ -418,10 +421,6 @@ shared_focus = {
 		value = GFX_goal_GER_Mauser_Werke_Contracts
 	}
 	icon = {
-		trigger = { var:AFR_benefactor_tag = { tag = LIB } }
-		value = GFX_goal_LIB_army
-	}
-	icon = {
 		trigger = { var:AFR_benefactor_tag = { tag = NFA } }
 		value = GFX_goal_NFA_Army
 	}
@@ -437,6 +436,7 @@ shared_focus = {
 		trigger = { var:AFR_benefactor_tag = { tag = SAF } }
 		value = GFX_goal_SAF_army
 	}
+	icon = GFX_focus_ETH_freedom_at_gunpoint
 
 	cost = 5
 	dynamic = yes
@@ -487,10 +487,6 @@ shared_focus = {
 		value = GFX_goal_GER_Pilots
 	}
 	icon = {
-		trigger = { var:AFR_benefactor_tag = { tag = LIB } }
-		value = GFX_goal_Desert_Officers_2
-	}
-	icon = {
 		trigger = { var:AFR_benefactor_tag = { tag = NFA } }
 		value = GFX_goal_NFA_Marechal_Cap
 	}
@@ -506,6 +502,7 @@ shared_focus = {
 		trigger = { var:AFR_benefactor_tag = { tag = SAF } }
 		value = GFX_goal_SAF_native_2
 	}
+	icon = GFX_focus_generic_military_mission
 
 	cost = 8
 	dynamic = yes
@@ -521,10 +518,6 @@ shared_focus = {
 		if = {
 			limit = { var:AFR_benefactor_tag = { tag = BEL } }
 			add_ideas = AFR_military_advisors_from_BEL
-		}
-		else_if = {
-			limit = { var:AFR_benefactor_tag = { tag = BRA } }
-			add_ideas = AFR_military_advisors_from_BRA
 		}
 		else_if = {
 			limit = { var:AFR_benefactor_tag = { tag = CAN } }
@@ -545,10 +538,6 @@ shared_focus = {
 		else_if = {
 			limit = { var:AFR_benefactor_tag = { tag = GER } }
 			add_ideas = AFR_military_advisors_from_GER
-		}
-		else_if = {
-			limit = { var:AFR_benefactor_tag = { tag = LIB } }
-			add_ideas = AFR_military_advisors_from_LIB
 		}
 		else_if = {
 			limit = { var:AFR_benefactor_tag = { tag = NFA } }
@@ -577,10 +566,6 @@ shared_focus = {
 		value = GFX_BEL_Reinforce_Belgicism
 	}
 	icon = {
-		trigger = { var:AFR_benefactor_tag = { tag = BRA } }
-		value = GFX_goal_generic_brazil_deal
-	}
-	icon = {
 		trigger = { var:AFR_benefactor_tag = { tag = CAN } }
 		value = GFX_goal_CAN_iedc
 	}
@@ -601,10 +586,6 @@ shared_focus = {
 		value = GFX_goal_GER_Master_of_the_World
 	}
 	icon = {
-		trigger = { var:AFR_benefactor_tag = { tag = LIB } }
-		value = GFX_goal_LIB_whiter_pale
-	}
-	icon = {
 		trigger = { var:AFR_benefactor_tag = { tag = NFA } }
 		value = GFX_goal_NFA_deal_with_the_devil
 	}
@@ -620,6 +601,7 @@ shared_focus = {
 		trigger = { var:AFR_benefactor_tag = { tag = SAF } }
 		value = GFX_goal_generic_cash_stimulus_plan
 	}
+	icon = GFX_focus_generic_agricultural_subsidies
 
 	cost = 5
 	dynamic = yes
@@ -649,10 +631,6 @@ shared_focus = {
 		value = GFX_goal_MAF_Support_Belgians
 	}
 	icon = {
-		trigger = { var:AFR_benefactor_tag = { tag = BRA } }
-		value = GFX_goal_generic_privatization
-	}
-	icon = {
 		trigger = { var:AFR_benefactor_tag = { tag = CAN } }
 		value = GFX_goal_generic_privatization
 	}
@@ -673,10 +651,6 @@ shared_focus = {
 		value = GFX_goal_GER_Mitteleuropa_German
 	}
 	icon = {
-		trigger = { var:AFR_benefactor_tag = { tag = LIB } }
-		value = GFX_goal_LIB_Emancipation
-	}
-	icon = {
 		trigger = { var:AFR_benefactor_tag = { tag = NFA } }
 		value = GFX_goal_generic_privatization
 	}
@@ -692,6 +666,7 @@ shared_focus = {
 		trigger = { var:AFR_benefactor_tag = { tag = SAF } }
 		value = GFX_goal_generic_privatization
 	}
+	icon = GFX_goal_generic_banking_legislation
 
 	cost = 5
 	dynamic = yes

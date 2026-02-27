@@ -1371,6 +1371,9 @@ GBR_spawn_player_uk = {
 		original_tag = IMP
 		set_temp_variable = { canada = THIS }
 
+		reserve_dynamic_country = yes
+		set_country_flag = reserved_dynamic_tag
+
 		set_cosmetic_tag = CAN_entente
 		set_major = yes
 		set_research_slots = var:ROOT.amount_research_slots
@@ -1762,6 +1765,32 @@ GBR_spawn_player_uk = {
 		}
 		restore_previous_government_type = yes
 	}
+
+	every_state = {
+		limit = {
+			is_claimed_by = var:canada
+			NOT = { is_owned_by = var:canada }
+			NOT = { owner = { is_subject_of = var:canada } }
+			NOT = { is_on_continent = north_america }
+		}
+		remove_claim_by = var:canada
+	}
+
+	if = {
+		limit = { is_in_array = { global.north_american_tags_array = THIS } }
+		remove_from_array = { global.north_american_tags_array = THIS }
+	}
+	if = {
+		limit = { is_in_array = { global.american_tags_array = THIS } }
+		remove_from_array = { global.american_tags_array = THIS }
+	}
+	if = {
+		limit = { NOT = { is_in_array = { global.european_tags_array = THIS } } }
+		add_to_array = { global.european_tags_array = THIS }
+	}
+	clr_country_flag = is_in_north_america
+	clr_country_flag = is_in_americas
+	set_country_flag = is_in_europe
 
 	###################
 	### fire events ###

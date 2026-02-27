@@ -1400,9 +1400,10 @@ italy_lombardy_coal_mines_effect = {
 		show_state_in_tooltip = no
 	}
 	hidden_effect = {
+		set_temp_variable = { target_state = THIS }
 		every_collection_element = {
 			input = collection:italian_countries
-			remove_targeted_decision = { decision = LOM_develop_lombardy_coal_mines target = PREV }
+			remove_targeted_decision = { decision = LOM_develop_lombardy_coal_mines target = var:target_state }
 		}
 	}
 }
@@ -1415,9 +1416,10 @@ italy_cagliari_coal_mines_effect = {
 		show_state_in_tooltip = no
 	}
 	hidden_effect = {
+		set_temp_variable = { target_state = THIS }
 		every_collection_element = {
 			input = collection:italian_countries
-			remove_targeted_decision = { decision = SRD_develop_cagliari_coal_mines target = PREV }
+			remove_targeted_decision = { decision = SRD_develop_cagliari_coal_mines target = var:target_state }
 		}
 	}
 }
@@ -1430,9 +1432,10 @@ italy_tuscany_coal_mines_effect = {
 		show_state_in_tooltip = no
 	}
 	hidden_effect = {
+		set_temp_variable = { target_state = THIS }
 		every_collection_element = {
 			input = collection:italian_countries
-			remove_targeted_decision = { decision = TUS_develop_tuscany_coal_mines target = PREV }
+			remove_targeted_decision = { decision = TUS_develop_tuscany_coal_mines target = var:target_state }
 		}
 	}
 }

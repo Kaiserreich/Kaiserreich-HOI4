@@ -5,16 +5,6 @@
 ###########################
 
 ideas = {
-	#prevent unit caps penalty during the LEP collapse war
-	hidden_ideas = {
-		LEP_units_bonus = {
-			on_add = { log = "[GetLogRoot]: add idea LEP_units_bonus" }
-			modifier = {
-				unit_limit_bonus = 15
-			}
-		}
-	}
-
 	country = {
 		LEP_Conspicuous_Kleptocracy = {
 			on_add = { log = "[GetLogRoot]: add idea LEP_Conspicuous_Kleptocracy" }
@@ -1190,12 +1180,12 @@ ideas = {
 			picture = generic_oppression
 			allowed = { always = no }
 			modifier = {
-				stability_factor = 0.3
-				war_support_factor = 0.35
-				political_power_gain = 0.5
-				industrial_capacity_factory = 0.05
-				consumer_goods_factor = -0.06
-				line_change_production_efficiency_factor = 0.1
+				stability_factor = 0.4
+				war_support_factor = 0.4
+				political_power_gain = 0.6
+				industrial_capacity_factory = 0.15
+				consumer_goods_factor = -0.3
+				line_change_production_efficiency_factor = 0.15
 			}
 		}
 		LEP_Emergency_Troop_Training = {

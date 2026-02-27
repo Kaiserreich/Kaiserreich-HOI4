@@ -1400,7 +1400,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = NIC_yank_promise
+		id = NIC_a_force_for_offence
 		icon = GFX_goal_NIC_Army_Socialist
 		cost = 5
 
@@ -1420,12 +1420,12 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed NIC_yank_promise"
-			add_ideas = NIC_yank_promise_1
+			log = "[GetLogRoot]: Focus Completed NIC_a_force_for_offence"
+			add_ideas = NIC_transforming_our_militia_1
 			add_doctrine_cost_reduction = {
-				name = NIC_yank_promise
-				cost_reduction = 0.5
-				uses = 1
+				name = NIC_a_force_for_offence
+				cost_reduction = 0.35
+				uses = 2
 				category = land_doctrine
 			}
 			hidden_effect = {
@@ -1445,7 +1445,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 5 }
 		prerequisite = {
-			focus = NIC_yank_promise
+			focus = NIC_a_force_for_offence
 		}
 		available = {
 			OR = {
@@ -1457,8 +1457,8 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NIC_inspiring_armies"
 			swap_ideas = {
-				remove_idea = NIC_yank_promise_1
-				add_idea = NIC_yank_promise_2
+				remove_idea = NIC_transforming_our_militia_1
+				add_idea = NIC_transforming_our_militia_2
 			}
 			hidden_effect = {
 				add_to_variable = { NIC_political_foci_count = 1 }
@@ -1478,7 +1478,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 5 }
 		prerequisite = {
-			focus = NIC_yank_promise
+			focus = NIC_a_force_for_offence
 		}
 		prerequisite = {
 			focus = NIC_foreign_influence_ded

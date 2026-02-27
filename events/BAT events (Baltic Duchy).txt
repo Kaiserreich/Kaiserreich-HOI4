@@ -97,10 +97,22 @@ country_event = { # Ungern-Sternberg's Gambit
 			}
 			else = {
 				random_list = {
-					25 = { set_country_flag = BAT_AI_liberal }
-					25 = { set_country_flag = BAT_AI_knighthoods }
-					25 = { set_country_flag = BAT_AI_brotherhood }
-					25 = { set_country_flag = BAT_AI_collapse }
+					25 = {
+						set_country_flag = BAT_AI_liberal
+						log = "DEBUGGING - BAT_AI_liberal flag set in united_baltic_duchy_events.8"
+					}
+					25 = {
+						set_country_flag = BAT_AI_knighthoods
+						log = "DEBUGGING - BAT_AI_knighthoods flag set in united_baltic_duchy_events.8"
+					}
+					25 = {
+						set_country_flag = BAT_AI_brotherhood
+						log = "DEBUGGING - BAT_AI_brotherhood flag set in united_baltic_duchy_events.8"
+					}
+					25 = {
+						set_country_flag = BAT_AI_collapse
+						log = "DEBUGGING - BAT_AI_collapse flag set in united_baltic_duchy_events.8"
+					}
 				}
 			}
 		}

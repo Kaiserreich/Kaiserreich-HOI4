@@ -3174,8 +3174,10 @@ country_event = { #Fate of Rio de Oro
 			if = {
 				limit = {
 					OR = {
-						462 = { is_claim_or_core_of_ROOT = yes } #Marrakesh
-						967 = { is_claim_or_core_of_ROOT = yes } #Adrar
+						any_state_of = {
+							target = { 462 967 } #Marrakesh, Adrar
+							is_claim_or_core_of_ROOT = yes
+						}
 						annexations_spain_can_annex_overseas = yes
 					}
 				}
@@ -3723,8 +3725,10 @@ country_event = { #Fate of Djibouti
 			if = {
 				limit = {
 					OR = {
-						269 = { is_claim_or_core_of_ROOT = yes } #Hargeisa
-						944 = { is_claim_or_core_of_ROOT = yes } #Hararghe
+						any_state_of = {
+							target = { 269 944 } #Hargeisa, Hararghe
+							is_claim_or_core_of_ROOT = yes
+						}
 						annexations_france_can_annex_overseas = yes
 					}
 				}
@@ -3915,6 +3919,11 @@ country_event = { #Fate of Somalia
 	is_triggered_only = yes
 
 	immediate = {
+		annexations_create_britain_event_target = yes
+		if = {
+			limit = { annexations_britain_can_annex_overseas = yes }
+			save_event_target_as = can_annex
+		}
 		268 = { retain_state = yes } #Djibouti
 		892 = { retain_state = yes } #Jubaland
 		906 = { retain_state = yes } #Ogaden
@@ -3926,8 +3935,48 @@ country_event = { #Fate of Somalia
 		trigger = {
 			is_subject = no
 		}
+		ai_chance = {
+			base = 60
+			modifier = {
+				factor = 0
+				annexations_can_annex = yes
+			}
+			modifier = {
+				factor = 0
+				annexations_AI_give_to_britain_instead = yes
+			}
+		}
 		set_temp_variable = { tag_to_release = SOM }
 		release_targeted_tag = yes
+	}
+
+	option = { #Give to Britain
+		log = "[GetLogInfo]: event annexation_events.5029 option annexation_events.give_to_britain"
+		name = annexation_events.give_to_britain
+		trigger = {
+			has_event_target = britain
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				annexations_can_annex = yes
+			}
+			modifier = {
+				factor = 0
+				annexations_AI_will_consider_returning_colonies = no
+			}
+			modifier = {
+				factor = 0
+				event_target:britain = { annexations_AI_dont_give_to_non_puppet_if_major = yes }
+			}
+			modifier = {
+				factor = 0.1
+				event_target:britain = { is_subject = yes }
+			}
+		}
+		set_temp_variable = { tag_to_release = event_target:britain }
+		SOM = { transfer_colonial_territory_to_european_country = yes }
 	}
 
 	option = { #Give to overlord
@@ -6184,16 +6233,48 @@ country_event = { #Fate of Ogaden
 
 	immediate = {
 		hidden_effect = {
-			annexations_create_ethiopia_event_target = yes
-			annexations_create_somalia_event_target = yes
 			if = {
 				limit = {
-					OR = {
-						original_tag = SOM
-						original_tag = ETH
+					any_state_of = {
+						target = { 559 934 1094 } #Mogadishu, Hararghe, Bale
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
+			}
+			annexations_create_ethiopia_event_target = yes
+			if = {
+				limit = {
+					559 = { #Mogadishu
+						annexations_state_owner_is_valid_grant_target = yes
+						owner = { ROOT_can_grant_land = yes }
+					}
+				}
+				var:559.owner = { save_event_target_as = somalia add_to_array = { ROOT.potential_grant_targets = THIS } }
+			}
+			else_if = {
+				limit = {
+					934 = { #Hararghe
+						annexations_state_owner_is_valid_grant_target = yes
+						owner = {
+							NOT = { tag = event_target:somalia }
+							ROOT_can_grant_land = yes
+						}
+					}
+				}
+				var:934.owner = { save_event_target_as = ethiopia add_to_array = { ROOT.potential_grant_targets = THIS } }
+			}
+			else_if = {
+				limit = {
+					1094 = { #Bale
+						annexations_state_owner_is_valid_grant_target = yes
+						owner = {
+							NOT = { tag = event_target:somalia }
+							ROOT_can_grant_land = yes
+						}
+					}
+				}
+				var:1094.owner = { save_event_target_as = ethiopia add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 		}
 	}
@@ -6212,8 +6293,17 @@ country_event = { #Fate of Ogaden
 			}
 			modifier = {
 				factor = 0
+				event_target:somalia = { is_in_africa = no }
+				annexations_AI_will_consider_returning_colonies = no
+			}
+			modifier = {
+				factor = 0
 				NOT = { is_ally_with = event_target:somalia }
 				is_ally_with = event_target:ethiopia
+				OR = {
+					event_target:ethiopia = { is_in_africa = yes }
+					annexations_AI_will_consider_returning_colonies = yes
+				}
 			}
 			modifier = {
 				factor = 0.1
@@ -6238,8 +6328,17 @@ country_event = { #Fate of Ogaden
 			}
 			modifier = {
 				factor = 0
+				event_target:ethiopia = { is_in_africa = no }
+				annexations_AI_will_consider_returning_colonies = no
+			}
+			modifier = {
+				factor = 0
 				NOT = { is_ally_with = event_target:ethiopia }
 				is_ally_with = event_target:somalia
+				OR = {
+					event_target:somalia = { is_in_africa = yes }
+					annexations_AI_will_consider_returning_colonies = yes
+				}
 			}
 			modifier = {
 				factor = 0.1
@@ -6292,9 +6391,9 @@ country_event = { #Fate of Jubaland
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						547 = { is_claim_or_core_of_ROOT = yes } #Kenya
-						559 = { is_claim_or_core_of_ROOT = yes } #Mogadishu
+					any_state_of = {
+						target = { 547 559 } #Kenya, Mogadishu
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -7082,9 +7181,9 @@ country_event = { #Fate of Lourenço Marques
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						544 = { is_claim_or_core_of_ROOT = yes } #Moçambique
-						545 = { is_claim_or_core_of_ROOT = yes } #Rhodesia
+					any_state_of = {
+						target = { 544 545 } #Moçambique, Rhodesia
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -7663,10 +7762,9 @@ country_event = { #Fate of Cabinda
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						540 = { is_claim_or_core_of_ROOT = yes } #Loanda
-						881 = { is_claim_or_core_of_ROOT = yes } #Lower Congo
-						928 = { is_claim_or_core_of_ROOT = yes } #Middle Congo
+					any_state_of = {
+						target = { 540 881 928 } #Loanda, Lower Congo, Middle Congo
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -7899,25 +7997,14 @@ state_event = { #Fate of Saint Helena and Ascension
 				var:126.owner = { save_event_target_as = britain add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 			if = {
-				limit = { country_exists = event_target:KR_king_base }
-				if = {
-					limit = {
-						event_target:KR_king_base = {
-							NOT = { tag = event_target:britain }
-							ROOT_can_grant_land = yes
-						}
-					}
-					event_target:KR_king_base = { save_event_target_as = british_exiles add_to_array = { ROOT.potential_grant_targets = THIS } }
-				}
-			}
-			else_if = {
 				limit = {
-					IMP = {
+					country_exists = event_target:KR_king_base
+					event_target:KR_king_base = {
 						NOT = { tag = event_target:britain }
 						ROOT_can_grant_land = yes
 					}
 				}
-				IMP = { save_event_target_as = british_exiles add_to_array = { ROOT.potential_grant_targets = THIS } }
+				event_target:KR_king_base = { save_event_target_as = british_exiles add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 		}
 	}

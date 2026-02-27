@@ -4,9 +4,10 @@ can_release_463 = { #Alaska
 	ROOT = {
 		OR = {
 			is_subject = yes
-			385 = { is_claim_or_core_of_ROOT = yes } #Oregon
-			471 = { is_claim_or_core_of_ROOT = yes } #Yukon
-			637 = { is_claim_or_core_of_ROOT = yes } #Kamchatka
+			any_state_of = {
+				target = { 385 471 637 } #Oregon, Yukon, Kamchatka
+				is_claim_or_core_of_ROOT = yes
+			}
 			385 = { #Oregon
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -83,8 +84,10 @@ can_release_101 = { #Greenland
 	ROOT = {
 		OR = {
 			is_subject = yes
-			37 = { is_claim_or_core_of_ROOT = yes } #Zealand
-			110 = { is_claim_or_core_of_ROOT = yes } #Ostlandet
+			any_state_of = {
+				target = { 37 110 } #Zealand, Ostlandet
+				is_claim_or_core_of_ROOT = yes
+			}
 			tag = CAN
 			is_american_tag = yes
 			37 = { #Zealand

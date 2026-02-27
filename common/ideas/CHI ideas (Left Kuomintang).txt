@@ -216,7 +216,6 @@ ideas = {
 				supply_consumption_factor = -0.05
 				army_core_attack_factor = 0.05
 				army_core_defence_factor = 0.05
-				unit_limit_bonus = 12
 				planning_speed = -0.2
 				max_planning_factor = -0.2
 				political_power_gain = -0.1
@@ -239,7 +238,6 @@ ideas = {
 				supply_consumption_factor = -0.1
 				army_core_attack_factor = 0.1
 				army_core_defence_factor = 0.1
-				unit_limit_bonus = 12
 				planning_speed = -0.2
 				max_planning_factor = -0.2
 				political_power_gain = -0.05
@@ -775,6 +773,9 @@ ideas = {
 			on_add = { log = "[GetLogRoot]: add idea CHI_the_disbandment_conference" }
 			picture = CHI_demobilised_nra
 			allowed = { always = no }
+			available = {
+				is_subject = yes
+			}
 			modifier = {
 				stability_factor = -0.2
 				conscription_factor = -0.25

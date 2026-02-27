@@ -86,7 +86,7 @@ focus_tree = {
 				add_command_power = 25 #Helps win the minigame - equivalent to 1x cost to secure state + a 5 CP buffer.
 			}
 			army_experience = 25
-			add_equipment_to_stockpile = { type = infantry_equipment amount = 750 producer = GEA }
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = GEA }
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.50
 				name = GXC_lessons_of_the_german_advisory_mission
@@ -129,8 +129,16 @@ focus_tree = {
 				category = support_tech
 			}
 			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = GXC_consolidate_the_regional_auxiliaries_tt
-			hidden_effect = {
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Lianhe Bubing"
+					LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 8 }
+				}
+				if = {
+					limit = { has_template = "Lianhe Bubing" }
+					delete_unit_template_and_units = { division_template = "Lianhe Bubing" disband = yes } #No cheating
+				}
 				division_template = {
 					name = "Lianhe Bubing"
 					division_names_group = GXC_INF_01
@@ -397,6 +405,13 @@ focus_tree = {
 			hidden_effect = {
 				country_lock_all_division_template = no
 				if = {
+					limit = { NOT = { has_completed_focus = GXC_integrate_the_baojia } }
+					set_division_template_lock = {
+						division_template = "Bubing Zhen"
+						is_locked = yes
+					}
+				}
+				if = {
 					limit = { china_is_aligned_with_kmt = yes }
 					country_event = { id = GXC.earlygame.001 days = 10 } #Fate of the Old Guangxi Clans
 					country_event = { id = GXC.earlygame.003 days = 14 } #Fate of the Yue Army
@@ -481,18 +496,21 @@ focus_tree = {
 		prerequisite = { focus = GXC_tighten_the_noose_on_militarism }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_integrate_the_baojia"
-			custom_effect_tooltip = GXC_gain_liangguang_infantry_division_template
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = GXC_consolidate_liangguang_infantry_divisions
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 750
-			}
-			hidden_effect = {
-				delete_units = { division_template = "Bubing Zhen" disband = yes }
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Zhongyang Shi"
+					LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 5 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				}
+				if = {
+					limit = { has_template = "Zhongyang Shi" }
+					delete_unit_template_and_units = { division_template = "Zhongyang Shi" disband = yes } #No cheating
+				}
 				division_template = {
 					name = "Zhongyang Shi"
-					division_names_group = "GXC_INF_01"
+					division_names_group = GXC_INF_01
 					regiments = {
 						infantry = { x = 0 y = 0 }
 						infantry = { x = 0 y = 1 }
@@ -505,33 +523,35 @@ focus_tree = {
 						artillery = { x = 0 y = 1 }
 					}
 				}
-				custom_effect_tooltip = {
-					localization_key = tooltip_create_division_template
-					NAME = "Zhongyang Shi"
-					LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 5 }
-					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-					SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_override_tooltip = {
+				tooltip = GXC_consolidate_liangguang_infantry_divisions
+				delete_units = { division_template = "Bubing Zhen" disband = yes }
+				if = {
+					limit = { has_completed_focus = GXC_integrate_provincial_security_forces }
+					set_division_template_lock = {
+						division_template = "Bubing Zhen"
+						is_locked = no
+					}
 				}
-				random_owned_controlled_state = {
-					prioritize = { 325 }
-					create_unit = {
-						division = "division_template = \"Zhongyang Shi\" start_experience_factor = 1.0"
-						owner = ROOT
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+			}
+			random_owned_controlled_state = {
+				prioritize = { 325 } #Kunming
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 7
+						TYPE = "Zhongyang Shi"
 					}
 					create_unit = {
 						division = "division_template = \"Zhongyang Shi\" start_experience_factor = 1.0"
 						owner = ROOT
-						count = 2
-					}
-					create_unit = {
-						division = "division_template = \"Zhongyang Shi\" start_experience_factor = 1.0"
-						owner = ROOT
-						count = 2
-					}
-					create_unit = {
-						division = "division_template = \"Zhongyang Shi\" start_experience_factor = 1.0"
-						owner = ROOT
-						count = 2
+						count = 7
 					}
 				}
 			}
@@ -541,7 +561,7 @@ focus_tree = {
 
 	focus = {
 		id = GXC_the_necessary_sin
-		icon = GFX_goal_zhang_rifle
+		icon = GFX_goal_CHN_beiyang_militarism
 		cost = 4
 		x = 1
 		y = 1
@@ -567,12 +587,12 @@ focus_tree = {
 			}
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 400
+				amount = 1600
 				producer = GEA
 			}
 			add_equipment_to_stockpile = {
 				type = artillery_equipment
-				amount = 150
+				amount = 300
 				producer = GEA
 			}
 		}
@@ -669,33 +689,34 @@ focus_tree = {
 			#	limit = { NOT = { has_tech = tech_militias } }
 			#	enable_tech_militias = yes
 			#}
-			if = {
-				limit = { has_template = "Gui Minbing" }
-				delete_unit_template_and_units = { division_template = "Gui Minbing" disband = yes }
-				#No cheating
-			}
 			custom_effect_tooltip = GXC_add_guangxi_militia_division_template_tt
-			division_template = {
-				name = "Gui Minbing" #Temporary name for now lol - Suzu
-				division_names_group = CHYN_MIL_01
-				force_allow_recruiting = yes
-				division_cap = 10
-				regiments = {
-					militia = { x = 0 y = 0 }
-					militia = { x = 0 y = 1 }
-					militia = { x = 0 y = 2 }
-					militia = { x = 1 y = 0 }
-					militia = { x = 1 y = 1 }
-					militia = { x = 1 y = 2 }
-					militia = { x = 2 y = 0 }
-					militia = { x = 2 y = 1 }
-					militia = { x = 2 y = 2 }
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Gui Minbing"
+					LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 9 }
 				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Gui Minbing"
-				LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 9 }
+				if = {
+					limit = { has_template = "Gui Minbing" }
+					delete_unit_template_and_units = { division_template = "Gui Minbing" disband = yes } #No cheating
+				}
+				division_template = {
+					name = "Gui Minbing" #Temporary name for now lol - Suzu
+					division_names_group = CHYN_MIL_01
+					force_allow_recruiting = yes
+					division_cap = 10
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+						militia = { x = 1 y = 2 }
+						militia = { x = 2 y = 0 }
+						militia = { x = 2 y = 1 }
+						militia = { x = 2 y = 2 }
+					}
+				}
 			}
 			custom_effect_tooltip = tooltip_white_line
 			if = {
@@ -819,22 +840,21 @@ focus_tree = {
 			GXC_increase_militia_cap = yes
 			add_political_power = 60
 			activate_targeted_decision = { target = ROOT decision = GXC_add_support_recon }
-			custom_effect_tooltip = GXC_merge_army_and_militia_tt
-			hidden_effect = {
-				random_owned_controlled_state = {
-					create_unit = {
-						division = "division_template = \"Gui Minbing\" start_experience_factor = 0.5"
-						owner = ROOT
+			random_owned_controlled_state = {
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 3
+						TYPE = "Gui Minbing"
 					}
 					create_unit = {
 						division = "division_template = \"Gui Minbing\" start_experience_factor = 0.5"
 						owner = ROOT
-					}
-					create_unit = {
-						division = "division_template = \"Gui Minbing\" start_experience_factor = 0.5"
-						owner = ROOT
+						count = 3
 					}
 				}
+			}
+			hidden_effect = {
 				if = {
 					limit = { china_is_aligned_with_kmt = no }
 					country_event = { id = GXC.earlygame.116 days = 21 }
@@ -942,7 +962,7 @@ focus_tree = {
 			}
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 1200
+				amount = 2000
 			}
 			hidden_effect = {
 				if = {
@@ -1416,42 +1436,53 @@ focus_tree = {
 				uses = 2
 			}
 			army_experience = 25
-			custom_effect_tooltip = GXC_form_mobile_detachments_tt
-			division_template = {
-				name = "Jidonghua Bubing Shi"
-				division_names_group = CHI_MOT_01
-				regiments = {
-					motorized = { x = 0 y = 0 }
-					motorized = { x = 0 y = 1 }
-					motorized = { x = 0 y = 2 }
-					motorized = { x = 1 y = 0 }
-					motorized = { x = 1 y = 1 }
-					motorized = { x = 1 y = 2 }
-					motorized = { x = 2 y = 0 }
-					motorized = { x = 2 y = 1 }
-					motorized = { x = 2 y = 2 }
-					motorized = { x = 3 y = 0 }
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Jidonghua Bubing Shi"
+					LINE_1 = { localization_key = line_battalion_tt NAME = motorized ICON = GFX_unit_motorized_icon_small COUNT = 10 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
 				}
-				support = {
-					engineer = { x = 0 y = 0 }
-					artillery = { x = 0 y = 1 }
+				if = {
+					limit = { has_template = "Jidonghua Bubing Shi" }
+					delete_unit_template_and_units = { division_template = "Jidonghua Bubing Shi" disband = yes } #No cheating
 				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Jidonghua Bubing Shi"
-				LINE_1 = { localization_key = line_battalion_tt NAME = motorized ICON = GFX_unit_motorized_icon_small COUNT = 10 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-				SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				division_template = {
+					name = "Jidonghua Bubing Shi"
+					division_names_group = CHI_MOT_01
+					regiments = {
+						motorized = { x = 0 y = 0 }
+						motorized = { x = 0 y = 1 }
+						motorized = { x = 0 y = 2 }
+						motorized = { x = 1 y = 0 }
+						motorized = { x = 1 y = 1 }
+						motorized = { x = 1 y = 2 }
+						motorized = { x = 2 y = 0 }
+						motorized = { x = 2 y = 1 }
+						motorized = { x = 2 y = 2 }
+						motorized = { x = 3 y = 0 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						artillery = { x = 0 y = 1 }
+					}
+				}
 			}
 			random_owned_controlled_state = {
 				limit = {
 					is_in_home_area = yes
 					impassable = no
 				}
-				create_unit = {
-					division = "name = \"Di 200 Shi\" division_template = \"Jidonghua Bubing Shi\" start_experience_factor = 1"
-					owner = ROOT
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Jidonghua Bubing Shi"
+					}
+					create_unit = {
+						division = "name = \"Di 200 Shi\" division_template = \"Jidonghua Bubing Shi\" start_experience_factor = 1"
+						owner = ROOT
+					}
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -1882,45 +1913,56 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = GXC_establishment_of_the_zhongyangjun_tt
-			division_template = {
-				name = "Zhongyangjun"
-				division_names_group = CHYN_MTN_01
-				regiments = {
-					mountaineers = { x = 0 y = 0 }
-					mountaineers = { x = 0 y = 1 }
-					mountaineers = { x = 0 y = 2 }
-					mountaineers = { x = 1 y = 0 }
-					mountaineers = { x = 1 y = 1 }
-					mountaineers = { x = 1 y = 2 }
-					mountaineers = { x = 2 y = 0 }
-					mountaineers = { x = 2 y = 1 }
-					mountaineers = { x = 2 y = 2 }
-					mountaineers = { x = 3 y = 0 }
-					mountaineers = { x = 3 y = 1 }
-					artillery_brigade = { x = 4 y = 0 }
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Zhongyangjun"
+					LINE_1 = { localization_key = line_battalion_tt NAME = mountaineers ICON = GFX_unit_mountaineers_icon_small COUNT = 11 }
+					LINE_2 = { localization_key = line_battalion_tt NAME = artillery_brigade ICON = GFX_unit_artillery_brigade_icon_small COUNT = 1 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
 				}
-				support = {
-					engineer = { x = 0 y = 0 }
-					artillery = { x = 0 y = 1 }
+				if = {
+					limit = { has_template = "Zhongyangjun" }
+					delete_unit_template_and_units = { division_template = "Zhongyangjun" disband = yes } #No cheating
 				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Zhongyangjun"
-				LINE_1 = { localization_key = line_battalion_tt NAME = mountaineers ICON = GFX_unit_mountaineers_icon_small COUNT = 11 }
-				LINE_2 = { localization_key = line_battalion_tt NAME = artillery_brigade ICON = GFX_unit_artillery_brigade_icon_small COUNT = 1 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-				SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				division_template = {
+					name = "Zhongyangjun"
+					division_names_group = CHYN_MTN_01
+					regiments = {
+						mountaineers = { x = 0 y = 0 }
+						mountaineers = { x = 0 y = 1 }
+						mountaineers = { x = 0 y = 2 }
+						mountaineers = { x = 1 y = 0 }
+						mountaineers = { x = 1 y = 1 }
+						mountaineers = { x = 1 y = 2 }
+						mountaineers = { x = 2 y = 0 }
+						mountaineers = { x = 2 y = 1 }
+						mountaineers = { x = 2 y = 2 }
+						mountaineers = { x = 3 y = 0 }
+						mountaineers = { x = 3 y = 1 }
+						artillery_brigade = { x = 4 y = 0 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						artillery = { x = 0 y = 1 }
+					}
+				}
 			}
 			random_owned_controlled_state = {
 				limit = {
 					is_in_home_area = yes
 					impassable = no
 				}
-				create_unit = {
-					division = "name = \"Zhongyangjun Di 1 Shi\" division_template = \"Zhongyangjun\" start_experience_factor = 1"
-					owner = ROOT
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Zhongyangjun"
+					}
+					create_unit = {
+						division = "name = \"Zhongyangjun Di 1 Shi\" division_template = \"Zhongyangjun\" start_experience_factor = 1"
+						owner = ROOT
+					}
 				}
 			}
 			hidden_effect = {
@@ -2132,7 +2174,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = GXC_proof_of_the_party_army
+		id = GXC_spirit_of_the_country
 		icon = {
 			trigger = {
 				china_is_aligned_with_kmt = yes
@@ -2163,7 +2205,7 @@ focus_tree = {
 			china_mid_unification_trigger = yes
 		}
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed GXC_proof_of_the_party_army"
+			log = "[GetLogRoot]: Focus Completed GXC_spirit_of_the_country"
 			swap_ideas = {
 				remove_idea = GXC_nra_1_idea
 				add_idea = GXC_nra_2_idea
@@ -2171,7 +2213,7 @@ focus_tree = {
 			if = {
 				limit = { has_dlc_aat = no }
 				add_tech_bonus = {
-					name = GXC_proof_of_the_party_army
+					name = GXC_spirit_of_the_country
 					bonus = 1
 					uses = 1
 					category = cat_special_forces_generic
@@ -2382,6 +2424,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		relative_position_id = GXC_mobilise_the_pearl_deltas_might
 		prerequisite = { focus = GXC_mobilise_the_pearl_deltas_might }
+		available = { controls_state = 592 } #Canton
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_combine_the_aviation_programs"
 			if = {
@@ -2474,6 +2517,7 @@ focus_tree = {
 		y = 2
 		ai_will_do = { base = 100 }
 		relative_position_id = GXC_combine_the_aviation_programs
+		available = { controls_state = 592 } #Canton
 		prerequisite = { focus = GXC_combine_the_aviation_programs }
 		prerequisite = { focus = GXC_swell_military_production }
 		completion_reward = {
@@ -3015,6 +3059,25 @@ focus_tree = {
 				uses = 1
 				category = excavation_tech
 			}
+			random_owned_state = {
+				prioritize = { 594 } #Nanning
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 			if = {
 				limit = { china_is_aligned_with_federalists = yes }
 				custom_effect_tooltip = tooltip_white_line
@@ -3136,6 +3199,26 @@ focus_tree = {
 					country_event = { id = GXC.earlygame.270 days = 21 }
 				}
 			}
+			if = {
+				limit = { owns_state = 593 }
+				593 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 1056 }
+				1056 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 591 }
+				591 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 1012 }
+				1012 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 800 }
+				800 = { increase_state_category_by_one_level = yes }
+			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -3209,6 +3292,10 @@ focus_tree = {
 		}
 		relative_position_id = GXC_land_rent_caps
 		prerequisite = { focus = GXC_land_rent_caps focus = GXC_promote_harmonious_land_cooperation }
+		available = {
+			controls_state = 593 #Qingyuan
+			controls_state = 594 #Nanning
+		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_ambitious_water_control_projects"
 			593 = { #Qingyuan
@@ -3235,6 +3322,37 @@ focus_tree = {
 				}
 			}
 			unlock_decision_tooltip = GXC_wengjiang_hydroelectric_plant
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = GXC_expanded_tt
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { owns_state = 325 } #Kunming
+				325 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 816 } #Dali
+				816 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 1051 } #Guiyang
+				1051 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 603 } #Zunyi
+				603 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 1052 } #Kaili
+				1052 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 1013 } #Changde
+				1013 = { increase_state_category_by_one_level = yes }
+			}
+			if = {
+				limit = { owns_state = 602 } #Changsha
+				602 = { increase_state_category_by_one_level = yes }
+			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -3322,6 +3440,7 @@ focus_tree = {
 		}
 		relative_position_id = GXC_promote_harmonious_land_cooperation
 		prerequisite = { focus = GXC_promote_harmonious_land_cooperation }
+		available = { controls_state = 599 } #Guilin
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_intensify_wet_rice_production"
 			599 = { #Guilin
@@ -3552,6 +3671,7 @@ focus_tree = {
 		}
 		relative_position_id = GXC_develop_guangdongs_rails
 		prerequisite = { focus = GXC_develop_guangdongs_rails }
+		available = { controls_state = 591 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_qiongya_green_gold"
 			add_tech_bonus = {
@@ -3607,6 +3727,64 @@ focus_tree = {
 				uses = 1
 			}
 			activate_targeted_decision = { target = 800 decision = GXC_Fuguo_Coal_Mine }
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = GXC_expanded_tt
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { 1013 = { is_owned_and_controlled_by = ROOT } }
+				1013 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { 1052 = { is_owned_and_controlled_by = ROOT } }
+				1052 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { 603 = { is_owned_and_controlled_by = ROOT } }
+				603 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { 816 = { is_owned_and_controlled_by = ROOT } }
+				816 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { 325 = { is_owned_and_controlled_by = ROOT } }
+				325 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -3626,12 +3804,13 @@ focus_tree = {
 		}
 		relative_position_id = GXC_harness_southern_industrial_might
 		prerequisite = { focus = GXC_harness_southern_industrial_might }
+		available = { controls_state = 592 } #Canton
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_addressing_the_urban_plight"
 			add_political_power = 50
 			random_owned_state = {
 				prioritize = { 592 } #Canton
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -3642,11 +3821,13 @@ focus_tree = {
 					level = 1
 					instant_build = yes
 				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
 			}
-			if = {
-				limit = { owns_state = 592 } #Canton
-				592 = { increase_state_category_by_one_level = yes }
-			}
+			592 = { increase_state_category_by_one_level = yes }
 			if = {
 				limit = {
 					china_is_aligned_with_kmt = yes
@@ -3697,13 +3878,32 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GXC_promote_pearl_river_trade"
 			random_owned_state = {
 				prioritize = { 592 } #Canton
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = infrastructure
 					level = 1
 					instant_build = yes
 				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
 			}
-			add_one_random_civilian_factory = yes
+			random_owned_state = {
+				prioritize = { 593 } #Qingyuan
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 			hidden_effect = {
 				country_event = { id = GXC.earlygame.240 days = 1 } #Trade Fair in Liuzhou
 			}
@@ -3854,6 +4054,57 @@ focus_tree = {
 					}
 				}
 			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = GXC_expanded_tt
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { owns_state = 1051 } #Guiyang
+				1051 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { owns_state = 325 } #Kunming
+				325 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { owns_state = 602 } #Changsha
+				602 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 			if = {
 				limit = {
 					china_is_aligned_with_kmt = yes
@@ -3999,6 +4250,57 @@ focus_tree = {
 				idea = GXC_merchant_alliance
 				days = 365
 			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = GXC_expanded_tt
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { owns_state = 1051 } #Guiyang
+				1051 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { owns_state = 325 } #Kunming
+				325 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { owns_state = 602 }
+				602 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 			hidden_effect = {
 				country_event = { id = GXC.earlygame.242 days = 21 }
 			}
@@ -4050,6 +4352,18 @@ focus_tree = {
 				GXC_ai_factor_prioritize_economic_focuses_trigger = yes
 			}
 		}
+
+		available = {
+			NOT = {
+				OR = {
+					custom_override_tooltip = {
+						tooltip = china_is_CHN_tt
+						tag = CHN
+					}
+					china_is_the_unifier_of_china_trigger = yes
+				}
+			}
+		}
 		relative_position_id = GXC_begin_the_yuegui_three_year_plan
 		prerequisite = { focus = GXC_root_out_guangxi_banditry focus = GXC_guangxi_infrastructure_devlopment_scheme }
 		prerequisite = { focus = GXC_wealth_of_the_hinterlands }
@@ -4067,8 +4381,8 @@ focus_tree = {
 						GXC_liangguangs_developing_economy5a
 						GXC_agricultural_reform_idea5a
 					}
-					add_ideas = GXC_peasant_and_autarkic_reform
 				}
+				add_ideas = GXC_peasant_and_autarkic_reform
 			}
 			else_if = {
 				limit = {
@@ -4080,8 +4394,8 @@ focus_tree = {
 						GXC_liangguangs_developing_economy5b
 						GXC_agricultural_reform_idea5a
 					}
-					add_ideas = GXC_peasant_and_free_trade_reform
 				}
+				add_ideas = GXC_peasant_and_free_trade_reform
 			}
 			else_if = {
 				limit = {
@@ -4093,8 +4407,8 @@ focus_tree = {
 						GXC_liangguangs_developing_economy5a
 						GXC_agricultural_reform_idea5b
 					}
-					add_ideas = GXC_modernized_and_autarkic_reform
 				}
+				add_ideas = GXC_modernized_and_autarkic_reform
 			}
 			else_if = {
 				limit = {
@@ -4106,8 +4420,8 @@ focus_tree = {
 						GXC_liangguangs_developing_economy5b
 						GXC_agricultural_reform_idea5b
 					}
-					add_ideas = GXC_modernized_and_free_trade_reform
 				}
+				add_ideas = GXC_modernized_and_free_trade_reform
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -4390,45 +4704,54 @@ focus_tree = {
 				level = 1
 			}
 			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = GXC_salutations_to_the_kingmakers_tt
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Zhongyangjun Di Shi"
+					LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 9 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				}
+				if = {
+					limit = { has_template = "Zhongyangjun Di Shi" }
+					delete_unit_template_and_units = { division_template = "Zhongyangjun Di Shi" disband = yes } #No cheating
+				}
+				division_template = {
+					name = "Zhongyangjun Di Shi"
+					division_names_group = QIE_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						artillery = { x = 0 y = 1 }
+					}
+				}
+			}
 			custom_effect_tooltip = tooltip_white_line
-			division_template = {
-				name = "Zhongyangjun Di Shi"
-				division_names_group = QIE_INF_01
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
-					infantry = { x = 2 y = 0 }
-					infantry = { x = 2 y = 1 }
-					infantry = { x = 2 y = 2 }
-				}
-				support = {
-					engineer = { x = 0 y = 0 }
-					artillery = { x = 0 y = 1 }
-				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Zhongyangjun Di Shi"
-				LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 9 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-				SUPPORT_2 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
-			}
 			random_owned_controlled_state = {
 				prioritize = { 800 }
 				limit = {
 					is_in_home_area = yes
 					impassable = no
 				}
-				create_unit = {
-					division = "name = \"Zhongyangjun Di 5 Shi\" division_template = \"Zhongyangjun Di Shi\" start_equipment_factor = 1"
-					prioritize_location = 800
-					owner = ROOT
-					count = 1
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Zhongyangjun Di Shi"
+					}
+					create_unit = {
+						division = "name = \"Zhongyangjun Di 5 Shi\" division_template = \"Zhongyangjun Di Shi\" start_equipment_factor = 1"
+						owner = ROOT
+					}
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -4820,47 +5143,56 @@ focus_tree = {
 				days = 120
 			}
 			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = GXC_laying_down_the_law_in_liangguang_tt
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Modern Police Reserve"
+					LINE_1 = { localization_key = line_battalion_tt NAME = cavalry ICON = GFX_unit_cavalry_icon_small COUNT = 9 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+					SUPPORT_3 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				}
+				if = {
+					limit = { has_template = "Modern Police Reserve" }
+					delete_unit_template_and_units = { division_template = "Modern Police Reserve" disband = yes } #No cheating
+				}
+				division_template = {
+					name = "Modern Police Reserve"
+					division_names_group = CHI_GAR_01
+					regiments = {
+						cavalry = { x = 0 y = 0 }
+						cavalry = { x = 0 y = 1 }
+						cavalry = { x = 0 y = 2 }
+						cavalry = { x = 1 y = 0 }
+						cavalry = { x = 1 y = 1 }
+						cavalry = { x = 1 y = 2 }
+						cavalry = { x = 2 y = 0 }
+						cavalry = { x = 2 y = 1 }
+						cavalry = { x = 2 y = 2 }
+					}
+					support = {
+						recon = { x = 0 y = 0 }
+						engineer = { x = 0 y = 1 }
+						artillery = { x = 0 y = 2 }
+					}
+				}
+			}
 			custom_effect_tooltip = tooltip_white_line
-			division_template = {
-				name = "Modern Police Reserve"
-				division_names_group = CHI_GAR_01
-				regiments = {
-					cavalry = { x = 0 y = 0 }
-					cavalry = { x = 0 y = 1 }
-					cavalry = { x = 0 y = 2 }
-					cavalry = { x = 1 y = 0 }
-					cavalry = { x = 1 y = 1 }
-					cavalry = { x = 1 y = 2 }
-					cavalry = { x = 2 y = 0 }
-					cavalry = { x = 2 y = 1 }
-					cavalry = { x = 2 y = 2 }
-				}
-				support = {
-					recon = { x = 0 y = 0 }
-					engineer = { x = 0 y = 1 }
-					artillery = { x = 0 y = 2 }
-				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Modern Police Reserve"
-				LINE_1 = { localization_key = line_battalion_tt NAME = cavalry ICON = GFX_unit_cavalry_icon_small COUNT = 9 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
-				SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-				SUPPORT_3 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
-			}
 			random_owned_controlled_state = {
 				prioritize = { 592 }
 				limit = {
 					is_in_home_area = yes
 					impassable = no
 				}
-				create_unit = {
-					division = "name = \"Xiandai Jingcha Yubeiyi\" division_template = \"Modern Police Reserve\" start_equipment_factor = 1"
-					prioritize_location = 592
-					owner = ROOT
-					count = 1
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Modern Police Reserve"
+					}
+					create_unit = {
+						division = "name = \"Xiandai Jingcha Yubeiyi\" division_template = \"Modern Police Reserve\" start_equipment_factor = 1"
+						owner = ROOT
+					}
 				}
 			}
 		}
@@ -4998,6 +5330,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_consolidate_the_revolutionary_junta"
 			add_stability = 0.05
+			add_war_support = 0.05
 			if = {
 				limit = {
 					GXC_is_phase_2_trigger = yes
@@ -5169,7 +5502,7 @@ focus_tree = {
 		prerequisite = { focus = GXC_kuomintang_united_front }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_rally_the_mass_movement"
-			add_war_support = 0.05
+			add_war_support = 0.1
 			add_command_power = 50
 			if = {
 				limit = { china_is_aligned_with_left_kmt = yes }
@@ -5225,6 +5558,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_subdue_the_gentry"
 			add_stability = 0.05
+			add_war_support = 0.05
 			if = {
 				limit = {
 					GXC_is_phase_2_trigger = yes
@@ -5249,6 +5583,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_local_government_initiatives"
 			add_stability = 0.05
+			add_war_support = 0.05
 			add_political_power = 35
 			GXC_KMT_popular_support_effect = yes
 		}
@@ -5336,6 +5671,8 @@ focus_tree = {
 				GXC_ju_zheng = { CHN_recruit_character_effect = yes }
 				country_event = { id = GXC.midgame.430 days = 60 } #Internal Machinations
 			}
+			custom_effect_tooltip = tooltip_white_line
+			china_add_research_slots = yes
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -6046,46 +6383,22 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_reorganise_nra_defectors"
-			custom_effect_tooltip = GXC_reorganise_nra_defectors_tt
-			hidden_effect = {
-				if = {
-					limit = { NOT = { has_tech = tech_militias } }
-					enable_tech_militias = yes
+			GXC_create_NRA_defectors_template = yes
+			custom_effect_tooltip = tooltip_white_line
+			random_owned_controlled_state = {
+				prioritize = { 592 }
+				limit = {
+					is_in_home_area = yes
+					impassable = no
 				}
-				division_template = {
-					name = "NRA Defectors"
-					division_names_group = CHI_GAR_01
-					regiments = {
-						militia = { x = 0 y = 0 }
-						militia = { x = 0 y = 1 }
-						militia = { x = 0 y = 2 }
-						militia = { x = 1 y = 0 }
-						militia = { x = 1 y = 1 }
-						militia = { x = 1 y = 2 }
-					}
-					support = {
-						recon = { x = 0 y = 0 }
-						engineer = { x = 0 y = 1 }
-						artillery = { x = 0 y = 2 }
-					}
-				}
-				custom_effect_tooltip = {
-					localization_key = tooltip_create_division_template
-					NAME = "NRA Defectors"
-					LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 6 }
-					SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
-					SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-					SUPPORT_3 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
-				}
-				random_owned_controlled_state = {
-					prioritize = { 592 }
-					limit = {
-						is_in_home_area = yes
-						impassable = no
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 3
+						TYPE = "NRA Defectors"
 					}
 					create_unit = {
 						division = "name = \"NRA Defectors\" division_template = \"NRA Defectors\" start_experience_factor = 0.35"
-						prioritize_location = 592
 						owner = ROOT
 						count = 3
 					}
@@ -6114,28 +6427,37 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_disrupt_socialist_lines"
-			800 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 1120 #Shaoguan
+			if = {
+				limit = { controls_state = 800 }
+				800 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = 1120 #Shaoguan
+					}
 				}
 			}
-			599 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 10404 #Guilin
+			if = {
+				limit = { controls_state = 599 }
+				599 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = 10404 #Guilin
+					}
 				}
 			}
-			1055 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 1597 #Liuzhou
+			if = {
+				limit = { controls_state = 1055 }
+				1055 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = 1597 #Liuzhou
+					}
 				}
 			}
 			if = {
@@ -6281,36 +6603,48 @@ focus_tree = {
 					days = 100
 				}
 			}
-			594 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 7137 #Nanning
+			if = {
+				limit = { controls_state = 594 }
+				594 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = 7137 #Nanning
+					}
 				}
 			}
-			592 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 1047 #Guangzhou
+			if = {
+				limit = { controls_state = 592 }
+				592 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = 1047 #Guangzhou
+					}
 				}
 			}
-			593 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 12095 #Qingyuan
+			if = {
+				limit = { controls_state = 593 }
+				593 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = 12095 #Qingyuan
+					}
 				}
 			}
-			599 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 4152 #Wuzhou
+			if = {
+				limit = { controls_state = 599 }
+				599 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						instant_build = yes
+						province = 4152 #Wuzhou
+					}
 				}
 			}
 		}
@@ -6752,6 +7086,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = GXC_the_south_submits
 		prerequisite = { focus = GXC_the_south_submits }
+		available = { controls_state = 592 } #Canton
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_star_of_guangdong"
@@ -7154,6 +7489,7 @@ focus_tree = {
 			}
 		}
 		prerequisite = { focus = GXC_establish_ministry_of_railways }
+		available = { controls_state = 596 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_mastery_over_nature"
 			CHN_improve_economic_devastation_effect = yes
@@ -7194,7 +7530,7 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			if = {
 				limit = {
-					602 = { is_owned_by = ROOT }
+					602 = { is_owned_and_controlled_by = ROOT }
 				}
 				602 = {
 					add_resource = {
@@ -7206,7 +7542,7 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					602 = { is_owned_by = ROOT }
+					602 = { is_owned_and_controlled_by = ROOT }
 				}
 				602 = {
 					add_resource = {
@@ -7222,7 +7558,7 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					596 = { is_owned_by = ROOT }
+					596 = { is_owned_and_controlled_by = ROOT }
 				}
 				596 = {
 					add_extra_state_shared_building_slots = 1
@@ -7296,7 +7632,7 @@ focus_tree = {
 			if = {
 				limit = {
 					614 = {
-						is_owned_by = ROOT
+						is_owned_and_controlled_by = ROOT
 						NOT = { has_state_flag = QIE_steel_mines_developed }
 					}
 				}
@@ -7322,7 +7658,7 @@ focus_tree = {
 			if = {
 				limit = {
 					1060 = {
-						is_owned_by = ROOT
+						is_owned_and_controlled_by = ROOT
 						NOT = { has_state_flag = QIE_steel_mines_developed }
 					}
 				}
@@ -8381,11 +8717,22 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_rally_the_red_guards"
-			custom_effect_tooltip = GXC_rally_the_red_guards_tt
-			hidden_effect = {
+			if = {
+				limit = { NOT = { has_tech = tech_militias } }
+				enable_tech_militias = yes
+			}
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Hongweibing"
+					LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 6 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = military_police ICON = GFX_unit_military_police_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+					SUPPORT_3 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				}
 				if = {
-					limit = { NOT = { has_tech = tech_militias } }
-					enable_tech_militias = yes
+					limit = { has_template = "Hongweibing" }
+					delete_unit_template_and_units = { division_template = "Hongweibing" disband = yes } #No cheating
 				}
 				division_template = {
 					name = "Hongweibing" #Red Guards- 	紅衛兵
@@ -8404,23 +8751,21 @@ focus_tree = {
 						artillery = { x = 0 y = 2 }
 					}
 				}
-				custom_effect_tooltip = {
-					localization_key = tooltip_create_division_template
-					NAME = "Hongweibing"
-					LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 6 }
-					SUPPORT_1 = { localization_key = support_battalion_tt NAME = military_police ICON = GFX_unit_military_police_icon_small }
-					SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-					SUPPORT_3 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+			}
+			random_owned_controlled_state = {
+				prioritize = { 592 }
+				limit = {
+					is_in_home_area = yes
+					impassable = no
 				}
-				random_owned_controlled_state = {
-					prioritize = { 592 }
-					limit = {
-						is_in_home_area = yes
-						impassable = no
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 3
+						TYPE = "Hongweibing"
 					}
 					create_unit = {
 						division = "name = \"Guangzhou Weiyuan Hui Hongweibeing\" division_template = \"Hongweibing\" start_experience_factor = 0.35" #廣州工會委員會 Guangzhou Union Committee Red Guards
-						prioritize_location = 592
 						owner = ROOT
 						count = 3
 					}
@@ -8482,8 +8827,16 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_mobilise_guerrila_detachments"
-			custom_effect_tooltip = GXC_mobilise_guerrila_detachments_tt
-			hidden_effect = {
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Youji zongdu"
+					LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 4 }
+				}
+				if = {
+					limit = { has_template = "Youji zongdu" }
+					delete_unit_template_and_units = { division_template = "Youji zongdu" disband = yes } #No cheating
+				}
 				division_template = {
 					name = "Youji zongdu"  # Represents: Guerrila Columns # 遊擊縱隊
 					division_names_group = CHI_MIL_01
@@ -8494,20 +8847,21 @@ focus_tree = {
 						irregular_infantry = { x = 1 y = 1 }
 					}
 				}
-				custom_effect_tooltip = {
-					localization_key = tooltip_create_division_template
-					NAME = "Youji zongdu"
-					LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 4 }
+			}
+			random_owned_controlled_state = {
+				prioritize = { 594 }
+				limit = {
+					is_in_home_area = yes
+					impassable = no
 				}
-				random_owned_controlled_state = {
-					prioritize = { 594 }
-					limit = {
-						is_in_home_area = yes
-						impassable = no
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 3
+						TYPE = "Youji zongdu"
 					}
 					create_unit = {
 						division = "name = \"Youji zongdu\" division_template = \"Youji zongdu\" start_experience_factor = 1.0" # Represents: Guerrila Columns # 遊擊縱隊
-						prioritize_location = 592
 						owner = ROOT
 						count = 3
 					}
@@ -9738,42 +10092,55 @@ focus_tree = {
 			hidden_effect = { country_event = { id = GXC.endgame.262 days = 3 } }
 			add_ideas = GXC_the_peasant_soldier_idea
 			add_war_support = 0.10
-			division_template = {
-				name = "Youji zongdu"
-				division_names_group = CHI_MIL_01
-				regiments = {
-					irregular_infantry = { x = 0 y = 0 }
-					irregular_infantry = { x = 0 y = 1 }
-					irregular_infantry = { x = 0 y = 2 }
-					irregular_infantry = { x = 1 y = 0 }
-					irregular_infantry = { x = 1 y = 1 }
-					irregular_infantry = { x = 1 y = 2 }
-					irregular_infantry = { x = 3 y = 0 }
-					irregular_infantry = { x = 3 y = 1 }
-					artillery_brigade = { x = 2 y = 0 }
-					artillery_brigade = { x = 2 y = 1 }
-					artillery_brigade = { x = 2 y = 2 }
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Youji zongdu"
+					LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 8 }
+					LINE_2 = { localization_key = line_battalion_tt NAME = artillery_brigade ICON = GFX_unit_artillery_brigade_icon_small COUNT = 3 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
 				}
-				support = {
-					artillery = { x = 0 y = 0 }
-					engineer = { x = 0 y = 1 }
+				if = {
+					limit = { has_template = "Youji zongdu" }
+					delete_unit_template_and_units = { division_template = "Youji zongdu" disband = yes } #No cheating
+				}
+				division_template = {
+					name = "Youji zongdu"
+					division_names_group = CHI_MIL_01
+					regiments = {
+						irregular_infantry = { x = 0 y = 0 }
+						irregular_infantry = { x = 0 y = 1 }
+						irregular_infantry = { x = 0 y = 2 }
+						irregular_infantry = { x = 1 y = 0 }
+						irregular_infantry = { x = 1 y = 1 }
+						irregular_infantry = { x = 1 y = 2 }
+						irregular_infantry = { x = 3 y = 0 }
+						irregular_infantry = { x = 3 y = 1 }
+						artillery_brigade = { x = 2 y = 0 }
+						artillery_brigade = { x = 2 y = 1 }
+						artillery_brigade = { x = 2 y = 2 }
+					}
+					support = {
+						artillery = { x = 0 y = 0 }
+						engineer = { x = 0 y = 1 }
+					}
 				}
 			}
 			random_owned_controlled_state = {
 				limit = { valid_state_for_spawning_friendly_unit = yes }
-				create_unit = {
-					division = "name = \"Youji zongdu\" division_template = \"Youji zongdu\" start_experience_factor = 1.0"
-					owner = ROOT
-					count = 5
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 5
+						TYPE = "Youji zongdu"
+					}
+					create_unit = {
+						division = "name = \"Youji zongdu\" division_template = \"Youji zongdu\" start_experience_factor = 1.0"
+						owner = ROOT
+						count = 5
+					}
 				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Youji zongdu"
-				LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 8 }
-				LINE_2 = { localization_key = line_battalion_tt NAME = artillery_brigade ICON = GFX_unit_artillery_brigade_icon_small COUNT = 3 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
-				SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
 			}
 		}
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS }
@@ -10487,7 +10854,7 @@ focus_tree = {
 				add_manpower = 20000
 				add_equipment_to_stockpile = {
 					type = infantry_equipment
-					amount = 1500
+					amount = 2000
 				}
 			}
 			else = {
@@ -12046,7 +12413,6 @@ focus_tree = {
 		prerequisite = { focus = GXC_entrenching_the_yue_clique }
 		available = {
 			NOT = {
-				#has_country_flag = UPC_CSP_in_governing_coalition_flag
 				has_country_flag = UPC_KMT_in_governing_coalition_flag
 				has_country_flag = UPC_REG_in_governing_coalition_flag
 				has_country_flag = UPC_YCP_in_governing_coalition_flag
@@ -12140,7 +12506,7 @@ focus_tree = {
 			effect_tooltip = {
 				GXC_ye_ju = {
 					add_trait = {
-						trait = GXC_democracys_iron_will
+						trait = GXC_son_of_the_republic_dem
 						ideology = authoritarian_democrat_subtype
 					}
 				}
@@ -12165,7 +12531,6 @@ focus_tree = {
 		prerequisite = { focus = GXC_steadying_our_democracy }
 		available = {
 			NOT = {
-				#has_country_flag = UPC_CSP_in_governing_coalition_flag
 				has_country_flag = UPC_KMT_in_governing_coalition_flag
 				has_country_flag = UPC_YCP_in_governing_coalition_flag
 			}
@@ -14723,7 +15088,7 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 1500
+				amount = 2000
 			}
 			if = {
 				limit = { check_variable = { CHN_military_disarray_fixes_needed_var > 0 } }
@@ -14892,43 +15257,55 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_utilising_warlord_contacts"
-			division_template = {
-				name = "Heping Jianguo Jun"
-				division_names_group = "CHYN_INF_01"
-				template_counter = 92
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
-					infantry = { x = 2 y = 0 }
-					infantry = { x = 2 y = 1 }
-					infantry = { x = 2 y = 2 }
-					artillery_brigade = { x = 3 y = 0 }
-					artillery_brigade = { x = 3 y = 1 }
-					artillery_brigade = { x = 3 y = 2 }
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Heping Jianguo Jun"
+					LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 9 }
+					LINE_2 = { localization_key = line_battalion_tt NAME = artillery_brigade ICON = GFX_unit_artillery_brigade_icon_small COUNT = 3 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
 				}
-				support = {
-					artillery = { x = 0 y = 0 }
+				if = {
+					limit = { has_template = "Heping Jianguo Jun" }
+					delete_unit_template_and_units = { division_template = "Heping Jianguo Jun" disband = yes } #No cheating
 				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Heping Jianguo Jun"
-				LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 9 }
-				LINE_2 = { localization_key = line_battalion_tt NAME = artillery_brigade ICON = GFX_unit_artillery_brigade_icon_small COUNT = 3 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				division_template = {
+					name = "Heping Jianguo Jun"
+					division_names_group = CHYN_INF_01
+					template_counter = 92
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+						artillery_brigade = { x = 3 y = 0 }
+						artillery_brigade = { x = 3 y = 1 }
+						artillery_brigade = { x = 3 y = 2 }
+					}
+					support = {
+						artillery = { x = 0 y = 0 }
+					}
+				}
 			}
 			random_owned_controlled_state = {
 				limit = {
 					is_core_of = ROOT
 					valid_state_for_spawning_friendly_unit = yes
 				}
-				create_unit = {
-					division = "division_template = \"Heping Jianguo Jun\" start_experience_factor = 0.1"
-					owner = ROOT
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Heping Jianguo Jun"
+					}
+					create_unit = {
+						division = "division_template = \"Heping Jianguo Jun\" start_experience_factor = 0.1"
+						owner = ROOT
+					}
 				}
 			}
 			if = {
@@ -15065,11 +15442,22 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_organising_a_national_merchant_corps"
-			custom_effect_tooltip = GXC_organising_a_national_merchant_corps_tt
-			hidden_effect = {
+			if = {
+				limit = { NOT = { has_tech = tech_militias } }
+				enable_tech_militias = yes
+			}
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Merchant Corps"
+					LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 6 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+					SUPPORT_3 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				}
 				if = {
-					limit = { NOT = { has_tech = tech_militias } }
-					enable_tech_militias = yes
+					limit = { has_template = "Merchant Corps" }
+					delete_unit_template_and_units = { division_template = "Merchant Corps" disband = yes } #No cheating
 				}
 				division_template = {
 					name = "Merchant Corps"
@@ -15088,19 +15476,18 @@ focus_tree = {
 						artillery = { x = 0 y = 2 }
 					}
 				}
-				custom_effect_tooltip = {
-					localization_key = tooltip_create_division_template
-					NAME = "Merchant Corps"
-					LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 6 }
-					SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
-					SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-					SUPPORT_3 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+			}
+			random_owned_controlled_state = {
+				prioritize = { 592 } #Guangzhou
+				limit = {
+					is_in_home_area = yes
+					impassable = no
 				}
-				random_owned_controlled_state = {
-					prioritize = { 592 } #Guangzhou
-					limit = {
-						is_in_home_area = yes
-						impassable = no
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 3
+						TYPE = "Merchant Corps"
 					}
 					create_unit = {
 						division = "name = \"Merchant Corps\" division_template = \"Merchant Corps\" start_experience_factor = 0.35"
@@ -15558,7 +15945,7 @@ focus_tree = {
 
 	focus = {
 		id = GXC_on_the_military_and_its_excesses
-		icon = GFX_goal_zhang_rifle
+		icon = GFX_goal_CHN_beiyang_militarism
 		cost = 7
 		x = -1
 		y = 1
@@ -17065,9 +17452,15 @@ focus_tree = {
 				amount = 200
 			}
 			var:ROOT.capital = {
-				create_unit = {
-					division = "name = \"Jidonghua Bubing di 201 Shi\"division_template = \"Jidonghua Bubing Shi\" start_experience_factor = 0.75"
-					owner = GXC
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Jidonghua Bubing Shi"
+					}
+					create_unit = {
+						division = "name = \"Jidonghua Bubing di 201 Shi\"division_template = \"Jidonghua Bubing Shi\" start_experience_factor = 0.75"
+						owner = ROOT
+					}
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -17656,8 +18049,8 @@ focus_tree = {
 			}
 			has_completed_focus = GXC_legacy_of_whampoa
 		}
-		relative_position_id = GXC_proof_of_the_party_army
-		prerequisite = { focus = GXC_proof_of_the_party_army }
+		relative_position_id = GXC_spirit_of_the_country
+		prerequisite = { focus = GXC_spirit_of_the_country }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_modern_revolutionary_soldier"
 			add_tech_bonus = {
@@ -17696,8 +18089,8 @@ focus_tree = {
 			}
 			has_completed_focus = GXC_legacy_of_whampoa
 		}
-		relative_position_id = GXC_proof_of_the_party_army
-		prerequisite = { focus = GXC_proof_of_the_party_army }
+		relative_position_id = GXC_spirit_of_the_country
+		prerequisite = { focus = GXC_spirit_of_the_country }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_instilling_the_national_bushido"
 			add_timed_idea = {
@@ -17726,8 +18119,8 @@ focus_tree = {
 			}
 			has_completed_focus = GXC_legacy_of_whampoa
 		}
-		relative_position_id = GXC_proof_of_the_party_army
-		prerequisite = { focus = GXC_proof_of_the_party_army }
+		relative_position_id = GXC_spirit_of_the_country
+		prerequisite = { focus = GXC_spirit_of_the_country }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_modern_arms_in_the_middle_kingdom"
 			if = {
@@ -18013,7 +18406,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = GXC_army_of_the_nation
+		id = GXC_army_for_a_nation
 		icon = {
 			trigger = {
 				china_is_aligned_with_kmt = yes
@@ -18035,7 +18428,7 @@ focus_tree = {
 		prerequisite = { focus = GXC_dedicated_hearts }
 		prerequisite = { focus = GXC_stalwart_souls }
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed GXC_army_of_the_nation"
+			log = "[GetLogRoot]: Focus Completed GXC_army_for_a_nation"
 			if = {
 				limit = { has_idea = GXC_nra_2kmt_idea }
 				swap_ideas = {
@@ -18049,52 +18442,55 @@ focus_tree = {
 					add_idea = GXC_nra_3_idea
 				}
 			}
-			division_template = {
-				name = "Tezhong budui"
-				division_names_group = "CHYN_INF_01"
-				regiments = {
-					mountaineers = { x = 0 y = 0 }
-					mountaineers = { x = 0 y = 1 }
-					mountaineers = { x = 0 y = 2 }
-					mountaineers = { x = 0 y = 3 }
-					mountaineers = { x = 1 y = 0 }
-					mountaineers = { x = 1 y = 1 }
-					mountaineers = { x = 1 y = 2 }
-					mountaineers = { x = 1 y = 3 }
-					artillery_brigade = { x = 2 y = 0 }
-					artillery_brigade = { x = 2 y = 1 }
-					artillery_brigade = { x = 2 y = 2 }
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Tezhong budui"
+					LINE_1 = { localization_key = line_battalion_tt NAME = mountaineers ICON = GFX_unit_mountaineers_icon_small COUNT = 8 }
+					LINE_2 = { localization_key = line_battalion_tt NAME = artillery_brigade ICON = GFX_unit_artillery_brigade_icon_small COUNT = 3 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+					SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
 				}
-				support = {
-					artillery = { x = 0 y = 0 }
-					engineer = { x = 0 y = 1 }
+				if = {
+					limit = { has_template = "Tezhong budui" }
+					delete_unit_template_and_units = { division_template = "Tezhong budui" disband = yes } #No cheating
 				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Tezhong budui"
-				LINE_1 = { localization_key = line_battalion_tt NAME = mountaineers ICON = GFX_unit_mountaineers_icon_small COUNT = 8 }
-				LINE_2 = { localization_key = line_battalion_tt NAME = artillery_brigade ICON = GFX_unit_artillery_brigade_icon_small COUNT = 3 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
-				SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+				division_template = {
+					name = "Tezhong budui"
+					division_names_group = CHYN_INF_01
+					regiments = {
+						mountaineers = { x = 0 y = 0 }
+						mountaineers = { x = 0 y = 1 }
+						mountaineers = { x = 0 y = 2 }
+						mountaineers = { x = 0 y = 3 }
+						mountaineers = { x = 1 y = 0 }
+						mountaineers = { x = 1 y = 1 }
+						mountaineers = { x = 1 y = 2 }
+						mountaineers = { x = 1 y = 3 }
+						artillery_brigade = { x = 2 y = 0 }
+						artillery_brigade = { x = 2 y = 1 }
+						artillery_brigade = { x = 2 y = 2 }
+					}
+					support = {
+						artillery = { x = 0 y = 0 }
+						engineer = { x = 0 y = 1 }
+					}
+				}
 			}
 			random_owned_controlled_state = {
 				prioritize = { 592 }
 				limit = { valid_state_for_spawning_friendly_unit = yes }
-				create_unit = {
-					division = "division_template = \"Tezhong budui\" start_experience_factor = 1.0"
-					prioritize_location = 1047
-					owner = ROOT
-				}
-				create_unit = {
-					division = "division_template = \"Tezhong budui\" start_experience_factor = 1.0"
-					prioritize_location = 1047
-					owner = ROOT
-				}
-				create_unit = {
-					division = "division_template = \"Tezhong budui\" start_experience_factor = 1.0"
-					prioritize_location = 1047
-					owner = ROOT
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 3
+						TYPE = "Tezhong budui"
+					}
+					create_unit = {
+						division = "division_template = \"Tezhong budui\" start_experience_factor = 1.0"
+						owner = ROOT
+						count = 3
+					}
 				}
 			}
 			hidden_effect = { country_event = { id = GXC.lategame.040 days = 21 } }
@@ -18485,41 +18881,22 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
-			if = {
-				limit = {
-					NOT = { has_tech = paratroopers }
-				}
-				set_technology = { paratroopers = 1 }
-			}
-			division_template = {
-				name = "Kongjiang bing jun" #Paratroopers
-				division_names_group = CHYN_INF_01
-				regiments = {
-					paratrooper = { x = 0 y = 0 }
-					paratrooper = { x = 0 y = 1 }
-					paratrooper = { x = 1 y = 0 }
-					paratrooper = { x = 1 y = 1 }
-				}
-				support = {
-					engineer = { x = 0 y = 0 }
-				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Kongjiang bing jun"
-				LINE_1 = { localization_key = line_battalion_tt NAME = paratrooper ICON = GFX_unit_paratrooper_icon_small COUNT = 4 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-			}
+			china_create_paratrooper_template = yes
 			random_owned_controlled_state = {
 				prioritize = { 592 }
 				limit = {
 					is_in_home_area = yes
 					impassable = no
 				}
-				create_unit = {
-					division = "name = \"Liubai ling yi\" division_template = \"Kongjiang bing jun\" start_experience_factor = 1.0" #NEEDS NEW NAME
-					prioritize_location = 1046
-					owner = ROOT
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Kongjiang bing jun"
+					}
+					create_unit = {
+						division = "name = \"Liubai ling yi\" division_template = \"Kongjiang bing jun\" start_experience_factor = 1.0" #NEEDS NEW NAME
+						owner = ROOT
+					}
 				}
 			}
 		}
@@ -19059,35 +19436,22 @@ focus_tree = {
 				uses = 1
 				category = tp_tech
 			}
-			division_template = {
-				name = "Haijun lu zhan dui" #Marine Corps
-				division_names_group = CHYN_INF_01
-				regiments = {
-					marine = { x = 0 y = 0 }
-					marine = { x = 0 y = 1 }
-					marine = { x = 1 y = 0 }
-					marine = { x = 1 y = 1 }
-				}
-				support = {
-					engineer = { x = 0 y = 0 }
-				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Haijun lu zhan dui"
-				LINE_1 = { localization_key = line_battalion_tt NAME = marine ICON = GFX_unit_marine_icon_small COUNT = 4 }
-				SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-			}
+			china_create_marine_template = yes
 			random_owned_controlled_state = {
 				prioritize = { 592 }
 				limit = {
 					is_in_home_area = yes
 					impassable = no
 				}
-				create_unit = {
-					division = "name = \"Di san tuan kuobian.\" division_template = \"Haijun lu zhan dui\" start_experience_factor = 1.0" #The Third Regiment
-					prioritize_location = 1047
-					owner = ROOT
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Haijun lu zhan dui"
+					}
+					create_unit = {
+						division = "name = \"Di san tuan kuobian.\" division_template = \"Haijun lu zhan dui\" start_experience_factor = 1.0" #The Third Regiment
+						owner = ROOT
+					}
 				}
 			}
 		}
@@ -19760,6 +20124,8 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = GXC_constitutionalism_triumphs_regionalism_modifier_tt
 			hidden_effect = {
+				set_temp_variable = { GXC_constitutionalism_triumphs_regionalism_soc_con_temp_var = ROOT.party_popularity@social_conservative }
+				multiply_temp_variable = { GXC_constitutionalism_triumphs_regionalism_soc_con_temp_var = -1 }
 				add_dynamic_modifier = { modifier = GXC_constitutionalism_triumphs_regionalism_modifier }
 			}
 		}
@@ -20322,8 +20688,8 @@ focus_tree = {
 			base = 100
 			modifier = {
 				factor = 0
-				#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_PRINCIPLED_AUTDEM }
-				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_REVOLUTIONARY_AUTDEM }
+				#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PRINCIPLED_AUTDEM }
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
 			}
 		}
 		prerequisite = { focus = GXC_the_six_years_of_necessary_tutelage }
@@ -20335,7 +20701,7 @@ focus_tree = {
 					social_liberal > 0.10
 					social_conservative > 0.10
 				}
-				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_REVOLUTIONARY_AUTDEM }
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
 			}
 		}
 		mutually_exclusive = { focus = GXC_promise_a_thorough_tutelage }
@@ -20460,8 +20826,8 @@ focus_tree = {
 			base = 100
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_PRINCIPLED_AUTDEM }
-				#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_HANMIN_REVOLUTIONARY_AUTDEM }
+				has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_PRINCIPLED_AUTDEM }
+				#has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_REVOLUTIONARY_AUTDEM }
 			}
 		}
 		prerequisite = { focus = GXC_the_six_years_of_necessary_tutelage }

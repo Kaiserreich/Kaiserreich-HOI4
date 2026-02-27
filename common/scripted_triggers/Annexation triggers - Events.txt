@@ -636,7 +636,10 @@ annexations_can_release_brazil = {
 	NOT = { country_exists = BRA }
 	500 = { #Rio de Janeiro
 		OR = {
-			is_valid_annexation_state = yes
+			AND = {
+				owner = { is_ally_with = ROOT }
+				is_allowed_annexation_state_for_owner = yes
+			}
 			owner = {
 				is_brazilian_tag = yes
 				is_subject_of = ROOT
@@ -648,7 +651,10 @@ annexations_can_release_brazil = {
 		amount = 3
 		498 = { #Northeastern Brazil
 			OR = {
-				is_valid_annexation_state = yes
+				AND = {
+					owner = { is_ally_with = ROOT }
+					is_allowed_annexation_state_for_owner = yes
+				}
 				owner = {
 					is_brazilian_tag = yes
 					is_subject_of = ROOT
@@ -657,7 +663,10 @@ annexations_can_release_brazil = {
 		}
 		499 = { #Bahia
 			OR = {
-				is_valid_annexation_state = yes
+				AND = {
+					owner = { is_ally_with = ROOT }
+					is_allowed_annexation_state_for_owner = yes
+				}
 				owner = {
 					is_brazilian_tag = yes
 					is_subject_of = ROOT
@@ -666,7 +675,10 @@ annexations_can_release_brazil = {
 		}
 		501 = { #São Paulo
 			OR = {
-				is_valid_annexation_state = yes
+				AND = {
+					owner = { is_ally_with = ROOT }
+					is_allowed_annexation_state_for_owner = yes
+				}
 				owner = {
 					is_brazilian_tag = yes
 					is_subject_of = ROOT
@@ -675,7 +687,10 @@ annexations_can_release_brazil = {
 		}
 		505 = { #Goyaz
 			OR = {
-				is_valid_annexation_state = yes
+				AND = {
+					owner = { is_ally_with = ROOT }
+					is_allowed_annexation_state_for_owner = yes
+				}
 				owner = {
 					is_brazilian_tag = yes
 					is_subject_of = ROOT
@@ -684,7 +699,10 @@ annexations_can_release_brazil = {
 		}
 		502 = { #Rio Grande do Sul
 			OR = {
-				is_valid_annexation_state = yes
+				AND = {
+					owner = { is_ally_with = ROOT }
+					is_allowed_annexation_state_for_owner = yes
+				}
 				owner = {
 					is_brazilian_tag = yes
 					is_subject_of = ROOT
@@ -693,7 +711,10 @@ annexations_can_release_brazil = {
 		}
 		898 = { #Pará
 			OR = {
-				is_valid_annexation_state = yes
+				AND = {
+					owner = { is_ally_with = ROOT }
+					is_allowed_annexation_state_for_owner = yes
+				}
 				owner = {
 					is_brazilian_tag = yes
 					is_subject_of = ROOT
@@ -859,9 +880,8 @@ annexations_can_release_united_kingdom = {
 
 annexations_can_released_united_danubia = {
 	is_subject = no
-	9 = { annexations_is_valid_annexation_region = yes } #Prague
-	43 = { annexations_is_valid_annexation_region = yes } #Central Hungary
-	70 = { annexations_is_valid_annexation_region = yes } #Slovakia
+	9 = { annexations_is_valid_annexation_region_for_faction = yes } #Prague
+	43 = { annexations_is_valid_annexation_region_for_faction = yes } #Central Hungary
 }
 
 annexations_AI_country_wants_to_dismantle_germany = {

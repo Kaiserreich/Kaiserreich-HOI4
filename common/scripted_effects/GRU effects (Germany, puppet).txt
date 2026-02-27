@@ -2,6 +2,9 @@ generate_new_german_puppet = {
 	if = {
 		limit = { NOT = { country_exists = GRU } }
 		set_temp_variable = { tag_to_release = GRU }
+		hidden_effect = {
+			GER = { var:tag_to_release = { copy_laws_of_PREV = yes } }
+		}
 		every_state = {
 			limit = { is_germany = yes }
 			add_core_of = var:tag_to_release
@@ -20,6 +23,9 @@ generate_new_german_puppet = {
 			original_tag = GRU
 			germany_create_puppet_templates = yes
 			set_temp_variable = { tag_to_release = THIS }
+			hidden_effect = {
+				GER = { var:tag_to_release = { copy_laws_of_PREV = yes } }
+			}
 			ROOT = {
 				every_owned_state = {
 					limit = { is_core_of = GRU }

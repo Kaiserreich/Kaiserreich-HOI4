@@ -126,7 +126,7 @@ country_event = { #The ZheGan Railway
 	title = CHI.introgame.004.t
 	desc = CHI.introgame.004.d
 	picture = GFX_report_event_FNG_railway_strike
-	is_triggered_only = yes  #fired by league_collapse.2
+	is_triggered_only = yes  #fired by league_collapse_events.2
 
 	option = { #Stoke nationalist sentiment
 		log = "[GetLogInfo]: event CHI.introgame.004 option CHI.introgame.004.a"
@@ -150,7 +150,7 @@ country_event = { #The Brewing Tempest
 	title = CHI.introgame.005.t
 	desc = CHI.introgame.005.d
 	picture = GFX_report_event_CHN_protest
-	is_triggered_only = yes  #Fired from league_collapse.6
+	is_triggered_only = yes  #Fired from league_collapse_events.6
 
 	option = { #Reinforce Rural Strongholds
 		log = "[GetLogInfo]: event CHI.introgame.005 option CHI.introgame.005.a"
@@ -176,7 +176,7 @@ country_event = { #The Wuhu Massacre
 	title = CHI.introgame.006.t
 	desc = CHI.introgame.006.d
 	picture = GFX_report_event_CHN_riot
-	is_triggered_only = yes  #Fired from league_collapse.10
+	is_triggered_only = yes  #Fired from league_collapse_events.10
 
 	option = { #Moderate Position
 		log = "[GetLogInfo]: event CHI.introgame.006 option CHI.introgame.006.a"
@@ -199,7 +199,7 @@ country_event = { #Black Monday and its consequences ...
 	title = CHI.introgame.007.t
 	desc = CHI.introgame.007.d
 	picture = GFX_report_event_LEC_shanghai_river
-	is_triggered_only = yes  #Fired 3 days after league_collapse.50
+	is_triggered_only = yes  #Fired 3 days after league_collapse_events.50
 
 	option = { #We need a coordinated, broad plan
 		log = "[GetLogInfo]: event CHI.introgame.007 option CHI.introgame.007.a"
@@ -223,7 +223,7 @@ country_event = { #The Smiling Tiger Downed
 	title = CHI.introgame.008.t
 	desc = CHI.introgame.008.d
 	picture = GFX_report_event_CHN_riot_police
-	is_triggered_only = yes  #Fired from league_collapse.52
+	is_triggered_only = yes  #Fired from league_collapse_events.52
 
 	option = { #Every man a rifle
 		log = "[GetLogInfo]: event CHI.introgame.008 option CHI.introgame.008.a"
@@ -266,7 +266,7 @@ country_event = {
 	desc = CHI.earlygame.000.d
 	picture = GFX_report_event_CHN_warlord_battle
 
-	is_triggered_only = yes #Fired from league_collapse.58
+	is_triggered_only = yes #Fired from league_collapse_events.58
 	option = { #Fu Zhan!
 		log = "[GetLogInfo]: event CHI.earlygame.000 option CHI.earlygame.000.a"
 		name = CHI.earlygame.000.a
@@ -318,7 +318,7 @@ country_event = { #Spies and Secrets in the League War
 	desc = CHI.earlygame.003.d
 	picture = GFX_report_event_CHN_intelligence
 
-	is_triggered_only = yes #Triggered by event league_collapse.59
+	is_triggered_only = yes #Triggered by event league_collapse_events.59
 
 	option = { #Interesting to hear.
 		log = "[GetLogInfo]: event CHI.earlygame.003 option CHI.earlygame.003.a"
@@ -779,7 +779,7 @@ country_event = { # The Shandong Menace
 		}
 	}
 
-	fire_only_once = yes #Is triggered by event league_war.15 and league_war.17 LEP/ANQ is dead
+	fire_only_once = yes #Is triggered by event league_war_events.15 and league_war_events.17 LEP/ANQ is dead
 	is_triggered_only = yes
 
 	option = { #We shall prepare a response...
@@ -2354,6 +2354,9 @@ country_event = {
 				GXC_dai_ji = { CHN_recruit_character_effect = yes }
 				GXC_cai_tingkai = { CHN_recruit_character_effect = yes }
 				GXC_jiang_guangnai = { CHN_recruit_character_effect = yes }
+				GXC_li_zhangda = { CHN_recruit_character_effect = yes }
+				GXC_li_minxin = { CHN_recruit_character_effect = yes }
+				GXC_xie_wenbing = { CHN_recruit_character_effect = yes }
 			}
 		}
 	}
@@ -8877,6 +8880,28 @@ country_event = { #The Fujian Rebellion
 					has_country_leader = { character = GXC_peng_pai }
 				}
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						tag = GXC
+						OR = {
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
+						}
+					}
+					AND = {
+						tag = YUN
+						OR = {
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_RADSOC }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCDEM }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_GENYUAN_MARLIB }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCCON }
+						}
+					}
+				}
+			}
 		}
 		effect_tooltip = { china_integrate_ally_effect = yes }
 		CHI = { change_tag_from = ROOT }
@@ -9622,6 +9647,28 @@ country_event = { #Wang Jingwei Falls From Power
 					has_country_leader = { character = GXC_hu_hanmin }
 				}
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						tag = GXC
+						OR = {
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
+						}
+					}
+					AND = {
+						tag = YUN
+						OR = {
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_RADSOC }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCDEM }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_GENYUAN_MARLIB }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCCON }
+						}
+					}
+				}
+			}
 		}
 		effect_tooltip = { china_integrate_ally_effect = yes }
 		CHI = { change_tag_from = ROOT }
@@ -10072,6 +10119,28 @@ country_event = {
 					has_country_leader = { character = YUN_chen_cheng }
 				}
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						tag = GXC
+						OR = {
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
+						}
+					}
+					AND = {
+						tag = YUN
+						OR = {
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_RADSOC }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCDEM }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_GENYUAN_MARLIB }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCCON }
+						}
+					}
+				}
+			}
 		}
 		effect_tooltip = { china_integrate_ally_effect = yes }
 		CHI = { change_tag_from = ROOT }
@@ -10103,6 +10172,28 @@ country_event = {
 				OR = {
 					#Moderate Leaders
 					has_country_leader = { character = HNN_tang_shengzhi }
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						tag = GXC
+						OR = {
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
+						}
+					}
+					AND = {
+						tag = YUN
+						OR = {
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_RADSOC }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCDEM }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_GENYUAN_MARLIB }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCCON }
+						}
+					}
 				}
 			}
 		}
@@ -10140,6 +10231,28 @@ country_event = {
 					#Right Wing Leaders
 					china_alignment_right_kuomintang = yes
 					has_country_leader = { character = GXC_chen_mingshu }
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						tag = GXC
+						OR = {
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_RADSOC }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SYNDIE }
+							has_game_rule = { rule = GXC_KMT_path option = GXC_KMT_PATH_SOCDEM }
+						}
+					}
+					AND = {
+						tag = YUN
+						OR = {
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_RADSOC }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCDEM }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_GENYUAN_MARLIB }
+							has_game_rule = { rule = YUN_KMT_path option = YUN_KMT_PATH_SOCCON }
+						}
+					}
 				}
 			}
 		}
@@ -13283,7 +13396,10 @@ country_event = {
 		CHI_chen_youren = { CHN_recruit_character_effect = yes }
 		CHI_he_xiangning = { CHN_recruit_character_effect = yes }
 		CHI_recruit_song_ziwen_effect = yes
-		CHI_zhang_bojun = { CHN_recruit_character_effect = yes }
+		if = {
+			limit = { YUN = { NOT = { has_character = CHI_zhang_bojun } } }
+			CHI_zhang_bojun = { CHN_recruit_character_effect = yes }
+		}
 	}
 }
 

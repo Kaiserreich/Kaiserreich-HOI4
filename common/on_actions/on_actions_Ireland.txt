@@ -260,8 +260,8 @@ on_actions = {
 						is_in_faction_with = GER
 						has_country_flag = IRE_govt_abstentionist_an
 						NOT = {
-							120 = { is_claimed_by = ROOT }
-							133 = { is_claimed_by = ROOT }
+							120 = { is_claimed_by = ROOT } #Scottish Highlands
+							1124 = { is_claimed_by = ROOT } #Isle of Man
 						}
 					}
 					FROM = {
@@ -757,10 +757,10 @@ on_actions = {
 					tag = IRE
 					is_subject = no
 					has_government = national_populist
-					120 = { is_claimed_by = ROOT }
-					133 = { is_claimed_by = ROOT }
+					120 = { is_claimed_by = ROOT } #Scottish Highlands
+					1124 = { is_claimed_by = ROOT } #Isle of Man
 				}
-				country_event = { id = ireland_events.3310 days = 2 }	### Ireland owns the two Scottish states it has claims on
+				country_event = { id = ireland_events.3310 days = 2 }	### Ireland owns the two states it has claims on
 				country_event = { id = ireland_events.3310 days = 14 }	### Repeat event in case player ally delays in transferring it
 				country_event = { id = ireland_events.3310 days = 28 } ### Repeat
 				country_event = { id = ireland_events.3310 days = 56 } ### Repeat

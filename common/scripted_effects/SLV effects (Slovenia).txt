@@ -1,10 +1,16 @@
 SLV_move_back_generals = {
-	if = {
-		limit = { NOT = { has_character = SLV_leon_rupnik } }
-		SLV_leon_rupnik = {
-			set_nationality = SLV
+	if = { #rupnik is only around for right wing SLV
+		limit = {
+			has_authoritarian_government = yes
+			has_soccon_or_marlib_government = yes
+		}
+		if = { limit = { NOT = { has_character = SLV_leon_rupnik } }
+			SLV_leon_rupnik = {
+				set_nationality = SLV
+			}
 		}
 	}
+	else = { retire_character = SLV_leon_rupnik }
 	if = {
 		limit = { NOT = { has_character = SLV_jaka_avsic } }
 		SLV_jaka_avsic = {
@@ -29,4 +35,14 @@ SLV_move_back_generals = {
 			set_nationality = SLV
 		}
 	}
+	if = { #rozman is only around for left wing SLV
+		limit = { has_socialist_government = yes }
+		if = {
+			limit = { NOT = { has_character = SLV_franc_rozman } }
+			SLV_franc_rozman = {
+				set_nationality = SLV
+			}
+		}
+	}
+	else = { retire_character = SLV_franc_rozman }
 }

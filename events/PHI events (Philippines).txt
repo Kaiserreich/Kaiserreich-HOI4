@@ -64,46 +64,7 @@ country_event = { #The Philippine Political Scene
 		hidden_effect = {
 			country_event = { id = philippines_political_events.003 days = 7 }
 
-			#This will set the ai to go down one of three strategies
-			random_list = {
-				50 = {
-					#Will go moderate/try to stay in the middle
-					modifier = {
-						factor = 0
-						OR = {
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_ROXAS_AUTDEM }
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_SOCLIB }
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_AGUINALDO_AUTDEM }
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_SYNDIE }
-						}
-					}
-					set_country_flag = PHI_quezon_chooses_moderate_ai_plan_flag
-				}
-				25 = {
-					#Will go conservative, result in a populist ending
-					modifier = {
-						factor = 0
-						OR = {
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_MARLIB }
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_ROXAS_AUTDEM }
-						}
-					}
-					set_country_flag = PHI_quezon_chooses_conservative_ai_plan_flag
-				}
-				25 = {
-					#Will go progressive, result in a elitist ending
-					modifier = {
-						factor = 0
-						OR = {
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_MARLIB }
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_SOCLIB }
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_AGUINALDO_AUTDEM }
-							has_game_rule = { rule = PHI_PATH option = PHI_PATH_SYNDIE }
-						}
-					}
-					set_country_flag = PHI_quezon_chooses_progressive_ai_plan_flag
-				}
-			}
+			country_event = philippines_political_events.006 #Hidden AI event because random_list apparently broke
 		}
 	}
 
@@ -251,6 +212,65 @@ country_event = { #The Populists are Angry
 
 	after = {
 		custom_effect_tooltip = PHI_populist_too_high_warning_tt
+	}
+}
+
+country_event = {
+	id = philippines_political_events.006 #AI event to choose a path because random_list broke
+	hidden = yes
+	is_triggered_only = yes #Trigged by [EVENT] philippines_political-events.002
+	trigger = {
+		is_ai = yes
+	}
+
+	#This will set the ai to go down one of three strategies
+	option = {
+		log = "[GetLogInfo]: event philippines_political_events.006 option 1" #Will go moderate/try to stay in the middle
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = PHI_path option = PHI_PATH_ROXAS_AUTDEM }
+					has_game_rule = { rule = PHI_path option = PHI_PATH_SOCLIB }
+					has_game_rule = { rule = PHI_path option = PHI_PATH_AGUINALDO_AUTDEM }
+					has_game_rule = { rule = PHI_path option = PHI_PATH_SYNDIE }
+				}
+			}
+		}
+		set_country_flag = PHI_quezon_chooses_moderate_ai_plan_flag
+	}
+
+	option = {
+		log = "[GetLogInfo]: event philippines_political_events.006 option 2" #Will go conservative, result in a populist ending
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = PHI_path option = PHI_PATH_MARLIB }
+					has_game_rule = { rule = PHI_path option = PHI_PATH_ROXAS_AUTDEM }
+				}
+			}
+		}
+		set_country_flag = PHI_quezon_chooses_conservative_ai_plan_flag
+	}
+
+	option = {
+		log = "[GetLogInfo]: event philippines_political_events.006 option 3" #Will go progressive, result in a elitist ending
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = PHI_path option = PHI_PATH_MARLIB }
+					has_game_rule = { rule = PHI_path option = PHI_PATH_SOCLIB }
+					has_game_rule = { rule = PHI_path option = PHI_PATH_AGUINALDO_AUTDEM }
+					has_game_rule = { rule = PHI_path option = PHI_PATH_SYNDIE }
+				}
+			}
+		}
+		set_country_flag = PHI_quezon_chooses_progressive_ai_plan_flag
 	}
 }
 
@@ -513,7 +533,33 @@ country_event = { #German economic aid package to the Philippines
 	option = {
 		log = "[GetLogInfo]: event philippines_political_events.050 option philippines_political_events.050.a"
 		name = philippines_political_events.050.a #We'll take all the help we can get!
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 100
+
+			modifier = {
+				factor = 0
+				GEA = { is_ai = yes }
+
+				OR = {
+					AND = {
+						PHI_ai_should_anger_elitists_trigger = yes
+						#Basically if you want to be angering Elitists and your Elitist anger is high, you will not accept.
+						is_power_balance_in_range = {
+							id = PHI_power_balance
+							range < PHI_bop_elitist_tensions
+						}
+					}
+					AND = {
+						PHI_ai_should_anger_populists_trigger = yes
+						#If you want to be angering Populists and your Populist anger is high, you will not accept.
+						is_power_balance_in_range = {
+							id = PHI_power_balance
+							range > PHI_bop_populist_tensions
+						}
+					}
+				}
+			}
+		}
 		if = {
 			limit = { has_idea = PHI_foreign_industrial_support_idea }
 			modify_timed_idea = {
@@ -540,7 +586,33 @@ country_event = { #German economic aid package to the Philippines
 		log = "[GetLogInfo]: event philippines_political_events.050 option philippines_political_events.050.b"
 		name = philippines_political_events.050.b #No thank you.
 
-		ai_chance = { base = 0 } #Don't turn down a free lunch
+		ai_chance = {
+			base = 0
+
+			modifier = {
+				add = 100
+				GEA = { is_ai = yes }
+
+				OR = {
+					AND = {
+						PHI_ai_should_anger_elitists_trigger = yes
+						#Basically if you want to be angering Elitists and your Elitist anger is high, you will not accept.
+						is_power_balance_in_range = {
+							id = PHI_power_balance
+							range < PHI_bop_elitist_tensions
+						}
+					}
+					AND = {
+						PHI_ai_should_anger_populists_trigger = yes
+						#If you want to be angering Populists and your Populist anger is high, you will not accept.
+						is_power_balance_in_range = {
+							id = PHI_power_balance
+							range > PHI_bop_populist_tensions
+						}
+					}
+				}
+			}
+		}
 		set_country_flag = PHI_reject_german_economic_aid
 		hidden_effect = {
 			GEA = {
@@ -560,7 +632,25 @@ country_event = { #American economic aid package to the Philippines
 	option = {
 		log = "[GetLogInfo]: event philippines_political_events.051 option philippines_political_events.051.a"
 		name = philippines_political_events.051.a #We'll take all the help we can get!
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 100
+
+			modifier = {
+				factor = 0
+				USA = { is_ai = yes } #Let the player get their way since this entire mechanic is meant to help them influence PHI and USA in particular is vulnerable to being shut out if their favored domestic leader doesn't win.
+
+				OR = {
+					AND = {
+						PHI_ai_should_anger_elitists_trigger = yes
+						FROM = { has_socialist_government = no }
+					}
+					AND = {
+						PHI_ai_should_anger_populists_trigger = yes
+						FROM = { has_socialist_government = yes }
+					}
+				}
+			}
+		}
 		if = {
 			limit = { has_idea = PHI_foreign_industrial_support_idea }
 			modify_timed_idea = {
@@ -614,7 +704,33 @@ country_event = { #Japanese economic aid package to the Philippines
 	option = {
 		log = "[GetLogInfo]: event philippines_political_events.052 option philippines_political_events.052.a"
 		name = philippines_political_events.052.a #We'll take all the help we can get!
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 100
+
+			modifier = {
+				factor = 0
+				JAP = { is_ai = yes }
+
+				OR = {
+					AND = {
+						PHI_ai_should_anger_elitists_trigger = yes
+						#Basically if you want to be angering Elitists and your Elitist anger is high, you will not accept.
+						is_power_balance_in_range = {
+							id = PHI_power_balance
+							range < PHI_bop_elitist_tensions
+						}
+					}
+					AND = {
+						PHI_ai_should_anger_populists_trigger = yes
+						#If you want to be angering Populists and your Populist anger is high, you will not accept.
+						is_power_balance_in_range = {
+							id = PHI_power_balance
+							range > PHI_bop_populist_tensions
+						}
+					}
+				}
+			}
+		}
 		if = {
 			limit = { has_idea = PHI_foreign_industrial_support_idea }
 			modify_timed_idea = {
@@ -640,7 +756,33 @@ country_event = { #Japanese economic aid package to the Philippines
 	option = {
 		log = "[GetLogInfo]: event philippines_political_events.052 option philippines_political_events.052.b"
 		name = philippines_political_events.052.b #No thank you.
-		ai_chance = { base = 0 } #Don't turn down a free lunch
+		ai_chance = {
+			base = 0
+
+			modifier = {
+				add = 100
+				GEA = { is_ai = yes }
+
+				OR = {
+					AND = {
+						PHI_ai_should_anger_elitists_trigger = yes
+						#Basically if you want to be angering Elitists and your Elitist anger is high, you will not accept.
+						is_power_balance_in_range = {
+							id = PHI_power_balance
+							range < PHI_bop_elitist_tensions
+						}
+					}
+					AND = {
+						PHI_ai_should_anger_populists_trigger = yes
+						#If you want to be angering Populists and your Populist anger is high, you will not accept.
+						is_power_balance_in_range = {
+							id = PHI_power_balance
+							range > PHI_bop_populist_tensions
+						}
+					}
+				}
+			}
+		}
 		set_country_flag = PHI_reject_japanese_economic_aid
 		hidden_effect = {
 			JAP = {

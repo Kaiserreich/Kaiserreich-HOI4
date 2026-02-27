@@ -330,6 +330,28 @@ ENG_build_radars_sussex = {
 	}
 }
 
+ENG_build_radars_wessex = {
+	allowed = {
+		original_tag = ENG
+		threat > 0.6
+		is_special_project_completed = sp:sp_air_radar
+	}
+	enable = {
+		1122 = { #Wessex
+			controller = { is_ally_with = FROM }
+			free_building_slots = { building = radar_station size > 0 }
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = radar_station
+		target = 1122 #Wessex
+		value = 2000
+	}
+}
+
 ENG_build_radars_london = {
 	allowed = {
 		original_tag = ENG
@@ -374,14 +396,14 @@ ENG_build_radars_east_anglia = {
 	}
 }
 
-ENG_build_radars_cornwall = {
+ENG_build_radars_west_country = {
 	allowed = {
 		original_tag = ENG
 		threat > 0.6
 		is_special_project_completed = sp:sp_air_radar
 	}
 	enable = {
-		123 = { #Cornwall
+		1123 = { #West Country
 			controller = { is_ally_with = FROM }
 			free_building_slots = { building = radar_station size > 0 }
 		}
@@ -391,7 +413,7 @@ ENG_build_radars_cornwall = {
 	ai_strategy = {
 		type = build_building
 		id = radar_station
-		target = 123 #Cornwall
+		target = 1123 #West Country
 		value = 2000
 	}
 }
@@ -572,6 +594,8 @@ ENG_protect_the_channel_from_invasions = {
 		125 = { is_fully_controlled_by = ROOT } #East Anglia
 		126 = { is_fully_controlled_by = ROOT } #Greater London
 		127 = { is_fully_controlled_by = ROOT } #Sussex
+		1122 = { is_fully_controlled_by = ROOT } #Wessex
+		1123 = { is_fully_controlled_by = ROOT } #West Country
 		any_enemy_country = {
 			OR = {
 				ships_in_area = {
@@ -618,7 +642,7 @@ ENG_raid_channel_if_invaded = {
 	enable = {
 		has_war = yes
 		any_state_of = {
-			target = { 123 125 126 127 } #Cornwall, East Anglia, Greater London, Sussex
+			target = { 123 125 126 127 1122 1123 } #Cornwall, East Anglia, Greater London, Sussex, Wessex, West Country
 			NOT = { is_fully_controlled_by = ROOT }
 		}
 	}
@@ -643,7 +667,7 @@ ENG_raid_north_sea_if_invaded = {
 	enable = {
 		has_war = yes
 		any_state_of = {
-			target = { 120 121 129 130 131 136 } #Scottish Highlands, Lothian, East Midlands, Yorkshire, Northumberland, Aberdeenshire
+			target = { 120 121 129 130 131 136 } #Scottish Highlands, Lothian, East Midlands, Yorkshire, Northumberland, Grampian
 			NOT = { is_fully_controlled_by = ROOT }
 		}
 	}
@@ -670,11 +694,12 @@ ENG_raid_western_approaches_if_invaded = {
 		OR = {
 			120 = { NOT = { is_fully_controlled_by = ROOT } } #Scottish Highlands
 			122 = { NOT = { is_fully_controlled_by = ROOT } } #South Wales
-			132 = { NOT = { is_fully_controlled_by = ROOT } } #Lancashire
-			133 = { NOT = { is_fully_controlled_by = ROOT } } #Lanark
-			338 = { NOT = { is_fully_controlled_by = ROOT } } #Gloucestershire
+			132 = { NOT = { is_fully_controlled_by = ROOT } } #Salfordshire
+			133 = { NOT = { is_fully_controlled_by = ROOT } } #Strathclyde
+			338 = { NOT = { is_fully_controlled_by = ROOT } } #Avon
 			957 = { NOT = { is_fully_controlled_by = ROOT } } #North Wales
 			1108 = { NOT = { is_fully_controlled_by = ROOT } } #Cumberland
+			1124 = { NOT = { is_fully_controlled_by = ROOT } } #Isle of Man
 			IRE = {
 				has_war_with = ROOT
 				has_capitulated = no
@@ -741,7 +766,7 @@ ENG_protect_against_invasions = {
 	ai_strategy = {
 		type = put_unit_buffers
 		ratio = 0.35
-		states = { 120 121 122 123 125 126 127 129 130 131 132 133 136 338 957 1108 }
+		states = { 120 121 122 123 125 126 127 129 130 131 132 133 136 338 957 1108 1121 1122 1123 1124 }
 		subtract_fronts_from_need = no
 		subtract_invasions_from_need = no
 	}

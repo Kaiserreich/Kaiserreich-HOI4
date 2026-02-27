@@ -9,7 +9,7 @@ add_namespace = belgium_independent_events
 add_namespace = belgium_military_events
 add_namespace = belgium_black_monday_events
 add_namespace = flanders_wallonia_events
-add_namespace = belgium_news
+add_namespace = belgium_news_events
 
 #Military Funding
 
@@ -1177,7 +1177,7 @@ country_event = { #Belgium receives Luxemburg
 			modifier = BEL_Arlon
 		}
 		FROM = { add_to_faction = ROOT }
-		hidden_effect = { news_event = belgium_news.3 }
+		hidden_effect = { news_event = belgium_news_events.3 }
 	}
 }
 
@@ -1279,7 +1279,7 @@ country_event = { #Belgium receives German counteroffer
 		8 = { add_claim_of_ROOT = yes } #Luxembourg
 		hidden_effect = {
 			GER_remove_from_mitteleuropa = yes
-			random_other_country = { news_event = belgium_news.3 }
+			random_other_country = { news_event = belgium_news_events.3 }
 		}
 		FROM = {
 			country_event = { id = belgium_events.465 days = 1 }
@@ -1302,7 +1302,7 @@ country_event = { #Treaty refused
 		8 = { add_claim_of_ROOT = yes } #Luxembourg
 		hidden_effect = {
 			GER_remove_from_mitteleuropa = yes
-			random_other_country = { news_event = belgium_news.3 }
+			random_other_country = { news_event = belgium_news_events.3 }
 		}
 	}
 }
@@ -1327,7 +1327,7 @@ country_event = { #Treaty accepted
 			modifier = BEL_Arlon
 		}
 		FROM = { add_to_faction = ROOT }
-		hidden_effect = { news_event = belgium_news.3 }
+		hidden_effect = { news_event = belgium_news_events.3 }
 	}
 }
 
@@ -2529,7 +2529,7 @@ country_event = { #France backs down
 			country_event = { id = belgium_events.3261 days = 3 }
 		}
 		hidden_effect = {
-			news_event = belgium_news.4
+			news_event = belgium_news_events.4
 		}
 	}
 }
@@ -2587,7 +2587,7 @@ country_event = { #Germany reacts to independent Wallonia
 		}
 		set_global_flag = BEL_GERMANYWITHDREW
 		hidden_effect = {
-			news_event = belgium_news.4
+			news_event = belgium_news_events.4
 		}
 	}
 }
@@ -2656,7 +2656,7 @@ country_event = { #France reacts to the ultimatum
 		}
 		set_global_flag = BEL_FRANCEWITHDREW
 		hidden_effect = {
-			news_event = belgium_news.4
+			news_event = belgium_news_events.4
 		}
 	}
 }
@@ -6381,7 +6381,7 @@ country_event = { #The Commune of Belgium declares its independence
 					to_state_array = owned_controlled_states
 				}
 			}
-			news_event = belgium_news.2
+			news_event = belgium_news_events.2
 		}
 		declare_war_on = {
 			target = GER
@@ -8168,10 +8168,10 @@ country_event = { #The Blue Lotus (others)
 
 # Belgium Declares its Independence
 news_event = {
-	id = belgium_news.1
-	immediate = { log = "[GetLogInfo]: event belgium_news.1" }
-	title = belgium_news.1.t
-	desc = belgium_news.1.d
+	id = belgium_news_events.1
+	immediate = { log = "[GetLogInfo]: event belgium_news_events.1" }
+	title = belgium_news_events.1.t
+	desc = belgium_news_events.1.d
 	picture = GFX_news_event_BEL_Liberated
 
 	major = yes
@@ -8183,7 +8183,7 @@ news_event = {
 	show_major = { regional_europe_news = yes }
 
 	option = {
-		name = belgium_news.1.a
+		name = belgium_news_events.1.a
 		trigger = {
 			NOT = {
 				tag = GER
@@ -8193,25 +8193,25 @@ news_event = {
 		}
 	}
 	option = {
-		name = belgium_news.1.b
+		name = belgium_news_events.1.b
 		trigger = { tag = GER }
 	}
 	option = {
-		name = belgium_news.1.c
+		name = belgium_news_events.1.c
 		trigger = { has_socialist_government = yes }
 	}
 	option = {
-		name = belgium_news.1.e
+		name = belgium_news_events.1.e
 		trigger = { is_in_faction_with = ENT }
 	}
 }
 
 # Wallonia Falls to Syndicalism
 news_event = {
-	id = belgium_news.2
-	immediate = { log = "[GetLogInfo]: event belgium_news.2" }
-	title = belgium_news.2.t
-	desc = belgium_news.2.d
+	id = belgium_news_events.2
+	immediate = { log = "[GetLogInfo]: event belgium_news_events.2" }
+	title = belgium_news_events.2.t
+	desc = belgium_news_events.2.d
 	picture = GFX_news_event_BEL_Liberated
 
 	major = yes
@@ -8228,7 +8228,7 @@ news_event = {
 	}
 
 	option = {
-		name = belgium_news.2.a
+		name = belgium_news_events.2.a
 		effect_tooltip = {
 			add_named_threat = {
 				threat = 2
@@ -8240,11 +8240,11 @@ news_event = {
 
 # Congress of Arlon
 news_event = {
-	id = belgium_news.3
-	immediate = { log = "[GetLogInfo]: event belgium_news.3" }
-	title = belgium_news.3.t
+	id = belgium_news_events.3
+	immediate = { log = "[GetLogInfo]: event belgium_news_events.3" }
+	title = belgium_news_events.3.t
 	desc = {
-		text = belgium_news.3.d.failed
+		text = belgium_news_events.3.d.failed
 		trigger = {
 			BEL = {
 				has_country_flag = TOA_Refused
@@ -8252,7 +8252,7 @@ news_event = {
 		}
 	}
 	desc = {
-		text = belgium_news.3.d
+		text = belgium_news_events.3.d
 		trigger = {
 			NOT = {
 				BEL = {
@@ -8272,16 +8272,16 @@ news_event = {
 	show_major = { regional_europe_news = yes }
 
 	option = {
-		name = belgium_news.3.a
+		name = belgium_news_events.3.a
 	}
 }
 # Tensions Over Wallonia
 news_event = {
-	id = belgium_news.4
-	immediate = { log = "[GetLogInfo]: event belgium_news.4" }
-	title = belgium_news.4.t
+	id = belgium_news_events.4
+	immediate = { log = "[GetLogInfo]: event belgium_news_events.4" }
+	title = belgium_news_events.4.t
 	desc = {
-		text = belgium_news.4.d
+		text = belgium_news_events.4.d
 		trigger = {
 			NOT = {
 				has_global_flag = BEL_GERMANYWITHDREW
@@ -8290,13 +8290,13 @@ news_event = {
 		}
 	}
 	desc = {
-		text = belgium_news.4.d.germanybacksdown
+		text = belgium_news_events.4.d.germanybacksdown
 		trigger = {
 			has_global_flag = BEL_GERMANYWITHDREW
 		}
 	}
 	desc = {
-		text = belgium_news.4.d.francebacksdown
+		text = belgium_news_events.4.d.francebacksdown
 		trigger = {
 			has_global_flag = BEL_FRANCEWITHDREW
 		}
@@ -8317,6 +8317,6 @@ news_event = {
 	}
 
 	option = {
-		name = belgium_news.4.a
+		name = belgium_news_events.4.a
 	}
 }

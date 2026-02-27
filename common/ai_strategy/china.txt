@@ -37,6 +37,26 @@ china_hates_japan = {
 	}
 }
 
+china_watch_out_for_LEC = {
+	allowed = {
+		is_chinese_or_potential_chinese_tag = yes
+	}
+	enable = {
+		country_exists = JAP
+		is_working_with_JAP = no
+
+		country_exists = LEC #LEC will be annexed at the end of the chain which will then disable this as the ai moves to fight the war.
+		has_global_flag = JAP_LEC_crisis_begins_china_get_ready_flag #For 70 days this will be active.
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = LEC
+		value = 100
+	}
+}
+
 ANQ_do_not_justify_wars = {
 	reversed = yes
 

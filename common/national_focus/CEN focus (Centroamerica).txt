@@ -2022,10 +2022,30 @@ focus_tree = {
 				add_ideas = CEN_army_restructure
 			}
 			custom_effect_tooltip = tooltip_effect_upon_focus_completion
-			army_experience = 30
 			swap_ideas = {
 				remove_idea = CEN_army_restructure
 				add_idea = CEN_professional_army
+			}
+			if = {
+				limit = { has_land_grand_doctrine = no }
+				set_grand_doctrine = grand_battleplan
+				set_sub_doctrine = large_unit_tactics
+			}
+			else = {
+				if = {
+					limit = { has_subdoctrine_in_track = infantry }
+					army_experience = 30
+				}
+				else = {
+					army_experience = 15
+					set_sub_doctrine = large_unit_tactics
+				}
+			}
+			add_daily_mastery = {
+				name = CEN_formalize_general_staff
+				amount = 0.5
+				days = 200
+				track = infantry
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_ARMY_BONUS }
@@ -2047,7 +2067,14 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CEN_moving_from_jungle"
-			add_ideas = CEN_moving_jungle_idea
+			swap_ideas = {
+				remove_idea = CEN_professional_army
+				add_idea = CEN_professional_army_2
+			}
+			custom_effect_tooltip = tooltip_white_line
+			every_army_leader = {
+				add_planning = 1
+			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -2068,6 +2095,11 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CEN_arming_forces"
+			add_timed_idea = {
+				idea = CEN_arming_forces_idea
+				days = 100
+			}
+			custom_effect_tooltip = tooltip_white_line
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
 				amount = 1200
@@ -2124,16 +2156,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CEN_imports"
 			if = {
-				limit = { has_idea = CEN_professional_army }
+				limit = { has_idea = CEN_professional_army_2 }
 				swap_ideas = {
-					remove_idea = CEN_professional_army
+					remove_idea = CEN_professional_army_2
 					add_idea = CEN_professional_army_0_1
 				}
 			}
 			else = {
 				swap_ideas = {
 					remove_idea = CEN_professional_army_1_0
-					add_idea = CEN_professional_army_1_1
+					add_idea = CEN_professional_army_3
 				}
 			}
 			add_tech_bonus = {
@@ -2166,16 +2198,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CEN_military_academy"
 			if = {
-				limit = { has_idea = CEN_professional_army }
+				limit = { has_idea = CEN_professional_army_2 }
 				swap_ideas = {
-					remove_idea = CEN_professional_army
+					remove_idea = CEN_professional_army_2
 					add_idea = CEN_professional_army_1_0
 				}
 			}
 			else = {
 				swap_ideas = {
 					remove_idea = CEN_professional_army_0_1
-					add_idea = CEN_professional_army_1_1
+					add_idea = CEN_professional_army_3
 				}
 			}
 			add_mastery_bonus = {
@@ -2326,12 +2358,38 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CEN_evolving_guerilla"
-			army_experience = 25
-			add_mastery_bonus = {
+			if = {
+				limit = { has_land_grand_doctrine = no }
+				set_grand_doctrine = grand_battleplan
+				if = {
+					limit = { has_dlc_ncns = yes }
+					set_sub_doctrine = peoples_war
+				}
+				else = {
+					set_sub_doctrine = large_unit_tactics
+				}
+			}
+			else = {
+				if = {
+					limit = { has_subdoctrine_in_track = infantry }
+					army_experience = 30
+				}
+				else = {
+					army_experience = 15
+					if = {
+						limit = { has_dlc_ncns = yes }
+						set_sub_doctrine = peoples_war
+					}
+					else = {
+						set_sub_doctrine = large_unit_tactics
+					}
+				}
+			}
+			add_daily_mastery = {
 				name = CEN_evolving_guerilla
-				bonus = 0.1
-				days = 365
-				folder = land
+				amount = 0.5
+				days = 200
+				track = infantry
 			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -2563,7 +2621,13 @@ focus_tree = {
 				remove_idea = CEN_air_restructure
 				add_idea = CEN_new_air_force_idea
 			}
-			air_experience = 30
+			if = {
+				limit = { has_air_grand_doctrine = no }
+				set_grand_doctrine = new_battlefield_support
+			}
+			else = {
+				air_experience = 30
+			}
 		}
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS FOCUS_FILTER_AIR_XP }
 	}
@@ -2694,11 +2758,11 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed CEN_air_officers"
 			add_ideas = CEN_new_air_officers
 			custom_effect_tooltip = tooltip_white_line
-			add_mastery_bonus = {
+			add_doctrine_cost_reduction = {
 				name = CEN_air_officers
-				bonus = 0.1
-				days = 365
-				folder = air
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
 			}
 		}
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS FOCUS_FILTER_RESEARCH }
@@ -2826,32 +2890,38 @@ focus_tree = {
 					custom_effect_tooltip = CEN_air_fighters_tooltip
 					custom_effect_tooltip = tooltip_white_line
 					effect_tooltip = {
+						swap_ideas = {
+							remove_idea = CEN_new_air_officers
+							add_idea = CEN_new_air_officers2F
+						}
 						add_tech_bonus = {
 							name = CEN_air_fighters
 							bonus = 1
 							uses = 1
 							category = light_fighter
 						}
-						swap_ideas = {
-							remove_idea = CEN_new_air_officers
-							add_idea = CEN_new_air_officers2F
-						}
 					}
 				}
 				else = {
+					swap_ideas = {
+						remove_idea = CEN_new_air_officers
+						add_idea = CEN_new_air_officers2F
+					}
 					add_tech_bonus = {
 						name = CEN_air_fighters
 						bonus = 1
 						uses = 1
 						category = light_fighter
 					}
-					swap_ideas = {
-						remove_idea = CEN_new_air_officers
-						add_idea = CEN_new_air_officers2F
-					}
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
+			add_daily_mastery = {
+				name = CEN_air_fighters
+				amount = 0.5
+				days = 200
+				track = fighter_aircraft
+			}
 			add_equipment_to_stockpile = {
 				type = small_plane_airframe
 				amount = 25
@@ -2972,6 +3042,12 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
+			add_daily_mastery = {
+				name = CEN_air_cas
+				amount = 0.5
+				days = 200
+				track = strike_aircraft
+			}
 			add_equipment_to_stockpile = {
 				type = small_plane_cas_airframe
 				amount = 25
@@ -3225,6 +3301,12 @@ focus_tree = {
 			else = {
 				custom_effect_tooltip = CEN_air_soc_airforce_tooltip
 			}
+			add_mastery_bonus = {
+				name = CEN_air_soc_airforce
+				bonus = 0.15
+				days = 365
+				folder = air
+			}
 		}
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
 	}
@@ -3244,7 +3326,7 @@ focus_tree = {
 			add_ideas = CEN_naval_start_idea
 			add_timed_idea = {
 				idea = CEN_naval_budget
-				days = 90
+				days = 100
 			}
 			navy_experience = 50
 		}
@@ -3376,11 +3458,11 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
-			add_mastery_bonus = {
+			add_doctrine_cost_reduction = {
 				name = CEN_naval_doctrine
-				bonus = 0.1
-				days = 365
-				folder = naval
+				cost_reduction = 0.5
+				uses = 2
+				category = naval_doctrine
 			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -3458,10 +3540,10 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed CEN_naval_heavy"
 			add_ideas = CEN_heavy_prod_idea
 			custom_effect_tooltip = tooltip_white_line
-			add_mastery_bonus = {
+			add_daily_mastery = {
 				name = CEN_naval_heavy
-				bonus = 0.1
-				days = 365
+				amount = 0.5
+				days = 200
 				track = screens
 			}
 		}
@@ -3579,6 +3661,13 @@ focus_tree = {
 				remove_idea = CEN_heavy_prod_idea
 				add_idea = CEN_heavy_prod_idea2
 			}
+			add_mastery_bonus = {
+				name = CEN_naval_heavy_production_focus
+				bonus = 0.15
+				days = 365
+				folder = naval
+			}
+			custom_effect_tooltip = tooltip_white_line
 			country_event = central_america_socialist_events.030
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = tooltip_event_allows_choice
@@ -3610,10 +3699,10 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed CEN_naval_lighter"
 			add_ideas = CEN_light_prod_idea
 			custom_effect_tooltip = tooltip_white_line
-			add_mastery_bonus = {
+			add_daily_mastery = {
 				name = CEN_naval_lighter
-				bonus = 0.1
-				days = 365
+				amount = 0.5
+				days = 200
 				track = submarines
 			}
 		}
@@ -3742,6 +3831,12 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = CEN_light_prod_idea
 				add_idea = CEN_light_prod_idea2
+			}
+			add_mastery_bonus = {
+				name = CEN_naval_light_production
+				bonus = 0.1
+				days = 365
+				folder = naval
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }

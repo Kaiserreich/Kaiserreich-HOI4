@@ -2304,10 +2304,8 @@ shared_focus = {
 	y = 1
 	prerequisite = { focus = KMT_imperialism_crushed_forevermore }
 	allow_branch = {
-		if = {
-			limit = { has_character = CHI_four_elders }
-			CHI_four_elders = { is_second_in_command = yes }
-		}
+		tag = CHI
+		has_completed_focus = CHI_revolution_for_all_peoples #Four Elders only
 		has_completed_focus = KMT_imperialism_crushed_forevermore
 	}
 	available = {

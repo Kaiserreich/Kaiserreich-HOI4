@@ -503,7 +503,7 @@ setup_puppet_baltic_union = {
 	hidden_effect = {
 		BAT = {
 			set_politics = {
-				ruling_party = syndicalist
+				ruling_party = radical_socialist
 				elections_allowed = no
 			}
 			set_popularities = {
@@ -519,8 +519,12 @@ setup_puppet_baltic_union = {
 				national_populist = 1
 			}
 			LAT_move_leaders = yes
-			LIT = { LIT_justas_paleckis = { set_nationality = BAT } }
-			LIT_justas_paleckis = { promote_character = yes }
+			LIT = {
+				LIT_justas_paleckis = {
+					set_nationality = BAT
+					promote_character = radical_socialist_subtype
+				}
+			}
 			set_party_name = {
 				ideology = radical_socialist
 				long_name = BAT_radical_socialist_union_long
@@ -583,8 +587,14 @@ setup_puppet_baltic_union = {
 				BAT_revanchism_1
 				BAT_revanchism_2
 			}
-			remove_dynamic_modifier = { modifier = BAT_constitution_dynamic_modifier }
-			remove_dynamic_modifier = { modifier = BAT_transformation_dynamic_modifier }
+			if = {
+				limit = { has_dynamic_modifier = { modifier = BAT_constitution_dynamic_modifier } }
+				remove_dynamic_modifier = { modifier = BAT_constitution_dynamic_modifier }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = BAT_transformation_dynamic_modifier } }
+				remove_dynamic_modifier = { modifier = BAT_transformation_dynamic_modifier }
+			}
 			random_owned_controlled_state = {
 				prioritize = { 11 842 }
 				limit = { is_in_home_area = yes }

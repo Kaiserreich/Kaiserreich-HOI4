@@ -3463,7 +3463,7 @@ country_event = {
 		name = qing_coup_events.12.a #Excellent
 		set_country_flag = QIE_zhang_backs_coup
 		hidden_effect = {
-			country_event = league_war.18
+			country_event = league_war_events.18
 			country_event = { id = qing_coup_events.16 days = 5 } #wu starts to notice military movements
 		}
 	}
@@ -4024,7 +4024,7 @@ country_event = {
 				}
 				SHD = {
 					country_event = qing_coup_events.23 #the coup succeeds! time to intervene
-					###country_event = league_war.18
+					###country_event = league_war_events.18
 				}
 			}
 			if = {
@@ -4075,7 +4075,7 @@ country_event = {
 		separate_peace_all_wars = yes
 		if = {
 			limit = { tag = SHD }
-			###country_event = league_war.18 #lol this event was never localized?!
+			###country_event = league_war_events.18 #lol this event was never localized?!
 			###QIE = { china_puppet_ROOT_effect = yes }
 			SHD_zhang_fuyun = {
 				set_nationality = QIE
@@ -5553,7 +5553,7 @@ country_event = {
 		ai_chance = {
 			base = 100
 			modifier = {
-				factor = 0.5
+				factor = 2
 				has_country_leader = { character = QIE_hu_shih }
 			}
 		}
@@ -5574,7 +5574,7 @@ country_event = {
 		ai_chance = {
 			base = 50
 			modifier = {
-				factor = 0.5
+				factor = 2
 				has_country_leader = { character = QIE_wellington_koo }
 			}
 		}
@@ -6455,7 +6455,13 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event qing_focus_events.32 option qing_focus_events.32.b"
 		name = qing_focus_events.32.b #Nein
-		ai_chance = { base = 35 }
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				QIE = { has_country_leader = { character = QIE_wellington_koo } }
+			}
+		}
 		FROM = {
 			country_event = { id = qing_coup_events.29 days = 2 }
 		}

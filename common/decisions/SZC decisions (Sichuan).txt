@@ -1524,7 +1524,19 @@ chinese_unification = {
 			650 = { is_owned_and_controlled_by = ROOT }
 			is_subject = no
 			CHN_no_aligned_unifier_exists_trigger = yes
-			date > 1937.7.1
+			OR = {
+				date > 1938.1.1
+				AND = {
+					YUN = {
+						YUN_is_phase_1_trigger = no
+						china_is_aligned_with_federalists = no
+					}
+					GXC = {
+						GXC_is_phase_1_trigger = no
+						china_is_aligned_with_federalists = no
+					}
+				}
+			}
 		}
 
 		cost = 10

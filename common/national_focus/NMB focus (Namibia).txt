@@ -92,7 +92,7 @@ focus_tree = {
 
 	focus = {
 		id = NMB_dealing_german
-		icon = GFX_goal_generic_landowner_tax_cuts
+		icon = GFX_goal_social_reforms
 		cost = 5
 
 		relative_position_id = NMB_cultural_assimilation
@@ -103,11 +103,11 @@ focus_tree = {
 
 		prerequisite = { focus = NMB_cultural_assimilation }
 
-		bypass = { has_country_flag = NMB_germans_removed_flag }
-
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NMB_dealing_german"
-			country_event = { id = namibia_events.31 days = 1 }
+			set_temp_variable = { ideology_change_var = 0.05 }
+			change_ruling_party_popularity = yes
+			add_stability = 0.05
 		}
 	}
 
@@ -511,7 +511,7 @@ focus_tree = {
 
 	focus = {
 		id = NMB_remove_germans
-		icon = GFX_goal_generic_political_purge
+		icon = GFX_goal_generic_landowner_tax_cuts
 		cost = 5
 
 		relative_position_id = NMB_silence_opposition
@@ -524,13 +524,10 @@ focus_tree = {
 			has_authoritarian_government = yes
 		}
 
-		bypass = {
-			has_country_flag = NMB_germans_removed_flag
-		}
-
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NMB_remove_germans"
-			country_event = { id = namibia_events.31 days = 1 }
+			add_political_power = 140
+			add_stability = -0.05
 		}
 	}
 

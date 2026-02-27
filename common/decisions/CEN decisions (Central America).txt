@@ -217,16 +217,74 @@ Forming_Central_America = {
 		}
 		visible = {
 			if = {
-				limit = {
-					has_authoritarian_government = yes
+				limit = { tag = GUA }
+				OR = {
+					has_completed_focus = GUA_orellana_holds_on
+					has_completed_focus = GUA_pcg_win
+					has_completed_focus = GUA_prn_win
+					has_completed_focus = GUA_unionist_win
+					has_completed_focus = GUA_ubico_wins
+					has_completed_focus = GUA_ubico_returns
 				}
-				date > 1937.10.1
+			}
+			else_if = {
+				limit = { tag = ELS }
+				OR = {
+					has_country_flag = ELS_pro_patria_stands_flag
+					has_country_flag = ELS_pro_patria_destroyed_flag
+					has_country_flag = ELS_military_takeover_flag
+					has_country_flag = ELS_labour_victory_flag
+					has_country_flag = ELS_national_democratic_victory_flag
+					has_country_flag = ELS_syndicalist_country_flag
+				}
+			}
+			else_if = {
+				limit = { tag = NIC }
+				OR = {
+					has_country_flag = NIC_liberal_revolution_flag
+					has_country_flag = NIC_socialist_revolution_flag
+				}
+			}
+			else_if = {
+				limit = { tag = HON }
+				NOT = { has_government = authoritarian_democrat }
 			}
 			FROM = {
 				exists = yes
 				CEN_country_is_friendly = yes
-				NOT = {
-					has_country_flag = CEN_already_formed_ties_with_@ROOT
+				NOT = { has_country_flag = CEN_already_formed_ties_with_@ROOT }
+				if = {
+					limit = { tag = GUA }
+					OR = {
+						has_completed_focus = GUA_orellana_holds_on
+						has_completed_focus = GUA_pcg_win
+						has_completed_focus = GUA_prn_win
+						has_completed_focus = GUA_unionist_win
+						has_completed_focus = GUA_ubico_wins
+						has_completed_focus = GUA_ubico_returns
+					}
+				}
+				else_if = {
+					limit = { tag = ELS }
+					OR = {
+						has_country_flag = ELS_pro_patria_stands_flag
+						has_country_flag = ELS_pro_patria_destroyed_flag
+						has_country_flag = ELS_military_takeover_flag
+						has_country_flag = ELS_labour_victory_flag
+						has_country_flag = ELS_national_democratic_victory_flag
+						has_country_flag = ELS_syndicalist_country_flag
+					}
+				}
+				else_if = {
+					limit = { tag = NIC }
+					OR = {
+						has_country_flag = NIC_liberal_revolution_flag
+						has_country_flag = NIC_socialist_revolution_flag
+					}
+				}
+				else_if = {
+					limit = { tag = HON }
+					NOT = { has_government = authoritarian_democrat }
 				}
 			}
 		}
@@ -235,6 +293,39 @@ Forming_Central_America = {
 			FROM = {
 				CEN_country_is_friendly = yes
 				NOT = { has_country_flag = CEN_already_formed_ties_with_@ROOT }
+				if = {
+					limit = { tag = GUA }
+					OR = {
+						has_completed_focus = GUA_orellana_holds_on
+						has_completed_focus = GUA_pcg_win
+						has_completed_focus = GUA_prn_win
+						has_completed_focus = GUA_unionist_win
+						has_completed_focus = GUA_ubico_wins
+						has_completed_focus = GUA_ubico_returns
+					}
+				}
+				else_if = {
+					limit = { tag = ELS }
+					OR = {
+						has_country_flag = ELS_pro_patria_stands_flag
+						has_country_flag = ELS_pro_patria_destroyed_flag
+						has_country_flag = ELS_military_takeover_flag
+						has_country_flag = ELS_labour_victory_flag
+						has_country_flag = ELS_national_democratic_victory_flag
+						has_country_flag = ELS_syndicalist_country_flag
+					}
+				}
+				else_if = {
+					limit = { tag = NIC }
+					OR = {
+						has_country_flag = NIC_liberal_revolution_flag
+						has_country_flag = NIC_socialist_revolution_flag
+					}
+				}
+				else_if = {
+					limit = { tag = HON }
+					NOT = { has_government = authoritarian_democrat }
+				}
 			}
 		}
 		ai_will_do = { factor = 100 }

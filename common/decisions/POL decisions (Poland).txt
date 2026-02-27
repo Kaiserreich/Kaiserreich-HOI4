@@ -706,7 +706,11 @@ POL_Stability_of_Nation = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete POL_found_intermarium"
-			create_faction_from_template = { template = faction_template_generic name = intermarium }
+			create_faction_from_template = { template = faction_template_generic name = faction_intermarium }
+			hidden_effect = {
+				set_faction_rule = joining_rule_same_continent_only
+				set_faction_manifest = faction_manifest_liberation_of_europe
+			}
 			every_other_country = {
 				limit = {
 					has_democratic_government = yes

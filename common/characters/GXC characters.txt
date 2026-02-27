@@ -1820,6 +1820,27 @@ characters = {
 			cost = 0
 			can_be_fired = no
 		}
+		advisor = {
+			slot = army_chief
+			idea_token = GXC_gu_dacun_army_chief
+			desc = GXC_gu_dacun_sic_desc
+			traits = { KR_army_chief_morale_2 }
+			cost = 100
+			on_add = {
+				ROOT = {
+					if = {
+						limit = { tag = GXC }
+						custom_effect_tooltip = GXC_add_gfa_aligned_advisor_tt
+						hidden_effect = { GXC_GFA_large_effect = yes }
+					}
+					else_if = {
+						limit = { tag = CHI }
+						custom_effect_tooltip = CHI_add_pac_aligned_advisor_tt
+						hidden_effect = { CHI_PAC_small_effect = yes }
+					}
+				}
+			}
+		}
 		corps_commander = {
 			desc = GXC_gu_dacun_sic_desc
 			traits = { CHN_LKT_officer_trait trait_reckless irregulars_officer commando }

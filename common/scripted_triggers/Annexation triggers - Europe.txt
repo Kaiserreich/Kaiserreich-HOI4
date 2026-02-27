@@ -4,8 +4,10 @@ can_release_341 = { #Adrianople
 	ROOT = {
 		OR = {
 			is_subject = yes
-			773 = { is_claim_or_core_of_ROOT = yes } #Constantinople
-			184 = { is_claim_or_core_of_ROOT = yes } #Komotini
+			any_state_of = {
+				target = { 773 184 } #Constantinople, Komotini
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				731 = { is_claim_or_core_of_ROOT = yes } #Florina
 				owns_state = 184 #Komotini
@@ -48,8 +50,10 @@ can_release_145 = { #Åland
 	ROOT = {
 		OR = {
 			is_subject = yes
-			141 = { is_claim_or_core_of_ROOT = yes } #Svealand
-			863 = { is_claim_or_core_of_ROOT = yes } #Finland Proper
+			any_state_of = {
+				target = { 141 863 } #Svealand, Finland Proper
+				is_claim_or_core_of_ROOT = yes
+			}
 			141 = { #Svealand
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -80,9 +84,10 @@ can_release_28 = { #Alsace-Lorraine
 	ROOT = {
 		OR = {
 			is_subject = yes
-			785 = { is_claim_or_core_of_ROOT = yes } #Lorraine
-			42 = { is_claim_or_core_of_ROOT = yes } #Palatinate
-			780 = { is_claim_or_core_of_ROOT = yes } #Baden
+			any_state_of = {
+				target = { 785 42 780 } #Lorraine, Palatinate, Baden
+				is_claim_or_core_of_ROOT = yes
+			}
 			785 = { #Lorraine
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -116,8 +121,10 @@ can_release_1003 = { #Aosta Valley
 		}
 		OR = {
 			is_subject = yes
-			158 = { is_claim_or_core_of_ROOT = yes } #Piedmont
-			735 = { is_claim_or_core_of_ROOT = yes } #Savoy
+			any_state_of = {
+				target = { 158 735 } #Piedmont, Savoy
+				is_claim_or_core_of_ROOT = yes
+			}
 			158 = { #Piedmont
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -142,8 +149,10 @@ can_release_741 = { #Verviers
 	ROOT = {
 		OR = {
 			is_subject = yes
-			948 = { is_claim_or_core_of_ROOT = yes } #Liège
-			781 = { is_claim_or_core_of_ROOT = yes } #Western Rhineland
+			any_state_of = {
+				target = { 948 781 } #Liège, Western Rhineland
+				is_claim_or_core_of_ROOT = yes
+			}
 			948 = { #Liège
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -248,8 +257,10 @@ can_release_78 = { #Bessarabia
 	ROOT = {
 		OR = {
 			is_subject = yes
-			79 = { is_claim_or_core_of_ROOT = yes } #Moldavia
-			192 = { is_claim_or_core_of_ROOT = yes } #Odessa
+			any_state_of = {
+				target = { 79 192 } #Moldavia, Odessa
+				is_claim_or_core_of_ROOT = yes
+			}
 			79 = { #Moldavia
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -337,8 +348,10 @@ can_release_93 = { #Brest
 	ROOT = {
 		OR = {
 			is_subject = yes
-			1088 = { is_claim_or_core_of_ROOT = yes } #Chelm
-			792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
+			any_state_of = {
+				target = { 1088 792 } #Chelm, Volhynia
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				95 = { is_claim_or_core_of_ROOT = yes } #Pinsk
 				owns_state = 997 #Polesia
@@ -384,8 +397,10 @@ can_release_784 = { #Burgenland
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			4 = { is_claim_or_core_of_ROOT = yes } #Lower Austria
-			155 = { is_claim_or_core_of_ROOT = yes } #Transdanubia
+			any_state_of = {
+				target = { 4 155 } #Lower Austria, Transdanubia
+				is_claim_or_core_of_ROOT = yes
+			}
 			4 = { #Lower Austria
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -479,8 +494,10 @@ can_release_1088 = { #Chelm
 	ROOT = {
 		OR = {
 			is_subject = yes
-			92 = { is_claim_or_core_of_ROOT = yes } #Lublin
-			792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
+			any_state_of = {
+				target = { 92 792 } #Lublin, Volhynia
+				is_claim_or_core_of_ROOT = yes
+			}
 			92 = { #Lublin
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -585,14 +602,10 @@ can_release_1 = { #Corsica
 		}
 		OR = {
 			is_subject = yes
-			original_tag = NFA
-			21 = { is_claim_or_core_of_ROOT = yes } #Provence
-			22 = { is_claim_or_core_of_ROOT = yes } #Languedoc
-			838 = { is_claim_or_core_of_ROOT = yes } #Liguria
-			162 = { is_claim_or_core_of_ROOT = yes } #Tuscany
-			2 = { is_claim_or_core_of_ROOT = yes } #Latium
-			117 = { is_claim_or_core_of_ROOT = yes } #Campania
-			114 = { is_claim_or_core_of_ROOT = yes } #Sardinia
+			any_state_of = {
+				target = { 21 22 838 162 2 117 114 } #Provence, Languedoc, Liguria, Tuscany, Latium, Campania, Sardinia
+				is_claim_or_core_of_ROOT = yes
+			}
 			21 = { #Provence
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -658,9 +671,10 @@ can_release_163 = { #Dalmatia
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			104 = { is_claim_or_core_of_ROOT = yes } #Bosnia
-			109 = { is_claim_or_core_of_ROOT = yes } #Central Croatia
-			160 = { is_claim_or_core_of_ROOT = yes } #Venetia
+			any_state_of = {
+				target = { 104 109 160 } #Bosnia, Central Croatia, Venetia
+				is_claim_or_core_of_ROOT = yes
+			}
 			104 = { #Bosnia
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -690,8 +704,10 @@ can_release_71 = { #Danubian Plain
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			70 = { is_claim_or_core_of_ROOT = yes } #Slovakia
-			155 = { is_claim_or_core_of_ROOT = yes } #Transdanubia
+			any_state_of = {
+				target = { 70 155 } #Slovakia, Transdanubia
+				is_claim_or_core_of_ROOT = yes
+			}
 			70 = { #Slovakia
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -724,8 +740,10 @@ can_release_29 = { #Dunkirk
 	ROOT = {
 		OR = {
 			is_subject = yes
-			17 = { is_claim_or_core_of_ROOT = yes } #Pas-de-Calais
-			6 = { is_claim_or_core_of_ROOT = yes } #Flanders
+			any_state_of = {
+				target = { 17 6 } #Pas-de-Calais, Flanders
+				is_claim_or_core_of_ROOT = yes
+			}
 			17 = { #Pas-de-Calais
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -754,10 +772,10 @@ can_release_880 = { #Latgale
 	ROOT = {
 		OR = {
 			is_subject = yes
-			12 = { is_claim_or_core_of_ROOT = yes } #Livonia
-			190 = { is_claim_or_core_of_ROOT = yes } #Courland
-			209 = { is_claim_or_core_of_ROOT = yes } #Pskov
-			210 = { is_claim_or_core_of_ROOT = yes } #Velikiye Luki
+			any_state_of = {
+				target = { 12 190 209 210 } #Livonia, Courland, Pskov, Velikiye Luki
+				is_claim_or_core_of_ROOT = yes
+			}
 			12 = { #Livonia
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -911,9 +929,10 @@ can_release_103 = { #Rijeka
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			102 = { is_claim_or_core_of_ROOT = yes } #Carniola
-			109 = { is_claim_or_core_of_ROOT = yes } #Central Croatia
-			160 = { is_claim_or_core_of_ROOT = yes } #Venetia
+			any_state_of = {
+				target = { 102 109 160 } #Carniola, Central Croatia, Venetia
+				is_claim_or_core_of_ROOT = yes
+			}
 			102 = { #Carniola
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -978,8 +997,10 @@ can_release_118 = { #Gibraltar
 	ROOT = {
 		OR = {
 			is_subject = yes
-			169 = { is_claim_or_core_of_ROOT = yes } #Seville
-			173 = { is_claim_or_core_of_ROOT = yes } #Málaga
+			any_state_of = {
+				target = { 169 173 } #Seville, Málaga
+				is_claim_or_core_of_ROOT = yes
+			}
 			annexations_britain_can_annex_overseas = yes
 			annexations_AI_wants_to_own_gibraltar = yes
 			annexations_major_can_annex_strategic_territories = yes
@@ -1006,10 +1027,10 @@ can_release_241 = { #Gomel
 	ROOT = {
 		OR = {
 			is_subject = yes
-			193 = { is_claim_or_core_of_ROOT = yes } #Chernihiv
-			194 = { is_claim_or_core_of_ROOT = yes } #Mozyr
-			791 = { is_claim_or_core_of_ROOT = yes } #Starodub
-			1087 = { is_claim_or_core_of_ROOT = yes } #Mohilev
+			any_state_of = {
+				target = { 193 194 791 1087 } #Chernihiv, Mozyr, Starodub, Mohilev
+				is_claim_or_core_of_ROOT = yes
+			}
 			193 = { #Chernihiv
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1086,8 +1107,10 @@ can_release_58 = { #Schleswig-Holstein
 	ROOT = {
 		OR = {
 			is_subject = yes
-			59 = { is_claim_or_core_of_ROOT = yes } #Hanover
-			61 = { is_claim_or_core_of_ROOT = yes } #Mecklenburg
+			any_state_of = {
+				target = { 59 61 } #Hanover, Mecklenburg
+				is_claim_or_core_of_ROOT = yes
+			}
 			59 = { #Hanover
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1144,13 +1167,13 @@ can_release_119 = { #Northern Ireland
 			original_tag = IRE
 			AND = {
 				annexations_britain_can_annex_overseas = yes
-				owns_state = 133 #Lanark
+				owns_state = 133 #Strathclyde
 			}
 			IRE = { ROOT_can_grant_land_ignore_ideology = yes }
 			126 = { #Greater London
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = {
-					owns_state = 133 #Lanark
+					owns_state = 133 #Strathclyde
 					has_socialist_government = no
 					ROOT_can_grant_land = yes
 				}
@@ -1161,6 +1184,32 @@ can_release_119 = { #Northern Ireland
 	ROOT = {
 		should_release_ireland_first = yes
 		should_release_britain_first = yes
+		should_release_scotland_first = yes
+	}
+}
+
+#Isle of Man - annexation_isle_of_man
+can_release_1124 = { #Isle of Man
+	1124 = { annexations_state_is_tied_to_annexation_decision = yes } #Isle of Man
+	ROOT = {
+		OR = {
+			is_subject = yes
+			any_state_of = {
+				target = { 113 132 133 } #Leinster, Salfordshire, Strathclyde
+				is_claim_or_core_of_ROOT = yes
+			}
+			any_state_of = {
+				target = { 113 132 133 } #Leinster, Salfordshire, Strathclyde
+				annexations_state_owner_is_valid_grant_target = yes
+				owner = { ROOT_can_grant_land = yes }
+			}
+		}
+	}
+	add_state_to_resistance_target_array = yes
+	ROOT = {
+		should_release_ireland_first = yes
+		should_release_britain_first = yes
+		should_release_scotland_first = yes
 	}
 }
 
@@ -1171,8 +1220,10 @@ can_release_1107 = { #Karavanks
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			102 = { is_claim_or_core_of_ROOT = yes } #Carniola
-			835 = { is_claim_or_core_of_ROOT = yes } #Carinthia
+			any_state_of = {
+				target = { 102 835 } #Carniola, Carinthia
+				is_claim_or_core_of_ROOT = yes
+			}
 			102 = { #Carniola
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1196,8 +1247,10 @@ can_release_1089 = { #Kardzhali
 	ROOT = {
 		OR = {
 			is_subject = yes
-			184 = { is_claim_or_core_of_ROOT = yes } #Komotini
-			212 = { is_claim_or_core_of_ROOT = yes } #Plovdiv
+			any_state_of = {
+				target = { 184 212 } #Komotini, Plovdiv
+				is_claim_or_core_of_ROOT = yes
+			}
 			184 = { #Komotini
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1222,8 +1275,10 @@ can_release_146 = { #Karelia
 	ROOT = {
 		OR = {
 			is_subject = yes
-			214 = { is_claim_or_core_of_ROOT = yes } #Archangelsk
-			864 = { is_claim_or_core_of_ROOT = yes } #Savo
+			any_state_of = {
+				target = { 214 864 } #Archangelsk, Savo
+				is_claim_or_core_of_ROOT = yes
+			}
 			214 = { #Archangelsk
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1296,8 +1351,10 @@ can_release_765 = { #Kosovo
 	ROOT = {
 		OR = {
 			is_subject = yes
-			108 = { is_claim_or_core_of_ROOT = yes } #Kraljevo
-			1053 = { is_claim_or_core_of_ROOT = yes } #Ghegeria
+			any_state_of = {
+				target = { 108 1053 } #Kraljevo, Ghegeria
+				is_claim_or_core_of_ROOT = yes
+			}
 			108 = { #Kraljevo
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1327,9 +1384,10 @@ can_release_841 = { #Kotor
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			105 = { is_claim_or_core_of_ROOT = yes } #Montenegro
-			163 = { is_claim_or_core_of_ROOT = yes } #Dalmatia
-			160 = { is_claim_or_core_of_ROOT = yes } #Venetia
+			any_state_of = {
+				target = { 105 163 160 } #Montenegro, Dalmatia, Venetia
+				is_claim_or_core_of_ROOT = yes
+			}
 			105 = { #Montenegro
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1409,8 +1467,10 @@ can_release_234 = { #Ekaterinodar
 	ROOT = {
 		OR = {
 			is_subject = yes
-			235 = { is_claim_or_core_of_ROOT = yes } #Stavropol
-			227 = { is_claim_or_core_of_ROOT = yes } #Yuzivka
+			any_state_of = {
+				target = { 235 227 } #Stavropol, Yuzivka
+				is_claim_or_core_of_ROOT = yes
+			}
 			235 = { #Stavropol
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1434,10 +1494,10 @@ can_release_779 = { #Labourd
 	ROOT = {
 		OR = {
 			is_subject = yes
-			19 = { is_claim_or_core_of_ROOT = yes } #Aquitaine
-			984 = { is_claim_or_core_of_ROOT = yes } #Pyrenees
-			172 = { is_claim_or_core_of_ROOT = yes } #Navarre
-			1070 = { is_claim_or_core_of_ROOT = yes } #Basque Country
+			any_state_of = {
+				target = { 19 984 172 1070 } #Aquitaine, Pyrenees, Navarre, Basque Country
+				is_claim_or_core_of_ROOT = yes
+			}
 			19 = { #Aquitaine
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1481,8 +1541,10 @@ can_release_980 = { #Lille
 	ROOT = {
 		OR = {
 			is_subject = yes
-			17 = { is_claim_or_core_of_ROOT = yes } #Pas-de-Calais
-			34 = { is_claim_or_core_of_ROOT = yes } #Hainaut
+			any_state_of = {
+				target = { 17 34 } #Pas-de-Calais, Hainaut
+				is_claim_or_core_of_ROOT = yes
+			}
 			17 = { #Pas-de-Calais
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1511,9 +1573,10 @@ can_release_978 = { #Limburg
 	ROOT = {
 		OR = {
 			is_subject = yes
-			35 = { is_claim_or_core_of_ROOT = yes } #North Brabant
-			925 = { is_claim_or_core_of_ROOT = yes } #Brabant
-			781 = { is_claim_or_core_of_ROOT = yes } #Western Rhineland
+			any_state_of = {
+				target = { 35 925 781 } #North Brabant, Brabant, Western Rhineland
+				is_claim_or_core_of_ROOT = yes
+			}
 			35 = { #North Brabant
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1555,9 +1618,10 @@ can_release_91 = { #Lwow
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			88 = { is_claim_or_core_of_ROOT = yes } #Krakow
-			89 = { is_claim_or_core_of_ROOT = yes } #Stanislawow
-			1088 = { is_claim_or_core_of_ROOT = yes } #Chelm
+			any_state_of = {
+				target = { 88 89 1088 } #Krakow, Stanislawow, Chelm
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
 				owns_state = 89 #Stanislawow
@@ -1598,8 +1662,10 @@ can_release_188 = { #Memel
 	ROOT = {
 		OR = {
 			is_subject = yes
-			189 = { is_claim_or_core_of_ROOT = yes } #Samogitia
-			5 = { is_claim_or_core_of_ROOT = yes } #East Prussia
+			any_state_of = {
+				target = { 189 5 } #Samogitia, East Prussia
+				is_claim_or_core_of_ROOT = yes
+			}
 			189 = { #Samogitia
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1644,9 +1710,10 @@ can_release_8 = { #Luxembourg
 	ROOT = {
 		OR = {
 			is_subject = yes
-			948 = { is_claim_or_core_of_ROOT = yes } #Liège
-			28 = { is_claim_or_core_of_ROOT = yes } #Alsace-Lorraine
-			781 = { is_claim_or_core_of_ROOT = yes } #Western Rhineland
+			any_state_of = {
+				target = { 948 28 781 } #Liège, Alsace-Lorraine, Western Rhineland
+				is_claim_or_core_of_ROOT = yes
+			}
 			948 = { #Liège
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1781,9 +1848,10 @@ can_release_762 = { #Nice
 		}
 		OR = {
 			is_subject = yes
-			21 = { is_claim_or_core_of_ROOT = yes } #Provence
-			158 = { is_claim_or_core_of_ROOT = yes } #Piedmont
-			838 = { is_claim_or_core_of_ROOT = yes } #Liguria
+			any_state_of = {
+				target = { 21 158 838 } #Provence, Piedmont, Liguria
+				is_claim_or_core_of_ROOT = yes
+			}
 			21 = { #Provence
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1811,8 +1879,10 @@ can_release_767 = { #Nish
 	ROOT = {
 		OR = {
 			is_subject = yes
-			106 = { is_claim_or_core_of_ROOT = yes } #Macedonia
-			107 = { is_claim_or_core_of_ROOT = yes } #Belgrade
+			any_state_of = {
+				target = { 106 107 } #Macedonia, Belgrade
+				is_claim_or_core_of_ROOT = yes
+			}
 			106 = { #Macedonia
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -1861,8 +1931,10 @@ can_release_766 = { #Northern Epirus
 	ROOT = {
 		OR = {
 			is_subject = yes
-			44 = { is_claim_or_core_of_ROOT = yes } #Toskeria
-			185 = { is_claim_or_core_of_ROOT = yes } #Epirus
+			any_state_of = {
+				target = { 44 185 } #Toskeria, Epirus
+				is_claim_or_core_of_ROOT = yes
+			}
 			44 = { #Toskeria
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2008,9 +2080,10 @@ can_release_86 = { #Poznan
 	ROOT = {
 		OR = {
 			is_subject = yes
-			87 = { is_claim_or_core_of_ROOT = yes } #Kalisz
-			66 = { is_claim_or_core_of_ROOT = yes } #Lower Silesia
-			68 = { is_claim_or_core_of_ROOT = yes } #Neumark
+			any_state_of = {
+				target = { 87 66 68 } #Kalisz, Lower Silesia, Neumark
+				is_claim_or_core_of_ROOT = yes
+			}
 			87 = { #Hither Pomerania
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2038,8 +2111,10 @@ can_release_67 = { #Upper Silesia
 	ROOT = {
 		OR = {
 			is_subject = yes
-			87 = { is_claim_or_core_of_ROOT = yes } #Kalisz
-			66 = { is_claim_or_core_of_ROOT = yes } #Lower Silesia
+			any_state_of = {
+				target = { 87 66 } #Kalisz, Lower Silesia
+				is_claim_or_core_of_ROOT = yes
+			}
 			87 = { #Kalisz
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2063,18 +2138,15 @@ can_release_776 = { #West Prussia
 	ROOT = {
 		OR = {
 			is_subject = yes
-			63 = { is_claim_or_core_of_ROOT = yes } #Farther Pomerania
-			86 = { is_claim_or_core_of_ROOT = yes } #Posen
-			777 = { is_claim_or_core_of_ROOT = yes } #Masuria
+			any_state_of = {
+				target = { 63 86 } #Farther Pomerania, Posen
+				is_claim_or_core_of_ROOT = yes
+			}
 			86 = { #Farther Pomerania
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
 			}
 			63 = { #Farther Pomerania
-				annexations_state_owner_is_valid_grant_target = yes
-				owner = { ROOT_can_grant_land = yes }
-			}
-			777 = { #Masuria
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
 			}
@@ -2109,9 +2181,10 @@ can_release_777 = { #Masuria
 	ROOT = {
 		OR = {
 			is_subject = yes
-			98 = { is_claim_or_core_of_ROOT = yes } #Plock
-			5 = { is_claim_or_core_of_ROOT = yes } #East Prussia
-			776 = { is_claim_or_core_of_ROOT = yes } #West Prussia
+			any_state_of = {
+				target = { 98 5 776 } #Plock, East Prussia, West Prussia
+				is_claim_or_core_of_ROOT = yes
+			}
 			98 = { #Plock
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2143,8 +2216,10 @@ can_release_997 = { #Brest
 	ROOT = {
 		OR = {
 			is_subject = yes
-			792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
-			95 = { is_claim_or_core_of_ROOT = yes } #Pinsk
+			any_state_of = {
+				target = { 792 95 } #Volhynia, Pinsk
+				is_claim_or_core_of_ROOT = yes
+			}
 			792 = { #Volhynia
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2183,9 +2258,10 @@ can_release_1090 = { #Pressburg
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			4 = { is_claim_or_core_of_ROOT = yes } #Lower Austria
-			70 = { is_claim_or_core_of_ROOT = yes } #Slovakia
-			71 = { is_claim_or_core_of_ROOT = yes } #Danubian Plain
+			any_state_of = {
+				target = { 4 70 71 } #Lower Austria, Slovakia, Danubian Plain
+				is_claim_or_core_of_ROOT = yes
+			}
 			4 = { #Lower Austria
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2286,9 +2362,10 @@ can_release_817 = { #Roussillon
 	ROOT = {
 		OR = {
 			is_subject = yes
-			22 = { is_claim_or_core_of_ROOT = yes } #Languedoc
-			984 = { is_claim_or_core_of_ROOT = yes } #Pyrenees
-			165 = { is_claim_or_core_of_ROOT = yes } #Catalonia
+			any_state_of = {
+				target = { 22 984 165 } #Languedoc, Pyrenees, Catalonia
+				is_claim_or_core_of_ROOT = yes
+			}
 			22 = { #Provence
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2329,8 +2406,10 @@ can_release_731 = { #Florina
 	ROOT = {
 		OR = {
 			is_subject = yes
-			1076 = { is_claim_or_core_of_ROOT = yes } #Veria
-			106 = { is_claim_or_core_of_ROOT = yes } #Macedonia
+			any_state_of = {
+				target = { 1076 106 } #Veria, Macedonia
+				is_claim_or_core_of_ROOT = yes
+			}
 			1076 = { #Veria
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2370,8 +2449,10 @@ can_release_65 = { #Saxony
 	ROOT = {
 		OR = {
 			is_subject = yes
-			59 = { is_claim_or_core_of_ROOT = yes } #Hanover
-			64 = { is_claim_or_core_of_ROOT = yes } #Brandenburg
+			any_state_of = {
+				target = { 59 64 } #Hanover, Brandenburg
+				is_claim_or_core_of_ROOT = yes
+			}
 			59 = { #Hanover
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2449,8 +2530,10 @@ can_release_782 = { #Northern Schleswig
 	ROOT = {
 		OR = {
 			is_subject = yes
-			99 = { is_claim_or_core_of_ROOT = yes } #Jutland
-			58 = { is_claim_or_core_of_ROOT = yes } #Schleswig-Holstein
+			any_state_of = {
+				target = { 99 58 } #Jutland, Schleswig-Holstein
+				is_claim_or_core_of_ROOT = yes
+			}
 			99 = { #Jutland
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2499,9 +2582,10 @@ can_release_769 = { #Serres
 	ROOT = {
 		OR = {
 			is_subject = yes
-			989 = { is_claim_or_core_of_ROOT = yes } #Chalcidice
-			212 = { is_claim_or_core_of_ROOT = yes } #Plovdiv
-			184 = { is_claim_or_core_of_ROOT = yes } #Komotini
+			any_state_of = {
+				target = { 989 212 184 } #Chalcidice, Plovdiv, Komotini
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				341 = { is_claim_or_core_of_ROOT = yes } #Adrianople
 				owns_state = 184 #Komotini
@@ -2542,8 +2626,10 @@ can_release_77 = { #Silistria
 	ROOT = {
 		OR = {
 			is_subject = yes
-			46 = { is_claim_or_core_of_ROOT = yes } #Muntenia
-			771 = { is_claim_or_core_of_ROOT = yes } #Varna
+			any_state_of = {
+				target = { 46 771 } #Muntenia, Varna
+				is_claim_or_core_of_ROOT = yes
+			}
 			772 = { #Constantza
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2597,8 +2683,10 @@ can_release_39 = { #Southern Tyrol
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			153 = { is_claim_or_core_of_ROOT = yes } #North Tyrol
-			783 = { is_claim_or_core_of_ROOT = yes } #Trentino
+			any_state_of = {
+				target = { 153 783 } #North Tyrol, Trentino
+				is_claim_or_core_of_ROOT = yes
+			}
 			153 = { #North Tyrol
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2641,8 +2729,10 @@ can_release_89 = { #Stanislawow
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			91 = { is_claim_or_core_of_ROOT = yes } #Lwow
-			792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
+			any_state_of = {
+				target = { 91 792 } #Lwow, Volhynia
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				AUS_is_unified = yes
 				80 = { is_claim_or_core_of_ROOT = yes } #Cernauti
@@ -2755,8 +2845,10 @@ can_release_794 = { #Syrmia
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			107 = { is_claim_or_core_of_ROOT = yes } #Belgrade
-			109 = { is_claim_or_core_of_ROOT = yes } #Central Croatia
+			any_state_of = {
+				target = { 107 109 } #Belgrade, Central Croatia
+				is_claim_or_core_of_ROOT = yes
+			}
 			107 = { #Belgrade
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2781,8 +2873,10 @@ can_release_924 = { #Tesin
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			75 = { is_claim_or_core_of_ROOT = yes } #Moravia
-			88 = { is_claim_or_core_of_ROOT = yes } #Krakow
+			any_state_of = {
+				target = { 75 88 } #Moravia, Krakow
+				is_claim_or_core_of_ROOT = yes
+			}
 			75 = {
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -2822,8 +2916,10 @@ can_release_783 = { #Trentino
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			159 = { is_claim_or_core_of_ROOT = yes } #Lombardy
-			160 = { is_claim_or_core_of_ROOT = yes } #Venetia
+			any_state_of = {
+				target = { 159 160 } #Lombardy, Venetia
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				153 = { is_claim_or_core_of_ROOT = yes } #North Tyrol
 				owns_state = 39 #South Tyrol
@@ -2859,8 +2955,10 @@ can_release_989 = { #Chalcidice
 	ROOT = {
 		OR = {
 			is_subject = yes
-			47 = { is_claim_or_core_of_ROOT = yes } #Central Greece
-			769 = { is_claim_or_core_of_ROOT = yes } #Serres
+			any_state_of = {
+				target = { 47 769 } #Central Greece, Serres
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				212 = { is_claim_or_core_of_ROOT = yes } #Plovdiv
 				owns_state = 769 #Serres
@@ -2918,8 +3016,10 @@ can_release_761 = { #Ticino
 		OR = {
 			is_subject = yes
 			original_tag = SWI
-			158 = { is_claim_or_core_of_ROOT = yes } #Piedmont
-			159 = { is_claim_or_core_of_ROOT = yes } #Lombardy
+			any_state_of = {
+				target = { 158 159 } #Piedmont, Lombardy
+				is_claim_or_core_of_ROOT = yes
+			}
 			SWI = { ROOT_can_grant_land = yes }
 			159 = { #Lombardy
 				annexations_state_owner_is_valid_grant_target = yes
@@ -2941,8 +3041,10 @@ can_release_73 = { #Transcarpathia
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			70 = { is_claim_or_core_of_ROOT = yes } #Slovakia
-			664 = { is_claim_or_core_of_ROOT = yes } #Miskolc
+			any_state_of = {
+				target = { 70 664 } #Slovakia, Miskolc
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				89 = { is_claim_or_core_of_ROOT = yes } #Stanislawow
 				91 = { is_claim_or_core_of_ROOT = yes } #Lwow
@@ -3081,8 +3183,10 @@ can_release_96 = { #Vilnius
 	ROOT = {
 		OR = {
 			is_subject = yes
-			11 = { is_claim_or_core_of_ROOT = yes } #Kaunas
-			207 = { is_claim_or_core_of_ROOT = yes } #Braslav
+			any_state_of = {
+				target = { 11 207 } #Kaunas, Braslav
+				is_claim_or_core_of_ROOT = yes
+			}
 			AND = {
 				92 = { is_claim_or_core_of_ROOT = yes } #Lublin
 				owns_state = 97 #Bialystok
@@ -3162,8 +3266,10 @@ can_release_45 = { #Vojvodina
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			43 = { is_claim_or_core_of_ROOT = yes } #Central Hungary
-			794 = { is_claim_or_core_of_ROOT = yes } #Syrmia
+			any_state_of = {
+				target = { 43 794 } #Central Hungary, Syrmia
+				is_claim_or_core_of_ROOT = yes
+			}
 			43 = { #Central Hungary
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -3189,8 +3295,10 @@ can_release_942 = { #Vorarlberg
 	ROOT = {
 		OR = {
 			is_subject = yes
-			151 = { is_claim_or_core_of_ROOT = yes } #Eastern Switzerland
-			153 = { is_claim_or_core_of_ROOT = yes } #Tyrol
+			any_state_of = {
+				target = { 151 153 } #Eastern Switzerland, Tyrol
+				is_claim_or_core_of_ROOT = yes
+			}
 			151 = { #Eastern Switzerland
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -3244,9 +3352,10 @@ can_release_875 = { #West Banat
 		AUS_can_have_danubian_annexations = yes
 		OR = {
 			is_subject = yes
-			45 = { is_claim_or_core_of_ROOT = yes } #Vojvodina
-			82 = { is_claim_or_core_of_ROOT = yes } #Banat
-			107 = { is_claim_or_core_of_ROOT = yes } #Belgrade
+			any_state_of = {
+				target = { 45 82 107 } #Vojvodina, Banat, Belgrade
+				is_claim_or_core_of_ROOT = yes
+			}
 			45 = { #Vojvodina
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -3278,8 +3387,10 @@ can_release_979 = { #Westerscheldt
 	ROOT = {
 		OR = {
 			is_subject = yes
-			6 = { is_claim_or_core_of_ROOT = yes } #Flanders
-			35 = { is_claim_or_core_of_ROOT = yes } #North Brabant
+			any_state_of = {
+				target = { 6 35 } #Flanders, North Brabant
+				is_claim_or_core_of_ROOT = yes
+			}
 			6 = { #Flanders
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -3514,6 +3625,13 @@ should_release_russia_first = {
 		country_exists = RSA
 		country_exists = RUS
 		219 = { annexations_state_has_valid_annexation = no } #Moscow
+	}
+}
+
+should_release_scotland_first = {
+	OR = {
+		country_exists = SCO
+		121 = { annexations_state_has_valid_annexation = no } #Lothian
 	}
 }
 

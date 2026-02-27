@@ -98,7 +98,7 @@ country_event = { #Dian-Qian Border Tensions
 	desc = YUN.introgame.003.d
 	picture = GFX_report_event_YUN_miner_strike
 
-	is_triggered_only = yes #Triggered by [EVENT] league_collapse.11 #Anqing Refuses Further Cooperation // Jan 29
+	is_triggered_only = yes #Triggered by [EVENT] league_collapse_events.11 #Anqing Refuses Further Cooperation // Jan 29
 	trigger = {
 		YUN_is_phase_1_trigger = yes
 	}
@@ -124,7 +124,7 @@ country_event = { #Black Monday Cripples the Tin Trade
 	desc = YUN.introgame.004.d
 	picture = GFX_report_event_YUN_geiju_tin
 
-	is_triggered_only = yes #Triggered by [EVENT]  league_collapse.50 #Black Monday Reaches the East // Feb 06
+	is_triggered_only = yes #Triggered by [EVENT]  league_collapse_events.50 #Black Monday Reaches the East // Feb 06
 	trigger = {
 		YUN_is_phase_1_trigger = yes
 	}
@@ -162,7 +162,7 @@ country_event = { #Sun Chuanfang is Shot in Nanjing!
 	desc = YUN.introgame.005.d
 	picture = GFX_report_event_LEP_sun_time_magazine
 
-	is_triggered_only = yes #Triggered by [EVENT]  league_collapse.52 #A Heinous Crime // Fires Feb 15 1936
+	is_triggered_only = yes #Triggered by [EVENT]  league_collapse_events.52 #A Heinous Crime // Fires Feb 15 1936
 	trigger = {
 		YUN_is_phase_1_trigger = yes
 	}
@@ -221,7 +221,7 @@ country_event = { #Tang Jiyao’s Gambit
 			modifier = {
 				#Rig it if you set gamerules so they will always win.
 				factor = 0
-				has_game_rule = { rule = YUN_PATH option = YUN_PATH_SOCCON }
+				has_game_rule = { rule = YUN_path option = YUN_PATH_SOCCON }
 			}
 		}
 		YUN_introminigame_add_UPC_medium_effect = yes
@@ -237,7 +237,7 @@ country_event = { #Tang Jiyao’s Gambit
 			modifier = {
 				#Rig it if you set gamerules so they will always win.
 				factor = 0
-				has_game_rule = { rule = YUN_PATH option = YUN_PATH_AUTDEM }
+				has_game_rule = { rule = YUN_path option = YUN_PATH_AUTDEM }
 			}
 		}
 		YUN_introminigame_add_KMT_medium_effect = yes
@@ -919,8 +919,8 @@ country_event = { #The Late-Autumn Offensive
 		if = {
 			limit = {
 				OR = {
-					has_game_rule = { rule = YUN_PATH option = YUN_PATH_SOCCON }
-					has_game_rule = { rule = YUN_PATH option = YUN_PATH_SOCCON }
+					has_game_rule = { rule = YUN_path option = YUN_PATH_SOCCON }
+					has_game_rule = { rule = YUN_path option = YUN_PATH_SOCCON }
 				}
 			}
 			custom_effect_tooltip = YUN_introgame_minigame_rigged_warning_tt
@@ -964,7 +964,7 @@ country_event = { #The Late-Autumn Offensive
 				modifier = {
 					#Rig it if you set gamerules so they will always win.
 					factor = 0
-					has_game_rule = { rule = YUN_PATH option = YUN_PATH_SOCCON }
+					has_game_rule = { rule = YUN_path option = YUN_PATH_SOCCON }
 				}
 				country_event = { id = YUN.introgame.101 days = 7 } #The Yunnan Army Overruns Guizhou
 			}
@@ -1014,7 +1014,7 @@ country_event = { #The Late-Autumn Offensive
 				modifier = {
 					#Rig it if you set gamerules so they will always win.
 					factor = 0
-					has_game_rule = { rule = YUN_PATH option = YUN_PATH_AUTDEM }
+					has_game_rule = { rule = YUN_path option = YUN_PATH_AUTDEM }
 				}
 				country_event = { id = YUN.introgame.102 days = 7 } #The Zhaotong Incident
 			}
@@ -1686,15 +1686,17 @@ country_event = { #The Extent of Politics in the Army
 			planning_skill = 1
 			logistics_skill = 1
 		}
-		add_corps_commander_role = {
-			character = YUN_zhang_qun
-			desc = YUN_zhang_qun_commander_desc
-			traits = { CHN_RKT_officer_trait artillery_officer cavalry_officer politically_connected }
-			skill = 1
-			attack_skill = 1
-			defense_skill = 1
-			planning_skill = 1
-			logistics_skill = 1
+		effect_tooltip = {
+			add_corps_commander_role = {
+				character = YUN_zhang_qun
+				desc = YUN_zhang_qun_commander_desc
+				traits = { CHN_RKT_officer_trait artillery_officer cavalry_officer politically_connected }
+				skill = 1
+				attack_skill = 1
+				defense_skill = 1
+				planning_skill = 1
+				logistics_skill = 1
+			}
 		}
 		add_corps_commander_role = {
 			character = YUN_chen_guofu
@@ -1705,6 +1707,13 @@ country_event = { #The Extent of Politics in the Army
 			defense_skill = 1
 			planning_skill = 1
 			logistics_skill = 1
+		}
+		hidden_effect = {
+			if = {
+				limit = { NOT = { has_character = YUN_liu_jianqun } }
+				YUN_liu_jianqun = { CHN_recruit_character_effect = yes }
+			}
+			YUN_zhang_qun = { set_character_flag = YUN_zhang_qun_commander_role } #Workaround until civilian characters with corps commander roles are fixed
 		}
 	}
 	option = {
@@ -2217,6 +2226,7 @@ country_event = { #An After Action Critique of [ROOT.GetLeader]
 			YUN_PSC_small_effect = yes
 			YUN_CCC_small_effect = yes
 			YUN_YSP_small_effect = yes
+			YUN_3AL_small_effect = yes
 		}
 		else = {
 			YUN_3AL_medium_effect = yes
@@ -2353,6 +2363,13 @@ country_event = {
 			#Promote the Junta to Field Marshal Roles
 			YUN_zhu_peide = { promote_leader = yes }
 			YUN_he_yingqin = { promote_leader = yes }
+			if = {
+				limit = { has_country_flag = GXC_supporting_UPC }
+				clr_country_flag = GXC_supporting_UPC
+				set_country_flag = GXC_supporting_KMT
+				remove_targeted_decision = { target = 594 decision = GXC_introminigame_secure_state_external_UPC_decision }
+				activate_targeted_decision = { target = 594 decision = GXC_introminigame_secure_state_external_KMT_decision }
+			}
 			complete_national_focus = YUN_kunming_to_guiyang
 		}
 	}
@@ -2564,6 +2581,13 @@ country_event = {
 			}
 			complete_national_focus = YUN_the_federalist_revival
 			complete_national_focus = YUN_kunming_to_guiyang
+			if = {
+				limit = { has_country_flag = GXC_supporting_KMT }
+				clr_country_flag = GXC_supporting_KMT
+				set_country_flag = GXC_supporting_UPC
+				remove_targeted_decision = { target = 594 decision = GXC_introminigame_secure_state_external_KMT_decision }
+				activate_targeted_decision = { target = 594 decision = GXC_introminigame_secure_state_external_UPC_decision }
+			}
 		}
 	}
 
@@ -5081,7 +5105,7 @@ country_event = {
 		log = "[GetLogInfo]: event YUN.midgame.441 option YUN.midgame.441.a"
 		name = YUN.midgame.441.a #Wang Jingwei can return but he better deliver.
 		ai_chance = { base = 100 }
-		add_stability = -0.05
+		add_stability = -0.10
 		add_political_power = -25
 		add_popularity = { ideology = radical_socialist popularity = 0.10 }
 		RKT_add_zeal_large_effect = yes
@@ -5161,7 +5185,7 @@ country_event = {
 		log = "[GetLogInfo]: event YUN.midgame.442 option YUN.midgame.442.a"
 		name = YUN.midgame.442.a #Better to deal with them inside the party than out.
 		ai_chance = { base = 100 }
-		add_war_support = -0.05
+		add_war_support = -0.10
 		add_political_power = -30
 		add_popularity = { ideology = radical_socialist popularity = 0.10 }
 		YUN_CEC_large_effect = yes
@@ -7428,6 +7452,7 @@ country_event = {
 			end_coalition = yes
 			YUN_lu_han = { CHN_recruit_character_effect = yes }
 			YUN_UPC_recruit_characters_effect = yes #Bring the UPC people back for now in case the KMT initally take over, then we'll purge them later in the event chain.
+			YUN_YSP_purge_characters_minus_leaders_effect = yes
 			YUN_3AL_purge_characters_minus_leaders_effect = yes
 			YUN_CEC_purge_characters_minus_leaders_effect = yes
 			YUN_PSC_purge_characters_minus_leaders_effect = yes
@@ -7437,6 +7462,7 @@ country_event = {
 			YUN_BSS_purge_characters_minus_leaders_effect = yes
 			YUN_transition_to_NPA_pop_support_effect = yes
 			YUN_transition_to_NPA_army_tree_effect = yes
+			YUN_wang_fusheng = { retire = yes }
 			YUN_zhu_de = { retire = yes }
 			YUN_chen_cheng = { retire = yes }
 			YUN_zhang_qun = { retire = yes }
@@ -10097,6 +10123,9 @@ country_event = {
 					has_character_flag = YUN_CEC_character_flag
 					has_character_flag = YUN_CCC_character_flag
 					has_character_flag = YUN_PSC_character_flag
+					is_character = KOR_kim_hong_il
+					is_character = SZC_lu_chao
+					is_character = YUN_zhang_jingyu
 				}
 			}
 			retire = yes
@@ -10123,6 +10152,9 @@ country_event = {
 					has_trait = CHN_RKT_officer_trait
 					has_trait = CHN_LKT_officer_trait
 					has_trait = CHN_gmj_officer_trait
+					is_character = KOR_kim_hong_il
+					is_character = ANQ_sun_liren
+					is_character = YUN_zhang_jingyu
 				}
 			}
 			retire = yes
@@ -11045,9 +11077,10 @@ country_event = {
 		YUN_3AL_purge_characters_minus_leaders_effect = yes
 		YUN_CEC_purge_characters_minus_leaders_effect = yes
 		#YUN_PSC_purge_characters_minus_leaders_effect = yes - Obviously won't purge yourself
-		YUN_3AR_purge_characters_minus_leaders_effect = yes
+		#YUN_3AR_purge_characters_minus_leaders_effect = yes - You need some friends
 		YUN_CCC_purge_characters_minus_leaders_effect = yes
-		YUN_WPC_purge_characters_minus_leaders_effect = yes
+		#YUN_WPC_purge_characters_minus_leaders_effect = yes - WPC makes up most of the army
+		set_country_flag = YUN_he_yingqin_hidden_flag # He should still go though
 		YUN_BSS_purge_characters_minus_leaders_effect = yes
 		every_character = {
 			limit = {
@@ -11058,6 +11091,14 @@ country_event = {
 					has_character_flag = YUN_CEC_character_flag
 					has_character_flag = YUN_CCC_character_flag
 					has_character_flag = YUN_PSC_character_flag
+					has_character_flag = GXC_RCF_character_flag
+					has_character_flag = CHI_RCF_military_loyalist_flag
+					is_character = KOR_kim_hong_il
+					is_character = SHX_shang_zhen
+					is_character = SHX_fu_zuoyi
+					is_character = ANQ_sun_liren
+					is_character = LEP_tang_enbo
+					is_character = YUN_zhang_jingyu
 				}
 			}
 			retire = yes
@@ -11089,6 +11130,12 @@ country_event = {
 					has_trait = CHN_RKT_officer_trait
 					has_trait = CHN_LKT_officer_trait
 					has_trait = CHN_gmj_officer_trait
+					is_character = KOR_kim_hong_il
+					is_character = SHX_shang_zhen
+					is_character = SHX_fu_zuoyi
+					is_character = ANQ_sun_liren
+					is_character = LEP_tang_enbo
+					is_character = YUN_zhang_jingyu
 				}
 			}
 			retire = yes
@@ -11184,6 +11231,9 @@ country_event = {
 					has_character_flag = YUN_CEC_character_flag
 					has_character_flag = YUN_CCC_character_flag
 					has_character_flag = YUN_PSC_character_flag
+					is_character = KOR_kim_hong_il
+					is_character = LEP_tang_enbo
+					is_character = CHI_chiang_wei_kuo
 				}
 			}
 			retire = yes
@@ -11215,6 +11265,9 @@ country_event = {
 					has_trait = CHN_RKT_officer_trait
 					has_trait = CHN_LKT_officer_trait
 					has_trait = CHN_gmj_officer_trait
+					is_character = KOR_kim_hong_il
+					is_character = LEP_tang_enbo
+					is_character = YUN_zhang_jingyu
 				}
 			}
 			retire = yes
@@ -11307,13 +11360,16 @@ country_event = {
 		#YUN_BSS_purge_characters_minus_leaders_effect = yes - Obviously wont purge themselves
 		every_character = {
 			limit = {
-				is_unit_leader = yes
 				NOT = {
 					has_character_flag = YUN_WPC_character_flag
 					has_character_flag = YUN_BSS_character_flag
 					has_character_flag = YUN_CEC_character_flag
 					has_character_flag = YUN_CCC_character_flag
 					has_character_flag = YUN_PSC_character_flag
+					has_character_flag = CHI_CRS_military_loyalist_flag
+					is_character = KOR_kim_hong_il
+					is_character = LEP_tang_enbo
+					is_character = YUN_zhang_jingyu
 				}
 			}
 			retire = yes
@@ -11341,11 +11397,14 @@ country_event = {
 		#YUN_BSS_purge_characters_minus_leaders_effect = yes - Obviously wont purge themselves
 		every_character = {
 			limit = {
-				is_unit_leader = yes
 				NOT = {
 					has_trait = CHN_RKT_officer_trait
 					has_trait = CHN_LKT_officer_trait
 					has_trait = CHN_gmj_officer_trait
+					is_character = KOR_kim_hong_il
+					is_character = LEP_tang_enbo
+					is_character = ANQ_sun_liren
+					is_character = YUN_zhang_jingyu
 				}
 			}
 			retire = yes
@@ -12559,6 +12618,7 @@ country_event = { #Lushan Conference
 		}
 	}
 	is_triggered_only = yes #Triggered by on action, 21 days after war with Japan
+	fire_only_once = yes
 	trigger = {
 		ROOT = {
 			OR = {
@@ -13264,7 +13324,7 @@ country_event = { #The Southwest Demands Mediation
 			IDEOLOGY = radical_socialist_coloured COUNTRY = "[YUN.GetNameDef]"
 		}
 		add_political_power = YUN_pp_loss_temp_var
-		custom_effect_tooltip = YUN_chen_cheng_warning_tt
+		custom_effect_tooltip = YUN_zhang_bojun_warning_tt
 		YUN = { country_event = { id = YUN.lategame.523 days = 5 } }
 	}
 }
@@ -16466,6 +16526,10 @@ country_event = { #Yunnan Rises Again
 		YUN = {
 			set_capital = { state = 592 } #Guangzhou
 			add_state_core = 592
+			every_controlled_state = {
+				limit = { is_china_claim_area = yes }
+				add_compliance = 25
+			}
 		}
 		hidden_effect = {
 			news_event = YUN.lategame.841 #The National Protection Alliance Reforms
@@ -16741,6 +16805,7 @@ country_event = { #The Generalissimo and His Broken Nation
 			}
 		}
 		set_country_flag = YUN_phase_5_begins_flag
+		YUN_transition_economy_effect = yes
 		mark_focus_tree_layout_dirty = yes
 	}
 
@@ -16782,6 +16847,7 @@ country_event = { #The Generalissimo and His Broken Legacy
 				country_event = { id = YUN.endgame.010 days = 3 random_days = 4 } #The Nationalist Government Falters
 			}
 			set_country_flag = YUN_phase_5_begins_flag
+			YUN_transition_economy_effect = yes
 			mark_focus_tree_layout_dirty = yes
 		}
 	}
@@ -17887,6 +17953,7 @@ country_event = { #Awakening of the New Right
 				country_event = { id = YUN.endgame.010 days = 3 random_days = 4 } #The Nationalist Government Falters
 			}
 			set_country_flag = YUN_phase_5_begins_flag
+			YUN_transition_economy_effect = yes
 			mark_focus_tree_layout_dirty = yes
 		}
 	}
@@ -18237,6 +18304,7 @@ country_event = { #The Chinese Thermidor
 	immediate = {
 		hidden_effect = {
 			set_country_flag = YUN_phase_5_begins_flag
+			YUN_transition_economy_effect = yes
 			every_subject_country = {
 				limit = { is_chinese_or_potential_chinese_tag = yes }
 				country_event = { id = YUN.endgame.010 days = 3 random_days = 4 } #The Nationalist Government Falters
@@ -18489,6 +18557,9 @@ country_event = { #Healing the PAC Rift
 				GXC_jiang_guangnai = { CHN_recruit_character_effect = yes }
 				GXC_cai_tingkai = { CHN_recruit_character_effect = yes }
 				GXC_dai_ji = { CHN_recruit_character_effect = yes }
+				GXC_li_zhangda = { CHN_recruit_character_effect = yes }
+				GXC_xie_wenbing = { CHN_recruit_character_effect = yes }
+				GXC_li_minxin = { CHN_recruit_character_effect = yes }
 			}
 		}
 	}
@@ -19085,6 +19156,7 @@ country_event = { #Triumph of Yunnan Federalism
 	immediate = {
 		hidden_effect = {
 			set_country_flag = YUN_phase_5_begins_flag
+			YUN_transition_economy_effect = yes
 			mark_focus_tree_layout_dirty = yes
 			country_event = { id = YUN.endgame.301 days = 3 }
 		}
@@ -20216,6 +20288,7 @@ country_event = { #Finishing the Mission
 	immediate = {
 		hidden_effect = {
 			set_country_flag = YUN_phase_5_begins_flag
+			YUN_transition_economy_effect = yes
 			mark_focus_tree_layout_dirty = yes
 			country_event = { id = YUN.endgame.601 days = 3 } #Consequences of Economic Misamanagement
 

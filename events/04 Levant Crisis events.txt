@@ -1,6 +1,6 @@
 add_namespace = operation_abul_awar_events
 add_namespace = third_arab_congress_events
-add_namespace = levant_crisis_news
+add_namespace = levant_crisis_news_events
 
 #####################
 ### OPERATION ABU ###
@@ -850,10 +850,10 @@ news_event = {
 
 # Levant Crisis
 news_event = {
-	id = levant_crisis_news.1
-	immediate = { log = "[GetLogInfo]: event levant_crisis_news.1" }
-	title = levant_crisis_news.1.t
-	desc = levant_crisis_news.1.d
+	id = levant_crisis_news_events.1
+	immediate = { log = "[GetLogInfo]: event levant_crisis_news_events.1" }
+	title = levant_crisis_news_events.1.t
+	desc = levant_crisis_news_events.1.d
 	picture = GFX_news_event_OTT_war_desert
 
 	trigger = { wants_world_news = yes } #Global news event
@@ -866,11 +866,11 @@ news_event = {
 	}
 
 	option = {
-		name = levant_crisis_news.1.a
+		name = levant_crisis_news_events.1.a
 		trigger = { NOT = { tag = OTT } }
 	}
 	option = {
-		name = levant_crisis_news.1.b
+		name = levant_crisis_news_events.1.b
 		trigger = { tag = OTT }
 	}
 
@@ -886,10 +886,10 @@ news_event = {
 
 # Yemen Rebellion
 news_event = {
-	id = levant_crisis_news.2
-	immediate = { log = "[GetLogInfo]: event levant_crisis_news.2" }
-	title = levant_crisis_news.2.t
-	desc = levant_crisis_news.2.d
+	id = levant_crisis_news_events.2
+	immediate = { log = "[GetLogInfo]: event levant_crisis_news_events.2" }
+	title = levant_crisis_news_events.2.t
+	desc = levant_crisis_news_events.2.d
 	picture = GFX_news_event_YEM_revolt
 
 	major = yes
@@ -905,16 +905,16 @@ news_event = {
 	}
 
 	option = {
-		name = levant_crisis_news.2.a
+		name = levant_crisis_news_events.2.a
 	}
 }
 
 # Cypriot Rebellion
 news_event = {
-	id = levant_crisis_news.3
-	immediate = { log = "[GetLogInfo]: event levant_crisis_news.3" }
-	title = levant_crisis_news.3.t
-	desc = levant_crisis_news.3.d
+	id = levant_crisis_news_events.3
+	immediate = { log = "[GetLogInfo]: event levant_crisis_news_events.3" }
+	title = levant_crisis_news_events.3.t
+	desc = levant_crisis_news_events.3.d
 	picture = GFX_news_event_OTT_cypriot_revolt
 
 	major = yes
@@ -934,20 +934,20 @@ news_event = {
 
 	option = {
 		trigger = { NOT = { tag = OTT } }
-		name = levant_crisis_news.3.a
+		name = levant_crisis_news_events.3.a
 	}
 	option = {
 		trigger = { tag = OTT }
-		name = levant_crisis_news.3.b
+		name = levant_crisis_news_events.3.b
 	}
 }
 
 # Hejazi Rebellion
 news_event = {
-	id = levant_crisis_news.4
-	immediate = { log = "[GetLogInfo]: event levant_crisis_news.4" }
-	title = levant_crisis_news.4.t
-	desc = levant_crisis_news.4.d
+	id = levant_crisis_news_events.4
+	immediate = { log = "[GetLogInfo]: event levant_crisis_news_events.4" }
+	title = levant_crisis_news_events.4.t
+	desc = levant_crisis_news_events.4.d
 	picture = GFX_news_event_OTT_hejaz_revolt
 
 	major = yes
@@ -964,20 +964,20 @@ news_event = {
 
 	option = {
 		trigger = { NOT = { tag = OTT } }
-		name = levant_crisis_news.4.a
+		name = levant_crisis_news_events.4.a
 	}
 	option = {
 		trigger = { tag = OTT }
-		name = levant_crisis_news.4.b
+		name = levant_crisis_news_events.4.b
 	}
 }
 
 # Syrian Rebellion
 news_event = {
-	id = levant_crisis_news.5
-	immediate = { log = "[GetLogInfo]: event levant_crisis_news.5" }
-	title = levant_crisis_news.5.t
-	desc = levant_crisis_news.5.d
+	id = levant_crisis_news_events.5
+	immediate = { log = "[GetLogInfo]: event levant_crisis_news_events.5" }
+	title = levant_crisis_news_events.5.t
+	desc = levant_crisis_news_events.5.d
 	picture = GFX_news_event_OTT_syrian_revolt
 
 	major = yes
@@ -994,20 +994,20 @@ news_event = {
 
 	option = {
 		trigger = { NOT = { tag = OTT } }
-		name = levant_crisis_news.5.a
+		name = levant_crisis_news_events.5.a
 	}
 	option = {
 		trigger = { tag = OTT }
-		name = levant_crisis_news.5.b
+		name = levant_crisis_news_events.5.b
 	}
 }
 
 # War over Khasab
 news_event = {
-	id = levant_crisis_news.6
-	immediate = { log = "[GetLogInfo]: event levant_crisis_news.6" }
-	title = levant_crisis_news.6.t
-	desc = levant_crisis_news.6.d
+	id = levant_crisis_news_events.6
+	immediate = { log = "[GetLogInfo]: event levant_crisis_news_events.6" }
+	title = levant_crisis_news_events.6.t
+	desc = levant_crisis_news_events.6.d
 	picture = GFX_news_event_OTT_navy
 
 	trigger = { wants_world_news = yes } #Global news event
@@ -1021,16 +1021,16 @@ news_event = {
 	}
 
 	option = {
-		name = levant_crisis_news.6.a
+		name = levant_crisis_news_events.6.a
 	}
 }
 
 # The Barzinji Insurrection
 news_event = {
-	id = levant_crisis_news.7
-	immediate = { log = "[GetLogInfo]: event levant_crisis_news.7" }
-	title = levant_crisis_news.7.t
-	desc = levant_crisis_news.7.d
+	id = levant_crisis_news_events.7
+	immediate = { log = "[GetLogInfo]: event levant_crisis_news_events.7" }
+	title = levant_crisis_news_events.7.t
+	desc = levant_crisis_news_events.7.d
 	picture = GFX_news_event_OTT_barzinji_revolt
 
 	major = yes
@@ -1048,20 +1048,20 @@ news_event = {
 
 	option = {
 		trigger = { NOT = { tag = OTT } }
-		name = levant_crisis_news.7.a
+		name = levant_crisis_news_events.7.a
 	}
 	option = {
 		trigger = { tag = OTT }
-		name = levant_crisis_news.7.b
+		name = levant_crisis_news_events.7.b
 	}
 }
 
 # War over the Shatt-al-Arab
 news_event = {
-	id = levant_crisis_news.8
-	immediate = { log = "[GetLogInfo]: event levant_crisis_news.8" }
-	title = levant_crisis_news.8.t
-	desc = levant_crisis_news.8.d
+	id = levant_crisis_news_events.8
+	immediate = { log = "[GetLogInfo]: event levant_crisis_news_events.8" }
+	title = levant_crisis_news_events.8.t
+	desc = levant_crisis_news_events.8.d
 	picture = GFX_news_event_OTT_shatt_al_arab
 
 	trigger = { wants_world_news = yes } #Global news event
@@ -1075,16 +1075,16 @@ news_event = {
 	}
 
 	option = {
-		name = levant_crisis_news.8.a
+		name = levant_crisis_news_events.8.a
 	}
 }
 
 # The Armenian Uprising
 news_event = {
-	id = levant_crisis_news.9
-	immediate = { log = "[GetLogInfo]: event levant_crisis_news.9" }
-	title = levant_crisis_news.9.t
-	desc = levant_crisis_news.9.d
+	id = levant_crisis_news_events.9
+	immediate = { log = "[GetLogInfo]: event levant_crisis_news_events.9" }
+	title = levant_crisis_news_events.9.t
+	desc = levant_crisis_news_events.9.d
 	picture = GFX_news_event_OTT_armenia
 
 	major = yes
@@ -1104,11 +1104,11 @@ news_event = {
 
 	option = {
 		trigger = { NOT = { tag = OTT } }
-		name = levant_crisis_news.9.a
+		name = levant_crisis_news_events.9.a
 	}
 	option = {
 		trigger = { tag = OTT }
-		name = levant_crisis_news.9.b
+		name = levant_crisis_news_events.9.b
 	}
 }
 

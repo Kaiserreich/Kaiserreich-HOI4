@@ -216,11 +216,13 @@ defined_text = {
 	}
 }
 
+# FROM is the offering country
+# FROM.FROM is the target country
 defined_text = {
 	name = GetLandExchangeNotificationEventDesc
 	text = {
 		trigger = {
-			FROM = { has_country_flag = offered_transylvania_@FROM }
+			FROM.FROM = { has_country_flag = offered_transylvania_@FROM }
 		}
 		localization_key = annexation_events.8.desc_romania
 	}
@@ -229,11 +231,13 @@ defined_text = {
 	}
 }
 
+# FROM is the offering country
+# FROM.FROM is the target country
 defined_text = {
 	name = GetLandExchangeNotificationEventOption
 	text = {
 		trigger = {
-			FROM = { has_country_flag = offered_transylvania_@FROM }
+			FROM.FROM = { has_country_flag = offered_transylvania_@FROM }
 		}
 		localization_key = annexation_events.8.a_romania
 	}

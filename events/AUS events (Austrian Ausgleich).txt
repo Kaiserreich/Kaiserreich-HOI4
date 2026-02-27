@@ -21,17 +21,17 @@ country_event = {
 
 	option = {
 		log = "[GetLogInfo]: event ausgleich_events.99 option 1"
-		ai_chance = { base = 50 }
+		ai_chance = { base = 65 }
 		set_global_flag = AUS_AI_ausgleich_pluralism
 	}
 	option = {
 		log = "[GetLogInfo]: event ausgleich_events.99 option 2"
-		ai_chance = { base = 20 }
+		ai_chance = { base = 35 }
 		set_global_flag = AUS_AI_ausgleich_status_quo
 	}
 	option = {
 		log = "[GetLogInfo]: event ausgleich_events.99 option 3"
-		ai_chance = { base = 30 }
+		ai_chance = { base = 0 } # temporarily disabled: known crash on Linux and macOS
 		set_global_flag = AUS_AI_ausgleich_military_occupation
 	}
 }
@@ -1311,7 +1311,7 @@ country_event = {
 		}
 		hidden_effect = {
 			random_other_country = {
-				news_event = { id = worldnews.7 days = 1 }
+				news_event = { id = world_news_events.7 days = 1 }
 			}
 			set_autonomy = {
 				target = HUN
@@ -1409,7 +1409,7 @@ country_event = {
 			GAL = { country_event = ausgleich_events.900 }
 			SER = { activate_targeted_decision = { target = CRO decision = SER_Ultimatum_To_Illyria } }
 			random_other_country = {
-				news_event = { id = worldnews.7 days = 1 }
+				news_event = { id = world_news_events.7 days = 1 }
 			}
 		}
 		declare_war_on = {
@@ -1931,7 +1931,7 @@ country_event = {
 			autonomy_state = autonomy_free
 		}
 		hidden_effect = {
-			news_event = { id = worldnews.7 days = 1 }
+			news_event = { id = world_news_events.7 days = 1 }
 			HUN = {
 				drop_cosmetic_tag = yes
 				leave_faction = yes
@@ -2315,6 +2315,55 @@ country_event = { #integrating the subjects
 					limit = { tag = GAL }
 					GAL_remove_karl_albrecht = yes
 				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			every_unit_leader = {
+				limit = { has_variable = nationality } #ignore AI-generated generics
+				demote_to_general = yes
+				set_nationality = ROOT
+			}
+			custom_effect_tooltip = tooltip_white_line
+			every_scientist = {
+				limit = { has_variable = nationality } #ignore AI-generated generics
+				set_nationality = ROOT
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = AUS_transfer_puppet_divisions
+		}
+		custom_effect_tooltip = tooltip_white_line
+		annex_country = {
+			target = FROM
+			transfer_troops = yes
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ausgleich_events.701 option ausgleich_events.701.b"
+		name = ausgleich_events.701.b
+		ai_chance = { base = 0 }
+		add_political_power = 20
+		FROM = {
+			every_core_state = {
+				limit = {
+					OR = {
+						is_owned_by = ROOT
+						owner = { has_autonomy_state = crownland }
+					}
+					NOT = { is_core_of = SER }
+					NOT = { is_core_of = ALB }
+					NOT = { is_core_of = BUL }
+				}
+				add_core_of = ROOT
+			}
+			hidden_effect = {
+				if = {
+					limit = { tag = HUN }
+					AUS_remove_monarchy = yes
+				}
+				else_if = {
+					limit = { tag = GAL }
+					GAL_remove_karl_albrecht = yes
+				}
 				delete_unit = { disband = yes }
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -2328,6 +2377,8 @@ country_event = { #integrating the subjects
 				limit = { has_variable = nationality } #ignore AI-generated generics
 				set_nationality = ROOT
 			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = AUS_transfer_puppet_equipment_and_manpower
 		}
 		custom_effect_tooltip = tooltip_white_line
 		annex_country = {
@@ -3168,7 +3219,6 @@ country_event = { #Illyria accepts
 	option = {
 		log = "[GetLogInfo]: event ausgleich_events.912 option ausgleich_events.912.a"
 		name = ausgleich_events.912.a
-		remove_decision = SER_Ultimatum_To_Illyria
 		if = {
 			limit = {
 				AUS = { has_war_with = CRO }

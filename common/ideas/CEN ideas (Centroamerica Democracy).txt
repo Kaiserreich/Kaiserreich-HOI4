@@ -745,7 +745,7 @@ ideas = {
 			modifier = {
 				army_org_factor = -0.1
 				conscription_factor = -0.1
-				initiative_factor = 0.01
+				initiative_factor = 0.1
 				recon_factor = 0.1
 			}
 		}
@@ -769,7 +769,7 @@ ideas = {
 			}
 			equipment_bonus = {
 				artillery_equipment = {
-					soft_attack = 0.1
+					soft_attack = 0.15
 					instant = yes
 				}
 			}
@@ -781,7 +781,7 @@ ideas = {
 			allowed = { always = no }
 			modifier = {
 				conscription_factor = -0.1
-				initiative_factor = 0.01
+				initiative_factor = 0.1
 				recon_factor = 0.1
 			}
 		}
@@ -795,7 +795,7 @@ ideas = {
 			}
 			equipment_bonus = {
 				artillery_equipment = {
-					soft_attack = 0.1
+					soft_attack = 0.15
 					instant = yes
 				}
 			}
@@ -808,12 +808,12 @@ ideas = {
 			modifier = {
 				army_org_factor = -0.1
 				conscription_factor = -0.1
-				initiative_factor = 0.01
+				initiative_factor = 0.1
 				recon_factor = 0.1
 			}
 			equipment_bonus = {
 				artillery_equipment = {
-					soft_attack = 0.1
+					soft_attack = 0.15
 					instant = yes
 				}
 			}
@@ -825,12 +825,12 @@ ideas = {
 			allowed = { always = no }
 			modifier = {
 				conscription_factor = -0.1
-				initiative_factor = 0.01
+				initiative_factor = 0.1
 				recon_factor = 0.1
 			}
 			equipment_bonus = {
 				artillery_equipment = {
-					soft_attack = 0.1
+					soft_attack = 0.15
 					instant = yes
 				}
 			}
@@ -843,14 +843,13 @@ ideas = {
 				army_org_factor = 0.1
 				army_attack_factor = 0.1
 				army_defence_factor = 0.1
-				conscription_factor = -0.1
 				training_time_factor = 0.2
-				initiative_factor = 0.01
+				initiative_factor = 0.1
 				recon_factor = 0.1
 			}
 			equipment_bonus = {
 				artillery_equipment = {
-					soft_attack = 0.1
+					soft_attack = 0.15
 					instant = yes
 				}
 			}
@@ -989,8 +988,9 @@ ideas = {
 			picture = prc_low_popular_support
 			allowed = { always = no }
 			modifier = {
-				max_command_power = 40
-				experience_gain_army_factor = 0.05
+				army_leader_start_attack_level = 1
+				army_leader_start_logistics_level = 1
+				army_leader_cost_factor = -0.1
 			}
 		}
 		CENdem_democratic_armies_2 = {
@@ -999,8 +999,9 @@ ideas = {
 			picture = prc_low_popular_support
 			allowed = { always = no }
 			modifier = {
-				max_command_power = 40
-				experience_gain_army_factor = 0.05
+				army_leader_start_attack_level = 1
+				army_leader_start_logistics_level = 1
+				army_leader_cost_factor = -0.1
 				authoritarian_democrat_drift = -0.05
 				paternal_autocrat_drift = -0.05
 				national_populist_drift = -0.05
@@ -1037,6 +1038,11 @@ ideas = {
 			modifier = {
 				navy_screen_defence_factor = 0.05
 			}
+			equipment_bonus = {
+				mio_cat_eq_all_ships = {
+					build_cost_ic = -0.05
+				}
+			}
 		}
 		CENdem_convoy_protection_tactics_b = {
 			on_add = { log = "[GetLogRoot]: add idea CENdem_convoy_protection_tactics_b" }
@@ -1055,6 +1061,11 @@ ideas = {
 			modifier = {
 				navy_screen_defence_factor = 0.05
 				convoy_escort_efficiency = 0.1
+			}
+			equipment_bonus = {
+				mio_cat_eq_all_ships = {
+					build_cost_ic = -0.05
+				}
 			}
 		}
 		CENdem_large_merchant_navy = {

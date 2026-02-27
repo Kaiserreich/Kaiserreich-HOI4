@@ -10214,17 +10214,7 @@ country_event = { #Renaming of states
 				effect_tooltip = {
 					set_state_name = STATE_5_KALEDINGRAD
 					set_province_name = { id = 6332 name = VICTORY_POINTS_6332_KALEDINGRAD }
-				}
-				rename_state_effect = yes
-			}
-		}
-		if = {
-			limit = { owns_state = 777 } #Masuria
-			777 = {
-				set_global_flag = allenstein_renamed_savinkov
-				custom_effect_tooltip = tooltip_white_line
-				effect_tooltip = {
-					set_province_name = { id = 9346 name = VICTORY_POINTS_9346_ROPSHINGRAD }
+					set_province_name = { id = 11245 name = VICTORY_POINTS_11245_ROPSHINGRAD }
 				}
 				rename_state_effect = yes
 			}
@@ -10921,6 +10911,7 @@ country_event = { #Kharkiv, the City of Liberation
 				}
 			}
 		}
+		hidden_effect = { spawn_vozhd_liberator_entity = yes }
 	}
 }
 country_event = { #With Russia or with Communism
@@ -37195,8 +37186,11 @@ country_event = { # TUR refuses
 		log = "[GetLogInfo]: event russia_foreign_policy_events.91 option russia_foreign_policy_events.91.b"
 		name = russia_foreign_policy_events.91.b #Back down
 		ai_chance = { base = 0 }
-		remove_decision = RUS_Demand_Armenia
 		clr_country_flag = RUS_demanding_armenia
+		custom_effect_tooltip = {
+			localization_key = tooltip_cancel_decision
+			NAME = RUS_Demand_Armenia
+		}
 	}
 }
 
@@ -37210,7 +37204,6 @@ country_event = { #Transfer of the territory
 	option = {
 		log = "[GetLogInfo]: event russia_foreign_policy_events.92 option russia_foreign_policy_events.92.a"
 		name = russia_foreign_policy_events.92.a #Another victory for Russian diplomacy!
-		remove_decision = RUS_Demand_Armenia
 		clr_country_flag = RUS_demanding_armenia
 		TUR = {
 			every_owned_state = {
@@ -37274,9 +37267,7 @@ country_event = { #Ultimatum for Galicia AUS owns it
 		if = {
 			limit = { has_subject = GAL }
 			if = {
-				limit = {
-					GAL = { owns_state = 73 }
-				}
+				limit = { GAL = { owns_state = 73 } }
 				transfer_state = 73
 			}
 			set_autonomy = {
@@ -37324,7 +37315,7 @@ country_event = { #AUS accepts
 	option = {
 		log = "[GetLogInfo]: event russia_foreign_policy_events.96 option russia_foreign_policy_events.96.a"
 		name = russia_foreign_policy_events.96.a #great
-		remove_decision = RUS_Demand_Galicia
+		clr_country_flag = RUS_demanding_galicia
 		if = {
 			limit = { GAL = { at_war_with_or_justifying_wargoal_against_ROOT = no } }
 			annex_country = {
@@ -37359,7 +37350,11 @@ country_event = { #AUS refuses
 		log = "[GetLogInfo]: event russia_foreign_policy_events.97 option russia_foreign_policy_events.97.b"
 		name = russia_foreign_policy_events.97.b #Back down
 		ai_chance = { base = 0 }
-		remove_decision = RUS_Demand_Galicia
+		clr_country_flag = RUS_demanding_galicia
+		custom_effect_tooltip = {
+			localization_key = tooltip_cancel_decision
+			NAME = RUS_Demand_Galicia
+		}
 	}
 }
 

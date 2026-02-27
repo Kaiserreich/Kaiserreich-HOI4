@@ -925,7 +925,7 @@ restore_previous_government_type = {
 			for_each_loop = {
 				array = original_coalitions
 				if = {
-					limit = { check_variable = { v = 1 } }
+					limit = { check_variable = { v = 2 } }
 					set_temp_variable = { coalition_partner_var = i }
 					add_to_coalition = yes
 				}

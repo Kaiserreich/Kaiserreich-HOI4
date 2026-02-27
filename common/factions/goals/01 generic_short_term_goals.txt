@@ -22,10 +22,39 @@ faction_goal_unlock_research = {
 			add_to_temp_variable = { total_techs = num_researched_technologies }
 		}
 
-		multiply_temp_variable = {
-			var = total_techs
-			value = 1.20
+		#Divide the numbers of total numbers of techs researched with the numbers of faction members to get an average of reserached techs
+		divide_temp_variable = { total_techs = num_faction_members }
+
+		#Check the numbers of average researched tech between the faction members and adjust the numbers of tech needed to complete the goal
+		if = {
+			limit = { check_variable = { total_techs < 25 } }
+			multiply_temp_variable = { total_techs = 2.25 }
 		}
+		else_if = {
+			limit = { check_variable = { total_techs < 50 } }
+			multiply_temp_variable = { total_techs = 2 }
+		}
+		else_if = {
+			limit = { check_variable = { total_techs < 75 } }
+			multiply_temp_variable = { total_techs = 1.75 }
+		}
+		else_if = {
+			limit = { check_variable = { total_techs < 125 } }
+			multiply_temp_variable = { total_techs = 1.5 }
+		}
+		else_if = {
+			limit = { check_variable = { total_techs < 175 } }
+			multiply_temp_variable = { total_techs = 1.35 }
+		}
+		else_if = {
+			limit = { check_variable = { total_techs < 225 } }
+			multiply_temp_variable = { total_techs = 1.20 }
+		}
+		else_if = {
+			limit = { check_variable = { total_techs < 260 } }
+			multiply_temp_variable = { total_techs = 1.05 }
+		}
+
 		scope:faction = {
 			set_variable = { unlock_military_techs_researched_target = total_techs }
 		}
@@ -35,28 +64,65 @@ faction_goal_unlock_research = {
 			hidden_trigger = {
 				tooltip_evaluation = eval
 				set_temp_variable = { unlock_military_techs_researched_compare = 0 }
+				set_temp_variable = { total_faction_compare_members = 0 }
 				all_collection_elements = {
 					collection = {
 						input = game:scope
 						operators = { faction_members }
 					}
 					add_to_temp_variable = { unlock_military_techs_researched_compare = num_researched_technologies }
+					add_to_temp_variable = { total_faction_compare_members = 1 }
 				}
+
+				#Divide the numbers of total numbers of techs researched with the numbers of faction members to get an average of reserached techs
+				divide_temp_variable = { unlock_military_techs_researched_compare = total_faction_compare_members }
+
 				set_temp_variable = { unlock_military_techs_researched_compare_temp_target = unlock_military_techs_researched_compare }
-				multiply_temp_variable = { unlock_military_techs_researched_compare_temp_target = 1.20 }
+
+				#Check the numbers of average researched tech between the faction members and adjust the numbers of tech needed to complete the goal
+				if = {
+					limit = { check_variable = { unlock_military_techs_researched_compare < 25 } }
+					multiply_temp_variable = { unlock_military_techs_researched_compare = 2.25 }
+				}
+				else_if = {
+					limit = { check_variable = { unlock_military_techs_researched_compare < 50 } }
+					multiply_temp_variable = { unlock_military_techs_researched_compare = 2 }
+				}
+				else_if = {
+					limit = { check_variable = { unlock_military_techs_researched_compare < 75 } }
+					multiply_temp_variable = { unlock_military_techs_researched_compare = 1.75 }
+				}
+				else_if = {
+					limit = { check_variable = { unlock_military_techs_researched_compare < 125 } }
+					multiply_temp_variable = { unlock_military_techs_researched_compare = 1.5 }
+				}
+				else_if = {
+					limit = { check_variable = { unlock_military_techs_researched_compare < 175 } }
+					multiply_temp_variable = { unlock_military_techs_researched_compare = 1.35 }
+				}
+				else_if = {
+					limit = { check_variable = { unlock_military_techs_researched_compare < 225 } }
+					multiply_temp_variable = { unlock_military_techs_researched_compare = 1.20 }
+				}
+				else_if = {
+					limit = { check_variable = { unlock_military_techs_researched_compare < 260 } }
+					multiply_temp_variable = { unlock_military_techs_researched_compare = 1.05 }
+				}
 			}
 			if = {
-				limit = {
-					has_variable = unlock_military_techs_researched_target
-				}
+				limit = { has_variable = unlock_military_techs_researched_target }
 				check_variable = {
-					unlock_military_techs_researched_compare > unlock_military_techs_researched_target
+					var = unlock_military_techs_researched_compare_temp_target
+					value = unlock_military_techs_researched_target
+					compare = greater_than_or_equals
 					tooltip = "GOAL_T_TRIGGER_A"
 				}
 			}
 			else = {
 				check_variable = {
-					unlock_military_techs_researched_compare > unlock_military_techs_researched_compare_temp_target
+					var = unlock_military_techs_researched_compare_temp_target
+					value = unlock_military_techs_researched_compare
+					compare = greater_than_or_equals
 					tooltip = "GOAL_T_TRIGGER_A"
 				}
 			}
@@ -245,7 +311,7 @@ faction_goal_spy_master = {
 			gain_random_agency_upgrade = yes
 		}
 		every_faction_member = { # Fallback in case someone completed everything
-			visible_when_empty = yes
+			visible_when_empty = no
 			limit = {
 				has_intelligence_agency = yes
 				agency_upgrade_number > 30
@@ -336,10 +402,11 @@ faction_goal_ensure_military_r_d = {
 		OR = {
 			collection_size = {
 				input = {
-					input = game:all_states
+					input = game:scope
 					operators = {
+						faction_members
+						controlled_states
 						limit = {
-							is_controlled_by_ROOT_or_ally = yes
 							land_facility > 0
 						}
 					}
@@ -349,10 +416,11 @@ faction_goal_ensure_military_r_d = {
 			}
 			collection_size = {
 				input = {
-					input = game:all_states
+					input = game:scope
 					operators = {
+						faction_members
+						controlled_states
 						limit = {
-							is_controlled_by_ROOT_or_ally = yes
 							naval_facility > 0
 						}
 					}
@@ -362,10 +430,11 @@ faction_goal_ensure_military_r_d = {
 			}
 			collection_size = {
 				input = {
-					input = game:all_states
+					input = game:scope
 					operators = {
+						faction_members
+						controlled_states
 						limit = {
-							is_controlled_by_ROOT_or_ally = yes
 							air_facility > 0
 						}
 					}
@@ -378,10 +447,11 @@ faction_goal_ensure_military_r_d = {
 	completed = {
 		collection_size = {
 			input = {
-				input = game:all_states
+				input = game:scope
 				operators = {
+					faction_members
+					controlled_states
 					limit = {
-						is_controlled_by_ROOT_or_ally = yes
 						land_facility > 0
 					}
 				}
@@ -391,10 +461,11 @@ faction_goal_ensure_military_r_d = {
 		}
 		collection_size = {
 			input = {
-				input = game:all_states
+				input = game:scope
 				operators = {
+					faction_members
+					controlled_states
 					limit = {
-						is_controlled_by_ROOT_or_ally = yes
 						naval_facility > 0
 					}
 				}
@@ -404,10 +475,11 @@ faction_goal_ensure_military_r_d = {
 		}
 		collection_size = {
 			input = {
-				input = game:all_states
+				input = game:scope
 				operators = {
+					faction_members
+					controlled_states
 					limit = {
-						is_controlled_by_ROOT_or_ally = yes
 						air_facility > 0
 					}
 				}
@@ -422,10 +494,11 @@ faction_goal_ensure_military_r_d = {
 		custom_effect_tooltip = ALL_FACTION_MEMBERS
 		every_collection_element = {
 			input = {
-				input = game:all_states
+				input = game:scope
 				operators = {
+					faction_members
+					controlled_states
 					limit = {
-						is_controlled_by_ROOT_or_ally = yes
 						OR = {
 							air_facility > 0
 							land_facility > 0
@@ -529,17 +602,18 @@ faction_goal_military_infrastructure = {
 	visible = {
 		collection_size = {
 			input = {
-				input = game:all_states
+				input = game:scope
 				operators = {
+					faction_members
+					controlled_states
 					limit = {
-						is_core_of = CONTROLLER
-						is_controlled_by_ROOT_or_ally = yes
+						is_core_of = controller
+						infrastructure < 4
 						any_neighbor_state = {
 							controller = {
 								NOT = { is_in_faction_with = ROOT }
 							}
 						}
-						infrastructure < 4
 					}
 				}
 				name = COLLECTION_FACTION_BORDER_STATES_FULL_INFRASTRUCTURE
@@ -550,16 +624,17 @@ faction_goal_military_infrastructure = {
 	completed = {
 		collection_size = {
 			input = {
-				input = game:all_states
+				input = game:scope
 				operators = {
+					faction_members
+					controlled_states
 					limit = {
-						is_controlled_by_ROOT_or_ally = yes
+						infrastructure < 4
 						any_neighbor_state = {
 							controller = {
 								NOT = { is_in_faction_with = ROOT }
 							}
 						}
-						infrastructure < 4
 					}
 				}
 				name = COLLECTION_FACTION_BORDER_STATES_FULL_INFRASTRUCTURE
@@ -1104,10 +1179,11 @@ faction_goal_expand_maltese_bases = {
 			convoy_threat > 0.5
 			collection_size = {
 				input = {
-					input = game:all_states
+					input = game:scope
 					operators = {
+						faction_members
+						controlled_states
 						limit = {
-							is_controlled_by_ROOT_or_ally = yes
 							is_on_continent = europe
 						}
 					}
@@ -1116,10 +1192,11 @@ faction_goal_expand_maltese_bases = {
 			}
 			collection_size = {
 				input = {
-					input = game:all_states
+					input = game:scope
 					operators = {
+						faction_members
+						controlled_states
 						limit = {
-							is_controlled_by_ROOT_or_ally = yes
 							OR = {
 								is_on_continent = middle_east
 								is_on_continent = africa
@@ -1692,10 +1769,11 @@ faction_goal_expand_singapore_naval_base = {
 			convoy_threat > 0.5
 			collection_size = {
 				input = {
-					input = game:all_states
+					input = game:scope
 					operators = {
+						faction_members
+						controlled_states
 						limit = {
-							is_controlled_by_ROOT_or_ally = yes
 							is_on_continent = europe
 						}
 					}
@@ -1705,10 +1783,11 @@ faction_goal_expand_singapore_naval_base = {
 			}
 			collection_size = {
 				input = {
-					input = game:all_states
+					input = game:scope
 					operators = {
+						faction_members
+						controlled_states
 						limit = {
-							is_controlled_by_ROOT_or_ally = yes
 							is_on_continent = asia
 						}
 					}

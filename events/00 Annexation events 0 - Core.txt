@@ -960,6 +960,8 @@ country_event = { #Land exchange deal has been refused
 	}
 }
 
+# FROM is the offering country
+# FROM.FROM is the target country
 country_event = { #Land exchange notification to allies
 	id = annexation_events.8
 	title = "[GetLandExchangeNotificationEventTitle]"
@@ -970,7 +972,9 @@ country_event = { #Land exchange notification to allies
 	option = {
 		log = "[GetLogInfo]: event annexation_events.8 option 1"
 		name = "[GetLandExchangeNotificationEventOption]"
-		add_opinion_modifier = { target = FROM modifier = KR_hates_govt }
+		FROM.FROM = {
+			reverse_add_opinion_modifier = { target = ROOT modifier = KR_hates_govt }
+		}
 	}
 
 	after = {

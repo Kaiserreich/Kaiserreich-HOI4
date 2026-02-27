@@ -105,10 +105,8 @@ faction_goal_strategic_bombing_campaign = {
 				input = game:all_states
 				operators = {
 					limit = {
-						owner = {
-							has_war_with = root
-						}
-						is_core_of = OWNER
+						owner = { has_war_with = ROOT }
+						is_core_of = owner
 						days_since_last_strategic_bombing < 30
 					}
 				}
@@ -254,14 +252,13 @@ faction_goal_great_offensive = {
 		FROM = { has_war = yes }
 		collection_size = {
 			input = {
-				input = game:all_states
+				input = game:scope
 				operators = {
+					faction_members
+					controlled_states
 					limit = {
-						owner = {
-							has_war_with = ROOT
-						}
-						is_core_of = OWNER
-						is_controlled_by_ROOT_or_ally = yes
+						owner = { has_war_with = ROOT }
+						is_core_of = owner
 					}
 				}
 				name = ENEMY_FACTION_CORE_STATES_CONTROLLED_BY_US
@@ -272,14 +269,13 @@ faction_goal_great_offensive = {
 	completed = {
 		collection_size = {
 			input = {
-				input = game:all_states
+				input = game:scope
 				operators = {
+					faction_members
+					controlled_states
 					limit = {
-						owner = {
-							has_war_with = ROOT
-						}
-						is_core_of = OWNER
-						is_controlled_by_ROOT_or_ally = yes
+						owner = { has_war_with = ROOT }
+						is_core_of = owner
 					}
 				}
 				name = ENEMY_FACTION_CORE_STATES_CONTROLLED_BY_US

@@ -1168,13 +1168,14 @@ CEN_reset_ideas = {
 		CEN_statewide_idea
 		CEN_statewide_idea2
 		CEN_normalize_idea
-		CEN_spread_revo_idea
 		CEN_army_restructure
 		CEN_professional_army
-		CEN_moving_jungle_idea
+		CEN_professional_army_2
+		CEN_arming_forces_idea
 		CEN_professional_army_0_1
 		CEN_professional_army_1_0
-		CEN_professional_army_1_1
+		CEN_professional_army_3
+		CEN_spread_revo_idea
 		CEN_new_generals_idea
 		CEN_conscription_idea
 		CEN_training_idea
@@ -2205,8 +2206,12 @@ NIC_add_socialist_generals = {
 		}
 	}
 	if = {
-		limit = { NOT = { has_character = NIC_yank_levy } }
-		NIC_yank_levy = { set_nationality = PREV }
+		limit = { NOT = { has_character = NIC_francisco_estrada_perez } }
+		NIC_francisco_estrada_perez = { set_nationality = PREV }
+	}
+	if = {
+		limit = { NOT = { has_character = NIC_jose_santos_lopez } }
+		NIC_jose_santos_lopez = { set_nationality = PREV }
 	}
 	if = {
 		limit = { NOT = { has_character = NIC_pedro_altamirano } }
@@ -2260,8 +2265,12 @@ NIC_remove_socialist_generals = {
 		retire_character = NIC_augusto_cesar_sandino
 	}
 	if = {
-		limit = { has_character = NIC_yank_levy }
-		retire_character = NIC_yank_levy
+		limit = { has_character = NIC_francisco_estrada_perez }
+		retire_character = NIC_francisco_estrada_perez
+	}
+	if = {
+		limit = { has_character = NIC_jose_santos_lopez }
+		retire_character = NIC_jose_santos_lopez
 	}
 	if = {
 		limit = { has_character = NIC_pedro_altamirano }

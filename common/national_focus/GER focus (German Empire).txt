@@ -3084,28 +3084,10 @@ focus_tree = {
 				}
 				NOT = { has_country_flag = GER_goerdeler_compromise } # this is to hide the requirement until the nullification happens
 			}
-			custom_override_tooltip = {
-				tooltip = GER_national_defence_state_tt
-				OR = {
-					AND = {
-						country_exists = FRA
-						FRA = {
-							has_government = totalist
-						}
-					}
-					AND = {
-						country_exists = ENG
-						ENG = {
-							has_government = totalist
-						}
-					}
-					AND = {
-						country_exists = RUS
-						RUS = {
-							has_government = totalist
-						}
-					}
-				}
+			any_country_of = {
+				target = { FRA ENG RUS }
+				exists = yes
+				has_government = totalist
 			}
 		}
 

@@ -700,7 +700,13 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = { UPC_election_party_index = 3 }
-			NOT = { tag = YUN }
+			OR = {
+				NOT = { tag = YUN }
+				AND = {
+					tag = YUN
+					has_country_flag = YUN_UPC_satellite_election_path_flag
+				}
+			}
 		}
 		localization_key = "CDL"
 	}
@@ -759,7 +765,13 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = { UPC_election_party_index = 6 }
-			NOT = { tag = YUN }
+			OR = {
+				NOT = { tag = YUN }
+				AND = {
+					tag = YUN
+					has_country_flag = YUN_UPC_satellite_election_path_flag
+				}
+			}
 		}
 		localization_key = "DCP"
 	}

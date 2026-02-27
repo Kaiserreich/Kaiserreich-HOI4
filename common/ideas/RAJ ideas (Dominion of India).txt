@@ -150,6 +150,21 @@ ideas = {
 			}
 		}
 
+		RAJ_increased_mobilisation_efforts = {
+			on_add = { log = "[GetLogRoot]: add idea RAJ_increased_mobilisation_efforts" }
+			picture = eng_imperial_conscription
+			allowed = { always = no }
+			available = {
+				OR = {
+					PRF = { exists = yes }
+					HND = { exists = yes }
+				}
+			}
+			modifier = {
+				unit_limit_bonus = 10
+				mobilization_speed = 0.1
+			}
+		}
 		RAJ_expanded_gurkha_rifles = {
 			on_add = { log = "[GetLogRoot]: add idea RAJ_expanded_gurkha_rifles" }
 			picture = raj_indian_gentlemen_officers

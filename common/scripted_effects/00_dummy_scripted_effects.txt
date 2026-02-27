@@ -48,6 +48,7 @@ cwtools_dummy_effect = {
 		set_variable = { GER_bm_cardgame_cards_array_to_draw_from^GER_card_drawn_index = 0 }
 		set_variable = { GER_bm_cardgame_cards_array^idx = 0 }
 		set_variable = { GER_bm_cardgame_cards_drawn_array^idx = 0 }
+		set_variable = { subjects^index = 0 }
 
 		# ### Variables linked with :
 		set_variable = { paired_impassable:owner = 0 }
@@ -68,8 +69,9 @@ cwtools_dummy_effect = {
 
 		### Other variables that cause CWTools false positives
 		set_variable = { highest_scored_country = 0 }
+		set_variable = { base_subjects = 0 }						 # Set in overlord scope
 		set_variable = { generic_raise_stability_decision_cost = 0 } # CWTools doesn't support creating variables from decision names
-		set_variable = { generic_raise_support_decision_cost = 0 } # CWTools doesn't support creating variables from decision names
+		set_variable = { generic_raise_support_decision_cost = 0 }   # CWTools doesn't support creating variables from decision names
 
 		### Arrays
 		add_to_array = { FROM.offered_states_array = THIS }
@@ -78,6 +80,7 @@ cwtools_dummy_effect = {
 		### Cosmetic tags handled by meta-effects/triggers
 		set_cosmetic_tag = SHX_kmt
 		set_cosmetic_tag = KUM_kmt
+		set_cosmetic_tag = FNG_JAP
 		# South China branch - specific, delete after merge
 		set_variable = { china_alignment_leader = 0 }
 
@@ -168,6 +171,7 @@ cwtools_dummy_effect = {
 			set_character_flag = POL_king_of_the_elite
 			set_character_flag = POL_the_kaiser_maker
 			set_character_flag = POL_last_hohenzollern
+			set_character_flag = has_custom_script_handle
 		}
 
 		set_cosmetic_tag = FER_GU

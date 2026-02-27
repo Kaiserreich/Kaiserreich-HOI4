@@ -7,8 +7,8 @@
 add_namespace = japan_domestic_events
 add_namespace = japan_foreign_events
 add_namespace = japan_fengtian_events
-add_namespace = japan_news
-add_namespace = JAP_LEC_crisis
+add_namespace = japan_news_events
+add_namespace = japan_legations_crisis_events
 
 ###########################
 # Opening Events - 1936
@@ -505,7 +505,7 @@ country_event = { #Army coups fails, triggered by disagreeing with emperor when 
 		mark_focus_tree_layout_dirty = yes
 		set_country_flag = democracy_failed_coup
 		hidden_effect = {
-			news_event = japan_news.4
+			news_event = japan_news_events.4
 		}
 	}
 }
@@ -551,7 +551,7 @@ country_event = { #The restorationist counter-coup, triggered by previous event,
 		set_country_flag = JAP_path_decided
 		set_country_flag = JAP_showa_tree
 		clr_country_flag = JAP_elected_soccon
-		hidden_effect = { news_event = japan_news.6 }
+		hidden_effect = { news_event = japan_news_events.6 }
 	}
 }
 country_event = { #Army coup fails, centralist incoming, triggered by focus "Military Centralism"
@@ -591,7 +591,7 @@ country_event = { #The Centralists counter-coup is successful, triggered by prev
 			popularity = 0.35
 		}
 		activate_advisor = JAP_hayashi_senjuro_sic
-		hidden_effect = { news_event = japan_news.7 }
+		hidden_effect = { news_event = japan_news_events.7 }
 
 		set_country_flag = JAP_path_decided
 		set_country_flag = JAP_milcentralism_tree
@@ -2144,6 +2144,15 @@ country_event = { #Fate of Hirohito - Democratic
 	trigger = {
 		has_subject = JAP
 		has_socialist_government = no
+		if = {
+			limit = { is_chinese_tag = yes }
+			NOT = {
+				OR = {
+					china_alignment_left_kuomintang = yes
+					china_alignment_right_kuomintang = yes
+				}
+			}
+		}
 	}
 
 	option = {
@@ -2207,7 +2216,7 @@ country_event = { #Fate of Hirohito - Democratic
 			activate_advisor = JAP_imperial_diet_sic
 		}
 		hidden_effect = {
-			JAP = { news_event = { id = japan_news.5 days = 1 } }
+			JAP = { news_event = { id = japan_news_events.5 days = 1 } }
 		}
 	}
 }
@@ -2259,7 +2268,7 @@ country_event = { #Fate of the Imperial Family - Socialist
 	}
 	after = {
 		hidden_effect = {
-			news_event = { id = japan_news.5 days = 1 }
+			news_event = { id = japan_news_events.5 days = 1 }
 		}
 	}
 }
@@ -3294,7 +3303,7 @@ country_event = { #Call for military action vs colonialists
 		log = "[GetLogInfo]: event japan_foreign_events.31 option japan_foreign_events.31.b"
 		name = japan_foreign_events.31.b
 		ai_chance = { base = 0 }
-		add_political_power = -100
+		add_political_power = -50
 		set_country_flag = JAP_pressured_for_ally
 		custom_effect_tooltip = JAP_100_chance_of_agreeing_tt
 	}
@@ -7435,10 +7444,10 @@ country_event = { #Puppet Military Exercise Event
 
 # The Fading Sun
 news_event = {
-	id = japan_news.1
-	immediate = { log = "[GetLogInfo]: event japan_news.1" }
-	title = japan_news.1.t
-	desc = japan_news.1.d
+	id = japan_news_events.1
+	immediate = { log = "[GetLogInfo]: event japan_news_events.1" }
+	title = japan_news_events.1.t
+	desc = japan_news_events.1.d
 	picture = GFX_news_event_JAP_coup
 
 	trigger = { wants_world_news = yes } #Global news event
@@ -7448,15 +7457,15 @@ news_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = japan_news.1.a
+		name = japan_news_events.1.a
 	}
 }
 
 news_event = {
-	id = japan_news.2
-	immediate = { log = "[GetLogInfo]: event japan_news.2" }
-	title = japan_news.2.t
-	desc = japan_news.2.d
+	id = japan_news_events.2
+	immediate = { log = "[GetLogInfo]: event japan_news_events.2" }
+	title = japan_news_events.2.t
+	desc = japan_news_events.2.d
 	picture = GFX_news_event_JAP_great_pacific_war
 
 	major = yes
@@ -7471,16 +7480,16 @@ news_event = {
 
 #The Rising Sun
 news_event = {
-	id = japan_news.3
-	immediate = { log = "[GetLogInfo]: event japan_news.3" }
-	title = japan_news.3.t
+	id = japan_news_events.3
+	immediate = { log = "[GetLogInfo]: event japan_news_events.3" }
+	title = japan_news_events.3.t
 
 	desc = {
-		text = japan_news.3.d.default
+		text = japan_news_events.3.d.default
 		trigger = { NOT = { has_global_flag = JAP_defeated_by_china } }
 	}
 	desc = {
-		text = japan_news.3.d.defeated_in_china
+		text = japan_news_events.3.d.defeated_in_china
 		trigger = { has_global_flag = JAP_defeated_by_china }
 	}
 
@@ -7493,7 +7502,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	option = {
-		name = japan_news.3.a
+		name = japan_news_events.3.a
 		effect_tooltip = {
 			add_named_threat = {
 				threat = 6
@@ -7505,10 +7514,10 @@ news_event = {
 
 # Failed coup in Japan
 news_event = {
-	id = japan_news.4
-	immediate = { log = "[GetLogInfo]: event japan_news.4" }
-	title = japan_news.4.t
-	desc = japan_news.4.d
+	id = japan_news_events.4
+	immediate = { log = "[GetLogInfo]: event japan_news_events.4" }
+	title = japan_news_events.4.t
+	desc = japan_news_events.4.d
 	picture = GFX_news_event_JAP_coup
 
 	major = yes
@@ -7518,19 +7527,19 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	option = {
-		name = japan_news.4.a
+		name = japan_news_events.4.a
 	}
 }
 
 # Fate of the Japanese Imperial Family
 news_event = {
-	id = japan_news.5
-	immediate = { log = "[GetLogInfo]: event japan_news.5" }
-	title = japan_news.5.t
+	id = japan_news_events.5
+	immediate = { log = "[GetLogInfo]: event japan_news_events.5" }
+	title = japan_news_events.5.t
 	picture = GFX_news_event_JAP_end_of_era
 
 	desc = {
-		text = japan_news.5.d.exile
+		text = japan_news_events.5.d.exile
 		trigger = {
 			JAP = {
 				has_idea = JAP_Imperial_Family_exiled
@@ -7539,7 +7548,7 @@ news_event = {
 	}
 
 	desc = {
-		text = japan_news.5.d.abolishsocialist
+		text = japan_news_events.5.d.abolishsocialist
 		trigger = {
 			JAP = {
 				has_idea = JAP_Imperial_Family_powerless
@@ -7548,7 +7557,7 @@ news_event = {
 	}
 
 	desc = {
-		text = japan_news.5.d.abolishdem
+		text = japan_news_events.5.d.abolishdem
 		trigger = {
 			JAP = {
 				has_cosmetic_tag = JAP_republic
@@ -7558,7 +7567,7 @@ news_event = {
 	}
 
 	desc = {
-		text = japan_news.5.d.symbol
+		text = japan_news_events.5.d.symbol
 		trigger = {
 			JAP = {
 				has_completed_focus = JAP_question_of_the_imperial_family
@@ -7568,7 +7577,7 @@ news_event = {
 	}
 
 	desc = {
-		text = japan_news.5.d.abdicate
+		text = japan_news_events.5.d.abdicate
 		trigger = {
 			JAP = {
 				has_completed_focus = JAP_question_of_the_imperial_family
@@ -7584,16 +7593,16 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	option = {
-		name = japan_news.5.a
+		name = japan_news_events.5.a
 	}
 }
 
 # The Shōwa Restoration
 news_event = {
-	id = japan_news.6
-	immediate = { log = "[GetLogInfo]: event japan_news.6" }
-	title = japan_news.6.t
-	desc = japan_news.6.d
+	id = japan_news_events.6
+	immediate = { log = "[GetLogInfo]: event japan_news_events.6" }
+	title = japan_news_events.6.t
+	desc = japan_news_events.6.d
 	picture = GFX_news_event_japanese_army_parade
 	is_triggered_only = yes
 	major = yes
@@ -7601,14 +7610,14 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	option = { # Sonnō tōkan!
-		name = japan_news.6.a
+		name = japan_news_events.6.a
 		trigger = {
 			tag = JAP
 		}
 	}
 
 	option = { # Oh no...
-		name = japan_news.6.b
+		name = japan_news_events.6.b
 		trigger = {
 			NOT = {
 				tag = JAP
@@ -7619,10 +7628,10 @@ news_event = {
 
 # Military Coup in Japan
 news_event = {
-	id = japan_news.7
-	immediate = { log = "[GetLogInfo]: event japan_news.7" }
-	title = japan_news.7.t
-	desc = japan_news.7.d
+	id = japan_news_events.7
+	immediate = { log = "[GetLogInfo]: event japan_news_events.7" }
+	title = japan_news_events.7.t
+	desc = japan_news_events.7.d
 	picture = GFX_news_event_japanese_army_parade
 	is_triggered_only = yes
 	major = yes
@@ -7630,14 +7639,14 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	option = { # Sonnō tōkan!
-		name = japan_news.7.a
+		name = japan_news_events.7.a
 		trigger = {
 			tag = JAP
 		}
 	}
 
 	option = { # Oh no...
-		name = japan_news.7.b
+		name = japan_news_events.7.b
 		trigger = {
 			NOT = {
 				tag = JAP
@@ -7651,13 +7660,13 @@ news_event = {
 ###########################
 
 #Maintainer's Note - okay so this chain is a lot easier to visualize if you have the diagram (ask CKS)
-#That said, it all funnels back into JAP_LEC_crisis.002 and JAP_LEC_crisis.006, the design is the AI will usually abandon the Legations unless its a player LEC.
+#That said, it all funnels back into japan_legations_crisis_events.002 and japan_legations_crisis_events.006, the design is the AI will usually abandon the Legations unless its a player LEC.
 
-#JAP_LEC_Crisis Section 01 (000-009): Core Chain
+#japan_legations_crisis_events Section 01 (000-009): Core Chain
 country_event = { #[MANY] Crisis Brews in the Legations
-	id = JAP_LEC_crisis.000
-	title = JAP_LEC_crisis.000.t
-	desc = JAP_LEC_crisis.000.d
+	id = japan_legations_crisis_events.000
+	title = japan_legations_crisis_events.000.t
+	desc = japan_legations_crisis_events.000.d
 
 	picture = GFX_report_event_JAP_mutsu
 
@@ -7667,60 +7676,51 @@ country_event = { #[MANY] Crisis Brews in the Legations
 	fire_for_sender = yes
 	show_major = {
 		OR = {
-			tag = JAP
 			is_ally_with = JAP
-
-			tag = LEC
 			is_ally_with = LEC
 			has_guaranteed = LEC
-
 			is_tag_in_china_area = yes
 		}
 	}
 
-	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.000 option JAP_LEC_crisis.000.a"
-		name = JAP_LEC_crisis.000.a #We must inform our allies
-		trigger = {
-			OR = {
-				tag = JAP
-				is_ally_with = JAP
+	immediate = {
+		if = {
+			limit = { tag = LEC } #Guarantee this flag is only set once.
+			set_global_flag = {
+				flag = JAP_LEC_crisis_begins_china_get_ready_flag
+				days = 70 #This Chain should be over after the end of the focuses (each 35 days for now and chain at most will be 1-14 days)
+				value = 1
 			}
 		}
-		ai_chance = { base = 100 }
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.000 option JAP_LEC_crisis.000.b"
-		name = JAP_LEC_crisis.000.b #Plead our allies for support.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.000 option japan_legations_crisis_events.000.a"
+		name = japan_legations_crisis_events.000.a #They would be wise to hear what we have to say.
+		trigger = { is_ally_with = JAP }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event japan_legations_crisis_events.000 option japan_legations_crisis_events.000.b"
+		name = japan_legations_crisis_events.000.b #The Japanese are once more on the move.
 		trigger = {
 			OR = {
-				tag = LEC
 				is_ally_with = LEC
 				has_guaranteed = LEC
 			}
-			NOT = {
-				tag = JAP
-				is_ally_with = JAP
-			}
+			NOT = { is_ally_with = JAP }
 		}
-		ai_chance = { base = 100 }
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.000 option JAP_LEC_crisis.000.c"
-		name = JAP_LEC_crisis.000.c #We must inform the council
+		log = "[GetLogInfo]: event japan_legations_crisis_events.000 option japan_legations_crisis_events.000.c"
+		name = japan_legations_crisis_events.000.c #We shall keep a close eye on the situation.
 		trigger = {
 			#Basically all Chinese tags
-			NOT = {
-				tag = JAP
-				is_ally_with = JAP
-				tag = LEC
-				is_ally_with = LEC
-				has_guaranteed = LEC
-			}
+			NOT = { is_ally_with = JAP }
+			NOT = { is_ally_with = LEC }
+			NOT = { has_guaranteed = LEC }
 		}
-		ai_chance = { base = 100 }
 	}
 	after = {
 		custom_effect_tooltip = JAP_LEC_crisis_warning_tt
@@ -7728,11 +7728,11 @@ country_event = { #[MANY] Crisis Brews in the Legations
 }
 
 country_event = { #LEC: The Japanese Make Their Demands
-	id = JAP_LEC_crisis.001
-	title = JAP_LEC_crisis.001.t
+	id = japan_legations_crisis_events.001
+	title = japan_legations_crisis_events.001.t
 
 	desc = {
-		text = JAP_LEC_crisis.001.d.war_with_both
+		text = japan_legations_crisis_events.001.d.war_with_both
 		trigger = {
 			JAP = {
 				has_war_with = CUF
@@ -7741,7 +7741,7 @@ country_event = { #LEC: The Japanese Make Their Demands
 		}
 	}
 	desc = {
-		text = JAP_LEC_crisis.001.d.war_with_GER
+		text = japan_legations_crisis_events.001.d.war_with_GER
 		trigger = {
 			JAP = {
 				has_war_with = GER
@@ -7750,7 +7750,7 @@ country_event = { #LEC: The Japanese Make Their Demands
 		}
 	}
 	desc = {
-		text = JAP_LEC_crisis.001.d.war_with_CUF
+		text = japan_legations_crisis_events.001.d.war_with_CUF
 		trigger = {
 			JAP = {
 				has_war_with = CUF
@@ -7764,8 +7764,8 @@ country_event = { #LEC: The Japanese Make Their Demands
 	is_triggered_only = yes #Triggered by [EFFECT] JAP_LEC_crisis_start_effect which fires from [FOCUS] JAP_continental_warfare OR [FOCUS] JAP_ultimatum
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.001 option JAP_LEC_crisis.001.a"
-		name = JAP_LEC_crisis.001.a #We must inform our allies
+		log = "[GetLogInfo]: event japan_legations_crisis_events.001 option japan_legations_crisis_events.001.a"
+		name = japan_legations_crisis_events.001.a #We must inform our allies
 		trigger = {
 			OR = {
 				is_subject = yes
@@ -7778,16 +7778,16 @@ country_event = { #LEC: The Japanese Make Their Demands
 		ai_chance = { base = 100 }
 		if = {
 			limit = { is_subject = yes }
-			overlord = { country_event = { id = JAP_LEC_crisis.010 days = 3 } } #(OVERLORD or Faction Leader) Japan Demands the Legations
+			overlord = { country_event = { id = japan_legations_crisis_events.010 days = 3 } } #(OVERLORD or Faction Leader) Japan Demands the Legations
 		}
 		else = {
-			faction_leader = { country_event = { id = JAP_LEC_crisis.010 days = 3 } } #(OVERLORD or Faction Leader) Japan Demands the Legations
+			faction_leader = { country_event = { id = japan_legations_crisis_events.010 days = 3 } } #(OVERLORD or Faction Leader) Japan Demands the Legations
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.001 option JAP_LEC_crisis.001.b"
-		name = JAP_LEC_crisis.001.b #Plead our allies for support.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.001 option japan_legations_crisis_events.001.b"
+		name = japan_legations_crisis_events.001.b #Plead our allies for support.
 		trigger = {
 			OR = {
 				is_subject = yes
@@ -7803,16 +7803,16 @@ country_event = { #LEC: The Japanese Make Their Demands
 		custom_effect_tooltip = JAP_LEC_crisis_plead_tt
 		if = {
 			limit = { is_subject = yes }
-			overlord = { country_event = { id = JAP_LEC_crisis.010 days = 3 } } #(OVERLORD or Faction Leader) Japan Demands the Legations
+			overlord = { country_event = { id = japan_legations_crisis_events.010 days = 3 } } #(OVERLORD or Faction Leader) Japan Demands the Legations
 		}
 		else = {
-			faction_leader = { country_event = { id = JAP_LEC_crisis.010 days = 3 } } #(OVERLORD or Faction Leader) Japan Demands the Legations
+			faction_leader = { country_event = { id = japan_legations_crisis_events.010 days = 3 } } #(OVERLORD or Faction Leader) Japan Demands the Legations
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.001 option JAP_LEC_crisis.001.c"
-		name = JAP_LEC_crisis.001.c #We must inform the council
+		log = "[GetLogInfo]: event japan_legations_crisis_events.001 option japan_legations_crisis_events.001.c"
+		name = japan_legations_crisis_events.001.c #We must inform the council
 		trigger = {
 			is_subject = no
 			is_in_faction = no
@@ -7822,20 +7822,20 @@ country_event = { #LEC: The Japanese Make Their Demands
 		effect_tooltip = {
 			every_country = {
 				limit = { LEC_is_legation_council_member = yes }
-				country_event = { id = JAP_LEC_crisis.020 days = 3 } #(Council) Japan Demands the Legations
+				country_event = { id = japan_legations_crisis_events.020 days = 3 } #(Council) Japan Demands the Legations
 			}
 		}
 		hidden_effect = {
 			random_other_country = {
 				limit = { LEC_is_legation_council_member = yes }
-				country_event = { id = JAP_LEC_crisis.020 days = 3 } #(Council) Japan Demands the Legations
+				country_event = { id = japan_legations_crisis_events.020 days = 3 } #(Council) Japan Demands the Legations
 			}
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.001 option JAP_LEC_crisis.001.d"
-		name = JAP_LEC_crisis.001.d #Plead the council for support.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.001 option japan_legations_crisis_events.001.d"
+		name = japan_legations_crisis_events.001.d #Plead the council for support.
 		trigger = {
 			is_subject = no
 			is_in_faction = no
@@ -7848,20 +7848,20 @@ country_event = { #LEC: The Japanese Make Their Demands
 		effect_tooltip = {
 			every_country = {
 				limit = { LEC_is_legation_council_member = yes }
-				country_event = { id = JAP_LEC_crisis.020 days = 3 } #(Council) Japan Demands the Legations
+				country_event = { id = japan_legations_crisis_events.020 days = 3 } #(Council) Japan Demands the Legations
 			}
 		}
 		hidden_effect = {
 			random_other_country = {
 				limit = { LEC_is_legation_council_member = yes }
-				country_event = { id = JAP_LEC_crisis.020 days = 3 } #(Council) Japan Demands the Legations
+				country_event = { id = japan_legations_crisis_events.020 days = 3 } #(Council) Japan Demands the Legations
 			}
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.001 option JAP_LEC_crisis.001.e"
-		name = JAP_LEC_crisis.001.e #It seems we will have to make a decision soon…
+		log = "[GetLogInfo]: event japan_legations_crisis_events.001 option japan_legations_crisis_events.001.e"
+		name = japan_legations_crisis_events.001.e #It seems we will have to make a decision soon…
 		trigger = {
 			is_subject = no
 			OR = {
@@ -7870,7 +7870,7 @@ country_event = { #LEC: The Japanese Make Their Demands
 			}
 		}
 		ai_chance = { base = 100 }
-		country_event = { id = JAP_LEC_crisis.002 days = 3 } #(LEC) Last Days of the Lonely Legations?
+		country_event = { id = japan_legations_crisis_events.002 days = 3 } #(LEC) Last Days of the Lonely Legations?
 	}
 
 	after = {
@@ -7882,21 +7882,22 @@ country_event = { #LEC: The Japanese Make Their Demands
 }
 
 country_event = { #LEC: Last Days of the Lonely Legations?
-	id = JAP_LEC_crisis.002
-	title = JAP_LEC_crisis.002.t
-	desc = JAP_LEC_crisis.002.d
+	id = japan_legations_crisis_events.002
+	title = japan_legations_crisis_events.002.t
+	desc = japan_legations_crisis_events.002.d
 	picture = GFX_report_event_LEC_shanghai_river
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.001 OR [EVENT] JAP_LEC_crisis.010 OR [EVENT] JAP_LEC_crisis.021
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.001 OR [EVENT] japan_legations_crisis_events.010 OR [EVENT] japan_legations_crisis_events.021
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.002 option JAP_LEC_crisis.002.a"
-		name = JAP_LEC_crisis.002.a #We have no choice but to fold.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.002 option japan_legations_crisis_events.002.a"
+		name = japan_legations_crisis_events.002.a #We have no choice but to fold.
 		ai_chance = {
 			base = 100
 			modifier = {
 				factor = 0
 				has_global_flag = JAP_LEC_crisis_LEC_has_international_backer_flag
+				NOT = { has_country_leader = { character = LEC_katsuo_okazaki } } #If you have a Japanese chairman, you're screwed.
 			}
 		}
 		custom_effect_tooltip = GAME_OVER_TT
@@ -7908,35 +7909,36 @@ country_event = { #LEC: Last Days of the Lonely Legations?
 				}
 			}
 		}
-		JAP = { country_event = { id = JAP_LEC_crisis.003 days = 3 } } #The Legations Fold
+		JAP = { country_event = { id = japan_legations_crisis_events.003 days = 3 } } #The Legations Fold
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.002 option JAP_LEC_crisis.002.b"
-		name = JAP_LEC_crisis.002.b #Mobilise the Legation Defense Force, we stand our ground!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.002 option japan_legations_crisis_events.002.b"
+		name = japan_legations_crisis_events.002.b #Mobilise the Legation Defense Force, we stand our ground!
 		ai_chance = {
 			base = 0
 			modifier = {
 				add = 100
 				has_global_flag = JAP_LEC_crisis_LEC_has_international_backer_flag
+				NOT = { has_country_leader = { character = LEC_katsuo_okazaki } } #If you have a Japanese chairman, you're screwed.
 			}
 		}
 		custom_effect_tooltip = JAP_LEC_crisis_war_tt
-		JAP = { country_event = { id = JAP_LEC_crisis.006 days = 3 } } #The Legations Resist!
+		JAP = { country_event = { id = japan_legations_crisis_events.006 days = 3 } } #The Legations Resist!
 	}
 }
 
 country_event = { #JAP: The Legations Fold
-	id = JAP_LEC_crisis.003
-	title = JAP_LEC_crisis.003.t
-	desc = JAP_LEC_crisis.003.d
+	id = japan_legations_crisis_events.003
+	title = japan_legations_crisis_events.003.t
+	desc = japan_legations_crisis_events.003.d
 	picture = GFX_report_event_JAP_battle_flag
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.002
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.002
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.003 option JAP_LEC_crisis.003.a"
-		name = JAP_LEC_crisis.003.a #A great victory for the forces of Asian Liberation!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.003 option japan_legations_crisis_events.003.a"
+		name = japan_legations_crisis_events.003.a #A great victory for the forces of Asian Liberation!
 		hidden_effect = {
 			#Do this first before LEC gets annexed.
 			LEC = {
@@ -7953,10 +7955,10 @@ country_event = { #JAP: The Legations Fold
 							}
 						}
 					}
-					country_event = { id = JAP_LEC_crisis.004 hours = 1 } #Japan Moves into the Legations
+					country_event = { id = japan_legations_crisis_events.004 hours = 1 } #Japan Moves into the Legations
 				}
 			}
-			news_event = { id = JAP_LEC_crisis.005 days = 1 } #Japan Seizes the Legations
+			news_event = { id = japan_legations_crisis_events.005 days = 1 } #Japan Seizes the Legations
 		}
 		annex_country = {
 			target = LEC
@@ -7967,12 +7969,12 @@ country_event = { #JAP: The Legations Fold
 }
 
 country_event = { #Chinese Factions: Japan Moves into the Legations
-	id = JAP_LEC_crisis.004
-	title = JAP_LEC_crisis.004.t
-	desc = JAP_LEC_crisis.004.d
+	id = japan_legations_crisis_events.004
+	title = japan_legations_crisis_events.004.t
+	desc = japan_legations_crisis_events.004.d
 	picture = GFX_report_event_CHN_china_red_spears
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.003
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.003
 	trigger = {
 		NOT = {
 			is_subject = yes
@@ -7986,8 +7988,8 @@ country_event = { #Chinese Factions: Japan Moves into the Legations
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.004 option JAP_LEC_crisis.004.a"
-		name = JAP_LEC_crisis.004.a #That is Chinese land, and forever shall be!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.004 option japan_legations_crisis_events.004.a"
+		name = japan_legations_crisis_events.004.a #That is Chinese land, and forever shall be!
 		ai_chance = { base = 100 }
 		add_war_support = 0.10
 		declare_war_on = {
@@ -7997,18 +7999,18 @@ country_event = { #Chinese Factions: Japan Moves into the Legations
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.004 option JAP_LEC_crisis.004.b"
-		name = JAP_LEC_crisis.004.b #We must bide our time...
+		log = "[GetLogInfo]: event japan_legations_crisis_events.004 option japan_legations_crisis_events.004.b"
+		name = japan_legations_crisis_events.004.b #We must bide our time...
 		ai_chance = { base = 0 }
 		add_war_support = -0.10
 	}
 }
 
 news_event = { #World News: Japan Seizes the Legations
-	id = JAP_LEC_crisis.005
-	immediate = { log = "[GetLogInfo]: event JAP_LEC_crisis.005" }
-	title = JAP_LEC_crisis.005.t
-	desc = JAP_LEC_crisis.005.d
+	id = japan_legations_crisis_events.005
+	immediate = { log = "[GetLogInfo]: event japan_legations_crisis_events.005" }
+	title = japan_legations_crisis_events.005.t
+	desc = japan_legations_crisis_events.005.d
 	picture = GFX_news_event_LEC_asia_diplomacy
 
 	is_triggered_only = yes #Triggered by [EVENT] china_events.452.a, china_events.453.a
@@ -8023,8 +8025,8 @@ news_event = { #World News: Japan Seizes the Legations
 	}
 
 	option = {
-		name = JAP_LEC_crisis.005.a #Our forces triumphantly enter the city!
-		log = "[GetLogInfo]: event JAP_LEC_crisis.005 option JAP_LEC_crisis.005.a"
+		name = japan_legations_crisis_events.005.a #Our forces triumphantly enter the city!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.005 option japan_legations_crisis_events.005.a"
 		trigger = {
 			OR = {
 				tag = JAP
@@ -8034,16 +8036,16 @@ news_event = { #World News: Japan Seizes the Legations
 	}
 
 	option = {
-		name = JAP_LEC_crisis.005.b #A spineless surrender of Shanghai.
-		log = "[GetLogInfo]: event JAP_LEC_crisis.005 option JAP_LEC_crisis.005.b"
+		name = japan_legations_crisis_events.005.b #A spineless surrender of Shanghai.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.005 option japan_legations_crisis_events.005.b"
 		trigger = {
 			has_war_with = JAP
 		}
 	}
 
 	option = {
-		name = JAP_LEC_crisis.005.c #So closes the Open Door.
-		log = "[GetLogInfo]: event JAP_LEC_crisis.005 option JAP_LEC_crisis.005.c"
+		name = japan_legations_crisis_events.005.c #So closes the Open Door.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.005 option japan_legations_crisis_events.005.c"
 		trigger = {
 			NOT = {
 				tag = JAP
@@ -8055,16 +8057,16 @@ news_event = { #World News: Japan Seizes the Legations
 }
 
 country_event = { #JAP: The Legations Resist!
-	id = JAP_LEC_crisis.006
-	title = JAP_LEC_crisis.006.t
-	desc = JAP_LEC_crisis.006.d
+	id = japan_legations_crisis_events.006
+	title = japan_legations_crisis_events.006.t
+	desc = japan_legations_crisis_events.006.d
 	picture = GFX_report_event_LEC_shanghai_river
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.002 OR [EVENT] JAP_LEC_crisis.012 OR [EVENT] JAP_LEC_crisis.025
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.002 OR [EVENT] japan_legations_crisis_events.012 OR [EVENT] japan_legations_crisis_events.025
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.006 option JAP_LEC_crisis.006.a"
-		name = JAP_LEC_crisis.006.a #Order the Shanghai Expeditionary Army to land immediately!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.006 option japan_legations_crisis_events.006.a"
+		name = japan_legations_crisis_events.006.a #Order the Shanghai Expeditionary Army to land immediately!
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -8085,13 +8087,13 @@ country_event = { #JAP: The Legations Resist!
 			type = annex_everything
 		}
 		hidden_effect = {
-			news_event = { id = JAP_LEC_crisis.007 days = 1 } #Japan Strikes the Legations
+			news_event = { id = japan_legations_crisis_events.007 days = 1 } #Japan Strikes the Legations
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.006 option JAP_LEC_crisis.006.b"
-		name = JAP_LEC_crisis.006.b #We have no choice but to backtrack and try to apologize...
+		log = "[GetLogInfo]: event japan_legations_crisis_events.006 option japan_legations_crisis_events.006.b"
+		name = japan_legations_crisis_events.006.b #We have no choice but to backtrack and try to apologize...
 		ai_chance = {
 			base = 0
 			modifier = {
@@ -8110,19 +8112,19 @@ country_event = { #JAP: The Legations Resist!
 		add_political_power = -50
 		add_war_support = -0.10
 		hidden_effect = {
-			news_event = { id = JAP_LEC_crisis.008 days = 1 } #The Legation Crisis Defuses
+			news_event = { id = japan_legations_crisis_events.008 days = 1 } #The Legation Crisis Defuses
 		}
 	}
 }
 
 news_event = { #World News: Japan Strikes the Legations
-	id = JAP_LEC_crisis.007
-	immediate = { log = "[GetLogInfo]: event JAP_LEC_crisis.007" }
-	title = JAP_LEC_crisis.007.t
-	desc = JAP_LEC_crisis.007.d
+	id = japan_legations_crisis_events.007
+	immediate = { log = "[GetLogInfo]: event japan_legations_crisis_events.007" }
+	title = japan_legations_crisis_events.007.t
+	desc = japan_legations_crisis_events.007.d
 	picture = GFX_news_event_LEC_war_shanghai
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.006
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.006
 
 	major = yes
 	fire_for_sender = yes
@@ -8134,8 +8136,8 @@ news_event = { #World News: Japan Strikes the Legations
 	}
 
 	option = {
-		name = JAP_LEC_crisis.007.a #We shall strike quickly and decisively!
-		log = "[GetLogInfo]: event JAP_LEC_crisis.007 option JAP_LEC_crisis.007.a"
+		name = japan_legations_crisis_events.007.a #We shall strike quickly and decisively!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.007 option japan_legations_crisis_events.007.a"
 		trigger = {
 			OR = {
 				tag = JAP
@@ -8145,16 +8147,16 @@ news_event = { #World News: Japan Strikes the Legations
 	}
 
 	option = {
-		name = JAP_LEC_crisis.007.b #Japan creates even more enemies for themselves.
-		log = "[GetLogInfo]: event JAP_LEC_crisis.007 option JAP_LEC_crisis.007.b"
+		name = japan_legations_crisis_events.007.b #Japan creates even more enemies for themselves.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.007 option japan_legations_crisis_events.007.b"
 		trigger = {
 			has_war_with = JAP
 		}
 	}
 
 	option = {
-		name = JAP_LEC_crisis.007.c #The Legations are embroiled in the very war they were created to prevent.
-		log = "[GetLogInfo]: event JAP_LEC_crisis.007 option JAP_LEC_crisis.007.c"
+		name = japan_legations_crisis_events.007.c #The Legations are embroiled in the very war they were created to prevent.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.007 option japan_legations_crisis_events.007.c"
 		trigger = {
 			NOT = {
 				tag = JAP
@@ -8166,13 +8168,13 @@ news_event = { #World News: Japan Strikes the Legations
 }
 
 news_event = { #World News: The Legation Crisis Defuses
-	id = JAP_LEC_crisis.008
-	immediate = { log = "[GetLogInfo]: event JAP_LEC_crisis.008" }
-	title = JAP_LEC_crisis.008.t
-	desc = JAP_LEC_crisis.008.d
+	id = japan_legations_crisis_events.008
+	immediate = { log = "[GetLogInfo]: event japan_legations_crisis_events.008" }
+	title = japan_legations_crisis_events.008.t
+	desc = japan_legations_crisis_events.008.d
 	picture = GFX_news_event_JAP_germany_peace
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.006
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.006
 
 	major = yes
 	fire_for_sender = yes
@@ -8184,8 +8186,8 @@ news_event = { #World News: The Legation Crisis Defuses
 	}
 
 	option = {
-		name = JAP_LEC_crisis.008.a #A shameful defeat.
-		log = "[GetLogInfo]: event JAP_LEC_crisis.008 option JAP_LEC_crisis.008.a"
+		name = japan_legations_crisis_events.008.a #A shameful defeat.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.008 option japan_legations_crisis_events.008.a"
 		trigger = {
 			OR = {
 				tag = JAP
@@ -8195,16 +8197,16 @@ news_event = { #World News: The Legation Crisis Defuses
 	}
 
 	option = {
-		name = JAP_LEC_crisis.008.b #The Rising Sun humiliated.
-		log = "[GetLogInfo]: event JAP_LEC_crisis.008 option JAP_LEC_crisis.008.b"
+		name = japan_legations_crisis_events.008.b #The Rising Sun humiliated.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.008 option japan_legations_crisis_events.008.b"
 		trigger = {
 			has_war_with = JAP
 		}
 	}
 
 	option = {
-		name = JAP_LEC_crisis.008.c #The Legations hold on...
-		log = "[GetLogInfo]: event JAP_LEC_crisis.008 option JAP_LEC_crisis.008.c"
+		name = japan_legations_crisis_events.008.c #The Legations hold on...
+		log = "[GetLogInfo]: event japan_legations_crisis_events.008 option japan_legations_crisis_events.008.c"
 		trigger = {
 			NOT = {
 				tag = JAP
@@ -8215,29 +8217,29 @@ news_event = { #World News: The Legation Crisis Defuses
 	}
 }
 
-#JAP_LEC_Crisis Section 02 (010-019): Faction Leader Chain
+#japan_legations_crisis_events Section 02 (010-019): Faction Leader Chain
 country_event = { #LEC faction leader/overlord: Japan Demands the Legations
-	id = JAP_LEC_crisis.010
-	title = JAP_LEC_crisis.010.t
+	id = japan_legations_crisis_events.010
+	title = japan_legations_crisis_events.010.t
 	picture = GFX_report_event_generic_east_china_map
 	desc = {
-		text = JAP_LEC_crisis.010.d.standard
+		text = japan_legations_crisis_events.010.d.standard
 		trigger = {
 			NOT = { has_global_flag = JAP_LEC_crisis_LEC_commissioner_asks_for_protection_flag }
 		}
 	}
 	desc = {
-		text = JAP_LEC_crisis.010.d.plead
+		text = japan_legations_crisis_events.010.d.plead
 		trigger = {
 			has_global_flag = JAP_LEC_crisis_LEC_commissioner_asks_for_protection_flag
 		}
 	}
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.001
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.001
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.010 option JAP_LEC_crisis.010.a"
-		name = JAP_LEC_crisis.010.a #Unfortunately, the Legations are not worth defending.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.010 option japan_legations_crisis_events.010.a"
+		name = japan_legations_crisis_events.010.a #Unfortunately, the Legations are not worth defending.
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -8271,12 +8273,12 @@ country_event = { #LEC faction leader/overlord: Japan Demands the Legations
 				active = no
 			}
 		}
-		LEC = { country_event = { id = JAP_LEC_crisis.011 days = 1 } } #[FROM.GetNameDef] Abandons Us!
+		LEC = { country_event = { id = japan_legations_crisis_events.011 days = 1 } } #[FROM.GetNameDef] Abandons Us!
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.010 option JAP_LEC_crisis.010.b"
-		name = JAP_LEC_crisis.010.b #We will defend the Legation Cities as we promised!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.010 option japan_legations_crisis_events.010.b"
+		name = japan_legations_crisis_events.010.b #We will defend the Legation Cities as we promised!
 		ai_chance = {
 			base = 0
 			modifier = {
@@ -8289,7 +8291,7 @@ country_event = { #LEC faction leader/overlord: Japan Demands the Legations
 			}
 		}
 		custom_effect_tooltip = JAP_LEC_crisis_war_tt
-		LEC = { country_event = { id = JAP_LEC_crisis.012 days = 1 } } #[FROM.GetNameDef] Defends Us!
+		LEC = { country_event = { id = japan_legations_crisis_events.012 days = 1 } } #[FROM.GetNameDef] Defends Us!
 	}
 
 	after = {
@@ -8307,63 +8309,63 @@ country_event = { #LEC faction leader/overlord: Japan Demands the Legations
 }
 
 country_event = { #LEC: [FROM.GetNameDef] Abandons Us!
-	id = JAP_LEC_crisis.011
-	title = JAP_LEC_crisis.011.t
-	desc = JAP_LEC_crisis.011.d
+	id = japan_legations_crisis_events.011
+	title = japan_legations_crisis_events.011.t
+	desc = japan_legations_crisis_events.011.d
 	picture = GFX_report_event_LEC_shanghai_police_patrol
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.010
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.010
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.011 option JAP_LEC_crisis.011.a"
-		name = JAP_LEC_crisis.011.a #A horrific betrayal!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.011 option japan_legations_crisis_events.011.a"
+		name = japan_legations_crisis_events.011.a #A horrific betrayal!
 		add_opinion_modifier = {
 			target = FROM
 			modifier = KR_disapproves_of_govt
 		}
-		country_event = { id = JAP_LEC_crisis.002 days = 1 } #Last Days of the Lonely Legations?
+		country_event = { id = japan_legations_crisis_events.002 days = 1 } #Last Days of the Lonely Legations?
 	}
 }
 
 country_event = { #LEC: [FROM.GetNameDef] Defends Us!
-	id = JAP_LEC_crisis.012
-	title = JAP_LEC_crisis.012.t
-	desc = JAP_LEC_crisis.012.d
+	id = japan_legations_crisis_events.012
+	title = japan_legations_crisis_events.012.t
+	desc = japan_legations_crisis_events.012.d
 	picture = GFX_report_event_LEC_Canadian_Forces_in_Hong_Kong
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.010
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.010
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.012 option JAP_LEC_crisis.012.a"
-		name = JAP_LEC_crisis.012.a #Now let us prepare for war...
+		log = "[GetLogInfo]: event japan_legations_crisis_events.012 option japan_legations_crisis_events.012.a"
+		name = japan_legations_crisis_events.012.a #Now let us prepare for war...
 		custom_effect_tooltip = JAP_LEC_crisis_war_tt
-		JAP = { country_event = { id = JAP_LEC_crisis.006 days = 1 } } #The Legations Resist!
+		JAP = { country_event = { id = japan_legations_crisis_events.006 days = 1 } } #The Legations Resist!
 	}
 }
 
-#JAP_LEC_Crisis Section 03 (020-029): Council Chain
+#japan_legations_crisis_events Section 03 (020-029): Council Chain
 country_event = { #Council members: Japan Demands the Legations
-	id = JAP_LEC_crisis.020
-	title = JAP_LEC_crisis.020.t
+	id = japan_legations_crisis_events.020
+	title = japan_legations_crisis_events.020.t
 	desc = {
-		text = JAP_LEC_crisis.020.d.standard
+		text = japan_legations_crisis_events.020.d.standard
 		trigger = {
 			NOT = { has_global_flag = JAP_LEC_crisis_LEC_commissioner_asks_for_protection_flag }
 		}
 	}
 	desc = {
-		text = JAP_LEC_crisis.020.d.plead
+		text = japan_legations_crisis_events.020.d.plead
 		trigger = {
 			has_global_flag = JAP_LEC_crisis_LEC_commissioner_asks_for_protection_flag
 		}
 	}
 	picture = GFX_report_event_LEC_shanghai_river
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.001
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.001
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.020 option JAP_LEC_crisis.020.a"
-		name = JAP_LEC_crisis.020.a #We vote to accept Japanese demands.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.020 option japan_legations_crisis_events.020.a"
+		name = japan_legations_crisis_events.020.a #We vote to accept Japanese demands.
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -8381,8 +8383,8 @@ country_event = { #Council members: Japan Demands the Legations
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.020 option JAP_LEC_crisis.020.b"
-		name = JAP_LEC_crisis.020.b #We vote to reject Japanese demands.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.020 option japan_legations_crisis_events.020.b"
+		name = japan_legations_crisis_events.020.b #We vote to reject Japanese demands.
 		ai_chance = {
 			base = 0
 			modifier = {
@@ -8422,7 +8424,7 @@ country_event = { #Council members: Japan Demands the Legations
 						NOT = { has_country_flag = JAP_LEC_crisis_accept_demands_flag }
 						NOT = { has_country_flag = JAP_LEC_crisis_reject_demands_flag }
 					}
-					country_event = JAP_LEC_crisis.020
+					country_event = japan_legations_crisis_events.020
 				}
 			}
 			else_if = {
@@ -8433,7 +8435,7 @@ country_event = { #Council members: Japan Demands the Legations
 						NOT = { has_country_flag = JAP_LEC_crisis_has_seen_vote_outcome_flag }
 					}
 					set_global_flag = JAP_LEC_crisis_council_voted_to_annex_global_flag
-					country_event = JAP_LEC_crisis.021 #The Council Votes to Accept Japanese Demands
+					country_event = japan_legations_crisis_events.021 #The Council Votes to Accept Japanese Demands
 				}
 			}
 			else = {
@@ -8442,7 +8444,7 @@ country_event = { #Council members: Japan Demands the Legations
 						LEC_is_legation_council_member = yes
 						NOT = { has_country_flag = JAP_LEC_crisis_has_seen_vote_outcome_flag }
 					}
-					country_event = JAP_LEC_crisis.025 #The Council Votes to Reject Japanese Demands
+					country_event = japan_legations_crisis_events.025 #The Council Votes to Reject Japanese Demands
 				}
 			}
 		}
@@ -8450,23 +8452,23 @@ country_event = { #Council members: Japan Demands the Legations
 }
 
 country_event = { #Council members: The Council Votes to Accept Japanese Demands
-	id = JAP_LEC_crisis.021
-	title = JAP_LEC_crisis.021.t
+	id = japan_legations_crisis_events.021
+	title = japan_legations_crisis_events.021.t
 	desc = {
-		text = JAP_LEC_crisis.021.d.council
+		text = japan_legations_crisis_events.021.d.council
 		trigger = {
 			NOT = { tag = LEC }
 		}
 	}
 	desc = {
-		text = JAP_LEC_crisis.021.d.LEC
+		text = japan_legations_crisis_events.021.d.LEC
 		trigger = {
 			tag = LEC
 		}
 	}
 	picture = GFX_report_event_LEC_shanghai_police_patrol
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.020
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.020
 
 	timeout_days = 5
 
@@ -8475,8 +8477,8 @@ country_event = { #Council members: The Council Votes to Accept Japanese Demands
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.021 option JAP_LEC_crisis.021.a"
-		name = JAP_LEC_crisis.021.a #A tragic but unfortunately realistic outcome.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.021 option japan_legations_crisis_events.021.a"
+		name = japan_legations_crisis_events.021.a #A tragic but unfortunately realistic outcome.
 		trigger = {
 			NOT = {
 				tag = LEC
@@ -8488,12 +8490,13 @@ country_event = { #Council members: The Council Votes to Accept Japanese Demands
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.021 option JAP_LEC_crisis.021.b"
-		name = JAP_LEC_crisis.021.b #...But one we refuse to accept!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.021 option japan_legations_crisis_events.021.b"
+		name = japan_legations_crisis_events.021.b #...But one we refuse to accept!
 		trigger = {
 			NOT = {
 				tag = LEC
 				tag = JAP
+				LEC = { has_country_leader = { character = LEC_katsuo_okazaki } } #You can't wild-cat protect LEC if it is run by a Japanese leader.
 			}
 			has_country_flag = JAP_LEC_crisis_reject_demands_flag
 		}
@@ -8502,12 +8505,12 @@ country_event = { #Council members: The Council Votes to Accept Japanese Demands
 			#This is player only - otherwise GEA would always take this choice basically and LEC would refuse to fold.
 		}
 		set_global_flag = JAP_LEC_crisis_LEC_has_international_backer_flag
-		LEC = { country_event = { id = JAP_LEC_crisis.022 hours = 1 } } #[FROM.GetNameDefCap] Defends Us!
+		LEC = { country_event = { id = japan_legations_crisis_events.022 hours = 1 } } #[FROM.GetNameDefCap] Defends Us!
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.021 option JAP_LEC_crisis.021.c"
-		name = JAP_LEC_crisis.021.c #It seems our time has come...
+		log = "[GetLogInfo]: event japan_legations_crisis_events.021 option japan_legations_crisis_events.021.c"
+		name = japan_legations_crisis_events.021.c #It seems our time has come...
 		trigger = {
 			tag = LEC
 		}
@@ -8521,12 +8524,12 @@ country_event = { #Council members: The Council Votes to Accept Japanese Demands
 				modifier = KR_disapproves_of_govt
 			}
 		}
-		country_event = { id = JAP_LEC_crisis.002 days = 1 } #Last Days of the Lonely Legations?
+		country_event = { id = japan_legations_crisis_events.002 days = 1 } #Last Days of the Lonely Legations?
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.021 option JAP_LEC_crisis.021.e"
-		name = JAP_LEC_crisis.021.e #Reality finally sets in for the West.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.021 option japan_legations_crisis_events.021.e"
+		name = japan_legations_crisis_events.021.e #Reality finally sets in for the West.
 		trigger = {
 			tag = JAP
 		}
@@ -8547,49 +8550,49 @@ country_event = { #Council members: The Council Votes to Accept Japanese Demands
 						LEC_is_legation_council_member = yes
 						NOT = { has_country_flag = JAP_LEC_crisis_has_seen_vote_outcome_flag }
 					}
-					country_event = JAP_LEC_crisis.021
+					country_event = japan_legations_crisis_events.021
 				}
 			}
 			else_if = {
 				limit = { LEC = { NOT = { has_country_flag = JAP_LEC_crisis_has_seen_vote_outcome_flag } } }
-				LEC = { country_event = JAP_LEC_crisis.021 }
+				LEC = { country_event = japan_legations_crisis_events.021 }
 			}
 		}
 	}
 }
 
 country_event = { #LEC: [FROM.GetNameDef] Defends Us!
-	id = JAP_LEC_crisis.022
-	title = JAP_LEC_crisis.022.t
-	desc = JAP_LEC_crisis.022.d
+	id = japan_legations_crisis_events.022
+	title = japan_legations_crisis_events.022.t
+	desc = japan_legations_crisis_events.022.d
 	picture = GFX_report_event_LEC_Canadian_Forces_in_Hong_Kong
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.010
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.010
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.022 option JAP_LEC_crisis.022.a"
-		name = JAP_LEC_crisis.022.a #It seems we are not alone...
+		log = "[GetLogInfo]: event japan_legations_crisis_events.022 option japan_legations_crisis_events.022.a"
+		name = japan_legations_crisis_events.022.a #It seems we are not alone...
 	}
 }
 
 country_event = { #Council members: The Council Votes to Reject Japanese Demands
-	id = JAP_LEC_crisis.025
-	title = JAP_LEC_crisis.025.t
+	id = japan_legations_crisis_events.025
+	title = japan_legations_crisis_events.025.t
 	desc = {
-		text = JAP_LEC_crisis.025.d.council
+		text = japan_legations_crisis_events.025.d.council
 		trigger = {
 			NOT = { tag = LEC }
 		}
 	}
 	desc = {
-		text = JAP_LEC_crisis.025.d.LEC
+		text = japan_legations_crisis_events.025.d.LEC
 		trigger = {
 			tag = LEC
 		}
 	}
 	picture = GFX_report_event_LEC_Canadian_Forces_in_Hong_Kong
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.020
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.020
 
 	timeout_days = 5
 
@@ -8598,8 +8601,8 @@ country_event = { #Council members: The Council Votes to Reject Japanese Demands
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.025 option JAP_LEC_crisis.025.a"
-		name = JAP_LEC_crisis.025.a #War seems imminent...
+		log = "[GetLogInfo]: event japan_legations_crisis_events.025 option japan_legations_crisis_events.025.a"
+		name = japan_legations_crisis_events.025.a #War seems imminent...
 		trigger = {
 			NOT = { tag = LEC }
 		}
@@ -8607,8 +8610,8 @@ country_event = { #Council members: The Council Votes to Reject Japanese Demands
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.025 option JAP_LEC_crisis.025.b"
-		name = JAP_LEC_crisis.025.b #...but we will not be a part of this.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.025 option japan_legations_crisis_events.025.b"
+		name = japan_legations_crisis_events.025.b #...but we will not be a part of this.
 		trigger = {
 			NOT = {
 				tag = LEC
@@ -8618,17 +8621,17 @@ country_event = { #Council members: The Council Votes to Reject Japanese Demands
 		}
 		ai_chance = { base = 100 } #Lets err on the side of caution and have tags with no reason to vote yes bail out if the vote does go in favor of the LEC.
 		LEC_remove_from_legation_council = yes
-		LEC = { country_event = { id = JAP_LEC_crisis.026 hours = 1 } } #[FROM.GetNameDefCap] Abandons Us!
+		LEC = { country_event = { id = japan_legations_crisis_events.026 hours = 1 } } #[FROM.GetNameDefCap] Abandons Us!
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.025 option JAP_LEC_crisis.025.c"
-		name = JAP_LEC_crisis.025.c #It seems a time of reckoning is here.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.025 option japan_legations_crisis_events.025.c"
+		name = japan_legations_crisis_events.025.c #It seems a time of reckoning is here.
 		trigger = {
 			tag = LEC
 		}
 		ai_chance = { base = 100 }
-		JAP = { country_event = { id = JAP_LEC_crisis.006 days = 1 } } #The Legations Resist!
+		JAP = { country_event = { id = japan_legations_crisis_events.006 days = 1 } } #The Legations Resist!
 	}
 
 	after = {
@@ -8645,28 +8648,28 @@ country_event = { #Council members: The Council Votes to Reject Japanese Demands
 						LEC_is_legation_council_member = yes
 						NOT = { has_country_flag = JAP_LEC_crisis_has_seen_vote_outcome_flag }
 					}
-					country_event = JAP_LEC_crisis.025
+					country_event = japan_legations_crisis_events.025
 				}
 			}
 			else_if = {
 				limit = { LEC = { NOT = { has_country_flag = JAP_LEC_crisis_has_seen_vote_outcome_flag } } }
-				LEC = { country_event = JAP_LEC_crisis.025 }
+				LEC = { country_event = japan_legations_crisis_events.025 }
 			}
 		}
 	}
 }
 
 country_event = { #LEC: [FROM.GetNameDef] Abandons Us!
-	id = JAP_LEC_crisis.026
-	title = JAP_LEC_crisis.026.t
-	desc = JAP_LEC_crisis.026.d
+	id = japan_legations_crisis_events.026
+	title = japan_legations_crisis_events.026.t
+	desc = japan_legations_crisis_events.026.d
 	picture = GFX_report_event_LEC_hong_kong_harbour
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.010
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.010
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.026 option JAP_LEC_crisis.026.a"
-		name = JAP_LEC_crisis.026.a #It seems we are increasingly alone.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.026 option japan_legations_crisis_events.026.a"
+		name = japan_legations_crisis_events.026.a #It seems we are increasingly alone.
 		add_opinion_modifier = {
 			target = FROM
 			modifier = KR_disapproves_of_govt
@@ -8674,19 +8677,19 @@ country_event = { #LEC: [FROM.GetNameDef] Abandons Us!
 	}
 }
 
-#JAP_LEC_Crisis Section 04 (030-039): CPS Chain
+#japan_legations_crisis_events Section 04 (030-039): CPS Chain
 country_event = { #LEC: Japan Moves On the Legations
-	id = JAP_LEC_crisis.030
-	title = JAP_LEC_crisis.030.t
-	desc = JAP_LEC_crisis.030.d
+	id = japan_legations_crisis_events.030
+	title = japan_legations_crisis_events.030.t
+	desc = japan_legations_crisis_events.030.d
 
 	picture = GFX_report_event_JAP_battleship_kongo
 
 	is_triggered_only = yes #Triggered by [EFFECT] JAP_LEC_crisis_start_effect which fires from [FOCUS] JAP_continental_warfare OR [FOCUS] JAP_ultimatum
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.030 option JAP_LEC_crisis.030.a"
-		name = JAP_LEC_crisis.030.a #We shall prepare their arrival
+		log = "[GetLogInfo]: event japan_legations_crisis_events.030 option japan_legations_crisis_events.030.a"
+		name = japan_legations_crisis_events.030.a #We shall prepare their arrival
 		ai_chance = { base = 100 }
 		custom_effect_tooltip = GAME_OVER_TT
 		effect_tooltip = {
@@ -8700,8 +8703,8 @@ country_event = { #LEC: Japan Moves On the Legations
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.030 option JAP_LEC_crisis.030.b"
-		name = JAP_LEC_crisis.030.b #Plead for more time.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.030 option japan_legations_crisis_events.030.b"
+		name = japan_legations_crisis_events.030.b #Plead for more time.
 		ai_chance = { base = 0 }
 		add_political_power = -100
 		set_global_flag = JAP_LEC_crisis_LEC_commissioner_asks_for_protection_flag
@@ -8709,32 +8712,32 @@ country_event = { #LEC: Japan Moves On the Legations
 	}
 
 	after = {
-		JAP = { country_event = { id = JAP_LEC_crisis.031 days = 1 } } #The Fate of the Legations
+		JAP = { country_event = { id = japan_legations_crisis_events.031 days = 1 } } #The Fate of the Legations
 	}
 }
 
 country_event = { #JAP: The Fate of the Legations
-	id = JAP_LEC_crisis.031
-	title = JAP_LEC_crisis.031.t
+	id = japan_legations_crisis_events.031
+	title = japan_legations_crisis_events.031.t
 	desc = {
-		text = JAP_LEC_crisis.031.d_normal
+		text = japan_legations_crisis_events.031.d_normal
 		trigger = {
 			NOT = { has_global_flag = JAP_LEC_crisis_LEC_commissioner_asks_for_protection_flag }
 		}
 	}
 	desc = {
-		text = JAP_LEC_crisis.031.d_plead
+		text = japan_legations_crisis_events.031.d_plead
 		trigger = {
 			has_global_flag = JAP_LEC_crisis_LEC_commissioner_asks_for_protection_flag
 		}
 	}
 	picture = GFX_report_event_JAP_parade_shanghai
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.030
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.030
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.031 option JAP_LEC_crisis.031.a"
-		name = JAP_LEC_crisis.031.a #Deploy the Shanghai Expeditionary Army - We shall formally end the Legation Farce.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.031 option japan_legations_crisis_events.031.a"
+		name = japan_legations_crisis_events.031.a #Deploy the Shanghai Expeditionary Army - We shall formally end the Legation Farce.
 		ai_chance = { base = 100 }
 		hidden_effect = {
 			#Do this first before LEC gets annexed.
@@ -8752,10 +8755,10 @@ country_event = { #JAP: The Fate of the Legations
 							}
 						}
 					}
-					country_event = { id = JAP_LEC_crisis.032 hours = 1 } #(Chinese Factions) Japan Moves to End the Legations
+					country_event = { id = japan_legations_crisis_events.032 hours = 1 } #(Chinese Factions) Japan Moves to End the Legations
 				}
 			}
-			news_event = { id = JAP_LEC_crisis.033 days = 1 } #(World News) Japan Ends the Legations
+			news_event = { id = japan_legations_crisis_events.033 days = 1 } #(World News) Japan Ends the Legations
 		}
 		annex_country = {
 			target = LEC
@@ -8765,8 +8768,8 @@ country_event = { #JAP: The Fate of the Legations
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.031 option JAP_LEC_crisis.031.b"
-		name = JAP_LEC_crisis.031.b #We shall preserve the status quo in Shanghai.
+		log = "[GetLogInfo]: event japan_legations_crisis_events.031 option japan_legations_crisis_events.031.b"
+		name = japan_legations_crisis_events.031.b #We shall preserve the status quo in Shanghai.
 		ai_chance = {
 			base = 0
 			modifier = {
@@ -8776,17 +8779,17 @@ country_event = { #JAP: The Fate of the Legations
 		}
 		add_political_power = -25
 		add_war_support = -0.05
-		LEC = { news_event = { id = JAP_LEC_crisis.034 days = 1 } } #(LEC) Tokyo Leaves the Legations Alone
+		LEC = { news_event = { id = japan_legations_crisis_events.034 days = 1 } } #(LEC) Tokyo Leaves the Legations Alone
 	}
 }
 
 country_event = { #Chinese Factions: Japan Moves to End the Legations
-	id = JAP_LEC_crisis.032
-	title = JAP_LEC_crisis.032.t
-	desc = JAP_LEC_crisis.032.d
+	id = japan_legations_crisis_events.032
+	title = japan_legations_crisis_events.032.t
+	desc = japan_legations_crisis_events.032.d
 	picture = GFX_report_event_CHN_china_red_spears
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.003
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.003
 	trigger = {
 		NOT = {
 			is_subject = yes
@@ -8800,8 +8803,8 @@ country_event = { #Chinese Factions: Japan Moves to End the Legations
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.032 option JAP_LEC_crisis.032.a"
-		name = JAP_LEC_crisis.032.a #That is Chinese land, and forever shall be!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.032 option japan_legations_crisis_events.032.a"
+		name = japan_legations_crisis_events.032.a #That is Chinese land, and forever shall be!
 		ai_chance = { base = 100 }
 		add_war_support = 0.10
 		declare_war_on = {
@@ -8811,18 +8814,18 @@ country_event = { #Chinese Factions: Japan Moves to End the Legations
 	}
 
 	option = {
-		log = "[GetLogInfo]: event JAP_LEC_crisis.032 option JAP_LEC_crisis.032.b"
-		name = JAP_LEC_crisis.032.b #We must bide our time...
+		log = "[GetLogInfo]: event japan_legations_crisis_events.032 option japan_legations_crisis_events.032.b"
+		name = japan_legations_crisis_events.032.b #We must bide our time...
 		ai_chance = { base = 0 }
 		add_war_support = -0.10
 	}
 }
 
 news_event = { #World News: Japan Ends the Legations
-	id = JAP_LEC_crisis.033
-	immediate = { log = "[GetLogInfo]: event JAP_LEC_crisis.033" }
-	title = JAP_LEC_crisis.033.t
-	desc = JAP_LEC_crisis.033.d
+	id = japan_legations_crisis_events.033
+	immediate = { log = "[GetLogInfo]: event japan_legations_crisis_events.033" }
+	title = japan_legations_crisis_events.033.t
+	desc = japan_legations_crisis_events.033.d
 	picture = GFX_news_event_LEC_asia_diplomacy
 
 	is_triggered_only = yes #Triggered by [EVENT] china_events.452.a, china_events.453.a
@@ -8837,8 +8840,8 @@ news_event = { #World News: Japan Ends the Legations
 	}
 
 	option = {
-		name = JAP_LEC_crisis.033.a #A great triumph for Japan and the Co-Prosperity Sphere!
-		log = "[GetLogInfo]: event JAP_LEC_crisis.033 option JAP_LEC_crisis.033.a"
+		name = japan_legations_crisis_events.033.a #A great triumph for Japan and the Co-Prosperity Sphere!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.033 option japan_legations_crisis_events.033.a"
 		trigger = {
 			OR = {
 				tag = JAP
@@ -8848,16 +8851,16 @@ news_event = { #World News: Japan Ends the Legations
 	}
 
 	option = {
-		name = JAP_LEC_crisis.033.b #Japanese aggression knows no bounds!
-		log = "[GetLogInfo]: event JAP_LEC_crisis.033 option JAP_LEC_crisis.033.b"
+		name = japan_legations_crisis_events.033.b #Japanese aggression knows no bounds!
+		log = "[GetLogInfo]: event japan_legations_crisis_events.033 option japan_legations_crisis_events.033.b"
 		trigger = {
 			has_war_with = JAP
 		}
 	}
 
 	option = {
-		name = JAP_LEC_crisis.033.c #So ends the farce of Legation neutrality...
-		log = "[GetLogInfo]: event JAP_LEC_crisis.033 option JAP_LEC_crisis.033.c"
+		name = japan_legations_crisis_events.033.c #So ends the farce of Legation neutrality...
+		log = "[GetLogInfo]: event japan_legations_crisis_events.033 option japan_legations_crisis_events.033.c"
 		trigger = {
 			NOT = {
 				tag = JAP
@@ -8869,17 +8872,17 @@ news_event = { #World News: Japan Ends the Legations
 }
 
 news_event = { #LEC: Tokyo Leaves the Legations Alone
-	id = JAP_LEC_crisis.034
-	immediate = { log = "[GetLogInfo]: event JAP_LEC_crisis.034" }
-	title = JAP_LEC_crisis.034.t
-	desc = JAP_LEC_crisis.034.d
+	id = japan_legations_crisis_events.034
+	immediate = { log = "[GetLogInfo]: event japan_legations_crisis_events.034" }
+	title = japan_legations_crisis_events.034.t
+	desc = japan_legations_crisis_events.034.d
 
 	picture = GFX_news_event_LEC_asia_diplomacy
 
-	is_triggered_only = yes #Triggered by [EVENT] JAP_LEC_crisis.031
+	is_triggered_only = yes #Triggered by [EVENT] japan_legations_crisis_events.031
 
 	option = {
-		name = JAP_LEC_crisis.034.a #The Legations live to see another day.
+		name = japan_legations_crisis_events.034.a #The Legations live to see another day.
 		ai_chance = { base = 100 }
 	}
 }

@@ -863,7 +863,7 @@ ideas = {
 			allowed = { always = no }
 			modifier = {
 				conscription_factor = 0.1
-				army_org_Factor = 0.05
+				army_morale_factor = 0.1
 			}
 		}
 
@@ -876,27 +876,27 @@ ideas = {
 			}
 		}
 
-		NIC_yank_promise_1 = {
-			on_add = { log = "[GetLogRoot]: add idea NIC_yank_promise_1" }
-			name = NIC_yank_promise_idea
+		NIC_transforming_our_militia_1 = {
+			on_add = { log = "[GetLogRoot]: add idea NIC_transforming_our_militia_1" }
+			name = NIC_transforming_our_militia_idea
 			picture = generic_war_preparation
 			allowed = { always = no }
 			modifier = {
-				land_night_attack = 0.10
-				max_command_power = 10
-				army_defence_factor = 0.05
+				max_planning = 0.05
+				land_night_attack = 0.05
+				max_command_power = 20
 			}
 		}
 
-		NIC_yank_promise_2 = {
-			on_add = { log = "[GetLogRoot]: add idea NIC_yank_promise_2" }
-			name = NIC_yank_promise_idea
+		NIC_transforming_our_militia_2 = {
+			on_add = { log = "[GetLogRoot]: add idea NIC_transforming_our_militia_2" }
+			name = NIC_transforming_our_militia_idea
 			picture = generic_war_preparation
 			allowed = { always = no }
 			modifier = {
-				land_night_attack = 0.15
+				max_planning = 0.1
+				land_night_attack = 0.1
 				max_command_power = 20
-				army_defence_factor = 0.10
 				conscription_factor = 0.05
 			}
 		}

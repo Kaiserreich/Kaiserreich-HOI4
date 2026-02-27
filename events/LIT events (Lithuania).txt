@@ -1080,9 +1080,7 @@ country_event = { # A line in the Neman
 	option = { # No, respect the Kaiser
 		log = "[GetLogInfo]: event lithuania_events.58 option lithuania_events.58.a"
 		name = lithuania_events.58.a
-		hidden_effect = {
-			country_event = { id = lithuania_events.59 days = 14 }
-		}
+		country_event = { id = lithuania_events.59 days = 14 }
 	}
 	option = { # Joint effort
 		log = "[GetLogInfo]: event lithuania_events.58 option lithuania_events.58.b"
@@ -1108,10 +1106,10 @@ country_event = { # Prussian Lithuanians shunned
 		log = "[GetLogInfo]: event lithuania_events.59 option lithuania_events.59.a"
 		name = lithuania_events.59.a
 		add_political_power = 25
-		remove_decision = LIT_knygesiai_memorial
 		set_temp_variable = { LIT_legitimacy_change = -5 }
 		LIT_change_legitimacy = yes
 		clr_country_flag = LIT_ongoing_project
+		remove_targeted_decision = { decision = LIT_knygesiai_memorial target = 189 }
 	}
 }
 country_event = { # Holding hands across the Neman

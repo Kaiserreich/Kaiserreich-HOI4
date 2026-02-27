@@ -348,6 +348,10 @@ country_event = { #FROM demands ROOT submit
 						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKMT }
 						FROM = { china_is_aligned_with_left_kmt = no }
 					}
+					AND = { #check for UPC
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_UPC }
+						FROM = { china_is_aligned_with_federalists = no }
+					}
 					AND = { #check for NPA
 						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NPA }
 						FROM = { NOT = { tag = NPA } }
@@ -600,6 +604,10 @@ country_event = { #FROM demands ROOT submit
 					AND = { #check for LKMT
 						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKMT }
 						FROM = { china_is_aligned_with_left_kmt = yes }
+					}
+					AND = { #check for UPC
+						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_UPC }
+						FROM = { china_is_aligned_with_federalists = no }
 					}
 					AND = { #check for NPA
 						has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NPA }
@@ -1374,6 +1382,10 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKMT }
 								FROM = { china_is_aligned_with_left_kmt = no }
 							}
+							AND = { #check for UPC
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_UPC }
+								FROM = { china_is_aligned_with_federalists = no }
+							}
 							AND = { #check for NPA
 								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NPA }
 								FROM = { NOT = { tag = NPA } }
@@ -1704,6 +1716,10 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_LKMT }
 								FROM = { china_is_aligned_with_left_kmt = yes }
 							}
+							AND = { #check for UPC
+								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_UPC }
+								FROM = { china_is_aligned_with_federalists = no }
+							}
 							AND = { #check for NPA
 								has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NPA }
 								FROM = { tag = NPA }
@@ -1865,6 +1881,29 @@ country_event = { #FROM requests our integration
 			modifier = {
 				FROM = { ROOT = { set_temp_variable = { acceptance = mtth:china_integration_acceptance_chance } } }
 				add = var:acceptance
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						tag = GXC
+						OR = {
+							has_game_rule = { rule = GXC_NPA_path option = GXC_GXC_NPA_PATH_JIAHUA_AUTDEM }
+							has_game_rule = { rule = GXC_NPA_path option = GXC_GXC_NPA_PATH_YAOHAN_PATAUT }
+							has_game_rule = { rule = GXC_NPA_path option = GXC_NPA_PATH_SOCCON }
+							has_game_rule = { rule = GXC_NPA_path option = GXC_NPA_PATH_MARLIB }
+						}
+					}
+					AND = {
+						tag = YUN
+						OR = {
+							has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_PATAUT }
+							has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LONG_YUN_AUTDEM }
+							has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_HU_RUOYU_PATAUT }
+							has_game_rule = { rule = YUN_NPA_path option = YUN_NPA_PATH_LU_HAN_AUTDEM }
+						}
+					}
+				}
 			}
 		}
 		effect_tooltip = { activate_mission = china_integration_timer }
@@ -2549,7 +2588,7 @@ country_event = { #United Front ends
 		dismantle_faction = yes
 		every_other_country = {
 			limit = { has_country_flag = was_in_united_front }
-			set_truce = { target = FROM days = 120 }
+			set_truce = { target = PREV days = 120 }
 			hidden_effect = {
 				every_other_country = {
 					limit = { has_country_flag = was_in_united_front }
@@ -8386,7 +8425,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8404,7 +8443,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8422,7 +8461,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8440,7 +8479,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8458,7 +8497,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8476,7 +8515,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8494,7 +8533,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8512,7 +8551,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8537,7 +8576,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8586,7 +8625,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8604,7 +8643,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8636,7 +8675,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8654,7 +8693,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8672,7 +8711,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8690,7 +8729,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8708,7 +8747,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8726,7 +8765,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8744,7 +8783,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8762,7 +8801,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -8780,7 +8819,7 @@ news_event = {
 	trigger = { wants_world_news = yes } #Global news event
 
 	is_triggered_only = yes
-	fire_for_sender = no
+	fire_for_sender = yes
 	major = yes
 
 	option = {
@@ -10476,7 +10515,7 @@ country_event = { #The Southern Standoff
 	desc = china_events.450.d
 	picture = GFX_report_event_YUN_army
 
-	is_triggered_only = yes ##Triggered by EVENT: league_collapse.106 #Hunan Secedes
+	is_triggered_only = yes ##Triggered by EVENT: league_collapse_events.106 #Hunan Secedes
 
 	option = {
 		log = "[GetLogInfo]: event china_events.450 option china_events.450.a"
@@ -10640,6 +10679,7 @@ country_event = { #A War for the South? [GXC Variant]
 				}
 			}
 		}
+		set_country_flag = CHN_SCW_neutral_flag
 	}
 }
 
@@ -10799,6 +10839,7 @@ country_event = { #A War for the South? [HNN Variant]
 				}
 			}
 		}
+		set_country_flag = CHN_SCW_neutral_flag
 	}
 }
 
@@ -10958,6 +10999,7 @@ country_event = { #A War for the South? [YUN Variant]
 				}
 			}
 		}
+		set_country_flag = CHN_SCW_neutral_flag
 	}
 }
 
@@ -12493,7 +12535,9 @@ country_event = { #Talks with Chinese Monarchists
 				release_chinese_government = yes
 			}
 			var:tag_to_release = {
-				hidden_effect = { clear_potential_national_government = yes }
+				hidden_effect = {
+					clear_potential_national_government = yes
+				}
 				set_cosmetic_tag = united_china_qing
 				set_politics = {
 					ruling_party = social_conservative
@@ -13462,7 +13506,9 @@ country_event = { #The Reformation of the Republic
 				release_chinese_government = yes
 			}
 			var:tag_to_release = {
-				hidden_effect = { clear_potential_national_government = yes }
+				hidden_effect = {
+					clear_potential_national_government = yes
+				}
 				set_politics = {
 					ruling_party = authoritarian_democrat
 					elections_allowed = no

@@ -64,9 +64,10 @@ can_release_914 = { #Cabinda
 	ROOT = {
 		OR = {
 			is_subject = yes
-			540 = { is_claim_or_core_of_ROOT = yes } #Loanda
-			881 = { is_claim_or_core_of_ROOT = yes } #Lower Congo
-			928 = { is_claim_or_core_of_ROOT = yes } #Middle Congo
+			any_state_of = {
+				target = { 540 881 928 } #Loanda, Lower Congo, Middle Congo
+				is_claim_or_core_of_ROOT = yes
+			}
 			540 = { #Loanda
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -196,8 +197,10 @@ can_release_268 = { #Djibouti
 	ROOT = {
 		OR = {
 			is_subject = yes
-			269 = { is_claim_or_core_of_ROOT = yes } #Hargeisa
-			944 = { is_claim_or_core_of_ROOT = yes } #Hararghe
+			any_state_of = {
+				target = { 269 944 } #Hargeisa, Hararghe
+				is_claim_or_core_of_ROOT = yes
+			}
 			annexations_france_can_annex_overseas = yes
 			269 = { #Hargeisa
 				annexations_state_owner_is_valid_grant_target = yes
@@ -351,8 +354,10 @@ can_release_892 = { #Jubaland
 	ROOT = {
 		OR = {
 			is_subject = yes
-			547 = { is_claim_or_core_of_ROOT = yes } #Kenya
-			559 = { is_claim_or_core_of_ROOT = yes } #Mogadishu
+			any_state_of = {
+				target = { 547 559 } #Kenya, Mogadishu
+				is_claim_or_core_of_ROOT = yes
+			}
 			547 = { #Kenya
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -391,8 +396,10 @@ can_release_950 = { #Lourenço Marques
 	ROOT = {
 		OR = {
 			is_subject = yes
-			544 = { is_claim_or_core_of_ROOT = yes } #Moçambique
-			545 = { is_claim_or_core_of_ROOT = yes } #Rhodesia
+			any_state_of = {
+				target = { 544 545 } #Moçambique, Rhodesia
+				is_claim_or_core_of_ROOT = yes
+			}
 			544 = { #Moçambique
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -570,10 +577,22 @@ can_release_906 = { #Ogaden
 	ROOT = {
 		OR = {
 			is_subject = yes
-			original_tag = SOM
-			original_tag = ETH
-			SOM = { ROOT_can_grant_land = yes }
-			ETH = { ROOT_can_grant_land = yes }
+			any_state_of = {
+				target = { 559 934 1094 } #Mogadishu, Hararghe, Bale
+				is_claim_or_core_of_ROOT = yes
+			}
+			559 = { #Mogadishu
+				annexations_state_owner_is_valid_grant_target = yes
+				owner = { ROOT_can_grant_land = yes }
+			}
+			934 = { #Hararghe
+				annexations_state_owner_is_valid_grant_target = yes
+				owner = { ROOT_can_grant_land = yes }
+			}
+			1094 = { #Bale
+				annexations_state_owner_is_valid_grant_target = yes
+				owner = { ROOT_can_grant_land = yes }
+			}
 		}
 	}
 	add_state_to_resistance_target_array = yes
@@ -610,8 +629,10 @@ can_release_699 = { #Rio de Oro
 	ROOT = {
 		OR = {
 			is_subject = yes
-			462 = { is_claim_or_core_of_ROOT = yes } #Marrakesh
-			967 = { is_claim_or_core_of_ROOT = yes } #Adrar
+			any_state_of = {
+				target = { 462 967 } #Marrakesh, Adrar
+				is_claim_or_core_of_ROOT = yes
+			}
 			annexations_spain_can_annex_overseas = yes
 			462 = { #Marrakesh
 				annexations_state_owner_is_valid_grant_target = yes

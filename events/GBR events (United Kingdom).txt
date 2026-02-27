@@ -1798,7 +1798,6 @@ country_event = {
 			limit = {
 				is_french_colonial_claim = yes
 				is_british_colonial_claim = no
-				NOT = { is_core_of = ROOT }
 			}
 			remove_claim_by = ROOT
 			transfer_state_to = NFA
@@ -1807,8 +1806,6 @@ country_event = {
 			every_state = {
 				limit = {
 					is_british_colonial_claim = yes
-					NOT = { is_core_of = owner }
-					NOT = { has_variable = can_integrate_@var:owner }
 					owner = {
 						is_in_faction_with = ROOT
 						NOT = { tag = NFA }
@@ -1817,15 +1814,48 @@ country_event = {
 					if = {
 						limit = { state = 545 } #Rhodesia
 						owner = {
+							NOT = { original_tag = ZIM }
+							NOT = { original_tag = SAF }
+							NOT = { is_subject_of = ZIM }
+							NOT = { is_subject_of = SAF }
+						}
+					}
+					else_if = {
+						limit = { is_south_africa = yes }
+						owner = {
 							NOT = { original_tag = SAF }
 							NOT = { is_subject_of = SAF }
 						}
 					}
 					else_if = {
-						limit = { is_core_of = PNG }
+						limit = {
+							is_canada = yes
+							NOT = { state = 730 } #St. Pierre
+						}
+						owner = {
+							NOT = { tag = CAN }
+							NOT = { is_subject_of = CAN }
+						}
+					}
+					else_if = {
+						limit = { is_new_zealand = yes }
 						owner = {
 							NOT = { original_tag = AST }
+							NOT = { original_tag = NZL }
 							NOT = { is_subject_of = AST }
+							NOT = { is_subject_of = NZL }
+						}
+					}
+					else_if = {
+						limit = {
+							OR = {
+								is_papua = yes
+								is_australia = yes
+							}
+						}
+						owner = {
+							NOT = { original_tag = NZL }
+							NOT = { is_subject_of = NZL }
 						}
 					}
 					else_if = {
@@ -1858,7 +1888,6 @@ country_event = {
 			limit = {
 				is_british_colonial_claim = yes
 				is_french_colonial_claim = no
-				NOT = { is_core_of = ROOT }
 			}
 			remove_claim_by = ROOT
 			transfer_state_to = GBR
@@ -1867,8 +1896,6 @@ country_event = {
 			every_state = {
 				limit = {
 					is_french_colonial_claim = yes
-					NOT = { is_core_of = owner }
-					NOT = { has_variable = can_integrate_@var:owner }
 					owner = {
 						is_in_faction_with = ROOT
 						NOT = { tag = GBR }
@@ -1934,6 +1961,10 @@ state_event = {
 					is_french_colonial_claim = no
 				}
 				else_if = {
+					limit = { ROOT = { original_tag = RAJ } }
+					NOT = { state = 818 } #Pondicherry
+				}
+				else_if = {
 					limit = { ROOT = { CAN_is_dominion = yes } }
 					NOT = { state = 730 }
 				}
@@ -1992,6 +2023,10 @@ state_event = {
 				if = {
 					limit = { ROOT = { original_tag = WIF } }
 					is_french_colonial_claim = no
+				}
+				else_if = {
+					limit = { ROOT = { original_tag = RAJ } }
+					NOT = { state = 818 } #Pondicherry
 				}
 				else_if = {
 					limit = { ROOT = { CAN_is_dominion = yes } }

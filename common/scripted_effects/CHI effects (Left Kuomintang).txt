@@ -1876,7 +1876,10 @@ CHI_recruit_RCA_endgame_advisors_effect = {
 }
 CHI_recruit_PAC_endgame_advisors_effect = {
 	CHI_chen_youren = { CHN_recruit_character_effect = yes }
-	CHI_zhang_bojun = { CHN_recruit_character_effect = yes }
+	if = {
+		limit = { YUN = { NOT = { has_character = CHI_zhang_bojun } } }
+		CHI_zhang_bojun = { CHN_recruit_character_effect = yes }
+	}
 	CHI_he_xiangning = { CHN_recruit_character_effect = yes }
 	CHI_peng_zexiang = { CHN_recruit_character_effect = yes }
 	CHI_zhang_yunchuan = { CHN_recruit_character_effect = yes }
@@ -1919,7 +1922,10 @@ CHI_purge_RCA_advisors_effect = {
 
 CHI_purge_PAC_advisors_effect = {
 	CHI_chen_youren = { CHI_purge_advisors_effect = yes }
-	CHI_zhang_bojun = { CHI_purge_advisors_effect = yes }
+	if = {
+		limit = { YUN = { NOT = { has_character = CHI_zhang_bojun } } }
+		CHI_zhang_bojun = { CHI_purge_advisors_effect = yes }
+	}
 	CHI_he_xiangning = { CHI_purge_advisors_effect = yes }
 	CHI_peng_zexiang = { CHI_purge_advisors_effect = yes }
 	CHI_zhang_yunchuan = { CHI_purge_advisors_effect = yes }

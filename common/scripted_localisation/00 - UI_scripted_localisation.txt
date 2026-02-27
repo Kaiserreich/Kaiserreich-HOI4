@@ -291,21 +291,9 @@ defined_text = {
 	name = unit_limit_reached_floor
 	text = {
 		trigger = {
-			set_temp_variable = { floor = constant:unit_limits.min }
-			check_variable = { uncapped_max_divisions < floor }
+			check_variable = { uncapped_max_divisions < constant:unit_limits.min }
 		}
 		localization_key = unit_limit_reached_floor_desc
-	}
-}
-
-defined_text = {
-	name = unit_limit_reached_ceiling
-	text = {
-		trigger = {
-			set_temp_variable = { ceiling = constant:unit_limits.max }
-			check_variable = { uncapped_max_divisions > ceiling }
-		}
-		localization_key = unit_limit_reached_ceiling_desc
 	}
 }
 
@@ -334,16 +322,6 @@ defined_text = {
 }
 
 defined_text = {
-	name = unit_limit_subject_population_bonus
-	text = {
-		trigger = {
-			NOT = { check_variable = { subject_base_units = 0 } }
-		}
-		localization_key = unit_limit_subject_population_bonus_desc
-	}
-}
-
-defined_text = {
 	name = unit_limit_states
 	text = {
 		localization_key = unit_limit_states_desc
@@ -351,19 +329,56 @@ defined_text = {
 }
 
 defined_text = {
-	name = unit_limit_subject_state_bonus
+	name = unit_limit_factories
 	text = {
 		trigger = {
-			NOT = { check_variable = { subject_states = 0 } }
+			check_variable = { base_factories < 0 }
 		}
-		localization_key = unit_limit_subject_state_bonus_desc
+		localization_key = unit_limit_factories_low_desc
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { base_factories = 0 } }
+		}
+		localization_key = unit_limit_factories_high_desc
 	}
 }
 
 defined_text = {
-	name = unit_limit_factory_count_multiplier
+	name = unit_limit_subject_bonus
 	text = {
-		localization_key = unit_limit_factory_count_multiplier_desc
+		trigger = {
+			NOT = { check_variable = { base_subjects = 0 } }
+		}
+		localization_key = unit_limit_subject_bonus_desc
+	}
+}
+
+#recursive scripted loc
+defined_text = {
+	name = unit_limit_subject_bonus_breakdown
+	text = {
+		trigger = {
+			NOT = { check_variable = { index < subjects^num } } #end loop if past final index
+			set_temp_variable = { index = 0 } #for other loops down the line
+		}
+		localization_key = loc_empty
+	}
+	text = {
+		trigger = { #modifier present, list scope
+			var:subjects^index = {
+				NOT = { check_variable = { divisions_from_subject = 0 } }
+				set_temp_variable = { scope = THIS }
+			}
+			add_to_temp_variable = { index = 1 }
+		}
+		localization_key = unit_limit_subject_bonus_breakdown_desc
+	}
+	text = { #no modifier, move to next index
+		trigger = {
+			add_to_temp_variable = { index = 1 }
+		}
+		localization_key = "[unit_limit_subject_bonus_breakdown]"
 	}
 }
 
@@ -386,7 +401,6 @@ defined_text = {
 	text = {
 		trigger = {
 			is_faction_leader = yes
-			set_temp_variable = { modifier = constant:unit_limits.faction_leader_bonus }
 		}
 		localization_key = unit_limit_faction_leader_desc
 	}
@@ -405,9 +419,6 @@ defined_text = {
 defined_text = {
 	name = unit_limit_base
 	text = {
-		trigger = {
-			set_temp_variable = { base = constant:unit_limits.base }
-		}
 		localization_key = unit_limit_base_desc
 	}
 }
@@ -415,20 +426,46 @@ defined_text = {
 defined_text = {
 	name = unit_limit_economy_law
 	text = {
-		trigger = { has_idea = low_economic_mobilisation }
-		localization_key = unit_limit_low_economic_mobilisation
-	}
-	text = {
-		trigger = { has_idea = partial_economic_mobilisation }
-		localization_key = unit_limit_partial_economic_mobilisation
-	}
-	text = {
-		trigger = { has_idea = war_economy }
-		localization_key = unit_limit_war_economy
-	}
-	text = {
-		trigger = { has_idea = tot_economic_mobilisation }
-		localization_key = unit_limit_tot_economic_mobilisation
+		trigger = {
+			NOT = { check_variable = { modifier@unit_limit_law_bonus = 0 } }
+			if = {
+				limit = { has_idea = undisturbed_isolation }
+				set_temp_variable = { law = token:undisturbed_isolation }
+			}
+			else_if = {
+				limit = { has_idea = isolation }
+				set_temp_variable = { law = token:isolation }
+			}
+			else_if = {
+				limit = { has_idea = civilian_economy }
+				set_temp_variable = { law = token:civilian_economy }
+			}
+			else_if = {
+				limit = { has_idea = low_economic_mobilisation }
+				set_temp_variable = { law = token:low_economic_mobilisation }
+			}
+			else_if = {
+				limit = { has_idea = partial_economic_mobilisation }
+				set_temp_variable = { law = token:partial_economic_mobilisation }
+			}
+			else_if = {
+				limit = { has_idea = war_economy }
+				set_temp_variable = { law = token:war_economy }
+			}
+			else_if = {
+				limit = { has_idea = tot_economic_mobilisation }
+				set_temp_variable = { law = token:tot_economic_mobilisation }
+			}
+			else_if = {
+				limit = { has_idea = FRA_autonomous_communes_default }
+				set_temp_variable = { law = token:FRA_autonomous_communes_default }
+			}
+			else_if = {
+				limit = { has_idea = FRA_autonomous_communes_upgraded }
+				set_temp_variable = { law = token:FRA_autonomous_communes_default } #upgraded uses same loc
+			}
+		}
+		localization_key = unit_limit_economy_law_desc
 	}
 }
 

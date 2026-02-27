@@ -585,7 +585,10 @@ focus_tree = {
 		y = 1
 
 		allow_branch = {
-			has_country_leader = { character = JAP_nosaka_sanzo }
+			OR = {
+				has_country_leader = { character = JAP_nosaka_sanzo }
+				has_country_leader = { character = JAP_miyazaki_ryusuke }
+			}
 		}
 
 		completion_reward = {
@@ -682,7 +685,7 @@ focus_tree = {
 			add_stability = -0.1
 			custom_effect_tooltip = JAP_purge_military_kmt_tt
 			JAP_purge_military_effect = yes
-			LKT = { country_event = { id = CHI.endgame.046 days = 1 } }
+			OVERLORD = { country_event = { id = CHI.endgame.046 days = 1 } }
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -703,7 +706,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed JAP_war_reparations_order"
 			add_timed_idea = {
-				idea = JAP_war_reparations_chi_overlord_idea
+				idea = JAP_war_reparations_overlord_idea
 				days = 720
 			}
 		}
@@ -726,7 +729,8 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed JAP_the_first_stage_of_revolution"
 			add_stability = 0.1
-			add_popularity = { ideology = radical_socialist popularity = 0.05 }
+			set_temp_variable = { ideology_change_var = 0.05 }
+			change_ruling_party_popularity = yes
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -969,7 +973,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed JAP_sino_japanese_study_programme"
 			add_research_slot_until_five = yes
-			CHI = {
+			OVERLORD = {
 				add_timed_idea = {
 					idea = JAP_CHI_sino_japanese_study_programme_idea
 					days = 365
@@ -1018,6 +1022,7 @@ focus_tree = {
 
 		allow_branch = {
 			has_socialist_government = no
+			NOT = { has_country_leader = { character = JAP_miyazaki_ryusuke } }
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed JAP_form_transitional_government"
@@ -1160,7 +1165,7 @@ focus_tree = {
 					limit = {
 						NOT = { has_cosmetic_tag = JAP_republic }
 					}
-					news_event = { id = japan_news.5 days = 1 }
+					news_event = { id = japan_news_events.5 days = 1 }
 				}
 			}
 		}
@@ -1195,13 +1200,6 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed JAP_subject_pol_start_focus"
 			if = {
-				limit = {
-					has_country_flag = JAP_RKMT_puppet_flag
-					NOT = { has_country_flag = JAP_hirohito_abdicated }
-				}
-				activate_advisor = JAP_miyazaki_ryusuke_sic
-			}
-			else_if = {
 				limit = {
 					has_country_flag = JAP_nonKMT_chinese_puppet_flag
 					NOT = { has_country_flag = JAP_hirohito_abdicated }

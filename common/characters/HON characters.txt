@@ -245,7 +245,7 @@ characters = {
 		advisor = {
 			slot = political_advisor
 			idea_token = HON_mariano_bertrand_anduray_advisor
-			available = { has_dictatorship_government = yes }
+			available = { has_socialist_government = no }
 			traits = { KR_industrialiser }
 		}
 	}
@@ -259,7 +259,12 @@ characters = {
 		advisor = {
 			slot = political_advisor
 			idea_token = HON_abraham_williams_calderon_advisor
-			available = { has_dictatorship_government = yes }
+			available = {
+				OR = {
+					has_conservative_government = yes
+					has_dictatorship_government = yes
+				}
+			}
 			traits = { KR_administrative_genius }
 		}
 	}
@@ -273,7 +278,12 @@ characters = {
 		advisor = {
 			slot = political_advisor
 			idea_token = HON_julio_lozano_diaz_advisor
-			available = { has_dictatorship_government = yes }
+			available = {
+				OR = {
+					has_conservative_government = yes
+					has_dictatorship_government = yes
+				}
+			}
 			traits = { KR_resource_industrialist }
 		}
 	}

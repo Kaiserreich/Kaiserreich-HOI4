@@ -1518,13 +1518,6 @@ country_event = { #Demanded to step down
 				autonomy_state = autonomy_free
 			}
 		}
-		if = {
-			limit = { has_subject = HON }
-			custom_effect_tooltip = NIC_HON_break_off
-			HON = { #Honduras breaks off
-				country_event = { id = nicaragua_events.52 days = 1 }
-			}
-		}
 	}
 
 	option = { #No thanks
@@ -1639,8 +1632,6 @@ country_event = { #Clash at the capital
 			add_stability = -0.1
 			add_political_power = -100
 		}
-		NIC_remove_socialist_generals = yes
-		NIC_add_liberal_generals = yes
 		set_country_flag = NIC_liberal_revolution_flag
 	}
 
@@ -1689,7 +1680,6 @@ country_event = { #Clash at the capital
 				popularity = -0.05
 			}
 		}
-
 		set_country_flag = NIC_socialist_revolution_flag
 		NIC_francisco_sequeira_moreno = { set_character_flag = NIC_loyal_to_sandino }
 		set_politics = {
@@ -2173,6 +2163,7 @@ country_event = { #Movement ends up dying out
 		}
 		set_country_flag = NIC_socialist_revolution_flag
 		NIC_francisco_sequeira_moreno = { set_character_flag = NIC_loyal_to_sandino }
+		retire_character = NIC_abelardo_cuadra
 	}
 }
 
@@ -2276,6 +2267,7 @@ country_event = { #Movement ends up dying out
 		}
 		set_country_flag = NIC_socialist_revolution_flag
 		NIC_francisco_sequeira_moreno = { set_character_flag = NIC_loyal_to_sandino }
+		retire_character = NIC_abelardo_cuadra
 	}
 }
 
@@ -2316,10 +2308,16 @@ country_event = { #Stalemate
 			elections_allowed = yes
 		}
 		set_country_flag = NIC_liberal_revolution_flag
-
 		if = {
 			limit = { has_template = "Milicia Sandinista" }
 			delete_unit_template_and_units = { division_template = "Milicia Sandinista" disband = yes }
+		}
+		if = {
+			limit = { has_subject = HON }
+			set_autonomy = {
+				target = HON
+				autonomy_state = autonomy_free
+			}
 		}
 	}
 
@@ -2335,6 +2333,7 @@ country_event = { #Stalemate
 		}
 		set_country_flag = NIC_socialist_revolution_flag
 		NIC_francisco_sequeira_moreno = { set_character_flag = NIC_loyal_to_sandino }
+		retire_character = NIC_abelardo_cuadra
 	}
 }
 
@@ -2377,10 +2376,16 @@ country_event = { #Clash at the capital
 			elections_allowed = yes
 		}
 		set_country_flag = NIC_liberal_revolution_flag
-
 		if = {
 			limit = { has_template = "Milicia Sandinista" }
 			delete_unit_template_and_units = { division_template = "Milicia Sandinista" disband = yes }
+		}
+		if = {
+			limit = { has_subject = HON }
+			set_autonomy = {
+				target = HON
+				autonomy_state = autonomy_free
+			}
 		}
 	}
 
@@ -2401,6 +2406,7 @@ country_event = { #Clash at the capital
 		}
 		set_country_flag = NIC_socialist_revolution_flag
 		NIC_francisco_sequeira_moreno = { set_character_flag = NIC_loyal_to_sandino }
+		retire_character = NIC_abelardo_cuadra
 	}
 }
 

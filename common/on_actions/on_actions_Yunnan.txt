@@ -56,7 +56,10 @@ on_actions = {
 						FROM.FROM = { state = 608 } #Beijing
 					}
 					if = {
-						limit = { tag = RKT }
+						limit = {
+							tag = RKT
+							has_country_leader = { character = YUN_he_yingqin }
+						}
 						country_event = { id = YUN.lategame.400 days = 3 } #The Northern Expedition Avenged
 					}
 					else_if = {

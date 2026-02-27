@@ -283,140 +283,69 @@ NFA_Military_Accords_Harsh = {
 	}
 }
 
-NFA_dynamic_metropole_coring_cost = {
+#State controller scope
+NFA_update_metropole_integration_effects = {
+	PREV = {
+		if = {
+			limit = { has_dynamic_modifier = { modifier = NFA_Communard_Resistance } }
+			remove_dynamic_modifier = { modifier = NFA_Communard_Resistance }
+		}
+	}
 	if = {
 		limit = {
-			FROM = { state_strategic_value > 250 }
-		}
-		ROOT = {
-			set_temp_variable = { a = FROM.state_strategic_value }
-			multiply_temp_variable = { a = 0.2 }
-			clamp_temp_variable = {
-				var = a
-				min = 35
-				max = 300
+			PREV = {
+				state = 16 #Ile-de-France
+				is_capital = no
 			}
-			multiply_temp_variable = { a = -1 }
-			add_political_power = a
-			add_war_support = -0.07
 		}
+		set_capital = { state = 16 remember_old_capital = no }
+		country_event = french_republic_events.524 #Flavour about capital change
 	}
 	else_if = {
 		limit = {
-			FROM = { state_strategic_value > 200 }
-		}
-		ROOT = {
-			set_temp_variable = { a = FROM.state_strategic_value }
-			multiply_temp_variable = { a = 0.225 }
-			clamp_temp_variable = {
-				var = a
-				min = 28
-				max = 250
+			PREV = {
+				state = 21 #Provence
+				is_capital = no
 			}
-			multiply_temp_variable = { a = -1 }
-			add_political_power = a
-			add_war_support = -0.06
+			NOT = { owns_state = 16 } #Ile-de-France
 		}
+		set_capital = { state = 21 remember_old_capital = no }
+		country_event = french_republic_events.525 #Flavour about capital change
+	}
+	set_temp_variable = { NFA_owned_france_states = 0 }
+	set_temp_variable = { NFA_cored_france_states = 0 }
+	for_each_scope_loop = {
+		array = global.france_states_array
+		if = {
+			limit = { is_owned_by = PREV }
+			add_to_temp_variable = { NFA_owned_france_states = 1 }
+		}
+		if = {
+			limit = { is_core_of = PREV }
+			add_to_temp_variable = { NFA_cored_france_states = 1 }
+		}
+	}
+	divide_temp_variable = { NFA_cored_france_states = NFA_owned_france_states }
+	if = {
+		limit = { check_variable = { NFA_cored_france_states = 1 } }
+		clr_country_flag = NFA_reconstruction_active
+	}
+	if = {
+		limit = {
+			has_idea = NFA_communard_influence_1
+			NOT = { check_variable = { NFA_cored_france_states < 0.9 } }
+		}
+		remove_ideas = NFA_communard_influence_1
 	}
 	else_if = {
 		limit = {
-			FROM = { state_strategic_value > 150 }
+			has_idea = NFA_communard_influence_2
+			NOT = { check_variable = { NFA_cored_france_states < 0.5 } }
 		}
-		ROOT = {
-			set_temp_variable = { a = FROM.state_strategic_value }
-			multiply_temp_variable = { a = 0.25 }
-			clamp_temp_variable = {
-				var = a
-				min = 25
-				max = 200
-			}
-			multiply_temp_variable = { a = -1 }
-			add_political_power = a
-			add_war_support = -0.05
+		swap_ideas = {
+			remove_idea = NFA_communard_influence_2
+			add_idea = NFA_communard_influence_1
 		}
-	}
-	else_if = {
-		limit = {
-			FROM = { state_strategic_value > 100 }
-		}
-		ROOT = {
-			set_temp_variable = { a = FROM.state_strategic_value }
-			multiply_temp_variable = { a = 0.275 }
-			clamp_temp_variable = {
-				var = a
-				min = 20
-				max = 150
-			}
-			multiply_temp_variable = { a = -1 }
-			add_political_power = a
-			add_war_support = -0.05
-		}
-	}
-	else_if = {
-		limit = {
-			FROM = { state_strategic_value > 75 }
-		}
-		ROOT = {
-			set_temp_variable = { a = FROM.state_strategic_value }
-			multiply_temp_variable = { a = 0.3 }
-			clamp_temp_variable = {
-				var = a
-				min = 15
-				max = 100
-			}
-			multiply_temp_variable = { a = -1 }
-			add_political_power = a
-			add_war_support = -0.04
-		}
-	}
-	else_if = {
-		limit = {
-			FROM = { state_strategic_value > 50 }
-		}
-		ROOT = {
-			set_temp_variable = { a = FROM.state_strategic_value }
-			multiply_temp_variable = { a = 0.325 }
-			clamp_temp_variable = {
-				var = a
-				min = 13
-				max = 75
-			}
-			multiply_temp_variable = { a = -1 }
-			add_political_power = a
-			add_war_support = -0.03
-		}
-	}
-	else_if = {
-		limit = {
-			FROM = { state_strategic_value > 24 }
-		}
-		ROOT = {
-			set_temp_variable = { a = FROM.state_strategic_value }
-			multiply_temp_variable = { a = 0.375 }
-			clamp_temp_variable = {
-				var = a
-				min = 10
-				max = 50
-			}
-			multiply_temp_variable = { a = -1 }
-			add_political_power = a
-			add_war_support = -0.02
-		}
-	}
-	else_if = {
-		limit = {
-			FROM = { state_strategic_value < 25 }
-		}
-		set_temp_variable = { a = FROM.state_strategic_value }
-		multiply_temp_variable = { a = 0.425 }
-		clamp_temp_variable = {
-			var = a
-			min = 8
-			max = 25
-		}
-		multiply_temp_variable = { a = -1 }
-		add_political_power = a
-		add_war_support = -0.01
 	}
 }
 
@@ -1145,13 +1074,6 @@ NFA_puppet_setup = {
 			set_political_party = {
 				ideology = social_conservative
 				popularity = 60
-			}
-		}
-		if = {
-			limit = { has_completed_focus = NATFRA_Reconstruction_Commission }
-			for_each_scope_loop = {
-				array = global.france_states_array
-				PREV = { activate_targeted_decision = { decision = NFA_Integrate_Metropole target = PREV } }
 			}
 		}
 		if = {

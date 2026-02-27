@@ -16,11 +16,11 @@ characters = {
 		}
 		field_marshal = {
 			desc = NIC_augusto_sandino_army_chief_desc
-			traits = { inspirational_leader trickster guerilla_fighter }
+			traits = { politically_connected inspirational_leader trickster organizer }
 			skill = 3
-			attack_skill = 3
+			attack_skill = 2
 			defense_skill = 2
-			planning_skill = 1
+			planning_skill = 2
 			logistics_skill = 4
 		}
 		advisor = {
@@ -48,10 +48,10 @@ characters = {
 		}
 		corps_commander = {
 			desc = NIC_francisco_sequeira_moreno_commander_desc
-			traits = { trickster guerilla_fighter commando }
+			traits = { light_infantry_officer trait_mountaineer }
 			skill = 2
-			attack_skill = 1
-			defense_skill = 3
+			attack_skill = 3
+			defense_skill = 1
 			planning_skill = 1
 			logistics_skill = 2
 		}
@@ -82,6 +82,7 @@ characters = {
 		}
 		corps_commander = {
 			desc = NIC_emiliano_chamorro_vargas_commander_desc
+			traits = { politically_connected infantry_leader }
 			skill = 2
 			attack_skill = 1
 			defense_skill = 2
@@ -109,8 +110,8 @@ characters = {
 			desc = NIC_anastasio_somoza_garcia_commander_desc
 			skill = 2
 			attack_skill = 2
-			defense_skill = 3
-			planning_skill = 1
+			defense_skill = 2
+			planning_skill = 2
 			logistics_skill = 1
 		}
 	}
@@ -118,29 +119,47 @@ characters = {
 	################
 	### Generals ###
 	################
-	NIC_yank_levy = {
-		name = NIC_yank_levy
+	NIC_francisco_estrada_perez = {
+		name = NIC_francisco_estrada_perez
 		portraits = {
 			army = {
-				small = GFX_portrait_NIC_yank_levy_army_small
-				large = GFX_portrait_NIC_yank_levy_army_large
+				small = GFX_portrait_NIC_francisco_estrada_perez_army_small
+				large = GFX_portrait_NIC_francisco_estrada_perez_army_large
 			}
 		}
 		corps_commander = {
-			desc = NIC_yank_levy_high_command_desc
-			traits = { trickster commando camouflage_expert guerilla_fighter }
+			desc = NIC_francisco_estrada_perez_commander_desc
+			traits = { militias_officer organizer skilled_staffer }
 			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 1
+		}
+	}
+	NIC_jose_santos_lopez = {
+		name = NIC_jose_santos_lopez
+		portraits = {
+			army = {
+				small = GFX_portrait_NIC_jose_santos_lopez_army_small
+				large = GFX_portrait_NIC_jose_santos_lopez_army_large
+			}
+		}
+		corps_commander = {
+			desc = NIC_jose_santos_lopez_commander_desc
+			traits = { militias_officer rising_star }
+			skill = 1
 			attack_skill = 1
 			defense_skill = 1
-			planning_skill = 2
-			logistics_skill = 3
+			planning_skill = 1
+			logistics_skill = 1
 		}
 		advisor = {
-			slot = high_command
-			idea_token = NIC_yank_levy_high_command
-			ledger = army
-			traits = { KR_MHC_commando_2 }
-			cost = 100
+			slot = political_advisor
+			idea_token = NIC_jose_santos_lopez_advisor
+			desc = NIC_jose_santos_lopez_commander_desc
+			available = { has_socialist_government = yes }
+			traits = { KR_reformist_soldier }
 		}
 	}
 	NIC_abelardo_cuadra = {
@@ -153,6 +172,7 @@ characters = {
 		}
 		corps_commander = {
 			desc = NIC_abelardo_cuadra_commander_desc
+			traits = { infantry_officer }
 			skill = 2
 			attack_skill = 2
 			defense_skill = 2
@@ -212,21 +232,6 @@ characters = {
 			idea_token = NIC_jose_pedro_zepeda_advisor
 			available = { has_socialist_government = yes }
 			traits = { KR_political_protege }
-		}
-	}
-
-	NIC_santos_lopez = {
-		name = NIC_santos_lopez
-		portraits = {
-			civilian = {
-				small = GFX_portrait_NIC_santos_lopez_civilian_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = NIC_santos_lopez_advisor
-			available = { has_socialist_government = yes }
-			traits = { KR_reformist_soldier }
 		}
 	}
 

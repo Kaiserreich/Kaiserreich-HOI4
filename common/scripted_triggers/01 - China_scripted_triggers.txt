@@ -838,37 +838,39 @@ CHN_has_civil_war_prep_trigger = {
 
 KMT_FROM_has_compatible_government_trigger = {
 	#Remember this is scoped to FROM
+	has_socialist_government = no
 	is_monarchy = no
 	is_subject = no #To prevent RKMT from having too easy of a time, all of these tags need to be independent and fully decolonized.
 	#South East Asia
 	if = {
-		limit = { tag = BRM }
-		NOT = { ROOT = { is_ally_with = SIA } } #Burma won't ally with KMT if they are allied with Siam
+		limit = { original_tag = BRM }
 		OR = {
 			has_elected_government = yes
 			has_government = paternal_autocrat
 		}
+		NOT = {
+			any_country_with_original_tag = {
+				original_tag_to_check = SIA
+				is_ally_with = ROOT
+			}
+		}
 	}
 	else_if = {
-		limit = { tag = PHI }
-		always = yes
-	}
-	else_if = {
-		limit = { tag = INS }
+		limit = { original_tag = INS }
 		has_country_leader = { character = INS_sukarno }
 	}
 	else_if = {
 		limit = {
 			OR = {
-				tag = VIN
-				tag = INC
+				original_tag = VIN
+				original_tag = INC
 			}
 		}
 		INC_has_VNQDD_government_trigger = yes
 	}
 	#Middle East
 	else_if = {
-		limit = { tag = TUR }
+		limit = { original_tag = TUR }
 		OR = {
 			has_country_leader = { character = TUR_ismet_inonu }
 			has_country_leader = { character = TUR_mehmet_recep_peker }
@@ -1370,5 +1372,30 @@ CHN_puppet_has_potential_chinese_allies_trigger = {
 		CHN_puppet_has_potential_chinese_pro_japanese_allies_trigger = yes
 		CHN_puppet_has_potential_chinese_federalist_allies_trigger = yes
 		CHN_puppet_has_potential_chinese_revolutionary_allies_trigger = yes
+	}
+}
+
+CHN_south_china_war_over_trigger = {
+	custom_override_tooltip = {
+		tooltip = china_south_china_war_over_tt
+		has_global_flag = CHN_south_china_war_started
+		GXC = {
+			NOT = {
+				has_war_with = HNN
+				has_war_with = YUN
+			}
+		}
+		HNN = {
+			NOT = {
+				has_war_with = GXC
+				has_war_with = YUN
+			}
+		}
+		YUN = {
+			NOT = {
+				has_war_with = GXC
+				has_war_with = HNN
+			}
+		}
 	}
 }

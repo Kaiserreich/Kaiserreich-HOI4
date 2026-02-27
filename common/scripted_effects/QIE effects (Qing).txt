@@ -1448,6 +1448,12 @@ QIE_sun_liren_flees_effect = {
 			QIE = {
 				random_unit_leader = {
 					limit = { is_character = ANQ_sun_liren }
+					set_portraits = {
+						army = {
+							large = GFX_portrait_ANQ_sun_liren_army_large_kuomintang
+							small = GFX_portrait_ANQ_sun_liren_army_small_kuomintang
+						}
+					}
 					add_unit_leader_trait = CHN_RKT_officer_trait
 					set_nationality = GXC
 					unit_leader_event = qing_flavour_events.14

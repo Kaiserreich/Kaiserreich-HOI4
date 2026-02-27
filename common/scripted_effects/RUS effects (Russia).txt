@@ -596,7 +596,6 @@ RUS_change_projection = {
 RUS_clear_savinkov_city_renames = {
 	clr_global_flag = konigsberg_renamed_savinkov
 	clr_global_flag = rybinsk_renamed_savinkov
-	clr_global_flag = allenstein_renamed_savinkov
 	clr_global_flag = ivanovovznesensk_renamed_savinkov
 	clr_global_flag = novonikolayevsk_renamed
 
@@ -3291,15 +3290,6 @@ RUS_maximalist_bonuses = {
 			RUS_maximalist_suspicion = yes
 		}
 		RUS_change_maximalist_influence_spirit = yes
-	}
-}
-
-RUS_decrease_maximalist_focus_variable = {
-	if = {
-		limit = {
-			check_variable = { RUS_maximalist_focuses > 0 }
-		}
-		add_to_variable = { RUS_maximalist_focuses = -1 }
 	}
 }
 

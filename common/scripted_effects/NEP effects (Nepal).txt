@@ -135,6 +135,9 @@ NEP_puppet_setup = {
 			}
 		}
 
+		### disable Indian Nightmare decisions ###
+		NEP_disable_indian_nightmare_decisions = yes
+
 		### if NatPop, rename the slot to Rana Dynasty ###
 		if = {
 			limit = { has_government = national_populist }
@@ -241,7 +244,7 @@ NEP_puppet_setup = {
 		if = {
 			limit = { has_completed_focus = NEP_protection_of_nepalese_independence }
 			uncomplete_national_focus = {
-				focus = ARM_safeguard_our_independence
+				focus = NEP_protection_of_nepalese_independence
 				uncomplete_children = yes
 			}
 		}
@@ -365,4 +368,12 @@ NEP_conspiracy_rng_effect = {
 			}
 		}
 	}
+}
+
+NEP_disable_indian_nightmare_decisions = {
+	remove_targeted_decision = { decision = NEP_pilfer_the_depots target = THIS }
+	remove_targeted_decision = { decision = NEP_emergency_military_production target = THIS }
+	remove_targeted_decision = { decision = NEP_retreat_to_kathmandu target = THIS }
+	remove_targeted_decision = { decision = NEP_fortify_uttaranchal target = 814 }
+	remove_targeted_decision = { decision = NEP_fortify_darjeeling target = 887 }
 }

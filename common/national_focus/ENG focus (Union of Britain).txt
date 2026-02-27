@@ -161,16 +161,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ENG_devolution"
 			hidden_effect = {
-				SCO = {
-					add_state_core = 133
-					add_state_core = 121
-					add_state_core = 136
-					add_state_core = 120
-					add_state_core = 938
+				every_state = {
+					limit = { is_scotland = yes }
+					add_core_of = SCO
 				}
-				WLS = {
-					add_state_core = 122
-					add_state_core = 957
+				every_state = {
+					limit = { is_wales = yes }
+					add_core_of = WLS
 				}
 				release = WLS
 				release = SCO
@@ -303,7 +300,7 @@ focus_tree = {
 							prioritize_location = 6300
 						}
 					}
-					133 = { #Lanark
+					133 = { #Strathclyde
 						create_unit = {
 							division = "name = \"Glasgow Militia\" division_template = \"Home Defence Garrison\" start_experience_factor = 0.1"
 							owner = PREV
@@ -2656,27 +2653,17 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ENG_aviation_unions"
-			123 = {
-				if = {
-					limit = { is_owned_by = ENG }
-					add_building_construction = {
-						type = air_base
-						level = 2
-						instant_build = yes
-					}
+			every_core_state = {
+				display_individual_scopes = yes
+				limit = {
+					air_base > 0
+					free_building_slots = { building = air_base size > 1 }
+					is_owned_and_controlled_by = ROOT
 				}
-			}
-			129 = {
-				if = {
-					limit = {
-						is_owned_by = ENG
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = air_base
-						level = 2
-						instant_build = yes
-					}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
 				}
 			}
 		}
@@ -2704,30 +2691,17 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ENG_expand_air_unions"
-			132 = {
-				if = {
-					limit = {
-						is_owned_by = ENG
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = air_base
-						level = 2
-						instant_build = yes
-					}
+			every_core_state = {
+				display_individual_scopes = yes
+				limit = {
+					air_base > 0
+					free_building_slots = { building = air_base size > 1 }
+					is_owned_and_controlled_by = ROOT
 				}
-			}
-			122 = {
-				if = {
-					limit = {
-						is_owned_by = ENG
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = air_base
-						level = 2
-						instant_build = yes
-					}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
 				}
 			}
 		}

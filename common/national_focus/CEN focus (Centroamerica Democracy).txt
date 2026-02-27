@@ -2732,7 +2732,29 @@ focus_tree = {
 				remove_idea = CENdem_Incompetent_Army
 			}
 			if = {
+				limit = { has_land_grand_doctrine = no }
+				set_grand_doctrine = grand_battleplan
+				set_sub_doctrine = large_unit_tactics
+			}
+			else = {
+				if = {
+					limit = { has_subdoctrine_in_track = infantry }
+					army_experience = 50
+				}
+				else = {
+					army_experience = 25
+					set_sub_doctrine = large_unit_tactics
+				}
+			}
+			add_daily_mastery = {
+				name = CENdem_federalised_army
+				amount = 0.5
+				days = 200
+				track = infantry
+			}
+			if = {
 				limit = { is_faction_leader = yes }
+				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = COS_DUTY_TT
 			}
 		}
@@ -2833,7 +2855,7 @@ focus_tree = {
 			army_experience = 50
 			add_mastery_bonus = {
 				name = CENdem_joint_comman_leaders
-				bonus = 0.1
+				bonus = 0.15
 				days = 365
 				folder = land
 			}
@@ -2866,7 +2888,7 @@ focus_tree = {
 	focus = {
 		id = CENdem_long_term_planning
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		cost = 5
+		cost = 7
 
 		relative_position_id = CENdem_federalised_army
 		x = 0
@@ -2944,7 +2966,7 @@ focus_tree = {
 	focus = {
 		id = CENdem_the_central_american_task_force
 		icon = GFX_focus_generic_little_entente
-		cost = 4
+		cost = 5
 
 		relative_position_id = CENdem_federalised_army
 		x = 5
@@ -2964,9 +2986,30 @@ focus_tree = {
 				add_idea = CENdem_preparing_a_task_force
 				remove_idea = CENdem_Incompetent_Army
 			}
-			army_experience = 50
+			if = {
+				limit = { has_land_grand_doctrine = no }
+				set_grand_doctrine = grand_battleplan
+				set_sub_doctrine = large_unit_tactics
+			}
+			else = {
+				if = {
+					limit = { has_subdoctrine_in_track = infantry }
+					army_experience = 50
+				}
+				else = {
+					army_experience = 25
+					set_sub_doctrine = large_unit_tactics
+				}
+			}
+			add_daily_mastery = {
+				name = CENdem_the_central_american_task_force
+				amount = 0.5
+				days = 200
+				track = infantry
+			}
 			if = {
 				limit = { is_faction_leader = yes }
+				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = COS_DUTY_TT
 			}
 		}
@@ -3013,11 +3056,18 @@ focus_tree = {
 					remove_idea = CENdem_preparing_a_task_force_1_0_1
 				}
 			}
-			add_mastery_bonus = {
+			if = {
+				limit = { has_subdoctrine_in_track = operations }
+				army_experience = 20
+			}
+			else = {
+				set_sub_doctrine = mission_type_tactics
+			}
+			add_daily_mastery = {
 				name = CENdem_autonomy_don_the_command_chain
-				bonus = 0.1
-				days = 365
-				folder = land
+				amount = 0.5
+				days = 200
+				track = operations
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH }
@@ -3126,7 +3176,7 @@ focus_tree = {
 	focus = {
 		id = CENdem_the_best_of_the_best
 		icon = GFX_goal_generic_CAS
-		cost = 5
+		cost = 7
 
 		relative_position_id = CENdem_federalised_army
 		x = 5
@@ -3261,7 +3311,7 @@ focus_tree = {
 	focus = {
 		id = CENdem_swiftness_is_key
 		icon = GFX_goal_doctrine_tank_warfare
-		cost = 5
+		cost = 6
 
 		relative_position_id = CENdem_federalised_army
 		x = 4
@@ -3275,6 +3325,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENdem_swiftness_is_key"
 			add_ideas = CENdem_swiftness_training
+			custom_effect_tooltip = tooltip_white_line
+			add_daily_mastery = {
+				name = CENdem_swiftness_is_key
+				amount = 0.4
+				days = 200
+				track = armor
+			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -3330,9 +3387,30 @@ focus_tree = {
 				add_idea = CENdem_republican_armies
 				remove_idea = CENdem_Incompetent_Army
 			}
-			army_experience = 50
+			if = {
+				limit = { has_land_grand_doctrine = no }
+				set_grand_doctrine = grand_battleplan
+				set_sub_doctrine = large_unit_tactics
+			}
+			else = {
+				if = {
+					limit = { has_subdoctrine_in_track = infantry }
+					army_experience = 50
+				}
+				else = {
+					army_experience = 25
+					set_sub_doctrine = large_unit_tactics
+				}
+			}
+			add_daily_mastery = {
+				name = CENdem_the_central_american_task_force
+				amount = 0.5
+				days = 200
+				track = infantry
+			}
 			if = {
 				limit = { is_faction_leader = yes }
+				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = COS_DUTY_TT
 			}
 		}
@@ -3412,14 +3490,20 @@ focus_tree = {
 		ai_will_do = { factor = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENdem_inter_republican_war_plan_simulations"
-			army_experience = 50
-			add_research_slot_until_five = yes
-			add_mastery_bonus = {
-				name = CENdem_inter_republican_war_plan_simulations
-				bonus = 0.1
-				days = 365
-				folder = land
+			if = {
+				limit = { has_subdoctrine_in_track = operations }
+				army_experience = 30
 			}
+			else = {
+				set_sub_doctrine = grand_assault
+			}
+			add_daily_mastery = {
+				name = CENdem_inter_republican_war_plan_simulations
+				amount = 0.5
+				days = 200
+				track = operations
+			}
+			add_research_slot_until_five = yes
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_XP }
 	}
@@ -3506,6 +3590,8 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENdem_military_parades"
 			country_event = central_america_democratic_events.241
+			custom_effect_tooltip = which_has_the_following_effect
+			event_option_tooltip = central_america_democratic_events.241.a
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -3552,6 +3638,12 @@ focus_tree = {
 				add_idea = CENdem_republican_armies_4
 				remove_idea = CENdem_republican_armies_3
 			}
+			add_mastery_bonus = {
+				name = CENdem_a_most_loyal_army_to_the_confederation
+				bonus = 0.1
+				days = 365
+				folder = land
+			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -3582,8 +3674,14 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENdem_propose_naval_ventures"
-			navy_experience = 50
 			add_ideas = CENdem_expanding_our_navy
+			custom_effect_tooltip = tooltip_white_line
+			add_doctrine_cost_reduction = {
+				name = CENdem_propose_naval_ventures
+				cost_reduction = 0.5
+				uses = 2
+				category = naval_doctrine
+			}
 		}
 		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_INDUSTRY }
 	}
@@ -3637,15 +3735,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENdem_next_generation_of_naval_officers"
+			navy_experience = 50
 			swap_ideas = {
 				remove_idea = CENdem_expanding_our_navy
 				add_idea = CENdem_expanding_our_navy_2
-			}
-			add_mastery_bonus = {
-				name = CENdem_next_generation_of_naval_officers
-				bonus = 0.1
-				days = 365
-				folder = naval
 			}
 		}
 		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_RESEARCH }
@@ -3708,12 +3801,19 @@ focus_tree = {
 			}
 			else = {
 				add_ideas = CENdem_convoy_protection_tactics_a
+				custom_effect_tooltip = tooltip_white_line
 			}
 			add_tech_bonus = {
 				name = CENdem_convoy_defence_fleet
 				bonus = 1
 				uses = 1
 				category = dd_tech
+			}
+			add_tech_bonus = {
+				name = CENdem_convoy_defence_fleet
+				bonus = 1
+				uses = 1
+				category = asw_tech
 			}
 		}
 		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_RESEARCH }
@@ -3749,12 +3849,19 @@ focus_tree = {
 			}
 			else = {
 				add_ideas = CENdem_convoy_protection_tactics_b
+				custom_effect_tooltip = tooltip_white_line
 			}
 			add_tech_bonus = {
 				name = CENdem_sea_lane_patrols
 				bonus = 1
 				uses = 1
 				category = ca_tech
+			}
+			add_tech_bonus = {
+				name = CENdem_sea_lane_patrols
+				bonus = 1
+				uses = 1
+				category = naval_artillery
 			}
 		}
 		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_RESEARCH }
@@ -4131,6 +4238,13 @@ focus_tree = {
 				}
 				progress = 0.4
 			}
+			custom_effect_tooltip = tooltip_white_line
+			add_mastery_bonus = {
+				name = CENdem_flagship_designs
+				bonus = 0.15
+				days = 365
+				folder = naval
+			}
 		}
 		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_RESEARCH }
 	}
@@ -4156,7 +4270,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENdem_airplane_trials"
-			air_experience = 25
+			air_experience = 35
 			if = {
 				limit = { has_dlc_bba = yes }
 				if = {
@@ -4347,11 +4461,11 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENdem_ace_pilot_initiative"
 			add_ideas = CENcem_prestigious_pilots
-			add_mastery_bonus = {
+			add_doctrine_cost_reduction = {
 				name = CENdem_ace_pilot_initiative
-				bonus = 0.1
-				days = 365
-				folder = air
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
 			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIRFORCE_BONUS }
@@ -4404,6 +4518,12 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = CENcem_prestigious_pilots
 				add_idea = CENcem_well_trained_pilots
+			}
+			add_mastery_bonus = {
+				name = CENdem_dogfight_training
+				bonus = 0.15
+				days = 365
+				folder = air
 			}
 		}
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }

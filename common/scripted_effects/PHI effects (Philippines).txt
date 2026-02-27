@@ -689,21 +689,21 @@ PHI_1939_election_outcome_effect = {
 	#Decide who wins the actual election first
 	if = {
 		limit = {
-			has_game_rule = { rule = PHI_PATH option = PHI_PATH_MARLIB }
+			has_game_rule = { rule = PHI_path option = PHI_PATH_MARLIB }
 		}
 		custom_effect_tooltip = PHI_gamerules_were_set_tt
 		PHI = { country_event = philippines_political_events.200 } #President Quezon Cruises to Reelection
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = PHI_PATH option = PHI_PATH_ROXAS_AUTDEM }
+			has_game_rule = { rule = PHI_path option = PHI_PATH_ROXAS_AUTDEM }
 		}
 		custom_effect_tooltip = PHI_gamerules_were_set_tt
 		PHI = { country_event = philippines_political_events.300 } #Roxas and the Elite reassert Control
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = PHI_PATH option = PHI_PATH_SOCLIB }
+			has_game_rule = { rule = PHI_path option = PHI_PATH_SOCLIB }
 			has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_GER }
 		}
 		custom_effect_tooltip = PHI_gamerules_were_set_tt
@@ -711,7 +711,7 @@ PHI_1939_election_outcome_effect = {
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = PHI_PATH option = PHI_PATH_AGUINALDO_AUTDEM }
+			has_game_rule = { rule = PHI_path option = PHI_PATH_AGUINALDO_AUTDEM }
 			has_game_rule = { rule = PHI_FORPOL option = PHI_FORPOL_JAP }
 		}
 		custom_effect_tooltip = PHI_gamerules_were_set_tt
@@ -719,7 +719,7 @@ PHI_1939_election_outcome_effect = {
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = PHI_PATH option = PHI_PATH_SYNDIE }
+			has_game_rule = { rule = PHI_path option = PHI_PATH_SYNDIE }
 			PHI_forpol_gamerule_needs_IND_trigger = yes
 		}
 		custom_effect_tooltip = PHI_gamerules_were_set_tt

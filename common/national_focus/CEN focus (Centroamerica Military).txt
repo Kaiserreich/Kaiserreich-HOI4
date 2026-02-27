@@ -1976,7 +1976,7 @@ focus_tree = {
 	focus = {
 		id = CENmil_army_investments
 		icon = GFX_goal_generic_axis_build_infantry
-		cost = 5
+		cost = 6
 
 		x = 40
 		y = 0
@@ -1990,16 +1990,36 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_army_investments"
-			army_experience = 35
+			if = {
+				limit = { has_land_grand_doctrine = no }
+				set_grand_doctrine = grand_battleplan
+				set_sub_doctrine = large_unit_tactics
+			}
+			else = {
+				if = {
+					limit = { has_subdoctrine_in_track = infantry }
+					army_experience = 50
+				}
+				else = {
+					army_experience = 25
+					set_sub_doctrine = large_unit_tactics
+				}
+			}
+			add_daily_mastery = {
+				name = CENmil_army_investments
+				amount = 0.5
+				days = 200
+				track = infantry
+			}
 		}
-		search_filters = { FOCUS_FILTER_ARMY_XP }
+		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_ARMY_BONUS }
 	}
 
 	## Warfare with European Characteristics ##
 	focus = {
 		id = CENmil_army_european
 		icon = GFX_focus_chi_army_reform
-		cost = 5
+		cost = 6
 
 		relative_position_id = CENmil_army_investments
 		x = -4
@@ -2020,7 +2040,20 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_army_european"
+			if = {
+				limit = { has_subdoctrine_in_track = operations }
+				army_experience = 25
+			}
+			else = {
+				set_sub_doctrine = grand_assault
+			}
 			add_ideas = CENmil_european_doctrine
+			add_daily_mastery = {
+				name = CENmil_army_european
+				amount = 0.5
+				days = 200
+				track = operations
+			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER FOCUS_FILTER_RESEARCH }
 	}
@@ -2047,6 +2080,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_standardised_equipment"
 			add_ideas = CENmil_better_equipment
+			custom_effect_tooltip = tooltip_white_line
 			add_tech_bonus = {
 				name = CENmil_standardised_equipment
 				bonus = 1
@@ -2167,7 +2201,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_chain_command"
-			army_experience = 10
 			swap_ideas = {
 				add_idea = CENmil_chain_command_idea
 				remove_idea = CENmil_european_doctrine
@@ -2229,7 +2262,13 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_border_exercises"
-			army_experience = 50
+			army_experience = 25
+			add_mastery_bonus = {
+				name = CENmil_border_exercises
+				bonus = 0.1
+				days = 365
+				folder = land
+			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH }
 	}
@@ -2502,7 +2541,7 @@ focus_tree = {
 	focus = {
 		id = CENmil_army_ca
 		icon = GFX_goal_generic_army_cooperation
-		cost = 5
+		cost = 6
 
 		relative_position_id = CENmil_army_investments
 		x = 4
@@ -2523,14 +2562,21 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_army_ca"
-			add_mastery_bonus = {
+			if = {
+				limit = { has_subdoctrine_in_track = operations }
+				army_experience = 35
+			}
+			else = {
+				set_sub_doctrine = infiltration_tactics
+			}
+			add_daily_mastery = {
 				name = CENmil_army_ca
-				bonus = 0.1
-				days = 365
-				folder = land
+				amount = 0.7
+				days = 150
+				track = operations
 			}
 		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH }
 	}
 
 	focus = {
@@ -2583,6 +2629,13 @@ focus_tree = {
 			enable_tech_ski_infantry = yes
 			custom_effect_tooltip = tooltip_white_line
 			enable_tech_jungle_warfare = yes
+			custom_effect_tooltip = tooltip_white_line
+			add_mastery_bonus = {
+				name = CENmil_adapt_terrain
+				bonus = 0.1
+				days = 365
+				folder = land
+			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -2794,6 +2847,13 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed CENmil_military_with_a_state"
 			add_war_support = 0.2
 			add_ideas = CENmil_powerful_military
+			custom_effect_tooltip = tooltip_white_line
+			add_mastery_bonus = {
+				name = CENmil_military_with_a_state
+				bonus = 0.1
+				days = 365
+				folder = land
+			}
 		}
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -2803,7 +2863,7 @@ focus_tree = {
 	focus = {
 		id = CENmil_faca
 		icon = GFX_goal_continuous_air_production
-		cost = 6
+		cost = 7
 
 		x = 49
 		y = 0
@@ -2818,6 +2878,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_faca"
 			air_experience = 50    ### Maybe add a flavour event
+			add_doctrine_cost_reduction = {
+				name = CENmil_faca
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}
 		}
 		search_filters = { FOCUS_FILTER_AIR_XP }
 	}
@@ -2844,11 +2910,11 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_air_lads"
 			air_experience = 25
-			add_mastery_bonus = {
-				name = CENmil_air_lads
-				bonus = 0.1
-				days = 365
-				folder = air
+			add_daily_mastery = {
+				name = CENmil_protecc_sky
+				amount = 0.5
+				days = 200
+				track = fighter_aircraft
 			}
 			custom_effect_tooltip = tooltip_white_line
 			add_ideas = CENmil_air_officers
@@ -3373,6 +3439,12 @@ focus_tree = {
 				add_idea = CENmil_air_officers2
 				remove_idea = CENmil_air_officers
 			}
+			add_mastery_bonus = {
+				name = CENmil_protecc_sky
+				bonus = 0.15
+				days = 365
+				folder = air
+			}
 		}
 		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIRFORCE_BONUS }
 	}
@@ -3534,7 +3606,7 @@ focus_tree = {
 	focus = {
 		id = CENmil_fnca
 		icon = GFX_goal_continuous_naval_production
-		cost = 6
+		cost = 7
 
 		relative_position_id = CENmil_faca
 		x = 4
@@ -3550,8 +3622,14 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_fnca"
 			navy_experience = 50 ### maybe a flavour event in addition
+			add_doctrine_cost_reduction = {
+				name = CENmil_fnca
+				cost_reduction = 0.5
+				uses = 2
+				category = naval_doctrine
+			}
 		}
-		search_filters = { FOCUS_FILTER_NAVY_XP }
+		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_RESEARCH }
 	}
 
 	focus = {
@@ -3961,11 +4039,11 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_naval_lads"
 			navy_experience = 25
-			add_mastery_bonus = {
+			add_daily_mastery = {
 				name = CENmil_naval_lads
-				bonus = 0.1
-				days = 365
-				folder = naval
+				amount = 0.5
+				days = 200
+				track = screens
 			}
 			custom_effect_tooltip = tooltip_white_line
 			add_ideas = CENmil_naval_officers
@@ -4036,6 +4114,12 @@ focus_tree = {
 			swap_ideas = {
 				add_idea = CENmil_naval_officers2
 				remove_idea = CENmil_naval_officers
+			}
+			add_mastery_bonus = {
+				name = CENmil_dual_sea_protecc
+				bonus = 0.15
+				days = 365
+				folder = naval
 			}
 		}
 		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_RESEARCH FOCUS_FILTER_WAR_SUPPORT }

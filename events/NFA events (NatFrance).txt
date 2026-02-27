@@ -3729,7 +3729,7 @@ country_event = { # France accepts deal
 		add_political_power = 50
 		set_truce = { target = NFA days = 400 }
 		set_country_flag = { flag = Truce_with_GER value = 1 days = 400 }
-		hidden_effect = { news_event = worldnews.478 }
+		hidden_effect = { news_event = world_news_events.478 }
 		if = {
 			limit = {
 				has_global_flag = NFA_peace_deal_5
@@ -4521,12 +4521,16 @@ country_event = { #AI NFA will declare war! - CAN Player POV
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.140 option french_republic_events.140.a"
 		name = french_republic_events.140.a #They are right, let them declare war!
+		hidden_effect = {
+			FRA = { country_event = french_republic_events.110 }
+		}
 	}
 
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.140 option french_republic_events.140.b"
 		name = french_republic_events.140.b #Stop it! now is not the time
-		NFA = { remove_decision = NFA_La_Lutte_Finale }
+		custom_effect_tooltip = NFA_delay_la_lutte_finale_for_60_days
+		FROM = { set_country_flag = NFA_delay_la_lutte_finale }
 	}
 }
 

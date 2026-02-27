@@ -3,7 +3,7 @@
 ###########################
 
 add_namespace = brazil_events
-add_namespace = brazil_news
+add_namespace = brazil_news_events
 
 ### PRE-ELECTION EVENTS
 
@@ -851,7 +851,7 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = { id = brazil_events.254 days = 200 }
-			news_event = { id = brazil_news.1 days = 2 }
+			news_event = { id = brazil_news_events.1 days = 2 }
 		}
 	}
 }
@@ -887,7 +887,7 @@ country_event = {
 		add_to_coalition = yes
 		hidden_effect = {
 			BRA_add_getulio_country_leader_role = yes
-			news_event = { id = brazil_news.1 days = 2 }
+			news_event = { id = brazil_news_events.1 days = 2 }
 		}
 	}
 }
@@ -922,7 +922,7 @@ country_event = {
 		effect_tooltip = { remove_unit_leader_role = { character = BRA_luis_carlos_prestes } }
 		hidden_effect = {
 			BRA_add_getulio_country_leader_role = yes
-			news_event = { id = brazil_news.1 days = 2 }
+			news_event = { id = brazil_news_events.1 days = 2 }
 			country_event = { id = brazil_events.100 days = 30 random_days = 6 }
 			country_event = { id = brazil_events.24 days = 75 random_days = 15 }
 			country_event = { id = brazil_events.101 days = 190 random_days = 15 }
@@ -967,7 +967,7 @@ country_event = {
 		add_to_coalition = yes
 		hidden_effect = {
 			BRA_add_getulio_country_leader_role = yes
-			news_event = { id = brazil_news.1 days = 2 }
+			news_event = { id = brazil_news_events.1 days = 2 }
 		}
 	}
 }
@@ -2551,7 +2551,7 @@ country_event = {
 			}
 			add_civil_war_target = GOY
 
-			news_event = { id = brazil_news.7 days = 2 }
+			news_event = { id = brazil_news_events.7 days = 2 }
 			URG = { country_event = { id = uruguay_events.62 days = 2 } }
 		}
 	}
@@ -2602,7 +2602,7 @@ country_event = {
 				ideology = national_populist
 				popularity = 0
 			}
-			news_event = brazil_news.9
+			news_event = brazil_news_events.9
 		}
 		annex_country = {
 			target = GOY
@@ -2687,7 +2687,7 @@ country_event = {
 				drop_cosmetic_tag = yes
 				every_core_state = { remove_core_of = PREV }
 			}
-			news_event = brazil_news.8
+			news_event = brazil_news_events.8
 		}
 	}
 }
@@ -5468,7 +5468,7 @@ country_event = {
 			mark_focus_tree_layout_dirty = yes
 			BRA_remove_old_vargas_ideas = yes
 			country_event = { id = brazil_events.300 days = 7 random_days = 3 }
-			news_event = { id = brazil_news.2 days = 2 }
+			news_event = { id = brazil_news_events.2 days = 2 }
 			URG = { country_event = { id = uruguay_events.15 days = 9 random_days = 18 } } # Terra meets with Vargas
 		}
 	}
@@ -5525,7 +5525,7 @@ country_event = {
 		}
 		hidden_effect = {
 			SPO_move_salgado = yes
-			news_event = { id = brazil_news.3 days = 2 }
+			news_event = { id = brazil_news_events.3 days = 2 }
 			SPO = {
 				transfer_technology = yes
 				add_equipment_to_stockpile = {
@@ -5585,7 +5585,7 @@ country_event = {
 		name = brazil_events.301.a
 		clr_country_flag = BRA_constitutionalist_revolt_begun
 		hidden_effect = {
-			news_event = { id = brazil_news.4 days = 2 }
+			news_event = { id = brazil_news_events.4 days = 2 }
 			BRA_teardown_pataut_decisions = yes
 			SPO = {
 				drop_cosmetic_tag = yes
@@ -5675,7 +5675,7 @@ country_event = {
 		add_stability = 0.10
 		add_political_power = 100
 		hidden_effect = {
-			news_event = { id = brazil_news.5 days = 2 }
+			news_event = { id = brazil_news_events.5 days = 2 }
 			SPO = { drop_cosmetic_tag = yes }
 			every_state = {
 				limit = {
@@ -6687,7 +6687,7 @@ country_event = {
 				}
 			}
 			country_event = { id = brazil_events.500 days = 7 }
-			news_event = { id = brazil_news.10 days = 2 }
+			news_event = { id = brazil_news_events.10 days = 2 }
 			add_named_threat = {
 				threat = 1
 				name = BRA_revolution_threat
@@ -7104,7 +7104,7 @@ country_event = {
 			popularity = 0.10
 		}
 		hidden_effect = {
-			news_event = { id = brazil_news.11 days = 2 }
+			news_event = { id = brazil_news_events.11 days = 2 }
 			BRA_teardown_socialist_decisions = yes
 		}
 	}
@@ -7140,7 +7140,7 @@ country_event = {
 				every_core_state = { remove_core_of = PREV }
 			}
 			country_event = { id = brazil_events.517 days = 10 } #Redistributing Farmlands
-			news_event = { id = brazil_news.12 days = 2 }
+			news_event = { id = brazil_news_events.12 days = 2 }
 		}
 	}
 }
@@ -9184,7 +9184,7 @@ country_event = {
 		promote_character = BRA_pedro_henrique_de_orleans_braganca
 		activate_advisor = BRA_gustavo_dodt_barroso_sic
 		hidden_effect = {
-			news_event = brazil_news.6
+			news_event = brazil_news_events.6
 		}
 	}
 }
@@ -9401,40 +9401,40 @@ country_event = {
 
 ### News Events ###
 news_event = {
-	id = brazil_news.1
-	immediate = { log = "[GetLogInfo]: event brazil_news.1" }
+	id = brazil_news_events.1
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.1" }
 	title = {
 		trigger = { BRA = { has_government = social_conservative } }
-		text = brazil_news.1.t.soccon
+		text = brazil_news_events.1.t.soccon
 	}
 	title = {
 		trigger = { BRA = { has_government = social_liberal } }
-		text = brazil_news.1.t.soclib
+		text = brazil_news_events.1.t.soclib
 	}
 	title = {
 		trigger = { BRA = { has_government = social_democrat } }
-		text = brazil_news.1.t.socdem
+		text = brazil_news_events.1.t.socdem
 	}
 	title = {
 		trigger = { BRA = { has_government = national_populist } }
-		text = brazil_news.1.t.natpop
+		text = brazil_news_events.1.t.natpop
 	}
 
 	desc = {
 		trigger = { BRA = { has_government = social_conservative } }
-		text = brazil_news.1.d.soccon
+		text = brazil_news_events.1.d.soccon
 	}
 	desc = {
 		trigger = { BRA = { has_government = social_liberal } }
-		text = brazil_news.1.d.soclib
+		text = brazil_news_events.1.d.soclib
 	}
 	desc = {
 		trigger = { BRA = { has_government = social_democrat } }
-		text = brazil_news.1.d.socdem
+		text = brazil_news_events.1.d.socdem
 	}
 	desc = {
 		trigger = { BRA = { has_government = national_populist } }
-		text = brazil_news.1.d.natpop
+		text = brazil_news_events.1.d.natpop
 	}
 
 	picture = GFX_news_event_BRA_election
@@ -9449,28 +9449,28 @@ news_event = {
 
 	# Non-socialist options
 	option = {
-		name = brazil_news.1.a.soccon
+		name = brazil_news_events.1.a.soccon
 		trigger = {
 			BRA = { has_government = social_conservative }
 			has_socialist_government = no
 		}
 	}
 	option = {
-		name = brazil_news.1.a.soclib
+		name = brazil_news_events.1.a.soclib
 		trigger = {
 			BRA = { has_government = social_liberal }
 			has_socialist_government = no
 		}
 	}
 	option = {
-		name = brazil_news.1.a.socdem
+		name = brazil_news_events.1.a.socdem
 		trigger = {
 			BRA = { has_government = social_democrat }
 			has_socialist_government = no
 		}
 	}
 	option = {
-		name = brazil_news.1.a.natpop
+		name = brazil_news_events.1.a.natpop
 		trigger = {
 			BRA = { has_government = national_populist }
 			has_socialist_government = no
@@ -9479,14 +9479,14 @@ news_event = {
 
 	#Socialist Options
 	option = {
-		name = brazil_news.1.b.generic
+		name = brazil_news_events.1.b.generic
 		trigger = {
 			NOT = { BRA = { has_government = social_democrat } }
 			has_socialist_government = yes
 		}
 	}
 	option = {
-		name = brazil_news.1.b.socdem
+		name = brazil_news_events.1.b.socdem
 		trigger = {
 			BRA = { has_government = social_democrat }
 			has_socialist_government = yes
@@ -9496,10 +9496,10 @@ news_event = {
 
 #Getulio Vargas Proclaims the New State
 news_event = {
-	id = brazil_news.2
-	immediate = { log = "[GetLogInfo]: event brazil_news.2" }
-	title = brazil_news.2.t
-	desc = brazil_news.2.d
+	id = brazil_news_events.2
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.2" }
+	title = brazil_news_events.2.t
+	desc = brazil_news_events.2.d
 	picture = GFX_news_event_BRA_new_state
 
 	major = yes
@@ -9511,14 +9511,14 @@ news_event = {
 	show_major = { regional_america_news = yes }
 
 	option = {
-		name = brazil_news.2.a
+		name = brazil_news_events.2.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.2.b
+		name = brazil_news_events.2.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9527,10 +9527,10 @@ news_event = {
 
 #Constitutionalist Revolt in Brazil
 news_event = {
-	id = brazil_news.3
-	immediate = { log = "[GetLogInfo]: event brazil_news.3" }
-	title = brazil_news.3.t
-	desc = brazil_news.3.d
+	id = brazil_news_events.3
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.3" }
+	title = brazil_news_events.3.t
+	desc = brazil_news_events.3.d
 	picture = GFX_news_event_BRA_constitutionalists
 
 	major = yes
@@ -9542,14 +9542,14 @@ news_event = {
 	show_major = { regional_america_news = yes }
 
 	option = {
-		name = brazil_news.3.a
+		name = brazil_news_events.3.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.3.b
+		name = brazil_news_events.3.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9558,10 +9558,10 @@ news_event = {
 
 #Constitutionalist Revolt in Brazil Succeeds
 news_event = {
-	id = brazil_news.4
-	immediate = { log = "[GetLogInfo]: event brazil_news.4" }
-	title = brazil_news.4.t
-	desc = brazil_news.4.d
+	id = brazil_news_events.4
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.4" }
+	title = brazil_news_events.4.t
+	desc = brazil_news_events.4.d
 	picture = GFX_news_event_BRA_constitutionalists
 
 	major = yes
@@ -9573,14 +9573,14 @@ news_event = {
 	show_major = { regional_america_news = yes }
 
 	option = {
-		name = brazil_news.4.a
+		name = brazil_news_events.4.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.4.b
+		name = brazil_news_events.4.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9589,10 +9589,10 @@ news_event = {
 
 #Constitutionalist Revolt in Brazil Fails
 news_event = {
-	id = brazil_news.5
-	immediate = { log = "[GetLogInfo]: event brazil_news.5" }
-	title = brazil_news.5.t
-	desc = brazil_news.5.d
+	id = brazil_news_events.5
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.5" }
+	title = brazil_news_events.5.t
+	desc = brazil_news_events.5.d
 	picture = GFX_news_event_BRA_constitutionalist_failure
 
 	major = yes
@@ -9604,14 +9604,14 @@ news_event = {
 	show_major = { regional_america_news = yes }
 
 	option = {
-		name = brazil_news.5.a
+		name = brazil_news_events.5.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.5.b
+		name = brazil_news_events.5.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9620,10 +9620,10 @@ news_event = {
 
 #Imperial Restoration in Brazil
 news_event = {
-	id = brazil_news.6
-	immediate = { log = "[GetLogInfo]: event brazil_news.6" }
-	title = brazil_news.6.t
-	desc = brazil_news.6.d
+	id = brazil_news_events.6
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.6" }
+	title = brazil_news_events.6.t
+	desc = brazil_news_events.6.d
 	picture = GFX_news_event_BRA_restoration_empire
 
 	major = yes
@@ -9650,14 +9650,14 @@ news_event = {
 	}
 
 	option = {
-		name = brazil_news.6.a
+		name = brazil_news_events.6.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.6.b
+		name = brazil_news_events.6.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9666,10 +9666,10 @@ news_event = {
 
 #Rondon's Revolt
 news_event = {
-	id = brazil_news.7
-	immediate = { log = "[GetLogInfo]: event brazil_news.7" }
-	title = brazil_news.7.t
-	desc = brazil_news.7.d
+	id = brazil_news_events.7
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.7" }
+	title = brazil_news_events.7.t
+	desc = brazil_news_events.7.d
 	picture = GFX_news_event_BRA_rondon
 
 	major = yes
@@ -9681,14 +9681,14 @@ news_event = {
 	show_major = { regional_america_news = yes }
 
 	option = {
-		name = brazil_news.7.a
+		name = brazil_news_events.7.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.7.b
+		name = brazil_news_events.7.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9697,10 +9697,10 @@ news_event = {
 
 #Rondon's Revolt Crushed
 news_event = {
-	id = brazil_news.8
-	immediate = { log = "[GetLogInfo]: event brazil_news.8" }
-	title = brazil_news.8.t
-	desc = brazil_news.8.d
+	id = brazil_news_events.8
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.8" }
+	title = brazil_news_events.8.t
+	desc = brazil_news_events.8.d
 	picture = GFX_news_event_BRA_restoration_empire
 
 	major = yes
@@ -9712,14 +9712,14 @@ news_event = {
 	show_major = { regional_america_news = yes }
 
 	option = {
-		name = brazil_news.8.a
+		name = brazil_news_events.8.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.8.b
+		name = brazil_news_events.8.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9728,10 +9728,10 @@ news_event = {
 
 #Rondon's Revolt Triumphed
 news_event = {
-	id = brazil_news.9
-	immediate = { log = "[GetLogInfo]: event brazil_news.9" }
-	title = brazil_news.9.t
-	desc = brazil_news.9.d
+	id = brazil_news_events.9
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.9" }
+	title = brazil_news_events.9.t
+	desc = brazil_news_events.9.d
 	picture = GFX_news_event_BRA_rondon
 
 	major = yes
@@ -9743,14 +9743,14 @@ news_event = {
 	show_major = { regional_america_news = yes }
 
 	option = {
-		name = brazil_news.9.a
+		name = brazil_news_events.9.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.9.b
+		name = brazil_news_events.9.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9759,10 +9759,10 @@ news_event = {
 
 #The Union of Brazil is proclaimed
 news_event = {
-	id = brazil_news.10
-	immediate = { log = "[GetLogInfo]: event brazil_news.10" }
-	title = brazil_news.10.t
-	desc = brazil_news.10.d
+	id = brazil_news_events.10
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.10" }
+	title = brazil_news_events.10.t
+	desc = brazil_news_events.10.d
 	picture = GFX_news_event_BRA_syndicalism
 
 	major = yes
@@ -9779,14 +9779,14 @@ news_event = {
 	}
 
 	option = {
-		name = brazil_news.10.a
+		name = brazil_news_events.10.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.10.b
+		name = brazil_news_events.10.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9804,10 +9804,10 @@ news_event = {
 
 #Reactionary Uprising Victorious in Brazil
 news_event = {
-	id = brazil_news.11
-	immediate = { log = "[GetLogInfo]: event brazil_news.11" }
-	title = brazil_news.11.t
-	desc = brazil_news.11.d
+	id = brazil_news_events.11
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.11" }
+	title = brazil_news_events.11.t
+	desc = brazil_news_events.11.d
 	picture = GFX_news_event_BRA_syndicalist_failure
 
 	major = yes
@@ -9819,14 +9819,14 @@ news_event = {
 	show_major = { regional_america_news = yes }
 
 	option = {
-		name = brazil_news.11.a
+		name = brazil_news_events.11.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.11.b
+		name = brazil_news_events.11.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -9835,10 +9835,10 @@ news_event = {
 
 #Reactionary Uprising Crushed in Brazil
 news_event = {
-	id = brazil_news.12
-	immediate = { log = "[GetLogInfo]: event brazil_news.12" }
-	title = brazil_news.12.t
-	desc = brazil_news.12.d
+	id = brazil_news_events.12
+	immediate = { log = "[GetLogInfo]: event brazil_news_events.12" }
+	title = brazil_news_events.12.t
+	desc = brazil_news_events.12.d
 	picture = GFX_news_event_BRA_syndicalist_victory
 
 	major = yes
@@ -9850,14 +9850,14 @@ news_event = {
 	show_major = { regional_america_news = yes }
 
 	option = {
-		name = brazil_news.12.a
+		name = brazil_news_events.12.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = brazil_news.12.b
+		name = brazil_news_events.12.b
 		trigger = {
 			has_socialist_government = yes
 		}

@@ -11,16 +11,24 @@ characters = {
 			ideology = totalist_subtype
 		}
 	}
+	SLV_france_klopcic = {
+		name = SLV_france_klopcic
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SLV_france_klopcic_civilian_large
+			}
+		}
+		country_leader = {
+			desc = SLV_france_klopcic_leader_desc
+			ideology = syndicalist_subtype
+		}
+	}
 	SLV_josip_vidmar = {
 		name = SLV_josip_vidmar
 		portraits = {
 			civilian = {
 				large = GFX_portrait_SLV_josip_vidmar_civilian_large
 			}
-		}
-		country_leader = {
-			desc = SLV_josip_vidmar_leader_desc
-			ideology = syndicalist_subtype
 		}
 		country_leader = {
 			desc = SLV_josip_vidmar_leader_desc
@@ -149,10 +157,6 @@ characters = {
 			desc = SLV_leon_rupnik_army_chief_desc
 			available = {
 				not_already_hired_except_as = political_advisor
-				OR = {
-					has_authoritarian_government = yes
-					has_soccon_or_marlib_government = yes
-				}
 			}
 			traits = { KR_old_general }
 		}
@@ -161,10 +165,6 @@ characters = {
 			idea_token = SLV_leon_rupnik_army_chief
 			available = {
 				not_already_hired_except_as = army_chief
-				OR = {
-					has_authoritarian_government = yes
-					has_soccon_or_marlib_government = yes
-				}
 			}
 			traits = { KR_army_chief_defensive_1 }
 			cost = 50
@@ -422,6 +422,24 @@ characters = {
 				has_intelligence_agency = yes
 			}
 			traits = { KR_head_of_intelligence }
+		}
+	}
+	SLV_franc_rozman = {
+		name = SLV_franc_rozman
+		portraits = {
+			army = {
+				small = GFX_portrait_SLV_franc_rozman_army_small
+				large = GFX_portrait_SLV_franc_rozman_army_large
+			}
+		}
+		corps_commander = {
+			desc = SLV_franc_rozman_commander_desc
+			traits = { commando }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
 		}
 	}
 	SLV_rudolf_maister = {

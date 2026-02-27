@@ -160,11 +160,11 @@ KMT_liberation_of_asia_category = {
 						NOT = { is_in_faction_with = INT }
 					}
 				}
-				OR = {
-					AND = {
-						has_socialist_government = yes
-						ROOT = { has_socialist_government = yes }
-					}
+				if = {
+					limit = { ROOT = { has_socialist_government = yes } }
+					has_socialist_government = yes
+				}
+				else = {
 					KMT_FROM_has_compatible_government_trigger = yes
 				}
 			}
@@ -230,15 +230,14 @@ KMT_liberation_of_asia_category = {
 				#So its not as annoying to see on cancel if not visible
 				FROM = {
 					OR = {
-						AND = {
-							ROOT = { has_socialist_government = yes }
+						if = {
+							limit = { ROOT = { has_socialist_government = yes } }
 							has_socialist_government = no
 						}
-						AND = {
-							ROOT = { has_socialist_government = no }
+						else = {
 							KMT_FROM_has_compatible_government_trigger = no
 						}
-						any_owned_state = { OR = { is_claim_or_core_of_ROOT = yes } }
+						any_owned_state = { is_claim_or_core_of_ROOT = yes }
 					}
 					any_owned_state = {
 						OR = {
@@ -379,10 +378,15 @@ RKT_zeal_decision_category = {
 		allowed = { is_chinese_or_potential_chinese_tag = yes }
 		available = {
 			has_war = no
-			OR = {
-				is_neighbor_of = FROM
-				FROM = { any_neighbor_country = { is_subject_of = ROOT } }
-				FROM = { any_subject_country = { is_neighbor_of = ROOT } }
+			country_exists = RKT
+			if = {
+				limit = { country_exists = RKT }
+				#Format it this way to these checks dont throw a bunch of errors searching for a tag that doesn't exist
+				OR = {
+					is_neighbor_of = RKT
+					RKT = { any_neighbor_country = { is_subject_of = ROOT } }
+					RKT = { any_subject_country = { is_neighbor_of = ROOT } }
+				}
 			}
 			if = {
 				limit = { tag = YUN }
@@ -407,12 +411,12 @@ RKT_zeal_decision_category = {
 		cost = 50
 
 		cancel_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision cancel RKT_eliminate_RKMT_pretenders_decision"
+			log = "[GetLogRoot]: Decision cancel RKT_eliminate_RKMT_pretenders_decision"
 			clear_decision_attack_AI = yes
 		}
 
 		complete_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision complete RKT_eliminate_RKMT_pretenders_decision"
+			log = "[GetLogRoot]: Decision complete RKT_eliminate_RKMT_pretenders_decision"
 			setup_decision_attack_ai = yes
 			if = {
 				limit = {
@@ -440,7 +444,7 @@ RKT_zeal_decision_category = {
 			}
 		}
 		remove_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision remove RKT_eliminate_RKMT_pretenders_decision"
+			log = "[GetLogRoot]: Decision remove RKT_eliminate_RKMT_pretenders_decision"
 			clear_decision_attack_AI = yes
 			RKT = {
 				ROOT = {
@@ -695,10 +699,14 @@ LKT_decision_category = {
 			#	limit = { tag = YUN }
 			#	has_completed_focus = YUN_lighting_the_match
 			#}
-			OR = {
-				is_neighbor_of = FROM
-				FROM = { any_neighbor_country = { is_subject_of = ROOT } }
-				FROM = { any_subject_country = { is_neighbor_of = ROOT } }
+			if = {
+				limit = { country_exists = LKT }
+				#Format it this way to these checks dont throw a bunch of errors searching for a tag that doesn't exist
+				OR = {
+					is_neighbor_of = LKT
+					LKT = { any_neighbor_country = { is_subject_of = ROOT } }
+					LKT = { any_subject_country = { is_neighbor_of = ROOT } }
+				}
 			}
 		}
 		icon = GFX_decision_lkmt_flag
@@ -717,12 +725,12 @@ LKT_decision_category = {
 		cost = 50
 
 		cancel_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision cancel LKT_eliminate_LKMT_pretenders_decision"
+			log = "[GetLogRoot]: Decision cancel LKT_eliminate_LKMT_pretenders_decision"
 			clear_decision_attack_AI = yes
 		}
 
 		complete_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision complete LKT_eliminate_LKMT_pretenders_decision"
+			log = "[GetLogRoot]: Decision complete LKT_eliminate_LKMT_pretenders_decision"
 			setup_decision_attack_ai = yes
 			if = {
 				limit = {
@@ -750,7 +758,7 @@ LKT_decision_category = {
 			}
 		}
 		remove_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision remove LKT_eliminate_LKMT_pretenders_decision"
+			log = "[GetLogRoot]: Decision remove LKT_eliminate_LKMT_pretenders_decision"
 			clear_decision_attack_AI = yes
 			LKT = {
 				ROOT = {

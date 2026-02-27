@@ -11,7 +11,7 @@ add_namespace = argentina_foreign_events
 add_namespace = argentina_military_events
 add_namespace = argentina_chilean_war_events
 add_namespace = argentina_democratic_events
-add_namespace = argentina_news
+add_namespace = argentina_news_events
 
 ### ARG - CHL war ###
 country_event = { # loop event for unit desertions during ARG-CHL war (donotlog)
@@ -2978,7 +2978,7 @@ country_event = { #Navy surrenders
 		custom_effect_tooltip = tooltip_white_line
 		ARG_create_starting_divisions = yes
 		hidden_effect = {
-			news_event = argentina_news.2
+			news_event = argentina_news_events.2
 			country_event = { id = argentina_democratic_events.1 days = 16 }
 			if = {
 				limit = { has_country_flag = ARG_gendarmeria_expanded }
@@ -3040,7 +3040,7 @@ country_event = { #Carles instates cabinet
 		name = argentina_carles_events.12.a
 		ARG_create_starting_divisions = yes
 		hidden_effect = {
-			news_event = argentina_news.1
+			news_event = argentina_news_events.1
 			if = {
 				limit = { has_country_flag = ARG_gendarmeria_expanded }
 				add_manpower = 15000
@@ -3882,6 +3882,11 @@ country_event = {
 			leave_faction = yes
 			peace_out_non_neighbours_after_leaving_faction = yes
 		}
+		every_subject_country = {
+			limit = { has_socialist_government = no }
+			remove_puppet_and_leave_faction = yes
+			peace_out_non_neighbours_after_leaving_faction = yes
+		}
 	}
 }
 
@@ -4016,6 +4021,11 @@ country_event = {
 				var:faction_leader = { has_socialist_government = no }
 			}
 			leave_faction = yes
+		}
+		every_subject_country = {
+			limit = { has_socialist_government = no }
+			remove_puppet_and_leave_faction = yes
+			peace_out_non_neighbours_after_leaving_faction = yes
 		}
 	}
 }
@@ -4458,6 +4468,11 @@ country_event = {
 			}
 			leave_faction = yes
 		}
+		every_subject_country = {
+			limit = { has_socialist_government = no }
+			remove_puppet_and_leave_faction = yes
+			peace_out_non_neighbours_after_leaving_faction = yes
+		}
 	}
 }
 
@@ -4620,6 +4635,11 @@ country_event = {
 				var:faction_leader = { has_socialist_government = no }
 			}
 			leave_faction = yes
+		}
+		every_subject_country = {
+			limit = { has_socialist_government = no }
+			remove_puppet_and_leave_faction = yes
+			peace_out_non_neighbours_after_leaving_faction = yes
 		}
 	}
 }
@@ -5000,10 +5020,10 @@ country_event = {
 
 # Manuel Carles Solidifies Control
 news_event = {
-	id = argentina_news.1
-	immediate = { log = "[GetLogInfo]: event argentina_news.1" }
-	title = argentina_news.1.t
-	desc = argentina_news.1.d
+	id = argentina_news_events.1
+	immediate = { log = "[GetLogInfo]: event argentina_news_events.1" }
+	title = argentina_news_events.1.t
+	desc = argentina_news_events.1.d
 	picture = GFX_news_event_ARG_Carles
 
 	major = yes
@@ -5015,13 +5035,13 @@ news_event = {
 	show_major = { regional_south_america_news = yes }
 
 	option = {
-		name = argentina_news.1.a
+		name = argentina_news_events.1.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 	option = {
-		name = argentina_news.1.b
+		name = argentina_news_events.1.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -5030,10 +5050,10 @@ news_event = {
 
 # Ramirez defeats Carles
 news_event = {
-	id = argentina_news.2
-	immediate = { log = "[GetLogInfo]: event argentina_news.2" }
-	title = argentina_news.2.t
-	desc = argentina_news.2.d
+	id = argentina_news_events.2
+	immediate = { log = "[GetLogInfo]: event argentina_news_events.2" }
+	title = argentina_news_events.2.t
+	desc = argentina_news_events.2.d
 	picture = GFX_news_event_ARG_Ramirez
 
 	major = yes
@@ -5045,6 +5065,6 @@ news_event = {
 	show_major = { regional_south_america_news = yes }
 
 	option = {
-		name = argentina_news.2.a
+		name = argentina_news_events.2.a
 	}
 }

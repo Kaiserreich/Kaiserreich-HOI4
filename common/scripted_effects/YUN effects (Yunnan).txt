@@ -1212,7 +1212,7 @@ YUN_add_YCD_effect = {
 	}
 }
 
-YUN_CMS_mechanic_effect = {
+YUN_YCD_mechanic_effect = {
 	if = {
 		limit = {
 			OR = {
@@ -1243,22 +1243,27 @@ YUN_CMS_mechanic_effect = {
 YUN_YCD_small_effect = {
 	set_temp_variable = { YUN_size_var = @YUN_size_small_constant }
 	YUN_add_YCD_effect = yes
+	YUN_YCD_mechanic_effect = yes
 }
 YUN_YCD_medium_effect = {
 	set_temp_variable = { YUN_size_var = @YUN_size_medium_constant }
 	YUN_add_YCD_effect = yes
+	YUN_YCD_mechanic_effect = yes
 }
 YUN_YCD_large_effect = {
 	set_temp_variable = { YUN_size_var = @YUN_size_large_constant }
 	YUN_add_YCD_effect = yes
+	YUN_YCD_mechanic_effect = yes
 }
 YUN_YCD_mega_effect = {
 	set_temp_variable = { YUN_size_var = @YUN_size_mega_constant }
 	YUN_add_YCD_effect = yes
+	YUN_YCD_mechanic_effect = yes
 }
 YUN_YCD_giga_effect = {
 	set_temp_variable = { YUN_size_var = @YUN_size_giga_constant }
 	YUN_add_YCD_effect = yes
+	YUN_YCD_mechanic_effect = yes
 }
 
 #Strengthening CMS
@@ -2347,10 +2352,15 @@ YUN_expand_public_education_effect = {
 		limit = { has_character = GXC_yu_youren }
 		if = {
 			limit = {
-				GXC_yu_youren = { is_political_advisor = yes }
-				OR = {
-					YUN_dai_jitao = { is_political_advisor = yes }
-					YUN_dai_jitao = { is_second_in_command = yes }
+				count_triggers = {
+					amount = 2
+					YUN_dai_jitao = {
+						OR = {
+							is_second_in_command = yes
+							is_political_advisor = yes
+						}
+					}
+					GXC_yu_youren = { is_political_advisor = yes }
 				}
 			}
 			add_timed_idea = {
@@ -2360,10 +2370,15 @@ YUN_expand_public_education_effect = {
 		}
 		else_if = {
 			limit = {
-				OR = {
+				count_triggers = {
+					amount = 1
+					YUN_dai_jitao = {
+						OR = {
+							is_second_in_command = yes
+							is_political_advisor = yes
+						}
+					}
 					GXC_yu_youren = { is_political_advisor = yes }
-					YUN_dai_jitao = { is_political_advisor = yes }
-					YUN_dai_jitao = { is_second_in_command = yes }
 				}
 			}
 			add_timed_idea = {
@@ -2518,19 +2533,11 @@ YUN_expand_the_legislative_yuan_effect = {
 	}
 	else_if = {
 		limit = {
-			OR = {
-				AND = {
-					YUN_chen_Cheng = { is_political_advisor = yes }
-					YUN_chen_lifu = { is_political_advisor = yes }
-				}
-				AND = {
-					YUN_chen_Cheng = { is_political_advisor = yes }
-					YUN_yang_yongtai = { is_political_advisor = yes }
-				}
-				AND = {
-					YUN_yang_yongtai = { is_political_advisor = yes }
-					YUN_chen_lifu = { is_political_advisor = yes }
-				}
+			count_triggers = {
+				amount = 2
+				YUN_chen_Cheng = { is_political_advisor = yes }
+				YUN_chen_lifu = { is_political_advisor = yes }
+				YUN_yang_yongtai = { is_political_advisor = yes }
 			}
 		}
 		add_timed_idea = {

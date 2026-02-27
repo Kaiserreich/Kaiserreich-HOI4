@@ -3468,8 +3468,8 @@ IRE_foreign_policy_decisions = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove IRE_reclaim_gaelic_lands"
 			clr_country_flag = IRE_joining_faction
 			clear_variable = IRE_war_decision_days
-			add_state_claim = 133
-			add_state_claim = 120
+			add_state_claim = 120 #Scottish Highlands
+			add_state_claim = 1124 #Isle of Man
 			clear_decision_attack_AI = yes
 			if = {
 				limit = {
@@ -3499,8 +3499,8 @@ IRE_foreign_policy_decisions = {
 		ai_will_do = { factor = 100 }
 
 		available = {
-			owns_state = 133
-			owns_state = 120
+			owns_state = 120 #Scottish Highlands
+			owns_state = 1124 #Isle of Man
 			has_subject = SCO
 			has_subject = WLS
 			has_subject = BRI
@@ -5884,9 +5884,9 @@ IRE_reactionary_decisions = {
 			set_temp_variable = { IRE_nationalist_discontent_delta = 0.1 }
 			IRE_nationalist_discontent_decrease = yes
 			if = {
-				limit = { has_country_flag = IRE_claimed_scottish_states }	# Scottish claims are regained if they were lost in the NIR uprising
-				add_state_claim = 133
-				add_state_claim = 120
+				limit = { has_country_flag = IRE_claimed_scottish_states }	# Claims are regained if they were lost in the NIR uprising
+				add_state_claim = 120 #Scottish Highlands
+				add_state_claim = 1124 #Isle of Man
 			}
 		}
 		timeout_effect = {
@@ -5894,7 +5894,7 @@ IRE_reactionary_decisions = {
 			NIR = { white_peace_with_ROOT = yes }
 			country_event = ireland_events.3420
 			hidden_effect = {
-				remove_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:133.owner }
+				remove_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:120.owner }
 			}
 		}
 		cancel_trigger = {
@@ -5905,7 +5905,7 @@ IRE_reactionary_decisions = {
 			NIR = { white_peace_with_ROOT = yes }
 			country_event = ireland_events.3420
 			hidden_effect = {
-				remove_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:133.owner }
+				remove_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:120.owner }
 			}
 		}
 		fixed_random_seed = no

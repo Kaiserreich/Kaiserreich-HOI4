@@ -574,6 +574,10 @@ focus_tree = {
 					event_target:original_siam = { complete_national_focus = SIA_modernsiamesenation }
 				}
 			}
+			activate_targeted_decision = { decision = SIA_join_copro target = JAP }
+		}
+		on_uncomplete = {
+			remove_targeted_decision = { decision = SIA_join_copro target = JAP }
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
 		available = {
@@ -789,6 +793,11 @@ focus_tree = {
 					event_target:original_siam = { complete_national_focus = SIA_ratthaniyomdecrees }
 				}
 			}
+			unlock_decision_tooltip = SIA_reclaim_left_bank_mekong
+			activate_targeted_decision = { decision = SIA_join_copro target = JAP }
+		}
+		on_uncomplete = {
+			remove_targeted_decision = { decision = SIA_join_copro target = JAP }
 		}
 		available = {
 			has_dictatorship_government = yes

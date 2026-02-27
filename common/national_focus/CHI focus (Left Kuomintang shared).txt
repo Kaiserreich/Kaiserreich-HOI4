@@ -2724,12 +2724,7 @@ focus_tree = {
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -2784,12 +2779,7 @@ focus_tree = {
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -3060,12 +3050,7 @@ focus_tree = {
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -3856,6 +3841,7 @@ focus_tree = {
 			CHI_demobilised_NRA_idea_effect = yes
 			army_experience = 50
 			every_subject_country = {
+				limit = { is_chinese_or_potential_chinese_tag = yes }
 				country_event = CHI.lategame.604
 			}
 		}
@@ -4556,35 +4542,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CHI_the_ninth_column"
-			if = {
-				limit = { NOT = { has_tech = paratroopers } }
-				set_technology = { paratroopers = 1 }
-			}
-			custom_override_tooltip = {
-				tooltip = {
-					localization_key = tooltip_create_division_template
-					NAME = "Kongjiang bing jun"
-					LINE_1 = { localization_key = line_battalion_tt NAME = paratrooper ICON = GFX_unit_paratrooper_icon_small COUNT = 4 }
-					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
-				}
-				if = {
-					limit = { has_template = "Kongjiang bing jun" }
-					delete_unit_template_and_units = { division_template = "Kongjiang bing jun" disband = yes } #no cheating
-				}
-				division_template = {
-					name = "Kongjiang bing jun" #Marine Corps
-					division_names_group = CHYN_INF_01
-					regiments = {
-						paratrooper = { x = 0 y = 0 }
-						paratrooper = { x = 0 y = 1 }
-						paratrooper = { x = 1 y = 0 }
-						paratrooper = { x = 1 y = 1 }
-					}
-					support = {
-						engineer = { x = 0 y = 0 }
-					}
-				}
-			}
+			china_create_paratrooper_template = yes
 			random_owned_controlled_state = {
 				prioritize = { 613 }
 				limit = {
@@ -4598,7 +4556,6 @@ focus_tree = {
 					}
 					create_unit = {
 						division = "name = \"Di jiu lan\" division_template = \"Kongjiang bing jun\" start_experience_factor = 1.0" #The 9th Column
-						prioritize_location = 1046
 						owner = ROOT
 					}
 				}
@@ -6439,11 +6396,20 @@ focus_tree = {
 					GXC_jiang_guangnai = { custom_effect_tooltip = character_becomes_a_general }
 					custom_effect_tooltip = tooltip_white_line
 					GXC_dai_ji = { custom_effect_tooltip = character_becomes_a_general }
+					custom_effect_tooltip = tooltip_white_line
+					GXC_li_zhangda = { custom_effect_tooltip = character_becomes_a_general }
+					custom_effect_tooltip = tooltip_white_line
+					GXC_xie_wenbing = { custom_effect_tooltip = character_becomes_a_general }
+					custom_effect_tooltip = tooltip_white_line
+					GXC_li_minxin = { custom_effect_tooltip = character_becomes_a_general }
 					hidden_effect = {
 						GXC_chen_mingshu = { CHN_recruit_character_effect = yes }
 						GXC_cai_tingkai = { CHN_recruit_character_effect = yes }
 						GXC_jiang_guangnai = { CHN_recruit_character_effect = yes }
 						GXC_dai_ji = { CHN_recruit_character_effect = yes }
+						GXC_li_zhangda = { CHN_recruit_character_effect = yes }
+						GXC_xie_wenbing = { CHN_recruit_character_effect = yes }
+						GXC_li_minxin = { CHN_recruit_character_effect = yes }
 					}
 				}
 			}

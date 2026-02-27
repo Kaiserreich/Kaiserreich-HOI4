@@ -8970,7 +8970,6 @@ RUS_federal_system = {
 					states = { 233 787 961 }
 				}
 			}
-			NOT = { has_decision = RUS_abolish_OSKAB }
 			custom_override_tooltip = {
 				tooltip = { localization_key = has_completed_decision DECISION = RUS_pacify_caucasus }
 				has_country_flag = RUS_caucasus_pacification
@@ -9007,9 +9006,7 @@ RUS_federal_system = {
 		ai_will_do = { base = 5 }
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete RUS_reform_OSKAB"
-			hidden_effect = {
-				remove_targeted_decision = { decision = RUS_abolish_OSKAB target = 233 }
-			}
+			remove_targeted_decision = { decision = RUS_abolish_OSKAB target = 233 }
 		}
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove RUS_reform_OSKAB"
@@ -9055,7 +9052,6 @@ RUS_federal_system = {
 					states = { 233 787 961 }
 				}
 			}
-			NOT = { has_decision = RUS_reform_OSKAB }
 			custom_override_tooltip = {
 				tooltip = { localization_key = has_completed_decision DECISION = RUS_pacify_caucasus }
 				has_country_flag = RUS_caucasus_pacification
@@ -9079,13 +9075,13 @@ RUS_federal_system = {
 
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete RUS_abolish_OSKAB"
+			remove_targeted_decision = { decision = RUS_reform_OSKAB target = 233 }
 			hidden_effect = {
 				add_command_power = -50
 				add_equipment_to_stockpile = {
 					type = infantry_equipment
 					amount = -1000
 				}
-				remove_targeted_decision = { decision = RUS_reform_OSKAB target = 233 }
 			}
 		}
 		remove_effect = {
@@ -10711,16 +10707,14 @@ RUS_russian_sphere_decisions = {
 		allowed = { always = no } #manually activated
 
 		available = {
-			NOT = { has_war_with = FIN }
+			OR = {
+				NOT = { has_war_with = FIN }
+				NOT = { 840 = { is_controlled_by = FIN } } #Helsinki
+			}
 		}
 
 		cancel_trigger = {
-			FIN = {
-				NOT = {
-					is_valid_peace_target = yes
-					controls_state = 840 #Helsinki
-				}
-			}
+			FIN = { is_valid_peace_target = no }
 		}
 
 		is_good = no
@@ -12002,6 +11996,7 @@ RUS_russian_sphere_decisions = {
 				NOT = { can_declare_war_on = FROM }
 				NOT = { 91 = { is_owned_by = FROM } } #Lwow
 				has_non_aggression_pact_with = FROM
+				hidden_trigger = { NOT = { has_country_flag = RUS_demanding_galicia } }
 			}
 		}
 
@@ -12055,17 +12050,17 @@ RUS_russian_sphere_decisions = {
 
 		cancel_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision cancel RUS_Demand_Galicia"
+			clr_country_flag = RUS_demanding_galicia
 			clear_decision_attack_AI = yes
 			hidden_effect = { add_political_power = 10 }
 		}
 
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete RUS_Demand_Galicia"
+			set_country_flag = RUS_demanding_galicia
 			setup_decision_attack_AI = yes
 			if = {
-				limit = {
-					FROM = { is_subject = yes }
-				}
+				limit = { FROM = { is_subject = yes } }
 				var:FROM.overlord = {
 					country_event = { id = russia_foreign_policy_events.95 days = 2 random_days = 2 } #warning event
 				}
@@ -12079,6 +12074,7 @@ RUS_russian_sphere_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove RUS_Demand_Galicia"
+			clr_country_flag = RUS_demanding_galicia
 			clear_decision_attack_AI = yes
 			custom_effect_tooltip = if_they_accept_tt
 			effect_tooltip = {
@@ -12136,8 +12132,10 @@ RUS_russian_sphere_decisions = {
 						}
 					}
 				}
+				hidden_trigger = { NOT = { has_country_flag = RUS_demanding_armenia } }
 			}
 		}
+
 		targets = { TUR }
 		target_root_trigger = {
 			has_completed_focus = RUS_preemptive_war
@@ -12178,20 +12176,32 @@ RUS_russian_sphere_decisions = {
 
 		cancel_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision cancel RUS_Demand_Armenia"
+			clr_country_flag = RUS_demanding_armenia
 			clear_decision_attack_AI = yes
 			hidden_effect = { add_political_power = 10 }
-			clr_country_flag = RUS_demanding_armenia
 		}
 
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete RUS_Demand_Armenia"
-			FROM = { country_event = { id = russia_foreign_policy_events.90 days = 8 } }    #warning event
-			setup_decision_attack_AI = yes
 			set_country_flag = RUS_demanding_armenia
+			setup_decision_attack_AI = yes
+			if = {
+				limit = { FROM = { is_subject = yes } }
+				var:FROM.overlord = {
+					country_event = { id = russia_foreign_policy_events.90 days = 8 } #warning event
+				}
+			}
+			else = {
+				FROM = {
+					country_event = { id = russia_foreign_policy_events.90 days = 8 } #warning event
+				}
+			}
 		}
 
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove RUS_Demand_Armenia"
+			clr_country_flag = RUS_demanding_armenia
+			clr_country_flag = RUS_attacking_ottomans
 			if = {
 				limit = { OTT_ottomans_have_post_defeat_content = no }
 				log = "KR_Event_Logging;RUS INTERVENE AGAINST OTT"
@@ -12230,8 +12240,6 @@ RUS_russian_sphere_decisions = {
 				type = take_state_focus
 				generator = { 230 585 1000 }
 			}
-			clr_country_flag = RUS_demanding_armenia
-			clr_country_flag = RUS_attacking_ottomans
 		}
 		fixed_random_seed = no
 	}
@@ -17346,7 +17354,7 @@ political_actions = {
 	}
 }
 
-MIO_decisions = {
+RUS_MIO_decisions = {
 	### Mine Pilled decision unlocked through Dalzavod MIO
 	RUS_dalzavod_mining_baltic_sea = {
 		desc = RUS_dalzavod_mining_desc

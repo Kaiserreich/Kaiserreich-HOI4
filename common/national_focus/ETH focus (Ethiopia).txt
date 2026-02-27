@@ -635,7 +635,10 @@ focus_tree = {
 		ai_will_do = { base = 1.3 }
 
 		available = {
-			has_country_flag = ETH_german_aligned
+			OR = {
+				has_country_flag = ETH_german_aligned
+				has_country_flag = ETH_japanese_aligned
+			}
 			NOT = { has_completed_focus = ETH_Nationalised_Railroad } #in the case MAF collapses and other side is auto-completed
 			any_state_of = {
 				target = { 271 920 921 922 }

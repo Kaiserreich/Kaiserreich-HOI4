@@ -56,6 +56,7 @@ country_event = { #The Darjeeling Conspiracy (NEP)
 
 	immediate = {
 		hidden_effect = {
+			set_country_flag = NEP_conspiracy_ongoing_flag
 			activate_mission = NEP_conspiracy_mission
 			activate_targeted_decision = { target = HND decision = NEP_weaken_HND_influence_decision }
 			activate_targeted_decision = { target = RAJ decision = NEP_weaken_RAJ_influence_decision }
@@ -116,7 +117,6 @@ country_event = { #The Darjeeling Conspiracy (NEP)
 		effect_tooltip = { activate_mission = NEP_conspiracy_mission }
 		custom_effect_tooltip = NEP_conspiracy_start_decisions_tt
 		custom_effect_tooltip = NEP_conspiracy_start_NEP_tt
-		set_country_flag = NEP_conspiracy_ongoing_flag
 	}
 }
 country_event = { #The Darjeeling Conspiracy (India)
@@ -567,6 +567,7 @@ country_event = { #Revolution Succeeds in Nepal HND
 				relation = non_aggression_pact
 			}
 		}
+		log = "KR_Event_Logging;NEP CONSPIRACY OUTCOME - Democratic Revolution"
 	}
 	option = { #Install a loyal government in Kathmandu
 		log = "[GetLogInfo]: event nepal_events.21 option nepal_events.21.b"
@@ -594,6 +595,7 @@ country_event = { #Revolution Succeeds in Nepal HND
 				add_to_coalition = yes
 			}
 		}
+		log = "KR_Event_Logging;NEP CONSPIRACY OUTCOME - Socialist Revolution"
 	}
 }
 country_event = { #Chaos in Kathmandu
@@ -653,6 +655,7 @@ country_event = { #The Sovereign's Order
 			news_event = nepal_events.1001
 			country_event = { id = nepal_events.300 days = 8 }
 		}
+		log = "KR_Event_Logging;NEP CONSPIRACY OUTCOME - Royal Restoration"
 	}
 }
 country_event = { #Royal Restoration in Nepal RAJ+HND
@@ -709,6 +712,7 @@ country_event = { #Failed Coup in Kathmandu
 			}
 			news_event = nepal_events.1001
 		}
+		log = "KR_Event_Logging;NEP CONSPIRACY OUTCOME - Rana Regency"
 	}
 }
 country_event = { #Revolution Fails in Nepal

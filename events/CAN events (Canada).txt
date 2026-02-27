@@ -4221,25 +4221,10 @@ country_event = {
 
 	trigger = {
 		tag = CAN
-		date > 1939.1.1
+		ENG = { has_war_with = GER }
 		has_country_flag = KR_british_king_base
 		can_declare_war_on = ENG
-		OR = {
-			ENG = { has_war_with = GER }
-			AND = {
-				has_completed_focus = CAN_project_plough
-				has_completed_focus = CAN_economic_recovery
-				has_completed_focus = CAN_deal_with_admiralty
-				OR = {
-					has_authoritarian_government = yes
-					AND = {
-						has_tech = mtg_transport
-						has_completed_focus = CAN_new_munitions_plants
-					}
-				}
-			}
-		}
-		controls_all_owned_states = yes
+		alliance_strength_ratio > 1
 	}
 
 	mean_time_to_happen = {

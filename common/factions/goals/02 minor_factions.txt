@@ -1,4 +1,4 @@
-### SOUTHERN SYNDICALIST ALLIANCE ###
+### Americas ###
 faction_manifest_defeat_argentina = {
 	name = faction_manifest_defeat_argentina_name
 	description = faction_manifest_defeat_argentina_desc
@@ -13,38 +13,6 @@ faction_manifest_defeat_argentina = {
 	}
 }
 
-### BOMBAY PACT ###
-faction_manifest_reunification_of_india = {
-	name = faction_manifest_reunification_of_india_name
-	description = faction_manifest_reunification_of_india_desc
-	is_manifest = yes
-	ratio_progress = {
-		total_amount_collection = collection:all_indian_states
-		completed_amount_collection = collection:all_controlled_indian_states
-		scale = {
-			war_support_factor = 0.1
-			conscription_factor = 0.1
-		}
-	}
-}
-
-### BALTIC LAST STAND ###
-faction_manifest_baltic_defence = {
-	name = faction_manifest_baltic_defence_name
-	description = faction_manifest_baltic_defence_desc
-	is_manifest = yes
-	ratio_progress = {
-		total_amount_collection = collection:all_baltic_states
-		completed_amount_collection = collection:all_controlled_baltic_states
-		scale = {
-			army_attack_against_major_factor = 0.15
-			army_breakthrough_against_major_factor = 0.15
-			army_defence_against_major_factor = 0.15
-		}
-	}
-}
-
-### CENTRAL AMERICA ###
 faction_manifest_bastion_of_american_democracy = {
 	name = faction_manifest_bastion_of_american_democracy_name
 	description = faction_manifest_bastion_of_american_democracy_desc
@@ -87,7 +55,21 @@ faction_manifest_unite_central_america = {
 	}
 }
 
-### CENTRAL ASIA ###
+### Asia ###
+faction_manifest_reunification_of_india = {
+	name = faction_manifest_reunification_of_india_name
+	description = faction_manifest_reunification_of_india_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:all_indian_states
+		completed_amount_collection = collection:all_controlled_indian_states
+		scale = {
+			war_support_factor = 0.1
+			conscription_factor = 0.1
+		}
+	}
+}
+
 faction_manifest_survive_the_russian_onslaught = {
 	name = faction_manifest_survive_the_russian_onslaught_name
 	description = faction_manifest_survive_the_russian_onslaught_desc
@@ -124,6 +106,55 @@ faction_manifest_achieve_turkic_unity = {
 				modifier = {
 					production_factory_max_efficiency_factor = 0.10
 					political_power_factor = 0.10
+				}
+			}
+		}
+	}
+}
+
+### Europe ###
+faction_manifest_baltic_defence = {
+	name = faction_manifest_baltic_defence_name
+	description = faction_manifest_baltic_defence_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:all_baltic_states
+		completed_amount_collection = collection:all_controlled_baltic_states
+		scale = {
+			army_attack_against_major_factor = 0.15
+			army_breakthrough_against_major_factor = 0.15
+			army_defence_against_major_factor = 0.15
+		}
+	}
+}
+
+faction_manifest_liberation_of_europe = {
+	name = faction_manifest_liberation_of_europe_name
+	description = faction_manifest_liberation_of_europe_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:european_countries
+		completed_amount_collection = collection:allied_european_countries
+		scale = {
+			political_power_factor = 0.10
+			army_org_factor = 0.10
+			conscription_factor = 0.15
+			stability_factor = 0.10
+		}
+
+		reversed = {
+			army_core_attack_factor = 0.20
+			army_core_defence_factor = 0.20
+		}
+
+		progress_sections = {
+			manifest_fulfilled = {
+				min = 0.75
+
+				modifier = {
+					production_factory_max_efficiency_factor = 0.10
+					consumer_goods_factor = -0.15
+					industrial_capacity_dockyard = 0.10
 				}
 			}
 		}

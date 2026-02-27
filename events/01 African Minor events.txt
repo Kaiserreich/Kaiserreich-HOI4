@@ -27,21 +27,6 @@ country_event = { #choosing a benefactor
 	}
 
 	option = {
-		log = "[GetLogInfo]: event africa_events.1 option africa_events.1.BRA"
-		name = africa_events.1.BRA
-		trigger = {
-			any_owned_state = { is_coastal = yes }
-			capital_scope = { region = 182 }
-			BRA = {
-				exists = yes
-				both_socialist_or_both_not_socialist = yes
-			}
-		}
-		ai_chance = { base = 10 }
-		BRA = { country_event = africa_events.2 }
-	}
-
-	option = {
 		log = "[GetLogInfo]: event africa_events.1 option africa_events.1.CAN"
 		name = africa_events.1.CAN
 		trigger = {
@@ -142,21 +127,6 @@ country_event = { #choosing a benefactor
 		}
 		ai_chance = { base = 15 }
 		GER = { country_event = africa_events.2 }
-	}
-
-	option = {
-		log = "[GetLogInfo]: event africa_events.1 option africa_events.1.LIB"
-		name = africa_events.1.LIB
-		trigger = {
-			any_owned_state = { is_coastal = yes }
-			capital_scope = { region = 182 }
-			LIB = {
-				exists = yes
-				both_socialist_or_both_not_socialist = yes
-			}
-		}
-		ai_chance = { base = 10 }
-		LIB = { country_event = africa_events.2 }
 	}
 
 	option = {

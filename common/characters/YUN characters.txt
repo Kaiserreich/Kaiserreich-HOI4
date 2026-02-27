@@ -710,6 +710,19 @@ characters = {
 			ideology = market_liberal_subtype
 			traits = { CHN_right_kuomintang_aligned }
 		}
+		corps_commander = {
+			desc = YUN_zhang_qun_commander_desc
+			traits = { CHN_RKT_officer_trait artillery_officer cavalry_officer politically_connected }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				has_character_flag = YUN_zhang_qun_commander_role
+				NOT = { has_country_flag = YUN_zhang_qun_hidden_flag }
+			}
+		}
 		advisor = {
 			slot = political_advisor
 			idea_token = YUN_zhang_qun_advisor
@@ -2521,7 +2534,7 @@ characters = {
 
 	#習自強
 	YUN_xi_ziqiang = {
-		name = YUN_wu_xuexian
+		name = YUN_xi_ziqiang
 		portraits = {
 			army = {
 				small = GFX_portrait_YUN_xi_ziqiang_army_small

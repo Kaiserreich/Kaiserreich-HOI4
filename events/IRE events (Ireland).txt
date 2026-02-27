@@ -8089,7 +8089,7 @@ country_event = {  # Reaction to joining Entente
 				transfer_state_to = IMP
 			}
 			hidden_effect = {
-				remove_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:133.owner }
+				remove_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:120.owner }
 				clear_variable = IRE_war_decision_days
 				if = {
 					limit = { has_cosmetic_tag = IRE_monarchist_gael }
@@ -8504,11 +8504,11 @@ country_event = {  # The WK has started so IRE is getting ready for possible war
 		custom_effect_tooltip = IRE_mobilised_for_war_tt
 		set_country_flag = IRE_mobilised_for_war
 		custom_effect_tooltip = tooltip_white_line
-		activate_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:133.owner }
+		activate_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:120.owner }
 		if = {
 			limit = {
 				is_in_faction = no
-				can_declare_war_on = var:133.owner
+				can_declare_war_on = var:120.owner
 			}
 			set_variable = { IRE_war_decision_days = 28 }
 		}
@@ -8536,11 +8536,12 @@ country_event = {  # IRE loses claims or leaves RP
 	option = {
 		log = "[GetLogInfo]: event ireland_events.2024 option ireland_events.2024.a"
 		name = ireland_events.2024.a
-		ai_chance = { base = 100 }
 		if = {
 			limit = {
-				133 = { is_claimed_by = ROOT }
-				120 = { is_claimed_by = ROOT }
+				OR = {
+					120 = { is_claimed_by = ROOT }
+					1124 = { is_claimed_by = ROOT }
+				}
 			}
 			add_stability = -0.05
 			every_state = {
@@ -8549,7 +8550,7 @@ country_event = {  # IRE loses claims or leaves RP
 			}
 		}
 		else = {
-			remove_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:133.owner }
+			remove_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:120.owner }
 			clear_variable = IRE_war_decision_days
 		}
 		set_country_flag = IRE_claimed_scottish_states
@@ -8627,7 +8628,7 @@ country_event = {  # NatPops regain their claims because Halifax broke on war be
 	option = {
 		log = "[GetLogInfo]: event ireland_events.2026 option ireland_events.2026.a"
 		name = ireland_events.2026.a
-		activate_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:133.owner }
+		activate_targeted_decision = { decision = IRE_reclaim_gaelic_lands target = var:120.owner }
 		set_variable = { IRE_war_decision_days = 5 }
 	}
 }
@@ -14053,7 +14054,7 @@ country_event = {  # Aodh gets the boot when there's no more monarchies on the g
 	}
 }
 
-country_event = {  # Ireland owns the two Scottish states it has claims on
+country_event = {  # Ireland owns the two states it has claims on
 	id = ireland_events.3310
 	title = ireland_events.3310.t
 
@@ -14074,7 +14075,7 @@ country_event = {  # Ireland owns the two Scottish states it has claims on
 			is_claimed_by = ROOT
 			is_owned_by = ROOT
 		}
-		133 = {
+		1124 = {
 			is_claimed_by = ROOT
 			is_owned_by = ROOT
 		}
@@ -14095,11 +14096,9 @@ country_event = {  # Ireland owns the two Scottish states it has claims on
 			}
 			rename_state_effect = yes
 		}
-		133 = {
+		1124 = {
 			effect_tooltip = {
-				set_state_name = STATE_133_IRISH
-				set_province_name = { id = 3273 name = VICTORY_POINTS_3273_IRISH }
-				set_province_name = { id = 11218 name = VICTORY_POINTS_11218_IRISH }
+				set_state_name = STATE_1124_IRISH
 				set_province_name = { id = 3311 name = VICTORY_POINTS_3311_IRISH }
 			}
 			rename_state_effect = yes
@@ -14418,7 +14417,10 @@ country_event = {  # Reactionary Resistance starts
 				add_command_power = -150
 			}
 			activate_mission = IRE_reactionary_resistance_grows
-			activate_decision = IRE_weaken_reactionary_resistance
+			custom_effect_tooltip = {
+				localization_key = EFFECT_ACTIVATE_TARGETED_DECISION
+				NAME = IRE_weaken_reactionary_resistance_tt
+			}
 			every_core_state = {
 				limit = {
 					is_owned_and_controlled_by = ROOT

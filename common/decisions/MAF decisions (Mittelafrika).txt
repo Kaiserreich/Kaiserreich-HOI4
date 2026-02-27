@@ -487,6 +487,8 @@ crisis = {
 			log = "[GetLogRoot]: Decision timeout MAF_Revolt_mission"
 			custom_effect_tooltip = MAF_collapse_at_minus_eighty
 			add_stability = -0.15
+			set_temp_variable = { ideology_change_var = -0.10 }
+			change_ruling_party_popularity = yes
 			if = {
 				limit = { has_stability > -0.8 }
 				activate_mission = MAF_Revolt_mission
@@ -576,6 +578,8 @@ crisis = {
 			log = "[GetLogRoot]: Decision timeout MAF_on_borrowed_time"
 			custom_effect_tooltip = MAF_collapse_at_minus_eighty
 			add_stability = -0.10
+			set_temp_variable = { ideology_change_var = -0.05 }
+			change_ruling_party_popularity = yes
 			if = {
 				limit = { has_stability > -0.8 }
 				activate_mission = MAF_on_borrowed_time

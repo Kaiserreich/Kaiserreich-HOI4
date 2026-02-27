@@ -196,6 +196,8 @@
  SIA_is_thailand_tt: "Our current country name is Thailand.\n"
  SIA_is_thailand_tt_NOT: "Our current country name is Siam.\n"
 
+ SIA_reform_progress_tt: "§YRecovery Progress§! is increased by $RIGHT|G0$, current progress is [?SIA_reform_progress|Y0]"
+
 ### Parties Siam/Thailand ###
  SIA_totalist_party: "Pak Kommunist Siam"
  SIA_totalist_party_long: "Pak Kommunist Siam (Communist Party of Siam)"
@@ -265,7 +267,7 @@
  SIA_country_intro_header_2: "The Kingdom's Many Other Problems"
  SIA_country_intro_content_2: "While seemingly economically and industrially prosperous to outside eyes, [SIA.GetSIAshortname] is actually very reliant on investments made by Germany and must cherish the economic ties it shares with the nation. Industry is a very fragile and small section of the economy, which is mainly built around rice, sugar, and timber exports. Nationalism among ethnic minorities has been rising, which raises the spectre of separatist movements in the near future. Moreover: the bloated bureaucratic system, which has been present since the reign of Rama VI, has siphoned off much needed taxes and thus allowed for bandits to continually run wild in the fringes of [SIA.GetSIAshortname]."
 
- SIA_guide: "§MPrajadhipok's Reforms§! ($social_liberal_coloured$ / $social_democrat_coloured$ / $social_conservative_coloured$)\n During Black Monday, choose at least 3 of the following options:\n£white_dot Purchase most of Jasmine's rice.\n£white_dot Allow the status-quo of the bureaucracy to continue.\n£white_dot Do not cut any of the military expenditure.\n£white_dot Double the inheritance tax or lift the ban on gambling.\nThis will allow us to weather the storm with as little dissent as possible.\n\n£white_dot You will get to choose which of the parties you want to be in power.\n£white_dot Alternatively: reduce the tensions enough during the Yellow Dossier affair, or have Phibun choose to repeal martial law.\n\n§MTo get any path below, start with:§!\n£white_dot During Black Monday, do not choose any of the options listed above to further dissent among the population.\n£white_dot The Khana Ratsadon will carry out a coup.\n£white_dot During the \"Yellow Cover Dossier\" affair, choose to arrest the \"syndicalist sympathizers\" or try to incite further conflict in the Parliament.\n\n§MCoup§! - §MPlaek Phibunsongkhram§! / §MSarit Thanarat§! / §MPhao Sriyanond§! ($national_populist_coloured$ / $paternal_autocrat_coloured$)\n£white_dot During \"Phibunsongkhram's Dilemma\", choose \"Try to end this factional bickering.\"\n£white_dot Wait 2 months, there should be an option to \"take power for ourselves.\", after which Phibun will take over and turn you into $national_populist_coloured$.\n£white_dot To keep him alive, implement the Ratthaniyom reforms, but do not pass the New Anthem Act, yet do the \"promote the usage of the Bangkok dialect in Compulsory Education\" act; Phibun will live until the '50s that way.\n£white_dot If Phibun gets assassinated (whether by not implementing the reforms or being too harsh/soft) you will be able to go down either Phao's $national_populist_coloured$ republican path or Sarit's $paternal_autocrat_coloured$ restoration of Royal Power.\n\n§MBirth of the Socialist Republic§! ($radical_socialist_coloured$)\n£white_dot During \"Phibunsongkhram's Dilemma\", select \"HM's Dignity must be upheld!\", siding with the Royalists.\n£white_dot When the rebellion starts, go with the \"For the country!\" option (the Rebels) and try to win the civil war by capturing Bangkok.\n\n§MPower to the King§! ($paternal_autocrat_coloured$)\n£white_dot During \"Phibunsongkhram's Dilemma\", select \"It's treason then!\", siding with the Parliamentarians.\n£white_dot When the rebellion starts, go with the \"For the king!\" option (the Rebels), and try to win the civil war by capturing Bangkok.\n£white_dot (Bonus): On this path Paribatra Sukhumbhand can seize the throne after Rama VII dies.\n"
+ SIA_guide: "§MPrajadhipok's Reforms§! ($social_liberal_coloured$ / $social_democrat_coloured$ / $social_conservative_coloured$)\n£white_dot During Black Monday, have a recovery progress of 5 or more.\n£white_dot You will get to choose which of the parties you want to be in power.\n£white_dot Alternatively: reduce the tensions enough during the Yellow Dossier affair, or have Phibun choose to repeal martial law.\n\n§MTo get any path below, start with:§!\n£white_dot During Black Monday, have a recovery progress of 4 or less\n£white_dot The Khana Ratsadon will carry out a coup.\n£white_dot During the \"Yellow Cover Dossier\" affair, choose to arrest the \"syndicalist sympathizers\" or try to incite further conflict in the Parliament.\n\n§MCoup§! - §MPlaek Phibunsongkhram§! / §MSarit Thanarat§! / §MPhao Sriyanond§! ($national_populist_coloured$ / $paternal_autocrat_coloured$)\n£white_dot During \"Phibunsongkhram's Dilemma\", choose \"Try to end this factional bickering.\"\n£white_dot Wait 2 months, there should be an option to \"take power for ourselves.\", after which Phibun will take over and turn you into $national_populist_coloured$.\n£white_dot To keep him alive, implement the Ratthaniyom reforms, but do not pass the New Anthem Act, yet do the \"promote the usage of the Bangkok dialect in Compulsory Education\" act; Phibun will live until the '50s that way.\n£white_dot If Phibun gets assassinated (whether by not implementing the reforms or being too harsh/soft) you will be able to go down either Phao's $national_populist_coloured$ republican path or Sarit's $paternal_autocrat_coloured$ restoration of Royal Power.\n\n§MBirth of the Socialist Republic§! ($radical_socialist_coloured$)\n£white_dot During \"Phibunsongkhram's Dilemma\", select \"HM's Dignity must be upheld!\", siding with the Royalists.\n£white_dot When the rebellion starts, go with the \"For the country!\" option (the Rebels) and try to win the civil war by capturing Bangkok.\n\n§MPower to the King§! ($paternal_autocrat_coloured$)\n£white_dot During \"Phibunsongkhram's Dilemma\", select \"It's treason then!\", siding with the Parliamentarians.\n£white_dot When the rebellion starts, go with the \"For the king!\" option (the Rebels), and try to win the civil war by capturing Bangkok.\n£white_dot (Bonus): On this path Paribatra Sukhumbhand can seize the throne after Rama VII dies.\n"
 
 ### Newly Reformed Siamese Events ###
 
@@ -357,18 +359,10 @@
  siam_events.16.ppa: "For the country! (Government side)"
  siam_events.16.ppb: "For the king! (Rebel side)"
 
- siam_events.17.t: "'Padauk Flowers' Wilted"
- siam_events.17.d: "The rising tension affects every facet of the Siamese society, perhaps with one of the more prominent examples being the Royal Siamese Navy itself. With the Royalist stronghold being mostly in non-coastal areas, most sailors and naval officers have opted to organise ad-hoc units to fortify Sattahip and surrounding areas as a Parliamentarian stronghold and support other ground units who shared their belief. The rest had deserted earlier or tried to sit out the war as 'neutrals'. In other word, this puts the majority of RSN ships outside the control of either side."
- siam_events.17.a: "Blessing in disguise?"
-
  siam_events.18.t: "The Reclamation of Bangkok"
  siam_events.18.d: "The Siamese Civil War has recently taken an unexpected turn for the better, as our side has managed to reclaim Bangkok. This is a shattering blow to the opposition and thus, while some ministers in the illegitimate government have fled abroad, most have complied with our demands and have promptly laid down their arms."
  siam_events.18.a: "The Royalists have reclaimed power!"
  siam_events.18.b: "Syndicalism shall guide our nation!"
-
- siam_events.19.t: "'Padauk Flowers' Blooming Once Again"
- siam_events.19.d: "Following the civil war's conclusion, actions were taken to reestablish the control over the mothballed RSN fleets left deserted due to the conflict. We've now gathered enough sailors to act as a skeleton crew for the meantime, with even more reinforcements on their way back from boot camps."
- siam_events.19.a: "Welcoming news."
 
  siam_events.20.t: "End of the [SIA.GetNonIdeologyAdjective] Civil War"
  siam_events.20.d.government_parliamentarian: "After subduing most of the separatists and rebels we have received word that the remaining rebels have fled to Yunnan. No matter, for we shall catch what remains of the rebel scum later. We must first mourn the losses sustained by our loyal men, to that end the royal cremation ground has been converted into a public pyre. Prajadhipok, who was largely unrelated to the rebellion, has been permitted to return to the Grand Palace."
@@ -1225,8 +1219,6 @@
  SIA_country_namechange_back_decision_desc: "Advocate by many people from all over our country - they've proposed the renaming of our nation back to Siam as the new name causes some controversies among the Chinese, Malay and Laotian minorities while also diminish our country's prestige abroad."
  SIA_tarutao: "Tarutao Correction Centre"
  SIA_tarutao_desc: "22 Kilometres from the Satun Coast and being in the middle of the Shark-infested area, the island of Tarutao ('Fresh Water Gulf' in Malay) has been selected by the Department of Corrections as the new facility site for holding political prisoners who are deemed to be threatening to the new regime's stability."
- SIA_recrew_the_navy: "Recrew the Navy"
- SIA_recrew_the_navy_desc: "The majority of the RSN fleet were mothballed following the outbreak of the Siamese Civil War. It's now time for us to fill the navy with men loyal to our causes."
  SIA_reclaim_left_bank_mekong: "Reclaim Left Bank of Mekong"
  SIA_reclaim_left_bank_mekong_desc: "§RWe shall retake what was rightfully ours! No border shall separate us from our brothers on the other side of the river.§!"
 
@@ -1289,8 +1281,6 @@
  SIA_secure_bangkok: "Secure Bangkok"
  SIA_secure_bangkok_desc: "In order to secure our faction's legitimacy in the civil war, the beating heart of the Siamese nation needed to be under our control. Failing to do so would be a huge blow to our cause."
  SIA_secure_bangkok_tt: "Our army's §R$MODIFIER_ARMY_ORG_FACTOR$§!, §RAttack§!, §RDefence§!, §RSupply Consumption§!, and §RDivision Recovery Rate§! deteriorates weekly.\n\n"
- SIA_naval_dissolution_tt: "§RThe control over the majority of the RSN ships will be disabled during the entire duration of the civil war.§!\n\nThe decision to reestablish control over RSN will be available later on to whoever emerges victorious."
- SIA_naval_reestablish_control_tt: "§GWe've successfully reestablished control over the RSN's pre-war fleets.§!"
 
 ### Cosmetic Tags ###
  SIA: "Siam"

@@ -655,7 +655,7 @@ LEP_add_collapse_dm = {
 	}
 	hidden_effect = {
 		china_update_morale = yes
-		country_event = { id = league_war.2 days = 34 }
+		country_event = { id = league_war_events.2 days = 34 }
 	}
 }
 
@@ -4523,5 +4523,65 @@ china_form_SCPC_effect = {
 			}
 		}
 		add_claim_by = ROOT
+	}
+}
+
+china_create_paratrooper_template = {
+	if = {
+		limit = { NOT = { has_tech = paratroopers } }
+		set_technology = { paratroopers = 1 }
+	}
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = tooltip_create_division_template
+			NAME = "Kongjiang bing jun"
+			LINE_1 = { localization_key = line_battalion_tt NAME = paratrooper ICON = GFX_unit_paratrooper_icon_small COUNT = 4 }
+			SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+		}
+		if = {
+			limit = { has_template = "Kongjiang bing jun" }
+			delete_unit_template_and_units = { division_template = "Kongjiang bing jun" disband = yes } #no cheating
+		}
+		division_template = {
+			name = "Kongjiang bing jun" #Marine Corps
+			division_names_group = CHYN_INF_01
+			regiments = {
+				paratrooper = { x = 0 y = 0 }
+				paratrooper = { x = 0 y = 1 }
+				paratrooper = { x = 1 y = 0 }
+				paratrooper = { x = 1 y = 1 }
+			}
+			support = {
+				engineer = { x = 0 y = 0 }
+			}
+		}
+	}
+}
+
+china_create_marine_template = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = tooltip_create_division_template
+			NAME = "Haijun lu zhan dui"
+			LINE_1 = { localization_key = line_battalion_tt NAME = marine ICON = GFX_unit_marine_icon_small COUNT = 4 }
+			SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+		}
+		if = {
+			limit = { has_template = "Haijun lu zhan dui" }
+			delete_unit_template_and_units = { division_template = "Haijun lu zhan dui" disband = yes } #No cheating
+		}
+		division_template = {
+			name = "Haijun lu zhan dui" #Marine Corps
+			division_names_group = CHYN_INF_01
+			regiments = {
+				marine = { x = 0 y = 0 }
+				marine = { x = 0 y = 1 }
+				marine = { x = 1 y = 0 }
+				marine = { x = 1 y = 1 }
+			}
+			support = {
+				engineer = { x = 0 y = 0 }
+			}
+		}
 	}
 }

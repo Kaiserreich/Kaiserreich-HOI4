@@ -154,7 +154,7 @@ large_unit_tactics = {
 				max_organisation = 10
 				soft_attack = 0.1
 			}
-			army_morale = 0.2
+			army_morale = 0.1
 		}
 		motorization_initiative = {
 		#5
@@ -502,10 +502,7 @@ irregulars = {
 	}
 	visible = {
 		has_dlc_ncns = yes
-		OR = {
-			has_template_containing_unit = irregular_infantry
-			has_template_containing_unit = militia
-		}
+		has_template_containing_unit = irregular_infantry
 	}
 
 	ai_will_do = {
@@ -520,10 +517,6 @@ irregulars = {
 		defense = 0.1
 		supply_consumption = -0.05
 	}
-	militia = {
-		defense = 0.1
-		supply_consumption = -0.01
-	}
 
 	# EFFECTS
 
@@ -533,9 +526,6 @@ irregulars = {
 		}
 		partisan_regiments = {
 			irregular_infantry = {
-				combat_width = -0.4
-			}
-			militia = {
 				combat_width = -0.4
 			}
 			category_light_infantry = {
@@ -581,9 +571,6 @@ peoples_war = {
 	xp_cost = 50
 	xp_type = army
 
-	available = {
-		has_socialist_government = yes
-	}
 	visible = {
 		has_dlc_ncns = yes
 		has_template_containing_unit = militia
@@ -620,7 +607,7 @@ peoples_war = {
 		#2
 			mastery = 50
 			category_light_infantry = {
-				default_morale = 0.2
+				default_morale = 0.1
 			}
 			militia = {
 				equipment_capture_factor = 0.01

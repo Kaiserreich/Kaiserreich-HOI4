@@ -962,6 +962,20 @@ shared_focus = {
 			num_divisions > 99
 		}
 	}
+	bypass = {
+		NOT = {
+			country_exists = XSM
+			country_exists = MON
+			country_exists = TIB
+			country_exists = SIK
+			country_exists = KUM
+			country_exists = ETS
+		}
+		owns_state = 617 #Dihua
+		owns_state = 283 #Lanzhou
+		owns_state = 322 #Lhasa
+		owns_state = 330 #Urga
+	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed CHN_subjugating_the_frontiers_focus"
 		china_enable_outskirts_decisions = yes
@@ -1146,6 +1160,7 @@ shared_focus = {
 				add_idea = CHN_return_to_the_world_stage_2_idea
 			}
 		}
+		mark_focus_tree_layout_dirty = yes #For the World in Harmony Focus
 	}
 	search_filters = { FOCUS_FILTER_ANNEXATION }
 }
@@ -1201,7 +1216,6 @@ shared_focus = {
 		}
 		add_state_claim = 1111 #Hukawng Valley
 		add_state_claim = 1042 #Badakhshan
-		mark_focus_tree_layout_dirty = yes #For the World in Harmony Focus
 	}
 	search_filters = { FOCUS_FILTER_ANNEXATION }
 }
@@ -1502,6 +1516,7 @@ shared_focus = {
 		has_completed_focus = CHN_forging_a_great_commercial_circle_focus
 		has_completed_focus = CHN_for_the_evolution_of_humanity_focus
 		has_completed_focus = CHN_the_dragon_awakens_focus
+		CHN_asia_federation_leaders_trigger = yes
 	}
 
 	available = {

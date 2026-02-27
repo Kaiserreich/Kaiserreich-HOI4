@@ -984,16 +984,13 @@ country_event = { # Boulder Dam Completed
 		name = united_states_events.161.a
 		379 = {
 			add_building_construction = {
-				type = dam_mountain
+				type = landmark_boulder_dam
 				level = 1
 				province = 4799
 				instant_build = yes
 			}
-			custom_effect_tooltip = {
-				localization_key = building_state_modifier|dam_mountain
-				INDENT = "    "
-			}
 		}
+		hidden_effect = { spawn_boulder_dam_entity = yes }
 	}
 }
 
@@ -6108,7 +6105,16 @@ country_event = {# War Department Moves into the Pentagon
 		log = "[GetLogInfo]: event united_states_events.628 option united_states_events.628.a"
 		name = united_states_events.628.a
 		add_political_power = 25
+		362 = {
+			add_building_construction = {
+				type = landmark_pentagon
+				level = 1
+				province = 873
+				instant_build = yes
+			}
+		}
 		hidden_effect = {
+			spawn_pentagon_entity = yes
 			country_event = { id = united_states_events.629 days = 100 }
 		}
 	}

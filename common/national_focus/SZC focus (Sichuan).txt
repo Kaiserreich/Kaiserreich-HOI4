@@ -5547,44 +5547,43 @@ focus_tree = {
 				amount = 200
 			}
 			custom_effect_tooltip = tooltip_white_line
-			hidden_effect = {
-				ROOT = {
-					# A division_template effect to address 'Malformed token: Luo Zezhou Division' error
-					if = {
-						limit = {
-							NOT = { has_template = "Luo Zezhou Division" }
-						}
-						division_template = { #Luo Zezhou Division
-							name = "Luo Zezhou Division"
-							division_names_group = "CHYN_MTN_01"
-							regiments = {
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								irregular_infantry = { x = 1 y = 0 }
-								irregular_infantry = { x = 1 y = 1 }
-							}
-							priority = 2
-						}
-						custom_effect_tooltip = {
-							localization_key = tooltip_create_division_template
-							NAME = "Luo Zezhou Division"
-							LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 2 }
-							LINE_2 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 2 }
-						}
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Luo Zezhou Division"
+					LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 2 }
+					LINE_2 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 2 }
+				}
+				if = {
+					limit = { has_template = "Luo Zezhou Division" }
+					delete_unit_template_and_units = { division_template = "Luo Zezhou Division" disband = yes } #no cheating
+				}
+				division_template = { #Luo Zezhou Division
+					name = "Luo Zezhou Division"
+					division_names_group = CHYN_MTN_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						irregular_infantry = { x = 1 y = 0 }
+						irregular_infantry = { x = 1 y = 1 }
 					}
+					priority = 2
 				}
 			}
 			random_owned_controlled_state = {
 				prioritize = { 661 }
-				create_unit = {
-					division = "division_template = \"Luo Zezhou Division\" start_experience_factor = 0.2"
-					prioritize_location = 2030
-					owner = ROOT
-				}
-				create_unit = {
-					division = "division_template = \"Luo Zezhou Division\" start_experience_factor = 0.2"
-					prioritize_location = 2030
-					owner = ROOT
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 2
+						TYPE = "Luo Zezhou Division"
+					}
+					create_unit = {
+						division = "division_template = \"Luo Zezhou Division\" start_experience_factor = 0.2"
+						prioritize_location = 2030
+						owner = ROOT
+						count = 2
+					}
 				}
 			}
 		}
@@ -8108,7 +8107,14 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed SZC_recruit_sympathetic_officers"
 			add_war_support = 0.05
 			if = {
-				limit = { SZC_li_jiayu = { is_high_command = yes } }
+				limit = {
+					SZC_li_jiayu = {
+						OR = {
+							is_high_command = yes
+							is_army_chief = yes
+						}
+					}
+				}
 				custom_effect_tooltip = SZC_li_jiayu_was_helpful_tt
 				army_experience = 50
 				UPC_ext_enthusiasm_medium_effect = yes
@@ -8388,7 +8394,10 @@ focus_tree = {
 		y = 12
 
 		allow_branch = {
-			has_country_flag = UPC_has_federalist_democracy_flag
+			OR = {
+				has_country_flag = UPC_has_federalist_democracy_flag
+				has_country_flag = UPC_democratic_backsliding_flag
+			}
 		}
 
 		available = {
@@ -8436,7 +8445,10 @@ focus_tree = {
 		y = 0
 
 		allow_branch = {
-			has_country_flag = UPC_has_federalist_democracy_flag
+			OR = {
+				has_country_flag = UPC_has_federalist_democracy_flag
+				has_country_flag = UPC_democratic_backsliding_flag
+			}
 		}
 
 		available = {
@@ -8849,7 +8861,10 @@ focus_tree = {
 		y = 0
 
 		allow_branch = {
-			has_country_flag = UPC_has_federalist_democracy_flag
+			OR = {
+				has_country_flag = UPC_has_federalist_democracy_flag
+				has_country_flag = UPC_democratic_backsliding_flag
+			}
 		}
 
 		available = {
@@ -9620,7 +9635,6 @@ focus_tree = {
 		ai_will_do = { factor = 100 }
 		available = {
 			NOT = {
-				#has_country_flag = UPC_CSP_in_governing_coalition_flag
 				has_country_flag = UPC_KMT_in_governing_coalition_flag
 			}
 		}
@@ -10349,11 +10363,6 @@ focus_tree = {
 						irregular_infantry = { x = 1 y = 1 }
 					}
 				}
-			}
-			custom_effect_tooltip = {
-				localization_key = tooltip_create_division_template
-				NAME = "Zhili Canbu Bubing Shi"
-				LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 4 }
 			}
 			random_owned_controlled_state = {
 				prioritize = { 605 }

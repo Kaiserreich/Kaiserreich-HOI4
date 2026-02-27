@@ -78,7 +78,7 @@ foreign_politics = {
 					has_country_flag = CHN_refuse_foreign_investment_flag
 					has_idea = CHN_east_asian_community_member_idea
 				}
-				num_of_controlled_factories < 21
+				num_of_controlled_factories < 31
 			}
 		}
 
@@ -1408,7 +1408,7 @@ UPC_road_to_unification_decision_category = {
 		}
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete UPC_manipulate_the_regionalists"
-			FROM = { add_war_support = -0.03 }
+			FROM = { add_war_support = -0.05 }
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
 				amount = -300
@@ -1445,7 +1445,7 @@ UPC_road_to_unification_decision_category = {
 		cost = 30
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete UPC_appeal_to_the_moderates"
-			FROM = { add_war_support = -0.03 }
+			FROM = { add_war_support = -0.05 }
 		}
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove UPC_appeal_to_the_moderates"
@@ -1481,7 +1481,7 @@ UPC_road_to_unification_decision_category = {
 		}
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete UPC_intimidate_the_defeatists"
-			FROM = { add_war_support = -0.03 }
+			FROM = { add_war_support = -0.05 }
 			hidden_effect = {
 				add_command_power = -30
 			}
@@ -1756,10 +1756,14 @@ UPC_enthusiasm_decision_category = {
 		allowed = { is_chinese_or_potential_chinese_tag = yes }
 		available = {
 			has_war = no
-			OR = {
-				is_neighbor_of = FROM
-				FROM = { any_neighbor_country = { is_subject_of = ROOT } }
-				FROM = { any_subject_country = { is_neighbor_of = ROOT } }
+			if = {
+				limit = { country_exists = UPC }
+				#Format it this way to these checks dont throw a bunch of errors searching for a tag that doesn't exist
+				OR = {
+					is_neighbor_of = UPC
+					UPC = { any_neighbor_country = { is_subject_of = ROOT } }
+					UPC = { any_subject_country = { is_neighbor_of = ROOT } }
+				}
 			}
 			if = {
 				limit = { tag = YUN }
@@ -1783,12 +1787,12 @@ UPC_enthusiasm_decision_category = {
 		cost = 50
 
 		cancel_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision cancel UPC_eliminate_UPC_pretenders_decision"
+			log = "[GetLogRoot]: Decision cancel UPC_eliminate_UPC_pretenders_decision"
 			clear_decision_attack_AI = yes
 		}
 
 		complete_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision complete UPC_eliminate_UPC_pretenders_decision"
+			log = "[GetLogRoot]: Decision complete UPC_eliminate_UPC_pretenders_decision"
 			setup_decision_attack_ai = yes
 			if = {
 				limit = {
@@ -1816,7 +1820,7 @@ UPC_enthusiasm_decision_category = {
 			}
 		}
 		remove_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision remove UPC_eliminate_UPC_pretenders_decision"
+			log = "[GetLogRoot]: Decision remove UPC_eliminate_UPC_pretenders_decision"
 			clear_decision_attack_AI = yes
 			UPC = {
 				ROOT = {

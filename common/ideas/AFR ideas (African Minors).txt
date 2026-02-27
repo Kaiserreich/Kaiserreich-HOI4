@@ -51,16 +51,6 @@ ideas = {
 				experience_gain_army = 0.05
 			}
 		}
-		AFR_military_advisors_from_BRA = {
-			on_add = { log = "[GetLogRoot]: add idea AFR_military_advisors_from_BRA" }
-			picture = advisors_brazil
-			allowed = { always = no }
-			available = { NOT = { has_war_with = BRA } }
-			modifier = {
-				command_power_gain = 0.1
-				experience_gain_army = 0.05
-			}
-		}
 		AFR_military_advisors_from_CAN = {
 			on_add = { log = "[GetLogRoot]: add idea AFR_military_advisors_from_CAN" }
 			picture = advisors_canada
@@ -106,16 +96,6 @@ ideas = {
 			picture = advisors_germany
 			allowed = { always = no }
 			available = { NOT = { has_war_with = GER } }
-			modifier = {
-				command_power_gain = 0.1
-				experience_gain_army = 0.05
-			}
-		}
-		AFR_military_advisors_from_LIB = {
-			on_add = { log = "[GetLogRoot]: add idea AFR_military_advisors_from_LIB" }
-			picture = LIB_whiter_pale
-			allowed = { always = no }
-			available = { NOT = { has_war_with = LIB } }
 			modifier = {
 				command_power_gain = 0.1
 				experience_gain_army = 0.05

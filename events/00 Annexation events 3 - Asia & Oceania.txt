@@ -97,10 +97,9 @@ country_event = { #Fate of Kazakhstan
 			annexations_reset_central_asian_tags = yes
 			if = {
 				limit = {
-					OR = {
-						571 = { is_claim_or_core_of_ROOT = yes } #Omsk
-						407 = { is_claim_or_core_of_ROOT = yes } #Tashkent
-						861 = { is_claim_or_core_of_ROOT = yes } #Khorezm
+					any_state_of = {
+						target = { 571 407 861 } #Omsk, Tashkent, Khorezm
+						is_claim_or_core_of_ROOT = yes
 					}
 					RUS_socialists_can_integrate = yes
 				}
@@ -357,6 +356,10 @@ country_event = { #Fate of Turkestan
 			if = {
 				limit = {
 					OR = {
+						any_state_of = {
+							target = { 589 861 732 } #Semireche, Khorezm, Samarkand
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							583 = { is_claim_or_core_of_ROOT = yes } #Petropavlovsk
 							owns_any_state_of = {
@@ -364,9 +367,6 @@ country_event = { #Fate of Turkestan
 								861 #Khorezm
 							}
 						}
-						589 = { is_claim_or_core_of_ROOT = yes } #Semireche
-						861 = { is_claim_or_core_of_ROOT = yes } #Khorezm
-						732 = { is_claim_or_core_of_ROOT = yes } #Samarkand
 					}
 					RUS_socialists_can_integrate = yes
 				}
@@ -718,6 +718,10 @@ country_event = { #Fate of Bukhara
 			if = {
 				limit = {
 					OR = {
+						any_state_of = {
+							target = { 407 861 } #Tashkent, Khorezm
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							583 = { is_claim_or_core_of_ROOT = yes } #Petropavlovsk
 							owns_any_state_of = {
@@ -725,8 +729,6 @@ country_event = { #Fate of Bukhara
 								861 #Khorezm
 							}
 						}
-						407 = { is_claim_or_core_of_ROOT = yes } #Tashkent
-						861 = { is_claim_or_core_of_ROOT = yes } #Khorezm
 					}
 					RUS_socialists_can_integrate = yes
 				}
@@ -1020,6 +1022,10 @@ country_event = { #Fate of Khiva
 			if = {
 				limit = {
 					OR = {
+						any_state_of = {
+							target = { 407 587 405 } #Mangyshlak, Kyzylkum, Bukhara
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							583 = { is_claim_or_core_of_ROOT = yes } #Petropavlovsk
 							owns_any_state_of = {
@@ -1027,9 +1033,6 @@ country_event = { #Fate of Khiva
 								587 #Kyzylkum
 							}
 						}
-						407 = { is_claim_or_core_of_ROOT = yes } #Mangyshlak
-						587 = { is_claim_or_core_of_ROOT = yes } #Kyzylkum
-						405 = { is_claim_or_core_of_ROOT = yes } #Bukhara
 					}
 					RUS_socialists_can_integrate = yes
 				}
@@ -1672,9 +1675,9 @@ country_event = { #Fate of the Russian Far East
 			588 = { retain_state = yes } #Pavlodar
 			if = {
 				limit = {
-					OR = {
-						582 = { is_claim_or_core_of_ROOT = yes } #Orsk
-						408 = { is_claim_or_core_of_ROOT = yes } #Vladivostok
+					any_state_of = {
+						target = { 582 408 } #Orsk, Vladivostok
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -3122,8 +3125,10 @@ country_event = { #Fate of Shanghai
 							NOT = { has_global_flag = JAP_defeated_by_china }
 						}
 						china_is_potential_government = yes
-						596 = { is_claim_or_core_of_ROOT = yes } #Hangzhou
-						613 = { is_claim_or_core_of_ROOT = yes } #Nanjing
+						any_state_of = {
+							target = { 596 613 } #Hangzhou, Nanjing
+							is_claim_or_core_of_ROOT = yes
+						}
 					}
 				}
 				save_event_target_as = can_annex
@@ -7583,9 +7588,9 @@ country_event = { #Fate of Kashmir
 			annexations_reset_indian_tags = yes
 			if = {
 				limit = {
-					OR = {
-						890 = { is_claim_or_core_of_ROOT = yes } #Simla
-						891 = { is_claim_or_core_of_ROOT = yes } #West Punjab
+					any_state_of = {
+						target = { 890 891 } #Simla, West Punjab
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -7839,9 +7844,10 @@ country_event = { #Fate of Sikkim
 			if = {
 				limit = {
 					OR = {
-						323 = { is_claim_or_core_of_ROOT = yes } #Nepal
-						324 = { is_claim_or_core_of_ROOT = yes } #Bhutan
-						887 = { is_claim_or_core_of_ROOT = yes } #Darjeeling
+						any_state_of = {
+							target = { 323 324 887 } #Nepal, Bhutan, Darjeeling
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							owns_state = 887 #Darjeeling
 							any_state_of = {
@@ -9165,11 +9171,9 @@ country_event = { #Fate of Chhatisgarh
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						426 = { is_claim_or_core_of_ROOT = yes } #Orissa
-						427 = { is_claim_or_core_of_ROOT = yes } #Hyderabad
-						436 = { is_claim_or_core_of_ROOT = yes } #Raipur
-						437 = { is_claim_or_core_of_ROOT = yes } #Central Provinces
+					any_state_of = {
+						target = { 426 427 436 437 } #Orissa, Hyderabad, Raipur, Central Provinces
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -9387,9 +9391,9 @@ country_event = { #Fate of Vizagapatnam
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						424 = { is_claim_or_core_of_ROOT = yes } #Andhra
-						426 = { is_claim_or_core_of_ROOT = yes } #Orissa
+					any_state_of = {
+						target = { 424 426 } #Andhra, Orissa
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -9852,12 +9856,9 @@ country_event = { #Fate of Andhra
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						320 = { is_claim_or_core_of_ROOT = yes } #Madras
-						425 = { is_claim_or_core_of_ROOT = yes } #Mysore
-						427 = { is_claim_or_core_of_ROOT = yes } #Hyderabad
-						868 = { is_claim_or_core_of_ROOT = yes } #Kolhapur
-						889 = { is_claim_or_core_of_ROOT = yes } #Vizagapatnam
+					any_state_of = {
+						target = { 320 425 427 868 889 } #Madras, Mysore, Hyderabad, Kolhapur, Vizagapatnam
+						is_valid_annexation_state = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -11228,11 +11229,9 @@ country_event = { #Fate of Baluchistan
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						410 = { is_claim_or_core_of_ROOT = yes } #Sistan
-						1117 = { is_claim_or_core_of_ROOT = yes } #Kandahar
-						443 = { is_claim_or_core_of_ROOT = yes } #Sind
-						445 = { is_claim_or_core_of_ROOT = yes } #Quetta
+					any_state_of = {
+						target = { 410 1117 443 445 } #Sistan, Kandahar, Sind, Quetta
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -11443,8 +11442,10 @@ country_event = { #Fate of Quetta
 			if = {
 				limit = {
 					OR = {
-						442 = { is_claim_or_core_of_ROOT = yes } #Peshawar
-						443 = { is_claim_or_core_of_ROOT = yes } #Sind
+						any_state_of = {
+							target = { 442 443 } #Peshawar, Sind
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							891 = { is_claim_or_core_of_ROOT = yes } #West Punjab
 							NOT = { original_tag = KHA }
@@ -11631,8 +11632,10 @@ country_event = { #Fate of Sind
 			if = {
 				limit = {
 					OR = {
-						428 = { is_claim_or_core_of_ROOT = yes } #Gujarat
-						433 = { is_claim_or_core_of_ROOT = yes } #Rajputana
+						any_state_of = {
+							target = { 428 433 } #Gujarat, Rajputana
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							891 = { is_claim_or_core_of_ROOT = yes } #West Punjab
 							NOT = { original_tag = KHA }
@@ -11891,6 +11894,10 @@ country_event = { #Fate of Nepal
 			modifier = {
 				add = 30
 				has_socialist_government = yes
+			}
+			modifier = {
+				factor = 0
+				original_tag = RAJ
 			}
 		}
 		set_temp_variable = { tag_to_release = NEP }
@@ -13820,9 +13827,9 @@ country_event = { #Fate of Stung Treng
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						286 = { is_claim_or_core_of_ROOT = yes } #Cochinchina
-						750 = { is_claim_or_core_of_ROOT = yes } #Phnom Penh
+					any_state_of = {
+						target = { 286 750 } #Cochinchina, Phnom Penh
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -13948,9 +13955,9 @@ country_event = { #Fate of Moulmein
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						288 = { is_claim_or_core_of_ROOT = yes } #Rangoon
-						822 = { is_claim_or_core_of_ROOT = yes } #Lan Na
+					any_state_of = {
+						target = { 288 822 } #Rangoon, Lan Na
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -14209,9 +14216,9 @@ country_event = { #Fate of Samaburi
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						670 = { is_claim_or_core_of_ROOT = yes } #Laos
-						822 = { is_claim_or_core_of_ROOT = yes } #Lan Na
+					any_state_of = {
+						target = { 670 822 } #Laos, Lan Na
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -14334,10 +14341,9 @@ country_event = { #Fate of Battambang
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						750 = { is_claim_or_core_of_ROOT = yes } #Phnom Penh
-						823 = { is_claim_or_core_of_ROOT = yes } #Isan
-						824 = { is_claim_or_core_of_ROOT = yes } #Rayong
+					any_state_of = {
+						target = { 750 823 824 } #Phnom Penh, Isan, Rayong
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -14664,8 +14670,10 @@ country_event = { #Fate of Singapore
 			if = {
 				limit = {
 					OR = {
-						846 = { is_claim_or_core_of_ROOT = yes } #Johore
-						1020 = { is_claim_or_core_of_ROOT = yes } #Batavia
+						any_state_of = {
+							target = { 846 1020 } #Johore, Batavia
+							is_claim_or_core_of_ROOT = yes
+						}
 						annexations_AI_wants_to_own_singapore = yes
 					}
 				}
@@ -14938,9 +14946,9 @@ country_event = { #Fate of Tawang
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						432 = { is_claim_or_core_of_ROOT = yes } #Assam
-						693 = { is_claim_or_core_of_ROOT = yes } #Chamdo
+					any_state_of = {
+						target = { 432 693 } #Assam, Chamdo
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -15588,11 +15596,10 @@ country_event = { #Fate of the Andaman and Nicobar Islands
 			if = {
 				limit = {
 					OR = {
-						320 = { is_claim_or_core_of_ROOT = yes } #Madras
-						423 = { is_claim_or_core_of_ROOT = yes } #Madura
-						424 = { is_claim_or_core_of_ROOT = yes } #Andhra
-						426 = { is_claim_or_core_of_ROOT = yes } #Orissa
-						431 = { is_claim_or_core_of_ROOT = yes } #West Bengal
+						any_state_of = {
+							target = { 320 423 424 426 431 } #Madras, Madura, Andhra, Orissa, West Bengal
+							is_valid_annexation_state = yes
+						}
 						annexations_britain_can_annex_overseas = yes
 						original_tag = GEA
 					}
@@ -15940,9 +15947,9 @@ country_event = { #Fate of Aksai Chin
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						441 = { is_claim_or_core_of_ROOT = yes } #Kashmir
-						619 = { is_claim_or_core_of_ROOT = yes } #Kashgar
+					any_state_of = {
+						target = { 441 619 } #Kashmir, Kashgar
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -17059,8 +17066,10 @@ country_event = { #Fate of Travancore
 				limit = {
 					OR = {
 						is_indian_unifier_tag = yes
-						320 = { is_claim_or_core_of_ROOT = yes } #Madras
-						425 = { is_claim_or_core_of_ROOT = yes } #Mysore
+						any_state_of = {
+							target = { 320 425 } #Madras, Mysore
+							is_claim_or_core_of_ROOT = yes
+						}
 					}
 				}
 				save_event_target_as = can_annex
@@ -17698,9 +17707,9 @@ country_event = { #Fate of Uttaranchal
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						323 = { is_claim_or_core_of_ROOT = yes } #Nepal
-						439 = { is_claim_or_core_of_ROOT = yes } #Delhi
+					any_state_of = {
+						target = { 323 439 } #Nepal, Delhi
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -17823,11 +17832,9 @@ country_event = { #Fate of Darjeeling
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						431 = { is_claim_or_core_of_ROOT = yes } #West Bengal
-						432 = { is_claim_or_core_of_ROOT = yes } #Assam
-						435 = { is_claim_or_core_of_ROOT = yes } #Bihar
-						888 = { is_claim_or_core_of_ROOT = yes } #Sikkim
+					any_state_of = {
+						target = { 431 432 435 888 } #West Bengal, Assam, Bihar, Sikkim
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -18043,9 +18050,9 @@ country_event = { #Fate of the Hukawng Valley
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						701 = { is_claim_or_core_of_ROOT = yes } #Kachin
-						816 = { is_claim_or_core_of_ROOT = yes } #Dali
+					any_state_of = {
+						target = { 701 816 } #Kachin, Dali
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -18165,9 +18172,9 @@ country_event = { #Fate of the Grey Wedge
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						571 = { is_claim_or_core_of_ROOT = yes } #Omsk
-						590 = { is_claim_or_core_of_ROOT = yes } #Akmolinsk
+					any_state_of = {
+						target = { 571 590 } #Omsk, Akmolinsk
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -18312,9 +18319,9 @@ state_event = { #Fate of the Kuril Islands
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						536 = { is_claim_or_core_of_ROOT = yes } #Hokkaido
-						637 = { is_claim_or_core_of_ROOT = yes } #Kamchatka
+					any_state_of = {
+						target = { 536 637 } #Hokkaido, Kamchatka
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -18441,10 +18448,9 @@ country_event = { #Fate of Badakhshan
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						586 = { is_claim_or_core_of_ROOT = yes } #Kokand
-						619 = { is_claim_or_core_of_ROOT = yes } #Kashgar
-						1118 = { is_claim_or_core_of_ROOT = yes } #Qataghan
+					any_state_of = {
+						target = { 586 619 1118 } #Kokand, Kashgar, Qataghan
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -18615,10 +18621,9 @@ country_event = { #Fate of the Malabar Coast
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						423 = { is_claim_or_core_of_ROOT = yes } #Madura
-						425 = { is_claim_or_core_of_ROOT = yes } #Mysore
-						867 = { is_claim_or_core_of_ROOT = yes } #Travancore
+					any_state_of = {
+						target = { 423 425 867 } #Madura, Mysore, Travancore
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex

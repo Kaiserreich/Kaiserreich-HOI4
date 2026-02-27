@@ -1670,6 +1670,17 @@ NEE_Great_Depression_decisions = {
 					level = 1
 					instant_build = yes
 				}
+				custom_effect_tooltip = tooltip_white_line
+				add_building_construction = {
+					type = dam
+					level = 1
+					province = 7629
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = {
+				localization_key = building_state_modifier|dam
+				INDENT = "    "
 			}
 			subtract_from_variable = { NEE_GD_timer_var = 6 }
 			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }

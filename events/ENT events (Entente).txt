@@ -9864,12 +9864,11 @@ country_event = {
 				}
 			}
 		}
-		has_offensive_war_with = ENT
-		war_length_with = { tag = ENT months > 6 }
+		has_war_with = ENT
+		war_length_with = { tag = ENT months > 12 }
 		surrender_progress < 0.05
 		is_valid_peace_target = yes
 		ENT = {
-			has_defensive_war_with = ROOT
 			is_valid_peace_target = yes
 			NOT = {
 				any_allied_country = {
@@ -9878,6 +9877,26 @@ country_event = {
 						is_in_australia = yes
 					}
 					has_capitulated = no
+				}
+				any_collection_element = {
+					collection = {
+						input = game:scope
+						operators = {
+							faction_members
+							controlled_states
+						}
+					}
+					is_coastal = yes
+					controller = { has_capitulated = no }
+					OR = {
+						state_strategic_value > 99
+						state_population_k > 200
+					}
+					OR = {
+						is_on_continent = asia
+						is_on_continent = india
+						is_on_continent = australia
+					}
 				}
 			}
 		}

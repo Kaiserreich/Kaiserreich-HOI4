@@ -7,7 +7,7 @@
 add_namespace = patagonia_events
 add_namespace = patagonia_battle_of_buenos_aires_events
 add_namespace = araucania_events
-add_namespace = patagonia_news
+add_namespace = patagonia_news_events
 
 country_event = { # calling for chilean volunteers
 	id = patagonia_events.2
@@ -560,7 +560,6 @@ country_event = { # Victory in civil war - proclaim ourselves new argentina
 		hidden_effect = {
 			remove_ideas = {
 				FOP_patagonian_resistance
-				FOP_war_preparations
 				FOP_resource_exploitation
 				FOP_try_to_solve_pop_issue
 				FOP_further_military_encouragement
@@ -2009,7 +2008,7 @@ country_event = { #TUC CUSC Victory
 		}
 		hidden_effect = {
 			country_event = { id = patagonia_battle_of_buenos_aires_events.001 days = 7 }
-			news_event = patagonia_news.1
+			news_event = patagonia_news_events.1
 		}
 	}
 }
@@ -2058,7 +2057,7 @@ country_event = { #TUC USA victory
 			}
 		}
 		hidden_effect = {
-			news_event = patagonia_news.1
+			news_event = patagonia_news_events.1
 		}
 	}
 }
@@ -2095,7 +2094,7 @@ country_event = { #TUC Socialist victory
 				country_event = { id = patagonia_battle_of_buenos_aires_events.42 days = 6 }
 			}
 			country_event = { id = patagonia_battle_of_buenos_aires_events.42 days = 6 }
-			news_event = patagonia_news.1
+			news_event = patagonia_news_events.1
 		}
 	}
 }
@@ -3874,10 +3873,10 @@ country_event = { #Communist coup against RadAns
 			complete_national_focus = FOP_the_communist_supremacy
 			if = {
 				limit = { has_government = radical_socialist }
-				news_event = patagonia_news.6
+				news_event = patagonia_news_events.6
 			}
 			else = {
-				news_event = patagonia_news.3
+				news_event = patagonia_news_events.3
 			}
 			country_event = { id = patagonia_battle_of_buenos_aires_events.42 days = 6 }
 			country_event = { id = patagonia_events.239 days = 90 }
@@ -3929,10 +3928,10 @@ country_event = { #Radical Anarchist Coup against Commies
 			complete_national_focus = FOP_the_anarchist_radicals
 			if = {
 				limit = { has_government = radical_socialist }
-				news_event = patagonia_news.6
+				news_event = patagonia_news_events.6
 			}
 			else = {
-				news_event = patagonia_news.4
+				news_event = patagonia_news_events.4
 			}
 			country_event = { id = patagonia_battle_of_buenos_aires_events.42 days = 6 }
 		}
@@ -4751,7 +4750,7 @@ country_event = { #Giovanni Coup
 		FOP_emilio_lopez_arango = { kill_character = yes }
 		hidden_effect = {
 			complete_national_focus = FOP_the_anarchist_radicals
-			news_event = patagonia_news.5
+			news_event = patagonia_news_events.5
 			country_event = { id = patagonia_battle_of_buenos_aires_events.023 days = 7 }
 		}
 	}
@@ -5291,10 +5290,10 @@ country_event = { #Religion Question
 
 # Proclamation of Argentine Commune
 news_event = {
-	id = patagonia_news.1
-	immediate = { log = "[GetLogInfo]: event patagonia_news.1" }
-	title = patagonia_news.1.t
-	desc = patagonia_news.1.d
+	id = patagonia_news_events.1
+	immediate = { log = "[GetLogInfo]: event patagonia_news_events.1" }
+	title = patagonia_news_events.1.t
+	desc = patagonia_news_events.1.d
 	picture = GFX_news_event_ARG_Commune_victory
 
 	major = yes
@@ -5312,16 +5311,16 @@ news_event = {
 	}
 
 	option = {
-		name = patagonia_news.1.a
+		name = patagonia_news_events.1.a
 	}
 }
 
 # RadSocs restore Republic of Argentina
 news_event = {
-	id = patagonia_news.2
-	immediate = { log = "[GetLogInfo]: event patagonia_news.2" }
-	title = patagonia_news.2.t
-	desc = patagonia_news.2.d
+	id = patagonia_news_events.2
+	immediate = { log = "[GetLogInfo]: event patagonia_news_events.2" }
+	title = patagonia_news_events.2.t
+	desc = patagonia_news_events.2.d
 	picture = GFX_news_event_PAR_coup
 
 	major = yes
@@ -5338,16 +5337,16 @@ news_event = {
 	}
 
 	option = {
-		name = patagonia_news.2.a
+		name = patagonia_news_events.2.a
 	}
 }
 
 #Commie Coup
 news_event = {
-	id = patagonia_news.3
-	immediate = { log = "[GetLogInfo]: event patagonia_news.3" }
-	title = patagonia_news.3.t
-	desc = patagonia_news.3.d
+	id = patagonia_news_events.3
+	immediate = { log = "[GetLogInfo]: event patagonia_news_events.3" }
+	title = patagonia_news_events.3.t
+	desc = patagonia_news_events.3.d
 	picture = GFX_news_event_SPA_spanish_civil_war
 
 	major = yes
@@ -5364,14 +5363,14 @@ news_event = {
 	}
 
 	option = {
-		name = patagonia_news.3.a
+		name = patagonia_news_events.3.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = patagonia_news.3.b
+		name = patagonia_news_events.3.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -5380,10 +5379,10 @@ news_event = {
 
 #Radical Anarchists vs Commies
 news_event = {
-	id = patagonia_news.4
-	immediate = { log = "[GetLogInfo]: event patagonia_news.4" }
-	title = patagonia_news.4.t
-	desc = patagonia_news.4.d
+	id = patagonia_news_events.4
+	immediate = { log = "[GetLogInfo]: event patagonia_news_events.4" }
+	title = patagonia_news_events.4.t
+	desc = patagonia_news_events.4.d
 	picture = GFX_news_event_SPA_spanish_civil_war
 
 	major = yes
@@ -5400,14 +5399,14 @@ news_event = {
 	}
 
 	option = {
-		name = patagonia_news.4.a
+		name = patagonia_news_events.4.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = patagonia_news.4.b
+		name = patagonia_news_events.4.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -5416,10 +5415,10 @@ news_event = {
 
 #Radical Anarchists vs Moderates
 news_event = {
-	id = patagonia_news.5
-	immediate = { log = "[GetLogInfo]: event patagonia_news.5" }
-	title = patagonia_news.5.t
-	desc = patagonia_news.5.d
+	id = patagonia_news_events.5
+	immediate = { log = "[GetLogInfo]: event patagonia_news_events.5" }
+	title = patagonia_news_events.5.t
+	desc = patagonia_news_events.5.d
 	picture = GFX_news_event_SPA_spanish_civil_war
 
 	major = yes
@@ -5436,14 +5435,14 @@ news_event = {
 	}
 
 	option = {
-		name = patagonia_news.5.a
+		name = patagonia_news_events.5.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = patagonia_news.5.b
+		name = patagonia_news_events.5.b
 		trigger = {
 			has_socialist_government = yes
 		}
@@ -5452,10 +5451,10 @@ news_event = {
 
 #Anti-Baldomero Coup
 news_event = {
-	id = patagonia_news.6
-	immediate = { log = "[GetLogInfo]: event patagonia_news.6" }
-	title = patagonia_news.6.t
-	desc = patagonia_news.6.d
+	id = patagonia_news_events.6
+	immediate = { log = "[GetLogInfo]: event patagonia_news_events.6" }
+	title = patagonia_news_events.6.t
+	desc = patagonia_news_events.6.d
 	picture = GFX_news_event_AST_riot
 
 	major = yes
@@ -5472,14 +5471,14 @@ news_event = {
 	}
 
 	option = {
-		name = patagonia_news.6.a
+		name = patagonia_news_events.6.a
 		trigger = {
 			has_socialist_government = no
 		}
 	}
 
 	option = {
-		name = patagonia_news.6.b
+		name = patagonia_news_events.6.b
 		trigger = {
 			has_socialist_government = yes
 		}

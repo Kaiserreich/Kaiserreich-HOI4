@@ -3620,12 +3620,14 @@ shared_focus = {
 		focus = BEL_Meuse_Line
 	}
 	available = {
-		NOT = {
-			is_in_faction_with = FRA
+		NOT = { is_in_faction_with = FRA }
+		6 = { is_owned_and_controlled_by = ROOT } #Flanders
+		if = {
+			limit = { owns_state = 29 }
+			29 = { is_owned_and_controlled_by = ROOT } #Dunkirk
 		}
-		29 = { is_owned_and_controlled_by = ROOT }
-		6 = { is_owned_and_controlled_by = ROOT }
-		34 = { is_owned_and_controlled_by = ROOT }
+		34 = { is_owned_and_controlled_by = ROOT } #Hainaut
+		948 = { is_owned_and_controlled_by = ROOT } #Liège
 	}
 	mutually_exclusive = {
 		focus = BEL_KW_Line
@@ -3633,19 +3635,22 @@ shared_focus = {
 
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed BEL_Expansion_Lundendorf_Line"
-		29 = {
-			custom_override_tooltip = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					province = 575
-					instant_build = yes
-				}
-				tooltip = {
-					localization_key = tooltip_add_building_on_victory_point
-					BUILDING = bunker
-					NUMBER = 1
-					VP = 575
+		if = {
+			limit = { owns_state = 29 }
+			29 = {
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = 575
+						instant_build = yes
+					}
+					tooltip = {
+						localization_key = tooltip_add_building_on_victory_point
+						BUILDING = bunker
+						NUMBER = 1
+						VP = 575
+					}
 				}
 			}
 		}

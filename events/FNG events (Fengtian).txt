@@ -7059,7 +7059,7 @@ country_event = { #zongchang and tiaoyuan in power
 	}
 }
 
-country_event = { #Zongchang and Anqing prevent war hidden prep event, triggered by league_war.15
+country_event = { #Zongchang and Anqing prevent war hidden prep event, triggered by league_war_events.15
 	id = fengtian_events.212
 	hidden = yes
 
@@ -8865,7 +8865,7 @@ country_event = { # The Compromise is Accepted
 			}
 
 			set_country_flag = FNG_anqSHD_warc2_success
-			hidden_effect = { country_event = league_war.18 }
+			hidden_effect = { country_event = league_war_events.18 }
 			clr_country_flag = FNG_anqSHD_warc_anqall5p
 			clr_country_flag = FNG_anqSHD_warc_anqgivejiangsu
 			clr_country_flag = FNG_anqSHD_warc_anqtheykeepjiangsu
@@ -12635,7 +12635,7 @@ country_event = { #Our Allies in Tokyo
 	desc = fengtian_japan_mechanic_events.000.d
 	picture = GFX_report_event_JAP_troops_train
 
-	is_triggered_only = yes #Triggered by [EVENT] league_collapse.57
+	is_triggered_only = yes #Triggered by [EVENT] league_collapse_events.57
 
 	option = {
 		log = "[GetLogInfo]: event fengtian_japan_mechanic_events.000 option fengtian_japan_mechanic_events.000.a"
@@ -13463,6 +13463,15 @@ country_event = { #A Nation Under the Northeast
 				factor = 0.25
 				OR = {
 					has_country_leader = { character = SHX_feng_yuxiang }
+				}
+			}
+
+			modifier = {
+				factor = 0
+				tag = GXC
+				OR = {
+					has_game_rule = { rule = GXC_NPA_path option = GXC_NPA_PATH_SOCCON }
+					has_game_rule = { rule = GXC_NPA_path option = GXC_NPA_PATH_MARLIB }
 				}
 			}
 		}

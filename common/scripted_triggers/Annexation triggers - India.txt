@@ -4,11 +4,10 @@ can_release_733 = { #Andaman & Nicobar
 	ROOT = {
 		OR = {
 			is_subject = yes
-			320 = { is_claim_or_core_of_ROOT = yes } #Madras
-			423 = { is_claim_or_core_of_ROOT = yes } #Madura
-			424 = { is_claim_or_core_of_ROOT = yes } #Andhra
-			426 = { is_claim_or_core_of_ROOT = yes } #Orissa
-			431 = { is_claim_or_core_of_ROOT = yes } #West Bengal
+			any_state_of = {
+				target = { 320 423 424 426 431 } #Madras, Madura,  Andhra, Orissa, West Bengal
+				is_claim_or_core_of_ROOT = yes
+			}
 			annexations_britain_can_annex_overseas = yes
 			original_tag = GEA
 			320 = { #Madras
@@ -49,11 +48,10 @@ can_release_424 = { #Andhra
 	ROOT = {
 		OR = {
 			is_subject = yes
-			320 = { is_claim_or_core_of_ROOT = yes } #Madras
-			425 = { is_claim_or_core_of_ROOT = yes } #Mysore
-			427 = { is_claim_or_core_of_ROOT = yes } #Hyderabad
-			868 = { is_claim_or_core_of_ROOT = yes } #Kolhapur
-			889 = { is_claim_or_core_of_ROOT = yes } #Vizagapatnam
+			any_state_of = {
+				target = { 320 425 427 868 889 } #Madras, Mysore,  Hyderabad, Kolhapur, Vizagapatnam
+				is_claim_or_core_of_ROOT = yes
+			}
 			320 = { #Madras
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -90,8 +88,10 @@ can_release_897 = { #Aksai Chin
 	ROOT = {
 		OR = {
 			is_subject = yes
-			441 = { is_claim_or_core_of_ROOT = yes } #Kashmir
-			619 = { is_claim_or_core_of_ROOT = yes } #Kashgar
+			any_state_of = {
+				target = { 441 619 } #Kashmir, Kashgar
+				is_claim_or_core_of_ROOT = yes
+			}
 			441 = { #Kashmir
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -126,10 +126,10 @@ can_release_444 = { #Baluchistan
 	ROOT = {
 		OR = {
 			is_subject = yes
-			410 = { is_claim_or_core_of_ROOT = yes } #Sistan
-			443 = { is_claim_or_core_of_ROOT = yes } #Sind
-			445 = { is_claim_or_core_of_ROOT = yes } #Quetta
-			1117 = { is_claim_or_core_of_ROOT = yes } #Kandahar
+			any_state_of = {
+				target = { 410 443 445 1117 } #Sistan, Sind, Quetta, Kandahar
+				is_claim_or_core_of_ROOT = yes
+			}
 			410 = { #Sistan
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -225,10 +225,10 @@ can_release_966 = { #Chhatisgarh
 	ROOT = {
 		OR = {
 			is_subject = yes
-			426 = { is_claim_or_core_of_ROOT = yes } #Orissa
-			427 = { is_claim_or_core_of_ROOT = yes } #Hyderabad
-			436 = { is_claim_or_core_of_ROOT = yes } #Raipur
-			437 = { is_claim_or_core_of_ROOT = yes } #Central Provinces
+			any_state_of = {
+				target = { 426 427 436 437 } #Orissa, Hyderabad, Raipur, Central Provinces
+				is_claim_or_core_of_ROOT = yes
+			}
 			426 = { #Orissa
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -261,10 +261,10 @@ can_release_887 = { #Darjeeling
 	ROOT = {
 		OR = {
 			is_subject = yes
-			431 = { is_claim_or_core_of_ROOT = yes } #West Bengal
-			432 = { is_claim_or_core_of_ROOT = yes } #Assam
-			435 = { is_claim_or_core_of_ROOT = yes } #Bihar
-			888 = { is_claim_or_core_of_ROOT = yes } #Sikkim
+			any_state_of = {
+				target = { 431 432 435 888 } #West Bengal, Assam, Bihar, Sikkim
+				is_claim_or_core_of_ROOT = yes
+			}
 			431 = { #West Bengal
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -392,9 +392,10 @@ can_release_1034 = { #Malabar Coast
 	ROOT = {
 		OR = {
 			is_subject = yes
-			423 = { is_claim_or_core_of_ROOT = yes } #Madura
-			425 = { is_claim_or_core_of_ROOT = yes } #Mysore
-			867 = { is_claim_or_core_of_ROOT = yes } #Travancore
+			any_state_of = {
+				target = { 423 425 867 } #Madura, Mysore, Travancore
+				is_claim_or_core_of_ROOT = yes
+			}
 			423 = { #Madura
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -472,8 +473,10 @@ can_release_445 = { #Quetta
 	ROOT = {
 		OR = {
 			is_subject = yes
-			442 = { is_claim_or_core_of_ROOT = yes } #Peshawar
-			443 = { is_claim_or_core_of_ROOT = yes } #Sind
+			any_state_of = {
+				target = { 442 443 } #Peshawar, Sind
+				is_claim_or_core_of_ROOT = yes
+			}
 			891 = { #West Punjab
 				is_claim_or_core_of_ROOT = yes
 				NOT = { ROOT = { original_tag = KHA } }
@@ -522,9 +525,10 @@ can_release_888 = { #Sikkim
 	ROOT = {
 		OR = {
 			is_subject = yes
-			323 = { is_claim_or_core_of_ROOT = yes } #Nepal
-			324 = { is_claim_or_core_of_ROOT = yes } #Bhutan
-			887 = { is_claim_or_core_of_ROOT = yes } #Darjeeling
+			any_state_of = {
+				target = { 323 324 887 } #Nepal, Bhutan, Darjeeling
+				is_claim_or_core_of_ROOT = yes
+			}
 			323 = { #Nepal
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -553,8 +557,10 @@ can_release_443 = { #Sind
 	ROOT = {
 		OR = {
 			is_subject = yes
-			428 = { is_claim_or_core_of_ROOT = yes } #Gujarat
-			433 = { is_claim_or_core_of_ROOT = yes } #Rajputana
+			any_state_of = {
+				target = { 428 433 } #Gujarat, Rajputana
+				is_claim_or_core_of_ROOT = yes
+			}
 			891 = { #West Punjab
 				is_claim_or_core_of_ROOT = yes
 				NOT = { ROOT = { original_tag = KHA } }
@@ -590,8 +596,10 @@ can_release_858 = { #Tawang
 	ROOT = {
 		OR = {
 			is_subject = yes
-			432 = { is_claim_or_core_of_ROOT = yes } #Assam
-			693 = { is_claim_or_core_of_ROOT = yes } #Chamdo
+			any_state_of = {
+				target = { 432 693 } #Assam, Chamdo
+				is_claim_or_core_of_ROOT = yes
+			}
 			432 = { #Assam
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -626,8 +634,10 @@ can_release_814 = { #Uttaranchal
 	ROOT = {
 		OR = {
 			is_subject = yes
-			323 = { is_claim_or_core_of_ROOT = yes } #Nepal
-			439 = { is_claim_or_core_of_ROOT = yes } #Delhi
+			any_state_of = {
+				target = { 323 439 } #Nepal, Delhi
+				is_claim_or_core_of_ROOT = yes
+			}
 			323 = { #Nepal
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
@@ -651,8 +661,10 @@ can_release_889 = { #Vizagapatnam
 	ROOT = {
 		OR = {
 			is_subject = yes
-			424 = { is_claim_or_core_of_ROOT = yes } #Andhra
-			426 = { is_claim_or_core_of_ROOT = yes } #Orissa
+			any_state_of = {
+				target = { 424 426 } #Andhra, Orissa
+				is_claim_or_core_of_ROOT = yes
+			}
 			424 = { #Andhra
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }

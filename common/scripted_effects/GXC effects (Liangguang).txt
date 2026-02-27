@@ -231,8 +231,11 @@ GXC_introgame_minigame_cleanup_scripted_effect = {
 			remove_targeted_decision = { decision = GXC_introminigame_secure_state_external_NPA_decision target = PREV }
 			remove_targeted_decision = { decision = GXC_introminigame_secure_state_external_UPC_decision target = PREV }
 			remove_targeted_decision = { decision = GXC_introminigame_secure_state_external_KMT_decision target = PREV }
+			clr_country_flag = GXC_supporting_UPC
+			clr_country_flag = GXC_supporting_KMT
 		}
 	}
+	clear_array = GXC.external_backers_array
 }
 
 GXC_introgame_declare_victor_scripted_effect = {
@@ -543,7 +546,7 @@ GXC_introgame_eliminate_the_weakest_faction_scripted_effect = {
 	#If you set a game rule, the game is rigged.
 	if = {
 		limit = {
-			has_game_rule = { rule = GXC_PATH option = GXC_PATH_NPA_AUTDEM }
+			has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
 		}
 		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		if = {
@@ -556,7 +559,7 @@ GXC_introgame_eliminate_the_weakest_faction_scripted_effect = {
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = GXC_PATH option = GXC_PATH_UPC_AUTDEM }
+			has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
 		}
 		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		if = {
@@ -569,7 +572,7 @@ GXC_introgame_eliminate_the_weakest_faction_scripted_effect = {
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = GXC_PATH option = GXC_PATH_KMT_AUTDEM }
+			has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
 		}
 		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		if = {
@@ -652,21 +655,21 @@ GXC_introgame_eliminate_both_weaker_factions_scripted_effect = {
 	#If you set a game rule, the game is rigged.
 	if = {
 		limit = {
-			has_game_rule = { rule = GXC_PATH option = GXC_PATH_NPA_AUTDEM }
+			has_game_rule = { rule = GXC_path option = GXC_PATH_NPA_AUTDEM }
 		}
 		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		GXC_introgame_eliminate_both_non_regionalist_factions_effect = yes
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = GXC_PATH option = GXC_PATH_UPC_AUTDEM }
+			has_game_rule = { rule = GXC_path option = GXC_PATH_UPC_AUTDEM }
 		}
 		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		GXC_introgame_eliminate_both_non_federalist_factions_effect = yes
 	}
 	else_if = {
 		limit = {
-			has_game_rule = { rule = GXC_PATH option = GXC_PATH_KMT_AUTDEM }
+			has_game_rule = { rule = GXC_path option = GXC_PATH_KMT_AUTDEM }
 		}
 		custom_effect_tooltip = CHN_game_rule_rigged_warning_tt
 		GXC_introgame_eliminate_both_non_kuomintang_factions_effect = yes
@@ -2649,39 +2652,21 @@ GXC_expand_civil_service_effect = {
 	}
 	else_if = {
 		limit = {
-			OR = {
-				AND = {
-					GXC_ju_zheng = {
-						OR = {
-							is_country_leader = yes
-							is_political_advisor = yes
-						}
-					}
-					GXC_wu_chaoshu = { is_political_advisor = yes }
-				}
-				AND = {
-					GXC_ju_zheng = {
-						OR = {
-							is_country_leader = yes
-							is_political_advisor = yes
-						}
-					}
-					GXC_gu_yingfen = {
-						OR = {
-							is_political_advisor = yes
-							is_country_leader = yes
-						}
+			count_triggers = {
+				amount = 2
+				GXC_ju_zheng = {
+					OR = {
+						is_country_leader = yes
+						is_political_advisor = yes
 					}
 				}
-				AND = {
-					GXC_gu_yingfen = {
-						OR = {
-							is_political_advisor = yes
-							is_country_leader = yes
-						}
+				GXC_gu_yingfen = {
+					OR = {
+						is_political_advisor = yes
+						is_country_leader = yes
 					}
-					GXC_wu_chaoshu = { is_political_advisor = yes }
 				}
+				GXC_wu_chaoshu = { is_political_advisor = yes }
 			}
 		}
 		add_timed_idea = {
@@ -3283,19 +3268,11 @@ GXC_cabinet_takes_the_lead_effect = {
 	}
 	else_if = {
 		limit = {
-			OR = {
-				AND = {
-					GXC_lin_sen = { is_political_advisor = yes }
-					GXC_wu_chaoshu = { is_political_advisor = yes }
-				}
-				AND = {
-					GXC_lin_sen = { is_political_advisor = yes }
-					GXC_hu_hanmin = { is_political_advisor = yes }
-				}
-				AND = {
-					GXC_hu_hanmin = { is_political_advisor = yes }
-					GXC_wu_chaoshu = { is_political_advisor = yes }
-				}
+			count_triggers = {
+				amount = 2
+				GXC_lin_sen = { is_political_advisor = yes }
+				GXC_hu_hanmin = { is_political_advisor = yes }
+				GXC_wu_chaoshu = { is_political_advisor = yes }
 			}
 		}
 		add_timed_idea = {
@@ -3757,19 +3734,11 @@ GXC_absolute_freedom_in_education_effect = {
 	}
 	else_if = {
 		limit = {
-			OR = {
-				AND = {
-					GXC_zhang_junmai = { is_political_advisor = yes }
-					HNN_huang_yanpei = { is_political_advisor = yes }
-				}
-				AND = {
-					GXC_zhang_junmai = { is_political_advisor = yes }
-					QIE_hu_shih = { is_political_advisor = yes }
-				}
-				AND = {
-					QIE_hu_shih = { is_political_advisor = yes }
-					HNN_huang_yanpei = { is_political_advisor = yes }
-				}
+			count_triggers = {
+				amount = 2
+				GXC_zhang_junmai = { is_political_advisor = yes }
+				HNN_huang_yanpei = { is_political_advisor = yes }
+				QIE_hu_shih = { is_political_advisor = yes }
 			}
 		}
 		add_timed_idea = {
@@ -3806,19 +3775,11 @@ GXC_democratic_literati_effect = {
 	}
 	else_if = {
 		limit = {
-			OR = {
-				AND = {
-					QIE_shen_junru = { is_political_advisor = yes }
-					SZC_Zhang_lan = { is_political_advisor = yes }
-				}
-				AND = {
-					QIE_shen_junru = { is_political_advisor = yes }
-					GXC_xu_fulin = { is_political_advisor = yes }
-				}
-				AND = {
-					GXC_xu_fulin = { is_political_advisor = yes }
-					SZC_Zhang_lan = { is_political_advisor = yes }
-				}
+			count_triggers = {
+				amount = 2
+				QIE_shen_junru = { is_political_advisor = yes }
+				SZC_Zhang_lan = { is_political_advisor = yes }
+				GXC_xu_fulin = { is_political_advisor = yes }
 			}
 		}
 		add_timed_idea = {
@@ -4455,5 +4416,43 @@ GXC_clear_popular_support_effect = {
 		GXC_NPA_popular_support_sword_of_progress
 		GXC_NPA_popular_support_the_chinese_plutocracy
 		GXC_NPA_popular_support_apostles_of_democracy
+	}
+}
+
+GXC_create_NRA_defectors_template = {
+	if = {
+		limit = { NOT = { has_tech = tech_militias } }
+		enable_tech_militias = yes
+	}
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = tooltip_create_division_template
+			NAME = "NRA Defectors"
+			LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 6 }
+			SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
+			SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+			SUPPORT_3 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+		}
+		if = {
+			limit = { has_template = "NRA Defectors" }
+			delete_unit_template_and_units = { division_template = "NRA Defectors" disband = yes } #No cheating
+		}
+		division_template = {
+			name = "NRA Defectors"
+			division_names_group = CHI_GAR_01
+			regiments = {
+				militia = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 0 y = 2 }
+				militia = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+				militia = { x = 1 y = 2 }
+			}
+			support = {
+				recon = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				artillery = { x = 0 y = 2 }
+			}
+		}
 	}
 }

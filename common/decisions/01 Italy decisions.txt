@@ -442,13 +442,11 @@ ITA_foreign_policy = {# Foreign Policy Stuff
 			modifier = {
 				factor = 0
 				country_exists = SER
-				SER = {
-					is_in_faction_with = BPL
-					OR = {
-						NOT = { has_completed_focus = SER_Together_Against_Austria }
-						has_decision = SER_Attack_Austria
-						ROOT = { has_country_flag = SER_will_attack_austria }
-					}
+				SER = { is_in_faction_with = BPL }
+				OR = {
+					SER = { NOT = { has_completed_focus = SER_Together_Against_Austria } }
+					AUS = { has_country_flag = added_AI_strategies_@SER }
+					has_country_flag = SER_will_attack_austria
 				}
 			}
 			modifier = {
@@ -476,6 +474,26 @@ ITA_foreign_policy = {# Foreign Policy Stuff
 			modifier = {
 				factor = 0
 				FROM = { is_in_faction_with = RUS }
+			}
+			modifier = {
+				factor = 0
+				country_exists = SRI
+				SRI = { focus_progress = { focus = SRI_risorgimento progress > 0 } }
+			}
+			# anti-exploit measure - don't attack player Austria if they're not deploying trained troops
+			modifier = {
+				factor = 0
+				FROM = {
+					is_ai = no
+					is_major = yes
+					set_temp_variable = { manpower_threshold = deployed_army_manpower_k }
+					multiply_temp_variable = { manpower_threshold = 1000 }
+					amount_manpower_in_deployment_queue > manpower_threshold
+					has_civil_war = no
+					has_war_with_major = no
+					enemies_strength_ratio < 1
+				}
+				second_weltkrieg_has_begun = no
 			}
 			modifier = {
 				factor = 0
@@ -512,11 +530,6 @@ ITA_foreign_policy = {# Foreign Policy Stuff
 						}
 					}
 				}
-			}
-			modifier = {
-				factor = 0
-				country_exists = SRI
-				SRI = { focus_progress = { focus = SRI_risorgimento progress > 0 } }
 			}
 		}
 

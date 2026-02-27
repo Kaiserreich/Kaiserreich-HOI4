@@ -399,7 +399,11 @@ release_spain = {
 
 release_chinese_government = {
 	every_owned_state = {
-		limit = { is_china_proper = yes }
+		limit = {
+			is_china_proper = yes
+			is_greater_tibet = no
+			is_possible_legation_cities_state = no
+		}
 		add_claim_of_target = yes
 	}
 	release_targeted_tag_with_claims = yes
@@ -847,6 +851,9 @@ release_canada = {
 						long_name = CAN_paternal_autocrat_party
 					}
 				}
+			}
+			else = {
+				CAN_create_governor_general = yes
 			}
 		}
 	}

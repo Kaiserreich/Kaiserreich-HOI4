@@ -137,10 +137,9 @@ country_event = { #Fate of Alsace-Lorraine
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					785 = { is_claim_or_core_of_ROOT = yes } #Lorraine
-					42 = { is_claim_or_core_of_ROOT = yes } #Palatinate
-					780 = { is_claim_or_core_of_ROOT = yes } #Baden
+				any_state_of = {
+					target = { 785 42 780 } #Lorraine, Palatinate, Baden
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -365,10 +364,9 @@ country_event = { #Fate of Luxembourg
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					948 = { is_claim_or_core_of_ROOT = yes } #Liège
-					28 = { is_claim_or_core_of_ROOT = yes } #Alsace-Lorraine
-					781 = { is_claim_or_core_of_ROOT = yes } #Western Rhineland
+				any_state_of = {
+					target = { 948 28 781 } #Liège, Alsace-Lorraine, Western Rhineland
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -621,8 +619,10 @@ country_event = { #Fate of the Rhineland
 				limit = {
 					OR = {
 						is_german_unifier_tag = yes
-						55 = { is_claim_or_core_of_ROOT = yes } #Hesse
-						57 = { is_claim_or_core_of_ROOT = yes } #Westphalia
+						any_state_of = {
+							target = { 55 57 } #Hesse, Westphalia
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							AUS_can_form_germany = yes
 							OR = {
@@ -711,7 +711,6 @@ country_event = { #Fate of the Rhineland
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				OR = {
 					has_event_target = germany
 					has_event_target = hesse
@@ -741,11 +740,6 @@ country_event = { #Fate of the Rhineland
 			}
 			modifier = {
 				factor = 0
-				annexations_AI_country_wants_to_dismantle_germany = yes
-			}
-			modifier = {
-				factor = 0
-				is_major = no
 				OR = {
 					has_event_target = germany
 					has_event_target = hesse
@@ -774,7 +768,6 @@ country_event = { #Fate of the Rhineland
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				OR = {
 					has_event_target = germany
 					has_event_target = hesse
@@ -819,6 +812,7 @@ country_event = { #Fate of the Rhineland
 			modifier = {
 				add = 100
 				annexations_AI_country_wants_to_dismantle_germany = yes
+				has_socialist_government = no
 			}
 			modifier = {
 				factor = 0
@@ -851,12 +845,12 @@ country_event = { #Fate of the Rhineland
 			modifier = {
 				factor = 0
 				annexations_AI_country_wants_to_dismantle_germany = yes
+				has_socialist_government = no
 			}
 			modifier = {
 				factor = 0
 				NOT = { is_ally_with = event_target:germany }
 				OR = {
-					is_major = yes
 					is_ally_with = event_target:hesse
 					is_ally_with = event_target:westphalia
 				}
@@ -1125,7 +1119,6 @@ country_event = { #Fate of North Germany
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				OR = {
 					has_event_target = germany
 					has_event_target = prussia
@@ -1154,7 +1147,6 @@ country_event = { #Fate of North Germany
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				OR = {
 					has_event_target = germany
 					has_event_target = prussia
@@ -1178,7 +1170,6 @@ country_event = { #Fate of North Germany
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				OR = {
 					has_event_target = germany
 					has_event_target = prussia
@@ -1224,10 +1215,7 @@ country_event = { #Fate of North Germany
 			modifier = {
 				factor = 0
 				NOT = { is_ally_with = event_target:germany }
-				OR = {
-					is_major = yes
-					is_ally_with = event_target:prussia
-				}
+				is_ally_with = event_target:prussia
 			}
 			modifier = {
 				factor = 0.1
@@ -1349,9 +1337,9 @@ country_event = { #Fate of Northern Schleswig
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					99 = { is_claim_or_core_of_ROOT = yes } #Jutland
-					58 = { is_claim_or_core_of_ROOT = yes } #Schleswig-Holstein
+				any_state_of = {
+					target = { 99 58 } #Jutland, Schleswig-Holstein
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -1542,7 +1530,6 @@ country_event = { #Fate of Prussia
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = germany
 			}
 			modifier = {
@@ -1573,7 +1560,6 @@ country_event = { #Fate of Prussia
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = germany
 			}
 			modifier = {
@@ -1599,7 +1585,6 @@ country_event = { #Fate of Prussia
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = germany
 			}
 			modifier = {
@@ -1630,7 +1615,6 @@ country_event = { #Fate of Prussia
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = germany
 			}
 			modifier = {
@@ -1657,10 +1641,7 @@ country_event = { #Fate of Prussia
 			modifier = {
 				factor = 0
 				NOT = { is_ally_with = event_target:germany }
-				OR = {
-					is_major = yes
-					is_ally_with = event_target:north_germany
-				}
+				is_ally_with = event_target:north_germany
 			}
 			modifier = {
 				factor = 0.1
@@ -1783,10 +1764,9 @@ country_event = { #Fate of West Prussia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					63 = { is_claim_or_core_of_ROOT = yes } #Farther Pomerania
-					86 = { is_claim_or_core_of_ROOT = yes } #Posen
-					777 = { is_claim_or_core_of_ROOT = yes } #Masuria
+				any_state_of = {
+					target = { 63 86 } #Farther Pomerania, Posen
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -1812,19 +1792,6 @@ country_event = { #Fate of West Prussia
 			}
 			var:86.owner = { save_event_target_as = poznan add_to_array = { ROOT.potential_grant_targets = THIS } }
 		}
-		if = {
-			limit = {
-				777 = { #Masuria
-					annexations_state_owner_is_valid_grant_target = yes
-					owner = {
-						NOT = { tag = event_target:pomerania }
-						NOT = { tag = event_target:poznan }
-						ROOT_can_grant_land = yes
-					}
-				}
-			}
-			var:777.owner = { save_event_target_as = masuria add_to_array = { ROOT.potential_grant_targets = THIS } }
-		}
 	}
 
 	option = { #Give it to Poland
@@ -1849,15 +1816,6 @@ country_event = { #Fate of West Prussia
 				}
 			}
 			modifier = {
-				factor = 0
-				NOT = { is_ally_with = event_target:poznan }
-				is_ally_with = event_target:masuria
-				OR = {
-					annexations_AI_country_wants_to_dismantle_germany = no
-					event_target:masuria = { is_german_tag = no }
-				}
-			}
-			modifier = {
 				factor = 0.1
 				event_target:poznan = { is_subject = yes }
 			}
@@ -1866,14 +1824,14 @@ country_event = { #Fate of West Prussia
 		776 = { transfer_state_and_notify = yes } #West Prussia
 	}
 
-	option = { #Give it to German tag 1 (owner of Farther Pomerania)
+	option = { #Give it to Germany
 		log = "[GetLogInfo]: event annexation_events.1007 option annexation_events.1007.b"
 		name = annexation_events.1007.b
 		trigger = {
 			has_event_target = pomerania
 		}
 		ai_chance = {
-			base = 15
+			base = 30
 			modifier = {
 				factor = 0
 				annexations_can_annex = yes
@@ -1886,26 +1844,11 @@ country_event = { #Fate of West Prussia
 			}
 			modifier = {
 				factor = 0
-				has_event_target = masuria
-				event_target:masuria = { original_tag = EPR }
-				NOT = { event_target:pomerania = { original_tag = EPR } }
-			}
-			modifier = {
-				factor = 0
 				NOT = { is_ally_with = event_target:pomerania }
 				is_ally_with = event_target:poznan
 				OR = {
 					annexations_AI_country_wants_to_dismantle_germany = no
 					event_target:poznan = { is_german_tag = no }
-				}
-			}
-			modifier = {
-				factor = 0
-				NOT = { is_ally_with = event_target:pomerania }
-				is_ally_with = event_target:masuria
-				OR = {
-					annexations_AI_country_wants_to_dismantle_germany = no
-					event_target:masuria = { is_german_tag = no }
 				}
 			}
 			modifier = {
@@ -1914,57 +1857,6 @@ country_event = { #Fate of West Prussia
 			}
 		}
 		set_temp_variable = { tag_to_release = event_target:pomerania }
-		776 = { transfer_state_and_notify = yes } #West Prussia
-	}
-
-	option = { #Give it to German tag 2 (owner of Masuria)
-		log = "[GetLogInfo]: event annexation_events.1007 option annexation_events.europe.give_to_owner_of_masuria"
-		name = annexation_events.europe.give_to_owner_of_masuria
-		trigger = {
-			has_event_target = masuria
-		}
-		ai_chance = {
-			base = 15
-			modifier = {
-				factor = 0
-				annexations_can_annex = yes
-			}
-			modifier = {
-				factor = 0
-				has_event_target = poznan
-				event_target:poznan = { is_german_tag = no }
-				annexations_AI_country_wants_to_dismantle_germany = yes
-			}
-			modifier = {
-				factor = 0
-				has_event_target = pomerania
-				event_target:masuria = { original_tag = EPR }
-				NOT = { event_target:masuria = { original_tag = EPR } }
-			}
-			modifier = {
-				factor = 0
-				NOT = { is_ally_with = event_target:masuria }
-				is_ally_with = event_target:poznan
-				OR = {
-					annexations_AI_country_wants_to_dismantle_germany = no
-					event_target:poznan = { is_german_tag = no }
-				}
-			}
-			modifier = {
-				factor = 0
-				NOT = { is_ally_with = event_target:masuria }
-				is_ally_with = event_target:pomerania
-				OR = {
-					annexations_AI_country_wants_to_dismantle_germany = no
-					event_target:pomerania = { is_german_tag = no }
-				}
-			}
-			modifier = {
-				factor = 0.1
-				event_target:masuria = { is_subject = yes }
-			}
-		}
-		set_temp_variable = { tag_to_release = event_target:masuria }
 		776 = { transfer_state_and_notify = yes } #West Prussia
 	}
 
@@ -2009,10 +1901,9 @@ country_event = { #Fate of East Prussia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					62 = { is_claim_or_core_of_ROOT = yes } #Hither Pomerania
-					63 = { is_claim_or_core_of_ROOT = yes } #Farther Pomerania
-					777 = { is_claim_or_core_of_ROOT = yes } #Masuria
+				any_state_of = {
+					target = { 62 63 777 } #Hither Pomerania, Farther Pomerania, Masuria
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -2224,10 +2115,9 @@ country_event = { #Fate of Posen
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					87 = { is_claim_or_core_of_ROOT = yes } #Kalisz
-					66 = { is_claim_or_core_of_ROOT = yes } #Lower Silesia
-					68 = { is_claim_or_core_of_ROOT = yes } #Neumark
+				any_state_of = {
+					target = { 87 66 68 } #Kalisz, Lower Silesia, Neumark
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -2655,9 +2545,9 @@ country_event = { #Fate of Memel
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					189 = { is_claim_or_core_of_ROOT = yes } #Samogitia
-					5 = { is_claim_or_core_of_ROOT = yes } #East Prussia
+				any_state_of = {
+					target = { 189 5 } #Samogitia, East Prussia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -2805,9 +2695,9 @@ country_event = { #Fate of Upper Silesia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					87 = { is_claim_or_core_of_ROOT = yes } #Kalisz
-					66 = { is_claim_or_core_of_ROOT = yes } #Lower Silesia
+				any_state_of = {
+					target = { 87 66 } #Kalisz, Lower Silesia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -2981,12 +2871,10 @@ country_event = { #Fate of South Germany
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = germany
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = austria
 				annexations_AI_country_wants_to_dismantle_germany = no
 			}
@@ -3013,12 +2901,10 @@ country_event = { #Fate of South Germany
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = germany
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = austria
 				annexations_AI_country_wants_to_dismantle_germany = no
 			}
@@ -3040,12 +2926,10 @@ country_event = { #Fate of South Germany
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = germany
 			}
 			modifier = {
 				factor = 0
-				is_major = no
 				has_event_target = austria
 				annexations_AI_country_wants_to_dismantle_germany = no
 			}
@@ -4426,8 +4310,10 @@ country_event = { #Fate of Vilnius
 		if = {
 			limit = {
 				OR = {
-					11 = { is_claim_or_core_of_ROOT = yes } #Kaunas
-					207 = { is_claim_or_core_of_ROOT = yes } #Braslav
+					any_state_of = {
+						target = { 11 207 } #Kaunas, Braslav
+						is_claim_or_core_of_ROOT = yes
+					}
 					AND = {
 						92 = { is_claim_or_core_of_ROOT = yes } #Lublin
 						owns_state = 97 #Bialystok
@@ -6003,8 +5889,10 @@ country_event = { #Fate of Transcarpathia
 			if = {
 				limit = {
 					OR = {
-						70 = { is_claim_or_core_of_ROOT = yes } #Slovakia
-						664 = { is_claim_or_core_of_ROOT = yes } #Miskolc
+						any_state_of = {
+							target = { 70 664 } #Slovakia, Miskolc
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							89 = { is_claim_or_core_of_ROOT = yes } #Stanislawow
 							91 = { is_claim_or_core_of_ROOT = yes } #Lwow
@@ -6227,9 +6115,9 @@ country_event = { #Fate of Transylvania
 		}
 		if = {
 			limit = {
-				OR = {
-					46 = { is_claim_or_core_of_ROOT = yes } #Muntenia
-					43 = { is_claim_or_core_of_ROOT = yes } #Central Hungary
+				any_state_of = {
+					target = { 46 43 } #Muntenia, Central Hungary
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -6550,10 +6438,9 @@ country_event = { #Fate of West Banat
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					45 = { is_claim_or_core_of_ROOT = yes } #Vojvodina
-					82 = { is_claim_or_core_of_ROOT = yes } #Banat
-					107 = { is_claim_or_core_of_ROOT = yes } #Belgrade
+				any_state_of = {
+					target = { 45 82 107 } #Vojvodina, Banat, Belgrade
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -6986,9 +6873,9 @@ country_event = { #Fate of Vojvodina
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					43 = { is_claim_or_core_of_ROOT = yes } #Central Hungary
-					794 = { is_claim_or_core_of_ROOT = yes } #Syrmia
+				any_state_of = {
+					target = { 43 794 } #Central Hungary, Syrmia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -7154,9 +7041,9 @@ country_event = { #Fate of Burgenland
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					4 = { is_claim_or_core_of_ROOT = yes } #Lower Austria
-					155 = { is_claim_or_core_of_ROOT = yes } #Transdanubia
+				any_state_of = {
+					target = { 4 155 } #Lower Austria, Transdanubia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -7675,10 +7562,9 @@ country_event = { #Fate of Dalmatia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					104 = { is_claim_or_core_of_ROOT = yes } #Bosnia
-					109 = { is_claim_or_core_of_ROOT = yes } #Central Croatia
-					160 = { is_claim_or_core_of_ROOT = yes } #Venetia
+				any_state_of = {
+					target = { 104 109 160 } #Bosnia, Central Croatia, Venetia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -8359,8 +8245,10 @@ country_event = { #Fate of Trentino
 		if = {
 			limit = {
 				OR = {
-					159 = { is_claim_or_core_of_ROOT = yes } #Lombardy
-					160 = { is_claim_or_core_of_ROOT = yes } #Venetia
+					any_state_of = {
+						target = { 159 160 } #Lombardy, Venetia
+						is_claim_or_core_of_ROOT = yes
+					}
 					AND = {
 						153 = { is_claim_or_core_of_ROOT = yes } #North Tyrol
 						owns_state = 39 #South Tyrol
@@ -8852,8 +8740,10 @@ country_event = { #Fate of Ticino
 			limit = {
 				OR = {
 					original_tag = SWI
-					158 = { is_claim_or_core_of_ROOT = yes } #Piedmont
-					159 = { is_claim_or_core_of_ROOT = yes } #Lombardy
+					any_state_of = {
+						target = { 158 159 } #Piedmont, Lombardy
+						is_claim_or_core_of_ROOT = yes
+					}
 				}
 			}
 			save_event_target_as = can_annex
@@ -9539,13 +9429,7 @@ country_event = { #Fate of Britain
 				}
 				event_target:KR_king_base = { save_event_target_as = british_exiles add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
-			else_if = {
-				limit = {
-					NOT = { country_exists = event_target:KR_king_base }
-					ENT = { ROOT_can_grant_land = yes }
-				}
-				ENT = { save_event_target_as = british_exiles add_to_array = { ROOT.potential_grant_targets = THIS } }
-			}
+			1124 = { retain_state = yes } #Isle of Man
 		}
 	}
 
@@ -9864,10 +9748,9 @@ country_event = { #Fate of Scotland
 			}
 			if = {
 				limit = {
-					OR = {
-						130 = { is_claim_or_core_of_ROOT = yes } #Yorkshire
-						131 = { is_claim_or_core_of_ROOT = yes } #Northumberland
-						1108 = { is_claim_or_core_of_ROOT = yes } #Cumberland
+					any_state_of = {
+						target = { 130 131 1108 } #Yorkshire, Northumberland, Cumberland
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -11748,8 +11631,10 @@ country_event = { #Fate of Greenland
 		if = {
 			limit = {
 				OR = {
-					37 = { is_claim_or_core_of_ROOT = yes } #Zealand
-					110 = { is_claim_or_core_of_ROOT = yes } #Ostlandet
+					any_state_of = {
+						target = { 37 110 } #Zealand, Ostlandet
+						is_claim_or_core_of_ROOT = yes
+					}
 					tag = CAN
 					is_american_tag = yes
 				}
@@ -12354,9 +12239,9 @@ country_event = { #Fate of the Aland Islands
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					141 = { is_claim_or_core_of_ROOT = yes } #Svealand
-					863 = { is_claim_or_core_of_ROOT = yes } #Finland Proper
+				any_state_of = {
+					target = { 141 863 } #Svealand, Finland Proper
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -12687,9 +12572,9 @@ country_event = { #Fate of Karelia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					214 = { is_claim_or_core_of_ROOT = yes } #Archangelsk
-					864 = { is_claim_or_core_of_ROOT = yes } #Savo
+				any_state_of = {
+					target = { 214 864 } #Archangelsk, Savo
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -12906,7 +12791,15 @@ country_event = { #Fate of Ukraine
 			997 = { retain_state = yes } #Polesia
 			1088 = { retain_state = yes } #Chelm
 			if = {
-				limit = { var:global.russia = { ROOT_can_grant_land = yes } }
+				limit = {
+					var:global.russia = {
+						ROOT_can_grant_land = yes
+						OR = {
+							is_subject = no
+							RUS_can_integrate = yes
+						}
+					}
+				}
 				var:global.russia = { save_event_target_as = russia add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 			if = {
@@ -13113,8 +13006,10 @@ country_event = { #Fate of Brest
 		if = {
 			limit = {
 				OR = {
-					1088 = { is_claim_or_core_of_ROOT = yes } #Chelm
-					792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
+					any_state_of = {
+						target = { 1088 792 } #Chelm, Volhynia
+						is_claim_or_core_of_ROOT = yes
+					}
 					AND = {
 						95 = { is_claim_or_core_of_ROOT = yes } #Pinsk
 						owns_state = 997 #Polesia
@@ -13362,9 +13257,9 @@ country_event = { #Fate of Polesia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
-					95 = { is_claim_or_core_of_ROOT = yes } #Pinsk
+				any_state_of = {
+					target = { 792 95 } #Volhynia, Pinsk
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -13536,7 +13431,15 @@ country_event = { #Fate of Belarus
 			}
 			94 = { retain_state = yes } #Volkovysk
 			if = {
-				limit = { var:global.russia = { ROOT_can_grant_land = yes } }
+				limit = {
+					var:global.russia = {
+						ROOT_can_grant_land = yes
+						OR = {
+							is_subject = no
+							RUS_can_integrate = yes
+						}
+					}
+				}
 				var:global.russia = { save_event_target_as = russia add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 			if = {
@@ -13995,11 +13898,9 @@ country_event = { #Fate of Dvinsk
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					12 = { is_claim_or_core_of_ROOT = yes } #Livonia
-					190 = { is_claim_or_core_of_ROOT = yes } #Courland
-					209 = { is_claim_or_core_of_ROOT = yes } #Pskov
-					210 = { is_claim_or_core_of_ROOT = yes } #Velikiye Luki
+				any_state_of = {
+					target = { 12 190 209 210 } #Livonia, Courland, Pskov, Velikiye Luki
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -14801,9 +14702,9 @@ country_event = { #Fate of Bosnia
 		}
 		if = {
 			limit = {
-				OR = {
-					109 = { is_claim_or_core_of_ROOT = yes } #Central Croatia
-					107 = { is_claim_or_core_of_ROOT = yes } #Belgrade
+				any_state_of = {
+					target = { 109 107 } #Central Croatia, Belgrade
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -15003,9 +14904,9 @@ country_event = { #Fate of Kosovo
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					108 = { is_claim_or_core_of_ROOT = yes } #Kraljevo
-					1053 = { is_claim_or_core_of_ROOT = yes } #Ghegeria
+				any_state_of = {
+					target = { 108 1053 } #Kraljevo, Ghegeria
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -15528,9 +15429,9 @@ country_event = { #Fate of Nis
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					106 = { is_claim_or_core_of_ROOT = yes } #Macedonia
-					107 = { is_claim_or_core_of_ROOT = yes } #Belgrade
+				any_state_of = {
+					target = { 106 107 } #Macedonia, Belgrade
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -15681,10 +15582,9 @@ country_event = { #Fate of Kotor
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					105 = { is_claim_or_core_of_ROOT = yes } #Montenegro
-					163 = { is_claim_or_core_of_ROOT = yes } #Dalmatia
-					160 = { is_claim_or_core_of_ROOT = yes } #Venetia
+				any_state_of = {
+					target = { 105 163 160 } #Montenegro, Dalmatia, Venetia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -16940,8 +16840,10 @@ country_event = { #Fate of Chalcidice
 		if = {
 			limit = {
 				OR = {
-					47 = { is_claim_or_core_of_ROOT = yes } #Central Greece
-					769 = { is_claim_or_core_of_ROOT = yes } #Serres
+					any_state_of = {
+						target = { 47 769 } #Central Greece, Serres
+						is_claim_or_core_of_ROOT = yes
+					}
 					AND = {
 						212 = { is_claim_or_core_of_ROOT = yes } #Plovdiv
 						owns_state = 769 #Serres
@@ -17192,9 +17094,9 @@ country_event = { #Fate of Northern Epirus
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					44 = { is_claim_or_core_of_ROOT = yes } #Toskeria
-					185 = { is_claim_or_core_of_ROOT = yes } #Epirus
+				any_state_of = {
+					target = { 44 185 } #Toskeria, Epirus
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -17731,9 +17633,9 @@ country_event = { #Fate of Galicia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					174 = { is_claim_or_core_of_ROOT = yes } #León
-					793 = { is_claim_or_core_of_ROOT = yes } #Asturias
+				any_state_of = {
+					target = { 174 793 } #León, Asturias
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -17875,8 +17777,10 @@ country_event = { #Fate of Gibraltar
 		if = {
 			limit = {
 				OR = {
-					169 = { is_claim_or_core_of_ROOT = yes } #Seville
-					173 = { is_claim_or_core_of_ROOT = yes } #Málaga
+					any_state_of = {
+						target = { 169 173 } #Seville, Málaga
+						is_claim_or_core_of_ROOT = yes
+					}
 					annexations_britain_can_annex_overseas = yes
 					annexations_AI_wants_to_own_gibraltar = yes
 				}
@@ -18059,10 +17963,9 @@ country_event = { #Fate of Euskadi
 		779 = { retain_state = yes } #Labourd
 		if = {
 			limit = {
-				OR = {
-					166 = { is_claim_or_core_of_ROOT = yes } #Upper Aragon
-					176 = { is_claim_or_core_of_ROOT = yes } #Burgos
-					1081 = { is_claim_or_core_of_ROOT = yes } #Valladolid
+				any_state_of = {
+					target = { 166 176 1081 } #Upper Aragon, Burgos, Valladolid
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -18519,15 +18422,9 @@ country_event = { #Fate of Corsica
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					21 = { is_claim_or_core_of_ROOT = yes } #Provence
-					22 = { is_claim_or_core_of_ROOT = yes } #Languedoc
-					original_tag = NFA
-					838 = { is_claim_or_core_of_ROOT = yes } #Liguria
-					162 = { is_claim_or_core_of_ROOT = yes } #Tuscany
-					2 = { is_claim_or_core_of_ROOT = yes } #Latium
-					117 = { is_claim_or_core_of_ROOT = yes } #Campania
-					114 = { is_claim_or_core_of_ROOT = yes } #Sardinia
+				any_state_of = {
+					target = { 21 22 838 162 2 117 114 } #Provence, Languedoc, Liguria, Tuscany, Latium, Campania, Sardinia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -18918,9 +18815,9 @@ country_event = { #Fate of the Aosta Valley
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					158 = { is_claim_or_core_of_ROOT = yes } #Piedmont
-					735 = { is_claim_or_core_of_ROOT = yes } #Savoy
+				any_state_of = {
+					target = { 158 735 } #Piedmont, Savoy
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -20753,9 +20650,9 @@ country_event = { #Fate of Verviers
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					948 = { is_claim_or_core_of_ROOT = yes } #Liège
-					781 = { is_claim_or_core_of_ROOT = yes } #Western Rhineland
+				any_state_of = {
+					target = { 948 781 } #Liège, Western Rhineland
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -20891,9 +20788,9 @@ country_event = { #Fate of Tesin
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					75 = { is_claim_or_core_of_ROOT = yes } #Moravia
-					88 = { is_claim_or_core_of_ROOT = yes } #Krakow
+				any_state_of = {
+					target = { 75 88 } #Moravia, Krakow
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -21014,9 +20911,9 @@ country_event = { #Fate of the Danubian Plain
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					70 = { is_claim_or_core_of_ROOT = yes } #Slovakia
-					155 = { is_claim_or_core_of_ROOT = yes } #Transdanubia
+				any_state_of = {
+					target = { 70 155 } #Slovakia, Transdanubia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -21308,11 +21205,9 @@ country_event = { #Fate of Gomel
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					193 = { is_claim_or_core_of_ROOT = yes } #Chernihiv
-					194 = { is_claim_or_core_of_ROOT = yes } #Mozyr
-					791 = { is_claim_or_core_of_ROOT = yes } #Starodub
-					1087 = { is_claim_or_core_of_ROOT = yes } #Mohilev
+				any_state_of = {
+					target = { 193 194 791 1087 } #Chernihiv, Mozyr, Starodub, Mohilev
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -21671,10 +21566,9 @@ country_event = { #Fate of Fiume
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					102 = { is_claim_or_core_of_ROOT = yes } #Carniola
-					109 = { is_claim_or_core_of_ROOT = yes } #Central Croatia
-					160 = { is_claim_or_core_of_ROOT = yes } #Venetia
+				any_state_of = {
+					target = { 102 109 160 } #Carniola, Central Croatia, Venetia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -21857,10 +21751,9 @@ country_event = { #Fate of Pressburg
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					4 = { is_claim_or_core_of_ROOT = yes } #Lower Austria
-					70 = { is_claim_or_core_of_ROOT = yes } #Slovakia
-					71 = { is_claim_or_core_of_ROOT = yes } #Danubian Plain
+				any_state_of = {
+					target = { 4 70 71 } #Lower Austria, Slovakia, Danubian Plain
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -22051,10 +21944,9 @@ country_event = { #Fate of Roussillon
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					22 = { is_claim_or_core_of_ROOT = yes } #Languedoc
-					984 = { is_claim_or_core_of_ROOT = yes } #Pyrenees
-					165 = { is_claim_or_core_of_ROOT = yes } #Catalonia
+				any_state_of = {
+					target = { 22 984 165 } #Languedoc, Pyrenees, Catalonia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -22268,9 +22160,9 @@ country_event = { #Fate of Chelm
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					92 = { is_claim_or_core_of_ROOT = yes } #Lublin
-					792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
+				any_state_of = {
+					target = { 92 792 } #Lublin, Volhynia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -22434,11 +22326,9 @@ country_event = { #Fate of Labourd
 		hidden_effect = {
 			if = {
 				limit = {
-					OR = {
-						19 = { is_claim_or_core_of_ROOT = yes } #Aquitaine
-						984 = { is_claim_or_core_of_ROOT = yes } #Pyrenees
-						172 = { is_claim_or_core_of_ROOT = yes } #Navarre
-						1070 = { is_claim_or_core_of_ROOT = yes } #Basque Country
+					any_state_of = {
+						target = { 19 984 172 1070 } #Aquitaine, Pyrenees, Navarre, Basque Country
+						is_claim_or_core_of_ROOT = yes
 					}
 				}
 				save_event_target_as = can_annex
@@ -22758,8 +22648,10 @@ country_event = { #Fate of Saxony
 				limit = {
 					OR = {
 						is_german_unifier_tag = yes
-						59 = { is_claim_or_core_of_ROOT = yes } #Hanover
-						64 = { is_claim_or_core_of_ROOT = yes } #Brandenburg
+						any_state_of = {
+							target = { 59 64 } #Hanover, Brandenburg
+							is_claim_or_core_of_ROOT = yes
+						}
 					}
 				}
 				save_event_target_as = can_annex
@@ -22906,9 +22798,9 @@ country_event = { #Fate of Schleswig-Holstein
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					59 = { is_claim_or_core_of_ROOT = yes } #Hanover
-					61 = { is_claim_or_core_of_ROOT = yes } #Mecklenburg
+				any_state_of = {
+					target = { 59 61 } #Hanover, Mecklenburg
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -23021,9 +22913,9 @@ country_event = { #Fate of Kuban
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					227 = { is_claim_or_core_of_ROOT = yes } #Yuzivka
-					235 = { is_claim_or_core_of_ROOT = yes } #Stavropol
+				any_state_of = {
+					target = { 227 235 } #Yuzivka, Stavropol
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -23512,10 +23404,9 @@ country_event = { #Fate of Nice
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					21 = { is_claim_or_core_of_ROOT = yes } #Provence
-					158 = { is_claim_or_core_of_ROOT = yes } #Piedmont
-					838 = { is_claim_or_core_of_ROOT = yes } #Liguria
+				any_state_of = {
+					target = { 21 158 838 } #Provence, Piedmont, Liguria
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -23729,9 +23620,9 @@ country_event = { #Fate of Syrmia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					107 = { is_claim_or_core_of_ROOT = yes } #Belgrade
-					109 = { is_claim_or_core_of_ROOT = yes } #Central Croatia
+				any_state_of = {
+					target = { 107 109 } #Belgrade, Central Croatia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -23892,9 +23783,9 @@ country_event = { #Fate of the Karavanks
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					102 = { is_claim_or_core_of_ROOT = yes } #Carniola
-					835 = { is_claim_or_core_of_ROOT = yes } #Carinthia
+				any_state_of = {
+					target = { 102 835 } #Carniola, Carinthia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -24157,9 +24048,9 @@ country_event = { #Fate of Florina
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					1076 = { is_claim_or_core_of_ROOT = yes } #Veria
-					106 = { is_claim_or_core_of_ROOT = yes } #Macedonia
+				any_state_of = {
+					target = { 1076 106 } #Veria, Macedonia
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -24692,9 +24583,9 @@ country_event = { #Fate of Lille
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					17 = { is_claim_or_core_of_ROOT = yes } #Pas-de-Calais
-					34 = { is_claim_or_core_of_ROOT = yes } #Hainaut
+				any_state_of = {
+					target = { 17 34 } #Pas-de-Calais, Hainaut
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -24815,9 +24706,9 @@ country_event = { #Fate of Dunkirk
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					17 = { is_claim_or_core_of_ROOT = yes } #Pas-de-Calais
-					6 = { is_claim_or_core_of_ROOT = yes } #Flanders
+				any_state_of = {
+					target = { 17 6 } #Pas-de-Calais, Flanders
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -24938,10 +24829,9 @@ country_event = { #Fate of Limburg
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					35 = { is_claim_or_core_of_ROOT = yes } #North Brabant
-					925 = { is_claim_or_core_of_ROOT = yes } #Brabant
-					781 = { is_claim_or_core_of_ROOT = yes } #Western Rhineland
+				any_state_of = {
+					target = { 35 925 781 } #North Brabant, Brabant, Western Rhineland
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -25146,9 +25036,9 @@ country_event = { #Fate of Westerscheldt
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					6 = { is_claim_or_core_of_ROOT = yes } #Flanders
-					35 = { is_claim_or_core_of_ROOT = yes } #North Brabant
+				any_state_of = {
+					target = { 6 35 } #Flanders, North Brabant
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -25443,9 +25333,9 @@ country_event = { #Fate of Bessarabia
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					79 = { is_claim_or_core_of_ROOT = yes } #Moldavia
-					192 = { is_claim_or_core_of_ROOT = yes } #Odessa
+				any_state_of = {
+					target = { 79 192 } #Moldavia, Odessa
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -25604,9 +25494,10 @@ country_event = { #Fate of Serres
 		if = {
 			limit = {
 				OR = {
-					989 = { is_claim_or_core_of_ROOT = yes } #Chalcidice
-					212 = { is_claim_or_core_of_ROOT = yes } #Plovdiv
-					184 = { is_claim_or_core_of_ROOT = yes } #Komotini
+					any_state_of = {
+						target = { 989 212 184 } #Chalcidice, Plovdiv, Komotini
+						is_claim_or_core_of_ROOT = yes
+					}
 					AND = {
 						341 = { is_claim_or_core_of_ROOT = yes } #Adrianople
 						owns_state = 184 #Komotini
@@ -25805,9 +25696,9 @@ country_event = { #Fate of Kardzhali
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					184 = { is_claim_or_core_of_ROOT = yes } #Komotini
-					212 = { is_claim_or_core_of_ROOT = yes } #Plovdiv
+				any_state_of = {
+					target = { 184 212 } #Komotini, Plovdiv
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -26137,9 +26028,10 @@ country_event = { #Fate of Lwow
 			if = {
 				limit = {
 					OR = {
-						88 = { is_claim_or_core_of_ROOT = yes } #Krakow
-						89 = { is_claim_or_core_of_ROOT = yes } #Stanislawow
-						1088 = { is_claim_or_core_of_ROOT = yes } #Chelm
+						any_state_of = {
+							target = { 88 89 1088 } #Krakow, Stanislawow, Chelm
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
 							owns_state = 89 #Stanislawow
@@ -26397,8 +26289,10 @@ country_event = { #Fate of Stanislawow
 			if = {
 				limit = {
 					OR = {
-						91 = { is_claim_or_core_of_ROOT = yes } #Lwow
-						792 = { is_claim_or_core_of_ROOT = yes } #Volhynia
+						any_state_of = {
+							target = { 91 792 } #Lwow, Volhynia
+							is_claim_or_core_of_ROOT = yes
+						}
 						AND = {
 							AUS_is_unified = yes
 							80 = { is_claim_or_core_of_ROOT = yes } #Cernauti
@@ -26565,9 +26459,9 @@ country_event = { #Fate of South Tyrol
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					153 = { is_claim_or_core_of_ROOT = yes } #North Tyrol
-					783 = { is_claim_or_core_of_ROOT = yes } #Trentino
+				any_state_of = {
+					target = { 153 783 } #North Tyrol, Trentino
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -26708,9 +26602,9 @@ country_event = { #Fate of Silistria
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					46 = { is_claim_or_core_of_ROOT = yes } #Muntenia
-					771 = { is_claim_or_core_of_ROOT = yes } #Varna
+				any_state_of = {
+					target = { 46 771 } #Muntenia, Varna
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -26846,8 +26740,10 @@ country_event = { #Fate of Adrianople
 		if = {
 			limit = {
 				OR = {
-					773 = { is_claim_or_core_of_ROOT = yes } #Constantinople
-					184 = { is_claim_or_core_of_ROOT = yes } #Komotini
+					any_state_of = {
+						target = { 773 184 } #Constantinople, Komotini
+						is_claim_or_core_of_ROOT = yes
+					}
 					AND = {
 						731 = { is_claim_or_core_of_ROOT = yes } #Florina
 						owns_state = 184 #Komotini
@@ -27039,7 +26935,7 @@ country_event = { #Fate of Northern Ireland
 					original_tag = IRE
 					AND = {
 						annexations_britain_can_annex_overseas = yes
-						owns_state = 133 #Lanark
+						owns_state = 133 #Strathclyde
 					}
 				}
 			}
@@ -27055,7 +26951,7 @@ country_event = { #Fate of Northern Ireland
 					annexations_state_owner_is_valid_grant_target = yes
 					owner = {
 						NOT = { tag = event_target:ireland }
-						owns_state = 133 #Lanark
+						owns_state = 133 #Strathclyde
 						has_socialist_government = no
 						ROOT_can_grant_land = yes
 					}
@@ -27166,9 +27062,9 @@ country_event = { #Fate of Vorarlberg
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					151 = { is_claim_or_core_of_ROOT = yes } #Eastern Switzerland
-					153 = { is_claim_or_core_of_ROOT = yes } #Tyrol
+				any_state_of = {
+					target = { 151 153 } #Eastern Switzerland, Tyrol
+					is_claim_or_core_of_ROOT = yes
 				}
 			}
 			save_event_target_as = can_annex
@@ -27219,7 +27115,7 @@ country_event = { #Fate of Vorarlberg
 			}
 		}
 		set_temp_variable = { tag_to_release = event_target:switzerland }
-		942 = { transfer_if_owned = yes } #Vorarlberg
+		942 = { transfer_state_and_notify = yes } #Vorarlberg
 	}
 
 	option = { #Give to owner of Tyrol
@@ -27245,7 +27141,7 @@ country_event = { #Fate of Vorarlberg
 			}
 		}
 		set_temp_variable = { tag_to_release = event_target:austria }
-		942 = { transfer_if_owned = yes } #Vorarlberg
+		942 = { transfer_state_and_notify = yes } #Vorarlberg
 	}
 
 	option = { #Give to overlord
@@ -27255,7 +27151,7 @@ country_event = { #Fate of Vorarlberg
 			annexations_should_give_lands_to_overlord = yes
 		}
 		set_temp_variable = { tag_to_release = overlord }
-		942 = { transfer_if_owned = yes } #Vorarlberg
+		942 = { transfer_state_and_notify = yes } #Vorarlberg
 	}
 
 	option = { #annex
@@ -27264,12 +27160,186 @@ country_event = { #Fate of Vorarlberg
 		trigger = {
 			annexations_can_annex = yes
 		}
-		set_temp_variable = { tag_to_release = event_target:greece }
 		942 = { add_claim_of_ROOT = yes } #Vorarlberg
 	}
 
 	option = { #Cancel
 		log = "[GetLogInfo]: event annexation_events.1144 option annexation_events.cancel"
+		name = annexation_events.cancel
+		ai_chance = { base = 0 }
+	}
+
+	after = {
+		recheck_annexations = yes
+	}
+}
+
+country_event = { #Fate of the Isle of Man
+	id = annexation_events.1145
+	title = annexation_1124
+	desc = annexation_1124_desc
+	picture = GFX_report_event_generic_conference2
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				any_state_of = {
+					target = { 113 132 133 } #Leinster, Salfordshire, Strathclyde
+					is_claim_or_core_of_ROOT = yes
+				}
+			}
+			save_event_target_as = can_annex
+		}
+		if = {
+			limit = {
+				113 = { #Leinster
+					annexations_state_owner_is_valid_grant_target = yes
+					owner = { ROOT_can_grant_land = yes }
+				}
+			}
+			var:113.owner = { save_event_target_as = ireland add_to_array = { ROOT.potential_grant_targets = THIS } }
+		}
+		if = {
+			limit = {
+				132 = { #Salfordshire
+					annexations_state_owner_is_valid_grant_target = yes
+					owner = {
+						NOT = { tag = event_target:ireland }
+						ROOT_can_grant_land = yes
+					}
+				}
+			}
+			var:132.owner = { save_event_target_as = england add_to_array = { ROOT.potential_grant_targets = THIS } }
+		}
+		if = {
+			limit = {
+				133 = { #Strathclyde
+					annexations_state_owner_is_valid_grant_target = yes
+					owner = {
+						NOT = { tag = event_target:ireland }
+						NOT = { tag = event_target:england }
+						ROOT_can_grant_land = yes
+					}
+				}
+			}
+			var:133.owner = { save_event_target_as = scotland add_to_array = { ROOT.potential_grant_targets = THIS } }
+		}
+	}
+
+	option = { #Give to owner of Leinster
+		log = "[GetLogInfo]: event annexation_events.1145 option annexation_events.europe.give_to_ireland"
+		name = annexation_events.europe.give_to_ireland
+		trigger = {
+			has_event_target = ireland
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				annexations_can_annex = yes
+			}
+			modifier = {
+				factor = 0
+				NOT = { is_ally_with = event_target:ireland }
+				any_of_scopes = {
+					array = potential_grant_targets
+					is_ally_with = ROOT
+				}
+			}
+			modifier = {
+				factor = 0.1
+				event_target:ireland = { is_subject = yes }
+			}
+		}
+		set_temp_variable = { tag_to_release = event_target:ireland }
+		1124 = { transfer_state_and_notify = yes } #Isle of Man
+	}
+
+	option = { #Give to owner of Salfordshire
+		log = "[GetLogInfo]: event annexation_events.1145 option annexation_events.europe.give_to_england"
+		name = annexation_events.europe.give_to_england
+		trigger = {
+			has_event_target = england
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				annexations_can_annex = yes
+			}
+			modifier = {
+				factor = 0
+				NOT = { is_ally_with = event_target:england }
+				any_of_scopes = {
+					array = potential_grant_targets
+					is_ally_with = ROOT
+				}
+			}
+			modifier = {
+				add = 1
+				NOT = { has_event_target = scotland }
+			}
+			modifier = {
+				factor = 0.1
+				event_target:england = { is_subject = yes }
+			}
+		}
+		set_temp_variable = { tag_to_release = event_target:england }
+		1124 = { transfer_state_and_notify = yes } #Isle of Man
+	}
+
+	option = { #Give to owner of Strathclyde
+		log = "[GetLogInfo]: event annexation_events.1145 option annexation_events.europe.give_to_scotland"
+		name = annexation_events.europe.give_to_scotland
+		trigger = {
+			has_event_target = scotland
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				annexations_can_annex = yes
+			}
+			modifier = {
+				factor = 0
+				NOT = { is_ally_with = event_target:scotland }
+				any_of_scopes = {
+					array = potential_grant_targets
+					is_ally_with = ROOT
+				}
+			}
+			modifier = {
+				factor = 0.1
+				event_target:scotland = { is_subject = yes }
+			}
+		}
+		set_temp_variable = { tag_to_release = event_target:scotland }
+		1124 = { transfer_state_and_notify = yes } #Isle of Man
+	}
+
+	option = { #Give to overlord
+		log = "[GetLogInfo]: event annexation_events.1145 option annexation_events.give_to_overlord"
+		name = annexation_events.give_to_overlord
+		trigger = {
+			annexations_should_give_lands_to_overlord = yes
+		}
+		set_temp_variable = { tag_to_release = overlord }
+		1124 = { transfer_state_and_notify = yes } #Vorarlberg
+	}
+
+	option = { #annex
+		log = "[GetLogInfo]: event annexation_events.1145 option annexation_events.integration"
+		name = annexation_events.integration
+		trigger = {
+			annexations_can_annex = yes
+		}
+		1124 = { add_claim_of_ROOT = yes } #Vorarlberg
+	}
+
+	option = { #Cancel
+		log = "[GetLogInfo]: event annexation_events.1145 option annexation_events.cancel"
 		name = annexation_events.cancel
 		ai_chance = { base = 0 }
 	}

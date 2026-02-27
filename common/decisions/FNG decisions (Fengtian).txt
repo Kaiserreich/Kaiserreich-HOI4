@@ -1938,7 +1938,7 @@ FNG_Preparing_For_The_Princes_Visit = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete FNG_investigate_the_junior_officer_corps"
 			add_command_power = 25
-			add_war_support = 0.05
+			add_war_support = 0.03
 		}
 		fixed_random_seed = no
 	}
@@ -2017,7 +2017,7 @@ FNG_Preparing_For_The_Princes_Visit = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete FNG_present_chinese_modernity"
-			add_war_support = 0.1
+			add_war_support = 0.05
 			add_stability = 0.05
 			FNG_JAP_investment_large = yes
 		}
@@ -2945,6 +2945,9 @@ FNG_foreign_policy = { #The Road to Reclamation
 						var:608.owner = { enemies_strength_ratio > 1 }
 						var:608.owner = { surrender_progress > 0.1 }
 					}
+				}
+				any_enemy_country = {
+					is_chinese_tag = yes #In case someone declares war on SHD or ANQ which are either subjects or guaranteed by FNG
 				}
 			}
 		}

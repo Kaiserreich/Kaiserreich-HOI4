@@ -3037,7 +3037,9 @@ country_event = { #Converting Convoys into aircraft carriers
 	picture = GFX_report_event_INS_independence_rally
 
 	immediate = {
-		country_event = { id = indonesia_events.94 days = 300 }
+		hidden_effect = {
+			country_event = { id = indonesia_events.94 days = 300 }
+		}
 	}
 
 	option = { #Sure

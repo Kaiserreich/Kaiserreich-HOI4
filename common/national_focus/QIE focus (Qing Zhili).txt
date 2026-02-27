@@ -2977,7 +2977,11 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			factor = 400
+			factor = 125
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
 			modifier = {
 				factor = 5
 				CHN_ai_factor_pressure_to_act_trigger = yes

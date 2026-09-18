@@ -234,11 +234,7 @@ CENmil_political_decisions = {
 				ideology = authoritarian_democrat
 				popularity = 0.02
 			}
-			subtract_from_variable = {
-				var = UFC_power
-				value = 3
-				tooltip = cenmil_foreign_influence_decreases_tt
-			}
+			subtract_from_variable = { UFC_power = 3 tooltip = cenmil_foreign_influence_decreases_tt }
 			hidden_effect = {
 				update_CENmil_UFC = yes
 			}
@@ -304,11 +300,7 @@ CENmil_political_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove CENmil_combat_debt"
 			add_political_power = 40
-			subtract_from_variable = {
-				var = UFC_power
-				value = 3
-				tooltip = cenmil_foreign_influence_decreases_tt
-			}
+			subtract_from_variable = { UFC_power = 3 tooltip = cenmil_foreign_influence_decreases_tt }
 			hidden_effect = {
 				update_CENmil_UFC = yes
 			}
@@ -404,11 +396,7 @@ CENmil_economic_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete CENmil_land_grants"
 			add_political_power = 75
-			add_to_variable = {
-				var = UFC_power
-				value = 3
-				tooltip = cenmil_foreign_influence_grows_tt
-			}
+			add_to_variable = { UFC_power = 3 tooltip = cenmil_foreign_influence_grows_tt }
 			hidden_effect = {
 				update_CENmil_UFC = yes
 			}
@@ -446,11 +434,7 @@ CENmil_economic_decisions = {
 					add_political_power = 125
 				}
 			}
-			add_to_variable = {
-				var = UFC_power
-				value = 5
-				tooltip = cenmil_foreign_influence_grows_tt
-			}
+			add_to_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_grows_tt }
 			hidden_effect = {
 				update_CENmil_UFC = yes
 			}
@@ -476,11 +460,7 @@ CENmil_economic_decisions = {
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete CENmil_buy_up_stuff"
-			subtract_from_variable = {
-				var = UFC_power
-				value = 3
-				tooltip = cenmil_foreign_influence_decreases_tt
-			}
+			subtract_from_variable = { UFC_power = 3 tooltip = cenmil_foreign_influence_decreases_tt }
 			hidden_effect = {
 				update_CENmil_UFC = yes
 			}
@@ -503,11 +483,7 @@ CENmil_economic_decisions = {
 			log = "[GetLogRoot]: Decision complete CENmil_nationalize_stuff"
 			add_stability = -0.1
 			add_political_power = 50
-			subtract_from_variable = {
-				var = UFC_power
-				value = 10
-				tooltip = cenmil_foreign_influence_decreases_tt
-			}
+			subtract_from_variable = { UFC_power = 10 tooltip = cenmil_foreign_influence_decreases_tt }
 			hidden_effect = {
 				update_CENmil_UFC = yes
 			}
@@ -1531,7 +1507,50 @@ CENmil_restoring_the_old_union_decisions = {
 		cancel_if_not_visible = yes
 		war_with_target_on_remove = yes
 
-		ai_will_do = { base = 0 } # Player-only for the time being
+		ai_will_do = {
+			# Will take if target is in a war that's going poorly
+			modifier = {
+				add = 100
+				FROM = {
+					has_war_with_major = yes
+					OR = {
+						any_allied_country = {
+							is_major = yes
+							is_subject = no
+							has_capitulated = yes
+						}
+						if = {
+							limit = { is_subject = no }
+							surrender_progress > 0.2
+						}
+						else = {
+							var:FROM.overlord = { surrender_progress > 0.2 }
+						}
+					}
+				}
+			}
+			# Will take if target is WIF fighting independence war
+			modifier = {
+				add = 100
+				FROM = {
+					original_tag = WIF
+					has_war_with = ENT
+					has_socialist_government = yes
+					is_valid_peace_target = yes
+				}
+			}
+			# Will never take if the target is a player
+			modifier = {
+				factor = 0
+				OR = {
+					FROM = { is_ai = no }
+					AND = {
+						FROM = { is_subject = yes }
+						var:FROM.overlord = { is_ai = no }
+					}
+				}
+			}
+		}
 
 		cancel_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision cancel CENmil_demand_belize"

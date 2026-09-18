@@ -1069,15 +1069,9 @@ RUS_uztm_organisation = {
 	}
 
 	equipment_type = {
-		light_tank_artillery_chassis
-		medium_tank_artillery_chassis
-		heavy_tank_artillery_chassis
-		light_tank_destroyer_chassis
-		medium_tank_destroyer_chassis
-		heavy_tank_destroyer_chassis
-		light_tank_aa_chassis
-		medium_tank_aa_chassis
-		heavy_tank_aa_chassis
+		mio_cat_eq_all_artillery_tanks
+		mio_cat_eq_all_tank_destroyers
+		mio_cat_eq_all_aa_tanks
 	}
 
 	research_categories = {
@@ -1695,18 +1689,19 @@ RUS_uztm_organisation = {
 
 		on_complete = {
 			custom_effect_tooltip = uztm_upgrade_based_on_allies_and_puppets_eff_cap_tt
-			set_temp_variable = { uztm_allies_and_puppets_no = FROM.allies }
-			add_to_temp_variable = { uztm_allies_and_puppets_no = FROM.num_subjects }
-			clamp_temp_variable = { var = uztm_allies_and_puppets_no min = 0 max = 10 }
+			set_temp_variable = {
+				uztm_allies_and_puppets_no = {
+					value = FROM.allies
+					add = FROM.num_subjects
+					clamp = { min = 0 max = 10 }
+				}
+			}
 
 			set_temp_variable = { uztm_upgrade_eff_cap = 1 }
 			hidden_effect = { RUS_upgrade_uztm = yes }
-			set_temp_variable = { uztm_eff_cap = uztm_allies_and_puppets_no }
-			multiply_temp_variable = { uztm_eff_cap = 2 }
-			set_temp_variable = { uztm_eff_gain = uztm_allies_and_puppets_no }
-			multiply_temp_variable = { uztm_eff_gain = 2 }
-			set_temp_variable = { uztm_resource = uztm_allies_and_puppets_no }
-			multiply_temp_variable = { uztm_resource = 2 }
+			set_temp_variable = { uztm_eff_cap = { value = uztm_allies_and_puppets_no multiply = 2 } }
+			set_temp_variable = { uztm_eff_gain = uztm_eff_cap }
+			set_temp_variable = { uztm_resource = uztm_eff_cap }
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = uztm_upgrade_will_get
 		}
@@ -1728,17 +1723,19 @@ RUS_uztm_organisation = {
 
 		on_complete = {
 			custom_effect_tooltip = uztm_upgrade_based_on_allies_and_puppets_eff_gro_tt
-			set_temp_variable = { uztm_allies_and_puppets_no = FROM.allies }
-			add_to_temp_variable = { uztm_allies_and_puppets_no = FROM.num_subjects }
-			clamp_temp_variable = { var = uztm_allies_and_puppets_no min = 0 max = 10 }
+			set_temp_variable = {
+				uztm_allies_and_puppets_no = {
+					value = FROM.allies
+					add = FROM.num_subjects
+					clamp = { min = 0 max = 10 }
+				}
+			}
 
 			set_temp_variable = { uztm_upgrade_eff_gro = 1 }
 			hidden_effect = { RUS_upgrade_uztm = yes }
 			set_temp_variable = { uztm_eff_cap = uztm_allies_and_puppets_no }
-			set_temp_variable = { uztm_eff_gain = uztm_allies_and_puppets_no }
-			multiply_temp_variable = { uztm_eff_gain = 4 }
-			set_temp_variable = { uztm_resource = uztm_allies_and_puppets_no }
-			multiply_temp_variable = { uztm_resource = 2 }
+			set_temp_variable = { uztm_eff_gain = { value = uztm_allies_and_puppets_no multiply = 4 } }
+			set_temp_variable = { uztm_resource = { value = uztm_allies_and_puppets_no multiply = 2 } }
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = uztm_upgrade_will_get
 		}
@@ -1754,9 +1751,7 @@ RUS_uztm_organisation = {
 		position = { x = 7 y = 2 }
 
 		limit_to_equipment_type = {
-			light_tank_aa_chassis
-			medium_tank_aa_chassis
-			heavy_tank_aa_chassis
+			mio_cat_eq_all_aa_tanks
 		}
 
 		equipment_bonus = {
@@ -1804,9 +1799,7 @@ RUS_uztm_organisation = {
 		position = { x = 6 y = 3 }
 
 		limit_to_equipment_type = {
-			light_tank_aa_chassis
-			medium_tank_aa_chassis
-			heavy_tank_aa_chassis
+			mio_cat_eq_all_aa_tanks
 		}
 
 		equipment_bonus = {
@@ -5625,7 +5618,7 @@ RUS_av_organisation = {
 	on_industrial_manufacturer_assigned = {
 		custom_effect_tooltip = RUS_av_decaying_funds_bonus_tt
 		if = {
-			limit = { check_variable = { FROM.RUS_decaying_funds_bonus_mios^num > 0 } }
+			limit = { has_variable = FROM.RUS_decaying_funds_bonus_mios^num }
 			RUS_show_decaying_funds_bonuses = yes
 		}
 		else = {
@@ -5828,8 +5821,7 @@ RUS_av_organisation = {
 		mutually_exclusive = { av_upgrade_3_1 }
 
 		on_complete = {
-			set_temp_variable = { RUS_funds_decay_granted_temp = Number_of_funds_decay_granted }
-			multiply_temp_variable = { RUS_funds_decay_granted_temp = 3 }
+			set_temp_variable = { RUS_funds_decay_granted_temp = { value = Number_of_funds_decay_granted multiply = 3 } }
 			custom_override_tooltip = {
 				tooltip = {
 					localization_key = RUS_AV_Number_Of_Funds_Bonus_Granted_tt
@@ -5955,12 +5947,7 @@ RUS_as_organisation = {
 	available = { FROM = { owns_state = 218 } } #Rostov
 
 	equipment_type = {
-		mio_cat_eq_all_carrier
-		mio_cat_eq_all_battleship
-		mio_cat_eq_all_cruiser
-		mio_cat_eq_all_destroyer
-		submarine
-		convoy_1
+		mio_cat_eq_all_ships
 	}
 
 	research_categories = {
@@ -8770,18 +8757,8 @@ RUS_skorost_organisation = {
 	available = { FROM = { owns_state = 219 } } #Moscow
 
 	equipment_type = {
-		small_plane_airframe
-		medium_plane_airframe
-		large_plane_airframe
-		cv_small_plane_airframe
-		transport_plane_equipment
+		mio_cat_eq_all_aircraft
 		helicopter_equipment
-		mothership_equipment
-		strat_bomber_intercontinental_equipment
-		nuclear_missile
-		ballistic_missile_equipment
-		sam_missile_equipment
-		guided_missile_equipment
 	}
 
 	research_categories = {
@@ -8819,6 +8796,8 @@ RUS_skorost_organisation = {
 		name = KR_MIO_Trait_standardise_small_airframes
 		icon = GFX_generic_mio_trait_icon_efficiency_cap
 
+		ai_will_do = { base = 100 }
+
 		position = { x = 0 y = 0 }
 
 		production_bonus = {
@@ -8830,6 +8809,8 @@ RUS_skorost_organisation = {
 		token = skorost_upgrade_2
 		name = KR_MIO_Trait_increased_work_hours
 		icon = GFX_generic_mio_trait_icon_efficiency_cap
+
+		ai_will_do = { base = 100 }
 
 		all_parents = { skorost_upgrade_1 }
 
@@ -8886,6 +8867,8 @@ RUS_skorost_organisation = {
 		token = skorost_upgrade_1_2
 		name = KR_MIO_Trait_favour_long_term_plane_production_contracts
 		icon = GFX_generic_mio_trait_icon_efficiency_cap
+
+		ai_will_do = { base = 1000 }
 
 		all_parents = { skorost_upgrade_1 }
 
@@ -9023,6 +9006,8 @@ RUS_skorost_organisation = {
 		name = KR_MIO_Trait_favour_further_elimination_of_resource_waste
 		icon = GFX_generic_mio_trait_icon_resources
 
+		ai_will_do = { base = -100 }
+
 		all_parents = { skorost_upgrade_4_1 }
 
 		position = { x = 2 y = 3 }
@@ -9039,6 +9024,8 @@ RUS_skorost_organisation = {
 		token = skorost_upgrade_3_3
 		name = KR_MIO_Trait_favour_additional_dedicated_conversion_facilities
 		icon = GFX_generic_mio_trait_icon_conversion_speed
+
+		ai_will_do = { base = 0 }
 
 		all_parents = { skorost_upgrade_4_4 }
 
@@ -9073,6 +9060,8 @@ RUS_skorost_organisation = {
 		name = KR_MIO_Trait_standardise_large_airframes
 		icon = GFX_generic_mio_trait_icon_resources
 
+		ai_will_do = { base = 50 }
+
 		position = { x = 0 y = 4 }
 
 		production_bonus = {
@@ -9084,6 +9073,8 @@ RUS_skorost_organisation = {
 		token = skorost_upgrade_4_2
 		name = KR_MIO_Trait_material_recycling
 		icon = GFX_generic_mio_trait_icon_resources
+
+		ai_will_do = { base = 50 }
 
 		all_parents = { skorost_upgrade_4_1 }
 
@@ -10268,6 +10259,8 @@ RUS_imz_organisation = {
 		name = KR_MIO_Trait_long_life_production_runs
 		icon = GFX_generic_mio_trait_icon_efficiency_cap
 
+		ai_will_do = { base = 10 }
+
 		position = { x = 3 y = 1 }
 
 		production_bonus = {
@@ -10292,6 +10285,8 @@ RUS_imz_organisation = {
 		name = KR_MIO_Trait_standardise_parts
 		icon = GFX_generic_mio_trait_icon_build_cost_ic
 
+		ai_will_do = { base = 10 }
+
 		position = { x = 7 y = 0 }
 
 		production_bonus = {
@@ -10303,6 +10298,8 @@ RUS_imz_organisation = {
 		token = imz_upgrade_1_1
 		name = KR_MIO_Trait_absorb_the_sez
 		icon = GFX_generic_mio_trait_icon_efficiency_gain
+
+		ai_will_do = { base = 0 }
 
 		position = { x = 0 y = 2 }
 
@@ -10319,6 +10316,8 @@ RUS_imz_organisation = {
 		token = imz_upgrade_1_2
 		name = KR_MIO_Trait_collaborate_with_the_votkinsk_factory
 		icon = GFX_KR_generic_mio_trait_icon_production_output
+
+		ai_will_do = { base = -100 }
 
 		position = { x = 2 y = 2 }
 
@@ -10342,6 +10341,8 @@ RUS_imz_organisation = {
 		name = KR_MIO_Trait_collaborate_with_soz
 		icon = GFX_generic_mio_trait_icon_resources
 
+		ai_will_do = { base = 0 }
+
 		position = { x = 4 y = 2 }
 
 		all_parents = { imz_upgrade_3 imz_upgrade_2 }
@@ -10358,6 +10359,8 @@ RUS_imz_organisation = {
 		token = imz_upgrade_1_4
 		name = KR_MIO_Trait_joint_front_line_designer_development_teams
 		icon = GFX_KR_generic_mio_trait_icon_research_speed
+
+		ai_will_do = { base = 0 }
 
 		position = { x = 6 y = 2 }
 
@@ -10460,11 +10463,9 @@ RUS_obukhov_organisation = {
 	available = { FROM = { owns_state = 195 } } #Petrograd
 
 	equipment_type = {
-		artillery_equipment
+		mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		anti_tank_equipment
 		anti_air_equipment
-		super_heavy_artillery_equipment
-		self_propelled_super_heavy_artillery_equipment
 	}
 
 	research_categories = {
@@ -10593,16 +10594,14 @@ RUS_obukhov_organisation = {
 		name = KR_MIO_Trait_expanded_engineer_department
 		icon = GFX_KR_generic_mio_trait_icon_army_xp
 
-		ai_will_do = { base = 1000 }
+		ai_will_do = { base = -1000 }
 
 		special_trait_background = yes
 
 		position = { x = 5 y = 0 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		mutually_exclusive = { obukhov_upgrade_6 }
@@ -10644,16 +10643,14 @@ RUS_obukhov_organisation = {
 		name = KR_MIO_Trait_expand_the_society_of_inventors
 		icon = GFX_KR_generic_mio_trait_icon_army_xp
 
-		ai_will_do = { base = 1000 }
+		ai_will_do = { base = 0 }
 
 		special_trait_background = yes
 
 		position = { x = 7 y = 0 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		mutually_exclusive = { obukhov_upgrade_5 }
@@ -10695,6 +10692,8 @@ RUS_obukhov_organisation = {
 		token = obukhov_upgrade_7
 		name = KR_MIO_Trait_extended_barrel_life
 		icon = GFX_KR_generic_mio_trait_icon_army_xp
+
+		ai_will_do = { base = 10 }
 
 		position = { x = 8 y = 0 }
 
@@ -10795,9 +10794,7 @@ RUS_obukhov_organisation = {
 		position = { x = 5 y = 1 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		mutually_exclusive = { obukhov_upgrade_1_5 }
@@ -10817,9 +10814,7 @@ RUS_obukhov_organisation = {
 		position = { x = 7 y = 1 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		mutually_exclusive = { obukhov_upgrade_1_4 }
@@ -10928,9 +10923,7 @@ RUS_obukhov_organisation = {
 		position = { x = 5 y = 2 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		mutually_exclusive = { obukhov_upgrade_2_5 }
@@ -11014,6 +11007,8 @@ RUS_obukhov_organisation = {
 		token = obukhov_upgrade_3_1_lvl4
 		name = KR_MIO_Trait_quality_manufacturing_tools
 		icon = GFX_generic_mio_trait_icon_efficiency_cap
+
+		ai_will_do = { base = 100 }
 
 		any_parent = { obukhov_upgrade_2_1 obukhov_upgrade_2_2 obukhov_upgrade_2_4 obukhov_upgrade_2_5 obukhov_upgrade_2_6 obukhov_upgrade_2_7 }
 
@@ -11377,12 +11372,8 @@ RUS_bmz_organisation = {
 	}
 
 	equipment_type = {
-		artillery_equipment
-		rocket_artillery_equipment
-		super_heavy_artillery_equipment
-		self_propelled_super_heavy_artillery_equipment
-		railway_gun_equipment
-		super_heavy_railway_gun_equipment
+		mio_cat_eq_all_artillery_rocket_artillery_howitzers
+		mio_cat_eq_all_railway_guns
 		train_equipment
 	}
 
@@ -11405,10 +11396,7 @@ RUS_bmz_organisation = {
 		position = { x = 3 y = 0 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			rocket_artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		equipment_bonus = {
@@ -11420,6 +11408,8 @@ RUS_bmz_organisation = {
 		token = bmz_upgrade_2
 		name = KR_MIO_Trait_expand_northern_routes
 		icon = GFX_KR_generic_mio_trait_icon_railway
+
+		ai_will_do = { base = 1000 }
 
 		available = {
 			FROM = {
@@ -11467,8 +11457,7 @@ RUS_bmz_organisation = {
 		}
 
 		on_complete = {
-			set_temp_variable = { weekly_research_speed_to_add = research_bonus }
-			multiply_temp_variable = { weekly_research_speed_to_add = 0.04 }
+			set_temp_variable = { weekly_research_speed_to_add = { value = research_bonus multiply = 0.04 } }
 			custom_effect_tooltip = RUS_manufacturer_trait_research_gain_bmz_tt
 			add_to_variable = { weekly_research_speed_gain = weekly_research_speed_to_add }
 		}
@@ -11504,6 +11493,8 @@ RUS_bmz_organisation = {
 		token = bmz_upgrade_1_3
 		name = KR_MIO_Trait_expand_southern_routes
 		icon = GFX_KR_generic_mio_trait_icon_supply
+
+		ai_will_do = { base = 1000 }
 
 		available = {
 			FROM = {
@@ -11561,10 +11552,7 @@ RUS_bmz_organisation = {
 		mutually_exclusive = { bmz_upgrade_1_4 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			rocket_artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		equipment_bonus = {
@@ -11587,10 +11575,7 @@ RUS_bmz_organisation = {
 		any_parent = { bmz_upgrade_1_1 bmz_upgrade_1_2 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			rocket_artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		equipment_bonus = {
@@ -11608,8 +11593,7 @@ RUS_bmz_organisation = {
 		all_parents = { bmz_upgrade_1_3 }
 
 		limit_to_equipment_type = {
-			railway_gun_equipment
-			super_heavy_railway_gun_equipment
+			mio_cat_eq_all_railway_guns
 		}
 
 		equipment_bonus = {
@@ -11660,10 +11644,7 @@ RUS_bmz_organisation = {
 		any_parent = { bmz_upgrade_1_4 bmz_upgrade_1_5 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			rocket_artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		equipment_bonus = {
@@ -11681,10 +11662,7 @@ RUS_bmz_organisation = {
 		all_parents = { bmz_upgrade_2_2 bmz_upgrade_2_3 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			rocket_artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		equipment_bonus = {
@@ -11716,10 +11694,7 @@ RUS_bmz_organisation = {
 		all_parents = { bmz_upgrade_2_3 bmz_upgrade_2_4 }
 
 		limit_to_equipment_type = {
-			artillery_equipment
-			rocket_artillery_equipment
-			super_heavy_artillery_equipment
-			self_propelled_super_heavy_artillery_equipment
+			mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		}
 
 		equipment_bonus = {
@@ -11739,9 +11714,13 @@ RUS_amo_organisation = {
 	on_tech_research_completed = {
 		# Add_cic formula: (RUS_amo_cic_bonus * size) + @RUS_amo_cic_base
 		#RUS_amo_cic_bonus further affected by trait amo_upgrade_1_2, trait amo_upgrade_1_4, and policy RUS_mio_policy_expand_weapon_deals
-		set_temp_variable = { RUS_amo_cic_trait_sum = RUS_amo_cic_bonus }
-		multiply_temp_variable = { RUS_amo_cic_trait_sum = size }
-		add_to_temp_variable = { RUS_amo_cic_trait_sum = @RUS_amo_cic_base }
+		set_temp_variable = {
+			RUS_amo_cic_trait_sum = {
+				value = RUS_amo_cic_bonus
+				multiply = size
+				add = @RUS_amo_cic_base
+			}
+		}
 
 		FROM = { add_cic = RUS_amo_cic_trait_sum }
 		add_to_variable = { RUS_amo_total_campaign_cic = RUS_amo_cic_trait_sum }
@@ -11750,7 +11729,7 @@ RUS_amo_organisation = {
 
 	equipment_type = {
 		motorized_equipment
-		mechanized_equipment
+		mio_cat_eq_all_mechanised
 		armor
 	}
 
@@ -11802,7 +11781,7 @@ RUS_amo_organisation = {
 
 		position = { x = 7 y = 0 }
 
-		limit_to_equipment_type = { mechanized_equipment }
+		limit_to_equipment_type = { mio_cat_eq_all_mechanised }
 
 		equipment_bonus = {
 			reliability = 0.05
@@ -11916,7 +11895,7 @@ RUS_amo_organisation = {
 
 		mutually_exclusive = { amo_upgrade_1_5 }
 
-		limit_to_equipment_type = { mechanized_equipment }
+		limit_to_equipment_type = { mio_cat_eq_all_mechanised }
 
 		equipment_bonus = {
 			maximum_speed = 0.05
@@ -11935,7 +11914,7 @@ RUS_amo_organisation = {
 		position = { x = 1 y = 2 }
 		relative_position_id = amo_upgrade_3
 
-		limit_to_equipment_type = { mechanized_equipment }
+		limit_to_equipment_type = { mio_cat_eq_all_mechanised }
 
 		any_parent = { amo_upgrade_2 amo_upgrade_3 }
 
@@ -12070,17 +12049,11 @@ RUS_naz_organisation = {
 
 	equipment_type = {
 		motorized_equipment
-		mechanized_equipment
+		mio_cat_eq_all_mechanised
 		motorized_rocket_equipment
-		light_tank_artillery_chassis
-		medium_tank_artillery_chassis
-		heavy_tank_artillery_chassis
-		light_tank_destroyer_chassis
-		medium_tank_destroyer_chassis
-		heavy_tank_destroyer_chassis
-		light_tank_aa_chassis
-		medium_tank_aa_chassis
-		heavy_tank_aa_chassis
+		mio_cat_eq_all_artillery_tanks
+		mio_cat_eq_all_tank_destroyers
+		mio_cat_eq_all_aa_tanks
 		armored_car_equipment
 	}
 
@@ -12128,7 +12101,7 @@ RUS_naz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			motorized_rocket_equipment
 			armored_car_equipment
 		}
@@ -12149,7 +12122,7 @@ RUS_naz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			motorized_rocket_equipment
 			armored_car_equipment
 		}
@@ -12169,15 +12142,9 @@ RUS_naz_organisation = {
 		mutually_exclusive = { naz_upgrade_2 }
 
 		limit_to_equipment_type = {
-			light_tank_artillery_chassis
-			medium_tank_artillery_chassis
-			heavy_tank_artillery_chassis
-			light_tank_destroyer_chassis
-			medium_tank_destroyer_chassis
-			heavy_tank_destroyer_chassis
-			light_tank_aa_chassis
-			medium_tank_aa_chassis
-			heavy_tank_aa_chassis
+			mio_cat_eq_all_artillery_tanks
+			mio_cat_eq_all_tank_destroyers
+			mio_cat_eq_all_aa_tanks
 		}
 
 		production_bonus = {
@@ -12193,15 +12160,9 @@ RUS_naz_organisation = {
 		position = { x = 8 y = 0 }
 
 		limit_to_equipment_type = {
-			light_tank_artillery_chassis
-			medium_tank_artillery_chassis
-			heavy_tank_artillery_chassis
-			light_tank_destroyer_chassis
-			medium_tank_destroyer_chassis
-			heavy_tank_destroyer_chassis
-			light_tank_aa_chassis
-			medium_tank_aa_chassis
-			heavy_tank_aa_chassis
+			mio_cat_eq_all_artillery_tanks
+			mio_cat_eq_all_tank_destroyers
+			mio_cat_eq_all_aa_tanks
 		}
 
 		production_bonus = {
@@ -12223,7 +12184,7 @@ RUS_naz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			motorized_rocket_equipment
 			armored_car_equipment
 		}
@@ -12282,15 +12243,9 @@ RUS_naz_organisation = {
 		mutually_exclusive = { naz_upgrade_1_2 }
 
 		limit_to_equipment_type = {
-			light_tank_artillery_chassis
-			medium_tank_artillery_chassis
-			heavy_tank_artillery_chassis
-			light_tank_destroyer_chassis
-			medium_tank_destroyer_chassis
-			heavy_tank_destroyer_chassis
-			light_tank_aa_chassis
-			medium_tank_aa_chassis
-			heavy_tank_aa_chassis
+			mio_cat_eq_all_artillery_tanks
+			mio_cat_eq_all_tank_destroyers
+			mio_cat_eq_all_aa_tanks
 		}
 
 		production_bonus = {
@@ -12309,7 +12264,7 @@ RUS_naz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			motorized_rocket_equipment
 			armored_car_equipment
 		}
@@ -12332,7 +12287,7 @@ RUS_naz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			motorized_rocket_equipment
 			armored_car_equipment
 		}
@@ -12354,15 +12309,9 @@ RUS_naz_organisation = {
 		mutually_exclusive = { naz_upgrade_2_2 }
 
 		limit_to_equipment_type = {
-			light_tank_artillery_chassis
-			medium_tank_artillery_chassis
-			heavy_tank_artillery_chassis
-			light_tank_destroyer_chassis
-			medium_tank_destroyer_chassis
-			heavy_tank_destroyer_chassis
-			light_tank_aa_chassis
-			medium_tank_aa_chassis
-			heavy_tank_aa_chassis
+			mio_cat_eq_all_artillery_tanks
+			mio_cat_eq_all_tank_destroyers
+			mio_cat_eq_all_aa_tanks
 		}
 
 		production_bonus = {
@@ -12380,15 +12329,9 @@ RUS_naz_organisation = {
 		position = { x = 8 y = 2 }
 
 		limit_to_equipment_type = {
-			light_tank_artillery_chassis
-			medium_tank_artillery_chassis
-			heavy_tank_artillery_chassis
-			light_tank_destroyer_chassis
-			medium_tank_destroyer_chassis
-			heavy_tank_destroyer_chassis
-			light_tank_aa_chassis
-			medium_tank_aa_chassis
-			heavy_tank_aa_chassis
+			mio_cat_eq_all_artillery_tanks
+			mio_cat_eq_all_tank_destroyers
+			mio_cat_eq_all_aa_tanks
 		}
 
 		production_bonus = {
@@ -12410,7 +12353,7 @@ RUS_naz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			motorized_rocket_equipment
 			armored_car_equipment
 		}
@@ -12447,15 +12390,9 @@ RUS_naz_organisation = {
 		position = { x = 6 y = 3 }
 
 		limit_to_equipment_type = {
-			light_tank_artillery_chassis
-			medium_tank_artillery_chassis
-			heavy_tank_artillery_chassis
-			light_tank_destroyer_chassis
-			medium_tank_destroyer_chassis
-			heavy_tank_destroyer_chassis
-			light_tank_aa_chassis
-			medium_tank_aa_chassis
-			heavy_tank_aa_chassis
+			mio_cat_eq_all_artillery_tanks
+			mio_cat_eq_all_tank_destroyers
+			mio_cat_eq_all_aa_tanks
 		}
 
 		mutually_exclusive = { naz_upgrade_3_2 }
@@ -12476,7 +12413,7 @@ RUS_naz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			motorized_rocket_equipment
 			armored_car_equipment
 		}
@@ -12560,15 +12497,9 @@ RUS_naz_organisation = {
 		position = { x = 8 y = 4 }
 
 		limit_to_equipment_type = {
-			light_tank_artillery_chassis
-			medium_tank_artillery_chassis
-			heavy_tank_artillery_chassis
-			light_tank_destroyer_chassis
-			medium_tank_destroyer_chassis
-			heavy_tank_destroyer_chassis
-			light_tank_aa_chassis
-			medium_tank_aa_chassis
-			heavy_tank_aa_chassis
+			mio_cat_eq_all_artillery_tanks
+			mio_cat_eq_all_tank_destroyers
+			mio_cat_eq_all_aa_tanks
 		}
 
 		production_bonus = {
@@ -12587,7 +12518,7 @@ RUS_laz_organisation = {
 
 	equipment_type = {
 		motorized_equipment
-		mechanized_equipment
+		mio_cat_eq_all_mechanised
 		motorized_rocket_equipment
 	}
 
@@ -12636,7 +12567,7 @@ RUS_laz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			motorized_rocket_equipment
 		}
 
@@ -12664,7 +12595,7 @@ RUS_laz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			motorized_rocket_equipment
 		}
 
@@ -12795,7 +12726,7 @@ RUS_laz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 		}
 
 		equipment_bonus = {
@@ -12824,7 +12755,7 @@ RUS_laz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 		}
 
 		equipment_bonus = {
@@ -12857,7 +12788,7 @@ RUS_laz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 		}
 
 		equipment_bonus = {
@@ -13025,7 +12956,7 @@ RUS_laz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 		}
 
 		equipment_bonus = {
@@ -13048,7 +12979,7 @@ RUS_laz_organisation = {
 
 		limit_to_equipment_type = {
 			motorized_equipment
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 		}
 
 		equipment_bonus = {

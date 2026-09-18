@@ -208,10 +208,7 @@ NFA_fight_for_influence_cat = {
 			else = {
 				custom_effect_tooltip = Mordacq_gains_influence_tt
 				hidden_effect = {
-					add_to_variable = {
-						var = Mor_influence
-						value = 2
-					}
+					add_to_variable = { Mor_influence = 2 }
 					clr_country_flag = Mordacq_Airwaves
 					clr_country_flag = Mordacq_Airwaves_decision_made
 					set_country_flag = Mordacq_Parade
@@ -278,10 +275,7 @@ NFA_fight_for_influence_cat = {
 			}
 			custom_effect_tooltip = Mordacq_gains_influence_tt
 			hidden_effect = {
-				add_to_variable = {
-					var = Mor_influence
-					value = 2
-				}
+				add_to_variable = { Mor_influence = 2 }
 				clr_country_flag = Mordacq_Parade
 				clr_country_flag = Mordacq_Parades_decision_made
 				set_country_flag = Mordacq_Speech
@@ -379,10 +373,7 @@ NFA_fight_for_influence_cat = {
 					clr_country_flag = Mordacq_Speech
 					clr_country_flag = Mordacq_Speech_decision_made
 					set_country_flag = Mordacq_Barrack
-					add_to_variable = {
-						var = Mor_influence
-						value = 2
-					}
+					add_to_variable = { Mor_influence = 2 }
 				}
 			}
 		}
@@ -448,14 +439,8 @@ NFA_fight_for_influence_cat = {
 				add_political_power = -10
 				add_manpower = -200
 				hidden_effect = {
-					add_to_variable = {
-						var = Pet_corruption
-						value = 1
-					}
-					add_to_variable = {
-						var = Competition_Loop_Counter
-						value = 1
-					}
+					add_to_variable = { Pet_corruption = 1 }
+					add_to_variable = { Competition_Loop_Counter = 1 }
 					clr_country_flag = Mordacq_Barrack
 					clr_country_flag = Mail_crack_down
 					clr_country_flag = Mordacq_Barrack_decision_made
@@ -466,14 +451,8 @@ NFA_fight_for_influence_cat = {
 				add_manpower = -500
 				custom_effect_tooltip = Mordacq_gains_influence_tt
 				hidden_effect = {
-					add_to_variable = {
-						var = Mor_influence
-						value = 1
-					}
-					add_to_variable = {
-						var = Competition_Loop_Counter
-						value = 1
-					}
+					add_to_variable = { Mor_influence = 1 }
+					add_to_variable = { Competition_Loop_Counter = 1 }
 					clr_country_flag = Mordacq_Barrack
 					clr_country_flag = Mordacq_Barrack_decision_made
 					country_event = { id = french_republic_events.28 days = 1 } # Count the competition loops
@@ -545,14 +524,8 @@ NFA_fight_for_influence_cat = {
 			log = "[GetLogRoot]: Decision complete Invest_Construction"
 			custom_effect_tooltip = Petain_gains_influence_tt
 			hidden_effect = {
-				add_to_variable = {
-					var = Pet_corruption
-					value = 1
-				}
-				add_to_variable = {
-					var = Pet_influence
-					value = 1
-				}
+				add_to_variable = { Pet_corruption = 1 }
+				add_to_variable = { Pet_influence = 1 }
 			}
 			set_country_flag = NFA_Investing
 		}
@@ -596,14 +569,8 @@ NFA_fight_for_influence_cat = {
 			log = "[GetLogRoot]: Decision complete Invest_Arms_Factory"
 			custom_effect_tooltip = Petain_gains_influence_tt
 			hidden_effect = {
-				add_to_variable = {
-					var = Pet_corruption
-					value = 1
-				}
-				add_to_variable = {
-					var = Pet_influence
-					value = 1
-				}
+				add_to_variable = { Pet_corruption = 1 }
+				add_to_variable = { Pet_influence = 1 }
 				set_country_flag = NFA_Investing
 			}
 		}
@@ -654,14 +621,8 @@ NFA_fight_for_influence_cat = {
 			log = "[GetLogRoot]: Decision complete Support_Loyal_Business"
 			custom_effect_tooltip = Petain_gains_influence_tt
 			hidden_effect = {
-				add_to_variable = {
-					var = Pet_corruption
-					value = 1
-				}
-				add_to_variable = {
-					var = Pet_influence
-					value = 1
-				}
+				add_to_variable = { Pet_corruption = 1 }
+				add_to_variable = { Pet_influence = 1 }
 				set_country_flag = NFA_Investing
 			}
 		}
@@ -712,14 +673,8 @@ NFA_fight_for_influence_cat = {
 			log = "[GetLogRoot]: Decision complete Back_Newspaper"
 			custom_effect_tooltip = Petain_gains_influence_tt
 			hidden_effect = {
-				add_to_variable = {
-					var = Pet_corruption
-					value = 1
-				}
-				add_to_variable = {
-					var = Pet_influence
-					value = 1
-				}
+				add_to_variable = { Pet_corruption = 1 }
+				add_to_variable = { Pet_influence = 1 }
 				set_country_flag = NFA_Investing
 			}
 		}
@@ -776,10 +731,7 @@ NFA_fight_for_influence_cat = {
 			log = "[GetLogRoot]: Decision remove NFA_Call_For_Moral_Order"
 			add_stability = 0.01
 			hidden_effect = {
-				subtract_from_variable = {
-					var = Pet_corruption
-					value = 1
-				}
+				subtract_from_variable = { Pet_corruption = 1 }
 			}
 			clr_country_flag = NFA_reduce_corruption
 		}
@@ -825,10 +777,7 @@ NFA_fight_for_influence_cat = {
 			log = "[GetLogRoot]: Decision remove NFA_Make_Corruption_Crime"
 			add_political_power = 5
 			hidden_effect = {
-				subtract_from_variable = {
-					var = Pet_corruption
-					value = 1
-				}
+				subtract_from_variable = { Pet_corruption = 1 }
 			}
 			clr_country_flag = NFA_reduce_corruption
 		}
@@ -878,10 +827,7 @@ NFA_fight_for_influence_cat = {
 				popularity = -0.02
 			}
 			hidden_effect = {
-				subtract_from_variable = {
-					var = Pet_corruption
-					value = 1
-				}
+				subtract_from_variable = { Pet_corruption = 1 }
 			}
 			clr_country_flag = NFA_reduce_corruption
 		}
@@ -2007,10 +1953,8 @@ NFA_reclaim_metropole_cat = {
 		icon = generic_prepare_civil_war
 		ai_will_do = { factor = 75 }
 		visible = {
-			controls_state = 459
-		}
-		visible = {
 			has_war_with = FRA
+			controls_state = 459
 			OR = {
 				controls_state = 30
 				controls_state = 33

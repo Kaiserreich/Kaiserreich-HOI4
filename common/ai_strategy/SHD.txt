@@ -71,8 +71,8 @@ SHD_attack_mingan = {
 		execution_type = rush_weak
 		execute_order = yes
 	}
-
 }
+
 SHD_attack_anqing = {
 	allowed = {
 		original_tag = SHD
@@ -91,16 +91,16 @@ SHD_attack_anqing = {
 		execution_type = rush_weak
 		execute_order = yes
 	}
-
 }
+
 SHD_army_composition = {
 	allowed = { original_tag = SHD }
 	enable = {
 		OR = {
-			check_variable = { num_divisions < 50 }
+			num_divisions < 50
 			has_reached_ninety_percent_of_maximum_divisions = no
 		}
-		check_variable = { num_divisions < 100 }
+		num_divisions < 100
 	}
 	abort_when_not_enabled = yes
 

@@ -11,9 +11,9 @@ CAN_royal_visit_effect = {
 	}
 
 	stability_factor = event_target:KR_king_base.CAN_visit_stability
-	war_support_factor = event_target:KR_king_base.CAN_visit_war_support
-	mobilization_speed = event_target:KR_king_base.CAN_visit_mobilisation
-	army_morale_factor = event_target:KR_king_base.CAN_visit_morale
+	war_support_factor = event_target:KR_king_base.CAN_visit_other_effects
+	mobilization_speed = event_target:KR_king_base.CAN_visit_other_effects
+	army_morale_factor = event_target:KR_king_base.CAN_visit_other_effects
 }
 
 CAN_exile_industry_effect = {
@@ -25,8 +25,8 @@ CAN_exile_industry_effect = {
 		}
 	}
 
-	production_speed_buildings_factor = event_target:KR_king_base.CAN_exile_building
-	industrial_capacity_factory = event_target:KR_king_base.CAN_exile_factory
+	production_speed_buildings_factor = event_target:KR_king_base.CAN_exile_other_effects
+	industrial_capacity_factory = event_target:KR_king_base.CAN_exile_other_effects
 }
 
 CAN_exile_government_effect = {
@@ -38,7 +38,7 @@ CAN_exile_government_effect = {
 		}
 	}
 
-	political_power_factor = event_target:KR_king_base.CAN_exile_power
+	political_power_factor = event_target:KR_king_base.CAN_exile_other_effects
 	stability_factor = event_target:KR_king_base.CAN_exile_stability
 }
 

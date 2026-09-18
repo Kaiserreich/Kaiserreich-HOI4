@@ -3,135 +3,92 @@
 ##########################
 
 increase_bhu_feudal_unity = {
-	hidden_effect = {
-		# do not go above 20
-		if = {
-			limit = {
-				NOT = {
-					has_country_flag = {
-						flag = bhu_feudal_unity
-						value > 21
-					}
-				}
-			}
-
-			modify_country_flag = { flag = bhu_feudal_unity value = 1 }
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 3 }
-					has_country_flag = { flag = bhu_feudal_unity value < 5 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_1 add_idea = BHU_feudal_2 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 6 }
-					has_country_flag = { flag = bhu_feudal_unity value < 8 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_2 add_idea = BHU_feudal_3 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 9 }
-					has_country_flag = { flag = bhu_feudal_unity value < 11 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_3 add_idea = BHU_feudal_4 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 12 }
-					has_country_flag = { flag = bhu_feudal_unity value < 14 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_4 add_idea = BHU_feudal_5 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 15 }
-					has_country_flag = { flag = bhu_feudal_unity value < 17 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_5 add_idea = BHU_feudal_6 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 18 }
-					has_country_flag = { flag = bhu_feudal_unity value < 20 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_6 add_idea = BHU_feudal_7 }
-				country_event = bhutan_events.118
+	if = {
+		limit = { check_variable = { BHU_feudal_unity_change = 3 } }
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_increase_3 TYPE = BHU_feudal_unity }
+	}
+	else_if = {
+		limit = { check_variable = { BHU_feudal_unity_change = 2 } }
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_increase_2 TYPE = BHU_feudal_unity }
+	}
+	else = {
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_increase_1 TYPE = BHU_feudal_unity }
+	}
+	# do not go above 20
+	if = {
+		limit = { check_variable = { BHU_feudal_unity < 21 } }
+		set_temp_variable = { BHU_feudal_unity_new = { value = BHU_feudal_unity add = BHU_feudal_unity_change?1 } }
+		BHU_get_feudal_unity_idea = yes
+		add_to_variable = {
+			BHU_feudal_unity = {
+				value = BHU_feudal_unity_change?1
+				clamp = { min = 0 max = { value = 20 subtract = BHU_feudal_unity } }
 			}
 		}
 	}
 }
 
 decrease_bhu_feudal_unity = {
-	hidden_effect = {
-		# do not go under 0
-		if = {
-			limit = {
-				NOT = {
-					has_country_flag = {
-						flag = bhu_feudal_unity
-						value < 1
-					}
-				}
-			}
-
-			modify_country_flag = { flag = bhu_feudal_unity value = -1 }
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 2 }
-					has_country_flag = { flag = bhu_feudal_unity value < 4 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_2 add_idea = BHU_feudal_1 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 5 }
-					has_country_flag = { flag = bhu_feudal_unity value < 7 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_3 add_idea = BHU_feudal_2 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 8 }
-					has_country_flag = { flag = bhu_feudal_unity value < 10 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_4 add_idea = BHU_feudal_3 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 11 }
-					has_country_flag = { flag = bhu_feudal_unity value < 13 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_5 add_idea = BHU_feudal_4 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 14 }
-					has_country_flag = { flag = bhu_feudal_unity value < 16 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_6 add_idea = BHU_feudal_5 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_feudal_unity value > 17 }
-					has_country_flag = { flag = bhu_feudal_unity value < 19 }
-				}
-				swap_ideas = { remove_idea = BHU_feudal_7 add_idea = BHU_feudal_6 }
+	if = {
+		limit = { check_variable = { BHU_feudal_unity_change = 3 } }
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_decrease_3 TYPE = BHU_feudal_unity }
+	}
+	else_if = {
+		limit = { check_variable = { BHU_feudal_unity_change = 2 } }
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_decrease_2 TYPE = BHU_feudal_unity }
+	}
+	else = {
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_decrease_1 TYPE = BHU_feudal_unity }
+	}
+	# do not go under 0
+	if = {
+		limit = { check_variable = { BHU_feudal_unity > 0 } }
+		set_temp_variable = { BHU_feudal_unity_new = { value = BHU_feudal_unity subtract = BHU_feudal_unity_change?1 } }
+		BHU_get_feudal_unity_idea = yes
+		subtract_from_variable = {
+			BHU_feudal_unity = {
+				value = BHU_feudal_unity_change?1
+				clamp = { min = 0 max = BHU_feudal_unity }
 			}
 		}
+	}
+}
+
+BHU_get_feudal_unity_idea = {
+	# BHU_feudal_7, 19-20
+	# BHU_feudal_6, 16-18
+	# BHU_feudal_5, 13-15
+	# BHU_feudal_4, 10-12
+	# BHU_feudal_3, 7-9
+	# BHU_feudal_2, 4-6
+	# BHU_feudal_1, 0-3
+	set_temp_variable = {
+		BHU_feudal_unity_idea_current = {
+			value = 0
+			if = { limit = { value = BHU_feudal_unity greater_than_or_equals = 19 } add = token:BHU_feudal_7 }
+			else_if = { limit = { value = BHU_feudal_unity greater_than_or_equals = 16 } add = token:BHU_feudal_6 }
+			else_if = { limit = { value = BHU_feudal_unity greater_than_or_equals = 13 } add = token:BHU_feudal_5 }
+			else_if = { limit = { value = BHU_feudal_unity greater_than_or_equals = 10 } add = token:BHU_feudal_4 }
+			else_if = { limit = { value = BHU_feudal_unity greater_than_or_equals = 7 } add = token:BHU_feudal_3 }
+			else_if = { limit = { value = BHU_feudal_unity greater_than_or_equals = 4 } add = token:BHU_feudal_2 }
+			else = { add = token:BHU_feudal_1 }
+		}
+	}
+	set_temp_variable = {
+		BHU_feudal_unity_idea_new = {
+			value = 0
+			if = { limit = { value = BHU_feudal_unity_new greater_than_or_equals = 19 } add = token:BHU_feudal_7 }
+			else_if = { limit = { value = BHU_feudal_unity_new greater_than_or_equals = 16 } add = token:BHU_feudal_6 }
+			else_if = { limit = { value = BHU_feudal_unity_new greater_than_or_equals = 13 } add = token:BHU_feudal_5 }
+			else_if = { limit = { value = BHU_feudal_unity_new greater_than_or_equals = 10 } add = token:BHU_feudal_4 }
+			else_if = { limit = { value = BHU_feudal_unity_new greater_than_or_equals = 7 } add = token:BHU_feudal_3 }
+			else_if = { limit = { value = BHU_feudal_unity_new greater_than_or_equals = 4 } add = token:BHU_feudal_2 }
+			else = { add = token:BHU_feudal_1 }
+		}
+	}
+	if = {
+		limit = { NOT = { check_variable = { BHU_feudal_unity_idea_new = BHU_feudal_unity_idea_current } } }
+		swap_ideas = { remove_idea = var:BHU_feudal_unity_idea_current add_idea = var:BHU_feudal_unity_idea_new }
 	}
 }
 
@@ -140,135 +97,210 @@ decrease_bhu_feudal_unity = {
 ##########################
 
 increase_bhu_econ_dev = {
-	hidden_effect = {
-		# do not go above 20
-		if = {
-			limit = {
-				NOT = {
-					has_country_flag = {
-						flag = bhu_econ_dev
-						value > 21
-					}
-				}
-			}
-
-			modify_country_flag = { flag = bhu_econ_dev value = 1 }
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 3 }
-					has_country_flag = { flag = bhu_econ_dev value < 5 }
-				}
-				swap_ideas = { remove_idea = BHU_economy_6 add_idea = BHU_economy_5 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 6 }
-					has_country_flag = { flag = bhu_econ_dev value < 8 }
-				}
-				remove_ideas = BHU_economy_5
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 9 }
-					has_country_flag = { flag = bhu_econ_dev value < 11 }
-				}
-				add_ideas = BHU_economy_4
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 12 }
-					has_country_flag = { flag = bhu_econ_dev value < 14 }
-				}
-				swap_ideas = { remove_idea = BHU_economy_4 add_idea = BHU_economy_3 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 15 }
-					has_country_flag = { flag = bhu_econ_dev value < 17 }
-				}
-				swap_ideas = { remove_idea = BHU_economy_3 add_idea = BHU_economy_2 }
-				country_event = bhutan_events.116
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 18 }
-					has_country_flag = { flag = bhu_econ_dev value < 20 }
-				}
-				swap_ideas = { remove_idea = BHU_economy_2 add_idea = BHU_economy_1 }
-				country_event = bhutan_events.117
+	# do not go above 25
+	if = {
+		limit = { check_variable = { BHU_econ_change = 2 } }
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_increase_2 TYPE = BHU_econ_dev }
+	}
+	else = {
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_increase_1 TYPE = BHU_econ_dev }
+	}
+	if = {
+		limit = {
+			check_variable = { BHU_econ_dev < 25 }
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+		set_temp_variable = { BHU_econ_dev_new = { value = BHU_econ_dev add = BHU_econ_change?1 } }
+		BHU_get_econ_dev_idea = yes
+		add_to_variable = {
+			BHU_econ_dev = {
+				value = BHU_econ_change?1
+				clamp = { min = 0 max = { value = 25 subtract = BHU_econ_dev } }
 			}
 		}
 	}
 }
 
 decrease_bhu_econ_dev = {
-	hidden_effect = {
-		# do not go under 0
+	# do not go under 0
+	if = {
+		limit = { check_variable = { BHU_econ_change = 2 } }
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_decrease_2 TYPE = BHU_econ_dev }
+	}
+	else = {
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_decrease_1 TYPE = BHU_econ_dev }
+	}
+	if = {
+		limit = {
+			check_variable = { BHU_econ_dev > 0 }
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+		set_temp_variable = { BHU_econ_dev_new = { value = BHU_econ_dev subtract = BHU_econ_change?1 } }
+		BHU_get_econ_dev_idea = yes
+		subtract_from_variable = {
+			BHU_econ_dev = {
+				value = BHU_econ_change?1
+				clamp = { min = 0 max = BHU_econ_dev }
+			}
+		}
+	}
+}
+
+BHU_get_econ_dev_idea = {
+	# BHU_economy_5, 22-25
+	# BHU_economy_4, 19-21
+	# BHU_economy_3, 16-18
+	# BHU_economy_2, 13-15
+	# BHU_economy_1, 10-12
+	# None, 7-9
+	# BHU_economy_minus_1, 4-6
+	# BHU_economy_minus_2, 0-3
+	set_temp_variable = {
+		BHU_economy_idea_current = {
+			value = 0
+			if = { limit = { value = BHU_econ_dev greater_than_or_equals = 22 } add = token:BHU_economy_5 }
+			else_if = { limit = { value = BHU_econ_dev greater_than_or_equals = 19 } add = token:BHU_economy_4 }
+			else_if = { limit = { value = BHU_econ_dev greater_than_or_equals = 16 } add = token:BHU_economy_3 }
+			else_if = { limit = { value = BHU_econ_dev greater_than_or_equals = 13 } add = token:BHU_economy_2 }
+			else_if = { limit = { value = BHU_econ_dev greater_than_or_equals = 10 } add = token:BHU_economy_1 }
+			else_if = { limit = { value = BHU_econ_dev greater_than_or_equals = 7 } add = 0 }
+			else_if = { limit = { value = BHU_econ_dev greater_than_or_equals = 4 } add = token:BHU_economy_minus_1 }
+			else = { add = token:BHU_economy_minus_2 }
+		}
+	}
+	set_temp_variable = {
+		BHU_economy_idea_new = {
+			value = 0
+			if = { limit = { value = BHU_econ_dev_new greater_than_or_equals = 22 } add = token:BHU_economy_5 }
+			else_if = { limit = { value = BHU_econ_dev_new greater_than_or_equals = 19 } add = token:BHU_economy_4 }
+			else_if = { limit = { value = BHU_econ_dev_new greater_than_or_equals = 16 } add = token:BHU_economy_3 }
+			else_if = { limit = { value = BHU_econ_dev_new greater_than_or_equals = 13 } add = token:BHU_economy_2 }
+			else_if = { limit = { value = BHU_econ_dev_new greater_than_or_equals = 10 } add = token:BHU_economy_1 }
+			else_if = { limit = { value = BHU_econ_dev_new greater_than_or_equals = 7 } add = 0 }
+			else_if = { limit = { value = BHU_econ_dev_new greater_than_or_equals = 4 } add = token:BHU_economy_minus_1 }
+			else = { add = token:BHU_economy_minus_2 }
+		}
+	}
+	if = {
+		limit = { NOT = { check_variable = { BHU_economy_idea_new = BHU_economy_idea_current } } }
 		if = {
-			limit = {
-				NOT = {
-					has_country_flag = {
-						flag = bhu_econ_dev
-						value < 1
-					}
-				}
-			}
+			limit = { check_variable = { BHU_economy_idea_new = 0 } }
+			remove_ideas = var:BHU_economy_idea_current
+		}
+		else_if = {
+			limit = { check_variable = { BHU_economy_idea_current = 0 } }
+			add_ideas = var:BHU_economy_idea_new
+		}
+		else = {
+			swap_ideas = { remove_idea = var:BHU_economy_idea_current add_idea = var:BHU_economy_idea_new }
+		}
+	}
+}
 
-			modify_country_flag = { flag = bhu_econ_dev value = -1 }
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 2 }
-					has_country_flag = { flag = bhu_econ_dev value < 4 }
-				}
-				swap_ideas = { remove_idea = BHU_economy_5 add_idea = BHU_economy_6 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 5 }
-					has_country_flag = { flag = bhu_econ_dev value < 7 }
-				}
-				add_ideas = BHU_economy_5
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 8 }
-					has_country_flag = { flag = bhu_econ_dev value < 10 }
-				}
-				remove_ideas = BHU_economy_4
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 11 }
-					has_country_flag = { flag = bhu_econ_dev value < 13 }
-				}
-				swap_ideas = { remove_idea = BHU_economy_3 add_idea = BHU_economy_4 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 14 }
-					has_country_flag = { flag = bhu_econ_dev value < 16 }
-				}
-				swap_ideas = { remove_idea = BHU_economy_2 add_idea = BHU_economy_3 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_econ_dev value > 17 }
-					has_country_flag = { flag = bhu_econ_dev value < 19 }
-				}
-				swap_ideas = { remove_idea = BHU_economy_1 add_idea = BHU_economy_2 }
-			}
+increase_bhu_econ_self_sufficiency = {
+	if = {
+		limit = { has_idea = BHU_building_self_sufficiency_0 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_0
+			add_idea = BHU_building_self_sufficiency_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_1 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_1
+			add_idea = BHU_building_self_sufficiency_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_2 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_2
+			add_idea = BHU_building_self_sufficiency_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_3 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_3
+			add_idea = BHU_building_self_sufficiency_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_4 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_4
+			add_idea = BHU_building_self_sufficiency_5
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_5 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_5
+			add_idea = BHU_building_self_sufficiency_6
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_6 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_6
+			add_idea = BHU_building_self_sufficiency_7
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_7 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_7
+			add_idea = BHU_building_self_sufficiency_8
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_8 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_8
+			add_idea = BHU_building_self_sufficiency_9
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_9 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_9
+			add_idea = BHU_building_self_sufficiency_10
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_10 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_10
+			add_idea = BHU_building_self_sufficiency_11
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_11 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_11
+			add_idea = BHU_building_self_sufficiency_12
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_12 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_12
+			add_idea = BHU_building_self_sufficiency_13
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_13 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_13
+			add_idea = BHU_building_self_sufficiency_14
+		}
+	}
+	else_if = {
+		limit = { has_idea = BHU_building_self_sufficiency_14 }
+		swap_ideas = {
+			remove_idea = BHU_building_self_sufficiency_14
+			add_idea = BHU_building_self_sufficiency_15
 		}
 	}
 }
@@ -278,133 +310,137 @@ decrease_bhu_econ_dev = {
 ##########################
 
 increase_bhu_mil_invest = {
-	hidden_effect = {
-		# do not go above 20
-		if = {
-			limit = {
-				NOT = {
-					has_country_flag = {
-						flag = bhu_mil_invest
-						value > 21
-					}
-				}
-			}
-
-			modify_country_flag = { flag = bhu_mil_invest value = 1 }
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 3 }
-					has_country_flag = { flag = bhu_mil_invest value < 5 }
-				}
-				swap_ideas = { remove_idea = BHU_military_6 add_idea = BHU_military_5 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 6 }
-					has_country_flag = { flag = bhu_mil_invest value < 8 }
-				}
-				remove_ideas = BHU_military_5
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 9 }
-					has_country_flag = { flag = bhu_mil_invest value < 11 }
-				}
-				add_ideas = BHU_military_4
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 12 }
-					has_country_flag = { flag = bhu_mil_invest value < 14 }
-				}
-				swap_ideas = { remove_idea = BHU_military_4 add_idea = BHU_military_3 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 15 }
-					has_country_flag = { flag = bhu_mil_invest value < 17 }
-				}
-				swap_ideas = { remove_idea = BHU_military_3 add_idea = BHU_military_2 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 18 }
-					has_country_flag = { flag = bhu_mil_invest value < 20 }
-				}
-				swap_ideas = { remove_idea = BHU_military_2 add_idea = BHU_military_1 }
+	if = {
+		limit = { check_variable = { BHU_mil_invest_change = 2 } }
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_increase_2 TYPE = BHU_mil_invest }
+	}
+	else = {
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_increase_1 TYPE = BHU_mil_invest }
+	}
+	if = {
+		limit = {
+			check_variable = { BHU_mil_invest < 25 }
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+		set_temp_variable = { BHU_mil_invest_new = { value = BHU_mil_invest add = BHU_mil_invest_change?1 } }
+		BHU_get_mil_invest_idea = yes
+		add_to_variable = {
+			BHU_mil_invest = {
+				value = BHU_mil_invest_change?1
+				clamp = { min = 0 max = { value = 25 subtract = BHU_mil_invest } }
 			}
 		}
 	}
 }
 
 decrease_bhu_mil_invest = {
-	hidden_effect = {
-		# do not go under 0
+	if = {
+		limit = { check_variable = { BHU_mil_invest_change = 2 } }
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_decrease_2 TYPE = BHU_mil_invest }
+	}
+	else = {
+		custom_effect_tooltip = { localization_key = BHU_variable_change TEXTICON = BHU_variable_decrease_1 TYPE = BHU_mil_invest }
+	}
+	if = {
+		limit = {
+			check_variable = { BHU_mil_invest > 0 }
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+		set_temp_variable = { BHU_mil_invest_new = { value = BHU_mil_invest subtract = BHU_mil_invest_change?1 } }
+		BHU_get_mil_invest_idea = yes
+		subtract_from_variable = {
+			BHU_mil_invest = {
+				value = BHU_mil_invest_change?1
+				clamp = { min = 0 max = BHU_mil_invest }
+			}
+		}
+	}
+}
+
+BHU_get_mil_invest_idea = {
+	# BHU_military_5, 22-25
+	# BHU_military_4, 19-21
+	# BHU_military_3, 16-18
+	# BHU_military_2, 13-15
+	# BHU_military_1, 10-12
+	# None, 7-9
+	# BHU_military_minus_1, 4-6
+	# BHU_military_minus_2, 0-3
+	set_temp_variable = {
+		BHU_mil_invest_idea_current = {
+			value = 0
+			if = { limit = { value = BHU_mil_invest greater_than_or_equals = 22 } add = token:BHU_military_5 }
+			else_if = { limit = { value = BHU_mil_invest greater_than_or_equals = 19 } add = token:BHU_military_4 }
+			else_if = { limit = { value = BHU_mil_invest greater_than_or_equals = 16 } add = token:BHU_military_3 }
+			else_if = { limit = { value = BHU_mil_invest greater_than_or_equals = 13 } add = token:BHU_military_2 }
+			else_if = { limit = { value = BHU_mil_invest greater_than_or_equals = 10 } add = token:BHU_military_1 }
+			else_if = { limit = { value = BHU_mil_invest greater_than_or_equals = 7 } add = 0 }
+			else_if = { limit = { value = BHU_mil_invest greater_than_or_equals = 4 } add = token:BHU_military_minus_1 }
+			else = { add = token:BHU_military_minus_2 }
+		}
+	}
+	set_temp_variable = {
+		BHU_mil_invest_idea_new = {
+			value = 0
+			if = { limit = { value = BHU_mil_invest_new greater_than_or_equals = 22 } add = token:BHU_military_5 }
+			else_if = { limit = { value = BHU_mil_invest_new greater_than_or_equals = 19 } add = token:BHU_military_4 }
+			else_if = { limit = { value = BHU_mil_invest_new greater_than_or_equals = 16 } add = token:BHU_military_3 }
+			else_if = { limit = { value = BHU_mil_invest_new greater_than_or_equals = 13 } add = token:BHU_military_2 }
+			else_if = { limit = { value = BHU_mil_invest_new greater_than_or_equals = 10 } add = token:BHU_military_1 }
+			else_if = { limit = { value = BHU_mil_invest_new greater_than_or_equals = 7 } add = 0 }
+			else_if = { limit = { value = BHU_mil_invest_new greater_than_or_equals = 4 } add = token:BHU_military_minus_1 }
+			else = { add = token:BHU_military_minus_2 }
+		}
+	}
+	if = {
+		limit = { NOT = { check_variable = { BHU_mil_invest_idea_new = BHU_mil_invest_idea_current } } }
 		if = {
-			limit = {
-				NOT = {
-					has_country_flag = {
-						flag = bhu_mil_invest
-						value < 1
-					}
-				}
+			limit = { check_variable = { BHU_mil_invest_idea_new = 0 } }
+			remove_ideas = var:BHU_mil_invest_idea_current
+		}
+		else_if = {
+			limit = { check_variable = { BHU_mil_invest_idea_current = 0 } }
+			add_ideas = var:BHU_mil_invest_idea_new
+		}
+		else = {
+			swap_ideas = { remove_idea = var:BHU_mil_invest_idea_current add_idea = var:BHU_mil_invest_idea_new }
+		}
+	}
+}
+
+BHU_spawn_cavalry_units = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = tooltip_create_division_template
+			NAME = "Rta'dmag"
+			LINE_1 = { localization_key = line_battalion_tt NAME = cavalry ICON = GFX_unit_cavalry_icon_small COUNT = 2 }
+		}
+		if = {
+			limit = { has_template = "Rta'dmag" }
+			delete_unit_template_and_units = { division_template = "Rta'dmag" disband = yes } #no cheating
+		}
+		division_template = {
+			name = "Rta'dmag"
+			division_names_group = BHU_CAV_01
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
 			}
-
-			modify_country_flag = { flag = bhu_mil_invest value = -1 }
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 2 }
-					has_country_flag = { flag = bhu_mil_invest value < 4 }
-				}
-				swap_ideas = { remove_idea = BHU_military_5 add_idea = BHU_military_6 }
+		}
+	}
+	random_owned_controlled_state = {
+		prioritize = { 324 }
+		limit = { valid_state_for_spawning_friendly_unit = yes }
+		custom_override_tooltip = {
+			tooltip = {
+				localization_key = tooltip_spawn_units
+				COUNT = 1
+				TYPE = "Rta'dmag"
 			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 5 }
-					has_country_flag = { flag = bhu_mil_invest value < 7 }
-				}
-				add_ideas = BHU_military_5
-				country_event = bhutan_events.117
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 8 }
-					has_country_flag = { flag = bhu_mil_invest value < 10 }
-				}
-				remove_ideas = BHU_military_4
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 11 }
-					has_country_flag = { flag = bhu_mil_invest value < 13 }
-				}
-				swap_ideas = { remove_idea = BHU_military_3 add_idea = BHU_military_4 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 14 }
-					has_country_flag = { flag = bhu_mil_invest value < 16 }
-				}
-				swap_ideas = { remove_idea = BHU_military_2 add_idea = BHU_military_3 }
-			}
-
-			if = {
-				limit = {
-					has_country_flag = { flag = bhu_mil_invest value > 17 }
-					has_country_flag = { flag = bhu_mil_invest value < 19 }
-				}
-				swap_ideas = { remove_idea = BHU_military_1 add_idea = BHU_military_2 }
+			create_unit = {
+				division = "division_template = \"Rta'dmag\" start_experience_factor = 1.0"
+				owner = ROOT
+				count = 1
 			}
 		}
 	}
@@ -416,29 +452,5 @@ BHU_add_namgyal_bahadur_sic = {
 
 BHU_add_chhoki_gyeltshen_sic = {
 	activate_advisor = BHU_chhoki_gyeltshen_sic
-}
-
-BHU_loot_from_raids = {
-	if = {
-		limit = { has_idea = BHU_Mighty_Fruits1 }
-		swap_ideas = {
-			remove_idea = BHU_Mighty_Fruits1
-			add_idea = BHU_Mighty_Fruits2
-		}
-	}
-	else_if = {
-		limit = { has_idea = BHU_Mighty_Fruits2 }
-		swap_ideas = {
-			remove_idea = BHU_Mighty_Fruits2
-			add_idea = BHU_Mighty_Fruits3
-		}
-	}
-	else_if = {
-		limit = { has_idea = BHU_Mighty_Fruits3 }
-		swap_ideas = {
-			remove_idea = BHU_Mighty_Fruits3
-			add_idea = BHU_Mighty_Fruits4
-		}
-	}
 }
 

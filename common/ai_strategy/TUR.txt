@@ -330,9 +330,11 @@ TUR_crush_egypt = {
 		stockpile_ratio = { archetype = infantry_equipment ratio > 0.05 }
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -422,9 +424,11 @@ TUR_take_back_iraq = {
 		stockpile_ratio = { archetype = infantry_equipment ratio > 0.05 }
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -556,9 +560,11 @@ TUR_crush_iran = {
 		stockpile_ratio = { archetype = infantry_equipment ratio > 0.05 }
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 

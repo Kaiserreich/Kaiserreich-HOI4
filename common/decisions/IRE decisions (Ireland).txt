@@ -76,8 +76,8 @@ IRE_economy_decisions = {
 			IRE_has_bm = yes
 			has_full_control_of_state = FROM
 			custom_override_tooltip = {
-				NOT = { has_country_flag = IRE_finish_bm_lab_ongoing }
 				tooltip = IRE_finish_bm_lab_ongoing_NOT
+				NOT = { has_country_flag = IRE_finish_bm_lab_ongoing }
 			}
 			if = {
 				limit = {
@@ -1117,8 +1117,8 @@ IRE_economy_decisions = {
 		available = {
 			has_full_control_of_state = 113
 			custom_override_tooltip = {
-				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 				tooltip = IRE_gateway_ENG_construction_ongoing_NOT
+				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 			}
 		}
 
@@ -1179,8 +1179,8 @@ IRE_economy_decisions = {
 		available = {
 			has_full_control_of_state = 119
 			custom_override_tooltip = {
-				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 				tooltip = IRE_gateway_ENG_construction_ongoing_NOT
+				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 			}
 		}
 
@@ -1241,8 +1241,8 @@ IRE_economy_decisions = {
 		available = {
 			has_full_control_of_state = 135
 			custom_override_tooltip = {
-				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 				tooltip = IRE_gateway_ENG_construction_ongoing_NOT
+				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 			}
 		}
 
@@ -1303,8 +1303,8 @@ IRE_economy_decisions = {
 		available = {
 			has_full_control_of_state = 134
 			custom_override_tooltip = {
-				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 				tooltip = IRE_gateway_ENG_construction_ongoing_NOT
+				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 			}
 		}
 
@@ -1580,6 +1580,11 @@ IRE_ira_decisions = {
 				134 = {
 					custom_effect_tooltip = tooltip_line_break
 					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_add_building_shared
+							BUILDING = bunker
+							NUMBER = 2
+						}
 						add_building_construction = {
 							type = bunker
 							province = {
@@ -1588,17 +1593,17 @@ IRE_ira_decisions = {
 							}
 							level = 2
 							instant_build = yes
-						}
-						tooltip = {
-							localization_key = tooltip_add_building_shared
-							BUILDING = bunker
-							NUMBER = 2
 						}
 					}
 				}
 				135 = {
 					custom_effect_tooltip = tooltip_line_break
 					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_add_building_shared
+							BUILDING = bunker
+							NUMBER = 2
+						}
 						add_building_construction = {
 							type = bunker
 							province = {
@@ -1607,11 +1612,6 @@ IRE_ira_decisions = {
 							}
 							level = 2
 							instant_build = yes
-						}
-						tooltip = {
-							localization_key = tooltip_add_building_shared
-							BUILDING = bunker
-							NUMBER = 2
 						}
 					}
 				}
@@ -1702,6 +1702,11 @@ IRE_ira_decisions = {
 				113 = {
 					custom_effect_tooltip = tooltip_line_break
 					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_add_building_shared
+							BUILDING = bunker
+							NUMBER = 2
+						}
 						add_building_construction = {
 							type = bunker
 							province = {
@@ -1710,17 +1715,17 @@ IRE_ira_decisions = {
 							}
 							level = 2
 							instant_build = yes
-						}
-						tooltip = {
-							localization_key = tooltip_add_building_shared
-							BUILDING = bunker
-							NUMBER = 2
 						}
 					}
 				}
 				135 = {
 					custom_effect_tooltip = tooltip_line_break
 					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_add_building_shared
+							BUILDING = bunker
+							NUMBER = 2
+						}
 						add_building_construction = {
 							type = bunker
 							province = {
@@ -1729,11 +1734,6 @@ IRE_ira_decisions = {
 							}
 							level = 2
 							instant_build = yes
-						}
-						tooltip = {
-							localization_key = tooltip_add_building_shared
-							BUILDING = bunker
-							NUMBER = 2
 						}
 					}
 				}
@@ -1828,6 +1828,11 @@ IRE_ira_decisions = {
 			119 = {
 				custom_effect_tooltip = tooltip_line_break
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 2
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -1836,17 +1841,17 @@ IRE_ira_decisions = {
 						}
 						level = 2
 						instant_build = yes
-					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 2
 					}
 				}
 			}
 			113 = {
 				custom_effect_tooltip = tooltip_line_break
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 2
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -1856,38 +1861,33 @@ IRE_ira_decisions = {
 						level = 2
 						instant_build = yes
 					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 2
-					}
 				}
 			}
 			135 = {
 				custom_override_tooltip = {
-					add_building_construction = {
-						type = coastal_bunker
-						province = 11237
-						level = 2
-					}
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = coastal_bunker
 						NUMBER = 2
 						VP = 11237
 					}
-				}
-				custom_override_tooltip = {
 					add_building_construction = {
 						type = coastal_bunker
-						province = 7394
+						province = 11237
 						level = 2
 					}
+				}
+				custom_override_tooltip = {
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = coastal_bunker
 						NUMBER = 2
 						VP = 7394
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						province = 7394
+						level = 2
 					}
 				}
 				add_building_construction = {
@@ -4041,8 +4041,8 @@ IRE_gateway_decisions = {
 			IRE_ENG_influence_at_least = yes
 			NOT = { has_war_with = ENG }
 			custom_override_tooltip = {
-				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 				tooltip = IRE_gateway_ENG_construction_ongoing_NOT
+				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 			}
 		}
 
@@ -4133,8 +4133,8 @@ IRE_gateway_decisions = {
 			IRE_ENG_influence_at_least = yes
 			NOT = { has_war_with = ENG }
 			custom_override_tooltip = {
-				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 				tooltip = IRE_gateway_ENG_construction_ongoing_NOT
+				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 			}
 		}
 
@@ -4225,8 +4225,8 @@ IRE_gateway_decisions = {
 			IRE_ENG_influence_at_least = yes
 			NOT = { has_war_with = ENG }
 			custom_override_tooltip = {
-				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 				tooltip = IRE_gateway_ENG_construction_ongoing_NOT
+				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 			}
 		}
 
@@ -4317,8 +4317,8 @@ IRE_gateway_decisions = {
 			IRE_ENG_influence_at_least = yes
 			NOT = { has_war_with = ENG }
 			custom_override_tooltip = {
-				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 				tooltip = IRE_gateway_ENG_construction_ongoing_NOT
+				check_variable = { IRE_gateway_ENG_construction_ongoing < 2 }
 			}
 		}
 
@@ -4712,9 +4712,7 @@ IRE_gateway_decisions = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout IRE_gateway_GER_pressure"
 			effect_tooltip = {
-				set_temp_variable = { IRE_GER_delta_tt = IRE_gateway_GER_pressure_duration }
-				subtract_from_temp_variable = { IRE_GER_delta_tt = 5 }
-				set_temp_variable = { IRE_GER_delta = IRE_GER_delta_tt }
+				set_temp_variable = { IRE_GER_delta = { value = IRE_gateway_GER_pressure_duration subtract = 5 } }
 				IRE_add_GER_influence = yes
 			}
 			if = {
@@ -4748,9 +4746,7 @@ IRE_gateway_decisions = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout IRE_gateway_ENG_pressure"
 			effect_tooltip = {
-				set_temp_variable = { IRE_ENG_delta_tt = IRE_gateway_ENG_pressure_duration }
-				subtract_from_temp_variable = { IRE_ENG_delta_tt = 5 }
-				set_temp_variable = { IRE_ENG_delta = IRE_ENG_delta_tt }
+				set_temp_variable = { IRE_ENG_delta = { value = IRE_gateway_ENG_pressure_duration subtract = 5 } }
 				IRE_add_ENG_influence = yes
 			}
 			if = {
@@ -5815,16 +5811,17 @@ IRE_reactionary_decisions = {
 			IRE_update_resistance = yes
 			if = {
 				limit = { check_variable = { IRE_ulster_resistance < 1 } }
-				add_to_variable = { IRE_ulster_resistance = IRE_ulster_resistance_delta }
-				clamp_variable = {
-					var = IRE_ulster_resistance
-					max = 1
-				}
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				custom_effect_tooltip = IRE_ulster_resistance_target_change_tt
+				add_to_variable = {
+					IRE_ulster_resistance = {
+						value = IRE_ulster_resistance_delta
+						clamp = { min = 0 max = { value = 1 subtract = IRE_ulster_resistance } }
+					}
+					tooltip = resistance_target_tooltip
+				}
 			}
 			else = { 119 = { add_resistance = 10 } }
 			force_update_dynamic_modifier = yes
@@ -6073,15 +6070,15 @@ IRE_reactionary_decisions = {
 					add_compliance = 7.5
 				}
 			}
-			set_temp_variable = { IRE_ulster_resistance_delta = 0.075 }
-			add_to_variable = { IRE_ulster_resistance = IRE_ulster_resistance_delta }
-			force_update_dynamic_modifier = yes
-			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
 				localization_key = tooltip_modify_dynmod
 				DYNMOD = IRE_reluctant_countrymen
 			}
-			custom_effect_tooltip = IRE_ulster_resistance_target_change_tt
+			add_to_variable = {
+				IRE_ulster_resistance = { value = 0.075 }
+				tooltip = resistance_target_tooltip
+			}
+			force_update_dynamic_modifier = yes
 			IRE_update_resistance = yes
 		}
 		timeout_effect = {
@@ -6499,9 +6496,8 @@ IRE_reactionary_decisions = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				set_temp_variable = { IRE_ulster_resistance_delta = -0.1 }
 				add_to_variable = {
-					IRE_ulster_resistance = IRE_ulster_resistance_delta
+					IRE_ulster_resistance = -0.1
 					tooltip = resistance_target_tooltip
 				}
 				force_update_dynamic_modifier = yes
@@ -6518,9 +6514,8 @@ IRE_reactionary_decisions = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				set_temp_variable = { IRE_ulster_resistance_delta = -0.05 }
 				add_to_variable = {
-					IRE_ulster_resistance = IRE_ulster_resistance_delta
+					IRE_ulster_resistance = -0.05
 					tooltip = resistance_target_tooltip
 				}
 				force_update_dynamic_modifier = yes
@@ -6564,7 +6559,6 @@ IRE_reactionary_decisions = {
 			}
 			owns_state = 119 # Northern Ireland
 		}
-		visible = { has_government = national_populist }
 
 		ai_hint_pp_cost = 40
 		custom_cost_text = IRE_goc_improve_loyalist_anger_cost_tt
@@ -7368,16 +7362,17 @@ IRE_socialist_decisions = {
 			IRE_update_resistance = yes
 			if = {
 				limit = { check_variable = { IRE_ulster_resistance < 1 } }
-				add_to_variable = { IRE_ulster_resistance = IRE_ulster_resistance_delta }
-				clamp_variable = {
-					var = IRE_ulster_resistance
-					max = 1
-				}
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				custom_effect_tooltip = IRE_ulster_resistance_target_change_tt
+				add_to_variable = {
+					IRE_ulster_resistance = {
+						value = IRE_ulster_resistance_delta
+						clamp = { min = 0 max = { value = 1 subtract = IRE_ulster_resistance } }
+					}
+					tooltip = resistance_target_tooltip
+				}
 			}
 			else_if = {
 				limit = { owns_state = 119 }
@@ -7531,9 +7526,13 @@ IRE_socialist_decisions = {
 					amount = -1000
 				}
 			}
-			set_temp_variable = { IRE_NIR_delay_time = IRE_NIR_mission_time }
-			subtract_from_temp_variable = { IRE_NIR_delay_time = days_mission_timeout@IRE_soc_NIR_mission }
-			add_to_temp_variable = { IRE_NIR_delay_time = 100 }
+			set_temp_variable = {
+				IRE_NIR_delay_time = {
+					value = IRE_NIR_mission_time
+					subtract = days_mission_timeout@IRE_soc_NIR_mission
+					add = 100
+				}
+			}
 			add_days_mission_timeout = {
 				mission = IRE_soc_NIR_mission
 				days = IRE_NIR_delay_time
@@ -7936,9 +7935,11 @@ IRE_socialist_decisions = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				set_temp_variable = { IRE_ulster_resistance_delta = -0.1 }
 				add_to_variable = {
-					IRE_ulster_resistance = IRE_ulster_resistance_delta
+					IRE_ulster_resistance = {
+						value = -0.1
+						clamp = { min = { value = IRE_ulster_resistance multiply = -1 } max = 0 }
+					}
 					tooltip = resistance_target_tooltip
 				}
 			}
@@ -7954,9 +7955,11 @@ IRE_socialist_decisions = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				set_temp_variable = { IRE_ulster_resistance_delta = -0.05 }
 				add_to_variable = {
-					IRE_ulster_resistance = IRE_ulster_resistance_delta
+					IRE_ulster_resistance = {
+						value = -0.05
+						clamp = { min = { value = IRE_ulster_resistance multiply = -1 } max = 0 }
+					}
 					tooltip = resistance_target_tooltip
 				}
 				force_update_dynamic_modifier = yes

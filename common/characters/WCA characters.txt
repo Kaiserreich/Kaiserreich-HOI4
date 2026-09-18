@@ -15,29 +15,29 @@ characters = {
 			traits = { WCA_new_founding_father }
 		}
 	}
-	WCA_william_edward_foster = {
-		name = WCA_william_edward_foster
+	WCA_william_z_foster = {
+		name = WCA_william_z_foster
 		portraits = {
 			civilian = {
-				large = GFX_portrait_WCA_william_edward_foster_civilian_large
+				large = GFX_portrait_WCA_william_z_foster_civilian_large
 			}
 		}
 		country_leader = {
-			desc = WCA_william_edward_foster_leader_desc
+			desc = WCA_william_z_foster_leader_desc
 			ideology = totalist_subtype
 			traits = { WCA_herald_of_the_militant_minority }
 		}
 	}
 
-	WCA_jack_reed = { #starts in USA
-		name = WCA_jack_reed
+	WCA_john_reed = { #starts in USA
+		name = WCA_john_reed
 		portraits = {
 			civilian = {
-				large = GFX_portrait_WCA_jack_reed_civilian_large
+				large = GFX_portrait_WCA_john_reed_civilian_large
 			}
 		}
 		country_leader = {
-			desc = WCA_jack_reed_leader_desc
+			desc = WCA_john_reed_leader_desc
 			ideology = syndicalist_subtype
 			traits = { WCA_romantic_revolutionary }
 		}
@@ -82,28 +82,6 @@ characters = {
 			traits = { WCA_the_de_leonist_revival }
 		}
 	}
-	WCA_eleanor_roosevelt = {
-		name = WCA_eleanor_roosevelt
-		gender = female
-		portraits = {
-			civilian = {
-				large = GFX_portrait_WCA_eleanor_roosevelt_civilian_large
-				small = GFX_portrait_WCA_eleanor_roosevelt_civilian_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = WCA_eleanor_roosevelt_advisor
-			available = {
-				if = {
-					limit = { can_be_country_leader = yes }
-					is_country_leader = no
-				}
-			}
-			traits = { KR_cultural_organiser }
-			cost = 100
-		}
-	}
 	WCA_frank_zeidler = {
 		name = WCA_frank_zeidler
 		portraits = {
@@ -130,28 +108,28 @@ characters = {
 			traits = { WCA_the_toiler }
 		}
 	}
-	WCA_james_cannon = {
-		name = WCA_james_cannon
+	WCA_james_p_cannon = {
+		name = WCA_james_p_cannon
 		portraits = {
 			civilian = {
-				large = GFX_portrait_WCA_james_cannon_civilian_large
+				large = GFX_portrait_WCA_james_p_cannon_civilian_large
 			}
 		}
 		country_leader = {
-			desc = WCA_james_cannon_leader_desc
+			desc = WCA_james_p_cannon_leader_desc
 			ideology = syndicalist_subtype
 			traits = { WCA_fervent_revolutionary }
 		}
 	}
-	WCA_louis_fraina = {
-		name = WCA_louis_fraina
+	WCA_louis_c_fraina = {
+		name = WCA_louis_c_fraina
 		portraits = {
 			civilian = {
-				large = GFX_portrait_WCA_louis_fraina_civilian_large
+				large = GFX_portrait_WCA_louis_c_fraina_civilian_large
 			}
 		}
 		country_leader = {
-			desc = WCA_louis_fraina_leader_desc
+			desc = WCA_louis_c_fraina_leader_desc
 			ideology = syndicalist_subtype
 			traits = { WCA_cultural_revolutionary }
 		}
@@ -171,17 +149,17 @@ characters = {
 			traits = { WCA_all_inclusive_socialist }
 		}
 	}
-	WCA_upton_sinclair = {
-		name = WCA_upton_sinclair
+	WCA_jack_altman = {
+		name = WCA_jack_altman
 		portraits = {
 			civilian = {
-				large = GFX_portrait_WCA_upton_sinclair_civilian_large
+				large = GFX_portrait_WCA_jack_altman_civilian_large
 			}
 		}
 		country_leader = {
-			desc = WCA_upton_sinclair_leader_desc
+			desc = WCA_jack_altman_leader_desc
 			ideology = radical_socialist_subtype
-			traits = { WCA_an_end_to_poverty }
+			traits = { WCA_the_call_of_militancy }
 		}
 	}
 	WCA_maynard_krueger = {
@@ -236,25 +214,58 @@ characters = {
 			traits = { WCA_revolutionary_cartoonist }
 		}
 	}
-	WCA_asa_philip_randolph = {
-		name = WCA_asa_philip_randolph
+	WCA_a_philip_randolph = {
+		name = WCA_a_philip_randolph
 		portraits = {
 			civilian = {
-				large = GFX_portrait_WCA_asa_philip_randolph_civilian_large
+				large = GFX_portrait_WCA_a_philip_randolph_civilian_large
 			}
 		}
 		country_leader = {
-			desc = WCA_asa_philip_randolph_leader_desc
+			desc = WCA_a_philip_randolph_leader_desc
 			ideology = radical_socialist_subtype
 			traits = { WCA_peace_and_reconciliation }
+		}
+	}
+
+	WCA_henry_a_wallace = {
+		name = WCA_henry_a_wallace
+		portraits = {
+			civilian = {
+				large = GFX_portrait_WCA_henry_a_wallace_civilian_large
+				small = GFX_portrait_WCA_henry_a_wallace_civilian_small
+			}
+		}
+		country_leader = {
+			desc = WCA_henry_a_wallace_leader_desc
+			ideology = social_democrat_subtype
+			traits = { }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = WCA_henry_a_wallace_advisor
+			traits = { KR_agricultural_economist }
+		}
+	}
+	WCA_paul_douglas = {
+		name = WCA_paul_douglas
+		portraits = {
+			civilian = {
+				large = GFX_portrait_WCA_paul_douglas_civilian_large
+			}
+		}
+		country_leader = {
+			desc = WCA_paul_douglas_leader_desc
+			ideology = social_liberal_subtype
+			traits = { }
 		}
 	}
 
 	#########################
 	### Second in Command ###
 	#########################
-	WCA_revolutionary_congress = {
-		name = WCA_revolutionary_congress
+	WCA_revolutionary_workers_congress = {
+		name = WCA_revolutionary_workers_congress
 		portraits = {
 			civilian = {
 				small = GFX_portrait_USA_united_states_congress_civilian_small
@@ -262,7 +273,7 @@ characters = {
 		}
 		advisor = {
 			slot = second_in_command
-			idea_token = WCA_revolutionary_congress_sic
+			idea_token = WCA_revolutionary_workers_congress_sic
 			traits = { KR_socialist_sic }
 			cost = 0
 			can_be_fired = no
@@ -285,17 +296,30 @@ characters = {
 			traits = { KR_catholic_anarchist }
 		}
 	}
-	WCA_paul_leroy_robeson = {
-		name = WCA_paul_leroy_robeson
+	WCA_paul_robeson = {
+		name = WCA_paul_robeson
 		portraits = {
 			civilian = {
-				small = GFX_portrait_WCA_paul_leroy_robeson_civilian_small
+				small = GFX_portrait_WCA_paul_robeson_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = WCA_paul_leroy_robeson_advisor
+			idea_token = WCA_paul_robeson_advisor
 			traits = { KR_renaissance_man }
+		}
+	}
+	WCA_lawrence_dennis = {
+		name = WCA_lawrence_dennis
+		portraits = {
+			civilian = {
+				small = GFX_portrait_WCA_lawrence_dennis_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = WCA_lawrence_dennis_advisor
+			traits = { KR_interventionist_economist }
 		}
 	}
 	WCA_whittaker_chambers = {
@@ -324,55 +348,55 @@ characters = {
 			traits = { KR_ideological_crusader }
 		}
 	}
-	WCA_james_william_ford = {
-		name = WCA_james_william_ford
+	WCA_james_w_ford = {
+		name = WCA_james_w_ford
 		portraits = {
 			civilian = {
-				small = GFX_portrait_WCA_james_william_ford_civilian_small
+				small = GFX_portrait_WCA_james_w_ford_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = WCA_james_william_ford_advisor
+			idea_token = WCA_james_w_ford_advisor
 			traits = { KR_racial_equalist }
 		}
 	}
-	WCA_angelo_braxton_herndon = {
-		name = WCA_angelo_braxton_herndon
+	WCA_angelo_herndon = {
+		name = WCA_angelo_herndon
 		portraits = {
 			civilian = {
-				small = GFX_portrait_WCA_angelo_braxton_herndon_small
+				small = GFX_portrait_WCA_angelo_herndon_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = WCA_angelo_braxton_herndon_advisor
+			idea_token = WCA_angelo_herndon_advisor
 			traits = { KR_tireless_organiser }
 		}
 	}
-	WCA_ernest_miller_hemingway = {
-		name = WCA_ernest_miller_hemingway
+	WCA_ernest_hemingway = {
+		name = WCA_ernest_hemingway
 		portraits = {
 			civilian = {
-				small = GFX_portrait_WCA_ernest_miller_hemingway_civilian_small
+				small = GFX_portrait_WCA_ernest_hemingway_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = WCA_ernest_miller_hemingway_advisor
+			idea_token = WCA_ernest_hemingway_advisor
 			traits = { KR_socialist_novelist }
 		}
 	}
-	WCA_ralph_hosea_chaplin = {
-		name = WCA_ralph_hosea_chaplin
+	WCA_ralph_chaplin = {
+		name = WCA_ralph_chaplin
 		portraits = {
 			civilian = {
-				small = GFX_portrait_WCA_ralph_hosea_chaplin_civilian_small
+				small = GFX_portrait_WCA_ralph_chaplin_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = WCA_ralph_hosea_chaplin_advisor
+			idea_token = WCA_ralph_chaplin_advisor
 			traits = { KR_cooperative_advocate }
 		}
 	}
@@ -402,16 +426,16 @@ characters = {
 			traits = { KR_backroom_backstabber }
 		}
 	}
-	WCA_abraham_johannes_muste = {
-		name = WCA_abraham_johannes_muste
+	WCA_aj_muste = {
+		name = WCA_aj_muste
 		portraits = {
 			civilian = {
-				small = GFX_portrait_WCA_abraham_johannes_muste_small
+				small = GFX_portrait_WCA_aj_muste_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = WCA_abraham_johannes_muste_advisor
+			idea_token = WCA_aj_muste_advisor
 			traits = { KR_compassionate_priest }
 		}
 	}
@@ -441,29 +465,29 @@ characters = {
 			traits = { KR_administrative_genius }
 		}
 	}
-	WCA_harold_maskell_ware = {
-		name = WCA_harold_maskell_ware
+	WCA_harold_ware = {
+		name = WCA_harold_ware
 		portraits = {
 			civilian = {
-				small = GFX_portrait_WCA_harold_maskell_ware_civilian_small
+				small = GFX_portrait_WCA_harold_ware_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = WCA_harold_maskell_ware_advisor
+			idea_token = WCA_harold_ware_advisor
 			traits = { KR_agrarian_expert }
 		}
 	}
-	WCA_clarence_senior = {
-		name = WCA_clarence_senior
+	WCA_clarence_o_senior = {
+		name = WCA_clarence_o_senior
 		portraits = {
 			civilian = {
-				small = GFX_portrait_WCA_clarence_senior_small
+				small = GFX_portrait_WCA_clarence_o_senior_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = WCA_clarence_senior_advisor
+			idea_token = WCA_clarence_o_senior_advisor
 			traits = { KR_silent_workhorse }
 			ai_will_do = { factor = 2 }
 		}
@@ -512,16 +536,16 @@ characters = {
 			cost = 150
 		}
 	}
-	WCA_marc_andrew_mitscher = {
-		name = WCA_marc_andrew_mitscher
+	WCA_marc_mitscher = {
+		name = WCA_marc_mitscher
 		portraits = {
 			army = {
-				small = GFX_portrait_WCA_marc_andrew_mitscher_army_small
+				small = GFX_portrait_WCA_marc_mitscher_army_small
 			}
 		}
 		advisor = {
 			slot = theorist
-			idea_token = WCA_marc_andrew_mitscher_theorist
+			idea_token = WCA_marc_mitscher_theorist
 			ledger = navy
 			available = {
 				OR = {
@@ -561,16 +585,16 @@ characters = {
 			cost = 50
 		}
 	}
-	WCA_james_kelly_parsons = {
-		name = WCA_james_kelly_parsons
+	WCA_james_k_parsons = {
+		name = WCA_james_k_parsons
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_james_kelly_parsons_army_large
-				small = GFX_portrait_WCA_james_kelly_parsons_army_small
+				large = GFX_portrait_WCA_james_k_parsons_army_large
+				small = GFX_portrait_WCA_james_k_parsons_army_small
 			}
 		}
 		field_marshal = {
-			desc = WCA_james_kelly_parsons_army_chief_desc
+			desc = WCA_james_k_parsons_army_chief_desc
 			traits = { armor_officer panzer_leader }
 			skill = 3
 			attack_skill = 3
@@ -580,21 +604,21 @@ characters = {
 		}
 		advisor = {
 			slot = army_chief
-			idea_token = WCA_james_kelly_parsons_army_chief
+			idea_token = WCA_james_k_parsons_army_chief
 			traits = { KR_army_chief_manoeuvre_1 }
 			cost = 50
 		}
 	}
-	WCA_evans_fordyce_carlson = {
-		name = WCA_evans_fordyce_carlson
+	WCA_evans_carlson = {
+		name = WCA_evans_carlson
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_evans_fordyce_carlson_army_large
-				small = GFX_portrait_WCA_evans_fordyce_carlson_army_small
+				large = GFX_portrait_WCA_evans_carlson_army_large
+				small = GFX_portrait_WCA_evans_carlson_army_small
 			}
 		}
 		corps_commander = {
-			desc = WCA_evans_fordyce_carlson_high_command_desc
+			desc = WCA_evans_carlson_high_command_desc
 			traits = { war_hero commando }
 			skill = 2
 			attack_skill = 2
@@ -604,22 +628,22 @@ characters = {
 		}
 		advisor = {
 			slot = high_command
-			idea_token = WCA_evans_fordyce_carlson_high_command
+			idea_token = WCA_evans_carlson_high_command
 			ledger = army
 			traits = { KR_MHC_commando_1 }
 			cost = 50
 		}
 	}
-	WCA_jacob_loucks_devers = {
-		name = WCA_jacob_loucks_devers
+	WCA_jacob_l_devers = {
+		name = WCA_jacob_l_devers
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_jacob_loucks_devers_army_large
-				small = GFX_portrait_WCA_jacob_loucks_devers_army_small
+				large = GFX_portrait_WCA_jacob_l_devers_army_large
+				small = GFX_portrait_WCA_jacob_l_devers_army_small
 			}
 		}
 		corps_commander = {
-			desc = WCA_jacob_loucks_devers_high_command_desc
+			desc = WCA_jacob_l_devers_high_command_desc
 			traits = { artillery_officer trait_reckless artillery_specialist }
 			skill = 3
 			attack_skill = 4
@@ -629,22 +653,22 @@ characters = {
 		}
 		advisor = {
 			slot = high_command
-			idea_token = WCA_jacob_loucks_devers_high_command
+			idea_token = WCA_jacob_l_devers_high_command
 			ledger = army
 			traits = { KR_MHC_artillery_1 }
 			cost = 50
 		}
 	}
-	WCA_herbert_charles_heitke = { #starts in USA
-		name = WCA_herbert_charles_heitke
+	WCA_herbert_c_holdridge = { #starts in USA
+		name = WCA_herbert_c_holdridge
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_herbert_charles_heitke_army_large
-				small = GFX_portrait_WCA_herbert_charles_heitke_army_small
+				large = GFX_portrait_WCA_herbert_c_holdridge_army_large
+				small = GFX_portrait_WCA_herbert_c_holdridge_army_small
 			}
 		}
 		corps_commander = {
-			desc = WCA_herbert_charles_heitke_commander_desc
+			desc = WCA_herbert_c_holdridge_commander_desc
 			traits = { trickster }
 			skill = 1
 			attack_skill = 1
@@ -653,16 +677,16 @@ characters = {
 			logistics_skill = 1
 		}
 	}
-	WCA_david_monroe_shoup = {
-		name = WCA_david_monroe_shoup
+	WCA_david_m_shoup = {
+		name = WCA_david_m_shoup
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_david_monroe_shoup_army_large
-				small = GFX_portrait_WCA_david_monroe_shoup_army_small
+				large = GFX_portrait_WCA_david_m_shoup_army_large
+				small = GFX_portrait_WCA_david_m_shoup_army_small
 			}
 		}
 		corps_commander = {
-			desc = WCA_david_monroe_shoup_army_chief_desc
+			desc = WCA_david_m_shoup_army_chief_desc
 			traits = { commando adaptable }
 			skill = 1
 			attack_skill = 1
@@ -672,21 +696,21 @@ characters = {
 		}
 		advisor = {
 			slot = army_chief
-			idea_token = WCA_david_monroe_shoup_army_chief
+			idea_token = WCA_david_m_shoup_army_chief
 			traits = { KR_army_chief_organisational_1 }
 			cost = 50
 		}
 	}
-	WCA_robert_sharon_allen = {
-		name = WCA_robert_sharon_allen
+	WCA_robert_s_allen = {
+		name = WCA_robert_s_allen
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_robert_sharon_allen_army_large
-				small = GFX_portrait_WCA_robert_sharon_allen_army_small
+				large = GFX_portrait_WCA_robert_s_allen_army_large
+				small = GFX_portrait_WCA_robert_s_allen_army_small
 			}
 		}
 		corps_commander = {
-			desc = WCA_robert_sharon_allen_commander_desc
+			desc = WCA_robert_s_allen_commander_desc
 			traits = { armor_officer panzer_leader }
 			skill = 1
 			attack_skill = 1
@@ -745,16 +769,16 @@ characters = {
 			cost = 50
 		}
 	}
-	WCA_benjamin_oliver_davis_sr = {
-		name = WCA_benjamin_oliver_davis_sr
+	WCA_benjamin_o_davis_sr = {
+		name = WCA_benjamin_o_davis_sr
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_benjamin_oliver_davis_sr_army_large
-				small = GFX_portrait_WCA_benjamin_oliver_davis_sr_army_small
+				large = GFX_portrait_WCA_benjamin_o_davis_sr_army_large
+				small = GFX_portrait_WCA_benjamin_o_davis_sr_army_small
 			}
 		}
 		corps_commander = {
-			desc = WCA_benjamin_oliver_davis_sr_commander_desc
+			desc = WCA_benjamin_o_davis_sr_commander_desc
 			traits = { cavalry_officer cavalry_leader }
 			skill = 2
 			attack_skill = 3
@@ -781,16 +805,16 @@ characters = {
 			logistics_skill = 1
 		}
 	}
-	WCA_ralph_ernest_jones = {
-		name = WCA_ralph_ernest_jones
+	WCA_ralph_e_jones = {
+		name = WCA_ralph_e_jones
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_ralph_ernest_jones_army_large
-				small = GFX_portrait_WCA_ralph_ernest_jones_army_small
+				large = GFX_portrait_WCA_ralph_e_jones_army_large
+				small = GFX_portrait_WCA_ralph_e_jones_army_small
 			}
 		}
 		corps_commander = {
-			desc = WCA_ralph_ernest_jones_commander_desc
+			desc = WCA_ralph_e_jones_commander_desc
 			traits = { armor_officer panzer_leader }
 			skill = 3
 			attack_skill = 2
@@ -817,16 +841,16 @@ characters = {
 			logistics_skill = 1
 		}
 	}
-	WCA_edward_allen_carter_jr = {
-		name = WCA_edward_allen_carter_jr
+	WCA_edward_a_carter_jr = {
+		name = WCA_edward_a_carter_jr
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_edward_allen_carter_jr_army_large
-				small = GFX_portrait_WCA_edward_allen_carter_jr_army_small
+				large = GFX_portrait_WCA_edward_a_carter_jr_army_large
+				small = GFX_portrait_WCA_edward_a_carter_jr_army_small
 			}
 		}
 		corps_commander = {
-			desc = WCA_edward_allen_carter_jr_commander_desc
+			desc = WCA_edward_a_carter_jr_commander_desc
 			traits = { WCA_red_guard_commander }
 			skill = 1
 			attack_skill = 1
@@ -853,16 +877,16 @@ characters = {
 			logistics_skill = 1
 		}
 	}
-	WCA_james_patrick_murphy = {
-		name = WCA_james_patrick_murphy
+	WCA_patrick_murphy = {
+		name = WCA_patrick_murphy
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_james_patrick_murphy_army_large
-				small = GFX_portrait_WCA_james_patrick_murphy_army_small
+				large = GFX_portrait_WCA_patrick_murphy_army_large
+				small = GFX_portrait_WCA_patrick_murphy_army_small
 			}
 		}
 		corps_commander = {
-			desc = WCA_james_patrick_murphy_commander_desc
+			desc = WCA_patrick_murphy_commander_desc
 			traits = { WCA_red_guard_commander }
 			skill = 1
 			attack_skill = 1
@@ -911,16 +935,16 @@ characters = {
 	################
 	### Admirals ###
 	################
-	WCA_william_rea_furlong = {
-		name = WCA_william_rea_furlong
+	WCA_william_r_furlong = {
+		name = WCA_william_r_furlong
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_william_rea_furlong_army_large
-				small = GFX_portrait_WCA_william_rea_furlong_army_small
+				large = GFX_portrait_WCA_william_r_furlong_army_large
+				small = GFX_portrait_WCA_william_r_furlong_army_small
 			}
 		}
 		navy_leader = {
-			desc = WCA_william_rea_furlong_navy_chief_desc
+			desc = WCA_william_r_furlong_navy_chief_desc
 			traits = { chief_engineer navy_media_personality blockade_runner }
 			skill = 3
 			attack_skill = 2
@@ -930,21 +954,21 @@ characters = {
 		}
 		advisor = {
 			slot = navy_chief
-			idea_token = WCA_william_rea_furlong_navy_chief
+			idea_token = WCA_william_r_furlong_navy_chief
 			traits = { KR_navy_chief_decisive_battle_1 }
 			cost = 50
 		}
 	}
-	WCA_arthur_schuyler_carpender = {
-		name = WCA_arthur_schuyler_carpender
+	WCA_arthur_s_carpender = {
+		name = WCA_arthur_s_carpender
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_arthur_schuyler_carpender_army_large
-				small = GFX_portrait_WCA_arthur_schuyler_carpender_army_small
+				large = GFX_portrait_WCA_arthur_s_carpender_army_large
+				small = GFX_portrait_WCA_arthur_s_carpender_army_small
 			}
 		}
 		navy_leader = {
-			desc = WCA_arthur_schuyler_carpender_admiral_desc
+			desc = WCA_arthur_s_carpender_admiral_desc
 			traits = { ironside }
 			skill = 2
 			attack_skill = 2
@@ -953,16 +977,16 @@ characters = {
 			coordination_skill = 1
 		}
 	}
-	WCA_arleigh_albert_burke = {
-		name = WCA_arleigh_albert_burke
+	WCA_arleigh_burke = {
+		name = WCA_arleigh_burke
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_arleigh_albert_burke_army_large
-				small = GFX_portrait_WCA_arleigh_albert_burke_army_small
+				large = GFX_portrait_WCA_arleigh_burke_army_large
+				small = GFX_portrait_WCA_arleigh_burke_army_small
 			}
 		}
 		navy_leader = {
-			desc = WCA_arleigh_albert_burke_theorist_desc
+			desc = WCA_arleigh_burke_theorist_desc
 			traits = { bold fleet_protector }
 			skill = 1
 			attack_skill = 1
@@ -972,22 +996,22 @@ characters = {
 		}
 		advisor = {
 			slot = theorist
-			idea_token = WCA_arleigh_albert_burke_theorist
+			idea_token = WCA_arleigh_burke_theorist
 			ledger = navy
 			traits = { KR_naval_theorist }
 			cost = 100
 		}
 	}
-	WCA_hyman_godalia_rickover = {
-		name = WCA_hyman_godalia_rickover
+	WCA_hyman_g_rickover = {
+		name = WCA_hyman_g_rickover
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_hyman_godalia_rickover_army_large
-				small = GFX_portrait_WCA_hyman_godalia_rickover_army_small
+				large = GFX_portrait_WCA_hyman_g_rickover_army_large
+				small = GFX_portrait_WCA_hyman_g_rickover_army_small
 			}
 		}
 		navy_leader = {
-			desc = WCA_hyman_godalia_rickover_high_command_desc
+			desc = WCA_hyman_g_rickover_high_command_desc
 			traits = { chief_engineer seawolf silent_hunter }
 			skill = 1
 			attack_skill = 1
@@ -997,29 +1021,29 @@ characters = {
 		}
 		advisor = {
 			slot = high_command
-			idea_token = WCA_hyman_godalia_rickover_high_command
+			idea_token = WCA_hyman_g_rickover_high_command
 			ledger = navy
 			traits = { KR_MHC_submarine_1 }
 			cost = 50
 		}
 	}
-	WCA_hugh_nathaniel_mulzac = {
-		name = WCA_hugh_nathaniel_mulzac
+	WCA_hugh_mulzac = {
+		name = WCA_hugh_mulzac
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_hugh_nathaniel_mulzac_army_large
-				small = GFX_portrait_WCA_hugh_nathaniel_mulzac_army_small
+				large = GFX_portrait_WCA_hugh_mulzac_army_large
+				small = GFX_portrait_WCA_hugh_mulzac_army_small
 			}
 		}
 		advisor = {
 			slot = navy_chief
-			idea_token = WCA_hugh_nathaniel_mulzac_navy_chief
+			idea_token = WCA_hugh_mulzac_navy_chief
 			available = { not_already_hired_except_as = navy_chief }
 			traits = { KR_navy_chief_commerce_raiding_1 }
 			cost = 50
 		}
 		navy_leader = {
-			desc = WCA_hugh_nathaniel_mulzac_navy_chief_desc
+			desc = WCA_hugh_mulzac_navy_chief_desc
 			traits = { navy_media_personality blockade_runner }
 			skill = 1
 			attack_skill = 1
@@ -1029,8 +1053,8 @@ characters = {
 		}
 		advisor = {
 			slot = theorist
-			idea_token = WCA_hugh_nathaniel_mulzac_theorist
-			desc = WCA_hugh_nathaniel_mulzac_navy_chief_desc
+			idea_token = WCA_hugh_mulzac_theorist
+			desc = WCA_hugh_mulzac_navy_chief_desc
 			ledger = navy
 			available = { not_already_hired_except_as = theorist }
 			traits = { KR_submarine_specialist }
@@ -1055,16 +1079,16 @@ characters = {
 			coordination_skill = 1
 		}
 	}
-	WCA_willard_john_smith = { #recruited in WCA_navy_of_new_age
-		name = WCA_willard_john_smith
+	WCA_willard_j_smith = { #recruited in WCA_navy_of_new_age
+		name = WCA_willard_j_smith
 		portraits = {
 			army = {
-				large = GFX_portrait_WCA_willard_john_smith_army_large
-				small = GFX_portrait_WCA_willard_john_smith_army_small
+				large = GFX_portrait_WCA_willard_j_smith_army_large
+				small = GFX_portrait_WCA_willard_j_smith_army_small
 			}
 		}
 		navy_leader = {
-			desc = WCA_willard_john_smith_admiral_desc
+			desc = WCA_willard_j_smith_admiral_desc
 			skill = 1
 			attack_skill = 1
 			defense_skill = 1
@@ -1093,30 +1117,30 @@ characters = {
 	######################
 	### Military Staff ###
 	######################
-	WCA_nathan_farragut_twining = {
-		name = WCA_nathan_farragut_twining
+	WCA_nathan_f_twining = {
+		name = WCA_nathan_f_twining
 		portraits = {
 			army = {
-				small = GFX_portrait_WCA_nathan_farragut_twining_army_small
+				small = GFX_portrait_WCA_nathan_f_twining_army_small
 			}
 		}
 		advisor = {
 			slot = air_chief
-			idea_token = WCA_nathan_farragut_twining_air_chief
+			idea_token = WCA_nathan_f_twining_air_chief
 			traits = { KR_air_chief_reform_2 }
 			cost = 100
 		}
 	}
-	WCA_willis_henry_hale = {
-		name = WCA_willis_henry_hale
+	WCA_willis_h_hale = {
+		name = WCA_willis_h_hale
 		portraits = {
 			army = {
-				small = GFX_portrait_WCA_willis_henry_hale_army_small
+				small = GFX_portrait_WCA_willis_h_hale_army_small
 			}
 		}
 		advisor = {
 			slot = air_chief
-			idea_token = WCA_willis_henry_hale_air_chief
+			idea_token = WCA_willis_h_hale_air_chief
 			traits = { KR_air_chief_ground_support_1 }
 			cost = 50
 		}
@@ -1137,16 +1161,16 @@ characters = {
 			cost = 100
 		}
 	}
-	WCA_eddie_august_henry_schneider = {
-		name = WCA_eddie_august_henry_schneider
+	WCA_eddie_august_schneider = {
+		name = WCA_eddie_august_schneider
 		portraits = {
 			army = {
-				small = GFX_portrait_WCA_eddie_august_henry_schneider_army_small
+				small = GFX_portrait_WCA_eddie_august_schneider_army_small
 			}
 		}
 		advisor = {
 			slot = high_command
-			idea_token = WCA_eddie_august_henry_schneider_high_command
+			idea_token = WCA_eddie_august_schneider_high_command
 			ledger = air
 			traits = { KR_MHC_air_superiority_2 }
 			cost = 100
@@ -1167,16 +1191,16 @@ characters = {
 			cost = 150
 		}
 	}
-	WCA_james_edmond_fechet = {
-		name = WCA_james_edmond_fechet
+	WCA_james_fechet = {
+		name = WCA_james_fechet
 		portraits = {
 			army = {
-				small = GFX_portrait_WCA_james_edmond_fechet_army_small
+				small = GFX_portrait_WCA_james_fechet_army_small
 			}
 		}
 		advisor = {
 			slot = theorist
-			idea_token = WCA_james_edmond_fechet_theorist
+			idea_token = WCA_james_fechet_theorist
 			ledger = air
 			traits = { KR_air_warfare_theorist }
 			cost = 100
@@ -1197,16 +1221,16 @@ characters = {
 			cost = 150
 		}
 	}
-	WCA_john_benjamin_anderson = {
-		name = WCA_john_benjamin_anderson
+	WCA_john_b_anderson = {
+		name = WCA_john_b_anderson
 		portraits = {
 			army = {
-				small = GFX_portrait_WCA_john_benjamin_anderson_army_small
+				small = GFX_portrait_WCA_john_b_anderson_army_small
 			}
 		}
 		advisor = {
 			slot = theorist
-			idea_token = WCA_john_benjamin_anderson_theorist
+			idea_token = WCA_john_b_anderson_theorist
 			ledger = army
 			traits = { KR_superior_firepower_expert }
 			cost = 150
@@ -1216,11 +1240,11 @@ characters = {
 	##################
 	### Scientists ###
 	##################
-	WCA_john_whiteside_parsons = {
-		name = WCA_john_whiteside_parsons
+	WCA_jack_parsons = {
+		name = WCA_jack_parsons
 		portraits = {
 			civilian = {
-				large = GFX_portrait_WCA_john_whiteside_parsons_scientist_large
+				large = GFX_portrait_WCA_jack_parsons_scientist_large
 			}
 		}
 		scientist = {
@@ -1228,11 +1252,11 @@ characters = {
 			skills = { specialization_air = 2 }
 		}
 	}
-	WCA_julius_robert_oppenheimer = {
-		name = WCA_julius_robert_oppenheimer
+	WCA_j_robert_oppenheimer = {
+		name = WCA_j_robert_oppenheimer
 		portraits = {
 			civilian = {
-				large = GFX_portrait_WCA_julius_robert_oppenheimer_scientist_large
+				large = GFX_portrait_WCA_j_robert_oppenheimer_scientist_large
 			}
 		}
 		scientist = {
@@ -1252,11 +1276,11 @@ characters = {
 			skills = { specialization_land = 2 }
 		}
 	}
-	WCA_peyton_marshall_magruder = {
-		name = WCA_peyton_marshall_magruder
+	WCA_peyton_m_magruder = {
+		name = WCA_peyton_m_magruder
 		portraits = {
 			civilian = {
-				large = GFX_portrait_WCA_peyton_marshall_magruder_scientist_large
+				large = GFX_portrait_WCA_peyton_m_magruder_scientist_large
 			}
 		}
 		scientist = {

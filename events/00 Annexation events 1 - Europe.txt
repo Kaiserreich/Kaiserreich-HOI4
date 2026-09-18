@@ -797,7 +797,6 @@ country_event = { #Fate of the Rhineland
 			hidden_effect = { remove_claim_by = var:tag_to_release }
 		}
 		release_targeted_tag = yes
-		RHI_puppet_setup = yes
 	}
 
 	option = { #puppet with reparations
@@ -826,7 +825,6 @@ country_event = { #Fate of the Rhineland
 			hidden_effect = { remove_claim_by = var:tag_to_release }
 		}
 		release_targeted_tag = yes
-		RHI_puppet_setup = yes
 		var:tag_to_release = { add_ideas = RHI_rhenish_reparations }
 	}
 
@@ -1184,9 +1182,58 @@ country_event = { #Fate of North Germany
 		annexations_release_hohenzollern_germany = yes
 	}
 
-	option = { #puppet
+	option = { #puppet - Monarchy
 		log = "[GetLogInfo]: event annexation_events.1004 option annexation_events.1004.a"
 		name = annexation_events.1004.a
+		trigger = {
+			annexations_can_release_german_splinters = yes
+			has_socialist_government = no
+		}
+		ai_chance = { base = 0 }
+		set_temp_variable = { tag_to_release = NGF }
+		every_state = {
+			limit = { is_north_germany = yes }
+			add_core_of = var:tag_to_release
+			hidden_effect = { remove_claim_by = var:tag_to_release }
+		}
+		release_targeted_tag = yes
+		var:tag_to_release = {
+			hidden_effect = {
+				promote_character = {
+					character = NGF_ernst_august_von_braunschweig
+					ideology = social_democrat_subtype
+				}
+				promote_character = {
+					character = NGF_ernst_august_von_braunschweig
+					ideology = social_liberal_subtype
+				}
+				promote_character = {
+					character = NGF_ernst_august_von_braunschweig
+					ideology = market_liberal_subtype
+				}
+				promote_character = {
+					character = NGF_ernst_august_von_braunschweig
+					ideology = social_conservative_subtype
+				}
+				promote_character = {
+					character = NGF_ernst_august_von_braunschweig
+					ideology = authoritarian_democrat_subtype
+				}
+				promote_character = {
+					character = NGF_ernst_august_von_braunschweig
+					ideology = paternal_autocrat_subtype
+				}
+				promote_character = {
+					character = NGF_ernst_august_von_braunschweig
+					ideology = national_populist_subtype
+				}
+			}
+		}
+	}
+
+	option = { #puppet - Republic
+		log = "[GetLogInfo]: event annexation_events.1004 option annexation_events.1004.b"
+		name = annexation_events.1004.b
 		trigger = {
 			annexations_can_release_german_splinters = yes
 		}
@@ -1198,6 +1245,38 @@ country_event = { #Fate of North Germany
 			hidden_effect = { remove_claim_by = var:tag_to_release }
 		}
 		release_targeted_tag = yes
+		var:tag_to_release = {
+			hidden_effect = {
+				promote_character = {
+					character = NGF_gustav_noske
+					ideology = social_democrat_subtype
+				}
+				promote_character = {
+					character = NGF_gustav_noske
+					ideology = social_liberal_subtype
+				}
+				promote_character = {
+					character = NGF_gustav_noske
+					ideology = market_liberal_subtype
+				}
+				promote_character = {
+					character = NGF_heinrich_langwost
+					ideology = social_conservative_subtype
+				}
+				promote_character = {
+					character = NGF_heinrich_langwost
+					ideology = authoritarian_democrat_subtype
+				}
+				promote_character = {
+					character = NGF_heinrich_langwost
+					ideology = paternal_autocrat_subtype
+				}
+				promote_character = {
+					character = NGF_heinrich_langwost
+					ideology = national_populist_subtype
+				}
+			}
+		}
 	}
 
 	option = { #Give to Germany
@@ -1601,9 +1680,67 @@ country_event = { #Fate of Prussia
 		annexations_release_hohenzollern_germany = yes
 	}
 
-	option = { #puppet PRE
+	option = { #puppet PRE - Monarchy
 		log = "[GetLogInfo]: event annexation_events.1006 option annexation_events.1006.a"
 		name = annexation_events.1006.a
+		trigger = {
+			annexations_can_release_german_splinters = yes
+			has_socialist_government = no
+		}
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				annexations_can_annex = yes
+			}
+			modifier = {
+				factor = 0
+				has_event_target = germany
+			}
+			modifier = {
+				factor = 0
+				has_event_target = north_germany
+				annexations_AI_country_wants_to_dismantle_germany = no
+			}
+		}
+		annexations_release_prussia = yes
+		var:tag_to_release = {
+			hidden_effect = {
+				promote_character = {
+					character = PRE_eitel_friedrich
+					ideology = social_democrat_subtype
+				}
+				promote_character = {
+					character = PRE_eitel_friedrich
+					ideology = social_liberal_subtype
+				}
+				promote_character = {
+					character = PRE_eitel_friedrich
+					ideology = market_liberal_subtype
+				}
+				promote_character = {
+					character = PRE_eitel_friedrich
+					ideology = social_conservative_subtype
+				}
+				promote_character = {
+					character = PRE_eitel_friedrich
+					ideology = authoritarian_democrat_subtype
+				}
+				promote_character = {
+					character = PRE_eitel_friedrich
+					ideology = paternal_autocrat_subtype
+				}
+				promote_character = {
+					character = PRE_eitel_friedrich
+					ideology = national_populist_subtype
+				}
+			}
+		}
+	}
+
+	option = { #puppet PRE - Republic
+		log = "[GetLogInfo]: event annexation_events.1006 option annexation_events.1006.b"
+		name = annexation_events.1006.b
 		trigger = {
 			annexations_can_release_german_splinters = yes
 		}
@@ -1624,6 +1761,38 @@ country_event = { #Fate of Prussia
 			}
 		}
 		annexations_release_prussia = yes
+		var:tag_to_release = {
+			hidden_effect = {
+				promote_character = {
+					character = PRE_albert_grzesinski
+					ideology = social_democrat_subtype
+				}
+				promote_character = {
+					character = PRE_albert_grzesinski
+					ideology = social_liberal_subtype
+				}
+				promote_character = {
+					character = PRE_albert_grzesinski
+					ideology = market_liberal_subtype
+				}
+				promote_character = {
+					character = PRE_otto_hoetzsch
+					ideology = social_conservative_subtype
+				}
+				promote_character = {
+					character = PRE_otto_hoetzsch
+					ideology = authoritarian_democrat_subtype
+				}
+				promote_character = {
+					character = PRE_otto_hoetzsch
+					ideology = paternal_autocrat_subtype
+				}
+				promote_character = {
+					character = PRE_otto_hoetzsch
+					ideology = national_populist_subtype
+				}
+			}
+		}
 	}
 
 	option = { #Give to Germany
@@ -2955,9 +3124,28 @@ country_event = { #Fate of South Germany
 		annexations_release_hohenzollern_germany = yes
 	}
 
-	option = { #puppet
+	option = { #puppet - monarchy
 		log = "[GetLogInfo]: event annexation_events.1013 option annexation_events.1013.a"
 		name = annexation_events.1013.a
+		trigger = {
+			NOT = { has_socialist_government = yes }
+			NOT = { country_exists = BAY }
+			annexations_can_release_german_splinters = yes
+		}
+		ai_chance = { base = 0 }
+		set_temp_variable = { tag_to_release = BAY }
+		every_state = {
+			limit = { region = 7 } #Upper Germany
+			add_core_of = var:tag_to_release
+			hidden_effect = { remove_claim_by = var:tag_to_release }
+		}
+		release_targeted_tag = yes
+		BAY_monarchy_puppet_setup = yes
+	}
+
+	option = { #puppet - republic
+		log = "[GetLogInfo]: event annexation_events.1013 option annexation_events.1013.b"
+		name = annexation_events.1013.b
 		trigger = {
 			NOT = { country_exists = BAY }
 			annexations_can_release_german_splinters = yes
@@ -2970,7 +3158,7 @@ country_event = { #Fate of South Germany
 			hidden_effect = { remove_claim_by = var:tag_to_release }
 		}
 		release_targeted_tag = yes
-		BAY_puppet_setup = yes
+		BAY_republic_puppet_setup = yes
 	}
 
 	option = { #Give to Germany
@@ -4876,6 +5064,7 @@ country_event = { #Fate of Bohemia
 				AUS_remove_monarchy = yes
 				AUS_disable_danubian_integration = yes
 				annexations_reset_danubian_characters = yes
+				AUS_remove_army_ideas = yes
 				promote_character = {
 					character = CZE_jan_syrovy
 					ideology = paternal_autocrat_subtype
@@ -5077,6 +5266,7 @@ country_event = { #Fate of Krakow
 				GAL = {
 					clear_cores_of_tag_if_possible = yes
 					GAL_remove_karl_albrecht = yes
+					AUS_remove_army_ideas = yes
 					activate_targeted_decision = { target = POL decision = GAL_unite_with_poland }
 				}
 			}
@@ -5501,6 +5691,7 @@ country_event = { #Fate of Hungary
 				AUS_remove_monarchy = yes
 				AUS_disable_danubian_integration = yes
 				annexations_reset_danubian_characters = yes
+				AUS_remove_army_ideas = yes
 				remove_ideas = {
 					HUN_financial_ties_broken
 					HUN_slovak_demonstrations
@@ -5720,6 +5911,7 @@ country_event = { #Fate of Slovakia
 
 	immediate = {
 		hidden_effect = {
+			SLO = { AUS_remove_army_ideas = yes }
 			71 = { retain_state = yes } #Danubian Plain
 			73 = { retain_state = yes } #Transcarpathia
 			1090 = { retain_state = yes } #Pressburg
@@ -6146,6 +6338,7 @@ country_event = { #Fate of Transylvania
 	immediate = {
 		hidden_effect = {
 			TRS = {
+				AUS_remove_army_ideas = yes
 				every_core_state = {
 					force_enable_resistance = { occupier = AUS occupied = TRS clear = yes }
 					force_enable_resistance = { occupier = HUN occupied = TRS clear = yes }
@@ -7236,6 +7429,7 @@ country_event = { #Fate of Croatia
 
 	immediate = {
 		hidden_effect = {
+			CRO = { AUS_remove_army_ideas = yes }
 			annexations_reset_yugoslavian_cores_claims = yes
 			if = {
 				limit = {
@@ -14814,6 +15008,7 @@ country_event = { #Fate of Bosnia
 			BOS = {
 				drop_cosmetic_tag = yes
 				SER_disable_yugoslavia_integration = yes
+				AUS_remove_army_ideas = yes
 			}
 		}
 		if = {
@@ -15369,6 +15564,7 @@ country_event = { #Fate of Serbia
 					SER_milutin_nedic = { retire = yes }
 					SER_bogoljub_ilic = { retire = yes }
 					SER_dragoljub_mihailovic = { retire = yes }
+					SER_danilo_kalafatovic = { retire = yes }
 				}
 			}
 		}
@@ -15380,6 +15576,7 @@ country_event = { #Fate of Serbia
 					SER_milutin_nedic = { set_nationality = PREV }
 					SER_bogoljub_ilic = { set_nationality = PREV }
 					SER_dragoljub_mihailovic = { set_nationality = PREV }
+					SER_danilo_kalafatovic = { set_nationality = PREV }
 				}
 			}
 		}
@@ -18501,6 +18698,10 @@ country_event = { #Fate of Portugal
 						desc = POR_francisco_de_barcelos_rolao_preto_leader_desc
 						picture = GFX_portrait_POR_francisco_de_barcelos_rolao_preto_civilian_large
 						ideology = national_populist_subtype
+					}
+					if = {
+						limit = { has_dlc_taog = yes }
+						create_generic_hq_template = yes
 					}
 					set_temp_variable = { tag_to_release = THIS }
 				}

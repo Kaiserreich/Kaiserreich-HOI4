@@ -1,0 +1,62 @@
+### AFG Decision Cats ###
+AFG_balance_of_power_category = {
+	allowed = { original_tag = AFG }
+}
+
+AFG_state_building_decisions = {
+	icon = GFX_decision_category_generic_economy
+	#picture = GFX_
+	priority = 1000
+	allowed = { original_tag = AFG }
+	visible = {
+		has_country_flag = AFG_state_building_active
+		AFG_civil_war_ongoing = no
+	}
+	visible_when_empty = yes
+}
+
+AFG_crossroads_of_civilisation_decisions = {
+	icon = GFX_decision_category_generic_foreign_policy
+	#picture = GFX_
+	priority = 900
+	allowed = { original_tag = AFG }
+	visible = { has_country_flag = AFG_crossroads_category_active }
+	visible_when_empty = yes
+}
+
+AFG_pashtunistan_crisis_decisions = {
+	icon = GFX_decision_cat_WIF_rebelion
+	#picture = GFX_
+	priority = 1050
+	allowed = { original_tag = AFG }
+	visible = { has_country_flag = AFG_pashtunistan_crisis_active }
+}
+
+AFG_afghan_civil_war_decisions = {
+	icon = GFX_decision_cat_WIF_rebelion
+	#picture = GFX_
+	priority = 1050
+	allowed = { original_tag = AFG }
+	visible = { AFG_civil_war_ongoing = yes }
+}
+
+AFG_consolidation_of_the_realm_decisions = {
+	icon = GFX_decision_cat_WIF_rebelion
+	#picture = GFX_
+	priority = 1100
+	allowed = { original_tag = AFG }
+	visible = {
+		OR = {
+			has_active_mission = AFG_stabilise_the_realm_mission
+			has_active_mission = AFG_reasserting_amanullahs_authority_mission
+		}
+	}
+}
+
+AFG_unifying_the_pashtuns = {
+	icon = GFX_decision_category_military_operation
+	#picture = GFX_
+	priority = 600
+	allowed = { original_tag = AFG }
+	visible = { has_completed_focus = AFG_liberating_the_colonised_pashtuns }
+}

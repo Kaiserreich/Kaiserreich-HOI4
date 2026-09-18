@@ -10,8 +10,8 @@ NDefines.NCareerProfile.MOD_STATISTICS_GROUP = "kaiserreich_career_profile"
 NDefines.NCareerProfile.MOD_STATISTICS_GROUP_NAME = "KAISERREICH_CAREER_PROFILE"
 
 -- Game
-NDefines.NGame.SAVE_VERSION = 164											-- Vanilla is 30
-NDefines.NGame.MINOR_SAVE_VERSION = 164										-- Vanilla is 1
+NDefines.NGame.SAVE_VERSION = 170											-- Vanilla is 30
+NDefines.NGame.MINOR_SAVE_VERSION = 170										-- Vanilla is 1
 NDefines.NGame.END_DATE = "1959.1.1.1"										-- Vanilla is 1949.1.1.1
 NDefines.NGame.HANDS_OFF_START_TAG = "BHU"									-- Vanilla is URG
 NDefines.NGame.DECISION_ALERT_TIMEOUT_DAYS = 60								-- Vanilla is 30
@@ -172,6 +172,7 @@ NDefines.NAI.HEAVILY_FORTIFIED_RATIO_TO_CONSIDER_A_FRONT_FORTIFIED = 0.3	-- Vani
 NDefines.NMilitary.PLAN_EXECUTE_CAREFUL_MAX_FORT = 4						-- Vanilla is 5
 NDefines.NAI.ATTACK_HEAVILY_DEFENDED_LIMIT = 1.1							-- Vanilla is 0.5
 NDefines.NAI.LAND_COMBAT_OUR_COMBATS_AIR_IMPORTANCE = 1000                  -- Vanilla is 155
+NDefines.NAI.MIN_NUM_CONQUERED_PROVINCES_TO_DEPRIO_NAVAL_INVADED_FRONTS = 100				-- Vanilla is 20
 
 -- Garrison AI
 NDefines.NAI.AREA_DEFENSE_SETTING_VP = true									-- Vanilla is false
@@ -207,6 +208,7 @@ NDefines.NFactions.FACTION_INTELLIGENCE_ALLOWED_ADVISOR_TRAIT  = {
 	"KR_tsingtao_spymaster",
 	"KR_master_diplomat",
 	"KR_savinkovs_shadow",
+	"KR_cavalier_spymaster",
 	"KR_shadowy_laoban_lar",
 	"KR_shadowy_laoban"
 }

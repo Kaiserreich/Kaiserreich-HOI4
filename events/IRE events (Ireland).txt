@@ -2397,7 +2397,6 @@ country_event = {		### BM SC BM mission start
 		hidden_effect = {
 			IRE_scndp_bm_calculation = yes
 			activate_mission = IRE_finish_bm_scndp
-			clear_variable = IRE_finish_bm_scndp_duration
 		}
 	}
 
@@ -5551,15 +5550,16 @@ country_event = {  # Anniversary of the Battle of the Boyne. 12/07/38
 				set_temp_variable = { ideology_change_var = 0.05 }
 				IRE_ruling_government_popularity_change = yes
 				119 = { add_compliance = 7.5 }
-				set_temp_variable = { IRE_ulster_resistance_delta = 0.075 }
-				add_to_variable = { IRE_ulster_resistance = IRE_ulster_resistance_delta }
-				force_update_dynamic_modifier = yes
-				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				custom_effect_tooltip = IRE_ulster_resistance_target_change_tt
+				add_to_variable = {
+					IRE_ulster_resistance = { value = 0.075 }
+					tooltip = resistance_target_tooltip
+				}
+				force_update_dynamic_modifier = yes
+				custom_effect_tooltip = tooltip_white_line
 				IRE_update_resistance = yes
 			}
 			else = { activate_mission = IRE_counter_protestant_influence }
@@ -12700,17 +12700,14 @@ country_event = {  # The Form of the Republic
 			remove_ideas = IRE_disproportionate_loyalist_representation
 			custom_effect_tooltip = tooltip_white_line
 		}
-		hidden_effect = {
-			add_ideas = IRE_ulster_status_quo_idea
-			add_to_variable = { IRE.IRE_ulster_stab_cost = -0.05 }
-			add_to_variable = { IRE.IRE_ulster_local_resource_factor = -0.12 }
-			add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 }
-		}
+		hidden_effect = { add_ideas = IRE_ulster_status_quo_idea }
 		custom_effect_tooltip = {
 			localization_key = tooltip_modify_dynmod
 			DYNMOD = IRE_reluctant_countrymen
 		}
-		custom_effect_tooltip = IRE_ulster_status_quo_tt
+		add_to_variable = { IRE.IRE_ulster_stab_cost = -0.05 tooltip = stability_factor_tooltip }
+		add_to_variable = { IRE.IRE_ulster_local_resource_factor = -0.12 tooltip = local_resources_tooltip }
+		add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 tooltip = local_manpower_tooltip }
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = { IRE_nationalist_discontent_delta = 0.05 }
 		IRE_nationalist_discontent_increase = yes
@@ -12759,17 +12756,16 @@ country_event = {  # The Form of the Republic
 		}
 		hidden_effect = {
 			add_ideas = IRE_ulster_devolution_idea
-			add_to_variable = { IRE.IRE_ulster_ppgain_cost = 0.10 }
-			add_to_variable = { IRE.IRE_ulster_stab_cost = -0.10 }
-			add_to_variable = { IRE.IRE_ulster_local_resource_factor = -0.07 }
-			add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 }
 			IRE_remove_basil_brooke_advisor = yes
 		}
 		custom_effect_tooltip = {
 			localization_key = tooltip_modify_dynmod
 			DYNMOD = IRE_reluctant_countrymen
 		}
-		custom_effect_tooltip = IRE_ulster_devolution_tt
+		add_to_variable = { IRE.IRE_ulster_ppgain_cost = 0.10 tooltip = political_power_gain_tooltip }
+		add_to_variable = { IRE.IRE_ulster_stab_cost = -0.10 tooltip = stability_factor_tooltip }
+		add_to_variable = { IRE.IRE_ulster_local_resource_factor = -0.07 tooltip = local_resources_tooltip }
+		add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 tooltip = local_manpower_tooltip }
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = { IRE_nationalist_discontent_delta = 0.15 }
 		IRE_nationalist_discontent_increase = yes
@@ -12798,16 +12794,15 @@ country_event = {  # The Form of the Republic
 		}
 		hidden_effect = {
 			add_ideas = IRE_ulster_unitary_idea
-			add_to_variable = { IRE.IRE_ulster_ppgain_cost = -0.15 }
-			add_to_variable = { IRE.IRE_ulster_stab_cost = 0.025 }
-			add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.03 }
-			add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 }
 		}
 		custom_effect_tooltip = {
 			localization_key = tooltip_modify_dynmod
 			DYNMOD = IRE_reluctant_countrymen
 		}
-		custom_effect_tooltip = IRE_ulster_unitary_tt
+		add_to_variable = { IRE.IRE_ulster_ppgain_cost = -0.15 tooltip = political_power_gain_tooltip }
+		add_to_variable = { IRE.IRE_ulster_stab_cost = 0.025 tooltip = stability_factor_tooltip }
+		add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.03 tooltip = local_resources_tooltip }
+		add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 tooltip = local_manpower_tooltip }
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = { IRE_nationalist_discontent_delta = 0.05 }
 		IRE_nationalist_discontent_decrease = yes
@@ -12856,10 +12851,6 @@ country_event = {  # The Form of the Republic
 		}
 		hidden_effect = {
 			add_ideas = IRE_ulster_federalism_idea
-			add_to_variable = { IRE.IRE_ulster_cg_cost = 0.10 }
-			add_to_variable = { IRE.IRE_ulster_stab_cost = 0.05 }
-			add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.03 }
-			add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 }
 			IRE_remove_basil_brooke_advisor = yes
 			set_country_flag = IRE_federalisation_wip
 		}
@@ -12867,12 +12858,14 @@ country_event = {  # The Form of the Republic
 			localization_key = tooltip_modify_dynmod
 			DYNMOD = IRE_reluctant_countrymen
 		}
-		custom_effect_tooltip = IRE_ulster_federalism_tt
+		add_to_variable = { IRE.IRE_ulster_cg_cost = 0.10 tooltip = consumer_goods_factor_tooltip }
+		add_to_variable = { IRE.IRE_ulster_stab_cost = 0.05 tooltip = stability_factor_tooltip }
+		add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.03 tooltip = local_resources_tooltip }
+		add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 tooltip = local_manpower_tooltip }
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_ppgain = -0.1 }
-		custom_effect_tooltip = IRE_new_constitution_ppgain_tt
-		add_to_variable = { IRE_new_constitution_ppgain = -0.1 }
+		add_to_variable = { IRE_new_constitution_ppgain = -0.1 tooltip = political_power_gain_tooltip }
+		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = ireland_events.2601.e.tt
 	}
@@ -12904,9 +12897,7 @@ country_event = {  # The Form of the Presidency
 		name = ireland_events.2602.a		# Presidential
 		ai_chance = { base = 100 }
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_ppgain = 0.05 }
-		custom_effect_tooltip = IRE_new_constitution_ppgain_tt
-		add_to_variable = { IRE_new_constitution_ppgain = 0.05 }
+		add_to_variable = { IRE_new_constitution_ppgain = 0.05 tooltip = political_power_gain_tooltip }
 	}
 	option = {
 		log = "[GetLogInfo]: event ireland_events.2602 option ireland_events.2602.b"
@@ -12934,9 +12925,7 @@ country_event = {  # The Form of the Presidency
 			}
 		}
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_stab = 0.025 }
-		custom_effect_tooltip = IRE_new_constitution_stab_tt
-		add_to_variable = { IRE_new_constitution_stab = 0.025 }
+		add_to_variable = { IRE_new_constitution_stab = 0.025 tooltip = stability_factor_tooltip }
 	}
 
 	after = {
@@ -12975,9 +12964,7 @@ country_event = {  # The Selection of the Dáil
 			}
 		}
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_stab = 0.025 }
-		custom_effect_tooltip = IRE_new_constitution_stab_tt
-		add_to_variable = { IRE_new_constitution_stab = 0.025 }
+		add_to_variable = { IRE_new_constitution_stab = 0.025 tooltip = stability_factor_tooltip }
 	}
 	option = {
 		log = "[GetLogInfo]: event ireland_events.2603 option ireland_events.2603.b"
@@ -12994,9 +12981,7 @@ country_event = {  # The Selection of the Dáil
 			}
 		}
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_ppgain = 0.05 }
-		custom_effect_tooltip = IRE_new_constitution_ppgain_tt
-		add_to_variable = { IRE_new_constitution_ppgain = 0.05 }
+		add_to_variable = { IRE_new_constitution_ppgain = 0.05 tooltip = political_power_gain_tooltip }
 	}
 	option = {
 		log = "[GetLogInfo]: event ireland_events.2603 option ireland_events.2603.c"
@@ -13004,9 +12989,7 @@ country_event = {  # The Selection of the Dáil
 		trigger = { has_country_flag = IRE_govt_cursed_coalition }
 		ai_chance = { base = 100 }
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_partystab = 0.15 }
-		custom_effect_tooltip = IRE_new_constitution_partystab_tt
-		add_to_variable = { IRE_new_constitution_partystab = 0.15 }
+		add_to_variable = { IRE_new_constitution_partystab = 0.15 tooltip = party_popularity_stability_factor_tooltip }
 	}
 
 	after = {
@@ -13138,9 +13121,7 @@ country_event = {  # Official Language
 		IRE_loyalist_anger_increase = yes
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_ws = 0.15 }
-		custom_effect_tooltip = IRE_new_constitution_ws_tt
-		add_to_variable = { IRE_new_constitution_ws = 0.15 }
+		add_to_variable = { IRE_new_constitution_ws = 0.15 tooltip = war_support_factor_tooltip }
 	}
 	option = {
 		log = "[GetLogInfo]: event ireland_events.2605 option ireland_events.2605.b"
@@ -13206,9 +13187,8 @@ country_event = {  # Landed Titles
 			}
 		}
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_stab = 0.025 }
-		custom_effect_tooltip = IRE_new_constitution_stab_tt
-		add_to_variable = { IRE_new_constitution_stab = 0.025 }
+		add_to_variable = { IRE_new_constitution_stab = 0.025 tooltip = stability_factor_tooltip }
+		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = { IRE_loyalist_anger_delta = 0.025 }
 		IRE_loyalist_anger_increase = yes
@@ -13240,9 +13220,7 @@ country_event = {  # Landed Titles
 			}
 		}
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_ppgain = 0.05 }
-		custom_effect_tooltip = IRE_new_constitution_ppgain_tt
-		add_to_variable = { IRE_new_constitution_ppgain = 0.05 }
+		add_to_variable = { IRE_new_constitution_ppgain = 0.05 tooltip = political_power_gain_tooltip }
 	}
 	option = {
 		log = "[GetLogInfo]: event ireland_events.2606 option ireland_events.2606.e"
@@ -13259,9 +13237,8 @@ country_event = {  # Landed Titles
 			}
 		}
 		custom_effect_tooltip = IRE_new_constitution_modified
-		set_temp_variable = { IRE_new_constitution_ppgain = 0.05 }
-		custom_effect_tooltip = IRE_new_constitution_ppgain_tt
-		add_to_variable = { IRE_new_constitution_ppgain = 0.05 }
+		add_to_variable = { IRE_new_constitution_ppgain = 0.05 tooltip = political_power_gain_tooltip }
+		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = { IRE_loyalist_anger_delta = 0.025 }
 		IRE_loyalist_anger_decrease = yes
@@ -13297,7 +13274,11 @@ country_event = {  # End of Constitution Chain
 	option = {
 		log = "[GetLogInfo]: event ireland_events.2607 option ireland_events.2607.a"
 		name = ireland_events.2607.a
-		custom_effect_tooltip = IRE_new_constitution_end_tt
+		custom_effect_tooltip = {
+			localization_key = tooltip_replace_dynmod
+			DYNMOD1 = IRE_new_constitution_temp
+			DYNMOD2 = IRE_new_constitution
+		}
 		custom_effect_tooltip = IRE_new_constitution_modifier_tt
 		add_to_variable = { IRE_new_constitution_stab = 0.05 }
 		hidden_effect = {
@@ -13422,18 +13403,16 @@ country_event = {  # Fully removed Ulster Privileges modifier
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				custom_effect_tooltip = IRE_an_ulster_remove_revolt_tt
-				add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.15 }
-				add_to_variable = { IRE.IRE_ulster_local_manpower = 0.05 }
+				add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.15 tooltip = local_resources_tooltip }
+				add_to_variable = { IRE.IRE_ulster_local_manpower = 0.05 tooltip = local_manpower_tooltip }
 			}
 			else = {
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				custom_effect_tooltip = IRE_an_ulster_remove_no_revolt_tt
-				add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.15 }
-				add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 }
+				add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.15 tooltip = local_resources_tooltip }
+				add_to_variable = { IRE.IRE_ulster_local_manpower = 0.15 tooltip = local_manpower_tooltip }
 			}
 		}
 		else_if = {
@@ -13454,18 +13433,16 @@ country_event = {  # Fully removed Ulster Privileges modifier
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				custom_effect_tooltip = IRE_soc_ulster_remove_revolt_tt
-				add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.15 }
-				add_to_variable = { IRE.IRE_ulster_local_manpower = 0.35 }
+				add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.15 tooltip = local_resources_tooltip }
+				add_to_variable = { IRE.IRE_ulster_local_manpower = 0.35 tooltip = local_manpower_tooltip }
 			}
 			else = {
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = IRE_reluctant_countrymen
 				}
-				custom_effect_tooltip = IRE_soc_ulster_remove_no_revolt_tt
-				add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.15 }
-				add_to_variable = { IRE.IRE_ulster_local_manpower = 0.45 }
+				add_to_variable = { IRE.IRE_ulster_local_resource_factor = 0.15 tooltip = local_resources_tooltip }
+				add_to_variable = { IRE.IRE_ulster_local_manpower = 0.45 tooltip = local_manpower_tooltip }
 			}
 		}
 	}
@@ -13853,6 +13830,10 @@ country_event = {	# GOC splits off
 				long_name = IRE_ana_short
 				name = IRE_ana_short
 			}
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.02
 		}
 		hidden_effect = {
 			set_party_name = {
@@ -14396,13 +14377,21 @@ country_event = {  # Resistance in NIR starts
 	immediate = {
 		hidden_effect = {
 			set_country_flag = IRE_nir_resistance_started
-			set_temp_variable = { IRE_starting_res = IRE_loyalist_anger }
-			multiply_temp_variable = { IRE_starting_res = -50 }
-			clamp_temp_variable = { var = IRE_starting_res max = 100 }
-			set_temp_variable = { IRE_starting_com = IRE_nationalist_discontent }
-			multiply_temp_variable = { IRE_starting_com = 100 }
-			add_to_temp_variable = { IRE_starting_com = 40 }
-			clamp_temp_variable = { var = IRE_starting_com min = 0 }
+			set_temp_variable = {
+				IRE_starting_res = {
+					value = IRE_loyalist_anger
+					multiply = -50
+					clamp = { min = 0 max = 100 }
+				}
+			}
+			set_temp_variable = {
+				IRE_starting_com = {
+					value = IRE_nationalist_discontent
+					multiply = 100
+					add = 40
+					clamp = { min = 0 max = 100 }
+				}
+			}
 			119 = {
 				force_enable_resistance = IRE
 				start_resistance = yes
@@ -14418,8 +14407,7 @@ country_event = {  # Resistance in NIR starts
 			set_variable = { IRE_NIR_decisions_time_long = 45 }
 			set_variable = { IRE_NIR_decisions_cost = 25 }
 			set_variable = { IRE_NIR_decisions_variable = 1 }
-			set_variable = { IRE_ulster_resistance_delta = 0.05 }
-			add_to_variable = { IRE_ulster_resistance = IRE_ulster_resistance_delta }
+			set_variable = { IRE_ulster_resistance = 0.05 }
 			IRE_update_resistance = yes
 			activate_mission = IRE_NIR_mission
 			activate_mission = IRE_improve_discontent_mission
@@ -14436,7 +14424,12 @@ country_event = {  # Resistance in NIR starts
 			localization_key = tooltip_modify_dynmod
 			DYNMOD = IRE_reluctant_countrymen
 		}
-		custom_effect_tooltip = IRE_ulster_resistance_tt
+		effect_tooltip = {
+			add_to_variable = { IRE_ulster_resistance = 0.05 tooltip = resistance_target_tooltip }
+			add_to_variable = { modifier_tt = 0.025 tooltip = compliance_gain_tooltip }
+			add_to_variable = { IRE.IRE_ulster_local_resource_factor = -0.12 tooltip = local_resources_tooltip }
+			add_to_variable = { IRE.IRE_ulster_local_manpower = -0.15 tooltip = local_manpower_tooltip }
+		}
 		custom_effect_tooltip = tooltip_white_line
 		effect_tooltip = {
 			activate_mission = IRE_NIR_mission
@@ -14487,6 +14480,12 @@ country_event = {  # NIR war
 			if = {
 				limit = { IRE_has_reactionary_govt = yes }
 				activate_mission = IRE_take_belfast
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = EFFECT_REMOVE_DECISION
+						NAME = IRE_join_entente
+					}
+				}
 			}
 		}
 	}
@@ -14630,13 +14629,21 @@ country_event = {  # Reactionary Resistance starts
 			activate_targeted_decision = { target = 135 decision = IRE_weaken_reactionary_resistance }
 			set_country_flag = IRE_nir_resistance_started
 			IRE_determine_NIR_revolt = yes
-			set_temp_variable = { IRE_starting_res = IRE_loyalist_anger }
-			multiply_temp_variable = { IRE_starting_res = -50 }
-			clamp_temp_variable = { var = IRE_starting_res max = 100 }
-			set_temp_variable = { IRE_starting_com = IRE_nationalist_discontent }
-			multiply_temp_variable = { IRE_starting_com = 100 }
-			add_to_temp_variable = { IRE_starting_com = 40 }
-			clamp_temp_variable = { var = IRE_starting_com min = 0 }
+			set_temp_variable = {
+				IRE_starting_res = {
+					value = IRE_loyalist_anger
+					multiply = -50
+					clamp = { min = 0 max = 100 }
+				}
+			}
+			set_temp_variable = {
+				IRE_starting_com = {
+					value = IRE_nationalist_discontent
+					multiply = 100
+					add = 40
+					clamp = { min = 0 max = 100 }
+				}
+			}
 			add_to_variable = { IRE.IRE_ulster_local_resource_factor = -0.12 }
 			add_to_variable = { IRE.IRE_ulster_local_manpower = -0.45 }
 			set_variable = { IRE_NIR_decisions_time = 60 }
@@ -14645,8 +14652,7 @@ country_event = {  # Reactionary Resistance starts
 			set_variable = { IRE_reactionary_mission_time = 30 }
 			set_variable = { IRE_NIR_decisions_cost = 25 }
 			set_variable = { IRE_NIR_decisions_variable = 1 }
-			set_variable = { IRE_ulster_resistance_delta = 0.10 }
-			add_to_variable = { IRE_ulster_resistance = IRE_ulster_resistance_delta }
+			set_variable = { IRE_ulster_resistance = 0.10 }
 			if = {
 				limit = { is_ai = no }
 				add_command_power = -150
@@ -14708,7 +14714,11 @@ country_event = {  # Reactionary Resistance starts
 			localization_key = tooltip_modify_dynmod
 			DYNMOD = IRE_reluctant_countrymen
 		}
-		custom_effect_tooltip = IRE_soc_ulster_resistance_tt
+		effect_tooltip = {
+			add_to_variable = { IRE_ulster_resistance = 0.1 tooltip = resistance_target_tooltip }
+			add_to_variable = { IRE.IRE_ulster_local_resource_factor = -0.12 tooltip = local_resources_tooltip }
+			add_to_variable = { IRE.IRE_ulster_local_manpower = -0.45 tooltip = local_manpower_tooltip }
+		}
 		if = {
 			limit = { check_variable = { IRE_loyalist_fear < 60 } }
 			custom_effect_tooltip = IRE_loyalist_fear_increase_a_lot_tt
@@ -16045,20 +16055,9 @@ country_event = {  # Country said yes
 			localization_key = tooltip_modify_dynmod
 			DYNMOD = IRE_dublin_international_hub
 		}
-		add_to_variable = {
-			var = IRE_investment_slots
-			value = 0.01
-			tooltip = local_building_slots_factor_tooltip
-		}
-		add_to_variable = {
-			var = IRE_investment_industrial
-			value = 0.02
-			tooltip = local_factories_tooltip
-		}
-		add_to_variable = {
-			var = IRE_investment_milestone
-			value = 1
-		}
+		add_to_variable = { IRE_investment_slots = 0.01 tooltip = local_building_slots_factor_tooltip }
+		add_to_variable = { IRE_investment_industrial = 0.02 tooltip = local_factories_tooltip }
+		add_to_variable = { IRE_investment_milestone = 1 }
 		if = {
 			limit = {
 				check_variable = { IRE_investment_milestone = 4 }
@@ -16145,21 +16144,30 @@ country_event = { # A check for the H&W MIO to set research speed (donotlog)
 	hidden = yes
 
 	option = {
-		set_temp_variable = { IRE_harland_wolff_dockyard_bonus = 3 }
-		multiply_temp_variable = { IRE_harland_wolff_dockyard_bonus = 119.building_level@dockyard }
-
-		set_temp_variable = { IRE_harland_wolff_civilian_bonus = 5 }
-		multiply_temp_variable = { IRE_harland_wolff_civilian_bonus = 119.building_level@industrial_complex }
-		add_to_temp_variable = { IRE_harland_wolff_civilian_bonus = 100 }
-
-		set_temp_variable = { IRE_harland_wolff_military_bonus = 9 }
-		subtract_from_temp_variable = { IRE_harland_wolff_military_bonus = 119.building_level@arms_factory }
-		divide_temp_variable = { IRE_harland_wolff_military_bonus = 2 }
-		clamp_temp_variable = { var = IRE_harland_wolff_military_bonus min = 0 max = 5 }
-
-		multiply_temp_variable = { IRE_harland_wolff_dockyard_bonus = 0.01 }
-		multiply_temp_variable = { IRE_harland_wolff_civilian_bonus = 0.01 }
-		multiply_temp_variable = { IRE_harland_wolff_military_bonus = 0.01 }
+		set_temp_variable = {
+			IRE_harland_wolff_dockyard_bonus = {
+				value = 3
+				multiply = 119.building_level@dockyard
+				multiply = 0.01
+			}
+		}
+		set_temp_variable = {
+			IRE_harland_wolff_civilian_bonus = {
+				value = 5
+				multiply = 119.building_level@industrial_complex
+				add = 100
+				multiply = 0.01
+			}
+		}
+		set_temp_variable = {
+			IRE_harland_wolff_military_bonus = {
+				value = 9
+				subtract = 119.building_level@arms_factory
+				multiply = 0.5
+				clamp = { min = 0 max = 5 }
+				multiply = 0.01
+			}
+		}
 
 		mio:IRE_harland_wolff_organisation = {
 			set_mio_research_bonus = var:IRE_harland_wolff_dockyard_bonus

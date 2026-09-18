@@ -5221,12 +5221,13 @@ UKR_parliamentary_hetmanate = {
 			}
 			else = {
 				UKR_calculate_new_opposition_strength = yes
-				add_to_variable = { UKR_opposition_strength = 10 }
 				custom_effect_tooltip = tooltip_white_line
-				clamp_variable = {
-					var = UKR_opposition_strength
-					min = 0
-					max = 100
+				add_to_variable = {
+					UKR_opposition_strength = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = UKR_opposition_strength } }
+					}
+					tooltip = UKR_strengthen_the_opposition_slight
 				}
 				hidden_effect = {
 					activate_mission = UKR_conservative_opposition_growing
@@ -5255,13 +5256,13 @@ UKR_parliamentary_hetmanate = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove UKR_strengthen_vdr_slight"
-			add_to_variable = { UKR_government_strength = 10 }
-			clamp_variable = {
-				var = UKR_government_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				UKR_government_strength = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = UKR_government_strength } }
+				}
+				tooltip = UKR_strengthen_the_vdr_slight
 			}
-			custom_effect_tooltip = UKR_strengthen_the_vdr_slight
 		}
 		fixed_random_seed = no
 	}
@@ -5285,13 +5286,13 @@ UKR_parliamentary_hetmanate = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove UKR_strengthen_vdr_moderate"
-			add_to_variable = { UKR_government_strength = 20 }
-			clamp_variable = {
-				var = UKR_government_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				UKR_government_strength = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = UKR_government_strength } }
+				}
+				tooltip = UKR_strengthen_the_vdr_moderate
 			}
-			custom_effect_tooltip = UKR_strengthen_the_vdr_moderate
 		}
 		fixed_random_seed = no
 	}
@@ -5312,13 +5313,13 @@ UKR_parliamentary_hetmanate = {
 			log = "[GetLogRoot]: Decision remove UKR_curb_opposition_efforts"
 			set_country_flag = UKR_stop_conservative_opposition_growing
 			custom_effect_tooltip = UKR_stop_conservative_opposition_growing_tt
-			add_to_variable = { UKR_government_strength = -10 }
-			clamp_variable = {
-				var = UKR_government_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				UKR_government_strength = {
+					value = -10
+					clamp = { min = { value = UKR_government_strength multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_weaken_the_vdr_slight
 			}
-			custom_effect_tooltip = UKR_weaken_the_vdr_slight
 		}
 		fixed_random_seed = no
 	}
@@ -5362,13 +5363,13 @@ UKR_parliamentary_hetmanate = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove UKR_gain_support_of_udkhp"
-			add_to_variable = { UKR_opposition_strength = -10 }
-			clamp_variable = {
-				var = UKR_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				UKR_opposition_strength = {
+					value = -10
+					clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_weaken_the_opposition_slight
 			}
-			custom_effect_tooltip = UKR_weaken_the_opposition_slight
 		}
 		fixed_random_seed = no
 	}
@@ -5471,10 +5472,7 @@ UKR_uskhd_consolidation = {
 		ai_will_do = { factor = 0 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete UKR_appoint_loyal_bureaucrats"
-			add_to_variable = {
-				var = UKR_cant_take_decision_thrice_appoint
-				value = 1
-			}
+			add_to_variable = { UKR_cant_take_decision_thrice_appoint = 1 }
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove UKR_appoint_loyal_bureaucrats"
@@ -5501,10 +5499,7 @@ UKR_uskhd_consolidation = {
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete UKR_issue_government_reconstruction_grants"
-			add_to_variable = {
-				var = UKR_cant_take_decision_thrice_issue
-				value = 1
-			}
+			add_to_variable = { UKR_cant_take_decision_thrice_issue = 1 }
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove UKR_issue_government_reconstruction_grants"
@@ -6056,10 +6051,8 @@ UKR_udkhp_parliamentarisation = {
 	UKR_concessions_to_skoropadskyi = {
 		icon = GFX_decision_shield
 		custom_cost_trigger = {
-			AND = {
-				social_conservative > 0.01
-				authoritarian_democrat > 0.01
-			}
+			social_conservative > 0.01
+			authoritarian_democrat > 0.01
 		}
 		custom_cost_text = UKR_concessions_cost
 		days_remove = UKR_skoropadskyi_concessions_days
@@ -6866,54 +6859,47 @@ UKR_republic_decisions = {
 		days_mission_timeout = 300
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout UKR_national_defence_act"
-			if = {
-				limit = {
-					has_stability > 0.69
-				}
-				add_to_variable = { UKR_national_defence_act_var = 1 }
-			}
-			if = {
-				limit = {
-					has_war_support > 0.49
-				}
-				add_to_variable = { UKR_national_defence_act_var = 1 }
-			}
-			if = {
-				limit = {
-					OR = {
-						UKR_coalition_partner_cooperative = yes
-						UKR_coalition_partner_amenable = yes
+			add_to_variable = {
+				UKR_national_defence_act_var = {
+					value = 0
+					if = {
+						limit = { value = stability greater_than = 0.69 }
+						add = 1
+					}
+					if = {
+						limit = { value = has_war_support greater_than = 0.49 }
+						add = 1
+					}
+					if = {
+						# UKR_coalition_partner_attitude cooperative or amenable
+						limit = { value = UKR_coalition_partner_attitude greater_than_or_equals = 11 }
+						add = 1
+					}
+					if = {
+						limit = {
+							value = { value = UKR_land_reform_score greater_than = 90 }
+							and = { value = UKR_industrial_score greater_than = 90 }
+						}
+						add = 1
+					}
+					if = { #Soclib
+						limit = { value = UKR_urdp_centre_influence greater_than_or_equals = 4 }
+						add = 1
+					}
+					else_if = { #Socdem
+						limit = { value = UKR_usdrp_idealism_points greater_than = 0 }
+						add = 1
+					}
+					if = {
+						limit = { value = UKR_military_focus greater_than = 2 }
+						add = 1
 					}
 				}
-				add_to_variable = { UKR_national_defence_act_var = 1 }
-			}
-			if = {
-				limit = {
-					check_variable = { UKR_land_reform_score > 90 }
-					check_variable = { UKR_industrial_score > 90 }
-				}
-				add_to_variable = { UKR_national_defence_act_var = 1 }
 			}
 			if = {
 				limit = {
 					has_completed_focus = UKR_progressive_tax_policy
 					has_completed_focus = UKR_land_fund_establishment
-				}
-				add_to_variable = { UKR_national_defence_act_var = 1 }
-			}
-			if = {
-				limit = {
-					OR = {
-						UKR_urdp_centre_moderate = yes
-						UKR_urdp_centre_high = yes
-						check_variable = { UKR_usdrp_idealism_points > 0 }
-					}
-				}
-				add_to_variable = { UKR_national_defence_act_var = 1 }
-			}
-			if = {
-				limit = {
-					check_variable = { UKR_military_focus > 2 }
 				}
 				add_to_variable = { UKR_national_defence_act_var = 1 }
 			}
@@ -7060,20 +7046,20 @@ UKR_republic_decisions = {
 		}
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout UKR_urdp_right_growth"
-			add_to_variable = { UKR_urdp_centre_influence = -2 }
-			clamp_variable = {
-				var = UKR_urdp_centre_influence
-				min = 0
-				max = 9
+			add_to_variable = {
+				UKR_urdp_centre_influence = {
+					value = -2
+					clamp = { min = { value = UKR_urdp_centre_influence multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_urdp_centre_weaken_tt
 			}
-			custom_effect_tooltip = UKR_urdp_centre_weaken_tt
-			add_to_variable = { UKR_urdp_left_influence = -2 }
-			clamp_variable = {
-				var = UKR_urdp_left_influence
-				min = 0
-				max = 9
+			add_to_variable = {
+				UKR_urdp_left_influence = {
+					value = -2
+					clamp = { min = { value = UKR_urdp_left_influence multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_urdp_left_weaken_tt
 			}
-			custom_effect_tooltip = UKR_urdp_left_weaken_tt
 			UKR_urdp_factionalism = yes
 		}
 		fixed_random_seed = no
@@ -7103,20 +7089,20 @@ UKR_republic_decisions = {
 		}
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout UKR_urdp_centre_growth"
-			add_to_variable = { UKR_urdp_right_influence = -2 }
-			clamp_variable = {
-				var = UKR_urdp_right_influence
-				min = 0
-				max = 9
+			add_to_variable = {
+				UKR_urdp_right_influence = {
+					value = -2
+					clamp = { min = { value = UKR_urdp_right_influence multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_urdp_right_weaken_tt
 			}
-			custom_effect_tooltip = UKR_urdp_right_weaken_tt
-			add_to_variable = { UKR_urdp_left_influence = -2 }
-			clamp_variable = {
-				var = UKR_urdp_left_influence
-				min = 0
-				max = 9
+			add_to_variable = {
+				UKR_urdp_left_influence = {
+					value = -2
+					clamp = { min = { value = UKR_urdp_left_influence multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_urdp_left_weaken_tt
 			}
-			custom_effect_tooltip = UKR_urdp_left_weaken_tt
 			UKR_urdp_factionalism = yes
 		}
 		fixed_random_seed = no
@@ -7146,20 +7132,20 @@ UKR_republic_decisions = {
 		}
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout UKR_urdp_left_growth"
-			add_to_variable = { UKR_urdp_right_influence = -2 }
-			clamp_variable = {
-				var = UKR_urdp_right_influence
-				min = 0
-				max = 9
+			add_to_variable = {
+				UKR_urdp_right_influence = {
+					value = -2
+					clamp = { min = { value = UKR_urdp_right_influence multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_urdp_right_weaken_tt
 			}
-			custom_effect_tooltip = UKR_urdp_right_weaken_tt
-			add_to_variable = { UKR_urdp_centre_influence = -2 }
-			clamp_variable = {
-				var = UKR_urdp_centre_influence
-				min = 0
-				max = 9
+			add_to_variable = {
+				UKR_urdp_centre_influence = {
+					value = -2
+					clamp = { min = { value = UKR_urdp_centre_influence multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_urdp_centre_weaken_tt
 			}
-			custom_effect_tooltip = UKR_urdp_centre_weaken_tt
 			UKR_urdp_factionalism = yes
 		}
 		fixed_random_seed = no
@@ -8745,49 +8731,34 @@ UKR_black_sea_doctrine = {
 			if = {
 				limit = { has_completed_focus = UKR_bsd_customs_union }
 				add_to_variable = {
-					var = UKR_bsd_consumer_goods
-					value = -0.05
+					UKR_bsd_consumer_goods = {
+						value = -0.05
+						clamp = { min = { value = -0.25 subtract = UKR_bsd_consumer_goods } max = 0 }
+					}
 				}
 				add_to_variable = {
-					var = UKR_bsd_factory_output
-					value = 0.02
+					UKR_bsd_factory_output = {
+						value = 0.02
+						clamp = { min = 0 max = { value = 0.1 subtract = UKR_bsd_factory_output } }
+					}
 				}
 			}
 			if = {
 				limit = { has_completed_focus = UKR_bsd_political_union }
 				add_to_variable = {
-					var = UKR_bsd_political_power
-					value = 0.02
+					UKR_bsd_political_power = {
+						value = 0.02
+						clamp = { min = 0 max = { value = 0.2 subtract = UKR_bsd_political_power } }
+					}
 				}
 				add_to_variable = {
-					var = UKR_bsd_stability
-					value = 0.02
+					UKR_bsd_stability = {
+						value = 0.02
+						clamp = { min = 0 max = { value = 0.1 subtract = UKR_bsd_stability } }
+					}
 				}
 			}
-			clamp_variable = {
-				var = UKR_bsd_consumer_goods
-				min = -0.25
-				max = 0
-			}
-			clamp_variable = {
-				var = UKR_bsd_factory_output
-				min = 0
-				max = 0.1
-			}
-			clamp_variable = {
-				var = UKR_bsd_political_power
-				min = 0
-				max = 0.2
-			}
-			clamp_variable = {
-				var = UKR_bsd_stability
-				min = 0
-				max = 0.1
-			}
-			add_to_variable = {
-				var = UKR_bsu_members
-				value = 1
-			}
+			add_to_variable = { UKR_bsu_members = 1 }
 		}
 		fixed_random_seed = no
 	}

@@ -2305,13 +2305,12 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed IRQ_Cooperate_with_Cairo_Pact"
-			every_country = {
-				limit = {
-					is_in_faction_with = EGY
-				}
-				add_opinion_modifier = {
-					target = IRQ
-					modifier = KR_approves_of_govt
+			EGY = {
+				every_faction_member = {
+					add_opinion_modifier = {
+						target = IRQ
+						modifier = KR_approves_of_govt
+					}
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -2472,13 +2471,12 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed IRQ_Cooperate_with_Reichspakt"
-			every_country = {
-				limit = {
-					is_in_faction_with = GER
-				}
-				add_opinion_modifier = {
-					target = IRQ
-					modifier = KR_approves_of_govt
+			GER = {
+				every_faction_member = {
+					add_opinion_modifier = {
+						target = IRQ
+						modifier = KR_approves_of_govt
+					}
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line

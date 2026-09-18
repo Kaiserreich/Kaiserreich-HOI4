@@ -2750,26 +2750,40 @@ country_event = { #Famine
 	option = {
 		log = "[GetLogInfo]: event sichuan_events.123 option sichuan_events.123.a"
 		name = sichuan_events.123.a
-		custom_effect_tooltip = SZC_swap_to_major_famine
-		set_temp_variable = {
+		custom_effect_tooltip = {
+			localization_key = tooltip_replace_dynmod
+			DYNMOD1 = SZC_looming_agricultural_crisis
+			DYNMOD2 = SZC_major_famine
+		}
+		set_variable = {
 			SZC_famine_monthly_population = -2
 			tooltip = monthly_population_tooltip
 		}
-		set_temp_variable = {
+		set_variable = {
 			SZC_famine_conscription_factor = -0.3
 			tooltip = conscription_factor_tooltip
 		}
-		set_temp_variable = {
+		set_variable = {
 			SZC_famine_consumer_goods_factor = 0.5
 			tooltip = consumer_goods_factor_tooltip
 		}
-		set_temp_variable = {
-			SZC_famine_stability_factor = -0.1
-			tooltip = stability_factor_tooltip
+		effect_tooltip = {
+			set_variable = {
+				SZC_famine_stability_factor = -0.20
+				tooltip = stability_factor_tooltip
+			}
 		}
-		set_temp_variable = {
-			SZC_famine_war_support_factor = -1
-			tooltip = war_support_factor_tooltip
+		hidden_effect = {
+			set_variable = { SZC_famine_stability_factor = -0.25 }
+		}
+		effect_tooltip = {
+			set_variable = {
+				SZC_famine_war_support_factor = -0.95
+				tooltip = war_support_factor_tooltip
+			}
+		}
+		hidden_effect = {
+			set_variable = { SZC_famine_war_support_factor = -1 }
 		}
 		hidden_effect = {
 			remove_ideas = SZC_looming_agricultural_crisis
@@ -2796,13 +2810,6 @@ country_event = { #Famine
 			activate_targeted_decision = { decision = SZC_Import_Grain target = GXC }
 			activate_targeted_decision = { decision = SZC_Import_Grain target = AST }
 			activate_targeted_decision = { decision = SZC_Import_Grain target = CAN }
-
-			#dynamic modifier and variables
-			set_variable = { SZC_famine_monthly_population = -2 }
-			set_variable = { SZC_famine_stability_factor = -0.25 }
-			set_variable = { SZC_famine_war_support_factor = -1 }
-			set_variable = { SZC_famine_consumer_goods_factor = 0.5 }
-			set_variable = { SZC_famine_conscription_factor = -0.3 }
 
 			#system event
 			country_event = { id = sichuan_events.1002 days = 20 random_hours = 144 }
@@ -4241,24 +4248,21 @@ country_event = { #Affairs of the Red Basin
 			}
 			#Tian Songyao/Liu Wenhui favour opium
 			modifier = {
-				set_temp_variable = { SZC_opium_removal_desire_tian = party_popularity@authoritarian_democrat }
-				multiply_temp_variable = { SZC_opium_removal_desire_tian = -10 }
+				set_temp_variable = { SZC_opium_removal_desire_tian = { value = party_popularity@authoritarian_democrat multiply = -10 } }
 				add = SZC_opium_removal_desire_tian
 
 				has_country_flag = SZC_baoding_department_in_power
 				has_character = SZC_tian_songyao
 			}
 			modifier = {
-				set_temp_variable = { SZC_opium_removal_desire_liu = party_popularity@market_liberal }
-				multiply_temp_variable = { SZC_opium_removal_desire_liu = -10 }
+				set_temp_variable = { SZC_opium_removal_desire_liu = { value = party_popularity@market_liberal multiply = -10 } }
 				add = SZC_opium_removal_desire_liu
 
 				has_country_flag = SZC_baoding_department_in_power
 			}
 			#Deng Xihou/Xiong Kewu dislike opium
 			modifier = {
-				set_temp_variable = { SZC_opium_removal_desire_deng = party_popularity@social_conservative }
-				multiply_temp_variable = { SZC_opium_removal_desire_deng = 10 }
+				set_temp_variable = { SZC_opium_removal_desire_deng = { value = party_popularity@social_conservative multiply = 10 } }
 				add = SZC_opium_removal_desire_deng
 
 				has_country_flag = SZC_baoding_department_in_power
@@ -4301,24 +4305,21 @@ country_event = { #Affairs of the Red Basin
 			}
 			#Tian Songyao/Liu Wenhui favour opium
 			modifier = {
-				set_temp_variable = { SZC_opium_removal_desire_tian = party_popularity@authoritarian_democrat }
-				multiply_temp_variable = { SZC_opium_removal_desire_tian = 10 }
+				set_temp_variable = { SZC_opium_removal_desire_tian = { value = party_popularity@authoritarian_democrat multiply = 10 } }
 				add = SZC_opium_removal_desire_tian
 
 				has_country_flag = SZC_baoding_department_in_power
 				has_character = SZC_tian_songyao
 			}
 			modifier = {
-				set_temp_variable = { SZC_opium_removal_desire_liu = party_popularity@market_liberal }
-				multiply_temp_variable = { SZC_opium_removal_desire_liu = 10 }
+				set_temp_variable = { SZC_opium_removal_desire_liu = { value = party_popularity@market_liberal multiply = 10 } }
 				add = SZC_opium_removal_desire_liu
 
 				has_country_flag = SZC_baoding_department_in_power
 			}
 			#Deng Xihou/Xiong Kewu dislike opium
 			modifier = {
-				set_temp_variable = { SZC_opium_removal_desire_deng = party_popularity@social_conservative }
-				multiply_temp_variable = { SZC_opium_removal_desire_deng = -10 }
+				set_temp_variable = { SZC_opium_removal_desire_deng = { value = party_popularity@social_conservative multiply = -10 } }
 				add = SZC_opium_removal_desire_deng
 
 				has_country_flag = SZC_baoding_department_in_power
@@ -6911,8 +6912,7 @@ country_event = { #Two Liu's War
 		ai_chance = {
 			base = 80
 			modifier = {
-				set_temp_variable = { SZC_xiang_win_chance = 0.8 }
-				multiply_temp_variable = { SZC_xiang_win_chance = SZC_liu_wenhui_support }
+				set_temp_variable = { SZC_xiang_win_chance = { value = 0.8 multiply = SZC_liu_wenhui_support } }
 				factor = SZC_xiang_win_chance
 			}
 		}
@@ -6929,8 +6929,7 @@ country_event = { #Two Liu's War
 		ai_chance = {
 			base = 20
 			modifier = {
-				set_temp_variable = { SZC_wenhui_win_chance = 1.2 }
-				multiply_temp_variable = { SZC_wenhui_win_chance = SZC_liu_wenhui_support }
+				set_temp_variable = { SZC_wenhui_win_chance = { value = 1.2 multiply = SZC_liu_wenhui_support } }
 				factor = SZC_wenhui_win_chance
 			}
 			modifier = {

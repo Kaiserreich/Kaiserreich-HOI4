@@ -201,10 +201,7 @@ PAN_foreign_category = {
 		ai_will_do = { factor = 50 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete PAN_entente_trade"
-			add_to_variable = {
-				var = PAN_can_only_take_three
-				value = 1
-			}
+			add_to_variable = { PAN_can_only_take_three = 1 }
 		}
 
 		remove_effect = {

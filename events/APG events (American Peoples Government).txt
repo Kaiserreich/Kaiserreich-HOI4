@@ -54,7 +54,7 @@ country_event = { # The American Legion Appointment
 			APG_george_van_horn_moseley = { save_event_target_as = APG_legion_head }
 		}
 	}
-	option = { # Robert Elkington Wood
+	option = { # Robert E. Wood
 		log = "[GetLogInfo]: event america_peoples_government_events.1 option america_peoples_government_events.1.c"
 		name = america_peoples_government_events.1.c
 		ai_chance = {
@@ -71,7 +71,7 @@ country_event = { # The American Legion Appointment
 			popularity = 0.1
 		}
 		hidden_effect = {
-			APG_robert_elkington_wood = { save_event_target_as = APG_legion_head }
+			APG_robert_e_wood = { save_event_target_as = APG_legion_head }
 			country_event = { id = america_peoples_government_events.2 days = 15 } # The Business Plot
 		}
 	}
@@ -99,7 +99,7 @@ country_event = { # The Business Plot
 		log = "[GetLogInfo]: event america_peoples_government_events.2 option america_peoples_government_events.2.a"
 		name = america_peoples_government_events.2.a
 		retire_character = APG_henry_ford
-		retire_character = APG_fred_chase_koch
+		retire_character = APG_fred_c_koch
 		retire_character = APG_george_van_horn_moseley
 		add_popularity = {
 			ideology = paternal_autocrat
@@ -141,7 +141,7 @@ country_event = { # A special Session of Congress
 				country_event = { id = america_peoples_government_events.4 days = 5 }
 			}
 			else_if = {
-				limit = { event_target:APG_legion_head = { is_character = APG_robert_elkington_wood } }
+				limit = { event_target:APG_legion_head = { is_character = APG_robert_e_wood } }
 				country_event = { id = america_peoples_government_events.5 days = 5 }
 			}
 			else = {
@@ -295,7 +295,7 @@ country_event = { # Capital of America
 		owns_state = 371
 	}
 
-	option = { # Washington DC
+	option = { # Washington, D.C.
 		log = "[GetLogInfo]: event america_peoples_government_events.7 option america_peoples_government_events.7.a"
 		name = america_peoples_government_events.7.a
 		trigger = {
@@ -455,14 +455,14 @@ country_event = { # Replace Charles Coughlin?
 	is_triggered_only = yes
 
 	trigger = {
-		APG_charles_edward_coughlin = { is_political_advisor = yes }
+		APG_charles_coughlin = { is_political_advisor = yes }
 	}
 
 	option = { # Remove
 		log = "[GetLogInfo]: event america_peoples_government_events.11 option america_peoples_government_events.11.a"
 		name = america_peoples_government_events.11.a
 		ai_chance = { base = 0 }
-		retire_character = APG_charles_edward_coughlin
+		retire_character = APG_charles_coughlin
 	}
 	option = { # Keep
 		log = "[GetLogInfo]: event america_peoples_government_events.11 option america_peoples_government_events.11.b"
@@ -497,7 +497,7 @@ country_event = { # The Long Dynasty
 		log = "[GetLogInfo]: event america_peoples_government_events.12 option america_peoples_government_events.12.b"
 		name = america_peoples_government_events.12.b
 		add_political_power = -100
-		activate_advisor = APG_earl_kemp_long_advisor
+		activate_advisor = APG_earl_long_advisor
 	}
 }
 
@@ -528,7 +528,7 @@ country_event = { # The Truth about Hugo Black
 	is_triggered_only = yes
 
 	trigger = {
-		APG_hugo_lafayette_black = { is_political_advisor = yes }
+		APG_hugo_black = { is_political_advisor = yes }
 	}
 
 	option = { # An intolerable association
@@ -536,7 +536,7 @@ country_event = { # The Truth about Hugo Black
 		name = america_peoples_government_events.14.a
 		ai_chance = { base = 0 }
 		add_political_power = -50
-		retire_character = APG_hugo_lafayette_black
+		retire_character = APG_hugo_black
 	}
 
 	option = { # A man can change
@@ -687,13 +687,13 @@ country_event = { # Death of the King
 			if = {
 				limit = { has_government = authoritarian_democrat }
 				promote_character = {
-					character = APG_earl_kemp_long
+					character = APG_earl_long
 					ideology = authoritarian_democrat_subtype
 				}
 			}
 			else = {
 				promote_character = {
-					character = APG_earl_kemp_long
+					character = APG_earl_long
 					ideology = national_populist_subtype
 				}
 			}

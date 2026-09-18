@@ -1,4 +1,5 @@
 #AUS also affected by GER_crush_poland in GER file
+####Diplomacy
 
 AUS_hates_serbia = {
 	allowed = {
@@ -352,9 +353,11 @@ AUS_crush_hungary = {
 		check_variable = { enemies^num = 1 } #Only at war with HUN
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -397,5 +400,121 @@ AUS_no_volunteers_during_revolt = {
 		target = send_volunteers
 		id = AUS
 		value = -1000
+	}
+}
+
+AUS_crownlands_if_safe_should_support_faction = {
+	allowed = {
+		OR = {
+			original_tag = CZE
+			original_tag = HUN
+			original_tag = SLO
+			original_tag = TRS
+			original_tag = CRO
+			original_tag = BOS
+			original_tag = GAL
+		}
+	}
+	enable = {
+		has_war = yes
+		OR = {
+			GER = { surrender_progress > 0 }
+			AUS = { surrender_progress > 0 }
+		}
+		NOT = { surrender_progress > 0 }
+		NOT = { any_enemy_country = { is_neighbor_of = ROOT } }
+		OR = {
+			NOT = { any_owned_state = { is_coastal = yes } }
+			is_subject = no						#the collapse of Austria should make them extra willing to do this
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = garrison
+		value = -75
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		country_trigger = { NOT = { is_neighbor_of = FROM } }		#counteract 00_area_priority
+		value = 25
+	}
+}
+
+AUS_crownlands_support_western_front = {
+	allowed = {
+		OR = {
+			original_tag = CZE
+			original_tag = SLO
+			original_tag = CRO
+			original_tag = BOS
+		}
+	}
+	enable = {
+		has_war_with = FRA
+		OR = {
+			has_war_with = BEL
+			has_war_with = HOL
+			has_war_with = SWI
+			AUS = { exists = no }
+		}
+		FRA = { has_capitulated = no }
+		NOT = { surrender_progress > 0 }
+		NOT = { any_enemy_country = { is_neighbor_of = ROOT } }
+		OR = {
+			NOT = { any_owned_state = { is_coastal = yes } }
+			is_subject = no						#the collapse of Austria should make them extra willing to do this
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = garrison
+		value = -75
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		country_trigger = { is_in_faction_with = FRA }			#counteract 00_area_priority
+		value = 25
+	}
+}
+
+AUS_crownlands_support_eastern_front = {
+	allowed = {
+		OR = {
+			original_tag = HUN
+			original_tag = GAL
+			original_tag = TRS
+		}
+	}
+	enable = {
+		has_war_with = RUS
+		OR = {
+			has_war_with = LAT
+			has_war_with = UKR
+			has_war_with = POL
+			AUS = { exists = no }
+		}
+		RUS = { has_capitulated = no }
+		NOT = { surrender_progress > 0 }
+		NOT = { any_enemy_country = { is_neighbor_of = ROOT } }
+		OR = {
+			NOT = { any_owned_state = { is_coastal = yes } }
+			is_subject = no						#the collapse of Austria should make them extra willing to do this
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = garrison
+		value = -75
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		country_trigger = { is_in_faction_with = RUS }			#counteract 00_area_priority
+		value = 25
 	}
 }

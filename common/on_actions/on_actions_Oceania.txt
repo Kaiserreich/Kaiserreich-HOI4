@@ -28,43 +28,43 @@ on_actions = {
 							activate_advisor = NZL_peter_fraser_sic
 						}
 						else = {
-							activate_advisor = AST_joseph_benedict_chifley_sic
+							activate_advisor = AST_ben_chifley_sic
 						}
 					}
 					else_if = {
 						limit = { has_government = social_liberal }
-						activate_advisor = AST_john_thomas_lang_sic
+						activate_advisor = AST_jack_lang_sic
 					}
 					else_if = {
 						limit = { has_government = market_liberal }
 						if = {
-							limit = { has_character = AST_earle_christmas_grafton_page }
-							activate_advisor = AST_earle_christmas_grafton_page_sic
+							limit = { has_character = AST_earle_page }
+							activate_advisor = AST_earle_page_sic
 						}
 						else = {
-							activate_advisor = AST_arthur_william_fadden_sic
+							activate_advisor = AST_arthur_fadden_sic
 						}
 					}
 					else_if = {
 						limit = { has_government = social_conservative }
 						if = {
-							limit = { has_character = AST_stanley_melbourne_bruce }
-							activate_advisor = AST_stanley_melbourne_bruce_sic
+							limit = { has_character = AST_stanley_bruce }
+							activate_advisor = AST_stanley_bruce_sic
 						}
 						else_if = {
 							limit = {
-								has_character = NZL_sidney_george_holland
-								NZL_sidney_george_holland = { has_advisor_role = second_in_command }
+								has_character = NZL_sidney_holland
+								NZL_sidney_holland = { has_advisor_role = second_in_command }
 							}
-							activate_advisor = NZL_sidney_george_holland_sic
+							activate_advisor = NZL_sidney_holland_sic
 						}
 						else = {
-							activate_advisor = AST_robert_gordon_menzies_sic
+							activate_advisor = AST_robert_menzies_sic
 						}
 					}
 					else_if = {
 						limit = { has_government = authoritarian_democrat }
-						activate_advisor = AST_william_morris_hughes_sic
+						activate_advisor = AST_billy_hughes_sic
 					}
 					else_if = {
 						limit = {
@@ -129,8 +129,10 @@ on_actions = {
 						}
 					}
 				}
-				country_event = { id = australasia_events.256 days = 20 random_days = 10 } # The Volunteer Defence Corps
-				country_event = { id = australasia_events.263 days = 50 random_days = 15 } # Formation of a Māori Battalion?
+				AST = {
+					country_event = { id = australasia_events.256 days = 20 random_days = 10 } # The Volunteer Defence Corps
+					country_event = { id = australasia_events.263 days = 50 random_days = 15 } # Formation of a Māori Battalion?
+				}
 			}
 			### Add AST to INT if the two go to war during scripted ENT/AST war
 			if = {

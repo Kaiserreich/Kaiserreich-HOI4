@@ -2707,31 +2707,23 @@ SHX_QIE_ties = {
 			}
 			modifier = {
 				add = 5
-				AND = {
-					has_country_flag = SHX_paying_with_inf
-					check_variable = { SHX.SHX_QIE_influence_variable > 10 }
-				}
+				has_country_flag = SHX_paying_with_inf
+				check_variable = { SHX.SHX_QIE_influence_variable > 10 }
 			}
 			modifier = {
 				add = 5
-				AND = {
-					has_country_flag = SHX_paying_with_inf
-					has_political_power > 100
-				}
+				has_country_flag = SHX_paying_with_inf
+				has_political_power > 100
 			}
 			modifier = {
 				add = 5
-				AND = {
-					has_country_flag = SHX_paying_with_pp
-					has_political_power < 100
-				}
+				has_country_flag = SHX_paying_with_pp
+				has_political_power < 100
 			}
 			modifier = {
 				add = 10
-				AND = {
-					has_country_flag = SHX_paying_with_pp
-					check_variable = { SHX.SHX_QIE_influence_variable < 10 }
-				}
+				has_country_flag = SHX_paying_with_pp
+				check_variable = { SHX.SHX_QIE_influence_variable < 10 }
 			}
 			modifier = {
 				add = 10000
@@ -3118,10 +3110,8 @@ SHX_QIE_ties = {
 
 	SHX_build_a_mill_dec = { # Build a mill in Taiyuan
 		visible = {
-			AND = {
-				has_completed_focus = SHX_grand_state_project
-				has_country_flag = SHX_build_a_mill
-			}
+			has_completed_focus = SHX_grand_state_project
+			has_country_flag = SHX_build_a_mill
 		}
 		fire_only_once = yes
 		icon = GFX_decision_electrify
@@ -3195,10 +3185,8 @@ SHX_QIE_ties = {
 	}
 	SHX_build_a_factory_dec = { # Build a factory in Taiyuan
 		visible = {
-			AND = {
-				has_completed_focus = SHX_grand_state_project
-				has_country_flag = SHX_build_a_factory
-			}
+			has_completed_focus = SHX_grand_state_project
+			has_country_flag = SHX_build_a_factory
 		}
 		cancel_trigger = { QIE = { exists = no } }
 		fire_only_once = yes
@@ -3473,10 +3461,8 @@ SHX_QIE_shanxi_diplomacy_decisions_category = {
 	SHX_QIE_begin_negotiations = {
 		icon = GFX_decision_generic_agreement
 		visible = {
-			AND = {
-				country_exists = SHX
-				has_completed_focus = QIE_future_of_the_zhili_clique
-			}
+			country_exists = SHX
+			has_completed_focus = QIE_future_of_the_zhili_clique
 			SHX = { is_subject = no }
 		}
 		available = {
@@ -3556,17 +3542,15 @@ SHX_QIE_shanxi_diplomacy_decisions_category = {
 	SHX_QIE_relief_for_shanxi = {
 		icon = GFX_decision_give_cash
 		visible = {
-			AND = {
-				SHX = {
-					exists = yes
-					has_completed_focus = SHX_ten_year_plan
-					NOT = {
-						has_country_flag = SHX_reject_BM_relief
-					}
+			SHX = {
+				exists = yes
+				has_completed_focus = SHX_ten_year_plan
+				NOT = {
+					has_country_flag = SHX_reject_BM_relief
 				}
-				has_country_flag = QIE_influence_shanxi_available
-				NOT = { SHX = { has_completed_focus = SHX_destiny } }
 			}
+			has_country_flag = QIE_influence_shanxi_available
+			NOT = { SHX = { has_completed_focus = SHX_destiny } }
 		}
 		available = {
 			SHX = {
@@ -3610,18 +3594,16 @@ SHX_QIE_shanxi_diplomacy_decisions_category = {
 	SHX_QIE_buyout_local_companies = {
 		icon = GFX_decision_global_trade
 		visible = {
-			AND = {
-				SHX = {
-					exists = yes
-					has_completed_focus = SHX_seek_outside_capital
-					has_active_mission = SHX_industrial_reform_mission_timer
-					NOT = {
-						has_country_flag = SHX_reject_buyout
-					}
+			SHX = {
+				exists = yes
+				has_completed_focus = SHX_seek_outside_capital
+				has_active_mission = SHX_industrial_reform_mission_timer
+				NOT = {
+					has_country_flag = SHX_reject_buyout
 				}
-				has_country_flag = QIE_influence_shanxi_available
-				NOT = { SHX = { has_completed_focus = SHX_destiny } }
 			}
+			has_country_flag = QIE_influence_shanxi_available
+			NOT = { SHX = { has_completed_focus = SHX_destiny } }
 		}
 		available = {
 			NOT = { has_war_with = SHX }
@@ -3664,18 +3646,16 @@ SHX_QIE_shanxi_diplomacy_decisions_category = {
 	SHX_QIE_entrench_our_grip = {
 		icon = GFX_decision_hand_grab
 		visible = {
-			AND = {
-				SHX = {
-					exists = yes
-					has_completed_focus = SHX_mass_privatization
-					has_active_mission = SHX_industrial_reform_mission_timer
-					NOT = {
-						has_country_flag = SHX_reject_entrenchment
-					}
+			SHX = {
+				exists = yes
+				has_completed_focus = SHX_mass_privatization
+				has_active_mission = SHX_industrial_reform_mission_timer
+				NOT = {
+					has_country_flag = SHX_reject_entrenchment
 				}
-				has_country_flag = QIE_influence_shanxi_available
-				NOT = { SHX = { has_completed_focus = SHX_destiny } }
 			}
+			has_country_flag = QIE_influence_shanxi_available
+			NOT = { SHX = { has_completed_focus = SHX_destiny } }
 		}
 		available = {
 			NOT = { has_war_with = SHX }
@@ -3721,18 +3701,16 @@ SHX_QIE_shanxi_diplomacy_decisions_category = {
 	SHX_QIE_agricultural_relief_package = {
 		icon = GFX_decision_generic_agriculture
 		visible = {
-			AND = {
-				SHX = {
-					exists = yes
-					has_completed_focus = SHX_agricultural_investments
-					has_active_mission = SHX_agricultural_reform_mission_timer
-					NOT = {
-						has_country_flag = SHX_reject_agriculture
-					}
+			SHX = {
+				exists = yes
+				has_completed_focus = SHX_agricultural_investments
+				has_active_mission = SHX_agricultural_reform_mission_timer
+				NOT = {
+					has_country_flag = SHX_reject_agriculture
 				}
-				has_country_flag = QIE_influence_shanxi_available
-				NOT = { SHX = { has_completed_focus = SHX_destiny } }
 			}
+			has_country_flag = QIE_influence_shanxi_available
+			NOT = { SHX = { has_completed_focus = SHX_destiny } }
 		}
 		available = {
 			NOT = { has_war_with = SHX }
@@ -3775,18 +3753,16 @@ SHX_QIE_shanxi_diplomacy_decisions_category = {
 	SHX_QIE_literacy_campaign = {
 		icon = GFX_decision_peace_dove
 		visible = {
-			AND = {
-				SHX = {
-					exists = yes
-					has_completed_focus = SHX_review_education
-					has_active_mission = SHX_educational_reform_mission_timer
-					NOT = {
-						has_country_flag = SHX_reject_literacy
-					}
+			SHX = {
+				exists = yes
+				has_completed_focus = SHX_review_education
+				has_active_mission = SHX_educational_reform_mission_timer
+				NOT = {
+					has_country_flag = SHX_reject_literacy
 				}
-				has_country_flag = QIE_influence_shanxi_available
-				NOT = { SHX = { has_completed_focus = SHX_destiny } }
 			}
+			has_country_flag = QIE_influence_shanxi_available
+			NOT = { SHX = { has_completed_focus = SHX_destiny } }
 		}
 		available = {
 			NOT = { has_war_with = SHX }
@@ -3996,13 +3972,11 @@ SHX_QIE_shanxi_diplomacy_decisions_category = {
 	SHX_QIE_prop_up_yan = { #Prop up Yan Xishan's Government
 		icon = GFX_decision_chinese_flag
 		visible = {
-			AND = {
-				SHX = {
-					exists = yes
-					has_active_mission = SHX_looming_gmj_coup
-				}
-				has_country_flag = QIE_influence_shanxi_available
+			SHX = {
+				exists = yes
+				has_active_mission = SHX_looming_gmj_coup
 			}
+			has_country_flag = QIE_influence_shanxi_available
 		}
 		available = {
 			NOT = { has_war_with = SHX }
@@ -4041,12 +4015,8 @@ SHX_QIE_shanxi_diplomacy_decisions_category = {
 	SHX_QIE_commission_order = { #Commission Order from Taiyuan Arsenal
 		icon = GFX_decision_artillery
 		visible = {
-			AND = {
-				SHX = {
-					exists = yes
-				}
-				has_country_flag = QIE_influence_shanxi_available
-			}
+			country_exists = SHX
+			has_country_flag = QIE_influence_shanxi_available
 		}
 		available = {
 			NOT = { has_war_with = SHX }
@@ -4091,16 +4061,14 @@ SHX_QIE_shanxi_diplomacy_decisions_category = {
 	SHX_QIE_secure_favorable_trade_deal = { #Secure Favorable Trade Deal
 		icon = GFX_decision_global_trade
 		visible = {
-			AND = {
-				SHX = {
-					exists = yes
-					NOT = {
-						has_idea = SHX_QIE_favorable_trade_deal
-					}
-					has_country_flag = SHX_private_coal_flag
+			SHX = {
+				exists = yes
+				NOT = {
+					has_idea = SHX_QIE_favorable_trade_deal
 				}
-				has_country_flag = QIE_influence_shanxi_available
+				has_country_flag = SHX_private_coal_flag
 			}
+			has_country_flag = QIE_influence_shanxi_available
 		}
 		available = {
 			NOT = { has_war_with = SHX }
@@ -4259,7 +4227,7 @@ SHX_zhi_feng_war = {
 				factor = 0
 				OR = {
 					AND = {
-						check_variable = { num_divisions < 25 }
+						num_divisions < 25
 						var:608.owner = { has_war = no }
 					}
 					AND = {

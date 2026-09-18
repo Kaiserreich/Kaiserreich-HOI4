@@ -3,24 +3,17 @@
 #	By Beelzebub and Ropa
 update_GUA_UFC = {
 	clamp_variable = { var = UFC_power min = 0 max = 100 }
-	set_variable = { GUA_UFC_modifier = UFC_power } #political_power_gain and war_support_factor
-	multiply_variable = { var = GUA_UFC_modifier value = -0.004 }
-	set_variable = { GUA_UFC_construction_speed = UFC_power }
-	multiply_variable = { var = GUA_UFC_construction_speed value = 0.003 }
-	set_variable = { GUA_UFC_consumer_goods = UFC_power }
-	multiply_variable = { var = GUA_UFC_consumer_goods value = -0.003 }
+	set_variable = { GUA_UFC_modifier = { value = UFC_power multiply = -0.004 } } #political_power_gain and war_support_factor
+	set_variable = { GUA_UFC_construction_speed = { value = UFC_power multiply = 0.003 } }
+	set_variable = { GUA_UFC_consumer_goods = { value = UFC_power multiply = -0.003 } }
 }
 
 update_CENmil_UFC = {
 	clamp_variable = { var = UFC_power min = 0 max = 100 }
-	set_variable = { CENmil_UFC_pol_power_gain = UFC_power }
-	multiply_variable = { var = CENmil_UFC_pol_power_gain value = -0.006 }
-	set_variable = { CENmil_UFC_construction_speed = UFC_power }
-	multiply_variable = { var = CENmil_UFC_construction_speed value = 0.003 }
-	set_variable = { CENmil_UFC_consumer_goods = UFC_power }
-	multiply_variable = { var = CENmil_UFC_consumer_goods value = -0.003 }
-	set_variable = { CENmil_UFC_modifier = UFC_power } #party_popularity_stability_factor and war_support_factor
-	multiply_variable = { var = CENmil_UFC_modifier value = -0.004 }
+	set_variable = { CENmil_UFC_pol_power_gain = { value = UFC_power multiply = -0.006 } }
+	set_variable = { CENmil_UFC_construction_speed = { value = UFC_power multiply = 0.003 } }
+	set_variable = { CENmil_UFC_consumer_goods = { value = UFC_power multiply = -0.003 } }
+	set_variable = { CENmil_UFC_modifier = { value = UFC_power multiply = -0.004 } } #party_popularity_stability_factor and war_support_factor
 }
 
 CEN_initiate_unification = {
@@ -111,6 +104,10 @@ CEN_initiate_unification = {
 					CENmil_chaotic_army_idea
 				}
 				country_event = { id = central_america_dictatorship_events.1 days = 1 }
+				if = {
+					limit = { has_global_flag = CEN_saviour_statue }
+					country_event = { id = central_america_dictatorship_events.43 days = 300 random_days = 50 }
+				}
 				set_variable = { UFC_power = 35 }
 				update_CENmil_UFC = yes
 				add_dynamic_modifier = { modifier = CENmil_united_fruit }
@@ -145,20 +142,6 @@ CEN_initiate_unification = {
 					long_name = CEN_social_democrat_liberal_long
 				}
 			}
-		}
-
-		## Clear temporary faction event targets
-		if = {
-			limit = { has_event_target = CEN_socialist_leader }
-			clear_global_event_target = CEN_socialist_leader
-		}
-		if = {
-			limit = { has_event_target = CEN_liberal_leader }
-			clear_global_event_target = CEN_liberal_leader
-		}
-		if = {
-			limit = { has_event_target = CEN_military_leader }
-			clear_global_event_target = CEN_military_leader
 		}
 
 		## Transfer attributes from unifier to CEN
@@ -200,6 +183,22 @@ CEN_initiate_unification = {
 		CEN_move_characters = yes
 
 		CEN = {
+			### Demote non-unifier Field Marshals the AI promoted
+			meta_effect = {
+				text = {
+					every_unit_leader = {
+						limit = {
+							NOT = {
+								has_character_flag = CEN_field_marshal
+								has_character_flag = [FLAG]
+							}
+						}
+						demote_to_general = yes
+					}
+				}
+				FLAG = "[ROOT.GetTag]_character"
+			}
+
 			### Refund PP sum of advisors and companies hired
 			add_political_power = CEN_government_ideas_refund_value
 
@@ -469,6 +468,8 @@ CEN_complete_unification = {
 	}
 
 	hidden_effect = {
+		## Fire shared Central America flavour events
+		CEN_initiate_flavour_events = yes
 		## Reset and give extra manpower to unified CEN
 		CEN_transfer_manpower = yes
 		## Activate Ferrer's Legion decisions
@@ -488,30 +489,29 @@ CEN_complete_unification = {
 
 CEN_move_characters = {
 	hidden_effect = {
-		if = {
-			limit = { is_central_american_tag = yes }
-			random_character = {
-				limit = { has_trait = KR_head_of_intelligence }
-				meta_effect = {
-					text = { set_character_flag = [FLAG] }
-					FLAG = "[ROOT.GetTag]_character"
-				}
-				set_nationality = CEN
-			}
-		}
-		else = {
-			random_country = {
-				limit = {
-					is_central_american_tag = yes
-					NOT = { tag = COS }
-				}
-				random_character = {
-					limit = { has_trait = KR_head_of_intelligence }
-					meta_effect = {
-						text = { set_character_flag = [FLAG] }
-						FLAG = "[PREV.GetTag]_character"
+		CEN = {
+			if = {
+				limit = { NOT = { any_character = { has_trait = KR_head_of_intelligence } } }
+				PREV = {
+					if = {
+						limit = { tag = CEN }
+						HON = {
+							HON_rafael_camilo_rivera_reina = {
+								set_character_flag = HON_character
+								set_nationality = CEN
+							}
+						}
 					}
-					set_nationality = CEN
+					else = {
+						random_character = {
+							limit = { has_trait = KR_head_of_intelligence }
+							meta_effect = {
+								text = { set_character_flag = [FLAG] }
+								FLAG = "[ROOT.GetTag]_character"
+							}
+							set_nationality = CEN
+						}
+					}
 				}
 			}
 		}
@@ -548,6 +548,8 @@ CEN_move_characters = {
 							is_character = ELS_miguel_marmol
 							is_character = ELS_oscar_bolanos
 							is_character = ELS_reynaldo_galindo_pohl
+							is_character = ELS_felix_de_jesus_osegueda
+							is_character = ELS_joaquin_valdes
 						}
 					}
 					set_character_flag = ELS_character
@@ -566,6 +568,7 @@ CEN_move_characters = {
 							is_character = HON_rafael_medina_raudales
 							is_character = HON_rafael_diaz_chavez
 							is_character = HON_jose_lino_zuniga
+							is_character = HON_luis_alonzo_fiallos
 						}
 					}
 					set_character_flag = HON_character
@@ -626,6 +629,7 @@ CEN_move_characters = {
 						NOT = {
 							is_character = ELS_claudia_lars
 							is_character = ELS_fidel_cristino_garay
+							is_character = ELS_jose_antonio_lorenzana
 							is_character = ELS_oscar_bolanos
 							is_character = ELS_reynaldo_galindo_pohl
 						}
@@ -646,6 +650,7 @@ CEN_move_characters = {
 							is_character = HON_rafael_medina_raudales
 							is_character = HON_rafael_diaz_chavez
 							is_character = HON_jose_lino_zuniga
+							is_character = HON_luis_alonzo_fiallos
 						}
 					}
 					set_character_flag = HON_character
@@ -672,6 +677,7 @@ CEN_move_characters = {
 		else = {
 			GUA = {
 				GUA_add_liberal_generals = yes
+				GUA_lazaro_chacon_gonzalez = { promote_to_field_marshal = yes } # Default CENDem FM
 				every_character = {
 					limit = {
 						CEN_character_should_transfer_liberal = yes
@@ -700,6 +706,7 @@ CEN_move_characters = {
 							is_character = ELS_fidel_cristino_garay
 							is_character = ELS_oscar_bolanos
 							is_character = ELS_reynaldo_galindo_pohl
+							is_character = ELS_tito_tomas_calvo
 						}
 					}
 					set_character_flag = ELS_character
@@ -718,6 +725,7 @@ CEN_move_characters = {
 							is_character = HON_rafael_medina_raudales
 							is_character = HON_rafael_diaz_chavez
 							is_character = HON_jose_lino_zuniga
+							is_character = HON_luis_alonzo_fiallos
 						}
 					}
 					set_character_flag = HON_character
@@ -758,21 +766,28 @@ CEN_conflict_escalates = {
 		if = {
 			limit = {
 				NOT = {
-					has_event_target = CEN_socialist_leader
-					has_event_target = CEN_liberal_leader
-					has_event_target = CEN_military_leader
-				}
-			}
-			every_country = {
-				limit = {
-					OR = {
-						tag = ELS
-						tag = GUA
-						tag = HON
-						tag = NIC
+					any_country_of = {
+						target = constant:country_groups.central_american_unifiers
+						is_faction_leader = yes
+						scope:faction = { has_variable = central_america_unification_faction }
 					}
 				}
-				activate_mission = CEN_conflict_escalates_mission
+			}
+			if = {
+				limit = { country_exists = ELS }
+				ELS = { activate_mission = CEN_conflict_escalates_mission }
+			}
+			if = {
+				limit = { country_exists = GUA }
+				GUA = { activate_mission = CEN_conflict_escalates_mission }
+			}
+			if = {
+				limit = { country_exists = HON }
+				HON = { activate_mission = CEN_conflict_escalates_mission }
+			}
+			if = {
+				limit = { country_exists = NIC }
+				NIC = { activate_mission = CEN_conflict_escalates_mission }
 			}
 			CEN = { set_variable = { CEN_lose_manpower_var = 0 } }
 		}
@@ -1019,6 +1034,82 @@ CENdem_increase_radical_land_reform_idea = {
 	}
 }
 
+CEN_initiate_flavour_events = {
+	# Fire shared Central America flavour events for CEN based on date after forming
+	CEN = {
+		## Don't fire events if past date already
+		set_temp_variable = { disable_days_to_event_clamping = 1 }
+
+		## First event should fire around 12th of February 1939
+		set_temp_variable = { days_to_event = 1137 }
+		calculate_days_since_game_start = yes
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.2 days = days_to_event } # The Izalco Volcano Intensifies Its Strombolian Activity
+		}
+
+		add_to_temp_variable = { days_to_event = 181 } # 1318 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.8 days = days_to_event } # Foundation of the Museo Regional de Arqueología in Copán
+		}
+
+		add_to_temp_variable = { days_to_event = 91 } # 1409 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.1 days = days_to_event } # Archaeological Expedition to the San Andres Site
+		}
+
+		add_to_temp_variable = { days_to_event = 282 } # 1691 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.12 days = days_to_event } # A Tropical Storm hits the Nicaraguan Atlantic shores
+		}
+
+		add_to_temp_variable = { days_to_event = 213 } # 1904 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.3 days = days_to_event } # The Izalco Volcano Intensifies Its Strombolian Activity Even Further
+		}
+
+		add_to_temp_variable = { days_to_event = 193 } # 2097 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.14 days = days_to_event } # Another Hurricane Hits the Nicaraguan Atlantic shores
+		}
+
+		add_to_temp_variable = { days_to_event = 79 } # 2176 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.20 days = days_to_event } # Publication of the Book 'Archaeology of the North Coast of Honduras'
+		}
+
+		add_to_temp_variable = { days_to_event = 232 } # 2408 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.7 days = days_to_event } # Earthquake Hits Guatemala!
+		}
+
+		add_to_temp_variable = { days_to_event = 1165 } # 3573 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.5 days = days_to_event } # Flooding at San Salvador
+		}
+
+		add_to_temp_variable = { days_to_event = 192 } # 3765 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.4 days = days_to_event } # The Izalco Volcano Goes Back to Normal Activity Levels
+		}
+
+		add_to_temp_variable = { days_to_event = 1836 } # 5601 days
+		if = {
+			limit = { check_variable = { days_to_event > 0 } }
+			country_event = { id = central_america_flavour_events.11 days = days_to_event } # Earthquake Hits El Salvador (1951)
+		}
+	}
+}
+
 CEN_transfer_manpower = {
 	## Give CEN manpower based on the difference between recruitable and max population upon unification
 	CEN = {
@@ -1115,6 +1206,7 @@ CEN_reset_ideas = {
 		CENmil_small_units_idea
 		CENmil_extended_recruitment
 		CENmil_guerilla_tactics_idea
+		CENmil_guerilla_tactics_idea_2
 		CENmil_powerful_military
 		CENmil_air_officers
 		CENmil_air_officers2
@@ -2149,6 +2241,19 @@ ELS_add_socialist_generals = {
 			promote_character = radical_socialist_subtype
 		}
 	}
+	if = {
+		limit = { NOT = { has_character = ELS_jose_asensio_menendez } }
+		ELS_jose_asensio_menendez = { set_nationality = PREV }
+	}
+	if = {
+		limit = { NOT = { has_character = ELS_alfonso_marroquin_calvo } }
+		ELS_alfonso_marroquin_calvo = { set_nationality = PREV }
+	}
+
+	if = {
+		limit = { NOT = { has_character = ELS_felix_de_jesus_osegueda } }
+		ELS_felix_de_jesus_osegueda = { set_nationality = PREV }
+	}
 	ELS_remove_reactionary_generals = yes
 	ELS_remove_democratic_generals = yes
 }
@@ -2162,6 +2267,22 @@ ELS_remove_socialist_generals = {
 		limit = { has_character = ELS_feliciano_ama }
 		retire_character = ELS_feliciano_ama
 	}
+	if = {
+		limit = { has_democratic_government = no }
+		if = {
+			limit = { has_character = ELS_jose_asensio_menendez }
+			retire_character = ELS_jose_asensio_menendez
+		}
+		if = {
+			limit = { has_character = ELS_alfonso_marroquin_calvo }
+			retire_character = ELS_alfonso_marroquin_calvo
+		}
+	}
+
+	if = {
+		limit = { has_character = ELS_felix_de_jesus_osegueda }
+		retire_character = ELS_felix_de_jesus_osegueda
+	}
 }
 
 ELS_add_democratic_generals = {
@@ -2173,11 +2294,28 @@ ELS_add_democratic_generals = {
 		}
 	}
 	if = {
+		limit = { NOT = { has_character = ELS_jose_asensio_menendez } }
+		ELS_jose_asensio_menendez = { set_nationality = PREV }
+	}
+	if = {
+		limit = { NOT = { has_character = ELS_alfonso_marroquin_calvo } }
+		ELS_alfonso_marroquin_calvo = { set_nationality = PREV }
+	}
+	if = {
 		limit = {
 			NOT = { has_character = ELS_andres_ignacio_menendez }
 			ELS_andres_ignacio_menendez = { has_character_flag = ELS_keep_menendez }
 		}
 		ELS_andres_ignacio_menendez = { set_nationality = PREV }
+	}
+
+	if = {
+		limit = { NOT = { has_character = ELS_antonio_claramount_lucero } }
+		ELS_antonio_claramount_lucero = { set_nationality = PREV }
+	}
+	if = {
+		limit = { NOT = { has_character = ELS_tito_tomas_calvo } }
+		ELS_tito_tomas_calvo = { set_nationality = PREV }
 	}
 	ELS_remove_socialist_generals = yes
 	ELS_remove_reactionary_generals = yes
@@ -2194,6 +2332,26 @@ ELS_remove_democratic_generals = {
 			has_authoritarian_government = no
 		}
 		retire_character = ELS_andres_ignacio_menendez
+	}
+	if = {
+		limit = { has_socialist_government = no }
+		if = {
+			limit = { has_character = ELS_jose_asensio_menendez }
+			retire_character = ELS_jose_asensio_menendez
+		}
+		if = {
+			limit = { has_character = ELS_alfonso_marroquin_calvo }
+			retire_character = ELS_alfonso_marroquin_calvo
+		}
+	}
+
+	if = {
+		limit = { has_character = ELS_antonio_claramount_lucero }
+		retire_character = ELS_antonio_claramount_lucero
+	}
+	if = {
+		limit = { has_character = ELS_tito_tomas_calvo }
+		retire_character = ELS_tito_tomas_calvo
 	}
 }
 
@@ -2216,6 +2374,15 @@ ELS_add_reactionary_generals = {
 		limit = { NOT = { has_character = ELS_andres_ignacio_menendez } }
 		ELS_andres_ignacio_menendez = { set_nationality = PREV }
 	}
+
+	if = {
+		limit = { NOT = { has_character = ELS_mauro_espinola_castro } }
+		ELS_mauro_espinola_castro = { set_nationality = PREV }
+	}
+	if = {
+		limit = { NOT = { has_character = ELS_jose_antonio_lorenzana } }
+		ELS_jose_antonio_lorenzana = { set_nationality = PREV }
+	}
 	ELS_remove_socialist_generals = yes
 	ELS_remove_democratic_generals = yes
 }
@@ -2235,6 +2402,15 @@ ELS_remove_reactionary_generals = {
 			ELS_andres_ignacio_menendez = { NOT = { has_character_flag = ELS_keep_menendez } }
 		}
 		retire_character = ELS_andres_ignacio_menendez
+	}
+
+	if = {
+		limit = { has_character = ELS_mauro_espinola_castro }
+		retire_character = ELS_mauro_espinola_castro
+	}
+	if = {
+		limit = { has_character = ELS_jose_antonio_lorenzana }
+		retire_character = ELS_jose_antonio_lorenzana
 	}
 }
 
@@ -3028,12 +3204,6 @@ COS_puppet_setup = {
 			set_temp_variable = { cos_UFC_change = -100 }
 			update_UFC_influence = yes
 			remove_ideas = COS_influence_of_the_UFC_idea
-			if = {
-				limit = { has_idea = COS_UFC_Profit_idea }
-				set_temp_variable = { cos_profit_change = { value = cos_profit_factor multiply = -1 } }
-				update_UFC_profits = yes
-				remove_ideas = COS_UFC_Profit_idea
-			}
 		}
 		if = {
 			limit = { has_idea = COS_influence_of_the_ZKG_idea }
@@ -3082,6 +3252,15 @@ COS_puppet_setup = {
 			popularity = 60
 		}
 	}
+	remove_targeted_decision = { decision = COS_join_faction target = GER }
+	remove_targeted_decision = { decision = COS_join_faction target = ENT }
+
+	COS_clear_cortes = yes
+	COS_disable_calderon_decisions = yes
+	COS_clear_ferrer = yes
+	COS_clear_elections_leadup = yes
+
+	clr_country_flag = COS_extended_emergency_powers
 }
 
 ##############

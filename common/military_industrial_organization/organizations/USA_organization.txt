@@ -1132,13 +1132,7 @@ USA_fisher_body_organisation = { #Fisher Body
 		icon = GFX_generic_mio_trait_icon_resources
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = {
-					localization_key = MIO_more_than_X_funds
-					FUNDS = "700"
-				}
-				check_variable = { funds > 700 }
-			}
+			check_variable = { funds > 700 tooltip = MIO_more_than_X_funds }
 			custom_override_tooltip = {
 				tooltip = USA_MIO_upgrade_chosen
 				OR = {
@@ -1659,14 +1653,7 @@ USA_fisher_body_organisation = { #Fisher Body
 		icon = GFX_generic_mio_trait_icon_resources
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = {
-					localization_key = MIO_more_than_X_funds
-					FUNDS = "700"
-				}
-				check_variable = { funds > 700 }
-			}
-			check_variable = { funds > 700 }
+			check_variable = { funds > 700 tooltip = MIO_more_than_X_funds }
 			custom_override_tooltip = {
 				tooltip = USA_MIO_upgrade_chosen
 				OR = {
@@ -5047,12 +5034,7 @@ USA_kaiser_shipyards_organisation = { #Kaiser Shipyards
 	}
 
 	equipment_type = {
-		mio_cat_eq_all_carrier
-		mio_cat_eq_all_battleship
-		mio_cat_eq_all_cruiser
-		mio_cat_eq_all_destroyer
-		submarine
-		convoy_1
+		mio_cat_eq_all_ships
 	}
 
 	research_categories = {
@@ -5129,13 +5111,7 @@ USA_kaiser_shipyards_organisation = { #Kaiser Shipyards
 		icon = GFX_KR_generic_mio_trait_icon_naval_refit_speed
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = {
-					localization_key = MIO_more_than_X_funds
-					FUNDS = "700"
-				}
-				check_variable = { funds > 700 }
-			}
+			check_variable = { funds > 700 tooltip = MIO_more_than_X_funds }
 		}
 
 		mutually_exclusive = { kaiser_shipyards_upgrade_2 }
@@ -5433,12 +5409,7 @@ USA_brooklyn_naval_yards_organisation = { #New York Shipbuilding
 	}
 
 	equipment_type = {
-		mio_cat_eq_all_carrier
-		mio_cat_eq_all_battleship
-		mio_cat_eq_all_cruiser
-		mio_cat_eq_all_destroyer
-		submarine
-		convoy_1
+		mio_cat_eq_all_ships
 	}
 
 	research_categories = {
@@ -6558,12 +6529,7 @@ USA_mare_island_naval_shipyard_organisation = { #Mare Island Naval Shipyard
 	}
 
 	equipment_type = {
-		mio_cat_eq_all_carrier
-		mio_cat_eq_all_battleship
-		mio_cat_eq_all_cruiser
-		mio_cat_eq_all_destroyer
-		submarine
-		convoy_1
+		mio_cat_eq_all_ships
 	}
 
 	research_categories = {
@@ -7376,11 +7342,7 @@ USA_bell_organisation = { #Bell
 	}
 
 	equipment_type = {
-		small_plane_airframe
-		medium_plane_airframe
-		large_plane_airframe
-		cv_small_plane_airframe
-		transport_plane_equipment
+		mio_cat_eq_all_aircraft
 	}
 
 	research_categories = {
@@ -7831,11 +7793,7 @@ USA_consolidated_organisation = { #Consolidated
 	}
 
 	equipment_type = {
-		small_plane_airframe
-		medium_plane_airframe
-		large_plane_airframe
-		cv_small_plane_airframe
-		transport_plane_equipment
+		mio_cat_eq_all_aircraft
 	}
 
 	research_categories = {
@@ -8018,14 +7976,7 @@ USA_consolidated_organisation = { #Consolidated
 		icon = GFX_generic_mio_trait_icon_air_ground_attack
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = {
-					localization_key = MIO_more_than_X_funds
-					FUNDS = "700"
-				}
-				check_variable = { funds > 700 }
-			}
-			check_variable = { funds > 700 }
+			check_variable = { funds > 700 tooltip = MIO_more_than_X_funds }
 		}
 
 		any_parent = { consolidated_upgrade_2 consolidated_upgrade_3 }
@@ -9110,11 +9061,7 @@ USA_north_american_aviation_organisation = { #North American Aviation
 	}
 
 	equipment_type = {
-		small_plane_airframe
-		medium_plane_airframe
-		large_plane_airframe
-		cv_small_plane_airframe
-		transport_plane_equipment
+		mio_cat_eq_all_aircraft
 	}
 
 	research_categories = {
@@ -10235,18 +10182,8 @@ USA_curtiss_wright_organisation = { #Curtiss-Wright
 	}
 
 	equipment_type = {
-		small_plane_airframe
-		medium_plane_airframe
-		large_plane_airframe
-		cv_small_plane_airframe
-		transport_plane_equipment
+		mio_cat_eq_all_aircraft
 		helicopter_equipment
-		mothership_equipment
-		strat_bomber_intercontinental_equipment
-		nuclear_missile
-		ballistic_missile_equipment
-		sam_missile_equipment
-		guided_missile_equipment
 	}
 
 	research_categories = {
@@ -10278,58 +10215,18 @@ USA_curtiss_wright_organisation = { #Curtiss-Wright
 		on_complete = {
 			FROM = {
 				if = {
-					limit = { has_dlc_bba = yes }
-					if = {
-						limit = { curtiss_wright_stockpile_trait_unlocked = yes }
-						custom_override_tooltip = {
-							tooltip = {
-								localization_key = add_equipment_to_stockpile_tt
-								UNITS = "200"
-								EQUIPMENT = "Curtiss C46 'Commando' Transport"
-							}
-						}
-						hidden_effect = {
-							add_equipment_to_stockpile = {
-								type = transport_plane_equipment_1
-								amount = 200
-								variant_name = "Curtiss C46 'Commando'"
-								producer = FROM
-							}
-						}
-					}
-					else = {
-						custom_override_tooltip = {
-							tooltip = {
-								localization_key = add_equipment_to_stockpile_tt
-								UNITS = "100"
-								EQUIPMENT = "Curtiss C46 'Commando' Transport"
-							}
-						}
-						hidden_effect = {
-							add_equipment_to_stockpile = {
-								type = transport_plane_equipment_1
-								amount = 100
-								variant_name = "Curtiss C46 'Commando'"
-								producer = FROM
-							}
-						}
+					limit = { curtiss_wright_stockpile_trait_unlocked = yes }
+					add_equipment_to_stockpile = {
+						type = transport_plane_equipment_1
+						amount = 200
+						producer = FROM
 					}
 				}
 				else = {
-					if = {
-						limit = { curtiss_wright_stockpile_trait_unlocked = yes }
-						add_equipment_to_stockpile = {
-							type = transport_plane_equipment
-							amount = 200
-							producer = FROM
-						}
-					}
-					else = {
-						add_equipment_to_stockpile = {
-							type = transport_plane_equipment
-							amount = 100
-							producer = FROM
-						}
+					add_equipment_to_stockpile = {
+						type = transport_plane_equipment_1
+						amount = 100
+						producer = FROM
 					}
 				}
 			}
@@ -10454,13 +10351,7 @@ USA_curtiss_wright_organisation = { #Curtiss-Wright
 		icon = GFX_generic_mio_trait_icon_conversion_speed
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = {
-					localization_key = MIO_more_than_X_funds
-					FUNDS = "1000"
-				}
-				check_variable = { funds > 1000 }
-			}
+			check_variable = { funds > 1000 tooltip = MIO_more_than_X_funds }
 		}
 
 		any_parent = { curtiss_wright_upgrade_3 curtiss_wright_upgrade_4 }
@@ -15431,13 +15322,10 @@ USA_army_ordnance_department_organisation = { #Army Ordnance Department
 	}
 
 	equipment_type = {
-		artillery_equipment
-		super_heavy_artillery_equipment
-		self_propelled_super_heavy_artillery_equipment
+		mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		anti_tank_equipment
 		anti_air_equipment
-		railway_gun_equipment
-		super_heavy_railway_gun_equipment
+		mio_cat_eq_all_railway_guns
 		train_equipment
 	}
 
@@ -15940,11 +15828,9 @@ USA_rock_island_arsenal_organisation = { #Rock Island Arsenal
 	}
 
 	equipment_type = {
-		artillery_equipment
+		mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		anti_tank_equipment
 		anti_air_equipment
-		super_heavy_artillery_equipment
-		self_propelled_super_heavy_artillery_equipment
 	}
 
 	research_categories = {
@@ -16413,11 +16299,9 @@ USA_watervliet_arsenal_organisation = { #Watervliet Arsenal
 	}
 
 	equipment_type = {
-		artillery_equipment
+		mio_cat_eq_all_artillery_rocket_artillery_howitzers
 		anti_tank_equipment
 		anti_air_equipment
-		super_heavy_artillery_equipment
-		self_propelled_super_heavy_artillery_equipment
 	}
 
 	research_categories = {
@@ -16870,7 +16754,7 @@ USA_studebaker_organisation = { #Studebaker
 
 	equipment_type = {
 		motorized_equipment
-		mechanized_equipment
+		mio_cat_eq_all_mechanised
 		armored_car_equipment
 	}
 
@@ -16981,7 +16865,7 @@ USA_studebaker_organisation = { #Studebaker
 		position = { x = 4 y = 0 }
 
 		limit_to_equipment_type = {
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			armored_car_equipment
 		}
 
@@ -17012,7 +16896,7 @@ USA_studebaker_organisation = { #Studebaker
 		position = { x = 1 y = 1 }
 
 		limit_to_equipment_type = {
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			armored_car_equipment
 		}
 
@@ -17065,7 +16949,7 @@ USA_studebaker_organisation = { #Studebaker
 		position = { x = 5 y = 1 }
 
 		limit_to_equipment_type = {
-			mechanized_equipment
+			mio_cat_eq_all_mechanised
 			armored_car_equipment
 		}
 
@@ -17287,7 +17171,7 @@ USA_ford_organisation = { #Ford
 
 	equipment_type = {
 		motorized_equipment
-		mechanized_equipment
+		mio_cat_eq_all_mechanised
 		armored_car_equipment
 	}
 

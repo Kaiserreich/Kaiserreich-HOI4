@@ -2,7 +2,7 @@
 FNG_RLPOP = {
 	if = {
 		limit = { has_country_flag = FNG_recovery_league_active }
-		divide_temp_variable = { RLPOP = 100 }
+		multiply_temp_variable = { RLPOP = 0.01 }
 		hidden_effect = {
 			add_popularity = {
 				ideology = authoritarian_democrat
@@ -18,7 +18,7 @@ FNG_RLPOP = {
 FNG_ZCPOP = {
 	if = {
 		limit = { has_country_flag = FNG_zhang_clique_active }
-		divide_temp_variable = { ZCPOP = 100 }
+		multiply_temp_variable = { ZCPOP = 0.01 }
 		hidden_effect = {
 			add_popularity = {
 				ideology = paternal_autocrat
@@ -34,7 +34,7 @@ FNG_ZCPOP = {
 FNG_CCPOP = {
 	if = {
 		limit = { has_country_flag = FNG_communications_clique_active }
-		divide_temp_variable = { CCPOP = 100 }
+		multiply_temp_variable = { CCPOP = 0.01 }
 		hidden_effect = {
 			add_popularity = {
 				ideology = social_conservative
@@ -56,6 +56,14 @@ FNG_CA_remove = {
 	}
 	FNG_party_popularity_events = yes
 	custom_effect_tooltip = CA_remove
+	if = {
+		limit = {
+			has_character = FNG_wu_zanzhou
+		}
+		FNG_wu_zanzhou = {
+			retire = yes
+		}
+	}
 }
 
 FNG_party_popularity_events = {
@@ -109,8 +117,12 @@ FNG_setup_legitimacy = {
 }
 
 FNG_increase_legitimacy = {
-	add_to_variable = { FNG_legitimacy_level = 1 }
-	clamp_variable = { var = FNG_legitimacy_level max = 10 }
+	add_to_variable = {
+		FNG_legitimacy_level = {
+			value = 1
+			clamp = { min = 0 max = { value = 10 subtract = FNG_legitimacy_level } }
+		}
+	}
 	if = {
 		limit = { has_idea = FNG_Legitimacy_1 }
 		swap_ideas = {
@@ -197,8 +209,12 @@ FNG_increase_legitimacy = {
 }
 
 FNG_decrease_legitimacy = {
-	subtract_from_variable = { FNG_legitimacy_level = 1 }
-	clamp_variable = { var = FNG_legitimacy_level min = 1 }
+	add_to_variable = {
+		FNG_legitimacy_level = {
+			value = -1
+			clamp = { min = { value = 1 subtract = FNG_legitimacy_level } max = 0 }
+		}
+	}
 	if = {
 		limit = { has_idea = FNG_Legitimacy_10 }
 		swap_ideas = {
@@ -291,7 +307,7 @@ FNG_recalculate_mantetsu_effects = {
 			FNG_JAP_hostile = no
 		}
 		#Max influence effects at 50% popularity
-		set_variable = {
+		set_temp_variable = {
 			FNG_mantetsu_influence_var = {
 				value = FNG.FNG_JAP_influence_variable
 				clamp = { min = 0 max = 0.5 }
@@ -302,16 +318,17 @@ FNG_recalculate_mantetsu_effects = {
 
 		###Fengtian
 		set_variable = { FNG.FNG_mantetsu_max_efficiency = { value = 0.25 multiply = FNG_mantetsu_positive_factor } }
-		set_variable = { FNG.FNG_mantetsu_construction_speed = { value = 0.25 multiply = FNG_mantetsu_positive_factor } }
-
 		# Efficient Rail System bonus (from focus)
-		clear_variable = FNG.FNG_mantetsu_factory_output
 		if = {
 			limit = {
 				has_country_flag = FNG_efficient_rail_system
 			}
-			add_to_variable = { FNG.FNG_mantetsu_construction_speed = 0.1 }
-			add_to_variable = { FNG.FNG_mantetsu_factory_output = 0.1 }
+			set_variable = { FNG.FNG_mantetsu_construction_speed = { value = 0.25 multiply = FNG_mantetsu_positive_factor add = 0.1 } }
+			set_variable = { FNG.FNG_mantetsu_factory_output = 0.1 }
+		}
+		else = {
+			set_variable = { FNG.FNG_mantetsu_construction_speed = { value = 0.25 multiply = FNG_mantetsu_positive_factor } }
+			clear_variable = FNG.FNG_mantetsu_factory_output
 		}
 
 		# Maluses if above 20%
@@ -365,7 +382,6 @@ FNG_recalculate_mantetsu_effects = {
 			set_variable = { FNG.JAP_mantetsu_resource_gain = { value = 0.16 multiply = FNG_mantetsu_positive_factor } }
 		}
 
-		clear_variable = FNG_mantetsu_influence_var
 		force_update_dynamic_modifier = yes
 	}
 }
@@ -378,6 +394,7 @@ FNG_break_with_japan = {
 			limit = { is_in_faction_with = JAP }
 			leave_faction = yes
 		}
+		JAP_tojo_hideki = { set_nationality = JAP }
 		diplomatic_relation = {
 			country = JAP
 			relation = non_aggression_pact
@@ -807,13 +824,10 @@ FNG_yalu_and_songhua_hydroelectricity_effect = { #used by FNG and MAN equivalent
 
 FNG_JAP_influence_change_inf_effect = {
 	add_to_variable = {
-		var = FNG.FNG_JAP_influence_variable
-		value = FNG_JAP_inf_change_var
-	}
-	clamp_variable = {
-		var = FNG.FNG_JAP_influence_variable
-		min = 0
-		max = 1
+		FNG.FNG_JAP_influence_variable = {
+			value = FNG_JAP_inf_change_var
+			clamp = { min = { value = FNG.FNG_JAP_influence_variable multiply = -1 } max = { value = 1 subtract = FNG.FNG_JAP_influence_variable } }
+		}
 	}
 }
 

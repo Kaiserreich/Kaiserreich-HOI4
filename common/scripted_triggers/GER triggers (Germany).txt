@@ -204,7 +204,7 @@ GER_in_naval_war = {
 	OR = {
 		has_war_with = ENG
 		has_war_with = JAP
-		has_war_with = var:361.owner #Washington DC
+		has_war_with = var:361.owner #Washington, D.C.
 	}
 	OR = {
 		FRA = { has_capitulated = yes }
@@ -386,4 +386,36 @@ GER_is_in_reichspakt = {
 
 GER_can_call_early_elections = {
 	check_variable = { days_until_next_election > 90 tooltip = days_until_next_election_greater_than }
+}
+
+GER_bm_can_draw_cards = {
+	all_of_scopes = {
+		array = GER_bm_cardgame_cards_array
+		if = {
+			#if a card was played to fire this effect, prevent infinite draw loop exploits
+			limit = { NOT = { check_variable = { GER_black_monday_card = THIS } } }
+			#check if there are any available cards to draw from the deck
+			if = {
+				limit = {
+					check_expr = { #available cards
+						value = total_copies
+						subtract = cards_drawn
+						subtract = copies_in_discard
+						greater_than = 0
+					}
+				}
+				#add available cards to counter
+				add_to_temp_array = { GER_bm_cardgame_cards_array_to_draw_from = THIS }
+				add_to_temp_variable = {
+					total_available_cards = {
+						value = total_copies
+						subtract = cards_drawn
+						subtract = copies_in_discard
+					}
+				}
+			}
+		}
+	}
+	#check if there are any available
+	check_variable = { total_available_cards > 0 }
 }

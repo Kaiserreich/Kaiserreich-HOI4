@@ -1,0 +1,258 @@
+ideas = {
+	country = {
+
+		PTH_insurrectionary_movement_1 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_insurrectionary_movement_1" }
+			name = PTH_insurrectionary_movement
+			picture = RAJ_independence_movement
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.15
+				war_support_weekly = -0.05
+				army_core_defence_factor = 0.1
+			}
+		}
+		PTH_neither_afghan_nor_indian = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_neither_afghan_nor_indian" }
+			name = PTH_neither_afghan_nor_indian
+			picture = RAJ_partition_india_united
+			allowed = { always = no }
+			modifier = {
+				trade_opinion_factor = -1
+				custom_modifier_tooltip = PTH_blockade_tt
+			}
+		}
+		PTH_confused_national_ambitions = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_confused_national_ambitions" }
+			name = PTH_confused_national_ambitions
+			picture = chi_incompetent_officers
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.1
+				army_org_factor = -0.05
+				paternal_autocrat_drift = 0.01
+				national_populist_drift = 0.01
+			}
+		}
+
+		PTH_insurrectionary_movement_2 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_insurrectionary_movement_2" }
+			name = PTH_insurrectionary_movement
+			picture = RAJ_independence_movement
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.3
+				war_support_weekly = -0.05
+				army_core_defence_factor = 0.1
+				army_core_attack_factor = 0.05
+			}
+		}
+		PTH_insurrectionary_movement_3 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_insurrectionary_movement_3" }
+			name = PTH_insurrectionary_movement
+			picture = RAJ_independence_movement
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.3
+				army_core_defence_factor = 0.15
+				army_core_attack_factor = 0.1
+				attrition = -0.1
+			}
+		}
+		PTH_afghan_deserters = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_afghan_deserters" }
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			available = {
+				has_war_with = AFG
+			}
+			modifier = {
+				weekly_manpower = 300
+				land_reinforce_rate = 0.05
+			}
+		}
+
+		PTH_development_of_islamic_socialism_1 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_development_of_islamic_socialism_1" }
+			name = PTH_development_of_islamic_socialism
+			picture = generic_radical_socialist_revolution
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.001
+				political_power_gain = 0.05
+			}
+		}
+		PTH_development_of_islamic_socialism_2 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_development_of_islamic_socialism_2" }
+			name = PTH_development_of_islamic_socialism
+			picture = generic_radical_socialist_revolution
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.005
+				political_power_gain = 0.075
+			}
+		}
+		PTH_model_of_islamic_socialism_idea = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_model_of_islamic_socialism_idea" }
+			name = PTH_model_of_islamic_socialism_idea
+			picture = generic_radical_socialist_revolution
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.0075
+				political_power_gain = 0.1
+				consumer_goods_factor = -0.1
+			}
+		}
+		PTH_state_controlled_media = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_state_controlled_media" }
+			name = PTH_state_controlled_media
+			picture = hol_the_foundations_of_defense
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.15
+				party_popularity_stability_factor = 0.1
+			}
+		}
+		PTH_building_the_islamic_progressive_ideal_1 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_building_the_islamic_progressive_ideal_1" }
+			name = PTH_building_the_islamic_progressive_ideal
+			picture = generic_radical_socialist_revolution
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = 0.05
+			}
+		}
+		PTH_building_the_islamic_progressive_ideal_2 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_building_the_islamic_progressive_ideal_2" }
+			name = PTH_building_the_islamic_progressive_ideal
+			picture = generic_radical_socialist_revolution
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				stability_factor = 0.05
+				army_morale_factor = 0.05
+			}
+		}
+		PTH_beacon_of_islamic_progressivism = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_beacon_of_islamic_progressivism" }
+			name = PTH_beacon_of_islamic_progressivism
+			picture = generic_radical_socialist_revolution
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.15
+				stability_factor = 0.1
+				army_morale_factor = 0.1
+			}
+		}
+		PTH_surge_of_pathan_nationalism = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_surge_of_pathan_nationalism" }
+			name = PTH_surge_of_pathan_nationalism
+			picture = generic_phoenix
+			allowed = { always = no }
+			modifier = {
+				army_core_defence_factor = 0.1
+				war_stability_factor = 0.1
+			}
+		}
+		PTH_a_new_national_party_1 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_a_new_national_party_1" }
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.05
+				political_power_gain = 0.1
+			}
+		}
+		PTH_a_new_national_party_2 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_a_new_national_party_2" }
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.15
+				political_power_gain = 0.2
+			}
+		}
+		PTH_tribal_autonomy = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_tribal_autonomy" }
+			name = PTH_tribal_autonomy
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				conscription_factor = 0.1
+				army_org_factor = 0.05
+			}
+		}
+		PTH_loy_waziristan_idea = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_loy_waziristan_idea" }
+			name = PTH_loy_waziristan_idea
+			picture = DEN_occupation_laws
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.1
+				war_stability_factor = 0.1
+				conscription_factor = -0.2
+			}
+		}
+		PTH_puppet_pathan_jirga = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_puppet_pathan_jirga" }
+			name = PTH_puppet_pathan_jirga
+			picture = tur_etatism_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.1
+			}
+		}
+		PTH_self_sufficiency = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_self_sufficiency" }
+			name = PTH_self_sufficiency
+			picture = undisturbed_isolation
+			allowed = { always = no }
+			modifier = {
+				consumer_goods_factor = -0.05
+				supply_consumption_factor = -0.1
+			}
+		}
+		PTH_swat_gemstone_trade_1 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_swat_gemstone_trade_1" }
+			name = PTH_swat_gemstone_trade
+			picture = diamond_trade
+			allowed = { always = no }
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+		PTH_swat_gemstone_trade_2 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_swat_gemstone_trade_2" }
+			name = PTH_swat_gemstone_trade
+			picture = diamond_trade
+			allowed = { always = no }
+			modifier = {
+				consumer_goods_factor = -0.05
+				military_factory_donations = 1
+			}
+		}
+		PTH_pathan_army_1 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_pathan_army_1" }
+			name = PTH_pathan_army_1
+			picture = ast_volunteer_defence_corps
+			allowed = { always = no }
+			modifier = {
+				attrition = -0.05
+				supply_consumption_factor = -0.1
+			}
+		}
+		PTH_pathan_army_2 = {
+			on_add = { log = "[GetLogRoot]: add idea PTH_pathan_army_2" }
+			name = PTH_pathan_army_1
+			picture = ast_volunteer_defence_corps
+			allowed = { always = no }
+			modifier = {
+				attrition = -0.1
+				supply_consumption_factor = -0.1
+				army_core_defence_factor = 0.1
+			}
+		}
+	}
+}

@@ -80,16 +80,14 @@ on_actions = {
 					}
 				}
 			}
-			every_country = {
-				limit = { has_socialist_government = yes }
-				every_other_country = {
-					limit = { is_ally_with = GER }
-					embargo_PREV = yes
+			GER = {
+				every_faction_member = {
+					add_to_tech_sharing_group = german_research
+					every_other_country = {
+						limit = { has_socialist_government = yes }
+						embargo_PREV = yes
+					}
 				}
-			}
-			every_country = {
-				limit = { is_ally_with = GER }
-				add_to_tech_sharing_group = german_research
 			}
 		}
 	}
@@ -167,10 +165,8 @@ on_actions = {
 							remove_dynamic_modifier = { modifier = GER_east_asian_naval_yards }
 							add_to_temp_variable = { GEA_dockyards = GER_east_asian_slots }
 
-							set_temp_variable = { state_dockyards = GER_east_asian_slots }
-							multiply_temp_variable = { state_dockyards = -1 }
+							set_temp_variable = { state_dockyards = { value = GER_east_asian_slots multiply = -1 } }
 							add_building_construction = { type = dockyard level = state_dockyards }
-
 							clear_variable = GER_east_asian_slots
 						}
 					}
@@ -399,8 +395,7 @@ on_actions = {
 			# Add/remove GEA dockyards
 			if = {
 				limit = { FROM.FROM = { has_variable = GER_east_asian_slots } }
-				set_temp_variable = { GER_dockyards = FROM.FROM.GER_east_asian_slots }
-				multiply_temp_variable = { GER_dockyards = -1 }
+				set_temp_variable = { GER_dockyards = { value = FROM.FROM.GER_east_asian_slots multiply = -1 } }
 				if = {
 					limit = { tag = GER }
 					FROM.FROM = {

@@ -887,17 +887,15 @@ focus_tree = {
 		available = {
 			OR = {
 				NOT = { has_country_flag = SHD_joined_league_war }
-				OR = {
-					AND = {
-						NOT = { has_war_with = ANQ }
-						NOT = { country_exists = CHI }
-						NOT = { country_exists = LEP }
-					}
-					AND = {
-						NOT = { country_exists = ANQ }
-						NOT = { country_exists = CHI }
-						NOT = { country_exists = LEP }
-					}
+				AND = {
+					NOT = { has_war_with = ANQ }
+					NOT = { country_exists = CHI }
+					NOT = { country_exists = LEP }
+				}
+				AND = {
+					NOT = { country_exists = ANQ }
+					NOT = { country_exists = CHI }
+					NOT = { country_exists = LEP }
 				}
 			}
 		}
@@ -1529,17 +1527,15 @@ focus_tree = {
 		available = {
 			OR = {
 				NOT = { has_country_flag = SHD_joined_league_war }
-				OR = {
-					AND = {
-						NOT = { has_war_with = ANQ }
-						NOT = { country_exists = CHI }
-						NOT = { country_exists = LEP }
-					}
-					AND = {
-						NOT = { country_exists = ANQ }
-						NOT = { country_exists = CHI }
-						NOT = { country_exists = LEP }
-					}
+				AND = {
+					NOT = { has_war_with = ANQ }
+					NOT = { country_exists = CHI }
+					NOT = { country_exists = LEP }
+				}
+				AND = {
+					NOT = { country_exists = ANQ }
+					NOT = { country_exists = CHI }
+					NOT = { country_exists = LEP }
 				}
 			}
 		}

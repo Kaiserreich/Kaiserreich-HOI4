@@ -1396,7 +1396,18 @@ country_event = { #Fate of Afghanistan
 
 	immediate = {
 		hidden_effect = {
-			AFG = { AFG_remove_monarchy = yes }
+			AFG = {
+				AFG_remove_monarchy = yes
+			}
+			PTH = {
+				if = {
+					limit = { exists = no }
+					every_character = {
+						limit = { has_character_flag = PTH_character }
+						set_nationality = AFG
+					}
+				}
+			}
 			every_state = {
 				if = {
 					limit = {
@@ -1441,6 +1452,7 @@ country_event = { #Fate of Afghanistan
 		}
 		set_temp_variable = { tag_to_release = AFG }
 		release_targeted_tag = yes
+		hidden_effect = { var:tag_to_release = { AFG_puppet_setup = yes } }
 	}
 
 	option = { #monarchy
@@ -1463,13 +1475,8 @@ country_event = { #Fate of Afghanistan
 		}
 		set_temp_variable = { tag_to_release = AFG }
 		release_targeted_tag = yes
-		if = {
-			limit = { has_government = national_populist }
-			var:tag_to_release = { AFG_create_habibullah = yes }
-		}
-		else = {
-			var:tag_to_release = { AFG_create_amanullah = yes }
-		}
+		set_temp_variable = { release_monarchy = 1 }
+		hidden_effect = { var:tag_to_release = { AFG_puppet_setup = yes } }
 	}
 
 	option = { #Give to overlord
@@ -1679,14 +1686,7 @@ country_event = { #Fate of the Russian Far East
 			}
 			if = {
 				limit = {
-					OR = {
-						original_tag = MAN
-						AND = {
-							tag = SHD
-							is_monarchy = yes
-						}
-						has_completed_focus = QIE_we_win
-					}
+					CHN_can_claim_outer_manchuria_trigger = yes
 					OR = {
 						408 = { is_valid_annexation_state = yes } #Vladivostok
 						409 = { is_valid_annexation_state = yes } #Khabarovsk
@@ -6090,7 +6090,13 @@ country_event = { #Fate of Sarawak
 		if = {
 			limit = {
 				original_tag = MAL
-				NOT = { has_cosmetic_tag = MAL_malaysia }
+				NOT = {
+					has_cosmetic_tag = MAL_malaysia
+					OR = {
+						has_country_leader = { character = MAL_burhanuddin_al_helmy }
+						has_country_leader = { character = MAL_ibrahim_yaacob }
+					}
+				}
 			}
 			set_cosmetic_tag = MAL_malaysia
 		}
@@ -11254,7 +11260,7 @@ country_event = { #Fate of Baluchistan
 			if = {
 				limit = {
 					any_state_of = {
-						target = { 410 1117 443 445 } #Sistan, Kandahar, Sind, Quetta
+						target = { 410 1117 445 } #Sistan, Kandahar, Quetta
 						is_claim_or_core_of_ROOT = yes
 					}
 				}
@@ -11271,23 +11277,10 @@ country_event = { #Fate of Baluchistan
 			}
 			if = {
 				limit = {
-					443 = { #Sind
-						annexations_state_owner_is_valid_grant_target = yes
-						owner = {
-							NOT = { tag = event_target:persia }
-							ROOT_can_grant_land = yes
-						}
-					}
-				}
-				var:443.owner = { save_event_target_as = sind add_to_array = { ROOT.potential_grant_targets = THIS } }
-			}
-			if = {
-				limit = {
 					445 = { #Quetta
 						annexations_state_owner_is_valid_grant_target = yes
 						owner = {
 							NOT = { tag = event_target:persia }
-							NOT = { tag = event_target:sind }
 							ROOT_can_grant_land = yes
 						}
 					}
@@ -11300,7 +11293,6 @@ country_event = { #Fate of Baluchistan
 						annexations_state_owner_is_valid_grant_target = yes
 						owner = {
 							NOT = { tag = event_target:persia }
-							NOT = { tag = event_target:sind }
 							NOT = { tag = event_target:quetta }
 							ROOT_can_grant_land = yes
 						}
@@ -11326,7 +11318,7 @@ country_event = { #Fate of Baluchistan
 			modifier = {
 				factor = 0
 				NOT = { is_ally_with = event_target:persia }
-				is_ally_with = event_target:sind
+				is_ally_with = event_target:afghanistan
 			}
 			modifier = {
 				factor = 0.1
@@ -11352,6 +11344,7 @@ country_event = { #Fate of Baluchistan
 			modifier = {
 				factor = 0
 				NOT = { is_ally_with = event_target:afghanistan }
+				is_ally_with = event_target:persia
 			}
 			modifier = {
 				factor = 0.1
@@ -11359,32 +11352,6 @@ country_event = { #Fate of Baluchistan
 			}
 		}
 		set_temp_variable = { tag_to_release = event_target:afghanistan }
-		444 = { transfer_state_and_notify = yes } #Baluchistan
-	}
-
-	option = { #Give to owner of Sind
-		log = "[GetLogInfo]: event annexation_events.3049 option annexation_events.asia.give_to_owner_of_sind"
-		name = annexation_events.asia.give_to_owner_of_sind
-		trigger = {
-			has_event_target = sind
-		}
-		ai_chance = {
-			base = 50
-			modifier = {
-				factor = 0
-				annexations_can_annex = yes
-			}
-			modifier = {
-				factor = 0
-				NOT = { is_ally_with = event_target:sind }
-				is_ally_with = event_target:persia
-			}
-			modifier = {
-				factor = 0.1
-				event_target:sind = { is_subject = yes }
-			}
-		}
-		set_temp_variable = { tag_to_release = event_target:sind }
 		444 = { transfer_state_and_notify = yes } #Baluchistan
 	}
 
@@ -11403,6 +11370,10 @@ country_event = { #Fate of Baluchistan
 			modifier = {
 				factor = 0
 				NOT = { is_ally_with = event_target:quetta }
+				OR = {
+					is_ally_with = event_target:persia
+					is_ally_with = event_target:afghanistan
+				}
 			}
 			modifier = {
 				factor = 0.1
@@ -11466,8 +11437,7 @@ country_event = { #Fate of Quetta
 			if = {
 				limit = {
 					OR = {
-						any_state_of = {
-							target = { 442 443 } #Peshawar, Sind
+						442 = { #Peshawar
 							is_claim_or_core_of_ROOT = yes
 						}
 						AND = {
@@ -11489,15 +11459,15 @@ country_event = { #Fate of Quetta
 			}
 			if = {
 				limit = {
-					443 = { #Sind
+					1117 = { #Kandahar
 						annexations_state_owner_is_valid_grant_target = yes
 						owner = {
-							NOT = { tag = event_target:peshawar }
 							ROOT_can_grant_land = yes
+							NOT = { tag = event_target:peshawar }
 						}
 					}
 				}
-				var:443.owner = { save_event_target_as = sind add_to_array = { ROOT.potential_grant_targets = THIS } }
+				var:1117.owner = { save_event_target_as = kandahar add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 			if = {
 				limit = {
@@ -11506,7 +11476,6 @@ country_event = { #Fate of Quetta
 						owner = {
 							NOT = { original_tag = KHA }
 							NOT = { tag = event_target:peshawar }
-							NOT = { tag = event_target:sind }
 							ROOT_can_grant_land = yes
 						}
 					}
@@ -11532,8 +11501,8 @@ country_event = { #Fate of Quetta
 				factor = 0
 				NOT = { is_ally_with = event_target:peshawar }
 				OR = {
-					is_ally_with = event_target:sind
 					is_ally_with = event_target:punjab
+					is_ally_with = event_target:kandahar
 				}
 			}
 			modifier = {
@@ -11545,11 +11514,11 @@ country_event = { #Fate of Quetta
 		445 = { transfer_state_and_notify = yes } #Quetta
 	}
 
-	option = { #Give to owner of Sind
-		log = "[GetLogInfo]: event annexation_events.3050 option annexation_events.asia.give_to_owner_of_sind"
-		name = annexation_events.asia.give_to_owner_of_sind
+	option = { #Give to owner of Kandahar
+		log = "[GetLogInfo]: event annexation_events.3050 option annexation_events.3050.b"
+		name = annexation_events.3050.b
 		trigger = {
-			has_event_target = sind
+			has_event_target = kandahar
 		}
 		ai_chance = {
 			base = 10
@@ -11559,7 +11528,7 @@ country_event = { #Fate of Quetta
 			}
 			modifier = {
 				factor = 0
-				NOT = { is_ally_with = event_target:sind }
+				NOT = { is_ally_with = event_target:kandahar }
 				OR = {
 					is_ally_with = event_target:peshawar
 					is_ally_with = event_target:punjab
@@ -11567,10 +11536,10 @@ country_event = { #Fate of Quetta
 			}
 			modifier = {
 				factor = 0.1
-				event_target:sind = { is_subject = yes }
+				event_target:kandahar = { is_subject = yes }
 			}
 		}
-		set_temp_variable = { tag_to_release = event_target:sind }
+		set_temp_variable = { tag_to_release = event_target:kandahar }
 		445 = { transfer_state_and_notify = yes } #Quetta
 	}
 
@@ -11591,7 +11560,7 @@ country_event = { #Fate of Quetta
 				NOT = { is_ally_with = event_target:punjab }
 				OR = {
 					is_ally_with = event_target:peshawar
-					is_ally_with = event_target:sind
+					is_ally_with = event_target:kandahar
 				}
 			}
 			modifier = {
@@ -11664,6 +11633,11 @@ country_event = { #Fate of Sind
 							891 = { is_claim_or_core_of_ROOT = yes } #West Punjab
 							NOT = { original_tag = KHA }
 						}
+						AND = {
+							445 = { is_claim_or_core_of_ROOT = yes } #Quetta
+							444 = { is_claim_or_core_of_ROOT = yes } #Baluchistan
+							is_pashtun_tag = yes
+						}
 					}
 				}
 				save_event_target_as = can_annex
@@ -11702,6 +11676,19 @@ country_event = { #Fate of Sind
 					}
 				}
 				var:891.owner = { save_event_target_as = punjab add_to_array = { ROOT.potential_grant_targets = THIS } }
+			}
+			if = {
+				limit = {
+					444 = { #Baluchistan
+						annexations_state_owner_is_valid_grant_target = yes
+						owner = {
+							owns_state = 445 #Quetta
+							is_pashtun_tag = yes
+							ROOT_can_grant_land = yes
+						}
+					}
+				}
+				var:444.owner = { save_event_target_as = baluchistan add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 		}
 	}
@@ -11790,6 +11777,36 @@ country_event = { #Fate of Sind
 			}
 		}
 		set_temp_variable = { tag_to_release = event_target:punjab }
+		443 = { transfer_state_and_notify = yes } #Sind
+	}
+
+	option = { #Give to owner of Baluchistan
+		log = "[GetLogInfo]: event annexation_events.3051 option annexation_events.3051.c"
+		name = annexation_events.3051.c
+		trigger = {
+			has_event_target = baluchistan
+		}
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 0
+				annexations_can_annex = yes
+			}
+			modifier = {
+				factor = 0
+				NOT = { is_ally_with = event_target:punjab }
+				OR = {
+					is_ally_with = event_target:gujarat
+					is_ally_with = event_target:rajputana
+					is_ally_with = event_target:punjab
+				}
+			}
+			modifier = {
+				factor = 0.1
+				event_target:baluchistan = { is_subject = yes }
+			}
+		}
+		set_temp_variable = { tag_to_release = event_target:baluchistan }
 		443 = { transfer_state_and_notify = yes } #Sind
 	}
 
@@ -12138,6 +12155,9 @@ country_event = { #Fate of Bhutan
 		}
 		set_temp_variable = { tag_to_release = BHU }
 		release_targeted_tag = yes
+		hidden_effect = {
+			324 = { rename_state_effect = yes }
+		}
 	}
 
 	option = { #Give to Indian owner of Assam
@@ -12727,7 +12747,7 @@ country_event = { #Fate of Ceylon
 					OR = {
 						AND = {
 							is_indian_unifier_tag = yes
-							naval_base > 0
+							any_owned_state = { naval_base > 0 }
 						}
 						423 = { is_claim_or_core_of_ROOT = yes } #Madura
 					}
@@ -12744,7 +12764,7 @@ country_event = { #Fate of Ceylon
 				if = {
 					limit = {
 						HND = {
-							naval_base > 0
+							any_owned_state = { naval_base > 0 }
 							ROOT_can_grant_land = yes
 						}
 					}
@@ -12753,7 +12773,7 @@ country_event = { #Fate of Ceylon
 				if = {
 					limit = {
 						PRF = {
-							naval_base > 0
+							any_owned_state = { naval_base > 0 }
 							ROOT_can_grant_land = yes
 						}
 					}
@@ -12762,7 +12782,7 @@ country_event = { #Fate of Ceylon
 				if = {
 					limit = {
 						RAJ = {
-							naval_base > 0
+							any_owned_state = { naval_base > 0 }
 							ROOT_can_grant_land = yes
 						}
 					}
@@ -13051,6 +13071,16 @@ country_event = { #Fate of Peshawar
 
 	immediate = {
 		hidden_effect = {
+			every_state = {
+				remove_claim_by = PTH
+				if = {
+					limit = { NOT = { state = 442 } } #Peshawar
+					remove_core_of = PTH
+				}
+				else = {
+					add_core_of = PTH
+				}
+			}
 			if = {
 				limit = {
 					OR = {
@@ -13088,6 +13118,31 @@ country_event = { #Fate of Peshawar
 		}
 	}
 
+	option = { #Release Pathanistan
+		log = "[GetLogInfo]: event annexation_events.3059 option annexation_events.3059.a"
+		name = annexation_events.3059.a
+		trigger = {
+			is_subject = no
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				annexations_can_annex = yes
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_ally_with = event_target:punjab
+					is_ally_with = event_target:afghanistan
+				}
+			}
+		}
+		set_temp_variable = { tag_to_release = PTH }
+		release_targeted_tag = yes
+		hidden_effect = { AFG_pathanistan_puppet_setup_effect = yes }
+	}
+
 	option = { #Give to Afghanistan
 		log = "[GetLogInfo]: event annexation_events.3059 option annexation_events.asia.give_to_afghanistan"
 		name = annexation_events.asia.give_to_afghanistan
@@ -13112,6 +13167,17 @@ country_event = { #Fate of Peshawar
 		}
 		set_temp_variable = { tag_to_release = event_target:afghanistan }
 		442 = { transfer_state_and_notify = yes } #Peshawar
+		hidden_effect = {
+			if = {
+				limit = { AFG = { is_subject = yes } }
+				PTH = {
+					every_character = {
+						limit = { has_character_flag = PTH_character }
+						set_nationality = AFG
+					}
+				}
+			}
+		}
 	}
 
 	option = { #Give to owner of West Punjab

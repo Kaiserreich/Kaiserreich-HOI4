@@ -114,8 +114,8 @@ country_event = { #Fate of America
 			}
 			WCA = {
 				if = {
-					limit = { has_character = WCA_jack_reed }
-					retire_character = WCA_jack_reed
+					limit = { has_character = WCA_john_reed }
+					retire_character = WCA_john_reed
 				}
 			}
 			USA = {
@@ -6328,6 +6328,7 @@ country_event = { #Fate of Argentina
 			579 = { remove_claim_and_add_core_of_target = yes } #Neuquén
 			1028 = { remove_claim_and_add_core_of_target = yes } #Tierra del Fuego
 			1029 = { remove_claim_and_add_core_of_target = yes } #Santa Cruz
+			1113 = { remove_claim_and_add_core_of_target = yes } #Cautín
 		}
 		release_targeted_tag = yes
 		var:tag_to_release = {
@@ -6878,6 +6879,7 @@ country_event = { #Fate of the French Caribbean
 		1037 = { retain_state = yes } #Inini
 		set_temp_variable = { tag_to_release = ANT }
 		release_targeted_tag = yes
+		var:tag_to_release = { set_cosmetic_tag = ANT_antilles }
 	}
 
 	option = { #Give to WIF
@@ -6908,6 +6910,15 @@ country_event = { #Fate of the French Caribbean
 		}
 		set_temp_variable = { tag_to_release = event_target:west_indies }
 		694 = { transfer_state_and_notify = yes } #French Caribbean
+		if = {
+			limit = {
+				var:tag_to_release = { original_tag = ANT }
+			}
+			var:tag_to_release = {
+				effect_tooltip = { set_cosmetic_tag = ANT }
+				drop_cosmetic_tag = yes
+			}
+		}
 	}
 
 	option = { #Give to NFA
@@ -7386,6 +7397,7 @@ country_event = { #Fate of East Guyana
 		694 = { retain_state = yes } #French Caribbean
 		set_temp_variable = { tag_to_release = ANT }
 		release_targeted_tag = yes
+		var:tag_to_release = { set_cosmetic_tag = ANT_guyane }
 	}
 
 	option = { #Give to WIF
@@ -7422,6 +7434,15 @@ country_event = { #Fate of East Guyana
 		set_temp_variable = { tag_to_release = event_target:west_indies }
 		310 = { transfer_state_and_notify = yes } #Cayenne
 		1037 = { transfer_state_and_notify = yes } #Inini
+		if = {
+			limit = {
+				var:tag_to_release = { original_tag = ANT }
+			}
+			var:tag_to_release = {
+				effect_tooltip = { set_cosmetic_tag = ANT }
+				drop_cosmetic_tag = yes
+			}
+		}
 	}
 
 	option = { #Give to Guyana

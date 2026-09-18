@@ -1,9 +1,9 @@
-########################################
-### Kaiserreich for HOI4 patch 1.6.4 ###
-########################################
+######################################
+### Kaiserreich for HOI4 patch 1.7 ###
+######################################
 
 Thank you for downloading Kaiserreich for Hearts of Iron IV.
-This release is built for Hearts of Iron IV version 1.19.2.
+This release is built for Hearts of Iron IV version 1.19.3.
 Compatibility with subsequent hotfixes is expected but not guaranteed.
 
 ## Manual Installation Instructions

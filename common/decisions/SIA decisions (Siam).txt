@@ -1884,17 +1884,17 @@ crisis = {
 					}
 					remove_ideas = SIA_faltering_political_movement_idea
 				}
-				subtract_from_variable = { SIA_MORAL_LEVEL = 0.01 }
-				add_to_variable = { SIA_SUPCON_LEVEL = 0.02 }
-				clamp_variable = {
-					var = SIA_MORAL_LEVEL
-					max = -0.01
-					min = -0.30
+				add_to_variable = {
+					SIA_MORAL_LEVEL = {
+						value = -0.01
+						clamp = { min = { value = -0.30 subtract = SIA_MORAL_LEVEL } max = 0 }
+					}
 				}
-				clamp_variable = {
-					var = SIA_SUPCON_LEVEL
-					max = 0.60
-					min = 0.02
+				add_to_variable = {
+					SIA_SUPCON_LEVEL = {
+						value = 0.02
+						clamp = { min = 0 max = { value = 0.6 subtract = SIA_SUPCON_LEVEL } }
+					}
 				}
 				activate_mission = SIA_secure_bangkok
 			}

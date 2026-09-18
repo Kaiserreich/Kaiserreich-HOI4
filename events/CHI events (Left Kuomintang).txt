@@ -7645,22 +7645,20 @@ country_event = { #The Long Shadow
 		log = "[GetLogInfo]: event CHI.lategame.209 option CHI.lategame.209.a"
 		name = CHI.lategame.209.a
 
-		set_temp_variable = { CHI_rad_stab_var = CHI_radicalism_var } #Should be between 0-1
-		multiply_temp_variable = { CHI_rad_stab_var = -0.5 } #Should be between -0.5-0
+		set_temp_variable = { CHI_rad_stab_var = { value = CHI_radicalism_var multiply = -0.5 } } #Should be between -0.5-0
 		add_stability = CHI_rad_stab_var
 
 		#Half of radicalism is distributed across radical factions.
 		#If CSP Radicals can contest radicalism, only a quarter goes to CRS. Otherwise, half goes to CRS.
-		set_temp_variable = { CHI_rad_pop_var = CHI_radicalism_var } #Should be between 0-1
 		if = {
 			limit = { has_country_flag = CHI_LCS_RAD_dom_flag }
-			multiply_temp_variable = { CHI_rad_pop_var = 0.25 }
+			set_temp_variable = { CHI_rad_pop_var = { value = CHI_radicalism_var multiply = 0.25 } }
 			add_popularity = { ideology = syndicalist popularity = CHI_rad_pop_var }
 			add_popularity = { ideology = totalist popularity = CHI_rad_pop_var }
 			custom_effect_tooltip = CHI_long_shadow_csp_tt
 		}
 		else = {
-			multiply_temp_variable = { CHI_rad_pop_var = 0.50 }
+			set_temp_variable = { CHI_rad_pop_var = { value = CHI_radicalism_var multiply = 0.5 } }
 			add_popularity = { ideology = totalist popularity = CHI_rad_pop_var }
 			custom_effect_tooltip = CHI_long_shadow_tt
 		}
@@ -8088,8 +8086,7 @@ country_event = { #Wang carries the Day
 			localization_key = CHN_deduct_stab_relative_to_ideology_tt
 			IDEOLOGY = social_democrat_coloured
 		}
-		set_temp_variable = { CHI_party_pop_stab_loss_temp_var = party_popularity@social_democrat }
-		multiply_temp_variable = { CHI_party_pop_stab_loss_temp_var = -0.5 }
+		set_temp_variable = { CHI_party_pop_stab_loss_temp_var = { value = party_popularity@social_democrat multiply = -0.5 } }
 		add_stability = CHI_party_pop_stab_loss_temp_var
 		CHI_purge_PAC_generals_effect = yes
 		CHI_purge_PAC_advisors_effect = yes
@@ -8972,10 +8969,8 @@ country_event = {
 		set_variable = {
 			CHI_pre_PAC_takeover_rad_soc_popularity_var = party_popularity@radical_socialist
 		}
-		set_temp_variable = { CHI_soc_dem_popularity_temp_var = party_popularity@social_democrat }
-		multiply_temp_variable = { CHI_soc_dem_popularity_temp_var = 0.75 }
-		set_temp_variable = { CHI_neg_soc_dem_popularity_temp_var = CHI_soc_dem_popularity_temp_var }
-		multiply_temp_variable = { CHI_neg_soc_dem_popularity_temp_var = -1 }
+		set_temp_variable = { CHI_soc_dem_popularity_temp_var = { value = party_popularity@social_democrat multiply = 0.75 } }
+		set_temp_variable = { CHI_neg_soc_dem_popularity_temp_var = { value = CHI_soc_dem_popularity_temp_var multiply = -1 } }
 		add_popularity = { ideology = social_democrat popularity = CHI_neg_soc_dem_popularity_temp_var }
 		add_popularity = { ideology = radical_socialist popularity = CHI_soc_dem_popularity_temp_var }
 		hidden_effect = {
@@ -9041,8 +9036,7 @@ country_event = { #RCA strikes back
 		custom_effect_tooltip = {
 			localization_key = CHI_deduct_pre_PAC_takeover_rad_soc_popularity_tt
 		}
-		set_temp_variable = { CHI_party_pop_stab_loss_temp_var = CHI_pre_PAC_takeover_rad_soc_popularity_var }
-		multiply_temp_variable = { CHI_party_pop_stab_loss_temp_var = -0.5 }
+		set_temp_variable = { CHI_party_pop_stab_loss_temp_var = { value = CHI_pre_PAC_takeover_rad_soc_popularity_var multiply = -0.5 } }
 		add_stability = CHI_party_pop_stab_loss_temp_var
 	}
 }
@@ -9747,8 +9741,7 @@ country_event = {
 			localization_key = CHN_deduct_stab_relative_to_ideology_tt
 			IDEOLOGY = social_democrat_coloured
 		}
-		set_temp_variable = { CHI_party_pop_stab_loss_temp_var = party_popularity@social_democrat }
-		multiply_temp_variable = { CHI_party_pop_stab_loss_temp_var = -0.5 }
+		set_temp_variable = { CHI_party_pop_stab_loss_temp_var = { value = party_popularity@social_democrat multiply = -0.5 } }
 		add_stability = CHI_party_pop_stab_loss_temp_var
 	}
 }
@@ -10886,12 +10879,12 @@ country_event = {
 		trigger = {
 			NOT = { check_variable = { CHI_gov_civ_war_var < CHI_crs_civ_war_var } }
 		}
-		set_temp_variable = { CHI_nanjing_boost_temp_var = CHI_pac_civ_war_var }
-		clamp_temp_variable = {
-			var = CHI_nanjing_boost_temp_var
-			min = 1 #It will always boost a faction
+		add_to_variable = {
+			CHI_gov_civ_war_var = {
+				value = CHI_pac_civ_war_var
+				clamp = { min = 1 max = 100 } #It will always boost a faction
+			}
 		}
-		add_to_variable = { CHI_gov_civ_war_var = CHI_nanjing_boost_temp_var }
 		set_variable = { CHI_crs_civ_war_var = 0 }
 		custom_effect_tooltip = CHI_nanjing_unrest_gov_victory_tt
 	}
@@ -10901,12 +10894,12 @@ country_event = {
 		trigger = {
 			NOT = { check_variable = { CHI_crs_civ_war_var < CHI_gov_civ_war_var } }
 		}
-		set_temp_variable = { CHI_nanjing_boost_temp_var = CHI_gov_civ_war_var }
-		clamp_temp_variable = {
-			var = CHI_nanjing_boost_temp_var
-			min = 1 #It will always boost a faction
+		add_to_variable = {
+			CHI_crs_civ_war_var = {
+				value = CHI_gov_civ_war_var
+				clamp = { min = 1 max = 100 } #It will always boost a faction
+			}
 		}
-		add_to_variable = { CHI_crs_civ_war_var = CHI_gov_civ_war_var }
 		set_variable = { CHI_gov_civ_war_var = 0 }
 		CHI_hu_zongnan = { promote_character = totalist_subtype }
 		set_politics = {
@@ -11164,12 +11157,12 @@ country_event = {
 		trigger = {
 			NOT = { check_variable = { CHI_rca_civ_war_var < CHI_crs_civ_war_var } }
 		}
-		set_temp_variable = { CHI_nanjing_boost_temp_var = CHI_gov_civ_war_var }
-		clamp_temp_variable = {
-			var = CHI_nanjing_boost_temp_var
-			min = 1 #It will always boost a faction
+		add_to_variable = {
+			CHI_rca_civ_war_var = {
+				value = CHI_gov_civ_war_var
+				clamp = { min = 1 max = 100 } #It will always boost a faction
+			}
 		}
-		add_to_variable = { CHI_rca_civ_war_var = CHI_nanjing_boost_temp_var }
 		set_variable = { CHI_gov_civ_war_var = 0 }
 		custom_effect_tooltip = CHI_push_along_yangtze_beijing_wins_tt
 	}
@@ -11179,12 +11172,12 @@ country_event = {
 		trigger = {
 			NOT = { check_variable = { CHI_crs_civ_war_var < CHI_rca_civ_war_var } }
 		}
-		set_temp_variable = { CHI_nanjing_boost_temp_var = CHI_gov_civ_war_var }
-		clamp_temp_variable = {
-			var = CHI_nanjing_boost_temp_var
-			min = 1 #It will always boost a faction
+		add_to_variable = {
+			CHI_crs_civ_war_var = {
+				value = CHI_gov_civ_war_var
+				clamp = { min = 1 max = 100 } #It will always boost a faction
+			}
 		}
-		add_to_variable = { CHI_crs_civ_war_var = CHI_nanjing_boost_temp_var }
 		set_variable = { CHI_gov_civ_war_var = 0 }
 		custom_effect_tooltip = CHI_push_along_yangtze_nanjing_wins_tt
 	}
@@ -11236,13 +11229,10 @@ country_event = {
 			ideology = radical_socialist_subtype
 		}
 		activate_advisor = CHI_sun_fo_sic
-		set_temp_variable = { CHI_soc_dem_popularity_temp_var = party_popularity@social_democrat }
-		set_temp_variable = { CHI_neg_soc_dem_popularity_temp_var = CHI_soc_dem_popularity_temp_var }
-		multiply_temp_variable = { CHI_neg_soc_dem_popularity_temp_var = -0.75 } #We're gonna subtract about 75% of soc dem popularity
-		set_temp_variable = { CHI_add_soc_dem_popularity_temp_var = CHI_soc_dem_popularity_temp_var }
-		multiply_temp_variable = { CHI_add_soc_dem_popularity_temp_var = 0.50 } #About 50% of Soc Dem Popularity will turn into Rad Soc
-		set_temp_variable = { CHI_add_soc_lib_popularity_temp_var = CHI_soc_dem_popularity_temp_var }
-		multiply_temp_variable = { CHI_add_soc_lib_popularity_temp_var = 0.25 } #About 25% of Soc Dem Popularity will turn into Soc Lib
+
+		set_temp_variable = { CHI_neg_soc_dem_popularity_temp_var = { value = party_popularity@social_democrat multiply = -0.75 } } #We're gonna subtract about 75% of soc dem popularity
+		set_temp_variable = { CHI_add_soc_dem_popularity_temp_var = { value = party_popularity@social_democrat multiply = 0.5 } } #About 50% of Soc Dem Popularity will turn into Rad Soc
+		set_temp_variable = { CHI_add_soc_lib_popularity_temp_var = { value = party_popularity@social_democrat multiply = 0.25 } } #About 25% of Soc Dem Popularity will turn into Soc Lib
 		add_popularity = { ideology = social_democrat popularity = CHI_neg_soc_dem_popularity_temp_var }
 		add_popularity = { ideology = radical_socialist popularity = CHI_add_soc_dem_popularity_temp_var }
 		add_popularity = { ideology = social_liberal popularity = CHI_add_soc_lib_popularity_temp_var }
@@ -11289,11 +11279,8 @@ country_event = {
 			character = CHI_song_qingling
 			ideology = radical_socialist_subtype
 		}
-		set_temp_variable = { CHI_soc_dem_popularity_temp_var = party_popularity@social_democrat }
-		set_temp_variable = { CHI_neg_soc_dem_popularity_temp_var = CHI_soc_dem_popularity_temp_var }
-		multiply_temp_variable = { CHI_neg_soc_dem_popularity_temp_var = -0.60 } #We're gonna subtract about 75% of soc dem popularity
-		set_temp_variable = { CHI_add_soc_dem_popularity_temp_var = CHI_soc_dem_popularity_temp_var }
-		multiply_temp_variable = { CHI_add_soc_dem_popularity_temp_var = 0.60 } #About 50% of Soc Dem Popularity will turn into Rad Soc
+		set_temp_variable = { CHI_neg_soc_dem_popularity_temp_var = { value = party_popularity@social_democrat multiply = -0.6 } }  #We're gonna subtract about 60% of soc dem popularity
+		set_temp_variable = { CHI_add_soc_dem_popularity_temp_var = { value = party_popularity@social_democrat multiply = 0.6 } } #About 60% of Soc Dem Popularity will turn into Rad Soc
 		add_popularity = { ideology = social_democrat popularity = CHI_neg_soc_dem_popularity_temp_var }
 		add_popularity = { ideology = radical_socialist popularity = CHI_add_soc_dem_popularity_temp_var }
 		hidden_effect = {
@@ -14144,8 +14131,7 @@ country_event = { #Braving the Darkness
 				totalist < 0.10
 			}
 		}
-		set_temp_variable = { CHI_totalist_pop_temp_var = party_popularity@totalist }
-		multiply_temp_variable = { CHI_totalist_pop_temp_var = -0.5 }
+		set_temp_variable = { CHI_totalist_pop_temp_var = { value = party_popularity@totalist multiply = -0.5 } }
 		add_stability = CHI_totalist_pop_temp_var
 		add_popularity = { ideology = totalist popularity = CHI_totalist_pop_temp_var }
 		CHI_purge_CRS_generals_effect = yes
@@ -14170,8 +14156,7 @@ country_event = { #Braving the Darkness
 				totalist < 0.05
 			}
 		}
-		set_temp_variable = { CHI_totalist_pop_temp_var = party_popularity@totalist }
-		multiply_temp_variable = { CHI_totalist_pop_temp_var = -1 }
+		set_temp_variable = { CHI_totalist_pop_temp_var = { value = party_popularity@totalist multiply = -1 } }
 		add_stability = CHI_totalist_pop_temp_var
 		add_popularity = { ideology = totalist popularity = CHI_totalist_pop_temp_var }
 		CHI_purge_CRS_generals_effect = yes

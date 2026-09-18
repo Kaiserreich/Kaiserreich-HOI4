@@ -88,19 +88,11 @@ set_variable = {
 set_variable = {
 	HAI_assembly_support = 14
 }
-clamp_variable = {
-	var = HAI_assembly_support
-	min = 0
-	max = 40
-}
+
 set_variable = {
 	HAI_council_support = 5
 }
-clamp_variable = {
-	var = HAI_council_support
-	min = 0
-	max = 21
-}
+
 set_variable = {
 	HAIborderclashesWS = 0.05
 }
@@ -112,11 +104,6 @@ set_variable = {
 }
 set_variable = {
 	HAI_corruption = 0.35
-}
-clamp_variable = {
-	var = HAI_corruption
-	min = 0
-	max = 100
 }
 
 activate_targeted_decision = { target = THIS decision = HAI_strongarm_assemblymen }
@@ -157,3 +144,5 @@ recruit_character = HAI_dumarsais_estime
 recruit_character = HAI_alix_pasquet
 recruit_character = HAI_cleante_valcin
 
+### Scientists ###
+recruit_character = HAI_charles_terres_weymann

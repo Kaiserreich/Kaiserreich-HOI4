@@ -527,7 +527,7 @@ country_event = { #The assembly re-elects Martinez
 	}
 }
 
-country_event = { #Castro defects!
+country_event = { #Generals defect!
 	id = el_salvador_events.60
 	title = el_salvador_events.60.t
 	desc = el_salvador_events.60.d
@@ -539,6 +539,8 @@ country_event = { #Castro defects!
 		name = el_salvador_events.60.a
 		add_manpower = -2500
 		retire_character = ELS_salvador_castaneda_castro
+		retire_character = ELS_jose_asensio_menendez
+		retire_character = ELS_alfonso_marroquin_calvo
 	}
 }
 
@@ -986,6 +988,8 @@ country_event = { #The End of Martinez
 		hidden_effect = {
 			country_event = { id = el_salvador_events.112 days = 7 }
 			ELS_salvador_castaneda_castro = { set_nationality = ROOT }
+			ELS_jose_asensio_menendez = { set_nationality = ROOT }
+			ELS_alfonso_marroquin_calvo = { set_nationality = ROOT }
 		}
 	}
 }
@@ -1142,13 +1146,18 @@ country_event = { #Partisans take over the capital
 		add_stability = -0.15
 		hidden_effect = {
 			country_event = { id = el_salvador_events.122 days = 7 }
+			ELS_salvador_castaneda_castro = {
+				set_nationality = ROOT
+				promote_character = authoritarian_democrat_subtype
+			}
 		}
 		add_manpower = 2500
 		complete_national_focus = ELS_revolutionary_ideals
 		add_ideas = ELS_revolution_scars
-		ELS_salvador_castaneda_castro = {
-			set_nationality = ROOT
-			promote_character = authoritarian_democrat_subtype
+		effect_tooltip = {
+			ELS_salvador_castaneda_castro = { set_nationality = ROOT }
+			ELS_jose_asensio_menendez = { set_nationality = ROOT }
+			ELS_alfonso_marroquin_calvo = { set_nationality = ROOT }
 		}
 	}
 }
@@ -1253,13 +1262,18 @@ country_event = { #Salinas was Injured!
 		add_political_power = 100
 		hidden_effect = {
 			country_event = { id = el_salvador_events.121 days = 7 } #Syndies 1, Salinas 0
+			ELS_salvador_castaneda_castro = {
+				set_nationality = ROOT
+				promote_character = authoritarian_democrat_subtype
+			}
 		}
 		add_manpower = 2500
 		complete_national_focus = ELS_revolutionary_ideals
 		add_ideas = ELS_revolution_scars
-		ELS_salvador_castaneda_castro = {
-			set_nationality = ROOT
-			promote_character = authoritarian_democrat_subtype
+		effect_tooltip = {
+			ELS_salvador_castaneda_castro = { set_nationality = ROOT }
+			ELS_jose_asensio_menendez = { set_nationality = ROOT }
+			ELS_alfonso_marroquin_calvo = { set_nationality = ROOT }
 		}
 	}
 }
@@ -1289,13 +1303,18 @@ country_event = { #Menendez's failure
 		add_political_power = 100
 		hidden_effect = {
 			country_event = { id = el_salvador_events.121 days = 7 } #Syndies 1, Salinas 0
+			ELS_salvador_castaneda_castro = {
+				set_nationality = ROOT
+				promote_character = authoritarian_democrat_subtype
+			}
 		}
 		add_manpower = 4000
 		complete_national_focus = ELS_revolutionary_ideals
 		add_ideas = ELS_revolution_scars
-		ELS_salvador_castaneda_castro = {
-			set_nationality = ROOT
-			promote_character = authoritarian_democrat_subtype
+		effect_tooltip = {
+			ELS_salvador_castaneda_castro = { set_nationality = ROOT }
+			ELS_jose_asensio_menendez = { set_nationality = ROOT }
+			ELS_alfonso_marroquin_calvo = { set_nationality = ROOT }
 		}
 	}
 }

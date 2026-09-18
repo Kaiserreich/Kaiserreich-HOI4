@@ -31,18 +31,18 @@ annexation_decision_effect = {
 	set_country_flag = { flag = open_annexation_event days = 16 value = 1 }
 	if = {
 		limit = {
-			OR = {
-				check_variable = { FROM.annexation_target:annexation_event = 2057 }
-				check_variable = { FROM.annexation_target:annexation_event = 3076 }
-				check_variable = { FROM.annexation_target:annexation_event = 3075 }
-				check_variable = { FROM.annexation_target:annexation_event = 3074 }
-				check_variable = { FROM.annexation_target:annexation_event = 3019 }
-				check_variable = { FROM.annexation_target:annexation_event = 3083 }
-				check_variable = { FROM.annexation_target:annexation_event = 3078 }
-				check_variable = { FROM.annexation_target:annexation_event = 3071 }
-				check_variable = { FROM.annexation_target:annexation_event = 3067 }
-				check_variable = { FROM.annexation_target:annexation_event = 5052 }
-				check_variable = { FROM.annexation_target:annexation_event = 5054 }
+			check_expr = {
+				value = { value = FROM.annexation_target:annexation_event equals = 2057 }
+				or = { value = FROM.annexation_target:annexation_event equals = 3076 }
+				or = { value = FROM.annexation_target:annexation_event equals = 3075 }
+				or = { value = FROM.annexation_target:annexation_event equals = 3074 }
+				or = { value = FROM.annexation_target:annexation_event equals = 3019 }
+				or = { value = FROM.annexation_target:annexation_event equals = 3083 }
+				or = { value = FROM.annexation_target:annexation_event equals = 3078 }
+				or = { value = FROM.annexation_target:annexation_event equals = 3071 }
+				or = { value = FROM.annexation_target:annexation_event equals = 3067 }
+				or = { value = FROM.annexation_target:annexation_event equals = 5052 }
+				or = { value = FROM.annexation_target:annexation_event equals = 5054 }
 			}
 		}
 		FROM = {

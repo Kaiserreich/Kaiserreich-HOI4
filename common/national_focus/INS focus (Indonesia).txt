@@ -1335,12 +1335,10 @@ focus_tree = {
 			factor = 140
 			modifier = {
 				factor = 0
-				AND = {
-					NOT = {
-						has_completed_focus = INS_political_stability
-					}
-					is_subject = no
+				NOT = {
+					has_completed_focus = INS_political_stability
 				}
+				is_subject = no
 			}
 		}
 

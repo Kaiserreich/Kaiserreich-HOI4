@@ -424,35 +424,33 @@ RUS_obukhov_upgrade_3_1_lvl4 = {
 RUS_obukhov_upgrade_3_1_lvl3 = {
 	OR = {
 		FROM = {
-			AND = {
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
-						}
-					}
-				}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
 					}
 				}
-				NOT = {
-					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
-					}
+			}
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
+				}
+			}
+			NOT = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
 				}
 			}
 		}
@@ -467,39 +465,37 @@ RUS_obukhov_upgrade_3_1_lvl3 = {
 RUS_obukhov_upgrade_3_1_lvl2 = {
 	OR = {
 		FROM = {
-			AND = {
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
-						}
-					}
-				}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
 					}
 				}
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
-						}
+			}
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
+				}
+			}
+			NOT = {
+				OR = {
+					mio:RUS_obukhov_organisation = {
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
+					}
+					mio:RUS_obukhov_organisation = {
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
 					}
 				}
 			}
@@ -515,29 +511,27 @@ RUS_obukhov_upgrade_3_1_lvl2 = {
 RUS_obukhov_upgrade_3_1_lvl1 = {
 	OR = {
 		FROM = {
-			AND = {
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
+				}
+			}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
-					}
-				}
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
-						}
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
 					}
 				}
 			}
@@ -578,35 +572,33 @@ RUS_obukhov_upgrade_3_2_lvl4 = {
 RUS_obukhov_upgrade_3_2_lvl3 = {
 	OR = {
 		FROM = {
-			AND = {
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
-						}
-					}
-				}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
 					}
 				}
-				NOT = {
-					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
-					}
+			}
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
+				}
+			}
+			NOT = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
 				}
 			}
 		}
@@ -621,39 +613,37 @@ RUS_obukhov_upgrade_3_2_lvl3 = {
 RUS_obukhov_upgrade_3_2_lvl2 = {
 	OR = {
 		FROM = {
-			AND = {
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
-						}
-					}
-				}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
 					}
 				}
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
-						}
+			}
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
+				}
+			}
+			NOT = {
+				OR = {
+					mio:RUS_obukhov_organisation = {
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
+					}
+					mio:RUS_obukhov_organisation = {
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
 					}
 				}
 			}
@@ -669,29 +659,27 @@ RUS_obukhov_upgrade_3_2_lvl2 = {
 RUS_obukhov_upgrade_3_2_lvl1 = {
 	OR = {
 		FROM = {
-			AND = {
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
+				}
+			}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
-					}
-				}
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
-						}
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
 					}
 				}
 			}
@@ -732,35 +720,33 @@ RUS_obukhov_upgrade_3_3_lvl4 = {
 RUS_obukhov_upgrade_3_3_lvl3 = {
 	OR = {
 		FROM = {
-			AND = {
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
-						}
-					}
-				}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
 					}
 				}
-				NOT = {
-					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
-					}
+			}
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
+				}
+			}
+			NOT = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
 				}
 			}
 		}
@@ -775,39 +761,37 @@ RUS_obukhov_upgrade_3_3_lvl3 = {
 RUS_obukhov_upgrade_3_3_lvl2 = {
 	OR = {
 		FROM = {
-			AND = {
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
-						}
-					}
-				}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
 					}
 				}
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
-						}
+			}
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
+				}
+			}
+			NOT = {
+				OR = {
+					mio:RUS_obukhov_organisation = {
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
+					}
+					mio:RUS_obukhov_organisation = {
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
 					}
 				}
 			}
@@ -823,29 +807,27 @@ RUS_obukhov_upgrade_3_3_lvl2 = {
 RUS_obukhov_upgrade_3_3_lvl1 = {
 	OR = {
 		FROM = {
-			AND = {
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
+				}
+			}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
-					}
-				}
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
-						}
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
 					}
 				}
 			}
@@ -886,35 +868,33 @@ RUS_obukhov_upgrade_3_4_lvl4 = {
 RUS_obukhov_upgrade_3_4_lvl3 = {
 	OR = {
 		FROM = {
-			AND = {
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
-						}
-					}
-				}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
 					}
 				}
-				NOT = {
-					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
-					}
+			}
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl4
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl4
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl4
+				}
+			}
+			NOT = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
 				}
 			}
 		}
@@ -929,39 +909,37 @@ RUS_obukhov_upgrade_3_4_lvl3 = {
 RUS_obukhov_upgrade_3_4_lvl2 = {
 	OR = {
 		FROM = {
-			AND = {
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
-						}
-					}
-				}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
+						is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
 					}
 				}
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
-						}
+			}
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl3
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl3
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl3
+				}
+			}
+			NOT = {
+				OR = {
+					mio:RUS_obukhov_organisation = {
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
+					}
+					mio:RUS_obukhov_organisation = {
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
 					}
 				}
 			}
@@ -977,29 +955,27 @@ RUS_obukhov_upgrade_3_4_lvl2 = {
 RUS_obukhov_upgrade_3_4_lvl1 = {
 	OR = {
 		FROM = {
-			AND = {
+			OR = {
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
+				}
+				mio:RUS_obukhov_organisation = {
+					is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
+				}
+			}
+			NOT = {
 				OR = {
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_2_lvl2
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_3_lvl2
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
 					}
 					mio:RUS_obukhov_organisation = {
-						is_mio_trait_completed = obukhov_upgrade_3_1_lvl2
-					}
-				}
-				NOT = {
-					OR = {
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl4
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl3
-						}
-						mio:RUS_obukhov_organisation = {
-							is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
-						}
+						is_mio_trait_completed = obukhov_upgrade_3_4_lvl2
 					}
 				}
 			}

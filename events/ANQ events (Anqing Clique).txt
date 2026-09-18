@@ -624,7 +624,7 @@ country_event = { #The matter of Zhejiang
 			set_country_flag = ANQ_zhejiang_chen_yi_governor
 			every_owned_state = {
 				limit = {
-					has_state_flag = zhejiang_province_state
+					check_variable = { chinese_province_state = 596.id }
 					has_resistance = yes
 				}
 				add_compliance = 25
@@ -635,7 +635,7 @@ country_event = { #The matter of Zhejiang
 			set_country_flag = ANQ_zhejiang_shangguan_governor
 			every_owned_state = {
 				limit = {
-					has_state_flag = zhejiang_province_state
+					check_variable = { chinese_province_state = 596.id }
 					has_resistance = yes
 				}
 				add_compliance = 15
@@ -662,7 +662,7 @@ country_event = { #The matter of Jiangsu
 		set_country_flag = ANQ_jiangsu_zheng_governor
 		every_owned_state = {
 			limit = {
-				has_state_flag = jiangsu_province_state
+				check_variable = { chinese_province_state = 613.id }
 				has_resistance = yes
 			}
 			add_compliance = 15
@@ -701,7 +701,7 @@ country_event = { #Confirmation of Ma Yuren
 		clr_country_flag = ANQ_jiangsu_finding_candidate_governor
 		every_owned_state = {
 			limit = {
-				has_state_flag = jiangsu_province_state
+				check_variable = { chinese_province_state = 613.id }
 				has_resistance = yes
 			}
 			add_compliance = -8
@@ -792,7 +792,7 @@ country_event = { #The matter of Jiangxi, Deng Ruzhou was reappointed
 		add_stability = 0.03
 		every_owned_state = {
 			limit = {
-				has_state_flag = jiangxi_province_state
+				check_variable = { chinese_province_state = 600.id }
 				has_resistance = yes
 			}
 			add_compliance = 15
@@ -834,7 +834,7 @@ country_event = { #The matter of Jiangxi, Deng not reappointed
 		}
 		every_owned_state = {
 			limit = {
-				has_state_flag = jiangxi_province_state
+				check_variable = { chinese_province_state = 600.id }
 				has_resistance = yes
 			}
 			add_compliance = -8
@@ -868,7 +868,7 @@ country_event = { #The matter of Fuijan
 		set_country_flag = ANQ_fujian_puppet_governor
 		every_owned_state = {
 			limit = {
-				has_state_flag = fujian_province_state
+				check_variable = { chinese_province_state = 595.id }
 				has_resistance = yes
 			}
 			add_compliance = 15
@@ -2068,19 +2068,31 @@ country_event = { #kuomintang yiguandao start
 		hidden_effect = {
 			set_variable = { anq_kmt_unrest_level = 2 }
 			set_variable = { anq_yiguandao_unrest_level = 2 }
-			set_variable = { anq_suppress_kmt_mission_timeout = 70 }
-			set_variable = { anq_suppress_yiguandao_mission_timeout = 70 }
 
-			set_temp_variable = { anq_kmt_random_delay = random }
-			subtract_from_temp_variable = { anq_kmt_random_delay = -0.5 }
-			multiply_temp_variable = { anq_kmt_random_delay = 15 }
-			add_to_variable = { anq_suppress_kmt_mission_timeout = anq_kmt_random_delay }
+			set_variable = {
+				anq_suppress_kmt_mission_timeout = {
+					value = 70
+					add = {
+						value = random
+						subtract = -0.5
+						multiply = 15
+						round = yes
+					}
+				}
+			}
 			activate_mission = ANQ_temp_suppress_kmt
 
-			set_temp_variable = { anq_yiguandao_random_delay = random }
-			subtract_from_temp_variable = { anq_yiguandao_random_delay = -0.5 }
-			multiply_temp_variable = { anq_yiguandao_random_delay = 15 }
-			add_to_variable = { anq_suppress_yiguandao_mission_timeout = anq_yiguandao_random_delay }
+			set_variable = {
+				anq_suppress_yiguandao_mission_timeout = {
+					value = 70
+					add = {
+						value = random
+						subtract = -0.5
+						multiply = 15
+						round = yes
+					}
+				}
+			}
 			activate_mission = ANQ_temp_suppress_yiguandao
 		}
 		custom_effect_tooltip = anq_instructions_kuomintang_yiguandao_tt
@@ -2812,14 +2824,8 @@ country_event = { #extra aid from qing
 		ANQ_modify_beijing_spirit = yes
 		custom_effect_tooltip = anq_reduce_reconstruction_timecost_qingextra_tt
 		hidden_effect = {
-			subtract_from_variable = {
-				var = anq_reconstruction_decision_cost?30
-				value = 5
-			}
-			subtract_from_variable = {
-				var = anq_reconstruction_decision_time?80
-				value = 10
-			}
+			subtract_from_variable = { anq_reconstruction_decision_cost?30 = 5 }
+			subtract_from_variable = { anq_reconstruction_decision_time?80 = 10 }
 		}
 	}
 }
@@ -3391,18 +3397,10 @@ country_event = { # deciding on reclamation chain start (triggers before anqing_
 			limit = {
 				FNG = { has_country_flag = FNG_shenyang_anticoncessions }
 			}
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 2
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 2 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		else = {
-			subtract_from_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_decrease_reclamation_war_willingness_tt
-			}
+			subtract_from_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		}
 	}
 }
@@ -3431,26 +3429,14 @@ country_event = { # willingness reconstruction (triggers before anqing_events.16
 		name = anqing_events.172.a
 		if = {
 			limit = { has_country_flag = ANQ_feng_aids_reconstruction }
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = { has_country_flag = ANQ_fengjapan_aids_reconstruction }
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 2
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 2 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		else = {
-			subtract_from_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_decrease_reclamation_war_willingness_tt
-			}
+			subtract_from_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		}
 
 		if = {
@@ -3509,21 +3495,13 @@ country_event = { # shandong anqing war conference willingness result
 				NOT = { country_exists = SHD }
 				FNG = { NOT = { has_country_flag = FNG_anqSHD_warc2_started } }
 			}
-			subtract_from_variable = {
-				var = ANQ_reclamation_willingness
-				value = 2
-				tooltip = ANQ_decrease_reclamation_war_willingness_tt
-			}
+			subtract_from_variable = { ANQ_reclamation_willingness = 2 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = {
 				FNG = { has_country_flag = FNG_anqSHD_warc2_failure }
 			}
-			subtract_from_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_decrease_reclamation_war_willingness_tt
-			}
+			subtract_from_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = {
@@ -3541,11 +3519,7 @@ country_event = { # shandong anqing war conference willingness result
 					NOT = { has_country_flag = FNG_anqSHD_warc_ideal_success }
 				}
 			}
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		country_event = { id = anqing_events.165 days = 2 }
 	}
@@ -3620,11 +3594,7 @@ country_event = { # anti concessionist opinion of qing (pro-fengtian)
 			QIE = { is_monarchy = yes }
 			has_global_flag = QIE_manchu_restoration
 		}
-		add_to_variable = {
-			var = ANQ_reclamation_willingness
-			value = 1
-			tooltip = ANQ_increase_reclamation_war_willingness_tt
-		}
+		add_to_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		add_to_temp_variable = { ANQ_credibility_factor_change = 10 tooltip = ANQ_increase_credibility_tt }
 		ANQ_recalculate_chens_credibility = yes
 		if = { #high japanese will lead to division even though puyi is strong
@@ -3642,11 +3612,7 @@ country_event = { # anti concessionist opinion of qing (pro-fengtian)
 		trigger = {
 			QIE = { is_monarchy = no }
 		}
-		subtract_from_variable = {
-			var = ANQ_reclamation_willingness
-			value = 1
-			tooltip = ANQ_decrease_reclamation_war_willingness_tt
-		}
+		subtract_from_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		subtract_from_temp_variable = { ANQ_credibility_factor_change = 20 tooltip = ANQ_decrease_credibility_tt }
 		ANQ_recalculate_chens_credibility = yes
 		country_event = { id = anqing_events.167 days = 1 random_hours = 18 } #bad stuff now they will always be against
@@ -3680,11 +3646,7 @@ country_event = { # anti-concessions for reclamation
 	option = {
 		log = "[GetLogInfo]: event anqing_events.166 option anqing_events.166.a"
 		name = anqing_events.166.a
-		add_to_variable = {
-			var = ANQ_reclamation_willingness
-			value = 1
-			tooltip = ANQ_increase_reclamation_war_willingness_tt
-		}
+		add_to_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		add_political_power = 20
 		country_event = { id = anqing_events.169 random_hours = 18 days = 1 }
 	}
@@ -3708,11 +3670,7 @@ country_event = { # anti-concessions against reclamation
 	option = {
 		log = "[GetLogInfo]: event anqing_events.167 option anqing_events.167.a"
 		name = anqing_events.167.a
-		subtract_from_variable = {
-			var = ANQ_reclamation_willingness
-			value = 1
-			tooltip = ANQ_decrease_reclamation_war_willingness_tt
-		}
+		subtract_from_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		country_event = { id = anqing_events.169 random_hours = 18 days = 1 }
 	}
 }
@@ -3765,38 +3723,22 @@ country_event = { # japanese influence in fengtian willingness
 		name = anqing_events.169.a
 		if = {
 			limit = { FNG_mantetsu_level_very_high = yes }
-			subtract_from_variable = {
-				var = ANQ_reclamation_willingness
-				value = 3
-				tooltip = ANQ_decrease_reclamation_war_willingness_tt
-			}
+			subtract_from_variable = { ANQ_reclamation_willingness = 3 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = { FNG_mantetsu_level_high = yes }
-			subtract_from_variable = {
-				var = ANQ_reclamation_willingness
-				value = 2
-				tooltip = ANQ_decrease_reclamation_war_willingness_tt
-			}
+			subtract_from_variable = { ANQ_reclamation_willingness = 2 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = { FNG_mantetsu_level_medium = yes }
-			subtract_from_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_decrease_reclamation_war_willingness_tt
-			}
+			subtract_from_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = { FNG_mantetsu_level_low = yes }
 			custom_effect_tooltip = ANQ_no_change_reclamation_war_willingness_tt
 		}
 		else = {
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 2
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 2 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		if = {
 			limit = { FNG_JAP_hostile = no }
@@ -3835,19 +3777,11 @@ country_event = { # japanese aid score willingness
 		name = anqing_events.170.a
 		if = {
 			limit = { check_variable = { ANQ_tokyo_score > 4 } }
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 2
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 2 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = { check_variable = { ANQ_tokyo_score > 1 } }
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		else = {
 			custom_effect_tooltip = ANQ_no_change_reclamation_war_willingness_tt
@@ -3891,30 +3825,18 @@ country_event = { # fengtian influence
 		name = anqing_events.174.a
 		if = {
 			limit = { check_variable = { ANQ_fengtian_level > 4 } }
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 2
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 2 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = { check_variable = { ANQ_fengtian_level > 2 } }
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = { check_variable = { ANQ_fengtian_level > 0 } }
 			custom_effect_tooltip = ANQ_no_change_reclamation_war_willingness_tt
 		}
 		else = {
-			subtract_from_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_decrease_reclamation_war_willingness_tt
-			}
+			subtract_from_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_decrease_reclamation_war_willingness_tt }
 		}
 		hidden_effect = {
 			country_event = { id = anqing_events.175 days = 3 random_days = 2 }
@@ -4187,14 +4109,8 @@ country_event = { # fengtian tolerates us
 		}
 		if = {
 			limit = { has_completed_focus = ANQ_reconstruction_efforts }
-			add_to_variable = {
-				var = anq_reconstruction_decision_cost?30
-				value = 5
-			}
-			add_to_variable = {
-				var = anq_reconstruction_decision_time?80
-				value = 10
-			}
+			add_to_variable = { anq_reconstruction_decision_cost?30 = 5 }
+			add_to_variable = { anq_reconstruction_decision_time?80 = 10 }
 		}
 	}
 
@@ -4536,14 +4452,11 @@ country_event = { #ANQ's proposal, trigger for FNG
 				add = 40
 			}
 		}
-		if = {
-			limit = {
-				check_variable = { ANQ.ANQ_FNG_bargain = 0 }
+		set_variable = {
+			ANQ.ANQ_FNG_bargain = {
+				value = 3
+				if = { limit = { value = ANQ.ANQ_FNG_bargain equals = 0 } subtract = 1 }
 			}
-			set_variable = { ANQ.ANQ_FNG_bargain = 2 }
-		}
-		else = {
-			set_variable = { ANQ.ANQ_FNG_bargain = 3 }
 		}
 
 		ANQ = {
@@ -4719,7 +4632,7 @@ country_event = { #The Mǎwěi Naval Mutiny!
 					producer = LEP
 				}
 				add_equipment_to_stockpile = {
-					type = convoy
+					type = convoy_1
 					amount = -20
 					producer = LEP
 				}

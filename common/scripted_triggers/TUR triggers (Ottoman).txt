@@ -331,7 +331,17 @@ OTT_russo_ottoman_convention_can_proceed = { #Stops ongoing Russo-Ottoman conven
 		NOT = {
 			has_war_with = RUS
 			is_in_faction_with = GER
+			is_in_faction_with = ENT
+			is_in_faction_with = JAP
 		}
+	}
+}
+
+OTT_russo_ottoman_convention_signed = {	#Allows different OTT and AFG forpol options
+	custom_override_tooltip = {
+		tooltip = RUSSIAN_OTTOMAN_DEAL
+		not_tooltip = RUSSIAN_OTTOMAN_DEAL_NOT
+		has_global_flag = RUSSIAN_OTTOMAN_DEAL
 	}
 }
 

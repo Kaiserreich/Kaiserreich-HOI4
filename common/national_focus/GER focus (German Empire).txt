@@ -115,12 +115,17 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_renew_rathenauplan"
 			add_ideas = GER_neue_wirtschaft_1
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_rathenauplan_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_rathenauplan_object }
-			GER_bm_card_add = yes
 
-			hidden_effect = {
-				add_to_variable = { GER_rathenauplan_draw = 1 }
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_rathenauplan_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_rathenauplan_object }
+				GER_bm_card_add = yes
 			}
 
 			add_advisor_role = {
@@ -158,12 +163,18 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_war_economic_offices"
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_economic_planning_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_economic_planning_object }
-			GER_bm_card_add = yes
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_economic_planning_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_economic_planning_object }
+				GER_bm_card_add = yes
 
-			hidden_effect = {
-				add_to_variable = { GER_rathenauplan_draw = 1 }
+				hidden_effect = { GER_bm_cardgame_rathenauplan_object = { add_to_variable = { card_draw_value = 1 } } }
 			}
 
 			swap_ideas = {
@@ -195,12 +206,18 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_reichsarbeitsamt"
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_arbeitsdienst_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_arbeitsdienst_object }
-			GER_bm_card_add = yes
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_arbeitsdienst_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_arbeitsdienst_object }
+				GER_bm_card_add = yes
 
-			hidden_effect = {
-				add_to_variable = { GER_rathenauplan_draw = 1 }
+				hidden_effect = { GER_bm_cardgame_rathenauplan_object = { add_to_variable = { card_draw_value = 1 } } }
 			}
 
 			add_one_random_civilian_factory = yes
@@ -250,18 +267,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_binnenwirtschaft"
 			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_import_tariffs_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_import_tariffs_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_import_tariffs_object }
 			GER_bm_card_add = yes
 			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_administrative_reform_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_administrative_reform_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_administrative_reform_object }
 			GER_bm_card_add = yes
 			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_nationalisation_of_foreign_companies_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_nationalisation_of_foreign_companies_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_nationalisation_of_foreign_companies_object }
 			GER_bm_card_add = yes
 
-			hidden_effect = {
-				add_to_variable = { GER_rathenauplan_draw = 1 }
-			}
+			hidden_effect = { GER_bm_cardgame_rathenauplan_object = { add_to_variable = { card_draw_value = 1 } } }
 			# Add two new cards - some other work creation card, and a card about nationalization of foreign industries that boosts Investment factor for some stuff
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -298,9 +313,7 @@ focus_tree = {
 				}
 			}
 
-			hidden_effect = {
-				add_to_variable = { GER_rathenauplan_draw = 1 }
-			}
+			hidden_effect = { GER_bm_cardgame_rathenauplan_object = { add_to_variable = { card_draw_value = 1 } } }
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_PRODUCTION }
 	}
@@ -339,9 +352,7 @@ focus_tree = {
 				}
 			}
 
-			hidden_effect = {
-				add_to_variable = { GER_rathenauplan_draw = 1 }
-			}
+			hidden_effect = { GER_bm_cardgame_rathenauplan_object = { add_to_variable = { card_draw_value = 1 } } }
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_RESEARCH }
 	}
@@ -374,9 +385,18 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_tarnow_baade_plan"
 			add_ideas = GER_reform_eco_1
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_tbplan_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_tbplan_object }
-			GER_bm_card_add = yes
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_tbplan_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_tbplan_object }
+				GER_bm_card_add = yes
+			}
+
 			add_advisor_role = {
 				character = GER_fritz_tarnow
 				advisor = {
@@ -385,10 +405,6 @@ focus_tree = {
 					traits = { KR_tarnow_baade_advocate }
 					ai_will_do = { factor = 1 }
 				}
-			}
-
-			hidden_effect = {
-				add_to_variable = { GER_tbplan_draw = 1 }
 			}
 			if = {
 				limit = {
@@ -417,12 +433,18 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_role_of_trade_unions"
 			add_ideas = GER_adgb_idea
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_trade_union_collaboration_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_trade_union_collaboration_object }
-			GER_bm_card_add = yes
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_trade_union_collaboration_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_trade_union_collaboration_object }
+				GER_bm_card_add = yes
 
-			hidden_effect = {
-				add_to_variable = { GER_tbplan_draw = 1 }
+				hidden_effect = { GER_bm_cardgame_tbplan_object = { add_to_variable = { card_draw_value = 1 } } }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -455,15 +477,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_price_controls"
 			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_strategic_tax_hikes_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_strategic_tax_hikes_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_strategic_tax_hikes_object }
 			GER_bm_card_add = yes
 			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_price_depression_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_price_depression_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_price_depression_object }
 			GER_bm_card_add = yes
 
-			hidden_effect = {
-				add_to_variable = { GER_tbplan_draw = 1 }
-			}
+			hidden_effect = { GER_bm_cardgame_tbplan_object = { add_to_variable = { card_draw_value = 1 } } }
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
 	}
@@ -494,19 +514,25 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_public_works"
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_institutional_public_works_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_institutional_public_works_object }
-			GER_bm_card_add = yes
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_arbeitsdienst_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_arbeitsdienst_object }
-			GER_bm_card_add = yes
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_institutional_public_works_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_institutional_public_works_object }
+				GER_bm_card_add = yes
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_arbeitsdienst_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_arbeitsdienst_object }
+				GER_bm_card_add = yes
+
+				hidden_effect = { GER_bm_cardgame_tbplan_object = { add_to_variable = { card_draw_value = 1 } } }
+			}
 			swap_ideas = {
 				remove_idea = GER_reform_eco_1
 				add_idea = GER_reform_eco_2
-			}
-
-			hidden_effect = {
-				add_to_variable = { GER_tbplan_draw = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -546,9 +572,7 @@ focus_tree = {
 				}
 			}
 
-			hidden_effect = {
-				add_to_variable = { GER_tbplan_draw = 1 }
-			}
+			hidden_effect = { GER_bm_cardgame_tbplan_object = { add_to_variable = { card_draw_value = 1 } } }
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_INDUSTRY }
 	}
@@ -587,9 +611,7 @@ focus_tree = {
 				}
 			}
 
-			hidden_effect = {
-				add_to_variable = { GER_tbplan_draw = 1 }
-			}
+			hidden_effect = { GER_bm_cardgame_tbplan_object = { add_to_variable = { card_draw_value = 1 } } }
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_INTERNAL_AFFAIRS }
 	}
@@ -665,7 +687,15 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_nitrate_tobacco_monopoly"
-			add_to_variable = { GER_debt = -6 tooltip = GER_debt_decrease_focus_tt }
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				add_to_variable = { GER_debt = -6 tooltip = GER_debt_decrease_focus_tt }
+			}
 			add_one_random_civilian_factory = yes
 			add_one_random_civilian_factory = yes
 		}
@@ -698,11 +728,12 @@ focus_tree = {
 					GER_is_du_path = yes
 				}
 				subtract_from_variable = {
-					var = GER_Left_SPD_loyalty
-					value = 20
+					GER_Left_SPD_loyalty = {
+						value = 20
+						clamp = { min = 0 max = GER_Left_SPD_loyalty }
+					}
 					tooltip = GER_Left_SPD_loyalty_loss
 				}
-				clamp_variable = { var = GER_Left_SPD_loyalty min = 0 max = 100 }
 				if = {
 					limit = {
 						check_variable = { GER_Left_SPD_loyalty < 1 }
@@ -713,16 +744,17 @@ focus_tree = {
 				if = {
 					limit = { is_in_coalition_with_social_liberal = yes }
 					add_to_variable = {
-						var = GER_LVP_loyalty
-						value = 10
+						GER_LVP_loyalty = {
+							value = 10
+							clamp = { min = 0 max = { value = 100 subtract = GER_LVP_loyalty } }
+						}
 						tooltip = GER_LVP_loyalty_gain
 					}
-					clamp_variable = { var = GER_LVP_loyalty max = 100 min = 0 }
 				}
 			}
 			add_to_variable = { GER_debt = -4 tooltip = GER_debt_decrease_focus_tt }
 			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_fiscal_austerity_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_fiscal_austerity_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_fiscal_austerity_object }
 			GER_bm_card_add = yes
 		}
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -797,18 +829,19 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GER_federal_income_taxes"
 			# this needs an event chain to get this card
 			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_federal_income_taxes_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_federal_income_taxes_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_federal_income_taxes_object }
 			GER_bm_card_add = yes
 			if = {
 				limit = {
 					GER_is_du_path = yes
 				}
 				subtract_from_variable = {
-					var = GER_Z_loyalty
-					value = 10
+					GER_Z_loyalty = {
+						value = 10
+						clamp = { min = 0 max = GER_Z_loyalty }
+					}
 					tooltip = GER_Z_loyalty_loss
 				}
-				clamp_variable = { var = GER_Z_loyalty min = 0 max = 100 }
 				if = {
 					limit = {
 						check_variable = { GER_Z_loyalty < 1 }
@@ -864,7 +897,7 @@ focus_tree = {
 			}
 			add_to_variable = { GER_debt = -5 tooltip = GER_debt_decrease_focus_tt }
 			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_money_issuance_large_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_money_issuance_large_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_money_issuance_large_object }
 			GER_bm_card_add = yes
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -891,11 +924,20 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_labour_service"
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_arbeitsdienst_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_arbeitsdienst_object }
-			GER_bm_card_add = yes
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_arbeitsdienst_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_arbeitsdienst_object }
+				GER_bm_card_add = yes
+				custom_effect_tooltip = GER_factory_decision_stab_focus_tt
+				custom_effect_tooltip = tooltip_white_line
+			}
 			add_ideas = GER_freiwillige_arbeitsdienst_idea
-			custom_effect_tooltip = GER_labour_service_tt
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_INDUSTRY }
 	}
@@ -927,7 +969,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_mitteleuropa_trade"
 			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_mitteleuropa_loans_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_mitteleuropa_loans_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_mitteleuropa_loans_object }
 			GER_bm_card_add = yes
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -991,9 +1033,17 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_job_creation_secretariat"
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_land_improvement_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_land_improvement_object }
-			GER_bm_card_add = yes
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_land_improvement_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_land_improvement_object }
+				GER_bm_card_add = yes
+			}
 			activate_targeted_decision = { target = 147 decision = GER_Mittelland_Canal } #Prussian Saxony
 			activate_targeted_decision = { target = 65 decision = GER_Lehnmuhle_Dam } #Saxony
 			activate_targeted_decision = { target = 61 decision = GER_Peat_Extraction } #Mecklenburg
@@ -1023,9 +1073,17 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_cartelisation"
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_corporate_assistance_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_corporate_assistance_object }
-			GER_bm_card_add = yes
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_corporate_assistance_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_corporate_assistance_object }
+				GER_bm_card_add = yes
+			}
 			activate_targeted_decision = { target = 51 decision = GER_Gelzenberg_Takeover } #Rhineland
 			activate_targeted_decision = { target = 51 decision = GER_Vereinigte_Stahlwerke } #Rhineland
 			activate_targeted_decision = { target = 780 decision = GER_Heidelberg_Cement } #Baden
@@ -1085,10 +1143,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 50 }
 		available = {
-			check_variable = {
-				tooltip = GER_economic_health_level_7_tt
-				GER_economic_health > -8
-			}
+			NOT = { check_variable = { GER_economic_health < -7 tooltip = GER_economic_health_level_tt } }
 		}
 		prerequisite = {
 			focus = GER_automotive_industry
@@ -1165,18 +1220,23 @@ focus_tree = {
 			focus = GER_job_creation_secretariat
 		}
 		available = {
-			check_variable = {
-				tooltip = GER_economic_health_level_7_tt
-				GER_economic_health > -8
-			}
+			NOT = { check_variable = { GER_economic_health < -7 tooltip = GER_economic_health_level_tt } }
 		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_kaiser_wilhelm_society"
 			add_research_slot_until_six = yes
-			hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_technocratic_thinking_decision } }
-			set_temp_variable = { GER_card_added = GER_bm_cardgame_technocratic_thinking_object }
-			GER_bm_card_add = yes
+			if = {
+				limit = {
+					OR = {
+						date < 1936.04.01
+						has_country_flag = GER_black_monday_game_active
+					}
+				}
+				hidden_effect = { activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_technocratic_thinking_decision } }
+				set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_technocratic_thinking_object }
+				GER_bm_card_add = yes
+			}
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_RESEARCH }
 	}
@@ -1230,10 +1290,7 @@ focus_tree = {
 			focus = GER_cartelisation
 		}
 		available = {
-			check_variable = {
-				tooltip = GER_economic_health_level_7_tt
-				GER_economic_health > -8
-			}
+			NOT = { check_variable = { GER_economic_health < -7 tooltip = GER_economic_health_level_tt } }
 		}
 
 		completion_reward = {
@@ -1259,10 +1316,7 @@ focus_tree = {
 		}
 		available = {
 			has_idea = GER_price_monitoring_idea
-			check_variable = {
-				tooltip = GER_economic_health_level_6_tt
-				GER_economic_health > -7
-			}
+			NOT = { check_variable = { GER_economic_health < -6 tooltip = GER_economic_health_level_tt } }
 		}
 
 		completion_reward = {
@@ -1291,10 +1345,7 @@ focus_tree = {
 			focus = GER_light_industry
 		}
 		available = {
-			check_variable = {
-				tooltip = GER_economic_health_level_6_tt
-				GER_economic_health > -7
-			}
+			NOT = { check_variable = { GER_economic_health < -6 tooltip = GER_economic_health_level_tt } }
 		}
 
 		completion_reward = {
@@ -1755,9 +1806,13 @@ focus_tree = {
 				set_variable = { GER_schleicher_seats_r = 0 } # Set up Schleicher Block
 				custom_effect_tooltip = GER_schleicher_block_enabled_tt
 			}
-			set_temp_variable = { temp1 = GER_DVLP_seats_r } # Takes 15% of DVLP
-			multiply_temp_variable = { temp1 = 0.15 }
-			round_temp_variable = temp1
+			set_temp_variable = {
+				temp1 = {
+					value = GER_DVLP_seats_r
+					multiply = 0.15 # Takes 15% of DVLP
+					round = yes
+				}
+			}
 			add_to_variable = { GER_schleicher_seats_r = temp1 } # Adds to Schleicher Block
 			subtract_from_variable = { GER_DVLP_seats_r = temp1 }
 			subtract_from_variable = { GER_swr_coalition_seats = temp1 } # Removes from SWR seats
@@ -1862,10 +1917,7 @@ focus_tree = {
 		}
 		available = {
 			has_country_flag = GER_schleicher_mechanics_flag
-			check_variable = {
-				tooltip = GER_economic_health_level_8_tt
-				GER_economic_health > -9
-			}
+			NOT = { check_variable = { GER_economic_health < -8 tooltip = GER_economic_health_level_tt } }
 		}
 
 		completion_reward = {
@@ -1885,30 +1937,44 @@ focus_tree = {
 				set_variable = { GER_schleicher_seats_r = 0 } # Set up Schleicher Block
 				custom_effect_tooltip = GER_schleicher_block_enabled_tt
 			}
-			set_temp_variable = { temp1 = GER_DVLP_seats_r } # Takes 20% of DVLP
-			multiply_temp_variable = { temp1 = 0.2 }
-			round_temp_variable = temp1
+			set_temp_variable = {
+				temp1 = {
+					value = GER_DVLP_seats_r
+					multiply = 0.2 # Takes 20% of DVLP
+					round = yes
+				}
+			}
 			add_to_variable = { GER_schleicher_seats_r = temp1 } # Adds to Schleicher Block
 			subtract_from_variable = { GER_DVLP_seats_r = temp1 }
 			subtract_from_variable = { GER_swr_coalition_seats = temp1 } # Removes from SWR seats
-			set_temp_variable = { temp1 = GER_SPD_seats_r } # Takes 10% of SPD
-			multiply_temp_variable = { temp1 = 0.1 }
-			round_temp_variable = temp1
-			add_to_variable = { GER_schleicher_seats_r = temp1 } # Adds to Schleicher Block
-			subtract_from_variable = { GER_SPD_seats_r = temp1 }
-			subtract_from_variable = { GER_democratic_union_seats = temp1 } # Removes from D-U seats
-			set_temp_variable = { temp1 = GER_DkP_seats_r } # Takes 10% of DkP
-			multiply_temp_variable = { temp1 = 0.1 }
-			round_temp_variable = temp1
-			add_to_variable = { GER_schleicher_seats_r = temp1 } # Adds to Schleicher Block
-			subtract_from_variable = { GER_DkP_seats_r = temp1 }
+
+			set_temp_variable = {
+				temp2 = {
+					value = GER_SPD_seats_r
+					multiply = 0.1 # Takes 10% of SPD
+					round = yes
+				}
+			}
+			add_to_variable = { GER_schleicher_seats_r = temp2 } # Adds to Schleicher Block
+			subtract_from_variable = { GER_SPD_seats_r = temp2 }
+			subtract_from_variable = { GER_democratic_union_seats = temp2 } # Removes from D-U seats
+
+			set_temp_variable = {
+				temp3 = {
+					value = GER_DkP_seats_r
+					multiply = 0.1 # Takes 10% of DkP
+					round = yes
+				}
+			}
+			add_to_variable = { GER_schleicher_seats_r = temp3 } # Adds to Schleicher Block
+			subtract_from_variable = { GER_DkP_seats_r = temp3 }
 			if = {
 				limit = {
 					13 = {
 						is_in_array = { GER.democratic_union_members_array = FROM }
 					}
 				}
-				subtract_from_variable = { GER_swr_coalition_seats = temp1 } # Removes from SWR seats
+				subtract_from_variable = { GER_swr_coalition_seats = temp3 } # Removes from SWR seats
 			}
 			custom_effect_tooltip = GER_schleicher_block_initial_membership_tt
 		}
@@ -1994,10 +2060,7 @@ focus_tree = {
 			NOT = {
 				has_country_flag = GER_ruhrkampf_begun
 			}
-			check_variable = {
-				tooltip = GER_economic_health_level_7_tt
-				GER_economic_health > -8
-			}
+			NOT = { check_variable = { GER_economic_health < -7 tooltip = GER_economic_health_level_tt } }
 		}
 
 		completion_reward = {
@@ -2043,10 +2106,7 @@ focus_tree = {
 				has_country_flag = GER_ruhrkampf_begun
 			}
 			country_exists = FRA
-			check_variable = {
-				tooltip = GER_economic_health_level_7_tt
-				GER_economic_health > -8
-			}
+			NOT = { check_variable = { GER_economic_health < -7 tooltip = GER_economic_health_level_tt } }
 			NOT = {
 				has_war_with = FRA
 				var:16.owner = { is_in_faction_with = ROOT }
@@ -2072,11 +2132,12 @@ focus_tree = {
 					is_in_coalition_with_social_liberal = yes
 				}
 				add_to_variable = {
-					var = GER_LVP_loyalty
-					value = 5
+					GER_LVP_loyalty = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = GER_LVP_loyalty } }
+					}
 					tooltip = GER_LVP_loyalty_gain
 				}
-				clamp_variable = { var = GER_LVP_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
@@ -2084,11 +2145,12 @@ focus_tree = {
 					is_in_coalition_with_social_conservative = yes
 				}
 				add_to_variable = {
-					var = GER_Z_loyalty
-					value = 5
+					GER_Z_loyalty = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = GER_Z_loyalty } }
+					}
 					tooltip = GER_Z_loyalty_gain
 				}
-				clamp_variable = { var = GER_Z_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
@@ -2130,10 +2192,7 @@ focus_tree = {
 		ai_will_do = { factor = 500 }
 		available = {
 			has_country_flag = GER_enabling_act
-			check_variable = {
-				tooltip = GER_economic_health_level_5_tt
-				GER_economic_health > -6
-			}
+			NOT = { check_variable = { GER_economic_health < -5 tooltip = GER_economic_health_level_tt } }
 		}
 		allow_branch = {
 			OR = {
@@ -3347,10 +3406,7 @@ focus_tree = {
 		}
 		available = {
 			#has_country_flag = GER_enabling_act
-			check_variable = {
-				tooltip = GER_economic_health_level_5_tt
-				GER_economic_health > -6
-			}
+			NOT = { check_variable = { GER_economic_health < -5 tooltip = GER_economic_health_level_tt } }
 		}
 		allow_branch = {
 			GER_is_swr_path = yes
@@ -5666,10 +5722,7 @@ focus_tree = {
 		ai_will_do = { factor = 300 }
 		available = {
 			#has_country_flag = GER_enabling_act
-			check_variable = {
-				tooltip = GER_economic_health_level_7_tt
-				GER_economic_health > -8
-			}
+			NOT = { check_variable = { GER_economic_health < -7 tooltip = GER_economic_health_level_tt } }
 		}
 		allow_branch = {
 			GER_is_du_path = yes
@@ -5704,55 +5757,60 @@ focus_tree = {
 					check_variable = { GER_LVP_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_LVP_loyalty
-					value = 10
+					GER_LVP_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_LVP_loyalty } }
+					}
 					tooltip = GER_LVP_loyalty_gain
 				}
-				clamp_variable = { var = GER_LVP_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
 					check_variable = { GER_Z_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_Z_loyalty
-					value = 10
+					GER_Z_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_Z_loyalty } }
+					}
 					tooltip = GER_Z_loyalty_gain
 				}
-				clamp_variable = { var = GER_Z_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
 					check_variable = { GER_Agrarian_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_Agrarian_loyalty
-					value = 10
+					GER_Agrarian_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_Agrarian_loyalty } }
+					}
 					tooltip = GER_Agrarian_loyalty_gain
 				}
-				clamp_variable = { var = GER_Agrarian_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
 					check_variable = { GER_Polish_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_Polish_loyalty
-					value = 10
+					GER_Polish_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_Polish_loyalty } }
+					}
 					tooltip = GER_Polish_loyalty_gain
 				}
-				clamp_variable = { var = GER_Polish_loyalty max = 100 min = 0 }
 			}
 			if = { # Could be removed
 				limit = {
 					check_variable = { GER_Left_SPD_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_Left_SPD_loyalty
-					value = 10
+					GER_Left_SPD_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_Left_SPD_loyalty } }
+					}
 					tooltip = GER_Left_SPD_loyalty_gain
 				}
-				clamp_variable = { var = GER_Left_SPD_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = { is_in_coalition_with_social_liberal = no }
@@ -5800,11 +5858,12 @@ focus_tree = {
 				popularity = 0.02
 			}
 			add_to_variable = {
-				var = GER_LVP_loyalty
-				value = 20
+				GER_LVP_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_LVP_loyalty } }
+				}
 				tooltip = GER_LVP_loyalty_gain
 			}
-			clamp_variable = { var = GER_LVP_loyalty max = 100 min = 0 }
 			add_to_variable = { LVP_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -5855,11 +5914,12 @@ focus_tree = {
 				days = 365
 			}
 			add_to_variable = {
-				var = GER_LVP_loyalty
-				value = 20
+				GER_LVP_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_LVP_loyalty } }
+				}
 				tooltip = GER_LVP_loyalty_gain
 			}
-			clamp_variable = { var = GER_LVP_loyalty max = 100 min = 0 }
 			add_to_variable = { LVP_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -5902,13 +5962,13 @@ focus_tree = {
 				popularity = 0.04
 			}
 			# Strengthens the Chancellor Overthrowal Movement
-
 			add_to_variable = {
-				var = GER_LVP_loyalty
-				value = 20
+				GER_LVP_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_LVP_loyalty } }
+				}
 				tooltip = GER_LVP_loyalty_gain
 			}
-			clamp_variable = { var = GER_LVP_loyalty max = 100 min = 0 }
 			add_to_variable = { LVP_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -5952,11 +6012,12 @@ focus_tree = {
 			}
 			add_political_power = -25
 			add_to_variable = {
-				var = GER_LVP_loyalty
-				value = 20
+				GER_LVP_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_LVP_loyalty } }
+				}
 				tooltip = GER_LVP_loyalty_gain
 			}
-			clamp_variable = { var = GER_LVP_loyalty max = 100 min = 0 }
 			add_to_variable = { LVP_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6007,11 +6068,12 @@ focus_tree = {
 				FOCUS2 = GER_nationalise_coal
 			}
 			add_to_variable = {
-				var = GER_LVP_loyalty
-				value = 20
+				GER_LVP_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_LVP_loyalty } }
+				}
 				tooltip = GER_LVP_loyalty_gain
 			}
-			clamp_variable = { var = GER_LVP_loyalty max = 100 min = 0 }
 			add_to_variable = { LVP_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6111,11 +6173,12 @@ focus_tree = {
 			}
 			add_political_power = 50
 			add_to_variable = {
-				var = GER_Z_loyalty
-				value = 20
+				GER_Z_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Z_loyalty } }
+				}
 				tooltip = GER_Z_loyalty_gain
 			}
-			clamp_variable = { var = GER_Z_loyalty max = 100 min = 0 }
 			add_to_variable = { Z_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6229,11 +6292,12 @@ focus_tree = {
 				}
 			}
 			add_to_variable = {
-				var = GER_Z_loyalty
-				value = 20
+				GER_Z_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Z_loyalty } }
+				}
 				tooltip = GER_Z_loyalty_gain
 			}
-			clamp_variable = { var = GER_Z_loyalty max = 100 min = 0 }
 			add_to_variable = { Z_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6328,11 +6392,12 @@ focus_tree = {
 				days = 200
 			}
 			add_to_variable = {
-				var = GER_Z_loyalty
-				value = 20
+				GER_Z_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Z_loyalty } }
+				}
 				tooltip = GER_Z_loyalty_gain
 			}
-			clamp_variable = { var = GER_Z_loyalty max = 100 min = 0 }
 			add_to_variable = { Z_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6385,11 +6450,12 @@ focus_tree = {
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = GER_johannes_bell_advisor
 			add_to_variable = {
-				var = GER_Z_loyalty
-				value = 20
+				GER_Z_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Z_loyalty } }
+				}
 				tooltip = GER_Z_loyalty_gain
 			}
-			clamp_variable = { var = GER_Z_loyalty max = 100 min = 0 }
 			add_to_variable = { Z_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6444,11 +6510,12 @@ focus_tree = {
 				FOCUS = GER_equality_of_sexes
 			}
 			add_to_variable = {
-				var = GER_Z_loyalty
-				value = 20
+				GER_Z_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Z_loyalty } }
+				}
 				tooltip = GER_Z_loyalty_gain
 			}
-			clamp_variable = { var = GER_Z_loyalty max = 100 min = 0 }
 			add_to_variable = { Z_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6540,11 +6607,12 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GER_pp_demands"
 			add_political_power = -25
 			add_to_variable = {
-				var = GER_Polish_loyalty
-				value = 20
+				GER_Polish_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Polish_loyalty } }
+				}
 				tooltip = GER_Polish_loyalty_gain
 			}
-			clamp_variable = { var = GER_Polish_loyalty max = 100 min = 0 }
 			add_to_variable = { Polish_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6588,11 +6656,12 @@ focus_tree = {
 				popularity = -0.03
 			}
 			add_to_variable = {
-				var = GER_Polish_loyalty
-				value = 20
+				GER_Polish_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Polish_loyalty } }
+				}
 				tooltip = GER_Polish_loyalty_gain
 			}
-			clamp_variable = { var = GER_Polish_loyalty max = 100 min = 0 }
 			add_to_variable = { Polish_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6651,11 +6720,12 @@ focus_tree = {
 				}
 			}
 			add_to_variable = {
-				var = GER_Polish_loyalty
-				value = 20
+				GER_Polish_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Polish_loyalty } }
+				}
 				tooltip = GER_Polish_loyalty_gain
 			}
-			clamp_variable = { var = GER_Polish_loyalty max = 100 min = 0 }
 			add_to_variable = { Polish_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6750,11 +6820,12 @@ focus_tree = {
 				days = 365
 			}
 			add_to_variable = {
-				var = GER_Agrarian_loyalty
-				value = 20
+				GER_Agrarian_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Agrarian_loyalty } }
+				}
 				tooltip = GER_Agrarian_loyalty_gain
 			}
-			clamp_variable = { var = GER_Agrarian_loyalty max = 100 min = 0 }
 			add_to_variable = { Agr_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6805,11 +6876,12 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 1
 			}
 			add_to_variable = {
-				var = GER_Agrarian_loyalty
-				value = 20
+				GER_Agrarian_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Agrarian_loyalty } }
+				}
 				tooltip = GER_Agrarian_loyalty_gain
 			}
-			clamp_variable = { var = GER_Agrarian_loyalty max = 100 min = 0 }
 			add_to_variable = { Agr_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6848,11 +6920,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_agr_demands_3"
 			add_to_variable = {
-				var = GER_Agrarian_loyalty
-				value = 20
+				GER_Agrarian_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Agrarian_loyalty } }
+				}
 				tooltip = GER_Agrarian_loyalty_gain
 			}
-			clamp_variable = { var = GER_Agrarian_loyalty max = 100 min = 0 }
 			add_to_variable = { Agr_foci_completed = 1 }
 			hidden_effect = { GER_anton_fehr = { set_nationality = ROOT } }
 			custom_effect_tooltip = available_political_advisor
@@ -6946,11 +7019,12 @@ focus_tree = {
 			}
 			add_political_power = 50
 			add_to_variable = {
-				var = GER_Left_SPD_loyalty
-				value = 20
+				GER_Left_SPD_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Left_SPD_loyalty } }
+				}
 				tooltip = GER_Left_SPD_loyalty_gain
 			}
-			clamp_variable = { var = GER_Left_SPD_loyalty max = 100 min = 0 }
 			add_to_variable = { Left_SPD_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -6986,11 +7060,12 @@ focus_tree = {
 			add_one_random_civilian_factory = yes
 			add_one_random_civilian_factory = yes
 			add_to_variable = {
-				var = GER_Left_SPD_loyalty
-				value = 20
+				GER_Left_SPD_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Left_SPD_loyalty } }
+				}
 				tooltip = GER_Left_SPD_loyalty_gain
 			}
-			clamp_variable = { var = GER_Left_SPD_loyalty max = 100 min = 0 }
 			add_to_variable = { Left_SPD_foci_completed = 1 }
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -7024,11 +7099,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_left_spd_demands_3"
 			add_to_variable = {
-				var = GER_Left_SPD_loyalty
-				value = 20
+				GER_Left_SPD_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Left_SPD_loyalty } }
+				}
 				tooltip = GER_Left_SPD_loyalty_gain
 			}
-			clamp_variable = { var = GER_Left_SPD_loyalty max = 100 min = 0 }
 			custom_effect_tooltip = GER_left_spd_demands_3_tt
 			set_country_flag = { flag = GER_left_spd_demands_3_flag days = 100 value = 1 }
 			add_to_variable = { Left_SPD_foci_completed = 1 }
@@ -7064,11 +7140,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_left_spd_demands_4"
 			add_to_variable = {
-				var = GER_Left_SPD_loyalty
-				value = 20
+				GER_Left_SPD_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Left_SPD_loyalty } }
+				}
 				tooltip = GER_Left_SPD_loyalty_gain
 			}
-			clamp_variable = { var = GER_Left_SPD_loyalty max = 100 min = 0 }
 			add_to_variable = { Left_SPD_foci_completed = 1 }
 			hidden_effect = { GER_otto_grotewohl = { set_nationality = ROOT } }
 			custom_effect_tooltip = available_political_advisor
@@ -7106,11 +7183,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_left_spd_demands_5"
 			add_to_variable = {
-				var = GER_Left_SPD_loyalty
-				value = 20
+				GER_Left_SPD_loyalty = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_Left_SPD_loyalty } }
+				}
 				tooltip = GER_Left_SPD_loyalty_gain
 			}
-			clamp_variable = { var = GER_Left_SPD_loyalty max = 100 min = 0 }
 			add_to_variable = { Left_SPD_foci_completed = 1 }
 			add_political_power = -50
 			custom_effect_tooltip = {
@@ -7248,11 +7326,12 @@ focus_tree = {
 			}
 			add_ideas = GER_gender_equality_idea
 			subtract_from_variable = {
-				var = GER_Z_loyalty
-				value = 10
+				GER_Z_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_Z_loyalty }
+				}
 				tooltip = GER_Z_loyalty_loss
 			}
-			clamp_variable = { var = GER_Z_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Z_loyalty < 1 }
@@ -7261,11 +7340,12 @@ focus_tree = {
 				activate_mission = GER_SPD_Z_rift
 			}
 			subtract_from_variable = {
-				var = GER_Polish_loyalty
-				value = 10
+				GER_Polish_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_Polish_loyalty }
+				}
 				tooltip = GER_Polish_loyalty_loss
 			}
-			clamp_variable = { var = GER_Polish_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Polish_loyalty < 1 }
@@ -7328,11 +7408,12 @@ focus_tree = {
 					}
 				}
 				subtract_from_variable = {
-					var = GER_Z_loyalty
-					value = 10
+					GER_Z_loyalty = {
+						value = 10
+						clamp = { min = 0 max = GER_Z_loyalty }
+					}
 					tooltip = GER_Z_loyalty_loss
 				}
-				clamp_variable = { var = GER_Z_loyalty min = 0 max = 100 }
 				if = {
 					limit = {
 						check_variable = { GER_Z_loyalty < 1 }
@@ -7388,21 +7469,18 @@ focus_tree = {
 				days = 120
 			}
 			add_stability = 0.05
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = GER_paralysis_base
-					add_idea = GER_paralysis_reduce_10
-				}
-			}
 			if = {
-				limit = {
-					has_dynamic_modifier = { modifier = GER_Government_Paralysis }
+				limit = { has_dynamic_modifier = { modifier = GER_Government_Paralysis } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = GER_Government_Paralysis
 				}
-				add_to_variable = { GER_government_paralysis_factor = 0.1 }
-				clamp_variable = {
-					var = GER_government_paralysis_factor
-					max = 0
-					min = -1
+				add_to_variable = {
+					GER_government_paralysis_factor = {
+						value = 0.1
+						clamp = { min = 0 max = { value = GER_government_paralysis_factor multiply = -1 } }
+					}
+					tooltip = political_power_factor_tooltip
 				}
 				if = {
 					limit = {
@@ -7414,11 +7492,12 @@ focus_tree = {
 			if = {
 				limit = { is_in_coalition_with_social_liberal = yes }
 				subtract_from_variable = {
-					var = GER_LVP_loyalty
-					value = 20
+					GER_LVP_loyalty = {
+						value = 20
+						clamp = { min = 0 max = GER_LVP_loyalty }
+					}
 					tooltip = GER_LVP_loyalty_loss
 				}
-				clamp_variable = { var = GER_LVP_loyalty min = 0 max = 100 }
 				if = {
 					limit = {
 						check_variable = { GER_LVP_loyalty < 1 }
@@ -7482,11 +7561,12 @@ focus_tree = {
 				days = 120
 			}
 			subtract_from_variable = {
-				var = GER_LVP_loyalty
-				value = 20
+				GER_LVP_loyalty = {
+					value = 20
+					clamp = { min = 0 max = GER_LVP_loyalty }
+				}
 				tooltip = GER_LVP_loyalty_loss
 			}
-			clamp_variable = { var = GER_LVP_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_LVP_loyalty < 1 }
@@ -7642,11 +7722,12 @@ focus_tree = {
 				}
 			}
 			subtract_from_variable = {
-				var = GER_LVP_loyalty
-				value = 10
+				GER_LVP_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_LVP_loyalty }
+				}
 				tooltip = GER_LVP_loyalty_loss
 			}
-			clamp_variable = { var = GER_LVP_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_LVP_loyalty < 1 }
@@ -8011,12 +8092,10 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = GER_prussia_equal_suffrage_unlocked_tt
-				AND = {
-					NOT = {
-						has_country_flag = GER_prussia_crisis_failed
-					}
-					has_country_flag = GER_prussia_crisis_success
+				NOT = {
+					has_country_flag = GER_prussia_crisis_failed
 				}
+				has_country_flag = GER_prussia_crisis_success
 			}
 			if = {
 				limit = {
@@ -8082,11 +8161,12 @@ focus_tree = {
 			}
 			custom_effect_tooltip = GER_Wilhelmine_Constitution_buildup_tt
 			subtract_from_variable = {
-				var = GER_Z_loyalty
-				value = 20
+				GER_Z_loyalty = {
+					value = 20
+					clamp = { min = 0 max = GER_Z_loyalty }
+				}
 				tooltip = GER_Z_loyalty_loss
 			}
-			clamp_variable = { var = GER_Z_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Z_loyalty < 1 }
@@ -8095,11 +8175,12 @@ focus_tree = {
 				activate_mission = GER_SPD_Z_rift
 			}
 			subtract_from_variable = {
-				var = GER_Polish_loyalty
-				value = 20
+				GER_Polish_loyalty = {
+					value = 20
+					clamp = { min = 0 max = GER_Polish_loyalty }
+				}
 				tooltip = GER_Polish_loyalty_loss
 			}
-			clamp_variable = { var = GER_Polish_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Polish_loyalty < 1 }
@@ -8108,11 +8189,12 @@ focus_tree = {
 				activate_mission = GER_SPD_Polish_rift
 			}
 			subtract_from_variable = {
-				var = GER_Agrarian_loyalty
-				value = 10
+				GER_Agrarian_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_Agrarian_loyalty }
+				}
 				tooltip = GER_Agrarian_loyalty_loss
 			}
-			clamp_variable = { var = GER_Agrarian_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Agrarian_loyalty < 1 }
@@ -8160,11 +8242,12 @@ focus_tree = {
 			}
 			custom_effect_tooltip = GER_Wilhelmine_Constitution_buildup_tt
 			subtract_from_variable = {
-				var = GER_LVP_loyalty
-				value = 10
+				GER_LVP_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_LVP_loyalty }
+				}
 				tooltip = GER_LVP_loyalty_loss
 			}
-			clamp_variable = { var = GER_LVP_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_LVP_loyalty < 1 }
@@ -8212,11 +8295,12 @@ focus_tree = {
 			}
 			custom_effect_tooltip = GER_Wilhelmine_Constitution_buildup_tt
 			subtract_from_variable = {
-				var = GER_LVP_loyalty
-				value = 10
+				GER_LVP_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_LVP_loyalty }
+				}
 				tooltip = GER_LVP_loyalty_loss
 			}
-			clamp_variable = { var = GER_LVP_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_LVP_loyalty < 1 }
@@ -8346,11 +8430,12 @@ focus_tree = {
 			}
 			custom_effect_tooltip = GER_Wilhelmine_Constitution_buildup_tt
 			subtract_from_variable = {
-				var = GER_Z_loyalty
-				value = 10
+				GER_Z_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_Z_loyalty }
+				}
 				tooltip = GER_Z_loyalty_loss
 			}
-			clamp_variable = { var = GER_Z_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Z_loyalty < 1 }
@@ -8359,11 +8444,12 @@ focus_tree = {
 				activate_mission = GER_SPD_Z_rift
 			}
 			subtract_from_variable = {
-				var = GER_Polish_loyalty
-				value = 10
+				GER_Polish_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_Polish_loyalty }
+				}
 				tooltip = GER_Polish_loyalty_loss
 			}
-			clamp_variable = { var = GER_Polish_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Polish_loyalty < 1 }
@@ -8591,10 +8677,7 @@ focus_tree = {
 					is_subject_of = GER
 				}
 			}
-			check_variable = {
-				tooltip = GER_economic_health_level_5_tt
-				GER_economic_health > -6
-			}
+			NOT = { check_variable = { GER_economic_health < -5 tooltip = GER_economic_health_level_tt } }
 		}
 
 		completion_reward = {
@@ -8724,7 +8807,10 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GER_mission_to_constantinople"
 			GER_improve_weltpolitik = yes
 			# activate_targeted_decision = { target = AZR decision = GER_AZR_align_azerbaijan }
-			activate_targeted_decision = { target = OTT decision = GER_OTT_settling_old_disputes }
+			if = {
+				limit = { NOT = { TUR = { has_completed_focus = OTT_Incorporate_Kadroist_Movement } } }
+				activate_targeted_decision = { target = TUR decision = GER_OTT_settling_old_disputes }
+			}
 			# turn the two OTT focuses into decisions
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_ANNEXATION }
@@ -9161,11 +9247,12 @@ focus_tree = {
 					check_variable = { GER_Z_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_Z_loyalty
-					value = 10
+					GER_Z_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_Z_loyalty } }
+					}
 					tooltip = GER_Z_loyalty_gain
 				}
-				clamp_variable = { var = GER_Z_loyalty max = 100 min = 0 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -9207,8 +9294,7 @@ focus_tree = {
 				threat = -2
 				name = GER_russo_german_consortium
 			}
-			set_variable = { GER_RUS_sanction_var = 2 }
-			add_to_variable = { GER_RUS_sanction_var = RUS_sanction_points }
+			set_variable = { GER_RUS_sanction_var = { value = 2 add = RUS_sanction_points } }
 			RUS = {
 				effect_tooltip = {
 					add_war_support = -0.05
@@ -11180,11 +11266,12 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GER_streamlined_mobilisation"
 			add_ideas = GER_old_mobile_doctrine_idea_1
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -11220,11 +11307,12 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GER_adapt_weltkrieg_experience"
 			GER_improve_weltkrieg_legacy = yes
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP }
@@ -11280,11 +11368,12 @@ focus_tree = {
 				}
 			}
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_ARMY_BONUS }
@@ -11341,11 +11430,12 @@ focus_tree = {
 				}
 			}
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_NAVY_XP FOCUS_FILTER_ARMY_BONUS }
@@ -11386,11 +11476,12 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GER_armoured_support"
 			add_ideas = GER_reformed_heer_idea_1
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -11444,11 +11535,12 @@ focus_tree = {
 				}
 			}
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -11503,11 +11595,12 @@ focus_tree = {
 				}
 			}
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -11584,11 +11677,12 @@ focus_tree = {
 			country_event = germany_military_events.6
 			add_ideas = GER_wehrmacht_idea_1
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -11646,11 +11740,12 @@ focus_tree = {
 				}
 			}
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -11711,11 +11806,12 @@ focus_tree = {
 			enable_tactic_human_wave_tactics = yes
 			custom_effect_tooltip = tooltip_white_line
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -11752,17 +11848,18 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GER_total_war"
 			add_ideas = GER_total_war_1
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER }
 	}
 	focus = {
 		id = GER_soldier_psychology
-		icon = GFX_focus_ETH_freedom_at_gunpoint
+		icon = GFX_goal_generic_army_soldier_2
 		cost = 6
 
 		relative_position_id = GER_the_revolt
@@ -11803,11 +11900,12 @@ focus_tree = {
 				add_idea = GER_total_war_2
 			}
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -11865,11 +11963,12 @@ focus_tree = {
 				}
 			}
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -11928,11 +12027,12 @@ focus_tree = {
 				}
 			}
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -11968,11 +12068,12 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GER_unrestrained_warfare"
 			GER_improve_weltkrieg_legacy = yes
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 	}
@@ -12012,11 +12113,12 @@ focus_tree = {
 			custom_effect_tooltip = GER_offensive_chit_tt
 			activate_targeted_decision = { target = THIS decision = GER_offensive_chit }
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -12104,11 +12206,12 @@ focus_tree = {
 				add_temporary_research_slot = yes
 			}
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_XP }
 	}
@@ -12149,11 +12252,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_professional_core"
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			add_ideas = GER_professional_core_1
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -12195,11 +12299,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_combined_arms_offensive"
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			if = {
 				limit = {
 					has_idea = GER_professional_core_11
@@ -12256,11 +12361,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_training_standards"
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			if = {
 				limit = {
 					has_idea = GER_professional_core_12
@@ -12316,11 +12422,12 @@ focus_tree = {
 			country_event = germany_military_events.4
 			add_ideas = GER_war_office_1
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -12361,11 +12468,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_interservice_cooperation"
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			if = {
 				limit = {
 					has_idea = GER_war_office_1
@@ -12419,11 +12527,12 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GER_general_staff_reform"
 			GER_improve_weltkrieg_legacy = yes
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP }
@@ -12464,11 +12573,12 @@ focus_tree = {
 			country_event = germany_military_events.3
 			add_ideas = GER_unified_military
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			GER_remove_grip_decisions = yes
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -12517,11 +12627,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_abolish_immediatrecht"
 			subtract_from_variable = {
-				var = GER_military_faction_strength
-				value = 10
+				GER_military_faction_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_military_faction_strength }
+				}
 				tooltip = GER_faction_strength_expend
 			}
-			clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			if = {
 				limit = {
 					has_idea = GER_war_office_1
@@ -14432,19 +14543,21 @@ focus_tree = {
 					GER_is_du_path = yes
 				}
 				add_to_variable = {
-					var = GER_military_faction_strength
-					value = 10
+					GER_military_faction_strength = {
+						value = `10
+						clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+					}
 					tooltip = GER_faction_strength_increase
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			else = {
 				subtract_from_variable = {
-					var = GER_military_faction_strength
-					value = 10
-					tooltip = GER_faction_strength_decrease
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = 0 max = GER_military_faction_strength }
+					}
+					tooltip = GER_faction_strength_expend
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = GER_war_preparedness_buff_tt
@@ -14713,19 +14826,21 @@ focus_tree = {
 					GER_is_swr_path = yes
 				}
 				add_to_variable = {
-					var = GER_military_faction_strength
-					value = 10
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+					}
 					tooltip = GER_faction_strength_increase
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			else = {
 				subtract_from_variable = {
-					var = GER_military_faction_strength
-					value = 10
-					tooltip = GER_faction_strength_decrease
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = 0 max = GER_military_faction_strength }
+					}
+					tooltip = GER_faction_strength_expend
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = GER_war_preparedness_buff_tt
@@ -14947,19 +15062,21 @@ focus_tree = {
 					GER_is_schleicher_path = yes
 				}
 				add_to_variable = {
-					var = GER_military_faction_strength
-					value = 10
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+					}
 					tooltip = GER_faction_strength_increase
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			else = {
 				subtract_from_variable = {
-					var = GER_military_faction_strength
-					value = 10
-					tooltip = GER_faction_strength_decrease
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = 0 max = GER_military_faction_strength }
+					}
+					tooltip = GER_faction_strength_expend
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = GER_war_preparedness_buff_tt
@@ -15358,6 +15475,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 30
+			modifier = {
+				factor = 10
+				date > 1939.1.1
+			}
 			modifier = {
 				factor = 10
 				second_weltkrieg_has_begun = yes
@@ -15822,19 +15943,21 @@ focus_tree = {
 					GER_is_du_path = yes
 				}
 				add_to_variable = {
-					var = GER_military_faction_strength
-					value = 10
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+					}
 					tooltip = GER_faction_strength_increase
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			else = {
 				subtract_from_variable = {
-					var = GER_military_faction_strength
-					value = 10
-					tooltip = GER_faction_strength_decrease
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = 0 max = GER_military_faction_strength }
+					}
+					tooltip = GER_faction_strength_expend
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = GER_war_preparedness_buff_tt
@@ -16149,22 +16272,24 @@ focus_tree = {
 					GER_is_schleicher_path = yes
 				}
 				add_to_variable = {
-					var = GER_military_faction_strength
-					value = 10
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+					}
 					tooltip = GER_faction_strength_increase
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			else_if = {
 				limit = {
 					GER_is_du_path = yes
 				}
 				subtract_from_variable = {
-					var = GER_military_faction_strength
-					value = 10
-					tooltip = GER_faction_strength_decrease
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = 0 max = GER_military_faction_strength }
+					}
+					tooltip = GER_faction_strength_expend
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = GER_war_preparedness_buff_tt
@@ -18846,11 +18971,12 @@ focus_tree = {
 				}
 				add_ideas = GER_civilian_control_of_army
 				subtract_from_variable = {
-					var = GER_military_faction_strength
-					value = 10
+					GER_military_faction_strength = {
+						value = 10
+						clamp = { min = 0 max = GER_military_faction_strength }
+					}
 					tooltip = GER_faction_strength_expend
 				}
-				clamp_variable = { var = GER_military_faction_strength min = 0 max = 100 }
 			}
 			else = {
 				custom_effect_tooltip = GER_civilian_control_of_army_incomplete_tt

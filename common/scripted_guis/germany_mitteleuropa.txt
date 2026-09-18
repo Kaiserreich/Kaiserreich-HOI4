@@ -115,9 +115,13 @@ scripted_gui = {
 								is_in_array = { agenda:available_for = THIS }
 							}
 							modifier = {
-								set_temp_variable = { consolidation_factor = agenda:agenda_supporters^num }
-								divide_temp_variable = { consolidation_factor = 20 }
-								add_to_temp_variable = { consolidation_factor = 1 }
+								set_temp_variable = {
+									consolidation_factor = {
+										value = agenda:agenda_supporters^num
+										multiply = 0.05
+										add = 1
+									}
+								}
 								factor = consolidation_factor
 							}
 							modifier = {

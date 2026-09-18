@@ -233,13 +233,12 @@ country_event = {
 		log = "[GetLogInfo]: event belgrade_pact_events.6 option belgrade_pact_events.6.a"
 		name = belgrade_pact_events.6.a # Support Bulgaria
 		ai_chance = { base = 100 }
-		every_country = {
-			limit = {
-				is_in_faction_with = BPL
+		BPL = {
+			every_faction_member = {
+				add_ideas = belgrade_part_arms_embargo
+				add_opinion_modifier = { target = ROOT modifier = KR_supported_our_enemies }
+				country_event = belgrade_pact_events.7
 			}
-			add_ideas = belgrade_part_arms_embargo
-			add_opinion_modifier = { target = ROOT modifier = KR_supported_our_enemies }
-			country_event = belgrade_pact_events.7
 		}
 		set_country_flag = SER_supported_bulgaria
 		GER = { country_event = belgrade_pact_events.8 }
@@ -303,12 +302,11 @@ country_event = {
 				}
 			}
 		}
-		every_country = {
-			limit = {
-				is_in_faction_with = BPL
+		BPL = {
+			every_faction_member = {
+				add_opinion_modifier = { target = ROOT modifier = KR_supported_our_enemies }
+				country_event = belgrade_pact_events.7
 			}
-			add_opinion_modifier = { target = ROOT modifier = KR_supported_our_enemies }
-			country_event = belgrade_pact_events.7
 		}
 		set_country_flag = SER_supported_bulgaria
 		BUL = {
@@ -957,6 +955,10 @@ country_event = {
 		has_country_flag = OTT_war_for_thrace
 	}
 
+	immediate = {
+		hidden_effect = { BUL = { add_ideas = has_scripted_peace_2 } }
+	}
+
 	option = {
 		log = "[GetLogInfo]: event belgrade_pact_events.39 option belgrade_pact_events.39.a"
 		name = belgrade_pact_events.39.a #End the war
@@ -1000,6 +1002,7 @@ country_event = {
 			limit = { has_state_flag = SER_transfer_to_OTT }
 			clr_state_flag = SER_transfer_to_OTT
 		}
+		hidden_effect = { BUL = { remove_ideas = has_scripted_peace_2 } }
 	}
 }
 
@@ -1065,6 +1068,10 @@ country_event = {
 		days = 3
 	}
 
+	immediate = {
+		hidden_effect = { BUL = { add_ideas = has_scripted_peace_2 } }
+	}
+
 	option = {
 		log = "[GetLogInfo]: event belgrade_pact_events.40 option belgrade_pact_events.40.a"
 		name = belgrade_pact_events.40.a #Make peace
@@ -1077,6 +1084,7 @@ country_event = {
 		clr_country_flag = OTT_war_for_thrace
 		add_political_power = -100
 		add_war_support = -0.10
+		hidden_effect = { BUL = { remove_ideas = has_scripted_peace_2 } }
 	}
 }
 
@@ -1160,6 +1168,9 @@ country_event = {
 			clr_country_flag = OTT_war_for_thrace
 			country_event = belgrade_pact_events.46
 		}
+	}
+	after = {
+		hidden_effect = { remove_ideas = has_scripted_peace_2 }
 	}
 }
 
@@ -3907,11 +3918,12 @@ country_event = {#Formation of the Economic Council (initiator)
 		log = "[GetLogInfo]: event belgrade_pact_events.302 option belgrade_pact_events.302.a"
 		name = belgrade_pact_events.302.a #Woop woop
 		add_dynamic_modifier = { modifier = BPL_pact_of_organisation }
-		set_temp_variable = { temp = 0.05 }
-		multiply_temp_variable = { temp = global.balkan_economic_union^num }
-		clamp_temp_variable = { var = temp max = 0.15 }
 		set_variable = {
-			global.BPL_pact_of_organisation_construction_speed = temp
+			global.BPL_pact_of_organisation_construction_speed = {
+				value = 0.05
+				multiply = global.balkan_economic_union^num
+				clamp = { min = 0 max = 0.15 }
+			}
 			tooltip = production_speed_buildings_factor_tooltip
 		}
 		every_other_country = {
@@ -3956,17 +3968,21 @@ country_event = { #Economic Council upgraded
 			DYNMOD = BPL_pact_of_organisation
 		}
 
-		set_temp_variable = { temp = 0.05 }
-		multiply_temp_variable = { temp = global.balkan_economic_union^num }
-		clamp_temp_variable = { var = temp max = 0.15 }
 		set_variable = {
-			global.BPL_pact_of_organisation_building_slots = temp
+			global.BPL_pact_of_organisation_building_slots = {
+				value = 0.05
+				multiply = global.balkan_economic_union^num
+				clamp = { min = 0 max = 0.15 }
+			}
 			tooltip = global_building_slots_factor_tooltip
 		}
-
-		divide_temp_variable = { temp = 2 }
 		set_variable = {
-			global.BPL_pact_of_organisation_research_speed = temp
+			global.BPL_pact_of_organisation_research_speed = {
+				value = 0.05
+				multiply = global.balkan_economic_union^num
+				clamp = { min = 0 max = 0.15 }
+				multiply = 0.5
+			}
 			tooltip = research_speed_factor_tooltip
 		}
 	}
@@ -4065,6 +4081,8 @@ country_event = { #Do you want to keep BP?
 
 	trigger = {
 		is_faction_leader = yes
+		is_in_faction_with = SER
+		SER = { has_country_flag = SER_founded_belgradepact }
 	}
 
 	option = {

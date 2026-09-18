@@ -492,7 +492,7 @@ country_event = {
 			}
 			modifier = {
 				factor = 0
-				GBR_robert_gascoyne_cecil = { is_second_in_command = yes }
+				GBR_robert_cecil = { is_second_in_command = yes }
 			}
 			modifier = {
 				factor = 0
@@ -596,7 +596,7 @@ country_event = {
 			}
 			modifier = {
 				factor = 0.1
-				GBR_robert_gascoyne_cecil = { is_second_in_command = yes }
+				GBR_robert_cecil = { is_second_in_command = yes }
 			}
 			modifier = {
 				factor = 0
@@ -714,7 +714,7 @@ country_event = {
 			base = 50
 			modifier = {
 				factor = 0.1
-				GBR_robert_gascoyne_cecil = { is_second_in_command = yes }
+				GBR_robert_cecil = { is_second_in_command = yes }
 			}
 			modifier = {
 				factor = 0.5
@@ -808,7 +808,7 @@ country_event = {
 			base = 50
 			modifier = {
 				factor = 0.5
-				GBR_robert_gascoyne_cecil = { is_second_in_command = yes }
+				GBR_robert_cecil = { is_second_in_command = yes }
 			}
 			modifier = {
 				factor = 0
@@ -833,7 +833,7 @@ country_event = {
 			base = 30
 			modifier = {
 				factor = 0.1
-				GBR_robert_gascoyne_cecil = { is_second_in_command = yes }
+				GBR_robert_cecil = { is_second_in_command = yes }
 			}
 			modifier = {
 				factor = 0.5
@@ -899,7 +899,7 @@ country_event = {
 			base = 20
 			modifier = {
 				factor = 0
-				GBR_robert_gascoyne_cecil = { is_second_in_command = yes }
+				GBR_robert_cecil = { is_second_in_command = yes }
 			}
 			modifier = {
 				factor = 0.5
@@ -1041,7 +1041,7 @@ country_event = {
 		}
 		if = {
 			limit = { has_global_flag = GBR_cons_leader_cecil }
-			activate_advisor = GBR_robert_gascoyne_cecil_sic
+			activate_advisor = GBR_robert_cecil_sic
 		}
 		else_if = {
 			limit = { has_global_flag = GBR_cons_leader_eden }
@@ -1212,7 +1212,7 @@ country_event = {
 		}
 		if = {
 			limit = { has_global_flag = GBR_cons_leader_cecil }
-			activate_advisor = GBR_robert_gascoyne_cecil_sic
+			activate_advisor = GBR_robert_cecil_sic
 		}
 		else_if = {
 			limit = { has_global_flag = GBR_cons_leader_eden }
@@ -1851,7 +1851,9 @@ country_event = {
 							}
 						}
 						owner = {
+							NOT = { original_tag = AST }
 							NOT = { original_tag = NZL }
+							NOT = { is_subject_of = AST }
 							NOT = { is_subject_of = NZL }
 						}
 					}
@@ -3731,7 +3733,16 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event united_kingdom_events.121 option united_kingdom_events.121.c"
 		name = united_kingdom_events.121.c #Inform overlord
-		trigger = { is_subject = yes }
+		trigger = {
+			is_subject = yes
+			NOT = { is_subject_of = FROM }
+		}
+		overlord = { country_event = united_kingdom_events.140 }
+	}
+	option = {
+		log = "[GetLogInfo]: event united_kingdom_events.121 option united_kingdom_events.121.e"
+		name = united_kingdom_events.121.e #Give to Britain
+		trigger = { is_subject_of = FROM }
 		overlord = { country_event = united_kingdom_events.140 }
 	}
 }
@@ -3756,6 +3767,7 @@ country_event = {
 					is_owned_by = FROM
 					owner = { is_subject_of = FROM }
 				}
+				is_claim_or_core_of_owner = no
 			}
 			ROOT = {
 				transfer_state = PREV

@@ -17,24 +17,15 @@ BRA_army_soft = {
 	NOT = { has_completed_focus = BRA_regionalist_recruiting_tactics }
 }
 BRA_soft_above_60_percent = {
-	check_variable = {
-		tooltip = BRA_soft_above_60_percent
-		BRA_reform_soft > 59.99
-	}
+	NOT = { check_variable = { BRA_reform_soft < 0.6 tooltip = BRA_soft_above_tooltip } }
 }
 
 BRA_soft_above_80_percent = {
-	check_variable = {
-		tooltip = BRA_soft_above_80_percent
-		BRA_reform_soft > 79.99
-	}
+	NOT = { check_variable = { BRA_reform_soft < 0.8 tooltip = BRA_soft_above_tooltip } }
 }
 
 BRA_soft_above_100_percent = {
-	check_variable = {
-		tooltip = BRA_soft_above_100_percent
-		BRA_reform_soft > 99.99
-	}
+	check_variable = { BRA_reform_soft = 1 tooltip = BRA_soft_above_tooltip }
 }
 BRA_army_hard = {
 	has_completed_focus = BRA_federal_army
@@ -42,24 +33,15 @@ BRA_army_hard = {
 }
 
 BRA_hard_above_60_percent = {
-	check_variable = {
-		tooltip = BRA_hard_above_60_percent
-		BRA_reform_hard > 59.99
-	}
+	NOT = { check_variable = { BRA_reform_hard < 0.6 tooltip = BRA_hard_above_tooltip } }
 }
 
 BRA_hard_above_80_percent = {
-	check_variable = {
-		tooltip = BRA_hard_above_80_percent
-		BRA_reform_hard > 79.99
-	}
+	NOT = { check_variable = { BRA_reform_hard < 0.8 tooltip = BRA_hard_above_tooltip } }
 }
 
 BRA_hard_above_100_percent = {
-	check_variable = {
-		tooltip = BRA_hard_above_100_percent
-		BRA_reform_hard > 99.99
-	}
+	check_variable = { BRA_reform_hard = 1 tooltip = BRA_hard_above_tooltip }
 }
 
 PAR_BRA_is_busy = {

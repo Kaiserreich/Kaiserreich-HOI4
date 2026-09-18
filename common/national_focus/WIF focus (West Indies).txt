@@ -3309,8 +3309,7 @@ focus_tree = {
 			custom_effect_tooltip = WIF_subjugate_totalists
 			hidden_effect = {
 				save_current_party_popularities = yes
-				set_temp_variable = { WIF_new_socdem_value = saved_popularities^3 } #socdem
-				add_to_temp_variable = { WIF_new_socdem_value = saved_popularities^0 } #totalist
+				set_temp_variable = { WIF_new_socdem_value = { value = saved_popularities^3 add = saved_popularities^0 } } #socdem + totalist
 				set_popularities = {
 					totalist = 0
 					syndicalist = saved_popularities^1
@@ -3365,8 +3364,7 @@ focus_tree = {
 			custom_effect_tooltip = WIF_subjugate_radsocs
 			hidden_effect = {
 				save_current_party_popularities = yes
-				set_temp_variable = { WIF_new_socdem_value = saved_popularities^3 } #socdem
-				add_to_temp_variable = { WIF_new_socdem_value = saved_popularities^2 } #radsoc
+				set_temp_variable = { WIF_new_socdem_value = { value = saved_popularities^3 add = saved_popularities^2 } } #socdem + radsoc
 				set_popularities = {
 					totalist = saved_popularities^0
 					syndicalist = saved_popularities^1
@@ -3417,8 +3415,7 @@ focus_tree = {
 			custom_effect_tooltip = WIF_subjugate_syndies
 			hidden_effect = {
 				save_current_party_popularities = yes
-				set_temp_variable = { WIF_new_socdem_value = saved_popularities^3 } #socdem
-				add_to_temp_variable = { WIF_new_socdem_value = saved_popularities^1 } #syndi
+				set_temp_variable = { WIF_new_socdem_value = { value = saved_popularities^3 add = saved_popularities^1 } } #socdem + syndicalist
 				set_popularities = {
 					totalist = saved_popularities^0
 					syndicalist = 0
@@ -3620,11 +3617,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed WIF_hear_people"
 			if = {
 				limit = { NOT = { has_idea = WIF_2nd_Cayenne_Agreement } }
-				add_to_variable = {
-					var = WIF_2nd_cayenne_conference_for
-					value = 5
-					tooltip = WIF_forging_new_agreement_effect_gain_votes
-				}
+				add_to_variable = { WIF_2nd_cayenne_conference_for = 5 tooltip = WIF_forging_new_agreement_effect_gain_votes }
 				subtract_from_variable = { WIF_2nd_cayenne_conference_against = 3 }
 				subtract_from_variable = { WIF_2nd_cayenne_conference_undecided = 2 }
 			}
@@ -3821,11 +3814,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed WIF_reconcile_socialists"
 			if = {
 				limit = { NOT = { has_idea = WIF_2nd_Cayenne_Agreement } }
-				add_to_variable = {
-					var = WIF_2nd_cayenne_conference_for
-					value = 8
-					tooltip = WIF_forging_new_agreement_effect_gain_votes
-				}
+				add_to_variable = { WIF_2nd_cayenne_conference_for = 8 tooltip = WIF_forging_new_agreement_effect_gain_votes }
 				subtract_from_variable = { WIF_2nd_cayenne_conference_against = 4 }
 				subtract_from_variable = { WIF_2nd_cayenne_conference_undecided = 4 }
 			}
@@ -3875,11 +3864,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed WIF_reform_party"
 			if = {
 				limit = { NOT = { has_idea = WIF_2nd_Cayenne_Agreement } }
-				add_to_variable = {
-					var = WIF_2nd_cayenne_conference_for
-					value = 10
-					tooltip = WIF_forging_new_agreement_effect_gain_votes
-				}
+				add_to_variable = { WIF_2nd_cayenne_conference_for = 10 tooltip = WIF_forging_new_agreement_effect_gain_votes }
 				subtract_from_variable = { WIF_2nd_cayenne_conference_against = 5 }
 				subtract_from_variable = { WIF_2nd_cayenne_conference_undecided = 5 }
 			}
@@ -3952,11 +3937,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed WIF_ties_unity"
 			if = {
 				limit = { NOT = { has_idea = WIF_2nd_Cayenne_Agreement } }
-				add_to_variable = {
-					var = WIF_2nd_cayenne_conference_for
-					value = 10
-					tooltip = WIF_forging_new_agreement_effect_gain_votes
-				}
+				add_to_variable = { WIF_2nd_cayenne_conference_for = 10 tooltip = WIF_forging_new_agreement_effect_gain_votes }
 				subtract_from_variable = { WIF_2nd_cayenne_conference_against = 5 }
 				subtract_from_variable = { WIF_2nd_cayenne_conference_undecided = 5 }
 			}

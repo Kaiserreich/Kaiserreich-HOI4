@@ -59,32 +59,15 @@ SAF_black_monday_decisions = {
 		cost = 0
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_cut_abandonment_of_the_gold_standard"
-			if = {
-				limit = {
-					check_variable = { saf_var_inflation < 0.06 }
+			add_to_variable = {
+				saf_var_inflation = {
+					value = 0
+					if = { limit = { value = saf_var_inflation less_than = 0.06 } add = 0.03 }
+					else_if = { limit = { value = saf_var_inflation less_than = 0.12 } add = 0.06 }
+					else_if = { limit = { value = saf_var_inflation less_than = 0.24 } add = 0.12 }
+					else_if = { limit = { value = saf_var_inflation less_than = 0.48 } add = 0.24 }
+					else = { add = 0.48 }
 				}
-				add_to_variable = { var = saf_var_inflation value = 0.03 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { saf_var_inflation < 0.12 }
-				}
-				add_to_variable = { var = saf_var_inflation value = 0.06 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { saf_var_inflation < 0.24 }
-				}
-				add_to_variable = { var = saf_var_inflation value = 0.12 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { saf_var_inflation < 0.48 }
-				}
-				add_to_variable = { var = saf_var_inflation value = 0.24 }
-			}
-			else = {
-				add_to_variable = { var = saf_var_inflation value = 0.48 }
 			}
 			SAF_inflation_events = yes
 			country_event = south_africa_events.320
@@ -92,7 +75,7 @@ SAF_black_monday_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove SAF_cut_abandonment_of_the_gold_standard"
 			custom_effect_tooltip = SAF_tt_saved_money_goes_to_free_budget_gs
-			add_to_variable = { var = saf_var_unemployment value = -0.05 }
+			add_to_variable = { saf_var_unemployment = -0.05 }
 		}
 		ai_will_do = {
 			base = 50
@@ -111,33 +94,16 @@ SAF_black_monday_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_print_extra_money"
 			custom_effect_tooltip = SAF_tt_print_extra_money
-			add_to_variable = { var = saf_var_budget value = 2 }
-			if = {
-				limit = {
-					check_variable = { saf_var_inflation < 0.08 }
+			add_to_variable = { saf_var_budget = 2 }
+			add_to_variable = {
+				saf_var_inflation = {
+					value = 0
+					if = { limit = { value = saf_var_inflation less_than = 0.08 } add = 0.03 }
+					else_if = { limit = { value = saf_var_inflation less_than = 0.12 } add = 0.06 }
+					else_if = { limit = { value = saf_var_inflation less_than = 0.24 } add = 0.12 }
+					else_if = { limit = { value = saf_var_inflation less_than = 0.48 } add = 0.24 }
+					else = { add = 0.48 }
 				}
-				add_to_variable = { var = saf_var_inflation value = 0.03 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { saf_var_inflation < 0.12 }
-				}
-				add_to_variable = { var = saf_var_inflation value = 0.06 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { saf_var_inflation < 0.24 }
-				}
-				add_to_variable = { var = saf_var_inflation value = 0.12 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { saf_var_inflation < 0.48 }
-				}
-				add_to_variable = { var = saf_var_inflation value = 0.24 }
-			}
-			else = {
-				add_to_variable = { var = saf_var_inflation value = 0.48 }
 			}
 			SAF_inflation_events = yes
 		}
@@ -171,11 +137,7 @@ SAF_black_monday_decisions = {
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_counter_inflation"
-			subtract_from_variable = {
-				var = saf_var_inflation
-				value = 0.05
-				tooltip = SWE_tt_inflation_lowered
-			}
+			subtract_from_variable = { saf_var_inflation = 0.05 tooltip = SWE_tt_inflation_lowered }
 			SAF_inflation_events = yes
 		}
 		ai_will_do = {
@@ -194,8 +156,8 @@ SAF_black_monday_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_take_a_loan"
 			custom_effect_tooltip = SAF_tt_loan_money
-			add_to_variable = { var = saf_var_debt value = 2 }
-			add_to_variable = { var = saf_var_budget value = 2 }
+			add_to_variable = { saf_var_debt = 2 }
+			add_to_variable = { saf_var_budget = 2 }
 		}
 		ai_will_do = {
 			base = 50
@@ -230,8 +192,8 @@ SAF_black_monday_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_repay_a_loan"
 			custom_effect_tooltip = SAF_tt_pays_off_debt
-			subtract_from_variable = { var = saf_var_debt value = 2 }
-			subtract_from_variable = { var = saf_var_budget value = 2 }
+			subtract_from_variable = { saf_var_debt = 2 }
+			subtract_from_variable = { saf_var_budget = 2 }
 		}
 		ai_will_do = {
 			base = 0
@@ -262,7 +224,7 @@ SAF_black_monday_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_cut_funding_on_military"
 			custom_effect_tooltip = SAF_tt_saved_money_goes_to_free_budget
-			add_to_variable = { var = saf_var_budget value = 5 }
+			add_to_variable = { saf_var_budget = 5 }
 		}
 		ai_will_do = {
 			base = 50
@@ -285,7 +247,7 @@ SAF_black_monday_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_raise_taxes"
 			custom_effect_tooltip = SAF_tt_earned_money_goes_to_free_budget
-			add_to_variable = { var = saf_var_budget value = 2 }
+			add_to_variable = { saf_var_budget = 2 }
 			if = {
 				limit = {
 					has_government = market_liberal
@@ -296,11 +258,7 @@ SAF_black_monday_decisions = {
 				limit = {
 					NOT = { check_variable = { saf_var_inflation < 0.01 } }
 				}
-				subtract_from_variable = {
-					var = saf_var_inflation
-					value = 0.01
-					tooltip = SWE_tt_inflation_lowered
-				}
+				subtract_from_variable = { saf_var_inflation = 0.01 tooltip = SWE_tt_inflation_lowered }
 			}
 		}
 		ai_will_do = {
@@ -328,22 +286,24 @@ SAF_black_monday_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_public_work_program"
 			#custom_effect_tooltip = SWE_tt_two_million_kronor_spent
-			add_to_variable = { var = saf_var_budget value = -3 }
+			add_to_variable = { saf_var_budget = -3 }
 			subtract_from_variable = {
-				var = saf_var_unemployment
-				value = 0.03
+				saf_var_unemployment = {
+					value = 0.03
+					clamp = { min = 0 max = saf_var_unemployment }
+				}
 				tooltip = SWE_tt_unemployment_lowered
 			}
-			clamp_variable = { var = saf_var_unemployment min = 0 max = 1 }
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove SAF_public_work_program"
 			subtract_from_variable = {
-				var = saf_var_unemployment
-				value = 0.02
+				saf_var_unemployment = {
+					value = 0.02
+					clamp = { min = 0 max = saf_var_unemployment }
+				}
 				tooltip = SWE_tt_unemployment_lowered
 			}
-			clamp_variable = { var = saf_var_unemployment min = 0 max = 1 }
 		}
 		ai_will_do = {
 			base = 100
@@ -370,22 +330,24 @@ SAF_black_monday_decisions = {
 		custom_cost_text = SAF_tt_two_million_kronor
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_subsidize_resource_exports"
-			add_to_variable = { var = saf_var_budget value = -2 }
+			add_to_variable = { saf_var_budget = -2 }
 			subtract_from_variable = {
-				var = saf_var_unemployment
-				value = 0.02
+				saf_var_unemployment = {
+					value = 0.02
+					clamp = { min = 0 max = saf_var_unemployment }
+				}
 				tooltip = SWE_tt_unemployment_lowered
 			}
-			clamp_variable = { var = saf_var_unemployment min = 0 max = 1 }
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove SAF_subsidize_resource_exports"
 			subtract_from_variable = {
-				var = saf_var_unemployment
-				value = 0.02
+				saf_var_unemployment = {
+					value = 0.02
+					clamp = { min = 0 max = saf_var_unemployment }
+				}
 				tooltip = SWE_tt_unemployment_lowered
 			}
-			clamp_variable = { var = saf_var_unemployment min = 0 max = 1 }
 		}
 		ai_will_do = {
 			base = 100
@@ -414,13 +376,14 @@ SAF_black_monday_decisions = {
 		custom_cost_text = SAF_tt_five_million_kronor
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_nationalize_company"
-			add_to_variable = { var = saf_var_budget value = -5 }
+			add_to_variable = { saf_var_budget = -5 }
 			subtract_from_variable = {
-				var = saf_var_unemployment
-				value = 0.02
+				saf_var_unemployment = {
+					value = 0.02
+					clamp = { min = 0 max = saf_var_unemployment }
+				}
 				tooltip = SWE_tt_unemployment_lowered
 			}
-			clamp_variable = { var = saf_var_unemployment min = 0 max = 1 }
 		}
 		ai_will_do = {
 			base = 100
@@ -443,13 +406,14 @@ SAF_black_monday_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_implement_tariffs"
 			custom_effect_tooltip = SAF_tt_receive_million_kronor
-			add_to_variable = { var = saf_var_budget value = 2 }
+			add_to_variable = { saf_var_budget = 2 }
 			subtract_from_variable = {
-				var = saf_var_unemployment
-				value = 0.02
+				saf_var_unemployment = {
+					value = 0.02
+					clamp = { min = 0 max = saf_var_unemployment }
+				}
 				tooltip = SWE_tt_unemployment_lowered
 			}
-			clamp_variable = { var = saf_var_unemployment min = 0 max = 1 }
 		}
 		ai_will_do = {
 			base = 100
@@ -473,11 +437,12 @@ SAF_black_monday_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SAF_soften_the_colour_bar"
 			subtract_from_variable = {
-				var = saf_var_unemployment
-				value = 0.02
+				saf_var_unemployment = {
+					value = 0.02
+					clamp = { min = 0 max = saf_var_unemployment }
+				}
 				tooltip = SWE_tt_unemployment_lowered
 			}
-			clamp_variable = { var = saf_var_unemployment min = 0 max = 1 }
 		}
 		ai_will_do = {
 			base = 100
@@ -811,24 +776,26 @@ SAF_internal_resistance = {
 				limit = {
 					check_variable = { saf_var_ob_suppression_effectiveness > 0 }
 				}
+				add_to_variable = { saf_var_ob_suppression_effectiveness = -1 }
 				subtract_from_variable = {
-					var = saf_ob_strength value = 0.2
+					saf_ob_strength = {
+						value = 0.2
+						clamp = { min = 0 max = saf_ob_strength }
+					}
 					tooltip = SAF_tt_ob_lowered
-				}
-				add_to_variable = {
-					var = saf_var_ob_suppression_effectiveness
-					value = -1
 				}
 			}
 			else = {
 				subtract_from_variable = {
-					var = saf_ob_strength value = 0.1
+					saf_ob_strength = {
+						value = 0.1
+						clamp = { min = 0 max = saf_ob_strength }
+					}
 					tooltip = SAF_tt_ob_lowered
 				}
 			}
-			clamp_variable = { var = saf_ob_strength min = 0 }
 			custom_effect_tooltip = SAF_tt_strain_on_detention_centers_increased
-			add_to_variable = { var = SAF_var_detention_cap value = 5 }
+			add_to_variable = { SAF_var_detention_cap = 5 }
 		}
 		fixed_random_seed = no
 	}
@@ -856,12 +823,14 @@ SAF_internal_resistance = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove SAF_suppress_icu"
 			subtract_from_variable = {
-				var = saf_icu_strength value = 0.1
+				saf_icu_strength = {
+					value = 0.1
+					clamp = { min = 0 max = saf_icu_strength }
+				}
 				tooltip = SAF_tt_icu_lowered
 			}
-			clamp_variable = { var = saf_icu_strength min = 0 max = 1 }
 			custom_effect_tooltip = SAF_tt_strain_on_detention_centers_increased
-			add_to_variable = { var = SAF_var_detention_cap value = 5 }
+			add_to_variable = { SAF_var_detention_cap = 5 }
 		}
 		fixed_random_seed = no
 	}
@@ -956,9 +925,13 @@ SAF_internal_resistance = {
 				}
 				random_list = {
 					20 = {
-						custom_effect_tooltip = SAF_tt_ossewa_nerds_attack_icu
-						subtract_from_variable = { var = saf_icu_strength value = -0.1 }
-						clamp_variable = { var = saf_icu_strength min = 0 max = 1 }
+						add_to_variable = {
+							saf_icu_strength = {
+								value = -0.1
+								clamp = { min = { value = saf_icu_strength multiply = -1 } max = 0 }
+							}
+							tooltip = SAF_tt_ossewa_nerds_attack_icu
+						}
 					}
 					10 = {
 						custom_effect_tooltip = SAF_tt_ossewa_nerds_start_recruitment_drive
@@ -998,8 +971,12 @@ SAF_internal_resistance = {
 			hidden_effect = {
 				random_list = {
 					45 = {
-						add_to_variable = { var = saf_ob_strength value = 0.05 }
-						clamp_variable = { var = saf_ob_strength min = 0 max = 1 }
+						add_to_variable = {
+							saf_ob_strength = {
+								value = 0.05
+								clamp = { min = 0 max = { value = 1 subtract = saf_ob_strength } }
+							}
+						}
 					}
 					55 = {
 						#no effect
@@ -1120,10 +1097,7 @@ SAF_internal_resistance = {
 				random_list = {
 					20 = {
 						custom_effect_tooltip = SAF_tt_icu_report_weapon_hideout
-						add_to_variable = {
-							var = saf_var_ob_suppression_effectiveness
-							value = 1
-						}
+						add_to_variable = { saf_var_ob_suppression_effectiveness = 1 }
 					}
 					10 = {
 						custom_effect_tooltip = SAF_tt_icu_suspends_peaceful_resistance
@@ -1163,8 +1137,12 @@ SAF_internal_resistance = {
 			hidden_effect = {
 				random_list = {
 					45 = {
-						add_to_variable = { var = saf_icu_strength value = 0.05 }
-						clamp_variable = { var = saf_icu_strength min = 0 max = 1 }
+						add_to_variable = {
+							saf_icu_strength = {
+								value = 0.05
+								clamp = { min = 0 max = { value = 1 subtract = saf_icu_strength } }
+							}
+						}
 					}
 					55 = {
 						#no effect
@@ -1199,11 +1177,11 @@ SAF_internal_resistance = {
 			custom_effect_tooltip = SAF_tt_no_trouble_with_detention_camps
 			add_stability = -0.1
 			hidden_effect = {
-				add_to_variable = { var = SAF_var_detention_cap value = -40 }
-				clamp_variable = {
-					var = SAF_var_detention_cap
-					min = 0
-					max = 100
+				add_to_variable = {
+					SAF_var_detention_cap = {
+						value = -40
+						clamp = { min = { value = SAF_var_detention_cap multiply = -1 } max = 0 }
+					}
 				}
 			}
 		}
@@ -1222,13 +1200,13 @@ SAF_ryneveld_doctrine_decisions = {
 				limit = { cannot_call_allies_or_join_wars = yes }
 				OR = {
 					is_neighbor_of = FROM
-					FROM = { naval_base > 0 }
+					FROM = { any_owned_state = { naval_base > 0 } }
 				}
 			}
 			else = {
 				FROM = {
 					OR = {
-						naval_base > 0
+						any_owned_state = { naval_base > 0 }
 						any_home_area_neighbor_country = { is_ally_with = ROOT }
 					}
 				}

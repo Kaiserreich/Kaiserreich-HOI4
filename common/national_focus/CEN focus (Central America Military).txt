@@ -1013,11 +1013,7 @@ focus_tree = {
 				limit = { has_completed_focus = CENmil_interventionism }
 				add_political_power = -50
 				custom_effect_tooltip = cenmil_money_tt
-				subtract_from_variable = {
-					var = UFC_power
-					value = 1
-					tooltip = cenmil_foreign_influence_decreases_tt
-				}
+				subtract_from_variable = { UFC_power = 1 tooltip = cenmil_foreign_influence_decreases_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1025,11 +1021,7 @@ focus_tree = {
 			else_if = {
 				limit = { has_completed_focus = CENmil_laissez_faire }
 				add_political_power = -15
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1041,22 +1033,14 @@ focus_tree = {
 				}
 				effect_tooltip = { add_political_power = -50 }
 				custom_effect_tooltip = cenmil_money_tt
-				subtract_from_variable = {
-					var = UFC_power
-					value = 1
-					tooltip = cenmil_foreign_influence_decreases_tt
-				}
+				subtract_from_variable = { UFC_power = 1 tooltip = cenmil_foreign_influence_decreases_tt }
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_if_focus_completed
 					FOCUS = CENmil_laissez_faire
 				}
 				effect_tooltip = { add_political_power = -15 }
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 			}
 			CEN_reduce_economic_instability = yes
 			unlock_decision_category_tooltip = CENmil_infrastructure_decisions
@@ -1148,11 +1132,7 @@ focus_tree = {
 			else_if = {
 				limit = { has_completed_focus = CENmil_laissez_faire }
 				add_ideas = CENmil_world_exports_lf_idea
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1172,11 +1152,7 @@ focus_tree = {
 					FOCUS = CENmil_laissez_faire
 				}
 				effect_tooltip = { add_ideas = CENmil_world_exports_lf_idea }
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
@@ -1329,11 +1305,7 @@ focus_tree = {
 				limit = { has_completed_focus = CENmil_interventionism }
 				add_political_power = -100
 				custom_effect_tooltip = cenmil_money_tt
-				subtract_from_variable = {
-					var = UFC_power
-					value = 1
-					tooltip = cenmil_foreign_influence_decreases_tt
-				}
+				subtract_from_variable = { UFC_power = 1 tooltip = cenmil_foreign_influence_decreases_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1342,11 +1314,7 @@ focus_tree = {
 				limit = {
 					has_completed_focus = CENmil_laissez_faire
 				}
-				add_to_variable = {
-					var = UFC_power
-					value = 5
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1358,21 +1326,13 @@ focus_tree = {
 				}
 				effect_tooltip = { add_political_power = -100 }
 				custom_effect_tooltip = cenmil_money_tt
-				subtract_from_variable = {
-					var = UFC_power
-					value = 1
-					tooltip = cenmil_foreign_influence_decreases_tt
-				}
+				subtract_from_variable = { UFC_power = 1 tooltip = cenmil_foreign_influence_decreases_tt }
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_if_focus_completed
 					FOCUS = CENmil_laissez_faire
 				}
-				add_to_variable = {
-					var = UFC_power
-					value = 5
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_grows_tt }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
@@ -1405,11 +1365,7 @@ focus_tree = {
 				limit = { has_completed_focus = CENmil_laissez_faire }
 				add_one_random_civilian_factory = yes
 				add_one_random_civilian_factory = yes
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1435,11 +1391,7 @@ focus_tree = {
 					add_one_random_civilian_factory = yes
 					add_one_random_civilian_factory = yes
 				}
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
@@ -1510,22 +1462,14 @@ focus_tree = {
 			if = {
 				limit = { has_completed_focus = CENmil_interventionism }
 				add_political_power = -50
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
 			}
 			else_if = {
 				limit = { has_completed_focus = CENmil_laissez_faire }
-				add_to_variable = {
-					var = UFC_power
-					value = 10
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 10 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1536,21 +1480,13 @@ focus_tree = {
 					FOCUS = CENmil_interventionism
 				}
 				effect_tooltip = { add_political_power = -50 }
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_if_focus_completed
 					FOCUS = CENmil_laissez_faire
 				}
-				add_to_variable = {
-					var = UFC_power
-					value = 10
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 10 tooltip = cenmil_foreign_influence_grows_tt }
 			}
 			CEN_reduce_economic_instability = yes
 		}
@@ -1597,11 +1533,7 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			if = {
 				limit = { has_completed_focus = CENmil_interventionism }
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1609,11 +1541,7 @@ focus_tree = {
 			else_if = {
 				limit = { has_completed_focus = CENmil_laissez_faire }
 				add_one_random_dockyard = yes
-				add_to_variable = {
-					var = UFC_power
-					value = 5
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1623,11 +1551,7 @@ focus_tree = {
 					localization_key = tooltip_if_focus_completed
 					FOCUS = CENmil_interventionism
 				}
-				add_to_variable = {
-					var = UFC_power
-					value = 2
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_if_focus_completed
@@ -1636,11 +1560,7 @@ focus_tree = {
 				effect_tooltip = {
 					add_one_random_dockyard = yes
 				}
-				add_to_variable = {
-					var = UFC_power
-					value = 5
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_grows_tt }
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -1719,11 +1639,7 @@ focus_tree = {
 				limit = { has_completed_focus = CENmil_interventionism }
 				add_political_power = -50
 				custom_effect_tooltip = cenmil_money_tt
-				subtract_from_variable = {
-					var = UFC_power
-					value = 1
-					tooltip = cenmil_foreign_influence_decreases_tt
-				}
+				subtract_from_variable = { UFC_power = 1 tooltip = cenmil_foreign_influence_decreases_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1731,11 +1647,7 @@ focus_tree = {
 			else_if = {
 				limit = { has_completed_focus = CENmil_laissez_faire }
 				add_political_power = -15
-				add_to_variable = {
-					var = UFC_power
-					value = 3
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 3 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1747,22 +1659,14 @@ focus_tree = {
 				}
 				effect_tooltip = { add_political_power = -50 }
 				custom_effect_tooltip = cenmil_money_tt
-				subtract_from_variable = {
-					var = UFC_power
-					value = 1
-					tooltip = cenmil_foreign_influence_decreases_tt
-				}
+				subtract_from_variable = { UFC_power = 1 tooltip = cenmil_foreign_influence_decreases_tt }
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_if_focus_completed
 					FOCUS = CENmil_laissez_faire
 				}
 				effect_tooltip = { add_political_power = -15 }
-				add_to_variable = {
-					var = UFC_power
-					value = 3
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 3 tooltip = cenmil_foreign_influence_grows_tt }
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_MANPOWER FOCUS_FILTER_POLITICAL }
@@ -1793,11 +1697,7 @@ focus_tree = {
 				limit = { has_completed_focus = CENmil_laissez_faire }
 				add_ideas = CENmil_protecting_UFC_land_lf
 				add_political_power = 50
-				add_to_variable = {
-					var = UFC_power
-					value = 5
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_grows_tt }
 				hidden_effect = {
 					update_CENmil_UFC = yes
 				}
@@ -1820,11 +1720,7 @@ focus_tree = {
 					add_ideas = CENmil_protecting_UFC_land_lf
 					add_political_power = 50
 				}
-				add_to_variable = {
-					var = UFC_power
-					value = 5
-					tooltip = cenmil_foreign_influence_grows_tt
-				}
+				add_to_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_grows_tt }
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
@@ -2792,7 +2688,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_guerrila_tactics"
-			add_ideas = CENmil_guerilla_tactics_idea
+			swap_ideas = {
+				add_idea = CENmil_guerilla_tactics_idea
+				remove_idea = CENmil_extended_recruitment
+			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
 	}
@@ -2817,6 +2716,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENmil_guerilla_spirit"
+			swap_ideas = {
+				add_idea = CENmil_guerilla_tactics_idea_2
+				remove_idea = CENmil_guerilla_tactics_idea
+			}
 			custom_override_tooltip = {
 				tooltip = {
 					localization_key = tooltip_create_division_template
@@ -2860,7 +2763,7 @@ focus_tree = {
 				}
 			}
 		}
-		search_filters = { FOCUS_FILTER_MANPOWER }
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
 	}
 
 	focus = {

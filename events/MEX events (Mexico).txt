@@ -1955,6 +1955,85 @@ news_event = {
 	}
 }
 
+country_event = { # Paricutín Volcano Erupts in Michoacán
+	id = mexico_events.140
+	title = mexico_events.140.t
+	desc = mexico_events.140.d
+	picture = GFX_report_event_ELS_volcano
+
+	is_triggered_only = yes
+
+	trigger = {
+		owns_state = 485 # Guerrero
+	}
+
+	option = { #Damn it
+		log = "[GetLogInfo]: event mexico_events.140 option mexico_events.140.a"
+		name = mexico_events.140.a
+		add_political_power = -25
+		485 = {
+			damage_building = {
+				type = infrastructure
+				damage = 0.1
+			}
+		}
+		hidden_effect = {
+			country_event = { id = mexico_events.141 days = 90 }
+		}
+	}
+}
+
+country_event = { # Paricutín Threatens Santa Ana Zirosto
+	id = mexico_events.141
+	title = mexico_events.141.t
+	desc = mexico_events.141.d
+	picture = GFX_report_event_ELS_volcano
+
+	is_triggered_only = yes
+
+	option = { #Damn it
+		log = "[GetLogInfo]: event mexico_events.141 option mexico_events.141.a"
+		name = mexico_events.141.a
+		add_political_power = -25
+		hidden_effect = {
+			country_event = { id = mexico_events.142 days = 150 }
+		}
+	}
+}
+
+country_event = { # Paricutín Threatens San Juan Parangaricutiro
+	id = mexico_events.142
+	title = mexico_events.142.t
+	desc = mexico_events.142.d
+	picture = GFX_report_event_ELS_volcano
+
+	is_triggered_only = yes
+
+	option = { #Damn it
+		log = "[GetLogInfo]: event mexico_events.142 option mexico_events.142.a"
+		name = mexico_events.142.a
+		add_political_power = -25
+		hidden_effect = {
+			country_event = { id = mexico_events.143 days = 90 }
+		}
+	}
+}
+
+country_event = { # Paricutín Finally Stops Erupting
+	id = mexico_events.143
+	title = mexico_events.143.t
+	desc = mexico_events.143.d
+	picture = GFX_report_event_ELS_volcano
+
+	is_triggered_only = yes
+
+	option = { #At last, it's over
+		log = "[GetLogInfo]: event mexico_events.143 option mexico_events.143.a"
+		name = mexico_events.143.a
+		add_political_power = 25
+	}
+}
+
 ### Foreign Policy ###
 country_event = { # Mexico wishes to join the Internationale (fired from focus)
 	id = mexico_events.200

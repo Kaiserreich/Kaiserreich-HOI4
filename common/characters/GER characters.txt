@@ -219,66 +219,9 @@ characters = {
 	}
 
 	### Splinters ###
-	GER_franz_jacob = { #North Germany
-		name = GER_franz_jacob
-		portraits = {
-			civilian = {
-				large = GFX_portrait_GER_franz_jacob_civilian_large
-			}
-		}
-		country_leader = {
-			desc = GER_franz_jacob_leader_desc
-			ideology = totalist_subtype
-		}
-		country_leader = {
-			desc = GER_franz_jacob_leader_desc
-			ideology = syndicalist_subtype
-		}
-		country_leader = {
-			desc = GER_franz_jacob_leader_desc
-			ideology = radical_socialist_subtype
-		}
-	}
-	GER_karl_liebknecht = { #Prussia
-		name = GER_karl_liebknecht
-		portraits = {
-			civilian = {
-				large = GFX_portrait_GER_karl_liebknecht_civilian_large
-			}
-		}
-		country_leader = {
-			desc = GER_karl_liebknecht_leader_desc
-			ideology = totalist_subtype
-		}
-		country_leader = {
-			desc = GER_karl_liebknecht_leader_desc
-			ideology = syndicalist_subtype
-		}
-		country_leader = {
-			desc = GER_karl_liebknecht_leader_desc
-			ideology = radical_socialist_subtype
-		}
-	}
-	GER_kurt_eisner = { #Bavaria/South Germany
-		name = GER_kurt_eisner
-		portraits = {
-			civilian = {
-				large = GFX_portrait_GER_kurt_eisner_civilian_large
-			}
-		}
-		country_leader = {
-			desc = GER_kurt_eisner_leader_desc
-			ideology = totalist_subtype
-		}
-		country_leader = {
-			desc = GER_kurt_eisner_leader_desc
-			ideology = syndicalist_subtype
-		}
-		country_leader = {
-			desc = GER_kurt_eisner_leader_desc
-			ideology = radical_socialist_subtype
-		}
-	}
+	#Franz Jacob has been removed.
+	#Karl Liebknecht has been removed
+	#Kurt Eisner has been removed
 	GER_erich_wollenberg = { #East Prussia
 		name = GER_erich_wollenberg
 		portraits = {
@@ -562,6 +505,25 @@ characters = {
 			ledger = army
 			traits = { KR_MHC_armoured_2 }
 			cost = 100
+			ai_will_do = {
+				base = 20
+				modifier = {
+					factor = 25
+					threat > 0.60
+				}
+				modifier = {
+					factor = 25
+					date > 1940.1.1
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_active_mission = GER_brunswick_front_activity
+						has_active_mission = GER_iron_front_activity
+						has_active_mission = GER_DVLP_emergency_conference
+					}
+				}
+			}
 		}
 	}
 	GER_heinz_guderian = {
@@ -586,6 +548,7 @@ characters = {
 			idea_token = GER_heinz_guderian_army_chief
 			traits = { KR_army_chief_manoeuvre_3 }
 			cost = 200
+			ai_will_do = { base = 0 }
 		}
 	}
 	GER_walter_model = {
@@ -631,6 +594,7 @@ characters = {
 			}
 			traits = { KR_army_chief_drill_2 }
 			cost = 100
+			ai_will_do = { base = 0 }
 		}
 		advisor = {
 			slot = high_command
@@ -642,6 +606,25 @@ characters = {
 			}
 			traits = { KR_MHC_infantry_2 }
 			cost = 100
+			ai_will_do = {
+				base = 20
+				modifier = {
+					factor = 25
+					threat > 0.60
+				}
+				modifier = {
+					factor = 25
+					date > 1940.1.1
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_active_mission = GER_brunswick_front_activity
+						has_active_mission = GER_iron_front_activity
+						has_active_mission = GER_DVLP_emergency_conference
+					}
+				}
+			}
 		}
 	}
 	GER_gunther_von_kluge = {
@@ -1523,12 +1506,14 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_nationalist_press_baron }
+			always_show_on_actions_tooltip = yes
 			on_add = {
 				owner = {
 					add_to_variable = { GER_swr_coalition_balance = 20 }
 					GER_check_swr_coalition_strength = yes
 				}
 			}
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_theodor_wolff = {
@@ -1545,6 +1530,7 @@ characters = {
 				has_authoritarian_government = no
 			}
 			traits = { KR_liberal_press_baron }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_carl_siemens = {
@@ -1558,6 +1544,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_carl_siemens_advisor
 			traits = { KR_captain_of_industry }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_fritz_thyssen = {
@@ -1574,6 +1561,7 @@ characters = {
 				has_completed_focus = GER_w_system
 			}
 			traits = { KR_war_industrialist }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_paul_lejeune_jung = {
@@ -1595,6 +1583,7 @@ characters = {
 			idea_token = GER_paul_lejeune_jung_advisor
 			desc = GER_paul_lejeune_jung_sic_desc
 			traits = { KR_mitteleuropa_advocate }
+			always_show_on_actions_tooltip = yes
 			on_add = {
 				every_country = {
 					limit = {
@@ -1605,6 +1594,7 @@ characters = {
 					hidden_effect = { country_event = germany_flavour_events.19 }
 				}
 			}
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_wilhelm_groener = {
@@ -1618,6 +1608,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_wilhelm_groener_advisor
 			traits = { KR_heer_advocate }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_oswald_lutz = {
@@ -1631,6 +1622,29 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_oswald_lutz_advisor
 			traits = { KR_tank_advocate }
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 25
+					date > 1938.1.1
+				}
+				modifier = {
+					factor = 25
+					threat > 0.60
+				}
+				modifier = {
+					factor = 25
+					has_war = yes
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_active_mission = GER_brunswick_front_activity
+						has_active_mission = GER_iron_front_activity
+						has_active_mission = GER_DVLP_emergency_conference
+					}
+				}
+			}
 		}
 	}
 	GER_ufa = {
@@ -1644,6 +1658,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_ufa_advisor
 			traits = { KR_propaganda_film_industry }
+			ai_will_do = { base = 0 }
 		}
 	}
 	GER_max_planck = {
@@ -1670,6 +1685,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_adolf_georg_maltzan_advisor
 			traits = { KR_leading_diplomat }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_carl_bosch = {
@@ -1683,6 +1699,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_carl_bosch_advisor
 			traits = { KR_industrial_chemist }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_uranverein = {
@@ -1696,6 +1713,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_uranverein_advisor
 			traits = { KR_nuclear_council }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_hafraba = {
@@ -1709,6 +1727,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_hafraba_advisor
 			traits = { KR_railway_magnate }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_franz_gurtner = {
@@ -1722,6 +1741,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_franz_gurtner_advisor
 			traits = { KR_legalist }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_hjalmar_schacht = {
@@ -1735,6 +1755,21 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_hjalmar_schacht_advisor
 			traits = { KR_austere_finance_advocate }
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 50
+					GER_is_du_path = yes
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_active_mission = GER_brunswick_front_activity
+						has_active_mission = GER_iron_front_activity
+						has_active_mission = GER_DVLP_emergency_conference
+					}
+				}
+			}
 		}
 	}
 	GER_wilhelm_ropke = {
@@ -1748,6 +1783,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_wilhelm_ropke_advisor
 			traits = { KR_interventionist_economist }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_karl_helfferich = {
@@ -1761,6 +1797,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_karl_helfferich_advisor
 			traits = { KR_economic_reformer }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_johann_ludwig_krosigk = {
@@ -1774,6 +1811,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_johann_ludwig_krosigk_advisor
 			traits = { KR_traditionalist_economist }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_wilhelm_canaris = {
@@ -1810,6 +1848,7 @@ characters = {
 			}
 			traits = { KR_army_chief_defensive_2 }
 			cost = 100
+			ai_will_do = { base = 0 }
 		}
 		advisor = {
 			slot = high_command
@@ -1848,6 +1887,7 @@ characters = {
 			}
 			traits = { KR_army_chief_reform_2 }
 			cost = 100
+			ai_will_do = { base = 0 }
 		}
 		advisor = {
 			slot = high_command
@@ -1877,6 +1917,16 @@ characters = {
 			}
 			traits = { KR_military_theorist }
 			cost = 100
+			ai_will_do = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_active_mission = GER_brunswick_front_activity
+						has_active_mission = GER_iron_front_activity
+						has_active_mission = GER_DVLP_emergency_conference
+					}
+				}
+			}
 		}
 	}
 	GER_ludwig_beck = {
@@ -1894,6 +1944,22 @@ characters = {
 			}
 			traits = { KR_army_chief_offensive_2 }
 			cost = 100
+			ai_will_do = {
+				base = 5000
+				modifier = {
+					factor = 0
+					has_idea = GER_victors_of_wwi
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_active_mission = GER_brunswick_front_activity
+						has_active_mission = GER_iron_front_activity
+						has_active_mission = GER_DVLP_emergency_conference
+					}
+					has_political_power < 150
+				}
+			}
 		}
 		advisor = {
 			slot = theorist
@@ -1922,6 +1988,7 @@ characters = {
 			}
 			traits = { KR_army_chief_organisational_2 }
 			cost = 100
+			ai_will_do = { base = 0 }
 		}
 		advisor = {
 			slot = high_command
@@ -1933,6 +2000,25 @@ characters = {
 			}
 			traits = { KR_MHC_army_regrouping_3 }
 			cost = 200
+			ai_will_do = {
+				base = 0
+				modifier = {
+					add = 1
+					has_idea = partial_economic_mobilisation
+				}
+				modifier = {
+					add = 250
+					threat > 0.60
+				}
+				modifier = {
+					add = 250
+					date > 1940.1.1
+				}
+				modifier = {
+					add = 500
+					has_war = yes
+				}
+			}
 		}
 	}
 	GER_wolfgang_wegener = {
@@ -2208,6 +2294,7 @@ characters = {
 			traits = { KR_east_elbia_knight_sic }
 			cost = 0
 			can_be_fired = no
+			always_show_on_actions_tooltip = yes
 			on_remove = {
 				if = {
 					limit = { has_dynamic_modifier = { modifier = GER_people_conservatism_effect } }
@@ -2300,6 +2387,17 @@ characters = {
 			idea_token = GER_adam_stegerwald_advisor
 			visible = { has_country_flag = GER_z_advisors_unlocked }
 			traits = { KR_catholic_unionist }
+			ai_will_do = {
+				base = 500
+				modifier = {
+					factor = 0
+					OR = {
+						has_active_mission = GER_brunswick_front_activity
+						has_active_mission = GER_iron_front_activity
+						has_active_mission = GER_DVLP_emergency_conference
+					}
+				}
+			}
 		}
 	}
 	GER_fritz_schaffer = {
@@ -2321,6 +2419,7 @@ characters = {
 			idea_token = GER_fritz_schaffer_advisor
 			visible = { has_country_flag = GER_z_advisors_unlocked }
 			traits = { KR_bavarian_federalist }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_konrad_adenauer = {
@@ -2424,6 +2523,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_centralisation_ideologue }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_ferdinand_von_bredow = {
@@ -2448,6 +2548,7 @@ characters = {
 				GER_kurt_von_schleicher = { is_second_in_command = yes }
 			}
 			traits = { KR_schleicher_confidant }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_lothar_erdmann = {
@@ -2464,6 +2565,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_yellow_unionist }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_ernst_niekisch = {
@@ -2480,6 +2582,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_spartanist_socialist }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_paul_reusch = {
@@ -2496,6 +2599,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_ruhrlade_leader }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_ulrich_von_hassell = {
@@ -2527,6 +2631,7 @@ characters = {
 			on_remove = {
 				GER_ulrich_von_hassell = { clr_character_flag = GER_event_only }
 			}
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_eduard_stadtler = {
@@ -2543,12 +2648,14 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_national_socialist }
+			always_show_on_actions_tooltip = yes
 			on_add = {
 				owner = {
 					add_to_variable = { GER_swr_coalition_balance = 20 }
 					GER_check_swr_coalition_strength = yes
 				}
 			}
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_oskar_hergt = {
@@ -2565,12 +2672,14 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_conservative_grandee }
+			always_show_on_actions_tooltip = yes
 			on_add = {
 				owner = {
 					add_to_variable = { GER_swr_coalition_balance = -20 }
 					GER_check_swr_coalition_strength = yes
 				}
 			}
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_adolf_von_trotha = {
@@ -2587,6 +2696,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_nationalist_press_baron }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_martin_spahn = {
@@ -2603,6 +2713,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_national_catholic }
+			always_show_on_actions_tooltip = yes
 			on_add = {
 				owner = {
 					add_to_variable = { GER_swr_coalition_balance = 20 }
@@ -2636,6 +2747,7 @@ characters = {
 					}
 				}
 			}
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_gottfried_treviranus = {
@@ -2675,6 +2787,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_eastern_agrarian }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_hermann_luninck = {
@@ -2691,6 +2804,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_pragmatic_agrarian }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_gunther_gereke = {
@@ -2707,6 +2821,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_schleicher_agrarian }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_fritz_baade = {
@@ -2723,6 +2838,7 @@ characters = {
 				has_soclib_or_socdem_government = yes
 			}
 			traits = { KR_socialist_agrarian }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_hansjoachim_rohr = {
@@ -2739,12 +2855,14 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_prussian_conservative }
+			always_show_on_actions_tooltip = yes
 			on_add = {
 				owner = {
 					add_to_variable = { GER_swr_coalition_balance = -20 }
 					GER_check_swr_coalition_strength = yes
 				}
 			}
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_tilo_wilmowsky = {
@@ -2769,12 +2887,14 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_bridge }
+			always_show_on_actions_tooltip = yes
 			on_add = {
 				owner = {
 					add_to_variable = { GER_swr_coalition_balance = -20 }
 					GER_check_swr_coalition_strength = yes
 				}
 			}
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_august_winnig = {
@@ -2806,6 +2926,21 @@ characters = {
 				has_elected_government = yes
 			}
 			traits = { KR_socialist_economist }
+			ai_will_do = {
+				base = 0
+				modifier = {
+					add = 150
+					GER_is_du_path = yes
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_active_mission = GER_brunswick_front_activity
+						has_active_mission = GER_iron_front_activity
+						has_active_mission = GER_DVLP_emergency_conference
+					}
+				}
+			}
 		}
 	}
 	GER_carl_severing = {
@@ -2827,6 +2962,7 @@ characters = {
 				}
 			}
 			traits = { KR_reformer_of_the_interior }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_johannes_bell = {
@@ -2840,6 +2976,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_johannes_bell_advisor
 			traits = { KR_brilliant_lawyer }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_albert_einstein = {
@@ -2856,6 +2993,7 @@ characters = {
 				has_elected_government = yes
 			}
 			traits = { KR_head_of_kw_physics_institute }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_hans_zehrer = {
@@ -2872,6 +3010,7 @@ characters = {
 				has_authoritarian_government = yes
 			}
 			traits = { KR_schleicher_mouthpiece }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_otto_grotewohl = {
@@ -2888,6 +3027,7 @@ characters = {
 				has_government = social_democrat
 			}
 			traits = { KR_left_wing_educator }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_max_seydewitz = {
@@ -2904,6 +3044,7 @@ characters = {
 				has_government = social_democrat
 			}
 			traits = { KR_left_wing_theoretician }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_wilhelm_sollmann = {
@@ -2920,6 +3061,7 @@ characters = {
 				has_government = social_democrat
 			}
 			traits = { KR_foreign_affairs_expert }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_fritz_naphtali = {
@@ -2952,6 +3094,7 @@ characters = {
 				has_elected_government = yes
 			}
 			traits = { KR_agricultural_economist }
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_wissell_moellendorff = {
@@ -2969,6 +3112,7 @@ characters = {
 			}
 			traits = { KR_conservative_socialists }
 			cost = 1
+			ai_will_do = { factor = 0 }
 		}
 	}
 	GER_waldemar_pabst = {
@@ -3334,184 +3478,106 @@ characters = {
 	############################
 
 	GER_bm_cardgame_money_issuance_object = {
-		name = GER_bm_cardgame_money_issuance_name
-	}
-	GER_bm_cardgame_money_issuance_idea = {
 		name = "GER_bm_cardgame_money_issuance"
 	}
 
 	GER_bm_cardgame_capital_controls_object = {
-		name = GER_bm_cardgame_capital_controls_name
-	}
-	GER_bm_cardgame_capital_controls_idea = {
 		name = "GER_bm_cardgame_capital_controls"
 	}
 
 	GER_bm_cardgame_employment_programme_object = {
-		name = GER_bm_cardgame_employment_programme_name
-	}
-	GER_bm_cardgame_employment_programme_idea = {
 		name = "GER_bm_cardgame_employment_programme"
 	}
 
 	GER_bm_cardgame_cooperation_business_object = {
-		name = GER_bm_cardgame_cooperation_business_name
-	}
-	GER_bm_cardgame_cooperation_business_idea = {
 		name = "GER_bm_cardgame_cooperation_business"
 	}
 
 	GER_bm_cardgame_fireside_chat_object = {
-		name = GER_bm_cardgame_fireside_chat_name
-	}
-	GER_bm_cardgame_fireside_chat_idea = {
 		name = "GER_bm_cardgame_fireside_chat"
 	}
 
 	GER_bm_cardgame_eastern_assistance_object = {
-		name = GER_bm_cardgame_eastern_assistance_name
-	}
-	GER_bm_cardgame_eastern_assistance_idea = {
 		name = "GER_bm_cardgame_eastern_assistance"
 	}
 
 	GER_bm_cardgame_price_monitoring_object = {
-		name = GER_bm_cardgame_price_monitoring_name
-	}
-	GER_bm_cardgame_price_monitoring_idea = {
 		name = "GER_bm_cardgame_price_monitoring"
 	}
 
 	GER_bm_cardgame_rathenauplan_object = {
-		name = GER_bm_cardgame_rathenauplan_name
-	}
-	GER_bm_cardgame_rathenauplan_idea = {
 		name = "GER_bm_cardgame_rathenauplan"
 	}
 
 	GER_bm_cardgame_tbplan_object = {
-		name = GER_bm_cardgame_tbplan_name
-	}
-	GER_bm_cardgame_tbplan_idea = {
 		name = "GER_bm_cardgame_tbplan"
 	}
 
 	GER_bm_cardgame_arbeitsdienst_object = {
-		name = GER_bm_cardgame_arbeitsdienst_name
-	}
-	GER_bm_cardgame_arbeitsdienst_idea = {
 		name = "GER_bm_cardgame_arbeitsdienst"
 	}
 
 	GER_bm_cardgame_land_improvement_object = {
-		name = GER_bm_cardgame_land_improvement_name
-	}
-	GER_bm_cardgame_land_improvement_idea = {
 		name = "GER_bm_cardgame_land_improvement"
 	}
 
 	GER_bm_cardgame_corporate_assistance_object = {
-		name = GER_bm_cardgame_corporate_assistance_name
-	}
-	GER_bm_cardgame_corporate_assistance_idea = {
 		name = "GER_bm_cardgame_corporate_assistance"
 	}
 
 	GER_bm_cardgame_institutional_public_works_object = {
-		name = GER_bm_cardgame_institutional_public_works_name
-	}
-	GER_bm_cardgame_institutional_public_works_idea = {
 		name = "GER_bm_cardgame_institutional_public_works"
 	}
 
 	GER_bm_cardgame_import_tariffs_object = {
-		name = GER_bm_cardgame_import_tariffs_name
-	}
-	GER_bm_cardgame_import_tariffs_idea = {
 		name = "GER_bm_cardgame_import_tariffs"
 	}
 
 	GER_bm_cardgame_economic_planning_object = {
-		name = GER_bm_cardgame_economic_planning_name
-	}
-	GER_bm_cardgame_economic_planning_idea = {
 		name = "GER_bm_cardgame_economic_planning"
 	}
 
 	GER_bm_cardgame_mitteleuropa_loans_object = {
-		name = GER_bm_cardgame_mitteleuropa_loans_name
-	}
-	GER_bm_cardgame_mitteleuropa_loans_idea = {
 		name = "GER_bm_cardgame_mitteleuropa_loans"
 	}
 
 	GER_bm_cardgame_administrative_reform_object = {
-		name = GER_bm_cardgame_administrative_reform_name
-	}
-	GER_bm_cardgame_administrative_reform_idea = {
 		name = "GER_bm_cardgame_administrative_reform"
 	}
 
 	GER_bm_cardgame_nationalisation_of_foreign_companies_object = {
-		name = GER_bm_cardgame_nationalisation_of_foreign_companies_name
-	}
-	GER_bm_cardgame_nationalisation_of_foreign_companies_idea = {
 		name = "GER_bm_cardgame_nationalisation_of_foreign_companies"
 	}
 
 	GER_bm_trade_union_collaboration_object = {
-		name = GER_bm_trade_union_collaboration_name
-	}
-	GER_bm_trade_union_collaboration_idea = {
 		name = "GER_bm_trade_union_collaboration"
 	}
 
 	GER_bm_cardgame_strategic_tax_hikes_object = {
-		name = GER_bm_cardgame_strategic_tax_hikes_name
-	}
-	GER_bm_cardgame_strategic_tax_hikes_idea = {
 		name = "GER_bm_cardgame_strategic_tax_hikes"
 	}
 
 	GER_bm_cardgame_price_depression_object = {
-		name = GER_bm_cardgame_price_depression_name
-	}
-	GER_bm_cardgame_price_depression_idea = {
 		name = "GER_bm_cardgame_price_depression"
 	}
 
 	GER_bm_cardgame_money_issuance_large_object = {
-		name = GER_bm_cardgame_money_issuance_large_name
-	}
-	GER_bm_cardgame_money_issuance_large_idea = {
 		name = "GER_bm_cardgame_money_issuance_large"
 	}
 
 	GER_bm_cardgame_fiscal_austerity_object = {
-		name = GER_bm_cardgame_fiscal_austerity_name
-	}
-	GER_bm_cardgame_fiscal_austerity_idea = {
 		name = "GER_bm_cardgame_fiscal_austerity"
 	}
 
 	GER_bm_cardgame_federal_income_taxes_object = {
-		name = GER_bm_cardgame_federal_income_taxes_name
-	}
-	GER_bm_cardgame_federal_income_taxes_idea = {
 		name = "GER_bm_cardgame_federal_income_taxes"
 	}
 
 	GER_bm_cardgame_reichsbank_analysis_object = {
-		name = GER_bm_cardgame_reichsbank_analysis_name
-	}
-	GER_bm_cardgame_reichsbank_analysis_idea = {
 		name = "GER_bm_cardgame_reichsbank_analysis"
 	}
 
 	GER_bm_cardgame_technocratic_thinking_object = {
-		name = GER_bm_cardgame_technocratic_thinking_name
-	}
-	GER_bm_cardgame_technocratic_thinking_idea = {
 		name = "GER_bm_cardgame_technocratic_thinking"
 	}
 }

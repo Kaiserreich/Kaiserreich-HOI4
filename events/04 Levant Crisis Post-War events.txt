@@ -442,8 +442,11 @@ country_event = { #Victory in the Mashriq
 						transfer_state = PREV
 					}
 				}
-				PER = { country_event = levant_crisis_events.3 }
-				EGY = { country_event = { id = levant_crisis_events.16 days = 4 } }
+				PER = {
+					country_event = levant_crisis_events.3
+					PER_forpol_setup = yes
+				}
+				EGY = { country_event = levant_crisis_events.16 }
 			}
 			else = {
 				IRQ = {
@@ -808,6 +811,8 @@ country_event = { #Victory in the Mashriq
 				#Power Projection event for Russia if they supported Anti-Ottoman forces
 				country_event = { id = russia_foreign_policy_events.257 days = 1 }
 			}
+
+			AFG = { country_event = { id = afghanistan_events.2001 days = 4 } }
 		}
 	}
 
@@ -979,10 +984,6 @@ country_event = { #Egypt signs peace in our name
 	desc = levant_crisis_events.3.d
 
 	is_triggered_only = yes
-
-	immediate = {
-		PER_forpol_setup = yes
-	}
 
 	option = {
 		log = "[GetLogInfo]: event levant_crisis_events.3 option levant_crisis_events.3.a"
@@ -1346,6 +1347,7 @@ country_event = { #Formation of the Israel Defence Force
 			division_template = {
 				name = "Yahudi Piyade Fırkası"
 				division_names_group = OTT_INF_01
+				is_locked = yes
 				regiments = {
 					infantry = { x = 0 y = 0 }
 					infantry = { x = 0 y = 1 }
@@ -1372,6 +1374,7 @@ country_event = { #Formation of the Israel Defence Force
 			division_template = {
 				name = "Yahudi Süvari Fırkası"
 				division_names_group = OTT_CAV_01
+				is_locked = yes
 				regiments = {
 					cavalry = { x = 0 y = 0 }
 					cavalry = { x = 0 y = 1 }
@@ -1492,13 +1495,18 @@ country_event = { #Persia Annexes Iraq (EGY)
 		is_faction_leader = yes
 	}
 
+	timeout_days = 7
 	is_triggered_only = yes
+
+	immediate = {
+		PER = { set_country_flag = { flag = imminent_war days = 30 value = 1 } } # Blocks PER from joining factions until event chain is over
+	}
 
 	option = {
 		log = "[GetLogInfo]: event levant_crisis_events.16 option levant_crisis_events.16.a"
 		name = levant_crisis_events.16.a #They must evacuate Mesopotamia immediately!
 		ai_chance = { base = 100 }
-		PER = { country_event = levant_crisis_events.17 }
+		PER = { country_event = { id = levant_crisis_events.17 days = 4 } }
 	}
 
 	option = {
@@ -1506,6 +1514,7 @@ country_event = { #Persia Annexes Iraq (EGY)
 		name = levant_crisis_events.16.b #We'd rather not fight the Persians...
 		ai_chance = { base = 0 }
 		add_war_support = -0.10
+		PER = { clr_country_flag = imminent_war }
 	}
 }
 
@@ -1515,6 +1524,7 @@ country_event = { #Egypt Demands the Liberation of Iraq (PER)
 	desc = levant_crisis_events.17.d
 	picture = GFX_report_event_EGY_egyptian_troops
 
+	timeout_days = 7
 	is_triggered_only = yes
 
 	option = {
@@ -1564,6 +1574,7 @@ country_event = { #Egypt Demands the Liberation of Iraq (PER)
 		}
 		release = IRQ
 		FROM = { country_event = levant_crisis_events.19 }
+		clr_country_flag = imminent_war
 	}
 }
 
@@ -1573,6 +1584,7 @@ country_event = { #Persia Refuses Our Demands (EGY)
 	desc = levant_crisis_events.18.d
 	picture = GFX_OTT_Civil_War_Jabal
 
+	timeout_days = 7
 	is_triggered_only = yes
 
 	option = {
@@ -1599,6 +1611,10 @@ country_event = { #Persia Refuses Our Demands (EGY)
 		name = levant_crisis_events.18.b #Drop the matter
 		ai_chance = { base = 0 }
 		add_political_power = -25
+	}
+
+	after = {
+		FROM = { clr_country_flag = imminent_war }
 	}
 }
 

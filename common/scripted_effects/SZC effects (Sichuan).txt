@@ -1084,9 +1084,7 @@ SZC_end_famine = {
 }
 
 SZC_increase_opium_control = {
-	divide_temp_variable = { SZC_opium_control_change = 100 }
-	add_to_variable = { SZC_opium_control = SZC_opium_control_change }
-	custom_effect_tooltip = SZC_increase_opium_control_tooltip
+	add_to_variable = { SZC_opium_control = { value = SZC_opium_control_change multiply = 0.01 } tooltip = SZC_increase_opium_control_tooltip }
 	if = {
 		limit = {
 			check_variable = { SZC_opium_control > 0.79 }
@@ -1152,9 +1150,7 @@ SZC_increase_opium_control = {
 }
 
 SZC_reduce_opium_spread = {
-	divide_temp_variable = { SZC_opium_spread_change = 100 }
-	add_to_variable = { SZC_opium_spread = SZC_opium_spread_change }
-	custom_effect_tooltip = SZC_reduce_opium_spread_tooltip
+	add_to_variable = { SZC_opium_spread = { value = SZC_opium_spread_change multiply = 0.01 } tooltip = SZC_reduce_opium_spread_tooltip }
 	if = {
 		limit = {
 			has_idea = SZC_opium_spread_1

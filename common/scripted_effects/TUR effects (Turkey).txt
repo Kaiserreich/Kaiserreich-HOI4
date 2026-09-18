@@ -11,12 +11,12 @@ TUR_modify_traditionalist_resistance = {
 	round_temp_variable = TUR_resistance_change
 
 	# temp variable for idea calculations below
-	set_temp_variable = { TUR_new_resistance_value = TUR_traditionalist_resistance }
-	add_to_temp_variable = { TUR_new_resistance_value = TUR_resistance_change }
-	clamp_temp_variable = {
-		var = TUR_new_resistance_value
-		min = 0
-		max = 100
+	set_temp_variable = {
+		TUR_new_resistance_value = {
+			value = TUR_traditionalist_resistance
+			add = TUR_resistance_change
+			clamp = { min = 0 max = 100 }
+		}
 	}
 	set_variable = { TUR_traditionalist_resistance = TUR_new_resistance_value }
 
@@ -26,9 +26,8 @@ TUR_modify_traditionalist_resistance = {
 			limit = { has_variable = TUR_traditionalist_resistance }
 			if = {
 				limit = { check_variable = { TUR_resistance_change < 0 } }
-				multiply_temp_variable = { TUR_resistance_change = -1 }
 				add_to_variable = {
-					TUR_traditionalist_resistance = TUR_resistance_change
+					TUR_traditionalist_resistance = { value = TUR_resistance_change multiply = -1 }
 					tooltip = TUR_traditionalist_resistance_decreases
 				}
 			}
@@ -41,24 +40,15 @@ TUR_modify_traditionalist_resistance = {
 		}
 	}
 
-	if = {
-		limit = { check_variable = { TUR_new_resistance_value > 79 } }
-		set_temp_variable = { TUR_new_resistance_idea = token:TUR_traditionalist_resistance_extreme }
-	}
-	else_if = {
-		limit = { check_variable = { TUR_new_resistance_value > 59 } }
-		set_temp_variable = { TUR_new_resistance_idea = token:TUR_traditionalist_resistance_strong }
-	}
-	else_if = {
-		limit = { check_variable = { TUR_new_resistance_value > 39 } }
-		set_temp_variable = { TUR_new_resistance_idea = token:TUR_traditionalist_resistance_significant }
-	}
-	else_if = {
-		limit = { check_variable = { TUR_new_resistance_value > 19 } }
-		set_temp_variable = { TUR_new_resistance_idea = token:TUR_traditionalist_resistance_slight }
-	}
-	else = {
-		set_temp_variable = { TUR_new_resistance_idea = token:TUR_traditionalist_resistance_insignificant }
+	set_temp_variable = {
+		TUR_new_resistance_idea = {
+			value = 0
+			if = { limit = { value = TUR_new_resistance_value greater_than = 79 } add = token:TUR_traditionalist_resistance_extreme }
+			else_if = { limit = { value = TUR_new_resistance_value greater_than = 59 } add = token:TUR_traditionalist_resistance_strong }
+			else_if = { limit = { value = TUR_new_resistance_value greater_than = 39 } add = token:TUR_traditionalist_resistance_significant }
+			else_if = { limit = { value = TUR_new_resistance_value greater_than = 19 } add = token:TUR_traditionalist_resistance_slight }
+			else = { add = token:TUR_traditionalist_resistance_insignificant }
+		}
 	}
 	if = {
 		limit = { NOT = { has_idea = var:TUR_new_resistance_idea } }
@@ -362,20 +352,21 @@ TUR_change_kurdish_unrest = {
 	if = {
 		limit = { check_variable = { TUR_unrest_change < 0 } }
 		add_to_variable = {
-			TUR_kurdish_unrest_value = TUR_unrest_change
+			TUR_kurdish_unrest_value = {
+				value = TUR_unrest_change
+				clamp = { min = { value = TUR_kurdish_unrest_value multiply = -1 } max = 0 }
+			}
 			tooltip = TUR_decrease_kurdish_unrest
 		}
 	}
 	else = {
 		add_to_variable = {
-			TUR_kurdish_unrest_value = TUR_unrest_change?1
+			TUR_kurdish_unrest_value = {
+				value = TUR_unrest_change?1
+				clamp = { min = 0 max = { value = 100 subtract = TUR_kurdish_unrest_value } }
+			}
 			tooltip = TUR_increase_kurdish_unrest
 		}
-	}
-	clamp_variable = {
-		var = TUR_kurdish_unrest_value
-		min = 0
-		max = 100
 	}
 	hidden_effect = {
 		country_event = { id = turkey_events.91 days = 1 random_days = 5 }

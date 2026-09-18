@@ -3597,12 +3597,11 @@ country_event = { #Elections of 1942
 				}
 			}
 		}
-		if = {
-			limit = { check_variable = { POL_royal_influence > 50 } }
-			set_temp_variable = { ideology_change_var = 10 }
-		}
-		else = {
-			set_temp_variable = { ideology_change_var = 5 }
+		set_temp_variable = {
+			ideology_change_var = {
+				value = 5
+				if = { limit = { value = POL_royal_influence greater_than = 50 } add = 5 }
+			}
 		}
 		change_ruling_party_popularity = yes
 		if = {
@@ -3667,12 +3666,11 @@ country_event = { #Elections of 1942
 				}
 			}
 		}
-		if = {
-			limit = { check_variable = { POL_royal_influence > 50 } }
-			set_temp_variable = { ideology_change_var = 10 }
-		}
-		else = {
-			set_temp_variable = { ideology_change_var = 5 }
+		set_temp_variable = {
+			ideology_change_var = {
+				value = 5
+				if = { limit = { value = POL_royal_influence greater_than = 50 } add = 5 }
+			}
 		}
 		change_ruling_party_popularity = yes
 		add_popularity = { ideology = social_liberal popularity = 0.05 }
@@ -3697,12 +3695,11 @@ country_event = { #Elections of 1942
 				}
 			}
 		}
-		if = {
-			limit = { check_variable = { POL_royal_influence > 50 } }
-			set_temp_variable = { ideology_change_var = 10 }
-		}
-		else = {
-			set_temp_variable = { ideology_change_var = 6 }
+		set_temp_variable = {
+			ideology_change_var = {
+				value = 6
+				if = { limit = { value = POL_royal_influence greater_than = 50 } add = 4 }
+			}
 		}
 		change_ruling_party_popularity = yes
 		add_popularity = { ideology = social_liberal popularity = 0.05 }
@@ -3730,12 +3727,11 @@ country_event = { #Elections of 1942
 				}
 			}
 		}
-		if = {
-			limit = { check_variable = { POL_royal_influence > 50 } }
-			set_temp_variable = { ideology_change_var = 10 }
-		}
-		else = {
-			set_temp_variable = { ideology_change_var = 5 }
+		set_temp_variable = {
+			ideology_change_var = {
+				value = 5
+				if = { limit = { value = POL_royal_influence greater_than = 50 } add = 5 }
+			}
 		}
 		change_ruling_party_popularity = yes
 		add_political_power = 50
@@ -4826,6 +4822,12 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event poland_events.219 option poland_events.219.c"
 		name = poland_events.219.c
+		trigger = {
+			AUS = {
+				exists = yes
+				is_subject = no
+			}
+		}
 		ai_chance = { base = 0 }
 		hidden_effect = { AUS = { country_event = poland_events.222 } } #POL asks to join AUS
 	}
@@ -4850,6 +4852,10 @@ country_event = { #Germany demands restoration of the King
 			}
 			modifier = {
 				factor = 0
+				AUS = {
+					exists = yes
+					is_subject = no
+				}
 				OR = {
 					AND = {
 						check_variable = { POL_AUS_influence > 30 }
@@ -4928,6 +4934,10 @@ country_event = { #Germany is willing to negotiate
 			}
 			modifier = {
 				factor = 0
+				AUS = {
+					exists = yes
+					is_subject = no
+				}
 				OR = {
 					AND = {
 						check_variable = { POL_AUS_influence > 30 }
@@ -5266,11 +5276,12 @@ country_event = { #Germans swoop in
 				GER_is_du_path = yes
 			}
 			subtract_from_variable = {
-				var = GER_Polish_loyalty
-				value = 10
+				GER_Polish_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_Polish_loyalty }
+				}
 				tooltip = GER_Polish_loyalty_loss
 			}
-			clamp_variable = { var = GER_Polish_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Polish_loyalty < 1 }
@@ -5958,25 +5969,6 @@ country_event = {
 				has_government = social_democrat
 			}
 		}
-		if = {
-			limit = {
-				tag = GER
-				GER_is_du_path = yes
-			}
-			subtract_from_variable = {
-				var = GER_Polish_loyalty
-				value = 10
-				tooltip = GER_Polish_loyalty_loss
-			}
-			clamp_variable = { var = GER_Polish_loyalty min = 0 max = 100 }
-			if = {
-				limit = {
-					check_variable = { GER_Polish_loyalty < 1 }
-					has_country_flag = GER_poles_in_coalition
-				}
-				activate_mission = GER_SPD_Polish_rift
-			}
-		}
 	}
 	option = {
 		log = "[GetLogInfo]: event poland_events.243 option poland_events.243.b"
@@ -5988,10 +5980,7 @@ country_event = {
 			base = 0
 			modifier = {
 				add = 10
-				OR = {
-					has_government = social_democrat
-					has_government = social_liberal
-				}
+				has_soclib_or_socdem_government = yes
 			}
 			modifier = {
 				add = 10
@@ -6012,16 +6001,23 @@ country_event = {
 		}
 		add_political_power = -15
 		if = {
+			limit = { is_in_faction_with = POL }
+			POL = { country_event = poland_events.244 }
+		}
+	}
+	after = {
+		if = {
 			limit = {
 				tag = GER
 				GER_is_du_path = yes
 			}
 			subtract_from_variable = {
-				var = GER_Polish_loyalty
-				value = 10
+				GER_Polish_loyalty = {
+					value = 10
+					clamp = { min = 0 max = GER_Polish_loyalty }
+				}
 				tooltip = GER_Polish_loyalty_loss
 			}
-			clamp_variable = { var = GER_Polish_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Polish_loyalty < 1 }
@@ -6029,10 +6025,6 @@ country_event = {
 				}
 				activate_mission = GER_SPD_Polish_rift
 			}
-		}
-		if = {
-			limit = { is_in_faction_with = POL }
-			POL = { country_event = poland_events.244 }
 		}
 	}
 }
@@ -6156,11 +6148,12 @@ country_event = {
 				GER_is_du_path = yes
 			}
 			subtract_from_variable = {
-				var = GER_Polish_loyalty
-				value = 20
+				GER_Polish_loyalty = {
+					value = 20
+					clamp = { min = 0 max = GER_Polish_loyalty }
+				}
 				tooltip = GER_Polish_loyalty_loss
 			}
-			clamp_variable = { var = GER_Polish_loyalty min = 0 max = 100 }
 			if = {
 				limit = {
 					check_variable = { GER_Polish_loyalty < 1 }
@@ -6963,10 +6956,16 @@ country_event = {
 		log = "[GetLogInfo]: event poland_events.254 option poland_events.254.a"
 		name = poland_events.254.a
 		ai_chance = {
-			base = 0
+			base = 75
 			modifier = {
-				add = 100
-				has_game_rule = { rule = POL_revolts option = POL_REVOLTS_NO_REVOLT }
+				factor = 0
+				OR = {
+					AND = {
+						RUS = { is_ai = no }
+						NOT = { has_game_rule = { rule = POL_revolts option = POL_REVOLTS_NO_REVOLT } }
+					}
+					has_game_rule = { rule = POL_revolts option = POL_REVOLTS_PATAUT }
+				}
 			}
 		}
 		add_stability = 0.04
@@ -6976,7 +6975,7 @@ country_event = {
 		log = "[GetLogInfo]: event poland_events.254 option poland_events.254.b"
 		name = poland_events.254.b
 		ai_chance = {
-			base = 100
+			base = 25
 			modifier = {
 				factor = 0
 				has_game_rule = { rule = POL_revolts option = POL_REVOLTS_NO_REVOLT }
@@ -7109,13 +7108,22 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event poland_events.259 option poland_events.259.a"
 		name = poland_events.259.a
-		set_temp_variable = { stab_removal = party_popularity_100@market_liberal }
-		add_to_temp_variable = { stab_removal = party_popularity_100@authoritarian_democrat }
-		divide_temp_variable = { stab_removal = -100 }
+		set_temp_variable = {
+			stab_removal = {
+				value = party_popularity_100@market_liberal
+				add = party_popularity_100@authoritarian_democrat
+				multiply = -0.01
+			}
+		}
 		add_stability = stab_removal
-		set_temp_variable = { coup_strength = stab_removal }
-		add_to_temp_variable = { coup_strength = party_popularity_100@social_conservative }
-		divide_temp_variable = { coup_strength = 200 }
+
+		set_temp_variable = {
+			coup_strength = {
+				value = stab_removal
+				add = party_popularity_100@social_conservative
+				multiply = 0.005
+			}
+		}
 		add_popularity = { ideology = paternal_autocrat popularity = coup_strength }
 		if = {
 			limit = { is_subject_of = GER }
@@ -8193,11 +8201,12 @@ country_event = {
 					GER_is_du_path = yes
 				}
 				subtract_from_variable = {
-					var = GER_Polish_loyalty
-					value = 10
+					GER_Polish_loyalty = {
+						value = 10
+						clamp = { min = 0 max = GER_Polish_loyalty }
+					}
 					tooltip = GER_Polish_loyalty_loss
 				}
-				clamp_variable = { var = GER_Polish_loyalty min = 0 max = 100 }
 				if = {
 					limit = {
 						check_variable = { GER_Polish_loyalty < 1 }

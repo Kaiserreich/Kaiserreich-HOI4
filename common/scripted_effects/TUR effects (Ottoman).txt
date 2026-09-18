@@ -1,9 +1,9 @@
 ott_increase_revolt_risk = {
-	add_to_variable = { OTT_revolt_risk = 1 }
-	clamp_variable = {
-		var = OTT_revolt_risk
-		min = 0
-		max = 5
+	add_to_variable = {
+		OTT_revolt_risk = {
+			value = 1
+			clamp = { min = { value = OTT_revolt_risk multiply = -1 } max = { value = 5 subtract = OTT_revolt_risk } }
+		}
 	}
 	if = {
 		limit = { OTT = { has_idea = ott_vilayet_stability_idea } }
@@ -49,11 +49,11 @@ ott_increase_revolt_risk = {
 }
 
 ott_decrease_revolt_risk = {
-	add_to_variable = { OTT_revolt_risk = -1 }
-	clamp_variable = {
-		var = OTT_revolt_risk
-		min = 0
-		max = 5
+	add_to_variable = {
+		OTT_revolt_risk = {
+			value = -1
+			clamp = { min = { value = OTT_revolt_risk multiply = -1 } max = { value = 5 subtract = OTT_revolt_risk } }
+		}
 	}
 	if = {
 		limit = { OTT = { has_idea = ott_vilayet_stability_idea } }
@@ -478,31 +478,22 @@ OTT_evaluate_stability_modifier = {
 				every_owned_state = {
 					limit = { has_variable = OTT_revolt_risk }
 					if = {
-						limit = {
-							check_variable = { OTT_revolt_risk = 5 }
-						}
-						add_to_variable = { OTT.OTT_state_stability = -0.02 }
-					}
-					else_if = {
-						limit = {
-							check_variable = { OTT_revolt_risk = 4 }
-						}
-						add_to_variable = { OTT.OTT_state_stability = -0.015 }
-					}
-					else_if = {
-						limit = {
-							check_variable = { OTT_revolt_risk = 3 }
-						}
-						add_to_variable = { OTT.OTT_state_stability = -0.01 }
-					}
-					else_if = {
-						limit = {
-							check_variable = { OTT_revolt_risk = 2 }
-						}
-						add_to_variable = { OTT.OTT_state_stability = -0.005 }
-					}
-					if = {
 						limit = { check_variable = { OTT_revolt_risk > 0 } }
+						if = {
+							limit = { check_variable = { OTT_revolt_risk > 1 } }
+							# 5 = -0.02
+							# 4 = -0.015
+							# 3 = -0.010
+							# 2 = -0.05
+							add_to_variable = {
+								OTT.OTT_state_stability = {
+									value = OTT_revolt_risk
+									clamp = { min = 2 max = 5 }
+									subtract = 1
+									multiply = -0.005
+								}
+							}
+						}
 						add_to_array = { TUR.OTT_unrest_states = THIS }
 					}
 				}
@@ -599,55 +590,42 @@ OTT_calc_coalition_strength = {
 	OTT = {
 		if = {
 			limit = { has_dynamic_modifier = { modifier = OTT_parliament_modifier } }
-			clamp_variable = {
-				var = nat_tur_sup_deputies
-				min = 0
-				max = nat_tur_deputies
-			}
-			clamp_variable = {
-				var = nat_ara_sup_deputies
-				min = 0
-				max = nat_ara_deputies
-			}
-			clamp_variable = {
-				var = con_sup_deputies
-				min = 0
-				max = con_deputies
-			}
-			clamp_variable = {
-				var = ind_sup_deputies
-				min = 0
-				max = ind_deputies
-			}
-			set_variable = {
-				var = representatives_support
-				value = 0
-			}
-			add_to_variable = { representatives_support = nat_ara_sup_deputies }
-			add_to_variable = { representatives_support = nat_tur_sup_deputies }
-			add_to_variable = { representatives_support = con_sup_deputies }
-			add_to_variable = { representatives_support = ind_sup_deputies }
+			clamp_variable = { var = nat_tur_sup_deputies min = 0 max = nat_tur_deputies }
+			clamp_variable = { var = nat_ara_sup_deputies min = 0 max = nat_ara_deputies }
+			clamp_variable = { var = con_sup_deputies min = 0 max = con_deputies }
+			clamp_variable = { var = ind_sup_deputies min = 0 max = ind_deputies }
 
-			if = {
-				limit = {
-					OR = {
-						is_part_of_government_market_liberal = yes
-						is_part_of_government_social_conservative = yes
+			set_variable = {
+				representatives_support = {
+					value = nat_ara_sup_deputies
+					add = nat_tur_sup_deputies
+					add = con_sup_deputies
+					add = ind_sup_deputies
+					if = {
+						#OR = {
+						#	is_part_of_government_market_liberal = yes
+						#	is_part_of_government_social_conservative = yes
+						#}
+						limit = {
+							value = { value = current_party_ideology_group equals = token:market_liberal }
+							or = { value = { value = current_party_ideology_group equals = token:social_conservative } }
+							or = { value = { value = coalitions_array^5 equals = 2 } } #marlib coalition
+							or = { value = { value = coalitions_array^6 equals = 2 } } #soccon coalition
+						}
+						add = hif_deputies
 					}
+					if = {
+						#is_part_of_government_social_liberal = yes
+						limit = {
+							value = { value = current_party_ideology_group equals = token:social_liberal }
+							or = { value = { value = coalitions_array^4 equals = 2 } } #soclib coalition
+						}
+						add = odf_deputies
+					}
+					clamp = { min = 0 max = representatives_total }
 				}
-				add_to_variable = { representatives_support = hif_deputies }
 			}
-			if = {
-				limit = {
-					is_part_of_government_social_liberal = yes
-				}
-				add_to_variable = { representatives_support = odf_deputies }
-			}
-			clamp_variable = {
-				var = representatives_support
-				min = 0
-				max = representatives_total
-			}
+
 			OTT_recalc_congress_icon_frames = yes
 			OTT_evaluate_parliament_support = yes
 
@@ -1414,7 +1392,9 @@ OTT_post_defeat_setup = {
 				ott_air_warfare_academy_idea
 				ott_mass_production_idea
 			}
+			TUR_disband_eretz_israel_divisions = yes
 			remove_mission = OTT_suppression_of_society
+			GER = { remove_targeted_decision = { target = TUR decision = GER_OTT_settling_old_disputes } }
 			EGY = {
 				OTT_clear_puppet_EGY = yes
 			}
@@ -2409,18 +2389,10 @@ OTT_change_egyptian_anger_level = {
 			# avoid going < 1 or > 7
 			if = {
 				limit = { has_country_flag = ott_egy_abortive_revolt }
-				clamp_temp_variable = {
-					var = OTT_new_anger_level
-					min = 3
-					max = 6
-				}
+				clamp_temp_variable = { var = OTT_new_anger_level min = 3 max = 6 }
 			}
 			else = {
-				clamp_temp_variable = {
-					var = OTT_new_anger_level
-					min = 1
-					max = 7
-				}
+				clamp_temp_variable = { var = OTT_new_anger_level min = 1 max = 7 }
 			}
 
 			# add new idea if applicable

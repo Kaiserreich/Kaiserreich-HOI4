@@ -22,6 +22,7 @@ GXC_research_gun_1 = {
 		value = 10000
 	}
 }
+
 GXC_infantry_equipment_modernisation = {
 	allowed = {
 		original_tag = GXC
@@ -81,6 +82,7 @@ GXC_buffer_against_japanese_invasion = {
 		value = 25
 	}
 }
+
 GXC_army_composition = {
 	allowed = { original_tag = GXC }
 	enable = {
@@ -88,7 +90,7 @@ GXC_army_composition = {
 			has_war_with = JAP
 			date < 1941.1.1
 		}
-		check_variable = { num_divisions < 50 }
+		num_divisions < 50
 	}
 	abort_when_not_enabled = yes
 
@@ -110,6 +112,7 @@ GXC_army_composition = {
 		value = 25
 	}
 }
+
 GXC_prepare_for_SCW_YUN = {
 	allowed = { original_tag = GXC }
 	enable = {
@@ -130,6 +133,7 @@ GXC_prepare_for_SCW_YUN = {
 		value = 500
 	}
 }
+
 GXC_prepare_for_SCW_HNN = {
 	allowed = { original_tag = GXC }
 	enable = {
@@ -150,6 +154,7 @@ GXC_prepare_for_SCW_HNN = {
 		value = 500
 	}
 }
+
 GXC_last_stand_of_guangzhou = {
 	allowed = {
 		original_tag = GXC

@@ -360,10 +360,7 @@ country_event = { # New England requests home rule
 			}
 			modifier = {
 				factor = 0
-				OR = {
-					has_government = social_liberal
-					has_government = social_democrat
-				}
+				has_soclib_or_socdem_government = yes
 			}
 			modifier = {
 				factor = 0.5
@@ -924,19 +921,19 @@ country_event = { # Shoe Strike 3 (Negotiations)
 	}
 }
 
-state_event = {
+country_event = {
 	id = new_england_events.39
 	hidden = yes
+	is_triggered_only = yes
 	fire_only_once = yes
 
 	trigger = {
-		state = 935
-		date > 1938.09.21
+		date < 1939.1.1
 	}
 
 	option = {
 		log = "[GetLogInfo]: event new_england_events.39 option 1"
-		owner = {
+		var:935.owner = { #Rhode Island
 			country_event = { id = new_england_events.40 days = 1 }
 		}
 	}
@@ -948,7 +945,6 @@ country_event = { # New England Hurricane
 	desc = new_england_events.40.d
 	picture = GFX_report_event_NEE_hurricane
 
-	fire_only_once = yes
 	is_triggered_only = yes
 	major = yes
 
@@ -1178,18 +1174,9 @@ country_event = { # Creation of the Railroad
 				limit = {
 					country_exists = WCA
 				}
-				set_variable = {
-					var = NEE_ugr_wca_times
-					value = 0
-				}
-				set_variable = {
-					var = NEE_ugr_wca_manpower
-					value = 2984
-				}
-				set_variable = {
-					var = NEE_ugr_wca_guns
-					value = 236
-				}
+				set_variable = { NEE_ugr_wca_times = 0 }
+				set_variable = { NEE_ugr_wca_manpower = 2984 }
+				set_variable = { NEE_ugr_wca_guns = 236 }
 				country_event = { id = new_england_events.51 days = 14 random_days = 7 } #Erie lake
 				country_event = { id = new_england_events.55 days = 60 random_days = 7 } #Monthly intake refugees
 			}
@@ -1197,18 +1184,9 @@ country_event = { # Creation of the Railroad
 				limit = {
 					country_exists = APG
 				}
-				set_variable = {
-					var = NEE_ugr_apg_times
-					value = 0
-				}
-				set_variable = {
-					var = NEE_ugr_apg_manpower
-					value = 2680
-				}
-				set_variable = {
-					var = NEE_ugr_apg_guns
-					value = 169
-				}
+				set_variable = { NEE_ugr_apg_times = 0 }
+				set_variable = { NEE_ugr_apg_manpower = 2680 }
+				set_variable = { NEE_ugr_apg_guns = 169 }
 				country_event = { id = new_england_events.56 days = 60 random_days = 7 } #Monthly intake refugees
 			}
 		}
@@ -1275,14 +1253,8 @@ country_event = { # Successful Smuggling action in the Great Lakes Region (Under
 
 	immediate = {
 		hidden_effect = {
-			multiply_variable = {
-				var = NEE_ugr_wca_manpower
-				value = 1.1
-			}
-			multiply_variable = {
-				var = NEE_ugr_wca_guns
-				value = 1.1
-			}
+			multiply_variable = { NEE_ugr_wca_manpower = 1.1 }
+			multiply_variable = { NEE_ugr_wca_guns = 1.1 }
 		}
 	}
 
@@ -1331,14 +1303,8 @@ country_event = { # Smuggling operation caught in the Great Lakes Region (Underg
 
 	immediate = {
 		hidden_effect = {
-			multiply_variable = {
-				var = NEE_ugr_wca_manpower
-				value = 0.7
-			}
-			multiply_variable = {
-				var = NEE_ugr_wca_guns
-				value = 0.7
-			}
+			multiply_variable = { NEE_ugr_wca_manpower = 0.7 }
+			multiply_variable = { NEE_ugr_wca_guns = 0.7 }
 		}
 	}
 
@@ -1408,10 +1374,7 @@ country_event = { # Migration Report WCA
 	immediate = {
 		hidden_effect = {
 			country_event = { id = new_england_events.55 days = 35 random_days = 72 }
-			add_to_variable = {
-				var = NEE_ugr_wca_times
-				value = 1
-			}
+			add_to_variable = { NEE_ugr_wca_times = 1 }
 		}
 	}
 
@@ -1442,10 +1405,7 @@ country_event = { # Migration Report APG
 	immediate = {
 		hidden_effect = {
 			country_event = { id = new_england_events.56 days = 35 random_days = 72 }
-			add_to_variable = {
-				var = NEE_ugr_apg_times
-				value = 1
-			}
+			add_to_variable = { NEE_ugr_apg_times = 1 }
 		}
 	}
 
@@ -1496,7 +1456,7 @@ country_event = { # Intervention for John Winant
 
 	trigger = {
 		tag = NEE
-		has_country_leader = { character = NEE_john_winant }
+		has_country_leader = { character = NEE_john_g_winant }
 	}
 
 	is_triggered_only = yes
@@ -1515,7 +1475,7 @@ country_event = { # Cocoanut Grove fire traced back to Tobin
 	picture = GFX_report_event_USA_reconstruction1
 
 	trigger = {
-		has_country_leader = { character = NEE_maurice_tobin }
+		has_country_leader = { character = NEE_maurice_j_tobin }
 	}
 
 	is_triggered_only = yes
@@ -1628,7 +1588,7 @@ country_event = { # America First Committee
 			}
 			modifier = {
 				add = 3
-				has_country_leader = { character = NEE_david_walsh }
+				has_country_leader = { character = NEE_david_i_walsh }
 			}
 		}
 		add_popularity = {
@@ -2236,7 +2196,7 @@ country_event = { # The Yankee Rebellion
 		every_owned_state = {
 			limit = { is_new_england = yes }
 			add_dynamic_modifier = { modifier = CAN_nee_resistance }
-			add_to_variable = { var = global.CAN_yankee_rebellion value = 1 }
+			add_to_variable = { global.CAN_yankee_rebellion = 1 }
 			if = {
 				limit = { has_resistance = no }
 				start_resistance = yes
@@ -3186,7 +3146,7 @@ country_event = { # New England has folded
 		every_owned_state = {
 			limit = { is_new_england = yes }
 			add_dynamic_modifier = { modifier = CAN_nee_resistance }
-			add_to_variable = { var = global.CAN_yankee_rebellion value = 1 }
+			add_to_variable = { global.CAN_yankee_rebellion = 1 }
 			if = {
 				limit = { has_resistance = no }
 				start_resistance = yes
@@ -3400,10 +3360,7 @@ country_event = { # Hidden Event to slowly reduce the Great Depression National 
 			NEE_Reduce_Great_Depression_big = yes
 			if = {
 				limit = {
-					check_variable = {
-						var = NEE_GD_build_speed_var
-						value = 0
-					}
+					check_variable = { NEE_GD_build_speed_var = 0 }
 				}
 				remove_dynamic_modifier = { modifier = NEE_Great_Depression }
 			}
@@ -3418,14 +3375,24 @@ country_event = { # Hidden Event to slowly reduce the Great Depression National 
 				}
 			}
 			NEE_Reduce_Great_Depression_regular = yes
-			subtract_from_variable = { NEE_GD_timer_var = 3 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
 			if = {
 				limit = {
 					has_idea = NEE_Mil_Dono_2
 				}
-				subtract_from_variable = { NEE_GD_timer_var = 7 }
-				clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+				subtract_from_variable = {
+					NEE_GD_timer_var = {
+						value = 10
+						clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+					}
+				}
+			}
+			else = {
+				subtract_from_variable = {
+					NEE_GD_timer_var = {
+						value = 3
+						clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+					}
+				}
 			}
 			if = {
 				limit = {
@@ -3435,10 +3402,7 @@ country_event = { # Hidden Event to slowly reduce the Great Depression National 
 			}
 			if = {
 				limit = {
-					check_variable = {
-						var = NEE_GD_build_speed_var
-						value = 0
-					}
+					check_variable = { NEE_GD_build_speed_var = 0 }
 				}
 				remove_dynamic_modifier = { modifier = NEE_Great_Depression }
 			}
@@ -3449,10 +3413,7 @@ country_event = { # Hidden Event to slowly reduce the Great Depression National 
 			NEE_Reduce_Great_Depression_regular = yes
 			if = {
 				limit = {
-					check_variable = {
-						var = NEE_GD_build_speed_var
-						value = 0
-					}
+					check_variable = { NEE_GD_build_speed_var = 0 }
 				}
 				remove_dynamic_modifier = { modifier = NEE_Great_Depression }
 			}
@@ -3503,10 +3464,7 @@ country_event = { # Hidden Event to slowly reduce the Great Depression National 
 			NEE_Reduce_Great_Depression_big = yes
 			if = {
 				limit = {
-					check_variable = {
-						var = NEE_GD_build_speed_var
-						value = 0
-					}
+					check_variable = { NEE_GD_build_speed_var = 0 }
 				}
 				remove_dynamic_modifier = { modifier = NEE_Great_Depression }
 			}
@@ -3521,14 +3479,24 @@ country_event = { # Hidden Event to slowly reduce the Great Depression National 
 				}
 			}
 			NEE_Reduce_Great_Depression_medium = yes
-			subtract_from_variable = { NEE_GD_timer_var = 3 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
 			if = {
 				limit = {
 					has_idea = NEE_Mil_Dono_2
 				}
-				subtract_from_variable = { NEE_GD_timer_var = 7 }
-				clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+				subtract_from_variable = {
+					NEE_GD_timer_var = {
+						value = 10
+						clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+					}
+				}
+			}
+			else = {
+				subtract_from_variable = {
+					NEE_GD_timer_var = {
+						value = 3
+						clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+					}
+				}
 			}
 			if = {
 				limit = {
@@ -3538,10 +3506,7 @@ country_event = { # Hidden Event to slowly reduce the Great Depression National 
 			}
 			if = {
 				limit = {
-					check_variable = {
-						var = NEE_GD_build_speed_var
-						value = 0
-					}
+					check_variable = { NEE_GD_build_speed_var = 0 }
 				}
 				remove_dynamic_modifier = { modifier = NEE_Great_Depression }
 			}
@@ -3552,10 +3517,7 @@ country_event = { # Hidden Event to slowly reduce the Great Depression National 
 			NEE_Reduce_Great_Depression_medium = yes
 			if = {
 				limit = {
-					check_variable = {
-						var = NEE_GD_build_speed_var
-						value = 0
-					}
+					check_variable = { NEE_GD_build_speed_var = 0 }
 				}
 				remove_dynamic_modifier = { modifier = NEE_Great_Depression }
 			}
@@ -3584,8 +3546,12 @@ country_event = { # Fires of War - Removes Great Depression upon entrance into c
 		# Add flag
 		hidden_effect = { set_country_flag = fires_of_war_fired }
 		# Make the timer of the Great Depression rapidly decrease
-		subtract_from_variable = { NEE_GD_timer_var = 20 }
-		clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+		subtract_from_variable = {
+			NEE_GD_timer_var = {
+				value = 20
+				clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+			}
+		}
 		# Up a mobilization level
 		if = {
 			limit = {
@@ -4742,8 +4708,8 @@ country_event = { # Kennedy Recalled
 		log = "[GetLogInfo]: event new_england_events.155 option new_england_events.155.a"
 		name = new_england_events.155.a
 		NEE_joseph_kennedy_sr = { remove_political_advisor_role = yes }
-		NEE_john_winant = { set_character_flag = show_political_advisor_role }
-		activate_advisor = NEE_john_winant_advisor
+		NEE_john_g_winant = { set_character_flag = show_political_advisor_role }
+		activate_advisor = NEE_john_g_winant_advisor
 		# Kennedy isn't dead, so shouldn't be retired
 	}
 }
@@ -4986,7 +4952,7 @@ country_event = { # Cross Parkway
 
 	is_triggered_only = yes
 	trigger = {
-		has_country_leader = { character = NEE_david_walsh }
+		has_country_leader = { character = NEE_david_i_walsh }
 	}
 
 	option = {
@@ -5010,7 +4976,7 @@ country_event = { # Dulles Rails Against TI
 
 	is_triggered_only = yes
 	trigger = {
-		has_country_leader = { character = NEE_raymond_baldwin }
+		has_country_leader = { character = NEE_raymond_e_baldwin }
 		NOT = {
 			has_war_with = INT
 		}
@@ -5170,8 +5136,8 @@ country_event = { # Morgenthau Controversial Plan
 
 	trigger = {
 		OR = {
-			has_country_leader = { character = NEE_maurice_tobin }
-			has_country_leader = { character = NEE_william_harriman }
+			has_country_leader = { character = NEE_maurice_j_tobin }
+			has_country_leader = { character = NEE_w_averell_harriman }
 		}
 		OR = {
 			781 = { is_owned_and_controlled_by = GRU }
@@ -5443,7 +5409,7 @@ country_event = { # Capital for the new America
 		}
 	}
 
-	option = { # Washington DC
+	option = { # Washington, D.C.
 		log = "[GetLogInfo]: event new_england_events.185 option new_england_events.185.a"
 		trigger = {
 			owns_state = 361
@@ -5592,14 +5558,14 @@ country_event = { # The Selection of a Chief Justice
 	id = new_england_events.191
 	title = new_england_events.191.t
 	desc = new_england_events.191.d
-	picture = GFX_report_event_NEE_learned_hand
+	picture = GFX_report_event_NEE_b_learned_hand
 
 	is_triggered_only = yes
 
 	option = {
 		log = "[GetLogInfo]: event new_england_events.191 option new_england_events.191.a"
 		name = new_england_events.191.a # An excellent choice!
-		set_country_flag = NEE_learned_hand_available
+		set_country_flag = NEE_b_learned_hand_available
 	}
 }
 
@@ -5651,9 +5617,9 @@ country_event = { #Provisional President
 			election_frequency = 48
 			elections_allowed = yes
 		}
-		promote_character = NEE_lewis_barrows
+		promote_character = NEE_lewis_o_barrows
 		hidden_effect = {
-			NEE_lewis_barrows = {
+			NEE_lewis_o_barrows = {
 				add_trait = { trait = NEE_provisional_president ideology = market_liberal_subtype }
 			}
 		}
@@ -5680,9 +5646,9 @@ country_event = { #Provisional President
 			election_frequency = 48
 			elections_allowed = yes
 		}
-		promote_character = NEE_joseph_martin_jr
+		promote_character = NEE_joseph_william_martin_jr
 		hidden_effect = {
-			NEE_joseph_martin_jr = {
+			NEE_joseph_william_martin_jr = {
 				add_trait = { trait = NEE_provisional_president ideology = market_liberal_subtype }
 			}
 		}
@@ -5709,9 +5675,9 @@ country_event = { #Provisional President
 			election_frequency = 48
 			elections_allowed = yes
 		}
-		promote_character = NEE_david_walsh
+		promote_character = NEE_david_i_walsh
 		hidden_effect = {
-			NEE_david_walsh = {
+			NEE_david_i_walsh = {
 				add_trait = { trait = NEE_provisional_president ideology = social_liberal_subtype }
 			}
 		}
@@ -5814,19 +5780,19 @@ country_event = { # Attack the Depression
 	desc = {
 		text = new_england_events.210.d.barrows #Barrows/Styles Bridges
 		trigger = {
-			has_country_leader = { character = NEE_lewis_barrows }
+			has_country_leader = { character = NEE_lewis_o_barrows }
 		}
 	}
 	desc = {
 		text = new_england_events.210.d.comp #Martin Jr/Joseph Ely
 		trigger = {
-			has_country_leader = { character = NEE_joseph_martin_jr }
+			has_country_leader = { character = NEE_joseph_william_martin_jr }
 		}
 	}
 	desc = {
 		text = new_england_events.210.d.walsh #David Walsh/Theodore Green
 		trigger = {
-			has_country_leader = { character = NEE_david_walsh }
+			has_country_leader = { character = NEE_david_i_walsh }
 		}
 	}
 
@@ -6113,8 +6079,7 @@ country_event = { # [NEE] decide how many factories to send
 		army_experience = 5
 		set_variable = { NEE_sent_mil = 1 }
 		# Get the reverse variable as well
-		set_variable = { NEE_sent_mil_removal = NEE_sent_mil }
-		multiply_variable = { NEE_sent_mil_removal = -1 }
+		set_variable = { NEE_sent_mil_removal = { value = NEE_sent_mil multiply = -1 } }
 		# Add the offmap mil to the backed country and
 		# Send an event to the backed faction that they are receiving [1] NEE factory for 90 days
 		effect_tooltip = {
@@ -6139,8 +6104,7 @@ country_event = { # [NEE] decide how many factories to send
 		army_experience = 10
 		set_variable = { NEE_sent_mil = 2 }
 		# Get the reverse variable as well
-		set_variable = { NEE_sent_mil_removal = NEE_sent_mil }
-		multiply_variable = { NEE_sent_mil_removal = -1 }
+		set_variable = { NEE_sent_mil_removal = { value = NEE_sent_mil multiply = -1 } }
 		# Add the offmap mils to the backed country and
 		# Send an event to the backed faction that they are receiving [2] NEE factories for 90 days
 		effect_tooltip = {
@@ -6165,8 +6129,7 @@ country_event = { # [NEE] decide how many factories to send
 		army_experience = 15
 		set_variable = { NEE_sent_mil = 3 }
 		# Get the reverse variable as well
-		set_variable = { NEE_sent_mil_removal = NEE_sent_mil }
-		multiply_variable = { NEE_sent_mil_removal = -1 }
+		set_variable = { NEE_sent_mil_removal = { value = NEE_sent_mil multiply = -1 } }
 		# Add the offmap mils to the backed country and
 		# Send an event to the backed faction that they are receiving [3] NEE factories for 90 days
 		effect_tooltip = {
@@ -6412,15 +6375,15 @@ country_event = {# Trial of the USA Generals/Admirals
 			character_list_tooltip = {
 				limit = {
 					OR = {
-						is_character = USA_dwight_david_eisenhower
-						is_character = USA_omar_nelson_bradley
-						is_character = USA_leonard_townsend_gerow
-						is_character = USA_edwin_forrest_harding
-						is_character = USA_john_clifford_hodges_lee
+						is_character = USA_dwight_d_eisenhower
+						is_character = USA_omar_bradley
+						is_character = USA_leonard_t_gerow
+						is_character = USA_edwin_f_harding
+						is_character = USA_john_ch_lee
 						is_character = USA_frank_jack_fletcher
-						is_character = USA_thomas_cassin_kinkaid
-						is_character = USA_william_frederick_halsey_jr
-						is_character = USA_raymond_ames_spruance
+						is_character = USA_thomas_c_kinkaid
+						is_character = USA_william_halsey_jr
+						is_character = USA_raymond_a_spruance
 					}
 				}
 			}
@@ -6428,15 +6391,15 @@ country_event = {# Trial of the USA Generals/Admirals
 				every_character = {
 					limit = {
 						OR = {
-							is_character = USA_dwight_david_eisenhower
-							is_character = USA_omar_nelson_bradley
-							is_character = USA_leonard_townsend_gerow
-							is_character = USA_edwin_forrest_harding
-							is_character = USA_john_clifford_hodges_lee
+							is_character = USA_dwight_d_eisenhower
+							is_character = USA_omar_bradley
+							is_character = USA_leonard_t_gerow
+							is_character = USA_edwin_f_harding
+							is_character = USA_john_ch_lee
 							is_character = USA_frank_jack_fletcher
-							is_character = USA_thomas_cassin_kinkaid
-							is_character = USA_william_frederick_halsey_jr
-							is_character = USA_raymond_ames_spruance
+							is_character = USA_thomas_c_kinkaid
+							is_character = USA_william_halsey_jr
+							is_character = USA_raymond_a_spruance
 						}
 					}
 					set_nationality = ROOT
@@ -6476,11 +6439,11 @@ country_event = {# Trial of the APG Generals/Admirals
 			character_list_tooltip = {
 				limit = {
 					OR = {
-						is_character = APG_robert_melville_danford
-						is_character = APG_courtney_hicks_hodges
-						is_character = APG_clifton_bledsoe_cates
-						is_character = APG_lewis_burwell_puller
-						is_character = APG_john_sidney_mccain_sr
+						is_character = APG_robert_m_danford
+						is_character = APG_courtney_hodges
+						is_character = APG_clifton_b_cates
+						is_character = APG_chesty_puller
+						is_character = APG_john_s_mccain_sr
 					}
 				}
 			}
@@ -6488,11 +6451,11 @@ country_event = {# Trial of the APG Generals/Admirals
 				every_character = {
 					limit = {
 						OR = {
-							is_character = APG_robert_melville_danford
-							is_character = APG_courtney_hicks_hodges
-							is_character = APG_clifton_bledsoe_cates
-							is_character = APG_lewis_burwell_puller
-							is_character = APG_john_sidney_mccain_sr
+							is_character = APG_robert_m_danford
+							is_character = APG_courtney_hodges
+							is_character = APG_clifton_b_cates
+							is_character = APG_chesty_puller
+							is_character = APG_john_s_mccain_sr
 						}
 					}
 					set_nationality = ROOT
@@ -6532,10 +6495,10 @@ country_event = {# Trial of the ACC Generals/Admirals
 			character_list_tooltip = {
 				limit = {
 					OR = {
-						is_character = ACC_alexander_archer_vandegrift
-						is_character = ACC_george_catlett_marshall
-						is_character = ACC_william_daniel_leahy
-						is_character = ACC_chester_william_nimitz
+						is_character = ACC_alexander_vandegrift
+						is_character = ACC_george_c_marshall
+						is_character = ACC_william_d_leahy
+						is_character = ACC_chester_w_nimitz
 					}
 				}
 			}
@@ -6543,10 +6506,10 @@ country_event = {# Trial of the ACC Generals/Admirals
 				every_character = {
 					limit = {
 						OR = {
-							is_character = ACC_alexander_archer_vandegrift
-							is_character = ACC_george_catlett_marshall
-							is_character = ACC_william_daniel_leahy
-							is_character = ACC_chester_william_nimitz
+							is_character = ACC_alexander_vandegrift
+							is_character = ACC_george_c_marshall
+							is_character = ACC_william_d_leahy
+							is_character = ACC_chester_w_nimitz
 						}
 					}
 					set_nationality = ROOT
@@ -8429,10 +8392,7 @@ country_event = { #NEE receives answer from European faction leader
 			base = 0 #AI should never do this at first
 			modifier = {
 				#check tension level with faction leader
-				set_temp_variable = { num = FROM.NEE_Tensions }
-				multiply_temp_variable = {
-					num = 10
-				}
+				set_temp_variable = { num = { value = FROM.NEE_Tensions multiply = 10 } }
 				add = num
 			}
 			modifier = { #If the European army is superior, reconsider war
@@ -8834,9 +8794,7 @@ country_event = { #American Investors making moves in [FROM.GetNameDef]
 				}
 			}
 			modifier = {
-				set_temp_variable = { num = 0 }
-				add_to_temp_variable = { num = American_Investor_Influence }
-				add = num
+				add = American_Investor_Influence
 			}
 		}
 		# timed flag for description
@@ -9538,13 +9496,11 @@ country_event = {
 	desc = {
 		text = new_england_events.354.d1
 		trigger = {
-			AND = {
-				IRE = {
-					controls_state = 119
-				}
-				GBR = {
-					NOT = { has_cosmetic_tag = GBR_britain }
-				}
+			IRE = {
+				controls_state = 119
+			}
+			GBR = {
+				NOT = { has_cosmetic_tag = GBR_britain }
 			}
 		}
 	}
@@ -11647,7 +11603,7 @@ country_event = { # 1940 Presidential Election
 		text = new_england_events.410.d.socdem #ACC allows Socdem if USA is dead
 		trigger = { ACC_can_elect_farmer_labor = yes }
 	}
-	picture = GFX_report_event_ACC_Olson_Roosevelt
+	picture = GFX_report_event_ACC_Downey_Roosevelt
 
 	is_triggered_only = yes
 
@@ -11665,7 +11621,7 @@ country_event = { # 1940 Presidential Election
 
 	option = {
 		log = "[GetLogInfo]: event new_england_events.410 option new_england_events.410.a"
-		name = new_england_events.410.a #Democrat - Olson
+		name = new_england_events.410.a #Democrat - Downey
 		set_country_flag = NEE_had_1940_election
 		ai_chance = {
 			base = 75
@@ -11697,7 +11653,7 @@ country_event = { # 1940 Presidential Election
 			}
 			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
 		}
-		promote_character = ACC_culbert_olson
+		promote_character = ACC_sheridan_downey
 		add_popularity = {
 			ideology = social_liberal
 			popularity = 0.05
@@ -11738,7 +11694,7 @@ country_event = { # 1940 Presidential Election
 
 	option = {
 		log = "[GetLogInfo]: event new_england_events.410 option new_england_events.410.c"
-		name = new_england_events.410.c #Farmer Labor - Wallace
+		name = new_england_events.410.c #Farmer Labor - Cutting
 		trigger = { ACC_can_elect_farmer_labor = yes }
 		ai_chance = {
 			base = 10
@@ -11761,13 +11717,10 @@ country_event = { # 1940 Presidential Election
 			}
 			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
 		}
-		promote_character = ACC_henry_wallace
+		promote_character = ACC_bronson_cutting
 		add_popularity = {
 			ideology = social_democrat
 			popularity = 0.05
-		}
-		hidden_effect = {
-			country_event = { id = united_states_events.179 days = 60 random_days = 660 }
 		}
 	}
 
@@ -11803,12 +11756,12 @@ country_event = {
 		set_country_flag = NEE_had_1944_election
 		if = {
 			limit = {
-				has_country_leader = { character = ACC_culbert_olson }
+				has_country_leader = { character = ACC_sheridan_downey }
 			}
-			country_event = new_england_events.412 #Olson vs Langlie
+			country_event = new_england_events.412 #Downey vs Langlie
 		}
 		else = {
-			country_event = new_england_events.413 #Warren vs Downey
+			country_event = new_england_events.413 #Warren vs Johnson
 		}
 		if = {
 			limit = { tag = ACC }
@@ -11817,7 +11770,7 @@ country_event = {
 	}
 }
 
-country_event = { #Olson vs Langlie
+country_event = { #Downey vs Langlie
 	id = new_england_events.412
 	title = new_england_events.412.t
 
@@ -11830,13 +11783,13 @@ country_event = { #Olson vs Langlie
 		trigger = { ACC_can_elect_farmer_labor = no }
 	}
 
-	picture = GFX_report_event_ACC_Olson_Langlie
+	picture = GFX_report_event_ACC_Downey_Langlie
 
 	is_triggered_only = yes
 
 	option = {
 		log = "[GetLogInfo]: event new_england_events.412 option new_england_events.412.a"
-		name = new_england_events.412.a #Democrat - Olson
+		name = new_england_events.412.a #Democrat - Downey
 		ai_chance = {
 			base = 55
 			modifier = {
@@ -11898,20 +11851,20 @@ country_event = { #Olson vs Langlie
 	}
 }
 
-country_event = { #Warren vs Downey
+country_event = { #Warren vs Johnson
 	id = new_england_events.413
 	title = new_england_events.413.t
 
 	desc = {
-		text = new_england_events.413.d.ACC_wallace
+		text = new_england_events.413.d.ACC_cutting
 		trigger = {
-			has_country_leader = { character = ACC_henry_wallace }
+			has_country_leader = { character = ACC_bronson_cutting }
 		}
 	}
 	desc = {
 		text = new_england_events.413.d.ACC_mcnary
 		trigger = {
-			NOT = { has_country_leader = { character = ACC_henry_wallace } }
+			NOT = { has_country_leader = { character = ACC_bronson_cutting } }
 			ACC_can_elect_farmer_labor = yes
 		}
 	}
@@ -11922,13 +11875,13 @@ country_event = { #Warren vs Downey
 		}
 	}
 
-	picture = GFX_report_event_ACC_Warren_Downey
+	picture = GFX_report_event_ACC_Warren_Johnson
 
 	is_triggered_only = yes
 
 	option = {
 		log = "[GetLogInfo]: event new_england_events.413 option new_england_events.413.a"
-		name = new_england_events.413.a #Democrat - Downey
+		name = new_england_events.413.a #Democrat - Johnson
 		ai_chance = {
 			base = 55
 			modifier = {
@@ -11972,10 +11925,10 @@ country_event = { #Warren vs Downey
 
 	option = {
 		log = "[GetLogInfo]: event new_england_events.413 option new_england_events.413.c"
-		name = new_england_events.413.c #Farmer Labor - Wallace
+		name = new_england_events.413.c #Farmer Labor - Cutting
 		trigger = {
 			ACC_can_elect_farmer_labor = yes
-			has_country_leader = { character = ACC_henry_wallace }
+			has_country_leader = { character = ACC_bronson_cutting }
 		}
 		ai_chance = {
 			base = 35
@@ -11997,7 +11950,7 @@ country_event = { #Warren vs Downey
 		name = new_england_events.413.e #Farmer Labor - La Follette
 		trigger = {
 			ACC_can_elect_farmer_labor = yes
-			NOT = { has_country_leader = { character = ACC_henry_wallace } }
+			NOT = { has_country_leader = { character = ACC_bronson_cutting } }
 		}
 		ai_chance = {
 			base = 35
@@ -12037,14 +11990,14 @@ country_event = {
 		set_country_flag = NEE_had_1948_election
 		if = {
 			limit = {
-				has_country_leader = { character = ACC_sheridan_downey }
+				has_country_leader = { character = ACC_edwin_c_johnson }
 			}
-			country_event = new_england_events.415 #Warren vs Downey
+			country_event = new_england_events.415 #Warren vs Johnson
 		}
 		else_if = {
 			limit = {
 				OR = {
-					has_country_leader = { character = ACC_culbert_olson }
+					has_country_leader = { character = ACC_sheridan_downey }
 					has_country_leader = { character = ACC_earl_warren }
 				}
 			}
@@ -12060,7 +12013,7 @@ country_event = {
 	}
 }
 
-country_event = { #Warren vs Downey
+country_event = { #Warren vs Johnson
 	id = new_england_events.415
 	title = new_england_events.415.t
 
@@ -12073,13 +12026,13 @@ country_event = { #Warren vs Downey
 		trigger = { ACC_can_elect_farmer_labor = no }
 	}
 
-	picture = GFX_report_event_ACC_Warren_Downey
+	picture = GFX_report_event_ACC_Warren_Johnson
 
 	is_triggered_only = yes
 
 	option = {
 		log = "[GetLogInfo]: event new_england_events.415 option new_england_events.415.a"
-		name = new_england_events.415.a #Democrat - Downey
+		name = new_england_events.415.a #Democrat - Johnson
 		ai_chance = {
 			base = 55
 			modifier = {
@@ -12097,7 +12050,7 @@ country_event = { #Warren vs Downey
 		}
 		USA_conservative_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = ACC_glen_taylor
+			promote_character = ACC_glen_h_taylor
 		}
 	}
 
@@ -12115,7 +12068,7 @@ country_event = { #Warren vs Downey
 		}
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = ACC_glen_taylor
+			promote_character = ACC_glen_h_taylor
 		}
 	}
 
@@ -12132,7 +12085,7 @@ country_event = { #Warren vs Downey
 				NOT = { has_game_rule = { rule = ACC_path option = ACC_PATH_SOCDEM } }
 			}
 		}
-		promote_character = ACC_glen_taylor
+		promote_character = ACC_glen_h_taylor
 		ACC_farmer_labor_elected_effect = yes
 		hidden_effect = {
 			country_event = { id = united_states_events.180 days = 60 random_days = 660 }
@@ -12146,30 +12099,30 @@ country_event = { #Martin vs Warren
 	title = new_england_events.416.t
 
 	desc = {
-		text = new_england_events.416.d.ACC_olson
+		text = new_england_events.416.d.ACC_downey
 		trigger = {
-			has_country_leader = { character = ACC_culbert_olson }
+			has_country_leader = { character = ACC_sheridan_downey }
 			ACC_can_elect_farmer_labor = yes
 		}
 	}
 	desc = {
-		text = new_england_events.416.d.NEE_olson
+		text = new_england_events.416.d.NEE_downey
 		trigger = {
-			has_country_leader = { character = ACC_culbert_olson }
+			has_country_leader = { character = ACC_sheridan_downey }
 			ACC_can_elect_farmer_labor = no
 		}
 	}
 	desc = {
 		text = new_england_events.416.d.ACC_warren
 		trigger = {
-			NOT = { has_country_leader = { character = ACC_culbert_olson } }
+			NOT = { has_country_leader = { character = ACC_sheridan_downey } }
 			ACC_can_elect_farmer_labor = yes
 		}
 	}
 	desc = {
 		text = new_england_events.416.d.NEE_warren
 		trigger = {
-			NOT = { has_country_leader = { character = ACC_culbert_olson } }
+			NOT = { has_country_leader = { character = ACC_sheridan_downey } }
 			ACC_can_elect_farmer_labor = no
 		}
 	}
@@ -12203,7 +12156,7 @@ country_event = { #Martin vs Warren
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = ACC_earl_warren
-			promote_character = ACC_glen_taylor
+			promote_character = ACC_glen_h_taylor
 		}
 	}
 
@@ -12227,7 +12180,7 @@ country_event = { #Martin vs Warren
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
 			promote_character = ACC_clarence_martin
-			promote_character = ACC_glen_taylor
+			promote_character = ACC_glen_h_taylor
 		}
 	}
 
@@ -12244,7 +12197,7 @@ country_event = { #Martin vs Warren
 				NOT = { has_game_rule = { rule = ACC_path option = ACC_PATH_SOCDEM } }
 			}
 		}
-		promote_character = ACC_glen_taylor
+		promote_character = ACC_glen_h_taylor
 		ACC_farmer_labor_elected_effect = yes
 		hidden_effect = {
 			promote_character = ACC_clarence_martin
@@ -12260,9 +12213,9 @@ country_event = { #Martin vs Langlie
 	title = new_england_events.417.t
 
 	desc = {
-		text = new_england_events.417.d.ACC_wallace
+		text = new_england_events.417.d.ACC_cutting
 		trigger = {
-			has_country_leader = { character = ACC_henry_wallace }
+			has_country_leader = { character = ACC_bronson_cutting }
 		}
 	}
 	desc = {
@@ -12275,7 +12228,7 @@ country_event = { #Martin vs Langlie
 		text = new_england_events.417.d.ACC_langlie
 		trigger = {
 			NOT = {
-				has_country_leader = { character = ACC_henry_wallace }
+				has_country_leader = { character = ACC_bronson_cutting }
 				has_country_leader = { character = ACC_philip_la_follette }
 			}
 			ACC_can_elect_farmer_labor = yes
@@ -12317,7 +12270,7 @@ country_event = { #Martin vs Langlie
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = ACC_arthur_langlie
-			promote_character = ACC_glen_taylor
+			promote_character = ACC_glen_h_taylor
 		}
 	}
 
@@ -12341,7 +12294,7 @@ country_event = { #Martin vs Langlie
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
 			promote_character = ACC_clarence_martin
-			promote_character = ACC_glen_taylor
+			promote_character = ACC_glen_h_taylor
 		}
 	}
 
@@ -12361,7 +12314,7 @@ country_event = { #Martin vs Langlie
 				NOT = { has_game_rule = { rule = ACC_path option = ACC_PATH_SOCDEM } }
 			}
 		}
-		promote_character = ACC_glen_taylor
+		promote_character = ACC_glen_h_taylor
 		ACC_farmer_labor_elected_effect = yes
 		hidden_effect = {
 			promote_character = ACC_clarence_martin
@@ -12422,7 +12375,7 @@ country_event = {
 		}
 		else_if = {
 			limit = {
-				has_country_leader = { character = ACC_sheridan_downey }
+				has_country_leader = { character = ACC_edwin_c_johnson }
 			}
 			country_event = new_england_events.420 #Magnuson vs Cain
 		}
@@ -12472,7 +12425,7 @@ country_event = { #Martin vs Cain
 		}
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = ACC_harry_cain
+			promote_character = ACC_harry_p_cain
 		}
 	}
 
@@ -12488,7 +12441,7 @@ country_event = { #Martin vs Cain
 				NOT = { has_game_rule = { rule = ACC_path option = ACC_PATH_MARLIB } }
 			}
 		}
-		promote_character = ACC_harry_cain
+		promote_character = ACC_harry_p_cain
 		USA_republicans_elected_effect = yes
 	}
 
@@ -12507,7 +12460,7 @@ country_event = { #Martin vs Cain
 		}
 		ACC_farmer_labor_elected_effect = yes
 		hidden_effect = {
-			promote_character = ACC_harry_cain
+			promote_character = ACC_harry_p_cain
 		}
 	}
 }
@@ -12549,7 +12502,7 @@ country_event = { #Magnuson vs Cain
 		promote_character = ACC_warren_magnuson
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = ACC_harry_cain
+			promote_character = ACC_harry_p_cain
 		}
 	}
 
@@ -12565,7 +12518,7 @@ country_event = { #Magnuson vs Cain
 				NOT = { has_game_rule = { rule = ACC_path option = ACC_PATH_MARLIB } }
 			}
 		}
-		promote_character = ACC_harry_cain
+		promote_character = ACC_harry_p_cain
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
 			promote_character = ACC_warren_magnuson
@@ -12588,7 +12541,7 @@ country_event = { #Magnuson vs Cain
 		ACC_farmer_labor_elected_effect = yes
 		hidden_effect = {
 			promote_character = ACC_warren_magnuson
-			promote_character = ACC_harry_cain
+			promote_character = ACC_harry_p_cain
 		}
 	}
 }
@@ -12606,7 +12559,7 @@ country_event = { #Magnuson vs Knowland
 	desc = {
 		text = new_england_events.421.d.ACC_taylor
 		trigger = {
-			has_country_leader = { character = ACC_glen_taylor }
+			has_country_leader = { character = ACC_glen_h_taylor }
 		}
 	}
 	desc = {
@@ -12699,8 +12652,8 @@ country_event = { #Magnuson vs Knowland
 			}
 		}
 		if = {
-			limit = { NOT = { has_country_leader = { character = ACC_glen_taylor ruling_only = no } } }
-			promote_character = ACC_glen_taylor
+			limit = { NOT = { has_country_leader = { character = ACC_glen_h_taylor ruling_only = no } } }
+			promote_character = ACC_glen_h_taylor
 		}
 		ACC_farmer_labor_elected_effect = yes
 		hidden_effect = {
@@ -13206,7 +13159,7 @@ country_event = { #Hidden Looper event
 			base = 5
 			modifier = {
 				add = 10
-				has_global_flag = CAN_C7_econ_lib
+				has_variable = global.CAN_C7_econ_lib
 			}
 			modifier = {
 				factor = 0.5
@@ -13523,10 +13476,10 @@ country_event = { # Replace Winant
 				has_government = market_liberal
 			}
 		}
-		NEE_john_winant = { remove_political_advisor_role = yes }
+		NEE_john_g_winant = { remove_political_advisor_role = yes }
 		hidden_effect = {
 			NEE_jay_pierrepont_moffat = { set_nationality = ROOT }
-			NEE_william_harriman = { set_character_flag = show_political_advisor_role }
+			NEE_w_averell_harriman = { set_character_flag = show_political_advisor_role }
 		}
 		activate_advisor = NEE_jay_pierrepont_moffat_advisor
 	}
@@ -13535,7 +13488,7 @@ country_event = { # Replace Winant
 		log = "[GetLogInfo]: event new_england_events.461 option new_england_events.461.b"
 		name = new_england_events.461.b #Harriman's our man!
 		trigger = {
-			NEE_william_harriman = {
+			NEE_w_averell_harriman = {
 				has_trait = NEE_ambassador_to_canada
 				is_country_leader = no
 			}
@@ -13547,22 +13500,22 @@ country_event = { # Replace Winant
 				has_government = social_liberal
 			}
 		}
-		NEE_john_winant = { remove_political_advisor_role = yes }
+		NEE_john_g_winant = { remove_political_advisor_role = yes }
 		hidden_effect = {
 			NEE_jay_pierrepont_moffat = { set_nationality = ROOT }
-			NEE_william_harriman = { set_character_flag = show_political_advisor_role }
+			NEE_w_averell_harriman = { set_character_flag = show_political_advisor_role }
 		}
-		activate_advisor = NEE_william_harriman_advisor
+		activate_advisor = NEE_w_averell_harriman_advisor
 	}
 
 	option = {
 		log = "[GetLogInfo]: event new_england_events.461 option new_england_events.461.c"
 		name = new_england_events.461.c #Demote the office
 		add_political_power = 10
-		NEE_john_winant = { remove_political_advisor_role = yes }
+		NEE_john_g_winant = { remove_political_advisor_role = yes }
 		hidden_effect = {
 			NEE_jay_pierrepont_moffat = { set_nationality = ROOT }
-			NEE_william_harriman = { set_character_flag = show_political_advisor_role }
+			NEE_w_averell_harriman = { set_character_flag = show_political_advisor_role }
 		}
 	}
 }
@@ -13577,7 +13530,7 @@ country_event = { # Replace Winant
 
 	option = { #Moffat's our man!
 		log = "[GetLogInfo]: event new_england_events.4610 option 1"
-		NEE_john_winant = {
+		NEE_john_g_winant = {
 			if = {
 				limit = { has_trait = NEE_ambassador_to_canada }
 				if = {
@@ -13604,7 +13557,7 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event new_england_events.462 option new_england_events.462.a"
 		name = new_england_events.462.a #Approve the Appointment
-		NEE_william_harriman = { remove_political_advisor_role = yes }
+		NEE_w_averell_harriman = { remove_political_advisor_role = yes }
 		hidden_effect = {
 			NEE_charles_bohlen = { set_nationality = ROOT }
 			NEE_laurence_steinhardt = { set_nationality = ROOT }
@@ -13616,7 +13569,7 @@ country_event = {
 		log = "[GetLogInfo]: event new_england_events.462 option new_england_events.462.b"
 		name = new_england_events.462.b #Demote the office
 		add_political_power = 10
-		NEE_william_harriman = { remove_political_advisor_role = yes }
+		NEE_w_averell_harriman = { remove_political_advisor_role = yes }
 		hidden_effect = {
 			NEE_charles_bohlen = { set_nationality = ROOT }
 			NEE_laurence_steinhardt = { set_nationality = ROOT }
@@ -13635,7 +13588,7 @@ country_event = { # Replace Harriman
 
 	option = { #Moffat's our man!
 		log = "[GetLogInfo]: event new_england_events.4620 option 1"
-		NEE_william_harriman = {
+		NEE_w_averell_harriman = {
 			if = {
 				limit = { has_trait = NEE_ambassador_to_canada }
 				if = {
@@ -14065,13 +14018,13 @@ country_event = {
 		set_country_flag = NEE_had_1940_election
 		if = {
 			limit = {
-				has_country_leader = { character = NEE_lewis_barrows }
+				has_country_leader = { character = NEE_lewis_o_barrows }
 			}
 			country_event = new_england_events.601 #Hurley vs Barrows
 		}
 		else_if = {
 			limit = {
-				has_country_leader = { character = NEE_david_walsh }
+				has_country_leader = { character = NEE_david_i_walsh }
 			}
 			country_event = new_england_events.602 #Walsh vs Winant
 		}
@@ -14093,7 +14046,7 @@ country_event = { #Hurley vs Barrows
 		log = "[GetLogInfo]: event new_england_events.601 option new_england_events.601.a"
 		name = new_england_events.601.a
 		ai_chance = { base = 55 }
-		promote_character = NEE_charles_hurley
+		promote_character = NEE_charles_f_hurley
 		USA_progressive_democrats_elected_effect = yes
 		add_popularity = {
 			ideology = social_democrat
@@ -14111,12 +14064,12 @@ country_event = { #Hurley vs Barrows
 		ai_chance = { base = 75 }
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			NEE_lewis_barrows = {
+			NEE_lewis_o_barrows = {
 				remove_trait = { trait = NEE_provisional_president ideology = market_liberal_subtype }
 			}
 		}
 		hidden_effect = {
-			promote_character = NEE_charles_hurley
+			promote_character = NEE_charles_f_hurley
 			country_event = { id = new_england_events.162 days = 635 }
 		}
 	}
@@ -14136,12 +14089,12 @@ country_event = { #Walsh vs Winant
 		ai_chance = { base = 100 }
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
-			NEE_david_walsh = {
+			NEE_david_i_walsh = {
 				remove_trait = { trait = NEE_provisional_president ideology = social_liberal_subtype }
 			}
 		}
 		hidden_effect = {
-			promote_character = NEE_john_winant
+			promote_character = NEE_john_g_winant
 			country_event = { id = new_england_events.166 days = 305 }
 			country_event = { id = new_england_events.219 days = 800 }
 		}
@@ -14151,7 +14104,7 @@ country_event = { #Walsh vs Winant
 		log = "[GetLogInfo]: event new_england_events.602 option new_england_events.602.b"
 		name = new_england_events.602.b
 		ai_chance = { base = 60 }
-		promote_character = NEE_john_winant
+		promote_character = NEE_john_g_winant
 		USA_republicans_elected_effect = yes
 		add_popularity = {
 			ideology = social_conservative
@@ -14176,13 +14129,13 @@ country_event = { #Hurley vs Winant
 	desc = {
 		text = new_england_events.603.d.martin_jr
 		trigger = {
-			has_country_leader = { character = NEE_joseph_martin_jr }
+			has_country_leader = { character = NEE_joseph_william_martin_jr }
 		}
 	}
 	desc = {
 		text = new_england_events.603.d.fallback
 		trigger = {
-			NOT = { has_country_leader = { character = NEE_joseph_martin_jr } }
+			NOT = { has_country_leader = { character = NEE_joseph_william_martin_jr } }
 		}
 	}
 
@@ -14194,10 +14147,10 @@ country_event = { #Hurley vs Winant
 		log = "[GetLogInfo]: event new_england_events.603 option new_england_events.603.a"
 		name = new_england_events.603.a
 		ai_chance = { base = 55 }
-		promote_character = NEE_charles_hurley
+		promote_character = NEE_charles_f_hurley
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = NEE_john_winant
+			promote_character = NEE_john_g_winant
 		}
 	}
 
@@ -14205,10 +14158,10 @@ country_event = { #Hurley vs Winant
 		log = "[GetLogInfo]: event new_england_events.603 option new_england_events.603.b"
 		name = new_england_events.603.b
 		ai_chance = { base = 60 }
-		promote_character = NEE_john_winant
+		promote_character = NEE_john_g_winant
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = NEE_charles_hurley
+			promote_character = NEE_charles_f_hurley
 			country_event = { id = new_england_events.163 days = 176 }
 			country_event = { id = new_england_events.164 days = 394 }
 			country_event = { id = new_england_events.183 days = 1100 }
@@ -14240,7 +14193,7 @@ country_event = {
 		set_country_flag = NEE_had_1944_election
 		if = {
 			limit = {
-				has_country_leader = { character = NEE_charles_hurley }
+				has_country_leader = { character = NEE_charles_f_hurley }
 			}
 			country_event = new_england_events.605 #Hurley vs Baldwin
 		}
@@ -14264,7 +14217,7 @@ country_event = { #Hurley vs Baldwin
 		ai_chance = { base = 40 }
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = NEE_raymond_baldwin
+			promote_character = NEE_raymond_e_baldwin
 		}
 	}
 
@@ -14272,7 +14225,7 @@ country_event = { #Hurley vs Baldwin
 		log = "[GetLogInfo]: event new_england_events.605 option new_england_events.605.b"
 		name = new_england_events.605.b
 		ai_chance = { base = 75 }
-		promote_character = NEE_raymond_baldwin
+		promote_character = NEE_raymond_e_baldwin
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
 			country_event = { id = new_england_events.169 days = 687 }
@@ -14288,28 +14241,28 @@ country_event = { #Tobin vs Baldwin
 	desc = {
 		text = new_england_events.606.d.barrows
 		trigger = {
-			has_country_leader = { character = NEE_lewis_barrows }
+			has_country_leader = { character = NEE_lewis_o_barrows }
 		}
 	}
 	desc = {
 		text = new_england_events.606.d.walsh
 		trigger = {
-			has_country_leader = { character = NEE_david_walsh }
+			has_country_leader = { character = NEE_david_i_walsh }
 		}
 	}
 	desc = {
 		text = new_england_events.606.d.winant
 		trigger = {
-			has_country_leader = { character = NEE_john_winant }
+			has_country_leader = { character = NEE_john_g_winant }
 		}
 	}
 	desc = {
 		text = new_england_events.606.d.fallback
 		trigger = {
 			NOT = {
-				has_country_leader = { character = NEE_lewis_barrows }
-				has_country_leader = { character = NEE_david_walsh }
-				has_country_leader = { character = NEE_john_winant }
+				has_country_leader = { character = NEE_lewis_o_barrows }
+				has_country_leader = { character = NEE_david_i_walsh }
+				has_country_leader = { character = NEE_john_g_winant }
 			}
 		}
 	}
@@ -14325,13 +14278,13 @@ country_event = { #Tobin vs Baldwin
 			base = 50
 			modifier = {
 				factor = 0.2
-				has_country_leader = { character = NEE_david_walsh }
+				has_country_leader = { character = NEE_david_i_walsh }
 			}
 		}
-		promote_character = NEE_maurice_tobin
+		promote_character = NEE_maurice_j_tobin
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = NEE_raymond_baldwin
+			promote_character = NEE_raymond_e_baldwin
 		}
 	}
 
@@ -14342,13 +14295,13 @@ country_event = { #Tobin vs Baldwin
 			base = 75
 			modifier = {
 				factor = 2
-				has_country_leader = { character = NEE_david_walsh }
+				has_country_leader = { character = NEE_david_i_walsh }
 			}
 		}
-		promote_character = NEE_raymond_baldwin
+		promote_character = NEE_raymond_e_baldwin
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = NEE_maurice_tobin
+			promote_character = NEE_maurice_j_tobin
 			country_event = { id = new_england_events.169 days = 687 }
 			country_event = { id = new_england_events.171 days = 846 }
 		}
@@ -14375,13 +14328,13 @@ country_event = {
 		set_country_flag = NEE_had_1948_election
 		if = {
 			limit = {
-				has_country_leader = { character = NEE_maurice_tobin }
+				has_country_leader = { character = NEE_maurice_j_tobin }
 			}
 			country_event = new_england_events.608 #Tobin vs Aiken
 		}
 		else_if = {
 			limit = {
-				has_country_leader = { character = NEE_raymond_baldwin }
+				has_country_leader = { character = NEE_raymond_e_baldwin }
 			}
 			country_event = new_england_events.609 #Harriman vs Baldwin
 		}
@@ -14427,7 +14380,7 @@ country_event = { #Harriman vs Baldwin
 	option = { # Democrat - Harriman
 		log = "[GetLogInfo]: event new_england_events.609 option new_england_events.609.a"
 		name = new_england_events.609.a
-		promote_character = NEE_william_harriman
+		promote_character = NEE_w_averell_harriman
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
 			country_event = { id = new_england_events.176 days = 35 }
@@ -14439,7 +14392,7 @@ country_event = { #Harriman vs Baldwin
 		name = new_england_events.609.b
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = NEE_william_harriman
+			promote_character = NEE_w_averell_harriman
 		}
 	}
 }
@@ -14451,13 +14404,13 @@ country_event = { #Harriman vs Aiken
 	desc = {
 		text = new_england_events.610.d.hurley
 		trigger = {
-			has_country_leader = { character = NEE_charles_hurley }
+			has_country_leader = { character = NEE_charles_f_hurley }
 		}
 	}
 	desc = {
 		text = new_england_events.610.d.fallback
 		trigger = {
-			NOT = { has_country_leader = { character = NEE_charles_hurley } }
+			NOT = { has_country_leader = { character = NEE_charles_f_hurley } }
 		}
 	}
 
@@ -14468,7 +14421,7 @@ country_event = { #Harriman vs Aiken
 	option = { # Democrat - Harriman
 		log = "[GetLogInfo]: event new_england_events.610 option new_england_events.610.a"
 		name = new_england_events.610.a
-		promote_character = NEE_william_harriman
+		promote_character = NEE_w_averell_harriman
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = NEE_george_aiken
@@ -14482,7 +14435,7 @@ country_event = { #Harriman vs Aiken
 		promote_character = NEE_george_aiken
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = NEE_william_harriman
+			promote_character = NEE_w_averell_harriman
 		}
 	}
 }
@@ -14513,7 +14466,7 @@ country_event = {
 		}
 		else_if = {
 			limit = {
-				has_country_leader = { character = NEE_william_harriman }
+				has_country_leader = { character = NEE_w_averell_harriman }
 			}
 			country_event = new_england_events.613 #Harriman vs Dewey
 		}
@@ -14561,14 +14514,14 @@ country_event = { #Harriman vs Dewey
 		name = new_england_events.613.a
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = NEE_thomas_dewey
+			promote_character = NEE_thomas_e_dewey
 		}
 	}
 
 	option = { # Republican - Dewey
 		log = "[GetLogInfo]: event new_england_events.613 option new_england_events.613.b"
 		name = new_england_events.613.b
-		promote_character = NEE_thomas_dewey
+		promote_character = NEE_thomas_e_dewey
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
 			country_event = { id = united_states_events.184 days = 60 random_days = 660 }
@@ -14583,21 +14536,21 @@ country_event = { #Bowles vs Dewey
 	desc = {
 		text = new_england_events.614.d.tobin
 		trigger = {
-			has_country_leader = { character = NEE_maurice_tobin }
+			has_country_leader = { character = NEE_maurice_j_tobin }
 		}
 	}
 	desc = {
 		text = new_england_events.614.d.baldwin
 		trigger = {
-			has_country_leader = { character = NEE_raymond_baldwin }
+			has_country_leader = { character = NEE_raymond_e_baldwin }
 		}
 	}
 	desc = {
 		text = new_england_events.614.d.fallback
 		trigger = {
 			NOT = {
-				has_country_leader = { character = NEE_maurice_tobin }
-				has_country_leader = { character = NEE_raymond_baldwin }
+				has_country_leader = { character = NEE_maurice_j_tobin }
+				has_country_leader = { character = NEE_raymond_e_baldwin }
 			}
 		}
 	}
@@ -14612,14 +14565,14 @@ country_event = { #Bowles vs Dewey
 		promote_character = NEE_chester_bowles
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = NEE_thomas_dewey
+			promote_character = NEE_thomas_e_dewey
 		}
 	}
 
 	option = { # Republican - Dewey
 		log = "[GetLogInfo]: event new_england_events.614 option new_england_events.614.b"
 		name = new_england_events.614.b
-		promote_character = NEE_thomas_dewey
+		promote_character = NEE_thomas_e_dewey
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
 			promote_character = NEE_chester_bowles
@@ -14715,10 +14668,7 @@ country_event = { # Testing
 		NEE_Reduce_Great_Depression_big = yes
 		if = {
 			limit = {
-				check_variable = {
-					var = NEE_GD_build_speed_var
-					value = 0
-				}
+				check_variable = { NEE_GD_build_speed_var = 0 }
 			}
 			remove_dynamic_modifier = { modifier = NEE_Great_Depression }
 		}

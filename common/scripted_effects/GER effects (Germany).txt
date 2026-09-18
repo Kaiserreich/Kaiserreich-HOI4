@@ -37,11 +37,7 @@ GER_black_monday_GER_effect = {
 	else = {
 		subtract_from_variable = { GER_LVP_seats = 2 }
 	}
-	add_to_variable = {
-		var = GER_SPD_seats
-		value = 10
-		tooltip = GER_SPD_gain
-	}
+	add_to_variable = { GER_SPD_seats = 10 tooltip = GER_SPD_gain }
 	subtract_from_variable = { GER_Zentrum_seats = 3 }
 	subtract_from_variable = { GER_DkP_seats = 5 }
 	if = {
@@ -53,11 +49,7 @@ GER_black_monday_GER_effect = {
 	else = {
 		subtract_from_variable = { GER_Zentrum_seats = 2 }
 	}
-	add_to_variable = {
-		var = GER_DVLP_seats
-		value = 10
-		tooltip = GER_DVLP_gain
-	}
+	add_to_variable = { GER_DVLP_seats = 10 tooltip = GER_DVLP_gain }
 }
 
 GER_increase_black_monday = {
@@ -791,21 +783,13 @@ GER_create_wilhelm_iv = {
 ### CARD EFFECTS ###
 
 GER_bm_cardgame_effects_apply = {
-	GER_bm_cardgame_effects_calculate = yes
-	GER_bm_cardgame_lines_calculate = yes
-
-	GER_bm_cardgame_reform = yes
-
+	# Start Of Card
+	custom_effect_tooltip = "[GER_GetCardLines]"
 	GER_bm_cardgame_has_type = yes
 	GER_bm_cardgame_has_tooltip = yes
 	GER_bm_cardgame_has_custom_effect = yes
-	GER_bm_cardgame_stability_apply = yes
-	GER_bm_cardgame_investment_apply = yes
-	GER_bm_cardgame_draw_effect_apply = yes
-	GER_bm_draw_from_discard_effect_apply = yes
-	GER_bm_cardgame_debt_effect_apply = yes
-	GER_bm_cardgame_discard_remove = yes
-
+	GER_bm_cardgame_effects_base_effects_execute = yes
+	# End of Card
 	custom_effect_tooltip = GER_card_back_tt
 
 	hidden_effect = {
@@ -813,383 +797,162 @@ GER_bm_cardgame_effects_apply = {
 	}
 }
 
-GER_bm_cardgame_effects_calculate = {
-	GER_bm_cardgame_basic_stats_calculate = yes
-
-	if = { #This is for complex cards that might do more funny things... Will overwrite "basic effects". Put line calculation math here if you like, too!
-		limit = {
-			var:GER_card_played = {
-				has_character_flag = custom_card_calculations
-			}
-		}
-		meta_effect = {
-			text = {
-				[CARD]_calculate = yes
-			}
-			CARD = "[?GER_card_played:card_id.GetName]"
-		}
-	}
-}
-
-GER_bm_cardgame_basic_stats_calculate = {
-	var:GER_card_played = {
-		if = {
-			limit = { has_variable = card_investment_value }
-			set_temp_variable = {
-				GER_investment_effect = {
-					value = 1
-					add = GER.GER_investment_bonus_factor
-					add = GER.GER_investment_perm_bonus_factor
-					multiply = card_investment_value
+GER_bm_cardgame_effects_base_effects_execute = {
+	#Investment
+	if = {
+		limit = { has_variable = GER_black_monday_card:card_investment_value }
+		add_to_variable = {
+			GER_investment = {
+				value = 1
+				add = GER_investment_bonus_factor
+				add = GER_investment_perm_bonus_factor
+				multiply = GER_black_monday_card:card_investment_value
+				if = {
+					limit = { value = GER_crisis_id equals = GER_black_monday_card:GER_card_type }
+					multiply = 1.5
 				}
-			}
-		}
-		if = {
-			limit = { has_variable = card_stability_value }
-			set_temp_variable = {
-				GER_stability_effect = {
-					value = 1
-					add = GER.GER_stability_bonus_factor
-					add = GER.GER_stability_perm_bonus_factor
-					multiply = card_stability_value
+				else_if = {
+					limit = { value = GER_black_monday_card:custom_card_calculations equals = 1 } #GER_bm_cardgame_eastern_assistance_object
+					multiply = {
+						value = 0
+						every_collection = {
+							named_collection = potential_intermarium_countries
+							if = { limit = { value = economic_sphere equals = PREV.economic_sphere } add = 1 }
+						}
+					}
 				}
+				round = yes
 			}
+			tooltip = GER_investment_increase_tt
 		}
 		if = {
-			limit = {
-				has_variable = card_draw_value
+			limit = { has_variable = GER_black_monday_card:GER_economic_planning_played }
+			custom_effect_tooltip = GER_economic_planning_played_inv_effect_tt
+		}
+	}
+	#Stabilty
+	if = {
+		limit = { has_variable = GER_black_monday_card:card_stability_value }
+		add_to_variable = {
+			GER_stability = {
+				value = 0
+				if = {
+					limit = { value = GER_black_monday_card:custom_card_calculations equals = 0 } #default
+					add = 1
+					add = GER_stability_bonus_factor
+					add = GER_stability_perm_bonus_factor
+					multiply = GER_black_monday_card:card_stability_value
+					if = {
+						limit = { value = GER_crisis_id equals = GER_black_monday_card:GER_card_type }
+						multiply = 1.5
+					}
+				}
+				else_if = {
+					limit = { value = GER_black_monday_card:custom_card_calculations equals = 1 } #GER_bm_cardgame_eastern_assistance_object
+					add = 1
+					add = GER_stability_bonus_factor
+					multiply = GER_black_monday_card:card_stability_value
+					multiply = {
+						value = 0
+						every_collection = {
+							named_collection = potential_intermarium_countries
+							if = { limit = { value = economic_sphere equals = PREV.economic_sphere } add = 1 } #Same as checking for same econ sphere
+						}
+					}
+				}
+				else_if = {
+					limit = { value = GER_black_monday_card:custom_card_calculations equals = 2 } #GER_bm_trade_union_collaboration_object
+					add = GER_investment
+					multiply = 0.5
+				}
+				round = yes
 			}
-			set_temp_variable = { GER_cards_to_draw = card_draw_value }
+			tooltip = GER_stability_increase_tt
 		}
 		if = {
-			limit = {
-				has_variable = card_draw_from_discard
-			}
-			set_temp_variable = { GER_cards_to_draw_from_discard = card_draw_from_discard }
+			limit = { has_variable = GER_black_monday_card:GER_economic_planning_played }
+			custom_effect_tooltip = GER_economic_planning_played_stab_effect_tt
 		}
+	}
+
+	#Draw
+	if = {
+		limit = { has_variable = GER_black_monday_card:card_draw_value }
+		set_temp_variable = { GER_cards_to_draw = GER_black_monday_card:card_draw_value }
+		GER_bm_cardgame_draw = yes
+	}
+	else_if = {
+		limit = { has_variable = GER_black_monday_card:card_draw_from_discard }
+		set_temp_variable = { GER_cards_to_draw_from_discard = GER_black_monday_card:card_draw_from_discard }
+		GER_bm_card_draw_from_discard = yes
+	}
+
+	#Debt
+	if = {
+		limit = { has_variable = GER_black_monday_card:card_debt_value }
+		add_to_variable = { GER_debt = GER_black_monday_card:card_debt_value tooltip = GER_debt_increase_tt }
+	}
+
+	#Discard/Remove Card
+	if = {
+		limit = {
+			is_in_array = { GER_bm_cardgame_cards_drawn_array = GER_black_monday_card }
+			check_variable = { GER_black_monday_card:cards_drawn = 1 }
+		}
+		remove_from_array = { GER_bm_cardgame_cards_drawn_array = GER_black_monday_card }
+	}
+	if = {
+		limit = { check_variable = { GER_black_monday_card:GER_card_type = 4 } } #Reform Card
+		# Remove
 		if = {
-			limit = {
-				has_variable = card_debt_value
-			}
-			set_temp_variable = { GER_debt_effect = card_debt_value }
+			limit = { is_in_array = { GER_bm_cardgame_cards_array = GER_black_monday_card } }
+			remove_from_array = { GER_bm_cardgame_cards_array = GER_black_monday_card }
 		}
-	}
-
-	if = {
-		limit = {
-			check_variable = { GER_crisis_id = GER_card_played:GER_card_type }
-		}
-
-		multiply_temp_variable = { GER_investment_effect = 1.5 }
-		multiply_temp_variable = { GER_stability_effect = 1.5 }
-		set_temp_variable = { GER_bm_cardgame_line_number_extra = GER_card_played:card_lines_for_tt_extra }
-	}
-	if = {
-		limit = {
-			check_variable = { GER_bm_cardgame_discard_array^num < GER_cards_to_draw_from_discard }
-		}
-		set_temp_variable = { GER_bm_cardgame_line_number_extra = GER_card_played:card_lines_for_tt_extra }
-	}
-}
-
-GER_bm_cardgame_fireside_chat_calculate = {
-	if = {
-		limit = {
-			has_country_flag = GER_played_reform_card_this_turn
-		}
-		set_temp_variable = { extra_lines_for_tt = 1 }
-	}
-}
-
-GER_bm_cardgame_eastern_assistance_calculate = {
-	set_temp_variable = { GER_number_of_mee_countries = 0 }
-	if = {
-		limit = {
-			BAT = {
-				GER_is_in_mitteleuropa = yes
-			}
-		}
-		add_to_temp_variable = { GER_number_of_mee_countries = 1 }
-	}
-	if = {
-		limit = {
-			LIT = {
-				GER_is_in_mitteleuropa = yes
-			}
-		}
-		add_to_temp_variable = { GER_number_of_mee_countries = 1 }
-	}
-	if = {
-		limit = {
-			POL = {
-				GER_is_in_mitteleuropa = yes
-			}
-		}
-		add_to_temp_variable = { GER_number_of_mee_countries = 1 }
-	}
-	if = {
-		limit = {
-			BLR = {
-				GER_is_in_mitteleuropa = yes
-			}
-		}
-		add_to_temp_variable = { GER_number_of_mee_countries = 1 }
-	}
-	if = {
-		limit = {
-			UKR = {
-				GER_is_in_mitteleuropa = yes
-			}
-		}
-		add_to_temp_variable = { GER_number_of_mee_countries = 1 }
-	}
-	if = {
-		limit = {
-			EST = {
-				GER_is_in_mitteleuropa = yes
-			}
-		}
-		add_to_temp_variable = { GER_number_of_mee_countries = 1 }
-	}
-	if = {
-		limit = {
-			FIN = {
-				GER_is_in_mitteleuropa = yes
-			}
-		}
-		add_to_temp_variable = { GER_number_of_mee_countries = 1 }
-	}
-	if = {
-		limit = {
-			GEO = {
-				GER_is_in_mitteleuropa = yes
-			}
-		}
-		add_to_temp_variable = { GER_number_of_mee_countries = 1 }
-	}
-
-	set_temp_variable = {
-		GER_investment_effect = {
-			value = 1
-			add = GER_investment_bonus_factor
-			add = GER_investment_perm_bonus_factor
-			multiply = GER_card_played:card_investment_value
-			multiply = GER_number_of_mee_countries
-		}
-	}
-	set_temp_variable = {
-		GER_stability_effect = {
-			value = 1
-			add = GER_stability_bonus_factor
-			multiply = GER_card_played:card_stability_value
-			multiply = GER_number_of_mee_countries
-		}
-	}
-}
-
-GER_bm_cardgame_rathenauplan_calculate = {
-	set_temp_variable = { GER_cards_to_draw = GER_rathenauplan_draw }
-}
-
-GER_bm_cardgame_tbplan_calculate = {
-	set_temp_variable = { GER_cards_to_draw = GER_tbplan_draw }
-}
-
-GER_bm_cardgame_corporate_assistance_calculate = {
-	if = {
-		limit = {
-			check_variable = { GER_bm_cardgame_discard_array^num < GER_cards_to_draw_from_discard }
-		}
-
-		add_to_temp_variable = { extra_lines_for_tt = 2 }
-	}
-}
-
-GER_bm_trade_union_collaboration_calculate = {
-	set_temp_variable = { GER_stability_effect = { value = GER_investment multiply = 0.5 } }
-}
-
-GER_bm_cardgame_lines_calculate = {
-	if = {
-		limit = {
-			NOT = {
-				has_variable = GER_bm_cardgame_line_number # can be set in a custom calculation...
-			}
-		}
-		set_temp_variable = {
-			GER_bm_cardgame_line_number = {
-				value = GER_card_played:card_lines_for_tt
-				add = GER_card_played:GER_bm_cardgame_line_number_extra
-				add = extra_lines_for_tt # can be setup in _calculate scripted effect
-			}
-		}
-
-		meta_effect = {
-			text = {
-				custom_effect_tooltip = GER_card_front_[LINES]_tt
-			}
-			LINES = "[?GER_bm_cardgame_line_number]"
-		}
-	}
-}
-
-GER_bm_cardgame_reform = {
-	if = {
-		limit = {
-			var:GER_card_played = {
-				has_character_flag = reform_card
-			}
-		}
-		GER_bm_cardgame_add_reform_to_array = yes
-		set_country_flag = GER_played_reform_card_this_turn
-		custom_effect_tooltip = GER_reform_card_tt
-		#add_reform_to_array = yes
-	}
-}
-
-GER_bm_cardgame_add_reform_to_array = {
-	var:GER_card_played = {
-		add_to_array = { GER.GER_reforms_array = THIS }
-	}
-}
-
-GER_bm_cardgame_discard_remove = {
-	if = {
-		limit = {
-			var:GER_card_played = {
-				has_character_flag = remove_after_play
-			}
-		}
-
-		set_temp_variable = { GER_card_removed = GER_card_played }
-		GER_bm_card_remove = yes
+		custom_effect_tooltip = GER_bm_card_remove_tt
+		clear_variable = GER_black_monday_card:cards_drawn
+		clear_variable = GER_black_monday_card:total_copies
 	}
 	else = {
-		set_temp_variable = { GER_card_discarded = GER_card_played }
-		GER_bm_card_discard = yes
+		#Discard
+		if = {
+			limit = { NOT = { is_in_array = { GER_bm_cardgame_discard_array = GER_black_monday_card } } }
+			add_to_array = { GER_bm_cardgame_discard_array = GER_black_monday_card }
+		}
+		add_to_variable = { GER_black_monday_card:cards_drawn = -1 }
+		add_to_variable = { GER_black_monday_card:copies_in_discard = 1 }
 	}
 }
 
 GER_bm_cardgame_has_type = {
+	custom_effect_tooltip = GER_bm_card_tt
 	if = {
-		limit = {
-			check_variable = { GER_card_played:GER_card_type = GER_crisis_id }
-		}
-		custom_effect_tooltip = GER_relief_card_tt
+		limit = { check_variable = { GER_black_monday_card:GER_card_type = GER_crisis_id } } #Relief Card
 		custom_effect_tooltip = GER_card_type_bonus_tt
 	}
 	else_if = {
-		limit = {
-			var:GER_card_played = {
-				has_variable = GER_card_type
-			}
-		}
-		custom_effect_tooltip = GER_relief_card_tt
+		limit = { check_variable = { GER_black_monday_card:GER_card_type = 4 } } #Reform Card
+		add_to_array = { GER.GER_reforms_array = GER_black_monday_card }
+		set_country_flag = GER_played_reform_card_this_turn
 	}
-	else_if = {
-		limit = {
-			NOT = {
-				var:GER_card_played = {
-					has_character_flag = reform_card
-				}
-			}
-		}
-		custom_effect_tooltip = GER_recovery_card_tt
-	}
+	#Default is Recovery Card
 }
 
 GER_bm_cardgame_has_tooltip = {
 	if = {
-		limit = {
-			var:GER_card_played = {
-				has_character_flag = custom_card_tooltip
-			}
-		}
-		meta_effect = {
-			text = {
-				custom_effect_tooltip = [CARD]_tt
-			}
-			CARD = "[?GER_card_played:card_id.GetName]"
-		}
+		limit = { var:GER_black_monday_card = { has_character_flag = custom_card_tooltip } }
+		custom_effect_tooltip = "[?GER_black_monday_card.GER_GetCardTooltip]"
 	}
 }
 
 GER_bm_cardgame_has_custom_effect = {
 	if = {
-		limit = {
-			var:GER_card_played = {
-				has_character_flag = custom_card_effect
-			}
-		}
+		limit = { var:GER_black_monday_card = { has_character_flag = custom_card_effect } }
 		meta_effect = {
 			text = {
 				[CARD]_effect = yes
 			}
-			CARD = "[?GER_card_played:card_id.GetName]"
+			CARD = "[?GER_black_monday_card.GetName]"
 		}
-	}
-}
-
-GER_bm_cardgame_stability_apply = {
-	if = {
-		limit = {
-			has_variable = GER_stability_effect
-		}
-
-		add_to_variable = { GER_stability = GER_stability_effect tooltip = GER_stability_increase_tt }
-	}
-	if = {
-		limit = {
-			has_variable = GER_card_played
-			var:GER_card_played = { has_character_flag = GER_economic_planning_played }
-		}
-		custom_effect_tooltip = GER_economic_planning_played_stab_effect_tt
-	}
-}
-
-GER_bm_cardgame_investment_apply = {
-	if = {
-		limit = {
-			has_variable = GER_investment_effect
-		}
-
-		add_to_variable = { GER_investment = GER_investment_effect tooltip = GER_investment_increase_tt }
-	}
-	if = {
-		limit = {
-			has_variable = GER_card_played
-			var:GER_card_played = { has_character_flag = GER_economic_planning_played }
-		}
-		custom_effect_tooltip = GER_economic_planning_played_inv_effect_tt
-	}
-}
-
-GER_bm_cardgame_debt_effect_apply = {
-	if = {
-		limit = {
-			has_variable = GER_debt_effect
-		}
-		add_to_variable = { GER_debt = GER_debt_effect tooltip = GER_debt_increase_tt }
-	}
-}
-
-GER_bm_cardgame_draw_effect_apply = {
-	if = {
-		limit = {
-			has_variable = GER_cards_to_draw
-		}
-
-		GER_bm_cardgame_draw = yes
-	}
-}
-
-GER_bm_draw_from_discard_effect_apply = {
-	if = {
-		limit = {
-			has_variable = GER_cards_to_draw_from_discard
-		}
-
-		GER_bm_card_draw_from_discard = yes
 	}
 }
 
@@ -1199,7 +962,7 @@ GER_bm_cardgame_economic_planning_effect = {
 			array = GER.GER_cardgame_object_array
 			if = {
 				limit = { check_variable = { GER_card_type = 3 } }
-				set_character_flag = GER_economic_planning_played
+				set_variable = { GER_economic_planning_played = 1 }
 				add_to_variable = { card_lines_for_tt = 4 }
 				add_to_variable = { card_investment_value = 750 }
 				add_to_variable = { card_stability_value = 750 }
@@ -1211,9 +974,7 @@ GER_bm_cardgame_economic_planning_effect = {
 GER_bm_cardgame_reichsbank_analysis_effect = {
 	hidden_effect = {
 		if = {
-			limit = {
-				check_variable = { GER_crisis_id = 1 }
-			}
+			limit = { check_variable = { GER_crisis_id = 1 } }
 			random_list = {
 				50 = {
 					set_variable = { GER_crisis_id = 2 }
@@ -1224,9 +985,7 @@ GER_bm_cardgame_reichsbank_analysis_effect = {
 			}
 		}
 		else_if = {
-			limit = {
-				check_variable = { GER_crisis_id = 2 }
-			}
+			limit = { check_variable = { GER_crisis_id = 2 } }
 			random_list = {
 				50 = {
 					set_variable = { GER_crisis_id = 1 }
@@ -1254,7 +1013,7 @@ GER_bm_cardgame_price_monitoring_effect = {
 }
 
 GER_bm_cardgame_technocratic_thinking_effect = {
-	set_country_flag = GER_technocratic_thinking_card_effect
+	set_variable = { GER_cards_to_draw_base = 6 }
 }
 
 GER_bm_cardgame_administrative_reform_effect = {
@@ -1267,18 +1026,38 @@ GER_bm_cardgame_nationalisation_of_foreign_companies_effect = {
 
 GER_bm_cardgame_fireside_chat_effect = {
 	if = {
-		limit = {
-			has_country_flag = GER_played_reform_card_this_turn
-		}
-
-		multiply_variable = { GER_investment = 1.5 }
-		multiply_variable = { GER_stability = 1.5 }
-
+		limit = { has_country_flag = GER_played_reform_card_this_turn }
 		custom_effect_tooltip = GER_bm_cardgame_fireside_chat_tt
+		add_to_variable = {
+			GER_investment = { value = GER_investment multiply = 0.5 }
+			tooltip = GER_investment_increase_tt
+		}
+		add_to_variable = {
+			GER_stability = { value = GER_stability multiply = 0.5 }
+			tooltip = GER_stability_increase_tt
+		}
 	}
 	else = {
 		custom_effect_tooltip = GER_bm_cardgame_fireside_chat_tt_no_effect
+		effect_tooltip = {
+			add_to_variable = {
+				GER_investment = { value = GER_investment multiply = 0.5 }
+				tooltip = GER_investment_increase_tt
+			}
+			add_to_variable = {
+				GER_stability = { value = GER_stability multiply = 0.5 }
+				tooltip = GER_stability_increase_tt
+			}
+		}
 	}
+}
+
+GER_bm_card_game_active_reform_card_tooltip = {
+	custom_effect_tooltip = GER_card_front_3_tt
+	custom_effect_tooltip = GER_bm_card_game_active_reform_card_name
+	GER_bm_cardgame_has_tooltip = yes
+	GER_bm_cardgame_has_custom_effect = yes
+	custom_effect_tooltip = GER_card_back_tt
 }
 
 GER_bm_cardgame_turn_end = {
@@ -1349,22 +1128,19 @@ GER_bm_cardgame_turn_end = {
 			}
 			add_to_variable = { GER_economic_health = 1 }
 			GER_reduce_black_monday = yes
-			#Variables needed to easily display economic health effects
-			add_to_variable = { GER_consumer_goods_loss = -0.05 }
-			add_to_variable = { GER_factory_output_loss = 0.05 }
-			add_to_variable = { GER_building_production_loss = 0.05 }
-			add_to_variable = { GER_max_efficiency_loss = 0.05 }
 		}
 		if = {
 			limit = {
 				has_country_flag = GER_ruhrkampf_begun
 			}
-			subtract_from_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 10
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			subtract_from_variable = {
+				GER_ruhrkampf_strength = {
+					value = 10
+					clamp = { min = 0 max = GER_ruhrkampf_strength }
+				}
 				tooltip = GER_ruhrkampf_reduced
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		if = {
@@ -1438,22 +1214,19 @@ GER_bm_cardgame_turn_end = {
 			}
 			add_to_variable = { GER_economic_health = -1 }
 			GER_increase_black_monday = yes
-			#Variables needed to easily display economic health effects
-			add_to_variable = { GER_consumer_goods_loss = 0.05 }
-			add_to_variable = { GER_factory_output_loss = -0.05 }
-			add_to_variable = { GER_building_production_loss = -0.05 }
-			add_to_variable = { GER_max_efficiency_loss = -0.05 }
 		}
 		if = {
 			limit = {
 				has_country_flag = GER_ruhrkampf_begun
 			}
-			add_to_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 10
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			add_to_variable = {
+				GER_ruhrkampf_strength = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = GER_ruhrkampf_strength } }
+				}
 				tooltip = GER_ruhrkampf_raised
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		#Adjust crisis variables. Each variable starts at 2500 at the start of the game. There is a 50% chance that it reduces by 250 at the end of the turn.
@@ -1512,25 +1285,11 @@ GER_bm_cardgame_turn_end = {
 		}
 
 		#THIS SHOULD BE MADE TO "DRAW ENOUGH CARDS UNTIL YOU GET 6"
-		if = {
-			limit = {
-				has_country_flag = GER_technocratic_thinking_card_effect
-			}
-			set_temp_variable = {
-				GER_cards_to_draw = {
-					value = 6
-					subtract = GER_bm_cardgame_cards_drawn_array^num
-					clamp = { min = 0 max = 6 }
-				}
-			}
-		}
-		else = {
-			set_temp_variable = {
-				GER_cards_to_draw = {
-					value = 5
-					subtract = GER_bm_cardgame_cards_drawn_array^num
-					clamp = { min = 0 max = 5 }
-				}
+		set_temp_variable = {
+			GER_cards_to_draw = {
+				value = GER_cards_to_draw_base?5
+				subtract = GER_bm_cardgame_cards_drawn_array^num
+				clamp = { min = 0 max = GER_cards_to_draw_base?5 }
 			}
 		}
 		custom_effect_tooltip = GER_bm_card_draw_tt
@@ -1548,35 +1307,7 @@ GER_bm_cardgame_draw = {
 	set_temp_variable = { total_available_cards = 0 }
 
 	if = {
-		limit = {
-			#build temp array of applicable cards
-			all_of_scopes = {
-				array = GER_bm_cardgame_cards_array
-				if = {
-					#if a card was played to fire this effect, prevent infinite draw loop exploits
-					limit = { NOT = { check_variable = { GER_card_played = THIS } } }
-
-					#check if there are any available cards to draw from the deck
-					set_temp_variable = {
-						available_cards = {
-							value = total_copies
-							subtract = cards_drawn
-							subtract = copies_in_discard
-						}
-					}
-					if = {
-						limit = { check_variable = { available_cards > 0 } }
-						add_to_temp_array = { GER_bm_cardgame_cards_array_to_draw_from = THIS }
-					}
-
-					#add available cards to counter
-					add_to_temp_variable = { total_available_cards = available_cards }
-				}
-			}
-
-			#check if there are any available
-			check_variable = { total_available_cards > 0 }
-		}
+		limit = { GER_bm_can_draw_cards = yes }
 
 		#variable bounds
 		clamp_temp_variable = { var = GER_cards_to_draw min = 1 max = total_available_cards }
@@ -1612,15 +1343,15 @@ GER_bm_cardgame_draw = {
 				}
 
 				#if all copies were drawn, ignore this one from in subsequent loops
-				set_temp_variable = {
-					available_cards = {
-						value = total_copies
-						subtract = cards_drawn
-						subtract = copies_in_discard
-					}
-				}
 				if = {
-					limit = { NOT = { check_variable = { available_cards > 0 } } }
+					limit = {
+						check_expr = { #available cards
+							value = total_copies
+							subtract = cards_drawn
+							subtract = copies_in_discard
+							less_than_or_equals = 0
+						}
+					}
 					remove_from_temp_array = { GER_bm_cardgame_cards_array_to_draw_from = THIS }
 				}
 			}
@@ -1671,53 +1402,76 @@ GER_bm_card_draw_from_discard = {
 	}
 }
 
-GER_bm_card_discard = {
-	if = {
-		limit = { is_in_array = { GER_bm_cardgame_cards_drawn_array = GER_card_discarded } }
-		remove_from_array = { GER_bm_cardgame_cards_drawn_array = GER_card_discarded }
-	}
-	if = {
-		limit = { NOT = { is_in_array = { GER_bm_cardgame_discard_array = GER_card_discarded } } }
-		add_to_array = { GER_bm_cardgame_discard_array = GER_card_discarded }
-	}
-	var:GER_card_discarded = {
-		add_to_variable = { cards_drawn = -1 }
-		add_to_variable = { copies_in_discard = 1 }
-	}
-}
-
-GER_bm_card_remove = {
-	if = {
-		limit = { is_in_array = { GER_bm_cardgame_cards_drawn_array = GER_card_removed } }
-		remove_from_array = { GER_bm_cardgame_cards_drawn_array = GER_card_removed }
-	}
-	if = {
-		limit = { is_in_array = { GER_bm_cardgame_cards_array = GER_card_removed } }
-		remove_from_array = { GER_bm_cardgame_cards_array = GER_card_removed }
-	}
-	custom_effect_tooltip = GER_bm_card_remove_tt
-
-	var:GER_card_removed = {
-		add_to_variable = { cards_drawn = -1 }
-		add_to_variable = { total_copies = -1 }
-	}
-}
-
 GER_bm_card_add = {
 	if = {
-		limit = { NOT = { is_in_array = { GER_bm_cardgame_cards_array = GER_card_added } } }
-		add_to_array = { GER_bm_cardgame_cards_array = GER_card_added }
+		limit = { NOT = { is_in_array = { GER_bm_cardgame_cards_array = GER_black_monday_card } } }
+		add_to_array = { GER_bm_cardgame_cards_array = GER_black_monday_card }
 	}
-	var:GER_card_added = {
-		add_to_variable = { total_copies = 1 } #doing this is not super elegeant but it should work pretty well - too lazy to refactor draw logic properly...
-	}
+	add_to_variable = { GER_black_monday_card:total_copies = 1 }
 
-	meta_effect = {
-		text = {
-			custom_effect_tooltip = "[GER_CARD_ID]_add_tt"
+	custom_effect_tooltip = GER_bm_card_add_tt
+	custom_effect_tooltip = "[GER_GetCardAddLines]"
+	custom_effect_tooltip = GER_bm_card_tt
+	GER_bm_cardgame_has_tooltip = yes
+	effect_tooltip = {
+		#Investment
+		if = {
+			limit = { has_variable = GER_black_monday_card:card_investment_value }
+			add_to_variable = {
+				GER_investment = {
+					value = GER_black_monday_card:card_investment_value
+					if = {
+						limit = { value = GER_black_monday_card:GER_economic_planning_played equals = 1 }
+						subtract = 750 # Avoid adding the extra investment
+					}
+				}
+				tooltip = GER_investment_increase_tt
+			}
 		}
-		GER_CARD_ID = "[?GER_card_added:card_id.GetName]"
+		#Stabilty
+		if = {
+			limit = {
+				has_variable = GER_black_monday_card:card_stability_value
+				check_variable = { GER_black_monday_card:card_stability_value > 0 }
+			}
+			add_to_variable = {
+				GER_stability = {
+					value = GER_black_monday_card:card_stability_value
+					if = {
+						limit = { value = GER_black_monday_card:GER_economic_planning_played equals = 1 }
+						subtract = 750 # Avoid adding the extra investment
+					}
+				}
+				tooltip = GER_stability_increase_tt
+			}
+		}
+
+		#Draw
+		if = {
+			limit = { has_variable = GER_black_monday_card:card_draw_value }
+			set_temp_variable = { GER_cards_to_draw = GER_black_monday_card:card_draw_value }
+			custom_effect_tooltip = GER_bm_card_draw_tt
+		}
+		else_if = {
+			limit = { has_variable = GER_black_monday_card:card_draw_from_discard }
+			set_temp_variable = { GER_cards_to_draw_from_discard = GER_black_monday_card:card_draw_from_discard }
+			custom_effect_tooltip = GER_bm_card_draw_discard_tt
+		}
+
+		#Debt
+		if = {
+			limit = { has_variable = GER_black_monday_card:card_debt_value }
+			add_to_variable = { GER_debt = GER_black_monday_card:card_debt_value tooltip = GER_debt_increase_tt }
+		}
+
+		#Draw
+		if = {
+			limit = { check_variable = { GER_black_monday_card:GER_card_type = 4 } } #Reform Card
+			custom_effect_tooltip = GER_bm_card_remove_tt
+		}
 	}
+	custom_effect_tooltip = GER_card_back_tt
+	custom_effect_tooltip = GER_bm_card_add_tt2
 }
 
 GER_set_bm_turn_timer = {
@@ -1799,11 +1553,14 @@ GER_economic_planning_card_counted = {
 	}
 
 	custom_effect_tooltip = GER_institutional_public_works_card_counted_tt
-	set_temp_variable = { GER_investment_effect = { value = 200 multiply = GER_num_buildings_built_on_round } }
-	GER_bm_cardgame_investment_apply = yes
-
-	set_temp_variable = { GER_stability_effect = { value = 200 multiply = GER_num_buildings_built_on_round } }
-	GER_bm_cardgame_stability_apply = yes
+	add_to_variable = {
+		GER_investment = { value = 200 multiply = GER_num_buildings_built_on_round }
+		tooltip = GER_investment_increase_tt
+	}
+	add_to_variable = {
+		GER_stability = { value = 200 multiply = GER_num_buildings_built_on_round }
+		tooltip = GER_stability_increase_tt
+	}
 }
 
 GER_initialize_bm_game = {
@@ -1812,23 +1569,23 @@ GER_initialize_bm_game = {
 	# VERY SANE WORKAROUND :pdx:
 	hidden_effect = {
 		GER_set_bm_turn_timer = yes
-		set_temp_variable = { GER_card_added = GER_bm_cardgame_money_issuance_object }
+		set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_money_issuance_object }
 		GER_bm_card_add = yes
-		set_temp_variable = { GER_card_added = GER_bm_cardgame_capital_controls_object }
+		set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_capital_controls_object }
 		GER_bm_card_add = yes
-		set_temp_variable = { GER_card_added = GER_bm_cardgame_employment_programme_object }
+		set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_employment_programme_object }
 		GER_bm_card_add = yes
-		set_temp_variable = { GER_card_added = GER_bm_cardgame_cooperation_business_object }
+		set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_cooperation_business_object }
 		GER_bm_card_add = yes
-		set_temp_variable = { GER_card_added = GER_bm_cardgame_cooperation_business_object }
+		set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_cooperation_business_object }
 		GER_bm_card_add = yes
-		set_temp_variable = { GER_card_added = GER_bm_cardgame_reichsbank_analysis_object }
+		set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_reichsbank_analysis_object }
 		GER_bm_card_add = yes
-		set_temp_variable = { GER_card_added = GER_bm_cardgame_fireside_chat_object }
+		set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_fireside_chat_object }
 		GER_bm_card_add = yes
-		set_temp_variable = { GER_card_added = GER_bm_cardgame_eastern_assistance_object }
+		set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_eastern_assistance_object }
 		GER_bm_card_add = yes
-		set_temp_variable = { GER_card_added = GER_bm_cardgame_price_monitoring_object }
+		set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_price_monitoring_object }
 		GER_bm_card_add = yes
 	}
 
@@ -1851,34 +1608,6 @@ GER_initialize_bm_game = {
 		activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_eastern_assistance_decision }
 		activate_targeted_decision = { target = THIS decision = GER_bm_cardgame_price_monitoring_decision }
 	}
-}
-
-check_cards_in_drawn_array = {
-	for_each_scope_loop = {
-		array = GER_bm_cardgame_cards_drawn_array
-
-		log = "[THIS.GETNAME] is in drawn array"
-	}
-}
-
-check_cards_in_deck_array = {
-	for_each_scope_loop = {
-		array = GER_bm_cardgame_cards_array
-
-		log = "[THIS.GETNAME] is in deck array"
-	}
-}
-
-check_reform_in_array = {
-	log = "[?GER_reforms_array^0] is first value in array"
-}
-
-add_reform_to_array = {
-	add_to_array = { GER_reforms_array = 1 }
-}
-
-clear_reform_array = {
-	clear_array = GER_reforms_array
 }
 
 GER_end_ruhrkampf_if_applicable = {
@@ -3932,82 +3661,117 @@ GER_add_plane_variants_no_mio = {
 	}
 }
 
-BAY_puppet_setup = {
+BAY_monarchy_puppet_setup = {
 	var:tag_to_release = {
-		if = {
-			limit = { has_socialist_government = yes }
-			hidden_effect = {
-				if = {
-					limit = { has_character = GER_rupprecht_von_bayern }
-					GER_rupprecht_von_bayern = { set_nationality = GER }
-				}
-			}
-		}
-		else = {
-			hidden_effect = {
-				GER = {
-					GER_rupprecht_von_bayern = {
-						set_nationality = BAY
-						remove_all_country_leader_roles = yes
-						add_country_leader_role = {
-							country_leader = {
-								desc = GER_rupprecht_von_bayern_leader_desc
-								ideology = social_democrat_subtype
-							}
-							promote_leader = yes
+		hidden_effect = {
+			GER = {
+				GER_rupprecht_von_bayern = {
+					set_nationality = BAY
+					remove_all_country_leader_roles = yes
+					add_country_leader_role = {
+						country_leader = {
+							desc = GER_rupprecht_von_bayern_leader_desc
+							ideology = social_democrat_subtype
 						}
-						add_country_leader_role = {
-							country_leader = {
-								desc = GER_rupprecht_von_bayern_leader_desc
-								ideology = social_liberal_subtype
-							}
-							promote_leader = yes
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = GER_rupprecht_von_bayern_leader_desc
+							ideology = social_liberal_subtype
 						}
-						add_country_leader_role = {
-							country_leader = {
-								desc = GER_rupprecht_von_bayern_leader_desc
-								ideology = market_liberal_subtype
-							}
-							promote_leader = yes
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = GER_rupprecht_von_bayern_leader_desc
+							ideology = market_liberal_subtype
 						}
-						add_country_leader_role = {
-							country_leader = {
-								desc = GER_rupprecht_von_bayern_leader_desc
-								ideology = social_conservative_subtype
-							}
-							promote_leader = yes
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = GER_rupprecht_von_bayern_leader_desc
+							ideology = social_conservative_subtype
 						}
-						add_country_leader_role = {
-							country_leader = {
-								desc = GER_rupprecht_von_bayern_leader_desc
-								ideology = authoritarian_democrat_subtype
-							}
-							promote_leader = yes
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = GER_rupprecht_von_bayern_leader_desc
+							ideology = authoritarian_democrat_subtype
 						}
-						add_country_leader_role = {
-							country_leader = {
-								desc = GER_rupprecht_von_bayern_leader_desc
-								ideology = paternal_autocrat_subtype
-							}
-							promote_leader = yes
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = GER_rupprecht_von_bayern_leader_desc
+							ideology = paternal_autocrat_subtype
 						}
-						add_country_leader_role = {
-							country_leader = {
-								desc = GER_rupprecht_von_bayern_leader_desc
-								ideology = national_populist_subtype
-							}
-							promote_leader = yes
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = GER_rupprecht_von_bayern_leader_desc
+							ideology = national_populist_subtype
 						}
+						promote_leader = yes
 					}
 				}
 			}
-			if = {
-				limit = { is_subject_of = AUS }
-				set_cosmetic_tag = SGF
-			}
+		}
+		if = {
+			limit = { is_subject_of = AUS }
+			set_cosmetic_tag = SGF
 		}
 	}
 }
+BAY_republic_puppet_setup = {
+	var:tag_to_release = {
+		hidden_effect = {
+			if = {
+				limit = { has_character = GER_rupprecht_von_bayern }
+				GER_rupprecht_von_bayern = { set_nationality = GER }
+			}
+			promote_character = {
+				character = BAY_eugen_bolz
+				ideology = social_democrat_subtype
+			}
+			promote_character = {
+				character = BAY_eugen_bolz
+				ideology = social_liberal_subtype
+			}
+			promote_character = {
+				character = BAY_eugen_bolz
+				ideology = market_liberal_subtype
+			}
+			promote_character = {
+				character = BAY_eugen_bolz
+				ideology = social_conservative_subtype
+			}
+			promote_character = {
+				character = BAY_franz_von_epp
+				ideology = authoritarian_democrat_subtype
+			}
+			promote_character = {
+				character = BAY_franz_von_epp
+				ideology = paternal_autocrat_subtype
+			}
+			promote_character = {
+				character = BAY_franz_von_epp
+				ideology = national_populist_subtype
+			}
+		}
+		if = {
+			limit = {
+				AUS = { has_socialist_government = no }
+				is_subject_of = AUS
+			}
+			set_cosmetic_tag = SGF
+		}
+	}
+}
+
 GER_setup_hugenberg_mechanic = {
 	clr_country_flag = GER_hugenberg_will_annoy_you
 	activate_mission = GER_DVLP_emergency_conference
@@ -4756,7 +4520,7 @@ GER_second_weltkrieg_legacy_effect = {
 
 		set_variable = { GER_demobilisation_final_eco_law = economic_law_current_temp } #preempts exploits from looping back and forth between laws
 
-		#calculate idea difference		
+		#calculate idea difference
 		set_temp_variable = {
 			GER_eco_law_delta = {
 				value = economic_law_current_temp

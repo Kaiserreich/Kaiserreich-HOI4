@@ -98,7 +98,24 @@ AUS_fire_next_budapest_treaty_event = {
 			country_event = { id = treaty_of_budapest_events.2 days = 2 }
 		}
 		else = {
-			remove_ideas = has_scripted_peace #the refusal events handled by the event chain itself
+			if = { # In case ITA was at war with AUS but not involved at all in treaty of budapest for some insane reason
+				limit = {
+					has_war_with = ITA
+					ITA = {
+						NOT = {
+							has_country_flag = AUS_accepts_peace
+							has_country_flag = AUS_will_continue_war
+						}
+					}
+				}
+				modify_timed_idea = {
+					idea = has_scripted_peace
+					days = 30
+				}
+			}
+			else = {
+				remove_ideas = has_scripted_peace #the refusal events handled by the event chain itself
+			}
 			every_possible_country = {
 				clr_country_flag = AUS_accepts_peace
 				clr_country_flag = AUS_will_continue_war
@@ -425,4 +442,73 @@ AUS_disable_danubian_integration = {
 	}
 	clear_array = danubian_integration
 	clear_array = danubian_ambitions
+}
+
+AUS_remove_army_ideas = {
+	hidden_effect = {
+		remove_ideas = {
+			AUS_modern_army
+			AUS_modern_army_jansa
+			AUS_modern_army_jansa_2
+			AUS_modern_army_jansa_3
+			AUS_modern_army_von_hubicki
+			AUS_modern_army_von_hubicki_2
+			AUS_modern_army_von_hubicki_3
+			AUS_modern_army_hickmann
+			AUS_modern_army_hickmann_2
+			AUS_artillery_production
+		}
+	}
+}
+
+AUS_refresh_crownland_army_ideas = { # Ensure Crownlands released later inherit current army ideas
+	hidden_effect = {
+		if = {
+			limit = { AUS = { has_completed_focus = AUS_reform_AOK } }
+			AUS_remove_army_ideas = yes
+			AUS = {
+				if = {
+					limit = { has_idea = AUS_modern_army }
+					set_temp_variable = { AUS_shared_army_idea = token:AUS_modern_army }
+				}
+				else_if = {
+					limit = { has_idea = AUS_modern_army_jansa }
+					set_temp_variable = { AUS_shared_army_idea = token:AUS_modern_army_jansa }
+				}
+				else_if = {
+					limit = { has_idea = AUS_modern_army_jansa_2 }
+					set_temp_variable = { AUS_shared_army_idea = token:AUS_modern_army_jansa_2 }
+				}
+				else_if = {
+					limit = { has_idea = AUS_modern_army_jansa_3 }
+					set_temp_variable = { AUS_shared_army_idea = token:AUS_modern_army_jansa_3 }
+				}
+				else_if = {
+					limit = { has_idea = AUS_modern_army_von_hubicki }
+					set_temp_variable = { AUS_shared_army_idea = token:AUS_modern_army_von_hubicki }
+				}
+				else_if = {
+					limit = { has_idea = AUS_modern_army_von_hubicki_2 }
+					set_temp_variable = { AUS_shared_army_idea = token:AUS_modern_army_von_hubicki_2 }
+				}
+				else_if = {
+					limit = { has_idea = AUS_modern_army_von_hubicki_3 }
+					set_temp_variable = { AUS_shared_army_idea = token:AUS_modern_army_von_hubicki_3 }
+				}
+				else_if = {
+					limit = { has_idea = AUS_modern_army_hickmann }
+					set_temp_variable = { AUS_shared_army_idea = token:AUS_modern_army_hickmann }
+				}
+				else_if = {
+					limit = { has_idea = AUS_modern_army_hickmann_2 }
+					set_temp_variable = { AUS_shared_army_idea = token:AUS_modern_army_hickmann_2 }
+				}
+			}
+			add_ideas = var:AUS_shared_army_idea
+			if = {
+				limit = { AUS = { has_idea = AUS_artillery_production } }
+				add_ideas = AUS_artillery_production
+			}
+		}
+	}
 }

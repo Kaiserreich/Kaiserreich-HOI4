@@ -5375,9 +5375,20 @@ characters = {
 			slot = second_in_command
 			idea_token = RUS_isaak_steinberg_sic
 			visible = { has_socialist_government = yes }
-			traits = { KR_head_of_the_romanticists }
+			traits = { KR_head_of_the_romanticists_sic }
 			cost = 0
 			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RUS_isaak_steinberg_advisor
+			desc = RUS_isaak_steinberg_sic_desc
+			available = {
+				RUS_PLSR = yes
+				not_already_hired_except_as = political_advisor
+			}
+			visible = { has_socialist_government = yes }
+			traits = { KR_cooperatives_proponent_steinberg }
 			on_add = {
 				ROOT = {
 					if = {
@@ -5396,17 +5407,6 @@ characters = {
 				set_temp_variable = { RUS_relation_change = -1 }
 				RUS_PSR_relation = yes
 			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = RUS_isaak_steinberg_advisor
-			desc = RUS_isaak_steinberg_sic_desc
-			available = {
-				RUS_PLSR = yes
-				not_already_hired_except_as = political_advisor
-			}
-			visible = { has_socialist_government = yes }
-			traits = { KR_cooperatives_proponent_steinberg }
 		}
 	}
 	RUS_yevgeny_sattel = {
@@ -5458,6 +5458,7 @@ characters = {
 			}
 			visible = { has_socialist_government = yes }
 			traits = { KR_peasant_populist_3 }
+			always_show_on_actions_tooltip = yes
 			on_add = {
 				ROOT = {
 					hidden_effect = {

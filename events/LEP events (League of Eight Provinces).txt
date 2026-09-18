@@ -1589,19 +1589,29 @@ country_event = {
 
 			set_variable = { lep_kmt_unrest_level = 2 }
 			set_variable = { lep_rural_unrest_level = 2 }
-			set_variable = { lep_suppress_kmt_mission_timeout = 70 }
-			set_variable = { lep_suppress_rural_banditry_mission_timeout = 70 }
 
-			set_temp_variable = { lep_kmt_random_delay = random }
-			subtract_from_temp_variable = { lep_kmt_random_delay = -0.5 }
-			multiply_temp_variable = { lep_kmt_random_delay = 15 }
-			add_to_variable = { lep_suppress_kmt_mission_timeout = lep_kmt_random_delay }
+			set_variable = {
+				lep_suppress_kmt_mission_timeout = {
+					value = 70
+					add = {
+						value = random
+						subtract = -0.5
+						multiply = 15
+					}
+				}
+			}
 			activate_mission = LEP_temp_suppress_kmt
 
-			set_temp_variable = { LEP_rural_banditry_random_delay = random }
-			subtract_from_temp_variable = { LEP_rural_banditry_random_delay = -0.5 }
-			multiply_temp_variable = { LEP_rural_banditry_random_delay = 15 }
-			add_to_variable = { lep_suppress_rural_banditry_mission_timeout = LEP_rural_banditry_random_delay }
+			set_variable = {
+				lep_suppress_rural_banditry_mission_timeout = {
+					value = 70
+					add = {
+						value = random
+						subtract = -0.5
+						multiply = 15
+					}
+				}
+			}
 			activate_mission = LEP_temp_suppress_rural_banditry
 
 			LEC = { country_event = { id = legation_cities_events.92 days = 1 random_days = 3 } }

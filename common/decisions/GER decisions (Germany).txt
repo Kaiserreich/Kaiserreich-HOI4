@@ -262,8 +262,13 @@ GER_ruhrkampf_mechanics_category = {
 				country_event = germany_schleicher_events.38
 			}
 			else = {
-				add_to_variable = { GER_ruhrkampf_strength = 10 } # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
+				# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+				add_to_variable = {
+					GER_ruhrkampf_strength = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_ruhrkampf_strength } }
+					}
+				}
 			}
 			activate_mission = GER_ruhrkampf_escalation
 			GER_end_ruhrkampf_if_applicable = yes
@@ -303,22 +308,26 @@ GER_ruhrkampf_mechanics_category = {
 			log = "[GetLogRoot]: Decision complete GER_ruhrkampf_occupy_east_rhineland"
 			add_stability = 0.1
 			add_manpower = -50
-			subtract_from_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 25
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			subtract_from_variable = {
+				GER_ruhrkampf_strength = {
+					value = 25
+					clamp = { min = 0 max = GER_ruhrkampf_strength }
+				}
 				tooltip = GER_ruhrkampf_reduced
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout GER_ruhrkampf_occupy_east_rhineland"
-			add_to_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 15
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			add_to_variable = {
+				GER_ruhrkampf_strength = {
+					value = 15
+					clamp = { min = 0 max = { value = 100 subtract = GER_ruhrkampf_strength } }
+				}
 				tooltip = GER_ruhrkampf_raised
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		fixed_random_seed = no
@@ -383,12 +392,14 @@ GER_ruhrkampf_mechanics_category = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_ruhrkampf_curtail_rote_fahne"
-			subtract_from_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 15
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			subtract_from_variable = {
+				GER_ruhrkampf_strength = {
+					value = 15
+					clamp = { min = 0 max = GER_ruhrkampf_strength }
+				}
 				tooltip = GER_ruhrkampf_reduced
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		fixed_random_seed = no
@@ -417,12 +428,14 @@ GER_ruhrkampf_mechanics_category = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_ruhrkampf_activate_yellow_unions"
-			subtract_from_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 15
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			subtract_from_variable = {
+				GER_ruhrkampf_strength = {
+					value = 15
+					clamp = { min = 0 max = GER_ruhrkampf_strength }
+				}
 				tooltip = GER_ruhrkampf_reduced
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		fixed_random_seed = no
@@ -451,12 +464,14 @@ GER_ruhrkampf_mechanics_category = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_ruhrkampf_establish_curfews"
-			subtract_from_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 15
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			subtract_from_variable = {
+				GER_ruhrkampf_strength = {
+					value = 15
+					clamp = { min = 0 max = GER_ruhrkampf_strength }
+				}
 				tooltip = GER_ruhrkampf_reduced
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		fixed_random_seed = no
@@ -484,12 +499,14 @@ GER_ruhrkampf_mechanics_category = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_ruhrkampf_arrest_activists"
-			subtract_from_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 15
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			subtract_from_variable = {
+				GER_ruhrkampf_strength = {
+					value = 15
+					clamp = { min = 0 max = GER_ruhrkampf_strength }
+				}
 				tooltip = GER_ruhrkampf_reduced
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		fixed_random_seed = no
@@ -517,12 +534,14 @@ GER_ruhrkampf_mechanics_category = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_ruhrkampf_selective_reform"
-			subtract_from_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 15
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			subtract_from_variable = {
+				GER_ruhrkampf_strength = {
+					value = 15
+					clamp = { min = 0 max = GER_ruhrkampf_strength }
+				}
 				tooltip = GER_ruhrkampf_reduced
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		fixed_random_seed = no
@@ -550,12 +569,14 @@ GER_ruhrkampf_mechanics_category = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_ruhrkampf_lapse_on_security"
-			add_to_variable = { # Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
-				var = GER_ruhrkampf_strength
-				value = 15
+			# Measures strength. Need to be 25-75 at the end of each Ruhrkampf turn
+			add_to_variable = {
+				GER_ruhrkampf_strength = {
+					value = 15
+					clamp = { min = 0 max = { value = 100 subtract = GER_ruhrkampf_strength } }
+				}
 				tooltip = GER_ruhrkampf_raised
 			}
-			clamp_variable = { var = GER_ruhrkampf_strength max = 100 min = 0 }
 			GER_end_ruhrkampf_if_applicable = yes
 		}
 		fixed_random_seed = no
@@ -1186,7 +1207,8 @@ foreign_politics = {
 			has_war_with = RUS
 			FROM = { at_peace_or_same_enemies_as_ROOT = yes }
 			FROM = { has_socialist_government = no }
-			FROM = { has_country_leader = { character = AFG_amanullah_khan } }
+			AFG_civil_war_started = yes
+			AFG_civil_war_ongoing = no
 		}
 
 		visible = {
@@ -1201,7 +1223,13 @@ foreign_politics = {
 		cost = 10
 		fire_only_once = yes
 
-		ai_will_do = { base = 100 }
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				second_weltkrieg_has_begun = no
+			}
+		}
 
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete GER_invite_AFG"
@@ -1285,7 +1313,11 @@ foreign_politics = {
 		available = {
 			is_faction_leader = yes
 			OTT_cairo_pact_defeated = yes
-			FROM = { is_monarchy = yes }
+			FROM = {
+				is_monarchy = yes
+				at_peace_or_same_enemies_as_ROOT = yes
+			}
+			OTT_russo_ottoman_convention_signed = no
 			OR = {
 				has_guaranteed = AZR
 				is_in_faction_with = AZR
@@ -1293,11 +1325,12 @@ foreign_politics = {
 		}
 
 		visible = {
+			OTT_ottomans_defeated = no
 			FROM = {
-				exists = yes
 				is_in_faction = no
-				is_subject = no
 				NOT = { has_war_with = ROOT }
+				has_socialist_government = no
+				NOT = { has_completed_focus = OTT_Incorporate_Kadroist_Movement }
 			}
 		}
 
@@ -3748,7 +3781,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_money_issuance_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_money_issuance_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_money_issuance_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -3782,7 +3815,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_capital_controls_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_capital_controls_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_capital_controls_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -3816,7 +3849,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_employment_programme_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_employment_programme_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_employment_programme_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -3834,10 +3867,8 @@ GER_black_monday_category = {
 			base = 100
 			modifier = {
 				factor = 0
-				AND = {
-					check_variable = { GER_investment > GER_stagnation }
-					check_variable = { GER_stability > GER_economic_decline }
-				}
+				check_variable = { GER_investment > GER_stagnation }
+				check_variable = { GER_stability > GER_economic_decline }
 			}
 		}
 
@@ -3845,7 +3876,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_cooperation_business_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_cooperation_business_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_cooperation_business_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -3863,10 +3894,8 @@ GER_black_monday_category = {
 			base = 100
 			modifier = {
 				factor = 0
-				AND = {
-					check_variable = { GER_investment > GER_stagnation }
-					check_variable = { GER_stability > GER_economic_decline }
-				}
+				check_variable = { GER_investment > GER_stagnation }
+				check_variable = { GER_stability > GER_economic_decline }
 			}
 		}
 
@@ -3874,7 +3903,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_reichsbank_analysis_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_reichsbank_analysis_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_reichsbank_analysis_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -3906,16 +3935,14 @@ GER_black_monday_category = {
 			}
 			modifier = {
 				factor = 0
-				AND = {
-					check_variable = { GER_investment > GER_stagnation }
-					check_variable = { GER_stability > GER_economic_decline }
-				}
+				check_variable = { GER_investment > GER_stagnation }
+				check_variable = { GER_stability > GER_economic_decline }
 			}
 		}
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_fireside_chat_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_fireside_chat_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_fireside_chat_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -3935,16 +3962,14 @@ GER_black_monday_category = {
 			base = 100
 			modifier = {
 				factor = 0
-				AND = {
-					check_variable = { GER_investment > GER_stagnation }
-					check_variable = { GER_stability > GER_economic_decline }
-				}
+				check_variable = { GER_investment > GER_stagnation }
+				check_variable = { GER_stability > GER_economic_decline }
 			}
 		}
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_eastern_assistance_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_eastern_assistance_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_eastern_assistance_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -3964,7 +3989,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_price_monitoring_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_price_monitoring_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_price_monitoring_object }
 			GER_bm_cardgame_effects_apply = yes
 
 			custom_effect_tooltip = tooltip_white_line
@@ -3992,7 +4017,7 @@ GER_black_monday_category = {
 
 			GER_economic_planning_card_begin_counting = yes
 
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_institutional_public_works_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_institutional_public_works_object }
 			GER_bm_cardgame_effects_apply = yes
 
 			custom_effect_tooltip = tooltip_white_line
@@ -4045,7 +4070,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_economic_planning_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_economic_planning_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_economic_planning_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4066,7 +4091,7 @@ GER_black_monday_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_federal_income_taxes_decision"
 			set_country_flag = GER_federal_income_taxes_played # to be updated later.
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_federal_income_taxes_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_federal_income_taxes_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4086,7 +4111,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_rathenauplan_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_rathenauplan_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_rathenauplan_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4105,7 +4130,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_tbplan_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_tbplan_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_tbplan_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4139,7 +4164,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_arbeitsdienst_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_arbeitsdienst_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_arbeitsdienst_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4173,7 +4198,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_land_improvement_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_land_improvement_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_land_improvement_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4193,7 +4218,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_corporate_assistance_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_corporate_assistance_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_corporate_assistance_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4227,7 +4252,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_import_tariffs_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_import_tariffs_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_import_tariffs_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4261,7 +4286,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_mitteleuropa_loans_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_mitteleuropa_loans_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_mitteleuropa_loans_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4287,7 +4312,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_administrative_reform_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_administrative_reform_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_administrative_reform_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4313,7 +4338,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_nationalisation_of_foreign_companies_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_nationalisation_of_foreign_companies_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_nationalisation_of_foreign_companies_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4329,7 +4354,6 @@ GER_black_monday_category = {
 
 		fixed_random_seed = no
 
-		ai_will_do = { factor = 50 }
 		ai_will_do = {
 			base = 0
 			modifier = {
@@ -4344,7 +4368,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_trade_union_collaboration_decision"
-			set_temp_variable = { GER_card_played = GER_bm_trade_union_collaboration_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_trade_union_collaboration_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4378,7 +4402,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_strategic_tax_hikes_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_strategic_tax_hikes_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_strategic_tax_hikes_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4412,7 +4436,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_price_depression_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_price_depression_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_price_depression_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4446,7 +4470,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_money_issuance_large_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_money_issuance_large_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_money_issuance_large_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4479,7 +4503,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_fiscal_austerity_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_fiscal_austerity_object }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_fiscal_austerity_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -4498,8 +4522,7 @@ GER_black_monday_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_bm_cardgame_technocratic_thinking_decision"
-			set_temp_variable = { GER_card_played = GER_bm_cardgame_technocratic_thinking_object }
-			set_temp_variable = { extra_lines_for_tt = 1 }
+			set_temp_variable = { GER_black_monday_card = GER_bm_cardgame_technocratic_thinking_object }
 			GER_bm_cardgame_effects_apply = yes
 		}
 	}
@@ -6475,11 +6498,7 @@ GER_1936_election_category = {
 			else = {
 				subtract_from_variable = { GER_LVP_seats = 1 }
 			}
-			add_to_variable = {
-				var = GER_SPD_seats
-				value = 5
-				tooltip = GER_SPD_gain
-			}
+			add_to_variable = { GER_SPD_seats = 5 tooltip = GER_SPD_gain }
 		}
 		fixed_random_seed = no
 	}
@@ -6513,11 +6532,7 @@ GER_1936_election_category = {
 			else = {
 				subtract_from_variable = { GER_LVP_seats = 1 }
 			}
-			add_to_variable = {
-				var = GER_farleft_seats
-				value = 2
-				tooltip = GER_farleft_gain
-			}
+			add_to_variable = { GER_farleft_seats = 2 tooltip = GER_farleft_gain }
 
 			subtract_from_variable = { GER_DVLP_seats = 1 }
 			if = {
@@ -6529,11 +6544,7 @@ GER_1936_election_category = {
 			else = {
 				subtract_from_variable = { GER_DVLP_seats = 1 }
 			}
-			add_to_variable = {
-				var = GER_SPD_seats
-				value = 2
-				tooltip = GER_SPD_gain
-			}
+			add_to_variable = { GER_SPD_seats = 2 tooltip = GER_SPD_gain }
 		}
 		fixed_random_seed = no
 	}
@@ -6577,11 +6588,7 @@ GER_1936_election_category = {
 			else = {
 				subtract_from_variable = { GER_Zentrum_seats = 1 }
 			}
-			add_to_variable = {
-				var = GER_LVP_seats
-				value = 4
-				tooltip = GER_LVP_gain
-			}
+			add_to_variable = { GER_LVP_seats = 4 tooltip = GER_LVP_gain }
 
 			subtract_from_variable = { GER_DVLP_seats = 1 }
 			add_to_variable = { GER_SPD_seats = 1 }
@@ -6637,11 +6644,7 @@ GER_1936_election_category = {
 			custom_effect_tooltip = GER_Welfen_1_gain
 
 			subtract_from_variable = { GER_DkP_seats = 2 }
-			add_to_variable = {
-				var = GER_polish_seats
-				value = 2
-				tooltip = GER_Polish_gain
-			}
+			add_to_variable = { GER_polish_seats = 2 tooltip = GER_Polish_gain }
 
 			subtract_from_variable = { GER_DkP_seats = 1 }
 			add_to_variable = { GER_SPD_seats = 1 }
@@ -6689,11 +6692,7 @@ GER_1936_election_category = {
 			else = {
 				subtract_from_variable = { GER_LVP_seats = 1 }
 			}
-			add_to_variable = {
-				var = GER_Zentrum_seats
-				value = 4
-				tooltip = GER_Zentrum_gain
-			}
+			add_to_variable = { GER_Zentrum_seats = 4 tooltip = GER_Zentrum_gain }
 
 			subtract_from_variable = { GER_DkP_seats = 1 }
 			add_to_variable = { GER_SPD_seats = 1 }
@@ -6732,11 +6731,7 @@ GER_1936_election_category = {
 			else = {
 				subtract_from_variable = { GER_LVP_seats = 1 }
 			}
-			add_to_variable = {
-				var = GER_DVLP_seats
-				value = 5
-				tooltip = GER_DVLP_gain
-			}
+			add_to_variable = { GER_DVLP_seats = 5 tooltip = GER_DVLP_gain }
 		}
 		fixed_random_seed = no
 	}
@@ -6771,11 +6766,7 @@ GER_1936_election_category = {
 			}
 			subtract_from_variable = { GER_LVP_seats = 1 }
 			subtract_from_variable = { GER_SPD_seats = 1 }
-			add_to_variable = {
-				var = GER_DkP_seats
-				value = 3
-				tooltip = GER_DkP_gain
-			}
+			add_to_variable = { GER_DkP_seats = 3 tooltip = GER_DkP_gain }
 
 			if = {
 				limit = {
@@ -6787,11 +6778,7 @@ GER_1936_election_category = {
 				subtract_from_variable = { GER_Zentrum_seats = 1 }
 			}
 			subtract_from_variable = { GER_Zentrum_seats = 1 }
-			add_to_variable = {
-				var = GER_DVLP_seats
-				value = 2
-				tooltip = GER_DVLP_gain
-			}
+			add_to_variable = { GER_DVLP_seats = 2 tooltip = GER_DVLP_gain }
 		}
 		fixed_random_seed = no
 	}
@@ -6825,11 +6812,7 @@ GER_1936_election_category = {
 				subtract_from_variable = { GER_LVP_seats = 1 }
 			}
 			subtract_from_variable = { GER_SPD_seats = 1 }
-			add_to_variable = {
-				var = GER_Zentrum_seats
-				value = 2
-				tooltip = GER_Zentrum_gain
-			}
+			add_to_variable = { GER_Zentrum_seats = 2 tooltip = GER_Zentrum_gain }
 
 			subtract_from_variable = { GER_SPD_seats = 1 }
 			add_to_variable = { GER_agrarian_seats = 1 }
@@ -6845,11 +6828,7 @@ GER_1936_election_category = {
 				subtract_from_variable = { GER_SPD_seats = 1 }
 			}
 			subtract_from_variable = { GER_LVP_seats = 1 }
-			add_to_variable = {
-				var = GER_DVLP_seats
-				value = 2
-				tooltip = GER_DVLP_gain
-			}
+			add_to_variable = { GER_DVLP_seats = 2 tooltip = GER_DVLP_gain }
 		}
 		fixed_random_seed = no
 	}
@@ -6875,18 +6854,10 @@ GER_1936_election_category = {
 
 			subtract_from_variable = { GER_SPD_seats = 1 }
 			subtract_from_variable = { GER_LVP_seats = 2 }
-			add_to_variable = {
-				var = GER_liberal_seats
-				value = 3
-				tooltip = GER_liberal_gain
-			}
+			add_to_variable = { GER_liberal_seats = 3 tooltip = GER_liberal_gain }
 
 			subtract_from_variable = { GER_SPD_seats = 2 }
-			add_to_variable = {
-				var = GER_DVLP_seats
-				value = 2
-				tooltip = GER_DVLP_gain
-			}
+			add_to_variable = { GER_DVLP_seats = 2 tooltip = GER_DVLP_gain }
 		}
 		fixed_random_seed = no
 	}
@@ -6924,18 +6895,10 @@ GER_1936_election_category = {
 				subtract_from_variable = { GER_SPD_seats = 1 }
 			}
 			subtract_from_variable = { GER_SPD_seats = 1 }
-			add_to_variable = {
-				var = GER_farright_seats
-				value = 2
-				tooltip = GER_farright_gain
-			}
+			add_to_variable = { GER_farright_seats = 2 tooltip = GER_farright_gain }
 
 			subtract_from_variable = { GER_SPD_seats = 2 }
-			add_to_variable = {
-				var = GER_DVLP_seats
-				value = 2
-				tooltip = GER_DVLP_gain
-			}
+			add_to_variable = { GER_DVLP_seats = 2 tooltip = GER_DVLP_gain }
 		}
 		fixed_random_seed = no
 	}
@@ -7173,7 +7136,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7209,7 +7172,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7246,7 +7209,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7300,7 +7263,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7336,7 +7299,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7373,7 +7336,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7409,7 +7372,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7446,7 +7409,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7494,7 +7457,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7530,7 +7493,7 @@ GER_schleicher_agrarian_decisions = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 3
+				factor = 25
 				OR = {
 					has_idea = GER_agrarian_1
 					has_idea = GER_agrarian_2
@@ -7581,7 +7544,7 @@ GER_conservative_revolution_mechanics_category = {
 								check_expr = { # DVLP_percents
 									value = GER_DVLP_seats_hug
 									divide = GER_DVLP_seats # Find % of Hugenberg supporters in DVLP Reichstag
-									less_than = { value = 0.5 }
+									less_than = 0.5
 								}
 							}
 							AND = {
@@ -7589,7 +7552,7 @@ GER_conservative_revolution_mechanics_category = {
 								check_expr = { # DVLP_percents
 									value = GER_DVLP_seats_hug
 									divide = GER_DVLP_seats # Find % of Hugenberg supporters in DVLP Reichstag
-									less_than = { value = 0.25 } # If rift is high, Hugenberg is more likely to split
+									less_than = 0.25 # If rift is high, Hugenberg is more likely to split
 								}
 							}
 						}
@@ -7602,7 +7565,7 @@ GER_conservative_revolution_mechanics_category = {
 						check_expr = { # DVLP_percents
 							value = GER_DVLP_seats_hug
 							divide = GER_DVLP_seats # Find % of Hugenberg supporters in DVLP Reichstag
-							greater_than = { value = 0.5 }
+							greater_than = 0.5
 						}
 					}
 					country_event = germany_swr_events.31
@@ -7635,23 +7598,35 @@ GER_conservative_revolution_mechanics_category = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout GER_DVLP_hugenberg_alignment"
 			if = {
-				limit = {
-					NOT = {
-						has_country_flag = GER_defended_from_hugenberg
+				limit = { NOT = { has_country_flag = GER_defended_from_hugenberg } }
+				add_to_variable = {
+					GER_DVLP_seats_hug = {
+						value = 3
+						clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_hug } }
 					}
 				}
-				add_to_variable = { GER_DVLP_seats_hug = 3 }
-				clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
-				subtract_from_variable = { GER_DVLP_seats_has = 3 }
-				clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
+				add_to_variable = {
+					GER_DVLP_seats_has = {
+						value = -3
+						clamp = { min = { value = GER_DVLP_seats_has multiply = -1 } max = 0 }
+					}
+				}
 				custom_effect_tooltip = GER_strengthens_hugenberg_tt
 			}
 			else = {
 				clr_country_flag = GER_defended_from_hugenberg
-				add_to_variable = { GER_DVLP_seats_has = 2 }
-				clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
-				subtract_from_variable = { GER_DVLP_seats_hug = 2 }
-				clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
+				add_to_variable = {
+					GER_DVLP_seats_has = {
+						value = 2
+						clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_has } }
+					}
+				}
+				add_to_variable = {
+					GER_DVLP_seats_hug = {
+						value = -2
+						clamp = { min = { value = GER_DVLP_seats_hug multiply = -1 } max = 0 }
+					}
+				}
 				custom_effect_tooltip = GER_not_strengthens_hugenberg_tt
 			}
 			activate_mission = GER_DVLP_hugenberg_alignment
@@ -7741,10 +7716,18 @@ GER_conservative_revolution_mechanics_category = {
 
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout GER_DVLP_schlange_schoningen_alignment"
-			add_to_variable = { GER_DVLP_seats_hug = 4 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_has = 4 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = 4
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_hug } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = -4
+					clamp = { min = { value = GER_DVLP_seats_has multiply = -1 } max = 0 }
+				}
+			}
 			custom_effect_tooltip = GER_strengthens_hugenberg_tt
 			add_to_variable = { GER_hugenberg_faction_rift = 5 }
 			custom_effect_tooltip = GER_hugenberg_faction_add_rift_tt
@@ -7770,10 +7753,18 @@ GER_conservative_revolution_mechanics_category = {
 
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout GER_DVLP_schmidt_alignment"
-			add_to_variable = { GER_DVLP_seats_hug = 6 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_has = 6 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = 6
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_hug } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = -6
+					clamp = { min = { value = GER_DVLP_seats_has multiply = -1 } max = 0 }
+				}
+			}
 			custom_effect_tooltip = GER_strengthens_hugenberg_tt
 		}
 		fixed_random_seed = no
@@ -7797,10 +7788,18 @@ GER_conservative_revolution_mechanics_category = {
 
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout GER_DVLP_levetzow_alignment"
-			add_to_variable = { GER_DVLP_seats_hug = 6 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_has = 6 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = 6
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_hug } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = -6
+					clamp = { min = { value = GER_DVLP_seats_has multiply = -1 } max = 0 }
+				}
+			}
 			custom_effect_tooltip = GER_strengthens_hugenberg_tt
 		}
 		fixed_random_seed = no
@@ -7824,10 +7823,18 @@ GER_conservative_revolution_mechanics_category = {
 
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout GER_DVLP_trotha_alignment"
-			add_to_variable = { GER_DVLP_seats_hug = 7 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_has = 7 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = 7
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_hug } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = -7
+					clamp = { min = { value = GER_DVLP_seats_has multiply = -1 } max = 0 }
+				}
+			}
 			custom_effect_tooltip = GER_strengthens_hugenberg_tt
 			add_to_variable = { GER_hugenberg_faction_rift = 10 }
 			custom_effect_tooltip = GER_hugenberg_faction_add_rift_tt
@@ -7872,10 +7879,18 @@ GER_conservative_revolution_mechanics_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_hugenberg_der_nahe_osten"
-			add_to_variable = { GER_DVLP_seats_has = 4 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_hug = 4 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = 4
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_has } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = -4
+					clamp = { min = { value = GER_DVLP_seats_hug multiply = -1 } max = 0 }
+				}
+			}
 			custom_effect_tooltip = GER_weakens_hugenberg_tt
 			add_to_variable = { GER_hugenberg_faction_rift = 10 }
 			custom_effect_tooltip = GER_hugenberg_faction_add_rift_tt
@@ -7899,10 +7914,18 @@ GER_conservative_revolution_mechanics_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_hugenberg_joint_committee"
-			add_to_variable = { GER_DVLP_seats_has = 5 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_hug = 5 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = 5
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_has } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = -5
+					clamp = { min = { value = GER_DVLP_seats_hug multiply = -1 } max = 0 }
+				}
+			}
 			custom_effect_tooltip = GER_weakens_hugenberg_tt
 			add_political_power = 50
 		}
@@ -7969,10 +7992,18 @@ GER_conservative_revolution_mechanics_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_hugenberg_defend_schmidt"
 			remove_mission = GER_DVLP_schmidt_alignment
-			add_to_variable = { GER_DVLP_seats_has = 2 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_hug = 2 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = 2
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_has } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = -2
+					clamp = { min = { value = GER_DVLP_seats_hug multiply = -1 } max = 0 }
+				}
+			}
 			custom_effect_tooltip = GER_weakens_hugenberg_tt
 		}
 		fixed_random_seed = no
@@ -7995,10 +8026,18 @@ GER_conservative_revolution_mechanics_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_hugenberg_defend_levetzow"
 			remove_mission = GER_DVLP_levetzow_alignment
-			add_to_variable = { GER_DVLP_seats_has = 2 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_hug = 2 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = 2
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_has } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = -2
+					clamp = { min = { value = GER_DVLP_seats_hug multiply = -1 } max = 0 }
+				}
+			}
 			custom_effect_tooltip = GER_weakens_hugenberg_tt
 		}
 		fixed_random_seed = no
@@ -8021,10 +8060,18 @@ GER_conservative_revolution_mechanics_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_hugenberg_defend_trotha"
 			remove_mission = GER_DVLP_trotha_alignment
-			add_to_variable = { GER_DVLP_seats_has = 2 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_hug = 2 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = 2
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_has } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = -2
+					clamp = { min = { value = GER_DVLP_seats_hug multiply = -1 } max = 0 }
+				}
+			}
 			custom_effect_tooltip = GER_weakens_hugenberg_tt
 		}
 		fixed_random_seed = no
@@ -8040,8 +8087,11 @@ GER_conservative_revolution_mechanics_category = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 5
-				has_country_flag = GER_hugenberg_ai
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
 			}
 		}
 
@@ -8085,8 +8135,11 @@ GER_conservative_revolution_mechanics_category = {
 		ai_will_do = {
 			base = 200
 			modifier = {
-				factor = 5
-				has_country_flag = GER_hugenberg_ai
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
 			}
 		}
 
@@ -8119,7 +8172,7 @@ GER_conservative_revolution_mechanics_category = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 500
+				add = 2500
 				has_active_mission = GER_DVLP_emergency_conference
 			}
 		}
@@ -8156,6 +8209,13 @@ GER_conservative_revolution_mechanics_category = {
 				factor = 0
 				has_country_flag = GER_hugenberg_ai
 			}
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
+			}
 		}
 
 		complete_effect = {
@@ -8189,6 +8249,13 @@ GER_conservative_revolution_mechanics_category = {
 				factor = 0
 				has_country_flag = GER_hugenberg_ai
 			}
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
+			}
 		}
 
 		complete_effect = {
@@ -8216,7 +8283,16 @@ GER_conservative_revolution_mechanics_category = {
 		fire_only_once = yes
 		cost = 25
 
-		ai_will_do = { base = 200 }
+		ai_will_do = {
+			base = 200
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
+			}
+		}
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_luninck_esplanade_circle"
@@ -8242,7 +8318,16 @@ GER_conservative_revolution_mechanics_category = {
 		fire_only_once = yes
 		days_remove = 30
 
-		ai_will_do = { base = 200 }
+		ai_will_do = {
+			base = 200
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
+			}
+		}
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_luninck_seize_farmers_association"
@@ -8277,7 +8362,16 @@ GER_conservative_revolution_mechanics_category = {
 		fire_only_once = yes
 		cost = 25
 
-		ai_will_do = { base = 200 }
+		ai_will_do = {
+			base = 200
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
+			}
+		}
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_luninck_east_elbia"
@@ -8321,7 +8415,16 @@ GER_conservative_revolution_mechanics_category = {
 		fire_only_once = yes
 		cost = 25
 
-		ai_will_do = { base = 200 }
+		ai_will_do = {
+			base = 200
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
+			}
+		}
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_luninck_agricultural_trade_restriction"
@@ -8347,7 +8450,16 @@ GER_conservative_revolution_mechanics_category = {
 		fire_only_once = yes
 		cost = 25
 
-		ai_will_do = { base = 200 }
+		ai_will_do = {
+			base = 200
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
+			}
+		}
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_luninck_endorse_cooperative_banking"
@@ -8380,10 +8492,18 @@ GER_conservative_revolution_mechanics_category = {
 			log = "[GetLogRoot]: Decision remove GER_hugenberg_import_tariffs_controls"
 			add_political_power = 25
 			add_stability = 0.1
-			add_to_variable = { GER_DVLP_seats_hug = 5 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_has = 5 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = 5
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_hug } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = -5
+					clamp = { min = { value = GER_DVLP_seats_has multiply = -1 } max = 0 }
+				}
+			}
 			every_other_country = {
 				limit = {
 					OR = {
@@ -8415,10 +8535,18 @@ GER_conservative_revolution_mechanics_category = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_hugenberg_welfare_strike"
 			add_political_power = 100
-			add_to_variable = { GER_DVLP_seats_hug = 5 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_has = 5 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = 5
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_hug } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = -5
+					clamp = { min = { value = GER_DVLP_seats_has multiply = -1 } max = 0 }
+				}
+			}
 			add_to_variable = { GER_hugenberg_faction_rift = 10 }
 			if = {
 				limit = {
@@ -8443,10 +8571,18 @@ GER_conservative_revolution_mechanics_category = {
 			log = "[GetLogRoot]: Decision remove GER_hugenberg_economic_deregulation"
 			add_one_random_civilian_factory = yes
 			add_one_random_civilian_factory = yes
-			add_to_variable = { GER_DVLP_seats_hug = 5 }
-			clamp_variable = { var = GER_DVLP_seats_hug max = var:GER_DVLP_seats min = 0 }
-			subtract_from_variable = { GER_DVLP_seats_has = 5 }
-			clamp_variable = { var = GER_DVLP_seats_has max = var:GER_DVLP_seats min = 0 }
+			add_to_variable = {
+				GER_DVLP_seats_hug = {
+					value = 5
+					clamp = { min = 0 max = { value = GER_DVLP_seats subtract = GER_DVLP_seats_hug } }
+				}
+			}
+			add_to_variable = {
+				GER_DVLP_seats_has = {
+					value = -5
+					clamp = { min = { value = GER_DVLP_seats_has multiply = -1 } max = 0 }
+				}
+			}
 			if = {
 				limit = {
 					has_country_flag = GER_hugenberg_mechanics_begin
@@ -9115,71 +9251,75 @@ GER_democratic_union_mechanics_category = {
 					check_variable = { GER_LVP_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_LVP_loyalty
-					value = 5
+					GER_LVP_loyalty = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = GER_LVP_loyalty } }
+					}
 					tooltip = GER_LVP_loyalty_gain
 				}
-				clamp_variable = { var = GER_LVP_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
 					check_variable = { GER_Z_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_Z_loyalty
-					value = 5
+					GER_Z_loyalty = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = GER_Z_loyalty } }
+					}
 					tooltip = GER_Z_loyalty_gain
 				}
-				clamp_variable = { var = GER_Z_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
 					check_variable = { GER_Agrarian_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_Agrarian_loyalty
-					value = 5
+					GER_Agrarian_loyalty = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = GER_Agrarian_loyalty } }
+					}
 					tooltip = GER_Agrarian_loyalty_gain
 				}
-				clamp_variable = { var = GER_Agrarian_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
 					check_variable = { GER_Polish_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_Polish_loyalty
-					value = 5
+					GER_Polish_loyalty = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = GER_Polish_loyalty } }
+					}
 					tooltip = GER_Polish_loyalty_gain
 				}
-				clamp_variable = { var = GER_Polish_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
 					check_variable = { GER_Left_SPD_loyalty > 0 }
 				}
 				add_to_variable = {
-					var = GER_Left_SPD_loyalty
-					value = 5
+					GER_Left_SPD_loyalty = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = GER_Left_SPD_loyalty } }
+					}
 					tooltip = GER_Left_SPD_loyalty_gain
 				}
-				clamp_variable = { var = GER_Left_SPD_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
 					has_dynamic_modifier = { modifier = GER_Government_Paralysis }
 				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = GER_paralysis_base
-						add_idea = GER_paralysis_reduce_5
-					}
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = GER_Government_Paralysis
 				}
-				add_to_variable = { GER_government_paralysis_factor = 0.05 }
-				clamp_variable = {
-					var = GER_government_paralysis_factor
-					max = 0
-					min = -1
+				add_to_variable = {
+					GER_government_paralysis_factor = {
+						value = 0.05
+						clamp = { min = 0 max = { value = GER_government_paralysis_factor multiply = -1 } }
+					}
+					tooltip = political_power_factor_tooltip
 				}
 				if = {
 					limit = {
@@ -9193,20 +9333,17 @@ GER_democratic_union_mechanics_category = {
 			log = "[GetLogRoot]: Decision timeout GER_SPD_demand_civil_service_reform"
 			add_political_power = -25
 			if = {
-				limit = {
-					has_dynamic_modifier = { modifier = GER_Government_Paralysis }
+				limit = { has_dynamic_modifier = { modifier = GER_Government_Paralysis } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = GER_Government_Paralysis
 				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = GER_paralysis_reduce_10
-						add_idea = GER_paralysis_base
+				add_to_variable = {
+					GER_government_paralysis_factor = {
+						value = -0.1
+						clamp = { min = { value = -1 subtract = GER_government_paralysis_factor } max = 0 }
 					}
-				}
-				add_to_variable = { GER_government_paralysis_factor = -0.1 }
-				clamp_variable = {
-					var = GER_government_paralysis_factor
-					max = 0
-					min = -1
+					tooltip = political_power_factor_tooltip
 				}
 			}
 			if = {
@@ -9248,17 +9385,16 @@ GER_democratic_union_mechanics_category = {
 				limit = {
 					has_dynamic_modifier = { modifier = GER_Government_Paralysis }
 				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = GER_paralysis_reduce_10
-						add_idea = GER_paralysis_base
-					}
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = GER_Government_Paralysis
 				}
-				add_to_variable = { GER_government_paralysis_factor = -0.1 }
-				clamp_variable = {
-					var = GER_government_paralysis_factor
-					max = 0
-					min = -1
+				add_to_variable = {
+					GER_government_paralysis_factor = {
+						value = -0.1
+						clamp = { min = { value = -1 subtract = GER_government_paralysis_factor } max = 0 }
+					}
+					tooltip = political_power_factor_tooltip
 				}
 			}
 			if = {
@@ -9333,20 +9469,17 @@ GER_democratic_union_mechanics_category = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout GER_brunswick_front_activity"
 			if = {
-				limit = {
-					has_dynamic_modifier = { modifier = GER_Government_Paralysis }
+				limit = { has_dynamic_modifier = { modifier = GER_Government_Paralysis } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = GER_Government_Paralysis
 				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = GER_paralysis_reduce_5
-						add_idea = GER_paralysis_base
+				add_to_variable = {
+					GER_government_paralysis_factor = {
+						value = -0.05
+						clamp = { min = { value = -1 subtract = GER_government_paralysis_factor } max = 0 }
 					}
-				}
-				add_to_variable = { GER_government_paralysis_factor = -0.05 }
-				clamp_variable = {
-					var = GER_government_paralysis_factor
-					max = 0
-					min = -1
+					tooltip = political_power_factor_tooltip
 				}
 			}
 			if = {
@@ -9372,11 +9505,12 @@ GER_democratic_union_mechanics_category = {
 				}
 				custom_effect_tooltip = GER_papen_active_brunswick_tt
 				subtract_from_variable = {
-					var = GER_Z_loyalty
-					value = 10
+					GER_Z_loyalty = {
+						value = 10
+						clamp = { min = 0 max = GER_Z_loyalty }
+					}
 					tooltip = GER_Z_loyalty_loss
 				}
-				clamp_variable = { var = GER_Z_loyalty min = 0 max = 100 }
 				if = {
 					limit = {
 						check_variable = { GER_Z_loyalty < 1 }
@@ -9395,8 +9529,7 @@ GER_democratic_union_mechanics_category = {
 			hidden_effect = {
 				add_political_power = -25
 			}
-			set_variable = { GER_Brunswick_Front_timeout = days_mission_timeout@GER_brunswick_front_activity }
-			add_to_variable = { var = GER_Brunswick_Front_timeout value = 10 }
+			set_variable = { GER_Brunswick_Front_timeout = { value = days_mission_timeout@GER_brunswick_front_activity add = 10 } }
 		}
 		fixed_random_seed = no
 	}
@@ -9422,17 +9555,16 @@ GER_democratic_union_mechanics_category = {
 						has_active_mission = GER_brunswick_front_activity
 					}
 				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = GER_paralysis_base
-						add_idea = GER_paralysis_reduce_5
-					}
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = GER_Government_Paralysis
 				}
-				add_to_variable = { GER_government_paralysis_factor = 0.05 }
-				clamp_variable = {
-					var = GER_government_paralysis_factor
-					max = 0
-					min = -1
+				add_to_variable = {
+					GER_government_paralysis_factor = {
+						value = 0.05
+						clamp = { min = 0 max = { value = GER_government_paralysis_factor multiply = -1 } }
+					}
+					tooltip = political_power_factor_tooltip
 				}
 				if = {
 					limit = {
@@ -9440,8 +9572,7 @@ GER_democratic_union_mechanics_category = {
 					}
 					country_event = germany_spd_events.69
 				}
-				add_to_variable = { GER_iron_front_organisation = -10 }
-				custom_effect_tooltip = GER_iron_front_organisation_reduce_tt
+				subtract_from_variable = { GER_iron_front_organisation = 10 tooltip = GER_iron_front_organisation_reduce_tt }
 			}
 			else_if = {
 				limit = {
@@ -9838,13 +9969,13 @@ GER_democratic_union_mechanics_category = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_SPD_iron_front_push_out_civil_servants"
-			add_to_variable = { GER_iron_front_organisation = 20 }
-			clamp_variable = {
-				var = GER_iron_front_organisation
-				max = 100
-				min = 0
+			add_to_variable = {
+				GER_iron_front_organisation = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_iron_front_organisation } }
+				}
+				tooltip = GER_iron_front_organisation_raise_tt
 			}
-			custom_effect_tooltip = GER_iron_front_organisation_raise_tt
 			custom_effect_tooltip = GER_decision_reenable_20_days_tt
 		}
 		fixed_random_seed = no
@@ -9874,13 +10005,13 @@ GER_democratic_union_mechanics_category = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_SPD_iron_front_fight_reactionary_cartel_influence"
-			add_to_variable = { GER_iron_front_organisation = 20 }
-			clamp_variable = {
-				var = GER_iron_front_organisation
-				max = 100
-				min = 0
+			add_to_variable = {
+				GER_iron_front_organisation = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_iron_front_organisation } }
+				}
+				tooltip = GER_iron_front_organisation_raise_tt
 			}
-			custom_effect_tooltip = GER_iron_front_organisation_raise_tt
 			custom_effect_tooltip = GER_decision_reenable_20_days_tt
 		}
 		fixed_random_seed = no
@@ -9917,13 +10048,13 @@ GER_democratic_union_mechanics_category = {
 			hidden_effect = {
 				add_stability = -0.02
 			}
-			add_to_variable = { GER_iron_front_organisation = 20 }
-			clamp_variable = {
-				var = GER_iron_front_organisation
-				max = 100
-				min = 0
+			add_to_variable = {
+				GER_iron_front_organisation = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_iron_front_organisation } }
+				}
+				tooltip = GER_iron_front_organisation_raise_tt
 			}
-			custom_effect_tooltip = GER_iron_front_organisation_raise_tt
 			custom_effect_tooltip = GER_decision_reenable_20_days_tt
 		}
 		fixed_random_seed = no
@@ -9949,13 +10080,13 @@ GER_democratic_union_mechanics_category = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GER_SPD_iron_front_counter_propaganda"
-			add_to_variable = { GER_iron_front_organisation = 20 }
-			clamp_variable = {
-				var = GER_iron_front_organisation
-				max = 100
-				min = 0
+			add_to_variable = {
+				GER_iron_front_organisation = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_iron_front_organisation } }
+				}
+				tooltip = GER_iron_front_organisation_raise_tt
 			}
-			custom_effect_tooltip = GER_iron_front_organisation_raise_tt
 			custom_effect_tooltip = GER_decision_reenable_20_days_tt
 		}
 		fixed_random_seed = no
@@ -10070,17 +10201,16 @@ GER_democratic_union_mechanics_category = {
 				limit = {
 					has_dynamic_modifier = { modifier = GER_Government_Paralysis }
 				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = GER_paralysis_base
-						add_idea = GER_paralysis_reduce_10
-					}
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = GER_Government_Paralysis
 				}
-				add_to_variable = { GER_government_paralysis_factor = 0.1 }
-				clamp_variable = {
-					var = GER_government_paralysis_factor
-					max = 0
-					min = -1
+				add_to_variable = {
+					GER_government_paralysis_factor = {
+						value = 0.1
+						clamp = { min = 0 max = { value = GER_government_paralysis_factor multiply = -1 } }
+					}
+					tooltip = political_power_factor_tooltip
 				}
 				if = {
 					limit = {
@@ -10105,7 +10235,7 @@ GER_democratic_union_mechanics_category = {
 		cost = 40
 
 		ai_will_do = {
-			base = 100
+			base = 200
 			modifier = {
 				factor = 5
 				has_country_flag = GER_agrarians_in_coalition
@@ -10113,6 +10243,13 @@ GER_democratic_union_mechanics_category = {
 			modifier = {
 				factor = 0
 				has_active_mission = GER_brunswick_front_activity
+			}
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
 			}
 		}
 
@@ -10125,11 +10262,12 @@ GER_democratic_union_mechanics_category = {
 					has_country_flag = GER_agrarians_in_coalition
 				}
 				add_to_variable = {
-					var = GER_Agrarian_loyalty
-					value = 10
+					GER_Agrarian_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_Agrarian_loyalty } }
+					}
 					tooltip = GER_Agrarian_loyalty_gain
 				}
-				clamp_variable = { var = GER_Agrarian_loyalty max = 100 min = 0 }
 			}
 			if = {
 				limit = {
@@ -10159,7 +10297,7 @@ GER_democratic_union_mechanics_category = {
 		cost = 40
 
 		ai_will_do = {
-			base = 100
+			base = 200
 			modifier = {
 				factor = 5
 				has_country_flag = GER_agrarians_in_coalition
@@ -10167,6 +10305,13 @@ GER_democratic_union_mechanics_category = {
 			modifier = {
 				factor = 0
 				has_active_mission = GER_brunswick_front_activity
+			}
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
 			}
 		}
 
@@ -10190,11 +10335,12 @@ GER_democratic_union_mechanics_category = {
 					has_country_flag = GER_agrarians_in_coalition
 				}
 				add_to_variable = {
-					var = GER_Agrarian_loyalty
-					value = 10
+					GER_Agrarian_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_Agrarian_loyalty } }
+					}
 					tooltip = GER_Agrarian_loyalty_gain
 				}
-				clamp_variable = { var = GER_Agrarian_loyalty max = 100 min = 0 }
 			}
 			add_to_variable = { GER_free_peasant_event = 1 }
 			if = {
@@ -10225,10 +10371,17 @@ GER_democratic_union_mechanics_category = {
 		cost = 40
 
 		ai_will_do = {
-			base = 500
+			base = 200
 			modifier = {
 				factor = 0
 				has_active_mission = GER_brunswick_front_activity
+			}
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
 			}
 		}
 
@@ -10261,7 +10414,7 @@ GER_democratic_union_mechanics_category = {
 		cost = 40
 
 		ai_will_do = {
-			base = 100
+			base = 200
 			modifier = {
 				factor = 5
 				has_country_flag = GER_agrarians_in_coalition
@@ -10269,6 +10422,13 @@ GER_democratic_union_mechanics_category = {
 			modifier = {
 				factor = 0
 				has_active_mission = GER_brunswick_front_activity
+			}
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
 			}
 		}
 
@@ -10280,11 +10440,12 @@ GER_democratic_union_mechanics_category = {
 					has_country_flag = GER_agrarians_in_coalition
 				}
 				add_to_variable = {
-					var = GER_Agrarian_loyalty
-					value = 10
+					GER_Agrarian_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_Agrarian_loyalty } }
+					}
 					tooltip = GER_Agrarian_loyalty_gain
 				}
-				clamp_variable = { var = GER_Agrarian_loyalty max = 100 min = 0 }
 			}
 			add_to_variable = { GER_bridges_event = 1 }
 			if = {
@@ -10315,10 +10476,17 @@ GER_democratic_union_mechanics_category = {
 		cost = 40
 
 		ai_will_do = {
-			base = 500
+			base = 200
 			modifier = {
 				factor = 0
 				has_active_mission = GER_brunswick_front_activity
+			}
+			modifier = {
+				factor = 25
+				OR = {
+					has_idea = GER_agrarian_1
+					has_idea = GER_agrarian_2
+				}
 			}
 		}
 
@@ -11315,11 +11483,11 @@ GER_military_decisions_category = {
 				}
 				add_equipment_to_stockpile = {
 					type = motorized_equipment
-					amount = 5000
+					amount = -5000
 				}
 				add_equipment_to_stockpile = {
 					type = train_equipment
-					amount = 100
+					amount = -100
 				}
 			}
 		}
@@ -11360,11 +11528,12 @@ GER_military_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_levy_support_in_federal_states"
 			add_to_variable = {
-				var = GER_military_faction_strength
-				value = 15
+				GER_military_faction_strength = {
+					value = 15
+					clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+				}
 				tooltip = GER_faction_strength_increase
 			}
-			clamp_variable = { var = GER_military_faction_strength max = 100 min = 0 }
 		}
 		fixed_random_seed = no
 	}
@@ -11394,11 +11563,12 @@ GER_military_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_levy_support_in_reichstag"
 			add_to_variable = {
-				var = GER_military_faction_strength
-				value = 15
+				GER_military_faction_strength = {
+					value = 15
+					clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+				}
 				tooltip = GER_faction_strength_increase
 			}
-			clamp_variable = { var = GER_military_faction_strength max = 100 min = 0 }
 		}
 		fixed_random_seed = no
 	}
@@ -11428,11 +11598,12 @@ GER_military_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_threat_assessments"
 			add_to_variable = {
-				var = GER_military_faction_strength
-				value = 15
+				GER_military_faction_strength = {
+					value = 15
+					clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+				}
 				tooltip = GER_faction_strength_increase
 			}
-			clamp_variable = { var = GER_military_faction_strength max = 100 min = 0 }
 		}
 		fixed_random_seed = no
 	}
@@ -11465,11 +11636,12 @@ GER_military_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_promote_ernst_volckheim"
 			add_to_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+				}
 				tooltip = GER_faction_strength_increase
 			}
-			clamp_variable = { var = GER_military_faction_strength max = 100 min = 0 }
 			hidden_effect = { GER_ernst_volckheim = { set_nationality = ROOT } }
 			effect_tooltip = {
 				add_corps_commander_role = {
@@ -11509,11 +11681,12 @@ GER_military_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_staff_army_with_new_officers"
 			add_to_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+				}
 				tooltip = GER_faction_strength_increase
 			}
-			clamp_variable = { var = GER_military_faction_strength max = 100 min = 0 }
 			army_experience = 50
 			add_command_power = -25
 		}
@@ -11543,11 +11716,12 @@ GER_military_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_promote_von_bonin"
 			add_to_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+				}
 				tooltip = GER_faction_strength_increase
 			}
-			clamp_variable = { var = GER_military_faction_strength max = 100 min = 0 }
 			hidden_effect = { GER_erich_von_bonin = { set_nationality = ROOT } }
 			custom_effect_tooltip = available_military_high_command
 			show_ideas_tooltip = GER_erich_von_bonin_high_command
@@ -11579,11 +11753,12 @@ GER_military_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_promote_stulpnagel"
 			add_to_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+				}
 				tooltip = GER_faction_strength_increase
 			}
-			clamp_variable = { var = GER_military_faction_strength max = 100 min = 0 }
 			hidden_effect = { GER_joachim_von_stulpnagel = { set_nationality = ROOT } }
 			custom_effect_tooltip = available_military_high_command
 			show_ideas_tooltip = GER_joachim_von_stulpnagel_high_command
@@ -11615,11 +11790,12 @@ GER_military_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_promote_blomberg"
 			add_to_variable = {
-				var = GER_military_faction_strength
-				value = 20
+				GER_military_faction_strength = {
+					value = 20
+					clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
+				}
 				tooltip = GER_faction_strength_increase
 			}
-			clamp_variable = { var = GER_military_faction_strength max = 100 min = 0 }
 			add_command_power = -25
 			GER_werner_von_blomberg = {
 				add_max_trait = 1
@@ -11661,9 +11837,13 @@ GER_red_general_decisions_category = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_red_general_populist_policies"
-			custom_effect_tooltip = GER_schleicher_move_left
-			add_to_variable = { GER_schleicher_ideology = 20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_schleicher_ideology } }
+				}
+				tooltip = GER_schleicher_move_left
+			}
 			add_stability = 0.02
 			add_war_support = -0.02
 		}
@@ -11690,13 +11870,24 @@ GER_red_general_decisions_category = {
 					GER_schleicher_ideology > 66
 				}
 			}
+			modifier = {
+				add = -1000
+				amount_taken_ideas = {
+					amount < 3
+					slots = { political_advisor }
+				}
+			}
 		}
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_red_general_walk_the_clubs"
-			custom_effect_tooltip = GER_schleicher_move_right
-			add_to_variable = { GER_schleicher_ideology = -20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = -20
+					clamp = { min = { value = GER_schleicher_ideology multiply = -1 } max = 0 }
+				}
+				tooltip = GER_schleicher_move_right
+			}
 			add_stability = -0.02
 			add_war_support = 0.02
 		}
@@ -11748,6 +11939,13 @@ GER_red_general_decisions_category = {
 				factor = 0
 				has_game_rule = { rule = GER_path option = GER_PATH_SCHLEICHER_AUTDEM }
 				has_idea = GER_new_state_5
+			}
+			modifier = {
+				factor = 0
+				amount_taken_ideas = {
+					amount < 3
+					slots = { political_advisor }
+				}
 			}
 		}
 
@@ -11831,9 +12029,13 @@ GER_red_general_decisions_category = {
 				}
 				# only exists for tooltip
 			}
-			custom_effect_tooltip = GER_schleicher_move_right
-			add_to_variable = { GER_schleicher_ideology = -20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = -20
+					clamp = { min = { value = GER_schleicher_ideology multiply = -1 } max = 0 }
+				}
+				tooltip = GER_schleicher_move_right
+			}
 			custom_effect_tooltip = tooltip_white_line
 		}
 		fixed_random_seed = no
@@ -11910,9 +12112,13 @@ GER_red_general_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_red_general_embrace_tat_circle"
 			country_event = germany_schleicher_events.58
-			custom_effect_tooltip = GER_schleicher_move_right
-			add_to_variable = { GER_schleicher_ideology = -20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = -20
+					clamp = { min = { value = GER_schleicher_ideology multiply = -1 } max = 0 }
+				}
+				tooltip = GER_schleicher_move_right
+			}
 			custom_effect_tooltip = tooltip_white_line
 		}
 		fixed_random_seed = no
@@ -11946,9 +12152,13 @@ GER_red_general_decisions_category = {
 				popularity = 0.05
 			}
 			add_timed_idea = { idea = GER_worker_bribery days = 180 }
-			custom_effect_tooltip = GER_schleicher_move_left
-			add_to_variable = { GER_schleicher_ideology = 20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_schleicher_ideology } }
+				}
+				tooltip = GER_schleicher_move_left
+			}
 			custom_effect_tooltip = tooltip_white_line
 		}
 		fixed_random_seed = no
@@ -12105,9 +12315,13 @@ GER_red_general_decisions_category = {
 			log = "[GetLogRoot]: Decision complete GER_red_general_take_over_kyffhauser"
 			add_war_support = 0.05
 			add_timed_idea = { idea = GER_kyffhauser days = 180 }
-			custom_effect_tooltip = GER_schleicher_move_right
-			add_to_variable = { GER_schleicher_ideology = -20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = -20
+					clamp = { min = { value = GER_schleicher_ideology multiply = -1 } max = 0 }
+				}
+				tooltip = GER_schleicher_move_right
+			}
 			custom_effect_tooltip = tooltip_white_line
 		}
 		fixed_random_seed = no
@@ -12257,9 +12471,13 @@ GER_red_general_decisions_category = {
 			hidden_effect = { GER_ernst_niekisch = { set_nationality = ROOT } }
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = GER_ernst_niekisch_advisor
-			custom_effect_tooltip = GER_schleicher_move_left
-			add_to_variable = { GER_schleicher_ideology = 20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_schleicher_ideology } }
+				}
+				tooltip = GER_schleicher_move_left
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -12352,9 +12570,13 @@ GER_red_general_decisions_category = {
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = GER_schleicher_move_left
-			add_to_variable = { GER_schleicher_ideology = 20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_schleicher_ideology } }
+				}
+				tooltip = GER_schleicher_move_left
+			}
 			custom_effect_tooltip = tooltip_white_line
 			set_country_flag = GER_seized_private_industries_flag
 		}
@@ -12386,9 +12608,13 @@ GER_red_general_decisions_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GER_red_general_privatize_industries"
 			add_stability = 0.04
-			custom_effect_tooltip = GER_schleicher_move_right
-			add_to_variable = { GER_schleicher_ideology = -20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = -20
+					clamp = { min = { value = GER_schleicher_ideology multiply = -1 } max = 0 }
+				}
+				tooltip = GER_schleicher_move_right
+			}
 			custom_effect_tooltip = tooltip_white_line
 		}
 		fixed_random_seed = no
@@ -12417,9 +12643,13 @@ GER_red_general_decisions_category = {
 				remove_idea = GER_freiwillige_arbeitsdienst_idea
 				add_idea = GER_labour_army_idea
 			}
-			custom_effect_tooltip = GER_schleicher_move_left
-			add_to_variable = { GER_schleicher_ideology = 20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = GER_schleicher_ideology } }
+				}
+				tooltip = GER_schleicher_move_left
+			}
 			custom_effect_tooltip = tooltip_white_line
 		}
 		fixed_random_seed = no
@@ -12458,9 +12688,13 @@ GER_red_general_decisions_category = {
 			hidden_effect = { GER_paul_reusch = { set_nationality = ROOT } }
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = GER_paul_reusch_advisor
-			custom_effect_tooltip = GER_schleicher_move_right
-			add_to_variable = { GER_schleicher_ideology = -20 }
-			clamp_variable = { var = GER_schleicher_ideology max = 100 min = 0 }
+			add_to_variable = {
+				GER_schleicher_ideology = {
+					value = -20
+					clamp = { min = { value = GER_schleicher_ideology multiply = -1 } max = 0 }
+				}
+				tooltip = GER_schleicher_move_right
+			}
 			custom_effect_tooltip = tooltip_white_line
 		}
 		fixed_random_seed = no

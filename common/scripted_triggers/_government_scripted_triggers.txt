@@ -398,6 +398,24 @@ is_part_of_government_national_populist = {
 	}
 }
 
+get_coalition_partner_party_popularity_trigger = {
+	set_temp_variable = {
+		coalition_partner_party_popularity = {
+			value = 0
+			if = { limit = { value = coalitions_array^0 equals = constant:party_pop.party.coalition_partner } add = party_popularity@totalist }
+			if = { limit = { value = coalitions_array^1 equals = constant:party_pop.party.coalition_partner } add = party_popularity@syndicalist }
+			if = { limit = { value = coalitions_array^2 equals = constant:party_pop.party.coalition_partner } add = party_popularity@radical_socialist }
+			if = { limit = { value = coalitions_array^3 equals = constant:party_pop.party.coalition_partner } add = party_popularity@social_democrat }
+			if = { limit = { value = coalitions_array^4 equals = constant:party_pop.party.coalition_partner } add = party_popularity@social_liberal }
+			if = { limit = { value = coalitions_array^5 equals = constant:party_pop.party.coalition_partner } add = party_popularity@market_liberal }
+			if = { limit = { value = coalitions_array^6 equals = constant:party_pop.party.coalition_partner } add = party_popularity@social_conservative }
+			if = { limit = { value = coalitions_array^7 equals = constant:party_pop.party.coalition_partner } add = party_popularity@authoritarian_democrat }
+			if = { limit = { value = coalitions_array^8 equals = constant:party_pop.party.coalition_partner } add = party_popularity@paternal_autocrat }
+			if = { limit = { value = coalitions_array^9 equals = constant:party_pop.party.coalition_partner } add = party_popularity@national_populist }
+		}
+	}
+}
+
 # checks whether the country in scope has the same government type as ROOT (the country running the event/focus)
 # note that it's not the exact same government - just the general type, as above
 same_government_type_as_ROOT = {

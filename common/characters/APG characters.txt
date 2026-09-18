@@ -114,27 +114,27 @@ characters = {
 			traits = { APG_the_kingfish }
 		}
 	}
-	APG_earl_kemp_long = {
-		name = APG_earl_kemp_long
+	APG_earl_long = {
+		name = APG_earl_long
 		portraits = {
 			civilian = {
-				large = GFX_portrait_APG_earl_kemp_long_civilian_large
-				small = GFX_portrait_APG_earl_kemp_long_civilian_small
+				large = GFX_portrait_APG_earl_long_civilian_large
+				small = GFX_portrait_APG_earl_long_civilian_small
 			}
 		}
 		country_leader = {
-			desc = APG_earl_kemp_long_leader_desc
+			desc = APG_earl_long_leader_desc
 			ideology = authoritarian_democrat_subtype
 			traits = { APG_the_brothers_keeper }
 		}
 		country_leader = {
-			desc = APG_earl_kemp_long_leader_desc
+			desc = APG_earl_long_leader_desc
 			ideology = national_populist_subtype
 			traits = { APG_the_brothers_keeper }
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_earl_kemp_long_advisor
+			idea_token = APG_earl_long_advisor
 			available = {
 				has_country_leader = { character = APG_huey_long }
 			}
@@ -165,30 +165,17 @@ characters = {
 	##########################
 	### Political Advisors ###
 	##########################
-	APG_charles_edward_coughlin = {
-		name = APG_charles_edward_coughlin
+	APG_charles_coughlin = {
+		name = APG_charles_coughlin
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_charles_edward_coughlin_civilian_small
+				small = GFX_portrait_APG_charles_coughlin_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_charles_edward_coughlin_advisor
+			idea_token = APG_charles_coughlin_advisor
 			traits = { KR_catholic_firebrand }
-		}
-	}
-	APG_lawrence_dennis = {
-		name = APG_lawrence_dennis
-		portraits = {
-			civilian = {
-				small = GFX_portrait_APG_lawrence_dennis_civilian_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = APG_lawrence_dennis_advisor
-			traits = { KR_interventionist_economist }
 		}
 	}
 	APG_henry_ford = {
@@ -204,42 +191,42 @@ characters = {
 			traits = { KR_father_of_the_assembly_line }
 		}
 	}
-	APG_archibald_bulloch_roosevelt = {
-		name = APG_archibald_bulloch_roosevelt
+	APG_archibald_roosevelt = {
+		name = APG_archibald_roosevelt
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_archibald_bulloch_roosevelt_civilian_small
+				small = GFX_portrait_APG_archibald_roosevelt_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_archibald_bulloch_roosevelt_advisor
+			idea_token = APG_archibald_roosevelt_advisor
 			traits = { KR_army_recruiter }
 		}
 	}
-	APG_fred_chase_koch = {
-		name = APG_fred_chase_koch
+	APG_fred_c_koch = {
+		name = APG_fred_c_koch
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_fred_chase_koch_civilian_small
+				small = GFX_portrait_APG_fred_c_koch_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_fred_chase_koch_advisor
+			idea_token = APG_fred_c_koch_advisor
 			traits = { KR_smiling_oilman }
 		}
 	}
-	APG_hugo_lafayette_black = {
-		name = APG_hugo_lafayette_black
+	APG_hugo_black = {
+		name = APG_hugo_black
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_hugo_lafayette_black_civilian_small
+				small = GFX_portrait_APG_hugo_black_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_hugo_lafayette_black_advisor
+			idea_token = APG_hugo_black_advisor
 			available = {
 				if = {
 					limit = { APG_long_in_power = no }
@@ -249,45 +236,45 @@ characters = {
 			traits = { KR_reformed_justice }
 		}
 	}
-	APG_francis_everett_townsend = {
-		name = APG_francis_everett_townsend
+	APG_francis_townsend = {
+		name = APG_francis_townsend
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_francis_everett_townsend_civilian_small
+				small = GFX_portrait_APG_francis_townsend_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_francis_everett_townsend_advisor
+			idea_token = APG_francis_townsend_advisor
 			available = {
 				APG_long_in_power = yes
 			}
 			traits = { KR_social_security_champion }
 		}
 	}
-	APG_elizabeth_eloise_kirkpatrick_dilling = {
-		name = APG_elizabeth_eloise_kirkpatrick_dilling
+	APG_elizabeth_dilling = {
+		name = APG_elizabeth_dilling
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_elizabeth_eloise_kirkpatrick_dilling_civilian_small
+				small = GFX_portrait_APG_elizabeth_dilling_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_elizabeth_eloise_kirkpatrick_dilling_advisor
+			idea_token = APG_elizabeth_dilling_advisor
 			traits = { KR_secret_police_chief }
 		}
 	}
-	APG_hamilton_stuyvesant_fish = {
-		name = APG_hamilton_stuyvesant_fish
+	APG_hamilton_fish_iii = {
+		name = APG_hamilton_fish_iii
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_hamilton_stuyvesant_fish_civilian_small
+				small = GFX_portrait_APG_hamilton_fish_iii_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_hamilton_stuyvesant_fish_advisor
+			idea_token = APG_hamilton_fish_iii_advisor
 			traits = { KR_war_industrialist }
 		}
 	}
@@ -317,64 +304,77 @@ characters = {
 			traits = { KR_ultranationalist_agitator }
 		}
 	}
-	APG_burton_kendall_wheeler = {
-		name = APG_burton_kendall_wheeler
+	APG_burton_k_wheeler = {
+		name = APG_burton_k_wheeler
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_burton_kendall_wheeler_civilian_small
+				small = GFX_portrait_APG_burton_k_wheeler_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_burton_kendall_wheeler_advisor
+			idea_token = APG_burton_k_wheeler_advisor
 			available = {
 				APG_long_in_power = yes
 			}
-			traits = { KR_backroom_backstabber }
+			traits = { KR_naive_optimist }
 		}
 	}
-	APG_john_lewis = {
-		name = APG_john_lewis
+	APG_eugene_talmadge = {
+		name = APG_eugene_talmadge
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_john_lewis_civilian_small
+				small = GFX_portrait_APG_eugene_talmadge_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_john_lewis_advisor
+			idea_token = APG_eugene_talmadge_advisor
+			traits = { KR_incendiary_demagogue }
+		}
+	}
+	APG_john_l_lewis = {
+		name = APG_john_l_lewis
+		portraits = {
+			civilian = {
+				small = GFX_portrait_APG_john_l_lewis_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = APG_john_l_lewis_advisor
 			available = {
 				APG_long_in_power = yes
 			}
 			traits = { KR_ambitious_union_boss }
 		}
 	}
-	APG_gerald_lyman_kenneth_smith = {
-		name = APG_gerald_lyman_kenneth_smith
+	APG_gerald_lk_smith = {
+		name = APG_gerald_lk_smith
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_gerald_lyman_kenneth_smith_civilian_small
+				small = GFX_portrait_APG_gerald_lk_smith_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_gerald_lyman_kenneth_smith_advisor
+			idea_token = APG_gerald_lk_smith_advisor
 			available = {
 				APG_long_in_power = yes
 			}
 			traits = { KR_christian_nationalist }
 		}
 	}
-	APG_frank_byron_rowlett = {
-		name = APG_frank_byron_rowlett
+	APG_frank_rowlett = {
+		name = APG_frank_rowlett
 		portraits = {
 			civilian = {
-				small = GFX_portrait_APG_frank_byron_rowlett_civilian_small
+				small = GFX_portrait_APG_frank_rowlett_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = APG_frank_byron_rowlett_advisor
+			idea_token = APG_frank_rowlett_advisor
 			allowed = {
 				has_dlc_lar = yes
 			}
@@ -388,16 +388,16 @@ characters = {
 	################
 	### Generals ###
 	################
-	APG_george_smith_patton = {
-		name = APG_george_smith_patton
+	APG_george_s_patton = {
+		name = APG_george_s_patton
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_george_smith_patton_army_large
-				small = GFX_portrait_APG_george_smith_patton_army_small
+				large = GFX_portrait_APG_george_s_patton_army_large
+				small = GFX_portrait_APG_george_s_patton_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_george_smith_patton_army_chief_desc
+			desc = APG_george_s_patton_army_chief_desc
 			traits = { trait_reckless armor_officer trickster panzer_leader }
 			skill = 4
 			attack_skill = 5
@@ -407,7 +407,7 @@ characters = {
 		}
 		advisor = {
 			slot = army_chief
-			idea_token = APG_george_smith_patton_army_chief
+			idea_token = APG_george_s_patton_army_chief
 			available = {
 				not_already_hired_except_as = army_chief
 			}
@@ -416,8 +416,8 @@ characters = {
 		}
 		advisor = {
 			slot = theorist
-			idea_token = APG_george_smith_patton_theorist
-			desc = APG_george_smith_patton_army_chief_desc
+			idea_token = APG_george_s_patton_theorist
+			desc = APG_george_s_patton_army_chief_desc
 			ledger = army
 			available = {
 				has_completed_focus = APG_Patton_Plan
@@ -465,16 +465,16 @@ characters = {
 			cost = 100
 		}
 	}
-	APG_robert_melville_danford = {
-		name = APG_robert_melville_danford
+	APG_robert_m_danford = {
+		name = APG_robert_m_danford
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_robert_melville_danford_army_large
-				small = GFX_portrait_APG_robert_melville_danford_army_small
+				large = GFX_portrait_APG_robert_m_danford_army_large
+				small = GFX_portrait_APG_robert_m_danford_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_robert_melville_danford_high_command_desc
+			desc = APG_robert_m_danford_high_command_desc
 			traits = { artillery_officer artillery_specialist }
 			skill = 3
 			attack_skill = 4
@@ -484,7 +484,7 @@ characters = {
 		}
 		advisor = {
 			slot = high_command
-			idea_token = APG_robert_melville_danford_high_command
+			idea_token = APG_robert_m_danford_high_command
 			ledger = army
 			available = {
 				not_already_hired_except_as = high_command
@@ -494,8 +494,8 @@ characters = {
 		}
 		advisor = {
 			slot = theorist
-			idea_token = APG_robert_melville_danford_theorist
-			desc = APG_robert_melville_danford_high_command_desc
+			idea_token = APG_robert_m_danford_theorist
+			desc = APG_robert_m_danford_high_command_desc
 			ledger = army
 			allowed = { original_tag = APG }
 			available = {
@@ -506,16 +506,16 @@ characters = {
 			cost = 150
 		}
 	}
-	APG_robert_elkington_wood = {
-		name = APG_robert_elkington_wood
+	APG_robert_e_wood = {
+		name = APG_robert_e_wood
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_robert_elkington_wood_army_large
-				small = GFX_portrait_APG_robert_elkington_wood_army_small
+				large = GFX_portrait_APG_robert_e_wood_army_large
+				small = GFX_portrait_APG_robert_e_wood_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_robert_elkington_wood_army_chief_desc
+			desc = APG_robert_e_wood_army_chief_desc
 			traits = { politically_connected organizer }
 			skill = 2
 			attack_skill = 1
@@ -525,21 +525,21 @@ characters = {
 		}
 		advisor = {
 			slot = army_chief
-			idea_token = APG_robert_elkington_wood_army_chief
+			idea_token = APG_robert_e_wood_army_chief
 			traits = { KR_army_chief_drill_1 }
 			cost = 50
 		}
 	}
-	APG_joseph_lawton_collins = {
-		name = APG_joseph_lawton_collins
+	APG_j_lawton_collins = {
+		name = APG_j_lawton_collins
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_joseph_lawton_collins_army_large
-				small = GFX_portrait_APG_joseph_lawton_collins_army_small
+				large = GFX_portrait_APG_j_lawton_collins_army_large
+				small = GFX_portrait_APG_j_lawton_collins_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_joseph_lawton_collins_commander_desc
+			desc = APG_j_lawton_collins_commander_desc
 			traits = { career_officer trickster }
 			skill = 3
 			attack_skill = 3
@@ -548,16 +548,16 @@ characters = {
 			logistics_skill = 2
 		}
 	}
-	APG_courtney_hicks_hodges = {
-		name = APG_courtney_hicks_hodges
+	APG_courtney_hodges = {
+		name = APG_courtney_hodges
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_courtney_hicks_hodges_army_large
-				small = GFX_portrait_APG_courtney_hicks_hodges_army_small
+				large = GFX_portrait_APG_courtney_hodges_army_large
+				small = GFX_portrait_APG_courtney_hodges_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_courtney_hicks_hodges_high_command_desc
+			desc = APG_courtney_hodges_high_command_desc
 			traits = { career_officer infantry_officer panzer_leader }
 			skill = 4
 			attack_skill = 4
@@ -567,7 +567,7 @@ characters = {
 		}
 		advisor = {
 			slot = high_command
-			idea_token = APG_courtney_hicks_hodges_high_command
+			idea_token = APG_courtney_hodges_high_command
 			ledger = army
 			traits = { KR_MHC_CombinedArms_2 }
 			cost = 100
@@ -609,16 +609,16 @@ characters = {
 			logistics_skill = 3
 		}
 	}
-	APG_walton_harris_walker = {
-		name = APG_walton_harris_walker
+	APG_walton_walker = {
+		name = APG_walton_walker
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_walton_harris_walker_army_large
-				small = GFX_portrait_APG_walton_harris_walker_army_small
+				large = GFX_portrait_APG_walton_walker_army_large
+				small = GFX_portrait_APG_walton_walker_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_walton_harris_walker_commander_desc
+			desc = APG_walton_walker_commander_desc
 			traits = { career_officer politically_connected panzer_leader }
 			skill = 1
 			attack_skill = 1
@@ -627,16 +627,16 @@ characters = {
 			logistics_skill = 1
 		}
 	}
-	APG_matthew_bunker_ridgway = {
-		name = APG_matthew_bunker_ridgway
+	APG_matthew_ridgway = {
+		name = APG_matthew_ridgway
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_matthew_bunker_ridgway_army_large
-				small = GFX_portrait_APG_matthew_bunker_ridgway_army_small
+				large = GFX_portrait_APG_matthew_ridgway_army_large
+				small = GFX_portrait_APG_matthew_ridgway_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_matthew_bunker_ridgway_commander_desc
+			desc = APG_matthew_ridgway_commander_desc
 			traits = { inflexible_strategist trait_cautious commando }
 			skill = 2
 			attack_skill = 1
@@ -645,16 +645,16 @@ characters = {
 			logistics_skill = 2
 		}
 	}
-	APG_bruce_cooper_clarke = {
-		name = APG_bruce_cooper_clarke
+	APG_bruce_c_clarke = {
+		name = APG_bruce_c_clarke
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_bruce_cooper_clarke_army_large
-				small = GFX_portrait_APG_bruce_cooper_clarke_army_small
+				large = GFX_portrait_APG_bruce_c_clarke_army_large
+				small = GFX_portrait_APG_bruce_c_clarke_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_bruce_cooper_clarke_commander_desc
+			desc = APG_bruce_c_clarke_commander_desc
 			traits = { harsh_leader panzer_leader }
 			skill = 1
 			attack_skill = 1
@@ -663,16 +663,16 @@ characters = {
 			logistics_skill = 1
 		}
 	}
-	APG_henry_irving_hodes = {
-		name = APG_henry_irving_hodes
+	APG_henry_i_hodes = {
+		name = APG_henry_i_hodes
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_henry_irving_hodes_army_large
-				small = GFX_portrait_APG_henry_irving_hodes_army_small
+				large = GFX_portrait_APG_henry_i_hodes_army_large
+				small = GFX_portrait_APG_henry_i_hodes_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_henry_irving_hodes_commander_desc
+			desc = APG_henry_i_hodes_commander_desc
 			traits = { trait_reckless infantry_leader }
 			skill = 2
 			attack_skill = 2
@@ -681,16 +681,16 @@ characters = {
 			logistics_skill = 2
 		}
 	}
-	APG_clifton_bledsoe_cates = {
-		name = APG_clifton_bledsoe_cates
+	APG_clifton_b_cates = {
+		name = APG_clifton_b_cates
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_clifton_bledsoe_cates_army_large
-				small = GFX_portrait_APG_clifton_bledsoe_cates_army_small
+				large = GFX_portrait_APG_clifton_b_cates_army_large
+				small = GFX_portrait_APG_clifton_b_cates_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_clifton_bledsoe_cates_commander_desc
+			desc = APG_clifton_b_cates_commander_desc
 			skill = 2
 			attack_skill = 2
 			defense_skill = 1
@@ -698,16 +698,16 @@ characters = {
 			logistics_skill = 2
 		}
 	}
-	APG_lewis_burwell_puller = {
-		name = APG_lewis_burwell_puller
+	APG_chesty_puller = {
+		name = APG_chesty_puller
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_lewis_burwell_puller_army_large
-				small = GFX_portrait_APG_lewis_burwell_puller_army_small
+				large = GFX_portrait_APG_chesty_puller_army_large
+				small = GFX_portrait_APG_chesty_puller_army_small
 			}
 		}
 		corps_commander = {
-			desc = APG_lewis_burwell_puller_high_command_desc
+			desc = APG_chesty_puller_high_command_desc
 			traits = { career_officer harsh_leader commando }
 			skill = 3
 			attack_skill = 3
@@ -717,7 +717,7 @@ characters = {
 		}
 		advisor = {
 			slot = high_command
-			idea_token = APG_lewis_burwell_puller_high_command
+			idea_token = APG_chesty_puller_high_command
 			ledger = army
 			traits = { KR_MHC_commando_2 }
 			cost = 100
@@ -780,16 +780,16 @@ characters = {
 			cost = 100
 		}
 	}
-	APG_david_worth_bagley = {
-		name = APG_david_worth_bagley
+	APG_david_w_bagley = {
+		name = APG_david_w_bagley
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_david_worth_bagley_army_large
-				small = GFX_portrait_APG_david_worth_bagley_army_small
+				large = GFX_portrait_APG_david_w_bagley_army_large
+				small = GFX_portrait_APG_david_w_bagley_army_small
 			}
 		}
 		navy_leader = {
-			desc = APG_david_worth_bagley_navy_chief_desc
+			desc = APG_david_w_bagley_navy_chief_desc
 			traits = { fleet_protector fly_swatter }
 			skill = 2
 			attack_skill = 2
@@ -799,21 +799,21 @@ characters = {
 		}
 		advisor = {
 			slot = navy_chief
-			idea_token = APG_david_worth_bagley_navy_chief
+			idea_token = APG_david_w_bagley_navy_chief
 			traits = { KR_navy_chief_manoeuvre_1 }
 			cost = 50
 		}
 	}
-	APG_john_sidney_mccain_sr = {
-		name = APG_john_sidney_mccain_sr
+	APG_john_s_mccain_sr = {
+		name = APG_john_s_mccain_sr
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_john_sidney_mccain_sr_army_large
-				small = GFX_portrait_APG_john_sidney_mccain_sr_army_small
+				large = GFX_portrait_APG_john_s_mccain_sr_army_large
+				small = GFX_portrait_APG_john_s_mccain_sr_army_small
 			}
 		}
 		navy_leader = {
-			desc = APG_john_sidney_mccain_sr_navy_chief_desc
+			desc = APG_john_s_mccain_sr_navy_chief_desc
 			traits = { aviation_enthusiast superior_tactician }
 			skill = 2
 			attack_skill = 2
@@ -823,21 +823,21 @@ characters = {
 		}
 		advisor = {
 			slot = navy_chief
-			idea_token = APG_john_sidney_mccain_sr_navy_chief
+			idea_token = APG_john_s_mccain_sr_navy_chief
 			traits = { KR_navy_chief_naval_aviation_1 }
 			cost = 50
 		}
 	}
-	APG_willis_augustus_lee_jr = { #recruited in APG_new_admirals
-		name = APG_willis_augustus_lee_jr
+	APG_willis_a_lee_jr = { #recruited in APG_new_admirals
+		name = APG_willis_a_lee_jr
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_willis_augustus_lee_jr_army_large
-				small = GFX_portrait_APG_willis_augustus_lee_jr_army_small
+				large = GFX_portrait_APG_willis_a_lee_jr_army_large
+				small = GFX_portrait_APG_willis_a_lee_jr_army_small
 			}
 		}
 		navy_leader = {
-			desc = APG_willis_augustus_lee_jr_theorist_desc
+			desc = APG_willis_a_lee_jr_theorist_desc
 			traits = { gunnery_expert }
 			skill = 1
 			attack_skill = 1
@@ -847,7 +847,7 @@ characters = {
 		}
 		advisor = {
 			slot = theorist
-			idea_token = APG_willis_augustus_lee_jr_theorist
+			idea_token = APG_willis_a_lee_jr_theorist
 			ledger = navy
 			traits = { KR_grand_fleet_proponent }
 			cost = 150
@@ -871,16 +871,16 @@ characters = {
 			coordination_skill = 2
 		}
 	}
-	APG_arthur_leroy_bristol_jr = { #recruited in APG_new_admirals
-		name = APG_arthur_leroy_bristol_jr
+	APG_arthur_l_bristol_jr = { #recruited in APG_new_admirals
+		name = APG_arthur_l_bristol_jr
 		portraits = {
 			army = {
-				large = GFX_portrait_APG_arthur_leroy_bristol_jr_army_large
-				small = GFX_portrait_APG_arthur_leroy_bristol_jr_army_small
+				large = GFX_portrait_APG_arthur_l_bristol_jr_army_large
+				small = GFX_portrait_APG_arthur_l_bristol_jr_army_small
 			}
 		}
 		navy_leader = {
-			desc = APG_arthur_leroy_bristol_jr_admiral_desc
+			desc = APG_arthur_l_bristol_jr_admiral_desc
 			traits = { ironside navy_career_officer }
 			skill = 2
 			attack_skill = 1
@@ -893,16 +893,16 @@ characters = {
 	######################
 	### Military Staff ###
 	######################
-	APG_james_guthrie_harbord = {
-		name = APG_james_guthrie_harbord
+	APG_james_harbord = {
+		name = APG_james_harbord
 		portraits = {
 			army = {
-				small = GFX_portrait_APG_james_guthrie_harbord_army_small
+				small = GFX_portrait_APG_james_harbord_army_small
 			}
 		}
 		advisor = {
 			slot = high_command
-			idea_token = APG_james_guthrie_harbord_high_command
+			idea_token = APG_james_harbord_high_command
 			ledger = army
 			traits = { KR_MHC_entrenchment_1 }
 			cost = 50
@@ -936,16 +936,16 @@ characters = {
 			cost = 100
 		}
 	}
-	APG_curtis_emerson_lemay = {
-		name = APG_curtis_emerson_lemay
+	APG_curtis_lemay = {
+		name = APG_curtis_lemay
 		portraits = {
 			army = {
-				small = GFX_portrait_APG_curtis_emerson_lemay_army_small
+				small = GFX_portrait_APG_curtis_lemay_army_small
 			}
 		}
 		advisor = {
 			slot = air_chief
-			idea_token = APG_curtis_emerson_lemay_air_chief
+			idea_token = APG_curtis_lemay_air_chief
 			available = {
 				not_already_hired_except_as = air_chief
 			}
@@ -954,8 +954,8 @@ characters = {
 		}
 		advisor = {
 			slot = high_command
-			idea_token = APG_curtis_emerson_lemay_high_command
-			desc = APG_curtis_emerson_lemay_air_chief_desc
+			idea_token = APG_curtis_lemay_high_command
+			desc = APG_curtis_lemay_air_chief_desc
 			ledger = air
 			available = {
 				not_already_hired_except_as = high_command
@@ -965,8 +965,8 @@ characters = {
 		}
 		advisor = {
 			slot = theorist
-			idea_token = APG_curtis_emerson_lemay_theorist
-			desc = APG_curtis_emerson_lemay_air_chief_desc
+			idea_token = APG_curtis_lemay_theorist
+			desc = APG_curtis_lemay_air_chief_desc
 			ledger = air
 			available = {
 				has_completed_focus = APG_le_may_reform
@@ -976,16 +976,16 @@ characters = {
 			cost = 150
 		}
 	}
-	APG_otto_paul_weyland = {
-		name = APG_otto_paul_weyland
+	APG_otto_p_weyland = {
+		name = APG_otto_p_weyland
 		portraits = {
 			army = {
-				small = GFX_portrait_APG_otto_paul_weyland_army_small
+				small = GFX_portrait_APG_otto_p_weyland_army_small
 			}
 		}
 		advisor = {
 			slot = air_chief
-			idea_token = APG_otto_paul_weyland_air_chief
+			idea_token = APG_otto_p_weyland_air_chief
 			available = {
 				not_already_hired_except_as = air_chief
 			}
@@ -994,8 +994,8 @@ characters = {
 		}
 		advisor = {
 			slot = high_command
-			idea_token = APG_otto_paul_weyland_high_command
-			desc = APG_otto_paul_weyland_air_chief_desc
+			idea_token = APG_otto_p_weyland_high_command
+			desc = APG_otto_p_weyland_air_chief_desc
 			ledger = air
 			available = {
 				not_already_hired_except_as = high_command
@@ -1005,8 +1005,8 @@ characters = {
 		}
 		advisor = {
 			slot = theorist
-			idea_token = APG_otto_paul_weyland_theorist
-			desc = APG_otto_paul_weyland_air_chief_desc
+			idea_token = APG_otto_p_weyland_theorist
+			desc = APG_otto_p_weyland_air_chief_desc
 			ledger = air
 			available = {
 				has_completed_focus = APG_Weyland_plan
@@ -1035,11 +1035,11 @@ characters = {
 	##################
 	### Scientists ###
 	##################
-	APG_emory_scott_land = {
-		name = APG_emory_scott_land
+	APG_emory_s_land = {
+		name = APG_emory_s_land
 		portraits = {
 			civilian = {
-				large = GFX_portrait_APG_emory_scott_land_scientist_large
+				large = GFX_portrait_APG_emory_s_land_scientist_large
 			}
 		}
 		scientist = {
@@ -1047,11 +1047,11 @@ characters = {
 			skills = { specialization_naval = 2 }
 		}
 	}
-	APG_john_walter_christie = {
-		name = APG_john_walter_christie
+	APG_j_walter_christie = {
+		name = APG_j_walter_christie
 		portraits = {
 			civilian = {
-				large = GFX_portrait_APG_john_walter_christie_scientist_large
+				large = GFX_portrait_APG_j_walter_christie_scientist_large
 			}
 		}
 		scientist = {
@@ -1059,11 +1059,11 @@ characters = {
 			skills = { specialization_land = 2 }
 		}
 	}
-	APG_robert_hutchings_goddard = {
-		name = APG_robert_hutchings_goddard
+	APG_robert_h_goddard = {
+		name = APG_robert_h_goddard
 		portraits = {
 			civilian = {
-				large = GFX_portrait_APG_robert_hutchings_goddard_scientist_large
+				large = GFX_portrait_APG_robert_h_goddard_scientist_large
 			}
 		}
 		scientist = {

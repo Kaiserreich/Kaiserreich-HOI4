@@ -507,3 +507,34 @@ ARG_puppet_setup = {
 		PAR_apply_puppet_modifier = yes
 	}
 }
+
+ARG_add_annual_immigration = {
+	# Used by both ARG and FOP
+	set_temp_variable = {
+		arg_im_total = {
+			value = 57821
+			multiply = arg_im_factor
+		}
+	}
+
+	#Buenos Aires
+	set_temp_variable = { arg_im_factor_local = { value = 0.7 multiply = arg_im_total } }
+	278 = {
+		add_manpower = arg_im_factor_local
+	}
+
+	#Cordoba
+	set_temp_variable = { arg_im_factor_local = { value = 0.2 multiply = arg_im_total } }
+	902 = {
+		add_manpower = arg_im_factor_local
+	}
+
+	#Entre Rios
+	set_temp_variable = { arg_im_factor_local = { value = 0.1 multiply = arg_im_total } }
+	510 = {
+		add_manpower = arg_im_factor_local
+	}
+
+	# Reset the immigration factor
+	set_variable = { arg_im_factor = 1 }
+}

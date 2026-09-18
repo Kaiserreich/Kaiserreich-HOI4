@@ -23,6 +23,7 @@ JAP_hates_reichspakt = {
 		value = -1000
 	}
 }
+
 JAP_hates_chinese_claimants = {
 	reversed = yes
 
@@ -50,6 +51,7 @@ JAP_hates_chinese_claimants = {
 		value = -1000
 	}
 }
+
 JAP_dont_send_expeditionary_forces_to_FNG = {
 	allowed = { original_tag = JAP }
 	enable = { always = yes }
@@ -248,7 +250,6 @@ JAP_raid_the_ocean_79 = {
 			1099 = { NOT = { is_fully_controlled_by = JAP } }
 			1106 = { NOT = { is_fully_controlled_by = JAP } }
 		}
-
 	}
 	abort_when_not_enabled = yes
 
@@ -273,7 +274,6 @@ JAP_raid_the_ocean_90 = {
 			533 = { NOT = { is_fully_controlled_by = JAP } }
 			1106 = { NOT = { is_fully_controlled_by = JAP } }
 		}
-
 	}
 	abort_when_not_enabled = yes
 
@@ -444,6 +444,7 @@ JAP_beat_GEA_and_friends_next = {
 		value = 50
 	}
 }
+
 JAP_no_naval_invasion_overseas = {
 	reversed = yes
 	allowed = { original_tag = JAP }
@@ -464,6 +465,7 @@ JAP_no_naval_invasion_overseas = {
 		value = -2000
 	}
 }
+
 JAP_no_naval_invasion = {
 	allowed = { original_tag = JAP }
 	enable = {
@@ -477,7 +479,7 @@ JAP_no_naval_invasion = {
 				AND = {
 					any_allied_country = {
 						is_chinese_tag = yes
-						check_variable = { num_divisions < 50 }
+						num_divisions < 50
 					}
 					has_country_flag = {
 						flag = JAP_SSJW_last_major_frontline_change_flag
@@ -486,7 +488,7 @@ JAP_no_naval_invasion = {
 				}
 				any_enemy_country = {
 					is_chinese_tag = yes
-					check_variable = { num_divisions > JAP.num_divisions }
+					num_divisions > JAP.num_divisions
 				}
 				any_allied_country = {
 					is_chinese_tag = yes
@@ -690,6 +692,7 @@ JAP_do_not_naval_invade_these_state = {
 		value = -100
 	}
 }
+
 JAP_only_naval_invade_these_states = {
 	allowed = { original_tag = JAP }
 	enable = {
@@ -712,7 +715,7 @@ JAP_only_naval_invade_these_states = {
 					AND = {
 						any_allied_country = {
 							is_chinese_tag = yes
-							check_variable = { num_divisions < 50 }
+							num_divisions < 50
 						}
 						has_country_flag = {
 							flag = JAP_SSJW_last_major_frontline_change_flag
@@ -721,7 +724,7 @@ JAP_only_naval_invade_these_states = {
 					}
 					any_enemy_country = {
 						is_chinese_tag = yes
-						check_variable = { num_divisions > JAP.num_divisions }
+						num_divisions > JAP.num_divisions
 					}
 					any_allied_country = {
 						is_chinese_tag = yes
@@ -992,9 +995,11 @@ JAP_follow_up_on_invasion_priority = {
 			flag = JAP_landing_priority_boost
 			days < 60
 		}
-		set_temp_variable = { aggro_days_small = global.num_days }
-		modulo_temp_variable = { aggro_days_small = 14 }
-		check_variable = { aggro_days_small < 8 }
+		check_expr = { #aggro_days_small
+			value = global.num_days
+			mod = 14
+			less_than = 8
+		}
 	}
 
 	abort_when_not_enabled = yes
@@ -1042,6 +1047,7 @@ JAP_follow_up_on_invasion_priority = {
 		value = -200
 	}
 }
+
 JAP_sync_invasions_on_china = {
 	allowed = {
 		original_tag = JAP
@@ -1050,9 +1056,11 @@ JAP_sync_invasions_on_china = {
 	enable = {
 		has_war_with = CUF
 		NOT = { has_global_flag = JAP_defeated_by_china }
-		set_temp_variable = { invasion_days = global.num_days }
-		modulo_temp_variable = { invasion_days = 90 }
-		check_variable = { invasion_days < 45 }
+		check_expr = { #invasion_days
+			value = global.num_days
+			mod = 90
+			less_than = 45
+		}
 	}
 
 	abort_when_not_enabled = yes
@@ -1064,6 +1072,7 @@ JAP_sync_invasions_on_china = {
 		execute_order = no
 	}
 }
+
 JAP_bypass_the_islands = {
 	allowed = { original_tag = JAP }
 	enable = {
@@ -1134,6 +1143,7 @@ JAP_bypass_the_islands = {
 		value = -100
 	}
 }
+
 JAP_avoid_Tianjin_if_no_nearby_controlled_states = {
 	allowed = { original_tag = JAP }
 	enable = {
@@ -1670,10 +1680,6 @@ JAP_expand_527_airbase = {
 		527 = {
 			controller = { is_ally_with = JAP }
 			air_base < 2
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
 		}
 	}
 	abort_when_not_enabled = yes
@@ -1685,6 +1691,7 @@ JAP_expand_527_airbase = {
 		value = 2
 	}
 }
+
 JAP_expand_1100_airbase = {
 	allowed = {
 		tag = JAP
@@ -1700,10 +1707,6 @@ JAP_expand_1100_airbase = {
 		1100 = {
 			controller = { is_ally_with = JAP }
 			air_base < 2
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
 		}
 	}
 	abort_when_not_enabled = yes
@@ -1715,6 +1718,7 @@ JAP_expand_1100_airbase = {
 		value = 2
 	}
 }
+
 JAP_expand_610_airbase = {
 	allowed = {
 		tag = JAP
@@ -1728,10 +1732,6 @@ JAP_expand_610_airbase = {
 		610 = {
 			controller = { is_ally_with = JAP }
 			air_base < 2
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
 		}
 	}
 	abort_when_not_enabled = yes
@@ -1743,23 +1743,19 @@ JAP_expand_610_airbase = {
 		value = 2
 	}
 }
+
 JAP_expand_1048_airbase = {
 	allowed = {
 		tag = JAP
 	}
 	enable = {
-		OR = {
-			661 = { controller = { has_war_with = JAP } }
-			1013 = { controller = { has_war_with = JAP } }
-			602 = { controller = { has_war_with = JAP } }
+		any_state_of = {
+			target = { 661 1013 602 }
+			controller = { has_war_with = JAP }
 		}
 		1048 = {
 			controller = { is_ally_with = JAP }
 			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 7 }
-				check_variable = { building_level@air_base < 3 }
-			}
 		}
 	}
 	abort_when_not_enabled = yes
@@ -1771,6 +1767,7 @@ JAP_expand_1048_airbase = {
 		value = 3
 	}
 }
+
 JAP_expand_799_airbase = {
 	allowed = {
 		tag = JAP
@@ -1784,10 +1781,6 @@ JAP_expand_799_airbase = {
 		799 = {
 			controller = { is_ally_with = JAP }
 			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 7 }
-				check_variable = { building_level@air_base < 3 }
-			}
 		}
 	}
 	abort_when_not_enabled = yes
@@ -1799,6 +1792,7 @@ JAP_expand_799_airbase = {
 		value = 3
 	}
 }
+
 JAP_expand_602_airbase = {
 	allowed = {
 		tag = JAP
@@ -1812,10 +1806,6 @@ JAP_expand_602_airbase = {
 		602 = {
 			controller = { is_ally_with = JAP }
 			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
 		}
 	}
 	abort_when_not_enabled = yes
@@ -1827,6 +1817,7 @@ JAP_expand_602_airbase = {
 		value = 2
 	}
 }
+
 JAP_expand_600_airbase = {
 	allowed = {
 		tag = JAP
@@ -1840,10 +1831,6 @@ JAP_expand_600_airbase = {
 		600 = {
 			controller = { is_ally_with = JAP }
 			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
 		}
 	}
 	abort_when_not_enabled = yes
@@ -1855,6 +1842,7 @@ JAP_expand_600_airbase = {
 		value = 2
 	}
 }
+
 JAP_expand_743_airbase = {
 	allowed = {
 		tag = JAP
@@ -1864,10 +1852,6 @@ JAP_expand_743_airbase = {
 		743 = {
 			controller = { is_ally_with = JAP }
 			air_base < 10
-			OR = {
-				free_building_slots = { building = air_base size > 0 }
-				check_variable = { building_level@air_base < 10 }
-			}
 		}
 	}
 	abort_when_not_enabled = yes
@@ -1912,6 +1896,7 @@ JAP_buffer_to_support_fengtian_for_FNG = {
 		value = 500
 	}
 }
+
 JAP_buffer_to_support_fengtian_enemy_FNG = {
 	allowed = {
 		original_tag = JAP
@@ -1948,6 +1933,7 @@ JAP_buffer_to_support_fengtian_enemy_FNG = {
 		value = 500
 	}
 }
+
 JAP_buffer_to_anti_fengtian = {
 	allowed = {
 		original_tag = JAP

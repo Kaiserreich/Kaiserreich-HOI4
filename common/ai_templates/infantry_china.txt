@@ -228,13 +228,13 @@ regular_infantry_china = {
 				tag = SZC
 				tag = ANQ
 			}
-			check_variable = { num_divisions < 40 }
+			num_divisions < 40
 		}
 		modifier = {
 			factor = 5
 			OR = {
 				date < 1938.1.1
-				check_variable = { num_divisions > 30 }
+				num_divisions > 30
 			}
 		}
 	}

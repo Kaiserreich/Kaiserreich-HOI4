@@ -2226,11 +2226,7 @@ ideas = {
 		JAP_member_integration_1 = {
 			on_add = {
 				log = "[GetLogRoot]: add idea JAP_member_integration_1"
-				activate_targeted_decision = { target = JAP decision = JAP_nationalize_japanese_investments }
-			}
-			on_remove = {
-				log = "[GetLogRoot]: remove idea JAP_member_integration_1"
-				remove_targeted_decision = { target = JAP decision = JAP_nationalize_japanese_investments }
+				set_variable = { JAP_investment_buyout = 100 }
 			}
 			picture = japanese_integration
 			allowed = { always = no }
@@ -2250,11 +2246,7 @@ ideas = {
 		JAP_member_integration_2 = {
 			on_add = {
 				log = "[GetLogRoot]: add idea JAP_member_integration_2"
-				activate_targeted_decision = { target = JAP decision = JAP_nationalize_japanese_investments }
-			}
-			on_remove = {
-				log = "[GetLogRoot]: remove idea JAP_member_integration_2"
-				remove_targeted_decision = { target = JAP decision = JAP_nationalize_japanese_investments }
+				set_variable = { JAP_investment_buyout = 250 }
 			}
 			picture = japanese_integration
 			allowed = { always = no }
@@ -2274,11 +2266,7 @@ ideas = {
 		JAP_member_integration_3 = {
 			on_add = {
 				log = "[GetLogRoot]: add idea JAP_member_integration_3"
-				activate_targeted_decision = { target = JAP decision = JAP_nationalize_japanese_investments }
-			}
-			on_remove = {
-				log = "[GetLogRoot]: remove idea JAP_member_integration_3"
-				remove_targeted_decision = { target = JAP decision = JAP_nationalize_japanese_investments }
+				set_variable = { JAP_investment_buyout = 400 }
 			}
 			picture = japanese_integration
 			allowed = { always = no }

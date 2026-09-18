@@ -58,6 +58,16 @@ YUN_UPC_recruit_characters_effect = {
 	YUN_liao_xingchao = { CHN_recruit_character_effect = yes }
 }
 
+YUN_unlock_YUN_wang_fusheng_advisor_effect = {
+	if = {
+		limit = { NOT = { has_country_flag = YUN_unlock_YUN_wang_fusheng_advisor } }
+		# YUN_waking_the_tiger,  YUN_contacting_the_yunnan_labour_unions, YUN_to_enact_minsheng_geming, YUN_reconcile_with_the_socialists
+		set_country_flag = YUN_unlock_YUN_wang_fusheng_advisor
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = YUN_wang_fusheng_advisor
+	}
+}
+
 YUN_YSP_purge_characters_minus_leaders_effect = {
 	every_character = {
 		limit = {
@@ -183,73 +193,52 @@ YUN_TJY_purge_characters_minus_leaders_effect = {
 
 ###- YUN Intro-Minigame Effects -###
 YUN_introminigame_calculate_difference_effect = {
-	set_variable = { YUN_introminigame_KMT_soldiers_difference_var = YUN_introminigame_KMT_soldiers_var }
-	subtract_from_variable = { YUN_introminigame_KMT_soldiers_difference_var = YUN_introminigame_UPC_soldiers_var } #Calculates how many more soldiers the KMT has than UPC.
-
-	set_variable = { YUN_introminigame_UPC_soldiers_difference_var = YUN_introminigame_UPC_soldiers_var }
-	subtract_from_variable = { YUN_introminigame_UPC_soldiers_difference_var = YUN_introminigame_KMT_soldiers_var } #Calculates how many more soldiers the UPC has than KMT.
+	set_variable = {
+		YUN_introminigame_KMT_soldiers_difference_var = { #Calculates how many more soldiers the KMT has than UPC.
+			value = YUN_introminigame_KMT_soldiers_var
+			subtract = YUN_introminigame_UPC_soldiers_var
+		}
+	}
+	set_variable = {
+		YUN_introminigame_UPC_soldiers_difference_var = { #Calculates how many more soldiers the UPC has than KMT.
+			value = YUN_introminigame_UPC_soldiers_var
+			subtract = YUN_introminigame_KMT_soldiers_var
+		}
+	}
 }
 
 YUN_introminigame_add_KMT_small_effect = {
-	add_to_variable = {
-		var = YUN_introminigame_KMT_soldiers_var
-		value = 1000
-		tooltip = YUN_introminigame_add_KMT_small_effect_tt
-	}
+	add_to_variable = { YUN_introminigame_KMT_soldiers_var = 1000 tooltip = YUN_introminigame_add_KMT_small_effect_tt }
 	YUN_introminigame_calculate_difference_effect = yes
 }
 
 YUN_introminigame_add_KMT_medium_effect = {
-	add_to_variable = {
-		var = YUN_introminigame_KMT_soldiers_var
-		value = 2000
-		tooltip = YUN_introminigame_add_KMT_medium_effect_tt
-	}
+	add_to_variable = { YUN_introminigame_KMT_soldiers_var = 2000 tooltip = YUN_introminigame_add_KMT_medium_effect_tt }
 	YUN_introminigame_calculate_difference_effect = yes
 }
 
 YUN_introminigame_add_KMT_large_effect = {
-	add_to_variable = {
-		var = YUN_introminigame_KMT_soldiers_var
-		value = 3000
-		tooltip = YUN_introminigame_add_KMT_large_effect_tt
-	}
+	add_to_variable = { YUN_introminigame_KMT_soldiers_var = 3000 tooltip = YUN_introminigame_add_KMT_large_effect_tt }
 	YUN_introminigame_calculate_difference_effect = yes
 }
 
 YUN_introminigame_sub_KMT_large_effect = {
-	add_to_variable = {
-		var = YUN_introminigame_KMT_soldiers_var
-		value = -3000
-		tooltip = YUN_introminigame_sub_KMT_large_effect_tt
-	}
+	add_to_variable = { YUN_introminigame_KMT_soldiers_var = -3000 tooltip = YUN_introminigame_sub_KMT_large_effect_tt }
 	YUN_introminigame_calculate_difference_effect = yes
 }
 
 YUN_introminigame_add_UPC_small_effect = {
-	add_to_variable = {
-		var = YUN_introminigame_UPC_soldiers_var
-		value = 1000
-		tooltip = YUN_introminigame_add_UPC_small_effect_tt
-	}
+	add_to_variable = { YUN_introminigame_UPC_soldiers_var = 1000 tooltip = YUN_introminigame_add_UPC_small_effect_tt }
 	YUN_introminigame_calculate_difference_effect = yes
 }
 
 YUN_introminigame_add_UPC_medium_effect = {
-	add_to_variable = {
-		var = YUN_introminigame_UPC_soldiers_var
-		value = 2000
-		tooltip = YUN_introminigame_add_UPC_medium_effect_tt
-	}
+	add_to_variable = { YUN_introminigame_UPC_soldiers_var = 2000 tooltip = YUN_introminigame_add_UPC_medium_effect_tt }
 	YUN_introminigame_calculate_difference_effect = yes
 }
 
 YUN_introminigame_add_UPC_large_effect = {
-	add_to_variable = {
-		var = YUN_introminigame_UPC_soldiers_var
-		value = 3000
-		tooltip = YUN_introminigame_add_UPC_large_effect_tt
-	}
+	add_to_variable = { YUN_introminigame_UPC_soldiers_var = 3000 tooltip = YUN_introminigame_add_UPC_large_effect_tt }
 	YUN_introminigame_calculate_difference_effect = yes
 }
 
@@ -295,8 +284,8 @@ YUN_war_with_GXC_effect = {
 	every_state = {
 		limit = {
 			OR = {
-				has_state_flag = guangxi_province_state
-				has_state_flag = guangdong_province_state
+				check_variable = { chinese_province_state = 594.id }
+				check_variable = { chinese_province_state = 592.id }
 			}
 		}
 		add_claim_by = YUN
@@ -578,44 +567,40 @@ YUN_KMT_set_initial_parties = {
 }
 
 #Strengthening YSP
-YUN_add_YSP_effect = {
-	add_popularity = {
-		ideology = syndicalist
-		popularity = var:YUN_size_var
-	}
-}
-
 #No need for a popularity ladder event for these people
 
 YUN_YSP_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_YSP_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.small
+	}
 }
 YUN_YSP_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_YSP_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 YUN_YSP_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_YSP_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.large
+	}
 }
 YUN_YSP_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_YSP_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 YUN_YSP_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_YSP_effect = yes
-}
-
-#Strengthening 3AL
-YUN_add_3AL_effect = {
 	add_popularity = {
-		ideology = radical_socialist
-		popularity = var:YUN_size_var
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.giga
 	}
 }
 
+#Strengthening 3AL
 YUN_3AL_mechanic_effect = {
 	if = {
 		limit = {
@@ -645,39 +630,42 @@ YUN_3AL_mechanic_effect = {
 }
 
 YUN_3AL_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_3AL_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_3AL_mechanic_effect = yes
 }
 YUN_3AL_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_3AL_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_3AL_mechanic_effect = yes
 }
 YUN_3AL_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_3AL_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_3AL_mechanic_effect = yes
 }
 YUN_3AL_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_3AL_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_3AL_mechanic_effect = yes
 }
 YUN_3AL_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_3AL_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_3AL_mechanic_effect = yes
 }
 
 #Strengthening CEC
-YUN_add_CEC_effect = {
-	add_popularity = {
-		ideology = social_democrat
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_CEC_mechanic_effect = {
 	if = {
 		limit = {
@@ -707,39 +695,42 @@ YUN_CEC_mechanic_effect = {
 }
 
 YUN_CEC_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_CEC_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_CEC_mechanic_effect = yes
 }
 YUN_CEC_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_CEC_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_CEC_mechanic_effect = yes
 }
 YUN_CEC_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_CEC_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_CEC_mechanic_effect = yes
 }
 YUN_CEC_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_CEC_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_CEC_mechanic_effect = yes
 }
 YUN_CEC_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_CEC_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_CEC_mechanic_effect = yes
 }
 
 #Strengthening PSC
-YUN_add_PSC_effect = {
-	add_popularity = {
-		ideology = market_liberal
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_PSC_mechanic_effect = {
 	if = {
 		limit = {
@@ -779,39 +770,42 @@ YUN_PSC_mechanic_effect = {
 }
 
 YUN_PSC_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_PSC_mechanic_effect = yes
 }
 YUN_PSC_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_PSC_mechanic_effect = yes
 }
 YUN_PSC_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_PSC_mechanic_effect = yes
 }
 YUN_PSC_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_PSC_mechanic_effect = yes
 }
 YUN_PSC_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_PSC_mechanic_effect = yes
 }
 
 #Strengthening 3AR
-YUN_add_3AR_effect = {
-	add_popularity = {
-		ideology = social_conservative
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_3AR_mechanic_effect = {
 	if = {
 		limit = {
@@ -841,39 +835,42 @@ YUN_3AR_mechanic_effect = {
 }
 
 YUN_3AR_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_3AR_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_3AR_mechanic_effect = yes
 }
 YUN_3AR_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_3AR_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_3AR_mechanic_effect = yes
 }
 YUN_3AR_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_3AR_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_3AR_mechanic_effect = yes
 }
 YUN_3AR_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_3AR_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_3AR_mechanic_effect = yes
 }
 YUN_3AR_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_3AR_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_3AR_mechanic_effect = yes
 }
 
 #Strengthening MCC
-YUN_add_MCC_effect = {
-	add_popularity = {
-		ideology = social_conservative
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_MCC_mechanic_effect = {
 	if = {
 		limit = {
@@ -903,39 +900,42 @@ YUN_MCC_mechanic_effect = {
 }
 
 YUN_MCC_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_MCC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_MCC_mechanic_effect = yes
 }
 YUN_MCC_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_MCC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_MCC_mechanic_effect = yes
 }
 YUN_MCC_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_MCC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_MCC_mechanic_effect = yes
 }
 YUN_MCC_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_MCC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_MCC_mechanic_effect = yes
 }
 YUN_MCC_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_MCC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_MCC_mechanic_effect = yes
 }
 
 #Strengthening CCC
-YUN_add_CCC_effect = {
-	add_popularity = {
-		ideology = authoritarian_democrat
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_CCC_mechanic_effect = {
 	if = {
 		limit = {
@@ -965,39 +965,42 @@ YUN_CCC_mechanic_effect = {
 }
 
 YUN_CCC_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_CCC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_CCC_mechanic_effect = yes
 }
 YUN_CCC_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_CCC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_CCC_mechanic_effect = yes
 }
 YUN_CCC_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_CCC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_CCC_mechanic_effect = yes
 }
 YUN_CCC_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_CCC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_CCC_mechanic_effect = yes
 }
 YUN_CCC_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_CCC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_CCC_mechanic_effect = yes
 }
 
 #Strengthening WPC
-YUN_add_WPC_effect = {
-	add_popularity = {
-		ideology = paternal_autocrat
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_WPC_mechanic_effect = {
 	if = {
 		limit = {
@@ -1027,39 +1030,42 @@ YUN_WPC_mechanic_effect = {
 }
 
 YUN_WPC_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_WPC_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_WPC_mechanic_effect = yes
 }
 YUN_WPC_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_WPC_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_WPC_mechanic_effect = yes
 }
 YUN_WPC_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_WPC_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_WPC_mechanic_effect = yes
 }
 YUN_WPC_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_WPC_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_WPC_mechanic_effect = yes
 }
 YUN_WPC_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_WPC_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_WPC_mechanic_effect = yes
 }
 
 #Strengthening BSS
-YUN_add_BSS_effect = {
-	add_popularity = {
-		ideology = national_populist
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_BSS_mechanic_effect = {
 	if = {
 		limit = {
@@ -1089,28 +1095,38 @@ YUN_BSS_mechanic_effect = {
 }
 
 YUN_BSS_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_BSS_effect = yes
+	add_popularity = {
+		ideology = national_populist
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_BSS_mechanic_effect = yes
 }
 YUN_BSS_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_BSS_effect = yes
+	add_popularity = {
+		ideology = national_populist
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_BSS_mechanic_effect = yes
 }
 YUN_BSS_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_BSS_effect = yes
+	add_popularity = {
+		ideology = national_populist
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_BSS_mechanic_effect = yes
 }
 YUN_BSS_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_BSS_effect = yes
+	add_popularity = {
+		ideology = national_populist
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_BSS_mechanic_effect = yes
 }
 YUN_BSS_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_BSS_effect = yes
+	add_popularity = {
+		ideology = national_populist
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_BSS_mechanic_effect = yes
 }
 
@@ -1211,13 +1227,6 @@ YUN_UPC_set_initial_parties = {
 }
 
 #Strengthening YCD
-YUN_add_YCD_effect = {
-	add_popularity = {
-		ideology = social_democrat
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_YCD_mechanic_effect = {
 	if = {
 		limit = {
@@ -1247,39 +1256,42 @@ YUN_YCD_mechanic_effect = {
 }
 
 YUN_YCD_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_YCD_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_YCD_mechanic_effect = yes
 }
 YUN_YCD_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_YCD_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_YCD_mechanic_effect = yes
 }
 YUN_YCD_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_YCD_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_YCD_mechanic_effect = yes
 }
 YUN_YCD_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_YCD_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_YCD_mechanic_effect = yes
 }
 YUN_YCD_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_YCD_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_YCD_mechanic_effect = yes
 }
 
 #Strengthening CMS
-YUN_add_CMS_effect = {
-	add_popularity = {
-		ideology = social_liberal
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_CMS_mechanic_effect = {
 	if = {
 		limit = {
@@ -1309,48 +1321,42 @@ YUN_CMS_mechanic_effect = {
 }
 
 YUN_CMS_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_CMS_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_CMS_mechanic_effect = yes
 }
 YUN_CMS_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_CMS_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_CMS_mechanic_effect = yes
 }
 YUN_CMS_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_CMS_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_CMS_mechanic_effect = yes
 }
 YUN_CMS_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_CMS_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_CMS_mechanic_effect = yes
 }
 YUN_CMS_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_CMS_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_CMS_mechanic_effect = yes
 }
 
 #Strengthening YCC
-YUN_add_YCC_effect = {
-	if = {
-		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
-		add_popularity = {
-			ideology = social_conservative
-			popularity = var:YUN_size_var
-		}
-	}
-	else = {
-		add_popularity = {
-			ideology = market_liberal
-			popularity = var:YUN_size_var
-		}
-	}
-}
-
 YUN_YCC_mechanic_effect = {
 	if = {
 		limit = {
@@ -1381,71 +1387,163 @@ YUN_YCC_mechanic_effect = {
 
 YUN_YCC_small_effect = {
 	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_YCC_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.small
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.small
+		}
+	}
 }
 YUN_YCC_medium_effect = {
 	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_YCC_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.medium
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.medium
+		}
+	}
 }
 YUN_YCC_large_effect = {
 	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_YCC_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.large
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.large
+		}
+	}
 }
 YUN_YCC_mega_effect = {
 	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_YCC_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.mega
+		}
+	}
 }
 YUN_YCC_giga_effect = {
 	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_YCC_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.giga
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.giga
+		}
+	}
 }
 
 #Strengthening LYC
-YUN_add_LYC_effect = {
+YUN_LYC_small_effect = {
 	if = {
 		limit = { china_is_aligned_with_federalists = yes }
 		add_popularity = {
 			ideology = paternal_autocrat
-			popularity = var:YUN_size_var
+			popularity = constant:party_pop.gain.small
 		}
 	}
 	else = {
 		add_popularity = {
 			ideology = authoritarian_democrat
-			popularity = var:YUN_size_var
+			popularity = constant:party_pop.gain.small
+		}
+	}
+}
+YUN_LYC_medium_effect = {
+	if = {
+		limit = { china_is_aligned_with_federalists = yes }
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.medium
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.medium
+		}
+	}
+}
+YUN_LYC_large_effect = {
+	if = {
+		limit = { china_is_aligned_with_federalists = yes }
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.large
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.large
+		}
+	}
+}
+YUN_LYC_mega_effect = {
+	if = {
+		limit = { china_is_aligned_with_federalists = yes }
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+}
+YUN_LYC_giga_effect = {
+	if = {
+		limit = { china_is_aligned_with_federalists = yes }
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.giga
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.giga
 		}
 	}
 }
 
-YUN_LYC_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_LYC_effect = yes
-}
-YUN_LYC_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_LYC_effect = yes
-}
-YUN_LYC_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_LYC_effect = yes
-}
-YUN_LYC_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_LYC_effect = yes
-}
-YUN_LYC_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_LYC_effect = yes
-}
-
 #Strengthening TJY
-YUN_add_TJY_effect = {
-	add_popularity = {
-		ideology = authoritarian_democrat
-		popularity = var:YUN_size_var
-	}
-}
-
 YUN_TJY_mechanic_effect = {
 	if = {
 		limit = {
@@ -1475,86 +1573,119 @@ YUN_TJY_mechanic_effect = {
 }
 
 YUN_TJY_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_TJY_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.small
+	}
 	YUN_TJY_mechanic_effect = yes
 }
 YUN_TJY_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_TJY_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.medium
+	}
 	YUN_TJY_mechanic_effect = yes
 }
 YUN_TJY_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_TJY_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.large
+	}
 	YUN_TJY_mechanic_effect = yes
 }
 YUN_TJY_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_TJY_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.mega
+	}
 	YUN_TJY_mechanic_effect = yes
 }
 YUN_TJY_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_TJY_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.giga
+	}
 	YUN_TJY_mechanic_effect = yes
 }
 
 #Strengthening HRY
-YUN_add_HRY_effect = {
+YUN_HRY_small_effect = {
 	if = {
 		limit = { china_is_aligned_with_kmt = yes }
 		add_popularity = {
 			ideology = authoritarian_democrat
-			popularity = var:YUN_size_var
+			popularity = constant:party_pop.gain.small
 		}
 	}
 	else = {
 		add_popularity = {
 			ideology = paternal_autocrat
-			popularity = var:YUN_size_var
+			popularity = constant:party_pop.gain.small
 		}
 	}
 }
-
-YUN_HRY_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_HRY_effect = yes
-}
 YUN_HRY_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_HRY_effect = yes
-}
-YUN_HRY_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_HRY_effect = yes
-}
-YUN_HRY_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_HRY_effect = yes
-}
-YUN_HRY_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_HRY_effect = yes
-}
-
-#Strengthening PGP
-YUN_add_PGP_effect = {
 	if = {
-		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		limit = { china_is_aligned_with_kmt = yes }
 		add_popularity = {
-			ideology = market_liberal
-			popularity = var:YUN_size_var
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.medium
 		}
 	}
 	else = {
 		add_popularity = {
-			ideology = social_conservative
-			popularity = var:YUN_size_var
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.medium
+		}
+	}
+}
+YUN_HRY_large_effect = {
+	if = {
+		limit = { china_is_aligned_with_kmt = yes }
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.large
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.large
+		}
+	}
+}
+YUN_HRY_mega_effect = {
+	if = {
+		limit = { china_is_aligned_with_kmt = yes }
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+}
+YUN_HRY_giga_effect = {
+	if = {
+		limit = { china_is_aligned_with_kmt = yes }
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.giga
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.giga
 		}
 	}
 }
 
+#Strengthening PGP
 YUN_PGP_mechanic_effect = {
 	if = {
 		limit = {
@@ -1602,28 +1733,83 @@ YUN_PGP_mechanic_effect = {
 }
 
 YUN_PGP_small_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.small }
-	YUN_add_PGP_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.small
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.small
+		}
+	}
 	YUN_PGP_mechanic_effect = yes
 }
 YUN_PGP_medium_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.medium }
-	YUN_add_PGP_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.medium
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.medium
+		}
+	}
 	YUN_PGP_mechanic_effect = yes
 }
 YUN_PGP_large_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.large }
-	YUN_add_PGP_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.large
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.large
+		}
+	}
 	YUN_PGP_mechanic_effect = yes
 }
 YUN_PGP_mega_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.mega }
-	YUN_add_PGP_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.mega
+		}
+	}
 	YUN_PGP_mechanic_effect = yes
 }
 YUN_PGP_giga_effect = {
-	set_temp_variable = { YUN_size_var = constant:party_pop.gain.giga }
-	YUN_add_PGP_effect = yes
+	if = {
+		limit = { YUN = { has_country_flag = YUN_UPC_satellite_election_path_flag } }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.giga
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.giga
+		}
+	}
 	YUN_PGP_mechanic_effect = yes
 }
 
@@ -2690,29 +2876,27 @@ YUN_KMT_hu_hanmin_crisis_MCC_zeal_effect = {
 
 YUN_KMT_hu_hanmin_crisis_PSC_delegates_effect = {
 	#Requires an external temp variable (MUST BE A DECIMAL!!!): YUN_PSC_delegate_change_temp_var
-
-	multiply_temp_variable = { YUN_PSC_delegate_change_temp_var = 502 } #Calculates a number of seats equivalent to % out of 502 (range from -502 to 502)
-	round_temp_variable = YUN_PSC_delegate_change_temp_var #Makes sure it is a whole number
-	custom_effect_tooltip = YUN_KMT_hu_hanmin_crisis_PSC_delegates_tt #NOTE THIS MUST BE AT THE BOTTOM FOR IT TO WORK
-	add_to_variable = { YUN_PSC_aligned_delegates_variable = YUN_PSC_delegate_change_temp_var }
-	clamp_variable = {
-		var = YUN_PSC_aligned_delegates_variable
-		min = 0
-		max = 502
+	add_to_variable = {
+		YUN_PSC_aligned_delegates_variable = {
+			value = YUN_PSC_delegate_change_temp_var
+			multiply = 502 #Calculates a number of seats equivalent to % out of 502 (range from -502 to 502)
+			round = yes #Makes sure it is a whole number
+			clamp = { min = { value = YUN_PSC_aligned_delegates_variable multiply = -1 } max = { value = 502 subtract = YUN_PSC_aligned_delegates_variable } }
+		}
+		tooltip = YUN_KMT_hu_hanmin_crisis_PSC_delegates_tt
 	}
 }
 
 YUN_KMT_hu_hanmin_crisis_CCC_delegates_effect = {
 	#Requires an external temp variable (MUST BE A DECIMAL!!!): YUN_CCC_delegate_change_temp_var
-
-	multiply_temp_variable = { YUN_CCC_delegate_change_temp_var = 502 } #Calculates a number of seats equivalent to % out of 502 (range from -502 to 502)
-	round_temp_variable = YUN_CCC_delegate_change_temp_var #Makes sure it is a whole number
-	custom_effect_tooltip = YUN_KMT_hu_hanmin_crisis_CCC_delegates_tt #NOTE THIS MUST BE AT THE BOTTOM FOR IT TO WORK
-	add_to_variable = { YUN_CCC_aligned_delegates_variable = YUN_CCC_delegate_change_temp_var }
-	clamp_variable = {
-		var = YUN_CCC_aligned_delegates_variable
-		min = 0
-		max = 502
+	add_to_variable = {
+		YUN_CCC_aligned_delegates_variable = {
+			value = YUN_CCC_delegate_change_temp_var
+			multiply = 502 #Calculates a number of seats equivalent to % out of 502 (range from -502 to 502)
+			round = yes #Makes sure it is a whole number
+			clamp = { min = { value = YUN_CCC_aligned_delegates_variable multiply = -1 } max = { value = 502 subtract = YUN_CCC_aligned_delegates_variable } }
+		}
+		tooltip = YUN_KMT_hu_hanmin_crisis_CCC_delegates_tt
 	}
 }
 
@@ -3480,7 +3664,7 @@ YUN_political_consultative_conference_effect = {
 	set_temp_variable = { YUN_radical_influence_var = { value = party_popularity@social_democrat add = party_popularity@national_populist } }
 	add_stability = YUN_radical_influence_var
 
-	set_temp_variable = { YUN_radical_influence_var_neg_var = {	value = YUN_radical_influence_var multiply = -300 } }
+	set_temp_variable = { YUN_radical_influence_var_neg_var = { value = YUN_radical_influence_var multiply = -300 } }
 	add_political_power = YUN_radical_influence_var_neg_var
 
 	set_temp_variable = { YUN_social_democrat_pop_temp_var = { value = party_popularity@social_democrat multiply = -1 } }

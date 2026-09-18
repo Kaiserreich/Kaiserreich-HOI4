@@ -648,7 +648,7 @@ focus_tree = {
 
 	focus = {
 		id = HOL_staatsvakbond
-		icon = GFX_goal_generic_corporatism
+		icon = GFX_goal_generic_militarism
 		cost = 5
 
 		relative_position_id = HOL_reijnders_putsch
@@ -1878,13 +1878,17 @@ focus_tree = {
 			factor = 100
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
+				if = {
+					limit = { DEI = { is_ai = no } }
+					OR = {
+						has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
+						has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
+						has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
+						has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
+						has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
+					}
 				}
+				else = { has_country_flag = HOL_socialist_ai }
 			}
 		}
 		prerequisite = {
@@ -1929,25 +1933,17 @@ focus_tree = {
 			factor = 100
 			modifier = {
 				factor = 0
-				DEI = { is_ai = no }
-				NOT = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
+				if = {
+					limit = { DEI = { is_ai = no } }
+					NOT = {
+						has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
+						has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
+						has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
+						has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
+						has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
+					}
 				}
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_REP_SOCDEM }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_REP_SOCLIB }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_REP_MARLIB }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_REP_SOCCON }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCDEM }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NOT_SOC }
-				}
+				else = { NOT = { has_country_flag = HOL_socialist_ai } }
 			}
 		}
 		prerequisite = {
@@ -3589,7 +3585,7 @@ focus_tree = {
 
 	focus = {
 		id = HOL_English_Advisors
-		icon = GFX_UOB_red
+		icon = GFX_goal_ENG_officer_corps
 		cost = 5
 
 		relative_position_id = HOL_spreading_the_revolution

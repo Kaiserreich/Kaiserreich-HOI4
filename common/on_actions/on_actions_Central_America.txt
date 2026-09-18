@@ -37,6 +37,25 @@ on_actions = {
 		}
 	}
 
+	#ROOT is winner #FROM is loser
+	on_peaceconference_ended = {
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						original_tag = COS
+						FROM = { original_tag = CEN }
+					}
+					OR = {
+						FROM = { original_tag = COS }
+						original_tag = CEN
+					}
+				}
+				COS = { remove_ideas = COS_liberation_campaign }
+			}
+		}
+	}
+
 	on_war_relation_added = {
 		effect = {
 			# Ensure CEN can't align with Entente if the two had a war
@@ -180,6 +199,14 @@ on_actions = {
 					NIC_remove_authoritarian_ideas = yes
 					NIC_remove_socialist_ideas = yes
 				}
+
+				if = {
+					limit = {
+						has_authoritarian_government = no
+						COS = { has_country_leader = { character = COS_jose_figueres_ferrer } }
+					}
+					COS = { country_event = { id = costa_rica_events.125 days = 365 random_days = 50 } } # Deutscher Aero Lloyd Flight 134
+				}
 			}
 		}
 	}
@@ -238,9 +265,17 @@ on_actions = {
 					activate_mission = CEN_COS_peace_timer
 					save_global_event_target_as = costa_rica_attacker
 				}
-				every_country = {
-					limit = { is_ally_with = ROOT }
+				if = {
+					limit = { is_in_faction = yes }
+					every_faction_member = {
+						activate_mission = COS_peace_timer
+					}
+				}
+				else = {
 					activate_mission = COS_peace_timer
+					every_subject_country = {
+						activate_mission = COS_peace_timer
+					}
 				}
 			}
 		}

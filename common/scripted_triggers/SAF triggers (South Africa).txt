@@ -55,12 +55,11 @@ saf_trigger_ob_prowar = {
 		}
 		is_in_faction_with = INT #Socialism bad
 	}
-	AND = { #fighting syndies with the Germans, hurrah
-		any_enemy_country = {
-			has_socialist_government = yes
-		}
-		is_in_faction_with = GER
+	#fighting syndies with the Germans, hurrah
+	any_enemy_country = {
+		has_socialist_government = yes
 	}
+	is_in_faction_with = GER
 }
 
 saf_trigger_icu_anti_war = {

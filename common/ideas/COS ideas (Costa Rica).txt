@@ -32,6 +32,19 @@ ideas = {
 			on_remove = {
 				log = "[GetLogRoot]: remove idea COS_influence_of_the_UFC_idea"
 				remove_dynamic_modifier = { modifier = COS_influence_of_the_UFC_dynamic_modifier scope = COS }
+
+				remove_targeted_decision = { decision = COS_Improve_Conditions_Plantations target = THIS }
+				remove_targeted_decision = { decision = COS_Sell_Government_Land_UFC_decision target = THIS }
+				remove_targeted_decision = { decision = COS_Build_New_Telephone_Lines target = THIS }
+				remove_targeted_decision = { decision = COS_Establish_UFC_Headquarters_decision target = THIS }
+
+				if = {
+					limit = { has_idea = COS_UFC_Profit_idea }
+					set_temp_variable = { cos_profit_change = { value = cos_profit_factor multiply = -1 } }
+					update_UFC_profits = yes
+					remove_ideas = COS_UFC_Profit_idea
+				}
+
 				clear_variable = COS_UFC_influence_modifier
 				clear_variable = COS_UFC_influence_construction_speed
 				clear_variable = COS_UFC_influence_consumer_goods
@@ -51,9 +64,20 @@ ideas = {
 			on_remove = {
 				log = "[GetLogRoot]: remove idea COS_influence_of_the_ZKG_idea"
 				remove_dynamic_modifier = { modifier = COS_influence_of_the_ZKG_dynamic_modifier scope = COS }
+
+				remove_targeted_decision = { decision = COS_Combat_Social_Inequality target = THIS }
+				remove_targeted_decision = { decision = COS_German_Cultural_Program target = THIS }
+				remove_targeted_decision = { decision = COS_Extend_Loan_decision target = THIS }
+				remove_targeted_decision = { decision = COS_Sell_Government_Land_decision target = THIS }
+				remove_targeted_decision = { decision = COS_Land_Survey target = THIS }
+				remove_targeted_decision = { decision = COS_Extend_Connections target = THIS }
+				remove_targeted_decision = { decision = COS_Hire_Foreign_Engineers target = THIS }
+				remove_targeted_decision = { decision = COS_Plantation_Expansion target = THIS }
+
 				clear_variable = COS_ZKG_influence_pol_power_gain
 				clear_variable = COS_ZKG_influence_research_speed
 				clear_variable = COS_ZKG_influence_production_cap
+				clear_variable = COS_ZKG_survey
 			}
 			allowed = { always = no }
 			modifier = {
@@ -249,13 +273,11 @@ ideas = {
 			}
 		}
 
-		COS_Iron_Bars_Presidency = {
-			on_add = { log = "[GetLogRoot]: add idea COS_Iron_Bars_Presidency" }
+		COS_Iron_Bars_Presidency_Idea = {
+			on_add = { log = "[GetLogRoot]: add idea COS_Iron_Bars_Presidency_Idea" }
+			name = COS_Iron_Bars_Presidency
 			picture = generic_build_infrastructure
 			allowed = { always = no }
-			available = {
-				has_government = social_conservative
-			}
 			modifier = {
 				production_speed_buildings_factor = 0.3
 				consumer_goods_factor = 0.1
@@ -571,6 +593,18 @@ ideas = {
 			}
 		}
 
+		COS_liberation_campaign = {
+			on_add = { log = "[GetLogRoot]: add idea COS_liberation_campaign" }
+			picture = SPR_torchbearers_of_tomorrow
+			modifier = {
+				conscription = 0.03
+				unit_limit_bonus = 5
+				mobilization_speed = 1
+				supply_consumption_factor = -0.05
+				out_of_supply_factor = -0.15
+			}
+		}
+
 		COS_car_economic_bloc_idea = {
 			picture = generic_trade
 			on_add = {
@@ -684,7 +718,26 @@ ideas = {
 			on_remove = {
 				log = "[GetLogRoot]: remove idea COS_UFC_Profit_idea"
 				remove_dynamic_modifier = { modifier = COS_UFC_profit_dynamic_modifier scope = COS }
+
+				remove_targeted_decision = { decision = COS_Limon_Bananas target = THIS }
+				remove_targeted_decision = { decision = COS_Jamaica_Sugar target = THIS }
+				remove_targeted_decision = { decision = COS_Jamaica_Bananas target = THIS }
+				remove_targeted_decision = { decision = COS_Cuba_Sugar target = THIS }
+				remove_targeted_decision = { decision = COS_Nicaragua_Palm_Oil target = THIS }
+				remove_targeted_decision = { decision = COS_Honduras_Palm_Oil target = THIS }
+				remove_targeted_decision = { decision = COS_Honduras_Abaca target = THIS }
+				remove_targeted_decision = { decision = COS_Honduras_Banana target = THIS }
+				remove_targeted_decision = { decision = COS_Guatemala_Banana target = THIS }
+				remove_targeted_decision = { decision = COS_Guatemala_Abaca target = THIS }
+				remove_targeted_decision = { decision = COS_Colombia_Banana target = THIS }
+				remove_targeted_decision = { decision = COS_Purchase_Convoys target = THIS }
+				remove_targeted_decision = { decision = COS_Purchase_Trucks target = THIS }
+				remove_targeted_decision = { decision = COS_Purchase_Planes target = THIS }
+
+				clr_country_flag = COS_EXPANDING_OPERATIONS
+
 				clear_variable = cos_profit_factor
+				clear_variable = COS_remove_market_decisions
 				clear_variable = COS_UFC_consumer_goods
 				clear_variable = COS_UFC_output
 			}

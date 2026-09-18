@@ -119,9 +119,9 @@
  CEN_found_military_pact_desc: "The People's Vanguard, meant to safeguard Central Americans from external threats, shall be found here in an attempt to resist the revolution at all costs."
 
  CEN_unification_join_faction: "Join the [ROOT.CEN_unification_join_faction_title]"
- CEN_unification_join_faction_socialist: "[CEN_socialist_leader.GetFactionName]"
- CEN_unification_join_faction_military: "[CEN_military_leader.GetFactionName]"
- CEN_unification_join_faction_liberal: "[CEN_liberal_leader.GetFactionName]"
+ CEN_unification_join_faction_socialist: "$faction_revolutionary_front$"
+ CEN_unification_join_faction_military: "$faction_peoples_vanguard$"
+ CEN_unification_join_faction_liberal: "$faction_liberal_pact$"
 
  CEN_unification_join_faction_desc: "[ROOT.CEN_unification_join_faction_desc]"
  CEN_unification_join_faction_desc_socialist: "The Revolutionary Front founded by like-minded individuals hoping to band together to bring socialism to Central America. It is our job to join it, for the sake of our brethren abroad."
@@ -648,7 +648,7 @@
  central_america_democratic_events.236.a: "We are grateful."
 
  central_america_democratic_events.237.t: "[FROM.GetNameDefCap] Refuses to Support Our Neutrality"
- central_america_democratic_events.237.d: "[FROM.GetNameDefCap] has decided not to support our neutrality in world affairs, and while they have expressed their willingness to do so, they have stated that they currently do not posses the strength to guarantee us for the time being."
+ central_america_democratic_events.237.d: "[FROM.GetNameDefCap] has decided not to support our neutrality in world affairs, and while they have expressed their willingness to do so, they have stated that they currently do not possess the strength to guarantee us for the time being."
  central_america_democratic_events.237.a: "We'll have to look for someone else..."
 
  central_america_democratic_events.241.t: "Military Parades"
@@ -2099,7 +2099,7 @@
  central_america_dictatorship_events.42.a: "Welcome Back!"
 
  central_america_dictatorship_events.43.t: "Jorge Ubico's Statue is Completed"
- central_america_dictatorship_events.43.d: "President Jorge Ubico, the hero of the Guatemalan Civil War, the saviour Central America from the Syndicalist traitors, will now forever watch the President's Palace.\n\nThe construction of his statue, which dominates the plaza in front of the palace, has been started when the Guatemalan flag was still on top of the palace's flag pole, when Central America was still divided due to the Syndicalist traitors.\n\nHowever now, the beautiful flag of the united Republic is guarding the entrance of the palace, all thanks to our hero, Jorge Ubico. The inauguration, on this beautiful day of June, has been declared a holiday so that all workers, students and intellectuals of Central America have the possibility of honouring our great leader.\n\nThe crowds which have gathered to see the statue are estimated at more than twenty thousand brave citizens, and the Republican flag is waving in every street of Guatemala City on this blessed day."
+ central_america_dictatorship_events.43.d: "President Jorge Ubico, the hero of the Guatemalan Civil War, the saviour Central America from the Syndicalist traitors, will now forever watch the President's Palace.\n\nThe construction of his statue, which dominates the plaza in front of the palace, has been started when the Guatemalan flag was still on top of the palace's flag pole, when Central America was still divided due to the Syndicalist traitors.\n\nHowever now, the beautiful flag of the united Republic is guarding the entrance of the palace, all thanks to our hero, Jorge Ubico. The inauguration, on this beautiful day of [GetMonth], has been declared a holiday so that all workers, students and intellectuals of Central America have the possibility of honouring our great leader.\n\nThe crowds which have gathered to see the statue are estimated at more than twenty thousand brave citizens, and the Republican flag is waving in every street of Guatemala City on this blessed day."
  central_america_dictatorship_events.43.a: "An impressive statue for an impressive leader."
 
  central_america_dictatorship_events.201.t: "The Central American Republic Asks for Protection"
@@ -2506,15 +2506,11 @@
  central_america_flavour_events.5.d: "Due to the recent weather and the poor maintenance of San Salvador's drainage system, there has been a flooding in the Salvadoran city. While there have been no reported deaths by the incident, the damage done to the city's infrastructure is still significant and it will take some time until the city is back on its feet."
  central_america_flavour_events.5.a: "An unfortunate turn of events."
 
- central_america_flavour_events.6.t: "Paricutín Volcano Erupts in Michoacán"
- central_america_flavour_events.6.d: "We have received reports today of bad news from the small town of Paricutín. The nearby volcano Paracutín has begun erupting during the afternoon, and the small town's populace now stands threatened by the rains of ash, and our specialists confirm that the lava flow will cover the city at the current pace of emissions. The town have been ordered being evacuation immediately by President [Root.GetLeader] and efforts to relocate them near Uruapan shall begin. This will however take time and effort, but it's a necessary step to ensure the safety of our citizens from a natural disaster."
- central_america_flavour_events.6.a: "An unfortunate turn of events."
-
  central_america_flavour_events.7.t: "Earthquake Hits Guatemala!"
  central_america_flavour_events.7.d: "At 17:37, an earthquake of 7.7 Richter scale begun near the Guatemalan Pacific coast. The Earthquake has caused extensive damage to the area's infrastructure, tumbling telegraph lines and fracturing the Inter-American Highway. The town of Tecpan has been severely damaged as well, with nearly 60% of the civilian housing being demolished by the earthquake. The historic Palacio de los Capitanes Generales in Antigua Guatemala has also been partially damaged, as well as many old churches from the colonial era in the area. Unfortunately, thirty eight people have met their end in this tragic incident, and now we will have to deal with the aftermath of such an awful natural disaster."
  central_america_flavour_events.7.a: "Let's hope this isn't the First of Many."
 
- central_america_flavour_events.8.t: "Foundation of the Museo Regional de Arqueología in Copan"
+ central_america_flavour_events.8.t: "Foundation of the Museo Regional de Arqueología in Copán"
  central_america_flavour_events.8.d: "Today, the Museo Regional de Arqueologia was finally founded in the town of Copán. The Copán Archaeological site houses one of the biggest surviving architectural complexes from the early pre-classic era, as well as one of the biggest cities of the old Mayan civilisation. The site was closed to the public in 1935 and has undertook an extensive restoration work, with the Acropolis, the main square, the 'Staircase of hieroglyphics', Temples 11 and 22 as well as the '38 Estelas' and all the altars being the main focus of the restoration efforts. With the inauguration of the museum, the archaeological site is open once more to the public to explore the past of pre-Columbian Central America."
  central_america_flavour_events.8.a: "Another step towards preserving our history."
 
@@ -2539,18 +2535,6 @@
  central_america_flavour_events.14.t: "Another Hurricane Hits the Nicaraguan Atlantic shores"
  central_america_flavour_events.14.d: "A Hurricane has hit the Nicaraguan Atlantic shores again. The storm formed nearly out of nowhere, and the unprepared civilian populace suffered for the unpredictability of the Central American weather. Luckily, the storm was headed towards the Gulf of Mexico, and didn't touch shore, but the strong winds still caused some damage throughout the Central American Atlantic coastline."
  central_america_flavour_events.14.a: "We were lucky it wasn't headed our way."
-
- central_america_flavour_events.15.t: "Paricutín Threatens Santa Ana Zirosto"
- central_america_flavour_events.15.d: "As the eruption of the Paracutín continues, another town finds itself in the path of destruction. The small town of Santa Ana Zirosto, which was founded during colonial times is now on the way of the lava emissions. The town has been ordered to evacuate, and they shall join the Paricutín population in the relocation efforts near Uruapan."
- central_america_flavour_events.15.a: "We can only hope they can recover."
-
- central_america_flavour_events.16.t: "Paricutín Threatens San Juan Parangaricutiro"
- central_america_flavour_events.16.d: "While our specialists assure us that the eruption of the Paricutín is nearing its end, the town of San Juan Parangaricutiro, with nearly two thousand inhabitants, is now in the path of the lava. Thankfully, the major was already preparing a backup plan in case the volcano threatened the town, but our help would still be appreciated. The town and its inhabitants shall be relocated to the old Conejos Farmstead, nearly thirty kilometres away from the original location of the town. President [Root.GetLeader] has praised the major for his foresight, and the relocation efforts are already on their way."
- central_america_flavour_events.16.a: "Let's Hope this Ends Soon."
-
- central_america_flavour_events.17.t: "Paricutín finally Stops Erupting"
- central_america_flavour_events.17.d: "The Paricutín Volcano has finally stopped emitting lava, and while the volcano may still be a threat for nearby populations for the years to come, we have avoided a major disaster by evacuating our civilian population and while ash clouds may still affect our nearby farmlands and towns. The towns that were buried shall be constituted as memorials for the old inhabitants, and will be considered integral part of their administration despite their relocation so they may do with their towns of old as they please."
- central_america_flavour_events.17.a: "At Last, It's Finally Over."
 
  central_america_flavour_events.18.t: "Annual Celebration of the '15 de Septiembre'"
  central_america_flavour_events.18.d: "Today, the whole Central American region celebrates the day where the delegation of deputies from all the now former provinces of Spain gathered in the Guatemala City Townhall and together drafted the declaration of Independence that was written by Jose Cecilio del Valle, and that turned our once foreign-ruled countries into free nations. During the whole month of September, all of Central America celebrates, each with their own distinct traditions, utilising all sorts of entertainment from parades and concerts to public speeches by high ranking government officials. Today is truly a day of unity for our nations!"

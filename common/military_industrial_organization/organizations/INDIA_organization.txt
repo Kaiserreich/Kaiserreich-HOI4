@@ -55,10 +55,19 @@ INDIA_karachi_shipyard_organisation = {
 	name = karachi_shipyard
 	icon = GFX_idea_karachi_shipyard
 	allowed = {
-		is_indian_tag = yes
+		OR = {
+			is_indian_tag = yes
+			original_tag = AFG
+		}
 	}
 	available = {
-		FROM = { owns_state = 443 } #Sind
+		FROM = {
+			owns_state = 443 #Sind
+			if = {
+				limit = { original_tag = AFG }
+				has_completed_focus = AFG_the_conquest_of_karachi
+			}
+		}
 	}
 }
 INDIA_garden_reach_workshops_organisation = {

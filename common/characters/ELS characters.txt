@@ -350,26 +350,26 @@ characters = {
 			}
 		}
 		advisor = {
-			slot = air_chief
-			idea_token = ELS_humberto_alejandro_aberle_air_chief
+			slot = theorist
+			idea_token = ELS_humberto_alejandro_aberle_theorist
+			desc = ELS_humberto_alejandro_aberle_theorist_desc
+			ledger = air
 			available = {
-				if = {
-					limit = { tag = ELS }
-					not_already_hired_except_as = air_chief
-				}
+				not_already_hired_except_as = theorist
 			}
-			traits = { KR_air_chief_all_weather_1 }
+			traits = { KR_air_warfare_theorist }
+			cost = 100
 		}
 		advisor = {
 			slot = high_command
 			idea_token = ELS_humberto_alejandro_aberle_high_command
-			desc = ELS_humberto_alejandro_aberle_air_chief_desc
+			desc = ELS_humberto_alejandro_aberle_theorist_desc
 			ledger = air
 			available = {
 				not_already_hired_except_as = high_command
 			}
-			visible = { tag = ELS }
-			traits = { KR_MHC_air_superiority_1 }
+			traits = { KR_MHC_pilot_training_2 }
+			cost = 100
 		}
 	}
 
@@ -389,7 +389,8 @@ characters = {
 					not_already_hired_except_as = air_chief
 				}
 			}
-			traits = { KR_air_chief_ground_support_1 }
+			traits = { KR_air_chief_ground_support_2 }
+			cost = 100
 		}
 		advisor = {
 			slot = high_command
@@ -401,6 +402,40 @@ characters = {
 			}
 			visible = { tag = ELS }
 			traits = { KR_MHC_close_air_support_1 }
+			cost = 50
+		}
+	}
+
+	ELS_antonio_claramount_lucero = {
+		name = ELS_antonio_claramount_lucero
+		portraits = {
+			army = {
+				small = GFX_portrait_ELS_antonio_claramount_lucero_army_small
+			}
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = ELS_antonio_claramount_lucero_air_chief
+			available = {
+				not_already_hired_except_as = air_chief
+			}
+			visible = { tag = ELS }
+			traits = { KR_air_chief_reform_1 }
+			cost = 50
+		}
+		advisor = {
+			slot = high_command
+			idea_token = ELS_antonio_claramount_lucero_high_command
+			desc = ELS_antonio_claramount_lucero_air_chief_desc
+			ledger = air
+			available = {
+				if = {
+					limit = { tag = ELS }
+					not_already_hired_except_as = high_command
+				}
+			}
+			traits = { KR_MHC_air_combat_training_2 }
+			cost = 100
 		}
 	}
 
@@ -470,17 +505,17 @@ characters = {
 		}
 	}
 
-	ELS_jose_ascencio_menendez = {
-		name = ELS_jose_ascencio_menendez
+	ELS_jose_asensio_menendez = {
+		name = ELS_jose_asensio_menendez
 		portraits = {
-			civilian = {
-				small = GFX_portrait_ELS_jose_ascencio_menendez_civilian_small
+			army = {
+				small = GFX_portrait_ELS_jose_asensio_menendez_army_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = ELS_jose_ascencio_menendez_advisor
-			desc = ELS_jose_ascencio_menendez_army_chief_desc
+			idea_token = ELS_jose_asensio_menendez_advisor
+			desc = ELS_jose_asensio_menendez_army_chief_desc
 			available = {
 				has_democratic_government = yes
 				not_already_hired_except_as = political_advisor
@@ -489,7 +524,7 @@ characters = {
 		}
 		advisor = {
 			slot = army_chief
-			idea_token = ELS_jose_ascencio_menendez_army_chief
+			idea_token = ELS_jose_asensio_menendez_army_chief
 			available = {
 				not_already_hired_except_as = army_chief
 			}
@@ -547,6 +582,75 @@ characters = {
 		}
 	}
 
+	ELS_joaquin_adolfo_ferman = {
+		name = ELS_joaquin_adolfo_ferman
+		portraits = {
+			army = {
+				small = GFX_portrait_ELS_joaquin_adolfo_ferman_army_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = ELS_joaquin_adolfo_ferman_advisor
+			allowed = {
+				has_dlc_lar = yes
+			}
+			available = {
+				has_intelligence_agency = yes
+			}
+			traits = { KR_head_of_intelligence }
+		}
+	}
+
+	ELS_alfonso_marroquin_calvo = {
+		name = ELS_alfonso_marroquin_calvo
+		portraits = {
+			army = {
+				small = GFX_Portrait_ELS_alfonso_marroquin_calvo_army_small
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = ELS_alfonso_marroquin_calvo_army_chief
+			available = {
+				if = {
+					limit = { tag = ELS }
+					not_already_hired_except_as = army_chief
+				}
+			}
+			traits = { KR_army_chief_drill_2 }
+			cost = 100
+		}
+		advisor = {
+			slot = theorist
+			idea_token = ELS_alfonso_marroquin_calvo_theorist
+			desc = ELS_alfonso_marroquin_calvo_army_chief_desc
+			ledger = army
+			available = {
+				not_already_hired_except_as = theorist
+			}
+			visible = { tag = ELS }
+			traits = { KR_military_theorist }
+			cost = 100
+		}
+	}
+
+	ELS_jose_antonio_lorenzana = {
+		name = ELS_jose_antonio_lorenzana
+		portraits = {
+			army = {
+				small = GFX_Portrait_ELS_jose_antonio_lorenzana_army_small
+			}
+		}
+		advisor = {
+			slot = theorist
+			idea_token = ELS_jose_antonio_lorenzana_theorist
+			ledger = army
+			traits = { KR_military_theorist }
+			cost = 100
+		}
+	}
+
 	ELS_oscar_bolanos = {
 		name = ELS_oscar_bolanos
 		portraits = {
@@ -560,6 +664,38 @@ characters = {
 			ledger = army
 			traits = { KR_MHC_army_regrouping_2 }
 			cost = 100
+		}
+	}
+
+	ELS_tito_tomas_calvo = {
+		name = ELS_tito_tomas_calvo
+		portraits = {
+			army = {
+				small = GFX_portrait_ELS_tito_tomas_calvo_army_small
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = ELS_tito_tomas_calvo_high_command
+			ledger = army
+			traits = { KR_MHC_infantry_1 }
+			cost = 50
+		}
+	}
+
+	ELS_felix_de_jesus_osegueda = {
+		name = ELS_felix_de_jesus_osegueda
+		portraits = {
+			army = {
+				small = GFX_portrait_ELS_felix_de_jesus_osegueda_army_small
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = ELS_felix_de_jesus_osegueda_high_command
+			ledger = army
+			traits = { KR_MHC_infantry_1 }
+			cost = 50
 		}
 	}
 
@@ -590,7 +726,7 @@ characters = {
 			slot = high_command
 			idea_token = ELS_joaquin_valdes_high_command
 			ledger = army
-			traits = { KR_MHC_commando_1 }
+			traits = { KR_MHC_army_surveyor_1 }
 			cost = 50
 		}
 	}

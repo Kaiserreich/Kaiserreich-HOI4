@@ -51,24 +51,24 @@
 
  member_entry_desc: "[THIS.GetMitteleuropaVotingStatus]"
 
- member_entry_proposing_agenda: "§Y[THIS.GetNameDefCap]§! is currently leading a lobbying effort in favour of §Y[?MIT_supported_agenda:agenda_idea.GetName]§!."
- member_entry_supporting_agenda: "§Y[THIS.GetNameDefCap]§! is currently supporting the §Y[?MIT_supported_agenda:agenda_supporters^0.GetAdjective]§! lobbying effort in favour of §Y[?MIT_supported_agenda:agenda_idea.GetName]§!."
+ member_entry_proposing_agenda: "§Y[THIS.GetNameDefCap]§! is currently leading a lobbying effort in favour of §Y[?MIT_supported_agenda.GetMitteleuropaAgendaNameBase]§!."
+ member_entry_supporting_agenda: "§Y[THIS.GetNameDefCap]§! is currently supporting the §Y[?MIT_supported_agenda:agenda_supporters^0.GetAdjective]§! lobbying effort in favour of §Y[?MIT_supported_agenda.GetMitteleuropaAgendaNameBase]§!."
  member_entry_neutral: "§Y[THIS.GetNameDefCap]§! is currently not supporting any agendas."
 
  main_agenda_supporter_title: "§Y[?top_agenda:agenda_supporters^0.GetName]§!"
 
- top_agenda_icon_title: "§Y[?top_agenda:agenda_idea.GetName]§!"
+ top_agenda_icon_title: "§Y[?top_agenda.GetMitteleuropaAgendaNameBase]§!"
  top_agenda_icon_desc: "[!top_agenda_reward_loc_button_click]"
 
  agenda_list_title: "Possible Agendas"
 
- agenda_button_title: "[?agenda:agenda_idea.GetName]"
+ agenda_button_title: "[?agenda.GetMitteleuropaAgendaNameBase]"
  agenda_button_score: "([?agenda:agenda_score|Y0])"
- agenda_button_tooltip: "[?agenda:agenda_idea.GetName]\nTotal Support: [?agenda:agenda_score|Y0]"
+ agenda_button_tooltip: "[?agenda.GetMitteleuropaAgendaNameBase]\nTotal Support: [?agenda:agenda_score|Y0]"
  agenda_button_tooltip_delayed: "[!agenda_button_click_enabled]\n§YEffects if enacted:§!\n[!agenda_reward_loc_button_click]"
 
  top_agendas_title: "Most Supported Agendas"
- top_agenda_name: "[?top_agenda:agenda_idea.GetName]"
+ top_agenda_name: "[?top_agenda.GetMitteleuropaAgendaNameBase]"
  top_agenda_score: "Support: [?top_agenda:agenda_score|Y1]"
 
  MIT_recent_agenda_change: "§Y[ROOT.GetNameDefCap]§! has already recently chosen to support an agenda and must wait [?MIT_recent_agenda_change:days_left|Y0] days to vote again."
@@ -233,10 +233,10 @@
  germany_mitteleuropa_events.1.d.three_agendas: "Delegates from all Mitteleuropa states gather in Berlin for biannual discussion as well as negotiations on the direction of the bloc's activities. Though hundreds of different issues will be discussed, only those which received the attention of enough member states will receive the time of day they need. It will also be up to the Chairman of the Mitteleuropean Commission, who is currently from [MIT.GetNameDef], to select which of the many proposals will be implemented by the bureaucratic authorities.\n\nThere are three proposals with considerable support from the member states, which sadly means that not everyone can be satisfied by the commission's decision today - however, it is up to the chairman."
  germany_mitteleuropa_events.1.d.three_agendas_chairman: "Delegates from all Mitteleuropa states gather in Berlin for biannual discussion as well as negotiations on the direction of the bloc's activities. Though hundreds of different issues will be discussed, only those which received the attention of enough member states will receive the time of day they need. It will also be up to the Chairman of the Mitteleuropean Commission, who is currently from [MIT.GetNameDef], to select which of the many proposals will be implemented by the bureaucratic authorities.\n\nThere are two proposals with considerable support from the member states on the table - however, should they find them unacceptable, the chairman has the ability to overrule the interests of the member states and select their own."
  germany_mitteleuropa_events.1.d.four_agendas: "Delegates from all Mitteleuropa states gather in Berlin for biannual discussion as well as negotiations on the direction of the bloc's activities. Though hundreds of different issues will be discussed, only those which received the attention of enough member states will receive the time of day they need. It will also be up to the Chairman of the Mitteleuropean Commission, who is currently from [MIT.GetNameDef], to select which of the many proposals will be implemented by the bureaucratic authorities.\n\nThere are three proposals with considerable support from the member states on the table - however, should they find them unacceptable, the chairman has the ability to overrule the interests of the member states and select their own."
- germany_mitteleuropa_events.1.a: "Enact [?MIT_first_place_agenda.agenda_idea.GetName]"
- germany_mitteleuropa_events.1.b: "Enact [?MIT_second_place_agenda.agenda_idea.GetName]"
- germany_mitteleuropa_events.1.c: "Enact [?MIT_third_place_agenda.agenda_idea.GetName]"
- germany_mitteleuropa_events.1.d: "Enact [?MIT_chairman_agenda.agenda_idea.GetName]"
+ germany_mitteleuropa_events.1.a: "Enact [MIT_first_place_agenda.GetMitteleuropaAgendaNameBase]"
+ germany_mitteleuropa_events.1.b: "Enact [MIT_second_place_agenda.GetMitteleuropaAgendaNameBase]"
+ germany_mitteleuropa_events.1.c: "Enact [MIT_third_place_agenda.GetMitteleuropaAgendaNameBase]"
+ germany_mitteleuropa_events.1.d: "Enact [MIT_chairman_agenda.GetMitteleuropaAgendaNameBase]"
  germany_mitteleuropa_events.1.e: "Moving on, then."
 
  germany_mitteleuropa_events.2.t: "Mitteleuropa Commission Summit: Frontrunner Agenda Chosen"

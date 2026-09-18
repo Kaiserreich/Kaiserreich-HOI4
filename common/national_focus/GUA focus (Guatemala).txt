@@ -86,11 +86,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GUA_ask_for_favours"
-			add_to_variable = {
-				var = UFC_power
-				value = 3
-				tooltip = GUA_UFC_increase
-			}
+			add_to_variable = { UFC_power = 3 tooltip = GUA_UFC_increase }
 			update_GUA_UFC = yes
 			313 = {
 				add_extra_state_shared_building_slots = 1
@@ -126,11 +122,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GUA_more_favours"
-			add_to_variable = {
-				var = UFC_power
-				value = 3
-				tooltip = GUA_UFC_increase
-			}
+			add_to_variable = { UFC_power = 3 tooltip = GUA_UFC_increase }
 			update_GUA_UFC = yes
 			if = {
 				limit = { 313 = { has_state_category = seven } }
@@ -169,11 +161,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GUA_fix_illiteracy"
-			add_to_variable = {
-				var = UFC_power
-				value = 5
-				tooltip = GUA_UFC_increase
-			}
+			add_to_variable = { UFC_power = 5 tooltip = GUA_UFC_increase }
 			update_GUA_UFC = yes
 			swap_ideas = {
 				add_idea = GUA_illiteracy_2
@@ -236,11 +224,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GUA_american_scientists"
-			add_to_variable = {
-				var = UFC_power
-				value = 5
-				tooltip = GUA_UFC_increase
-			}
+			add_to_variable = { UFC_power = 5 tooltip = GUA_UFC_increase }
 			update_GUA_UFC = yes
 			swap_ideas = {
 				add_idea = GUA_compensated_illiteracy
@@ -530,11 +514,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GUA_promote_more_education"
 			add_ideas = GUA_orellana_loves_school
-			add_to_variable = {
-				var = UFC_power
-				value = 12
-				tooltip = GUA_UFC_increase
-			}
+			add_to_variable = { UFC_power = 12 tooltip = GUA_UFC_increase }
 			update_GUA_UFC = yes
 			custom_effect_tooltip = GUA_literacy
 			hidden_effect = {
@@ -663,11 +643,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GUA_more_UFC"
-			add_to_variable = {
-				var = UFC_power
-				value = 10
-				tooltip = GUA_UFC_increase
-			}
+			add_to_variable = { UFC_power = 10 tooltip = GUA_UFC_increase }
 			update_GUA_UFC = yes
 			add_stability = 0.2
 			custom_effect_tooltip = tooltip_white_line
@@ -2200,11 +2176,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GUA_ufc_puppet"
-			add_to_variable = {
-				var = UFC_power
-				value = 10
-				tooltip = GUA_UFC_increase
-			}
+			add_to_variable = { UFC_power = 10 tooltip = GUA_UFC_increase }
 			update_GUA_UFC = yes
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -2229,11 +2201,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GUA_tighten_ufc_grip"
-			add_to_variable = {
-				var = UFC_power
-				value = 15
-				tooltip = GUA_UFC_increase
-			}
+			add_to_variable = { UFC_power = 15 tooltip = GUA_UFC_increase }
 			update_GUA_UFC = yes
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }

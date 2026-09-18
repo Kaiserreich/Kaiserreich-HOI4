@@ -1,0 +1,310 @@
+characters = {
+	PTH_abdur_rahim_popalzai = {
+		name = PTH_abdur_rahim_popalzai
+		portraits = {
+			civilian = {
+				large = GFX_portrait_PTH_abdur_rahim_popalzai_civilian_large
+				small = GFX_portrait_PTH_abdur_rahim_popalzai_civilian_small
+			}
+			army = {
+				large = GFX_portrait_PTH_abdur_rahim_popalzai_army_large
+				small = GFX_portrait_PTH_abdur_rahim_popalzai_army_small
+			}
+		}
+		country_leader = {
+			desc = PTH_abdur_rahim_popalzai_leader_desc
+			ideology = totalist_subtype
+			traits = { AFG_marxist_maulana }
+		}
+		country_leader = {
+			desc = PTH_abdur_rahim_popalzai_leader_desc
+			ideology = syndicalist_subtype
+			traits = { AFG_marxist_maulana }
+		}
+		country_leader = {
+			desc = PTH_abdur_rahim_popalzai_leader_desc
+			ideology = radical_socialist_subtype
+			traits = { AFG_marxist_maulana }
+		}
+		corps_commander = {
+			desc = PTH_abdur_rahim_popalzai_army_chief_desc
+			visible = {
+				if = {
+					limit = { original_tag = AFG }
+					is_monarchy = no
+					OR = {
+						AFG_aia_republic = yes
+						AFG_socialist_republic = yes
+					}
+				}
+			}
+			traits = { irregulars_officer politically_connected }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = PTH_abdur_rahim_popalzai_army_chief
+			available = {
+				if = {
+					limit = { original_tag = AFG }
+					is_monarchy = no
+					OR = {
+						AFG_aia_republic = yes
+						AFG_socialist_republic = yes
+					}
+				}
+			}
+			traits = { KR_army_chief_manoeuvre_2 }
+			cost = 100
+			can_be_fired = no
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = PTH_abdur_rahim_popalzai_sic
+			desc = PTH_abdur_rahim_popalzai_leader_desc
+			traits = { AFG_marxist_maulana_sic }
+			cost = 0
+			can_be_fired = no
+		}
+	}
+
+	PTH_abdul_ghaffar_khan = { #TODO add socdem/soclib roles via on_annex and revolt effect later
+		name = PTH_abdul_ghaffar_khan
+		portraits = {
+			civilian = {
+				large = GFX_portrait_PTH_abdul_ghaffar_khan_civilian_large
+			}
+		}
+	}
+
+	PTH_aurangzeb_khan_gandapur = { #TODO add marlib/soccon roles via on_annex and revolt effect later
+		name = PTH_aurangzeb_khan_gandapur
+		portraits = {
+			civilian = {
+				large = GFX_portrait_PTH_aurangzeb_khan_gandapur_civilian_large
+				small = GFX_portrait_PTH_aurangzeb_khan_gandapur_civilian_small
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = PTH_aurangzeb_khan_gandapur_sic
+			traits = { KR_brilliant_lawyer_sic }
+			cost = 0
+			can_be_fired = no
+		}
+	}
+
+	PTH_mirzali_khan_wazir = { #TODO add authdem/pataut/natpop roles via on_annex and revolt effect later
+		name = PTH_mirzali_khan_wazir
+		portraits = {
+			army = {
+				large = GFX_portrait_PTH_mirzali_khan_wazir_army_large
+				small = GFX_portrait_PTH_mirzali_khan_wazir_army_small
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = PTH_mirzali_khan_wazir_high_command
+			ledger = army
+			available = {
+				if = {
+					limit = {
+						ROOT = { original_tag = PTH }
+					}
+					OR = {
+						AFG_faqir_neutral = yes
+						NOT = { PTH = { has_war_with = AFG } }
+					}
+				}
+				if = {
+					limit = {
+						ROOT = {
+							original_tag = AFG
+							AFG_is_seraj = yes
+						}
+					}
+					AFG_faqir_hostile = no
+				}
+				AFG_is_telai = no
+				if = {
+					limit = { original_tag = AFG }
+					AFG_socialist_republic = no
+				}
+				else = {
+					OR = {
+						has_socialist_government = no
+						has_war_with = AFG
+					}
+				}
+			}
+			traits = { KR_MHC_irregular_3 }
+			cost = 200
+		}
+		corps_commander = {
+			desc = PTH_mirzali_khan_wazir_high_command_desc
+			traits = { irregulars_officer inspirational_leader }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+			visible = {
+				if = {
+					limit = {
+						ROOT = { original_tag = PTH }
+					}
+					OR = {
+						AFG_faqir_neutral = yes
+						NOT = { PTH = { has_war_with = AFG } }
+					}
+				}
+				if = {
+					limit = {
+						ROOT = {
+							original_tag = AFG
+							AFG_is_seraj = yes
+						}
+					}
+					AFG_faqir_hostile = no
+				}
+				AFG_is_telai = no
+				if = {
+					limit = { original_tag = AFG }
+					AFG_socialist_republic = no
+				}
+				else = {
+					OR = {
+						has_socialist_government = no
+						has_war_with = AFG
+					}
+				}
+			}
+		}
+	}
+
+	PTH_abdul_jabbar_khan = {
+		name = PTH_abdul_jabbar_khan
+		portraits = {
+			civilian = {
+				small = GFX_portrait_PTH_abdul_jabbar_khan_civilian_small
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = PTH_abdul_jabbar_khan_sic
+			traits = { KR_devoted_progressivist_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = PTH_abdul_jabbar_khan_advisor
+			desc = PTH_abdul_jabbar_khan_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				is_in_coalition_with_social_democrat = yes
+			}
+			traits = { KR_patron_of_progressives }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.15 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+	}
+
+	PTH_nasir_ul_mulk = {
+		name = PTH_nasir_ul_mulk
+		portraits = {
+			army = {
+				large = GFX_portrait_PTH_nasir_ul_mulk_army_large
+				small = GFX_portrait_PTH_nasir_ul_mulk_army_small
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = PTH_nasir_ul_mulk_high_command
+			ledger = army
+			available = {
+				if = {
+					limit = { original_tag = AFG }
+					AFG_socialist_republic = no
+				}
+				else = {
+					OR = {
+						has_socialist_government = no
+						has_war_with = AFG
+					}
+				}
+			}
+			traits = { KR_MHC_commando_1 }
+			cost = 50
+		}
+		corps_commander = {
+			desc = PTH_nasir_ul_mulk_high_command_desc
+			visible = {
+				if = {
+					limit = { original_tag = AFG }
+					AFG_socialist_republic = no
+				}
+				else = {
+					OR = {
+						has_socialist_government = no
+						has_war_with = AFG
+					}
+				}
+			}
+			traits = { hill_fighter politically_connected }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+		}
+	}
+
+	PTH_sukhdev_thapar = {
+		name = PTH_sukhdev_thapar
+		portraits = {
+			army = {
+				large = GFX_portrait_PTH_sukhdev_thapar_army_large
+				small = GFX_portrait_PTH_sukhdev_thapar_army_small
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = PTH_sukhdev_thapar_high_command
+			ledger = army
+			available = {
+				has_socialist_government = yes
+			}
+			traits = { KR_MHC_army_logistics_2 }
+			cost = 100
+		}
+		corps_commander = {
+			desc = PTH_sukhdev_thapar_high_command_desc
+			visible = {
+				has_socialist_government = yes
+			}
+			traits = { irregulars_officer politically_connected }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 2
+		}
+	}
+}

@@ -9,9 +9,7 @@ WCA_state_defects_AI_weight = {
 		add = defecting_state.modifier@state_defection_chance
 	}
 	modifier = {
-		set_temp_variable = { strength_factor = USA.SPA_strength }
-		multiply_temp_variable = { strength_factor = 2.5 }
-
+		set_temp_variable = { strength_factor = { value = USA.SPA_strength multiply = 2.5 } }
 		add = strength_factor
 	}
 }
@@ -30,9 +28,7 @@ WCA_state_stays_loyal_AI_weight = {
 		factor = -1
 	}
 	modifier = {
-		set_temp_variable = { strength_factor = USA.SPA_strength }
-		multiply_temp_variable = { strength_factor = -2.5 }
-
+		set_temp_variable = { strength_factor = { value = USA.SPA_strength multiply = -2.5 } }
 		add = strength_factor
 	}
 }
@@ -44,9 +40,7 @@ APG_state_defects_AI_weight = {
 		add = defecting_state.modifier@state_defection_chance
 	}
 	modifier = {
-		set_temp_variable = { strength_factor = USA.Long_strength }
-		multiply_temp_variable = { strength_factor = 2.5 }
-
+		set_temp_variable = { strength_factor = { value = USA.Long_strength multiply = 2.5 } }
 		add = strength_factor
 	}
 }
@@ -65,9 +59,7 @@ APG_state_stays_loyal_AI_weight = {
 		factor = -1
 	}
 	modifier = {
-		set_temp_variable = { strength_factor = USA.Long_strength }
-		multiply_temp_variable = { strength_factor = -2.5 }
-
+		set_temp_variable = { strength_factor = { value = USA.Long_strength multiply = -2.5 } }
 		add = strength_factor
 	}
 }

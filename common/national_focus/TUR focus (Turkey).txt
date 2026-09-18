@@ -3209,7 +3209,6 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed TUR_kadroism_movement"
 			add_ideas = TUR_kadroist_party
-			activate_targeted_decision = { target = INT decision = TUR_join_internationale }
 		}
 	}
 
@@ -3237,6 +3236,14 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed TUR_permanent_revolutionism"
 			country_event = { id = turkey_events.31 days = 3 }
+			if = {
+				limit = { is_subject = no }
+				custom_effect_tooltip = tooltip_event_allows_choice
+				custom_effect_tooltip = tooltip_event_choice_option_1
+				event_option_tooltip = turkey_events.31.a
+				custom_effect_tooltip = tooltip_event_choice_option_2
+				event_option_tooltip = turkey_events.31.b
+			}
 		}
 	}
 

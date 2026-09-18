@@ -244,12 +244,10 @@ country_event = { #An Offer from the Kempeitai
 		log = "[GetLogInfo]: event fengtian_events.7 option fengtian_events.7.a"
 		name = fengtian_events.7.a
 		complete_national_focus = FNG_Silence_Targeted_Subversives
-		set_temp_variable = { CAPOP = 5 }
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -266,8 +264,7 @@ country_event = { #An Offer from the Kempeitai
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -331,8 +328,7 @@ country_event = { #Picking up the Educational Slack
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -347,8 +343,7 @@ country_event = { #Picking up the Educational Slack
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -389,8 +384,7 @@ country_event = { #Mantetsu School Open Kimono
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -422,8 +416,7 @@ country_event = { #Mantetsu School Open Fengtian Youth League
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -437,8 +430,7 @@ country_event = { #Mantetsu School Open Fengtian Youth League
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -512,8 +504,7 @@ country_event = { #Building Infrastructure in Liaoning
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -549,8 +540,7 @@ country_event = { #Building Infrastructure in Liaoning
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -621,8 +611,7 @@ country_event = { #Building Infrastructure in Jilin and Liaobei
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -658,8 +647,7 @@ country_event = { #Building Infrastructure in Jilin and Liaobei
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -730,8 +718,7 @@ country_event = { # Building Infrastructure in Nenjiang and Songjiang
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -767,8 +754,7 @@ country_event = { # Building Infrastructure in Nenjiang and Songjiang
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -1056,8 +1042,7 @@ country_event = { #Wu Jinglian Criticizes Japan
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -1084,8 +1069,7 @@ country_event = { #Wu Jinglian Criticizes Japan
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -1366,8 +1350,7 @@ country_event = { #A New Automobile Company
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 400 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 400 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -1388,8 +1371,7 @@ country_event = { #A New Automobile Company
 		ai_chance = {
 			base = 20
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -100 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -100 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -1578,8 +1560,7 @@ country_event = { # Fengtian chooses whether to back the initiative
 		ai_chance = {
 			base = 65
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -325 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -325 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -1593,8 +1574,7 @@ country_event = { # Fengtian chooses whether to back the initiative
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 175 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 175 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -1636,8 +1616,7 @@ country_event = { # Fengtian is asked to provide food
 		ai_chance = {
 			base = 60
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -300 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -300 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -1660,8 +1639,7 @@ country_event = { # Fengtian is asked to provide food
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 200 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 200 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -2064,8 +2042,7 @@ country_event = { #Yamato Hotel Licenses
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -2082,8 +2059,7 @@ country_event = { #Yamato Hotel Licenses
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -2587,8 +2563,7 @@ country_event = { #Jinzhou Industrial Zone
 		ai_chance = {
 			base = 30
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -150 } #-30 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -150 } } #-30 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -2610,8 +2585,7 @@ country_event = { #Jinzhou Industrial Zone
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable } #Between 0 and 1
-				multiply_temp_variable = { FNG_concordia_positive_factor = 165 } #33 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 165 } } #33 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -2632,8 +2606,7 @@ country_event = { #Jinzhou Industrial Zone
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 180 } #36 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 180 } } #36 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -2794,8 +2767,7 @@ country_event = { #Banking Evidence Discovered!
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 400 } #80 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 400 } } #80 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -2810,8 +2782,7 @@ country_event = { #Banking Evidence Discovered!
 			base = 20
 			modifier = {
 				has_political_power > 0
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -100 } #-20 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -100 } } #-20 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -3817,8 +3788,7 @@ country_event = { #Mantetsu Bribes
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 250 } #50 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 250 } } #50 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -3832,8 +3802,7 @@ country_event = { #Mantetsu Bribes
 		ai_chance = {
 			base = 50
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -250 } #-50 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -250 } } #-50 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -3866,8 +3835,7 @@ country_event = { #The Anshan Incident
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 250 } #50 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 250 } } #50 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -3881,8 +3849,7 @@ country_event = { #The Anshan Incident
 		ai_chance = {
 			base = 50
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -250 } #-50 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -250 } } #-50 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -3911,8 +3878,7 @@ country_event = { #Japan Denounces us
 		ai_chance = {
 			base = 70
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -350 } #-70 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -350 } } #-70 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -3930,8 +3896,7 @@ country_event = { #Japan Denounces us
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 150 } #30 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 150 } } #30 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -4063,8 +4028,7 @@ country_event = { #Honghuzi Attacks in Heilongjiang
 		ai_chance = {
 			base = 25
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -125 } #-25 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -125 } } #-25 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -4164,8 +4128,7 @@ country_event = { #Honghuzi Attacks in Xing'an
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -4190,8 +4153,7 @@ country_event = { #Honghuzi Attacks in Xing'an
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -4306,8 +4268,7 @@ country_event = { #Honghuzi Attacks in Liaobei
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -4338,8 +4299,7 @@ country_event = { #Honghuzi Attacks in Liaobei
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -4579,8 +4539,7 @@ country_event = { #Beijing Parade Event
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 150 } #30 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 150 } } #30 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -4598,8 +4557,7 @@ country_event = { #Beijing Parade Event
 		ai_chance = {
 			base = 40
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -200 } #-40 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -200 } } #-40 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -4623,8 +4581,7 @@ country_event = { #Beijing Parade Event
 			base = 0
 			modifier = {
 				has_political_power < 0
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 150 } #30 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 150 } } #30 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -4852,8 +4809,7 @@ country_event = { #The Founding of the Jilin Film Association
 		ai_chance = {
 			base = 60
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -300 } #-60 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -300 } } #-60 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -4867,8 +4823,7 @@ country_event = { #The Founding of the Jilin Film Association
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 150 } #30 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 150 } } #30 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -5137,11 +5092,7 @@ country_event = { #Prince Kan'in Arrives
 				has_country_flag = school_open
 			}
 			FNG_JAP_investment_medium = yes
-			add_to_variable = {
-				var = prince_impress_level
-				value = 1
-				tooltip = FNG_impressed_prince
-			}
+			add_to_variable = { prince_impress_level = 1 tooltip = FNG_impressed_prince }
 		}
 		if = {
 			limit = {
@@ -5233,11 +5184,7 @@ country_event = { #Prince Kan'in Visits Shenyang 'In the Eye of the Tiger'
 				has_completed_focus = FNG_Expand_the_Shenyang_Arsenal
 			}
 			add_political_power = 10
-			add_to_variable = {
-				var = prince_impress_level
-				value = 1
-				tooltip = FNG_impressed_prince
-			}
+			add_to_variable = { prince_impress_level = 1 tooltip = FNG_impressed_prince }
 		}
 		if = {
 			limit = {
@@ -5399,11 +5346,7 @@ country_event = { #Prince Kan'in Visits Shanhaiguan 'An Inspection of the Southe
 				}
 			}
 			add_political_power = 20
-			add_to_variable = {
-				var = prince_impress_level
-				value = 1
-				tooltip = FNG_impressed_prince
-			}
+			add_to_variable = { prince_impress_level = 1 tooltip = FNG_impressed_prince }
 		}
 		if = {
 			limit = {
@@ -5481,11 +5424,7 @@ country_event = { #Prince Kan'in Visits Jinzhou 'An Industrial Excursion'
 		name = fengtian_events.145.a
 		add_political_power = 20
 		add_stability = 0.01
-		add_to_variable = {
-			var = prince_impress_level
-			value = 1
-			tooltip = FNG_impressed_prince
-		}
+		add_to_variable = { prince_impress_level = 1 tooltip = FNG_impressed_prince }
 		FNG_JAP_investment_small = yes
 		hidden_effect = {
 			country_event = { id = fengtian_events.146 days = 3 }
@@ -6647,8 +6586,7 @@ country_event = { #Reclaiming the Railways
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -6664,8 +6602,7 @@ country_event = { #Reclaiming the Railways
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -7038,8 +6975,7 @@ country_event = { #Japan Demands Ruan Zhenduo's Reinstatement
 		ai_chance = {
 			base = 45
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -225 } #-45 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -225 } } #-45 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -7058,8 +6994,7 @@ country_event = { #Japan Demands Ruan Zhenduo's Reinstatement
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 275 } #55 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 275 } } #55 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -8859,13 +8794,20 @@ country_event = { # The Compromise is Accepted
 					remove_targeted_decision = { decision = SHD_intervene_southeast target = ANQ }
 				}
 
-				set_temp_variable = { SHD_jiangsu_exploitation_civ_factories = 1047.building_level@industrial_complex }
-				add_to_temp_variable = { SHD_jiangsu_exploitation_civ_factories = 598.building_level@industrial_complex }
-				add_to_temp_variable = { SHD_jiangsu_exploitation_civ_factories = 1075.building_level@industrial_complex }
-
-				set_temp_variable = { SHD_jiangsu_exploitation_mil_factories = 1047.building_level@arms_factory }
-				add_to_temp_variable = { SHD_jiangsu_exploitation_mil_factories = 598.building_level@arms_factory }
-				add_to_temp_variable = { SHD_jiangsu_exploitation_mil_factories = 1075.building_level@arms_factory }
+				set_temp_variable = {
+					SHD_jiangsu_exploitation_civ_factories = {
+						value = 1047.building_level@industrial_complex
+						add = 598.building_level@industrial_complex
+						add = 1075.building_level@industrial_complex
+					}
+				}
+				set_temp_variable = {
+					SHD_jiangsu_exploitation_mil_factories = {
+						value = 1047.building_level@arms_factory
+						add = 598.building_level@arms_factory
+						add = 1075.building_level@arms_factory
+					}
+				}
 
 				add_offsite_building = {
 					type = industrial_complex
@@ -8926,11 +8868,7 @@ country_event = { # The Compromise is Accepted
 		}
 		else_if = {
 			limit = { tag = ANQ }
-			add_to_variable = {
-				var = ANQ_reclamation_willingness
-				value = 1
-				tooltip = ANQ_increase_reclamation_war_willingness_tt
-			}
+			add_to_variable = { ANQ_reclamation_willingness = 1 tooltip = ANQ_increase_reclamation_war_willingness_tt }
 		}
 		else_if = {
 			limit = { tag = SHD }
@@ -9659,8 +9597,7 @@ country_event = { # Feeding the North China Plain
 		ai_chance = {
 			base = 0
 			modifier = {
-				set_temp_variable = { FNG_concordia_positive_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_positive_factor = 350 } #70 at 20%
+				set_temp_variable = { FNG_concordia_positive_factor = { value = FNG.FNG_JAP_influence_variable multiply = 350 } } #70 at 20%
 				add = FNG_concordia_positive_factor
 			}
 		}
@@ -9683,8 +9620,7 @@ country_event = { # Feeding the North China Plain
 		ai_chance = {
 			base = 30
 			modifier = {
-				set_temp_variable = { FNG_concordia_negative_factor = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_concordia_negative_factor = -150 } #-30 at 20%
+				set_temp_variable = { FNG_concordia_negative_factor = { value = FNG.FNG_JAP_influence_variable multiply = -150 } } #-30 at 20%
 				add = FNG_concordia_negative_factor
 			}
 		}
@@ -10357,9 +10293,13 @@ country_event = { #Fengtian's Ultimatum
 				}
 			}
 			modifier = {
-				set_temp_variable = { FNG_japan_accept_chance = FROM.num_of_factories }
-				subtract_from_temp_variable = { FNG_japan_accept_chance = ROOT.num_of_factories }
-				divide_temp_variable = { FNG_japan_accept_chance = -3 }
+				set_temp_variable = {
+					FNG_japan_accept_chance = {
+						value = FROM.num_of_factories
+						subtract = ROOT.num_of_factories
+						divide = -3
+					}
+				}
 				add = FNG_japan_accept_chance
 			}
 		}
@@ -10406,9 +10346,13 @@ country_event = { #Fengtian's Ultimatum
 				}
 			}
 			modifier = {
-				set_temp_variable = { FNG_japan_accept_chance = FROM.num_of_factories }
-				subtract_from_temp_variable = { FNG_japan_accept_chance = ROOT.num_of_factories }
-				divide_temp_variable = { FNG_japan_accept_chance = 3 }
+				set_temp_variable = {
+					FNG_japan_accept_chance = {
+						value = FROM.num_of_factories
+						subtract = ROOT.num_of_factories
+						divide = 3
+					}
+				}
 				add = FNG_japan_accept_chance
 			}
 		}
@@ -11577,6 +11521,34 @@ country_event = { #Macau is returned to China!
 	}
 }
 
+country_event = { #The New People's Society
+	id = fengtian_events.325
+	title = fengtian_events.325.t
+	desc = fengtian_events.325.d
+	picture = GFX_report_event_FNG_new_peoples_society
+
+	is_triggered_only = yes #Triggered by ON_ACTION
+	trigger = {
+		NOT = { FNG_JAP_hostile = yes }
+	}
+	fire_only_once = yes
+
+	option = { #We can use all the help we can get bringing people on board.
+		log = "[GetLogInfo]: event fengtian_events.325 option fengtian_events.325.a"
+		name = fengtian_events.325.a
+		FNG_JAP_investment_large = yes
+		FNG_wu_zanzhou = {
+			CHN_recruit_character_effect = yes
+		}
+	}
+	option = { #We can handle reconstruction on our own.
+		log = "[GetLogInfo]: event fengtian_events.325 option fengtian_events.325.b"
+		name = fengtian_events.325.b
+		add_stability = -0.05
+		FNG_JAP_investment_small = yes
+	}
+}
+
 country_event = { # Involve Japan in the Reclamation War?
 	id = fengtian_events.330
 	title = fengtian_events.330.t
@@ -11935,9 +11907,11 @@ country_event = { #Clear out railway variables
 	trigger = {
 		check_variable = { FNG_mantetsu_rails < 3 }
 		check_variable = { FNG_national_rails < 3 }
-		set_temp_variable = { FNG_rail_decisions_taken = FNG_mantetsu_rails }
-		add_to_temp_variable = { FNG_rail_decisions_taken = FNG_national_rails }
-		check_variable = { FNG_rail_decisions_taken > 2 }
+		check_expr = {
+			value = FNG_mantetsu_rails
+			add = FNG_national_rails
+			greater_than = 2
+		}
 	}
 
 	option = {

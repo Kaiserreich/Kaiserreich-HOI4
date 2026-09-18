@@ -204,68 +204,108 @@ BUL_grant_prince_effects = {
 			check_variable = { BUL_tsar_perception < 10 }
 		}
 		add_stability = -0.1
-		set_temp_variable = { BUL_tsar_change = 15 }
-		custom_effect_tooltip = BUL_boris_perception_natural_drift_positive_tt
-		add_to_variable = { BUL_tsar_perception = BUL_tsar_change }
-		clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
-		set_temp_variable = { BUL_deputies = 20 }
-		custom_effect_tooltip = BUL_increase_deputy_support_tt
-		add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
-		add_to_variable = { BUL_coup_success_chance = 20 }
-		clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-		custom_effect_tooltip = BUL_increase_coup_chance_tt
+		add_to_variable = {
+			BUL_tsar_perception = {
+				value = 15
+				clamp = { min = 0 max = { value = 100 subtract = BUL_tsar_perception } }
+			}
+			tooltip = BUL_boris_perception_natural_drift_positive_tt
+		}
+		add_to_variable = {
+			BUL_parliamentary_support = {
+				value = 20
+				clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+			}
+			tooltip = BUL_increase_deputy_support_tt
+		}
+		add_to_variable = {
+			BUL_coup_success_chance = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+			}
+			tooltip = BUL_increase_coup_chance_tt
+		}
 	}
 	else_if = {
 		limit = {
 			check_variable = { BUL_tsar_perception < 40 }
 		}
 		add_stability = -0.05
-		set_temp_variable = { BUL_tsar_change = 10 }
-		custom_effect_tooltip = BUL_boris_perception_natural_drift_positive_tt
-		add_to_variable = { BUL_tsar_perception = BUL_tsar_change }
-		clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
-		set_temp_variable = { BUL_deputies = 15 }
-		custom_effect_tooltip = BUL_increase_deputy_support_tt
-		add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
-		add_to_variable = { BUL_coup_success_chance = 15 }
-		clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-		custom_effect_tooltip = BUL_increase_coup_chance_tt
+		add_to_variable = {
+			BUL_tsar_perception = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = BUL_tsar_perception } }
+			}
+			tooltip = BUL_boris_perception_natural_drift_positive_tt
+		}
+		add_to_variable = {
+			BUL_parliamentary_support = {
+				value = 15
+				clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+			}
+			tooltip = BUL_increase_deputy_support_tt
+		}
+		add_to_variable = {
+			BUL_coup_success_chance = {
+				value = 15
+				clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+			}
+			tooltip = BUL_increase_coup_chance_tt
+		}
 	}
 	else_if = {
 		limit = {
 			check_variable = { BUL_tsar_perception < 60 }
 		}
-		set_temp_variable = { BUL_tsar_change = 10 }
-		custom_effect_tooltip = BUL_boris_perception_natural_drift_positive_tt
-		add_to_variable = { BUL_tsar_perception = BUL_tsar_change }
-		clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
-		add_to_variable = { BUL_coup_success_chance = 10 }
-		clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-		custom_effect_tooltip = BUL_increase_coup_chance_slight_tt
+		add_to_variable = {
+			BUL_tsar_perception = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = BUL_tsar_perception } }
+			}
+			tooltip = BUL_boris_perception_natural_drift_positive_tt
+		}
+		add_to_variable = {
+			BUL_coup_success_chance = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+			}
+			tooltip = BUL_increase_coup_chance_slight_tt
+		}
 	}
 	else_if = {
 		limit = {
 			check_variable = { BUL_tsar_perception < 90 }
 		}
-		set_temp_variable = { BUL_deputies = 10 }
-		custom_effect_tooltip = BUL_reduce_deputy_support_tt
-		subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		subtract_from_variable = {
+			BUL_parliamentary_support = {
+				value = 10
+				clamp = { min = 0 max = BUL_parliamentary_support }
+			}
+			tooltip = BUL_reduce_deputy_support_tt
+		}
 	}
 	else = {
-		set_temp_variable = { BUL_tsar_change = 10 }
-		custom_effect_tooltip = BUL_boris_perception_worsen_tt
-		subtract_from_variable = { BUL_tsar_perception = BUL_tsar_change }
-		clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
-		add_to_variable = { BUL_coup_success_chance = -10 }
-		clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-		custom_effect_tooltip = BUL_decrease_coup_chance_tt
-		set_temp_variable = { BUL_deputies = 20 }
-		custom_effect_tooltip = BUL_reduce_deputy_support_tt
-		subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		add_to_variable = {
+			BUL_tsar_perception = {
+				value = -10
+				clamp = { min = { value = BUL_tsar_perception multiply = -1 } max = 100 }
+			}
+			tooltip = BUL_boris_perception_worsen_tt
+		}
+		add_to_variable = {
+			BUL_coup_success_chance = {
+				value = -10
+				clamp = { min = { value = BUL_coup_success_chance multiply = -1 } max = 0 }
+			}
+			tooltip = BUL_decrease_coup_chance_tt
+		}
+		subtract_from_variable = {
+			BUL_parliamentary_support = {
+				value = 20
+				clamp = { min = 0 max = BUL_parliamentary_support }
+			}
+			tooltip = BUL_reduce_deputy_support_tt
+		}
 	}
 	hidden_effect = {
 		if = {
@@ -790,6 +830,10 @@ BUL_spawn_chetnik_revolt = {
 			support = {
 				recon = { x = 0 y = 0 }
 			}
+		}
+		if = {
+			limit = { has_dlc_taog = yes }
+			create_generic_hq_template = yes
 		}
 		event_target:BUL_chetnik_headquarters = {
 			create_unit = {

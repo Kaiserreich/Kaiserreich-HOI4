@@ -332,8 +332,7 @@ country_event = { #An Offer From Fengtian (UPC)
 		ai_chance = {
 			base = 1
 			modifier = {
-				set_temp_variable = { FNG_jiongming_chance = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_jiongming_chance = -1 }
+				set_temp_variable = { FNG_jiongming_chance = { value = FNG.FNG_JAP_influence_variable multiply = -1 } }
 				add = FNG_jiongming_chance
 			}
 		}
@@ -617,8 +616,7 @@ country_event = { #The Point of Decision
 		ai_chance = {
 			base = 1
 			modifier = {
-				set_temp_variable = { FNG_accept_chance = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_accept_chance = -1 }
+				set_temp_variable = { FNG_accept_chance = { value = FNG.FNG_JAP_influence_variable multiply = -1 } }
 				add = FNG_accept_chance
 			}
 			modifier = {

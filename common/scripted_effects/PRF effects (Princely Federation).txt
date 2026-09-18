@@ -192,15 +192,6 @@ PRF_puppet_setup = {
 			}
 		}
 		if = {
-			limit = { NOT = { country_exists = PJB } }
-			PJB = {
-				every_character = {
-					limit = { has_character_flag = PJB_character }
-					set_nationality = PREV.PREV
-				}
-			}
-		}
-		if = {
 			limit = { NOT = { country_exists = MYS } }
 			MYS = {
 				every_character = {

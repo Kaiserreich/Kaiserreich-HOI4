@@ -661,10 +661,12 @@ USA_increase_longist_state_control = {
 		}
 	}
 	add_to_variable = {
-		USA_state_defection_chance = 25
+		USA_state_defection_chance = {
+			value = 25
+			clamp = { min = 0 max = { value = 100 subtract = USA_state_defection_chance } }
+		}
 		tooltip = state_defection_chance_tooltip
 	}
-	clamp_variable = { var = USA_state_defection_chance max = 100 }
 	force_update_dynamic_modifier = yes
 }
 
@@ -708,10 +710,12 @@ USA_increase_socialist_state_control = {
 		}
 	}
 	add_to_variable = {
-		USA_state_defection_chance = 25
+		USA_state_defection_chance = {
+			value = 25
+			clamp = { min = 0 max = { value = 100 subtract = USA_state_defection_chance } }
+		}
 		tooltip = state_defection_chance_tooltip
 	}
-	clamp_variable = { var = USA_state_defection_chance max = 100 }
 	force_update_dynamic_modifier = yes
 }
 
@@ -1221,8 +1225,8 @@ USA_create_virginia_hall_operative = {
 	if = {
 		limit = { has_dlc_lar = yes }
 		create_operative_leader = {
-			name = USA_virginia_hall_goillot
-			GFX = GFX_portrait_USA_virginia_hall_goillot_operative
+			name = USA_virginia_hall
+			GFX = GFX_portrait_USA_virginia_hall_operative
 			traits = { operative_demolition_expert }
 			bypass_recruitment = no
 			available_to_spy_master = yes
@@ -1316,21 +1320,21 @@ USA_borah_negotiations_conclude = {
 
 USA_longist_transfer_characters = {
 	APG = {
-		APG_charles_edward_coughlin = { set_nationality = USA }
-		APG_lawrence_dennis = { set_nationality = USA }
+		APG_charles_coughlin = { set_nationality = USA }
+		APG_eugene_talmadge = { set_nationality = USA }
 		APG_henry_ford = { set_nationality = USA }
-		APG_archibald_bulloch_roosevelt = { set_nationality = USA }
-		APG_fred_chase_koch = { set_nationality = USA }
-		APG_hugo_lafayette_black = { set_nationality = USA }
-		APG_francis_everett_townsend = { set_nationality = USA }
-		APG_elizabeth_eloise_kirkpatrick_dilling = { set_nationality = USA }
-		APG_hamilton_stuyvesant_fish = { set_nationality = USA }
+		APG_archibald_roosevelt = { set_nationality = USA }
+		APG_fred_c_koch = { set_nationality = USA }
+		APG_hugo_black = { set_nationality = USA }
+		APG_francis_townsend = { set_nationality = USA }
+		APG_elizabeth_dilling = { set_nationality = USA }
+		APG_hamilton_fish_iii = { set_nationality = USA }
 		APG_robert_rice_reynolds = { set_nationality = USA }
 		APG_jacob_thorkelson = { set_nationality = USA }
-		APG_burton_kendall_wheeler = { set_nationality = USA }
-		APG_john_lewis = { set_nationality = USA }
-		APG_gerald_lyman_kenneth_smith = { set_nationality = USA }
-		APG_frank_byron_rowlett = { set_nationality = USA }
+		APG_burton_k_wheeler = { set_nationality = USA }
+		APG_john_l_lewis = { set_nationality = USA }
+		APG_gerald_lk_smith = { set_nationality = USA }
+		APG_frank_rowlett = { set_nationality = USA }
 	}
 }
 

@@ -158,22 +158,14 @@ defined_text = { # Country
 defined_text = { # Country
 	name = SAF_getDetentionCapacity
 	text = {
-		trigger = {
-			check_variable = { SAF_var_detention_cap < 20 }
-		}
+		trigger = { check_variable = { SAF_var_detention_cap < 20 } }
 		localization_key = SAF_getDetentionCapacity_good
 	}
 	text = {
-		trigger = {
-			check_variable = { SAF_var_detention_cap > 19 }
-			check_variable = { SAF_var_detention_cap < 40 }
-		}
+		trigger = { check_variable = { SAF_var_detention_cap < 40 } }
 		localization_key = SAF_getDetentionCapacity_full
 	}
 	text = {
-		trigger = {
-			check_variable = { SAF_var_detention_cap > 39 }
-		}
 		localization_key = SAF_getDetentionCapacity_overwhelmed
 	}
 }
@@ -197,32 +189,22 @@ defined_text = { # Country
 defined_text = { # Country
 	name = saffaBudgetAmount
 	text = {
-		trigger = {
-			NOT = { check_variable = { saf_var_budget > 0 } }
-		}
-		localization_key = saffaBudgetAmount_zero
+		trigger = { check_variable = { saf_var_budget > 0 } }
+		localization_key = saffaBudgetAmount_positive
 	}
 	text = {
-		trigger = {
-			check_variable = { saf_var_budget > 0 }
-		}
-		localization_key = saffaBudgetAmount_positive
+		localization_key = saffaBudgetAmount_zero
 	}
 }
 
 defined_text = { # Country
 	name = saffaDebtAmount
 	text = {
-		trigger = {
-			NOT = { check_variable = { saf_var_debt > 0 } }
-		}
-		localization_key = saffaBudgetAmount_zero
+		trigger = { check_variable = { saf_var_debt > 0 } }
+		localization_key = saffaDebtAmount_positive
 	}
 	text = {
-		trigger = {
-			check_variable = { saf_var_debt > 0 }
-		}
-		localization_key = saffaDebtAmount_positive
+		localization_key = saffaBudgetAmount_zero
 	}
 }
 

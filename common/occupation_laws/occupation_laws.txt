@@ -62,7 +62,7 @@
 #}
 
 territorial_integration = {
-	icon = 13
+	icon = 12
 	tooltip = territorial_integration_tt
 	sound_effect = "Martial_Law_Interface_Foreign_Cvilian_Oversight"
 
@@ -190,9 +190,9 @@ foreign_civilian_oversight = {
 		#resistance_target 				= 0.0
 		required_garrison_factor 		= -0.25
 		resistance_damage_to_garrison 	= -0.25
-		compliance_gain 				= 0.000
-		local_factories 				= 0.00
-		local_resources 				= 0.00
+		#compliance_gain 				= 0.000
+		#local_factories 				= 0.00
+		#local_resources 				= 0.00
 	}
 
 	ai_will_do = {
@@ -211,8 +211,8 @@ local_police_force_garrison = {
 		compliance_gain 				= -0.025
 		required_garrison_factor 		= -0.35
 		resistance_damage_to_garrison = -0.5
-		local_factories 				= 0.00
-		local_resources 				= 0.00
+		#local_factories 				= 0.00
+		#local_resources 				= 0.00
 	}
 
 	ai_will_do = {
@@ -226,8 +226,7 @@ local_police_force_garrison = {
 			check_variable = { garrison_min_support_ratio < 0.15 }
 		}
 		modifier = {
-			set_temp_variable = { compliance_negative = compliance }
-			multiply_temp_variable = { compliance_negative = -1 }
+			set_temp_variable = { compliance_negative = { value = compliance multiply = -1 } }
 			add = compliance_negative
 		}
 	}
@@ -260,8 +259,7 @@ secret_police_oversight = {
 			check_variable = { garrison_min_support_ratio < 0.35 }
 		}
 		modifier = {
-			set_temp_variable = { compliance_negative = compliance }
-			multiply_temp_variable = { compliance_negative = -2 }
+			set_temp_variable = { compliance_negative = { value = compliance multiply = -2 } }
 			add = compliance_negative
 		}
 	}
@@ -298,8 +296,7 @@ liberate_workers_occupation = {
 			check_variable = { garrison_min_support_ratio < 0.35 }
 		}
 		modifier = {
-			set_temp_variable = { compliance_negative = compliance }
-			multiply_temp_variable = { compliance_negative = -1 }
+			set_temp_variable = { compliance_negative = { value = compliance multiply = -1 } }
 			add = compliance_negative
 		}
 	}
@@ -328,8 +325,7 @@ military_governor_occupation = {
 			check_variable = { garrison_min_support_ratio < 0.5 }
 		}
 		modifier = {
-			set_temp_variable = { compliance_negative = compliance }
-			multiply_temp_variable = { compliance_negative = -3 }
+			set_temp_variable = { compliance_negative = { value = compliance multiply = -3 } }
 			add = compliance_negative
 		}
 	}
@@ -359,8 +355,7 @@ martial_law_occupation = {
 			check_variable = { garrison_min_support_ratio < 0.5 }
 		}
 		modifier = {
-			set_temp_variable = { compliance_negative = compliance }
-			multiply_temp_variable = { compliance_negative = -4 }
+			set_temp_variable = { compliance_negative = { value = compliance multiply = -4 } }
 			add = compliance_negative
 		}
 	}

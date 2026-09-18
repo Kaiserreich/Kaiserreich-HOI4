@@ -33,6 +33,11 @@ if = {
 	set_air_oob = "GUA_air_legacy"
 }
 
+### Central American flavour events ###
+country_event = { id = central_america_flavour_events.7 days = 2408 } # Earthquake Hits Guatemala!
+country_event = { id = central_america_flavour_events.8 days = 1318 } # Foundation of the Museo Regional de Arqueología in Copán
+country_event = { id = central_america_flavour_events.18 days = 258 } # Annual Celebration of the '15 de Septiembre'
+
 activate_targeted_decision = { decision = CEN_unite_central_america target = THIS }
 
 set_politics = {
@@ -65,7 +70,7 @@ add_ideas = {
 
 set_variable = { country_guide_page_count = 1 }
 
-set_variable = { var = UFC_power value = 50 }
+set_variable = { UFC_power = 50 }
 update_GUA_UFC = yes
 add_dynamic_modifier = { modifier = GUA_united_fruit_land }
 
@@ -122,3 +127,6 @@ GUA_manuel_maria_orellana_contreras = { set_character_flag = CEN_reactionary }
 GUA_juan_federico_ponce_vaides = { set_character_flag = CEN_reactionary }
 GUA_buenaventura_pineda = { set_character_flag = CEN_reactionary }
 GUA_eduardo_villagran_ariza = { set_character_flag = CEN_reactionary }
+
+GUA_lazaro_chacon_gonzalez = { set_character_flag = CEN_field_marshal }
+GUA_jose_maria_orellana = { set_character_flag = CEN_field_marshal }

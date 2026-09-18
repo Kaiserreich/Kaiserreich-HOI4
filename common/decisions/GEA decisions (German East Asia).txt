@@ -94,13 +94,11 @@ GEA_indochina_war_decisions = {
 
 		cancel_trigger = {
 			divisions_in_state = { state = 671 size < 3 }
+			NOT = { has_war_with = INC }
 		}
 
 		highlight_states = {
 			highlight_state_targets = { state = 671 }
-		}
-		cancel_trigger = {
-			NOT = { has_war_with = INC }
 		}
 
 		is_good = yes
@@ -112,7 +110,7 @@ GEA_indochina_war_decisions = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout GEA_maintain_Tonkin_control"
 			custom_effect_tooltip = reduce_10_guerilla_tooltip
-			add_to_variable = { var = INC.guerilla_activity value = -10 }
+			add_to_variable = { INC.guerilla_activity = -10 }
 		}
 		fixed_random_seed = no
 	}
@@ -147,7 +145,7 @@ GEA_indochina_war_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GEA_reinforce_police"
 			custom_effect_tooltip = reduce_10_guerilla_tooltip
-			add_to_variable = { var = INC.guerilla_activity value = -10 }
+			add_to_variable = { INC.guerilla_activity = -10 }
 		}
 		fixed_random_seed = no
 	}
@@ -185,7 +183,7 @@ GEA_indochina_war_decisions = {
 				amount = 10
 			}
 			custom_effect_tooltip = reduce_10_guerilla_tooltip
-			add_to_variable = { var = INC.guerilla_activity value = -10 }
+			add_to_variable = { INC.guerilla_activity = -10 }
 		}
 		fixed_random_seed = no
 	}

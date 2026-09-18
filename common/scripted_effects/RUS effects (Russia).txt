@@ -94,15 +94,12 @@ RUS_change_popular_anger = {
 			}
 		}
 
-		set_temp_variable = { RUS_anger_lower_limit = { value = 1 subtract = RUS_popular_anger } }
-
-		set_temp_variable = { RUS_anger_upper_limit = { value = 10 subtract = RUS_popular_anger } }
-
 		# avoid going < 1 or > 10
-		clamp_temp_variable = {
-			var = RUS_anger_change
-			min = RUS_anger_lower_limit
-			max = RUS_anger_upper_limit
+		set_temp_variable = {
+			RUS_anger_change = {
+				value = RUS_anger_change
+				clamp = { min = { value = 1 subtract = RUS_popular_anger } max = { value = 10 subtract = RUS_popular_anger } }
+			}
 		}
 
 		if = {
@@ -194,15 +191,12 @@ RUS_change_military_anger = {
 			}
 		}
 
-		set_temp_variable = { RUS_anger_lower_limit = { value = 1 subtract = RUS_military_anger } }
-
-		set_temp_variable = { RUS_anger_upper_limit = { value = 10 subtract = RUS_military_anger } }
-
 		# avoid going < 1 or > 10
-		clamp_temp_variable = {
-			var = RUS_anger_change
-			min = RUS_anger_lower_limit
-			max = RUS_anger_upper_limit
+		set_temp_variable = {
+			RUS_anger_change = {
+				value = RUS_anger_change
+				clamp = { min = { value = 1 subtract = RUS_military_anger } max = { value = 10 subtract = RUS_military_anger } }
+			}
 		}
 
 		if = {
@@ -295,15 +289,12 @@ RUS_change_military_anger = {
 			}
 		}
 
-		set_temp_variable = { RUS_anger_lower_limit = { value = 1 subtract = RUS_military_anger } }
-
-		set_temp_variable = { RUS_anger_upper_limit = { value = 10 subtract = RUS_military_anger } }
-
 		# avoid going < 1 or > 10
-		clamp_temp_variable = {
-			var = RUS_anger_change
-			min = RUS_anger_lower_limit
-			max = RUS_anger_upper_limit
+		set_temp_variable = {
+			RUS_anger_change = {
+				value = RUS_anger_change
+				clamp = { min = { value = 1 subtract = RUS_military_anger } max = { value = 10 subtract = RUS_military_anger } }
+			}
 		}
 
 		if = {
@@ -363,15 +354,12 @@ RUS_change_right_anger = {
 			}
 		}
 
-		set_temp_variable = { RUS_anger_lower_limit = { value = 1 subtract = RUS_right_anger } }
-
-		set_temp_variable = { RUS_anger_upper_limit = { value = 10 subtract = RUS_right_anger } }
-
 		# avoid going < 1 or > 10
-		clamp_temp_variable = {
-			var = RUS_anger_change
-			min = RUS_anger_lower_limit
-			max = RUS_anger_upper_limit
+		set_temp_variable = {
+			RUS_anger_change = {
+				value = RUS_anger_change
+				clamp = { min = { value = 1 subtract = RUS_right_anger } max = { value = 10 subtract = RUS_right_anger } }
+			}
 		}
 
 		if = {
@@ -457,15 +445,12 @@ RUS_change_left_anger = {
 			}
 		}
 
-		set_temp_variable = { RUS_anger_lower_limit = { value = 1 subtract = RUS_left_anger } }
-
-		set_temp_variable = { RUS_anger_upper_limit = { value = 10 subtract = RUS_left_anger } }
-
 		# avoid going < 1 or > 10
-		clamp_temp_variable = {
-			var = RUS_anger_change
-			min = RUS_anger_lower_limit
-			max = RUS_anger_upper_limit
+		set_temp_variable = {
+			RUS_anger_change = {
+				value = RUS_anger_change
+				clamp = { min = { value = 1 subtract = RUS_left_anger } max = { value = 10 subtract = RUS_left_anger } }
+			}
 		}
 
 		if = {
@@ -1057,8 +1042,7 @@ RUS_setup_demrus = {
 }
 
 RUS_initialise_dem_military = {
-	set_variable = { RUS_target_army_size = num_divisions }
-	add_to_variable = { RUS_target_army_size = 24 }
+	set_variable = { RUS_target_army_size = { value = num_divisions add = 24 } }
 	set_variable = { RUS_military_demands_var = 365 }
 	activate_mission = RUS_military_demands
 }
@@ -2171,9 +2155,17 @@ RUS_abolish_hosts = {
 
 RUS_initialise_socrus = {
 	hidden_effect = {
-		every_country = {
-			limit = { is_ally_with = RUS }
+		if = {
+			limit = { is_in_faction = yes }
+			every_faction_member = {
+				remove_from_tech_sharing_group = russian_research
+			}
+		}
+		else = {
 			remove_from_tech_sharing_group = russian_research
+			every_subject_country = {
+				remove_from_tech_sharing_group = russian_research
+			}
 		}
 		if = {
 			limit = { has_character = RUS_vladimir_nabokov }
@@ -2386,6 +2378,7 @@ RUS_initialise_socrus = {
 			GEO = { country_event = { id = georgia_events.79 days = 1 } }
 		}
 		POL = { country_event = { id = poland_events.730 days = 7 } }
+		AFG = { country_event = { id = afghanistan_events.2000 days = 4 } }
 	}
 }
 
@@ -2505,8 +2498,12 @@ RUS_add_faith = {
 	if = {
 		limit = { RUS_is_spiridonist = yes }
 		custom_effect_tooltip = RUS_add_faith_tt
-		add_to_variable = { RUS_faith = RUS_spiridonist_influence_change }
-		clamp_variable = { var = RUS_faith min = 0 max = 100 }
+		add_to_variable = {
+			RUS_faith = {
+				value = RUS_spiridonist_influence_change
+				clamp = { min = { value = RUS_faith multiply = -1 } max = { value = 100 subtract = RUS_faith } }
+			}
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -2620,91 +2617,39 @@ RUS_faith_bonuses = {
 		limit = { RUS_is_spiridonist = yes }
 		if = {
 			limit = {
-				check_variable = { RUS_spiridonist_focuses = 1 }
+				check_variable = { RUS_spiridonist_focuses < 8 }
+				check_variable = { RUS_spiridonist_focuses > 0 }
 			}
 			custom_effect_tooltip = RUS_spiridonist_influencing_sr_tt
-			set_temp_variable = { RUS_spiridonist_influence_change = 2 }
+			set_temp_variable = { RUS_spiridonist_influence_change = { value = RUS_spiridonist_focuses multiply = 2 } }
 			RUS_add_faith = yes
-			add_political_power = -15
-		}
-		else_if = {
-			limit = {
-				check_variable = { RUS_spiridonist_focuses = 2 }
+			set_temp_variable = {
+				RUS_spiridonist_pp_change = {
+					value = RUS_spiridonist_focuses
+					multiply = -15
+					if = { limit = { value = RUS_spiridonist_focuses equals = 7 } add = 5 } #100
+				}
 			}
-			custom_effect_tooltip = RUS_spiridonist_influencing_sr_tt
-			set_temp_variable = { RUS_spiridonist_influence_change = 4 }
-			RUS_add_faith = yes
-			add_political_power = -30
-		}
-		else_if = {
-			limit = {
-				check_variable = { RUS_spiridonist_focuses = 3 }
-			}
-			custom_effect_tooltip = RUS_spiridonist_influencing_sr_tt
-			set_temp_variable = { RUS_spiridonist_influence_change = 6 }
-			RUS_add_faith = yes
-			add_political_power = -45
-		}
-		else_if = {
-			limit = {
-				check_variable = { RUS_spiridonist_focuses = 4 }
-			}
-			custom_effect_tooltip = RUS_spiridonist_influencing_sr_tt
-			set_temp_variable = { RUS_spiridonist_influence_change = 8 }
-			RUS_add_faith = yes
-			add_political_power = -60
-		}
-		else_if = {
-			limit = {
-				check_variable = { RUS_spiridonist_focuses = 5 }
-			}
-			custom_effect_tooltip = RUS_spiridonist_influencing_sr_tt
-			set_temp_variable = { RUS_spiridonist_influence_change = 10 }
-			RUS_add_faith = yes
-			add_political_power = -75
-		}
-		else_if = {
-			limit = {
-				check_variable = { RUS_spiridonist_focuses = 6 }
-			}
-			custom_effect_tooltip = RUS_spiridonist_influencing_sr_tt
-			set_temp_variable = { RUS_spiridonist_influence_change = 12 }
-			RUS_add_faith = yes
-			add_political_power = -90
-		}
-		else_if = {
-			limit = {
-				check_variable = { RUS_spiridonist_focuses = 7 }
-			}
-			custom_effect_tooltip = RUS_spiridonist_influencing_sr_tt
-			set_temp_variable = { RUS_spiridonist_influence_change = 14 }
-			RUS_add_faith = yes
-			add_political_power = -100
+			add_political_power = RUS_spiridonist_pp_change
 		}
 	}
 }
 
 RUS_rural_development_effects = {
 	if = {
-		limit = {
-			check_variable = { RUS_rural_development_var = 0 }
-		}
+		limit = { check_variable = { RUS_rural_development_var = 0 } }
 		custom_effect_tooltip = RUS_rural_development_stage_tt
 		effect_tooltip = { add_stability = 0.01 }
 	}
-	if = {
-		limit = {
-			check_variable = { RUS_rural_development_var = 1 }
-		}
+	else_if = {
+		limit = { check_variable = { RUS_rural_development_var = 1 } }
 		add_stability = 0.01
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = RUS_rural_development_stage_tt
 		effect_tooltip = { add_stability = 0.03 }
 	}
-	if = {
-		limit = {
-			check_variable = { RUS_rural_development_var = 2 }
-		}
+	else_if = {
+		limit = { check_variable = { RUS_rural_development_var = 2 } }
 		add_stability = 0.03
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = RUS_rural_development_stage_tt
@@ -2714,10 +2659,8 @@ RUS_rural_development_effects = {
 			RUS_add_faith = yes
 		}
 	}
-	if = {
-		limit = {
-			check_variable = { RUS_rural_development_var = 3 }
-		}
+	else_if = {
+		limit = { check_variable = { RUS_rural_development_var = 3 } }
 		add_stability = 0.04
 		set_temp_variable = { RUS_spiridonist_influence_change = 3 }
 		RUS_add_faith = yes
@@ -2738,10 +2681,8 @@ RUS_rural_development_effects = {
 			}
 		}
 	}
-	if = {
-		limit = {
-			check_variable = { RUS_rural_development_var = 4 }
-		}
+	else_if = {
+		limit = { check_variable = { RUS_rural_development_var = 4 } }
 		set_temp_variable = { ideology_change_var = 0.02 }
 		change_ruling_party_popularity = yes
 		set_temp_variable = { RUS_spiridonist_influence_change = 3 }
@@ -2770,10 +2711,8 @@ RUS_rural_development_effects = {
 			RUS_decrease_antisoc_resistance = yes
 		}
 	}
-	if = {
-		limit = {
-			check_variable = { RUS_rural_development_var = 5 }
-		}
+	else_if = {
+		limit = { check_variable = { RUS_rural_development_var = 5 } }
 		set_temp_variable = { ideology_change_var = 0.04 }
 		change_ruling_party_popularity = yes
 		random_owned_state = {
@@ -2792,10 +2731,8 @@ RUS_rural_development_effects = {
 			add_war_support = 0.03
 		}
 	}
-	if = {
-		limit = {
-			check_variable = { RUS_rural_development_var = 6 }
-		}
+	else_if = {
+		limit = { check_variable = { RUS_rural_development_var = 6 } }
 		add_stability = 0.05
 		add_war_support = 0.03
 		custom_effect_tooltip = tooltip_white_line
@@ -2808,15 +2745,20 @@ RUS_rural_development_effects = {
 			RUS_decrease_antisoc_resistance = yes
 		}
 	}
-	if = {
-		limit = {
-			check_variable = { RUS_rural_development_var = 7 }
-		}
+	else = {
+		# RUS_rural_development_var = 7
 		set_temp_variable = { ideology_change_var = 0.08 }
 		change_ruling_party_popularity = yes
 		set_temp_variable = { RUS_spiridonist_influence_change = 3 }
 		RUS_add_faith = yes
 		RUS_decrease_antisoc_resistance = yes
+	}
+	if = {
+		limit = { check_variable = { RUS_rural_development_var = 7 } }
+		clear_variable = RUS_rural_development_var
+	}
+	else = {
+		add_to_variable = { RUS_rural_development_var = 1 }
 	}
 }
 
@@ -3041,88 +2983,57 @@ RUS_remove_maximalist_influence_ideas = {
 RUS_change_maximalist_influence_spirit = {
 	hidden_effect = {
 		if = {
-			limit = {
-				check_variable = { RUS_maximalist_influence < 10 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 10 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_0
 		}
 		else_if = {
-			limit = {
-				NOT = { check_variable = { RUS_maximalist_influence < 10 } }
-				check_variable = { RUS_maximalist_influence < 20 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 20 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_1
 		}
 		else_if = {
-			limit = {
-				NOT = { check_variable = { RUS_maximalist_influence < 20 } }
-				check_variable = { RUS_maximalist_influence < 30 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 30 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_2
 		}
 		else_if = {
-			limit = {
-				NOT = { check_variable = { RUS_maximalist_influence < 30 } }
-				check_variable = { RUS_maximalist_influence < 40 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 40 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_3
 		}
 		else_if = {
-			limit = {
-				NOT = { check_variable = { RUS_maximalist_influence < 40 } }
-				check_variable = { RUS_maximalist_influence < 50 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 50 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_4
 		}
 		else_if = {
-			limit = {
-				NOT = { check_variable = { RUS_maximalist_influence < 50 } }
-				check_variable = { RUS_maximalist_influence < 60 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 60 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_5
 		}
 		else_if = {
-			limit = {
-				NOT = { check_variable = { RUS_maximalist_influence < 60 } }
-				check_variable = { RUS_maximalist_influence < 70 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 70 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_6
 		}
 		else_if = {
-			limit = {
-				NOT = { check_variable = { RUS_maximalist_influence < 70 } }
-				check_variable = { RUS_maximalist_influence < 80 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 80 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_7
 		}
 		else_if = {
-			limit = {
-				NOT = { check_variable = { RUS_maximalist_influence < 80 } }
-				check_variable = { RUS_maximalist_influence < 90 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 90 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_8
 		}
 		else_if = {
-			limit = {
-				NOT = { check_variable = { RUS_maximalist_influence < 90 } }
-				check_variable = { RUS_maximalist_influence < 100 }
-			}
+			limit = { check_variable = { RUS_maximalist_influence < 100 } }
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_9
 		}
-		else_if = {
-			limit = {
-				check_variable = { RUS_maximalist_influence = 100 }
-			}
+		else = {
+			# RUS_maximalist_influence = 100
 			RUS_remove_maximalist_influence_ideas = yes
 			add_ideas = RUS_maximalist_influence_10
 		}
@@ -3136,11 +3047,11 @@ RUS_maximalist_influence = {
 			RUS_is_maximalist = yes
 		}
 		custom_effect_tooltip = RUS_add_sr_influence_tt
-		add_to_variable = { RUS_maximalist_influence = RUS_maximalist_influence_change }
-		clamp_variable = {
-			var = RUS_maximalist_influence
-			min = 0
-			max = 100
+		add_to_variable = {
+			RUS_maximalist_influence = {
+				value = RUS_maximalist_influence_change
+				clamp = { min = { value = RUS_maximalist_influence multiply = -1 } max = { value = 100 subtract = RUS_maximalist_influence } }
+			}
 		}
 		RUS_change_maximalist_influence_spirit = yes
 	}
@@ -3153,11 +3064,11 @@ RUS_maximalist_suspicion = {
 			RUS_is_maximalist = yes
 		}
 		custom_effect_tooltip = RUS_add_maximalist_suspicion_tt
-		add_to_variable = { RUS_maximalist_suspicion = RUS_maximalist_suspicion_change }
-		clamp_variable = {
-			var = RUS_maximalist_suspicion
-			min = 0
-			max = 50
+		add_to_variable = {
+			RUS_maximalist_suspicion = {
+				value = RUS_maximalist_suspicion_change
+				clamp = { min = { value = RUS_maximalist_suspicion multiply = -1 } max = { value = 50 subtract = RUS_maximalist_suspicion } }
+			}
 		}
 		if = {
 			limit = {
@@ -3521,17 +3432,25 @@ RUS_VST_party_check = {
 				has_idea = RUS_vst_party_factionalism_idea
 			}
 		}
-		set_variable = { vst_popularity_var = 1 }
 		#Will be maximum of 0.41 for maximum Levitsky, and maximum of 0.17 for best 2-wing coalition
 		if = {
 			limit = { RUS_VST_centre = yes }
-			add_to_variable = { vst_popularity_var = vst_centre_unity }
-			multiply_variable = { vst_popularity_var = 1.5 } #Increase effect of VST centre unity by 50%
+			set_variable = {
+				vst_popularity_var = {
+					value = 1
+					add = vst_centre_unity
+					multiply = 1.5  #Increase effect of VST centre unity by 50%
+				}
+			}
 		}
 		else = {
-			add_to_variable = { vst_popularity_var = vst_centre_var }
-			### Instead of centre unity, give left/right fixed mediocre unity
-			add_to_variable = { vst_popularity_var = 6 }
+			set_variable = {
+				vst_popularity_var = {
+					value = 1
+					add = vst_centre_var
+					add = 6 #Instead of centre unity, give left/right fixed mediocre unity
+				}
+			}
 		}
 		if = {
 			limit = { has_completed_focus = RUS_social_solidarity }
@@ -3594,9 +3513,13 @@ RUS_decrease_VST_left_radicalism = {
 				has_completed_focus = RUS_preserve_revolution_within
 			}
 		}
-		custom_effect_tooltip = RUS_decrease_VST_left_radicalism_tt
-		subtract_from_variable = { vst_left_radicalism = 1 }
-		clamp_variable = { var = vst_left_radicalism min = 0 max = 10 }
+		add_to_variable = {
+			vst_left_radicalism = {
+				value = -1
+				clamp = { min = { value = vst_left_radicalism multiply = -1 } max = { value = 10 subtract = vst_left_radicalism } }
+			}
+			tooltip = RUS_decrease_VST_left_radicalism_tt
+		}
 	}
 }
 
@@ -3612,9 +3535,13 @@ RUS_increase_VST_left_radicalism = {
 			}
 			has_country_flag = RUS_dvoika_minigame
 		}
-		custom_effect_tooltip = RUS_increase_VST_left_radicalism_tt
-		add_to_variable = { vst_left_radicalism = 1 }
-		clamp_variable = { var = vst_left_radicalism min = 0 max = 10 }
+		add_to_variable = {
+			vst_left_radicalism = {
+				value = 1
+				clamp = { min = { value = vst_left_radicalism multiply = -1 } max = { value = 10 subtract = vst_left_radicalism } }
+			}
+			tooltip = RUS_increase_VST_left_radicalism_tt
+		}
 	}
 	else_if = {
 		limit = {
@@ -3629,8 +3556,12 @@ RUS_increase_VST_left_radicalism = {
 			has_country_flag = RUS_dvoika_minigame
 		}
 		custom_effect_tooltip = RUS_increase_VST_left_radicalism_warning_tt
-		add_to_variable = { vst_left_radicalism = 1 }
-		clamp_variable = { var = vst_left_radicalism min = 0 max = 10 }
+		add_to_variable = {
+			vst_left_radicalism = {
+				value = 1
+				clamp = { min = { value = vst_left_radicalism multiply = -1 } max = { value = 10 subtract = vst_left_radicalism } }
+			}
+		}
 		hidden_effect = {
 			country_event = russia_socialist_events.339
 		}
@@ -3678,8 +3609,13 @@ RUS_VST_centre_relation = {
 			RUS_VST_centre = no
 			NOT = { has_country_flag = RUS_VST_centre_revolt }
 		}
-		add_to_variable = { vst_centre_var = RUS_relation_change tooltip = RUS_change_vst_centre_tt }
-		clamp_variable = { var = vst_centre_var min = 0 max = 10 }
+		add_to_variable = {
+			vst_centre_var = {
+				value = RUS_relation_change
+				clamp = { min = { value = vst_centre_var multiply = -1 } max = { value = 10 subtract = vst_centre_var } }
+			}
+			tooltip = RUS_change_vst_centre_tt
+		}
 		if = {
 			limit = {
 				RUS_VST_centre = no
@@ -3700,11 +3636,12 @@ RUS_VST_right_relation = {
 			NOT = { has_country_flag = RUS_VST_right_revolt }
 		}
 		add_to_variable = {
-			var = vst_right_var
-			value = RUS_relation_change
+			vst_right_var = {
+				value = RUS_relation_change
+				clamp = { min = { value = vst_right_var multiply = -1 } max = { value = 10 subtract = vst_right_var } }
+			}
 			tooltip = RUS_change_vst_right_tt
 		}
-		clamp_variable = { var = vst_right_var min = 0 max = 10 }
 		if = {
 			limit = {
 				NOT = { has_country_flag = RUS_VST_right_revolt }
@@ -3724,11 +3661,12 @@ RUS_VST_left_relation = {
 			NOT = { has_country_flag = RUS_VST_left_revolt }
 		}
 		add_to_variable = {
-			var = vst_left_var
-			value = RUS_relation_change
+			vst_left_var = {
+				value = RUS_relation_change
+				clamp = { min = { value = vst_left_var multiply = -1 } max = { value = 10 subtract = vst_left_var } }
+			}
 			tooltip = RUS_change_vst_left_tt
 		}
-		clamp_variable = { var = vst_left_var min = 0 max = 10 }
 		if = {
 			limit = {
 				NOT = { has_country_flag = RUS_VST_left_revolt }
@@ -3744,11 +3682,12 @@ RUS_PSR_relation = {
 	if = {
 		limit = { RUS_VST = yes }
 		add_to_variable = {
-			var = sr_var
-			value = RUS_relation_change
+			sr_var = {
+				value = RUS_relation_change
+				clamp = { min = { value = sr_var multiply = -1 } max = { value = 10 subtract = sr_var } }
+			}
 			tooltip = RUS_change_sr_tt
 		}
-		clamp_variable = { var = sr_var min = 0 max = 10 }
 		if = {
 			limit = {
 				check_variable = { sr_var < 1 }
@@ -3798,11 +3737,12 @@ RUS_SDS_relation = {
 			NOT = { has_country_flag = RUS_purged_social_democrats }
 		}
 		add_to_variable = {
-			var = sds_var
-			value = RUS_relation_change
+			sds_var = {
+				value = RUS_relation_change
+				clamp = { min = { value = sds_var multiply = -1 } max = { value = 10 subtract = sds_var } }
+			}
 			tooltip = RUS_change_sds_tt
 		}
-		clamp_variable = { var = sds_var min = 0 max = 10 }
 		if = {
 			limit = {
 				check_variable = { sds_var < 1 }
@@ -3811,7 +3751,7 @@ RUS_SDS_relation = {
 			}
 			hidden_effect = { country_event = { id = russia_socialist_events.65 days = 3 } }
 		}
-		if = {
+		else_if = {
 			limit = {
 				check_variable = { sds_var > 4 }
 				is_in_coalition_with_social_democrat = no
@@ -3832,11 +3772,12 @@ RUS_RKP_relation = {
 			}
 		}
 		add_to_variable = {
-			var = rkp_var
-			value = RUS_relation_change
+			rkp_var = {
+				value = RUS_relation_change
+				clamp = { min = { value = rkp_var multiply = -1 } max = { value = 10 subtract = rkp_var } }
+			}
 			tooltip = RUS_change_bolshevik_tt
 		}
-		clamp_variable = { var = rkp_var min = 0 max = 10 }
 		if = {
 			limit = {
 				check_variable = { rkp_var < 1 }
@@ -3844,7 +3785,7 @@ RUS_RKP_relation = {
 			}
 			hidden_effect = { country_event = { id = russia_socialist_events.67 days = 3 } }
 		}
-		if = {
+		else_if = {
 			limit = {
 				check_variable = { rkp_var > 4 }
 				is_in_coalition_with_totalist = no
@@ -3857,9 +3798,13 @@ RUS_RKP_relation = {
 RUS_decrease_VST_centre_unity = {
 	if = {
 		limit = { RUS_VST_centre = yes }
-		custom_effect_tooltip = RUS_decreases_VST_centre_unity_tt
-		subtract_from_variable = { vst_centre_unity = 1 }
-		clamp_variable = { var = vst_centre_unity min = 0 max = 10 }
+		add_to_variable = {
+			vst_centre_unity = {
+				value = -1
+				clamp = { min = { value = vst_centre_unity multiply = -1 } max = { value = 10 subtract = vst_centre_unity } }
+			}
+			tooltip = RUS_decreases_VST_centre_unity_tt
+		}
 		if = {
 			limit = { check_variable = { vst_centre_unity < 4 } }
 			custom_effect_tooltip = RUS_VST_centre_falling_warning_tt
@@ -3878,9 +3823,13 @@ RUS_increase_VST_centre_unity = {
 			RUS_VST_centre = yes
 			check_variable = { vst_centre_unity < 10 }
 		}
-		custom_effect_tooltip = RUS_increases_VST_centre_unity_tt
-		add_to_variable = { vst_centre_unity = 1 }
-		clamp_variable = { var = vst_centre_unity min = 0 max = 10 }
+		add_to_variable = {
+			vst_centre_unity = {
+				value = 1
+				clamp = { min = { value = vst_centre_unity multiply = -1 } max = { value = 10 subtract = vst_centre_unity } }
+			}
+			tooltip = RUS_increases_VST_centre_unity_tt
+		}
 	}
 }
 
@@ -4230,12 +4179,24 @@ RUS_fire_economy_event = {
 }
 
 RUS_decrease_german_economic_influence_cost = {
-	subtract_from_variable = { RUS_influence_cost_low = RUS_influence_cost_change_var }
-	clamp_variable = { var = RUS_influence_cost_low min = 0 }
-	subtract_from_variable = { RUS_influence_cost_normal = RUS_influence_cost_change_var }
-	clamp_variable = { var = RUS_influence_cost_normal min = 0 }
-	subtract_from_variable = { RUS_influence_cost_increased = RUS_influence_cost_change_var }
-	clamp_variable = { var = RUS_influence_cost_increased min = 0 }
+	subtract_from_variable = {
+		RUS_influence_cost_low = {
+			value = RUS_influence_cost_change_var
+			clamp = { min = 0 max = RUS_influence_cost_low }
+		}
+	}
+	subtract_from_variable = {
+		RUS_influence_cost_normal = {
+			value = RUS_influence_cost_change_var
+			clamp = { min = 0 max = RUS_influence_cost_normal }
+		}
+	}
+	subtract_from_variable = {
+		RUS_influence_cost_increased = {
+			value = RUS_influence_cost_change_var
+			clamp = { min = 0 max = RUS_influence_cost_increased }
+		}
+	}
 }
 
 RUS_check_voskhod_events = {
@@ -4313,24 +4274,43 @@ RUS_set_default_industry_costs = {
 		set_temp_variable = { RUS_ic_cost_high_change_var = 10 }
 		RUS_increase_industry_costs = yes
 	}
+	if = {
+		limit = {
+			has_character = RUS_vasily_grabin # Avoids scope errors
+			RUS_vasily_grabin = { is_hired_as_advisor = yes }
+		}
+		set_temp_variable = { RUS_ic_cost_low_change_var = 5 }
+		set_temp_variable = { RUS_ic_cost_med_change_var = 10 }
+		set_temp_variable = { RUS_ic_cost_high_change_var = 10 }
+		RUS_decrease_industry_costs = yes
+	}
 }
 
 RUS_decrease_industry_costs = {
-	subtract_from_variable = { RUS_ic_cost_low = RUS_ic_cost_low_change_var }
-	clamp_variable = { var = RUS_ic_cost_low min = 0 }
-	subtract_from_variable = { RUS_ic_cost_med = RUS_ic_cost_med_change_var }
-	clamp_variable = { var = RUS_ic_cost_med min = 0 }
-	subtract_from_variable = { RUS_ic_cost_high = RUS_ic_cost_high_change_var }
-	clamp_variable = { var = RUS_ic_cost_high min = 0 }
+	subtract_from_variable = {
+		RUS_ic_cost_low = {
+			value = RUS_ic_cost_low_change_var
+			clamp = { min = 0 max = RUS_ic_cost_low }
+		}
+	}
+	subtract_from_variable = {
+		RUS_ic_cost_med = {
+			value = RUS_ic_cost_med_change_var
+			clamp = { min = 0 max = RUS_ic_cost_med }
+		}
+	}
+	subtract_from_variable = {
+		RUS_ic_cost_high = {
+			value = RUS_ic_cost_high_change_var
+			clamp = { min = 0 max = RUS_ic_cost_high }
+		}
+	}
 }
 
 RUS_increase_industry_costs = {
 	add_to_variable = { RUS_ic_cost_low = RUS_ic_cost_low_change_var }
-	clamp_variable = { var = RUS_ic_cost_low min = 0 }
 	add_to_variable = { RUS_ic_cost_med = RUS_ic_cost_med_change_var }
-	clamp_variable = { var = RUS_ic_cost_med min = 0 }
 	add_to_variable = { RUS_ic_cost_high = RUS_ic_cost_high_change_var }
-	clamp_variable = { var = RUS_ic_cost_high min = 0 }
 }
 
 RUS_industry_effect = {
@@ -4455,11 +4435,11 @@ RUS_add_CA_unrest = {
 	else = {
 		custom_effect_tooltip = RUS_increase_CA_unrest_tt
 	}
-	add_to_variable = { RUS_central_asia_unrest = RUS_central_asia_unrest_temp }
-	clamp_variable = {
-		var = RUS_central_asia_unrest
-		min = 0
-		max = 20
+	add_to_variable = {
+		RUS_central_asia_unrest = {
+			value = RUS_central_asia_unrest_temp
+			clamp = { min = { value = RUS_central_asia_unrest multiply = -1 } max = { value = 20 subtract = RUS_central_asia_unrest } }
+		}
 	}
 }
 
@@ -5916,7 +5896,7 @@ RUS_fifth_column_effects = {
 			}
 			clr_country_flag = RUS_support_the_laf
 			LIT = { country_event = russia_foreign_policy_events.112 }
-			set_temp_variable = { LIT_threat_change = 5 }
+			set_temp_variable = { LIT_threat_change = 0.05 }
 			LIT_change_LAF_threat = yes
 		}
 		if = {
@@ -6087,9 +6067,7 @@ RUS_Update_MIO_Research_Speeds = {
 		}
 		set_variable = { Previous_Week_Funds = Current_Week_Funds }
 		set_variable = { Current_Week_Funds = funds }
-		set_variable = { weekly_funds_gained = Current_Week_Funds }
-		subtract_from_variable = { weekly_funds_gained = Previous_Week_Funds }
-		clamp_variable = { var = weekly_funds_gained min = 0 }
+		set_variable = { weekly_funds_gained = { value = Current_Week_Funds subtract = Previous_Week_Funds clamp = { min = 0 max = 10000 } } }
 
 		if = { #Weekly trigger for giving incremental research bonus to MIO
 			limit = {
@@ -6102,12 +6080,7 @@ RUS_Update_MIO_Research_Speeds = {
 			}
 			### Max Research Speed Alerts ###
 			if = {
-				limit = {
-					OR = {
-						check_variable = { research_bonus > max_research_speed }
-						check_variable = { research_bonus = max_research_speed }
-					}
-				}
+				limit = { NOT = { check_variable = { research_bonus < max_research_speed } } }
 				set_mio_research_bonus = max_research_speed
 				if = {
 					limit = { NOT = { has_mio_flag = RUS_research_bonus_max_notification } }
@@ -6317,8 +6290,12 @@ RUS_Update_MIO_XP_Gains = {
 # 			add_to_temp_variable = { RUS_design_team_assign_cost_dif = 0.01 }
 # 		}
 # 		var:RUS_sokol_organisation_var = {
-# 			add_to_variable = { RUS_sokol_limit = RUS_design_team_assign_cost_dif }
-# 			clamp_variable = { var = RUS_sokol_limit min = 0 max = 0.20 }
+#			add_to_variable = {
+#				RUS_sokol_limit = {
+#					value = RUS_design_team_assign_cost_dif
+#					clamp = { min = { value = RUS_sokol_limit multiply = -1 } max = { value = 0.20 subtract = RUS_sokol_limit } }
+#				}
+#			}
 # 			set_mio_design_team_assign_cost = RUS_sokol_limit
 #			set_temp_variable = {
 #				RUS_sokol_funds_gain_factor = {
@@ -6865,103 +6842,102 @@ RUS_add_laz_upgrade_4_1 = {
 RUS_Balance_Report = {
 	if = {
 		limit = { amount_taken_ideas = { amount < 1 slots = { political_advisor } } }
-		set_variable = { RUS_political_advisor_number = 0 }
+		set_temp_variable = { RUS_political_advisor_number = 0 }
 	}
 	else_if = {
 		limit = { amount_taken_ideas = { amount > 0 slots = { political_advisor } } amount_taken_ideas = { amount < 2 slots = { political_advisor } } }
-		set_variable = { RUS_political_advisor_number = 1 }
+		set_temp_variable = { RUS_political_advisor_number = 1 }
 	}
 	else_if = {
 		limit = { amount_taken_ideas = { amount > 1 slots = { political_advisor } } amount_taken_ideas = { amount < 3 slots = { political_advisor } } }
-		set_variable = { RUS_political_advisor_number = 2 }
+		set_temp_variable = { RUS_political_advisor_number = 2 }
 	}
 	else_if = {
 		limit = { amount_taken_ideas = { amount > 2 slots = { political_advisor } } }
-		set_variable = { RUS_political_advisor_number = 3 }
+		set_temp_variable = { RUS_political_advisor_number = 3 }
 	}
 	if = {
 		limit = { amount_taken_ideas = { amount < 1 slots = { high_command } } }
-		set_variable = { RUS_military_advisor_number = 0 }
+		set_temp_variable = { RUS_military_advisor_number = 0 }
 	}
 	else_if = {
 		limit = { amount_taken_ideas = { amount > 0 slots = { high_command } } amount_taken_ideas = { amount < 2 slots = { high_command } } }
-		set_variable = { RUS_military_advisor_number = 1 }
+		set_temp_variable = { RUS_military_advisor_number = 1 }
 	}
 	else_if = {
 		limit = { amount_taken_ideas = { amount > 1 slots = { high_command } } amount_taken_ideas = { amount < 3 slots = { high_command } } }
-		set_variable = { RUS_military_advisor_number = 2 }
+		set_temp_variable = { RUS_military_advisor_number = 2 }
 	}
 	else_if = {
 		limit = { amount_taken_ideas = { amount > 2 slots = { high_command } } }
-		set_variable = { RUS_military_advisor_number = 3 }
+		set_temp_variable = { RUS_military_advisor_number = 3 }
 	}
 	if = {
 		limit = { amount_taken_ideas = { amount < 1 slots = { industrial_concern } } }
-		set_variable = { RUS_industrial_concern_number = 0 }
+		set_temp_variable = { RUS_industrial_concern_number = 0 }
 	}
 	else_if = {
 		limit = { amount_taken_ideas = { amount > 0 slots = { industrial_concern } } }
-		set_variable = { RUS_industrial_concern_number = 1 }
+		set_temp_variable = { RUS_industrial_concern_number = 1 }
 	}
 	if = {
 		limit = { amount_taken_ideas = { amount < 1 slots = { theorist } } }
-		set_variable = { RUS_theorist_number = 0 }
+		set_temp_variable = { RUS_theorist_number = 0 }
 	}
 	else_if = {
 		limit = { amount_taken_ideas = { amount > 0 slots = { theorist } } }
-		set_variable = { RUS_theorist_number = 1 }
+		set_temp_variable = { RUS_theorist_number = 1 }
 	}
 	if = {
 		limit = { amount_taken_ideas = { amount < 1 slots = { air_chief } } }
-		set_variable = { RUS_air_chief_number = 0 }
+		set_temp_variable = { RUS_air_chief_number = 0 }
 	}
 	else_if = {
 		limit = { amount_taken_ideas = { amount > 0 slots = { air_chief } } }
-		set_variable = { RUS_air_chief_number = 1 }
+		set_temp_variable = { RUS_air_chief_number = 1 }
 	}
 	if = {
 		limit = { has_idea = civilian_economy }
-		set_variable = { RUS_economy_law_number = 1 }
+		set_temp_variable = { RUS_economy_law_number = 1 }
 	}
-	if = {
+	else_if = {
 		limit = { has_idea = low_economic_mobilisation }
-		set_variable = { RUS_economy_law_number = 2 }
+		set_temp_variable = { RUS_economy_law_number = 2 }
 	}
-	if = {
+	else_if = {
 		limit = { has_idea = partial_economic_mobilisation }
-		set_variable = { RUS_economy_law_number = 3 }
+		set_temp_variable = { RUS_economy_law_number = 3 }
 	}
-	if = {
+	else_if = {
 		limit = { has_idea = war_economy }
-		set_variable = { RUS_economy_law_number = 4 }
+		set_temp_variable = { RUS_economy_law_number = 4 }
 	}
-	if = {
+	else_if = {
 		limit = { has_idea = tot_economic_mobilisation }
-		set_variable = { RUS_economy_law_number = 5 }
+		set_temp_variable = { RUS_economy_law_number = 5 }
 	}
 	if = {
 		limit = { has_idea = volunteer_only }
-		set_variable = { RUS_conscription_number = 1 }
-	}
-	if = {
-		limit = { has_idea = limited_conscription }
-		set_variable = { RUS_conscription_number = 2 }
-	}
-	if = {
-		limit = { has_idea = extensive_conscription }
-		set_variable = { RUS_conscription_number = 3 }
-	}
-	if = {
-		limit = { has_idea = service_by_requirement }
-		set_variable = { RUS_conscription_number = 4 }
-	}
-	if = {
-		limit = { RUS = { has_war = yes } }
-		set_variable = { RUS_war_number = 1 }
+		set_temp_variable = { RUS_conscription_number = 1 }
 	}
 	else_if = {
-		limit = { RUS = { has_war = no } }
-		set_variable = { RUS_war_number = 0 }
+		limit = { has_idea = limited_conscription }
+		set_temp_variable = { RUS_conscription_number = 2 }
+	}
+	else_if = {
+		limit = { has_idea = extensive_conscription }
+		set_temp_variable = { RUS_conscription_number = 3 }
+	}
+	else_if = {
+		limit = { has_idea = service_by_requirement }
+		set_temp_variable = { RUS_conscription_number = 4 }
+	}
+	if = {
+		limit = { has_war = yes }
+		set_temp_variable = { RUS_war_number = 1 }
+	}
+	else = {
+		set_temp_variable = { RUS_war_number = 0 }
 	}
 	if = {
 		limit = { has_country_flag = RUS_savinkov_ai }
@@ -7091,14 +7067,14 @@ RUS_Balance_Report = {
 		}
 		log = "Leader: Solonevich (PatAut/VPP)"
 	}
-	if = {
+	else_if = {
 		limit = {
 			RUS_georgy_vernadsky = { is_second_in_command = yes }
 			has_country_flag = RUS_empire_ai
 		}
 		log = "Leader: Vernadsky (SocCon/VPP)"
 	}
-	if = {
+	else_if = {
 		limit = {
 			RUS_aleksandr_golitsyn = { is_second_in_command = yes }
 			has_country_flag = RUS_empire_ai

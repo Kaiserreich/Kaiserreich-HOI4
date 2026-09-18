@@ -397,18 +397,8 @@ cannot_call_allies_or_join_wars = {
 
 owns_state_with_naval_base = {
 	any_owned_state = {
-		hidden_trigger = {
-			is_coastal = yes
-			is_controlled_by = PREV
-		}
-		any_province_building_level = {
-			province = {
-				all_provinces = yes
-				limit_to_coastal = yes
-			}
-			building = naval_base
-			level > 0
-		}
+		naval_base > 0
+		is_controlled_by = PREV
 	}
 }
 
@@ -611,15 +601,6 @@ is_guaranteed_by_owner_of_state = {
 }
 
 get_month_of_year_trigger = {
-	# Get num days passed from past years since game start
-	set_temp_variable = {
-		days_past_years = {
-			value = global.year
-			subtract = 1936
-			multiply = 365
-		}
-	}
-
  	# Get day of year
 	# day_of_year = days_since_game_start - days_past_years
 	set_temp_variable = {
@@ -628,7 +609,11 @@ get_month_of_year_trigger = {
 			subtract = 706640
 			add = 1  #as on 1st jan day is 0 otherwise
 			# ^ = days_since_game_start
-			subtract = days_past_years
+			subtract = { #days_past_years (Get num days passed from past years since game start)
+				value = global.year
+				subtract = 1936
+				multiply = 365
+			}
 		}
 	}
 

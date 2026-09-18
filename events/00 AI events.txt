@@ -22,6 +22,40 @@ country_event = {
 	}
 }
 
+# Break all truces against all possible enemies
+country_event = {
+	id = ai_events.11
+	hidden = yes
+
+	trigger = {
+		country_exists = FROM
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ai_events.11 option 1"
+		# Note: FROM is attacker, ROOT is defender in this event
+		if = {
+			limit = { is_in_faction = yes }
+			every_faction_member = {
+				limit = { has_truce_with = FROM }
+				set_truce = { target = FROM days = 0 }
+			}
+		}
+		else_if = {
+			limit = { num_subjects > 0 }
+			every_collection_element = {
+				input = {
+					input = collection:country_and_all_subjects
+					operators = { limit = { has_truce_with = FROM } }
+				}
+				set_truce = { target = FROM days = 0 }
+			}
+		}
+	}
+}
+
 #hidden event to set up starting market access in economic spheres
 country_event = {
 	id = ai_events.90
@@ -129,6 +163,7 @@ country_event = {
 		SWI = {
 			country_event = { id = switzerland_events.135 days = 2 random_days = 4 }
 		}
+		COS = { country_event = { id = costa_rica_events.81 days = 3 random_days = 5 } } # Persecution of Foreign Landowners
 		BRA = {
 			country_event = { id = brazil_events.209 days = 15 random_days = 45 } #The New Rubber Boom
 			country_event = { id = brazil_events.701 days = 180 random_days = 540 } #Carlos Drummond de Andrade Publishes 'Sentimento do Mundo'

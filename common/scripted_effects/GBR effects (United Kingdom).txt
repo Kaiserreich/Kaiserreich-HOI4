@@ -390,12 +390,13 @@ GBR_create_starting_ship_variants = {
 GBR_recalculate_postwar_devastation = {
 	if = {
 		limit = { has_dynamic_modifier = { modifier = GBR_postwar_devastation } }
-
-		set_temp_variable = { GBR_pwd_consumer_goods_temp = { value = 0.04 multiply = GBR_pwd_multiplier?1 } }
-		set_temp_variable = { GBR_pwd_negative_temp = { value = -0.03 multiply = GBR_pwd_multiplier?1 } }
-
 		if = {
-			limit = { NOT = { check_variable = { GBR_pwd_consumer_goods_factor > GBR_pwd_consumer_goods_temp } } }
+			limit = {
+				check_expr = {
+					value = 0.04 multiply = GBR_pwd_multiplier?1
+					greater_than_or_equals = GBR_pwd_consumer_goods_factor
+				}
+			}
 			remove_dynamic_modifier = { modifier = GBR_postwar_devastation }
 			clear_variable = GBR_pwd_consumer_goods_factor
 			clear_variable = GBR_pwd_negative_modifier
@@ -413,35 +414,23 @@ GBR_recalculate_postwar_devastation = {
 			}
 		}
 		else = {
-			multiply_temp_variable = { GBR_pwd_consumer_goods_temp = -1 }
-			multiply_temp_variable = { GBR_pwd_negative_temp = -1 }
 			custom_effect_tooltip = {
 				localization_key = tooltip_modify_dynmod
 				DYNMOD = GBR_postwar_devastation
 			}
 			add_to_variable = {
-				GBR_pwd_consumer_goods_factor = GBR_pwd_consumer_goods_temp
+				GBR_pwd_consumer_goods_factor = {
+					value = -0.04 multiply = GBR_pwd_multiplier?1
+					clamp = { min = { value = GBR_pwd_consumer_goods_factor multiply = -1 } max = 0 }
+				}
 				tooltip = consumer_goods_factor_tooltip
 			}
-			clamp_variable = { var = GBR_pwd_consumer_goods_factor min = 0 }
 			add_to_variable = {
-				GBR_pwd_negative_modifier = GBR_pwd_negative_temp
-				tooltip = industrial_capacity_factory_tooltip
-			}
-			clamp_variable = { var = GBR_pwd_negative_temp max = 0 }
-			effect_tooltip = {
-				set_temp_variable = {
-					GBR_pwd_negative_temp = GBR_pwd_negative_temp
-					tooltip = industrial_capacity_dockyard_tooltip
+				GBR_pwd_negative_modifier = {
+					value = 0.03 multiply = GBR_pwd_multiplier?1
+					clamp = { min = 0 max = { value = GBR_pwd_negative_modifier multiply = -1 } }
 				}
-				set_temp_variable = {
-					GBR_pwd_negative_temp = GBR_pwd_negative_temp
-					tooltip = local_resources_factor_tooltip
-				}
-				set_temp_variable = {
-					GBR_pwd_negative_temp = GBR_pwd_negative_temp
-					tooltip = production_speed_buildings_factor_tooltip
-				}
+				tooltip = GBR_postwar_devastation_modifier_change_tooltip
 			}
 		}
 	}
@@ -473,15 +462,19 @@ GBR_reduce_legacy_revolution = {
 				DYNMOD = GBR_legacy_revolution
 			}
 			add_to_variable = {
-				GBR_lr_political_power_cost = -0.1
+				GBR_lr_political_power_cost = {
+					value = -0.1
+					clamp = { min = { value = GBR_lr_political_power_cost multiply = -1 } max = 0 }
+				}
 				tooltip = political_power_cost_tooltip
 			}
-			clamp_variable = { var = GBR_lr_political_power_cost min = 0 }
 			add_to_variable = {
-				GBR_lr_conscription_factor = 0.12
+				GBR_lr_conscription_factor = {
+					value = 0.12
+					clamp = { min = 0 max = { value = GBR_lr_conscription_factor multiply = -1 } }
+				}
 				tooltip = conscription_factor_tooltip
 			}
-			clamp_variable = { var = GBR_lr_conscription_factor max = 0 }
 		}
 	}
 }
@@ -489,15 +482,15 @@ GBR_reduce_legacy_revolution = {
 GBR_recalculate_syndicalist_resistance = {
 	if = {
 		limit = { has_dynamic_modifier = { modifier = GBR_syndicalist_resistance } }
-		set_temp_variable = {
-			GBR_temp_sr = {
-				value = GBR_sr_stability_factor
-				add = GBR_resistance_temp?0.01
-				clamp = { min = -1 max = 0 }
-			}
-		}
 		if = {
-			limit = { check_variable = { GBR_temp_sr = 0 } }
+			limit = {
+				check_expr = {
+					value = GBR_sr_stability_factor
+					add = GBR_resistance_temp?0.01
+					clamp = { min = -1 max = 0 }
+					equals = 0
+				}
+			}
 			remove_dynamic_modifier = { modifier = GBR_syndicalist_resistance }
 			clear_variable = GBR_sr_stability_factor
 			hidden_effect = {
@@ -2173,6 +2166,28 @@ GBR_add_infantry_templates = {
 				infantry = { x = 1 y = 0 }
 			}
 			template_counter = 68
+		}
+	}
+	if = {
+		limit = {
+			has_dlc_taog = yes
+			is_dynamic_country = yes
+			NOT = { has_template = "Army Headquarters" }
+		}
+		division_template = {
+			name = "Army Headquarters"
+			template_counter = 121
+			is_army_hq = yes
+
+			regiments = {
+				hq_infantry = { x = 0 y = 0 }
+				hq_infantry = { x = 0 y = 1 }
+				hq_infantry = { x = 0 y = 2 }
+			}
+
+			support = {
+				hq_support_company = { x = 0 y = 0 }
+			}
 		}
 	}
 }

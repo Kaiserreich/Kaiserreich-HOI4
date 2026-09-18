@@ -2489,9 +2489,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed COL_Reaffirm_Economic_Ties"
-			every_country = {
+			every_faction_member = {
 				tooltip = COL_every_allied_country
-				limit = { is_ally_with = ROOT }
 				add_ideas = COL_AND_trade
 			}
 		}
@@ -2516,9 +2515,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed COL_Research_Cooperation"
-			every_country = {
+			every_faction_member = {
 				tooltip = COL_every_allied_country
-				limit = { is_ally_with = ROOT }
 				add_to_tech_sharing_group = colombia_research
 			}
 		}

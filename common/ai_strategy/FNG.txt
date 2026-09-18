@@ -204,6 +204,7 @@ FNG_aifc_linear_defence = {
 		value = -100
 	}
 }
+
 FNG_basic_production = {
 	allowed = {
 		original_tag = FNG
@@ -234,6 +235,7 @@ FNG_basic_production = {
 		value = -2
 	}
 }
+
 FNG_basic_production_2 = {
 	allowed = {
 		original_tag = FNG
@@ -254,6 +256,7 @@ FNG_basic_production_2 = {
 		value = 2
 	}
 }
+
 FNG_basic_production_3 = {
 	allowed = {
 		original_tag = FNG
@@ -279,6 +282,7 @@ FNG_basic_production_3 = {
 		value = 1
 	}
 }
+
 FNG_acquire_mountaineer_for_reclamation_buff = {
 	allowed = {
 		original_tag = FNG
@@ -304,6 +308,7 @@ FNG_acquire_mountaineer_for_reclamation_buff = {
 		value = 1000
 	}
 }
+
 FNG_expand_610_airbase = {
 	allowed = {
 		is_chinese_or_potential_chinese_tag = yes
@@ -316,13 +321,7 @@ FNG_expand_610_airbase = {
 			612 = { controller = { has_war_with = JAP } }
 			611 = { controller = { has_war_with = JAP } }
 		}
-		610 = {
-			air_base < 2
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
-		}
+		610 = { air_base < 2 }
 	}
 	abort_when_not_enabled = yes
 
@@ -333,6 +332,7 @@ FNG_expand_610_airbase = {
 		value = 2
 	}
 }
+
 FNG_expand_1048_airbase = {
 	allowed = {
 		is_chinese_or_potential_chinese_tag = yes
@@ -345,13 +345,7 @@ FNG_expand_1048_airbase = {
 			1013 = { controller = { has_war_with = JAP } }
 			602 = { controller = { has_war_with = JAP } }
 		}
-		1048 = {
-			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 7 }
-				check_variable = { building_level@air_base < 3 }
-			}
-		}
+		1048 = { air_base < 3 }
 	}
 	abort_when_not_enabled = yes
 
@@ -362,6 +356,7 @@ FNG_expand_1048_airbase = {
 		value = 3
 	}
 }
+
 FNG_expand_799_airbase = {
 	allowed = {
 		is_chinese_or_potential_chinese_tag = yes
@@ -374,13 +369,7 @@ FNG_expand_799_airbase = {
 			661 = { controller = { has_war_with = JAP } }
 			650 = { controller = { has_war_with = JAP } }
 		}
-		799 = {
-			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 7 }
-				check_variable = { building_level@air_base < 3 }
-			}
-		}
+		799 = { air_base < 3 }
 	}
 	abort_when_not_enabled = yes
 
@@ -391,6 +380,7 @@ FNG_expand_799_airbase = {
 		value = 3
 	}
 }
+
 FNG_expand_602_airbase = {
 	allowed = {
 		is_chinese_or_potential_chinese_tag = yes
@@ -403,13 +393,7 @@ FNG_expand_602_airbase = {
 			1052 = { controller = { has_war_with = JAP } }
 			650 = { controller = { has_war_with = JAP } }
 		}
-		602 = {
-			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
-		}
+		602 = { air_base < 2 }
 	}
 	abort_when_not_enabled = yes
 
@@ -420,6 +404,7 @@ FNG_expand_602_airbase = {
 		value = 2
 	}
 }
+
 FNG_expand_600_airbase = {
 	allowed = {
 		is_chinese_or_potential_chinese_tag = yes
@@ -432,13 +417,7 @@ FNG_expand_600_airbase = {
 			800 = { controller = { has_war_with = JAP } }
 			599 = { controller = { has_war_with = JAP } }
 		}
-		600 = {
-			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
-		}
+		600 = { air_base < 3 }
 	}
 	abort_when_not_enabled = yes
 
@@ -449,6 +428,7 @@ FNG_expand_600_airbase = {
 		value = 2
 	}
 }
+
 FNG_expand_609_airbase = {
 	allowed = {
 		is_chinese_or_potential_chinese_tag = yes
@@ -456,13 +436,7 @@ FNG_expand_609_airbase = {
 	enable = {
 		controls_state = 609
 		is_ally_with = JAP
-		609 = {
-			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
-		}
+		609 = { air_base < 3 }
 	}
 	abort_when_not_enabled = yes
 
@@ -481,13 +455,7 @@ FNG_expand_614_airbase = {
 	enable = {
 		controls_state = 614
 		is_ally_with = JAP
-		614 = {
-			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
-		}
+		614 = { air_base < 3 }
 	}
 	abort_when_not_enabled = yes
 
@@ -498,6 +466,7 @@ FNG_expand_614_airbase = {
 		value = 3
 	}
 }
+
 FNG_expand_1068_airbase = {
 	allowed = {
 		is_chinese_or_potential_chinese_tag = yes
@@ -505,13 +474,7 @@ FNG_expand_1068_airbase = {
 	enable = {
 		controls_state = 1068
 		is_ally_with = JAP
-		1068 = {
-			air_base < 3
-			OR = {
-				free_building_slots = { building = air_base size > 8 }
-				check_variable = { building_level@air_base < 2 }
-			}
-		}
+		1068 = { air_base < 3 }
 	}
 	abort_when_not_enabled = yes
 

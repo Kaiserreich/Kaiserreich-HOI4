@@ -14,14 +14,17 @@ country_event = { # Constitutional Convention begins
 
 	is_triggered_only = yes
 
-	option = {
-		log = "[GetLogInfo]: event america_workers_congress_events.1 option america_workers_congress_events.1.a"
-		name = america_workers_congress_events.1.a
+	immediate = {
 		hidden_effect = {
 			set_country_flag = { flag = WCA_commonwealth value = 0 }
 			set_country_flag = { flag = WCA_usas value = 0 }
 			country_event = { id = america_workers_congress_events.2 days = 6 }
 		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event america_workers_congress_events.1 option america_workers_congress_events.1.a"
+		name = america_workers_congress_events.1.a
 	}
 }
 
@@ -32,6 +35,7 @@ country_event = { # Socialist Constitution - System of Government
 	picture = GFX_report_event_ACC_legislature
 
 	is_triggered_only = yes
+	timeout_days = 6
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.2 option america_workers_congress_events.2.a"
@@ -55,7 +59,7 @@ country_event = { # Socialist Constitution - System of Government
 			ideology = totalist
 			popularity = 0.07
 		}
-		set_country_flag = WCA_syndicalism
+		save_event_target_as = WCA_syndicalism
 		modify_country_flag = {
 			flag = WCA_usas
 			value = 2
@@ -79,7 +83,6 @@ country_event = { # Socialist Constitution - System of Government
 			ideology = radical_socialist
 			popularity = 0.10
 		}
-		set_country_flag = WCA_socialist
 		modify_country_flag = {
 			flag = WCA_commonwealth
 			value = 2
@@ -98,26 +101,29 @@ country_event = { # Socialist Constitution - Framework
 	desc = { # Socialist
 		text = america_workers_congress_events.3.d.syndicalist
 		trigger = {
-			has_country_flag = WCA_syndicalism
+			has_event_target = WCA_syndicalism
 		}
 	}
 	desc = { # Syndicalism
 		text = america_workers_congress_events.3.d.socialist
 		trigger = {
-			has_country_flag = WCA_socialist
+			NOT = { has_event_target = WCA_syndicalism }
 		}
 	}
 	picture = GFX_report_event_ACC_legislature
 
 	is_triggered_only = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = america_workers_congress_events.4 days = 6 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.3 option america_workers_congress_events.3.a"
 		name = america_workers_congress_events.3.a
 		add_political_power = 20
-		hidden_effect = {
-			country_event = { id = america_workers_congress_events.4 days = 6 }
-		}
 	}
 }
 
@@ -129,13 +135,16 @@ country_event = { # Socialist Constitution - Human Rights and Workers Rights
 
 	is_triggered_only = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = america_workers_congress_events.5 days = 6 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.4 option america_workers_congress_events.4.a"
 		name = america_workers_congress_events.4.a
 		add_political_power = 20
-		hidden_effect = {
-			country_event = { id = america_workers_congress_events.5 days = 6 }
-		}
 	}
 }
 
@@ -146,6 +155,12 @@ country_event = { # Socialist Constitution - Judiciary
 	picture = GFX_report_event_generic_trial
 
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = america_workers_congress_events.6 days = 6 }
+		}
+	}
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.5 option america_workers_congress_events.5.a"
@@ -197,11 +212,6 @@ country_event = { # Socialist Constitution - Judiciary
 			value = 1
 		}
 	}
-	after = {
-		hidden_effect = {
-			country_event = { id = america_workers_congress_events.6 days = 6 }
-		}
-	}
 }
 
 country_event = { # Socialist Constitution - Economic System
@@ -212,13 +222,16 @@ country_event = { # Socialist Constitution - Economic System
 
 	is_triggered_only = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = america_workers_congress_events.7 days = 6 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.6 option america_workers_congress_events.6.a"
 		name = america_workers_congress_events.6.a
 		add_political_power = 20
-		hidden_effect = {
-			country_event = { id = america_workers_congress_events.7 days = 6 }
-		}
 	}
 }
 
@@ -229,6 +242,12 @@ country_event = { # Socialist Constitution - Congress and the President
 	picture = GFX_report_event_USA_capitol_hill
 
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = america_workers_congress_events.8 days = 6 }
+		}
+	}
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.7 option america_workers_congress_events.7.a"
@@ -280,11 +299,6 @@ country_event = { # Socialist Constitution - Congress and the President
 			value = 1
 		}
 	}
-	after = {
-		hidden_effect = {
-			country_event = { id = america_workers_congress_events.8 days = 6 }
-		}
-	}
 }
 
 country_event = { # Socialist Constitution - Centralization or decentralization
@@ -294,6 +308,25 @@ country_event = { # Socialist Constitution - Centralization or decentralization
 	picture = GFX_report_event_generic_diplomacy1
 
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					owns_any_state_of = {
+						358 #New York City
+						360 #Philadelphia
+						361 #Maryland
+						395 #Illinois
+					}
+				}
+				country_event = { id = america_workers_congress_events.9 days = 6 }
+			}
+			else = {
+				country_event = { id = america_workers_congress_events.10 days = 6 }
+			}
+		}
+	}
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.8 option america_workers_congress_events.8.a"
@@ -345,24 +378,6 @@ country_event = { # Socialist Constitution - Centralization or decentralization
 			value = 1
 		}
 	}
-	after = {
-		hidden_effect = {
-			if = {
-				limit = {
-					owns_any_state_of = {
-						358 #New York City
-						360 #Philadelphia
-						361 #Maryland
-						395 #Illinois
-					}
-				}
-				country_event = { id = america_workers_congress_events.9 days = 6 }
-			}
-			else = {
-				country_event = { id = america_workers_congress_events.10 days = 6 }
-			}
-		}
-	}
 }
 
 country_event = { # Socialist Constitution - The Capital
@@ -372,6 +387,12 @@ country_event = { # Socialist Constitution - The Capital
 	picture = GFX_report_event_USA_chicago
 
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = america_workers_congress_events.10 days = 6 }
+		}
+	}
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.9 option america_workers_congress_events.9.a"
@@ -404,11 +425,6 @@ country_event = { # Socialist Constitution - The Capital
 		}
 		ai_chance = { base = 100 }
 		set_capital = { state = 358 remember_old_capital = no }
-	}
-	after = {
-		hidden_effect = {
-			country_event = { id = america_workers_congress_events.10 days = 6 }
-		}
 	}
 }
 
@@ -555,7 +571,7 @@ country_event = { # Socialist Constitution - Leader till election
 				NOT = { has_game_rule = { rule = WCA_path option = WCA_PATH_SYNDIE } }
 			}
 		}
-		retire_character = WCA_jack_reed
+		retire_character = WCA_john_reed
 		effect_tooltip = {
 			set_politics = {
 				ruling_party = syndicalist
@@ -597,7 +613,7 @@ country_event = { # Socialist Constitution - Leader till election
 				NOT = { has_game_rule = { rule = WCA_path option = WCA_PATH_RADSOC } }
 			}
 		}
-		retire_character = WCA_jack_reed
+		retire_character = WCA_john_reed
 		effect_tooltip = {
 			set_politics = {
 				ruling_party = radical_socialist
@@ -639,7 +655,7 @@ country_event = { # Socialist Constitution - Leader till election
 				NOT = { has_game_rule = { rule = WCA_path option = WCA_PATH_BROWDER_TOTALIST } }
 			}
 		}
-		retire_character = WCA_jack_reed
+		retire_character = WCA_john_reed
 		effect_tooltip = {
 			set_politics = {
 				ruling_party = totalist
@@ -669,7 +685,7 @@ country_event = { # Socialist Constitution - Leader till election
 			country_event = { id = america_workers_congress_events.74 days = 430 }
 		}
 	}
-	option = { # Totalist - William Foster
+	option = { # Totalist - William Z. Foster
 		log = "[GetLogInfo]: event america_workers_congress_events.11 option america_workers_congress_events.11.e"
 		name = america_workers_congress_events.11.e
 		trigger = {
@@ -686,8 +702,8 @@ country_event = { # Socialist Constitution - Leader till election
 				NOT = { has_game_rule = { rule = WCA_path option = WCA_PATH_FOSTER_TOTALIST } }
 			}
 		}
-		retire_character = WCA_jack_reed
-		promote_character = WCA_william_edward_foster
+		retire_character = WCA_john_reed
+		promote_character = WCA_william_z_foster
 		effect_tooltip = {
 			set_politics = {
 				ruling_party = totalist
@@ -743,9 +759,9 @@ country_event = { # Trial of the American First
 			character_list_tooltip = {
 				limit = {
 					OR = {
-						is_character = APG_lewis_burwell_puller
-						is_character = APG_clifton_bledsoe_cates
-						is_character = APG_matthew_bunker_ridgway
+						is_character = APG_chesty_puller
+						is_character = APG_clifton_b_cates
+						is_character = APG_matthew_ridgway
 						is_character = APG_samuel_murray_robinson
 					}
 				}
@@ -754,9 +770,9 @@ country_event = { # Trial of the American First
 				every_character = {
 					limit = {
 						OR = {
-							is_character = APG_lewis_burwell_puller
-							is_character = APG_clifton_bledsoe_cates
-							is_character = APG_matthew_bunker_ridgway
+							is_character = APG_chesty_puller
+							is_character = APG_clifton_b_cates
+							is_character = APG_matthew_ridgway
 							is_character = APG_samuel_murray_robinson
 						}
 					}
@@ -812,9 +828,9 @@ country_event = { # Trial of the Old Federalist
 			character_list_tooltip = {
 				limit = {
 					OR = {
-						is_character = USA_lucian_king_truscott_jr
+						is_character = USA_lucian_truscott_jr
 						is_character = USA_james_garesche_ord
-						is_character = USA_thomas_cassin_kinkaid
+						is_character = USA_thomas_c_kinkaid
 					}
 				}
 			}
@@ -822,9 +838,9 @@ country_event = { # Trial of the Old Federalist
 				every_character = {
 					limit = {
 						OR = {
-							is_character = USA_lucian_king_truscott_jr
+							is_character = USA_lucian_truscott_jr
 							is_character = USA_james_garesche_ord
-							is_character = USA_thomas_cassin_kinkaid
+							is_character = USA_thomas_c_kinkaid
 						}
 					}
 					set_nationality = ROOT
@@ -1100,7 +1116,7 @@ country_event = {
 		end_coalition = yes
 		if = {
 			limit = { has_government = syndicalist }
-			country_event = america_workers_congress_events.26 #Flynn vs Sinclair
+			country_event = america_workers_congress_events.26 #Flynn vs Altman
 		}
 		else = {
 			country_event = america_workers_congress_events.27 #Gitlow vs Thomas
@@ -1109,11 +1125,11 @@ country_event = {
 	}
 }
 
-country_event = { #Flynn vs Sinclair
+country_event = { #Flynn vs Altman
 	id = america_workers_congress_events.26
 	title = america_workers_congress_events.26.t
 	desc = america_workers_congress_events.26.d
-	picture = GFX_report_event_WCA_Flynn_Sinclair
+	picture = GFX_report_event_WCA_Flynn_Altman
 
 	is_triggered_only = yes
 
@@ -1121,13 +1137,13 @@ country_event = { #Flynn vs Sinclair
 		log = "[GetLogInfo]: event america_workers_congress_events.26 option america_workers_congress_events.26.a"
 		name = america_workers_congress_events.26.a #Socialist - Flynn
 		WCA_syndicalists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_upton_sinclair }
+		hidden_effect = { promote_character = WCA_jack_altman }
 	}
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.26 option america_workers_congress_events.26.b"
-		name = america_workers_congress_events.26.b #Commonwealth - Sinclair
-		promote_character = WCA_upton_sinclair
+		name = america_workers_congress_events.26.b #Commonwealth - Altman
+		promote_character = WCA_jack_altman
 		WCA_radical_socialists_elected_effect = yes
 	}
 }
@@ -1178,62 +1194,12 @@ country_event = {
 			country_event = america_workers_congress_events.30 #Gitlow vs Krueger
 		}
 		else_if = {
-			limit = { has_country_leader = { character = WCA_upton_sinclair } }
-			if = {
-				limit = {
-					NOT = {
-						country_exists = NEE
-					}
-					has_country_flag = {
-						flag = WCA_rehabilitated_reactionaries
-						value > 1
-					}
-				}
-				WCA_eleanor_roosevelt = {
-					set_nationality = ROOT
-					remove_all_country_leader_roles = yes
-					add_country_leader_role = {
-						country_leader = {
-							desc = WCA_eleanor_roosevelt_leader_desc
-							ideology = syndicalist_subtype
-							traits = { WCA_first_lady_of_the_revolution }
-						}
-					}
-				}
-				country_event = america_workers_congress_events.32 #Roosevelt vs Sinclair
-			}
-			else = {
-				country_event = america_workers_congress_events.31 #Hass vs Sinclair
-			}
+			limit = { has_country_leader = { character = WCA_jack_altman } }
+			country_event = america_workers_congress_events.31 #Hass vs Altman
 		}
 		else_if = {
 			limit = { has_country_leader = { character = WCA_norman_thomas } }
-			if = {
-				limit = {
-					NOT = {
-						country_exists = NEE
-					}
-					has_country_flag = {
-						flag = WCA_rehabilitated_reactionaries
-						value > 1
-					}
-				}
-				WCA_eleanor_roosevelt = {
-					set_nationality = ROOT
-					remove_all_country_leader_roles = yes
-					add_country_leader_role = {
-						country_leader = {
-							desc = WCA_eleanor_roosevelt_leader_desc
-							ideology = syndicalist_subtype
-							traits = { WCA_first_lady_of_the_revolution }
-						}
-					}
-				}
-				country_event = america_workers_congress_events.34 #Roosevelt vs Thomas
-			}
-			else = {
-				country_event = america_workers_congress_events.33 #Hass vs Thomas
-			}
+			country_event = america_workers_congress_events.33 #Hass vs Thomas
 		}
 		set_variable = { WCA_election = 2 }
 	}
@@ -1285,11 +1251,11 @@ country_event = { #Gitlow vs Krueger
 	}
 }
 
-country_event = { #Hass vs Sinclair
+country_event = { #Hass vs Altman
 	id = america_workers_congress_events.31
 	title = america_workers_congress_events.31.t
 	desc = america_workers_congress_events.31.d
-	picture = GFX_report_event_WCA_Hass_Sinclair
+	picture = GFX_report_event_WCA_Hass_Altman
 
 	is_triggered_only = yes
 
@@ -1302,35 +1268,9 @@ country_event = { #Hass vs Sinclair
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.31 option america_workers_congress_events.31.b"
-		name = america_workers_congress_events.31.b #Commonwealth - Sinclair
+		name = america_workers_congress_events.31.b #Commonwealth - Altman
 		WCA_radical_socialists_elected_effect = yes
 		hidden_effect = { promote_character = WCA_eric_hass }
-	}
-}
-
-country_event = { #Roosevelt vs Sinclair
-	id = america_workers_congress_events.32
-	title = america_workers_congress_events.32.t
-	desc = america_workers_congress_events.32.d
-	picture = GFX_report_event_WCA_Roosevelt_Sinclair
-
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event america_workers_congress_events.32 option america_workers_congress_events.32.a"
-		name = america_workers_congress_events.32.a #Socialist - Roosevelt
-		promote_character = WCA_eleanor_roosevelt
-		WCA_syndicalists_elected_effect = yes
-	}
-
-	option = {
-		log = "[GetLogInfo]: event america_workers_congress_events.32 option america_workers_congress_events.32.b"
-		name = america_workers_congress_events.32.b #Commonwealth - Sinclair
-		WCA_radical_socialists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_eleanor_roosevelt }
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = available_political_advisor
-		show_ideas_tooltip = WCA_eleanor_roosevelt_advisor
 	}
 }
 
@@ -1357,32 +1297,6 @@ country_event = { #Hass vs Thomas
 	}
 }
 
-country_event = { #Roosevelt vs Thomas
-	id = america_workers_congress_events.34
-	title = america_workers_congress_events.34.t
-	desc = america_workers_congress_events.34.d
-	picture = GFX_report_event_WCA_Thomas_Roosevelt
-
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event america_workers_congress_events.34 option america_workers_congress_events.34.a"
-		name = america_workers_congress_events.34.a #Socialist - Roosevelt
-		promote_character = WCA_eleanor_roosevelt
-		WCA_syndicalists_elected_effect = yes
-	}
-
-	option = {
-		log = "[GetLogInfo]: event america_workers_congress_events.34 option america_workers_congress_events.34.b"
-		name = america_workers_congress_events.34.b #Commonwealth - Thomas
-		WCA_radical_socialists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_eleanor_roosevelt }
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = available_political_advisor
-		show_ideas_tooltip = WCA_eleanor_roosevelt_advisor
-	}
-}
-
 ### 1948 Elections ###
 country_event = {
 	id = america_workers_congress_events.35 #hidden event to fire the correct election (donotlog)
@@ -1406,15 +1320,11 @@ country_event = {
 			country_event = america_workers_congress_events.37 #Allison vs Reuther
 		}
 		else_if = {
-			limit = { has_country_leader = { character = WCA_eleanor_roosevelt } }
-			country_event = america_workers_congress_events.38 #Roosevelt vs Hoan
-		}
-		else_if = {
 			limit = { has_country_leader = { character = WCA_eric_hass } }
 			country_event = america_workers_congress_events.39 #Hass vs Hoan
 		}
 		else_if = {
-			limit = { has_country_leader = { character = WCA_upton_sinclair } }
+			limit = { has_country_leader = { character = WCA_jack_altman } }
 			country_event = america_workers_congress_events.40 #Cannon vs Zeidler
 		}
 		else_if = {
@@ -1495,29 +1405,6 @@ country_event = { #Allison vs Reuther
 	}
 }
 
-country_event = { #Roosevelt vs Hoan
-	id = america_workers_congress_events.38
-	title = america_workers_congress_events.38.t
-	desc = america_workers_congress_events.38.d
-	picture = GFX_report_event_WCA_Hoan_Roosevelt
-
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event america_workers_congress_events.38 option america_workers_congress_events.38.a"
-		name = america_workers_congress_events.38.a #Socialist - Roosevelt
-		WCA_syndicalists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_daniel_hoan }
-	}
-
-	option = {
-		log = "[GetLogInfo]: event america_workers_congress_events.38 option america_workers_congress_events.38.b"
-		name = america_workers_congress_events.38.b #Commonwealth - Hoan
-		promote_character = WCA_daniel_hoan
-		WCA_radical_socialists_elected_effect = yes
-	}
-}
-
 country_event = { #Hass vs Hoan
 	id = america_workers_congress_events.39
 	title = america_workers_congress_events.39.t
@@ -1546,12 +1433,12 @@ country_event = { #Cannon vs Zeidler
 	title = america_workers_congress_events.40.t
 
 	desc = {
-		text = america_workers_congress_events.40.d.sinclair
-		trigger = { has_country_leader = { character = WCA_upton_sinclair } }
+		text = america_workers_congress_events.40.d.altman
+		trigger = { has_country_leader = { character = WCA_jack_altman } }
 	}
 	desc = {
 		text = america_workers_congress_events.40.d.fallback
-		trigger = { NOT = { has_country_leader = { character = WCA_upton_sinclair } } }
+		trigger = { NOT = { has_country_leader = { character = WCA_jack_altman } } }
 	}
 
 	picture = GFX_report_event_WCA_Cannon_Zeidler
@@ -1561,7 +1448,7 @@ country_event = { #Cannon vs Zeidler
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.40 option america_workers_congress_events.40.a"
 		name = america_workers_congress_events.40.a #Socialist - Cannon
-		promote_character = WCA_james_cannon
+		promote_character = WCA_james_p_cannon
 		WCA_syndicalists_elected_effect = yes
 		hidden_effect = { promote_character = WCA_frank_zeidler }
 	}
@@ -1571,7 +1458,7 @@ country_event = { #Cannon vs Zeidler
 		name = america_workers_congress_events.40.b #Commonwealth - Zeidler
 		promote_character = WCA_frank_zeidler
 		WCA_radical_socialists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_james_cannon }
+		hidden_effect = { promote_character = WCA_james_p_cannon }
 	}
 }
 
@@ -1620,7 +1507,7 @@ country_event = { #Cannon vs Krueger
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.42 option america_workers_congress_events.42.a"
 		name = america_workers_congress_events.42.a #Socialist - Cannon
-		promote_character = WCA_james_cannon
+		promote_character = WCA_james_p_cannon
 		WCA_syndicalists_elected_effect = yes
 	}
 
@@ -1628,7 +1515,7 @@ country_event = { #Cannon vs Krueger
 		log = "[GetLogInfo]: event america_workers_congress_events.42 option america_workers_congress_events.42.b"
 		name = america_workers_congress_events.42.b #Commonwealth - Krueger
 		WCA_radical_socialists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_james_cannon }
+		hidden_effect = { promote_character = WCA_james_p_cannon }
 	}
 }
 
@@ -1652,10 +1539,10 @@ country_event = {
 		}
 		else_if = {
 			limit = { has_country_leader = { character = WCA_elmer_allison } }
-			country_event = america_workers_congress_events.45 #Allison vs Sinclair
+			country_event = america_workers_congress_events.45 #Allison vs Altman
 		}
 		else_if = {
-			limit = { has_country_leader = { character = WCA_james_cannon } }
+			limit = { has_country_leader = { character = WCA_james_p_cannon } }
 			country_event = america_workers_congress_events.47 #Cannon vs Thomas
 		}
 		else_if = {
@@ -1689,22 +1576,22 @@ country_event = { #Minor vs Randolph
 		log = "[GetLogInfo]: event america_workers_congress_events.44 option america_workers_congress_events.44.a"
 		name = america_workers_congress_events.44.a #Socialist - Minor
 		WCA_syndicalists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_asa_philip_randolph }
+		hidden_effect = { promote_character = WCA_a_philip_randolph }
 	}
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.44 option america_workers_congress_events.44.b"
 		name = america_workers_congress_events.44.b #Commonwealth - Randolph
-		promote_character = WCA_asa_philip_randolph
+		promote_character = WCA_a_philip_randolph
 		WCA_radical_socialists_elected_effect = yes
 	}
 }
 
-country_event = { #Allison vs Sinclair
+country_event = { #Allison vs Altman
 	id = america_workers_congress_events.45
 	title = america_workers_congress_events.45.t
 	desc = america_workers_congress_events.45.d
-	picture = GFX_report_event_WCA_Allison_Sinclair
+	picture = GFX_report_event_WCA_Allison_Altman
 
 	is_triggered_only = yes
 
@@ -1712,13 +1599,13 @@ country_event = { #Allison vs Sinclair
 		log = "[GetLogInfo]: event america_workers_congress_events.45 option america_workers_congress_events.45.a"
 		name = america_workers_congress_events.45.a #Socialist - Allison
 		WCA_syndicalists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_upton_sinclair }
+		hidden_effect = { promote_character = WCA_jack_altman }
 	}
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.45 option america_workers_congress_events.45.b"
-		name = america_workers_congress_events.45.b #Commonwealth - Sinclair
-		promote_character = WCA_upton_sinclair
+		name = america_workers_congress_events.45.b #Commonwealth - Altman
+		promote_character = WCA_jack_altman
 		WCA_radical_socialists_elected_effect = yes
 	}
 }
@@ -1732,10 +1619,6 @@ country_event = { #Fraina vs Randolph
 		trigger = { has_country_leader = { character = WCA_eric_hass } }
 	}
 	desc = {
-		text = america_workers_congress_events.46.d.roosevelt
-		trigger = { has_country_leader = { character = WCA_eleanor_roosevelt } }
-	}
-	desc = {
 		text = america_workers_congress_events.46.d.krueger
 		trigger = { has_country_leader = { character = WCA_maynard_krueger } }
 	}
@@ -1744,7 +1627,6 @@ country_event = { #Fraina vs Randolph
 		trigger = {
 			NOT = {
 				has_country_leader = { character = WCA_eric_hass }
-				has_country_leader = { character = WCA_eleanor_roosevelt }
 				has_country_leader = { character = WCA_maynard_krueger }
 			}
 		}
@@ -1757,17 +1639,17 @@ country_event = { #Fraina vs Randolph
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.46 option america_workers_congress_events.46.a"
 		name = america_workers_congress_events.46.a #Socialist - Fraina
-		promote_character = WCA_louis_fraina
+		promote_character = WCA_louis_c_fraina
 		WCA_syndicalists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_asa_philip_randolph }
+		hidden_effect = { promote_character = WCA_a_philip_randolph }
 	}
 
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.46 option america_workers_congress_events.46.b"
-		name = america_workers_congress_events.46.b #Commonwealth - Sinclair
-		promote_character = WCA_asa_philip_randolph
+		name = america_workers_congress_events.46.b #Commonwealth - Altman
+		promote_character = WCA_a_philip_randolph
 		WCA_radical_socialists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_louis_fraina }
+		hidden_effect = { promote_character = WCA_louis_c_fraina }
 	}
 }
 
@@ -1782,7 +1664,7 @@ country_event = { #Cannon vs Thomas
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.47 option america_workers_congress_events.47.a"
 		name = america_workers_congress_events.47.a #Socialist - Cannon
-		promote_character = WCA_james_cannon
+		promote_character = WCA_james_p_cannon
 		WCA_syndicalists_elected_effect = yes
 		hidden_effect = { promote_character = WCA_norman_thomas }
 	}
@@ -1792,7 +1674,7 @@ country_event = { #Cannon vs Thomas
 		name = america_workers_congress_events.47.b #Commonwealth - Thomas
 		promote_character = WCA_norman_thomas
 		WCA_radical_socialists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_james_cannon }
+		hidden_effect = { promote_character = WCA_james_p_cannon }
 	}
 }
 
@@ -1807,7 +1689,7 @@ country_event = { #Fraina vs Hoan
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.48 option america_workers_congress_events.48.a"
 		name = america_workers_congress_events.48.a #Socialist - Fraina
-		promote_character = WCA_louis_fraina
+		promote_character = WCA_louis_c_fraina
 		WCA_syndicalists_elected_effect = yes
 	}
 
@@ -1815,7 +1697,7 @@ country_event = { #Fraina vs Hoan
 		log = "[GetLogInfo]: event america_workers_congress_events.48 option america_workers_congress_events.48.b"
 		name = america_workers_congress_events.48.b #Commonwealth - Hoan
 		WCA_radical_socialists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_louis_fraina }
+		hidden_effect = { promote_character = WCA_louis_c_fraina }
 	}
 }
 
@@ -1830,7 +1712,7 @@ country_event = { #Fraina vs Reuther
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.49 option america_workers_congress_events.49.a"
 		name = america_workers_congress_events.49.a #Socialist - Fraina
-		promote_character = WCA_louis_fraina
+		promote_character = WCA_louis_c_fraina
 		WCA_syndicalists_elected_effect = yes
 	}
 
@@ -1838,7 +1720,7 @@ country_event = { #Fraina vs Reuther
 		log = "[GetLogInfo]: event america_workers_congress_events.49 option america_workers_congress_events.49.b"
 		name = america_workers_congress_events.49.b #Commonwealth - Reuther
 		WCA_radical_socialists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_louis_fraina }
+		hidden_effect = { promote_character = WCA_louis_c_fraina }
 	}
 }
 
@@ -1853,7 +1735,7 @@ country_event = { #Fraina vs Zeidler
 	option = {
 		log = "[GetLogInfo]: event america_workers_congress_events.4901 option america_workers_congress_events.4901.a"
 		name = america_workers_congress_events.4901.a #Socialist - Fraina
-		promote_character = WCA_louis_fraina
+		promote_character = WCA_louis_c_fraina
 		WCA_syndicalists_elected_effect = yes
 	}
 
@@ -1861,7 +1743,7 @@ country_event = { #Fraina vs Zeidler
 		log = "[GetLogInfo]: event america_workers_congress_events.4901 option america_workers_congress_events.4901.b"
 		name = america_workers_congress_events.4901.b #Commonwealth - Zeidler
 		WCA_radical_socialists_elected_effect = yes
-		hidden_effect = { promote_character = WCA_louis_fraina }
+		hidden_effect = { promote_character = WCA_louis_c_fraina }
 	}
 }
 
@@ -2194,7 +2076,7 @@ country_event = { # Ministers are sent on vacation(aka killed
 	desc = {
 		text = america_workers_congress_events.63.d.foster
 		trigger = {
-			has_country_leader = { character = WCA_william_edward_foster }
+			has_country_leader = { character = WCA_william_z_foster }
 		}
 	}
 	desc = {
@@ -2343,9 +2225,9 @@ country_event = { # Butler's Coup
 		}
 		else = {
 			add_country_leader_role = {
-				character = WCA_evans_fordyce_carlson
+				character = WCA_evans_carlson
 				country_leader = {
-					desc = WCA_evans_fordyce_carlson_high_command_desc
+					desc = WCA_evans_carlson_high_command_desc
 					ideology = radical_socialist_subtype
 					traits = { WCA_maverick_marine }
 				}
@@ -2381,7 +2263,7 @@ country_event = { # Butler's Coup
 			retire_character = WCA_smedley_butler
 		}
 		else = {
-			retire_character = WCA_evans_fordyce_carlson
+			retire_character = WCA_evans_carlson
 		}
 	}
 }
@@ -2428,7 +2310,7 @@ country_event = { # Self Determination in the Black Belt
 	picture = GFX_report_event_WCA_black_militias
 
 	trigger = {
-		has_country_leader = { character = WCA_william_edward_foster }
+		has_country_leader = { character = WCA_william_z_foster }
 		has_government = totalist
 	}
 
@@ -2458,7 +2340,7 @@ country_event = { # Reactions to the Black Belt
 	picture = GFX_report_event_WCA_black_militias
 
 	trigger = {
-		has_country_leader = { character = WCA_william_edward_foster }
+		has_country_leader = { character = WCA_william_z_foster }
 		has_government = totalist
 	}
 
@@ -2528,7 +2410,7 @@ country_event = { # Foster dissolves the AFL
 	is_triggered_only = yes
 
 	trigger = {
-		has_country_leader = { character = WCA_william_edward_foster }
+		has_country_leader = { character = WCA_william_z_foster }
 	}
 
 	option = { # Damage a random infra, mil and civ
@@ -2599,7 +2481,7 @@ country_event = { # River Rouge Wildcat Strike Turns Deadly
 	is_triggered_only = yes
 
 	trigger = {
-		has_country_leader = { character = WCA_william_edward_foster }
+		has_country_leader = { character = WCA_william_z_foster }
 	}
 
 	option = { # Damage a random infra, mil and civ
@@ -2893,7 +2775,7 @@ country_event = { # Syndicalist Ethics
 	is_triggered_only = yes
 
 	trigger = {
-		has_country_leader = { character = WCA_william_edward_foster }
+		has_country_leader = { character = WCA_william_z_foster }
 	}
 
 	option = { # Flavor
@@ -2925,7 +2807,7 @@ country_event = { # The Family and Freedom Program
 	is_triggered_only = yes
 
 	trigger = {
-		has_country_leader = { character = WCA_william_edward_foster }
+		has_country_leader = { character = WCA_william_z_foster }
 	}
 
 	option = { # Flavor
@@ -4094,9 +3976,9 @@ country_event = { #Marshal Smedley Butler Passes Away
 		if = {
 			limit = { has_country_leader = { character = WCA_smedley_butler } }
 			add_country_leader_role = {
-				character = WCA_evans_fordyce_carlson
+				character = WCA_evans_carlson
 				country_leader = {
-					desc = WCA_evans_fordyce_carlson_high_command_desc
+					desc = WCA_evans_carlson_high_command_desc
 					ideology = radical_socialist_subtype
 					traits = { WCA_maverick_marine }
 				}
@@ -4218,7 +4100,7 @@ news_event = {
 	}
 }
 
-#William Foster is named President
+#William Z. Foster is named President
 news_event = {
 	id = america_workers_congress_events.1001
 	immediate = { log = "[GetLogInfo]: event america_workers_congress_events.1001" }

@@ -780,7 +780,7 @@ release_canada = {
 				elections_allowed = no
 			}
 			promote_character = {
-				character = CAN_thomas_alexander_mcewen
+				character = CAN_tom_mcewen
 				ideology = totalist_subtype
 			}
 			promote_character = {
@@ -861,7 +861,7 @@ release_canada = {
 		hidden_effect = {
 			CAN = {
 				promote_character = {
-					character = CAN_timothy_buck
+					character = CAN_tim_buck
 					ideology = totalist_subtype
 				}
 			}
@@ -1356,7 +1356,10 @@ annexations_reset_yugoslavian_cores_claims = {
 annexations_reset_central_asian_tags = {
 	if = {
 		limit = { NOT = { country_exists = KAZ } }
-		KAZ = { drop_cosmetic_tag = yes }
+		KAZ = {
+			drop_cosmetic_tag = yes
+			set_country_flag = CA_able_to_repair
+		}
 		every_state = {
 			if = {
 				limit = { is_alash = no }
@@ -1370,7 +1373,10 @@ annexations_reset_central_asian_tags = {
 	}
 	if = {
 		limit = { NOT = { country_exists = TRK } }
-		TRK = { drop_cosmetic_tag = yes }
+		TRK = {
+			drop_cosmetic_tag = yes
+			set_country_flag = CA_able_to_repair
+		}
 		every_state = {
 			if = {
 				limit = { is_turkestan = no }
@@ -1384,7 +1390,10 @@ annexations_reset_central_asian_tags = {
 	}
 	if = {
 		limit = { NOT = { country_exists = BUK } }
-		BUK = { drop_cosmetic_tag = yes }
+		BUK = {
+			drop_cosmetic_tag = yes
+			set_country_flag = CA_able_to_repair
+		}
 		every_state = {
 			if = {
 				limit = { is_bukhara = no }
@@ -1398,7 +1407,10 @@ annexations_reset_central_asian_tags = {
 	}
 	if = {
 		limit = { NOT = { country_exists = KHI } }
-		KHI = { drop_cosmetic_tag = yes }
+		KHI = {
+			drop_cosmetic_tag = yes
+			set_country_flag = CA_able_to_repair
+		}
 		every_state = {
 			if = {
 				limit = { is_khiva = no }

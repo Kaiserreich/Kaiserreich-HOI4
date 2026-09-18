@@ -7316,13 +7316,10 @@ country_event = {
 			popularity = 0.01
 		}
 		add_to_variable = {
-			var = SHX.SHX_QIE_influence_variable
-			value = 3 #This may or may not "tilt the scales" in certain calculations
-		}
-		clamp_variable = {
-			var = SHX.SHX_QIE_influence_variable
-			min = 0
-			max = 100
+			SHX.SHX_QIE_influence_variable = {
+				value = 3 #This may or may not "tilt the scales" in certain calculations
+				clamp = { min = 0 max = { value = 100 subtract = SHX.SHX_QIE_influence_variable } }
+			}
 		}
 	}
 
@@ -7739,10 +7736,7 @@ country_event = {
 	trigger = { SHX = { NOT = { has_war_with = QIE } } } #In case war starts midway through
 
 	immediate = {
-		set_variable = {
-			var = SHX_QIE_negotiation_value
-			value = 1 #Set it at one to start, which is the bare minimum on the scale
-		}
+		set_variable = { SHX_QIE_negotiation_value = 1 } #Set it at one to start, which is the bare minimum on the scale
 	}
 
 	option = {
@@ -11024,11 +11018,7 @@ country_event = {
 		log = "[GetLogInfo]: event shanxi_suiyuan_campaign_events.30 option shanxi_suiyuan_campaign_events.30.a"
 		name = shanxi_suiyuan_campaign_events.30.a #We will meet them in time!
 		SHX_start_suiyuan_crisis = yes
-		set_variable = {
-			var = SHX_suiyuan_campaign_prep_variable
-			value = 10
-			tooltip = SHX_suiyuan_campaign_prep_intro_tooltip
-		}
+		set_variable = { SHX_suiyuan_campaign_prep_variable = 10 tooltip = SHX_suiyuan_campaign_prep_intro_tooltip }
 	}
 }
 
@@ -12019,7 +12009,7 @@ country_event = {
 
 	major = yes
 	show_major = {
-		or = {
+		OR = {
 			tag = SHX
 			owns_state = 616
 			AND = {
@@ -13238,10 +13228,8 @@ country_event = { #The National Army and the Nationalist Party
 		}
 
 		#Converts 75% of Auth Dem Popularity into Rad SOc
-		set_temp_variable = { SHX_auth_dem_popularity_temp_var = party_popularity@authoritarian_democrat }
-		multiply_temp_variable = { SHX_auth_dem_popularity_temp_var = 0.75 }
-		set_temp_variable = { SHX_neg_auth_dem_popularity_temp_var = SHX_auth_dem_popularity_temp_var }
-		multiply_temp_variable = { SHX_neg_auth_dem_popularity_temp_var = -1 }
+		set_temp_variable = { SHX_auth_dem_popularity_temp_var = { value = party_popularity@authoritarian_democrat multiply = 0.75 } }
+		set_temp_variable = { SHX_neg_auth_dem_popularity_temp_var = { value = party_popularity@authoritarian_democrat multiply = -0.75 } }
 		add_popularity = { ideology = authoritarian_democrat popularity = SHX_neg_auth_dem_popularity_temp_var }
 		add_popularity = { ideology = radical_socialist popularity = SHX_auth_dem_popularity_temp_var }
 
@@ -13348,11 +13336,9 @@ country_event = { #Yan can flip nat pop if they feel like
 			}
 		}
 
-		#Converts 75% of Auth Dem Popularity into Rad SOc
-		set_temp_variable = { SHX_pat_aut_popularity_temp_var = party_popularity@paternal_autocrat }
-		multiply_temp_variable = { SHX_pat_aut_popularity_temp_var = 0.75 }
-		set_temp_variable = { SHX_neg_pat_aut_popularity_temp_var = SHX_pat_aut_popularity_temp_var }
-		multiply_temp_variable = { SHX_neg_pat_aut_popularity_temp_var = -1 }
+		#Converts 75% of Pat Aut Popularity into Rad SOc
+		set_temp_variable = { SHX_pat_aut_popularity_temp_var = { value = party_popularity@paternal_autocrat multiply = 0.75 } }
+		set_temp_variable = { SHX_neg_pat_aut_popularity_temp_var = { value = party_popularity@paternal_autocrat multiply = -0.75 } }
 		add_popularity = { ideology = paternal_autocrat popularity = SHX_neg_pat_aut_popularity_temp_var }
 		add_popularity = { ideology = national_populist popularity = SHX_pat_aut_popularity_temp_var }
 

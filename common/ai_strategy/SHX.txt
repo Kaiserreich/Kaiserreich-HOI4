@@ -32,6 +32,7 @@ SHX_basic_production = {
 		value = -1
 	}
 }
+
 SHX_research_gun_1 = {
 	allowed = {
 		original_tag = SHX
@@ -56,6 +57,7 @@ SHX_research_gun_1 = {
 		value = 10000
 	}
 }
+
 SHX_infantry_equipment_modernisation = {
 	allowed = {
 		original_tag = SHX
@@ -80,6 +82,7 @@ SHX_infantry_equipment_modernisation = {
 		value = 20000
 	}
 }
+
 SHX_army_composition = {
 	allowed = { original_tag = SHX }
 	enable = {
@@ -87,7 +90,7 @@ SHX_army_composition = {
 			has_war_with = JAP
 			date < 1941.1.1
 		}
-		check_variable = { num_divisions < 40 }
+		num_divisions < 40
 	}
 	abort_when_not_enabled = yes
 
@@ -109,6 +112,7 @@ SHX_army_composition = {
 		value = 25
 	}
 }
+
 SHX_prepare_for_war_with_beijing = {
 	allowed = {
 		original_tag = SHX

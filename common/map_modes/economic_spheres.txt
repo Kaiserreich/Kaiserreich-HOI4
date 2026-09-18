@@ -16,12 +16,9 @@ scripted_map_modes = {
 					}
 					else = {
 						var:economic_sphere = {
-							set_temp_variable = { red = THIS.red }
-							multiply_temp_variable = { red = 0.7 }
-							set_temp_variable = { green = THIS.green }
-							multiply_temp_variable = { green = 0.7 }
-							set_temp_variable = { blue = THIS.blue }
-							multiply_temp_variable = { blue = 0.7 }
+							set_temp_variable = { red = { value = THIS.red multiply = 0.7 } }
+							set_temp_variable = { green = { value = THIS.green multiply = 0.7 } }
+							set_temp_variable = { blue = { value = THIS.blue multiply = 0.7 } }
 						}
 						set_temp_variable = { alpha = 1 }
 					}

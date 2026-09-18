@@ -321,9 +321,6 @@ defined_text = {
 		localization_key = SHX_yan_sic_zhao_status_alive_key
 	}
 	text = {
-		trigger = {
-			SHX_zhao_daiwen = { NOT = { has_advisor_role = second_in_command } }
-		}
 		localization_key = SHX_yan_sic_zhao_status_dead_key
 	}
 }
@@ -337,9 +334,6 @@ defined_text = {
 		localization_key = SHX_yan_prime_minister_zhao_status_alive_key
 	}
 	text = {
-		trigger = {
-			SHX_zhao_daiwen = { NOT = { has_advisor_role = second_in_command } }
-		}
 		localization_key = SHX_yan_prime_minister_zhao_status_dead_key
 	}
 }
@@ -353,9 +347,6 @@ defined_text = {
 		localization_key = SHX_yan_sic_wang_status_powerful_key
 	}
 	text = {
-		trigger = {
-			SHX_wang_xiang_sic_eligible_check = no
-		}
 		localization_key = SHX_yan_sic_wang_status_impotent_key
 	}
 }
@@ -369,9 +360,6 @@ defined_text = {
 		localization_key = SHX_yan_prime_minister_wang_status_powerful_key
 	}
 	text = {
-		trigger = {
-			NOT = { SHX_wang_xiang = { has_advisor_role = second_in_command } }
-		}
 		localization_key = SHX_yan_prime_minister_wang_status_impotent_key
 	}
 }
@@ -386,18 +374,11 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			SHX_komoto_daisaku = { is_second_in_command = no }
 			SHX_su_tiren = { has_advisor_role = second_in_command }
 		}
 		localization_key = SHX_yan_prime_minister_su_status_powerful_key
 	}
 	text = {
-		trigger = {
-			NOT = {
-				SHX_komoto_daisaku = { is_second_in_command = yes }
-				SHX_su_tiren = { has_advisor_role = second_in_command }
-			}
-		}
 		localization_key = SHX_yan_prime_minister_su_status_impotent_key
 	}
 }
@@ -411,9 +392,6 @@ defined_text = {
 		localization_key = SHX_feng_sic_shang_status_powerful_key
 	}
 	text = {
-		trigger = {
-			SHX_shang_zhen_sic_eligible_check = no
-		}
 		localization_key = SHX_feng_sic_shang_status_impotent_key
 	}
 }
@@ -427,9 +405,6 @@ defined_text = {
 		localization_key = SHX_feng_prime_minister_shang_status_powerful_key
 	}
 	text = {
-		trigger = {
-			SHX_shang_zhen = { is_second_in_command = no }
-		}
 		localization_key = SHX_feng_prime_minister_shang_status_impotent_key
 	}
 }
@@ -492,20 +467,7 @@ defined_text = {
 defined_text = {
 	name = SHX_Get_Destabilise_desc
 	text = {
-		trigger = { has_state_flag = suiyuan_province_state }
-		localization_key = SHX_suiyuan_destabilise_suiyuan_desc
-	}
-	text = {
-		trigger = { has_state_flag = ningxia_province_state }
-		localization_key = SHX_suiyuan_destabilise_ningxia_desc
-	}
-	text = {
-		trigger = { has_state_flag = qinghai_province_state }
-		localization_key = SHX_suiyuan_destabilise_qinghai_desc
-	}
-	text = {
-		trigger = { has_state_flag = gansu_province_state }
-		localization_key = SHX_suiyuan_destabilise_gansu_desc
+		localization_key = SHX_suiyuan_destabilise_[?chinese_province_state.GetID]_desc
 	}
 }
 
@@ -518,9 +480,6 @@ defined_text = {
 		localization_key = SHX_send_scouts_shanxi_desc
 	}
 	text = {
-		trigger = {
-			NOT = { tag = SHX }
-		}
 		localization_key = SHX_send_scouts_against_shanxi_desc
 	}
 }
@@ -534,9 +493,6 @@ defined_text = {
 		localization_key = SHX_suiyuan_northwestern_war_exhaustion_mission_shanxi_desc
 	}
 	text = {
-		trigger = {
-			NOT = { tag = SHX }
-		}
 		localization_key = SHX_suiyuan_northwestern_war_exhaustion_mission_enemy_desc
 	}
 }

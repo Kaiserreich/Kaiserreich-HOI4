@@ -163,27 +163,7 @@ log_unit_limits = {
 	}
 }
 
-calculate_manpower_based_on_compliance = {
-	set_temp_variable = {
-		state_manpower = {
-			value = 0.02
-			add = modifier@local_non_core_manpower
-			multiply = state_population_k
-		}
-	}
-}
-
 calculate_available_factories_based_on_compliance = {
-	# Calculate the compliance_multiplier
-	set_temp_variable = {
-		compliance_multiplier = {
-			value = 0.75
-			add = modifier@local_factories #negative
-			add = 0.25
-			clamp = { min = 0 max = 1 }
-		}
-	}
-
 	# Add to factory_points based on state factories + compliance multiplier
 	add_to_temp_variable = {
 		# state_factories_non_core
@@ -191,7 +171,12 @@ calculate_available_factories_based_on_compliance = {
 			value = building_level@industrial_complex
 			add = building_level@arms_factory
 			add = building_level@dockyard
-			multiply = compliance_multiplier
+			multiply = { #compliance_multiplier
+				value = 0.75
+				add = modifier@local_factories #negative
+				add = 0.25
+				clamp = { min = 0 max = 1 }
+			}
 			round = yes
 		}
 	}
@@ -218,8 +203,13 @@ calculate_maximum_divisions = {
 			}
 		}
 		else = {
-			calculate_manpower_based_on_compliance = yes
-			add_to_variable = { PREV.non_core_base = state_manpower }
+			add_to_variable = { #calculate_manpower_based_on_compliance
+				PREV.non_core_base = {
+					value = 0.02
+					add = modifier@local_non_core_manpower
+					multiply = state_population_k
+				}
+			}
 
 			calculate_available_factories_based_on_compliance = yes
 		}
@@ -244,8 +234,13 @@ calculate_maximum_divisions = {
 					}
 				}
 				else = {
-					calculate_manpower_based_on_compliance = yes
-					add_to_variable = { PREV.PREV.non_core_base = state_manpower }
+					add_to_variable = { #calculate_manpower_based_on_compliance
+						PREV.PREV.non_core_base = {
+							value = 0.02
+							add = modifier@local_non_core_manpower
+							multiply = state_population_k
+						}
+					}
 
 					calculate_available_factories_based_on_compliance = yes
 				}
@@ -267,7 +262,7 @@ calculate_maximum_divisions = {
 	add_to_variable = { base_units = base_states }
 
 	# initial max = base_units
-	set_variable = { max_divisions = base_units }
+	set_variable = { uncapped_max_divisions = base_units }
 
 	# calculate factory bonus
 	set_variable = { factory_delta = factory_points } #for the tooltip
@@ -275,39 +270,53 @@ calculate_maximum_divisions = {
 	set_variable = { factory_cutoff = { value = base_units round = yes } } #also used for tooltip
 	subtract_from_temp_variable = { factory_points = factory_cutoff }
 	round_temp_variable = factory_points
+	set_variable = { base_factories = 0 }
 	if = {
 		limit = { NOT = { check_variable = { factory_points = 0 } } }
 		set_temp_variable = {
 			base_factories_temp = {
 				value = factory_points
 				if = { limit = { value = factory_points less_than = 0 } multiply = -1 }
-				clamp = { min = -1000 max = factory_cutoff }
+				clamp = { min = 1 max = factory_cutoff }
 			}
 		}
 
-		#calculate diminishing returns - every factory above/below factory_cutoff gives (1 - (n-1)/factory_cutoff)
-		set_temp_variable = { diminishing_returns = 0 }
+		# OLD DIMINISHING RETURNS
+		# calculate diminishing returns - every factory above/below factory_cutoff gives (1 - (n-1)/factory_cutoff)
+		#for_loop_effect = {
+		#	start = 0
+		#	end = base_factories_temp
+		#	add_to_variable = {
+		#		base_factories = {
+		#			# iteration
+		#			value = v
+		#			divide = factory_cutoff
+		#			multiply = -1
+		#			add = 1
+		#		}
+		#	}
+		#}
+
+		# NEW DIMINISHING RETURNS
+		# calculate diminishing returns - every factory above/below factory cutoff gives e^[(n-1)*-0.015]
 		for_loop_effect = {
 			start = 0
 			end = base_factories_temp
-			add_to_temp_variable = {
-				diminishing_returns = {
-					# iteration
-					value = v
-					divide = factory_cutoff
-					multiply = -1
-					add = 1
+			add_to_variable = {
+				base_factories = {
+					# Exponential with base e
+					value = constant:maths.e
+					pow = { value = v multiply = -0.015 }
 				}
 			}
 		}
 
 		if = {
 			limit = { check_variable = { factory_points < 0 } }
-			multiply_temp_variable = { diminishing_returns = -1 }
+			multiply_variable = { base_factories = -1 }
 		}
-		set_variable = { base_factories = diminishing_returns }
 		add_to_variable = { base_units = base_factories }
-		add_to_variable = { max_divisions = base_factories }
+		add_to_variable = { uncapped_max_divisions = base_factories }
 	}
 
 	### if an overlord, check if any puppets should transfer part of their bases
@@ -320,38 +329,39 @@ calculate_maximum_divisions = {
 			set_variable = { divisions_from_subject = { value = max_before_modifiers multiply = modifier@unit_limit_subject_bonus } }
 			add_to_variable = { overlord:base_subjects = divisions_from_subject }
 			add_to_variable = { overlord:base_units = divisions_from_subject }
-			add_to_variable = { overlord:max_divisions = divisions_from_subject }
+			add_to_variable = { overlord:uncapped_max_divisions = divisions_from_subject }
 		}
 	}
 
-	set_temp_variable = { max_before_modifiers = max_divisions } #for use in the every_subject_country above
+	set_temp_variable = { max_before_modifiers = uncapped_max_divisions } #for use in the every_subject_country above
 
-	# apply multipliers
-	multiply_variable = {
-		max_divisions = {
-			# limit multiplier
-			value = 1
-			add = modifier@unit_limit_factor
-			if = { limit = { value = id equals = faction_leader } add = constant:unit_limits.faction_leader_bonus } # Same as checking for faction leader
-		}
-	}
-
-	# Apply all other modifiers
-	add_to_variable = {
-		max_divisions = {
-			value = constant:unit_limits.base # all countries get unit_limits.base free divisions
-			add = modifier@unit_limit_law_bonus # add the law bonus to the limit (+4 per economy law level above civilian economy)
-			add = modifier@unit_limit_bonus # add any specific bonuses to the limit
+	set_variable = {
+		uncapped_max_divisions = {
+			value = uncapped_max_divisions
+			# apply multipliers
+			multiply = {
+				# limit multiplier
+				value = 1
+				add = modifier@unit_limit_factor
+				if = { limit = { value = id equals = faction_leader } add = constant:unit_limits.faction_leader_bonus } # Same as checking for faction leader
+			}
+			# Apply all other modifiers
+			add = {
+				value = constant:unit_limits.base # all countries get unit_limits.base free divisions
+				add = modifier@unit_limit_law_bonus # add the law bonus to the limit (+4 per economy law level above civilian economy)
+				add = modifier@unit_limit_bonus # add any specific bonuses to the limit
+			}
+			round = yes
 		}
 	}
 
 	# max (unit_limits.base, max_divisions)
-	set_variable = { uncapped_max_divisions = { value = max_divisions round = yes } }
-	clamp_variable = {
-		var = max_divisions
-		min = constant:unit_limits.base
+	set_variable = {
+		max_divisions = {
+			value = uncapped_max_divisions
+			clamp = { min = constant:unit_limits.base max = 10000 }
+		}
 	}
-	round_variable = max_divisions
 }
 
 calculate_mobilisation_penalty = {
@@ -394,6 +404,14 @@ unit_limit_calculation_effect = {
 		set_variable = {
 			num_actual_divisions = {
 				value = num_divisions
+				subtract = { #exclude Army HQ divisions
+					value = num_armies_with_type@hq_infantry
+					add = num_armies_with_type@hq_motorized
+					add = num_armies_with_type@hq_paratrooper
+					add = num_armies_with_type@hq_light_armor
+					add = num_armies_with_type@hq_medium_armor
+					add = num_armies_with_type@hq_heavy_armor
+				}
 				subtract = num_fake_intel_divisions #ignore fake intel divisions
 				subtract = num_expeditionary_divisions_received #remove expeditionaries receivd
 				add = num_expeditionary_divisions_sent # add expeditionaries sent
@@ -454,6 +472,7 @@ unit_limit_calculation_effect = {
 		}
 	}
 	else = {
+		set_variable = { num_actual_divisions = num_divisions }
 		set_variable = { unit_limit_progressbar_frame = 1 }
 		set_variable = { unit_limit_progressbar_value = 0 }
 	}

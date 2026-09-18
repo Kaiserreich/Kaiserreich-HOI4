@@ -1139,16 +1139,12 @@ country_event = { #hidden event to fire the Chaco peace mission
 		is_valid_peace_target = yes
 		NOT = { has_active_mission = PAR_chaco_peace_timer }
 		1027 = { #Upper Chaco
-			AND = {
-				is_owned_by_ROOT_or_ally = yes
-				NOT = { owner = { has_full_control_of_state = PREV } }
-			}
+			is_owned_by_ROOT_or_ally = yes
+			NOT = { owner = { has_full_control_of_state = PREV } }
 		}
 		688 = { #Northern Chaco
-			AND = {
-				is_owned_by_ROOT_or_ally = yes
-				NOT = { owner = { has_full_control_of_state = PREV } }
-			}
+			is_owned_by_ROOT_or_ally = yes
+			NOT = { owner = { has_full_control_of_state = PREV } }
 		}
 		if = { # only will fire if all the state is occupied
 			limit = {

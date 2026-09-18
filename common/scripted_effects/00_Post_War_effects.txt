@@ -315,15 +315,16 @@ take_occupied_states_in_africa = {
 		take_occupied_states_in_africa = yes
 	}
 	else = {
-		every_country = {
-			limit = {
-				has_war_with = GER
-				any_owned_state = {
-					is_on_continent = africa
-					has_state_flag = GER_capitulation_transfer
+		GER = {
+			every_enemy_country = {
+				limit = {
+					any_owned_state = {
+						is_on_continent = africa
+						has_state_flag = GER_capitulation_transfer
+					}
 				}
+				clean_up_african_states = yes
 			}
-			clean_up_african_states = yes
 		}
 	}
 }

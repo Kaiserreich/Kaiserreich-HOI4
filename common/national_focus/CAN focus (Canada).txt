@@ -1624,7 +1624,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = available_chief_of_airforce
-			show_ideas_tooltip = CAN_william_avery_bishop_air_chief
+			show_ideas_tooltip = CAN_billy_bishop_air_chief
 		}
 		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_AIRFORCE_BONUS }
 	}
@@ -3610,7 +3610,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = available_theorist
-			show_ideas_tooltip = CAN_harry_farnham_germain_letson_theorist
+			show_ideas_tooltip = CAN_hfg_letson_theorist
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
@@ -4654,20 +4654,26 @@ focus_tree = {
 					AND = {
 						has_global_flag = CAN_supports_USA
 						country_exists = USA
-						USA = { surrender_progress < 0.50 }
-						check_variable = { USA.num_controlled_states > 5 }
+						USA = {
+							surrender_progress < 0.50
+							num_of_controlled_states > 5
+						}
 					}
 					AND = {
 						has_global_flag = CAN_supports_ACC
 						country_exists = ACC
-						ACC = { surrender_progress < 0.50 }
-						check_variable = { ACC.num_controlled_states > 5 }
+						ACC = {
+							surrender_progress < 0.50
+							num_of_controlled_states > 5
+						}
 					}
 					AND = {
 						has_global_flag = CAN_supports_APG
 						country_exists = APG
-						APG = { surrender_progress < 0.50 }
-						check_variable = { ACC.num_controlled_states > 7 }
+						APG = {
+							surrender_progress < 0.50
+							num_of_controlled_states > 7
+						}
 					}
 					AND = {
 						OR = {
@@ -4705,12 +4711,11 @@ focus_tree = {
 						OR = {
 							has_global_flag = USA_civil_war_over_flag
 							is_in_faction_with = ACC
-							AND = {
-								set_temp_variable = { nonenemy_states = 0 }
-								add_to_temp_variable = { nonenemy_states = APG.num_controlled_states }
-								add_to_temp_variable = { nonenemy_states = USA.num_controlled_states }
-								add_to_temp_variable = { nonenemy_states = ACC.num_controlled_states }
-								check_variable = { nonenemy_states > 6 }
+							check_expr = { #nonenemy_states
+								value = APG.num_controlled_states
+								add = USA.num_controlled_states
+								add = ACC.num_controlled_states
+								greater_than = 6
 							}
 						}
 					}
@@ -5158,10 +5163,8 @@ focus_tree = {
 					check_variable = { CAN_was_king_popularity < 3 }
 				}
 				hidden_trigger = {
-					AND = {
-						is_ai = yes
-						has_game_rule = { rule = CAN_referendum option = CAN_REFERENDUM_REP }
-					}
+					is_ai = yes
+					has_game_rule = { rule = CAN_referendum option = CAN_REFERENDUM_REP }
 				}
 			}
 		}

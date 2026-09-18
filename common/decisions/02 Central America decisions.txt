@@ -11,6 +11,13 @@ Forming_Central_America = {
 
 		available = {
 			if = {
+				limit = { has_variable = central_america_political_foci_count }
+				custom_override_tooltip = {
+					tooltip = CEN_four_political_foci_completed
+					check_variable = { central_america_political_foci_count > 3 }
+				}
+			}
+			else_if = {
 				limit = { original_tag = GUA }
 				custom_override_tooltip = {
 					tooltip = CEN_four_political_foci_completed
@@ -24,25 +31,8 @@ Forming_Central_America = {
 				}
 			}
 			else_if = {
-				limit = { original_tag = ELS }
-				custom_override_tooltip = {
-					tooltip = CEN_four_political_foci_completed
-					check_variable = { ELS_political_foci_count > 3 }
-				}
-			}
-			else_if = {
-				limit = { original_tag = HON }
-				custom_override_tooltip = {
-					tooltip = CEN_four_political_foci_completed
-					check_variable = { HON_political_foci_count > 3 }
-				}
-			}
-			else_if = {
-				limit = { original_tag = NIC }
-				custom_override_tooltip = {
-					tooltip = CEN_four_political_foci_completed
-					check_variable = { NIC_political_foci_count > 3 }
-				}
+				limit = { original_tag = PAN }
+				316 = { is_owned_by_ROOT_or_ally = yes } #Costa Rica
 			}
 			is_valid_peace_target = yes
 			has_war = no
@@ -50,10 +40,6 @@ Forming_Central_America = {
 			313 = { is_owned_by_ROOT_or_ally = yes } #Guatemala
 			314 = { is_owned_by_ROOT_or_ally = yes } #El Salvador
 			317 = { is_owned_by_ROOT_or_ally = yes } #Managua
-			if = {
-				limit = { original_tag = PAN }
-				316 = { is_owned_by_ROOT_or_ally = yes } #Costa Rica
-			}
 		}
 
 		cost = 0
@@ -64,9 +50,7 @@ Forming_Central_America = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete CEN_unite_central_america"
 			# Clearing variables
-			clear_variable = ELS_political_foci_count
-			clear_variable = HON_political_foci_count
-			clear_variable = NIC_political_foci_count
+			clear_variable = central_america_political_foci_count
 			# If Costa Rica is the unifier, handle it through their unique event
 			if = {
 				limit = { original_tag = COS }
@@ -357,7 +341,13 @@ Forming_Central_America = {
 		}
 		visible = {
 			has_socialist_government = yes
-			NOT = { has_event_target = CEN_socialist_leader }
+			NOT = {
+				any_other_country_of = {
+					target = constant:country_groups.central_american_unifiers
+					is_faction_leader = yes
+					scope:faction = { check_variable = { central_america_unification_faction = 1 } }
+				}
+			}
 		}
 		cost = 30
 		fire_only_once = yes
@@ -365,32 +355,19 @@ Forming_Central_America = {
 			factor = 100
 			modifier = {
 				factor = 0
-				OR = {
-					ELS = {
-						is_ai = no
-						has_socialist_government = yes
-					}
-					GUA = {
-						is_ai = no
-						has_socialist_government = yes
-					}
-					HON = {
-						is_ai = no
-						has_socialist_government = yes
-					}
-					NIC = {
-						is_ai = no
-						has_socialist_government = yes
-					}
+				any_other_country_of = {
+					target = constant:country_groups.central_american_unifiers
+					is_ai = no
+					has_socialist_government = yes
 				}
 			}
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete CEN_found_revolutionary_pact"
 			CEN_conflict_escalates = yes
-			save_global_event_target_as = CEN_socialist_leader
 			create_faction_from_template = { template = faction_template_internationale_successor name = faction_revolutionary_front }
 			set_faction_manifest = faction_manifest_unite_central_america
+			scope:faction = { set_variable = { central_america_unification_faction = 1 } }
 			hidden_effect = { set_as_temporary_faction = yes }
 			every_other_country = {
 				limit = {
@@ -430,7 +407,13 @@ Forming_Central_America = {
 		}
 		visible = {
 			has_elected_government = yes
-			NOT = { has_event_target = CEN_liberal_leader }
+			NOT = {
+				any_other_country_of = {
+					target = constant:country_groups.central_american_unifiers
+					is_faction_leader = yes
+					scope:faction = { check_variable = { central_america_unification_faction = 2 } }
+				}
+			}
 		}
 		cost = 30
 		fire_only_once = yes
@@ -438,32 +421,19 @@ Forming_Central_America = {
 			factor = 100
 			modifier = {
 				factor = 0
-				OR = {
-					ELS = {
-						is_ai = no
-						has_elected_government = yes
-					}
-					GUA = {
-						is_ai = no
-						has_elected_government = yes
-					}
-					HON = {
-						is_ai = no
-						has_elected_government = yes
-					}
-					NIC = {
-						is_ai = no
-						has_elected_government = yes
-					}
+				any_other_country_of = {
+					target = constant:country_groups.central_american_unifiers
+					is_ai = no
+					has_elected_government = yes
 				}
 			}
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete CEN_found_liberal_pact"
 			CEN_conflict_escalates = yes
-			save_global_event_target_as = CEN_liberal_leader
 			create_faction_from_template = { template = faction_template_defender_of_democracy name = faction_liberal_pact }
 			set_faction_manifest = faction_manifest_unite_central_america
+			scope:faction = { set_variable = { central_america_unification_faction = 2 } }
 			hidden_effect = { set_as_temporary_faction = yes }
 			every_other_country = {
 				limit = {
@@ -495,7 +465,14 @@ Forming_Central_America = {
 		}
 		visible = {
 			has_authoritarian_government = yes
-			NOT = { has_event_target = CEN_military_leader }
+			is_in_faction = no
+			NOT = {
+				any_other_country_of = {
+					target = constant:country_groups.central_american_unifiers
+					is_faction_leader = yes
+					scope:faction = { check_variable = { central_america_unification_faction = 3 } }
+				}
+			}
 		}
 		cost = 30
 		fire_only_once = yes
@@ -503,32 +480,19 @@ Forming_Central_America = {
 			factor = 100
 			modifier = {
 				factor = 0
-				OR = {
-					ELS = {
-						is_ai = no
-						has_authoritarian_government = yes
-					}
-					GUA = {
-						is_ai = no
-						has_authoritarian_government = yes
-					}
-					HON = {
-						is_ai = no
-						has_authoritarian_government = yes
-					}
-					NIC = {
-						is_ai = no
-						has_authoritarian_government = yes
-					}
+				any_other_country_of = {
+					target = constant:country_groups.central_american_unifiers
+					is_ai = no
+					has_authoritarian_government = yes
 				}
 			}
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete CEN_found_military_pact"
 			CEN_conflict_escalates = yes
-			save_global_event_target_as = CEN_military_leader
 			create_faction_from_template = { template = faction_template_harbinger_of_a_new_order name = faction_peoples_vanguard }
 			set_faction_manifest = faction_manifest_unite_central_america
+			scope:faction = { set_variable = { central_america_unification_faction = 3 } }
 			hidden_effect = { set_as_temporary_faction = yes }
 			every_other_country = {
 				limit = {
@@ -557,32 +521,28 @@ Forming_Central_America = {
 		visible = {
 			is_in_faction = no
 			if = {
-				limit = {
-					has_socialist_government = yes
-				}
-				country_exists = event_target:CEN_socialist_leader
-				event_target:CEN_socialist_leader = {
+				limit = { has_socialist_government = yes }
+				any_other_country_of = {
+					target = constant:country_groups.central_american_unifiers
 					is_faction_leader = yes
-					has_socialist_government = yes
+					scope:faction = { check_variable = { central_america_unification_faction = 1 } }
 					NOT = { has_war_with = ROOT }
 				}
 			}
 			else_if = {
-				limit = {
-					has_authoritarian_government = yes
-				}
-				country_exists = event_target:CEN_military_leader
-				event_target:CEN_military_leader = {
+				limit = { has_authoritarian_government = yes }
+				any_other_country_of = {
+					target = constant:country_groups.central_american_unifiers
 					is_faction_leader = yes
-					has_authoritarian_government = yes
+					scope:faction = { check_variable = { central_america_unification_faction = 3 } }
 					NOT = { has_war_with = ROOT }
 				}
 			}
 			else = {
-				country_exists = event_target:CEN_liberal_leader
-				event_target:CEN_liberal_leader = {
+				any_other_country_of = {
+					target = constant:country_groups.central_american_unifiers
 					is_faction_leader = yes
-					has_elected_government = yes
+					scope:faction = { check_variable = { central_america_unification_faction = 2 } }
 					NOT = { has_war_with = ROOT }
 				}
 			}
@@ -592,15 +552,39 @@ Forming_Central_America = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete CEN_unification_join_faction"
 			if = {
-				limit = { has_socialist_government = yes }
-				event_target:CEN_socialist_leader = { country_event = central_america_unification_events.8 }
+				limit = {
+					has_socialist_government = yes
+					any_other_country_of = {
+						target = constant:country_groups.central_american_unifiers
+						is_faction_leader = yes
+						scope:faction = { check_variable = { central_america_unification_faction = 1 } }
+						set_temp_variable = { faction_leader_target = THIS }
+					}
+				}
+				var:faction_leader_target = { country_event = central_america_unification_events.8 }
 			}
 			else_if = {
-				limit = { has_authoritarian_government = yes }
-				event_target:CEN_military_leader = { country_event = central_america_unification_events.8 }
+				limit = {
+					has_authoritarian_government = yes
+					any_other_country_of = {
+						target = constant:country_groups.central_american_unifiers
+						is_faction_leader = yes
+						scope:faction = { check_variable = { central_america_unification_faction = 3 } }
+						set_temp_variable = { faction_leader_target = THIS }
+					}
+				}
+				var:faction_leader_target = { country_event = central_america_unification_events.8 }
 			}
-			else = {
-				event_target:CEN_liberal_leader = { country_event = central_america_unification_events.8 }
+			else_if = {
+				limit = {
+					any_other_country_of = {
+						target = constant:country_groups.central_american_unifiers
+						is_faction_leader = yes
+						scope:faction = { check_variable = { central_america_unification_faction = 2 } }
+						set_temp_variable = { faction_leader_target = THIS }
+					}
+				}
+				var:faction_leader_target = { country_event = central_america_unification_events.8 }
 			}
 		}
 		fixed_random_seed = no
@@ -617,29 +601,8 @@ Forming_Central_America = {
 		}
 		visible = {
 			is_in_faction = yes
-			if = {
-				limit = { is_faction_leader = yes }
-				OR = {
-					AND = {
-						tag = event_target:CEN_socialist_leader
-						has_socialist_government = no
-					}
-					AND = {
-						tag = event_target:CEN_liberal_leader
-						has_elected_government = no
-					}
-					AND = {
-						tag = event_target:CEN_military_leader
-						has_authoritarian_government = no
-					}
-				}
-			}
-			else = {
-				faction_leader = {
-					is_central_american_tag = yes
-					same_government_type_as_ROOT_authoritarian = no
-				}
-			}
+			scope:faction = { has_variable = central_america_unification_faction }
+			faction_leader = { same_government_type_as_ROOT_authoritarian = no }
 		}
 		cost = 0
 		ai_will_do = { factor = 800 }
@@ -647,18 +610,6 @@ Forming_Central_America = {
 			log = "[GetLogRoot]: Decision complete CEN_leave_faction"
 			if = {
 				limit = { is_faction_leader = yes }
-				if = {
-					limit = { tag = event_target:CEN_socialist_leader }
-					clear_global_event_target = CEN_socialist_leader
-				}
-				if = {
-					limit = { tag = event_target:CEN_liberal_leader }
-					clear_global_event_target = CEN_liberal_leader
-				}
-				if = {
-					limit = { tag = event_target:CEN_military_leader }
-					clear_global_event_target = CEN_military_leader
-				}
 				dismantle_faction = yes
 			}
 			else = {

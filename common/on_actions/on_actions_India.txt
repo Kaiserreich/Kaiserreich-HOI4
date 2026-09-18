@@ -8,7 +8,10 @@ on_actions = {
 				}
 				for_each_scope_loop = {
 					array = global.indian_tags_array
-					PREV = { enable_state_integration_50_compliance = yes }
+					if = {
+						limit = { NOT = { original_tag = PTH } }
+						PREV = { enable_state_integration_50_compliance = yes }
+					}
 				}
 			}
 			HND = {
@@ -675,8 +678,6 @@ on_actions = {
 					}
 					# Send the PJB/KAS people to the PJB tag
 					RAJ = {
-						RAJ_ishar_singh = { set_nationality = PJB }
-						RAJ_khizar_hayat_tiwana = { set_nationality = PJB }
 						PJB_sultan_muhammed_shah = {
 							set_nationality = PJB
 							remove_political_advisor_role = yes
@@ -824,8 +825,32 @@ on_actions = {
 		}
 	}
 
+	#ROOT is winner #FROM is loser
 	on_peaceconference_ended = {
 		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = india_united }
+					FROM = { is_indian_unifier_tag = yes }
+					NOT = { is_indian_unifier_tag = yes }
+					any_state_of = {
+						target = constant:state_groups.indian_unifiers_starting_states
+						is_owned_by = PREV
+					}
+				}
+				if = {
+					limit = { country_exists = RAJ }
+					RAJ = { country_event = { id = india_events.8 hours = 5 } }
+				}
+				if = {
+					limit = { country_exists = PRF }
+					PRF = { country_event = { id = india_events.8 hours = 5 } }
+				}
+				if = {
+					limit = { country_exists = HND }
+					HND = { country_event = { id = india_events.8 hours = 5 } }
+				}
+			}
 			if = {
 				limit = {
 					OR = {

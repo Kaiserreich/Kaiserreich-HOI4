@@ -186,103 +186,81 @@ defined_text = {
 }
 
 defined_text = {
-	name = SER_GetYugoTooltip_Serbia
+	name = SER_GetYugoTooltip
 	text = {
+		trigger = { tag = SER }
 		localization_key = YUG_serbia_tooltip_text
 	}
-}
-defined_text = {
-	name = SER_GetYugoTooltip_Croatia
 	text = {
+		trigger = { tag = CRO }
 		localization_key = YUG_croatia_tooltip_text
 	}
-}
-defined_text = {
-	name = SER_GetYugoTooltip_Bosnia
 	text = {
+		trigger = { tag = BOS }
 		localization_key = YUG_bosnia_tooltip_text
 	}
-}
-defined_text = {
-	name = SER_GetYugoTooltip_Slovenia
 	text = {
+		trigger = { tag = SLV }
 		localization_key = YUG_slovenia_tooltip_text
 	}
-}
-defined_text = {
-	name = SER_GetYugoTooltip_Other
 	text = {
 		localization_key = YUG_other_tooltip_text
 	}
 }
 
 defined_text = {
-	name = SER_GetYugoPointTooltipColour_Serbia
+	name = SER_GetYugoTooltipDesc
 	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_serbia < YUG_serbia_pp_requirement } }
+		localization_key = country_culture|YUG_tooltip_desc
+	}
+}
+
+defined_text = {
+	name = SER_GetYugoTooltipPointsDesc
+	text = {
+		localization_key = YUG_ethnicity_tooltip_points_desc_tooltip_text
+	}
+}
+
+defined_text = {
+	name = SER_GetYugoTooltipPoints
+	text = {
+		localization_key = YUG_ethnicity_tooltip_points_tooltip_text
+	}
+}
+
+defined_text = {
+	name = SER_GetYugoIcon
+	text = {
+		localization_key = country_culture|YUG_ethnic_group_icon
+	}
+}
+
+defined_text = {
+	name = SER_GetYugoPointTooltipColour
+	text = {
+		trigger = { check_variable = { ROOT.YUG_pc_expenditure_@THIS < ROOT.YUG_ethnicity_pp_requirement_@THIS } }
 		localization_key = colour_red
 	}
 	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_serbia = YUG_serbia_pp_requirement } }
+		trigger = { check_variable = { ROOT.YUG_pc_expenditure_@THIS = ROOT.YUG_ethnicity_pp_requirement_@THIS } }
 		localization_key = colour_yellow
 	}
 	text = {
 		localization_key = colour_green
 	}
 }
+
 defined_text = {
-	name = SER_GetYugoPointTooltipColour_Croatia
+	name = SER_GetEthnicGroupAdjective
 	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_croatia < YUG_croatia_pp_requirement } }
-		localization_key = colour_red
-	}
-	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_croatia = YUG_croatia_pp_requirement } }
-		localization_key = colour_yellow
-	}
-	text = {
-		localization_key = colour_green
+		localization_key = country_culture|YUG_ethnic_group_adjective
 	}
 }
+
 defined_text = {
-	name = SER_GetYugoPointTooltipColour_Bosnia
+	name = SER_GetEthnicGroupNounPlural
 	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_bosnia < YUG_bosnia_pp_requirement } }
-		localization_key = colour_red
-	}
-	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_bosnia = YUG_bosnia_pp_requirement } }
-		localization_key = colour_yellow
-	}
-	text = {
-		localization_key = colour_green
-	}
-}
-defined_text = {
-	name = SER_GetYugoPointTooltipColour_Slovenia
-	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_slovenia < YUG_slovenia_pp_requirement } }
-		localization_key = colour_red
-	}
-	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_slovenia = YUG_slovenia_pp_requirement } }
-		localization_key = colour_yellow
-	}
-	text = {
-		localization_key = colour_green
-	}
-}
-defined_text = {
-	name = SER_GetYugoPointTooltipColour_Other
-	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_other < YUG_other_pp_requirement } }
-		localization_key = colour_red
-	}
-	text = {
-		trigger = { check_variable = { YUG_pc_expenditure_other = YUG_other_pp_requirement } }
-		localization_key = colour_yellow
-	}
-	text = {
-		localization_key = colour_green
+		localization_key = country_culture|YUG_ethnic_group_noun_plural
 	}
 }

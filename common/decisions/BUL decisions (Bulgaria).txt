@@ -78,29 +78,40 @@ BUL_media_battle_decisions = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete BUL_spin_scandals_about_royal_family"
-			set_temp_variable = { BUL_tsar_change = 20 }
-			custom_effect_tooltip = BUL_boris_perception_worsen_tt
-			subtract_from_variable = { BUL_tsar_perception = BUL_tsar_change }
-			clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
-			if = {
-				limit = {
-					has_country_flag = BUL_stands_with_zveno
+			add_to_variable = {
+				BUL_tsar_perception = {
+					value = -20
+					clamp = { min = { value = BUL_tsar_perception multiply = -1 } max = 100 }
 				}
-				set_temp_variable = { BUL_deputies = 5 }
-				custom_effect_tooltip = BUL_increase_deputy_support_tt
-				add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-				clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+				tooltip = BUL_boris_perception_worsen_tt
+			}
+			if = {
+				limit = { has_country_flag = BUL_stands_with_zveno }
+				add_to_variable = {
+					BUL_parliamentary_support = {
+						value = 5
+						clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+					}
+					tooltip = BUL_increase_deputy_support_tt
+				}
 				random_list = {
 					60 = {
-						add_to_variable = { BUL_coup_success_chance = 10 }
-						clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-						custom_effect_tooltip = BUL_increase_coup_chance_tt
+						add_to_variable = {
+							BUL_coup_success_chance = {
+								value = 10
+								clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+							}
+							tooltip = BUL_increase_coup_chance_tt
+						}
 					}
 					30 = {
-						set_temp_variable = { BUL_deputies = 10 }
-						custom_effect_tooltip = BUL_increase_deputy_support_tt
-						add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-						clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+						add_to_variable = {
+							BUL_parliamentary_support = {
+								value = 10
+								clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+							}
+							tooltip = BUL_increase_deputy_support_tt
+						}
 					}
 					10 = {
 
@@ -108,20 +119,31 @@ BUL_media_battle_decisions = {
 				}
 			}
 			else = {
-				add_to_variable = { BUL_coup_success_chance = 5 }
-				clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-				custom_effect_tooltip = BUL_increase_coup_chance_slight_tt
+				add_to_variable = {
+					BUL_coup_success_chance = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+					}
+					tooltip = BUL_increase_coup_chance_slight_tt
+				}
 				random_list = {
 					30 = {
-						add_to_variable = { BUL_coup_success_chance = 10 }
-						clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-						custom_effect_tooltip = BUL_increase_coup_chance_tt
+						add_to_variable = {
+							BUL_coup_success_chance = {
+								value = 10
+								clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+							}
+							tooltip = BUL_increase_coup_chance_tt
+						}
 					}
 					60 = {
-						set_temp_variable = { BUL_deputies = 10 }
-						custom_effect_tooltip = BUL_increase_deputy_support_tt
-						add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-						clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+						add_to_variable = {
+							BUL_parliamentary_support = {
+								value = 10
+								clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+							}
+							tooltip = BUL_increase_deputy_support_tt
+						}
 					}
 					10 = {
 
@@ -147,21 +169,31 @@ BUL_media_battle_decisions = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete BUL_defend_royal_family"
-			set_temp_variable = { BUL_tsar_change = 20 }
-			custom_effect_tooltip = BUL_boris_perception_improve_tt
-			add_to_variable = { BUL_tsar_perception = BUL_tsar_change }
-			clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
+			add_to_variable = {
+				BUL_tsar_perception = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = BUL_tsar_perception } }
+				}
+				tooltip = BUL_boris_perception_improve_tt
+			}
 			random_list = {
 				40 = {
-					add_to_variable = { BUL_coup_success_chance = 10 }
-					clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-					custom_effect_tooltip = BUL_increase_coup_chance_tt
+					add_to_variable = {
+						BUL_coup_success_chance = {
+							value = 10
+							clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+						}
+						tooltip = BUL_increase_coup_chance_tt
+					}
 				}
 				40 = {
-					set_temp_variable = { BUL_deputies = 10 }
-					custom_effect_tooltip = BUL_increase_deputy_support_tt
-					add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-					clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+					add_to_variable = {
+						BUL_parliamentary_support = {
+							value = 10
+							clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+						}
+						tooltip = BUL_increase_deputy_support_tt
+					}
 				}
 				20 = {
 
@@ -193,38 +225,54 @@ BUL_media_battle_decisions = {
 				limit = {
 					has_country_flag = BUL_stands_with_opposition
 				}
-				set_temp_variable = { BUL_deputies = 20 }
-				custom_effect_tooltip = BUL_increase_deputy_support_tt
-				add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-				clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+				add_to_variable = {
+					BUL_parliamentary_support = {
+						value = 20
+						clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+					}
+					tooltip = BUL_increase_deputy_support_tt
+				}
 			}
 			else = {
-				set_temp_variable = { BUL_deputies = 20 }
-				custom_effect_tooltip = BUL_reduce_deputy_support_tt
-				subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-				clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+				subtract_from_variable = {
+					BUL_parliamentary_support = {
+						value = 20
+						clamp = { min = 0 max = BUL_parliamentary_support }
+					}
+					tooltip = BUL_reduce_deputy_support_tt
+				}
 			}
 			random_list = {
 				40 = {
-					add_to_variable = { BUL_coup_success_chance = 10 }
-					clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-					custom_effect_tooltip = BUL_increase_coup_chance_tt
+					add_to_variable = {
+						BUL_coup_success_chance = {
+							value = 10
+							clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+						}
+						tooltip = BUL_increase_coup_chance_tt
+					}
 				}
 				40 = {
 					if = {
 						limit = {
 							has_country_flag = BUL_stands_with_opposition
 						}
-						set_temp_variable = { BUL_tsar_change = 15 }
-						custom_effect_tooltip = BUL_boris_perception_worsen_tt
-						subtract_from_variable = { BUL_tsar_perception = BUL_tsar_change }
-						clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
+						add_to_variable = {
+							BUL_tsar_perception = {
+								value = -15
+								clamp = { min = { value = BUL_tsar_perception multiply = -1 } max = 100 }
+							}
+							tooltip = BUL_boris_perception_worsen_tt
+						}
 					}
 					else = {
-						set_temp_variable = { BUL_tsar_change = 15 }
-						custom_effect_tooltip = BUL_boris_perception_improve_tt
-						add_to_variable = { BUL_tsar_perception = BUL_tsar_change }
-						clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
+						add_to_variable = {
+							BUL_tsar_perception = {
+								value = 15
+								clamp = { min = 0 max = { value = 100 subtract = BUL_tsar_perception } }
+							}
+							tooltip = BUL_boris_perception_improve_tt
+						}
 					}
 				}
 				20 = {
@@ -253,23 +301,33 @@ BUL_media_battle_decisions = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete BUL_fearmongering"
-			add_to_variable = { BUL_coup_success_chance = 20 }
-			clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-			custom_effect_tooltip = BUL_increase_coup_chance_tt
+			add_to_variable = {
+				BUL_coup_success_chance = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+				}
+				tooltip = BUL_increase_coup_chance_tt
+			}
 			if = {
 				limit = {
 					has_country_flag = BUL_stands_with_prince
 				}
-				set_temp_variable = { BUL_deputies = 15 }
-				custom_effect_tooltip = BUL_reduce_deputy_support_tt
-				subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-				clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+				subtract_from_variable = {
+					BUL_parliamentary_support = {
+						value = 15
+						clamp = { min = 0 max = BUL_parliamentary_support }
+					}
+					tooltip = BUL_reduce_deputy_support_tt
+				}
 			}
 			else = {
-				set_temp_variable = { BUL_deputies = 15 }
-				custom_effect_tooltip = BUL_increase_deputy_support_tt
-				add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-				clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+				add_to_variable = {
+					BUL_parliamentary_support = {
+						value = 15
+						clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+					}
+					tooltip = BUL_increase_deputy_support_tt
+				}
 			}
 		}
 		fixed_random_seed = no
@@ -298,9 +356,13 @@ BUL_media_battle_decisions = {
 			hidden_effect = {
 				unlock_national_focus = BUL_bank_consolidation
 			}
-			add_to_variable = { BUL_coup_success_chance = 20 }
-			clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-			custom_effect_tooltip = BUL_increase_coup_chance_tt
+			add_to_variable = {
+				BUL_coup_success_chance = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+				}
+				tooltip = BUL_increase_coup_chance_tt
+			}
 			BUL_fire_zveno_coup = yes
 		}
 		fixed_random_seed = no
@@ -329,9 +391,13 @@ BUL_media_battle_decisions = {
 
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout BUL_vidovdan_speech_fallout"
-			add_to_variable = { BUL_coup_success_chance = 20 }
-			clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-			custom_effect_tooltip = BUL_increase_coup_chance_tt
+			add_to_variable = {
+				BUL_coup_success_chance = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+				}
+				tooltip = BUL_increase_coup_chance_tt
+			}
 			BUL_fire_zveno_coup = yes
 		}
 		fixed_random_seed = no
@@ -436,13 +502,10 @@ foreign_politics = {
 
 		visible = {
 			tag = event_target:chetnik_state
+			NOT = { has_war_with = BUL }
 		}
 
 		fire_only_once = yes
-
-		visible = {
-			NOT = { has_war_with = BUL }
-		}
 
 		ai_will_do = { factor = 100 }
 
@@ -455,6 +518,14 @@ foreign_politics = {
 			if = {
 				limit = { owns_state = 107 }
 				set_capital = { state = 107 remember_old_capital = no }
+			}
+			if = {
+				limit = { event_target:original_serbia = { exists = yes } }
+				declare_war_on = {
+					target = event_target:original_serbia
+					type = annex_everything
+				}
+				add_civil_war_target = event_target:original_serbia
 			}
 			hidden_effect = {
 				event_target:original_serbia = { SER_petar_ii = { set_nationality = ROOT } }

@@ -180,22 +180,18 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed HAI_german_loan"
 			subtract_from_variable = {
-				HAI_council_support = 1
+				HAI_council_support = {
+					value = 1
+					clamp = { min = 0 max = HAI_council_support }
+				}
 				tooltip = HAI_remove_council_support
 			}
-			clamp_variable = {
-				var = HAI_council_support
-				min = 0
-				max = 21
-			}
 			add_to_variable = {
-				HAI_assembly_support = 1
+				HAI_assembly_support = {
+					value = 1
+					clamp = { min = 0 max = { value = 40 subtract = HAI_assembly_support } }
+				}
 				tooltip = HAI_add_assembly_support
-			}
-			clamp_variable = {
-				var = HAI_assembly_support
-				min = 0
-				max = 40
 			}
 			custom_effect_tooltip = tooltip_white_line
 			swap_ideas = {
@@ -235,22 +231,18 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed HAI_american_loan"
 			add_to_variable = {
-				HAI_council_support = 1
+				HAI_council_support = {
+					value = 1
+					clamp = { min = 0 max = { value = 21 subtract = HAI_council_support } }
+				}
 				tooltip = HAI_add_council_support
 			}
-			clamp_variable = {
-				var = HAI_council_support
-				min = 0
-				max = 21
-			}
 			add_to_variable = {
-				HAI_assembly_support = 3
+				HAI_assembly_support = {
+					value = 3
+					clamp = { min = 0 max = { value = 40 subtract = HAI_assembly_support } }
+				}
 				tooltip = HAI_add_assembly_support
-			}
-			clamp_variable = {
-				var = HAI_assembly_support
-				min = 0
-				max = 40
 			}
 			custom_effect_tooltip = tooltip_white_line
 			swap_ideas = {
@@ -287,22 +279,18 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed HAI_civil_relief_programs"
 			add_to_variable = {
-				HAI_council_support = 1
+				HAI_council_support = {
+					value = 1
+					clamp = { min = 0 max = { value = 21 subtract = HAI_council_support } }
+				}
 				tooltip = HAI_add_council_support
 			}
-			clamp_variable = {
-				var = HAI_council_support
-				min = 0
-				max = 21
-			}
 			add_to_variable = {
-				HAI_assembly_support = 1
+				HAI_assembly_support = {
+					value = 1
+					clamp = { min = 0 max = { value = 40 subtract = HAI_assembly_support } }
+				}
 				tooltip = HAI_add_assembly_support
-			}
-			clamp_variable = {
-				var = HAI_assembly_support
-				min = 0
-				max = 40
 			}
 			custom_effect_tooltip = tooltip_white_line
 			if = {
@@ -358,13 +346,11 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed HAI_decrease_mil_spending"
 			subtract_from_variable = {
-				HAI_council_support = 1
+				HAI_council_support = {
+					value = 1
+					clamp = { min = 0 max = HAI_council_support }
+				}
 				tooltip = HAI_remove_council_support
-			}
-			clamp_variable = {
-				var = HAI_council_support
-				min = 0
-				max = 21
 			}
 			add_ideas = HAI_military_spending_cuts
 			custom_effect_tooltip = tooltip_white_line

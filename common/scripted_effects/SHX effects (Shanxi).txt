@@ -31,13 +31,12 @@
 #Maintenance Note: It is worth remembering that Yan is negative, Feng is positive.
 
 SHX_change_pop_effect = {
-	set_temp_variable = { SHX_pop_change_var = SHX_bop_change_var }
 	if = {
 		limit = { has_active_mission = SHX_looming_gmj_coup }
-		multiply_temp_variable = { SHX_pop_change_var = 0.25 } #Quarter it
+		set_temp_variable = { SHX_pop_change_var = { value = SHX_bop_change_var multiply = 0.25 } } #Quarter it
 	}
 	else = {
-		multiply_temp_variable = { SHX_pop_change_var = 0.10 } #Tenth it so post power struggle its not as easy to get 100%
+		set_temp_variable = { SHX_pop_change_var = { value = SHX_bop_change_var multiply = 0.10 } } #Tenth it so post power struggle its not as easy to get 100%
 	}
 	set_temp_variable = { SHX_pop_change_neg_var = { value = SHX_pop_change_var multiply = -1 } } #Invert it
 	add_popularity = {
@@ -282,14 +281,15 @@ SHX_upgrade_xiang_jun_model_spirit_effect = {
 ###- Victory Effects -###
 
 SHX_yan_victory_effect = {
-	set_temp_variable = { yan_distance_from_victory_temp_variable = power_balance_value } #Ranges from 0 to 1
 	if = {
 		limit = { SHX_yan_is_winning_trigger = yes }
-		divide_temp_variable = { yan_distance_from_victory_temp_variable = 2 } #Ranges now from 0 to 0.5
+		#Ranges now from 0 to 0.5
+		set_temp_variable = { yan_distance_from_victory_temp_variable = { value = power_balance_value multiply = 0.5 } }
 	}
 	else_if = {
 		limit = { SHX_feng_is_winning_trigger = yes }
-		divide_temp_variable = { yan_distance_from_victory_temp_variable = -2 } #Ranges now from 0 to -0.5
+		#Ranges now from 0 to -0.5
+		set_temp_variable = { yan_distance_from_victory_temp_variable = { value = power_balance_value multiply = -0.5 } }
 	}
 	else = {
 		set_temp_variable = { yan_distance_from_victory_temp_variable = -0.05 }
@@ -312,14 +312,15 @@ SHX_yan_victory_effect = {
 }
 
 SHX_feng_victory_effect = {
-	set_temp_variable = { feng_distance_from_victory_temp_variable = power_balance_value } #Ranges from 0 to 1
 	if = {
 		limit = { SHX_yan_is_winning_trigger = yes }
-		divide_temp_variable = { feng_distance_from_victory_temp_variable = -2 } #Ranges now from 0 to -0.5
+		#Ranges now from 0 to -0.5
+		set_temp_variable = { feng_distance_from_victory_temp_variable = { value = power_balance_value multiply = -0.5 } }
 	}
 	else_if = {
 		limit = { SHX_feng_is_winning_trigger = yes }
-		divide_temp_variable = { feng_distance_from_victory_temp_variable = 2 } #Ranges now from 0 to 0.5
+		#Ranges now from 0 to 0.5
+		set_temp_variable = { feng_distance_from_victory_temp_variable = { value = power_balance_value multiply = 0.5 } }
 	}
 	else = {
 		set_temp_variable = { feng_distance_from_victory_temp_variable = -0.05 }
@@ -653,13 +654,10 @@ SHX_marlib_change_pop_effect = {
 
 SHX_QIE_investment_change_inf_effect = {
 	add_to_variable = {
-		var = SHX.SHX_QIE_influence_variable
-		value = SHX_QIE_inf_change_var
-	}
-	clamp_variable = {
-		var = SHX.SHX_QIE_influence_variable
-		min = 0
-		max = 100
+		SHX.SHX_QIE_influence_variable = {
+			value = SHX_QIE_inf_change_var
+			clamp = { min = { value = SHX.SHX_QIE_influence_variable multiply = -1 } max = { value = 100 subtract = SHX.SHX_QIE_influence_variable } }
+		}
 	}
 	SHX_econ_update = yes
 }
@@ -793,43 +791,23 @@ SHX_remove_qie_econ = {
 
 ###- QIE Negotiations and Zhifeng -###
 SHX_QIE_negotiation_demand_plus_1_effect = {
-	add_to_variable = {
-		var = SHX.SHX_QIE_negotiation_value
-		value = 1
-		tooltip = SHX_QIE_negotiation_demand_plus_1_tooltip
-	}
+	add_to_variable = { SHX.SHX_QIE_negotiation_value = 1 tooltip = SHX_QIE_negotiation_demand_plus_1_tooltip }
 }
 
 SHX_QIE_negotiation_demand_plus_2_effect = {
-	add_to_variable = {
-		var = SHX.SHX_QIE_negotiation_value
-		value = 2
-		tooltip = SHX_QIE_negotiation_demand_plus_2_tooltip
-	}
+	add_to_variable = { SHX.SHX_QIE_negotiation_value = 2 tooltip = SHX_QIE_negotiation_demand_plus_2_tooltip }
 }
 
 SHX_QIE_negotiation_demand_plus_3_effect = {
-	add_to_variable = {
-		var = SHX.SHX_QIE_negotiation_value
-		value = 3
-		tooltip = SHX_QIE_negotiation_demand_plus_3_tooltip
-	}
+	add_to_variable = { SHX.SHX_QIE_negotiation_value = 3 tooltip = SHX_QIE_negotiation_demand_plus_3_tooltip }
 }
 
 SHX_QIE_negotiation_demand_minus_1_effect = {
-	subtract_from_variable = {
-		var = SHX.SHX_QIE_negotiation_value
-		value = 1
-		tooltip = SHX_QIE_negotiation_demand_minus_1_tooltip
-	}
+	subtract_from_variable = { SHX.SHX_QIE_negotiation_value = 1 tooltip = SHX_QIE_negotiation_demand_minus_1_tooltip }
 }
 
 SHX_QIE_negotiation_demand_minus_2_effect = {
-	subtract_from_variable = {
-		var = SHX.SHX_QIE_negotiation_value
-		value = 2
-		tooltip = SHX_QIE_negotiation_demand_minus_2_tooltip
-	}
+	subtract_from_variable = { SHX.SHX_QIE_negotiation_value = 2 tooltip = SHX_QIE_negotiation_demand_minus_2_tooltip }
 }
 
 SHX_transfer_east_shanxi_effect = {
@@ -1397,87 +1375,66 @@ SHX_end_suiyuan_crisis = {
 
 SHX_suiyuan_campaign_prep_add_small = {
 	add_to_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		value = 30
+		SHX.SHX_suiyuan_campaign_prep_variable = {
+			value = 30
+			clamp = { min = 0 max = { value = 500 subtract = SHX.SHX_suiyuan_campaign_prep_variable } }
+		}
+		tooltip = SHX_suiyuan_campaign_prep_add_small_tooltip
 	}
-	clamp_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		min = 0
-		max = 500
-	}
-	custom_effect_tooltip = SHX_suiyuan_campaign_prep_add_small_tooltip
 }
 
 SHX_suiyuan_campaign_prep_add_medium = {
 	add_to_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		value = 50
+		SHX.SHX_suiyuan_campaign_prep_variable = {
+			value = 50
+			clamp = { min = 0 max = { value = 500 subtract = SHX.SHX_suiyuan_campaign_prep_variable } }
+		}
+		tooltip = SHX_suiyuan_campaign_prep_add_medium_tooltip
 	}
-	clamp_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		min = 0
-		max = 500
-	}
-	custom_effect_tooltip = SHX_suiyuan_campaign_prep_add_medium_tooltip
 }
 
 SHX_suiyuan_campaign_prep_add_large = {
 	add_to_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		value = 100
+		SHX.SHX_suiyuan_campaign_prep_variable = {
+			value = 100
+			clamp = { min = 0 max = { value = 500 subtract = SHX.SHX_suiyuan_campaign_prep_variable } }
+		}
+		tooltip = SHX_suiyuan_campaign_prep_add_large_tooltip
 	}
-	clamp_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		min = 0
-		max = 500
-	}
-	custom_effect_tooltip = SHX_suiyuan_campaign_prep_add_large_tooltip
 }
 
 SHX_suiyuan_campaign_prep_subtract_small = {
 	add_to_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		value = -30
+		SHX.SHX_suiyuan_campaign_prep_variable = {
+			value = -30
+			clamp = { min = { value = SHX.SHX_suiyuan_campaign_prep_variable multiply = -1 } max = 0 }
+		}
+		tooltip = SHX_suiyuan_campaign_prep_subtract_small_tooltip
 	}
-	clamp_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		min = 0
-		max = 500
-	}
-	custom_effect_tooltip = SHX_suiyuan_campaign_prep_subtract_small_tooltip
 }
 
 SHX_suiyuan_campaign_prep_subtract_medium = {
 	add_to_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		value = -50
+		SHX.SHX_suiyuan_campaign_prep_variable = {
+			value = -50
+			clamp = { min = { value = SHX.SHX_suiyuan_campaign_prep_variable multiply = -1 } max = 0 }
+		}
+		tooltip = SHX_suiyuan_campaign_prep_subtract_medium_tooltip
 	}
-	clamp_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		min = 0
-		max = 500
-	}
-	custom_effect_tooltip = SHX_suiyuan_campaign_prep_subtract_medium_tooltip
 }
 
 SHX_suiyuan_campaign_prep_subtract_large = {
 	add_to_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		value = -100
+		SHX.SHX_suiyuan_campaign_prep_variable = {
+			value = -100
+			clamp = { min = { value = SHX.SHX_suiyuan_campaign_prep_variable multiply = -1 } max = 0 }
+		}
+		tooltip = SHX_suiyuan_campaign_prep_subtract_large_tooltip
 	}
-	clamp_variable = {
-		var = SHX.SHX_suiyuan_campaign_prep_variable
-		min = 0
-		max = 500
-	}
-	custom_effect_tooltip = SHX_suiyuan_campaign_prep_subtract_large_tooltip
 }
 
 SHX_suiyuan_campaign_tally_success_effect = {
-	set_variable = {
-		var = SHX_suiyuan_claimed_states_unfulfilment_variable
-		value = SHX_suiyuan_claimed_states_variable
-	}
+	set_variable = { SHX_suiyuan_claimed_states_unfulfilment_variable = SHX_suiyuan_claimed_states_variable }
 	if = {
 		limit = { owns_state = 616 } #Ordos
 		subtract_from_variable = { SHX_suiyuan_claimed_states_unfulfilment_variable = 1 }

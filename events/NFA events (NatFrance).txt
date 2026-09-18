@@ -74,22 +74,10 @@ country_event = { #Book Competition - Setup
 			country_event = { id = french_republic_events.7 days = 1 }
 		}
 		hidden_effect = { #Set up the variables for the power struggle
-			set_variable = {
-				var = Pet_influence
-				value = 1
-			}
-			set_variable = {
-				var = Mor_influence
-				value = 2
-			}
-			set_variable = {
-				var = Pet_corruption
-				value = 0
-			}
-			set_variable = {
-				var = Competition_Loop_Counter
-				value = 0
-			}
+			set_variable = { Pet_influence = 1 }
+			set_variable = { Mor_influence = 2 }
+			set_variable = { Pet_corruption = 0 }
+			set_variable = { Competition_Loop_Counter = 0 }
 		}
 	}
 }
@@ -183,10 +171,7 @@ country_event = { #Petain backs the Bear
 		name = french_republic_events.8.a #Can the Bear really bring change?
 		hidden_effect = {
 			country_event = { id = french_republic_events.12 days = 5 }
-			add_to_variable = {
-				var = Mor_influence
-				value = 2
-			}
+			add_to_variable = { Mor_influence = 2 }
 		}
 	}
 }
@@ -206,10 +191,7 @@ country_event = { #Petain backs the Rooster
 		name = french_republic_events.9.a
 		hidden_effect = {
 			country_event = { id = french_republic_events.14 days = 5 }
-			add_to_variable = {
-				var = Pet_influence
-				value = 1
-			}
+			add_to_variable = { Pet_influence = 1 }
 		}
 	}
 }
@@ -270,14 +252,11 @@ country_event = { #CdG publishes his book regardless
 		add_political_power = -10
 		hidden_effect = {
 			country_event = { id = french_republic_events.13 days = 12 }
-			subtract_from_variable = {
-				var = Pet_influence
-				value = 1
-			}
-			clamp_variable = {
-				var = Pet_influence
-				min = 0
-				max = 30
+			add_to_variable = {
+				Pet_influence = {
+					value = -1
+					clamp = { min = { value = Pet_influence multiply = -1 } max = { value = 30 subtract = Pet_influence } }
+				}
 			}
 		}
 	}
@@ -462,14 +441,11 @@ country_event = { #Mordacq publishes his book regardless
 		add_political_power = -10
 		hidden_effect = {
 			country_event = { id = french_republic_events.13 days = 12 }
-			subtract_from_variable = {
-				var = Mor_influence
-				value = 1
-			}
-			clamp_variable = {
-				var = Mor_influence
-				min = 0
-				max = 30
+			add_to_variable = {
+				Mor_influence = {
+					value = -1
+					clamp = { min = { value = Mor_influence multiply = -1 } max = { value = 30 subtract = Mor_influence } }
+				}
 			}
 		}
 	}
@@ -1175,18 +1151,10 @@ country_event = { #AF Full Power
 		add_ideas = NFA_republican_remnants
 		hidden_effect = {
 			set_country_flag = NFA_AF_victorious
-			set_variable = { #Set up the variables for the purge decisions
-				var = NFA_AF_purged_low
-				value = 0
-			}
-			set_variable = {
-				var = NFA_AF_purged_medium
-				value = 0
-			}
-			set_variable = {
-				var = NFA_AF_purged_high
-				value = 0
-			}
+			#Set up the variables for the purge decisions
+			set_variable = { NFA_AF_purged_low = 0 }
+			set_variable = { NFA_AF_purged_medium = 0 }
+			set_variable = { NFA_AF_purged_high = 0 }
 			country_event = { id = french_republic_events.512 days = 28 } #Restore the King
 			country_event = { id = french_republic_events.271 days = 40 random_days = 50 }
 			if = {
@@ -1253,20 +1221,19 @@ country_event = { #DwPO Airwaves
 		add_political_power = 5
 		ai_chance = { base = 20 }
 		hidden_effect = {
-			set_temp_variable = { temp_20 = random }
-			multiply_temp_variable = { temp_20 = 100 }
 			if = {
 				limit = {
-					check_variable = { temp_20 < 71 }
+					check_expr = {
+						value = random
+						multiply = 100
+						less_than = 71
+					}
 				}
-				subtract_from_variable = {
-					var = Pet_corruption
-					value = 1
-				}
-				clamp_variable = {
-					var = Pet_corruption
-					min = 0
-					max = 30
+				add_to_variable = {
+					Pet_corruption = {
+						value = -1
+						clamp = { min = { value = Pet_corruption multiply = -1 } max = { value = 30 subtract = Pet_corruption } }
+					}
 				}
 			}
 			else = {
@@ -1295,10 +1262,7 @@ country_event = { #DwPO Airwaves
 		ai_chance = { base = 30 }
 		add_stability = -0.01
 		hidden_effect = {
-			add_to_variable = {
-				var = Pet_corruption
-				value = 1
-			}
+			add_to_variable = { Pet_corruption = 1 }
 		}
 		remove_mission = Mordacq_takes_to_the_waves
 		clr_country_flag = Mordacq_Airwaves
@@ -1323,14 +1287,8 @@ country_event = { #Mordacq Popular
 		add_political_power = -5
 		hidden_effect = {
 			set_country_flag = Mordacq_Parade
-			add_to_variable = {
-				var = Mor_influence
-				value = 3
-			}
-			add_to_variable = {
-				var = Pet_influence
-				value = 1
-			}
+			add_to_variable = { Mor_influence = 3 }
+			add_to_variable = { Pet_influence = 1 }
 		}
 	}
 }
@@ -1351,14 +1309,8 @@ country_event = { #Petain Popular
 		add_political_power = 5
 		hidden_effect = {
 			set_country_flag = Mordacq_Parade
-			add_to_variable = {
-				var = Pet_influence
-				value = 3
-			}
-			add_to_variable = {
-				var = Mor_influence
-				value = 1
-			}
+			add_to_variable = { Pet_influence = 3 }
+			add_to_variable = { Mor_influence = 1 }
 		}
 	}
 }
@@ -1383,20 +1335,19 @@ country_event = { #DwPO Parades
 		ai_chance = { base = 40 }
 		add_political_power = 5
 		hidden_effect = {
-			set_temp_variable = { temp_23 = random }
-			multiply_temp_variable = { temp_23 = 100 }
 			if = {
 				limit = {
-					check_variable = { temp_23 < 21 }
+					check_expr = {
+						value = random
+						multiply = 100
+						less_than = 21
+					}
 				}
-				subtract_from_variable = {
-					var = Pet_corruption
-					value = 1
-				}
-				clamp_variable = {
-					var = Pet_corruption
-					min = 0
-					max = 30
+				add_to_variable = {
+					Pet_corruption = {
+						value = -1
+						clamp = { min = { value = Pet_corruption multiply = -1 } max = { value = 30 subtract = Pet_corruption } }
+					}
 				}
 			}
 			else = {
@@ -1413,10 +1364,7 @@ country_event = { #DwPO Parades
 		add_manpower = -25
 		remove_mission = Mordacq_parade
 		hidden_effect = {
-			add_to_variable = {
-				var = Pet_corruption
-				value = 1
-			}
+			add_to_variable = { Pet_corruption = 1 }
 			clr_country_flag = Mordacq_Parade
 			clr_country_flag = Mordacq_Parades_decision_made
 			set_country_flag = Mordacq_Speech
@@ -1440,14 +1388,8 @@ country_event = { #Mordacq Popular
 		add_political_power = -5
 		hidden_effect = {
 			set_country_flag = Mordacq_Barrack
-			add_to_variable = {
-				var = Mor_influence
-				value = 3
-			}
-			add_to_variable = {
-				var = Pet_influence
-				value = 1
-			}
+			add_to_variable = { Mor_influence = 3 }
+			add_to_variable = { Pet_influence = 1 }
 		}
 	}
 }
@@ -1468,14 +1410,8 @@ country_event = { #Petain Popular
 		add_political_power = 5
 		hidden_effect = {
 			set_country_flag = Mordacq_Barrack
-			add_to_variable = {
-				var = Pet_influence
-				value = 3
-			}
-			add_to_variable = {
-				var = Mor_influence
-				value = 1
-			}
+			add_to_variable = { Pet_influence = 3 }
+			add_to_variable = { Mor_influence = 1 }
 		}
 	}
 }
@@ -1500,20 +1436,19 @@ country_event = { #DwPO Speech
 		ai_chance = { base = 25 }
 		add_political_power = 5
 		hidden_effect = {
-			set_temp_variable = { temp_26 = random }
-			multiply_temp_variable = { temp_26 = 100 }
 			if = {
 				limit = {
-					check_variable = { temp_26 < 36 }
+					check_expr = {
+						value = random
+						multiply = 100
+						less_than = 36
+					}
 				}
-				subtract_from_variable = {
-					var = Pet_corruption
-					value = 1
-				}
-				clamp_variable = {
-					var = Pet_corruption
-					min = 0
-					max = 30
+				add_to_variable = {
+					Pet_corruption = {
+						value = -1
+						clamp = { min = { value = Pet_corruption multiply = -1 } max = { value = 30 subtract = Pet_corruption } }
+					}
 				}
 			}
 			else = {
@@ -1541,10 +1476,7 @@ country_event = { #DwPO Speech
 		ai_chance = { base = 20 }
 		add_stability = -0.01
 		hidden_effect = {
-			add_to_variable = {
-				var = Pet_corruption
-				value = 1
-			}
+			add_to_variable = { Pet_corruption = 1 }
 		}
 		remove_mission = Mordacqs_Speech
 		clr_country_flag = Mordacq_Speech
@@ -1572,20 +1504,19 @@ country_event = { #DwPO Barrack
 		name = french_republic_events.27.a #This will blow over
 		ai_chance = { base = 80 }
 		hidden_effect = {
-			set_temp_variable = { temp_27 = random }
-			multiply_temp_variable = { temp_27 = 100 }
 			if = {
 				limit = {
-					check_variable = { temp_27 < 21 }
+					check_expr = {
+						value = random
+						multiply = 100
+						less_than = 21
+					}
 				}
-				subtract_from_variable = {
-					var = Pet_corruption
-					value = 1
-				}
-				clamp_variable = {
-					var = Pet_corruption
-					min = 0
-					max = 30
+				add_to_variable = {
+					Pet_corruption = {
+						value = -1
+						clamp = { min = { value = Pet_corruption multiply = -1 } max = { value = 30 subtract = Pet_corruption } }
+					}
 				}
 			}
 			else = {
@@ -2964,18 +2895,10 @@ country_event = { #Resurrection
 		hidden_effect = {
 			country_event = { id = french_republic_events.77 days = 24 } #Results of the investigation
 			set_country_flag = NFA_AF_victorious
-			set_variable = { #Set up the variables for the purge decisions
-				var = NFA_AF_purged_low
-				value = 0
-			}
-			set_variable = {
-				var = NFA_AF_purged_medium
-				value = 0
-			}
-			set_variable = {
-				var = NFA_AF_purged_high
-				value = 0
-			}
+			#Set up the variables for the purge decisions
+			set_variable = { NFA_AF_purged_low = 0 }
+			set_variable = { NFA_AF_purged_medium = 0 }
+			set_variable = { NFA_AF_purged_high = 0 }
 			country_event = { id = french_republic_events.512 days = 28 } #Restore the King
 			if = {
 				limit = { has_country_flag = nfa_lessons_1914_chosen }
@@ -5845,8 +5768,7 @@ country_event = { #Fallout of the Coup
 		custom_effect_tooltip = NFA_tt_PSF_becomes_ade
 		hidden_effect = {
 			set_temp_variable = { NFA_conservative_to_liberal_value = party_popularity@social_conservative }
-			set_temp_variable = { NFA_conservative_to_liberal_value_reverse = 0 }
-			subtract_from_temp_variable = { var = NFA_conservative_to_liberal_value_reverse value = party_popularity@social_conservative }
+			set_temp_variable = { NFA_conservative_to_liberal_value_reverse = { value = party_popularity@social_conservative multiply = -1 } }
 			add_popularity = { ideology = social_conservative popularity = NFA_conservative_to_liberal_value_reverse }
 			add_popularity = { ideology = authoritarian_democrat popularity = NFA_conservative_to_liberal_value }
 			NFA_francois_de_la_rocque = {
@@ -5891,8 +5813,7 @@ country_event = { #Fallout of the Coup
 		custom_effect_tooltip = NFA_tt_PSF_becomes_pau
 		hidden_effect = {
 			set_temp_variable = { NFA_conservative_to_liberal_value = party_popularity@social_conservative }
-			set_temp_variable = { NFA_conservative_to_liberal_value_reverse = 0 }
-			subtract_from_temp_variable = { var = NFA_conservative_to_liberal_value_reverse value = party_popularity@social_conservative }
+			set_temp_variable = { NFA_conservative_to_liberal_value_reverse = { value = party_popularity@social_conservative multiply = -1 } }
 			add_popularity = { ideology = social_conservative popularity = NFA_conservative_to_liberal_value_reverse }
 			add_popularity = { ideology = paternal_autocrat popularity = NFA_conservative_to_liberal_value }
 			NFA_francois_de_la_rocque = {
@@ -8338,26 +8259,17 @@ country_event = { #Public Humiliation of Republicans
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.312 option french_republic_events.312.a"
 		name = french_republic_events.312.a
-		add_to_variable = {
-			var = NFA_AF_purged_low
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_low = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.312 option french_republic_events.312.b"
 		name = french_republic_events.312.b
-		add_to_variable = {
-			var = NFA_AF_purged_medium
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_medium = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.312 option french_republic_events.312.c"
 		name = french_republic_events.312.c
-		add_to_variable = {
-			var = NFA_AF_purged_high
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_high = 1 }
 	}
 	after = {
 		hidden_effect = { clr_country_flag = NFA_democratie_shells_protestors }
@@ -8376,26 +8288,17 @@ country_event = { #Arrest Republican Leaders
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.313 option french_republic_events.313.a"
 		name = french_republic_events.313.a
-		add_to_variable = {
-			var = NFA_AF_purged_low
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_low = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.313 option french_republic_events.313.b"
 		name = french_republic_events.313.b
-		add_to_variable = {
-			var = NFA_AF_purged_medium
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_medium = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.313 option french_republic_events.313.c"
 		name = french_republic_events.313.c
-		add_to_variable = {
-			var = NFA_AF_purged_high
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_high = 1 }
 	}
 }
 
@@ -8411,26 +8314,17 @@ country_event = { #Cleanse the police
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.314 option french_republic_events.314.a"
 		name = french_republic_events.314.a
-		add_to_variable = {
-			var = NFA_AF_purged_low
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_low = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.314 option french_republic_events.314.b"
 		name = french_republic_events.314.b
-		add_to_variable = {
-			var = NFA_AF_purged_medium
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_medium = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.314 option french_republic_events.314.c"
 		name = french_republic_events.314.c
-		add_to_variable = {
-			var = NFA_AF_purged_high
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_high = 1 }
 	}
 }
 
@@ -8446,26 +8340,17 @@ country_event = { #Purge the military
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.315 option french_republic_events.315.a"
 		name = french_republic_events.315.a
-		add_to_variable = {
-			var = NFA_AF_purged_low
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_low = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.315 option french_republic_events.315.b"
 		name = french_republic_events.315.b
-		add_to_variable = {
-			var = NFA_AF_purged_medium
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_medium = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.315 option french_republic_events.315.c"
 		name = french_republic_events.315.c
-		add_to_variable = {
-			var = NFA_AF_purged_high
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_high = 1 }
 	}
 }
 
@@ -8481,26 +8366,17 @@ country_event = { #Those who slither in the dark
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.316 option french_republic_events.316.a"
 		name = french_republic_events.316.a
-		add_to_variable = {
-			var = NFA_AF_purged_low
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_low = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.316 option french_republic_events.316.b"
 		name = french_republic_events.316.b
-		add_to_variable = {
-			var = NFA_AF_purged_medium
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_medium = 1 }
 	}
 	option = {
 		log = "[GetLogInfo]: event french_republic_events.316 option french_republic_events.316.c"
 		name = french_republic_events.316.c
-		add_to_variable = {
-			var = NFA_AF_purged_high
-			value = 1
-		}
+		add_to_variable = { NFA_AF_purged_high = 1 }
 	}
 }
 

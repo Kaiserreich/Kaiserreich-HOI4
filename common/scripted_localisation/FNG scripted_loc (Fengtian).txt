@@ -40,13 +40,11 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = { FNG.FNG_mantetsu_political_power < 0 }
-			AND = {
-				check_variable = { FNG.FNG_mantetsu_stability = 0 }
-				check_variable = { FNG.FNG_mantetsu_war_support = 0 }
-				check_variable = { FNG.FNG_mantetsu_construction_speed = 0 }
-				check_variable = { FNG.FNG_mantetsu_max_efficiency = 0 }
-				check_variable = { FNG.FNG_mantetsu_factory_output = 0 }
-			}
+			check_variable = { FNG.FNG_mantetsu_stability = 0 }
+			check_variable = { FNG.FNG_mantetsu_war_support = 0 }
+			check_variable = { FNG.FNG_mantetsu_construction_speed = 0 }
+			check_variable = { FNG.FNG_mantetsu_max_efficiency = 0 }
+			check_variable = { FNG.FNG_mantetsu_factory_output = 0 }
 		}
 		localization_key = FNG_mantetsu_political_power_text_last
 	}
@@ -63,12 +61,10 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = { FNG.FNG_mantetsu_stability < 0 }
-			AND = {
-				check_variable = { FNG.FNG_mantetsu_war_support = 0 }
-				check_variable = { FNG.FNG_mantetsu_construction_speed = 0 }
-				check_variable = { FNG.FNG_mantetsu_max_efficiency = 0 }
-				check_variable = { FNG.FNG_mantetsu_factory_output = 0 }
-			}
+			check_variable = { FNG.FNG_mantetsu_war_support = 0 }
+			check_variable = { FNG.FNG_mantetsu_construction_speed = 0 }
+			check_variable = { FNG.FNG_mantetsu_max_efficiency = 0 }
+			check_variable = { FNG.FNG_mantetsu_factory_output = 0 }
 		}
 		localization_key = FNG_mantetsu_stability_text_last
 	}
@@ -85,11 +81,9 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = { FNG.FNG_mantetsu_war_support < 0 }
-			AND = {
-				check_variable = { FNG.FNG_mantetsu_construction_speed = 0 }
-				check_variable = { FNG.FNG_mantetsu_max_efficiency = 0 }
-				check_variable = { FNG.FNG_mantetsu_factory_output = 0 }
-			}
+			check_variable = { FNG.FNG_mantetsu_construction_speed = 0 }
+			check_variable = { FNG.FNG_mantetsu_max_efficiency = 0 }
+			check_variable = { FNG.FNG_mantetsu_factory_output = 0 }
 		}
 		localization_key = FNG_mantetsu_war_support_text_last
 	}
@@ -106,10 +100,8 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = { FNG.FNG_mantetsu_construction_speed > 0 }
-			AND = {
-				check_variable = { FNG.FNG_mantetsu_max_efficiency = 0 }
-				check_variable = { FNG.FNG_mantetsu_factory_output = 0 }
-			}
+			check_variable = { FNG.FNG_mantetsu_max_efficiency = 0 }
+			check_variable = { FNG.FNG_mantetsu_factory_output = 0 }
 		}
 		localization_key = FNG_mantetsu_construction_speed_text_last
 	}

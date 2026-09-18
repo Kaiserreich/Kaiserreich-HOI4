@@ -238,6 +238,53 @@ country_event = { #Zwolle Massacre
 	}
 }
 
+country_event = { # Event for the AI to pick between going Socialist or not
+	id = netherlands_starting_events.1000
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = yes
+	}
+
+	option = { # Not Socialist
+		log = "[GetLogInfo]: event netherlands_starting_events.1000 option 1"
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
+					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
+					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
+					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
+					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
+				}
+			}
+		}
+	}
+
+	option = { # Socialist
+		log = "[GetLogInfo]: event netherlands_starting_events.1000 option 2"
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				NOT = {
+					has_game_rule = { rule = HOL_path option = DEFAULT }
+					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
+					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
+					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
+					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
+					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
+				}
+			}
+		}
+		set_country_flag = HOL_socialist_ai
+	}
+}
+
 ###################################
 # Dutch Elections 1937
 ###################################
@@ -364,6 +411,7 @@ country_event = { #Dutch Elections 1937
 			modifier = {
 				factor = 0
 				OR = {
+					has_country_flag = HOL_socialist_ai
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCLIB_SOCDEM }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_MARLIB }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCDEM }
@@ -375,11 +423,6 @@ country_event = { #Dutch Elections 1937
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCLIB }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCCON }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCCON_PATAUT }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_AUTDEM }
 				}
 			}
@@ -426,11 +469,7 @@ country_event = { #Lijst Links victorious, but Wilhelmina will only accept a lef
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
+					has_country_flag = HOL_socialist_ai
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCDEM }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_REP_SOCDEM }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_REP_SOCLIB }
@@ -715,6 +754,11 @@ country_event = { #Reijnders seeks support for putsch in Germany
 			modifier = {
 				factor = 1.5
 				is_in_faction_with = GER
+			}
+			modifier = {
+				factor = 0
+				has_completed_focus = HOL_left_list_victorious
+				has_country_flag = HOL_socialist_ai
 			}
 		}
 		add_manpower = -20000
@@ -1302,15 +1346,11 @@ country_event = { #Torching of the binnenhof
 			modifier = {
 				factor = 0
 				OR = {
+					has_country_flag = HOL_socialist_ai
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCCON_MARLIB }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCLIB }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCCON }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCCON_PATAUT }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_PATAUT }
 					has_game_rule = { rule = HOL_path option = HOL_PATH_NATPOP }
 				}
@@ -1374,13 +1414,7 @@ country_event = { #Antileftwing riots
 			base = 35
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
-				}
+				has_country_flag = HOL_socialist_ai
 			}
 		}
 		hidden_effect = {
@@ -1750,13 +1784,7 @@ country_event = { #Police partake in antileftist riots
 			base = 45
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
-				}
+				has_country_flag = HOL_socialist_ai
 			}
 		}
 		add_stability = -0.045
@@ -1771,14 +1799,7 @@ country_event = { #Police partake in antileftist riots
 			base = 55
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCCON_MARLIB }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCLIB }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCCON }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_MON_SOCCON_PATAUT }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NOT_SOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_AUTDEM }
-				}
+				NOT = { has_country_flag = HOL_socialist_ai }
 			}
 		}
 		add_stability = -0.025
@@ -5201,11 +5222,7 @@ country_event = { #Nacht der Dooie Rooie Ratten
 			base = 25
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_PATAUT }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NATPOP }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NOT_SOC }
-				}
+				NOT = { has_country_flag = HOL_socialist_ai }
 			}
 		}
 		hidden_effect = {
@@ -5228,11 +5245,7 @@ country_event = { #Daniel Goulooze arrested
 			base = 75
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_PATAUT }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NATPOP }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NOT_SOC }
-				}
+				NOT = { has_country_flag = HOL_socialist_ai }
 			}
 		}
 		add_political_power = 20
@@ -5325,13 +5338,7 @@ country_event = { #Harm Kolthek seeks refuge in Mexican embassy
 			base = 25
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
-				}
+				has_country_flag = HOL_socialist_ai
 			}
 		}
 		hidden_effect = {
@@ -5356,11 +5363,7 @@ country_event = { #Kolthek in Mexican Embassy
 			base = 45
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_PATAUT }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NATPOP }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NOT_SOC }
-				}
+				NOT = { has_country_flag = HOL_socialist_ai }
 			}
 		}
 		hidden_effect = {
@@ -5375,13 +5378,7 @@ country_event = { #Kolthek in Mexican Embassy
 			base = 25
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
-				}
+				has_country_flag = HOL_socialist_ai
 			}
 		}
 		add_stability = -0.05
@@ -6515,13 +6512,7 @@ country_event = { #The Batavian Commune forms and we need to react
 			base = 20
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
-				}
+				HOL = { has_country_flag = HOL_socialist_ai }
 			}
 		}
 		add_manpower = -500
@@ -6566,13 +6557,7 @@ country_event = { #The Batavian Commune forms and we need to react
 			}
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-					has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
-				}
+				HOL = { has_country_flag = HOL_socialist_ai }
 			}
 		}
 		create_wargoal = {

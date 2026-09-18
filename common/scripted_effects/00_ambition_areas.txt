@@ -29,9 +29,12 @@ create_ambition_areas = {
 				is_core_of = AFG
 				is_claimed_by = AFG
 				is_afghanistan = yes
+				state = 410 #Sistan
 				state = 442 #Peshawar
+				state = 443 #Sind
 				state = 444 #Baluchistan
 				state = 445 #Quetta
+				state = 1042 #Badakhshan
 			}
 		}
 		set_variable = { ambition_area_@AFG = 1 }
@@ -1707,6 +1710,20 @@ create_ambition_areas = {
 			}
 		}
 		set_variable = { ambition_area_@PRU = 1 }
+	}
+	# PTH = Pathanistan
+	if = {
+		limit = {
+			OR = {
+				is_core_of = PTH
+				is_claimed_by = PTH
+				state = 442 #Peshawar
+				state = 443 #Sind
+				state = 444 #Baluchistan
+				state = 445 #Quetta
+			}
+		}
+		set_variable = { ambition_area_@PTH = 1 }
 	}
 	# QIE = Empire of China
 	if = {

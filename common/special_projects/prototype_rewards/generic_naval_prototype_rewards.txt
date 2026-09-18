@@ -37,14 +37,9 @@ sp_naval_generic_reward_scientist_xp_1 = {
 
 		iteration_output = {
 			scientist_effects = {
-				if = {
-					limit = {
-
-					}
-					add_scientist_xp = {
-						experience = constant:sp_scientist_xp_gain.low
-						specialization = specialization_naval
-					}
+				add_scientist_xp = {
+					experience = constant:sp_scientist_xp_gain.low
+					specialization = specialization_naval
 				}
 				FROM = { set_project_flag = sp_naval_generic_reward_scientist_xp_flag }
 			}

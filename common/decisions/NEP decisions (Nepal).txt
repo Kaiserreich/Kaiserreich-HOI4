@@ -510,6 +510,44 @@ NEP_the_darjeeling_conspiracy_category = {
 	}
 }
 
+operations = {
+	NEP_sikkim_war_timer = {
+		icon = generic_prepare_civil_war
+		priority = 100
+		allowed = { always = no } #manually activated
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		cancel_trigger = {
+			has_war = no
+		}
+
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 150
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout NEP_sikkim_war_timer"
+			custom_effect_tooltip = BHU_tt_sikkim_nep_war_timer
+			if = {
+				limit = {
+					888 = { is_controlled_by_ROOT_or_ally = yes }
+					887 = { is_controlled_by_ROOT_or_ally = yes }
+				}
+				custom_effect_tooltip = BHU_tt_sikkim_nep_war_timer_good
+
+			}
+			else = {
+				custom_effect_tooltip = BHU_tt_sikkim_nep_war_timer_bad
+				country_event = bhutan_events.716
+			}
+		}
+		fixed_random_seed = no
+	}
+}
+
 foreign_politics = {
 	NEP_join_faction = {
 		name = NEP_join_faction_name

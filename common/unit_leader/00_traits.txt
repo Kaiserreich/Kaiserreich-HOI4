@@ -681,6 +681,44 @@ leader_traits = {
 		logistics_skill_factor = 1
 	}
 
+	marine_officer = {
+		type = land
+		trait_type = personality_trait
+
+		unit_trigger = {
+			division_has_majority_template = marine
+			owner = {
+				NOT = {
+					has_idea = best_of_the_best_spirit
+					has_idea = academy_scholarships_spirit
+				}
+			}
+		}
+
+		trait_xp_factor = {
+			naval_invader = 1     #+100%
+		}
+
+		new_commander_weight = {
+			factor = 1
+
+			modifier = {
+				FROM = { has_idea = best_of_the_best_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { has_idea = academy_scholarships_spirit }
+				factor = 0
+			}
+			modifier = {
+				has_dlc_bba = yes
+				factor = 0
+			}
+		}
+		logistics_skill_factor = 1
+		planning_skill_factor = 1
+	}
+
 ##################################
 # Field Marshal traits.
 ##################################
@@ -937,7 +975,7 @@ leader_traits = {
 				value = num_cavalry
 				add = num_motorized
 				add = num_mechanized
-				greater_than = { value = num_units  multiply = 0.4 }
+				greater_than = { value = num_units multiply = 0.4 }
 			}
 		}
 		custom_gain_xp_trigger_tooltip = cavalary_ratio_over_40
@@ -964,7 +1002,7 @@ leader_traits = {
 		gain_xp = {
 			check_expr = {
 				value = num_infantry
-				greater_than = { value = num_units  multiply = 0.8 }
+				greater_than = { value = num_units multiply = 0.8 }
 			}
 		}
 		custom_gain_xp_trigger_tooltip = infantry_ratio_over_80
@@ -988,10 +1026,10 @@ leader_traits = {
 		gain_xp_leader = {
 			if = {
 				limit = { is_leading_army_group = yes }
-				check_variable = { num_units > 99 }
+				num_units > 99
 			}
 			else = {
-				check_variable = { num_units > 23 }
+				num_units > 23
 			}
 		}
 		custom_gain_xp_trigger_tooltip = fighting_with_enough_units
@@ -1123,7 +1161,7 @@ leader_traits = {
 		gain_xp = {
 			check_expr = {
 				value = num_armored
-				greater_than = { value = num_units  multiply = 0.4 }
+				greater_than = { value = num_units multiply = 0.4 }
 			}
 		}
 		custom_gain_xp_trigger_tooltip = armored_ratio_over_40
@@ -2632,9 +2670,7 @@ leader_traits = {
 				factor = 0
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
+		ai_will_do = { factor = 1 }
 	}
 
 	destroyer_officer = {
@@ -2657,7 +2693,7 @@ leader_traits = {
 			ship_hull_light
 		}
 
-		trait_xp_factor	= {
+		trait_xp_factor = {
 			blockade_runner = 0.5
 			fleet_protector = 0.5
 		}
@@ -2672,10 +2708,7 @@ leader_traits = {
 				factor = 0
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
-
+		ai_will_do = { factor = 1 }
 	}
 
 	cruiser_officer = {
@@ -2698,7 +2731,7 @@ leader_traits = {
 			ship_hull_cruiser
 		}
 
-		trait_xp_factor	= {
+		trait_xp_factor = {
 			superior_tactician = 0.5
 			fleet_protector = 0.5
 		}
@@ -2713,10 +2746,7 @@ leader_traits = {
 				factor = 0
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
-
+		ai_will_do = { factor = 1 }
 	}
 
 	heavy_ship_officer = {
@@ -2739,7 +2769,7 @@ leader_traits = {
 			ship_hull_heavy
 		}
 
-		trait_xp_factor	= {
+		trait_xp_factor = {
 			superior_tactician = 0.5
 			ironside = 0.5
 		}
@@ -2754,10 +2784,7 @@ leader_traits = {
 				factor = 0
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
-
+		ai_will_do = { factor = 1 }
 	}
 
 	carrier_officer = {
@@ -2780,7 +2807,7 @@ leader_traits = {
 			ship_hull_carrier
 		}
 
-		trait_xp_factor	= {
+		trait_xp_factor = {
 			air_controller = 0.5
 			spotter = 0.5
 		}
@@ -2795,9 +2822,7 @@ leader_traits = {
 				factor = 0
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
+		ai_will_do = { factor = 1 }
 	}
 
 ##################################
@@ -2921,9 +2946,7 @@ leader_traits = {
 			army_non_core_defence_factor = 0.10
 		}
 
-		ai_will_do = {
-			factor = 1
-		}
+		ai_will_do = { factor = 1 }
 
 		new_commander_weight = {
 			factor = 0
@@ -2941,13 +2964,7 @@ leader_traits = {
 		new_commander_weight = {
 			base = 1
 			modifier = {
-				set_temp_variable = {
-					trait_chance = FROM.modifier@commando_trait_chance_factor
-				}
-				add_to_temp_variable = {
-					var = trait_chance
-					value = 1
-				}
+				set_temp_variable = { trait_chance = { value = FROM.modifier@commando_trait_chance_factor add = 1 } }
 				factor = trait_chance
 			}
 

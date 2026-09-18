@@ -52,20 +52,6 @@ on_actions = {
 					}
 				}
 
-				# clear CEN event targets
-				if = {
-					limit = { tag = event_target:CEN_socialist_leader }
-					clear_global_event_target = CEN_socialist_leader
-				}
-				if = {
-					limit = { tag = event_target:CEN_liberal_leader }
-					clear_global_event_target = CEN_liberal_leader
-				}
-				if = {
-					limit = { tag = event_target:CEN_military_leader }
-					clear_global_event_target = CEN_military_leader
-				}
-
 				# remove state modifiers
 				if = {
 					limit = {
@@ -230,32 +216,22 @@ on_actions = {
 			else_if = {
 				limit = {
 					is_central_american_tag = yes
+					is_in_faction = yes
+					scope:faction = { has_variable = central_america_unification_faction }
 					OR = {
 						AND = {
-							is_in_faction_with = event_target:CEN_socialist_leader
+							scope:faction = { check_variable = { central_america_unification_faction = 1 } }
 							has_socialist_government = no
 						}
 						AND = {
-							is_in_faction_with = event_target:CEN_liberal_leader
+							scope:faction = { check_variable = { central_america_unification_faction = 2 } }
 							has_elected_government = no
 						}
 						AND = {
-							is_in_faction_with = event_target:CEN_military_leader
+							scope:faction = { check_variable = { central_america_unification_faction = 3 } }
 							has_authoritarian_government = no
 						}
 					}
-				}
-				if = {
-					limit = { tag = event_target:CEN_socialist_leader }
-					clear_global_event_target = CEN_socialist_leader
-				}
-				else_if = {
-					limit = { tag = event_target:CEN_liberal_leader }
-					clear_global_event_target = CEN_liberal_leader
-				}
-				else_if = {
-					limit = { tag = event_target:CEN_military_leader }
-					clear_global_event_target = CEN_military_leader
 				}
 				if = {
 					limit = { is_faction_leader = yes }
@@ -385,7 +361,6 @@ on_actions = {
 				limit = { tag = COS }
 				country_event = costa_rica_events.4 #1936
 				country_event = costa_rica_events.71 #1940 Cortes
-				country_event = costa_rica_events.91 #1940/1944 Council
 				country_event = costa_rica_events.99 #1940/1944 Calderon
 			}
 			### Cuba ###
@@ -857,6 +832,41 @@ on_actions = {
 				CHL = {
 					country_event = { id = chile_events.12 days = 4 random_days = 4 }
 				}
+			}
+		}
+	}
+
+	on_monthly_ARG = {
+		effect = {
+			# Immigration
+			if = {
+				limit = {
+					get_month_of_year_trigger = yes
+					check_variable = { month_of_year = 1 }
+					check_variable = { global.year < 1946 }
+				}
+				country_event = { id = argentina_immigration_events.1 days = 10 random_days = 10 }
+			}
+		}
+	}
+
+	on_monthly_FOP = {
+		effect = {
+			# Immigration
+			if = {
+				limit = {
+					get_month_of_year_trigger = yes
+					check_variable = { month_of_year = 1 }
+					has_completed_focus = FOP_the_first_national_trade_union_congress
+					NOT = {
+						country_exists = ARG
+						has_idea = FOP_anti_syndie_rebels_idea1
+						has_idea = FOP_anti_syndie_rebels_idea2
+						has_idea = FOP_anti_syndie_rebels_idea3
+						has_idea = FOP_anti_syndie_rebels_idea4
+					}
+				}
+				country_event = { id = patagonia_events.41 days = 10 random_days = 10 }
 			}
 		}
 	}

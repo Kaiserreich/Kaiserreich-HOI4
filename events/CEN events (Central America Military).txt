@@ -1167,25 +1167,11 @@ country_event = { # Ubico's statue is finished, temporary Ubico wank event
 	title = central_america_dictatorship_events.43.t
 	desc = central_america_dictatorship_events.43.d
 	picture = GFX_report_event_GUA_ubico_gang
-	trigger = {
-		tag = CEN
-		has_global_flag = CEN_saviour_statue
-		OR = {
-			AND = {
-				date < 1940.06.04
-				date > 1940.06.10
-			}
-			AND = {
-				date < 1941.06.04
-				date > 1941.06.10
-			}
-			AND = {
-				date < 1942.06.04
-				date > 1942.06.10
-			}
-		}
-	}
-	fire_only_once = yes
+
+	trigger = { has_global_flag = CEN_saviour_statue }
+
+	is_triggered_only = yes
+
 	option = {
 		log = "[GetLogInfo]: event central_america_dictatorship_events.43 option central_america_dictatorship_events.43.a"
 		name = central_america_dictatorship_events.43.a
@@ -1194,6 +1180,7 @@ country_event = { # Ubico's statue is finished, temporary Ubico wank event
 			ideology = paternal_autocrat
 			popularity = 0.01
 		}
+		clr_global_flag = CEN_saviour_statue
 	}
 }
 
@@ -1354,11 +1341,7 @@ country_event = { ### IRCA status
 		}
 		ai_chance = { base = 50 }
 		add_political_power = 100
-		add_to_variable = {
-			var = UFC_power
-			value = 5
-			tooltip = cenmil_foreign_influence_grows_tt
-		}
+		add_to_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_grows_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}
@@ -1368,11 +1351,7 @@ country_event = { ### IRCA status
 		name = central_america_dictatorship_events.220.b
 		ai_chance = { base = 50 }
 		add_political_power = 25
-		add_to_variable = {
-			var = UFC_power
-			value = 1
-			tooltip = cenmil_foreign_influence_grows_tt
-		}
+		add_to_variable = { UFC_power = 1 tooltip = cenmil_foreign_influence_grows_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}
@@ -1386,11 +1365,7 @@ country_event = { ### IRCA status
 		ai_chance = { base = 50 }
 		add_political_power = -75
 		set_country_flag = CENmil_irca_nationalized
-		subtract_from_variable = {
-			var = UFC_power
-			value = 5
-			tooltip = cenmil_foreign_influence_decreases_tt
-		}
+		subtract_from_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_decreases_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}
@@ -1416,11 +1391,7 @@ country_event = { ### Railway planning
 		}
 		ai_chance = { base = 50 }
 		add_ideas = CENmil_small_investments
-		add_to_variable = {
-			var = UFC_power
-			value = 2
-			tooltip = cenmil_foreign_influence_grows_tt
-		}
+		add_to_variable = { UFC_power = 2 tooltip = cenmil_foreign_influence_grows_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}
@@ -1430,11 +1401,7 @@ country_event = { ### Railway planning
 		name = central_america_dictatorship_events.221.b
 		ai_chance = { base = 50 }
 		add_ideas = CENmil_medium_investments
-		subtract_from_variable = {
-			var = UFC_power
-			value = 1
-			tooltip = cenmil_foreign_influence_decreases_tt
-		}
+		subtract_from_variable = { UFC_power = 1 tooltip = cenmil_foreign_influence_decreases_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}
@@ -1449,11 +1416,7 @@ country_event = { ### Railway planning
 		add_ideas = CENmil_large_investments
 		custom_effect_tooltip = cenmil_more_gov_control_tt
 		clr_country_flag = CENmil_irca_nationalized
-		subtract_from_variable = {
-			var = UFC_power
-			value = 3
-			tooltip = cenmil_foreign_influence_decreases_tt
-		}
+		subtract_from_variable = { UFC_power = 3 tooltip = cenmil_foreign_influence_decreases_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}
@@ -1523,11 +1486,7 @@ country_event = { ### Going to Tegucigalpa
 		log = "[GetLogInfo]: event central_america_dictatorship_events.222 option central_america_dictatorship_events.222.a"
 		name = central_america_dictatorship_events.222.a
 		ai_chance = { base = 50 }
-		add_to_variable = {
-			var = UFC_power
-			value = 1
-			tooltip = cenmil_foreign_influence_grows_tt
-		}
+		add_to_variable = { UFC_power = 1 tooltip = cenmil_foreign_influence_grows_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}
@@ -2001,11 +1960,7 @@ country_event = { ### Strike killing
 		}
 		add_political_power = -75
 		add_stability = 0.03
-		subtract_from_variable = {
-			var = UFC_power
-			value = 5
-			tooltip = cenmil_foreign_influence_decreases_tt
-		}
+		subtract_from_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_decreases_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}
@@ -2095,11 +2050,7 @@ country_event = { ### Port Strike killing
 		}
 		add_political_power = -75
 		add_stability = 0.03
-		subtract_from_variable = {
-			var = UFC_power
-			value = 5
-			tooltip = cenmil_foreign_influence_decreases_tt
-		}
+		subtract_from_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_decreases_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}
@@ -2182,11 +2133,7 @@ country_event = { ### Rail Strike killing
 		}
 		add_political_power = -75
 		add_stability = 0.03
-		subtract_from_variable = {
-			var = UFC_power
-			value = 5
-			tooltip = cenmil_foreign_influence_decreases_tt
-		}
+		subtract_from_variable = { UFC_power = 5 tooltip = cenmil_foreign_influence_decreases_tt }
 		hidden_effect = {
 			update_CENmil_UFC = yes
 		}

@@ -64,12 +64,23 @@ characters = {
 		portraits = {
 			civilian = {
 				large = GFX_portrait_SAF_josiah_tshangana_gumede_civilian_large
+				small = GFX_portrait_SAF_josiah_tshangana_gumede_civilian_small
 			}
 		}
 		allowed_civil_war = { tag = SAF }
 		country_leader = {
 			desc = SAF_josiah_tshangana_gumede_leader_desc
 			ideology = social_democrat_subtype
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_josiah_tshangana_gumede_advisor
+			desc = SAF_josiah_tshangana_gumede_leader_desc
+			available = {
+				has_socialist_government = yes
+			}
+			traits = { KR_humanitarian }
+			cost = 150
 		}
 	}
 	SAF_davidson_don_tengo_jabavu = {
@@ -878,6 +889,221 @@ characters = {
 			cost = 150
 		}
 	}
+	SAF_awg_champion = {
+		name = SAF_awg_champion
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_awg_champion_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_awg_champion_advisor
+			available = {
+				if = {
+					limit = { has_socialist_government = no }
+					has_authoritarian_government = no
+				}
+			}
+			visible = {
+				OR = {
+					has_government = syndicalist
+					has_character_flag = SAF_gool_unlocked
+				}
+			}
+			traits = { KR_ambitious_union_boss }
+		}
+	}
+	SAF_h_selby_msimang = {
+		name = SAF_h_selby_msimang
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_h_selby_msimang_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_h_selby_msimang_advisor
+			available = {
+				if = {
+					limit = { has_socialist_government = no }
+					has_authoritarian_government = no
+				}
+			}
+			visible = {
+				OR = {
+					has_government = syndicalist
+					has_character_flag = SAF_gool_unlocked
+				}
+			}
+			traits = { KR_liberal_journalist }
+		}
+	}
+	SAF_james_calata = {
+		name = SAF_james_calata
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_james_calata_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_james_calata_advisor
+			available = {
+				has_socialist_government = yes
+			}
+			traits = { KR_spiritual_leader }
+		}
+	}
+	SAF_zk_matthews = {
+		name = SAF_zk_matthews
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_zk_matthews_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_zk_matthews_advisor
+			available = {
+				has_socialist_government = yes
+			}
+			traits = { KR_education_reformer }
+		}
+	}
+	SAF_james_m_thaele = {
+		name = SAF_james_m_thaele
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_james_m_thaele_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_james_m_thaele_advisor
+			available = {
+				has_socialist_government = yes
+			}
+			traits = { KR_political_showman }
+		}
+	}
+	SAF_johannes_nkosi = {
+		name = SAF_johannes_nkosi
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_johannes_nkosi_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_johannes_nkosi_advisor
+			available = {
+				has_socialist_government = yes
+			}
+			traits = { SAF_dynamic_militant }
+		}
+	}
+	SAF_jl_dube = {
+		name = SAF_jl_dube
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_jl_dube_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_jl_dube_advisor
+			available = {
+				has_socialist_government = yes
+			}
+			traits = { SAF_anc_founding_president }
+		}
+	}
+	SAF_josie_mpama = {
+		name = SAF_josie_mpama
+		gender = female
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_josie_mpama_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_josie_mpama_advisor
+			available = {
+				has_socialist_government = yes
+			}
+			traits = { KR_ideological_crusader }
+		}
+	}
+	SAF_roy_campbell = {
+		name = SAF_roy_campbell
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_roy_campbell_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_roy_campbell_advisor
+			available = {
+				has_socialist_government = no
+			}
+			visible = {
+				is_in_faction_with = ENT
+			}
+			traits = { KR_influential_poet }
+			cost = 150
+		}
+	}
+	SAF_carruthers_beattie = {
+		name = SAF_carruthers_beattie
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_carruthers_beattie_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_carruthers_beattie_advisor
+			available = {
+				has_socialist_government = no
+			}
+			visible = {
+				is_in_faction_with = ENT
+			}
+			traits = { SAF_university_of_cape_town_principal }
+			cost = 150
+		}
+	}
+	SAF_albert_van_der_sandt_centlivres = {
+		name = SAF_albert_van_der_sandt_centlivres
+		portraits = {
+			civilian = {
+				small = GFX_portrait_SAF_albert_van_der_sandt_centlivres_civilian_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		advisor = {
+			slot = political_advisor
+			idea_token = SAF_albert_van_der_sandt_centlivres_advisor
+			available = {
+				has_socialist_government = no
+			}
+			traits = { KR_brilliant_lawyer }
+			cost = 150
+		}
+	}
 	SAF_head_of_intelligence = { #special character that covers all three possible spymasters - the portrait and name change dynamically, see SAF_set_socialist_spymaster/SAF_set_british_spymaster/SAF_set_boer_spymaster
 		name = SAF_henry_landau
 		portraits = {
@@ -1096,7 +1322,32 @@ characters = {
 			logistics_skill = 1
 		}
 	}
-
+	SAF_hs_wakefield = {
+		name = SAF_hs_wakefield
+		portraits = {
+			army = {
+				large = GFX_portrait_SAF_hs_wakefield_army_large
+				small = GFX_portrait_SAF_hs_wakefield_army_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		corps_commander = {
+			desc = SAF_hs_wakefield_high_command_desc
+			traits = { cavalry_officer SAF_british_commander }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 1
+		}
+		advisor = {
+			slot = high_command
+			idea_token = SAF_hs_wakefield_high_command
+			ledger = army
+			traits = { KR_MHC_army_regrouping_1 }
+			cost = 50
+		}
+	}
 	SAF_dolf_de_la_rey = {
 		name = SAF_dolf_de_la_rey
 		portraits = {
@@ -1107,7 +1358,7 @@ characters = {
 		}
 		allowed_civil_war = { tag = SAF }
 		field_marshal = {
-			desc = SAF_dolf_de_la_rey_commander_desc
+			desc = SAF_dolf_de_la_rey_army_chief_desc
 			traits = { war_hero commando }
 			skill = 2
 			attack_skill = 2
@@ -1118,7 +1369,6 @@ characters = {
 		advisor = {
 			slot = army_chief
 			idea_token = SAF_dolf_de_la_rey_army_chief
-			desc = SAF_dolf_de_la_rey_commander_desc
 			available = {
 				not_already_hired_except_as = army_chief
 			}
@@ -1128,6 +1378,7 @@ characters = {
 		advisor = {
 			slot = high_command
 			idea_token = SAF_dolf_de_la_rey_high_command
+			desc = SAF_dolf_de_la_rey_army_chief_desc
 			ledger = army
 			available = {
 				not_already_hired_except_as = high_command
@@ -1146,7 +1397,7 @@ characters = {
 		}
 		allowed_civil_war = { tag = SAF }
 		corps_commander = {
-			desc = SAF_philip_hamond_commander_desc
+			desc = SAF_philip_hamond_army_chief_desc
 			traits = { career_officer panzer_leader }
 			skill = 3
 			attack_skill = 3
@@ -1157,7 +1408,6 @@ characters = {
 		advisor = {
 			slot = army_chief
 			idea_token = SAF_philip_hamond_army_chief
-			desc = SAF_philip_hamond_commander_desc
 			available = {
 				not_already_hired_except_as = army_chief
 			}
@@ -1167,7 +1417,7 @@ characters = {
 		advisor = {
 			slot = high_command
 			idea_token = SAF_philip_hamond_high_command
-			desc = SAF_philip_hamond_commander_desc
+			desc = SAF_philip_hamond_army_chief_desc
 			ledger = army
 			available = {
 				not_already_hired_except_as = high_command
@@ -1186,7 +1436,7 @@ characters = {
 		}
 		allowed_civil_war = { tag = SAF }
 		corps_commander = {
-			desc = SAF_lancelot_john_morley_turney_commander_desc
+			desc = SAF_lancelot_john_morley_turney_high_command_desc
 			traits = { trait_reckless rising_star }
 			skill = 2
 			attack_skill = 2
@@ -1231,7 +1481,7 @@ characters = {
 		}
 		allowed_civil_war = { tag = SAF }
 		corps_commander = {
-			desc = SAF_govan_archibald_myuyelwa_mbeki_high_command_desc
+			desc = SAF_govan_archibald_myuyelwa_mbeki_commander_desc
 			traits = { infantry_officer rising_star }
 			skill = 1
 			attack_skill = 1
@@ -1250,7 +1500,7 @@ characters = {
 		}
 		allowed_civil_war = { tag = SAF }
 		corps_commander = {
-			desc = SAF_thabo_edwin_mofutsanyana_high_command_desc
+			desc = SAF_thabo_edwin_mofutsanyana_commander_desc
 			traits = { politically_connected rising_star }
 			skill = 1
 			attack_skill = 1
@@ -1295,6 +1545,25 @@ characters = {
 			defense_skill = 2
 			planning_skill = 2
 			logistics_skill = 2
+		}
+	}
+	SAF_jb_marks = {
+		name = SAF_jb_marks
+		portraits = {
+			army = {
+				large = GFX_portrait_SAF_jb_marks_army_large
+				small = GFX_portrait_SAF_jb_marks_army_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		corps_commander = {
+			desc = SAF_jb_marks_commander_desc
+			traits = { trickster guerilla_fighter rising_star }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
 		}
 	}
 
@@ -1534,11 +1803,52 @@ characters = {
 		advisor = {
 			slot = high_command
 			idea_token = SAF_kenneth_van_der_spuy_high_command
+			desc = SAF_kenneth_van_der_spuy_air_chief_desc
 			ledger = air
 			available = {
 				not_already_hired_except_as = high_command
 			}
 			traits = { KR_MHC_air_superiority_2 }
+			cost = 100
+		}
+	}
+	SAF_ib_tabata = {
+		name = SAF_ib_tabata
+		portraits = {
+			army = {
+				large = GFX_portrait_SAF_ib_tabata_army_large
+				small = GFX_portrait_SAF_ib_tabata_army_small
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		corps_commander = {
+			desc = SAF_ib_tabata_theorist_desc
+			traits = { rising_star }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+		advisor = {
+			slot = theorist
+			idea_token = SAF_ib_tabata_theorist
+			ledger = army
+			available = {
+				not_already_hired_except_as = theorist
+			}
+			traits = { KR_military_theorist }
+			cost = 100
+		}
+		advisor = {
+			slot = high_command
+			idea_token = SAF_ib_tabata_high_command
+			desc = SAF_ib_tabata_theorist_desc
+			ledger = army
+			available = {
+				not_already_hired_except_as = high_command
+			}
+			traits = { KR_MHC_army_logistics_2 }
 			cost = 100
 		}
 	}
@@ -1610,6 +1920,7 @@ characters = {
 		advisor = {
 			slot = high_command
 			idea_token = SAF_adolph_gysbert_malan_high_command
+			desc = SAF_adolph_gysbert_malan_air_chief_desc
 			ledger = air
 			available = {
 				not_already_hired_except_as = high_command
@@ -1632,6 +1943,48 @@ characters = {
 			ledger = military
 			traits = { KR_council_of_theorists }
 			cost = 100
+		}
+	}
+
+	##################
+	### Scientists ###
+	##################
+	SAF_abraham_du_toit = {
+		name = SAF_abraham_du_toit
+		portraits = {
+			civilian = {
+				large = GFX_portrait_scientist_europe_male_9
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		scientist = {
+			traits = { scientist_trait_fast_learner scientist_trait_armored_specialist }
+			skills = { specialization_land = 1 }
+		}
+	}
+	SAF_basil_schonland = {
+		name = SAF_basil_schonland
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SAF_basil_schonland_scientist_large
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		scientist = {
+			traits = { scientist_trait_gifted_engineer }
+			skills = { specialization_air = 2 }
+		}
+	}
+	SAF_stefan_meiring_naude = {
+		name = SAF_stefan_meiring_naude
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SAF_stefan_meiring_naude_scientist_large
+			}
+		}
+		allowed_civil_war = { tag = SAF }
+		scientist = {
+			skills = { specialization_nuclear = 1 }
 		}
 	}
 }

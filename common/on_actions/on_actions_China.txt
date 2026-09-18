@@ -1,13 +1,4 @@
 on_actions = {
-	on_daily = {
-		effect = {
-			if = {
-				limit = { has_country_flag = china_alignment_gui_visibility }
-				CHN_calculate_china_alignment_gui_effect = yes
-				CHN_update_china_alignment_gui = yes
-			}
-		}
-	}
 
 	on_startup = {
 		effect = {
@@ -346,168 +337,227 @@ on_actions = {
 			}
 
 			#Initialise state flags
-			326 = { set_state_flag = guangdong_province_state } #Hong Kong
-			591 = { set_state_flag = guangdong_province_state } #Qiongya
-			592 = { set_state_flag = guangdong_province_state } #Guangzhou
-			593 = { set_state_flag = guangdong_province_state } #Qingyuan
-			728 = { set_state_flag = guangdong_province_state } #Guangzhouwan
-			729 = { set_state_flag = guangdong_province_state } #Macau
-			800 = { set_state_flag = guangdong_province_state } #Shaoguan
-			801 = { set_state_flag = guangdong_province_state } #Shantou
-			1012 = { set_state_flag = guangdong_province_state } #Huiyang
-			1056 = { set_state_flag = guangdong_province_state } #Beihai
+			592 = { #Guangdong Province guangdong_province_state
+				set_variable = { 326.chinese_province_state = THIS } #Hong Kong
+				set_variable = { 591.chinese_province_state = THIS } #Qiongya
+				set_variable = { 592.chinese_province_state = THIS } #Guangzhou
+				set_variable = { 593.chinese_province_state = THIS } #Qingyuan
+				set_variable = { 728.chinese_province_state = THIS } #Guangzhouwan
+				set_variable = { 729.chinese_province_state = THIS } #Macau
+				set_variable = { 800.chinese_province_state = THIS } #Shaoguan
+				set_variable = { 801.chinese_province_state = THIS } #Shantou
+				set_variable = { 1012.chinese_province_state = THIS } #Huiyang
+				set_variable = { 1056.chinese_province_state = THIS } #Beihai
+			}
 
-			594 = { set_state_flag = guangxi_province_state } #Nanning
-			599 = { set_state_flag = guangxi_province_state } #Guilin
-			1054 = { set_state_flag = guangxi_province_state } #Tiannan
-			1055 = { set_state_flag = guangxi_province_state } #Liuzhou
+			594 = { #Guangxi Province guangxi_province_state
+				set_variable = { 594.chinese_province_state = THIS } #Nanning
+				set_variable = { 599.chinese_province_state = THIS } #Guilin
+				set_variable = { 1054.chinese_province_state = THIS } #Tiannan
+				set_variable = { 1055.chinese_province_state = THIS } #Liuzhou
+			}
 
-			608 = { set_state_flag = zhili_province_state } #Beijing
-			609 = { set_state_flag = zhili_province_state } #Tianjin
-			614 = { set_state_flag = zhili_province_state } #Tangshan
-			1061 = { set_state_flag = zhili_province_state } #Shimen
-			1062 = { set_state_flag = zhili_province_state } #Baoding
-			1068 = { set_state_flag = zhili_province_state } #Qinhuangdao
+			608 = { #Zhili Province zhili_province_state
+				set_variable = { 608.chinese_province_state = THIS } #Beijing
+				set_variable = { 609.chinese_province_state = THIS } #Tianjin
+				set_variable = { 614.chinese_province_state = THIS } #Tangshan
+				set_variable = { 1061.chinese_province_state = THIS } #Shimen
+				set_variable = { 1062.chinese_province_state = THIS } #Baoding
+				set_variable = { 1068.chinese_province_state = THIS } #Qinhuangdao
+			}
 
-			607 = { set_state_flag = henan_province_state } #Luoyang
-			1058 = { set_state_flag = henan_province_state } #Xinyang
-			1059 = { set_state_flag = henan_province_state } #Kaifeng
-			1060 = { set_state_flag = henan_province_state } #Hebi
+			607 = { #Henan Province henan_province_state
+				set_variable = { 607.chinese_province_state = THIS } #Luoyang
+				set_variable = { 1058.chinese_province_state = THIS } #Xinyang
+				set_variable = { 1059.chinese_province_state = THIS } #Kaifeng
+				set_variable = { 1060.chinese_province_state = THIS } #Hebi
+			}
 
-			620 = { set_state_flag = hubei_province_state } #Xiangyang
-			1048 = { set_state_flag = hubei_province_state } #Wuhan
-			1049 = { set_state_flag = hubei_province_state } #Shihe
+			1048 = { #Hubei Province hubei_province_state
+				set_variable = { 620.chinese_province_state = THIS } #Xiangyang
+				set_variable = { 1048.chinese_province_state = THIS } #Wuhan
+				set_variable = { 1049.chinese_province_state = THIS } #Shihe
+			}
 
-			602 = { set_state_flag = hunan_province_state } #Changsha
-			1013 = { set_state_flag = hunan_province_state } #Changde
+			602 = { #Hunan Province hunan_province_state
+				set_variable = { 602.chinese_province_state = THIS } #Changsha
+				set_variable = { 1013.chinese_province_state = THIS } #Changde
+			}
 
-			598 = { set_state_flag = jiangsu_province_state } #Yancheng
-			613 = { set_state_flag = jiangsu_province_state } #Nanjing
-			743 = { set_state_flag = jiangsu_province_state } #Shanghai
-			1047 = { set_state_flag = jiangsu_province_state } #Xuzhou
-			1075 = { set_state_flag = jiangsu_province_state } #Nantong
+			613 = { #Jiangsu Province jiangsu_province_state
+				set_variable = { 598.chinese_province_state = THIS } #Yancheng
+				set_variable = { 613.chinese_province_state = THIS } #Nanjing
+				set_variable = { 743.chinese_province_state = THIS } #Shanghai
+				set_variable = { 1047.chinese_province_state = THIS } #Xuzhou
+				set_variable = { 1075.chinese_province_state = THIS } #Nantong
+			}
 
-			600 = { set_state_flag = jiangxi_province_state } #Ganzhou
-			1044 = { set_state_flag = jiangxi_province_state } #Nanchang
+			600 = { #Jiangxi Province jiangxi_province_state
+				set_variable = { 600.chinese_province_state = THIS } #Ganzhou
+				set_variable = { 1044.chinese_province_state = THIS } #Nanchang
+			}
 
-			622 = { set_state_flag = shaanxi_province_state } #Yulin
-			799 = { set_state_flag = shaanxi_province_state } #Guanzhong
+			622 = { #Shaanxi Province shaanxi_province_state
+				set_variable = { 622.chinese_province_state = THIS } #Yulin
+				set_variable = { 799.chinese_province_state = THIS } #Guanzhong
+			}
 
-			615 = { set_state_flag = shanxi_province_state } #Datong
-			1072 = { set_state_flag = shanxi_province_state } #Central Shanxi
+			1072 = { #Shanxi Province shanxi_province_state
+				set_variable = { 615.chinese_province_state = THIS } #Datong
+				set_variable = { 1072.chinese_province_state = THIS } #Central Shanxi
+			}
 
-			597 = { set_state_flag = shandong_province_state } #Jinan
-			744 = { set_state_flag = shandong_province_state } #Qingdao
-			1063 = { set_state_flag = shandong_province_state } #Dezhou
-			1064 = { set_state_flag = shandong_province_state } #Linyi
-			1065 = { set_state_flag = shandong_province_state } #Weixian
+			597 = { #Shandong Province shandong_province_state
+				set_variable = { 597.chinese_province_state = THIS } #Jinan
+				set_variable = { 744.chinese_province_state = THIS } #Qingdao
+				set_variable = { 1063.chinese_province_state = THIS } #Dezhou
+				set_variable = { 1064.chinese_province_state = THIS } #Linyi
+				set_variable = { 1065.chinese_province_state = THIS } #Weixian
+			}
 
-			606 = { set_state_flag = anhui_province_state } #Anqing
-			1014 = { set_state_flag = anhui_province_state } #Wuhu
-			1050 = { set_state_flag = anhui_province_state } #Bengbu
+			606 = { #Anhui Province anhui_province_state
+				set_variable = { 606.chinese_province_state = THIS } #Anqing
+				set_variable = { 1014.chinese_province_state = THIS } #Wuhu
+				set_variable = { 1050.chinese_province_state = THIS } #Bengbu
+			}
 
-			596 = { set_state_flag = zhejiang_province_state } #Hangzhou
-			746 = { set_state_flag = zhejiang_province_state } #Ningbo
-			803 = { set_state_flag = zhejiang_province_state } #Wenzhou
-			1067 = { set_state_flag = zhejiang_province_state } #Jinhua
-			1069 = { set_state_flag = zhejiang_province_state } #Lishui
+			596 = { #Zhejiang Province zhejiang_province_state
+				set_variable = { 596.chinese_province_state = THIS } #Hangzhou
+				set_variable = { 746.chinese_province_state = THIS } #Ningbo
+				set_variable = { 803.chinese_province_state = THIS } #Wenzhou
+				set_variable = { 1067.chinese_province_state = THIS } #Jinhua
+				set_variable = { 1069.chinese_province_state = THIS } #Lishui
+			}
 
-			595 = { set_state_flag = fujian_province_state } #Nanping
-			747 = { set_state_flag = fujian_province_state } #Fuzhou
-			802 = { set_state_flag = fujian_province_state } #Xiamen
-			1046 = { set_state_flag = fujian_province_state } #Longyan
-			1066 = { set_state_flag = fujian_province_state } #Qanzhou
+			595 = { #Fujian Province fujian_province_state
+				set_variable = { 595.chinese_province_state = THIS } #Nanping
+				set_variable = { 747.chinese_province_state = THIS } #Fuzhou
+				set_variable = { 802.chinese_province_state = THIS } #Xiamen
+				set_variable = { 1046.chinese_province_state = THIS } #Longyan
+				set_variable = { 1066.chinese_province_state = THIS } #Qanzhou
+			}
 
-			601 = { set_state_flag = sichuan_province_state } #Xikang
-			605 = { set_state_flag = sichuan_province_state } #Chengdu
-			650 = { set_state_flag = sichuan_province_state } #Chongqing
-			661 = { set_state_flag = sichuan_province_state } #Daxian
-			788 = { set_state_flag = sichuan_province_state } #Aba
-			1015 = { set_state_flag = sichuan_province_state } #Ya'an
+			605 = { #Sichuan Province sichuan_province_state
+				set_variable = { 601.chinese_province_state = THIS } #Xikang
+				set_variable = { 605.chinese_province_state = THIS } #Chengdu
+				set_variable = { 650.chinese_province_state = THIS } #Chongqing
+				set_variable = { 661.chinese_province_state = THIS } #Daxian
+				set_variable = { 788.chinese_province_state = THIS } #Aba
+				set_variable = { 1015.chinese_province_state = THIS } #Ya'an
+			}
 
-			603 = { set_state_flag = guizhou_province_state } #Qiangzhong
-			1051 = { set_state_flag = guizhou_province_state } #Guiyang
-			1052 = { set_state_flag = guizhou_province_state } #Kaili
+			1051 = { #Guizhou Province guizhou_province_state
+				set_variable = { 603.chinese_province_state = THIS } #Qiangzhong
+				set_variable = { 1051.chinese_province_state = THIS } #Guiyang
+				set_variable = { 1052.chinese_province_state = THIS } #Kaili
+			}
 
-			325 = { set_state_flag = yunnan_province_state } #Kunming
-			816 = { set_state_flag = yunnan_province_state } #Dali
-			1111 = { set_state_flag = yunnan_province_state } #Hukawng Valley
+			325 = { #Yunnan Province yunnan_province_state
+				set_variable = { 325.chinese_province_state = THIS } #Kunming
+				set_variable = { 816.chinese_province_state = THIS } #Dali
+				set_variable = { 1111.chinese_province_state = THIS } #Hukawng Valley
+			}
 
-			353 = { set_state_flag = qinghai_province_state } #Yushu
-			604 = { set_state_flag = qinghai_province_state } #Babao
-			1045 = { set_state_flag = qinghai_province_state } #Xining
+			353 = { #Qinghai Province qinghai_province_state
+				set_variable = { 353.chinese_province_state = THIS } #Yushu
+				set_variable = { 604.chinese_province_state = THIS } #Babao
+				set_variable = { 1045.chinese_province_state = THIS } #Xining
+			}
 
-			283 = { set_state_flag = gansu_province_state } #Lanzhou
-			774 = { set_state_flag = gansu_province_state } #Hexi Corridor
+			283 = { #Gansu Province gansu_province_state
+				set_variable = { 283.chinese_province_state = THIS } #Lanzhou
+				set_variable = { 774.chinese_province_state = THIS } #Hexi Corridor
+			}
 
-			348 = { set_state_flag = ningxia_province_state } #Alxa
-			1120 = { set_state_flag = ningxia_province_state } #Yinchuan
+			348 = { #Ningxia Province ningxia_province_state
+				set_variable = { 348.chinese_province_state = THIS } #Alxa
+				set_variable = { 1120.chinese_province_state = THIS } #Yinchuan
+			}
 
-			328 = { set_state_flag = fengtian_province_state } #Andong
-			715 = { set_state_flag = fengtian_province_state } #Liaobei
-			716 = { set_state_flag = fengtian_province_state } #Liaoning
-			745 = { set_state_flag = fengtian_province_state } #Dalian
+			716 = { #Fengtian Province fengtian_province_state
+				set_variable = { 328.chinese_province_state = THIS } #Andong
+				set_variable = { 715.chinese_province_state = THIS } #Liaobei
+				set_variable = { 716.chinese_province_state = THIS } #Liaoning
+				set_variable = { 745.chinese_province_state = THIS } #Dalian
+			}
 
-			717 = { set_state_flag = jilin_province_state } #Hejiang
-			886 = { set_state_flag = jilin_province_state } #Jilin
-			408 = { set_state_flag = jilin_province_state } #Vladivostok
-			409 = { set_state_flag = jilin_province_state } #Khabarovsk
-			537 = { set_state_flag = jilin_province_state } #South Sakhalin
-			577 = { set_state_flag = jilin_province_state } #North Sakhalin
+			886 = { #Jilin Province jilin_province_state
+				set_variable = { 717.chinese_province_state = THIS } #Hejiang
+				set_variable = { 886.chinese_province_state = THIS } #Jilin
+				set_variable = { 408.chinese_province_state = THIS } #Vladivostok
+				set_variable = { 409.chinese_province_state = THIS } #Khabarovsk
+				set_variable = { 537.chinese_province_state = THIS } #South Sakhalin
+				set_variable = { 577.chinese_province_state = THIS } #North Sakhalin
+			}
 
-			714 = { set_state_flag = heilongjiang_province_state } #Qiqihar
-			883 = { set_state_flag = heilongjiang_province_state } #Aigun
-			884 = { set_state_flag = heilongjiang_province_state } #Hulunbuir
-			885 = { set_state_flag = heilongjiang_province_state } #Songjiang
-			560 = { set_state_flag = heilongjiang_province_state } #Nikolayevsk
-			561 = { set_state_flag = heilongjiang_province_state } #Amur
-			657 = { set_state_flag = heilongjiang_province_state } #Blagoveshchensk
-			996 = { set_state_flag = heilongjiang_province_state } #Barga
+			714 = { #Heilongjiang Province heilongjiang_province_state
+				set_variable = { 714.chinese_province_state = THIS } #Qiqihar
+				set_variable = { 883.chinese_province_state = THIS } #Aigun
+				set_variable = { 884.chinese_province_state = THIS } #Hulunbuir
+				set_variable = { 885.chinese_province_state = THIS } #Songjiang
+				set_variable = { 560.chinese_province_state = THIS } #Nikolayevsk
+				set_variable = { 561.chinese_province_state = THIS } #Amur
+				set_variable = { 657.chinese_province_state = THIS } #Blagoveshchensk
+				set_variable = { 996.chinese_province_state = THIS } #Barga
+			}
 
-			610 = { set_state_flag = rehe_province_state } #Rehe
+			610 = { #Rehe Province rehe_province_state
+				set_variable = { 610.chinese_province_state = THIS } #Rehe
+			}
 
-			621 = { set_state_flag = suiyuan_province_state } #Ulanqab
-			616 = { set_state_flag = suiyuan_province_state } #Ordos
+			621 = { #Suiyuan Province suiyuan_province_state
+				set_variable = { 621.chinese_province_state = THIS } #Ulanqab
+				set_variable = { 616.chinese_province_state = THIS } #Ordos
+			}
 
-			611 = { set_state_flag = chahar_province_state } #Chahar
-			612 = { set_state_flag = chahar_province_state } #Xilingol
+			611 = { #Chahar Province chahar_province_state
+				set_variable = { 611.chinese_province_state = THIS } #Chahar
+				set_variable = { 612.chinese_province_state = THIS } #Xilingol
+			}
 
-			287 = { set_state_flag = xinjiang_province_state } #Hotan
-			617 = { set_state_flag = xinjiang_province_state } #Dihua
-			618 = { set_state_flag = xinjiang_province_state } #Dzungaria
-			619 = { set_state_flag = xinjiang_province_state } #Kashgar
-			897 = { set_state_flag = xinjiang_province_state } #Aksai Chin
-			1042 = { set_state_flag = xinjiang_province_state } #Badakhshan
-			1083 = { set_state_flag = xinjiang_province_state } #Kumul
-			1085 = { set_state_flag = xinjiang_province_state } #Taklamakan Desert
+			617 = { #Xinjiang Province xinjiang_province_state
+				set_variable = { 287.chinese_province_state = THIS } #Hotan
+				set_variable = { 617.chinese_province_state = THIS } #Dihua
+				set_variable = { 618.chinese_province_state = THIS } #Dzungaria
+				set_variable = { 619.chinese_province_state = THIS } #Kashgar
+				set_variable = { 897.chinese_province_state = THIS } #Aksai Chin
+				set_variable = { 1042.chinese_province_state = THIS } #Badakhshan
+				set_variable = { 1083.chinese_province_state = THIS } #Kumul
+				set_variable = { 1085.chinese_province_state = THIS } #Taklamakan Desert
+			}
 
-			524 = { set_state_flag = taiwan_province_state } #Taiwan
+			524 = { #Taiwan Province taiwan_province_state
+				set_variable = { 524.chinese_province_state = THIS } #Taiwan
+			}
 
-			329 = { set_state_flag = mongolia_province_state } #Tuva
-			330 = { set_state_flag = mongolia_province_state } #Urga
-			1084 = { set_state_flag = mongolia_province_state } #Uliastai
-			1114 = { set_state_flag = mongolia_province_state } #Gobi Desert
-			1115 = { set_state_flag = mongolia_province_state } #Moron
-			1116 = { set_state_flag = mongolia_province_state } #Bayan Tumen
+			330 = { #Mongolia (Wai Menggu) Province mongolia_province_state
+				set_variable = { 329.chinese_province_state = THIS } #Tuva
+				set_variable = { 330.chinese_province_state = THIS } #Urga
+				set_variable = { 1084.chinese_province_state = THIS } #Uliastai
+				set_variable = { 1114.chinese_province_state = THIS } #Gobi Desert
+				set_variable = { 1115.chinese_province_state = THIS } #Moron
+				set_variable = { 1116.chinese_province_state = THIS } #Bayan Tumen
+			}
 
-			322 = { set_state_flag = tibet_province_state } #Lhasa
-			693 = { set_state_flag = tibet_province_state } #Chamdo
-			748 = { set_state_flag = tibet_province_state } #Tsonyi
-			858 = { set_state_flag = tibet_province_state } #Tawang
-			1086 = { set_state_flag = tibet_province_state } #Gartok
-
+			322 = { #Tibet (Xizang) Province tibet_province_state
+				set_variable = { 322.chinese_province_state = THIS } #Lhasa
+				set_variable = { 693.chinese_province_state = THIS } #Chamdo
+				set_variable = { 748.chinese_province_state = THIS } #Tsonyi
+				set_variable = { 858.chinese_province_state = THIS } #Tawang
+				set_variable = { 1086.chinese_province_state = THIS } #Gartok
+			}
 			#Initialise state modifiers
 			every_state = {
 				limit = {
 					is_core_china = yes
 					owner = { is_chinese_tag = yes }
 					is_possible_legation_cities_state = no
-					NOT = { has_state_flag = ningxia_province_state }
-					NOT = { has_state_flag = qinghai_province_state }
-					NOT = { has_state_flag = suiyuan_province_state }
-					NOT = { has_state_flag = chahar_province_state }
-					NOT = { has_state_flag = xinjiang_province_state }
-					NOT = { has_state_flag = taiwan_province_state }
+					NOT = { check_variable = { chinese_province_state = 348.id } }
+					NOT = { check_variable = { chinese_province_state = 353.id } }
+					NOT = { check_variable = { chinese_province_state = 621.id } }
+					NOT = { check_variable = { chinese_province_state = 611.id } }
+					NOT = { check_variable = { chinese_province_state = 617.id } }
+					NOT = { check_variable = { chinese_province_state = 524.id } }
 					NOT = { state = 601 } #Xikang
 					NOT = { state = 774 } #Hexi Corridor
 					NOT = { state = 788 } #Aba
@@ -1051,6 +1101,48 @@ on_actions = {
 	}
 
 	# ROOT is country
+	on_daily_ANQ = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_CHI = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_FNG = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_GXC = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_HNN = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_LEP = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
 	on_daily_QIE = {
 		effect = {
 			if = {
@@ -1065,6 +1157,56 @@ on_actions = {
 				}
 				QIE_recalculate_yiguandao_influence = yes
 			}
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_SHX = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_SIK = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_SHD = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_SZC = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_XSM = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_YUN = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
+		}
+	}
+
+	# ROOT is country
+	on_daily_KUM = {
+		effect = {
+			CHN_china_GUI_daily_update = yes
 		}
 	}
 
@@ -1827,7 +1969,6 @@ on_actions = {
 						limit = { tag = CHI }
 						country_event = { id = CHI.lategame.068 days = 7 } #The Situation in Tibet
 					}
-
 				}
 				if = {
 					limit = {
@@ -1867,11 +2008,12 @@ on_actions = {
 					OR = {
 						owns_state = 714 #Qiqihar
 						owns_state = 716 #Shenyang
-						owns_state = 745 #Dalian
+						#owns_state = 745 #Dalian - Dalian is handed to China via scripted peace before the actual FNG conference so remove.
 						owns_state = 885 #Harbin
 						owns_state = 886 #Jinling
 					}
 				}
+				set_country_flag = CHN_has_occupied_dongbei_flag
 				country_event = china_events.474 #The Devastation of Dongbei
 			}
 		}
@@ -2135,6 +2277,10 @@ on_actions = {
 					country_event = { id = fengtian_events.34 days = 36 random_hours = 1500 } #Red Spears in Dezhou
 				}
 				else_if = {
+					limit = { FROM.FROM = { state = 1060 } } #Hebei
+					country_event = { id = fengtian_events.325 days = 2 } #The New People's Society
+				}
+				else_if = {
 					limit = { FROM.FROM = { state = 1061 } } #Shimen
 					country_event = { id = fengtian_events.35 days = 36 random_hours = 1500 } # Deserters Rise up in Daming
 				}
@@ -2344,24 +2490,14 @@ on_actions = {
 						has_idea = league_collapse_LEP
 					}
 				}
-				set_temp_variable = { strategic_value_temp = FROM.FROM.state_strategic_value }
-				set_temp_variable = { state_name_temp = FROM.FROM }
-				if = {
-					limit = { check_variable = { FROM.FROM.state_strategic_value > 50 } }
-					set_temp_variable = { change_league_war_morale_by = 25 }
+				set_temp_variable = {
+					change_league_war_morale_by = {
+						value = 5 #base
+						if = { limit = { value = FROM.FROM.state_strategic_value greater_than = 50 } add = 20 } #25
+						else_if = { limit = { value = FROM.FROM.state_strategic_value greater_than = 25 } add = 10 } #15
+						else_if = { limit = { value = FROM.FROM.state_strategic_value greater_than = 10 } add = 5 } #10
+					}
 				}
-				else_if = {
-					limit = { check_variable = { FROM.FROM.state_strategic_value > 25 } }
-					set_temp_variable = { change_league_war_morale_by = 15 }
-				}
-				else_if = {
-					limit = { check_variable = { FROM.FROM.state_strategic_value > 10 } }
-					set_temp_variable = { change_league_war_morale_by = 10 }
-				}
-				else = {
-					set_temp_variable = { change_league_war_morale_by = 5 }
-				}
-
 				china_update_morale = yes
 				FROM = {
 					multiply_temp_variable = { change_league_war_morale_by = -1 }

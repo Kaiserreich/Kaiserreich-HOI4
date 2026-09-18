@@ -97,6 +97,8 @@ country_event = { id = united_states_leadup_events.108 days = 121 } #Harlan Mass
 country_event = { id = united_states_leadup_events.113 days = 121 } #Harlan Siege
 country_event = { id = united_states_leadup_events.119 days = 121 } #Harlan Commune
 
+country_event = { id = new_england_events.39 days = 995 random_days = 20 } #New England Hurricane
+
 WCA = {
 	country_event = { id = united_states_events.615 days = 1621 random_days = 100 } #Adoption of the M1 helmet
 	country_event = { id = america_constitutional_coalition_events.2060 days = 1582 random_days = 24 } #Chien-Shiung Wu
@@ -211,7 +213,7 @@ IMP = {
 
 ### Dummy Leaders ###
 create_country_leader = {
-	name = WCA_william_edward_foster
+	name = WCA_william_z_foster
 	picture = GFX_portrait_WCA_william_foster_civilian_large
 	ideology = totalist_subtype
 }
@@ -227,11 +229,11 @@ create_country_leader = {
 	ideology = radical_socialist_subtype
 }
 create_country_leader = {
-	name = ACC_henry_wallace
-	desc = ACC_henry_wallace_leader_desc
-	picture = GFX_portrait_ACC_henry_wallace_civilian_large
+	name = ACC_bronson_cutting
+	desc = ACC_bronson_cutting_leader_desc
+	picture = GFX_portrait_ACC_bronson_cutting_civilian_large
 	ideology = social_democrat_subtype
-	traits = { ACC_world_planner }
+	traits = { ACC_modern_progressive }
 }
 create_country_leader = {
 	name = APG_martin_dies_jr
@@ -292,22 +294,22 @@ every_core_state = {
 }
 
 ### Country Leaders ###
-#WCA_jack_reed - in WCA file
+#WCA_john_reed - in WCA file
 #WCA_norman_thomas - in WCA file
 recruit_character = USA_floyd_olson
 recruit_character = USA_al_smith
 recruit_character = USA_alben_barkley
 recruit_character = USA_wendell_willkie
+recruit_character = USA_paul_v_mcnutt
 recruit_character = USA_scott_lucas
-recruit_character = USA_paul_douglas
 recruit_character = USA_herbert_hoover
 recruit_character = USA_alf_landon
 recruit_character = USA_william_borah
 recruit_character = USA_quentin_roosevelt
-recruit_character = USA_robert_taft
+recruit_character = USA_robert_a_taft
 recruit_character = USA_charles_halleck
 recruit_character = USA_john_nance_garner
-recruit_character = USA_harry_byrd
+recruit_character = USA_harry_f_byrd
 recruit_character = USA_richard_russell_jr
 recruit_character = USA_happy_chandler
 recruit_character = USA_john_sparkman
@@ -322,103 +324,103 @@ recruit_character = USA_united_states_congress
 activate_advisor = USA_united_states_congress_sic
 
 ### Advisors ###
-recruit_character = USA_john_edgar_hoover
-recruit_character = USA_john_pierpont_morgan_jr
+recruit_character = USA_j_edgar_hoover
+recruit_character = USA_jp_morgan_jr
 recruit_character = USA_william_randolph_hearst
 recruit_character = USA_cordell_hull
-recruit_character = USA_charles_andrew_willoughby
+recruit_character = USA_charles_a_willoughby
 recruit_character = USA_hjalmar_petersen
-recruit_character = USA_walter_francis_white
-recruit_character = USA_robert_ferdinand_wagner
+recruit_character = USA_walter_white
+recruit_character = USA_robert_f_wagner
 recruit_character = USA_felix_frankfurter
-recruit_character = USA_samuel_taliaferro_rayburn
-recruit_character = USA_john_davison_rockefeller_jr
-recruit_character = USA_william_signis_knudsen
+recruit_character = USA_sam_rayburn
+recruit_character = USA_john_d_rockefeller_jr
+recruit_character = USA_william_s_knudsen
 
 ### Theorists ###
-recruit_character = USA_theodore_edson_chandler
+recruit_character = USA_theodore_e_chandler
 
 ### Field Marshals ###
 recruit_character = USA_malin_craig
 recruit_character = USA_douglas_macarthur
 
-#ACC_george_catlett_marshall - in ACC file
+#ACC_george_c_marshall - in ACC file
 
 ### Generals ###
-recruit_character = USA_dwight_david_eisenhower
-recruit_character = USA_clarence_ralph_huebner
-recruit_character = USA_edward_hale_brooks
+recruit_character = USA_dwight_d_eisenhower
+recruit_character = USA_clarence_r_huebner
+recruit_character = USA_edward_h_brooks
 recruit_character = USA_geoffrey_keyes
-recruit_character = USA_jonathan_mayhew_wainwright
-recruit_character = USA_joseph_warren_stilwell
-recruit_character = USA_leonard_townsend_gerow
-recruit_character = USA_lesley_james_mcnair
-recruit_character = USA_lloyd_ralston_fredendall
-recruit_character = USA_lucian_king_truscott_jr
+recruit_character = USA_jonathan_m_wainwright_iv
+recruit_character = USA_joseph_stilwell
+recruit_character = USA_leonard_t_gerow
+recruit_character = USA_lesley_j_mcnair
+recruit_character = USA_lloyd_fredendall
+recruit_character = USA_lucian_truscott_jr
 recruit_character = USA_walter_krueger
-recruit_character = USA_adna_romanza_chaffee_jr
-recruit_character = USA_omar_nelson_bradley
+recruit_character = USA_adna_r_chaffee_jr
+recruit_character = USA_omar_bradley
 recruit_character = USA_daniel_van_voorhis
-recruit_character = USA_john_clifford_hodges_lee
+recruit_character = USA_john_ch_lee
 recruit_character = USA_james_garesche_ord
-recruit_character = USA_edwin_forrest_harding
+recruit_character = USA_edwin_f_harding
 
 #WCA_smedley_butler - in WCA file
-#WCA_herbert_charles_heitke - in WCA file
+#WCA_herbert_c_holdridge - in WCA file
 
 #APG_george_van_horn_moseley - in APG file
-#APG_george_smith_patton - in APG file
+#APG_george_s_patton - in APG file
 #APG_fox_conner - in APG file
 
-#ACC_john_lesesne_dewitt - in ACC file
-#ACC_henry_harley_arnold - in ACC file
+#ACC_john_l_dewitt - in ACC file
+#ACC_henry_h_arnold - in ACC file
 
 ### Admirals ###
-recruit_character = USA_william_frederick_halsey_jr
-recruit_character = USA_raymond_ames_spruance
+recruit_character = USA_william_halsey_jr
+recruit_character = USA_raymond_a_spruance
 recruit_character = USA_frank_jack_fletcher
-recruit_character = USA_thomas_cassin_kinkaid
-recruit_character = USA_charles_maynard_cooke_jr
-recruit_character = USA_alfred_melville_pride
-recruit_character = USA_daniel_edward_barbey
+recruit_character = USA_thomas_c_kinkaid
+recruit_character = USA_charles_m_cooke_jr
+recruit_character = USA_alfred_m_pride
+recruit_character = USA_daniel_e_barbey
 
 #APG_samuel_murray_robinson - in APG file
-#APG_david_worth_bagley - in APG file
-#APG_john_sidney_mccain_sr - in APG file
+#APG_david_w_bagley - in APG file
+#APG_john_s_mccain_sr - in APG file
 
-#ACC_william_daniel_leahy - in ACC file
-#ACC_chester_william_nimitz - in ACC file
-#ACC_ernest_joseph_king - in ACC file
+#ACC_william_d_leahy - in ACC file
+#ACC_chester_w_nimitz - in ACC file
+#ACC_ernest_j_king - in ACC file
 
-#HAW_james_otto_richardson - in HAW file
+#HAW_james_o_richardson - in HAW file
 
-#NEE_harold_stark - in NEE file
+#NEE_harold_r_stark - in NEE file
 
 ### Military Staff ###
-recruit_character = USA_kenneth_george_althaus
-recruit_character = USA_carl_andrew_spaatz
-recruit_character = USA_ira_clarence_eaker
-recruit_character = USA_hoyt_sanford_vandenberg
+recruit_character = USA_kenneth_althaus
+recruit_character = USA_carl_spaatz
+recruit_character = USA_ira_c_eaker
+recruit_character = USA_hoyt_vandenberg
 recruit_character = USA_elwood_richard_quesada
 
 ### Scientists ###
-recruit_character = USA_charles_macon_wesson
+recruit_character = USA_charles_m_wesson
 recruit_character = USA_john_henry_manley
-recruit_character = USA_john_charles_niedermair
-recruit_character = USA_leslie_alfred_skinner
-recruit_character = USA_william_harvey_tschappat
+recruit_character = USA_john_niedermair
+recruit_character = USA_leslie_skinner
+recruit_character = USA_william_h_tschappat
 
 ### Character Setup ###
-USA_charles_maynard_cooke_jr = { retire = yes }
-USA_alfred_melville_pride = { retire = yes }
-USA_daniel_edward_barbey = { retire = yes }
+USA_charles_m_cooke_jr = { retire = yes }
+USA_alfred_m_pride = { retire = yes }
+USA_daniel_e_barbey = { retire = yes }
 
 ### Operatives ###
 if = {
 	limit = { has_dlc_lar = yes }
 	create_operative_leader = {
-		name = USA_william_joseph_donovan
-		GFX = GFX_portrait_USA_william_joseph_donovan_operative
+		name = USA_william_j_donovan
+		GFX = GFX_portrait_USA_william_j_donovan_operative
 		traits = { operative_natural_orator operative_tough }
 		bypass_recruitment = no
 		available_to_spy_master = yes

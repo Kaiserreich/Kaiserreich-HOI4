@@ -391,19 +391,16 @@ CAN_transfer_king_base = {
 				limit = { check_variable = { king_civ_factories > 0 } }
 				custom_effect_tooltip = CAN_remove_king_civ
 				hidden_effect = {
-					set_variable = { tempvar1 = 0 }
-					subtract_from_variable = { var = tempvar1 value = king_civ_factories }
-					add_offsite_building = { type = industrial_complex level = tempvar1 }
-					clear_variable = tempvar1
+					set_temp_variable = { civ_factories = { value = king_civ_factories multiply = -1 } }
+					add_offsite_building = { type = industrial_complex level = civ_factories }
 				}
 			}
 			if = {
 				limit = { check_variable = { king_mil_factories > 0 } }
 				custom_effect_tooltip = CAN_remove_king_mil
 				hidden_effect = {
-					set_variable = { tempvar2 = 0 }
-					subtract_from_variable = { var = tempvar2 value = king_mil_factories }
-					add_offsite_building = { type = arms_factory level = tempvar2 }
+					set_temp_variable = { mil_factories = { value = king_mil_factories multiply = -1 } }
+					add_offsite_building = { type = arms_factory level = mil_factories }
 					clear_variable = tempvar2
 				}
 			}
@@ -525,14 +522,10 @@ CAN_transfer_king_base = {
 			clear_variable = king_popularity
 			clear_variable = king_influence
 			clear_variable = CAN_visit_stability
-			clear_variable = CAN_visit_war_support
-			clear_variable = CAN_visit_mobilisation
-			clear_variable = CAN_visit_morale
+			clear_variable = CAN_visit_other_effects
 			clear_variable = king_civ_factories
 			clear_variable = king_mil_factories
-			clear_variable = CAN_exile_building
-			clear_variable = CAN_exile_factory
-			clear_variable = CAN_exile_power
+			clear_variable = CAN_exile_other_effects
 			clear_variable = CAN_exile_stability
 		}
 		save_global_event_target_as = KR_king_base
@@ -566,118 +559,75 @@ CAN_transfer_king_base = {
 }
 
 CAN_add_ws_based_on_popularity_cw = {
-	if = {
-		limit = {
-			check_variable = { event_target:KR_king_base.king_popularity > 4 }
+	set_temp_variable = {
+		CAN_war_support_gain = {
+			value = 0.025
+			if = {
+				limit = { value = event_target:KR_king_base.king_popularity greater_than = 2 }
+				add = {
+					value = event_target:KR_king_base.king_popularity
+					clamp = { min = 3 max = 5 }
+					multiply = 0.025
+					subtract = 0.050
+				}
+			}
+			else_if = {
+				limit = { value = event_target:KR_king_base.king_popularity equals = 2 }
+				add = 0.010
+			}
 		}
-		add_war_support = 0.10
 	}
-	else_if = {
-		limit = {
-			check_variable = { event_target:KR_king_base.king_popularity > 3 }
-			check_variable = { event_target:KR_king_base.king_popularity < 5 }
-		}
-		add_war_support = 0.075
-	}
-	else_if = {
-		limit = {
-			check_variable = { event_target:KR_king_base.king_popularity > 2 }
-			check_variable = { event_target:KR_king_base.king_popularity < 4 }
-		}
-		add_war_support = 0.05
-	}
-	else_if = {
-		limit = {
-			check_variable = { event_target:KR_king_base.king_popularity > 1 }
-			check_variable = { event_target:KR_king_base.king_popularity < 3 }
-		}
-		add_war_support = 0.035
-	}
-	else = {
-		add_war_support = 0.025
-	}
+	add_war_support = CAN_war_support_gain
 }
 
 CAN_add_ws_based_on_popularity = {
-	if = {
-		limit = {
-			check_variable = { event_target:KR_king_base.king_popularity > 5 }
+	set_temp_variable = {
+		CAN_war_support_gain = {
+			value = 0.025
+			if = {
+				limit = { value = event_target:KR_king_base.king_popularity greater_than = 3 }
+				add = {
+					value = event_target:KR_king_base.king_popularity
+					clamp = { min = 4 max = 6 }
+					multiply = 0.025
+					subtract = 0.075
+				}
+			}
+			else_if = {
+				limit = { value = event_target:KR_king_base.king_popularity equals = 3 }
+				add = 0.010
+			}
 		}
-		add_war_support = 0.10
 	}
-	else_if = {
-		limit = {
-			check_variable = { event_target:KR_king_base.king_popularity > 4 }
-			check_variable = { event_target:KR_king_base.king_popularity < 6 }
-		}
-		add_war_support = 0.075
-	}
-	else_if = {
-		limit = {
-			check_variable = { event_target:KR_king_base.king_popularity > 3 }
-			check_variable = { event_target:KR_king_base.king_popularity < 5 }
-		}
-		add_war_support = 0.05
-	}
-	else_if = {
-		limit = {
-			check_variable = { event_target:KR_king_base.king_popularity > 2 }
-			check_variable = { event_target:KR_king_base.king_popularity < 4 }
-		}
-		add_war_support = 0.035
-	}
-	else = {
-		add_war_support = 0.025
-	}
+	add_war_support = CAN_war_support_gain
 }
 
 CAN_calc_royal_visit_effects = {
 	hidden_effect = {
 		event_target:KR_king_base = {
-			if = {
-				limit = {
-					check_variable = { king_popularity > 4 }
+			# 0 <= king_popularity <= 5
+			set_variable = {
+				CAN_visit_stability = {
+					value = king_popularity
+					clamp = { min = 1 max = 5 }
+					multiply = 0.01
 				}
-				set_variable = { CAN_visit_stability = 0.05 }
-				set_variable = { CAN_visit_war_support = 0.20 }
-				set_variable = { CAN_visit_mobilisation = 0.20 }
-				set_variable = { CAN_visit_morale = 0.20 }
 			}
-			else_if = {
-				limit = {
-					check_variable = { king_popularity > 3 }
-					check_variable = { king_popularity < 5 }
+			# Linear sequence :wink:. High school math pays off in the end
+			set_variable = {
+				CAN_visit_other_effects = {
+					value = king_popularity
+					clamp = { min = 1 max = 5 }
+					if = { #y = 0.05x - 0.05
+						limit = { value = king_popularity greater_than_or_equals = 4 }
+						multiply = 0.05
+						subtract = 0.05
+					}
+					else = { #y = 0.025x + 0.025
+						multiply = 0.025
+						add = 0.025
+					}
 				}
-				set_variable = { CAN_visit_stability = 0.04 }
-				set_variable = { CAN_visit_war_support = 0.15 }
-				set_variable = { CAN_visit_mobilisation = 0.15 }
-				set_variable = { CAN_visit_morale = 0.15 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { king_popularity > 2 }
-					check_variable = { king_popularity < 4 }
-				}
-				set_variable = { CAN_visit_stability = 0.03 }
-				set_variable = { CAN_visit_war_support = 0.10 }
-				set_variable = { CAN_visit_mobilisation = 0.10 }
-				set_variable = { CAN_visit_morale = 0.10 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { king_popularity > 1 }
-					check_variable = { king_popularity < 3 }
-				}
-				set_variable = { CAN_visit_stability = 0.02 }
-				set_variable = { CAN_visit_war_support = 0.075 }
-				set_variable = { CAN_visit_mobilisation = 0.075 }
-				set_variable = { CAN_visit_morale = 0.075 }
-			}
-			else = {
-				set_variable = { CAN_visit_stability = 0.01 }
-				set_variable = { CAN_visit_war_support = 0.05 }
-				set_variable = { CAN_visit_mobilisation = 0.05 }
-				set_variable = { CAN_visit_morale = 0.05 }
 			}
 			force_update_dynamic_modifier = yes
 		}
@@ -687,50 +637,20 @@ CAN_calc_royal_visit_effects = {
 CAN_calc_exile_influence_effects = {
 	hidden_effect = {
 		event_target:KR_king_base = {
-			if = {
-				limit = {
-					check_variable = { king_influence > 4 }
+			# 0 <= king_influence <= 5
+			set_variable = {
+				CAN_exile_other_effects = {
+					value = king_influence
+					clamp = { min = 1 max = 5 }
+					multiply = 0.05
 				}
-				set_variable = { CAN_exile_building = 0.25 }
-				set_variable = { CAN_exile_factory = 0.25 }
-				set_variable = { CAN_exile_power = 0.25 }
-				set_variable = { CAN_exile_stability = 0.10 }
 			}
-			else_if = {
-				limit = {
-					check_variable = { king_influence > 3 }
-					check_variable = { king_influence < 5 }
+			set_variable = {
+				CAN_exile_stability = {
+					value = king_influence
+					clamp = { min = 1 max = 5 }
+					multiply = 0.02
 				}
-				set_variable = { CAN_exile_building = 0.20 }
-				set_variable = { CAN_exile_factory = 0.20 }
-				set_variable = { CAN_exile_power = 0.20 }
-				set_variable = { CAN_exile_stability = 0.08 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { king_influence > 2 }
-					check_variable = { king_influence < 4 }
-				}
-				set_variable = { CAN_exile_building = 0.15 }
-				set_variable = { CAN_exile_factory = 0.15 }
-				set_variable = { CAN_exile_power = 0.15 }
-				set_variable = { CAN_exile_stability = 0.06 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { king_influence > 1 }
-					check_variable = { king_influence < 3 }
-				}
-				set_variable = { CAN_exile_building = 0.10 }
-				set_variable = { CAN_exile_factory = 0.10 }
-				set_variable = { CAN_exile_power = 0.10 }
-				set_variable = { CAN_exile_stability = 0.04 }
-			}
-			else = {
-				set_variable = { CAN_exile_building = 0.05 }
-				set_variable = { CAN_exile_factory = 0.05 }
-				set_variable = { CAN_exile_power = 0.05 }
-				set_variable = { CAN_exile_stability = 0.02 }
 			}
 			force_update_dynamic_modifier = yes
 		}
@@ -1252,10 +1172,10 @@ CAN_add_major_james_coldwell_sic = {
 		if = {
 			limit = {
 				CAN_is_dominion = yes
-				has_character = CAN_major_james_coldwell
-				CAN_major_james_coldwell = { is_second_in_command = no }
+				has_character = CAN_mj_coldwell
+				CAN_mj_coldwell = { is_second_in_command = no }
 			}
-			activate_advisor = CAN_major_james_coldwell_sic
+			activate_advisor = CAN_mj_coldwell_sic
 		}
 	}
 }
@@ -1299,10 +1219,10 @@ CAN_add_conservative_second_in_command = {
 			}
 			else_if = {
 				limit = {
-					has_character = CAN_richard_bedford_bennett
-					CAN_richard_bedford_bennett = { has_advisor_role = second_in_command }
+					has_character = CAN_rb_bennett
+					CAN_rb_bennett = { has_advisor_role = second_in_command }
 				}
-				activate_advisor = CAN_richard_bedford_bennett_sic
+				activate_advisor = CAN_rb_bennett_sic
 			}
 			else_if = {
 				limit = {
@@ -1325,10 +1245,10 @@ CAN_add_conservative_second_in_command = {
 			}
 			else_if = {
 				limit = {
-					has_character = CAN_richard_bedford_bennett
-					CAN_richard_bedford_bennett = { has_advisor_role = second_in_command }
+					has_character = CAN_rb_bennett
+					CAN_rb_bennett = { has_advisor_role = second_in_command }
 				}
-				activate_advisor = CAN_richard_bedford_bennett_sic
+				activate_advisor = CAN_rb_bennett_sic
 			}
 			else_if = {
 				limit = {
@@ -1363,9 +1283,9 @@ CAN_add_correct_second_in_command = {
 		if = {
 			limit = {
 				has_government = social_democrat
-				CAN_major_james_coldwell = { has_advisor_role = second_in_command }
+				CAN_mj_coldwell = { has_advisor_role = second_in_command }
 			}
-			activate_advisor = CAN_major_james_coldwell_sic
+			activate_advisor = CAN_mj_coldwell_sic
 		}
 		else_if = {
 			limit = {
@@ -1383,26 +1303,7 @@ CAN_add_correct_second_in_command = {
 		}
 		else_if = {
 			limit = { has_government = social_conservative }
-			if = {
-				limit = {
-					CAN_john_bracken = { can_be_country_leader = yes }
-					CAN_john_bracken = { has_advisor_role = second_in_command }
-				}
-				activate_advisor = CAN_john_bracken_sic
-			}
-			else_if = {
-				limit = {
-					CAN_robert_manion = { can_be_country_leader = yes }
-					CAN_robert_manion = { has_advisor_role = second_in_command }
-				}
-				activate_advisor = CAN_robert_manion_sic
-			}
-			else_if = {
-				limit = {
-					CAN_richard_bedford_bennett = { has_advisor_role = second_in_command }
-				}
-				activate_advisor = CAN_richard_bedford_bennett_sic
-			}
+			CAN_add_conservative_second_in_command = yes
 			else = {
 				activate_advisor = CAN_canadian_parliament_sic
 			}
@@ -1433,9 +1334,9 @@ CAN_convert_british_pm_slots = {
 		activate_advisor = GBR_anthony_eden_sic
 	}
 	else_if = {
-		limit = { GBR_robert_gascoyne_cecil = { is_political_advisor = yes } }
-		hidden_effect = { deactivate_advisor = GBR_robert_gascoyne_cecil_advisor }
-		activate_advisor = GBR_robert_gascoyne_cecil_sic
+		limit = { GBR_robert_cecil = { is_political_advisor = yes } }
+		hidden_effect = { deactivate_advisor = GBR_robert_cecil_advisor }
+		activate_advisor = GBR_robert_cecil_sic
 	}
 	else_if = {
 		limit = { GBR_robert_vansittart = { is_political_advisor = yes } }
@@ -1462,9 +1363,9 @@ CAN_revert_british_pm_slots = {
 		activate_advisor = GBR_anthony_eden_advisor
 	}
 	else_if = {
-		limit = { GBR_robert_gascoyne_cecil = { is_second_in_command = yes } }
+		limit = { GBR_robert_cecil = { is_second_in_command = yes } }
 		hidden_effect = { CAN_add_correct_second_in_command = yes }
-		activate_advisor = GBR_robert_gascoyne_cecil_advisor
+		activate_advisor = GBR_robert_cecil_advisor
 	}
 	else_if = {
 		limit = { GBR_robert_vansittart = { is_second_in_command = yes } }
@@ -1494,16 +1395,16 @@ CAN_add_british_pm = {
 		}
 	}
 	else_if = {
-		limit = { GBR = { GBR_robert_gascoyne_cecil = { is_character = var:global.GBR_prime_minister } } }
+		limit = { GBR = { GBR_robert_cecil = { is_character = var:global.GBR_prime_minister } } }
 		clr_global_flag = GBR_cons_leader_croft
 		set_global_flag = GBR_cons_leader_cecil
 		clr_global_flag = GBR_cons_leader_eden
 		if = {
 			limit = { has_global_flag = GBR_british_pm_slot_changed }
-			activate_advisor = GBR_robert_gascoyne_cecil_sic
+			activate_advisor = GBR_robert_cecil_sic
 		}
 		else = {
-			activate_advisor = GBR_robert_gascoyne_cecil_advisor
+			activate_advisor = GBR_robert_cecil_advisor
 		}
 	}
 	else_if = {

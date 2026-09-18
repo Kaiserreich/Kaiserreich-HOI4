@@ -3137,7 +3137,7 @@ country_event = { #Bring forward a charter on pan-Asian trade
 		log = "[GetLogInfo]: event japan_foreign_events.27 option japan_foreign_events.27.b"
 		name = japan_foreign_events.27.b
 		ai_chance = { base = 0 }
-		set_country_flag = JAP_pressured_for_trade
+		set_variable = { JAP_pressured_for_trade = 1 }
 		custom_effect_tooltip = JAP_nerf_copro_bonuses_tt
 		custom_effect_tooltip = JAP_100_chance_of_agreeing_tt
 	}
@@ -3188,7 +3188,7 @@ country_event = { #Japan's resolution on trade
 			}
 			modifier = {
 				factor = 0
-				JAP = { has_country_flag = JAP_pressured_for_trade }
+				JAP = { has_variable = JAP_pressured_for_trade }
 			}
 			modifier = {
 				factor = 0
@@ -6490,7 +6490,6 @@ country_event = { #Japan promotes investment
 		add_stability = 0.03
 		if = {
 			limit = { has_idea = JAP_member_integration_1 }
-			set_variable = { JAP_investment_buyout = 250 }
 			swap_ideas = {
 				remove_idea = JAP_member_integration_1
 				add_idea = JAP_member_integration_2
@@ -6498,14 +6497,12 @@ country_event = { #Japan promotes investment
 		}
 		else_if = {
 			limit = { has_idea = JAP_member_integration_2 }
-			set_variable = { JAP_investment_buyout = 400 }
 			swap_ideas = {
 				remove_idea = JAP_member_integration_2
 				add_idea = JAP_member_integration_3
 			}
 		}
 		else = {
-			set_variable = { JAP_investment_buyout = 100 }
 			add_ideas = JAP_member_integration_1
 		}
 		hidden_effect = {
@@ -7475,12 +7472,12 @@ country_event = { #Japan Rewards Our Loyalty
 #		name = japan_foreign_events.465.a
 #		custom_effect_tooltip = JAP_speed_up_collapse_bad_tooltip
 #		set_temp_variable = {
-#			JAP_mission_timeout = JAP.days_mission_timeout@JAP_fading_sun_mission
+#			JAP_mission_timeout = {
+#				value = JAP.days_mission_timeout@JAP_fading_sun_mission
+#				multiply = -0.5
+#				round = yes
+#			}
 #		}
-#		divide_temp_variable = {
-#			JAP_mission_timeout = -2
-#		}
-#		round_temp_variable = JAP_mission_timeout
 #		add_days_mission_timeout = {
 #			mission = JAP_fading_sun_mission
 #			days = JAP_mission_timeout

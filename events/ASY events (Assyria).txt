@@ -37,11 +37,12 @@ country_event = {	#Maʻdān shelter criminals
 		}
 		if = {
 			limit = { OTT_has_centralist_government = yes }
-			add_to_variable = { irq_integration_factor = 5 tooltip = ott_increase_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				irq_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+				}
+				tooltip = ott_increase_irq_int
 			}
 		}
 	}
@@ -107,11 +108,12 @@ country_event = {	#Assyrian Levies exact revenge for Al-Qurnah
 		}
 		if = {
 			limit = { OTT_has_centralist_government = yes }
-			add_to_variable = { irq_integration_factor = 5 tooltip = ott_increase_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				irq_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+				}
+				tooltip = ott_increase_irq_int
 			}
 		}
 		hidden_effect = {
@@ -175,11 +177,12 @@ country_event = {	#Shimun XXI Eshai pleads for the preservation of the Assyrian 
 		add_stability = -0.05
 		if = {
 			limit = { OTT_has_centralist_government = yes }
-			subtract_from_variable = { irq_integration_factor = 5 tooltip = ott_decrease_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			subtract_from_variable = {
+				irq_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = irq_integration_factor }
+				}
+				tooltip = ott_decrease_irq_int
 			}
 		}
 		hidden_effect = {
@@ -499,11 +502,12 @@ country_event = {	#[CAN.GetName] demands that the Ottomans grant autonomy to the
 		add_political_power = -100
 		if = {
 			limit = { OTT_has_centralist_government = yes }
-			subtract_from_variable = { irq_integration_factor = 5 tooltip = ott_decrease_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			subtract_from_variable = {
+				irq_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = irq_integration_factor }
+				}
+				tooltip = ott_decrease_irq_int
 			}
 		}
 		ASY = { delete_unit = { disband = yes } }

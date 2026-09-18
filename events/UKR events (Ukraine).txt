@@ -186,13 +186,16 @@ country_event = { # Dissent in the West
 	fire_only_once = yes
 	picture = GFX_report_event_UKR_farming
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.12 random_hours = 120 days = 2 }
+		}
+	}
+
 	option = { # Troubling
 		log = "[GetLogInfo]: event ukraine_events.11 option ukraine_events.11.a"
 		name = ukraine_events.11.a
 		add_stability = -0.01
-		hidden_effect = {
-			country_event = { id = ukraine_events.12 random_hours = 120 days = 2 }
-		}
 	}
 }
 
@@ -204,13 +207,16 @@ country_event = { # Tractor Factory Opens In Kyiv
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.13 days = 2 } # Strikes In Odesa
+		}
+	}
+
 	option = { # Great!
 		log = "[GetLogInfo]: event ukraine_events.12 option ukraine_events.12.a"
 		name = ukraine_events.12.a
 		add_political_power = 30
-		hidden_effect = {
-			country_event = { id = ukraine_events.13 days = 2 } # Strikes In Odesa
-		}
 	}
 }
 
@@ -313,16 +319,20 @@ country_event = { # Black Monday Hits Ukraine!
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			add_ideas = UKR_black_monday
+			set_variable = { UKR_BM_length = 625 }
+			country_event = { id = ukraine_relief_bill_events.1 days = 18 } # Start of Relief Bill negotiations
+			country_event = { id = ukraine_events.17 days = 60 } # Formation of VDR
+		}
+	}
+
 	option = { # We still have time
 		log = "[GetLogInfo]: event ukraine_events.16 option ukraine_events.16.a"
 		name = ukraine_events.16.a
 		add_stability = -0.1
-		add_ideas = UKR_black_monday
-		set_variable = { UKR_BM_length = 625 }
-		hidden_effect = {
-			country_event = { id = ukraine_relief_bill_events.1 days = 18 } # Start of Relief Bill negotiations
-			country_event = { id = ukraine_events.17 days = 60 } # Formation of VDR
-		}
+		effect_tooltip = { add_ideas = UKR_black_monday }
 	}
 }
 
@@ -334,6 +344,12 @@ country_event = { # Formation of VDR
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.18 days = 7 } # Archduke Wilhelm Speaks Out
+		}
+	}
+
 	option = { # Troubling
 		log = "[GetLogInfo]: event ukraine_events.17 option ukraine_events.17.a"
 		name = ukraine_events.17.a
@@ -341,10 +357,6 @@ country_event = { # Formation of VDR
 		add_popularity = {
 			ideology = authoritarian_democrat
 			popularity = -0.01
-		}
-
-		hidden_effect = {
-			country_event = { id = ukraine_events.18 days = 7 } # Archduke Wilhelm Speaks Out
 		}
 	}
 }
@@ -357,13 +369,16 @@ country_event = { # Austrian Guy Speaks Out
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.20 days = 60 }
+		}
+	}
+
 	option = { # He can blabber all he wants...
 		log = "[GetLogInfo]: event ukraine_events.18 option ukraine_events.18.a"
 		name = ukraine_events.18.a
 		add_political_power = -10
-		hidden_effect = {
-			country_event = { id = ukraine_events.20 days = 60 }
-		}
 	}
 }
 
@@ -389,6 +404,12 @@ country_event = { # General Strike
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.22 days = 2 } # Transportation Strike!
+		}
+	}
+
 	option = { # Damn them
 		log = "[GetLogInfo]: event ukraine_events.20 option ukraine_events.20.a"
 		name = ukraine_events.20.a
@@ -397,9 +418,6 @@ country_event = { # General Strike
 		add_timed_idea = {
 			idea = UKR_general_strike
 			days = 70
-		}
-		hidden_effect = {
-			country_event = { id = ukraine_events.22 days = 2 } # Transportation Strike!
 		}
 	}
 }
@@ -412,14 +430,17 @@ country_event = { # Transportation Strike!
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.23 days = 5 } # Truce
+		}
+	}
+
 	option = { # This is getting out of hand, I guess...
 		log = "[GetLogInfo]: event ukraine_events.22 option ukraine_events.22.a"
 		name = ukraine_events.22.a
 		add_stability = -0.05
 		remove_ideas = UKR_strong_agrarian_economy
-		hidden_effect = {
-			country_event = { id = ukraine_events.23 days = 5 } # Truce
-		}
 	}
 }
 
@@ -431,13 +452,16 @@ country_event = { # Temporary truce
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.25 days = 30 } # Panic in Kyiv
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_events.23 option ukraine_events.23.a"
 		name = ukraine_events.23.a
 		add_stability = 0.03
-		hidden_effect = {
-			country_event = { id = ukraine_events.25 days = 30 } # Panic in Kyiv
-		}
 	}
 }
 
@@ -456,19 +480,20 @@ country_event = { # Severity of protests increases in August
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = UKR_bill_failed }	# Bill failed, Soim is seen as unreliable
+				country_event = { id = ukraine_events.26 days = 3 } # SHD approaches Hetman about martial law
+			}
+			GER = { country_event = ukraine_foreign_policy_events.35 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_events.25 option ukraine_events.25.a"
 		name = ukraine_events.25.a
 		add_stability = -0.05
-		if = {
-			limit = { has_country_flag = UKR_bill_failed }	# Bill failed, Soim is seen as unreliable
-			hidden_effect = {
-				country_event = { id = ukraine_events.26 days = 3 } # SHD approaches Hetman about martial law
-			}
-		}
-		hidden_effect = {
-			GER = { country_event = ukraine_foreign_policy_events.35 }
-		}
 	}
 }
 
@@ -480,12 +505,15 @@ country_event = { # SHD approaches Hetman about martial law
 	fire_only_once = yes
 	picture = GFX_report_event_UKR_prisovskyi
 
-	option = {
-		log = "[GetLogInfo]: event ukraine_events.26 option ukraine_events.26.a"
-		name = ukraine_events.26.a #Bill failed, Hetman agrees
+	immediate = {
 		hidden_effect = {
 			country_event = { id = ukraine_events.27 days = 1 } # Martial law, everyone is angry
 		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ukraine_events.26 option ukraine_events.26.a"
+		name = ukraine_events.26.a #Bill failed, Hetman agrees
 	}
 }
 
@@ -496,6 +524,12 @@ country_event = { # Martial law, everyone is angry
 	picture = GFX_report_event_BEL_Protest_Aggressive
 	is_triggered_only = yes
 	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.30 days = 10 } # Massacre in Kyiv
+		}
+	}
 
 	option = {
 		log = "[GetLogInfo]: event ukraine_events.27 option ukraine_events.27.a"
@@ -508,9 +542,6 @@ country_event = { # Martial law, everyone is angry
 		set_temp_variable = { coalition_partner_var = token:market_liberal }
 		add_to_coalition = yes
 		activate_advisor = UKR_borys_homzyn_sic
-		hidden_effect = {
-			country_event = { id = ukraine_events.30 days = 10 } # Massacre in Kyiv
-		}
 	}
 }
 
@@ -522,13 +553,16 @@ country_event = { # Riots In Kyiv after failed negotiations between regime and V
 	fire_only_once = yes
 	picture = GFX_report_event_BEL_Protest_Aggressive
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.30 days = 2 } # Massacre in Kyiv
+		}
+	}
+
 	option = { # Damn
 		log = "[GetLogInfo]: event ukraine_events.28 option ukraine_events.28.a"
 		name = ukraine_events.28.a
 		add_stability = -0.08
-		hidden_effect = {
-			country_event = { id = ukraine_events.30 days = 2 } # Massacre in Kyiv
-		}
 	}
 }
 
@@ -540,13 +574,16 @@ country_event = { # Riots In Kyiv after raiding VDR safehouses
 	fire_only_once = yes
 	picture = GFX_report_event_generic_riot2
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.30 days = 2 } # Massacre in Kyiv
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_events.29 option ukraine_events.29.a"
 		name = ukraine_events.29.a
 		add_stability = -0.08
-		hidden_effect = {
-			country_event = { id = ukraine_events.30 days = 2 } # Massacre in Kyiv
-		}
 	}
 }
 
@@ -558,14 +595,17 @@ country_event = { # Massacre in Kyiv
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.31 days = 5 } # Protests explode after the massacre
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_events.30 option ukraine_events.30.a"
 		name = ukraine_events.30.a
 		add_stability = -0.03
 		add_political_power = -25
-		hidden_effect = {
-			country_event = { id = ukraine_events.31 days = 5 } # Protests explode after the massacre
-		}
 	}
 }
 
@@ -584,13 +624,16 @@ country_event = { # Protests explode after the massacre
 	fire_only_once = yes
 	picture = GFX_report_event_generic_riot3
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.32 days = 5 } # Strange Activity In The Ranks
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_events.31 option ukraine_events.31.a"
 		name = ukraine_events.31.a
 		add_political_power = -20
-		hidden_effect = {
-			country_event = { id = ukraine_events.32 days = 5 } # Strange Activity In The Ranks
-		}
 	}
 }
 
@@ -602,12 +645,15 @@ country_event = { # Soldiers Disappear
 	fire_only_once = yes
 	picture = GFX_report_event_generic_strike
 
-	option = { # Sounds suspicious...
-		log = "[GetLogInfo]: event ukraine_events.32 option ukraine_events.32.a"
-		name = ukraine_events.32.a
+	immediate = {
 		hidden_effect = {
 			country_event = { id = ukraine_revolt_events.1 days = 10 } # Revolt Begins
 		}
+	}
+
+	option = { # Sounds suspicious...
+		log = "[GetLogInfo]: event ukraine_events.32 option ukraine_events.32.a"
+		name = ukraine_events.32.a
 	}
 }
 
@@ -619,12 +665,15 @@ country_event = { # Hetman's speech
 	fire_only_once = yes
 	picture = GFX_report_event_UKR_pavlo_and_doroshenko
 
-	option = { # Maybe we can fix this
-		log = "[GetLogInfo]: event ukraine_events.34 option ukraine_events.34.a"
-		name = ukraine_events.34.a
+	immediate = {
 		hidden_effect = {
 			country_event = { id = ukraine_negotiations_events.1 days = 15 }
 		}
+	}
+
+	option = { # Maybe we can fix this
+		log = "[GetLogInfo]: event ukraine_events.34 option ukraine_events.34.a"
+		name = ukraine_events.34.a
 	}
 }
 
@@ -1853,19 +1902,15 @@ country_event = { #History of Ukraine - Doroshenko
 	}
 	desc = {
 		trigger = {
-			AND = {
-				NOT = { has_country_leader = { character = UKR_danylo_skoropadskyi } }
-				has_government = social_liberal
-			}
+			NOT = { has_country_leader = { character = UKR_danylo_skoropadskyi } }
+			has_government = social_liberal
 		}
 		text = ukraine_events.78.d2
 	}
 	desc = {
 		trigger = {
-			AND = {
-				has_government = social_liberal
-				has_country_leader = { character = UKR_danylo_skoropadskyi }
-			}
+			has_government = social_liberal
+			has_country_leader = { character = UKR_danylo_skoropadskyi }
 		}
 		text = ukraine_events.78.d3
 	}
@@ -2549,16 +2594,27 @@ country_event = { # Start of the Relief Bill negotiations
 	picture = GFX_report_event_generic_conference1
 	immediate = {
 		hidden_effect = {
+			set_country_flag = UKR_bill_negotiations_flag
+			set_variable = { UKR_independents_support = 40 }
+			set_variable = { UKR_urdp_support = 30 }
+			set_variable = { UKR_protofis_support = 10 }
+			set_variable = { UKR_uskhd_support = 40 }
+			set_variable = { UKR_udkhp_support = 40 }
+			set_variable = { UKR_bm_focuses = 0 }
 			country_event = { id = ukraine_relief_bill_events.5 days = 17 random_days = 4 } # USKhD proposes creation of temporary corporate group in the Soim
+			if = {
+				limit = { is_ai = no }
+				activate_targeted_decision = { decision = UKR_negotiate_with_protofis target = THIS }
+				activate_targeted_decision = { decision = UKR_negotiate_with_URDP target = THIS }
+				activate_targeted_decision = { decision = UKR_negotiate_with_udkhp target = THIS }
+				activate_targeted_decision = { decision = UKR_negotiate_with_uskhd target = THIS }
+				activate_targeted_decision = { decision = UKR_negotiate_with_independents target = THIS }
+			}
+			else = {
+				activate_targeted_decision = { decision = AI_dont_spend_PP target = THIS }
+			}
+			activate_mission = UKR_bill_negotiations
 		}
-		set_country_flag = UKR_bill_negotiations_flag
-		set_variable = { UKR_independents_support = 40 }
-		set_variable = { UKR_urdp_support = 30 }
-		set_variable = { UKR_protofis_support = 10 }
-		set_variable = { UKR_uskhd_support = 40 }
-		set_variable = { UKR_udkhp_support = 40 }
-
-		set_variable = { UKR_bm_focuses = 0 }
 	}
 
 	option = { # Lets hope for the best
@@ -2566,18 +2622,14 @@ country_event = { # Start of the Relief Bill negotiations
 		name = ukraine_relief_bill_events.1.a
 		custom_effect_tooltip = UKR_relief_bill_guide_tt
 		custom_effect_tooltip = tooltip_white_line
-		if = {
-			limit = { is_ai = no }
+		effect_tooltip = {
 			activate_targeted_decision = { decision = UKR_negotiate_with_protofis target = THIS }
 			activate_targeted_decision = { decision = UKR_negotiate_with_URDP target = THIS }
 			activate_targeted_decision = { decision = UKR_negotiate_with_udkhp target = THIS }
 			activate_targeted_decision = { decision = UKR_negotiate_with_uskhd target = THIS }
 			activate_targeted_decision = { decision = UKR_negotiate_with_independents target = THIS }
+			activate_mission = UKR_bill_negotiations
 		}
-		else = {
-			activate_targeted_decision = { decision = AI_dont_spend_PP target = THIS }
-		}
-		activate_mission = UKR_bill_negotiations
 	}
 }
 
@@ -5132,16 +5184,16 @@ country_event = { # The Bill was passed, Skoro is ok with the Soim for the time 
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			# Doroshenko and Coalition are ready to negotiate with VDR.
+			country_event = { id = ukraine_negotiations_events.2 days = 4 random_hours = 120 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_negotiations_events.1 option ukraine_negotiations_events.1.a"
 		name = ukraine_negotiations_events.1.a
-		hidden_effect = {
-			country_event = {
-				id = ukraine_negotiations_events.2	# Doroshenko and Coalition are ready to negotiate with VDR.
-				days = 4
-				random_hours = 120
-			}
-		}
 	}
 }
 
@@ -5204,18 +5256,18 @@ country_event = { # VDR Raided, Success?
 	fire_only_once = yes
 	picture = GFX_report_event_BLR_officers_house
 
+	immediate = {
+		hidden_effect = {
+			# Riots In Kyiv after raiding VDR safehouses
+			country_event = { id = ukraine_events.29 days = 5 random_hours = 48 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_negotiations_events.3 option ukraine_negotiations_events.3.a"
 		name = ukraine_negotiations_events.3.a
 		add_political_power = 20
 		add_stability = 0.02
-		hidden_effect = {
-			country_event = {
-				id = ukraine_events.29 # Riots In Kyiv after raiding VDR safehouses
-				days = 5
-				random_hours = 48
-			}
-		}
 	}
 }
 
@@ -5227,31 +5279,26 @@ country_event = { # Empowered Coalition and Doroshenko trying to reach out to VD
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	option = {
-		log = "[GetLogInfo]: event ukraine_negotiations_events.4 option ukraine_negotiations_events.4.a"
-		name = ukraine_negotiations_events.4.a
+	immediate = {
 		hidden_effect = {
 			if = {
 				limit = {
 					has_country_flag = UKR_petliura_left_alone
 					NOT = { check_variable = { UKR_urdp_support < 70 } }
 				}
-				country_event = {
-					id = ukraine_negotiations_events.6	# VDR Agrees
-					days = 2
-					random_hours = 120
-				}
+				# VDR Agrees
+				country_event = { id = ukraine_negotiations_events.6 days = 2 random_hours = 120 }
 			}
-			else_if = {
-				limit = {
-					OR = {
-						check_variable = { UKR_urdp_support < 70 }
-						NOT = { has_country_flag = UKR_petliura_left_alone }
-					}
-				}
-				country_event = { id = ukraine_negotiations_events.27 days = 2 } # VDR Refuses
+			else = {
+				# VDR Refuses
+				country_event = { id = ukraine_negotiations_events.27 days = 2 }
 			}
 		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ukraine_negotiations_events.4 option ukraine_negotiations_events.4.a"
+		name = ukraine_negotiations_events.4.a
 	}
 }
 
@@ -5263,16 +5310,17 @@ country_event = { # VDR Agrees
 	fire_only_once = yes
 	picture = GFX_report_event_generic_diplomacy3
 
+	immediate = {
+		hidden_effect = {
+			# Talks Begin
+			country_event = { id = ukraine_negotiations_events.7 days = 1 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_negotiations_events.6 option ukraine_negotiations_events.6.a"
 		name = ukraine_negotiations_events.6.a
 		add_political_power = 20
-		hidden_effect = {
-			country_event = {
-				id = ukraine_negotiations_events.7	# Talks Begin
-				days = 1
-			}
-		}
 	}
 }
 
@@ -5383,12 +5431,15 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	option = {
-		log = "[GetLogInfo]: event ukraine_negotiations_events.9 option ukraine_negotiations_events.9.a"
-		name = ukraine_negotiations_events.9.a
+	immediate = {
 		hidden_effect = {
 			country_event = { id = ukraine_events.28 days = 5 } # Riots In Kyiv after failed negotiations between regime and VDR
 		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ukraine_negotiations_events.9 option ukraine_negotiations_events.9.a"
+		name = ukraine_negotiations_events.9.a
 	}
 }
 
@@ -5524,13 +5575,16 @@ country_event = { # Skoro refuses
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.28 days = 2 } # Riots in Kyiv
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_negotiations_events.12 option ukraine_negotiations_events.12.a"
 		name = ukraine_negotiations_events.12.a
 		add_stability = -0.04
-		hidden_effect = {
-			country_event = { id = ukraine_events.28 days = 2 } # Riots in Kyiv
-		}
 	}
 }
 
@@ -5542,13 +5596,16 @@ country_event = { # VDR is unsatisfied
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.28 days = 2 } # Riots in Kyiv
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_negotiations_events.13 option ukraine_negotiations_events.13.a"
 		name = ukraine_negotiations_events.13.a
 		add_stability = -0.04
-		hidden_effect = {
-			country_event = { id = ukraine_events.28 days = 2 } # Riots in Kyiv
-		}
 	}
 }
 
@@ -5560,12 +5617,16 @@ country_event = { # Land Reform Question
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			# Allow participation of Socialists in local and national elections
+			country_event = { id = ukraine_negotiations_events.15 days = 2 }
+		}
+	}
+
 	option = {  # Both VDR and Hetman are mostly in agreement on that topic
 		log = "[GetLogInfo]: event ukraine_negotiations_events.14 option ukraine_negotiations_events.14.a"
 		name = ukraine_negotiations_events.14.a
-		hidden_effect = {
-			country_event = { id = ukraine_negotiations_events.15 days = 2 } # Allow participation of Socialists in local and national elections
-		}
 	}
 }
 
@@ -5682,12 +5743,15 @@ country_event = { # SHD and Coalition shut down talks
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	option = {
-		log = "[GetLogInfo]: event ukraine_negotiations_events.17 option ukraine_negotiations_events.17.a"
-		name = ukraine_negotiations_events.17.a
+	immediate = {
 		hidden_effect = {
 			country_event = { id = ukraine_events.28 days = 2 } # Riots in Kyiv
 		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ukraine_negotiations_events.17 option ukraine_negotiations_events.17.a"
+		name = ukraine_negotiations_events.17.a
 	}
 }
 
@@ -5699,12 +5763,15 @@ country_event = { # Comms are leaked to VDR
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	option = {
-		log = "[GetLogInfo]: event ukraine_negotiations_events.18 option ukraine_negotiations_events.17.a"
-		name = ukraine_negotiations_events.17.a
+	immediate = {
 		hidden_effect = {
 			country_event = { id = ukraine_events.28 days = 2 } # Riots in Kyiv
 		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ukraine_negotiations_events.18 option ukraine_negotiations_events.17.a"
+		name = ukraine_negotiations_events.17.a
 	}
 }
 
@@ -5826,12 +5893,15 @@ country_event = { # Hetman and SHD shut down talks
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	option = {
-		log = "[GetLogInfo]: event ukraine_negotiations_events.21 option ukraine_negotiations_events.21.a"
-		name = ukraine_negotiations_events.21.a
+	immediate = {
 		hidden_effect = {
 			country_event = { id = ukraine_events.28 days = 2 } # Riots in Kyiv
 		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ukraine_negotiations_events.21 option ukraine_negotiations_events.21.a"
+		name = ukraine_negotiations_events.21.a
 	}
 }
 
@@ -5843,12 +5913,16 @@ country_event = { # Counterproposal from VDR
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			# Talks are deadlocked
+			country_event = { id = ukraine_negotiations_events.23 days = 2 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_negotiations_events.22 option ukraine_negotiations_events.22.a"
 		name = ukraine_negotiations_events.22.a
-		hidden_effect = {
-			country_event = { id = ukraine_negotiations_events.23 days = 2 } # Talks are deadlocked
-		}
 	}
 }
 
@@ -5860,12 +5934,15 @@ country_event = { # Talks are deadlocked
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	option = {
-		log = "[GetLogInfo]: event ukraine_negotiations_events.23 option ukraine_negotiations_events.23.a"
-		name = ukraine_negotiations_events.23.a
+	immediate = {
 		hidden_effect = {
 			country_event = { id = ukraine_negotiations_events.24 days = 2 } # Rogue assassin strikes at Pavlo
 		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ukraine_negotiations_events.23 option ukraine_negotiations_events.23.a"
+		name = ukraine_negotiations_events.23.a
 	}
 }
 
@@ -5949,13 +6026,16 @@ country_event = { # VDR Says No
 	fire_only_once = yes
 	picture = GFX_report_event_generic_scandal
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = ukraine_events.28 days = 5 } # Riots in Kyiv
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event ukraine_negotiations_events.27 option ukraine_negotiations_events.27.a"
 		name = ukraine_negotiations_events.27.a
 		add_political_power = -20
-		hidden_effect = {
-			country_event = { id = ukraine_events.28 days = 5 } # Riots in Kyiv
-		}
 	}
 }
 
@@ -5967,12 +6047,15 @@ country_event = { #VDR leaves table
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	option = {
-		log = "[GetLogInfo]: event ukraine_negotiations_events.29 option ukraine_negotiations_events.29.a"
-		name = ukraine_negotiations_events.29.a
+	immediate = {
 		hidden_effect = {
 			country_event = { id = ukraine_events.28 days = 2 } # Riots in Kyiv after failed negotiations
 		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ukraine_negotiations_events.29 option ukraine_negotiations_events.29.a"
+		name = ukraine_negotiations_events.29.a
 	}
 }
 
@@ -6709,39 +6792,39 @@ country_event = { #Question of the Hetman's Authority
 		log = "[GetLogInfo]: event ukraine_danylo_events.4 option ukraine_danylo_events.4.a"
 		name = ukraine_danylo_events.4.a
 		ai_chance = { base = 0 }
-		add_to_variable = { UKR_government_strength = 20 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = UKR_government_strength } }
+			}
+			tooltip = UKR_strengthen_the_vdr_moderate
 		}
-		custom_effect_tooltip = UKR_strengthen_the_vdr_moderate
-		add_to_variable = { UKR_opposition_strength = 10 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = UKR_opposition_strength } }
+			}
+			tooltip = UKR_strengthen_the_opposition_slight
 		}
-		custom_effect_tooltip = UKR_strengthen_the_opposition_slight
 	}
 	option = { #The Hetman should keep some powers
 		log = "[GetLogInfo]: event ukraine_danylo_events.4 option ukraine_danylo_events.4.b"
 		name = ukraine_danylo_events.4.b
 		ai_chance = { base = 100 }
-		add_to_variable = { UKR_government_strength = -20 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = -20
+				clamp = { min = { value = UKR_government_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_vdr_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_vdr_slight
-		add_to_variable = { UKR_opposition_strength = -10 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = -10
+				clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_opposition_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_opposition_slight
 	}
 }
 
@@ -6773,13 +6856,13 @@ country_event = { #Borotbists attack train
 		log = "[GetLogInfo]: event ukraine_danylo_events.5 option ukraine_danylo_events.5.a"
 		name = ukraine_danylo_events.5.a
 		ai_chance = { base = 0 }
-		add_to_variable = { UKR_opposition_strength = 10 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = UKR_opposition_strength } }
+			}
+			tooltip = UKR_strengthen_the_opposition_slight
 		}
-		custom_effect_tooltip = UKR_strengthen_the_opposition_slight
 	}
 	option = {
 		log = "[GetLogInfo]: event ukraine_danylo_events.5 option ukraine_danylo_events.5.b"
@@ -6824,13 +6907,13 @@ country_event = { # SHD Offers to Take Care of Borotbists
 	option = { #I'm not gonna allow that
 		log = "[GetLogInfo]: event ukraine_danylo_events.6 option ukraine_danylo_events.6.b"
 		name = ukraine_danylo_events.6.b
-		add_to_variable = { UKR_opposition_strength = 20 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = UKR_opposition_strength } }
+			}
+			tooltip = UKR_strengthen_the_opposition_big
 		}
-		custom_effect_tooltip = UKR_strengthen_the_opposition_big
 	}
 }
 
@@ -6848,13 +6931,13 @@ country_event = { #Doroshenko Reigns in the UDKhP
 	option = {
 		log = "[GetLogInfo]: event ukraine_danylo_events.8 option ukraine_danylo_events.8.a"
 		name = ukraine_danylo_events.8.a
-		add_to_variable = { UKR_opposition_strength = -10 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = -10
+				clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_opposition_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_opposition_slight
 	}
 }
 
@@ -6870,13 +6953,13 @@ country_event = { #VSZV visits the Hetman
 		log = "[GetLogInfo]: event ukraine_danylo_events.9 option ukraine_danylo_events.9.a"
 		name = ukraine_danylo_events.9.a
 		ai_chance = { base = 0 }
-		add_to_variable = { UKR_opposition_strength = -15 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = -15
+				clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_opposition_moderate
 		}
-		custom_effect_tooltip = UKR_weaken_the_opposition_moderate
 		add_stability = -0.06
 		custom_effect_tooltip = UKR_right_wing_landreform_inevitable_tt
 		set_country_flag = UKR_right_wing_inevitable
@@ -6885,32 +6968,32 @@ country_event = { #VSZV visits the Hetman
 		log = "[GetLogInfo]: event ukraine_danylo_events.9 option ukraine_danylo_events.9.b"
 		name = ukraine_danylo_events.9.b
 		ai_chance = { base = 100 }
-		add_to_variable = { UKR_government_strength = 20 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = UKR_government_strength } }
+			}
+			tooltip = UKR_strengthen_the_vdr_moderate
 		}
-		custom_effect_tooltip = UKR_strengthen_the_vdr_moderate
 	}
 	option = {
 		log = "[GetLogInfo]: event ukraine_danylo_events.9 option ukraine_danylo_events.9.c"
 		name = ukraine_danylo_events.9.c
 		ai_chance = { base = 0 }
-		add_to_variable = { UKR_opposition_strength = -10 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = -10
+				clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_opposition_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_opposition_slight
-		add_to_variable = { UKR_government_strength = -10 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = -10
+				clamp = { min = { value = UKR_government_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_vdr_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_vdr_slight
 	}
 }
 
@@ -6926,32 +7009,32 @@ country_event = { #Question of the Administration
 		log = "[GetLogInfo]: event ukraine_danylo_events.12 option ukraine_danylo_events.12.a"
 		name = ukraine_danylo_events.12.a
 		ai_chance = { base = 0 }
-		add_to_variable = { UKR_government_strength = 20 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = UKR_government_strength } }
+			}
+			tooltip = UKR_strengthen_the_vdr_moderate
 		}
-		custom_effect_tooltip = UKR_strengthen_the_vdr_moderate
 	}
 	option = { #Keep some of the old administration
 		log = "[GetLogInfo]: event ukraine_danylo_events.12 option ukraine_danylo_events.12.b"
 		name = ukraine_danylo_events.12.b
 		ai_chance = { base = 100 }
-		add_to_variable = { UKR_opposition_strength = -10 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = -10
+				clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_opposition_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_opposition_slight
-		add_to_variable = { UKR_government_strength = -10 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = -10
+				clamp = { min = { value = UKR_government_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_vdr_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_vdr_slight
 	}
 }
 
@@ -6977,13 +7060,13 @@ country_event = { ###Pavlo Skoropadskyi's Funeral
 				}
 			}
 		}
-		add_to_variable = { UKR_opposition_strength = 10 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = UKR_opposition_strength } }
+			}
+			tooltip = UKR_strengthen_the_opposition_slight
 		}
-		custom_effect_tooltip = UKR_strengthen_the_opposition_slight
 		add_political_power = 20
 		add_stability = 0.02
 	}
@@ -6991,13 +7074,13 @@ country_event = { ###Pavlo Skoropadskyi's Funeral
 		log = "[GetLogInfo]: event ukraine_danylo_events.13 option ukraine_danylo_events.13.b"
 		name = ukraine_danylo_events.13.b
 		ai_chance = { base = 100 }
-		add_to_variable = { UKR_government_strength = 20 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = UKR_government_strength } }
+			}
+			tooltip = UKR_strengthen_the_vdr_moderate
 		}
-		custom_effect_tooltip = UKR_strengthen_the_vdr_slight
 	}
 }
 
@@ -7013,13 +7096,13 @@ country_event = { ###LUN newspaper
 	option = {
 		log = "[GetLogInfo]: event ukraine_danylo_events.14 option ukraine_danylo_events.14.a"
 		name = ukraine_danylo_events.14.a
-		add_to_variable = { UKR_opposition_strength = 20 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = UKR_opposition_strength } }
+			}
+			tooltip = UKR_strengthen_the_opposition_moderate
 		}
-		custom_effect_tooltip = UKR_strengthen_the_opposition_moderate
 	}
 }
 
@@ -7036,26 +7119,26 @@ country_event = { ###Direction of the UDKhP
 		log = "[GetLogInfo]: event ukraine_danylo_events.15 option ukraine_danylo_events.15.a"
 		name = ukraine_danylo_events.15.a
 		ai_chance = { base = 0 }
-		add_to_variable = { UKR_opposition_strength = 10 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = UKR_opposition_strength } }
+			}
+			tooltip = UKR_strengthen_the_opposition_slight
 		}
-		custom_effect_tooltip = UKR_strengthen_the_opposition_slight
 		add_political_power = 10
 	}
 	option = {
 		log = "[GetLogInfo]: event ukraine_danylo_events.15 option ukraine_danylo_events.15.b"
 		name = ukraine_danylo_events.15.b
 		ai_chance = { base = 100 }
-		add_to_variable = { UKR_government_strength = -10 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = -10
+				clamp = { min = { value = UKR_government_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_vdr_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_vdr_slight
 	}
 }
 
@@ -7071,13 +7154,13 @@ country_event = { ###Investigation of Skoropadskyi's Death
 	option = {
 		log = "[GetLogInfo]: event ukraine_danylo_events.16 option ukraine_danylo_events.16.a"
 		name = ukraine_danylo_events.16.a
-		add_to_variable = { UKR_government_strength = -10 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = -10
+				clamp = { min = { value = UKR_government_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_vdr_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_vdr_slight
 	}
 }
 
@@ -7106,13 +7189,13 @@ country_event = { ###Dissolution of the USKhD
 			name = UKR_authoritarian_democrat_party7
 		}
 		custom_effect_tooltip = tooltip_white_line
-		add_to_variable = { UKR_opposition_strength = -30 }
-		clamp_variable = {
-			var = UKR_opposition_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_opposition_strength = {
+				value = -30
+				clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_opposition_big
 		}
-		custom_effect_tooltip = UKR_weaken_the_opposition_big
 		UKR_mykola_kochubei = { retire = yes }
 	}
 }
@@ -7134,13 +7217,13 @@ country_event = { #Revival of the Ukrainian National-State Union?
 	option = {
 		log = "[GetLogInfo]: event ukraine_danylo_events.18 option ukraine_danylo_events.18.a"
 		name = ukraine_danylo_events.18.a
-		add_to_variable = { UKR_government_strength = -10 }
-		clamp_variable = {
-			var = UKR_government_strength
-			min = 0
-			max = 100
+		add_to_variable = {
+			UKR_government_strength = {
+				value = -10
+				clamp = { min = { value = UKR_government_strength multiply = -1 } max = 0 }
+			}
+			tooltip = UKR_weaken_the_vdr_slight
 		}
-		custom_effect_tooltip = UKR_weaken_the_vdr_slight
 	}
 }
 
@@ -8361,26 +8444,48 @@ country_event = { #Death of Kistiakovskyi
 	id = ukraine_coalition_events.29
 	title = ukraine_coalition_events.29.t
 	desc = {
-		trigger = { NOT = { has_global_flag = GER_stay_out_france_uk } }
+		trigger = {
+			UKR_ihor_kistiakovskyi = { is_second_in_command = yes }
+			NOT = { has_global_flag = GER_stay_out_france_uk }
+		}
 		text = ukraine_coalition_events.29.d
 	}
 	desc = {
-		trigger = { has_global_flag = GER_stay_out_france_uk }
+		trigger = {
+			UKR_ihor_kistiakovskyi = { is_second_in_command = yes }
+			has_global_flag = GER_stay_out_france_uk
+		}
 		text = ukraine_coalition_events.29.d2
+	}
+	desc = {
+		trigger = { UKR_ihor_kistiakovskyi = { is_second_in_command = no } }
+		text = ukraine_coalition_events.29.d3
 	}
 	picture = GFX_report_event_UKR_korostovets
 
 	trigger = {
-		UKR_ihor_kistiakovskyi = { is_second_in_command = yes }
+		has_government = authoritarian_democrat
 	}
 
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	option = {
+		trigger = {
+			UKR_ihor_kistiakovskyi = { is_second_in_command = yes }
+		}
 		log = "[GetLogInfo]: event ukraine_coalition_events.29 option ukraine_coalition_events.29.a"
 		name = ukraine_coalition_events.29.a
+		UKR_ihor_kistiakovskyi = { kill_character = yes }
 		activate_advisor = UKR_volodymyr_korostovets_sic
+	}
+	option = {
+		trigger = {
+			UKR_ihor_kistiakovskyi = { is_second_in_command = no }
+		}
+		log = "[GetLogInfo]: event ukraine_coalition_events.29 option ukraine_coalition_events.29.b"
+		UKR_ihor_kistiakovskyi = { kill_character = yes }
+		name = ukraine_coalition_events.29.b
 	}
 }
 
@@ -8926,22 +9031,7 @@ country_event = { #Question of USKhD and UDKhP
 		add_stability = -0.06
 		custom_effect_tooltip = UKR_integrate_organisations_full
 		hidden_effect = {
-			set_temp_variable = { UKR_new_pataut = party_popularity_100@paternal_autocrat }
-			add_to_temp_variable = { UKR_new_pataut = party_popularity_100@authoritarian_democrat }
-
-			set_temp_variable = { sum = 100 }
-			subtract_from_temp_variable = { sum = party_popularity_100@totalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@syndicalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@radical_socialist }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_democrat }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_liberal }
-			subtract_from_temp_variable = { sum = party_popularity_100@market_liberal }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_conservative }
-			subtract_from_temp_variable = { sum = UKR_new_pataut }
-			subtract_from_temp_variable = { sum = party_popularity_100@national_populist }
-
-			add_to_temp_variable = { UKR_new_pataut = sum } #avoid rounding errors
-
+			set_temp_variable = { UKR_new_pataut = { value = party_popularity_100@paternal_autocrat add = party_popularity_100@authoritarian_democrat } }
 			set_popularities = {
 				totalist = party_popularity_100@totalist
 				syndicalist = party_popularity_100@syndicalist
@@ -8964,25 +9054,30 @@ country_event = { #Question of USKhD and UDKhP
 		add_stability = -0.03
 		custom_effect_tooltip = UKR_integrate_organisations_half
 		hidden_effect = {
-			set_temp_variable = { UKR_new_authdem = UKR.party_popularity_100@authoritarian_democrat }
-			divide_temp_variable = { UKR_new_authdem = 2 }
+			set_temp_variable = { UKR_new_authdem = { value = party_popularity_100@authoritarian_democrat multiply = 0.5 } }
 
-			set_temp_variable = { UKR_new_pataut = UKR.party_popularity_100@paternal_autocrat }
-			add_to_temp_variable = { UKR_new_pataut = UKR_new_authdem }
+			set_temp_variable = {
+				UKR_new_pataut = {
+					value = party_popularity_100@paternal_autocrat
+					add = UKR_new_authdem
+				}
+			}
 
-			set_temp_variable = { sum = 100 }
-			subtract_from_temp_variable = { sum = party_popularity_100@totalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@syndicalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@radical_socialist }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_democrat }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_liberal }
-			subtract_from_temp_variable = { sum = party_popularity_100@market_liberal }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_conservative }
-			subtract_from_temp_variable = { sum = UKR_new_authdem }
-			subtract_from_temp_variable = { sum = UKR_new_pataut }
-			subtract_from_temp_variable = { sum = party_popularity_100@national_populist }
-
-			add_to_temp_variable = { UKR_new_pataut = sum } #avoid rounding errors
+			add_to_temp_variable = { #avoid rounding errors
+				UKR_new_pataut = {
+					value = 100
+					subtract = party_popularity_100@totalist
+					subtract = party_popularity_100@syndicalist
+					subtract = party_popularity_100@radical_socialist
+					subtract = party_popularity_100@social_democrat
+					subtract = party_popularity_100@social_liberal
+					subtract = party_popularity_100@market_liberal
+					subtract = party_popularity_100@social_conservative
+					subtract = UKR_new_authdem
+					subtract = UKR_new_pataut
+					subtract = party_popularity_100@national_populist
+				}
+			}
 
 			set_popularities = {
 				totalist = party_popularity_100@totalist
@@ -13981,12 +14076,20 @@ country_event = { #German ambassador event 2
 		add_stability = 0.1
 		remove_targeted_decision = { target = THIS decision = UKR_concessions_to_rrb_radicals }
 		remove_targeted_decision = { target = THIS decision = UKR_concessions_to_upsr_radicals }
-		set_temp_variable = { UKR_strength_change = -50 }
+		set_temp_variable = {
+			UKR_strength_change = {
+				value = -50
+				clamp = { min = { value = UKR_rrb_radical_var multiply = -1 } max = 0 }
+			}
+		}
 		UKR_rrb_radical_points = yes
-		clamp_variable = { var = UKR_rrb_radical_var min = 0 }
-		set_temp_variable = { UKR_strength_change = -50 }
+		set_temp_variable = {
+			UKR_strength_change = {
+				value = -50
+				clamp = { min = { value = UKR_upsr_radical_var multiply = -1 } max = 0 }
+			}
+		}
 		UKR_upsr_radical_points = yes
-		clamp_variable = { var = UKR_upsr_radical_var min = 0 }
 		UKR_change_revbloc_dominance_pp = yes
 	}
 }
@@ -19738,10 +19841,14 @@ country_event = { #LUN coup part 2
 			add_dynamic_modifier = { modifier = UKR_lun_mechanic_modifier }
 			activate_advisor = UKR_the_soim_sic #1111 Replace with unique SiC if advisor in the future works for this
 			activate_targeted_decision = { target = ROOT decision = UKR_cohesion_increase }
-			set_temp_variable = { LUN_bonus_PP = days_mission_timeout@UKR_landreform_mission }
-			add_to_temp_variable = { var = LUN_bonus_PP value = days_mission_timeout@UKR_industrialisation_mission }
-			multiply_temp_variable = { var = LUN_bonus_PP value = 0.1 }
-			round_variable = LUN_bonus_PP
+			set_temp_variable = {
+				LUN_bonus_PP = {
+					value = days_mission_timeout@UKR_landreform_mission
+					add = days_mission_timeout@UKR_industrialisation_mission
+					multiply = 0.1
+					round = yes
+				}
+			}
 			add_political_power = LUN_bonus_PP
 			news_event = { id = ukraine_lun_events.100 days = 1 }
 			GER = { country_event = { id = ukraine_foreign_policy_events.15 days = 1 } } #Negotiations with Germany
@@ -20140,49 +20247,34 @@ country_event = { #Invitation to BSU
 			if = {
 				limit = { has_completed_focus = UKR_bsd_customs_union }
 				add_to_variable = {
-					var = UKR_bsd_consumer_goods
-					value = -0.05
+					UKR_bsd_consumer_goods = {
+						value = -0.05
+						clamp = { min = { value = -0.25 subtract = UKR_bsd_consumer_goods } max = 0 }
+					}
 				}
 				add_to_variable = {
-					var = UKR_bsd_factory_output
-					value = 0.02
+					UKR_bsd_factory_output = {
+						value = 0.02
+						clamp = { min = 0 max = { value = 0.1 subtract = UKR_bsd_factory_output } }
+					}
 				}
 			}
 			if = {
 				limit = { has_completed_focus = UKR_bsd_political_union }
 				add_to_variable = {
-					var = UKR_bsd_political_power
-					value = 0.02
+					UKR_bsd_political_power = {
+						value = 0.02
+						clamp = { min = 0 max = { value = 0.2 subtract = UKR_bsd_political_power } }
+					}
 				}
 				add_to_variable = {
-					var = UKR_bsd_stability
-					value = 0.02
+					UKR_bsd_stability = {
+						value = 0.02
+						clamp = { min = 0 max = { value = 0.1 subtract = UKR_bsd_stability } }
+					}
 				}
 			}
-			clamp_variable = {
-				var = UKR_bsd_consumer_goods
-				min = -0.25
-				max = 0
-			}
-			clamp_variable = {
-				var = UKR_bsd_factory_output
-				min = 0
-				max = 0.1
-			}
-			clamp_variable = {
-				var = UKR_bsd_political_power
-				min = 0
-				max = 0.2
-			}
-			clamp_variable = {
-				var = UKR_bsd_stability
-				min = 0
-				max = 0.1
-			}
-			add_to_variable = {
-				var = UKR_bsu_members
-				value = 1
-			}
+			add_to_variable = { UKR_bsu_members = 1 }
 			force_update_dynamic_modifier = yes
 		}
 		faction_leader = { country_event = { id = ukraine_lun_events.56 days = 5 } }
@@ -21079,12 +21171,14 @@ country_event = { # Bloc lets Borotbists into Parliament, They jointly dissolve 
 		complete_national_focus = UKR_fighters_til_the_end
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = UKR_borotbyst_popularity_mechanic_tt
-		set_temp_variable = { UKR_syndie_bonus = UKR.party_popularity_100@syndicalist }
 		if = {
 			limit = {
 				has_country_flag = UKR_bakhmut_meeting_agree_to_ukapist
 			}
-			add_to_temp_variable = { UKR_syndie_bonus = UKR.party_popularity_100@totalist }
+			set_temp_variable = { UKR_syndie_bonus = { value = party_popularity_100@syndicalist add = party_popularity_100@totalist } }
+		}
+		else = {
+			set_temp_variable = { UKR_syndie_bonus = party_popularity_100@syndicalist }
 		}
 		if = {
 			limit = {
@@ -21168,9 +21262,9 @@ country_event = { # Bloc lets Borotbists into Parliament, They jointly dissolve 
 						has_war_with = GER
 					}
 				}
-				every_country = {
+				every_enemy_country = {
 					limit = {
-						has_war_with = UKR
+						is_valid_peace_target = yes
 						NOT = { is_in_faction_with = RUS }
 					}
 					white_peace_with_ROOT = yes
@@ -21200,10 +21294,8 @@ country_event = { # Bloc lets Borotbists into Parliament, They jointly dissolve 
 						has_war_with = GER
 					}
 				}
-				every_country = {
-					limit = {
-						has_war_with = UKR
-					}
+				every_enemy_country = {
+					limit = { is_valid_peace_target = yes }
 					white_peace_with_ROOT = yes
 				}
 				GER = {
@@ -21767,10 +21859,7 @@ country_event = { # Focus (Khvyliovyi) - Latinised Alphabet
 		name = ukraine_borotbyst_events.66.a
 		custom_effect_tooltip = UKR_khvyliovyi_anger_tt
 		hidden_effect = {
-			add_to_variable = {
-				var = UKR_khvyliovyi_anger_variable
-				value = 2
-			}
+			add_to_variable = { UKR_khvyliovyi_anger_variable = 2 }
 			if = {
 				limit = { #Khvyliovyi Resigns
 					NOT = { check_variable = { UKR_khvyliovyi_anger_variable < 4 } }
@@ -21792,10 +21881,7 @@ country_event = { # Focus (Khvyliovyi) - Latinised Alphabet
 		add_political_power = -20
 		add_stability = -0.02
 		hidden_effect = {
-			subtract_from_variable = {
-				var = UKR_khvyliovyi_anger_variable
-				value = -1
-			}
+			subtract_from_variable = { UKR_khvyliovyi_anger_variable = -1 }
 			country_event = { id = ukraine_borotbyst_events.67 days = 30 }
 		}
 	}
@@ -21841,10 +21927,7 @@ country_event = { # Focus (Khvyliovyi) - Bad Article >:C
 		name = ukraine_borotbyst_events.67.b
 		custom_effect_tooltip = UKR_khvyliovyi_anger_tt
 		hidden_effect = {
-			add_to_variable = {
-				var = UKR_khvyliovyi_anger_variable
-				value = 1
-			}
+			add_to_variable = { UKR_khvyliovyi_anger_variable = 1 }
 		}
 	}
 }
@@ -21886,10 +21969,7 @@ country_event = { # Focus (Khvyliovyi) - Post-War Alphabet
 		log = "[GetLogInfo]: event ukraine_borotbyst_events.69 option ukraine_borotbyst_events.69.a"
 		name = ukraine_borotbyst_events.69.a
 		custom_effect_tooltip = UKR_khvyliovyi_anger_tt
-		add_to_variable = {
-			var = UKR_khvyliovyi_anger_variable
-			value = 3
-		}
+		add_to_variable = { UKR_khvyliovyi_anger_variable = 3 }
 		if = {
 			limit = { #Khvyliovyi Resigns
 				NOT = { check_variable = { UKR_khvyliovyi_anger_variable < 4 } }
@@ -21902,10 +21982,7 @@ country_event = { # Focus (Khvyliovyi) - Post-War Alphabet
 		log = "[GetLogInfo]: event ukraine_borotbyst_events.69 option ukraine_borotbyst_events.69.b"
 		name = ukraine_borotbyst_events.69.b
 		hidden_effect = {
-			subtract_from_variable = {
-				var = UKR_khvyliovyi_anger_variable
-				value = -1
-			}
+			subtract_from_variable = { UKR_khvyliovyi_anger_variable = -1 }
 		}
 	}
 
@@ -21920,10 +21997,7 @@ country_event = { # Focus (Khvyliovyi) - Post-War Alphabet
 		}
 		UKR_syndie_khvyliovyi_buff = yes
 		hidden_effect = {
-			subtract_from_variable = {
-				var = UKR_khvyliovyi_anger_variable
-				value = -2
-			}
+			subtract_from_variable = { UKR_khvyliovyi_anger_variable = -2 }
 		}
 	}
 }
@@ -23891,9 +23965,9 @@ country_event = { #Do we support Skoropadskyi? (For GER)
 		ai_chance = { base = 0 }
 		add_political_power = -40
 		UKR = { country_event = intermarium_events.18 }
-		add_opinion_modifier = {
+		reverse_add_opinion_modifier = {
 			modifier = KR_approves_of_govt
-			target = GER
+			target = UKR
 		}
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = ukraine_foreign_policy_events.35.tt

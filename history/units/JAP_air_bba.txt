@@ -10,15 +10,25 @@ air_wings = {
 			amount = 72
 			version_name = "Type 91"
 		}
-		small_plane_cas_airframe_1 = {
+		small_plane_cas_airframe_0 = {
 			owner = "JAP"
 			amount = 54
-			version_name = "Ki-32"
+			version_name = "Ki-3"
 		}
 		medium_plane_airframe_0 = {
 			owner = "JAP"
 			amount = 54
 			version_name = "Ki-2"
+		}
+		large_plane_maritime_patrol_plane_airframe_0 = {
+			owner = "JAP"
+			amount = 10
+			version_name = "H4H"
+		}
+		large_plane_maritime_patrol_plane_airframe_0 = {
+			owner = "JAP"
+			amount = 10
+			version_name = "H4H"
 		}
 	}
 
@@ -26,12 +36,12 @@ air_wings = {
 		small_plane_airframe_0 = {
 			owner = "JAP"
 			amount = 72
-			version_name = "Type 91"
+			version_name = "Ki-10"
 		}
-		small_plane_cas_airframe_1 = {
+		small_plane_cas_airframe_0 = {
 			owner = "JAP"
 			amount = 54
-			version_name = "Ki-32"
+			version_name = "Ki-3"
 		}
 	}
 
@@ -39,22 +49,22 @@ air_wings = {
 		small_plane_airframe_0 = {
 			owner = "JAP"
 			amount = 72
-			version_name = "Type 91"
+			version_name = "Ki-10"
 		}
-		small_plane_cas_airframe_1 = {
+		small_plane_cas_airframe_0 = {
 			owner = "JAP"
 			amount = 54
-			version_name = "Ki-32"
+			version_name = "Ki-3"
 		}
-		small_plane_cas_airframe_1 = {
+		small_plane_cas_airframe_0 = {
 			owner = "JAP"
 			amount = 60
-			version_name = "Ki-32"
+			version_name = "Ki-3"
 		}
-		small_plane_cas_airframe_1 = {
+		small_plane_cas_airframe_0 = {
 			owner = "JAP"
 			amount = 60
-			version_name = "Ki-32"
+			version_name = "Ki-3"
 		}
 		medium_plane_airframe_0 = {
 			owner = "JAP"
@@ -65,42 +75,52 @@ air_wings = {
 
 	"Hōshō" = {
 		cv_small_plane_airframe_0 = { owner = "JAP" amount = 10 version_name = "A4N" }
-		cv_small_plane_naval_bomber_airframe_1 = { owner = "JAP" amount = 10 version_name = "B5N" }
+		cv_small_plane_naval_bomber_airframe_0 = { owner = "JAP" amount = 10 version_name = "B4Y" }
 	}
 	"Shōkaku" = {
 		cv_small_plane_airframe_0 = { owner = "JAP" amount = 10 version_name = "A4N" }
 		cv_small_plane_airframe_0 = { owner = "JAP" amount = 10 version_name = "A4N" }
-		cv_small_plane_naval_bomber_airframe_1 = { owner = "JAP" amount = 10 version_name = "B5N" }
-		cv_small_plane_cas_airframe_1 = { owner = "JAP" amount = 10 version_name = "D1A2" }
+		cv_small_plane_naval_bomber_airframe_0 = { owner = "JAP" amount = 10 version_name = "B4Y" }
+		cv_small_plane_cas_airframe_0 = { owner = "JAP" amount = 10 version_name = "D1A2" }
 	}
 	"Zuikaku" = {
 		cv_small_plane_airframe_0 = { owner = "JAP" amount = 10 version_name = "A4N" }
 		cv_small_plane_airframe_0 = { owner = "JAP" amount = 10 version_name = "A4N" }
-		cv_small_plane_naval_bomber_airframe_1 = { owner = "JAP" amount = 10 version_name = "B5N" }
-		cv_small_plane_cas_airframe_1 = { owner = "JAP" amount = 10 version_name = "D1A2" }
+		cv_small_plane_naval_bomber_airframe_0 = { owner = "JAP" amount = 10 version_name = "B4Y" }
+		cv_small_plane_cas_airframe_0 = { owner = "JAP" amount = 10 version_name = "D1A2" }
 	}
 }
 
 instant_effect = {
 	add_equipment_production = {
 		equipment = {
-			type = small_plane_airframe_0
+			type = small_plane_airframe_1
 			creator = "JAP"
-			version_name = "Type 91"
+			version_name = "Ki-27"
 		}
-		industrial_manufacturer = mio:JAP_mitsubishi_organisation
-		progress = 0.15
+		industrial_manufacturer = mio:JAP_tachikawa_organisation
 		efficiency = 50
 	}
 
 	add_equipment_production = {
 		equipment = {
-			type = cv_small_plane_naval_bomber_airframe_1
+			type = cv_small_plane_airframe_1
 			creator = "JAP"
-			version_name = "B5N"
+			version_name = "A5M1"
 		}
 		industrial_manufacturer = mio:JAP_nakajima_organisation
 		progress = 0.2
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_naval_bomber_airframe_1
+			creator = "JAP"
+			version_name = "G3M"
+		}
+		industrial_manufacturer = mio:JAP_nakajima_organisation
+		progress = 0.22
 		efficiency = 50
 	}
 }

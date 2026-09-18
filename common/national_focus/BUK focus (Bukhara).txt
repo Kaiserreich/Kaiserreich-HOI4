@@ -2270,27 +2270,31 @@ focus_tree = {
 					long_name = BUK_red_coup_social_democrat_party_long
 				}
 
-				set_temp_variable = { BUK_new_soccon = BUK.party_popularity_100@social_conservative }
-				multiply_temp_variable = { BUK_new_soccon = 0.75 }
-				set_temp_variable = { BUK_new_authdem = BUK.party_popularity_100@authoritarian_democrat }
-				multiply_temp_variable = { BUK_new_authdem = 0.75 }
-				set_temp_variable = { BUK_new_radsoc = BUK.party_popularity_100@radical_socialist }
-				add_to_temp_variable = { BUK_new_radsoc = BUK_new_soccon }
-				add_to_temp_variable = { BUK_new_radsoc = BUK_new_authdem }
+				set_temp_variable = { BUK_new_soccon = { value = BUK.party_popularity_100@social_conservative multiply = 0.75 } }
+				set_temp_variable = { BUK_new_authdem = { value = BUK.party_popularity_100@authoritarian_democrat multiply = 0.75 } }
+				set_temp_variable = {
+					BUK_new_radsoc = {
+						value = BUK.party_popularity_100@radical_socialist
+						add = BUK_new_soccon
+						add = BUK_new_authdem
+					}
+				}
 
-				set_temp_variable = { sum = 100 }
-				subtract_from_temp_variable = { sum = party_popularity_100@totalist }
-				subtract_from_temp_variable = { sum = party_popularity_100@syndicalist }
-				subtract_from_temp_variable = { sum = BUK_new_radsoc }
-				subtract_from_temp_variable = { sum = party_popularity_100@social_democrat }
-				subtract_from_temp_variable = { sum = party_popularity_100@social_liberal }
-				subtract_from_temp_variable = { sum = party_popularity_100@market_liberal }
-				subtract_from_temp_variable = { sum = BUK_new_soccon }
-				subtract_from_temp_variable = { sum = BUK_new_authdem }
-				subtract_from_temp_variable = { sum = party_popularity_100@paternal_autocrat }
-				subtract_from_temp_variable = { sum = party_popularity_100@national_populist }
-
-				add_to_temp_variable = { BUK_new_radsoc = sum } #avoid rounding errors
+				add_to_temp_variable = { #avoid rounding errors
+					BUK_new_radsoc = {
+						value = 100
+						subtract = party_popularity_100@totalist
+						subtract = party_popularity_100@syndicalist
+						subtract = BUK_new_radsoc
+						subtract = party_popularity_100@social_democrat
+						subtract = party_popularity_100@social_liberal
+						subtract = party_popularity_100@market_liberal
+						subtract = BUK_new_soccon
+						subtract = BUK_new_authdem
+						subtract = party_popularity_100@paternal_autocrat
+						subtract = party_popularity_100@national_populist
+					}
+				}
 
 				set_popularities = {
 					totalist = party_popularity_100@totalist

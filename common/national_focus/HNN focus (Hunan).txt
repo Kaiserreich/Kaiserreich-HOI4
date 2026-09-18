@@ -532,8 +532,8 @@ focus_tree = {
 			every_state = {
 				limit = {
 					OR = {
-						has_state_flag = guangxi_province_state
-						has_state_flag = guangdong_province_state
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 592.id }
 					}
 					is_owned_by_ROOT_or_ally = yes
 				}
@@ -1017,13 +1017,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed HNN_reach_out_to_the_peasantry"
 			add_ideas = HNN_peasant_support_weak
-			add_to_variable = { HNN_opposition_strength = -20 }
-			clamp_variable = {
-				var = HNN_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				HNN_opposition_strength = {
+					value = -20
+					clamp = { min = { value = HNN_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = HNN_weaken_the_opposition
 			}
-			custom_effect_tooltip = HNN_weaken_the_opposition
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -1179,12 +1179,6 @@ focus_tree = {
 				limit = {
 					HNN_zhou_shizhao = { is_political_advisor = yes }
 				}
-				add_to_variable = { HNN_opposition_strength = -20 }
-				clamp_variable = {
-					var = HNN_opposition_strength
-					min = 0
-					max = 100
-				}
 				add_popularity = {
 					ideology = social_liberal
 					popularity = 0.03
@@ -1192,16 +1186,16 @@ focus_tree = {
 				custom_effect_tooltip = HNN_zhou_shizhao_is_helpful_tooltip
 			}
 			else = {
-				add_to_variable = { HNN_opposition_strength = -20 }
-				clamp_variable = {
-					var = HNN_opposition_strength
-					min = 0
-					max = 100
-				}
 				custom_effect_tooltip = HNN_zhou_shizhao_helpful_tooltip
 				custom_effect_tooltip = tooltip_white_line
 			}
-			custom_effect_tooltip = HNN_weaken_the_opposition
+			add_to_variable = {
+				HNN_opposition_strength = {
+					value = -20
+					clamp = { min = { value = HNN_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = HNN_weaken_the_opposition
+			}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 	}
@@ -1279,13 +1273,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed HNN_introduce_basic_welfare"
 			add_ideas = HNN_basic_welfare
-			add_to_variable = { HNN_opposition_strength = -20 }
-			clamp_variable = {
-				var = HNN_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				HNN_opposition_strength = {
+					value = -20
+					clamp = { min = { value = HNN_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = HNN_weaken_the_opposition
 			}
-			custom_effect_tooltip = HNN_weaken_the_opposition
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -1317,13 +1311,13 @@ focus_tree = {
 				remove_idea = HNN_peasant_support_weak
 				add_idea = HNN_peasant_support_growing
 			}
-			add_to_variable = { HNN_opposition_strength = -20 }
-			clamp_variable = {
-				var = HNN_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				HNN_opposition_strength = {
+					value = -20
+					clamp = { min = { value = HNN_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = HNN_weaken_the_opposition
 			}
-			custom_effect_tooltip = HNN_weaken_the_opposition
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -1528,14 +1522,14 @@ focus_tree = {
 				remove_idea = HNN_basic_welfare
 				add_idea = HNN_peace_with_the_unions
 			}
-			add_to_variable = { HNN_opposition_strength = -20 }
-			clamp_variable = {
-				var = HNN_opposition_strength
-				min = 0
-				max = 100
-			}
 			country_event = { id = hunan_federalist_events.7 days = 1 }
-			custom_effect_tooltip = HNN_weaken_the_opposition
+			add_to_variable = {
+				HNN_opposition_strength = {
+					value = -20
+					clamp = { min = { value = HNN_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = HNN_weaken_the_opposition
+			}
 		}
 		search_filters = { FOCUS_FILTER_PRODUCTION FOCUS_FILTER_POLITICAL }
 	}
@@ -1588,13 +1582,13 @@ focus_tree = {
 				custom_effect_tooltip = HNN_ye_dehui_helpful_tooltip
 				custom_effect_tooltip = tooltip_white_line
 			}
-			add_to_variable = { HNN_opposition_strength = -20 }
-			clamp_variable = {
-				var = HNN_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				HNN_opposition_strength = {
+					value = -20
+					clamp = { min = { value = HNN_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = HNN_weaken_the_opposition
 			}
-			custom_effect_tooltip = HNN_weaken_the_opposition
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
 	}
@@ -1766,13 +1760,13 @@ focus_tree = {
 				remove_idea = HNN_the_western_diarchy
 				add_idea = HNN_diarchy_influence_curbbed
 			}
-			add_to_variable = { HNN_opposition_strength = -20 }
-			clamp_variable = {
-				var = HNN_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				HNN_opposition_strength = {
+					value = -20
+					clamp = { min = { value = HNN_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = HNN_weaken_the_opposition
 			}
-			custom_effect_tooltip = HNN_weaken_the_opposition
 			custom_effect_tooltip = tooltip_white_line
 			country_event = { id = hunan_federalist_events.9 days = 1 }
 			custom_effect_tooltip = tooltip_white_line
@@ -2094,10 +2088,8 @@ focus_tree = {
 		}
 
 		available = {
-			AND = {
-				HNN_eighth_winning_trigger = yes
-				HNN_led_by_tang_shengzhi = yes
-			}
+			HNN_eighth_winning_trigger = yes
+			HNN_led_by_tang_shengzhi = yes
 		}
 
 		completion_reward = {
@@ -2172,13 +2164,11 @@ focus_tree = {
 		}
 
 		available = {
-			AND = {
-				OR = {
-					has_country_flag = HNN_tang_has_won_bop
-					HNN_eighth_winning_trigger = yes
-				}
-				HNN_led_by_tang_shengzhi = yes
+			OR = {
+				has_country_flag = HNN_tang_has_won_bop
+				HNN_eighth_winning_trigger = yes
 			}
+			HNN_led_by_tang_shengzhi = yes
 		}
 
 		completion_reward = {
@@ -2252,12 +2242,10 @@ focus_tree = {
 		}
 
 		available = {
-			AND = {
-				HNN_led_by_tang_shengzhi = yes
-				OR = {
-					has_country_flag = HNN_tang_has_won_bop
-					HNN_eighth_ascendant_trigger = yes
-				}
+			HNN_led_by_tang_shengzhi = yes
+			OR = {
+				has_country_flag = HNN_tang_has_won_bop
+				HNN_eighth_ascendant_trigger = yes
 			}
 		}
 
@@ -2302,10 +2290,8 @@ focus_tree = {
 		}
 
 		available = {
-			AND = {
-				HNN_led_by_tang_shengzhi = yes
-				HNN_eighth_ascendant_trigger = yes
-			}
+			HNN_led_by_tang_shengzhi = yes
+			HNN_eighth_ascendant_trigger = yes
 		}
 
 		completion_reward = {
@@ -2356,10 +2342,8 @@ focus_tree = {
 		}
 
 		available = {
-			AND = {
-				HNN_led_by_tang_shengzhi = yes
-				HNN_eighth_ascendant_trigger = yes
-			}
+			HNN_led_by_tang_shengzhi = yes
+			HNN_eighth_ascendant_trigger = yes
 			has_completed_focus = HNN_planning_hunans_national_revolution
 		}
 
@@ -2393,10 +2377,8 @@ focus_tree = {
 		}
 
 		available = {
-			AND = {
-				HNN_led_by_tang_shengzhi = yes
-				HNN_eighth_ascendant_trigger = yes
-			}
+			HNN_led_by_tang_shengzhi = yes
+			HNN_eighth_ascendant_trigger = yes
 			has_completed_focus = HNN_ensuring_rural_pacification
 		}
 
@@ -2441,10 +2423,8 @@ focus_tree = {
 		prerequisite = { focus = HNN_revolution_in_the_countryside }
 
 		available = {
-			AND = {
-				HNN_led_by_tang_shengzhi = yes
-				HNN_eighth_dominant_trigger = yes
-			}
+			HNN_led_by_tang_shengzhi = yes
+			HNN_eighth_dominant_trigger = yes
 			has_completed_focus = HNN_expansion_of_yuelu_academy
 			has_completed_focus = HNN_the_basis_of_peoples_livelihood
 			has_completed_focus = HNN_providing_universal_literacy
@@ -2577,10 +2557,8 @@ focus_tree = {
 			}
 		}
 		available = {
-			AND = {
-				HNN_sixth_winning_trigger = yes
-				HNN_led_by_cheng_qian = yes
-			}
+			HNN_sixth_winning_trigger = yes
+			HNN_led_by_cheng_qian = yes
 		}
 
 		prerequisite = {
@@ -2648,10 +2626,8 @@ focus_tree = {
 			}
 		}
 		available = {
-			AND = {
-				HNN_sixth_winning_trigger = yes
-				HNN_led_by_cheng_qian = yes
-			}
+			HNN_sixth_winning_trigger = yes
+			HNN_led_by_cheng_qian = yes
 		}
 
 		prerequisite = {
@@ -2701,10 +2677,8 @@ focus_tree = {
 			}
 		}
 		available = {
-			AND = {
-				HNN_sixth_ascendant_trigger = yes
-				HNN_led_by_cheng_qian = yes
-			}
+			HNN_sixth_ascendant_trigger = yes
+			HNN_led_by_cheng_qian = yes
 		}
 
 		prerequisite = {
@@ -2878,11 +2852,9 @@ focus_tree = {
 			}
 		}
 		available = {
-			AND = {
-				HNN_sixth_ascendant_trigger = yes
-				HNN_led_by_cheng_qian = yes
-				has_completed_focus = HNN_ensuring_rural_pacification
-			}
+			HNN_sixth_ascendant_trigger = yes
+			HNN_led_by_cheng_qian = yes
+			has_completed_focus = HNN_ensuring_rural_pacification
 		}
 
 		prerequisite = {
@@ -2925,11 +2897,9 @@ focus_tree = {
 			}
 		}
 		available = {
-			AND = {
-				HNN_sixth_ascendant_trigger = yes
-				HNN_led_by_cheng_qian = yes
-				has_completed_focus = HNN_planning_hunans_national_revolution
-			}
+			HNN_sixth_ascendant_trigger = yes
+			HNN_led_by_cheng_qian = yes
+			has_completed_focus = HNN_planning_hunans_national_revolution
 		}
 
 		prerequisite = {
@@ -3092,10 +3062,8 @@ focus_tree = {
 			}
 		}
 		bypass = {
-			AND = {
-				owns_state = 592 #canton
-				is_subject = no
-			}
+			owns_state = 592 #canton
+			is_subject = no
 		}
 
 		relative_position_id = HNN_victory_of_the_united_front
@@ -3537,9 +3505,9 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = hunan_province_state
-						has_state_flag = guizhou_province_state
-						has_state_flag = hubei_province_state
+						check_variable = { chinese_province_state = 602.id }
+						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 1048.id }
 					}
 				}
 				HNN = { activate_targeted_decision = { target = PREV decision = china_generic_land_reform_decision } }

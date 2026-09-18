@@ -263,7 +263,7 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 5
-				GBR_robert_gascoyne_cecil = { is_second_in_command = yes }
+				GBR_robert_cecil = { is_second_in_command = yes }
 			}
 			modifier = {
 				factor = 2
@@ -360,19 +360,15 @@ focus_tree = {
 			country_event = united_kingdom_events.35
 			activate_advisor = GBR_robert_vansittart_sic
 			hidden_effect = {
-				set_variable = { var = bra_supp value = party_popularity@paternal_autocrat }
-				multiply_variable = { var = bra_supp value = 100 }
-				set_variable = { var = new_pataut value = bra_supp }
-				multiply_variable = { var = new_pataut value = -1 }
 				set_party_name = {
 					ideology = paternal_autocrat
 					name = GBR_military_government_party
 					long_name = GBR_military_government_party_long
 				}
-				add_popularity = { ideology = paternal_autocrat popularity = new_pataut }
-				add_popularity = { ideology = authoritarian_democrat popularity = bra_supp }
-				clear_variable = new_pataut
-				clear_variable = bra_supp
+				set_temp_variable = { GBR_authdem_new_pop = party_popularity_100@paternal_autocrat }
+				set_temp_variable = { GBR_pataut_new_pop = { value = party_popularity_100@paternal_autocrat multiply = -1 } }
+				add_popularity = { ideology = paternal_autocrat popularity = GBR_pataut_new_pop }
+				add_popularity = { ideology = authoritarian_democrat popularity = GBR_authdem_new_pop }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }

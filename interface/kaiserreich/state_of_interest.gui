@@ -1,7 +1,7 @@
-@soi_icon_x_pos = 56
-@soi_icon_y_pos = 12
+@soi_icon_x_pos = 55
+@soi_icon_y_pos = 18
 @soi_text_x_pos = 80
-@soi_text_y_pos = -25
+@soi_text_y_pos = -4
 
 guiTypes = {
 	containerWindowType = {
@@ -13,183 +13,30 @@ guiTypes = {
 			position = { x = 0 y = -11 }
 			alwaystransparent = yes
 		}
-	}
 
-	########################
-	###      EUROPE      ###
-	########################
-
-	### RUSSIAN AUTONOMY ###
-	containerWindowType = {
-		name = "KR_state_of_interest_russian_autonomy"
-
-	#	buttonType = {
-	#		name = "cossack_host_icon"
-	#		spriteType ="GFX_cossack_host_panel"
-	#		position = { x = @soi_icon_x_pos  y = @soi_icon_y_pos }
-	#	}
-
-		instantTextBoxType = {
-			name = "russian_state_title"
-			text = "[THIS.GetName]"
-			font = hoi_36header
-			format = center
-
-			position = { x = @soi_text_x_pos  y = -5 }
-			maxWidth = 330
-			maxHeight = 30
-		}
-
-		instantTextBoxType = {
-			name = "cossack_host_title"
-			text = "[THIS.GetRussianStateName]"
-			font = hoi_24header
-			format = center
-
-			position = { x = @soi_text_x_pos  y = 20 }
-			maxWidth = 330
-			maxHeight = 30
-		}
-	}
-
-	########################
-	###       ASIA       ###
-	########################
-
-	### CHINESE PROVINCE ###
-	containerWindowType = {
-		name = "KR_state_of_interest_chinese_province"
-
-	#	buttonType = {
-	#		name = "chinese_province_icon"
-	#		spriteType = "GFX_idea_government"
-	#		position = { x = @soi_icon_x_pos  y = @soi_icon_y_pos }
-	#	}
-
-		instantTextBoxType = {
-			name = "chinese_state_title"
-			text = "[THIS.GetName]"
-			font = hoi_36header
-			format = center
-
-			position = { x = @soi_text_x_pos  y = -4 }
-			maxWidth = 330
-			maxHeight = 30
-		}
-
-		instantTextBoxType = {
-			name = "chinese_province_title"
-			text = "chinese_province_title"
-			font = hoi_24header
-			format = center
-
-			position = { x = @soi_text_x_pos  y = 20 }
-			maxWidth = 330
-			maxHeight = 30
-		}
-	}
-
-	########################
-	###   MIDDLE  EAST   ###
-	########################
-
-	### OTTOMAN PROVINCE ###
-	containerWindowType = {
-		name = "KR_state_of_interest_ottoman_province"
-
-	#	buttonType = {
-	#		name = "ottoman_province_icon"
-	#		spriteType = "GFX_idea_government"
-	#		position = { x = @soi_icon_x_pos  y = @soi_icon_y_pos }
-	#	}
-
-		instantTextBoxType = {
-			name = "ottoman_state_title"
-			text = "[THIS.GetName]"
-			font = hoi_36header
-			format = center
-
-			position = { x = @soi_text_x_pos  y = -4 }
-			maxWidth = 330
-			maxHeight = 30
-		}
-
-		instantTextBoxType = {
-			name = "ottoman_province_title"
-			text = "ottoman_province_title"
-			font = hoi_24header
-			format = center
-
-			position = { x = @soi_text_x_pos  y = 20 }
-			maxWidth = 330
-			maxHeight = 30
-		}
-
-		#Population Textbox
 		iconType = {
-			name = "OTT_population_backdrop"
-			position = { x = 32 y = 8 }
-			spriteType = "GFX_minishield"
+			name = "KR_state_of_interest_icon"
+			spriteType = "GFX_empty_paper"
+			position = { x = 40  y = 18 } #default. modify in scripted GUI
+			centerposition = yes
+			pdx_tooltip = KR_state_of_interest_icon_tooltip
+			pdx_tooltip_delayed = KR_state_of_interest_icon_tooltip_delayed
 		}
-		iconType = {
-			name = "OTT_population_icon"
-			position = { x = 32 y = 8 }
-			spriteType = "GFX_population_icon"
-
-			pdx_tooltip = "OTT_POPULATION_GUI"
-			pdx_tooltip_delayed = "OTT_POPULATION_GUI_DESC"
-		}
-	}
-
-	########################
-	### GERMAN  COLONIES ###
-	########################
-
-	### GERMAN EAST ASIA TERRITORIES ###
-	containerWindowType = {
-		name = "KR_state_of_interest_GEA_territory"
 
 		instantTextBoxType = {
-			name = "GEA_state_title"
-			text = "[THIS.GetName]"
+			name = "KR_state_of_interest_state_name"
+			text = KR_state_of_interest_state_name_text
 			font = hoi_36header
 			format = center
 
-			position = { x = @soi_text_x_pos  y = -4 }
+			position = { x = @soi_text_x_pos  y = @soi_text_y_pos }
 			maxWidth = 330
 			maxHeight = 30
 		}
 
 		instantTextBoxType = {
-			name = "GEA_territory_title"
-			text = "GEA_territory_title"
-			font = hoi_24header
-			format = center
-
-			position = { x = @soi_text_x_pos  y = 20 }
-			maxWidth = 330
-			maxHeight = 30
-		}
-	}
-
-	### MITTELAFRIKA TERRITORIES ###
-	containerWindowType = {
-		name = "KR_state_of_interest_mittelafrika_territory"
-
-		instantTextBoxType = {
-			name = "mittelafrika_state_title"
-			text = "[THIS.GetName]"
-			font = hoi_36header
-			format = center
-
-			position = { x = @soi_text_x_pos  y = -4 }
-			maxWidth = 330
-			maxHeight = 30
-		}
-
-		instantTextBoxType = {
-			name = "mittelafrika_territory_title"
-			text = "mittelafrika_territory_title"
+			name = "KR_state_of_interest_state_title"
+			text = KR_state_of_interest_state_title_text
 			font = hoi_24header
 			format = center
 

@@ -1,18 +1,11 @@
 #Dem Enthusiasm Effects
-UPC_clamp_enthusiasm_effect = {
-	clamp_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		min = 0
-		max = 1
-	}
-}
-
 UPC_add_enthusiasm_small_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = 0.01
+		global.UPC_democratic_enthusiasm_var = {
+			value = 0.01
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -43,10 +36,11 @@ UPC_add_enthusiasm_small_effect = {
 
 UPC_add_enthusiasm_medium_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = 0.03
+		global.UPC_democratic_enthusiasm_var = {
+			value = 0.03
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -76,10 +70,11 @@ UPC_add_enthusiasm_medium_effect = {
 }
 UPC_add_enthusiasm_large_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = 0.05
+		global.UPC_democratic_enthusiasm_var = {
+			value = 0.05
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -109,10 +104,11 @@ UPC_add_enthusiasm_large_effect = {
 }
 UPC_add_enthusiasm_mega_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = 0.10
+		global.UPC_democratic_enthusiasm_var = {
+			value = 0.10
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -142,10 +138,11 @@ UPC_add_enthusiasm_mega_effect = {
 }
 UPC_add_enthusiasm_giga_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = 0.25
+		global.UPC_democratic_enthusiasm_var = {
+			value = 0.20
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -175,10 +172,11 @@ UPC_add_enthusiasm_giga_effect = {
 }
 UPC_sub_enthusiasm_small_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = -0.01
+		global.UPC_democratic_enthusiasm_var = {
+			value = -0.01
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -208,10 +206,11 @@ UPC_sub_enthusiasm_small_effect = {
 }
 UPC_sub_enthusiasm_medium_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = -0.03
+		global.UPC_democratic_enthusiasm_var = {
+			value = -0.03
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -241,10 +240,11 @@ UPC_sub_enthusiasm_medium_effect = {
 }
 UPC_sub_enthusiasm_large_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = -0.05
+		global.UPC_democratic_enthusiasm_var = {
+			value = -0.05
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -274,10 +274,11 @@ UPC_sub_enthusiasm_large_effect = {
 }
 UPC_sub_enthusiasm_mega_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = -0.10
+		global.UPC_democratic_enthusiasm_var = {
+			value = -0.10
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -307,10 +308,11 @@ UPC_sub_enthusiasm_mega_effect = {
 }
 UPC_sub_enthusiasm_giga_effect = {
 	add_to_variable = {
-		var = global.UPC_democratic_enthusiasm_var
-		value = -0.25
+		global.UPC_democratic_enthusiasm_var = {
+			value = -0.25
+			clamp = { min = { value = global.UPC_democratic_enthusiasm_var multiply = -1 } max = { value = 1 subtract = global.UPC_democratic_enthusiasm_var } }
+		}
 	}
-	UPC_clamp_enthusiasm_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -1124,75 +1126,81 @@ UPC_election_unban_YCP_effect = {
 #UPC Party Popularity Effects - we need these to help keep track of bonuses also because some parties have different slots depending on tag.
 
 #Independent Radicals
-UPC_add_RAD_effect = {
+UPC_RAD_small_effect = {
 	add_popularity = {
 		ideology = totalist
-		popularity = var:UPC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-UPC_RAD_small_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.small }
-	UPC_add_RAD_effect = yes
-}
 UPC_RAD_medium_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.medium }
-	UPC_add_RAD_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 UPC_RAD_large_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.large }
-	UPC_add_RAD_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.large
+	}
 }
 UPC_RAD_mega_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.mega }
-	UPC_add_RAD_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 
 #Chinese Syndicalist Party
-UPC_add_CSP_effect = {
+UPC_CSP_small_effect = {
 	add_popularity = {
 		ideology = syndicalist
-		popularity = var:UPC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-UPC_CSP_small_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.small }
-	UPC_add_CSP_effect = yes
-}
 UPC_CSP_medium_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.medium }
-	UPC_add_CSP_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 UPC_CSP_large_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.large }
-	UPC_add_CSP_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.large
+	}
 }
 UPC_CSP_mega_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.mega }
-	UPC_add_CSP_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 
 #Kuomintang
-UPC_add_KMT_effect = {
+UPC_KMT_small_effect = {
 	add_popularity = {
 		ideology = radical_socialist
-		popularity = var:UPC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-UPC_KMT_small_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.small }
-	UPC_add_KMT_effect = yes
-}
 UPC_KMT_medium_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.medium }
-	UPC_add_KMT_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 UPC_KMT_large_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.large }
-	UPC_add_KMT_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.large
+	}
 }
 UPC_KMT_mega_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.mega }
-	UPC_add_KMT_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 
 #China Democratic League
@@ -1380,75 +1388,81 @@ UPC_DCP_mega_effect = {
 }
 
 #Statists - whoever the evil federalist faction of a tag is lol
-UPC_add_STA_effect = {
+UPC_STA_small_effect = {
 	add_popularity = {
 		ideology = authoritarian_democrat
-		popularity = var:UPC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-UPC_STA_small_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.small }
-	UPC_add_STA_effect = yes
-}
 UPC_STA_medium_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.medium }
-	UPC_add_STA_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.medium
+	}
 }
 UPC_STA_large_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.large }
-	UPC_add_STA_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.large
+	}
 }
 UPC_STA_mega_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.mega }
-	UPC_add_STA_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.mega
+	}
 }
 
 #Independent Regionalists
-UPC_add_REG_effect = {
+UPC_REG_small_effect = {
 	add_popularity = {
 		ideology = paternal_autocrat
-		popularity = var:UPC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-UPC_REG_small_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.small }
-	UPC_add_REG_effect = yes
-}
 UPC_REG_medium_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.medium }
-	UPC_add_REG_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.medium
+	}
 }
 UPC_REG_large_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.large }
-	UPC_add_REG_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.large
+	}
 }
 UPC_REG_mega_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.mega }
-	UPC_add_REG_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.mega
+	}
 }
 
 #Young China Party
-UPC_add_YCP_effect = {
+UPC_YCP_small_effect = {
 	add_popularity = {
 		ideology = national_populist
-		popularity = var:UPC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-UPC_YCP_small_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.small }
-	UPC_add_YCP_effect = yes
-}
 UPC_YCP_medium_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.medium }
-	UPC_add_YCP_effect = yes
+	add_popularity = {
+		ideology = national_populist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 UPC_YCP_large_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.large }
-	UPC_add_YCP_effect = yes
+	add_popularity = {
+		ideology = national_populist
+		popularity = constant:party_pop.gain.large
+	}
 }
 UPC_YCP_mega_effect = {
-	set_temp_variable = { UPC_size_var = constant:party_pop.gain.mega }
-	UPC_add_YCP_effect = yes
+	add_popularity = {
+		ideology = national_populist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 
 UPC_RUL_small_effect = {
@@ -1660,10 +1674,18 @@ UPC_sub_coalition_cost_effect = {
 }
 
 UPC_recalculate_needed_seats_effect = {
-	set_variable = { global.UPC_GRA_needed_votes_for_majority_var = global.UPC_majority_seats_var } #Either 401, 451, or 501
-	subtract_from_variable = { global.UPC_GRA_needed_votes_for_majority_var = global.UPC_GRA_aligned_votes_var } #Between -499 and 501.
-	set_variable = { global.UPC_CDL_needed_votes_for_majority_var = global.UPC_majority_seats_var } #Either 401, 451, or 501
-	subtract_from_variable = { global.UPC_CDL_needed_votes_for_majority_var = global.UPC_CDL_aligned_votes_var } #Between -499 and 501.
+	set_variable = {
+		global.UPC_GRA_needed_votes_for_majority_var = {
+			value = global.UPC_majority_seats_var #Either 401, 451, or 501
+			subtract = global.UPC_GRA_aligned_votes_var #Between -499 and 501.
+		}
+	}
+	set_variable = {
+		global.UPC_CDL_needed_votes_for_majority_var = {
+			value = global.UPC_majority_seats_var #Either 401, 451, or 501
+			subtract = global.UPC_CDL_aligned_votes_var #Between -499 and 501.
+		}
+	}
 }
 
 UPC_add_aligned_votes_effect = {
@@ -2039,20 +2061,14 @@ UPC_YCP_joins_governing_coalition_effect = {
 	set_temp_variable = { UPC_seats_to_be_changed_temp_var = global.UPC_YCP_seats_var }
 	UPC_add_aligned_votes_effect = yes
 	#Add appropriate number of promises
-	if = {
-		limit = { check_variable = { global.UPC_YCP_seats_var > 150 } }
-		set_variable = { global.UPC_YCP_promises_var = 4 }
-	}
-	else_if = {
-		limit = { check_variable = { global.UPC_YCP_seats_var > 100 } }
-		set_variable = { global.UPC_YCP_promises_var = 3 }
-	}
-	else_if = {
-		limit = { check_variable = { global.UPC_YCP_seats_var > 50 } }
-		set_variable = { global.UPC_YCP_promises_var = 2 }
-	}
-	else = {
-		set_variable = { global.UPC_YCP_promises_var = 1 }
+	set_variable = {
+		global.UPC_YCP_promises_var = {
+			value = 0
+			if = { limit = { value = global.UPC_YCP_seats_var greater_than = 150 } add = 4 }
+			else_if = { limit = { value = global.UPC_YCP_seats_var greater_than = 100 } add = 3 }
+			else_if = { limit = { value = global.UPC_YCP_seats_var greater_than = 50 } add = 2 }
+			else = { add = 1 }
+		}
 	}
 	UPC_add_coalition_cost_effect = yes
 	mark_focus_tree_layout_dirty = yes
@@ -2359,11 +2375,12 @@ UPC_KMT_fulfill_coalition_promises_effect = {
 			localization_key = UPC_party_fulfil_coalition_promises_effect_tt
 			PARTY_LONG = UPC_KMT_party_long
 		}
-		subtract_from_variable = { global.UPC_KMT_promises_var = 1 }
-	}
-	clamp_variable = {
-		var = global.UPC_KMT_promises_var
-		min = 0 #Having negative promises looks ugly unfortunately
+		add_to_variable = {
+			global.UPC_KMT_promises_var = {
+				value = -1
+				clamp = { min = { value = global.UPC_KMT_promises_var multiply = -1 } max = 0 } #Having negative promises looks ugly unfortunately
+			}
+		}
 	}
 	set_country_flag = UPC_KMT_coalition_progress_flag #Will be removed via the mission
 	mark_focus_tree_layout_dirty = yes
@@ -2374,11 +2391,12 @@ UPC_CDL_fulfill_coalition_promises_effect = {
 			localization_key = UPC_party_fulfil_coalition_promises_effect_tt
 			PARTY_LONG = UPC_CDL_party_long
 		}
-		subtract_from_variable = { global.UPC_CDL_promises_var = 1 }
-	}
-	clamp_variable = {
-		var = global.UPC_CDL_promises_var
-		min = 0 #Having negative promises looks ugly unfortunately
+		add_to_variable = {
+			global.UPC_CDL_promises_var = {
+				value = -1
+				clamp = { min = { value = global.UPC_CDL_promises_var multiply = -1 } max = 0 } #Having negative promises looks ugly unfortunately
+			}
+		}
 	}
 	set_country_flag = UPC_CDL_coalition_progress_flag #Will be removed via the mission
 	mark_focus_tree_layout_dirty = yes
@@ -2389,11 +2407,12 @@ UPC_GRA_fulfill_coalition_promises_effect = {
 			localization_key = UPC_party_fulfil_coalition_promises_effect_tt
 			PARTY_LONG = UPC_GRA_party_long
 		}
-		subtract_from_variable = { global.UPC_GRA_promises_var = 1 }
-	}
-	clamp_variable = {
-		var = global.UPC_GRA_promises_var
-		min = 0 #Having negative promises looks ugly unfortunately
+		add_to_variable = {
+			global.UPC_GRA_promises_var = {
+				value = -1
+				clamp = { min = { value = global.UPC_GRA_promises_var multiply = -1 } max = 0 } #Having negative promises looks ugly unfortunately
+			}
+		}
 	}
 	set_country_flag = UPC_GRA_coalition_progress_flag #Will be removed via the mission
 	mark_focus_tree_layout_dirty = yes
@@ -2404,11 +2423,12 @@ UPC_REP_fulfill_coalition_promises_effect = {
 			localization_key = UPC_party_fulfil_coalition_promises_effect_tt
 			PARTY_LONG = UPC_REP_party_long
 		}
-		subtract_from_variable = { global.UPC_REP_promises_var = 1 }
-	}
-	clamp_variable = {
-		var = global.UPC_REP_promises_var
-		min = 0 #Having negative promises looks ugly unfortunately
+		add_to_variable = {
+			global.UPC_REP_promises_var = {
+				value = -1
+				clamp = { min = { value = global.UPC_REP_promises_var multiply = -1 } max = 0 } #Having negative promises looks ugly unfortunately
+			}
+		}
 	}
 	set_country_flag = UPC_REP_coalition_progress_flag #Will be removed via the mission
 	mark_focus_tree_layout_dirty = yes
@@ -2419,11 +2439,12 @@ UPC_DCP_fulfill_coalition_promises_effect = {
 			localization_key = UPC_party_fulfil_coalition_promises_effect_tt
 			PARTY_LONG = UPC_DCP_party_long
 		}
-		subtract_from_variable = { global.UPC_DCP_promises_var = 1 }
-	}
-	clamp_variable = {
-		var = global.UPC_DCP_promises_var
-		min = 0 #Having negative promises looks ugly unfortunately
+		add_to_variable = {
+			global.UPC_DCP_promises_var = {
+				value = -1
+				clamp = { min = { value = global.UPC_DCP_promises_var multiply = -1 } max = 0 } #Having negative promises looks ugly unfortunately
+			}
+		}
 	}
 	set_country_flag = UPC_DCP_coalition_progress_flag #Will be removed via the mission
 	mark_focus_tree_layout_dirty = yes
@@ -2434,11 +2455,12 @@ UPC_STA_fulfill_coalition_promises_effect = {
 			localization_key = UPC_party_fulfil_coalition_promises_effect_tt
 			PARTY_LONG = UPC_STA_party_long
 		}
-		subtract_from_variable = { global.UPC_STA_promises_var = 1 }
-	}
-	clamp_variable = {
-		var = global.UPC_STA_promises_var
-		min = 0 #Having negative promises looks ugly unfortunately
+		add_to_variable = {
+			global.UPC_STA_promises_var = {
+				value = -1
+				clamp = { min = { value = global.UPC_STA_promises_var multiply = -1 } max = 0 } #Having negative promises looks ugly unfortunately
+			}
+		}
 	}
 	set_country_flag = UPC_STA_coalition_progress_flag #Will be removed via the mission
 	mark_focus_tree_layout_dirty = yes
@@ -2449,11 +2471,12 @@ UPC_REG_fulfill_coalition_promises_effect = {
 			localization_key = UPC_party_fulfil_coalition_promises_effect_tt
 			PARTY_LONG = UPC_REG_party_long
 		}
-		subtract_from_variable = { global.UPC_REG_promises_var = 1 }
-	}
-	clamp_variable = {
-		var = global.UPC_REG_promises_var
-		min = 0 #Having negative promises looks ugly unfortunately
+		add_to_variable = {
+			global.UPC_REG_promises_var = {
+				value = -1
+				clamp = { min = { value = global.UPC_REG_promises_var multiply = -1 } max = 0 } #Having negative promises looks ugly unfortunately
+			}
+		}
 	}
 	set_country_flag = UPC_REG_coalition_progress_flag #Will be removed via the mission
 	mark_focus_tree_layout_dirty = yes
@@ -2464,11 +2487,12 @@ UPC_YCP_fulfill_coalition_promises_effect = {
 			localization_key = UPC_party_fulfil_coalition_promises_effect_tt
 			PARTY_LONG = UPC_YCP_party_long
 		}
-		subtract_from_variable = { global.UPC_YCP_promises_var = 1 }
-	}
-	clamp_variable = {
-		var = global.UPC_YCP_promises_var
-		min = 0 #Having negative promises looks ugly unfortunately
+		add_to_variable = {
+			global.UPC_YCP_promises_var = {
+				value = -1
+				clamp = { min = { value = global.UPC_YCP_promises_var multiply = -1 } max = 0 } #Having negative promises looks ugly unfortunately
+			}
+		}
 	}
 	set_country_flag = UPC_YCP_coalition_progress_flag #Will be removed via the mission
 	mark_focus_tree_layout_dirty = yes

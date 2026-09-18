@@ -1,0 +1,4221 @@
+### AFG Decisions ###
+AFG_balance_of_power_category = {
+	AFG_change_decision_currency = {
+		icon = GFX_decision_eng_trade_unions_support
+		ai_will_do = { factor = 0 } #Don't want to add instability in AI path weights
+
+		cost = 0
+		visible = {
+			has_completed_focus = AFG_quest_for_a_national_economy
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_change_decision_currency"
+			if = {
+				limit = { has_country_flag = AFG_bop_reform_currency_flag }
+				clr_country_flag = AFG_bop_reform_currency_flag
+				custom_effect_tooltip = AFG_bop_pp_currency_tt
+			}
+			else = {
+				set_country_flag = AFG_bop_reform_currency_flag
+				custom_effect_tooltip = AFG_bop_reform_currency_tt
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_bribe_tribal_leaders = {
+		icon = GFX_decision_generic_welfare
+		ai_will_do = { factor = 0 } #Don't want to add instability in AI path weights
+
+		available = {
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = AFG_anger_number_check_tooltip
+					NUMBER = 5
+				}
+				check_variable = { AFG_anger_level > 0.04 }
+			}
+		}
+
+		visible = {
+			has_variable = AFG_anger_level
+		}
+
+		custom_cost_text = AFG_60pp_6reform_tt
+		custom_cost_trigger = {
+			if = {
+				limit = { has_country_flag = AFG_bop_reform_currency_flag }
+				check_variable = { AFG_reform_points > 5 }
+			}
+			else = {
+				NOT = { has_political_power < 60 }
+			}
+		}
+		days_remove = 30
+		days_re_enable = 1
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_bribe_tribal_leaders"
+			hidden_effect = {
+				if = {
+					limit = { has_country_flag = AFG_bop_reform_currency_flag }
+					set_temp_variable = { AFG_reform_points_change = -6 }
+					AFG_change_reform_points = yes
+				}
+				else = {
+					add_political_power = -60
+				}
+			}
+			set_temp_variable = { AFG_anger_change = -0.05 }
+			AFG_change_anger = yes
+		}
+		fixed_random_seed = no
+	}
+	AFG_rein_in_the_reformers = {
+		icon = GFX_decision_SWI_dismiss_council
+		ai_will_do = { #Don't want to add instability in AI path weights
+			factor = 0
+			modifier = {
+				add = 200000 #needs to be higher then the dont spend pp one
+				has_country_flag = AFG_amanullah_traditionalist_ai
+				has_active_mission = AFG_reasserting_amanullahs_authority_mission
+			}
+		}
+
+		available = {
+			power_balance_value = {
+				id = AFG_power_balance
+				value > -0.8
+			}
+		}
+
+		custom_cost_text = AFG_50pp_5reform_tt
+		custom_cost_trigger = {
+			if = {
+				limit = { has_country_flag = AFG_bop_reform_currency_flag }
+				check_variable = { AFG_reform_points > 4 }
+			}
+			else = {
+				NOT = { has_political_power < 50 }
+			}
+		}
+		days_remove = 30
+		days_re_enable = 1
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_rein_in_the_reformers"
+			hidden_effect = {
+				if = {
+					limit = { has_country_flag = AFG_bop_reform_currency_flag }
+					set_temp_variable = { AFG_reform_points_change = -5 }
+					AFG_change_reform_points = yes
+				}
+				else = {
+					add_political_power = -50
+				}
+			}
+			add_power_balance_value = { id = AFG_power_balance value = -0.2 }
+		}
+		fixed_random_seed = no
+	}
+	AFG_fund_westernisation_efforts = {
+		icon = GFX_decision_cash_flow
+		ai_will_do = { #Don't want to add instability in AI path weights
+			factor = 0
+			modifier = {
+				add = 200000 #needs to be higher then the dont spend pp one
+				has_country_flag = AFG_amanullah_reformist_ai
+				has_active_mission = AFG_reasserting_amanullahs_authority_mission
+			}
+		}
+
+		available = {
+			power_balance_value = {
+				id = AFG_power_balance
+				value < 0.8
+			}
+		}
+
+		custom_cost_text = AFG_50pp_5reform_tt
+		custom_cost_trigger = {
+			if = {
+				limit = { has_country_flag = AFG_bop_reform_currency_flag }
+				check_variable = { AFG_reform_points > 4 }
+			}
+			else = {
+				NOT = { has_political_power < 50 }
+			}
+		}
+		days_remove = 30
+		days_re_enable = 1
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_fund_westernisation_efforts"
+			hidden_effect = {
+				if = {
+					limit = { has_country_flag = AFG_bop_reform_currency_flag }
+					set_temp_variable = { AFG_reform_points_change = -5 }
+					AFG_change_reform_points = yes
+				}
+				else = {
+					add_political_power = -50
+				}
+			}
+			add_power_balance_value = { id = AFG_power_balance value = 0.2 }
+		}
+		fixed_random_seed = no
+	}
+}
+
+AFG_state_building_decisions = {
+	AFG_monthly_reform_progress_mission = {
+		icon = GFX_decision_government_up
+		allowed = { always = no } #manually activated
+		available = {
+			hidden_trigger = { always = no }
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 100
+		selectable_mission = no
+		is_good = yes
+		days_mission_timeout = 30
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout AFG_monthly_reform_progress_mission"
+			if = {
+				limit = { has_any_power_balance = yes }
+				custom_effect_tooltip = AFG_monthly_reform_progress_mission_tooltip
+				#Balance of Power
+				effect_tooltip = {
+					if = {
+						limit = { check_variable = { modifier@AFG_monthly_stability_change > 0 } }
+						add_stability = modifier@AFG_monthly_stability_change
+					}
+					set_temp_variable = { AFG_anger_change = AFG_monthly_anger_change_bop }
+					AFG_change_anger = yes
+					set_temp_variable = { AFG_reform_points_change = AFG_monthly_reform_points_gain_bop }
+					AFG_change_reform_points = yes
+				}
+				# Ideas
+				if = {
+					limit = { check_expr = { value = modifier@AFG_monthly_reform_points_gain subtract = AFG_monthly_reform_points_gain_bop not_equals = 0 } }
+					set_temp_variable = {
+						AFG_reform_points_change = {
+							value = modifier@AFG_monthly_reform_points_gain
+							subtract = AFG_monthly_reform_points_gain_bop
+						}
+						tooltip = AFG_reform_points_change_bonus_tooltip
+					}
+				}
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = AFG_net_change_anger_reform_points_tooltip
+				if = {
+					limit = { check_variable = { modifier@AFG_monthly_stability_change > 0 } }
+					add_stability = modifier@AFG_monthly_stability_change
+				}
+				set_temp_variable = { AFG_anger_change = modifier@AFG_monthly_anger_change }
+				AFG_change_anger = yes
+				set_temp_variable = { AFG_reform_points_change = modifier@AFG_monthly_reform_points_gain }
+			}
+			else = {
+				set_temp_variable = { AFG_reform_points_change = { value = 5 add = modifier@AFG_monthly_reform_points_gain } }
+			}
+			AFG_change_reform_points = yes
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = AFG_monthly_reform_progress_mission
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_improving_the_darulaman_tramway = {
+		icon = GFX_decision_generic_train
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 19 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Kabul
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Kabul
+		}
+
+		days_remove = 20
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_10
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 9 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_improving_the_darulaman_tramway"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_improving_the_darulaman_tramway"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_improving_the_darulaman_tramway"
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_improving_the_darulaman_tramway target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_home_building_in_farah = {
+		icon = GFX_decision_generic_construction
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 19 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Kandahar
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Kandahar
+		}
+
+		days_remove = 40
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_10
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 9 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_home_building_in_farah"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_home_building_in_farah"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_home_building_in_farah"
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_home_building_in_farah target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_supporting_kunduz_cotton = {
+		icon = GFX_decision_generic_factory
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 29 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Qataghan
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Qataghan
+		}
+
+		days_remove = 45
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_20
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 19 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_supporting_kunduz_cotton"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -20 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_supporting_kunduz_cotton"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 20 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_supporting_kunduz_cotton"
+			add_tech_bonus = {
+				name = AFG_supporting_kunduz_cotton
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_supporting_kunduz_cotton target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_distributing_paper_afghanis = {
+		icon = GFX_decision_give_cash
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 19 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		days_remove = 30
+		custom_cost_text = AFG_reform_points_cost_text_10
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 9 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_distributing_paper_afghanis"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_distributing_paper_afghanis"
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_distributing_paper_afghanis target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_founding_the_baghlan_sugar_factory = {
+		icon = GFX_decision_generic_factory
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 34 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Qataghan
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Qataghan
+		}
+
+		days_remove = 55
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_25
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 24 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_founding_the_baghlan_sugar_factory"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_founding_the_baghlan_sugar_factory"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_founding_the_baghlan_sugar_factory"
+			1118 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_founding_the_baghlan_sugar_factory target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_mining_efforts_in_qaramqol = {
+		icon = GFX_decision_steel
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 34 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Qataghan
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Qataghan
+		}
+
+		days_remove = 75
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_25
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 24 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_mining_efforts_in_qaramqol"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_mining_efforts_in_qaramqol"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_mining_efforts_in_qaramqol"
+			1118 = {
+				add_resource = {
+					type = steel
+					amount = 5
+				}
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_mining_efforts_in_qaramqol target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_develop_nangarhar_sugar_plantations = {
+		icon = GFX_decision_generic_agriculture
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 19 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Kabul
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Kabul
+		}
+
+		days_remove = 45
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_10
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 9 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_develop_nangarhar_sugar_plantations"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_develop_nangarhar_sugar_plantations"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_develop_nangarhar_sugar_plantations"
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_develop_nangarhar_sugar_plantations target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_replacing_camels_with_automotives = {
+		icon = GFX_decision_generic_trucks
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 29 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		days_remove = 150
+		custom_cost_text = AFG_reform_points_cost_text_20
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 19 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_replacing_camels_with_automotives"
+			add_ideas = AFG_replacing_camels_with_automotives_idea
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -20 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_replacing_camels_with_automotives"
+			remove_ideas = AFG_replacing_camels_with_automotives_idea
+			custom_effect_tooltip = tooltip_white_line
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_replacing_camels_with_automotives target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_growth_of_karakul_herding = {
+		icon = GFX_decision_generic_agriculture
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 34 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Qataghan
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Qataghan
+		}
+
+		days_remove = 75
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_25
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 24 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_growth_of_karakul_herding"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_growth_of_karakul_herding"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_growth_of_karakul_herding"
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_growth_of_karakul_herding target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_encourage_mining_along_the_logar = {
+		icon = GFX_decision_chromium
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 34 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Kabul
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Kabul
+		}
+
+		days_remove = 65
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_25
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 24 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_encourage_mining_along_the_logar"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_encourage_mining_along_the_logar"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_encourage_mining_along_the_logar"
+			267 = {
+				add_resource = {
+					type = chromium
+					amount = 5
+				}
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_encourage_mining_along_the_logar target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_improve_connections_to_iran = {
+		icon = GFX_decision_road
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 34 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Herat
+			AFG_civil_war_ongoing = no
+			NOT = { has_war_with = 416.owner }
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Herat
+		}
+
+		days_remove = 55
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_25
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 24 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_improve_connections_to_iran"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_improve_connections_to_iran"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_improve_connections_to_iran"
+			415 = { #Herat
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_improve_connections_to_iran target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_develop_border_towns = {
+		icon = GFX_decision_road
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 29 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Herat
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Herat
+		}
+
+		days_remove = 45
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_20
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 19 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_develop_border_towns"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -20 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_develop_border_towns"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 20 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_develop_border_towns"
+			415 = { #Herat
+				add_extra_state_shared_building_slots = 1
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_develop_border_towns target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_tapping_the_sabzak_pass = {
+		icon = GFX_decision_steel
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 34 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Herat
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Herat
+		}
+
+		days_remove = 65
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_25
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 24 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_tapping_the_sabzak_pass"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_tapping_the_sabzak_pass"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_tapping_the_sabzak_pass"
+			415 = {
+				add_resource = {
+					type = steel
+					amount = 4
+				}
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_tapping_the_sabzak_pass target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_bridging_the_kunduz = {
+		icon = GFX_decision_road
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 19 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Qataghan
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Qataghan
+		}
+
+		days_remove = 40
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_10
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 9 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_bridging_the_kunduz"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_bridging_the_kunduz"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_bridging_the_kunduz"
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_bridging_the_kunduz target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_expand_pashtun_colonisation_efforts = {
+		icon = GFX_decision_generic_disband_irregulars
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 24 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Qataghan
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Qataghan
+		}
+
+		days_remove = 60
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_15
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 14 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_expand_pashtun_colonisation_efforts"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_expand_pashtun_colonisation_efforts"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_expand_pashtun_colonisation_efforts"
+			1118 = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_stability = -0.025
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_expand_pashtun_colonisation_efforts target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_welcoming_american_refugees = {
+		icon = GFX_decision_generic_research
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 24 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		visible = {
+			has_global_flag = USA_civil_war_begun_flag
+		}
+		available = {
+			has_global_flag = USA_civil_war_begun_flag
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		days_remove = 35
+		custom_cost_text = AFG_reform_points_cost_text_15
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 14 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_welcoming_american_refugees"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -15 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_welcoming_american_refugees"
+			add_tech_bonus = {
+				name = AFG_welcoming_american_refugees
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_welcoming_american_refugees target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_the_kandahar_development_plan = {
+		icon = GFX_decision_cement_mixer
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 29 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Kandahar
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Kandahar
+		}
+
+		days_remove = 65
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_20
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 19 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_the_kandahar_development_plan"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -20 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_the_kandahar_development_plan"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 20 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_the_kandahar_development_plan"
+			1117 = {
+				add_extra_state_shared_building_slots = 1
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_the_kandahar_development_plan target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_the_grand_mazar_i_sharif_bazaar = {
+		icon = GFX_decision_cash_flow
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 19 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Qataghan
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Qataghan
+		}
+
+		days_remove = 65
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_10
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 9 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_the_grand_mazar_i_sharif_bazaar"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_the_grand_mazar_i_sharif_bazaar"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_the_grand_mazar_i_sharif_bazaar"
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_the_grand_mazar_i_sharif_bazaar target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_carrying_out_a_geological_survey = {
+		icon = GFX_decision_generic_research
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 24 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		days_remove = 60
+		custom_cost_text = AFG_reform_points_cost_text_15
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 14 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_carrying_out_a_geological_survey"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -15 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_carrying_out_a_geological_survey"
+			add_tech_bonus = {
+				name = AFG_carrying_out_a_geological_survey
+				bonus = 0.5
+				uses = 1
+				category = excavation_tech
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_carrying_out_a_geological_survey target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_irrigation_renovation_in_wardak = {
+		icon = GFX_decision_generic_agriculture
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 19 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Kabul
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Kabul
+		}
+
+		days_remove = 35
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_10
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 9 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_irrigation_renovation_in_wardak"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_irrigation_renovation_in_wardak"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 10 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_irrigation_renovation_in_wardak"
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_irrigation_renovation_in_wardak target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_bringing_drinking_water_to_nimruz = {
+		icon = GFX_decision_generic_agriculture
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 24 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM #Kabul
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM } #Kabul
+		}
+
+		days_remove = 55
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_15
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 14 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_bringing_drinking_water_to_nimruz"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -15 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_bringing_drinking_water_to_nimruz"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 15 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_bringing_drinking_water_to_nimruz"
+			add_stability = 0.025
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_bringing_drinking_water_to_nimruz target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_electrification_campaign_in_state = {
+		icon = GFX_decision_generic_electricity
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 34 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			controls_state = FROM
+			AFG_civil_war_ongoing = no
+			FROM = { is_core_of = ROOT }
+		}
+		visible = {
+			owns_state = FROM
+		}
+		priority = 80
+
+		cancel_trigger = {
+			NOT = { controls_state = FROM }
+		}
+
+		days_remove = 100
+		state_target = yes
+		custom_cost_text = AFG_reform_points_cost_text_25
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 24 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_electrification_campaign_in_state"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_electrification_campaign_in_state"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = 25 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_electrification_campaign_in_state"
+			FROM = {
+				add_dynamic_modifier = {
+					modifier = AFG_electrification_campaign_modifier
+					scope = THIS
+				}
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_electrification_campaign_in_state target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_building_shirkat_monopolies = {
+		icon = GFX_decision_give_cash
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 24 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		days_remove = 35
+		custom_cost_text = AFG_reform_points_cost_text_15
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 14 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_building_shirkat_monopolies"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -15 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_building_shirkat_monopolies"
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+			}
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_building_shirkat_monopolies target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_branching_out_the_bank = {
+		icon = GFX_decision_gre_paying_ifc_debt
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 24 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		days_remove = 40
+		custom_cost_text = AFG_reform_points_cost_text_15
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 14 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_branching_out_the_bank"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -15 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_branching_out_the_bank"
+			add_political_power = 50
+			AFG_increase_national_integration = yes
+			hidden_effect = {
+				remove_targeted_decision = { decision = AFG_branching_out_the_bank target = FROM }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_generalised_investment_schemes = {
+		icon = GFX_decision_cash_flow
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0 #keep a reserve of atleast 10
+				check_variable = { AFG_reform_points < 24 }
+			}
+			modifier = {
+				factor = 0 #dont spend in leadup to civil war
+				has_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		days_remove = 30
+		days_re_enable = 0
+		custom_cost_text = AFG_reform_points_cost_text_15
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 14 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_generalised_investment_schemes"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -15 }
+				AFG_change_reform_points = yes
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_generalised_investment_schemes"
+			AFG_increase_national_integration = yes
+		}
+		fixed_random_seed = no
+	}
+}
+
+@AFG_attract_foreign_investment_reform_points_change = 3 #Temp value for the Cazad Hind
+@AFG_attract_foreign_investment_influence_change = 2 #Temp value for the Cazad Hind
+@AFG_attract_foreign_investment_days_remove = 15 #Temp value for the Cazad Hind
+AFG_crossroads_of_civilisation_decisions = {
+
+	AFG_entice_companies = {
+		icon = GFX_decision_global_trade
+		allowed = { always = no }
+		available = {
+			set_temp_variable = { AFG_foreign_influence_check = 15 }
+			FROM = { AFG_has_foreign_influence_greater_than = yes }
+		}
+		priority = 40
+		cost = 20
+		fire_only_once = yes
+		ai_will_do = { base = 100 }
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_entice_companies"
+			set_country_flag = AFG_company_enabled_@FROM
+			if = {
+				limit = { FROM = { tag = RUS } }
+				if = {
+					limit = { has_dlc_aat = no }
+					custom_effect_tooltip = available_designer
+					show_ideas_tooltip = AFG_sokol_no_dlc
+				}
+				else = {
+					custom_effect_tooltip = available_mio_tt
+					show_mio_tooltip = AFG_sokol_organisation
+					mio:AFG_sokol_organisation = { add_mio_size = 2 }
+				}
+			}
+			else_if = {
+				limit = { FROM = { tag = TUR } }
+				if = {
+					limit = { has_dlc_aat = no }
+					custom_effect_tooltip = available_designer
+					show_ideas_tooltip = AFG_mke_no_dlc
+				}
+				else = {
+					custom_effect_tooltip = available_mio_tt
+					show_mio_tooltip = AFG_mke_organisation
+					mio:AFG_mke_organisation = { add_mio_size = 2 }
+				}
+			}
+			else_if = {
+				limit = { FROM = { tag = JAP } }
+				if = {
+					limit = { has_dlc_aat = no }
+					custom_effect_tooltip = available_designer
+					show_ideas_tooltip = AFG_toyota_no_dlc
+				}
+				else = {
+					custom_effect_tooltip = available_mio_tt
+					show_mio_tooltip = AFG_toyota_organisation
+					mio:AFG_toyota_organisation = { add_mio_size = 2 }
+				}
+			}
+			else_if = {
+				limit = { FROM = { tag = GER } }
+				custom_effect_tooltip = available_industrial_concern
+				show_ideas_tooltip = AFG_siemens_halske
+				custom_effect_tooltip = tooltip_white_line
+				if = {
+					limit = { has_dlc_aat = no }
+					custom_effect_tooltip = available_designer
+					show_ideas_tooltip = AFG_krupp_no_dlc
+				}
+				else = {
+					custom_effect_tooltip = available_mio_tt
+					show_mio_tooltip = AFG_krupp_tank_organisation
+					mio:AFG_krupp_tank_organisation = { add_mio_size = 2 }
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_attract_foreign_investment_GER = {
+		name = AFG_attract_foreign_investment
+		icon = GFX_decision_give_cash
+		allowed = { always = no }
+		available = {
+			set_temp_variable = { AFG_foreign_influence_share_check = 1 }
+			FROM = { AFG_has_foreign_influence_share_less_than = yes }
+		}
+		cost = AFG_foreign_investment_cost_GER?10
+		priority = 60
+		days_remove = @AFG_attract_foreign_investment_days_remove
+		ai_will_do = { base = 100 }
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_attract_foreign_investment_GER"
+			set_temp_variable = { AFG_foreign_influence_change = @AFG_attract_foreign_investment_influence_change }
+			AFG_change_influence_FROM = yes
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_attract_foreign_investment_GER"
+			set_temp_variable = { AFG_reform_points_change = @AFG_attract_foreign_investment_reform_points_change }
+			AFG_change_reform_points = yes
+		}
+		fixed_random_seed = no
+	}
+	AFG_attract_foreign_investment_RUS = {
+		name = AFG_attract_foreign_investment
+		icon = GFX_decision_give_cash
+		allowed = { always = no }
+		available = {
+			set_temp_variable = { AFG_foreign_influence_share_check = 1 }
+			FROM = { AFG_has_foreign_influence_share_less_than = yes }
+		}
+		cost = AFG_foreign_investment_cost_RUS?10
+		priority = 60
+		days_remove = @AFG_attract_foreign_investment_days_remove
+		ai_will_do = { base = 100 }
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_attract_foreign_investment_RUS"
+			set_temp_variable = { AFG_foreign_influence_change = @AFG_attract_foreign_investment_influence_change }
+			AFG_change_influence_FROM = yes
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_attract_foreign_investment_RUS"
+			set_temp_variable = { AFG_reform_points_change = @AFG_attract_foreign_investment_reform_points_change }
+			AFG_change_reform_points = yes
+		}
+		fixed_random_seed = no
+	}
+	AFG_attract_foreign_investment_TUR = {
+		name = AFG_attract_foreign_investment
+		icon = GFX_decision_give_cash
+		allowed = { always = no }
+		available = {
+			set_temp_variable = { AFG_foreign_influence_share_check = 1 }
+			FROM = { AFG_has_foreign_influence_share_less_than = yes }
+		}
+		cost = AFG_foreign_investment_cost_TUR?10
+		priority = 60
+		days_remove = @AFG_attract_foreign_investment_days_remove
+		ai_will_do = { base = 100 }
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_attract_foreign_investment_TUR"
+			set_temp_variable = { AFG_foreign_influence_change = @AFG_attract_foreign_investment_influence_change }
+			AFG_change_influence_FROM = yes
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_attract_foreign_investment_TUR"
+			set_temp_variable = { AFG_reform_points_change = @AFG_attract_foreign_investment_reform_points_change }
+			AFG_change_reform_points = yes
+		}
+		fixed_random_seed = no
+	}
+	AFG_attract_foreign_investment_JAP = {
+		name = AFG_attract_foreign_investment
+		icon = GFX_decision_give_cash
+		allowed = { always = no }
+		available = {
+			set_temp_variable = { AFG_foreign_influence_share_check = 1 }
+			FROM = { AFG_has_foreign_influence_share_less_than = yes }
+		}
+		cost = AFG_foreign_investment_cost_JAP?10
+		priority = 60
+		days_remove = @AFG_attract_foreign_investment_days_remove
+		ai_will_do = { base = 100 }
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_attract_foreign_investment_JAP"
+			set_temp_variable = { AFG_foreign_influence_change = @AFG_attract_foreign_investment_influence_change }
+			AFG_change_influence_FROM = yes
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_attract_foreign_investment_JAP"
+			set_temp_variable = { AFG_reform_points_change = @AFG_attract_foreign_investment_reform_points_change }
+			AFG_change_reform_points = yes
+		}
+		fixed_random_seed = no
+	}
+	AFG_the_hajigak_mine_concession = { #GER unique
+		icon = GFX_decision_steel
+		allowed = { always = no }
+		available = {
+			set_temp_variable = { AFG_foreign_influence_check = 10 }
+			FROM = { AFG_has_foreign_influence_greater_than = yes }
+			controls_state = 267 #Kabul
+		}
+		cancel_trigger = {
+			NOT = { controls_state = 267 } #Kabul
+		}
+		priority = 50
+		cost = 25
+		days_remove = 120
+		fire_only_once = yes
+		ai_will_do = { base = 100 }
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_the_hajigak_mine_concession"
+			add_political_power = 25
+		}
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_the_hajigak_mine_concession"
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_the_hajigak_mine_concession"
+			267 = { #Kabul
+				add_resource = {
+					type = steel
+					amount = 7
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_combat_exercises_with_the_russians = { #RUS unique
+		icon = GFX_decision_FIN_stop_motti_tactics
+		allowed = { always = no }
+		available = {
+			set_temp_variable = { AFG_foreign_influence_check = 10 }
+			FROM = { AFG_has_foreign_influence_greater_than = yes }
+			RUS = { has_war = no }
+		}
+		priority = 50
+		cost = 30
+		days_remove = 180
+		fire_only_once = yes
+		modifier = {
+			experience_gain_army = 0.5
+		}
+		ai_will_do = { base = 100 }
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_combat_exercises_with_the_russians"
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_combat_exercises_with_the_russians"
+		}
+		fixed_random_seed = no
+	}
+	AFG_inviting_turkish_military_experts = { #TUR unique
+		icon = GFX_decision_soldierly_discipline
+		allowed = { always = no }
+		available = {
+			set_temp_variable = { AFG_foreign_influence_check = 10 }
+			FROM = { AFG_has_foreign_influence_greater_than = yes }
+		}
+		priority = 50
+		cost = 20
+		days_remove = 150
+		fire_only_once = yes
+		modifier = {
+			research_speed_factor = 0.05
+		}
+		ai_will_do = { base = 100 }
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_inviting_turkish_military_experts"
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_inviting_turkish_military_experts"
+			add_tech_bonus = {
+				name = AFG_inviting_turkish_military_experts
+				bonus = 0.5
+				uses = 1
+				category = hospital_tech
+			}
+			add_tech_bonus = {
+				name = AFG_inviting_turkish_military_experts
+				bonus = 0.5
+				uses = 1
+				category = artillery
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_commit_to_the_eurasian_rail_scheme = { #JAP unique
+		icon = GFX_decision_railroad
+		allowed = { always = no }
+		available = {
+			set_temp_variable = { AFG_foreign_influence_check = 10 }
+			FROM = { AFG_has_foreign_influence_greater_than = yes }
+		}
+		priority = 50
+		cost = 30
+		days_remove = 200
+		fire_only_once = yes
+		modifier = {
+			production_speed_infrastructure_factor = 0.2
+			production_speed_rail_way_factor = 1
+		}
+		ai_will_do = { base = 100 }
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_commit_to_the_eurasian_rail_scheme"
+			if = {
+				limit = { NOT = { has_tech = basic_train } }
+				set_technology = { basic_train = 1 }
+			}
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_commit_to_the_eurasian_rail_scheme"
+		}
+		fixed_random_seed = no
+	}
+}
+
+AFG_pashtunistan_crisis_decisions = {
+	AFG_pashtunistan_crisis_reformist_mission = {
+		icon = GFX_decision_hand_out
+		allowed = { always = no } #manually activated
+		available = {
+			OR = {
+				AND = {
+					has_completed_focus = AFG_taming_the_winter_capital
+					has_completed_focus = AFG_swat_hydroelectric_developments
+					custom_override_tooltip = {
+						check_variable = { AFG_pashtunistan_points > 0 }
+						tooltip = {
+							localization_key = AFG_pashtunistan_points_check_tooltip
+							NUMBER = 1
+						}
+					}
+				}
+				custom_override_tooltip = {
+					check_variable = { AFG_pashtunistan_points > 2 }
+					tooltip = {
+						localization_key = AFG_pashtunistan_points_check_tooltip
+						NUMBER = 3
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 300
+			modifier = {
+				factor = 0 #dont click on it if its set to revolt
+				has_country_flag = AFG_pashtunistan_revolt_ai
+			}
+		}
+		priority = 100
+		is_good = no
+		selectable_mission = yes
+		days_mission_timeout = 180
+		cancel_trigger = {
+			NOT = { owns_state = 442 } #Peshawar
+		}
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout AFG_pashtunistan_crisis_reformist_mission"
+			hidden_effect = { country_event = afghanistan_pashtunistan_events.7 }
+			custom_effect_tooltip = AFG_pashtunistan_crisis_failure_tt
+			clr_country_flag = AFG_pashtunistan_crisis_active
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_pashtunistan_crisis_reformist_mission"
+			442 = {
+				add_dynamic_modifier = { modifier = AFG_pashtunistan_autonomous_province_modifier }
+			}
+			country_event = afghanistan_pashtunistan_events.12
+			set_country_flag = AFG_pashtunistan_reformist_success_flag
+			clr_country_flag = AFG_pashtunistan_crisis_active
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_transfer_control_of_local_transportation_responsibilities = {
+		icon = GFX_decision_generic_train
+		ai_will_do = { base = 350 }
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_reformist_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		cost = 25
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_transfer_control_of_local_transportation_responsibilities"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_transfer_control_of_local_transportation_responsibilities"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_transfer_control_of_local_transportation_responsibilities"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = AFG_pashtunistan_autonomous_province_modifier
+			}
+			add_to_variable = {
+				AFG_pashtunistan_production_speed_buildings_factor = -0.05
+				tooltip = state_production_speed_buildings_factor_tooltip
+			}
+			force_update_dynamic_modifier = yes
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+		}
+		fixed_random_seed = no
+	}
+	AFG_devolved_taxation = {
+		icon = GFX_decision_cash_flow
+		ai_will_do = { base = 350 }
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_reformist_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		cost = 20
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_devolved_taxation"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_devolved_taxation"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_devolved_taxation"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = AFG_pashtunistan_autonomous_province_modifier
+			}
+			add_to_variable = {
+				AFG_pashtunistan_production_speed_buildings_factor = -0.1
+				tooltip = state_production_speed_buildings_factor_tooltip
+			}
+			force_update_dynamic_modifier = yes
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+		}
+		fixed_random_seed = no
+	}
+	AFG_let_peshawar_handle_local_conscription = {
+		icon = GFX_decision_soldierly_discipline
+		ai_will_do = { base = 350 }
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_reformist_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		cost = 15
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_let_peshawar_handle_local_conscription"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_let_peshawar_handle_local_conscription"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_let_peshawar_handle_local_conscription"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = AFG_pashtunistan_autonomous_province_modifier
+			}
+			add_to_variable = {
+				AFG_pashtunistan_local_manpower = -0.1
+				tooltip = local_manpower_tooltip
+			}
+			force_update_dynamic_modifier = yes
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+		}
+		fixed_random_seed = no
+	}
+	AFG_tolerate_a_devolved_legal_system = {
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+		ai_will_do = { base = 350 }
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_reformist_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		custom_cost_text = AFG_reform_points_cost_text_5
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 4 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_tolerate_a_devolved_legal_system"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -5 }
+				AFG_change_reform_points = yes
+			}
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_tolerate_a_devolved_legal_system"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_tolerate_a_devolved_legal_system"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+			add_political_power = 25
+			add_popularity = { ideology = paternal_autocrat popularity = -0.025 }
+		}
+		fixed_random_seed = no
+	}
+	AFG_limit_royal_powers_over_appointments = {
+		icon = GFX_decision_eng_ally_imperialist_coup
+		ai_will_do = { base = 350 }
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_reformist_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		custom_cost_text = AFG_reform_points_cost_text_10
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 9 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_limit_royal_powers_over_appointments"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -10 }
+				AFG_change_reform_points = yes
+			}
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_limit_royal_powers_over_appointments"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_limit_royal_powers_over_appointments"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			add_to_variable = { AFG_pashtunistan_points = 2 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_2_tooltip
+			add_stability = 0.05
+			add_popularity = { ideology = paternal_autocrat popularity = -0.05 }
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_pashtunistan_crisis_traditional_mission = {
+		icon = GFX_decision_hand_out
+		allowed = { always = no } #manually activated
+		available = {
+			custom_override_tooltip = {
+				check_variable = { AFG_pashtunistan_points > 2 }
+				tooltip = {
+					localization_key = AFG_pashtunistan_points_check_tooltip
+					NUMBER = 3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 300
+			modifier = {
+				factor = 0 #dont click on it if its set to revolt
+				has_country_flag = AFG_pashtunistan_revolt_ai
+			}
+		}
+		priority = 100
+		is_good = no
+		selectable_mission = yes
+		days_mission_timeout = 180
+		cancel_trigger = {
+			NOT = { owns_state = 442 } #Peshawar
+		}
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout AFG_pashtunistan_crisis_traditional_mission"
+			hidden_effect = { country_event = afghanistan_pashtunistan_events.7 }
+			custom_effect_tooltip = AFG_pashtunistan_crisis_failure_tt
+			clr_country_flag = AFG_pashtunistan_crisis_active
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_pashtunistan_crisis_traditional_mission"
+			442 = {
+				add_dynamic_modifier = { modifier = AFG_chitral_treaties_modifier }
+			}
+			country_event = afghanistan_pashtunistan_events.13
+			set_country_flag = AFG_pashtunistan_traditionalist_success_flag
+			clr_country_flag = AFG_pashtunistan_crisis_active
+		}
+		fixed_random_seed = no
+	}
+	AFG_tolerate_expansion_of_the_chitral_bodyguard = {
+		icon = GFX_decision_soldierly_discipline
+		ai_will_do = { #TODO
+			base = 350
+		}
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_traditional_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		cost = 20
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_tolerate_expansion_of_the_chitral_bodyguard"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_tolerate_expansion_of_the_chitral_bodyguard"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_tolerate_expansion_of_the_chitral_bodyguard"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = AFG_chitral_treaties_modifier
+			}
+			add_to_variable = {
+				AFG_pashtunistan_local_manpower = -0.05
+				tooltip = local_manpower_tooltip
+			}
+			force_update_dynamic_modifier = yes
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+		}
+		fixed_random_seed = no
+	}
+	AFG_guarantee_protection_of_hazarewal_land_rights = {
+		icon = GFX_decision_CHL_mapuche_liberate_isthmo_amerindia
+		ai_will_do = { #TODO
+			base = 350
+		}
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_traditional_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		cost = 15
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_guarantee_protection_of_hazarewal_land_rights"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_guarantee_protection_of_hazarewal_land_rights"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_guarantee_protection_of_hazarewal_land_rights"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			set_temp_variable = { AFG_anger_change = -0.02 }
+			AFG_change_anger = yes
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = AFG_chitral_treaties_modifier
+			}
+			add_to_variable = {
+				AFG_pashtunistan_building_slots = -0.05
+				tooltip = local_building_slots_factor_tooltip
+			}
+			force_update_dynamic_modifier = yes
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+		}
+		fixed_random_seed = no
+	}
+	AFG_grant_conscription_exemptions_for_dir = {
+		icon = GFX_decision_generic_disband_irregulars
+		ai_will_do = { #TODO
+			base = 350
+		}
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_traditional_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		cost = 30
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_grant_conscription_exemptions_for_dir"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_grant_conscription_exemptions_for_dir"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_grant_conscription_exemptions_for_dir"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			add_stability = 0.01
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = AFG_chitral_treaties_modifier
+			}
+			add_to_variable = {
+				AFG_pashtunistan_local_manpower = -0.05
+				tooltip = local_manpower_tooltip
+			}
+			force_update_dynamic_modifier = yes
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+			if = {
+				limit = { check_variable = { AFG_loyal_dir_var = 1 } }
+				country_event = afghanistan_pashtunistan_events.22
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_fund_swat_architectural_projects = {
+		icon = GFX_decision_generic_merge_plant_materiel
+		ai_will_do = { #TODO
+			base = 350
+		}
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_traditional_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		cost = 25
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_fund_swat_architectural_projects"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_fund_swat_architectural_projects"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_fund_swat_architectural_projects"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = AFG_chitral_treaties_modifier
+			}
+			add_to_variable = {
+				AFG_pashtunistan_production_speed_buildings_factor = -0.05
+				tooltip = state_production_speed_buildings_factor_tooltip
+			}
+			force_update_dynamic_modifier = yes
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+		}
+		fixed_random_seed = no
+	}
+	AFG_strengthen_the_nawab_of_ambs_legitimacy = {
+		icon = GFX_decision_generic_political_discourse
+		ai_will_do = { #TODO
+			base = 350
+		}
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_traditional_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = yes
+		days_remove = 30
+		cost = 75
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_strengthen_the_nawab_of_ambs_legitimacy"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_strengthen_the_nawab_of_ambs_legitimacy"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_strengthen_the_nawab_of_ambs_legitimacy"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			add_popularity = { ideology = paternal_autocrat popularity = 0.01 }
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+		}
+		fixed_random_seed = no
+	}
+	AFG_funnel_bribes_to_tribal_leaders = {
+		icon = GFX_decision_give_cash
+		ai_will_do = { #TODO
+			base = 350
+		}
+		visible = {
+			has_active_mission = AFG_pashtunistan_crisis_traditional_mission
+		}
+		available = {
+			NOT = { has_country_flag = AFG_pashtunistan_crisis_active_decision_flag }
+		}
+		priority = 80
+
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 0
+		custom_cost_text = AFG_reform_points_cost_text_5
+		custom_cost_trigger = {
+			check_variable = { AFG_reform_points > 4 }
+		}
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_funnel_bribes_to_tribal_leaders"
+			set_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = -5 }
+				AFG_change_reform_points = yes
+			}
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_funnel_bribes_to_tribal_leaders"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove AFG_funnel_bribes_to_tribal_leaders"
+			clr_country_flag = AFG_pashtunistan_crisis_active_decision_flag
+			add_to_variable = { AFG_pashtunistan_points = 1 }
+			custom_effect_tooltip = AFG_pashtunistan_points_add_1_tooltip
+			custom_effect_tooltip = AFG_repeatable_decision_tooltip
+		}
+		fixed_random_seed = no
+	}
+	AFG_retake_the_frontier_mission = {
+		icon = GFX_decision_SWI_consolidate_council_power
+		allowed = { always = no } #manually activated
+
+		available = {
+			NOT = { has_war_with = PTH }
+		}
+		cancel_trigger = {
+			NOT = { controls_state = 267 }
+		}
+
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 60
+		priority = 100
+		fire_only_once = yes
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout AFG_retake_the_frontier_mission"
+			PTH = {
+				hidden_effect = { remove_civil_war_target = AFG }
+				white_peace_with_ROOT = yes
+			}
+			country_event = afghanistan_pashtunistan_events.10
+		}
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel AFG_retake_the_frontier_mission"
+			PTH = {
+				hidden_effect = { remove_civil_war_target = AFG }
+				white_peace_with_ROOT = yes
+			}
+			country_event = afghanistan_pashtunistan_events.10
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_retake_the_frontier_mission"
+			country_event = afghanistan_pashtunistan_events.11
+		}
+		fixed_random_seed = no
+	}
+}
+
+AFG_afghan_civil_war_decisions = {
+	AFG_civil_war_duration_mission = {
+		icon = GFX_decision_generic_guerilla_base
+		allowed = { always = no } #manually activated
+		available = {
+			OR = {
+				check_variable = { AFG_strength_level = 0 tooltip = AFG_strength_level_check_tooltip }
+				check_variable = { AFG_strength_level = 1 tooltip = AFG_strength_level_check_tooltip }
+			}
+		}
+		priority = 150
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 180
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_civil_war_duration_mission"
+			custom_effect_tooltip = AFG_amanullah_victory_decision_tt
+			effect_tooltip = { country_event = afghanistan_civil_war_events.40 }
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = AFG_nadir_victory_decision_tt
+			effect_tooltip = { country_event = afghanistan_civil_war_events.41 }
+			hidden_effect = {
+				if = { #Amanullah Wins
+					limit = { check_variable = { AFG_strength_level = 1 } }
+					country_event = afghanistan_civil_war_events.40
+				}
+				else = { #Nadir Wins
+					country_event = afghanistan_civil_war_events.41
+				}
+			}
+			AFG_end_civil_war_effect = yes
+		}
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout AFG_civil_war_duration_mission"
+			country_event = afghanistan_civil_war_events.41
+			AFG_end_civil_war_effect = yes
+		}
+		fixed_random_seed = no
+	}
+	AFG_amanullah_makes_his_move = {
+		#icon = GFX_decision_government_up
+		allowed = { always = no } #manually activated
+		available = {
+			hidden_trigger = { always = no }
+		}
+		cancel_trigger = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 100
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 14
+		fire_only_once = yes
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout AFG_amanullah_makes_his_move"
+			if = {
+				limit = {
+					NOT = { has_country_flag = AFG_civil_war_turn_blocked_flag }
+				}
+				custom_effect_tooltip = AFG_civil_war_amanullah_attack_tt
+				hidden_effect = {
+					if = {
+						limit = { has_country_flag = AFG_civil_war_amanullah_attack_herat_flag }
+						random_list = {
+							15 = {
+								save_event_target_as = AFG_civil_war_amanullah_attack_waras
+							}
+							15 = {
+								save_event_target_as = AFG_civil_war_amanullah_attack_ghazni
+							}
+							15 = {
+								save_event_target_as = AFG_civil_war_amanullah_attack_basawul
+							}
+							15 = {
+								save_event_target_as = AFG_civil_war_amanullah_attack_kajran
+							}
+							15 = {
+								save_event_target_as = AFG_civil_war_amanullah_attack_bamyan
+							}
+							15 = {
+								save_event_target_as = AFG_civil_war_amanullah_attack_baghlan
+							}
+							10 = {
+								save_event_target_as = AFG_civil_war_amanullah_attack_zaranj
+							}
+						}
+						country_event = afghanistan_civil_war_events.32
+					}
+					else = {
+						country_event = afghanistan_civil_war_events.31
+						set_country_flag = AFG_civil_war_amanullah_attack_herat_flag
+					}
+				}
+			}
+			else = {
+				custom_effect_tooltip = AFG_amanullah_is_blocked_tt
+				clr_country_flag = AFG_civil_war_turn_blocked_flag
+			}
+			if = {
+				limit = { has_active_mission = AFG_civil_war_duration_mission }
+				activate_mission = AFG_amanullah_makes_his_move
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_nadir_makes_his_move = {
+		icon = GFX_decision_infiltrate_state
+		allowed = { always = no } #manually activated
+		available = {
+			hidden_trigger = { always = no }
+		}
+		cancel_trigger = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 100
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 14
+		fire_only_once = yes
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout AFG_nadir_makes_his_move"
+			if = {
+				limit = {
+					NOT = { has_country_flag = AFG_civil_war_turn_blocked_flag }
+				}
+				custom_effect_tooltip = AFG_civil_war_nadir_attack_tt
+				hidden_effect = {
+					random_list = {
+						15 = {
+							save_event_target_as = AFG_civil_war_nadir_attack_bost
+						}
+						15 = {
+							save_event_target_as = AFG_civil_war_nadir_attack_kajran
+						}
+						15 = {
+							save_event_target_as = AFG_civil_war_nadir_attack_gizab
+						}
+						15 = {
+							save_event_target_as = AFG_civil_war_nadir_attack_chisht
+						}
+						15 = {
+							save_event_target_as = AFG_civil_war_nadir_attack_maiwand
+						}
+						15 = {
+							save_event_target_as = AFG_civil_war_nadir_attack_sharak
+						}
+						10 = {
+							modifier = {
+								add = -10
+								OR = {
+									has_completed_focus = AFG_the_khost_stronghold
+									has_country_flag = AFG_civil_war_khost_lost
+								}
+							}
+							save_event_target_as = AFG_civil_war_nadir_attack_khost
+						}
+					}
+					country_event = afghanistan_civil_war_events.30
+				}
+			}
+			else = {
+				custom_effect_tooltip = AFG_nadir_is_blocked_tt
+				clr_country_flag = AFG_civil_war_turn_blocked_flag
+			}
+			if = {
+				limit = { has_active_mission = AFG_civil_war_duration_mission }
+				activate_mission = AFG_nadir_makes_his_move
+			}
+		}
+		fixed_random_seed = no
+	}
+	#Amanullah decisions
+	AFG_launch_an_assault_against_herat = {
+		icon = GFX_decisions_generic_infiltration
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 90
+
+		state_target = yes
+		custom_cost_text = CP_50
+		custom_cost_trigger = {
+			NOT = { command_power < 50 }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_launch_an_assault_against_herat"
+			hidden_effect = { add_command_power = -50 }
+			add_manpower = -947
+			415 = { set_demilitarized_zone = no }
+			set_temp_variable = { AFG_strength_change = 0.15 }
+			AFG_change_strength_level = yes
+			activate_targeted_decision = { decision = AFG_move_towards_mazar-i-sharif target = 1118 }
+		}
+		fixed_random_seed = no
+	}
+	AFG_move_towards_mazar-i-sharif = {
+		icon = GFX_decisions_generic_infiltration
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 90
+
+		state_target = yes
+		custom_cost_text = CP_50
+		custom_cost_trigger = {
+			NOT = { command_power < 50 }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_move_towards_mazar-i-sharif"
+			hidden_effect = { add_command_power = -50 }
+			add_manpower = -487
+			set_temp_variable = { AFG_strength_change = 0.1 }
+			AFG_change_strength_level = yes
+			activate_targeted_decision = { decision = AFG_take_kunduz target = 1118 }
+		}
+		fixed_random_seed = no
+	}
+	AFG_take_kunduz = {
+		icon = GFX_decisions_generic_infiltration
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 90
+
+		state_target = yes
+		custom_cost_text = CP_50
+		custom_cost_trigger = {
+			NOT = { command_power < 50 }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_take_kunduz"
+			hidden_effect = { add_command_power = -50 }
+			add_manpower = -386
+			set_temp_variable = { AFG_strength_change = 0.1 }
+			AFG_change_strength_level = yes
+			415 = { set_demilitarized_zone = no }
+			activate_targeted_decision = { decision = AFG_storm_kabul target = 267 }
+		}
+		fixed_random_seed = no
+	}
+	AFG_storm_kabul = {
+		icon = GFX_decisions_generic_infiltration
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 90
+
+		state_target = yes
+
+		custom_cost_text = AFG_command_power_cost_text_cw_final_assault
+		custom_cost_trigger = {
+			NOT = { check_variable = { command_power < AFG.AFG_cw_command_power_final_decision_cost_var } }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_storm_kabul"
+			hidden_effect = {
+				set_temp_variable = { AFG_cw_command_power_final_decision_negative_var = { value = AFG.AFG_cw_command_power_final_decision_cost_var multiply = -1 } }
+				add_command_power = AFG_cw_command_power_final_decision_negative_var
+			}
+			add_manpower = -2396
+			set_temp_variable = { AFG_strength_change = 1 }
+			AFG_change_strength_level = yes
+			267 = { set_demilitarized_zone = no }
+		}
+		fixed_random_seed = no
+	}
+	AFG_securing_the_path_to_kabul = {
+		icon = GFX_decision_generic_prepare_civil_war
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		cancel_trigger = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		state_target = yes
+		custom_cost_text = CP_25
+		custom_cost_trigger = {
+			NOT = { command_power < 25 }
+		}
+
+		days_remove = 30
+		days_re_enable = 0
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_securing_the_path_to_kabul"
+			hidden_effect = { add_command_power = 25 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_securing_the_path_to_kabul"
+			hidden_effect = { add_command_power = -25 }
+			add_manpower = -103
+			set_temp_variable = { AFG_strength_change = 0.05 }
+			AFG_change_strength_level = yes
+		}
+		fixed_random_seed = no
+	}
+	AFG_rally_the_amanites = {
+		icon = GFX_decision_eng_propaganda_campaigns
+		ai_will_do = { base = 200000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 70
+
+		cost = AFG.AFG_amanite_decision_cost_var
+		days_re_enable = 0
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_rally_the_amanites"
+			add_command_power = 25
+		}
+		fixed_random_seed = no
+	}
+	AFG_promise_payments_to_the_fighters = {
+		icon = GFX_decision_generic_disband_irregulars
+		ai_will_do = {
+			base = 2000
+			modifier = {
+				factor = 0 #keep a reserve of of reform points
+				check_variable = { AFG_reform_points < 9 }
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 70
+
+		custom_cost_text = AFG_reform_points_cost_text_cw_tribe
+		custom_cost_trigger = {
+			NOT = { check_variable = { AFG_reform_points < AFG.AFG_cw_tribe_decision_cost_var } }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_promise_payments_to_the_fighters"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = { value = AFG.AFG_cw_tribe_decision_cost_var multiply = -1 } }
+				AFG_change_reform_points = yes
+			}
+			add_command_power = 25
+		}
+		fixed_random_seed = no
+	}
+	#Nadir decisions
+	AFG_drive_loyalists_from_jalalabad = {
+		icon = GFX_decisions_generic_infiltration
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 90
+
+		state_target = yes
+		custom_cost_text = CP_50
+		custom_cost_trigger = {
+			NOT = { command_power < 50 }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_drive_loyalists_from_jalalabad"
+			hidden_effect = { add_command_power = -50 }
+			add_manpower = -947
+			set_temp_variable = { AFG_strength_change = -0.15 }
+			AFG_change_strength_level = yes
+			activate_targeted_decision = { decision = AFG_prevent_amanite_attacks_in_the_north target = 1118 }
+		}
+		fixed_random_seed = no
+	}
+	AFG_prevent_amanite_attacks_in_the_north = {
+		icon = GFX_decisions_generic_infiltration
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 90
+
+		state_target = yes
+		custom_cost_text = CP_50
+		custom_cost_trigger = {
+			NOT = { command_power < 50 }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_prevent_amanite_attacks_in_the_north"
+			hidden_effect = { add_command_power = -50 }
+			add_manpower = -487
+			set_temp_variable = { AFG_strength_change = -0.1 }
+			AFG_change_strength_level = yes
+			activate_targeted_decision = { decision = AFG_retaking_herat target = 415 }
+		}
+		fixed_random_seed = no
+	}
+	AFG_retaking_herat = {
+		icon = GFX_decisions_generic_infiltration
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 90
+
+		state_target = yes
+		custom_cost_text = CP_50
+		custom_cost_trigger = {
+			NOT = { command_power < 50 }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_retaking_herat"
+			hidden_effect = { add_command_power = -50 }
+			add_manpower = -386
+			set_temp_variable = { AFG_strength_change = -0.1 }
+			AFG_change_strength_level = yes
+			415 = { set_demilitarized_zone = no }
+			activate_targeted_decision = { decision = AFG_assault_farah target = 1117 }
+		}
+		fixed_random_seed = no
+	}
+	AFG_assault_farah = {
+		icon = GFX_decisions_generic_infiltration
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 90
+
+		state_target = yes
+
+		custom_cost_text = AFG_command_power_cost_text_cw_final_assault
+		custom_cost_trigger = {
+			NOT = { check_variable = { command_power < AFG.AFG_cw_command_power_final_decision_cost_var } }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_assault_farah"
+			hidden_effect = {
+				set_temp_variable = { AFG_cw_command_power_final_decision_negative_var = { value = AFG.AFG_cw_command_power_final_decision_cost_var multiply = -1 } }
+				add_command_power = AFG_cw_command_power_final_decision_negative_var
+			}
+			add_manpower = -2396
+			set_temp_variable = { AFG_strength_change = -1 }
+			AFG_change_strength_level = yes
+			1117 = { set_demilitarized_zone = no }
+		}
+		fixed_random_seed = no
+	}
+	AFG_crush_scattered_loyalists = {
+		icon = GFX_decision_generic_prepare_civil_war
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		cancel_trigger = {
+			AFG_civil_war_ongoing = no
+		}
+		priority = 80
+
+		state_target = yes
+		custom_cost_text = CP_25
+		custom_cost_trigger = {
+			NOT = { command_power < 25 }
+		}
+
+		days_remove = 30
+		days_re_enable = 0
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel AFG_crush_scattered_loyalists"
+			hidden_effect = { add_command_power = 25 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_crush_scattered_loyalists"
+			hidden_effect = { add_command_power = -25 }
+			add_manpower = -103
+			set_temp_variable = { AFG_strength_change = -0.05 }
+			AFG_change_strength_level = yes
+		}
+		fixed_random_seed = no
+	}
+	AFG_reassert_state_control = {
+		icon = GFX_decision_oppression
+		ai_will_do = { base = 2000 }
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 70
+
+		cost = 50
+		days_re_enable = 0
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_reassert_state_control"
+			add_command_power = 25
+		}
+		fixed_random_seed = no
+	}
+	AFG_keeping_the_army_loyal = {
+		icon = GFX_decision_soldierly_discipline
+		ai_will_do = {
+			base = 2000
+			modifier = {
+				factor = 0 #keep a reserve of of reform points
+				check_variable = { AFG_reform_points < 9 }
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+		}
+		priority = 70
+
+		custom_cost_text = AFG_reform_points_cost_text_cw_tribe
+		custom_cost_trigger = {
+			NOT = { check_variable = { AFG_reform_points < AFG.AFG_cw_tribe_decision_cost_var } }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_keeping_the_army_loyal"
+			hidden_effect = {
+				set_temp_variable = { AFG_reform_points_change = { value = AFG.AFG_cw_tribe_decision_cost_var multiply = -1 } }
+				AFG_change_reform_points = yes
+			}
+			add_command_power = 25
+		}
+		fixed_random_seed = no
+	}
+
+	#Shared decisions
+	AFG_reach_out_to_backer = {
+		icon = GFX_decision_generic_political_discourse
+		ai_will_do = {
+			base = 2000
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_country_flag = AFG_amanullah_chosen_flag
+						check_variable = { AFG.AFG_amanullah_backer_alignment_var > 1 }
+					}
+					AND = {
+						has_country_flag = AFG_nadir_chosen_flag
+						check_variable = { AFG.AFG_nadir_backer_alignment_var > 1 }
+					}
+				}
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			AFG_civil_war_ongoing = yes
+			has_country_flag = AFG_received_support_from_backer_flag
+			NOT = { has_country_flag = AFG_reaching_out_to_backer_flag }
+		}
+		visible = {
+			if = {
+				limit = { has_country_flag = AFG_amanullah_chosen_flag }
+				check_variable = { AFG.AFG_amanullah_backer_alignment_var < 3 }
+			}
+			else = {
+				check_variable = { AFG.AFG_nadir_backer_alignment_var < 3 }
+			}
+			if = {
+				limit = {
+					var:AFG_amanullah_backer = { has_socialist_government = yes }
+				}
+				check_variable = { AFG.AFG_amanullah_backer_alignment_var < 2 }
+			}
+			else_if = {
+				limit = {
+					var:AFG_nadir_backer = { has_socialist_government = yes }
+				}
+				check_variable = { AFG.AFG_nadir_backer_alignment_var < 2 }
+			}
+		}
+		priority = 60
+
+		custom_cost_trigger = {
+			NOT = { has_stability < 0.05 }
+		}
+		custom_cost_text = stability5
+		days_remove = 30
+		days_re_enable = 0
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_reach_out_to_backer"
+			set_country_flag = AFG_reaching_out_to_backer_flag
+			hidden_effect = { add_stability = -0.05 }
+			if = {
+				limit = {
+					OR = {
+						check_variable = { AFG.AFG_amanullah_backer_alignment_var > 1 }
+						check_variable = { AFG.AFG_nadir_backer_alignment_var > 1 }
+					}
+				}
+				custom_effect_tooltip = AFG_backer_alignment_guaranteed_AFG_tt
+			}
+			if = {
+				limit = { has_country_flag = AFG_amanullah_chosen_flag }
+				var:AFG_amanullah_backer = { country_event = afghanistan_civil_war_events.25 }
+			}
+			else = {
+				var:AFG_nadir_backer = { country_event = afghanistan_civil_war_events.25 }
+			}
+		}
+		fixed_random_seed = no
+	}
+}
+
+AFG_consolidation_of_the_realm_decisions = {
+	AFG_reasserting_amanullahs_authority_mission = {
+		icon = GFX_decision_hand_out
+		allowed = { always = no } #manually activated
+		ai_will_do = {
+			base = 200000 #needs to be higher then the dont spend pp one
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = AFG_inayatullah_ai
+					has_country_flag = AFG_hashim_reactionary_ai
+					has_country_flag = AFG_hashim_palace_ai
+				}
+			}
+		}
+		available = {
+			has_completed_focus = AFG_restoring_darulaman
+			if = {
+				limit = { has_country_flag = AFG_amanullah_reformist_consolidation_flag }
+				has_completed_focus = AFG_destroying_the_mojadidis
+				custom_override_tooltip = {
+					tooltip = { localization_key = has_completed_decision DECISION = AFG_drive_saqqawists_from_the_north }
+					has_country_flag = AFG_saqqawists_crushed_north_flag
+				}
+				custom_override_tooltip = {
+					tooltip = { localization_key = has_completed_decision DECISION = AFG_destroy_saqqawist_holdouts_in_the_south }
+					has_country_flag = AFG_saqqawists_crushed_south_flag
+				}
+				power_balance_value = {
+					id = AFG_power_balance
+					value > 0.499
+				}
+			}
+			else = {
+				has_completed_focus = AFG_good_king_bad_boyars
+				custom_override_tooltip = {
+					tooltip = { localization_key = has_completed_decision DECISION = AFG_purge_the_palace }
+					has_country_flag = AFG_purge_the_palace_flag
+				}
+				custom_override_tooltip = {
+					tooltip = { localization_key = has_completed_decision DECISION = AFG_repeal_the_tazkera }
+					has_country_flag = AFG_repeal_the_tazkera_flag
+				}
+				power_balance_value = {
+					id = AFG_power_balance
+					value < -0.499
+				}
+			}
+		}
+		priority = 100
+		is_good = no
+		selectable_mission = yes
+		days_mission_timeout = 120
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout AFG_reasserting_amanullahs_authority_mission"
+			if = { #game rule ai can cheat by just taking forever to account for any situation
+				limit = {
+					is_ai = yes
+					OR = {
+						has_game_rule = { rule = AFG_path option = AFG_PATH_AMANULLAH_AUTDEM }
+						has_game_rule = { rule = AFG_path option = AFG_PATH_AMANULLAH_PATAUT }
+					}
+				}
+				activate_mission = AFG_reasserting_amanullahs_authority_mission
+			}
+			else_if = {
+				limit = { has_country_flag = AFG_amanullah_reformist_consolidation_flag }
+				custom_effect_tooltip = AFG_amanullah_reformist_failure_tt
+				hidden_effect = {
+					country_event = { id = afghanistan_civil_war_events.49 days = 5 }
+				}
+			}
+			else = {
+				custom_effect_tooltip = AFG_amanullah_traditionalist_failure_tt
+				hidden_effect = {
+					country_event = { id = afghanistan_civil_war_events.54 days = 5 }
+				}
+			}
+			clr_country_flag = AFG_dont_spend_reform_points_flag
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_reasserting_amanullahs_authority_mission"
+			set_country_flag = AFG_amanullah_consolidated_flag
+			if = {
+				limit = { has_country_flag = AFG_amanullah_reformist_consolidation_flag }
+				country_event = afghanistan_civil_war_events.61
+			}
+			else = {
+				country_event = afghanistan_civil_war_events.62
+			}
+			clr_country_flag = AFG_dont_spend_reform_points_flag
+		}
+		fixed_random_seed = no
+	}
+	AFG_drive_saqqawists_from_the_north = {
+		icon = GFX_decision_generic_prepare_civil_war
+		ai_will_do = { base = 300000 }
+
+		allowed = { always = no }
+		available = {
+			has_active_mission = AFG_reasserting_amanullahs_authority_mission
+			controls_state = 1118 #Qataghan
+		}
+		target_trigger = {
+			has_active_mission = AFG_reasserting_amanullahs_authority_mission
+		}
+		priority = 80
+
+		state_target = yes
+		custom_cost_text = CP_25
+		custom_cost_trigger = {
+			NOT = { command_power < 25 }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_drive_saqqawists_from_the_north"
+			hidden_effect = { add_command_power = -25 }
+			add_stability = 0.025
+			set_country_flag = AFG_saqqawists_crushed_north_flag
+		}
+		fixed_random_seed = no
+	}
+	AFG_destroy_saqqawist_holdouts_in_the_south = {
+		icon = GFX_decision_generic_prepare_civil_war
+		ai_will_do = { base = 300000 }
+
+		allowed = { always = no }
+		available = {
+			has_active_mission = AFG_reasserting_amanullahs_authority_mission
+			controls_state = 1117 #Kandahar
+		}
+		target_trigger = {
+			has_active_mission = AFG_reasserting_amanullahs_authority_mission
+		}
+		priority = 80
+
+		state_target = yes
+		custom_cost_text = CP_25
+		custom_cost_trigger = {
+			NOT = { command_power < 25 }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_destroy_saqqawist_holdouts_in_the_south"
+			hidden_effect = { add_command_power = -25 }
+			add_stability = 0.025
+			set_country_flag = AFG_saqqawists_crushed_south_flag
+		}
+		fixed_random_seed = no
+	}
+	AFG_purge_the_palace = {
+		icon = GFX_decision_generic_arrest
+		ai_will_do = { base = 300000 }
+
+		allowed = { always = no }
+		available = {
+			has_active_mission = AFG_reasserting_amanullahs_authority_mission
+		}
+		target_trigger = {
+			has_active_mission = AFG_reasserting_amanullahs_authority_mission
+		}
+		priority = 80
+
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_purge_the_palace"
+			add_stability = 0.025
+			add_popularity = { ideology = authoritarian_democrat popularity = -0.05 }
+			set_country_flag = AFG_purge_the_palace_flag
+		}
+		fixed_random_seed = no
+	}
+	AFG_repeal_the_tazkera = {
+		icon = GFX_decision_generic_disband_irregulars
+		ai_will_do = { base = 300000 }
+
+		allowed = { always = no }
+		available = {
+			has_active_mission = AFG_reasserting_amanullahs_authority_mission
+		}
+		target_trigger = {
+			has_active_mission = AFG_reasserting_amanullahs_authority_mission
+		}
+		priority = 80
+
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_repeal_the_tazkera"
+			add_stability = 0.025
+			decrease_conscription = yes
+			set_country_flag = AFG_repeal_the_tazkera_flag
+		}
+		fixed_random_seed = no
+	}
+	AFG_stabilise_the_realm_mission = {
+		icon = GFX_decision_hand_out
+		allowed = { always = no } #manually activated
+		ai_will_do = {
+			base = 200000 #needs to be higher then the dont spend pp one
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = AFG_zahir_ai
+					has_country_flag = AFG_aut_republic_ai
+					has_country_flag = AFG_dem_republic_ai
+					has_country_flag = AFG_soc_republic_ai
+				}
+			}
+		}
+		available = {
+			OR = {
+				has_completed_focus = AFG_reshape_amanullahs_legacy
+				has_completed_focus = AFG_uphold_saqqawist_proclamations
+			}
+			custom_override_tooltip = {
+				tooltip = { localization_key = has_completed_decision DECISION = AFG_hunt_down_dissident_amanites }
+				has_country_flag = AFG_hunt_amanite_flag
+			}
+			custom_override_tooltip = {
+				tooltip = { localization_key = has_completed_decision DECISION = AFG_establish_the_society_of_the_ulema }
+				has_country_flag = AFG_society_of_ulema_flag
+			}
+		}
+		priority = 100
+		is_good = no
+		selectable_mission = yes
+		days_mission_timeout = 120
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout AFG_stabilise_the_realm_mission"
+			if = { #game rule ai can cheat by just taking forever to account for any situation
+				limit = {
+					is_ai = yes
+					OR = {
+						has_game_rule = { rule = AFG_path option = AFG_PATH_NADIR_TRADITIONALIST_PATAUT }
+						has_game_rule = { rule = AFG_path option = AFG_PATH_NADIR_REFORMIST_PATAUT }
+					}
+				}
+				activate_mission = AFG_stabilise_the_realm_mission
+			}
+			else = { #if not game rule then the normal failure
+				custom_effect_tooltip = AFG_nadir_failure_tt
+				hidden_effect = {
+					country_event = { id = afghanistan_civil_war_events.59 days = 5 }
+				}
+				clr_country_flag = AFG_dont_spend_reform_points_flag
+			}
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_stabilise_the_realm_mission"
+
+			set_country_flag = AFG_nadir_consolidated_flag
+			country_event = afghanistan_civil_war_events.63
+			clr_country_flag = AFG_dont_spend_reform_points_flag
+		}
+		fixed_random_seed = no
+	}
+	AFG_hunt_down_dissident_amanites = {
+		icon = GFX_decision_generic_prepare_civil_war
+		ai_will_do = {
+			base = 300000 #needs to be higher then the dont spend pp one
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = AFG_zahir_ai
+					has_country_flag = AFG_aut_republic_ai
+					has_country_flag = AFG_dem_republic_ai
+					has_country_flag = AFG_soc_republic_ai
+				}
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			has_active_mission = AFG_stabilise_the_realm_mission
+		}
+		target_trigger = {
+			has_active_mission = AFG_stabilise_the_realm_mission
+		}
+
+		priority = 80
+
+		custom_cost_text = CP_25
+		custom_cost_trigger = {
+			NOT = { command_power < 25 }
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_hunt_down_dissident_amanites"
+			hidden_effect = { add_command_power = -25 }
+			add_stability = 0.025
+			add_manpower = -394
+			set_country_flag = AFG_hunt_amanite_flag
+		}
+		fixed_random_seed = no
+	}
+	AFG_establish_the_society_of_the_ulema = {
+		icon = GFX_decision_generic_prepare_civil_war
+		ai_will_do = {
+			base = 300000 #needs to be higher then the dont spend pp one
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = AFG_zahir_ai
+					has_country_flag = AFG_aut_republic_ai
+					has_country_flag = AFG_dem_republic_ai
+					has_country_flag = AFG_soc_republic_ai
+				}
+			}
+		}
+
+		allowed = { always = no }
+		available = {
+			has_active_mission = AFG_stabilise_the_realm_mission
+		}
+		target_trigger = {
+			has_active_mission = AFG_stabilise_the_realm_mission
+		}
+		priority = 80
+
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_establish_the_society_of_the_ulema"
+			add_popularity = { ideology = social_conservative popularity = 0.05 }
+			add_stability = 0.05
+			set_country_flag = AFG_society_of_ulema_flag
+		}
+		fixed_random_seed = no
+	}
+}
+
+foreign_politics = {
+	AFG_join_faction = {
+		name = join_faction
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		allowed = { always = no } #Manually activated
+
+		available = {
+			at_peace_or_same_enemies_as_FROM = yes
+			if = {
+				limit = { AFG_aia_republic = yes }
+				has_country_flag = AFG_aia_india_negotiations_over_flag
+			}
+			if = {
+				limit = {
+					is_ai = no
+					AFG_backer_faction_blocked = yes
+				}
+				if = {
+					limit = {
+						OR = {
+							AND = {
+								var:AFG_amanullah_backer = { tag = FROM }
+								FROM = { has_socialist_government = no }
+								AFG_is_seraj = yes
+							}
+							AND = {
+								var:AFG_nadir_backer = { tag = FROM }
+								FROM = { has_socialist_government = no }
+								AFG_is_telai = yes
+							}
+						}
+					}
+					custom_override_tooltip = {
+						tooltip = AFG_backer_faction_only_tt
+						always = yes
+					}
+				}
+				else = {
+					custom_override_tooltip = {
+						tooltip = AFG_backer_faction_blocked_tt
+						always = no
+					}
+				}
+			}
+			if = {
+				limit = { FROM = { tag = OTT } }
+				OTT_russo_ottoman_convention_signed = no
+			}
+			OR = {
+				NOT = { has_completed_focus = AFG_liberating_the_colonised_pashtuns }
+				second_weltkrieg_has_begun = yes
+			}
+		}
+
+		visible = {
+			is_subject = no
+			is_in_faction = no
+			has_socialist_government = no
+			FROM = {
+				is_faction_leader = yes
+				has_socialist_government = no
+			}
+			NOT = { has_war_with = FROM }
+			NOT = { has_country_flag = AFG_joining_faction }
+		}
+
+		target_trigger = {
+			is_subject = no
+			has_socialist_government = no
+			FROM = {
+				has_socialist_government = no
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		cost = 30
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 1.5
+				OR = {
+					AND = {
+						FROM = { tag = var:AFG.AFG_amanullah_backer }
+						check_variable = { AFG.AFG_amanullah_backer_alignment_var = 1 }
+						AFG_is_seraj = yes
+					}
+					AND = {
+						FROM = { tag = var:AFG.AFG_nadir_backer }
+						check_variable = { AFG.AFG_amanullah_backer_alignment_var = 1 }
+						AFG_is_telai = yes
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					AND = {
+						FROM = { tag = var:AFG.AFG_amanullah_backer }
+						check_variable = { AFG.AFG_amanullah_backer_alignment_var = 2 }
+						AFG_is_seraj = yes
+					}
+					AND = {
+						FROM = { tag = var:AFG.AFG_nadir_backer }
+						check_variable = { AFG.AFG_nadir_backer_alignment_var = 2 }
+						AFG_is_telai = yes
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_neutral_ai
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						FROM = { tag = JAP }
+						NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_JAP } }
+					}
+					AND = {
+						FROM = { tag = RUS }
+						NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_RUS } }
+					}
+					AND = {
+						FROM = { tag = GER }
+						NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_GER } }
+					}
+					AND = {
+						FROM = { tag = OTT }
+						NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_OTT } }
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_join_faction"
+			set_country_flag = AFG_joining_faction
+			FROM = { ask_to_join_faction = yes }
+			clr_country_flag = AFG_faction_ai
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_seek_imperial_recognition = {
+		icon = GFX_decision_crown_up
+
+		allowed = { original_tag = AFG }
+
+		available = {
+			check_variable = {
+				tooltip = AFG_recognition_var_available_tooltip
+				AFG.AFG_recognition_var < 3
+			}
+			NOT = { has_war_with = FROM }
+			if = {
+				limit = {
+					FROM = { original_tag = GER }
+				}
+				NOT = {
+					is_ally_with = RUS
+					is_ally_with = JAP
+				}
+			}
+			if = {
+				limit = {
+					FROM = { original_tag = RUS }
+				}
+				NOT = {
+					is_ally_with = GER
+				}
+			}
+			NOT = { has_country_flag = AFG_seeking_recognition_flag }
+		}
+
+		visible = {
+			is_subject = no
+			NOT = { has_war_with = FROM }
+			NOT = { has_cosmetic_tag = AFG_empire }
+		}
+
+		target_array = global.majors
+		target_root_trigger = {
+			has_completed_focus = AFG_seeking_imperial_recognition
+			NOT = { has_cosmetic_tag = AFG_empire }
+		}
+		target_trigger = {
+			FROM = {
+				is_actual_major = yes
+				is_subject = no
+				has_socialist_government = no
+				NOT = { has_war_with = FROM }
+			}
+		}
+
+		cost = 50
+		fire_only_once = yes
+
+		ai_will_do = { factor = 10 }
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_seek_imperial_recognition"
+			set_country_flag = AFG_seeking_recognition_flag
+			FROM = {
+				country_event = { id = afghanistan_foreign_policy_events.1 days = 1 }
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_declare_the_second_afghan_empire = {
+		icon = GFX_decision_soldierly_discipline
+
+		allowed = { always = no } #Manually activated
+
+		fire_only_once = yes
+
+		ai_will_do = { factor = 10 }
+
+		available = {
+			check_variable = {
+				tooltip = AFG_recognition_var_tooltip
+				AFG.AFG_recognition_var > 2
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_declare_the_second_afghan_empire"
+			set_cosmetic_tag = AFG_empire
+			add_popularity = { ideology = ROOT popularity = 0.1 }
+			add_war_support = 0.1
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_acquire_allied_rifles = {
+		icon = GFX_decision_ger_military_buildup
+
+		allowed = { always = no } #Manually activated
+
+		cost = 40
+		days_remove = 90
+		days_re_enable = 1
+		priority = 100
+
+		ai_will_do = { #TODO
+			factor = 10
+		}
+
+		visible = {
+			OR = {
+				is_in_faction = yes
+				is_subject = yes
+			}
+		}
+
+		available = {
+			FROM = {
+				has_socialist_government = yes
+				NOT = { has_war_with = FROM }
+				has_capitulated = no
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_acquire_allied_rifles"
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 5000
+				producer = FROM
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_acquire_allied_support_equipment = {
+		icon = GFX_decision_support_equipment
+
+		allowed = { always = no } #Manually activated
+
+		cost = 50
+		days_remove = 90
+		days_re_enable = 1
+		priority = 100
+
+		ai_will_do = { #TODO
+			factor = 10
+		}
+
+		visible = {
+			OR = {
+				is_in_faction = yes
+				is_subject = yes
+			}
+		}
+
+		available = {
+			FROM = {
+				has_socialist_government = yes
+				NOT = { has_war_with = FROM }
+				has_capitulated = no
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_acquire_allied_support_equipment"
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 500
+				producer = FROM
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_acquire_allied_aircraft = {
+		icon = GFX_decision_SWE_set_air_budget
+
+		allowed = { always = no } #Manually activated
+
+		cost = 75
+		days_remove = 90
+		days_re_enable = 1
+		priority = 100
+
+		ai_will_do = { #TODO
+			factor = 10
+		}
+
+		visible = {
+			OR = {
+				is_in_faction = yes
+				is_subject = yes
+			}
+		}
+
+		available = {
+			FROM = {
+				has_socialist_government = yes
+				NOT = { has_war_with = FROM }
+				has_capitulated = no
+				has_design_based_on = small_plane_airframe
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_acquire_allied_aircraft"
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe
+				amount = 50
+				producer = FROM
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_acquire_allied_armour = {
+		icon = GFX_decision_generic_tank
+
+		allowed = { always = no } #Manually activated
+
+		cost = 50
+		days_remove = 90
+		days_re_enable = 1
+		priority = 100
+
+		ai_will_do = { #TODO
+			factor = 10
+		}
+
+		visible = {
+			OR = {
+				is_in_faction = yes
+				is_subject = yes
+			}
+		}
+
+		available = {
+			FROM = {
+				has_socialist_government = yes
+				NOT = { has_war_with = FROM }
+				has_capitulated = no
+				if = {
+					limit = { has_dlc_nsb = yes }
+					has_tech = basic_medium_tank_chassis
+				}
+				else = {
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_has_tech_detailed
+							NAME = country_culture|medium_tank_equipment_1
+							TECH = medium_tank_equipment_1
+						}
+						has_tech = basic_medium_tank
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_acquire_allied_armour"
+			add_equipment_to_stockpile = {
+				type = medium_tank_chassis
+				amount = 100
+				producer = FROM
+			}
+		}
+		fixed_random_seed = no
+	}
+}
+
+AFG_unifying_the_pashtuns = {
+
+	AFG_restore_the_nations_unity = {
+		icon = GFX_decision_generic_civil_support
+		ai_will_do = { #TODO
+			base = 50
+		}
+
+		allowed = { always = no } #Manually Activated
+		priority = 80
+		state_target = yes
+		cost = 25
+		fire_only_once = yes
+
+		available = {
+			has_full_control_of_state = 442 #Peshawar
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_restore_the_nations_unity"
+			swap_ideas = {
+				remove_idea = AFG_loy_afghanistan
+				add_idea = AFG_loy_afghanistan_2
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	AFG_bring_state_into_the_fold = {
+		icon = GFX_decision_generic_civil_support
+		ai_will_do = { #TODO
+			base = 50
+		}
+
+		allowed = { always = no } #Manually Activated
+		priority = 80
+		state_target = yes
+		cost = 25
+		fire_only_once = yes
+
+		available = {
+			has_full_control_of_state = FROM
+			custom_override_tooltip = {
+				tooltip = AFG_bring_state_into_the_fold_available_tt
+				OR = {
+					has_idea = AFG_loy_afghanistan_2
+					has_idea = AFG_loy_afghanistan_3
+					has_idea = AFG_loy_afghanistan_4
+					has_idea = AFG_loy_afghanistan_5
+					has_idea = AFG_loy_afghanistan_6
+					has_idea = AFG_loy_afghanistan_7
+				}
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_bring_state_into_the_fold"
+			AFG_improve_loy_afghanistan_effect = yes
+			if = {
+				limit = {
+					FROM = { state = 445 } #Quetta
+				}
+				hidden_effect = {
+					country_event = { id = afghanistan_foreign_policy_events.15 days = 18 }
+				}
+			}
+			if = {
+				limit = {
+					FROM = { state = 444 } #Baluchistan
+				}
+				hidden_effect = {
+					country_event = { id = afghanistan_foreign_policy_events.17 days = 21 }
+				}
+			}
+			if = {
+				limit = {
+					FROM = { state = 410 } #Sistan
+				}
+				hidden_effect = {
+					country_event = { id = afghanistan_foreign_policy_events.18 days = 19 }
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+}
+
+political_actions = {
+	AFG_remove_pashtunistan_reformist_modifier_decision = {
+		icon = generic_civil_support
+		ai_will_do = { #TODO
+			base = 50
+		}
+
+		allowed = { always = no } #Manually Activated
+		priority = 1000
+		state_target = yes
+		cost = 50
+		fire_only_once = yes
+		days_remove = 365
+
+		available = {
+			has_full_control_of_state = 442
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_remove_pashtunistan_reformist_modifier_decision"
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = AFG_amanullah_traditionalist_consolidation_flag
+						has_completed_focus = AFG_the_steady_hand
+						has_completed_focus = AFG_the_final_fall_of_amanullah
+					}
+				}
+				add_ideas = AFG_pacifying_the_frontier_idea
+			}
+			else = {
+				add_ideas = AFG_integrating_the_frontier_idea
+			}
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_remove_pashtunistan_reformist_modifier_decision"
+			442 = {
+				remove_dynamic_modifier = { modifier = AFG_pashtunistan_autonomous_province_modifier }
+			}
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = AFG_amanullah_traditionalist_consolidation_flag
+						has_completed_focus = AFG_the_steady_hand
+						has_completed_focus = AFG_the_final_fall_of_amanullah
+					}
+				}
+				remove_ideas = AFG_pacifying_the_frontier_idea
+			}
+			else = {
+				remove_ideas = AFG_integrating_the_frontier_idea
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_remove_pashtunistan_traditionalist_modifier_decision = {
+		icon = generic_civil_support
+		ai_will_do = { #TODO
+			base = 50
+		}
+
+		allowed = { always = no } #Manually Activated
+		priority = 1000
+		state_target = yes
+		cost = 50
+		fire_only_once = yes
+		days_remove = 365
+
+		available = {
+			has_full_control_of_state = 442
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_remove_pashtunistan_traditionalist_modifier_decision"
+			if = {
+				limit = {
+					AFG_is_telai = yes
+				}
+				add_ideas = AFG_pacifying_the_frontier_idea
+			}
+			else = {
+				add_ideas = AFG_integrating_the_frontier_idea
+			}
+		}
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove AFG_remove_pashtunistan_traditionalist_modifier_decision"
+			442 = {
+				remove_dynamic_modifier = { modifier = AFG_chitral_treaties_modifier }
+			}
+			if = {
+				limit = {
+					AFG_is_telai = yes
+				}
+				remove_ideas = AFG_pacifying_the_frontier_idea
+			}
+			else = {
+				remove_ideas = AFG_integrating_the_frontier_idea
+			}
+		}
+		fixed_random_seed = no
+	}
+	PTH_negotiate_with_india_decision = {
+		icon = generic_civil_support
+		priority = 1000
+
+		allowed = { always = no } #Manually activated
+
+		available = {
+			has_war = no
+			has_global_flag = india_united
+			is_subject = no
+			FROM = { is_subject = no }
+		}
+
+		visible = {
+			is_subject = no
+			FROM = {
+				exists = yes
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = { factor = 1000 }
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete PTH_negotiate_with_india_decision"
+			FROM = { country_event = { id = afghanistan_pashtunistan_events.50 days = 1 } }
+		}
+		fixed_random_seed = no
+	}
+}

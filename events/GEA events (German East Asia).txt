@@ -111,10 +111,7 @@ country_event = { # Yen Bai Mutiny
 		ai_chance = { base = 50 }
 		set_global_flag = GEA_Martial_Law_NOT_Declared
 		add_political_power = -30 # Weaken the Stability
-		add_to_variable = {
-			var = INC.guerilla_activity
-			value = 8
-		}
+		add_to_variable = { INC.guerilla_activity = 8 }
 	}
 	option = { # Declare martial law in all Indochina!
 		log = "[GetLogInfo]: event german_east_asia_events.6 option german_east_asia_events.6.b"
@@ -270,10 +267,7 @@ country_event = { # BBR Round 2 (Police)
 				has_game_rule = { rule = INC_revolt option = INC_REVOLT_NO }
 			}
 		}
-		add_to_variable = {
-			var = INC.guerilla_activity
-			value = 3
-		}
+		add_to_variable = { INC.guerilla_activity = 3 }
 		modify_country_flag = {
 			flag = GEA_Indochinese_Anger
 			value = 1
@@ -551,6 +545,7 @@ country_event = { # GEA in trouble
 	option = { # Fighting a land war in Asia sounds like fun!
 		log = "[GetLogInfo]: event german_east_asia_events.17 option german_east_asia_events.17.c"
 		name = german_east_asia_events.17.c
+		trigger = { NOT = { has_war_with = INC } }
 		ai_chance = {
 			base = 20
 			modifier = {
@@ -985,10 +980,7 @@ country_event = { # Falling Rice Price
 			flag = GEA_Indochinese_Anger
 			value = 1
 		}
-		add_to_variable = {
-			var = INC.guerilla_activity
-			value = 5
-		}
+		add_to_variable = { INC.guerilla_activity = 5 }
 	}
 
 	option = { # Protect Indochina
@@ -1021,10 +1013,7 @@ country_event = { # Falling Rice Price
 			flag = GEA_Indochinese_Anger
 			value = 2
 		}
-		add_to_variable = {
-			var = INC.guerilla_activity
-			value = 5
-		}
+		add_to_variable = { INC.guerilla_activity = 5 }
 	}
 }
 
@@ -1068,10 +1057,7 @@ country_event = { # European privileges
 			flag = GEA_Indochinese_Anger
 			value = 1
 		}
-		add_to_variable = {
-			var = INC.guerilla_activity
-			value = 6
-		}
+		add_to_variable = { INC.guerilla_activity = 6 }
 	}
 }
 
@@ -1098,10 +1084,7 @@ country_event = { # Strikes in Annamese plantations
 			flag = GEA_Indochinese_Anger
 			value = 1
 		}
-		add_to_variable = {
-			var = INC.guerilla_activity
-			value = 3
-		}
+		add_to_variable = { INC.guerilla_activity = 3 }
 	}
 
 	option = { # Negotiation

@@ -665,23 +665,62 @@ is_indonesia = {
 	is_sarawak = no
 }
 
-is_india = {
+is_minimal_india = {
 	OR = {
-		region = 31 #Deccan Plateau
-		region = 141 #Bengal
+		AND = {
+			region = 31 #Deccan Plateau
+			NOT = { state = 321 } #Goa
+		}
+		AND = {
+			region = 141 #Bengal
+			NOT = { state = 887 } #Darjeeling
+			NOT = { state = 858 } #Tawang
+		}
 		region = 153 #Gangetic Plain
-		region = 245 #Indus Valley
+		AND = {
+			region = 245 #Indus Valley
+			NOT = { state = 442 } #Peshawar
+		}
 		region = 261 #Rajasthan
 		region = 262 #Vindhya Range
 		region = 263 #Coromandel Coast
-		region = 264 #Cape Comorin
-		region = 270 #Kashmir
-		state = 281 #Maldives
-		state = 710 #Diego Garcia
+		AND = {
+			region = 264 #Cape Comorin
+			NOT = { state = 422 } #Colombo
+			NOT = { state = 1119 } #Trincomalee
+			NOT = { state = 818 } #Pondicherry
+		}
+		AND = {
+			region = 270 #Kashmir
+			NOT = { state = 814 } #Uttaranchal
+		}
 		state = 733 #Andaman Islands
+	}
+}
+
+is_core_india = {
+	OR = {
+		is_minimal_india = yes
+		state = 442 #Peshawar
+		state = 814 #Uttaranchal
+		state = 887 #Darjeeling
 		state = 858 #Tawang
 		state = 888 #Sikkim
 		state = 897 #Aksai Chin
+		state = 321 #Goa
+		state = 818 #Pondicherry
+	}
+}
+
+is_india = {
+	OR = {
+		is_core_india = yes
+		state = 422 #Colombo
+		state = 1119 #Trincomalee
+		state = 281 #Maldives
+		state = 710 #Diego Garcia
+		state = 709 #Seychelles
+		state = 707 #Mauritius
 	}
 }
 
@@ -1259,7 +1298,6 @@ is_azania = {
 		state = 869 #Rwanda
 		state = 870 #Urundi
 		state = 899 #Ruvuma
-		state = 905 #Zanzibar
 		state = 918 #Bukoba
 		state = 965 #Dar-es-Salaam
 		state = 1032 #Greater Unyamwezi

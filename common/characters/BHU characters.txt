@@ -5,27 +5,43 @@ characters = {
 
 	### Placeholders ###
 
+	BHU_pasang_sherpa = {
+		name = BHU_pasang_sherpa
+		portraits = {
+			civilian = {
+				large = GFX_Portrait_India_Generic_new_7
+			}
+		}
+		country_leader = {
+			desc = BHU_pasang_sherpa_leader_desc
+			ideology = totalist_subtype
+		}
+		country_leader = {
+			desc = BHU_pasang_sherpa_leader_desc
+			ideology = syndicalist_subtype
+		}
+		country_leader = {
+			desc = BHU_pasang_sherpa_leader_desc
+			ideology = radical_socialist_subtype
+		}
+	}
 	BHU_db_gurung = {
 		name = BHU_db_gurung
 		portraits = {
 			civilian = {
-				large = GFX_Portrait_India_Generic_new_1
+				large = GFX_Portrait_India_Generic_new_4
 			}
 		}
 		country_leader = {
 			desc = BHU_db_gurung_leader_desc
 			ideology = social_democrat_subtype
 		}
-		country_leader = {
-			desc = BHU_db_gurung_leader_desc
-			ideology = social_conservative_subtype
-		}
 	}
 	BHU_mahasur_chhetri = {
 		name = BHU_mahasur_chhetri
 		portraits = {
 			civilian = {
-				large = GFX_Portrait_India_Generic_new_1
+				large = GFX_Portrait_India_Generic_new_3
 			}
 		}
 		country_leader = {
@@ -33,15 +49,15 @@ characters = {
 			ideology = social_liberal_subtype
 		}
 	}
-	BHU_bal_bahadur_basnet = {
-		name = BHU_bal_bahadur_basnet
+	BHU_yanglop_sonam_chhozing = {
+		name = BHU_yanglop_sonam_chhozing
 		portraits = {
 			civilian = {
-				large = GFX_Portrait_India_Generic_new_1
+				large = GFX_Portrait_Asia_Generic_new_1
 			}
 		}
 		country_leader = {
-			desc = BHU_bal_bahadur_basnet_leader_desc
+			desc = BHU_yanglop_sonam_chhozing_leader_desc
 			ideology = market_liberal_subtype
 		}
 	}
@@ -55,6 +71,10 @@ characters = {
 		}
 		country_leader = {
 			desc = BHU_choekyi_wangchuck_leader_desc
+			ideology = social_conservative_subtype
+		}
+		country_leader = {
+			desc = BHU_choekyi_wangchuck_leader_desc
 			ideology = national_populist_subtype
 		}
 		advisor = {
@@ -62,6 +82,10 @@ characters = {
 			idea_token = BHU_choekyi_wangchuck_advisor
 			desc = BHU_choekyi_wangchuck_leader_desc
 			available = {
+				OR = {
+					NOT = { has_country_flag = BHU_z_win }
+					has_completed_focus = bhu_bind_intransigent_elders
+				}
 				OR = {
 					has_idea = BHU_feudal_5
 					has_idea = BHU_feudal_6
@@ -105,12 +129,35 @@ characters = {
 			idea_token = BHU_chogley_jigme_tenzin_advisor
 			available = {
 				OR = {
+					has_country_flag = BHU_empowered_sungtrul
 					has_idea = BHU_feudal_5
 					has_idea = BHU_feudal_6
 					has_idea = BHU_feudal_7
 				}
 			}
 			traits = { KR_speech_incarnation }
+		}
+	}
+
+	BHU_sey_dopola = {
+		name = BHU_sey_dopola
+		portraits = {
+			army = {
+				small = GFX_portrait_BHU_sey_dopola_army_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BHU_sey_dopola_advisor
+			available = {
+				OR = {
+					has_country_flag = BHU_sey_druk_desi
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+				}
+			}
+			traits = { KR_affable_aristocrat }
 		}
 	}
 
@@ -124,122 +171,35 @@ characters = {
 		advisor = {
 			slot = political_advisor
 			idea_token = BHU_samten_jamtsho_advisor
-			allowed = {
-				has_dlc_lar = yes
-			}
 			available = {
-				has_intelligence_agency = yes
 				OR = {
 					has_idea = BHU_feudal_5
 					has_idea = BHU_feudal_6
 					has_idea = BHU_feudal_7
 				}
 			}
-			traits = { KR_head_of_intelligence }
+			traits = { KR_backroom_backstabber }
 		}
 	}
 
-	BHU_pedma_chandra = {
-		name = BHU_pedma_chandra
+	BHU_tsham_go_seb = {
+		name = BHU_tsham_go_seb
 		portraits = {
 			army = {
-				small = GFX_portrait_BHU_pedma_chandra_army_small
+				small = GFX_portrait_BHU_tsham_go_seb_army_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = BHU_pedma_chandra_advisor
-			desc = BHU_pedma_chandra_army_chief_desc
+			idea_token = BHU_tsham_go_seb_advisor
 			available = {
-				has_completed_focus = bhu_address_military
 				OR = {
 					has_idea = BHU_feudal_5
 					has_idea = BHU_feudal_6
 					has_idea = BHU_feudal_7
 				}
-				not_already_hired_except_as = political_advisor
 			}
-			traits = { KR_reformist_soldier }
-		}
-		advisor = {
-			slot = army_chief
-			idea_token = BHU_pedma_chandra_army_chief
-			available = {
-				has_completed_focus = bhu_address_military
-				OR = {
-					has_idea = BHU_feudal_5
-					has_idea = BHU_feudal_6
-					has_idea = BHU_feudal_7
-				}
-				not_already_hired_except_as = army_chief
-			}
-			traits = { KR_army_chief_drill_2 }
-			cost = 100
-		}
-		advisor = {
-			slot = high_command
-			idea_token = BHU_pedma_chandra_high_command
-			desc = BHU_pedma_chandra_army_chief_desc
-			ledger = army
-			available = {
-				has_completed_focus = bhu_address_military
-				OR = {
-					has_idea = BHU_feudal_5
-					has_idea = BHU_feudal_6
-					has_idea = BHU_feudal_7
-				}
-				not_already_hired_except_as = high_command
-			}
-			traits = { KR_MHC_commando_2 }
-			cost = 100
-		}
-	}
-
-	BHU_zamadar_chencho = {
-		name = BHU_zamadar_chencho
-		portraits = {
-			army = {
-				small = GFX_portrait_BHU_zamadar_chencho_army_small
-				large = GFX_portrait_BHU_zamadar_chencho_army_large
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = BHU_zamadar_chencho_advisor
-			desc = BHU_zamadar_chencho_high_command_desc
-			available = {
-				has_completed_focus = bhu_address_military
-				OR = {
-					has_idea = BHU_feudal_5
-					has_idea = BHU_feudal_6
-					has_idea = BHU_feudal_7
-				}
-				not_already_hired_except_as = political_advisor
-			}
-			traits = { KR_master_quartermaster }
-		}
-		advisor = {
-			slot = high_command
-			idea_token = BHU_zamadar_chencho_high_command
-			ledger = army
-			available = {
-				OR = {
-					has_completed_focus = bhu_noble_officers
-					has_completed_focus = bhu_finish_mil_reform
-				}
-				not_already_hired_except_as = high_command
-			}
-			traits = { KR_MHC_army_logistics_1 }
-			cost = 50
-		}
-		corps_commander = {
-			desc = BHU_zamadar_chencho_high_command_desc
-			traits = { trait_cautious trait_mountaineer }
-			skill = 1
-			attack_skill = 1
-			defense_skill = 1
-			planning_skill = 1
-			logistics_skill = 1
+			traits = { KR_shrine_builder }
 		}
 	}
 
@@ -293,10 +253,7 @@ characters = {
 			idea_token = BHU_sonam_topgye_dorji_advisor
 			desc = BHU_sonam_topgye_dorji_leader_desc
 			available = {
-				OR = {
-					has_country_flag = BHU_jw_win
-					has_country_flag = BHU_ref_favored
-				}
+				has_country_flag = BHU_jw_win
 				OR = {
 					has_idea = BHU_feudal_5
 					has_idea = BHU_feudal_6
@@ -306,22 +263,9 @@ characters = {
 			}
 			traits = { KR_administrative_genius }
 		}
-		advisor = {
-			slot = army_chief
-			idea_token = BHU_sonam_topgye_dorji_army_chief
+		corps_commander = {
 			desc = BHU_sonam_topgye_dorji_leader_desc
-			available = {
-				OR = {
-					has_country_flag = BHU_jw_win
-					has_country_flag = BHU_st_win
-				}
-			}
-			traits = { KR_army_chief_planning_1 }
-			cost = 50
-		}
-		field_marshal = {
-			desc = BHU_sonam_topgye_dorji_leader_desc
-			traits = { politically_connected trait_cautious }
+			traits = { politically_connected organizer }
 			skill = 1
 			attack_skill = 1
 			defense_skill = 1
@@ -344,10 +288,7 @@ characters = {
 			slot = political_advisor
 			idea_token = BHU_jhulendra_bahadur_pradhan_advisor
 			available = {
-				OR = {
-					has_country_flag = BHU_st_win
-					has_country_flag = BHU_ref_favored
-				}
+				has_country_flag = BHU_compact_with_lhotshampa
 				OR = {
 					has_idea = BHU_feudal_5
 					has_idea = BHU_feudal_6
@@ -355,6 +296,127 @@ characters = {
 				}
 			}
 			traits = { KR_nepalese_collaborator }
+		}
+	}
+
+	BHU_ugyen_dorji_tangbi = {
+		name = BHU_ugyen_dorji_tangbi
+		portraits = {
+			army = {
+				small = GFX_portrait_BHU_ugyen_dorji_tangbi_army_small
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = BHU_ugyen_dorji_tangbi_army_chief
+			available = {
+				has_country_flag = BHU_stabilized
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+				}
+				not_already_hired_except_as = army_chief
+			}
+			traits = { KR_army_chief_organisational_1 }
+			cost = 50
+		}
+		advisor = {
+			slot = high_command
+			idea_token = BHU_ugyen_dorji_tangbi_high_command
+			desc = BHU_ugyen_dorji_tangbi_army_chief_desc
+			ledger = army
+			available = {
+				has_country_flag = BHU_stabilized
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+				}
+				not_already_hired_except_as = high_command
+			}
+			traits = { KR_MHC_army_surveyor_1 }
+			cost = 50
+		}
+	}
+
+	BHU_pedma_chandra = {
+		name = BHU_pedma_chandra
+		portraits = {
+			army = {
+				small = GFX_portrait_BHU_pedma_chandra_army_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BHU_pedma_chandra_advisor
+			desc = BHU_pedma_chandra_army_chief_desc
+			available = {
+				has_completed_focus = bhu_next_generation_leaders
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+				}
+				not_already_hired_except_as = political_advisor
+			}
+			traits = { KR_reformist_soldier }
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = BHU_pedma_chandra_army_chief
+			available = {
+				has_completed_focus = bhu_next_generation_leaders
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+				}
+				not_already_hired_except_as = army_chief
+			}
+			traits = { KR_army_chief_drill_2 }
+			cost = 100
+		}
+		advisor = {
+			slot = high_command
+			idea_token = BHU_pedma_chandra_high_command
+			desc = BHU_pedma_chandra_army_chief_desc
+			ledger = army
+			available = {
+				has_completed_focus = bhu_next_generation_leaders
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+				}
+				not_already_hired_except_as = high_command
+			}
+			traits = { KR_MHC_commando_2 }
+			cost = 100
+		}
+	}
+
+	BHU_thinley_namgyel = {
+		name = BHU_thinley_namgyel
+		portraits = {
+			army = {
+				small = GFX_portrait_BHU_thinley_namgyel_army_small
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = BHU_thinley_namgyel_high_command
+			ledger = army
+			available = {
+				has_completed_focus = bhu_next_generation_leaders
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+				}
+			}
+			traits = { KR_MHC_entrenchment_1 }
+			cost = 50
 		}
 	}
 
@@ -378,10 +440,7 @@ characters = {
 			idea_token = BHU_namgyal_bahadur_advisor
 			desc = BHU_namgyal_bahadur_sic_desc
 			available = {
-				OR = {
-					has_government = paternal_autocrat
-					has_country_flag = BHU_con_favored
-				}
+				has_completed_focus = bhu_militant_court
 				OR = {
 					has_idea = BHU_feudal_5
 					has_idea = BHU_feudal_6
@@ -399,16 +458,67 @@ characters = {
 			available = {
 				OR = {
 					has_completed_focus = bhu_noble_officers
-					has_completed_focus = bhu_finish_mil_reform
+					has_completed_focus = bhu_a_force_apart
 				}
 				not_already_hired_except_as = high_command
 			}
-			traits = { KR_MHC_entrenchment_1 }
+			traits = { KR_MHC_irregular_1 }
 			cost = 50
 		}
 		corps_commander = {
 			desc = BHU_namgyal_bahadur_sic_desc
 			traits = { politically_connected trickster trait_mountaineer }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+
+	BHU_zamadar_chencho = {
+		name = BHU_zamadar_chencho
+		portraits = {
+			army = {
+				small = GFX_portrait_BHU_zamadar_chencho_army_small
+				large = GFX_portrait_BHU_zamadar_chencho_army_large
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BHU_zamadar_chencho_advisor
+			desc = BHU_zamadar_chencho_high_command_desc
+			available = {
+				OR = {
+					has_completed_focus = bhu_militant_court
+					has_country_flag = BHU_reform_aligned_zamadar_chencho
+				}
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+				}
+				not_already_hired_except_as = political_advisor
+			}
+			traits = { KR_master_quartermaster }
+		}
+		advisor = {
+			slot = high_command
+			idea_token = BHU_zamadar_chencho_high_command
+			ledger = army
+			available = {
+				OR = {
+					has_completed_focus = bhu_noble_officers
+					has_completed_focus = bhu_a_force_apart
+				}
+				not_already_hired_except_as = high_command
+			}
+			traits = { KR_MHC_army_logistics_1 }
+			cost = 50
+		}
+		corps_commander = {
+			desc = BHU_zamadar_chencho_high_command_desc
+			traits = { trait_cautious trait_mountaineer }
 			skill = 1
 			attack_skill = 1
 			defense_skill = 1
@@ -428,31 +538,57 @@ characters = {
 			slot = political_advisor
 			idea_token = BHU_chimi_dorji_rabden_advisor
 			available = {
-				OR = {
-					has_government = paternal_autocrat
-					has_country_flag = BHU_con_favored
-				}
+				has_completed_focus = bhu_militant_court
 				OR = {
 					has_idea = BHU_feudal_5
 					has_idea = BHU_feudal_6
 					has_idea = BHU_feudal_7
 				}
+				not_already_hired_except_as = political_advisor
 			}
 			traits = { KR_venerable_diplomat }
+		}
+		advisor = {
+			slot = high_command
+			idea_token = BHU_chimi_dorji_rabden_high_command
+			desc = BHU_chimi_dorji_rabden_advisor_desc
+			ledger = army
+			available = {
+				OR = {
+					has_completed_focus = bhu_noble_officers
+					has_completed_focus = bhu_a_force_apart
+				}
+				not_already_hired_except_as = high_command
+			}
+			traits = { KR_MHC_infantry_1 }
+			cost = 50
 		}
 	}
 
 	BHU_jigme_wangchuck = {
 		name = BHU_jigme_wangchuck
 		portraits = {
-			civilian = {
+			army = {
 				large = GFX_portrait_BHU_jigme_wangchuck_civilian_large
+				small = GFX_portrait_BHU_jigme_wangchuck_civilian_small
 			}
 		}
 		country_leader = {
 			desc = BHU_jigme_wangchuck_leader_desc
 			ideology = paternal_autocrat_subtype
 			traits = { BHU_steady_handed }
+		}
+		field_marshal = {
+			desc = BHU_jigme_wangchuck_leader_desc
+			traits = { politically_connected trait_cautious rising_star }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = { #TODO: revert when bug with country_leader variable is fixed
+				has_character_flag = show_unit_leader_role
+			}
 		}
 	}
 
@@ -470,19 +606,23 @@ characters = {
 			traits = { BHU_king_of_feasts }
 		}
 		advisor = {
-			slot = army_chief
-			idea_token = BHU_tshering_penjor_army_chief
+			slot = political_advisor
+			idea_token = BHU_tshering_penjor_advisor
 			available = {
 				OR = {
 					has_country_flag = BHU_jw_win
-					has_country_flag = BHU_tp_win
+					has_country_flag = BHU_reform_aligned_tshering_penjor
+				}
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
 				}
 			}
-			traits = { KR_army_chief_offensive_1 }
-			cost = 50
+			traits = { KR_flamboyant_brute }
 		}
 		field_marshal = {
-			desc = BHU_tshering_penjor_army_chief_desc
+			desc = BHU_tshering_penjor_advisor_desc
 			traits = { old_guard harsh_leader cavalry_officer }
 			skill = 2
 			attack_skill = 2
@@ -505,6 +645,11 @@ characters = {
 		country_leader = {
 			desc = BHU_jigme_dorji_wangchuck_leader_desc
 			ideology = authoritarian_democrat_subtype
+			traits = { BHU_young_dragon_1 }
+		}
+		country_leader = {
+			desc = BHU_jigme_dorji_wangchuck_leader_desc
+			ideology = paternal_autocrat_subtype
 			traits = { BHU_young_dragon_1 }
 		}
 	}
@@ -536,15 +681,6 @@ characters = {
 				small = GFX_portrait_BHU_zhabdrung_rinpoche_army_small
 			}
 		}
-		advisor = {
-			slot = army_chief
-			idea_token = BHU_zhabdrung_rinpoche_army_chief
-			available = {
-				has_country_flag = BHU_z_win
-			}
-			traits = { KR_army_chief_organisational_1 }
-			cost = 50
-		}
 		field_marshal = {
 			desc = BHU_zhabdrung_rinpoche_army_chief_desc
 			traits = { politically_connected trickster inspirational_leader }
@@ -575,28 +711,6 @@ characters = {
 		}
 	}
 
-	BHU_thinley_namgyel = {
-		name = BHU_thinley_namgyel
-		portraits = {
-			army = {
-				small = GFX_portrait_BHU_thinley_namgyel_army_small
-			}
-		}
-		advisor = {
-			slot = high_command
-			idea_token = BHU_thinley_namgyel_high_command
-			ledger = army
-			available = {
-				OR = {
-					has_completed_focus = bhu_noble_officers
-					has_completed_focus = bhu_finish_mil_reform
-				}
-			}
-			traits = { KR_MHC_infantry_1 }
-			cost = 50
-		}
-	}
-
 	BHU_royal_army_council = {
 		name = BHU_royal_army_council
 		portraits = {
@@ -609,10 +723,30 @@ characters = {
 			idea_token = BHU_royal_army_council_theorist
 			ledger = army
 			available = {
-				has_completed_focus = bhu_address_military
+				has_completed_focus = bhu_study_distant_doctrines
 			}
 			traits = { KR_army_reform_council }
 			cost = 100
+		}
+	}
+
+	BHU_nob_gyaltsen = {
+		name = BHU_nob_gyaltsen
+		portraits = {
+			army = {
+				small = GFX_portrait_BHU_nob_gyaltsen_army_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BHU_nob_gyaltsen_advisor
+			allowed = {
+				has_dlc_lar = yes
+			}
+			available = {
+				has_intelligence_agency = yes
+			}
+			traits = { KR_head_of_intelligence }
 		}
 	}
 }

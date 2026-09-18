@@ -1036,10 +1036,7 @@ country_event = { ####Ismet Pasha and Kemal's will#####
 
 		hidden_effect = {
 			mark_focus_tree_layout_dirty = yes
-			set_variable = {
-				var = Kemal_will
-				value = 0
-			}
+			set_variable = { Kemal_will = 0 }
 			country_event = { id = turkey_events.104 days = 70 }
 		}
 	}
@@ -1653,6 +1650,12 @@ country_event = { #The new turkish state protection
 	option = {
 		log = "[GetLogInfo]: event turkey_events.31 option turkey_events.31.a"
 		name = turkey_events.31.a
+		trigger = {
+			OR = {
+				is_subject = no
+				NOT = { has_government = totalist }
+			}
+		}
 		ai_chance = {
 			base = 50
 			modifier = {
@@ -1668,11 +1671,23 @@ country_event = { #The new turkish state protection
 	option = {
 		log = "[GetLogInfo]: event turkey_events.31 option turkey_events.31.b"
 		name = turkey_events.31.b
+		trigger = {
+			OR = {
+				is_subject = no
+				has_government = totalist
+			}
+		}
 		ai_chance = {
 			base = 50
 			modifier = {
 				factor = 0
 				has_game_rule = { rule = TUR_path option = TUR_PATH_NATPOP }
+			}
+			modifier = {
+				factor = 0
+				is_in_faction = yes
+				faction_leader = { has_socialist_government = no }
+				NOT = { has_game_rule = { rule = TUR_path option = TUR_PATH_TOTALIST } }
 			}
 		}
 		add_popularity = {
@@ -1689,6 +1704,10 @@ country_event = { #The new turkish state protection
 		}
 		set_temp_variable = { coalition_partner_var = token:national_populist }
 		add_to_coalition = yes
+		if = {
+			limit = { is_subject = no }
+			activate_targeted_decision = { target = INT decision = TUR_join_internationale }
+		}
 	}
 }
 country_event = { #Militarists takes power
@@ -3324,10 +3343,8 @@ country_event = { #Kurdish Acts of Resistance
 
 	trigger = {
 		has_active_mission = TUR_growing_kurdish_unrest
-		AND = {
-			check_variable = { TUR_kurdish_unrest_value > 19 }
-			check_variable = { TUR_kurdish_unrest_value < 41 }
-		}
+		check_variable = { TUR_kurdish_unrest_value > 19 }
+		check_variable = { TUR_kurdish_unrest_value < 41 }
 		any_controlled_state = { has_dynamic_modifier = { modifier = TUR_kurdish_unrest_modifier } }
 	}
 
@@ -3391,10 +3408,8 @@ country_event = { #Raid on Halilçavuş
 	trigger = {
 		354 = { is_owned_and_controlled_by = ROOT }
 		has_active_mission = TUR_growing_kurdish_unrest
-		AND = {
-			check_variable = { TUR_kurdish_unrest_value > 40 }
-			check_variable = { TUR_kurdish_unrest_value < 61 }
-		}
+		check_variable = { TUR_kurdish_unrest_value > 40 }
+		check_variable = { TUR_kurdish_unrest_value < 61 }
 		any_controlled_state = { has_dynamic_modifier = { modifier = TUR_kurdish_unrest_modifier } }
 	}
 
@@ -3420,10 +3435,8 @@ country_event = { #Ottoman Gendarmerie Officer Shot
 
 	trigger = {
 		has_active_mission = TUR_growing_kurdish_unrest
-		AND = {
-			check_variable = { TUR_kurdish_unrest_value > 60 }
-			check_variable = { TUR_kurdish_unrest_value < 91 }
-		}
+		check_variable = { TUR_kurdish_unrest_value > 60 }
+		check_variable = { TUR_kurdish_unrest_value < 91 }
 		any_controlled_state = { has_dynamic_modifier = { modifier = TUR_kurdish_unrest_modifier } }
 	}
 

@@ -14,11 +14,69 @@ ideas = {
 				army_org_factor = -0.5
 				army_defence_factor = -0.5
 				army_attack_factor = -0.5
-				production_speed_buildings_factor = -0.4
-				production_factory_max_efficiency_factor = -0.4
-				production_factory_efficiency_gain_factor = -0.4
+				production_speed_buildings_factor = -0.5
+				production_factory_max_efficiency_factor = -0.5
+				production_factory_efficiency_gain_factor = -0.5
 				industrial_capacity_factory = -0.9
-				research_speed_factor = -0.4
+				research_speed_factor = -0.5
+				economy_cost_factor = 1
+				trade_laws_cost_factor = 1
+			}
+		}
+
+		BHU_hermit_kingdom_reformed = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_hermit_kingdom_reformed" }
+			picture = BHU_mountain_nation
+			name = BHU_hermit_kingdom_reformed
+			allowed = { always = no }
+			modifier = {
+				conscription_factor = -0.5
+				army_org_factor = -0.5
+				army_defence_factor = -0.5
+				army_attack_factor = -0.5
+				production_speed_buildings_factor = -0.5
+				production_factory_max_efficiency_factor = -0.4
+				production_factory_efficiency_gain_factor = -0.35
+				production_lack_of_resource_penalty_factor = -0.15
+				industrial_capacity_factory = -0.8
+				research_speed_factor = -0.35
+				political_power_gain = 0.1
+				stability_factor = 0.1
+			}
+		}
+
+		BHU_hermit_kingdom_fully_reformed = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_hermit_kingdom_fully_reformed" }
+			picture = BHU_mountain_nation
+			name = BHU_hermit_kingdom_reformed
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.15
+				production_lack_of_resource_penalty_factor = -0.15
+				industrial_capacity_factory = -0.3
+				research_speed_factor = -0.3
+				political_power_gain = -1
+				stability_factor = 0.1
+			}
+		}
+
+		BHU_hermit_kingdom_self_sufficiency_tooltip = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_hermit_kingdom_self_sufficiency_tooltip" }
+			picture = BHU_mountain_nation
+			name = BHU_hermit_kingdom
+			allowed = { always = no }
+			modifier = {
+				conscription_factor = -0.5
+				army_org_factor = -0.5
+				army_defence_factor = -0.5
+				army_attack_factor = -0.5
+				production_speed_buildings_factor = -0.5
+				production_factory_max_efficiency_factor = -0.4
+				production_factory_efficiency_gain_factor = -0.35
+				production_lack_of_resource_penalty_factor = -0.15
+				industrial_capacity_factory = -0.9
+				research_speed_factor = -0.5
 				economy_cost_factor = 1
 				trade_laws_cost_factor = 1
 			}
@@ -29,11 +87,460 @@ ideas = {
 			picture = generic_phoenix
 			allowed = { always = no }
 			modifier = {
-				political_power_factor = 0.15
+				army_org_regain = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jw = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jw" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_st = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_st" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				production_factory_start_efficiency_factor = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_tp = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_tp" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				army_attack_against_major_factor = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_z = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_z" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				surrender_limit = 0.1
+			}
+		}
+
+		BHU_outward_court = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_outward_court" }
+			picture = CAN_exile_government
+			allowed = { always = no }
+			modifier = {
+				industrial_capacity_factory = 0.1
+				trade_opinion_factor = 0.5
+			}
+		}
+
+		BHU_aristocratic_court = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_aristocratic_court" }
+			picture = CAN_exile_government
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				grant_medal_cost_factor = -0.50
+			}
+		}
+
+		BHU_monastic_court = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_monastic_court" }
+			picture = CAN_exile_government
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.001
+				resistance_growth_on_our_occupied_states = 0.1
+			}
+		}
+
+		BHU_balanced_court = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_balanced_court" }
+			picture = CAN_exile_government
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				compliance_gain = 0.01
+			}
+		}
+
+		BHU_expand_to_the_territories = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_expand_to_the_territories" }
+			picture = AFG_adopt_nufus
+			allowed = { always = no }
+			modifier = {
+				conscription = 0.01
+				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_focus_on_our_core_cadres = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_focus_on_our_core_cadres" }
+			picture = chi_army_corruption3
+			allowed = { always = no }
+			modifier = {
 				army_defence_factor = 0.05
 				army_attack_factor = 0.05
-				research_speed_factor = 0.05
+				special_forces_out_of_supply_factor = -0.1
+			}
+		}
+
+		BHU_keep_an_eye_to_the_future = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_keep_an_eye_to_the_future" }
+			picture = RUS_planning_school
+			allowed = { always = no }
+			modifier = {
+				research_speed_factor = 0.1
+				land_doctrine_cost_factor = -0.1
+				army_artillery_attack_factor = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jwoe = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jwoe" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_jw_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+				industrial_capacity_factory = 0.1
+				trade_opinion_factor = 0.5
+				conscription = 0.01
 				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jwof = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jwof" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_jw_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+				industrial_capacity_factory = 0.1
+				trade_opinion_factor = 0.5
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+				special_forces_out_of_supply_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jwok = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jwok" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_jw_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+				industrial_capacity_factory = 0.1
+				trade_opinion_factor = 0.5
+				research_speed_factor = 0.1
+				land_doctrine_cost_factor = -0.1
+				army_artillery_attack_factor = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jwae = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jwae" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_jw_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+				stability_factor = 0.1
+				grant_medal_cost_factor = -0.50
+				conscription = 0.01
+				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jwaf = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jwaf" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_jw_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+				stability_factor = 0.1
+				grant_medal_cost_factor = -0.50
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+				special_forces_out_of_supply_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jwak = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jwak" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_jw_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+				stability_factor = 0.1
+				grant_medal_cost_factor = -0.50
+				research_speed_factor = 0.1
+				land_doctrine_cost_factor = -0.1
+				army_artillery_attack_factor = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jwbe = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jwbe" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_jw_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+				political_power_factor = 0.1
+				compliance_gain = 0.01
+				conscription = 0.01
+				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jwbf = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jwbf" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_jw_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+				political_power_factor = 0.1
+				compliance_gain = 0.01
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+				special_forces_out_of_supply_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_jwbk = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_jwbk" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_jw_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				party_popularity_stability_factor = 0.1
+				political_power_factor = 0.1
+				compliance_gain = 0.01
+				research_speed_factor = 0.1
+				land_doctrine_cost_factor = -0.1
+				army_artillery_attack_factor = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_stoe = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_stoe" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_st_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				production_factory_start_efficiency_factor = 0.1
+				industrial_capacity_factory = 0.1
+				trade_opinion_factor = 0.5
+				conscription = 0.01
+				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_stok = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_stok" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_st_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				production_factory_start_efficiency_factor = 0.1
+				industrial_capacity_factory = 0.1
+				trade_opinion_factor = 0.5
+				research_speed_factor = 0.1
+				land_doctrine_cost_factor = -0.1
+				army_artillery_attack_factor = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_stbe = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_stbe" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_st_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				production_factory_start_efficiency_factor = 0.1
+				political_power_factor = 0.1
+				compliance_gain = 0.01
+				conscription = 0.01
+				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_stbk = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_stbk" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_st_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				production_factory_start_efficiency_factor = 0.1
+				political_power_factor = 0.1
+				compliance_gain = 0.01
+				research_speed_factor = 0.1
+				land_doctrine_cost_factor = -0.1
+				army_artillery_attack_factor = 0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_tpae = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_tpae" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_tp_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				army_attack_against_major_factor = 0.1
+				stability_factor = 0.1
+				grant_medal_cost_factor = -0.50
+				conscription = 0.01
+				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_tpaf = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_tpaf" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_tp_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				army_attack_against_major_factor = 0.1
+				stability_factor = 0.1
+				grant_medal_cost_factor = -0.50
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+				special_forces_out_of_supply_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_tpoe = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_tpoe" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_tp_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				army_attack_against_major_factor = 0.1
+				industrial_capacity_factory = 0.1
+				trade_opinion_factor = 0.5
+				conscription = 0.01
+				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_tpof = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_tpof" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_tp_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				army_attack_against_major_factor = 0.1
+				industrial_capacity_factory = 0.1
+				trade_opinion_factor = 0.5
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+				special_forces_out_of_supply_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_zme = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_zme" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_z_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				surrender_limit = 0.1
+				stability_weekly = 0.001
+				resistance_growth_on_our_occupied_states = 0.1
+				conscription = 0.01
+				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_zmf = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_zmf" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_z_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				surrender_limit = 0.1
+				stability_weekly = 0.001
+				resistance_growth_on_our_occupied_states = 0.1
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+				special_forces_out_of_supply_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_zbe = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_zbe" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_z_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				surrender_limit = 0.1
+				political_power_factor = 0.1
+				compliance_gain = 0.01
+				conscription = 0.01
+				non_core_manpower = 0.02
+				required_garrison_factor = -0.1
+			}
+		}
+
+		BHU_drukpa_renaissance_zbf = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_drukpa_renaissance_zbf" }
+			picture = generic_phoenix
+			name = BHU_drukpa_renaissance_z_finisher
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = 0.1
+				surrender_limit = 0.1
+				political_power_factor = 0.1
+				compliance_gain = 0.01
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+				special_forces_out_of_supply_factor = -0.1
 			}
 		}
 
@@ -42,19 +549,459 @@ ideas = {
 			picture = generic_destruction
 			allowed = { always = no }
 			modifier = {
-				stability_weekly = -0.001
-				compliance_gain = -0.01
+				stability_weekly = -0.003
+				compliance_gain = -0.03
 				conscription_factor = -0.25
 				resistance_activity = 0.15
 			}
 		}
+
+		BHU_integrating_foreign_armies = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_integrating_foreign_armies" }
+			picture = generic_shackles
+			allowed = { always = no }
+			modifier = {
+				compliance_gain = -0.01
+				coordination_bonus = -0.1
+				army_morale_factor = -0.1
+			}
+		}
+
+		BHU_xenophobic_fervor = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_xenophobic_fervor" }
+			picture = LBA_Senussi_Order
+			allowed = { always = no }
+			modifier = {
+				justify_war_goal_time = -0.5
+				army_attack_against_major_factor = 0.1
+				army_breakthrough_against_major_factor = 0.1
+			}
+		}
+
+		BHU_new_faces_new_ideas = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_new_faces_new_ideas" }
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				research_speed_factor = 0.1
+				economy_cost_factor = -0.5
+				trade_laws_cost_factor = -0.5
+				political_advisor_cost_factor = -0.5
+			}
+		}
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # Opening / Shared Ideas  # # # # # # # # # # # # # # # # # # # # # # #
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+		BHU_sikkim_protests_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_sikkim_protests_1" }
+			picture = generic_destruction
+			name = BHU_sikkim_protests
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.02
+				war_support_factor = -0.02
+				planning_speed = -0.02
+				army_speed_factor = -0.02
+			}
+		}
+
+		BHU_sikkim_protests_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_sikkim_protests_2" }
+			picture = generic_destruction
+			name = BHU_sikkim_protests
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.05
+				war_support_factor = -0.05
+				planning_speed = -0.05
+				army_speed_factor = -0.05
+			}
+		}
+
+		BHU_sikkim_protests_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_sikkim_protests_3" }
+			picture = generic_destruction
+			name = BHU_sikkim_protests
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.1
+				planning_speed = -0.1
+				army_speed_factor = -0.1
+			}
+		}
+
+		BHU_bloodied_by_bhutan = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_bloodied_by_bhutan" }
+			picture = generic_desertion
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = -0.15
+			}
+		}
+
+		BHU_sikkim_revolt_unity_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_sikkim_revolt_unity_1" }
+			picture = LBA_Senussi_Order
+			name = BHU_spirit_of_the_lotus_throne
+			allowed = { always = no }
+			modifier = {
+				army_speed_factor = 0.05
+				max_dig_in = 5
+				dig_in_speed_factor = 0.05
+			}
+			targeted_modifier = {
+				tag = NEP
+				defense_bonus_against = 0.05
+			}
+		}
+
+		BHU_sikkim_revolt_unity_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_sikkim_revolt_unity_2" }
+			picture = LBA_Senussi_Order
+			name = BHU_spirit_of_the_lotus_throne
+			allowed = { always = no }
+			modifier = {
+				army_speed_factor = 0.05
+				max_dig_in = 5
+				dig_in_speed_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = NEP
+				defense_bonus_against = 0.1
+			}
+		}
+
+		BHU_sikkim_revolt_unity_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_sikkim_revolt_unity_3" }
+			picture = LBA_Senussi_Order
+			name = BHU_spirit_of_the_lotus_throne
+			allowed = { always = no }
+			modifier = {
+				army_speed_factor = 0.05
+				max_dig_in = 5
+				dig_in_speed_factor = 0.15
+			}
+			targeted_modifier = {
+				tag = NEP
+				defense_bonus_against = 0.15
+			}
+		}
+
+		BHU_sikkim_revolt_unity_4 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_sikkim_revolt_unity_4" }
+			picture = LBA_Senussi_Order
+			name = BHU_spirit_of_the_lotus_throne
+			allowed = { always = no }
+			modifier = {
+				army_speed_factor = 0.05
+				max_dig_in = 5
+				dig_in_speed_factor = 0.2
+			}
+			targeted_modifier = {
+				tag = NEP
+				defense_bonus_against = 0.2
+			}
+		}
+
+		BHU_sikkim_revolt_unity_5 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_sikkim_revolt_unity_5" }
+			picture = LBA_Senussi_Order
+			name = BHU_spirit_of_the_lotus_throne
+			allowed = { always = no }
+			modifier = {
+				army_speed_factor = 0.05
+				max_dig_in = 5
+				dig_in_speed_factor = 0.25
+			}
+			targeted_modifier = {
+				tag = NEP
+				defense_bonus_against = 0.25
+			}
+		}
+
+		BHU_peace_in_our_time = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_peace_in_our_time" }
+			picture = generic_desertion
+			allowed = { always = no }
+			modifier = {
+				conscription_factor = -0.2
+				army_org_regain = -0.05
+				planning_speed = -0.1
+				experience_gain_army = -0.05
+				political_power_factor = 0.05
+			}
+		}
+
+		BHU_monastic_control = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_monastic_control" }
+			picture = SIA_buddhisttraditions_idea
+			allowed = { always = no }
+			modifier = {
+				research_speed_factor = 0.1
+				political_power_gain = -0.15
+				conscription = 0.04
+			}
+		}
+
+		BHU_monastic_whispers = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_monastic_whispers" }
+			picture = prc_low_popular_support2
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.05
+			}
+		}
+
+		BHU_split_zhungdratshang = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_split_zhungdratshang" }
+			picture = prc_low_popular_support3
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.05
+				political_power_gain = -0.25
+			}
+		}
+
+		BHU_Yung_Monk_Revolt = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_Yung_Monk_Revolt" }
+			picture = chi_war_of_resistance
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = -0.001
+				national_populist_drift = 0.01
+				stability_factor = -0.1
+				political_power_gain = -0.3
+			}
+		}
+
+		BHU_Zhabdrung_Revolt = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_Zhabdrung_Revolt" }
+			picture = chi_war_of_resistance3
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = -0.003
+				national_populist_drift = 0.03
+				stability_factor = -0.15
+				political_power_gain = -0.3
+			}
+		}
+
+		BHU_Zhabdrung_Aftermath = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_Zhabdrung_Aftermath" }
+			picture = chi_war_of_resistance
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = -0.002
+				stability_factor = -0.1
+				political_power_gain = -0.2
+			}
+		}
+
+		BHU_Zhabdrung_Aftermath2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_Zhabdrung_Aftermath2" }
+			picture = chi_war_of_resistance
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = -0.001
+				stability_factor = -0.05
+				political_power_gain = -0.1
+			}
+		}
+
+		BHU_villages_drained = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_villages_drained" }
+			picture = generic_migration
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.05
+			}
+		}
+
+		BHU_repaired_irrigation = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_repaired_irrigation" }
+			allowed = { always = no }
+			picture = DEI_solid_foodsystem
+			modifier = {
+				political_power_gain = 0.05
+				monthly_population = 0.25
+			}
+		}
+
+		BHU_tax_collectors = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_tax_collectors" }
+			picture = LEC_medium_reserves
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = -0.001
+				political_power_gain = 0.25
+			}
+		}
+
+		BHU_eyes_on_the_duars = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_eyes_on_the_duars" }
+			picture = FIN_maan_turva
+			allowed = { always = no }
+			targeted_modifier = {
+				tag = HND
+				defense_bonus_against = 0.1
+			}
+		}
+
+		BHU_forcing_renovations = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_forcing_renovations" }
+			picture = SOV_third_five_year_plan_civilian_ccp_2d_sov_compatibility
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = -0.2
+				production_speed_bunker_factor = 0.5
+				industrial_factory_donations = 1
+			}
+		}
+
+		BHU_neighbours_reassured = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_neighbours_reassured" }
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				stability_weekly = 0.003
+			}
+		}
+
+		BHU_regulars_drilled = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_regulars_drilled" }
+			picture = prc_the_long_march
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				experience_gain_army = 0.2
+			}
+		}
+
+		BHU_village_defenders = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_village_defenders" }
+			picture = citizen_militia_1
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				weekly_manpower = 20
+			}
+		}
+
+		BHU_the_raven_crown = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_the_raven_crown" }
+			picture = BHU_raven_crown
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				army_morale_factor = 0.05
+			}
+		}
+
+		BHU_treaty_of_phuentscholing = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_treaty_of_phuentscholing" }
+			picture = generic_constitutional_guarantees
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		BHU_treaty_of_phuentscholing_improved = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_treaty_of_phuentscholing_improved" }
+			picture = generic_constitutional_guarantees
+			name = BHU_treaty_of_phuentscholing
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.15
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		BHU_slackened_indian_trade = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_slackened_indian_trade" }
+			picture = generic_flexible_foreign_policy
+			allowed = { always = no }
+			modifier = {
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		BHU_restored_indian_trade = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_restored_indian_trade" }
+			picture = generic_flexible_foreign_policy
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		BHU_newfound_belligerence_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_newfound_belligerence_1" }
+			name = BHU_newfound_belligerence
+			picture = LBA_Senussi_Order
+			allowed = { always = no }
+			modifier = {
+				enemy_justify_war_goal_time = -0.25
+				justify_war_goal_time = -0.25
+			}
+		}
+
+		BHU_newfound_belligerence_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_newfound_belligerence_2" }
+			name = BHU_newfound_belligerence
+			picture = LBA_Senussi_Order
+			allowed = { always = no }
+			modifier = {
+				enemy_justify_war_goal_time = -0.25
+				justify_war_goal_time = -0.25
+				war_support_factor = 0.025
+				industrial_capacity_factory = 0.025
+			}
+		}
+
+		BHU_newfound_belligerence_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_newfound_belligerence_3" }
+			name = BHU_newfound_belligerence
+			picture = LBA_Senussi_Order
+			allowed = { always = no }
+			modifier = {
+				enemy_justify_war_goal_time = -0.25
+				justify_war_goal_time = -0.25
+				war_support_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		BHU_military_funding_priority = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_funding_priority" }
+			picture = capital_outflow
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = -0.2
+				production_factory_efficiency_gain_factor = -0.2
+				experience_gain_army = 0.05
+			}
+		}
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # Reforming Bhutan Ideas (Feudal Reforms, Economic Reforms, Military Reforms) # # # # # # # # # #
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 		BHU_feudal_1 = {
 			on_add = { log = "[GetLogRoot]: add idea BHU_feudal_1" }
 			picture = LIT_crown_1
 			allowed = { always = no }
 			modifier = {
-				political_power_gain = -1
+				stability_weekly = -0.001
+				political_power_gain = -0.75
 				production_speed_buildings_factor = -0.3
 				research_speed_factor = -0.3
 				army_defence_factor = -0.3
@@ -66,7 +1013,8 @@ ideas = {
 			picture = LIT_crown_2
 			allowed = { always = no }
 			modifier = {
-				political_power_gain = -0.8
+				stability_weekly = -0.001
+				political_power_gain = -0.6
 				production_speed_buildings_factor = -0.2
 				research_speed_factor = -0.2
 				army_defence_factor = -0.2
@@ -78,7 +1026,7 @@ ideas = {
 			picture = LIT_crown_2
 			allowed = { always = no }
 			modifier = {
-				political_power_gain = -0.6
+				political_power_gain = -0.45
 				production_speed_buildings_factor = -0.1
 				research_speed_factor = -0.1
 				army_defence_factor = -0.1
@@ -90,7 +1038,7 @@ ideas = {
 			picture = LIT_crown_3
 			allowed = { always = no }
 			modifier = {
-				political_power_gain = -0.4
+				political_power_gain = -0.3
 				production_speed_buildings_factor = -0.05
 				research_speed_factor = -0.05
 				army_defence_factor = -0.05
@@ -102,7 +1050,7 @@ ideas = {
 			picture = LIT_crown_3
 			allowed = { always = no }
 			modifier = {
-				political_power_gain = -0.2
+				political_power_gain = -0.15
 			}
 		}
 
@@ -122,6 +1070,7 @@ ideas = {
 			picture = LIT_crown_4
 			allowed = { always = no }
 			modifier = {
+				stability_weekly = 0.001
 				political_power_gain = 0.1
 				production_speed_buildings_factor = 0.1
 				research_speed_factor = 0.1
@@ -129,51 +1078,8 @@ ideas = {
 			}
 		}
 
-		BHU_defence_effort1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_defence_effort1" }
-			picture = CAN_darkest_hour
-			allowed = { always = no }
-			modifier = {
-				industry_air_damage_factor = -0.05
-				army_core_defence_factor = 0.05
-			}
-		}
-
-		BHU_defence_effort2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_defence_effort2" }
-			name = BHU_defence_effort1
-			picture = CAN_darkest_hour
-			allowed = { always = no }
-			modifier = {
-				industry_air_damage_factor = -0.15
-				army_core_defence_factor = 0.15
-			}
-		}
-
-		BHU_defence_effort3 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_defence_effort3" }
-			name = BHU_defence_effort1
-			picture = CAN_darkest_hour
-			allowed = { always = no }
-			modifier = {
-				industry_air_damage_factor = -0.2
-				army_core_defence_factor = 0.15
-			}
-		}
-
-		BHU_defence_effort4 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_defence_effort4" }
-			name = BHU_defence_effort1
-			picture = CAN_darkest_hour
-			allowed = { always = no }
-			modifier = {
-				industry_air_damage_factor = -0.2
-				army_core_defence_factor = 0.2
-			}
-		}
-
-		BHU_military_6 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_military_6" }
+		BHU_military_minus_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_minus_2" }
 			picture = SIA_military_expenditure_cut
 			allowed = { always = no }
 			modifier = {
@@ -185,8 +1091,8 @@ ideas = {
 			}
 		}
 
-		BHU_military_5 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_military_5" }
+		BHU_military_minus_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_minus_1" }
 			picture = SIA_military_expenditure_cut
 			allowed = { always = no }
 			modifier = {
@@ -198,62 +1104,92 @@ ideas = {
 			}
 		}
 
-		BHU_military_4 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_military_4" }
+		BHU_military_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_1" }
 			picture = HOL_defense_spending_spree
+			name = BHU_military_meagre
 			allowed = { always = no }
 			modifier = {
 				conscription_factor = 0.1
 				army_org_factor = 0.1
 				army_defence_factor = 0.1
 				army_attack_factor = 0.1
-				political_power_gain = -0.25
-			}
-		}
-
-		BHU_military_3 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_military_3" }
-			picture = HOL_defense_spending_spree
-			allowed = { always = no }
-			modifier = {
-				conscription_factor = 0.2
-				army_org_factor = 0.2
-				army_defence_factor = 0.2
-				army_attack_factor = 0.2
-				political_power_gain = -0.5
+				political_power_gain = -0.15
 			}
 		}
 
 		BHU_military_2 = {
 			on_add = { log = "[GetLogRoot]: add idea BHU_military_2" }
 			picture = HOL_defense_spending_spree
+			name = BHU_military_moderate
 			allowed = { always = no }
 			modifier = {
-				experience_gain_army = 0.05
+				conscription_factor = 0.2
+				army_org_factor = 0.2
+				army_defence_factor = 0.2
+				army_attack_factor = 0.2
+				political_power_gain = -0.3
+			}
+		}
+
+		BHU_military_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_3" }
+			picture = HOL_defense_spending_spree
+			name = BHU_military_moderate
+			allowed = { always = no }
+			modifier = {
 				conscription_factor = 0.3
 				army_org_factor = 0.3
 				army_defence_factor = 0.3
 				army_attack_factor = 0.3
-				political_power_gain = -0.75
+				political_power_gain = -0.45
 			}
 		}
 
-		BHU_military_1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_military_1" }
+		BHU_military_4 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_4" }
 			picture = HOL_defense_spending_spree
+			name = BHU_military_adequate
 			allowed = { always = no }
 			modifier = {
-				experience_gain_army = 0.1
 				conscription_factor = 0.4
 				army_org_factor = 0.4
 				army_defence_factor = 0.4
 				army_attack_factor = 0.4
-				political_power_gain = -1
+				political_power_gain = -0.6
 			}
 		}
 
-		BHU_economy_6 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_economy_6" }
+		BHU_military_5 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_5" }
+			picture = HOL_defense_spending_spree
+			name = BHU_military_extensive
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army = 0.1
+				conscription_factor = 0.5
+				army_org_factor = 0.5
+				army_defence_factor = 0.5
+				army_attack_factor = 0.5
+				political_power_gain = -0.75
+			}
+		}
+
+		BHU_economy_minus_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_economy_minus_2" }
+			picture = KTG_Industrial_Crisis_Factories
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = -0.2
+				industrial_capacity_factory = -0.2
+				production_factory_max_efficiency_factor = -0.2
+				production_factory_efficiency_gain_factor = -0.2
+				political_power_gain = 0.3
+			}
+		}
+
+		BHU_economy_minus_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_economy_minus_1" }
 			picture = KTG_Industrial_Crisis_Factories
 			allowed = { always = no }
 			modifier = {
@@ -261,550 +1197,1315 @@ ideas = {
 				industrial_capacity_factory = -0.1
 				production_factory_max_efficiency_factor = -0.1
 				production_factory_efficiency_gain_factor = -0.1
-				political_power_gain = 0.3
-			}
-		}
-
-		BHU_economy_5 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_economy_5" }
-			picture = KTG_Industrial_Crisis_Factories
-			allowed = { always = no }
-			modifier = {
-				production_speed_buildings_factor = -0.05
-				industrial_capacity_factory = -0.05
-				production_factory_max_efficiency_factor = -0.05
-				production_factory_efficiency_gain_factor = -0.05
 				political_power_gain = 0.15
-			}
-		}
-
-		BHU_economy_4 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_economy_4" }
-			picture = HOL_welfare_state
-			allowed = { always = no }
-			modifier = {
-				production_speed_buildings_factor = 0.15
-				industrial_capacity_factory = 0.15
-				production_factory_max_efficiency_factor = 0.1
-				production_factory_efficiency_gain_factor = 0.15
-				political_power_gain = -0.25
-			}
-		}
-
-		BHU_economy_3 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_economy_3" }
-			picture = HOL_welfare_state
-			allowed = { always = no }
-			modifier = {
-				production_speed_buildings_factor = 0.3
-				industrial_capacity_factory = 0.3
-				production_factory_max_efficiency_factor = 0.15
-				production_factory_efficiency_gain_factor = 0.3
-				political_power_gain = -0.5
-			}
-		}
-
-		BHU_economy_2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_economy_2" }
-			picture = HOL_welfare_state
-			allowed = { always = no }
-			modifier = {
-				production_speed_buildings_factor = 0.4
-				industrial_capacity_factory = 0.4
-				production_factory_max_efficiency_factor = 0.2
-				production_factory_efficiency_gain_factor = 0.4
-				political_power_gain = -0.75
 			}
 		}
 
 		BHU_economy_1 = {
 			on_add = { log = "[GetLogRoot]: add idea BHU_economy_1" }
 			picture = HOL_welfare_state
+			name = BHU_economy_meagre
 			allowed = { always = no }
 			modifier = {
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.1
+				production_factory_max_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+				political_power_gain = -0.15
+			}
+		}
+
+		BHU_economy_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_economy_2" }
+			picture = HOL_welfare_state
+			name = BHU_economy_moderate
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.2
+				industrial_capacity_factory = 0.2
+				production_factory_max_efficiency_factor = 0.2
+				production_factory_efficiency_gain_factor = 0.2
+				political_power_gain = -0.3
+			}
+		}
+
+		BHU_economy_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_economy_3" }
+			picture = HOL_welfare_state
+			name = BHU_economy_moderate
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.3
+				industrial_capacity_factory = 0.3
+				production_factory_max_efficiency_factor = 0.3
+				production_factory_efficiency_gain_factor = 0.3
+				political_power_gain = -0.45
+			}
+		}
+
+		BHU_economy_4 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_economy_4" }
+			picture = HOL_welfare_state
+			name = BHU_economy_adequate
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.4
+				industrial_capacity_factory = 0.4
+				production_factory_max_efficiency_factor = 0.4
+				production_factory_efficiency_gain_factor = 0.4
+				political_power_gain = -0.6
+			}
+		}
+
+		BHU_economy_5 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_economy_5" }
+			picture = HOL_welfare_state
+			name = BHU_economy_extensive
+			allowed = { always = no }
+			modifier = {
+				research_speed_factor = 0.05
 				production_speed_buildings_factor = 0.5
 				industrial_capacity_factory = 0.5
-				production_factory_max_efficiency_factor = 0.25
+				production_factory_max_efficiency_factor = 0.5
 				production_factory_efficiency_gain_factor = 0.5
-				political_power_gain = -1
+				political_power_gain = -0.75
 			}
 		}
 
-		BHU_Zhabdrung_Revolt = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Zhabdrung_Revolt" }
-			picture = chi_war_of_resistance3
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # Economic Ideas (from Econ Tree) # # # # # # # # # # # # # # # # # # # # #
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+		BHU_building_self_sufficiency_0 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_0" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
 			allowed = { always = no }
 			modifier = {
-				stability_weekly = -0.005
-				stability_factor = -0.15
-				political_power_gain = -1.0
+				production_factory_max_efficiency_factor = 0.1
 			}
 		}
-
-		BHU_Zhabdrung_Aftermath = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Zhabdrung_Aftermath" }
-			picture = chi_war_of_resistance2
+		BHU_building_self_sufficiency_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_1" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
 			allowed = { always = no }
 			modifier = {
-				stability_weekly = -0.003
-				stability_factor = -0.05
-				political_power_gain = -0.5
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.01
+				production_factory_efficiency_gain_factor = 0.01
 			}
 		}
-
-		BHU_Zhabdrung_Aftermath2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Zhabdrung_Aftermath2" }
-			picture = chi_war_of_resistance2
+		BHU_building_self_sufficiency_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_2" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
 			allowed = { always = no }
 			modifier = {
-				stability_weekly = -0.001
-				stability_factor = -0.05
-				political_power_gain = -0.25
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.02
+				production_factory_efficiency_gain_factor = 0.02
 			}
 		}
-
-		BHU_Great_Purge = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Great_Purge" }
-			picture = generic_destruction
+		BHU_building_self_sufficiency_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_3" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
 			allowed = { always = no }
 			modifier = {
-				stability_weekly = -0.005
-				war_support_weekly = 0.005
-				national_populist_drift = 0.1
-				paternal_autocrat_drift = -0.05
-				authoritarian_democrat_drift = -0.05
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.03
+				production_factory_efficiency_gain_factor = 0.03
+			}
+		}
+		BHU_building_self_sufficiency_4 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_4" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.04
+				production_factory_efficiency_gain_factor = 0.04
+			}
+		}
+		BHU_building_self_sufficiency_5 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_5" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+		BHU_building_self_sufficiency_6 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_6" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.06
+				production_factory_efficiency_gain_factor = 0.06
+			}
+		}
+		BHU_building_self_sufficiency_7 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_7" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.07
+				production_factory_efficiency_gain_factor = 0.07
+			}
+		}
+		BHU_building_self_sufficiency_8 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_8" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.08
+				production_factory_efficiency_gain_factor = 0.08
+			}
+		}
+		BHU_building_self_sufficiency_9 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_9" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.09
+				production_factory_efficiency_gain_factor = 0.09
+			}
+		}
+		BHU_building_self_sufficiency_10 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_10" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.1
+				production_factory_efficiency_gain_factor = 0.1
+			}
+		}
+		BHU_building_self_sufficiency_11 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_11" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.11
+				production_factory_efficiency_gain_factor = 0.11
+			}
+		}
+		BHU_building_self_sufficiency_12 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_12" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.12
+				production_factory_efficiency_gain_factor = 0.12
+			}
+		}
+		BHU_building_self_sufficiency_13 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_13" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.13
+				production_factory_efficiency_gain_factor = 0.13
+			}
+		}
+		BHU_building_self_sufficiency_14 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_14" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.14
+				production_factory_efficiency_gain_factor = 0.14
+			}
+		}
+		BHU_building_self_sufficiency_15 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_self_sufficiency_15" }
+			name = BHU_building_self_sufficiency
+			picture = generic_medium_industry
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.15
+				production_factory_efficiency_gain_factor = 0.15
 			}
 		}
 
-		BHU_Monastic_Control = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Monastic_Control" }
-			picture = SIA_buddhisttraditions_idea
+		BHU_dreams_of_modernity_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_dreams_of_modernity_1" }
+			name = BHU_dreams_of_modernity
+			picture = ARG_invest_in_roads
+			allowed = { always = no }
+			modifier = {
+				production_speed_supply_node_factor = 0.1
+				state_production_speed_infrastructure_factor = 0.1
+			}
+		}
+
+		BHU_dreams_of_modernity_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_dreams_of_modernity_2" }
+			name = BHU_dreams_of_modernity
+			picture = ARG_invest_in_roads
+			allowed = { always = no }
+			modifier = {
+				production_speed_supply_node_factor = 0.1
+				state_production_speed_infrastructure_factor = 0.1
+				industrial_capacity_factory = 0.1
+				production_speed_buildings_factor = 0.1
+			}
+		}
+
+		BHU_new_building_tech = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_new_building_tech" }
+			picture = SOV_fourth_five_year_plan
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.05
+			}
+			research_bonus = {
+				industry = 0.25
+			}
+		}
+
+		BHU_new_building_tech_improved = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_new_building_tech_improved" }
+			picture = SOV_fourth_five_year_plan
+			name = BHU_new_building_tech
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.1
+			}
+			research_bonus = {
+				industry = 0.5
+			}
+		}
+
+		BHU_building_chukha_hydroelectric = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_building_chukha_hydroelectric" }
+			picture = por_hydroelectric_power
 			allowed = { always = no }
 			modifier = {
 				political_power_gain = -0.1
-				conscription = 0.04
-				stability_factor = 0.05
+				production_speed_buildings_factor = -0.05
+				industrial_capacity_factory = -0.05
+			}
+			on_remove = {
+				324 = {
+					if = {
+						limit = { dam > 0 }
+						increase_state_category_by_one_level = yes
+					}
+					else = {
+						add_extra_state_shared_building_slots = 1
+						custom_override_tooltip = {
+							add_building_construction = {
+								type = dam
+								level = 1
+								province = 8010
+								instant_build = yes
+							}
+							tooltip = {
+								localization_key = tooltip_add_building_on_victory_point
+								BUILDING = dam
+								NUMBER = 1
+								VP = 8010
+							}
+						}
+					}
+					prioritize_state = yes
+				}
+				if = {
+					limit = { 324 = { dam < 1 } } #separate due to tooltip indentation
+					custom_effect_tooltip = {
+						localization_key = building_state_modifier|dam
+						INDENT = "    "
+					}
+					custom_effect_tooltip = tooltip_white_line
+				}
 			}
 		}
 
-		BHU_Monastic_Reform = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Monastic_Reform" }
-			picture = SIA_buddhisttraditions_idea
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = -0.15
-				conscription = 0.04
-				stability_factor = 0.1
-			}
-		}
-
-		BHU_Monastic_Dom = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Monastic_Dom" }
-			picture = SIA_buddhisttraditions_idea
+		BHU_importing_coins = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_importing_coins" }
+			picture = debts
 			allowed = { always = no }
 			modifier = {
 				political_power_gain = -0.1
-				conscription = 0.045
-				war_support_factor = 0.05
+			}
+			on_remove = {
+				add_ideas = BHU_nascent_market_economy_1
 			}
 		}
 
-		BHU_Monastic_Primacy1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Monastic_Primacy1" }
-			name = BHU_Monastic_Dom
-			picture = SIA_buddhisttraditions_idea
+		BHU_nascent_market_economy_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_nascent_market_economy_1" }
+			picture = generic_loans
 			allowed = { always = no }
 			modifier = {
-				political_power_gain = -0.15
-				conscription = 0.05
-				stability_factor = 0.05
-				war_support_factor = 0.05
+				political_power_gain = 0.1
+				consumer_goods_factor = -0.05
 			}
 		}
 
-		BHU_Monastic_Primacy2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Monastic_Primacy2" }
-			name = BHU_Monastic_Dom
-			picture = SIA_buddhisttraditions_idea
+		BHU_nascent_market_economy_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_nascent_market_economy_2" }
+			picture = generic_loans
 			allowed = { always = no }
 			modifier = {
-				political_power_gain = -0.25
-				conscription = 0.05
-				stability_factor = 0.05
-				war_support_factor = 0.05
-				production_speed_buildings_factor = 0.05
+				political_power_gain = 0.1
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.15
+			}
+		}
+
+		BHU_nascent_market_economy_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_nascent_market_economy_3" }
+			picture = generic_loans
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.25
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.3
+			}
+		}
+
+		BHU_expanded_government_offices = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_expanded_government_offices" }
+			picture = CAN_exile_government
+			allowed = { always = no }
+			modifier = {
 				industrial_capacity_factory = 0.05
-			}
-		}
-
-		BHU_Monastic_Primacy3 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Monastic_Primacy3" }
-			name = BHU_Monastic_Dom
-			picture = SIA_buddhisttraditions_idea
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = -0.25
-				stability_factor = 0.05
-				war_support_factor = 0.05
-				conscription = 0.05
-				national_populist_drift = 0.05
 				production_speed_buildings_factor = 0.05
-				industrial_capacity_factory = 0.05
+				army_org_factor = 0.05
+				research_speed_factor = 0.05
 			}
 		}
 
-		BHU_Lama_Legacy = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Lama_Legacy" }
-			picture = big_entente_idea
+		BHU_newarnomics = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_newarnomics" }
+			picture = generic_loans
 			allowed = { always = no }
 			modifier = {
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		BHU_passports = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_passports" }
+			picture = NOR_passport_union_idea
+			allowed = { always = no }
+			modifier = {
+				improve_relations_maintain_cost_factor = -0.25
+				trade_opinion_factor = 0.25
+			}
+		}
+
+		BHU_dead_bandits = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_dead_bandits" }
+			picture = generic_colonize
+			allowed = { always = no }
+			modifier = {
+				monthly_population = 0.15
+				stability_factor = 0.03
+			}
+		}
+
+		BHU_direct_rule_from_punakha = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_direct_rule_from_punakha" }
+			picture = generic_migration
+			allowed = { always = no }
+			modifier = {
+				industrial_capacity_factory = 0.07
+				political_power_gain = 0.07
+				stability_factor = -0.07
+			}
+		}
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # Military Ideas  (from Mil Tree) # # # # # # # # # # # # # # # # # # # # #
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+		BHU_village_musters_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_village_musters_1" }
+			picture = citizen_militia_1
+			name = BHU_village_musters
+			allowed = { always = no }
+			modifier = {
+				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.1
+				weekly_manpower = 15
+			}
+		}
+
+		BHU_village_musters_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_village_musters_2" }
+			picture = citizen_militia_1
+			name = BHU_village_musters
+			allowed = { always = no }
+			modifier = {
+				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.1
+				weekly_manpower = 30
+				stability_factor = -0.05
+			}
+		}
+
+		BHU_village_musters_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_village_musters_3" }
+			picture = citizen_militia_1
+			name = BHU_village_musters
+			allowed = { always = no }
+			modifier = {
+				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.1
+				weekly_manpower = 45
+				stability_factor = -0.125
+			}
+		}
+
+		BHU_village_musters_4 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_village_musters_4" }
+			picture = citizen_militia_1
+			name = BHU_village_musters
+			allowed = { always = no }
+			modifier = {
+				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.1
+				weekly_manpower = 60
+				stability_factor = -0.2
+			}
+		}
+
+		BHU_mountain_fortress_dzongs = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_mountain_fortress_dzongs" }
+			picture = FRA_fortification_focus
+			name = BHU_mountain_fortress
+			allowed = { always = no }
+			modifier = {
+				land_bunker_effectiveness_factor = 0.05
+			}
+		}
+
+		BHU_mountain_fortress_dzongs_keypasses = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_mountain_fortress_dzongs_keypasses" }
+			picture = FRA_fortification_focus
+			name = BHU_mountain_fortress
+			allowed = { always = no }
+			modifier = {
+				land_bunker_effectiveness_factor = 0.1
+				army_core_defence_factor = 0.05
+			}
+		}
+
+		BHU_mountain_fortress_mountainguides = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_mountain_fortress_mountainguides" }
+			picture = generic_mountain_defensive_training #alternative icon generic_mountain_warfare?
+			name = BHU_mountain_fortress
+			allowed = { always = no }
+			modifier = {
+				modifier_army_sub_unit_mountaineers_attack_factor = 0.05
+				modifier_army_sub_unit_mountaineers_defence_factor = 0.05
+			}
+		}
+
+		BHU_mountain_fortress_mountainguides_lords = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_mountain_fortress_mountainguides_lords" }
+			picture = generic_mountain_defensive_training
+			name = BHU_mountain_fortress
+			allowed = { always = no }
+			modifier = {
+				modifier_army_sub_unit_mountaineers_attack_factor = 0.1
+				modifier_army_sub_unit_mountaineers_defence_factor = 0.1
+				army_core_defence_factor = 0.05
+			}
+		}
+
+		BHU_mountain_fortress_dzongs_mountainguides = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_mountain_fortress_dzongs_mountainguides" }
+			picture = FRA_fortification_focus
+			name = BHU_mountain_fortress
+			allowed = { always = no }
+			modifier = {
+				land_bunker_effectiveness_factor = 0.05
+				modifier_army_sub_unit_mountaineers_attack_factor = 0.05
+				modifier_army_sub_unit_mountaineers_defence_factor = 0.05
+			}
+		}
+
+		BHU_mountain_fortress_dzongs_mountainguides_lords = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_mountain_fortress_dzongs_mountainguides_lords" }
+			picture = FRA_fortification_focus
+			name = BHU_mountain_fortress
+			allowed = { always = no }
+			modifier = {
+				land_bunker_effectiveness_factor = 0.05
+				modifier_army_sub_unit_mountaineers_attack_factor = 0.1
+				modifier_army_sub_unit_mountaineers_defence_factor = 0.1
+				army_core_defence_factor = 0.05
+			}
+		}
+
+		BHU_mountain_fortress_dzongs_keypasses_mountainguides = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_mountain_fortress_dzongs_keypasses_mountainguides" }
+			picture = FRA_fortification_focus
+			name = BHU_mountain_fortress
+			allowed = { always = no }
+			modifier = {
+				land_bunker_effectiveness_factor = 0.1
+				modifier_army_sub_unit_mountaineers_attack_factor = 0.05
+				modifier_army_sub_unit_mountaineers_defence_factor = 0.05
+				army_core_defence_factor = 0.05
+			}
+		}
+
+		BHU_mountain_fortress_dzongs_keypasses_mountainguides_lords = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_mountain_fortress_dzongs_keypasses_mountainguides_lords" }
+			picture = FRA_fortification_focus
+			name = BHU_mountain_fortress
+			allowed = { always = no }
+			modifier = {
+				land_bunker_effectiveness_factor = 0.1
+				modifier_army_sub_unit_mountaineers_attack_factor = 0.1
+				modifier_army_sub_unit_mountaineers_defence_factor = 0.1
 				army_core_defence_factor = 0.1
 			}
 		}
 
-		BHU_Bhutan_Raiders = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Bhutan_Raiders" }
-			picture = big_entente_idea
+		BHU_what_officers = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_what_officers" }
+			picture = PER_untrained_officer
 			allowed = { always = no }
 			modifier = {
-				army_attack_factor = 0.1
-				army_speed_factor = 0.05
+				army_org_regain = -0.05
+				planning_speed = -0.1
+				experience_gain_army = -0.05
 			}
 		}
 
-		BHU_Domestic_Guns = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Domestic_Guns" }
+		BHU_what_officers_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_what_officers_2" }
+			picture = PER_untrained_officer
+			name = BHU_what_officers
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = -0.05
+				planning_speed = -0.05
+				experience_gain_army = 0.05
+			}
+		}
+
+		BHU_modernising_the_military = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_modernising_the_military" }
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = -0.05
+				experience_gain_army = 0.05
+				promote_cost_factor = -0.25
+			}
+		}
+
+		BHU_modernising_the_military_merit = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_modernising_the_military_merit" }
+			picture = generic_manpower_bonus
+			name = BHU_modernising_the_military
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army = 0.05
+				promote_cost_factor = -0.25
+				conscription_factor = 0.1
+				army_leader_start_defense_level = 1
+				army_leader_start_planning_level = 1
+			}
+		}
+
+		BHU_modernising_the_military_noble = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_modernising_the_military_noble" }
+			picture = generic_manpower_bonus
+			name = BHU_modernising_the_military
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = -0.05
+				experience_gain_army = 0.05
+				promote_cost_factor = -0.25
+				command_power_gain = 0.1
+				skill_bonus_factor = 0.1
+			}
+		}
+
+		BHU_cherish_our_rifles = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_cherish_our_rifles" }
 			picture = MEX_politicised_army_2
 			allowed = { always = no }
 			equipment_bonus = {
 				infantry_equipment = {
-					reliability = 0.05
+					reliability = 0.1
+					instant = yes
+				}
+			}
+		}
+
+		BHU_cherish_our_rifles_support = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_cherish_our_rifles_support" }
+			picture = MEX_politicised_army_2
+			name = BHU_cherish_our_rifles
+			allowed = { always = no }
+			equipment_bonus = {
+				infantry_equipment = {
+					reliability = 0.1
+					build_cost_ic = -0.05
+					instant = yes
+				}
+				support_equipment = {
 					build_cost_ic = -0.05
 					instant = yes
 				}
 			}
 		}
 
-		BHU_Reformed_Bureaucracy_1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Reformed_Bureaucracy_1" }
-			name = BHU_Reformed_Bureaucracy
-			picture = OTT_solid_idea
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.1
-				production_speed_buildings_factor = 0.02
-				research_speed_factor = 0.02
-			}
-		}
-
-		BHU_Reformed_Bureaucracy_2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Reformed_Bureaucracy_2" }
-			name = BHU_Reformed_Bureaucracy
-			picture = OTT_solid_idea
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.2
-				production_speed_buildings_factor = 0.05
-				research_speed_factor = 0.02
-			}
-		}
-
-		BHU_Reformed_Bureaucracy_3 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Reformed_Bureaucracy_3" }
-			name = BHU_Reformed_Bureaucracy
-			picture = OTT_solid_idea
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.2
-				production_speed_buildings_factor = 0.05
-				research_speed_factor = 0.05
-			}
-		}
-
-		BHU_Military_Edu_1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Military_Edu_1" }
-			name = BHU_Military_Edu
-			picture = generic_manpower_bonus
-			allowed = { always = no }
-			modifier = {
-				army_org_factor = 0.02
-				army_core_defence_factor = 0.02
-				research_speed_factor = 0.01
-			}
-		}
-
-		BHU_Military_Edu_2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Military_Edu_2" }
-			name = BHU_Military_Edu
-			picture = generic_manpower_bonus
-			allowed = { always = no }
-			modifier = {
-				army_org_factor = 0.05
-				army_core_defence_factor = 0.05
-				research_speed_factor = 0.01
-			}
-		}
-
-		BHU_Military_Edu_3 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Military_Edu_3" }
-			name = BHU_Military_Edu
-			picture = generic_manpower_bonus
-			allowed = { always = no }
-			modifier = {
-				army_org_factor = 0.05
-				army_core_defence_factor = 0.05
-				research_speed_factor = 0.03
-			}
-		}
-
-		BHU_Buddhist_Edu_1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Buddhist_Edu_1" }
-			name = BHU_Buddhist_Edu
-			picture = OTT_solid_idea
-			allowed = { always = no }
-			modifier = {
-				stability_factor = 0.025
-				conscription_factor = 0.05
-				research_speed_factor = 0.01
-			}
-		}
-
-		BHU_Buddhist_Edu_2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Buddhist_Edu_2" }
-			name = BHU_Buddhist_Edu
-			picture = OTT_solid_idea
-			allowed = { always = no }
-			modifier = {
-				stability_factor = 0.05
-				conscription_factor = 0.1
-				research_speed_factor = 0.03
-			}
-		}
-
-		BHU_Centralised_Economy_1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Centralised_Economy_1" }
-			picture = state_economy
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = -0.25
-				production_speed_buildings_factor = 0.07
-				industrial_capacity_factory = 0.07
-			}
-		}
-
-		BHU_Centralised_Economy_2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Centralised_Economy_2" }
-			picture = state_economy
-			allowed = { always = no }
-			modifier = {
-				production_speed_buildings_factor = 0.1
-				industrial_capacity_factory = 0.1
-			}
-		}
-
-		BHU_Regional_Taxation_1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Regional_Taxation_1" }
-			picture = LEC_low_reserves
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.05
-				production_factory_efficiency_gain_factor = 0.1
-			}
-		}
-
-		BHU_Regional_Taxation_2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Regional_Taxation_2" }
-			picture = LEC_medium_reserves
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.25
-				production_factory_efficiency_gain_factor = 0.15
-			}
-		}
-
-		BHU_Labour_Fruits = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Labour_Fruits" }
-			picture = generic_agrarian_reform
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = -0.1
-				consumer_goods_factor = -0.35
-				monthly_population = 0.5
-			}
-		}
-
-		BHU_Mighty_Fruits1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Mighty_Fruits1" }
-			name = BHU_Mighty_Fruits
-			picture = LBA_Senussi_Order
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.06
-				industrial_capacity_factory = 0.06
-				consumer_goods_factor = -0.2
-				enemy_justify_war_goal_time = -0.3
-			}
-		}
-
-		BHU_Mighty_Fruits2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Mighty_Fruits2" }
-			name = BHU_Mighty_Fruits
-			picture = LBA_Senussi_Order
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.09
-				industrial_capacity_factory = 0.09
-				consumer_goods_factor = -0.3
-				enemy_justify_war_goal_time = -0.45
-			}
-		}
-
-		BHU_Mighty_Fruits3 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Mighty_Fruits3" }
-			name = BHU_Mighty_Fruits
-			picture = LBA_Senussi_Order
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.12
-				industrial_capacity_factory = 0.12
-				consumer_goods_factor = -0.4
-				enemy_justify_war_goal_time = -0.6
-			}
-		}
-
-		BHU_Mighty_Fruits4 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Mighty_Fruits4" }
-			name = BHU_Mighty_Fruits
-			picture = LBA_Senussi_Order
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.15
-				industrial_capacity_factory = 0.15
-				consumer_goods_factor = -0.5
-				enemy_justify_war_goal_time = -0.75
-			}
-		}
-
-		BHU_Raven_Crown = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Raven_Crown" }
-			picture = BHU_raven_crown
-			allowed = { always = no }
-			modifier = {
-				stability_factor = 0.05
-				army_morale_factor = 0.05
-			}
-		}
-
-		BHU_Phuentscholing_Treaty = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Phuentscholing_Treaty" }
-			picture = generic_constitutional_guarantees
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.1
-				production_speed_buildings_factor = 0.05
-				industrial_capacity_factory = 0.05
-			}
-		}
-
-		BHU_Phuentscholing_Treaty_Good = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Phuentscholing_Treaty_Good" }
-			picture = generic_constitutional_guarantees
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.15
-				production_speed_buildings_factor = 0.10
-				industrial_capacity_factory = 0.10
-			}
-		}
-
-		BHU_Phuentscholing_Treaty_Great = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Phuentscholing_Treaty_Great" }
-			name = BHU_Phuentscholing_Treaty_Good
-			picture = generic_constitutional_guarantees
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.15
-				production_speed_buildings_factor = 0.15
-				industrial_capacity_factory = 0.15
-			}
-		}
-
-		BHU_Indian_Trade = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_Indian_Trade" }
-			picture = KTG_Gold_Trade
-			allowed = { always = no }
-			modifier = {
-				political_power_gain = 0.1
-				production_speed_buildings_factor = 0.1
-				industrial_capacity_factory = 0.1
-			}
-		}
-
-		BHU_army_military_1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_army_military_1" }
+		BHU_specialists_and_auxiliaries_capture = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_specialists_and_auxiliaries_capture" }
 			picture = army_cooperation
+			name = BHU_specialists_and_auxiliaries
 			allowed = { always = no }
 			modifier = {
-				army_org_factor = 0.05
+				equipment_capture = 0.03
+			}
+		}
+
+		BHU_specialists_and_auxiliaries_recon = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_specialists_and_auxiliaries_recon" }
+			picture = army_cooperation
+			name = BHU_specialists_and_auxiliaries
+			allowed = { always = no }
+			modifier = {
+				recon_factor = 0.2
+			}
+		}
+
+		BHU_specialists_and_auxiliaries_logistics = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_specialists_and_auxiliaries_logistics" }
+			picture = army_cooperation
+			name = BHU_specialists_and_auxiliaries
+			allowed = { always = no }
+			modifier = {
+				supply_consumption_factor = -0.1
+			}
+		}
+
+		BHU_specialists_and_auxiliaries_capture_recon = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_specialists_and_auxiliaries_capture_recon" }
+			picture = army_cooperation
+			name = BHU_specialists_and_auxiliaries
+			allowed = { always = no }
+			modifier = {
+				equipment_capture = 0.03
+				recon_factor = 0.2
+			}
+		}
+
+		BHU_specialists_and_auxiliaries_capture_logistics = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_specialists_and_auxiliaries_capture_logistics" }
+			picture = army_cooperation
+			name = BHU_specialists_and_auxiliaries
+			allowed = { always = no }
+			modifier = {
+				equipment_capture = 0.03
+				supply_consumption_factor = -0.1
+			}
+		}
+
+		BHU_specialists_and_auxiliaries_recon_logistics = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_specialists_and_auxiliaries_recon_logistics" }
+			picture = army_cooperation
+			name = BHU_specialists_and_auxiliaries
+			allowed = { always = no }
+			modifier = {
+				recon_factor = 0.2
+				supply_consumption_factor = -0.1
+			}
+		}
+
+		BHU_specialists_and_auxiliaries_complete = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_specialists_and_auxiliaries_complete" }
+			picture = army_cooperation
+			name = BHU_specialists_and_auxiliaries
+			allowed = { always = no }
+			modifier = {
+				supply_consumption_factor = -0.1
+				recon_factor = 0.2
+				equipment_capture = 0.03
+			}
+		}
+
+		BHU_military_reforms_complete_noble_tooltip = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_reforms_complete_noble_tooltip" }
+			picture = generic_reserve_divisions
+			name = BHU_military_reforms_complete
+			allowed = { always = no }
+			modifier = {
+				army_org_regain = -0.05
+				experience_gain_army = 0.05
+				promote_cost_factor = -0.25
 				command_power_gain = 0.1
+				skill_bonus_factor = 0.1
+				supply_consumption_factor = -0.1
+				recon_factor = 0.2
+				equipment_capture = 0.03
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					reliability = 0.1
+					build_cost_ic = -0.05
+					instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
 			}
 		}
 
-		BHU_army_military_2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_army_military_2" }
-			name = BHU_army_military_1
-			picture = army_cooperation
+		BHU_military_reforms_complete_noble = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_reforms_complete_noble" }
+			picture = generic_reserve_divisions
+			name = BHU_military_reforms_complete
 			allowed = { always = no }
 			modifier = {
+				army_org_regain = -0.05
+				experience_gain_army = 0.05
+				army_org_factor = 0.05
+				promote_cost_factor = -0.25
+				command_power_gain = 0.2
+				skill_bonus_factor = 0.2
+				supply_consumption_factor = -0.1
+				recon_factor = 0.2
+				equipment_capture = 0.03
+				army_infantry_attack_factor = 0.05
+				army_infantry_defence_factor = 0.05
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					reliability = 0.1
+					build_cost_ic = -0.05
+					instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+			}
+		}
+
+		BHU_military_reforms_complete_merit_tooltip = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_reforms_complete_merit_tooltip" }
+			picture = generic_reserve_divisions
+			name = BHU_military_reforms_complete
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army = 0.05
+				promote_cost_factor = -0.25
+				conscription_factor = 0.1
+				army_leader_start_defense_level = 1
+				army_leader_start_planning_level = 1
+				supply_consumption_factor = -0.1
+				recon_factor = 0.2
+				equipment_capture = 0.03
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					reliability = 0.1
+					build_cost_ic = -0.05
+					instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+			}
+		}
+
+		BHU_military_reforms_complete_merit = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_military_reforms_complete_merit" }
+			picture = generic_reserve_divisions
+			name = BHU_military_reforms_complete
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army = 0.05
+				promote_cost_factor = -0.25
+				conscription_factor = 0.1
 				army_org_factor = 0.1
-				army_defence_factor = 0.05
-				army_attack_factor = 0.05
-				command_power_gain = 0.1
+				army_leader_start_defense_level = 1
+				army_leader_start_planning_level = 1
+				supply_consumption_factor = -0.1
+				recon_factor = 0.2
+				equipment_capture = 0.03
+				army_infantry_attack_factor = 0.05
+				army_infantry_defence_factor = 0.05
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					reliability = 0.1
+					build_cost_ic = -0.05
+					instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
 			}
 		}
 
-		BHU_army_military_3 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_army_military_3" }
-			picture = army_cooperation
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # Political Ideas  (from Pol Trees) # # # # # # # # # # # # # # # # # # # # #
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+		BHU_royal_resistance_base = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_royal_resistance_base" }
+			picture = generic_monarchist_uprising
+			name = BHU_royal_resistance
 			allowed = { always = no }
 			modifier = {
-				army_org_factor = 0.15
-				army_defence_factor = 0.15
-				army_attack_factor = 0.15
-				command_power_gain = 0.1
+				political_power_factor = -0.15
+				stability_factor = -0.15
+				authoritarian_democrat_drift = 0.03
+				market_liberal_drift = 0.03
 			}
 		}
 
-		BHU_militia_military_1 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_militia_military_1" }
-			picture = army_cooperation
+		BHU_royal_resistance_postfocus = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_royal_resistance_postfocus" }
+			picture = generic_monarchist_uprising
+			name = BHU_royal_resistance
 			allowed = { always = no }
 			modifier = {
+				political_power_factor = -0.1
+				stability_factor = -0.1
+				authoritarian_democrat_drift = 0.02
+				market_liberal_drift = 0.02
+			}
+		}
+
+		BHU_royal_resistance_postfocus_noad = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_royal_resistance_postfocus_noad" }
+			picture = generic_monarchist_uprising
+			name = BHU_royal_resistance
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = -0.05
+				stability_factor = -0.05
+				market_liberal_drift = 0.02
+			}
+		}
+
+		BHU_royal_resistance_postfocus_noml = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_royal_resistance_postfocus_noml" }
+			picture = generic_monarchist_uprising
+			name = BHU_royal_resistance
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = -0.05
+				stability_factor = -0.05
+				authoritarian_democrat_drift = 0.02
+			}
+		}
+
+		BHU_reconciliation_campaign = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reconciliation_campaign" }
+			picture = HOL_welfare_state
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.005
+			}
+		}
+
+		BHU_retribution_campaign = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_retribution_campaign" }
+			picture = generic_shackles
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.10
+				stability_weekly = -0.001
+				national_populist_drift = -0.05
+			}
+		}
+
+		BHU_rural_relief_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_rural_relief_1" }
+			picture = generic_agrarian_reform
+			name = BHU_rural_relief
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = -0.05
 				conscription_factor = 0.05
-				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.05
+				monthly_population = 0.25
 			}
 		}
 
-		BHU_militia_military_2 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_militia_military_2" }
-			name = BHU_militia_military_1
-			picture = army_cooperation
+		BHU_rural_relief_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_rural_relief_2" }
+			picture = generic_agrarian_reform
+			name = BHU_rural_relief
 			allowed = { always = no }
 			modifier = {
+				political_power_gain = -0.10
+				conscription_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				monthly_population = 0.25
+			}
+		}
+
+		BHU_rural_relief_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_rural_relief_3" }
+			picture = generic_agrarian_reform
+			name = BHU_rural_relief
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = -0.15
 				conscription_factor = 0.1
-				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.05
-				modifier_army_sub_unit_irregular_infantry_max_org_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.1
+				monthly_population = 0.25
 			}
 		}
 
-		BHU_militia_military_3 = {
-			on_add = { log = "[GetLogRoot]: add idea BHU_militia_military_3" }
-			picture = army_cooperation
+		BHU_lifting_the_boot = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_lifting_the_boot" }
+			picture = generic_colonize
 			allowed = { always = no }
 			modifier = {
-				conscription_factor = 0.2
-				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.1
-				modifier_army_sub_unit_irregular_infantry_max_org_factor = 0.1
+				stability_weekly = 0.001
+				war_support_weekly = 0.001
+			}
+		}
+
+		BHU_assembly_successful = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_assembly_successful" }
+			picture = generic_disjointed_gov
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.001
+				market_liberal_drift = 0.01
+				social_conservative_drift = 0.01
+				authoritarian_democrat_drift = 0.01
+			}
+		}
+
+		BHU_feudal_order_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_feudal_order_1" }
+			picture = generic_intel_bonus
+			name = BHU_feudal_order
+			allowed = { always = no }
+			modifier = {
+				monthly_population = -0.25
+				production_factory_efficiency_gain_factor = -0.05
+				industrial_capacity_factory = 0.15
+			}
+		}
+
+		BHU_feudal_order_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_feudal_order_2" }
+			picture = generic_intel_bonus
+			name = BHU_feudal_order
+			allowed = { always = no }
+			modifier = {
+				monthly_population = -0.25
+				production_factory_efficiency_gain_factor = -0.1
+				industrial_capacity_factory = 0.25
+				resistance_activity = -0.25
+			}
+		}
+
+		BHU_traditionalist_shackles = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_traditionalist_shackles" }
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = -0.10
+				stability_factor = -0.1
+			}
+		}
+
+		BHU_sweeping_monastic_privileges = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_sweeping_monastic_privileges" }
+			picture = debts
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = -0.15
+				social_conservative_drift = 0.01
+			}
+			on_remove = {
+				country_event = bhutan_events.925
+			}
+		}
+
+		BHU_reasserting_stability_stability = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reasserting_stability_stability" }
+			picture = generic_migration
+			name = BHU_reasserting_stability
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+			}
+		}
+
+		BHU_reasserting_stability_ppgain = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reasserting_stability_ppgain" }
+			picture = generic_migration
+			name = BHU_reasserting_stability
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.05
+			}
+		}
+
+		BHU_reasserting_stability_both = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reasserting_stability_both" }
+			picture = generic_migration
+			name = BHU_reasserting_stability
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.05
+			}
+		}
+
+		BHU_web_of_oaths = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_web_of_oaths" }
+			picture = generic_migration
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.1
+			}
+		}
+
+		BHU_royal_outriders = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_royal_outriders" }
+			picture = MON_scourge_of_the_steppes
+			allowed = { always = no }
+			modifier = {
+				cavalry_attack_factor = 0.1
+				supply_node_range = 0.25
+			}
+		}
+
+		BHU_reformist_project_law = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reformist_project_law" }
+			picture = generic_government_reconciliation
+			name = BHU_reformist_project
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+			}
+		}
+
+		BHU_reformist_project_law_assembly = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reformist_project_law_assembly" }
+			picture = generic_government_reconciliation
+			name = BHU_reformist_project
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				conscription_factor = 0.05
+				compliance_gain = 0.01
+			}
+		}
+
+		BHU_reformist_project_law_civil = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reformist_project_law_civil" }
+			picture = generic_government_reconciliation
+			name = BHU_reformist_project
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.075
+				production_speed_buildings_factor = 0.025
+				political_advisor_cost_factor = -0.33
+			}
+		}
+
+		BHU_reformist_project_law_assembly_civil = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reformist_project_law_assembly_civil" }
+			picture = generic_government_reconciliation
+			name = BHU_reformist_project
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.075
+				production_speed_buildings_factor = 0.025
+				political_advisor_cost_factor = -0.33
+				conscription_factor = 0.05
+				compliance_gain = 0.01
+			}
+		}
+
+		BHU_reformist_project_law_civil_academy = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reformist_project_law_civil_academy" }
+			picture = generic_government_reconciliation
+			name = BHU_reformist_project
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				research_speed_factor = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		BHU_reformist_project_law_assembly_civil_academy = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_reformist_project_law_assembly_civil_academy" }
+			picture = generic_government_reconciliation
+			name = BHU_reformist_project
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				conscription_factor = 0.05
+				compliance_gain = 0.01
+				research_speed_factor = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		BHU_buddhist_edu_canon = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_buddhist_edu_canon" }
+			name = BHU_buddhist_edu
+			picture = OTT_solid_idea
+			allowed = { always = no }
+			modifier = {
+				research_speed_factor = 0.025
+				mobilization_speed = 0.1
+				war_stability_factor = 0.1
+			}
+		}
+
+		BHU_buddhist_edu_college = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_buddhist_edu_college" }
+			name = BHU_buddhist_edu
+			picture = OTT_solid_idea
+			allowed = { always = no }
+			modifier = {
+				compliance_gain = 0.01
+				research_speed_factor = 0.025
+				experience_loss_factor = -0.10
+			}
+		}
+
+		BHU_buddhist_edu_canon_college = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_buddhist_edu_canon_college" }
+			name = BHU_buddhist_edu
+			picture = OTT_solid_idea
+			allowed = { always = no }
+			modifier = {
+				compliance_gain = 0.01
+				research_speed_factor = 0.05
+				experience_loss_factor = -0.10
+				mobilization_speed = 0.1
+				war_stability_factor = 0.1
+			}
+		}
+
+		BHU_monastic_tax_reforms = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_monastic_tax_reforms" }
+			picture = ARG_social_welfare_fund_ns
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = -0.15
+				authoritarian_democrat_drift = 0.02
+				stability_weekly = 0.003
+				monthly_population = 0.15
+			}
+		}
+
+		BHU_monastic_primacy_1 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_monastic_primacy_1" }
+			picture = SIA_buddhisttraditions_idea
+			name = BHU_monastic_primacy
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				conscription = 0.04
+				research_speed_factor = 0.1
+			}
+		}
+
+		BHU_monastic_primacy_2 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_monastic_primacy_2" }
+			picture = SIA_buddhisttraditions_idea
+			name = BHU_monastic_primacy
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				conscription = 0.04
+				research_speed_factor = 0.1
+				mobilization_laws_cost_factor = -0.5
+			}
+		}
+
+		BHU_monastic_primacy_3 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_monastic_primacy_3" }
+			picture = SIA_buddhisttraditions_idea
+			name = BHU_monastic_primacy
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				conscription = 0.05
+				research_speed_factor = 0.1
+				mobilization_laws_cost_factor = -0.5
+				stability_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+
+		BHU_monastic_primacy_4 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_monastic_primacy_4" }
+			picture = SIA_buddhisttraditions_idea
+			name = BHU_monastic_primacy
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				conscription = 0.05
+				research_speed_factor = 0.1
+				mobilization_laws_cost_factor = -0.5
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+				army_core_defence_factor = 0.05
+				monthly_population = 0.1
+			}
+		}
+
+		BHU_monastic_primacy_5 = {
+			on_add = { log = "[GetLogRoot]: add idea BHU_monastic_primacy_5" }
+			picture = SIA_buddhisttraditions_idea
+			name = BHU_monastic_primacy
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = 0.1
+				conscription = 0.05
+				research_speed_factor = 0.1
+				mobilization_laws_cost_factor = -0.5
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				conscription_factor = 0.1
+				army_core_defence_factor = 0.1
+				monthly_population = 0.1
 			}
 		}
 	}

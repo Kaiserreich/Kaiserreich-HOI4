@@ -1058,7 +1058,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FER_heavy_equipment
-		icon = GFX_goal_japanese_tank_import
+		icon = GFX_JAP_tank
 		cost = 4
 
 		relative_position_id = FER_trade_agreement
@@ -1978,11 +1978,9 @@ focus_tree = {
 			}
 		}
 		available = {
-			AND = {
-				has_government = paternal_autocrat
-				NOT = {
-					owns_state = 219 # Moscow
-				}
+			has_government = paternal_autocrat
+			NOT = {
+				owns_state = 219 # Moscow
 			}
 		}
 		prerequisite = {
@@ -3548,7 +3546,7 @@ focus_tree = {
 			JAP = {
 				owns_any_state_of = {
 					537 #South Sakhalin
-					1100 #Gwanbuk
+					1100 #Kwanbuk
 				}
 			}
 		}

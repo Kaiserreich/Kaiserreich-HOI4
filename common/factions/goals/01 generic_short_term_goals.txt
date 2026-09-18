@@ -21,11 +21,11 @@ faction_goal_unlock_research = {
 							value = num_researched_technologies
 							multiply = {
 								value = 0
-								if = { limit = { value = num_researched_technologies  less_than = 50 }  add = 1.25 }
-								else_if = { limit = { value = num_researched_technologies  less_than = 75 }  add = 1.2 }
-								else_if = { limit = { value = num_researched_technologies  less_than = 100 }  add = 1.15 }
-								else_if = { limit = { value = num_researched_technologies  less_than = 150 }  add = 1.1 }
-								else_if = { limit = { value = num_researched_technologies  less_than = 200 }  add = 1.05 }
+								if = { limit = { value = num_researched_technologies less_than = 50 } add = 1.25 }
+								else_if = { limit = { value = num_researched_technologies less_than = 75 } add = 1.2 }
+								else_if = { limit = { value = num_researched_technologies less_than = 100 } add = 1.15 }
+								else_if = { limit = { value = num_researched_technologies less_than = 150 } add = 1.1 }
+								else_if = { limit = { value = num_researched_technologies less_than = 200 } add = 1.05 }
 							}
 						}
 					}
@@ -57,11 +57,11 @@ faction_goal_unlock_research = {
 								value = num_researched_technologies
 								multiply = {
 									value = 0
-									if = { limit = { value = num_researched_technologies  less_than = 50 }  add = 1.25 }
-									else_if = { limit = { value = num_researched_technologies  less_than = 75 }  add = 1.2 }
-									else_if = { limit = { value = num_researched_technologies  less_than = 100 }  add = 1.15 }
-									else_if = { limit = { value = num_researched_technologies  less_than = 150 }  add = 1.1 }
-									else_if = { limit = { value = num_researched_technologies  less_than = 200 }  add = 1.05 }
+									if = { limit = { value = num_researched_technologies less_than = 50 } add = 1.25 }
+									else_if = { limit = { value = num_researched_technologies less_than = 75 } add = 1.2 }
+									else_if = { limit = { value = num_researched_technologies less_than = 100 } add = 1.15 }
+									else_if = { limit = { value = num_researched_technologies less_than = 150 } add = 1.1 }
+									else_if = { limit = { value = num_researched_technologies less_than = 200 } add = 1.05 }
 								}
 							}
 						}
@@ -73,18 +73,14 @@ faction_goal_unlock_research = {
 			if = {
 				limit = { has_variable = unlock_military_techs_researched_target }
 				check_variable = {
-					var = unlock_military_techs_researched_compare_temp_target
-					value = unlock_military_techs_researched_target
-					compare = greater_than
-					tooltip = "GOAL_T_TRIGGER_A"
+					unlock_military_techs_researched_compare_temp_target > unlock_military_techs_researched_target
+					tooltip = GOAL_T_TRIGGER_A
 				}
 			}
 			else = {
 				check_variable = {
-					var = unlock_military_techs_researched_compare_temp_target
-					value = unlock_military_techs_researched_compare
-					compare = greater_than
-					tooltip = "GOAL_T_TRIGGER_A"
+					unlock_military_techs_researched_compare_temp_target > unlock_military_techs_researched_compare
+					tooltip = GOAL_T_TRIGGER_A
 				}
 			}
 		}
@@ -306,13 +302,14 @@ faction_goal_convoy_sufficiency = {
 	category = short_term
 	group = FOCUS_FILTER_INDUSTRY
 	completed = {
-		hidden_trigger = {
-			tooltip_evaluation = eval
-			set_temp_variable = { unit_type_temp = token:convoy }
-			set_temp_variable = { num_convoys_faction = 0 }
-			all_of_scopes = {
-				array = faction_members
-				add_to_temp_variable = { num_convoys_faction = num_equipment@convoy }
+		set_temp_variable = { unit_type_temp = token:convoy }
+		set_temp_variable = {
+			num_convoys_faction = {
+				value = 0
+				every_collection = {
+					named_collection = faction_members
+					add = num_equipment@convoy
+				}
 			}
 		}
 		NOT = { check_variable = { num_convoys_faction < 1000 tooltip = count_in_collection_units_workaround_tooltip } }
@@ -350,7 +347,7 @@ faction_goal_convoy_sufficiency = {
 		base = 1
 		modifier = {
 			factor = 0
-			naval_base < 1
+			NOT = { any_owned_state = { naval_base > 0 } }
 		}
 		modifier = {
 			add = 1
@@ -358,20 +355,14 @@ faction_goal_convoy_sufficiency = {
 		}
 		modifier = {
 			add = 1
-			hidden_trigger = {
-				tooltip_evaluation = eval
-				set_temp_variable = { faction_coastal_states = 0 }
-				all_of_scopes = {
-					array = faction_members
-					all_controlled_state = {
-						if = {
-							limit = { is_coastal = yes }
-							add_to_temp_variable = { faction_coastal_states = 1 }
-						}
-					}
+			check_expr = {
+				value = 0
+				every_collection = {
+					named_collection = faction_controlled_coastal_states
+					add = 1
 				}
+				greater_than = 19
 			}
-			check_variable = { faction_coastal_states > 19 }
 			# TODO: Fix for collection triggers crashes. Revert if fixed
 			#collection_size = {
 			#	input = {
@@ -559,8 +550,8 @@ faction_goal_military_infrastructure = {
 							any_neighbor_state = {
 								controller = { NOT = { is_in_faction_with = ROOT } }
 							}
-							add_to_temp_variable = { faction_border_states_full_infrastructure = 1 }
 						}
+						add_to_temp_variable = { faction_border_states_full_infrastructure = 1 }
 					}
 				}
 			}
@@ -600,8 +591,8 @@ faction_goal_military_infrastructure = {
 							any_neighbor_state = {
 								controller = { NOT = { is_in_faction_with = ROOT } }
 							}
-							add_to_temp_variable = { faction_border_states_full_infrastructure = 1 }
 						}
+						add_to_temp_variable = { faction_border_states_full_infrastructure = 1 }
 					}
 				}
 			}
@@ -732,16 +723,17 @@ faction_goal_an_armored_fist = {
 
 	}
 	completed = {
-		hidden_trigger = {
-			tooltip_evaluation = eval
-			set_temp_variable = { unit_type_temp = token:armor }
-			set_temp_variable = { num_armor_battalions_faction = 0 }
-			all_of_scopes = {
-				array = faction_members
-				add_to_temp_variable = { num_armor_battalions_faction = num_battalions_with_type@light_armor }
-				add_to_temp_variable = { num_armor_battalions_faction = num_battalions_with_type@medium_armor }
-				add_to_temp_variable = { num_armor_battalions_faction = num_battalions_with_type@heavy_armor }
-				add_to_temp_variable = { num_armor_battalions_faction = num_battalions_with_type@modern_armor }
+		set_temp_variable = { unit_type_temp = token:armor }
+		set_temp_variable = {
+			num_armor_battalions_faction = {
+				value = 0
+				every_collection = {
+					named_collection = faction_members
+					add = num_battalions_with_type@light_armor
+					add = num_battalions_with_type@medium_armor
+					add = num_battalions_with_type@heavy_armor
+					add = num_battalions_with_type@modern_armor
+				}
 			}
 		}
 		NOT = { check_variable = { num_armor_battalions_faction < 15 tooltip = count_in_collection_battalions_workaround_tooltip } }
@@ -787,29 +779,28 @@ faction_goal_an_infantry_army = {
 	category = short_term
 	group = FOCUS_FILTER_ARMY_XP
 	completed = {
-		hidden_trigger = {
-			tooltip_evaluation = eval
-			set_temp_variable = { unit_type_temp = token:infantry }
-			set_temp_variable = { num_infantry_battalions_faction = 0 }
-			all_of_scopes = {
-				array = faction_members
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@infantry }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@bicycle_battalion }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@marine }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@marine_commando }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@mountaineers }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@ranger_battalion }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@paratrooper }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@motorized }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@mechanized }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@fake_intel_unit }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@penal_battalion }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@irregular_infantry }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@militia }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@cavalry }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@camelry }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@elephantry }
-				add_to_temp_variable = { num_infantry_battalions_faction = num_battalions_with_type@artillery }
+		set_temp_variable = { unit_type_temp = token:infantry }
+		set_temp_variable = {
+			num_infantry_battalions_faction = {
+				value = 0
+				every_collection = {
+					named_collection = faction_members
+					add = num_battalions_with_type@infantry
+					add = num_battalions_with_type@bicycle_battalion
+					add = num_battalions_with_type@marine
+					add = num_battalions_with_type@marine_commando
+					add = num_battalions_with_type@mountaineers
+					add = num_battalions_with_type@ranger_battalion
+					add = num_battalions_with_type@paratrooper
+					add = num_battalions_with_type@motorized
+					add = num_battalions_with_type@mechanized
+					add = num_battalions_with_type@penal_battalion
+					add = num_battalions_with_type@irregular_infantry
+					add = num_battalions_with_type@militia
+					add = num_battalions_with_type@cavalry
+					add = num_battalions_with_type@camelry
+					add = num_battalions_with_type@artillery
+				}
 			}
 		}
 		NOT = { check_variable = { num_infantry_battalions_faction < 250 tooltip = count_in_collection_battalions_workaround_tooltip } }
@@ -1084,27 +1075,9 @@ faction_goal_fortify_gibraltar = {
 	completed = {
 		118 = {
 			air_base > 3
-			any_province_building_level = {
-				province = {
-					all_provinces = yes
-				}
-				building = naval_base
-				level > 6
-			}
-			any_province_building_level = {
-				province = {
-					all_provinces = yes
-				}
-				building = coastal_bunker
-				level > 2
-			}
-			any_province_building_level = {
-				province = {
-					all_provinces = yes
-				}
-				building = bunker
-				level > 2
-			}
+			naval_base > 6
+			coastal_bunker > 2
+			bunker > 2
 		}
 		OR = {
 			divisions_in_state = { state = 118 size > 0 }
@@ -1201,13 +1174,7 @@ faction_goal_expand_maltese_bases = {
 	completed = {
 		116 = {
 			air_base > 3
-			any_province_building_level = {
-				province = {
-					all_provinces = yes
-				}
-				building = naval_base
-				level > 3
-			}
+			naval_base > 3
 		}
 	}
 	complete_effect = {
@@ -1765,20 +1732,8 @@ faction_goal_expand_singapore_naval_base = {
 	completed = {
 		336 = {
 			air_base > 7
-			any_province_building_level = {
-				province = {
-					all_provinces = yes
-				}
-				building = naval_base
-				level > 9
-			}
-			any_province_building_level = {
-				province = {
-					all_provinces = yes
-				}
-				building = coastal_bunker
-				level > 3
-			}
+			naval_base > 9
+			coastal_bunker > 3
 		}
 	}
 	complete_effect = {

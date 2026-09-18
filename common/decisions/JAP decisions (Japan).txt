@@ -389,10 +389,7 @@ JAP_land_reform = {
 			log = "[GetLogRoot]: Decision remove JAP_land_reform_1"
 			set_country_flag = JAP_part_one_land_reform
 			clr_country_flag = JAP_land_reform_in_progress
-			add_to_variable = {
-				var = JAP_land_reform_variable
-				value = 1
-			}
+			add_to_variable = { JAP_land_reform_variable = 1 }
 			custom_effect_tooltip = JAP_land_reform_progress
 		}
 		fixed_random_seed = no
@@ -438,10 +435,7 @@ JAP_land_reform = {
 			log = "[GetLogRoot]: Decision remove JAP_land_reform_2"
 			set_country_flag = JAP_part_two_land_reform
 			clr_country_flag = JAP_land_reform_in_progress
-			add_to_variable = {
-				var = JAP_land_reform_variable
-				value = 1
-			}
+			add_to_variable = { JAP_land_reform_variable = 1 }
 			custom_effect_tooltip = JAP_land_reform_progress
 		}
 		fixed_random_seed = no
@@ -486,10 +480,7 @@ JAP_land_reform = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove JAP_land_reform_3"
 			clr_country_flag = JAP_land_reform_in_progress
-			add_to_variable = {
-				var = JAP_land_reform_variable
-				value = 2
-			}
+			add_to_variable = { JAP_land_reform_variable = 2 }
 			custom_effect_tooltip = JAP_land_reform_progress_large
 		}
 		fixed_random_seed = no
@@ -524,10 +515,7 @@ JAP_land_reform = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove JAP_land_adjustment"
 			clr_country_flag = JAP_land_reform_in_progress
-			add_to_variable = {
-				var = JAP_land_reform_variable
-				value = 1
-			}
+			add_to_variable = { JAP_land_reform_variable = 1 }
 			custom_effect_tooltip = JAP_land_reform_progress
 		}
 		fixed_random_seed = no
@@ -551,10 +539,7 @@ JAP_land_reform = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete JAP_rent_control"
-			add_to_variable = {
-				var = JAP_land_reform_variable
-				value = 2
-			}
+			add_to_variable = { JAP_land_reform_variable = 2 }
 			custom_effect_tooltip = JAP_land_reform_progress_large
 		}
 		fixed_random_seed = no
@@ -586,10 +571,7 @@ JAP_land_reform = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete JAP_agriculture_land_control"
 			add_stability = -0.05
-			add_to_variable = {
-				var = JAP_land_reform_variable
-				value = 1
-			}
+			add_to_variable = { JAP_land_reform_variable = 1 }
 			custom_effect_tooltip = JAP_land_reform_progress
 		}
 		fixed_random_seed = no
@@ -630,16 +612,11 @@ JAP_land_reform = {
 			country_event = japan_domestic_events.75
 			custom_effect_tooltip = JAP_land_reform_idea
 			if = {
-				limit = {
-					check_variable = { JAP_land_reform_variable < 3 }
-				}
+				limit = { check_variable = { JAP_land_reform_variable < 3 } }
 				custom_effect_tooltip = JAP_land_reform_fail
 			}
 			else_if = {
-				limit = {
-					check_variable = { JAP_land_reform_variable > 2 }
-					check_variable = { JAP_land_reform_variable < 6 }
-				}
+				limit = { check_variable = { JAP_land_reform_variable < 6 } }
 				effect_tooltip = {
 					if = {
 						limit = { has_country_flag = JAP_seiyukai_land_reform }
@@ -650,10 +627,7 @@ JAP_land_reform = {
 				}
 			}
 			else_if = {
-				limit = {
-					check_variable = { JAP_land_reform_variable > 5 }
-					check_variable = { JAP_land_reform_variable < 8 }
-				}
+				limit = { check_variable = { JAP_land_reform_variable < 8 } }
 				effect_tooltip = {
 					if = {
 						limit = { has_country_flag = JAP_seiyukai_land_reform }
@@ -663,10 +637,7 @@ JAP_land_reform = {
 					JAP_land_reform_reward_good = yes
 				}
 			}
-			else_if = {
-				limit = {
-					check_variable = { JAP_land_reform_variable > 7 }
-				}
+			else = {
 				effect_tooltip = {
 					if = {
 						limit = { has_country_flag = JAP_seiyukai_land_reform }
@@ -1952,14 +1923,12 @@ JAP_influence_china = {
 			base = 0
 			modifier = {
 				FROM = {
-					AND = {
-						OR = {
-							is_in_faction_with = JAP
-							is_in_faction_with = FNG
-						}
-						NOT = {
-							has_war_with = JAP
-						}
+					OR = {
+						is_in_faction_with = JAP
+						is_in_faction_with = FNG
+					}
+					NOT = {
+						has_war_with = JAP
 					}
 				}
 				add = 10
@@ -2023,14 +1992,12 @@ JAP_influence_china = {
 			base = 0
 			modifier = {
 				FROM = {
-					AND = {
-						OR = {
-							is_in_faction_with = JAP
-							is_in_faction_with = FNG
-						}
-						NOT = {
-							has_war_with = JAP
-						}
+					OR = {
+						is_in_faction_with = JAP
+						is_in_faction_with = FNG
+					}
+					NOT = {
+						has_war_with = JAP
 					}
 				}
 				add = 5
@@ -2106,14 +2073,12 @@ JAP_influence_china = {
 			base = 0
 			modifier = {
 				FROM = {
-					AND = {
-						OR = {
-							is_in_faction_with = JAP
-							is_in_faction_with = FNG
-						}
-						NOT = {
-							has_war_with = JAP
-						}
+					OR = {
+						is_in_faction_with = JAP
+						is_in_faction_with = FNG
+					}
+					NOT = {
+						has_war_with = JAP
 					}
 				}
 				add = 5
@@ -2248,6 +2213,41 @@ JAP_influence_china = {
 				add_war_support = 0.03
 			}
 			FNG_JAP_investment_large = yes
+		}
+		fixed_random_seed = no
+	}
+
+	JAP_take_over_qiongya = {
+		icon = eng_trade_unions_demand
+		allowed = { always = no }
+		available = {
+			NOT = { has_global_flag = JAP_defeated_by_china }
+			OR = {
+				has_global_flag = FNG_relations_JAP_broke
+				FNG = { is_subject_of = JAP }
+				FNG = { exists = no }
+			}
+			FROM = { is_controlled_by_ROOT_or_subject = yes }
+		}
+
+		cost = 30
+		fire_only_once = yes
+		state_target = yes
+
+		ai_will_do = { factor = 20 }
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete JAP_take_over_qiongya"
+			add_state_claim = FROM
+			if = {
+				limit = {
+					var:FROM.owner = {
+						is_subject_of = JAP
+						NOT = { tag = JAP }
+					}
+				}
+				FROM = { transfer_state_to = ROOT }
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -2592,7 +2592,7 @@ JAP_economy_cat = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove JAP_support_nichitsu_expansion"
-			527 = { # Yangseo
+			527 = { # Yangso
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = synthetic_refinery
@@ -2600,7 +2600,7 @@ JAP_economy_cat = {
 					instant_build = yes
 				}
 			}
-			1100 = { # Gwanbuk
+			1100 = { # Kwanbuk
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = synthetic_refinery
@@ -3262,14 +3262,13 @@ JAP_co_prosperity_decisions = {
 		allowed = { tag = JAP }
 
 		available = {
-			set_temp_variable = { JAP_factory_comparison = FROM.num_of_owned_factories }
 			if = {
 				limit = { FROM = { has_idea = JAP_member_integration_2 } }
-				multiply_temp_variable = { JAP_factory_comparison = 3 }
+				set_temp_variable = { JAP_factory_comparison = { value = FROM.num_of_owned_factories multiply = 3 } }
 			}
 			else_if = {
 				limit = { FROM = { has_idea = JAP_member_integration_1 } }
-				multiply_temp_variable = { JAP_factory_comparison = 2 }
+				set_temp_variable = { JAP_factory_comparison = { value = FROM.num_of_owned_factories multiply = 2 } }
 			}
 			num_of_controlled_factories > JAP_factory_comparison
 			surrender_progress < 0.30
@@ -3331,6 +3330,10 @@ JAP_co_prosperity_decisions = {
 				FROM = {
 					original_tag = SIA #Make Siam join ASAP
 				}
+			}
+			modifier = {
+				factor = 0
+				FROM = { is_ai = no }
 			}
 		}
 		fixed_random_seed = no
@@ -3457,6 +3460,10 @@ JAP_co_prosperity_decisions = {
 				factor = 3
 				ic_ratio = { tag = FROM ratio < 2 }
 			}
+			modifier = {
+				factor = 0
+				has_political_power < 200
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -3559,6 +3566,10 @@ JAP_co_prosperity_decisions = {
 				factor = 2
 				is_in_faction_with = FROM
 			}
+			modifier = {
+				factor = 0
+				has_political_power < 200
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -3634,6 +3645,10 @@ JAP_co_prosperity_decisions = {
 			modifier = {
 				factor = 10
 				any_enemy_country = { num_of_naval_factories > ROOT.num_of_naval_factories }
+			}
+			modifier = {
+				factor = 0
+				has_political_power < 200
 			}
 		}
 		fixed_random_seed = no
@@ -4496,27 +4511,6 @@ JAP_co_prosperity_member_decisions = {
 		icon = generic_research
 
 		allowed = {
-			NOT = {
-				tag = JAP
-				tag = GER #always hostile
-				tag = MAF
-				tag = GEA
-				tag = BAT
-				tag = RUS
-				tag = FRA
-				tag = ENG
-				tag = WCA
-				tag = SRI
-				tag = SWF
-				tag = FOP
-				tag = HND
-				tag = USA #can't join
-				tag = APG
-				tag = NEE
-				tag = RAJ
-				tag = DEI
-				tag = TAI
-			}
 			OR = {
 				tag = FNG
 				original_tag = GXC
@@ -4555,7 +4549,6 @@ JAP_co_prosperity_member_decisions = {
 
 		allowed = {
 			NOT = {
-				tag = JAP
 				tag = FNG #Fengtian has its own content for joining and leaving.
 			}
 		}
@@ -4592,7 +4585,6 @@ JAP_co_prosperity_member_decisions = {
 
 		allowed = {
 			NOT = {
-				original_tag = JAP
 				tag = FNG #Fengtian has its own content for joining and leaving.
 			}
 		}
@@ -4604,11 +4596,6 @@ JAP_co_prosperity_member_decisions = {
 
 		visible = {
 			is_in_economic_sphere_led_by_FROM = yes
-			NOT = {
-				has_idea = JAP_member_integration_1
-				has_idea = JAP_member_integration_2
-				has_idea = JAP_member_integration_3
-			}
 		}
 
 		targets = { JAP }
@@ -4616,64 +4603,23 @@ JAP_co_prosperity_member_decisions = {
 			is_in_economic_sphere_led_by_FROM = yes
 		}
 
-		cost = 50
+		cost = JAP_investment_buyout?50
 		fire_only_once = yes
 
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete JAP_withdraw_from_sphere"
 			custom_effect_tooltip = JAP_withdraws_from_sphere
-			hidden_effect = { JAP_remove_from_economic_sphere = yes }
 			JAP = {
 				add_opinion_modifier = { target = ROOT modifier = KR_outraged }
-				country_event = japan_foreign_events.409
+				if = {
+					limit = { has_variable = ROOT.JAP_investment_buyout }
+					country_event = { id = japan_foreign_events.410 days = 1 }
+				}
+				else = {
+					country_event = japan_foreign_events.409
+				}
 			}
-			remove_ideas = JAP_nav_tra_idea
-		}
-
-		ai_will_do = { base = 0 }
-		fixed_random_seed = no
-	}
-
-	JAP_nationalize_japanese_investments = {
-		icon = generic_break_treaty
-
-		allowed = {
-			NOT = {
-				original_tag = JAP
-				tag = FNG #Fengtian has its own content for joining and leaving.
-			}
-		}
-
-		available = {
-			is_subject = no
-			controls_all_owned_states = yes
-		}
-
-		visible = {
-			is_in_economic_sphere_led_by_FROM = yes
-			OR = {
-				has_idea = JAP_member_integration_1
-				has_idea = JAP_member_integration_2
-				has_idea = JAP_member_integration_3
-			}
-		}
-
-		targets = { JAP }
-		target_trigger = {
-			is_in_economic_sphere_led_by_FROM = yes
-		}
-
-		cost = JAP_investment_buyout?100
-		fire_only_once = yes
-
-		complete_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision complete JAP_nationalize_japanese_investments"
-			custom_effect_tooltip = JAP_withdraws_from_sphere
 			hidden_effect = { JAP_remove_from_economic_sphere = yes }
-			JAP = {
-				add_opinion_modifier = { target = ROOT modifier = KR_outraged }
-				country_event = { id = japan_foreign_events.410 days = 1 }
-			}
 		}
 
 		ai_will_do = { base = 0 }
@@ -4777,7 +4723,7 @@ JAP_foreign_policy_decisions = {
 			NOT = { has_guaranteed = FROM }
 			OR = {
 				is_neighbor_of = FROM
-				FROM = { naval_base > 0 }
+				FROM = { any_owned_state = { naval_base > 0 } } #not land-locked
 				FROM = { any_home_area_neighbor_country = { is_ally_with = ROOT } }
 			}
 		}
@@ -4983,6 +4929,15 @@ JAP_foreign_policy_decisions = {
 			modifier = {
 				factor = 5
 				FROM = { has_socialist_government = yes }
+			}
+			modifier = {
+				add = 5000
+				FER = { exists = no }
+				is_ally_with = CHN
+				FROM = {
+					any_enemy_country = { is_major = yes }
+					surrender_progress > 0.1
+				}
 			}
 		}
 

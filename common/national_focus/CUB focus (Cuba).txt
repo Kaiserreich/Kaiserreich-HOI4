@@ -956,15 +956,13 @@ shared_focus = {
 		has_government = authoritarian_democrat
 		has_country_leader = { character = CUB_ramon_grau_san_martin }
 		custom_override_tooltip = {
-			AND = {
-				OR = {
-					has_country_flag = CUB_natsseizedstuff
-					has_idea = CUB_natplantdeal
-				}
-				OR = {
-					has_country_flag = CUB_stormed_embassy
-					has_country_flag = CUB_nostorm
-				}
+			OR = {
+				has_country_flag = CUB_natsseizedstuff
+				has_idea = CUB_natplantdeal
+			}
+			OR = {
+				has_country_flag = CUB_stormed_embassy
+				has_country_flag = CUB_nostorm
 			}
 			tooltip = forthecubans_tooltip
 		}
@@ -1711,10 +1709,8 @@ shared_focus = {
 
 	available = {
 		custom_override_tooltip = {
-			AND = {
-				has_country_flag = CUB_demreform1
-				has_country_flag = CUB_demreform2
-			}
+			has_country_flag = CUB_demreform1
+			has_country_flag = CUB_demreform2
 			tooltip = bypasspresg_tooltip
 		}
 	}
@@ -3943,10 +3939,8 @@ shared_focus = {
 			factor = 0
 		}
 		modifier = {
-			AND = {
-				has_country_flag = CUB_pol_tree_finished
-				has_war = yes
-			}
+			has_country_flag = CUB_pol_tree_finished
+			has_war = yes
 			factor = 1.4
 		}
 	}
@@ -4828,15 +4822,13 @@ shared_focus = {
 				AND = {
 					has_game_rule = { rule = CUB_forpol option = CUB_FORPOL_APG }
 					NOT = { has_global_flag = USA_civil_war_over_flag }
-					AND = {
-						OR = {
-							has_socialist_government = yes
-							country_exists = USA
-						}
-						OR = {
-							NOT = { has_global_flag = USA_civil_war_begun_flag }
-							country_exists = APG
-						}
+					OR = {
+						has_socialist_government = yes
+						country_exists = USA
+					}
+					OR = {
+						NOT = { has_global_flag = USA_civil_war_begun_flag }
+						country_exists = APG
 					}
 				}
 				AND = {
@@ -5470,24 +5462,6 @@ shared_focus = {
 ###Democratic Tree
 #Political
 
-focus_tree = {
-	id = CUB_democratic_focuses
-	country = {
-		factor = 0
-		modifier = {
-			add = 10
-			tag = CUB
-		}
-	}
-	default = no
-	continuous_focus_position = { x = 150 y = 900 }
-
-	shared_focus = CUB_democracy_survives
-	shared_focus = CUB_new_economic_expansion
-	shared_focus = CUB_foreign_relate
-	shared_focus = CUB_begin_mil_reform
-}
-
 shared_focus = {
 	id = CUB_democracy_survives
 	icon = GFX_goal_liberty
@@ -5940,10 +5914,8 @@ shared_focus = {
 	ai_will_do = {
 		factor = 15
 		modifier = {
-			AND = {
-				has_global_flag = USA_civil_war_over_flag
-				country_exists = WCA
-			}
+			has_global_flag = USA_civil_war_over_flag
+			country_exists = WCA
 			factor = 4
 		}
 	}
@@ -6097,10 +6069,8 @@ shared_focus = {
 	ai_will_do = {
 		factor = 15
 		modifier = {
-			AND = {
-				has_global_flag = USA_civil_war_over_flag
-				country_exists = WCA
-			}
+			has_global_flag = USA_civil_war_over_flag
+			country_exists = WCA
 			factor = 4
 		}
 	}

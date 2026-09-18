@@ -283,7 +283,7 @@ PER_forpol_setup = {
 									OR = {
 										exists = no
 										is_faction_leader = no
-										has_war_with = ROOT
+										has_war_with = PER
 									}
 								}
 								RUS = { has_country_flag = RUS_iranian_aid_sent } # Disable if RUS has sent aid to PER
@@ -302,7 +302,7 @@ PER_forpol_setup = {
 										exists = no
 										is_faction_leader = no
 										has_socialist_government = yes
-										has_war_with = ROOT
+										has_war_with = PER
 									}
 								}
 							}
@@ -335,6 +335,7 @@ PER_puppet_setup = {
 		limit = { has_authoritarian_government = no }
 		remove_ideas = PER_legacy_of_agha_khan
 	}
+	remove_targeted_decision = { decision = PER_invade_iraq target = IRQ }
 }
 
 PER_puppet_KUR = {

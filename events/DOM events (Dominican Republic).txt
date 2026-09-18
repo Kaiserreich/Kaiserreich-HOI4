@@ -3454,8 +3454,7 @@ country_event = { #Dominican Government Seized
 						militia = { x = 0 y = 2 }
 					}
 				}
-				set_temp_variable = { DOM_num_rebel_units = ROOT.num_divisions }
-				subtract_from_temp_variable = { DOM_num_rebel_units = HAI.num_divisions }
+				set_temp_variable = { DOM_num_rebel_units = { value = ROOT.num_divisions subtract = HAI.num_divisions } }
 				capital_scope = {
 					create_unit = {
 						division = "name = \"Brigada de Infantería 'Trinitarios'\" division_template = \"Brigada de Milicia\" start_experience_factor = 0.05"
@@ -3592,9 +3591,8 @@ country_event = { #Haitian Government Seized
 						militia = { x = 0 y = 2 }
 					}
 				}
-				set_temp_variable = { DOM_num_rebel_units = ROOT.num_divisions }
-				subtract_from_temp_variable = { DOM_num_rebel_units = HAI.num_divisions }
-				clamp_temp_variable = { var = DOM_num_rebel_units min = 0 }
+
+				set_temp_variable = { DOM_num_rebel_units = { value = ROOT.num_divisions subtract = HAI.num_divisions } }
 				if = {
 					limit = { check_variable = { DOM_num_rebel_units > 0 } }
 					capital_scope = {

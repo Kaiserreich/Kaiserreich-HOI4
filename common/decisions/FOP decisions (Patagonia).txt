@@ -554,16 +554,20 @@ FOP_immigration_decisions = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete FOP_Attract_Immigrants_Small"
-			add_to_variable = {
-				var = fop_im_factor
-				value = 5
-				tooltip = ARG_add_immigration_tt
-			}
+			add_to_variable = { arg_im_factor = 0.05 tooltip = ARG_add_immigration_tt }
 			### Immigration modifier update
-			add_to_variable = { var = var_ARG_immigration_modifier_buff value = 0.002 }
-			add_to_variable = { var = var_ARG_immigration_modifier_debuff value = -0.001 }
-			clamp_variable = { var = var_ARG_immigration_modifier_buff min = 0 max = 0.30 }
-			clamp_variable = { var = var_ARG_immigration_modifier_debuff min = -0.15 max = 0.30 }
+			add_to_variable = {
+				var_ARG_immigration_modifier_buff = {
+					value = 0.002
+					clamp = { min = 0 max = { value = 0.30 subtract = var_ARG_immigration_modifier_buff } }
+				}
+			}
+			add_to_variable = {
+				var_ARG_immigration_modifier_debuff = {
+					value = -0.001
+					clamp = { min = { value = -0.15 subtract = var_ARG_immigration_modifier_debuff } max = 0 }
+				}
+			}
 		}
 
 		ai_will_do = { base = 1 }
@@ -584,16 +588,20 @@ FOP_immigration_decisions = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete FOP_Attract_Immigrants_Medium"
-			add_to_variable = {
-				var = fop_im_factor
-				value = 10
-				tooltip = ARG_add_immigration_tt
-			}
+			add_to_variable = { arg_im_factor = 0.1 tooltip = ARG_add_immigration_tt }
 			### Immigration modifier update
-			add_to_variable = { var = var_ARG_immigration_modifier_buff value = 0.005 }
-			add_to_variable = { var = var_ARG_immigration_modifier_debuff value = -0.002 }
-			clamp_variable = { var = var_ARG_immigration_modifier_buff min = 0 max = 0.30 }
-			clamp_variable = { var = var_ARG_immigration_modifier_debuff min = -0.15 max = 0 }
+			add_to_variable = {
+				var_ARG_immigration_modifier_buff = {
+					value = 0.005
+					clamp = { min = 0 max = { value = 0.30 subtract = var_ARG_immigration_modifier_buff } }
+				}
+			}
+			add_to_variable = {
+				var_ARG_immigration_modifier_debuff = {
+					value = -0.002
+					clamp = { min = { value = -0.15 subtract = var_ARG_immigration_modifier_debuff } max = 0 }
+				}
+			}
 		}
 
 		ai_will_do = { base = 1 }
@@ -614,16 +622,20 @@ FOP_immigration_decisions = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete FOP_Attract_Immigrants_Big"
-			add_to_variable = {
-				var = fop_im_factor
-				value = 20
-				tooltip = ARG_add_immigration_tt
-			}
+			add_to_variable = { arg_im_factor = 0.2 tooltip = ARG_add_immigration_tt }
 			### Immigration modifier update
-			add_to_variable = { var = var_ARG_immigration_modifier_buff value = 0.01 }
-			add_to_variable = { var = var_ARG_immigration_modifier_debuff value = -0.005 }
-			clamp_variable = { var = var_ARG_immigration_modifier_buff min = 0 max = 0.30 }
-			clamp_variable = { var = var_ARG_immigration_modifier_debuff min = -0.15 max = 0 }
+			add_to_variable = {
+				var_ARG_immigration_modifier_buff = {
+					value = 0.01
+					clamp = { min = 0 max = { value = 0.30 subtract = var_ARG_immigration_modifier_buff } }
+				}
+			}
+			add_to_variable = {
+				var_ARG_immigration_modifier_debuff = {
+					value = -0.005
+					clamp = { min = { value = -0.15 subtract = var_ARG_immigration_modifier_debuff } max = 0 }
+				}
+			}
 		}
 
 		ai_will_do = { base = 1 }

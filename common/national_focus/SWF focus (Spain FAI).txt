@@ -1221,7 +1221,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SWF_united_iberia"
 			add_ideas = SWF_unification_of_iberia
-			set_cosmetic_tag = SPA_socialist_iberia
+			if = {
+				limit = { NOT = { has_government = syndicalist } }
+				set_cosmetic_tag = SPA_socialist_iberia_radical_socialist
+			}
+			else = {
+				set_cosmetic_tag = SPA_socialist_iberia_syndicalist
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}

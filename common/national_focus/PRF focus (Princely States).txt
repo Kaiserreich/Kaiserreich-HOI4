@@ -2487,6 +2487,9 @@ focus_tree = {
 					unlock_national_focus = PRF_the_spirit_of_andhrodyamam
 					country_event = { id = princely_federation_events.300 days = 20 }
 				}
+				BHU = {
+					country_event = { id = bhutan_events.728 days = 5 }
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_POLITICAL }
@@ -5182,6 +5185,57 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed PRF_nepal_claims"
 			india_claim_nepal_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+
+	focus = {
+		id = PRF_fate_of_the_frontier
+		icon = {
+			GFX_goal_generic_attack_afghanistan_republic = {
+				AFG = {
+					is_monarchy = no
+					has_socialist_government = no
+				}
+			}
+			GFX_goal_generic_attack_afghanistan_socialist = {
+				AFG = {
+					has_socialist_government = yes
+				}
+			}
+			GFX_goal_generic_attack_afghanistan = yes
+		}
+		cost = 5
+		dynamic = yes
+
+		relative_position_id = PRF_nepal_claims
+		x = 3
+		y = 1
+
+		prerequisite = { focus = PRF_nepal_claims }
+		available = {
+			india_can_claim_peshawar = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 10
+				var:442.owner = { enemies_strength_ratio > 0.5 }
+			}
+			modifier = {
+				factor = 0
+				india_reconstruction_ongoing = yes
+			}
+		}
+
+		bypass = {
+			india_bypass_peshawar_claim = yes
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PRF_fate_of_the_frontier"
+			india_claim_peshawar_effect = yes
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 	}

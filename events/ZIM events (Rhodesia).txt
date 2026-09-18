@@ -226,8 +226,7 @@ country_event = {
 		custom_effect_tooltip = ZIM_tt_reform_becomes_authdem
 		hidden_effect = {
 			set_temp_variable = { SAF_moderate_to_extremist_value = party_popularity@social_liberal }
-			set_temp_variable = { SAF_moderate_to_extremist_value_reverse = 0 }
-			subtract_from_temp_variable = { var = SAF_moderate_to_extremist_value_reverse value = party_popularity@social_liberal }
+			set_temp_variable = { SAF_moderate_to_extremist_value_reverse = { value = party_popularity@social_liberal multiply = -1 } }
 			add_popularity = { ideology = social_liberal popularity = SAF_moderate_to_extremist_value_reverse }
 			add_popularity = { ideology = authoritarian_democrat popularity = SAF_moderate_to_extremist_value }
 		}
@@ -302,8 +301,7 @@ country_event = {
 		custom_effect_tooltip = ZIM_tt_rhodesia_and_right_reform_become_united
 		hidden_effect = {
 			set_temp_variable = { SAF_moderate_to_extremist_value = party_popularity@market_liberal }
-			set_temp_variable = { SAF_moderate_to_extremist_value_reverse = 0 }
-			subtract_from_temp_variable = { var = SAF_moderate_to_extremist_value_reverse value = party_popularity@market_liberal }
+			set_temp_variable = { SAF_moderate_to_extremist_value_reverse = { value = party_popularity@market_liberal multiply = -1 } }
 			add_popularity = { ideology = market_liberal popularity = SAF_moderate_to_extremist_value_reverse }
 			add_popularity = { ideology = authoritarian_democrat popularity = SAF_moderate_to_extremist_value }
 		}
@@ -395,8 +393,7 @@ country_event = {
 		custom_effect_tooltip = ZIM_tt_reform_becomes_authdem
 		hidden_effect = {
 			set_temp_variable = { SAF_moderate_to_extremist_value = party_popularity@social_liberal }
-			set_temp_variable = { SAF_moderate_to_extremist_value_reverse = 0 }
-			subtract_from_temp_variable = { var = SAF_moderate_to_extremist_value_reverse value = party_popularity@social_liberal }
+			set_temp_variable = { SAF_moderate_to_extremist_value_reverse = { value = party_popularity@social_liberal multiply = -1 } }
 			add_popularity = { ideology = social_liberal popularity = SAF_moderate_to_extremist_value_reverse }
 			add_popularity = { ideology = authoritarian_democrat popularity = SAF_moderate_to_extremist_value }
 		}
@@ -427,8 +424,7 @@ country_event = {
 		custom_effect_tooltip = ZIM_tt_rhodesia_and_right_reform_become_united
 		hidden_effect = {
 			set_temp_variable = { SAF_moderate_to_extremist_value = party_popularity@market_liberal }
-			set_temp_variable = { SAF_moderate_to_extremist_value_reverse = 0 }
-			subtract_from_temp_variable = { var = SAF_moderate_to_extremist_value_reverse value = party_popularity@market_liberal }
+			set_temp_variable = { SAF_moderate_to_extremist_value_reverse = { value = party_popularity@market_liberal multiply = -1 } }
 			add_popularity = { ideology = market_liberal popularity = SAF_moderate_to_extremist_value_reverse }
 			add_popularity = { ideology = authoritarian_democrat popularity = SAF_moderate_to_extremist_value }
 		}

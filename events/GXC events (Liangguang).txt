@@ -4714,7 +4714,7 @@ country_event = { #Rice Glut
 			GXC_CMC_medium_effect = yes
 		}
 		random_owned_controlled_state = {
-			limit = { has_state_flag = guangxi_province_state }
+			limit = { check_variable = { chinese_province_state = 594.id } }
 			prioritize = { 594 599 } #Nanning, Guilin
 			add_building_construction = {
 				type = infrastructure
@@ -7039,14 +7039,11 @@ country_event = {
 		hidden_effect = {
 			CHI = { country_event = { id = GXC.earlygame.463 days = 1 } } #Chen Mingshu's Coup Fails
 		}
-		set_temp_variable = { GXC_CHI_coup_soc_dem_temp_var = ROOT.party_popularity@social_democrat }
-		set_temp_variable = { GXC_CHI_coup_rad_soc_temp_var = ROOT.party_popularity@radical_socialist }
-		set_temp_variable = { GXC_CHI_coup_syndie_temp_var = ROOT.party_popularity@syndicalist }
 
-		#GXC loses half of each leftist ideology (minus totalists who are irrelevant
-		divide_temp_variable = { GXC_CHI_coup_soc_dem_temp_var = -2 }
-		divide_temp_variable = { GXC_CHI_coup_rad_soc_temp_var = -2 }
-		divide_temp_variable = { GXC_CHI_coup_syndie_temp_var = -2 }
+		#GXC loses half of each leftist ideology (minus totalists who are irrelevant)
+		set_temp_variable = { GXC_CHI_coup_soc_dem_temp_var = { value = party_popularity@social_democrat multiply = -0.5 } }
+		set_temp_variable = { GXC_CHI_coup_rad_soc_temp_var = { value = party_popularity@radical_socialist multiply = -0.5 } }
+		set_temp_variable = { GXC_CHI_coup_syndie_temp_var = { value = party_popularity@syndicalist multiply = -0.5 } }
 
 		add_popularity = { ideology = social_democrat popularity = GXC_CHI_coup_soc_dem_temp_var }
 		add_popularity = { ideology = radical_socialist popularity = GXC_CHI_coup_rad_soc_temp_var }
@@ -7055,13 +7052,21 @@ country_event = {
 		GXC_NGX_giga_effect = yes #Li Zongren doesn't become countryleader but does get compensated handsomely
 
 		#GXC loses war support equivalent to loss of Rad Soc (Peasant) popularity, stability equivalent to Syndicalist (Union) popularity, and tanks both equivalent to half of Soc Dem (army) popularity
-		set_temp_variable = { GXC_CHI_coup_war_support_loss = GXC_CHI_coup_rad_soc_temp_var }
-		set_temp_variable = { GXC_CHI_coup_stability_loss = GXC_CHI_coup_syndie_temp_var }
-		multiply_temp_variable = { GXC_CHI_coup_war_support_loss = 2 }
-		multiply_temp_variable = { GXC_CHI_coup_stability_loss = 2 }
-		add_to_temp_variable = { GXC_CHI_coup_war_support_loss = GXC_CHI_coup_soc_dem_temp_var }
-		add_to_temp_variable = { GXC_CHI_coup_stability_loss = GXC_CHI_coup_soc_dem_temp_var }
+		set_temp_variable = {
+			GXC_CHI_coup_war_support_loss = {
+				value = GXC_CHI_coup_rad_soc_temp_var
+				multiply = 2
+				add = GXC_CHI_coup_soc_dem_temp_var
+			}
+		}
 		add_war_support = GXC_CHI_coup_war_support_loss
+		set_temp_variable = {
+			GXC_CHI_coup_stability_loss = {
+				value = GXC_CHI_coup_syndie_temp_var
+				multiply = 2
+				add = GXC_CHI_coup_soc_dem_temp_var
+			}
+		}
 		add_stability = GXC_CHI_coup_stability_loss
 		effect_tooltip = {
 			800 = { transfer_state_to = CHI } #Shaoguan
@@ -7091,8 +7096,7 @@ country_event = {
 			ideology = social_democrat_subtype
 		}
 		activate_advisor = GXC_li_zongren_sic
-		set_temp_variable = { GXC_CHI_coup_auth_dem_temp_var = ROOT.party_popularity@authoritarian_democrat }
-		divide_temp_variable = { GXC_CHI_coup_auth_dem_temp_var = -2 }
+		set_temp_variable = { GXC_CHI_coup_auth_dem_temp_var = { value = party_popularity@authoritarian_democrat multiply = -0.5 } }
 		add_popularity = { ideology = authoritarian_democrat popularity = GXC_CHI_coup_auth_dem_temp_var }
 		add_war_support = GXC_CHI_coup_auth_dem_temp_var
 		add_stability = GXC_CHI_coup_auth_dem_temp_var
@@ -8049,7 +8053,10 @@ country_event = {
 			every_country = {
 				limit = {
 					OR = {
-						tag = QIE
+						AND = {
+							tag = QIE
+							china_alignment_manchu_qing = no
+						}
 						tag = FNG
 						tag = LEP
 						tag = ANQ
@@ -11677,9 +11684,13 @@ country_event = {
 						#Our goal here is to multiply the chance of winning by amount of Zeal % above 50%.
 						#So at 100%, the chance of winning increases by 50% (aka 75 total points).
 						#At 0%, the chance of winning decreases by 50% (aka 25 total points).
-						set_temp_variable = { GXC_hu_hanmin_win_bonus_temp_var = global.RKT_revolutionary_zeal_var } #Zeal is always between 0-1.
-						subtract_from_temp_variable = { GXC_hu_hanmin_win_bonus_temp_var = 0.5 } #We are subtracting 0.5 from it. So the result will be between -0.5 to 0.5.
-						add_to_temp_variable = { GXC_hu_hanmin_win_bonus_temp_var = 1 } #Now we are adding 1, so it'll range between 0.5-1.5
+						set_temp_variable = {
+							GXC_hu_hanmin_win_bonus_temp_var = {
+								value = global.RKT_revolutionary_zeal_var #Zeal is always between 0-1.
+								subtract = 0.5 #We are subtracting 0.5 from it. So the result will be between -0.5 to 0.5.
+								add = 1 #Now we are adding 1, so it'll range between 0.5-1.5
+							}
+						}
 						factor = GXC_hu_hanmin_win_bonus_temp_var
 					}
 					country_event = { id = GXC.midgame.508 days = 3 } #The Chairman Prevails! - Unlocks the high zeal ending
@@ -11689,10 +11700,14 @@ country_event = {
 						#Our goal here is to multiply the chance of winning by amount of Zeal % below 50%.
 						#So at 100%, the chance of winning decreases by 50% (aka 25 total points).
 						#At 0%, the chance of winning increases by 50% (aka 75 total points).
-						set_temp_variable = { GXC_li_zongren_win_bonus_temp_var = global.RKT_revolutionary_zeal_var } #Zeal is always between 0-1.
-						subtract_from_temp_variable = { GXC_li_zongren_win_bonus_temp_var = 0.5 } #We are subtracting 0.5 from it. So the result will be between -0.5 to 0.5.
-						multiply_temp_variable = { GXC_li_zongren_win_bonus_temp_var = -1 } #So now it all inverses, -0.5 becomes 0.5 and vice versa. So 0.5 to -0.5
-						add_to_temp_variable = { GXC_li_zongren_win_bonus_temp_var = 1 } #Now we are adding 1, so it'll range between 1.5-0.5
+						set_temp_variable = {
+							GXC_li_zongren_win_bonus_temp_var = {
+								value = global.RKT_revolutionary_zeal_var #Zeal is always between 0-1.
+								subtract = 0.5 #We are subtracting 0.5 from it. So the result will be between -0.5 to 0.5.
+								multiply = -1 #So now it all inverses, -0.5 becomes 0.5 and vice versa. So 0.5 to -0.5
+								add = 1 #Now we are adding 1, so it'll range between 0.5-1.5
+							}
+						}
 						factor = GXC_li_zongren_win_bonus_temp_var
 					}
 					country_event = { id = GXC.midgame.509 days = 3 } #The Chairman Falls! - Unlocks low zeal ending
@@ -11734,13 +11749,14 @@ country_event = {
 		add_political_power = -50
 		#He literally tried to kill your government
 		custom_effect_tooltip = tooltip_white_line
-		retire_character = GXC_li_zongren
-		retire_character = GXC_bai_chongxi
-		add_command_power = -50
 		if = {
 			limit = { GXC_li_zongren = { is_second_in_command = yes } }
 			activate_advisor = GXC_li_wenfan_sic
 		}
+		custom_effect_tooltip = tooltip_white_line
+		retire_character = GXC_li_zongren
+		retire_character = GXC_bai_chongxi
+		add_command_power = -50
 	}
 
 	option = {
@@ -12651,8 +12667,7 @@ country_event = {
 		add_political_power = -50
 		add_stability = -0.10
 		GXC_GPA_large_effect = yes
-		set_temp_variable = { GXC_PPP_pop_loss_temp_var = ROOT.party_popularity@syndicalist } #0-1
-		multiply_temp_variable = { GXC_PPP_pop_loss_temp_var = -1 } #-1-0
+		set_temp_variable = { GXC_PPP_pop_loss_temp_var = { value = party_popularity@syndicalist multiply = -1 } } #0-1 -> -1-0
 		custom_effect_tooltip = GXC_LKMT_canton_commune_tot_attacK_tt
 	}
 
@@ -12718,18 +12733,15 @@ country_event = {
 		add_command_power = -100
 
 		#Add Soc Dem Party Popularity = to Soc Lib and Pat Aut Combined
-		set_temp_variable = { GXC_PPP_bonus_from_rightists_temp_var = ROOT.party_popularity@social_liberal } #0-1
-		add_to_temp_variable = { GXC_PPP_bonus_from_rightists_temp_var = ROOT.party_popularity@paternal_autocrat } #0.2
+		set_temp_variable = { GXC_PPP_bonus_from_rightists_temp_var = { value = party_popularity@social_liberal add = party_popularity@paternal_autocrat } }
 		add_popularity = { ideology = social_democrat popularity = GXC_PPP_bonus_from_rightists_temp_var }
 
 		#Subtract Rad Soc Popularity = to Pat Aut
-		set_temp_variable = { GXC_rad_soc_loss_temp_var = ROOT.party_popularity@paternal_autocrat } #0-1
-		multiply_temp_variable = { GXC_rad_soc_loss_temp_var = -1 } #-1-0
+		set_temp_variable = { GXC_rad_soc_loss_temp_var = { value = party_popularity@paternal_autocrat multiply = -1 } }
 		add_popularity = { ideology = radical_socialist popularity = GXC_rad_soc_loss_temp_var }
 
 		#Subtract Syndie Popularity = Soc Lib
-		set_temp_variable = { GXC_syndie_loss_temp_var = ROOT.party_popularity@syndicalist } #0-1
-		multiply_temp_variable = { GXC_syndie_loss_temp_var = -1 } #-1-0
+		set_temp_variable = { GXC_syndie_loss_temp_var = { value = party_popularity@syndicalist multiply = -1 } }
 		add_popularity = { ideology = syndicalist popularity = GXC_syndie_loss_temp_var }
 
 		custom_effect_tooltip = GXC_LKMT_chen_mingshu_deal_with_rightist_tt
@@ -12745,14 +12757,12 @@ country_event = {
 
 		#Remove Soc Lib popularity - add it to Syndicalists
 		add_popularity = { ideology = syndicalist popularity = ROOT.party_popularity@social_liberal }
-		set_temp_variable = { GXC_soc_lib_loss_temp_var = ROOT.party_popularity@social_liberal } #0-1
-		multiply_temp_variable = { GXC_soc_lib_loss_temp_var = -1 } #-1-0
+		set_temp_variable = { GXC_soc_lib_loss_temp_var = { value = ROOT.party_popularity@social_liberal multiply = -1 } } #-1-0
 		add_popularity = { ideology = social_liberal popularity = GXC_soc_lib_loss_temp_var }
 
 		#Remove Pat Aut popularity - add it to Rad Soc
 		add_popularity = { ideology = radical_socialist popularity = ROOT.party_popularity@paternal_autocrat }
-		set_temp_variable = { GXC_pat_aut_loss_temp_var = ROOT.party_popularity@paternal_autocrat } #0-1
-		multiply_temp_variable = { GXC_pat_aut_loss_temp_var = -1 } #-1-0
+		set_temp_variable = { GXC_pat_aut_loss_temp_var = { value = party_popularity@paternal_autocrat multiply = -1 } } #-1-0
 		add_popularity = { ideology = paternal_autocrat popularity = GXC_pat_aut_loss_temp_var }
 
 		custom_effect_tooltip = GXC_LKMT_chen_mingshu_no_deal_with_rightist_tt
@@ -13056,9 +13066,13 @@ country_event = {
 			}
 		}
 		#For every non-Syndicalist party popularity in GXC, costs 1pp (max 100).
-		set_temp_variable = { GXC_pp_loss_temp_var = 1 }
-		subtract_from_temp_variable = { GXC_pp_loss_temp_var = GXC.party_popularity@syndicalist }
-		multiply_temp_variable = { GXC_pp_loss_temp_var = -100 }
+		set_temp_variable = {
+			GXC_pp_loss_temp_var = {
+				value = 100
+				subtract = GXC.party_popularity_100@syndicalist
+				multiply = -1
+			}
+		}
 		custom_effect_tooltip = {
 			localization_key = CHN_deduct_pp_relative_to_non_ideology_in_country_tt
 			IDEOLOGY = syndicalist_coloured COUNTRY = "[GXC.GetNameDef]"
@@ -13086,9 +13100,13 @@ country_event = {
 			}
 		}
 		#For every non-Rad Soc party popularity in GXC, costs 1pp (max 100).
-		set_temp_variable = { GXC_pp_loss_temp_var = 1 }
-		subtract_from_temp_variable = { GXC_pp_loss_temp_var = GXC.party_popularity@radical_socialist }
-		multiply_temp_variable = { GXC_pp_loss_temp_var = -100 }
+		set_temp_variable = {
+			GXC_pp_loss_temp_var = {
+				value = 100
+				subtract = GXC.party_popularity_100@radical_socialist
+				multiply = -1
+			}
+		}
 		custom_effect_tooltip = {
 			localization_key = CHN_deduct_pp_relative_to_non_ideology_in_country_tt
 			IDEOLOGY = radical_socialist_coloured COUNTRY = "[GXC.GetNameDef]"
@@ -13115,9 +13133,13 @@ country_event = {
 			}
 		}
 		#For every non-Soc Dem party popularity in GXC, costs 1pp (max 100).
-		set_temp_variable = { GXC_pp_loss_temp_var = 1 }
-		subtract_from_temp_variable = { GXC_pp_loss_temp_var = GXC.party_popularity@social_democrat }
-		multiply_temp_variable = { GXC_pp_loss_temp_var = -100 }
+		set_temp_variable = {
+			GXC_pp_loss_temp_var = {
+				value = 100
+				subtract = GXC.party_popularity_100@social_democrat
+				multiply = -1
+			}
+		}
 		custom_effect_tooltip = {
 			localization_key = CHN_deduct_pp_relative_to_non_ideology_in_country_tt
 			IDEOLOGY = social_democrat_coloured COUNTRY = "[GXC.GetNameDef]"
@@ -17770,15 +17792,22 @@ country_event = { #The Democratic Awakening
 			}
 		}
 		#Lose political power and stability proportionate to difference between party popularity and 100%
-		set_temp_variable = { GXC_party_pop_diff_temp_var = 1 }
-		subtract_from_temp_variable = { GXC_party_pop_diff_temp_var = party_popularity@authoritarian_democrat } #Between 0-1
-
-		set_temp_variable = { GXC_stability_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_stability_loss_temp_var = -0.25 } #Between -0.25 to 0.00
+		set_temp_variable = {
+			GXC_stability_loss_temp_var = { #Between -0.25 to 0.00
+				value = 1
+				subtract = party_popularity@authoritarian_democrat
+				multiply = -0.25
+			}
+		}
 		add_stability = GXC_stability_loss_temp_var
 
-		set_temp_variable = { GXC_pp_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_pp_loss_temp_var = -200 } #Between -200 to 0.00
+		set_temp_variable = {
+			GXC_pp_loss_temp_var = { #Between -200 to 0.00
+				value = 100
+				subtract = party_popularity_100@authoritarian_democrat
+				multiply = -2
+			}
+		}
 		add_political_power = GXC_pp_loss_temp_var
 
 		custom_effect_tooltip = {
@@ -17811,15 +17840,22 @@ country_event = { #The Democratic Awakening
 			}
 		}
 		#Lose political power and stability proportionate to difference between party popularity and 100%
-		set_temp_variable = { GXC_party_pop_diff_temp_var = 1 }
-		subtract_from_temp_variable = { GXC_party_pop_diff_temp_var = party_popularity@social_conservative } #Between 0-1
-
-		set_temp_variable = { GXC_stability_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_stability_loss_temp_var = -0.25 } #Between -0.25 to 0.00
+		set_temp_variable = {
+			GXC_stability_loss_temp_var = { #Between -0.25 to 0.00
+				value = 1
+				subtract = party_popularity@social_conservative
+				multiply = -0.25
+			}
+		}
 		add_stability = GXC_stability_loss_temp_var
 
-		set_temp_variable = { GXC_pp_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_pp_loss_temp_var = -200 } #Between -200 to 0.00
+		set_temp_variable = {
+			GXC_pp_loss_temp_var = { #Between -200 to 0.00
+				value = 100
+				subtract = party_popularity_100@social_conservative
+				multiply = -2
+			}
+		}
 		add_political_power = GXC_pp_loss_temp_var
 
 		custom_effect_tooltip = {
@@ -17852,15 +17888,22 @@ country_event = { #The Democratic Awakening
 			}
 		}
 		#Lose political power and stability proportionate to difference between party popularity and 100%
-		set_temp_variable = { GXC_party_pop_diff_temp_var = 1 }
-		subtract_from_temp_variable = { GXC_party_pop_diff_temp_var = party_popularity@social_liberal } #Between 0-1
-
-		set_temp_variable = { GXC_stability_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_stability_loss_temp_var = -0.25 } #Between -0.25 to 0.00
+		set_temp_variable = {
+			GXC_stability_loss_temp_var = { #Between -0.25 to 0.00
+				value = 1
+				subtract = party_popularity@social_liberal
+				multiply = -0.25
+			}
+		}
 		add_stability = GXC_stability_loss_temp_var
 
-		set_temp_variable = { GXC_pp_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_pp_loss_temp_var = -200 } #Between -200 to 0.00
+		set_temp_variable = {
+			GXC_pp_loss_temp_var = { #Between -200 to 0.00
+				value = 100
+				subtract = party_popularity_100@social_liberal
+				multiply = -2
+			}
+		}
 		add_political_power = GXC_pp_loss_temp_var
 
 		custom_effect_tooltip = {
@@ -18807,15 +18850,22 @@ country_event = { #Faceoff in [ROOT.Capital.GetCapitalVictoryPointName]
 			}
 		}
 		#Lose political power and stability proportionate to difference between party popularity and 100%
-		set_temp_variable = { GXC_party_pop_diff_temp_var = 1 }
-		subtract_from_temp_variable = { GXC_party_pop_diff_temp_var = party_popularity@paternal_autocrat } #Between 0-1
-
-		set_temp_variable = { GXC_stability_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_stability_loss_temp_var = -0.25 } #Between -0.25 to 0.00
+		set_temp_variable = {
+			GXC_stability_loss_temp_var = { #Between -0.25 to 0.00
+				value = 1
+				subtract = party_popularity@paternal_autocrat
+				multiply = -0.25
+			}
+		}
 		add_stability = GXC_stability_loss_temp_var
 
-		set_temp_variable = { GXC_pp_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_pp_loss_temp_var = -200 } #Between -200 to 0.00
+		set_temp_variable = {
+			GXC_pp_loss_temp_var = { #Between -200 to 0.00
+				value = 100
+				subtract = party_popularity_100@paternal_autocrat
+				multiply = -2
+			}
+		}
 		add_political_power = GXC_pp_loss_temp_var
 
 		custom_effect_tooltip = {
@@ -18868,15 +18918,22 @@ country_event = { #Faceoff in [ROOT.Capital.GetCapitalVictoryPointName]
 			}
 		}
 		#Lose political power and stability proportionate to difference between party popularity and 100%
-		set_temp_variable = { GXC_party_pop_diff_temp_var = 1 }
-		subtract_from_temp_variable = { GXC_party_pop_diff_temp_var = party_popularity@social_conservative } #Between 0-1
-
-		set_temp_variable = { GXC_stability_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_stability_loss_temp_var = -0.25 } #Between -0.25 to 0.00
+		set_temp_variable = {
+			GXC_stability_loss_temp_var = { #Between -0.25 to 0.00
+				value = 1
+				subtract = party_popularity@social_conservative
+				multiply = -0.25
+			}
+		}
 		add_stability = GXC_stability_loss_temp_var
 
-		set_temp_variable = { GXC_pp_loss_temp_var = GXC_party_pop_diff_temp_var }
-		multiply_temp_variable = { GXC_pp_loss_temp_var = -200 } #Between -200 to 0.00
+		set_temp_variable = {
+			GXC_pp_loss_temp_var = { #Between -200 to 0.00
+				value = 100
+				subtract = party_popularity_100@social_conservative
+				multiply = -2
+			}
+		}
 		add_political_power = GXC_pp_loss_temp_var
 
 		custom_effect_tooltip = {
@@ -22258,9 +22315,13 @@ country_event = {
 		if = {
 			limit = { GXC = { has_country_flag = GXC_NPA_satellite_shen_hongying_favored_flag } }
 			#For every non-Pat Aut party popularity in GXC, costs 1pp (max 100).
-			set_temp_variable = { GXC_pp_loss_temp_var = 1 }
-			subtract_from_temp_variable = { GXC_pp_loss_temp_var = GXC.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { GXC_pp_loss_temp_var = -100 }
+			set_temp_variable = {
+				GXC_pp_loss_temp_var = {
+					value = 100
+					subtract = GXC.party_popularity_100@paternal_autocrat
+					multiply = -1
+				}
+			}
 			custom_effect_tooltip = {
 				localization_key = CHN_deduct_pp_relative_to_non_ideology_in_country_tt
 				IDEOLOGY = paternal_autocrat_coloured COUNTRY = "[GXC.GetNameDef]"
@@ -22271,9 +22332,13 @@ country_event = {
 		}
 		else = {
 			#For every non-Rad Soc party popularity in GXC, costs 1pp (max 100).
-			set_temp_variable = { GXC_pp_loss_temp_var = 1 }
-			subtract_from_temp_variable = { GXC_pp_loss_temp_var = GXC.party_popularity@social_conservative }
-			multiply_temp_variable = { GXC_pp_loss_temp_var = -100 }
+			set_temp_variable = {
+				GXC_pp_loss_temp_var = {
+					value = 100
+					subtract = GXC.party_popularity_100@social_conservative
+					multiply = -1
+				}
+			}
 			custom_effect_tooltip = {
 				localization_key = CHN_deduct_pp_relative_to_non_ideology_in_country_tt
 				IDEOLOGY = social_conservative_coloured COUNTRY = "[GXC.GetNameDef]"
@@ -22385,9 +22450,13 @@ country_event = {
 		if = {
 			limit = { GXC = { has_country_flag = GXC_NPA_satellite_shen_hongying_favored_flag } }
 			#For every non-Pat Aut party popularity in GXC, costs 1pp (max 100).
-			set_temp_variable = { GXC_pp_loss_temp_var = 1 }
-			subtract_from_temp_variable = { GXC_pp_loss_temp_var = GXC.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { GXC_pp_loss_temp_var = -100 }
+			set_temp_variable = {
+				GXC_pp_loss_temp_var = {
+					value = 100
+					subtract = GXC.party_popularity_100@paternal_autocrat
+					multiply = -1
+				}
+			}
 			custom_effect_tooltip = {
 				localization_key = CHN_deduct_pp_relative_to_non_ideology_in_country_tt
 				IDEOLOGY = paternal_autocrat_coloured COUNTRY = "[GXC.GetNameDef]"
@@ -22410,9 +22479,13 @@ country_event = {
 		}
 		else = {
 			#For every non-Soc Con party popularity in GXC, costs 1pp (max 100).
-			set_temp_variable = { GXC_pp_loss_temp_var = 1 }
-			subtract_from_temp_variable = { GXC_pp_loss_temp_var = GXC.party_popularity@social_conservative }
-			multiply_temp_variable = { GXC_pp_loss_temp_var = -100 }
+			set_temp_variable = {
+				GXC_pp_loss_temp_var = {
+					value = 100
+					subtract = GXC.party_popularity_100@social_conservative
+					multiply = -1
+				}
+			}
 			custom_effect_tooltip = {
 				localization_key = CHN_deduct_pp_relative_to_non_ideology_in_country_tt
 				IDEOLOGY = social_conservative_coloured COUNTRY = "[GXC.GetNameDef]"
@@ -27680,8 +27753,6 @@ country_event = { #To Rule a Nation
 		}
 		hidden_effect = {
 			save_current_party_popularities = yes
-			set_temp_variable = { GXC_new_authdem_value = saved_popularities^8 } #Current Pat Aut
-			set_temp_variable = { GXC_new_pataut_value = saved_popularities^7 } #Current Auth Dem
 			set_popularities = {
 				totalist = saved_popularities^0
 				syndicalist = saved_popularities^1
@@ -27690,8 +27761,8 @@ country_event = { #To Rule a Nation
 				social_liberal = saved_popularities^4
 				market_liberal = saved_popularities^5
 				social_conservative = saved_popularities^6
-				authoritarian_democrat = GXC_new_authdem_value
-				paternal_autocrat = GXC_new_pataut_value
+				authoritarian_democrat = saved_popularities^8 #pataut flipped to authdem
+				paternal_autocrat = saved_popularities^7 #authdem flipped to pataut
 				national_populist = saved_popularities^9
 			}
 

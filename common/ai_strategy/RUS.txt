@@ -22,6 +22,7 @@ RUS_hates_reichspakt = {
 		value = -1000
 	}
 }
+
 RUS_hates_far_eastern_army = {
 	allowed = {
 		original_tag = RUS
@@ -43,6 +44,7 @@ RUS_hates_far_eastern_army = {
 		value = -1000
 	}
 }
+
 FER_hates_russia = {
 	allowed = {
 		original_tag = FER
@@ -64,6 +66,7 @@ FER_hates_russia = {
 		value = -1000
 	}
 }
+
 RUS_postwar_contain_INT = {
 	allowed = {
 		is_russian_tag = yes
@@ -127,6 +130,7 @@ FER_dont_justify = {
 		value = -200
 	}
 }
+
 RSA_dont_justify = {
 	allowed = {
 		original_tag = RSA
@@ -590,15 +594,17 @@ RUS_crush_ukraine = {
 		}
 
 		#activate during the non-winter months
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 365 }
-		check_variable = { frequency > 90 } #early April
-		check_variable = { frequency < 300 } #late October
+		check_expr = {
+			value = { value = global.num_days mod = 365 greater_than = 90 } #early April
+			and = { value = global.num_days mod = 365 less_than = 300 } #late October
+		}
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -667,15 +673,17 @@ RUS_mop_up_white_ruthenia = {
 		}
 
 		#activate during the non-winter months
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 365 }
-		check_variable = { frequency > 90 } #early April
-		check_variable = { frequency < 300 } #late October
+		check_expr = {
+			value = { value = global.num_days mod = 365 greater_than = 90 } #early April
+			and = { value = global.num_days mod = 365 less_than = 300 } #late October
+		}
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -739,9 +747,11 @@ RUS_mop_up_lithuania = {
 		}
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -805,15 +815,17 @@ RUS_mop_up_baltic_duchy = {
 		}
 
 		#activate during the non-winter months
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 365 }
-		check_variable = { frequency > 90 } #early April
-		check_variable = { frequency < 300 } #late October
+		check_expr = {
+			value = { value = global.num_days mod = 365 greater_than = 90 } #early April
+			and = { value = global.num_days mod = 365 less_than = 300 } #late October
+		}
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -912,9 +924,11 @@ RUS_mop_up_estonia = {
 		}
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -1015,9 +1029,11 @@ RUS_crush_poland = {
 		}
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -1191,9 +1207,11 @@ RUS_crush_germany = {
 		}
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -1525,7 +1543,7 @@ RUS_military_buildup = {
 	}
 	enable = {
 		date < 1940.1.1
-		date > 1937.6.1
+		date > 1937.1.1
 	}
 	abort_when_not_enabled = yes
 

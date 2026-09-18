@@ -3,7 +3,6 @@ instant_effect = {
 		equipment = {
 			type = infantry_equipment_0
 		}
-		industrial_manufacturer = mio:generic_KR_general_purpose_organization
 		requested_factories = 2
 		progress = 0.82
 		efficiency = 100
@@ -11,7 +10,7 @@ instant_effect = {
 }
 
 division_template = {
-	name = "Infantry Division"
+	name = "Lashkar Peyadeh"
 	division_names_group = AFG_INF_01
 	regiments = {
 		infantry = { x = 0 y = 0 }
@@ -26,7 +25,7 @@ division_template = {
 	}
 }
 division_template = {
-	name = "Tribal Division"
+	name = "Lashkar Qaumi"
 	division_names_group = AFG_MIL_01
 	regiments = {
 		irregular_infantry = { x = 0 y = 0 }
@@ -41,7 +40,27 @@ division_template = {
 	}
 }
 division_template = {
-	name = "Tribal Rider Division"
+	name = "Lashkar Tupkhaneh"
+	division_names_group = AFG_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+		artillery_brigade = { x = 3 y = 0 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 }
+	}
+	priority = 2
+}
+division_template = {
+	name = "Spara Askar"
 	division_names_group = AFG_CAV_01
 	regiments = {
 		cavalry = { x = 0 y = 0 }
@@ -50,10 +69,13 @@ division_template = {
 		cavalry = { x = 1 y = 0 }
 		cavalry = { x = 1 y = 1 }
 		cavalry = { x = 1 y = 2 }
+		cavalry = { x = 2 y = 0 }
+		cavalry = { x = 2 y = 1 }
+		cavalry = { x = 2 y = 2 }
 	}
 }
 division_template = {
-	name = "Mountain Division"
+	name = "Gharni Iwa"
 	division_names_group = AFG_MTN_01
 	regiments = {
 		mountaineers = { x = 0 y = 0 }
@@ -67,28 +89,52 @@ division_template = {
 
 units = {
 	division = {
-		location = 2078
-		division_template = "Tribal Division"
-		start_equipment_factor = 0.5
-	}
-	division = {
-		location = 2078
-		division_template = "Tribal Division"
-		start_equipment_factor = 0.5
-	}
-	division = {
-		location = 10737
-		division_template = "Tribal Division"
+		location = 12769
+		name = "Gard Saltanti"
+		division_template = "Lashkar Peyadeh"
 		start_equipment_factor = 0.8
+		start_experience_factor = 0.2
 	}
 	division = {
 		location = 10737
-		division_template = "Tribal Division"
+		division_template = "Lashkar Peyadeh"
+		start_equipment_factor = 0.8
+		start_experience_factor = 0.1
+	}
+	division = {
+		location = 12769
+		division_template = "Lashkar Peyadeh"
+		start_equipment_factor = 0.8
+		start_experience_factor = 0.1
+	}
+	division = {
+		location = 12831
+		division_template = "Lashkar Peyadeh"
+		start_equipment_factor = 0.8
+		start_experience_factor = 0.1
+	}
+	division = {
+		location = 4893
+		division_template = "Lashkar Tupkhaneh"
+		start_equipment_factor = 0.5
+		start_experience_factor = 0.2
+	}
+	division = {
+		location = 5064
+		division_template = "Lashkar Qaumi"
 		start_equipment_factor = 0.7
+		start_experience_factor = 0.15
 	}
 	division = {
-		location = 10737
-		division_template = "Infantry Division"
-		start_experience_factor = 0.3
+		location = 10789
+		division_template = "Lashkar Qaumi"
+		start_equipment_factor = 0.7
+		start_experience_factor = 0.15
+	}
+	division = {
+		location = 4998
+		division_template = "Spara Askar"
+		start_equipment_factor = 0.7
+		start_experience_factor = 0.15
 	}
 }

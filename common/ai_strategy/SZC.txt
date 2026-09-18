@@ -32,6 +32,7 @@ SZC_basic_production = {
 		value = -1
 	}
 }
+
 SZC_research_gun_1 = {
 	allowed = {
 		original_tag = SZC
@@ -56,6 +57,7 @@ SZC_research_gun_1 = {
 		value = 10000
 	}
 }
+
 SZC_infantry_equipment_modernisation = {
 	allowed = {
 		original_tag = SZC
@@ -80,11 +82,12 @@ SZC_infantry_equipment_modernisation = {
 		value = 20000
 	}
 }
+
 SZC_army_composition_independent = {
 	allowed = { original_tag = SZC }
 	enable = {
 		is_subject = no
-		check_variable = { num_divisions < 100 }
+		num_divisions < 100
 	}
 	abort_when_not_enabled = yes
 
@@ -110,12 +113,13 @@ SZC_army_composition_independent = {
 		value = 10
 	}
 }
+
 SZC_army_composition_independent_2 = {
 	allowed = { original_tag = SZC }
 	enable = {
 		is_subject = no
-		check_variable = { num_divisions > 99 }
-		check_variable = { num_divisions < 200 }
+		num_divisions > 99
+		num_divisions < 200
 	}
 	abort_when_not_enabled = yes
 
@@ -141,11 +145,12 @@ SZC_army_composition_independent_2 = {
 		value = 20
 	}
 }
+
 SZC_army_composition_subject = {
 	allowed = { original_tag = SZC }
 	enable = {
 		is_subject = yes
-		check_variable = { num_divisions < 60 }
+		num_divisions < 60
 	}
 	abort_when_not_enabled = yes
 

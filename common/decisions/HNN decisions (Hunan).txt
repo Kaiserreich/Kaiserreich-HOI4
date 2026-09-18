@@ -44,7 +44,6 @@ HNN_elections_category = {
 			HNN_tang_remove_pop_effect = yes
 			clr_country_flag = HNN_campaigned_last_days
 			set_country_flag = HNN_campaigned_last_days
-			HNN_election_update_percentage_effect = yes
 		}
 		fixed_random_seed = no
 	}
@@ -83,7 +82,6 @@ HNN_elections_category = {
 			HNN_cheng_remove_pop_effect = yes
 			clr_country_flag = HNN_campaigned_last_days
 			set_country_flag = HNN_campaigned_last_days
-			HNN_election_update_percentage_effect = yes
 		}
 		fixed_random_seed = no
 	}
@@ -116,7 +114,6 @@ HNN_elections_category = {
 			HNN_zhao_remove_pop_effect = yes
 			clr_country_flag = HNN_campaigned_last_days
 			set_country_flag = HNN_campaigned_last_days
-			HNN_election_update_percentage_effect = yes
 		}
 		fixed_random_seed = no
 	}
@@ -149,7 +146,6 @@ HNN_elections_category = {
 			HNN_zhao_pop_effect = yes
 			clr_country_flag = HNN_campaigned_last_days
 			set_country_flag = HNN_campaigned_last_days
-			HNN_election_update_percentage_effect = yes
 		}
 		fixed_random_seed = no
 	}
@@ -180,7 +176,6 @@ HNN_elections_category = {
 			HNN_cheng_pop_effect = yes
 			clr_country_flag = HNN_campaigned_last_days
 			set_country_flag = HNN_campaigned_last_days
-			HNN_election_update_percentage_effect = yes
 		}
 		fixed_random_seed = no
 	}
@@ -211,7 +206,6 @@ HNN_elections_category = {
 			HNN_tang_pop_effect = yes
 			clr_country_flag = HNN_campaigned_last_days
 			set_country_flag = HNN_campaigned_last_days
-			HNN_election_update_percentage_effect = yes
 		}
 		fixed_random_seed = no
 	}
@@ -233,7 +227,6 @@ HNN_elections_category = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout HNN_zhao_campaign_zhao"
 			HNN_zhao_pop_effect = yes
-			HNN_election_update_percentage_effect = yes
 			hidden_effect = {
 				random_list = {
 					33 = { activate_mission = HNN_zhao_campaign_zhao }
@@ -273,11 +266,6 @@ HNN_elections_category = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout HNN_zhao_campaign_tang"
 			HNN_tang_remove_pop_effect = yes
-			clamp_variable = {
-				var = hnn_tang_popularity
-				min = 0
-			}
-			HNN_election_update_percentage_effect = yes
 			hidden_effect = {
 				random_list = {
 					33 = { activate_mission = HNN_zhao_campaign_zhao }
@@ -317,11 +305,6 @@ HNN_elections_category = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout HNN_zhao_campaign_cheng"
 			HNN_cheng_remove_pop_effect = yes
-			clamp_variable = {
-				var = hnn_chen_popularity
-				min = 0
-			}
-			HNN_election_update_percentage_effect = yes
 			hidden_effect = {
 				random_list = {
 					33 = { activate_mission = HNN_zhao_campaign_zhao }
@@ -361,7 +344,6 @@ HNN_elections_category = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout HNN_kmt_campaign_tang"
 			HNN_tang_pop_effect = yes
-			HNN_election_update_percentage_effect = yes
 			hidden_effect = {
 				random_list = {
 					33 = { activate_mission = HNN_kmt_campaign_tang }
@@ -395,7 +377,6 @@ HNN_elections_category = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout HNN_kmt_campaign_cheng"
 			HNN_cheng_pop_effect = yes
-			HNN_election_update_percentage_effect = yes
 			hidden_effect = {
 				random_list = {
 					33 = { activate_mission = HNN_kmt_campaign_tang }
@@ -429,11 +410,6 @@ HNN_elections_category = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout HNN_kmt_campaign_zhao"
 			HNN_zhao_remove_pop_effect = yes
-			clamp_variable = {
-				var = hnn_zhao_popularity
-				min = 0
-			}
-			HNN_election_update_percentage_effect = yes
 			hidden_effect = {
 				random_list = {
 					33 = { activate_mission = HNN_kmt_campaign_tang }
@@ -840,12 +816,11 @@ HNN_democratic_reform_category = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout HNN_opposition_growing"
 			HNN_calculate_new_opposition_strength = yes
-			add_to_variable = { HNN_opposition_strength = 8 }
-			custom_effect_tooltip = tooltip_white_line
-			clamp_variable = {
-				var = HNN_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				HNN_opposition_strength = {
+					value = 8
+					clamp = { min = 0 max = { value = 100 subtract = HNN_opposition_strength } }
+				}
 			}
 			hidden_effect = {
 				activate_mission = HNN_opposition_growing
@@ -2342,15 +2317,10 @@ HNN_expanding_local_elections_category = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove HNN_expand_local_elections_decision"
-			ROOT = {
-				every_owned_state = {
-					limit = {
-						state = FROM
-					}
-					add_dynamic_modifier = {
-						modifier = HNN_local_democratic_elections
-						scope = THIS
-					}
+			FROM = {
+				add_dynamic_modifier = {
+					modifier = HNN_local_democratic_elections
+					scope = THIS
 				}
 			}
 		}
@@ -2395,15 +2365,10 @@ HNN_constructing_rural_autonomy_category = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove HNN_constructing_rural_autonomy_decision"
-			ROOT = {
-				every_owned_state = {
-					limit = {
-						state = FROM
-					}
-					add_dynamic_modifier = {
-						modifier = HNN_local_communes
-						scope = THIS
-					}
+			FROM = {
+				add_dynamic_modifier = {
+					modifier = HNN_local_communes
+					scope = THIS
 				}
 			}
 		}

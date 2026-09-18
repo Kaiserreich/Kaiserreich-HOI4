@@ -41,7 +41,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SIC_armed_forces"
-			army_experience = 15
+			army_experience = 40
 			add_political_power = 15
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_POLITICAL }
@@ -79,7 +79,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SIC_he_atacc"
-			army_experience = 25
+			add_ideas = SIC_attack_idea
+			custom_effect_tooltip = tooltip_white_line
 			add_tech_bonus = {
 				name = SIC_he_atacc
 				bonus = 1
@@ -183,7 +184,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SIC_planning_grand_offensive"
-			add_ideas = SIC_planning_bonus_yuge }
+			swap_ideas = {
+				remove_idea = SIC_attack_idea
+				add_idea = SIC_attack_idea_2
+			}
+		}
 	}
 
 	focus = {# Armored Thrusts
@@ -216,6 +221,10 @@ focus_tree = {
 				bonus = 1
 				uses = 1
 				category = armor
+			}
+			swap_ideas = {
+				remove_idea = SIC_attack_idea_2
+				add_idea = SIC_attack_idea_3
 			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -319,7 +328,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SIC_he_protecc"
-			army_experience = 25
+			add_ideas = SIC_defence_idea
 			add_doctrine_cost_reduction = {
 				name = SIC_he_protecc
 				cost_reduction = 0.5
@@ -355,6 +364,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SIC_artillery_batteries"
+			swap_ideas = {
+				remove_idea = SIC_defence_idea
+				add_idea = SIC_defence_idea_2
+			}
 			add_tech_bonus = {
 				name = SIC_artillery_batteries
 				bonus = 0.50
@@ -395,7 +408,7 @@ focus_tree = {
 			add_doctrine_cost_reduction = {
 				name = SIC_army_reform
 				cost_reduction = 0.5
-				uses = 1
+				uses = 2
 				category = land_doctrine
 			}
 		}
@@ -468,6 +481,61 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
+			}
+			custom_effect_tooltip = tooltip_white_line
+			742 = {
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = bunker
+						province = {
+							all_provinces = yes
+							limit_to_border_country = SRI
+						}
+						level = 1
+						instant_build = yes
+					}
+					tooltip = {
+						localization_key = tooltip_add_building_on_border_provinces_with_tag
+						BUILDING = bunker
+						NUMBER = 1
+						TAG = "[SRI.GetTag]"
+					}
+				}
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = bunker
+						province = 6831
+						level = 1
+					}
+					tooltip = {
+						localization_key = tooltip_add_building_on_victory_point
+						BUILDING = bunker
+						NUMBER = 1
+						VP = 6831
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					province = 13632
+					level = 1
+				}
+				add_building_construction = {
+					type = bunker
+					province = 11882
+					level = 1
+				}
+				add_building_construction = {
+					type = bunker
+					province = 963
+					level = 1
+				}
+			}
+			117 = {
+				add_building_construction = {
+					type = bunker
+					province = 923
+					level = 1
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -626,7 +694,14 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SIC_coastal_batteries"
-			army_experience = 10
+			army_experience = 25
+			add_tech_bonus = {
+				name = SIC_coastal_batteries
+				bonus = 1
+				uses = 1
+				category = artillery
+			}
+			custom_effect_tooltip = tooltip_white_line
 			117 = {
 				custom_override_tooltip = {
 					add_building_construction = {
@@ -704,7 +779,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SIC_mobilize_the_realm"
-			add_political_power = 100
+			swap_ideas = {
+				remove_idea = SIC_defence_idea_2
+				add_idea = SIC_defence_idea_3
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -1016,6 +1094,8 @@ focus_tree = {
 		ai_will_do = { factor = 50 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SIC_investment"
+			add_one_random_civilian_factory = yes
+			custom_effect_tooltip = tooltip_white_line
 			add_tech_bonus = {
 				name = SIC_investment
 				bonus = 1

@@ -1,0 +1,2740 @@
+ideas = {
+	country = {
+		AFG_lands_of_villages_tribes_and_faiths_1 = { #Starting
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_1" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_factor = -0.075
+				political_power_factor = -0.2
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_2 = { #Added by AFG_nationhood_in_the_20th_century
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_2" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_factor = -0.05
+				political_power_factor = -0.1
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_2_civil_war = { #Added when civil war starts without doing the military or civ focuses
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_2_civil_war" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = -0.05
+				political_power_factor = -0.1
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_military_1 = { #Added by AFG_expand_military_governance prior to civil war
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_military_1" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_factor = 0.05
+				political_power_factor = -0.1
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_military_2 = { #Added either by civil war, or by completing focus after the civil war
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_military_2" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				political_power_factor = -0.1
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_military_reformist_1 = { #Added by reformist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_military_reformist_1" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_military_reformist_2 = { #Added by reformist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_military_reformist_2" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				political_power_gain = 0.1
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_military_traditionalist_army = { #Added by traditionalist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_military_traditionalist_army" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.1
+				conscription_factor = -0.1
+				political_power_factor = -0.1
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_military_traditionalist_cooperation = { #Added by traditionalist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_military_traditionalist_cooperation" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_military_traditionalist_2 = { #Added by traditionalist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_military_traditionalist_2" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.1
+				stability_factor = 0.1
+				conscription_factor = -0.1
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_civilian_1 = { #Added by AFG_building_civilian_institutions prior to civil war
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_civilian_1" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_factor = -0.05
+				stability_factor = 0.05
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_civilian_2 = { #Added either by civil war, or by completing focus after the civil war
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_civilian_2" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = -0.05
+				stability_factor = 0.05
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_civilian_reformist_1 = { #Added by reformist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_civilian_reformist_1" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_civilian_reformist_2 = { #Added by reformist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_civilian_reformist_2" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.1
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_civilian_traditionalist_army = { #Added by traditionalist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_civilian_traditionalist_army" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.15
+				conscription_factor = -0.1
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_civilian_traditionalist_cooperation = { #Added by traditionalist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_civilian_traditionalist_cooperation" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+			}
+		}
+		AFG_lands_of_villages_tribes_and_faiths_civilian_traditionalist_2 = { #Added by traditionalist aligned trees
+			on_add = { log = "[GetLogRoot]: add idea AFG_lands_of_villages_tribes_and_faiths_civilian_traditionalist_2" }
+			name = AFG_lands_of_villages_tribes_and_faiths
+			picture = AFG_quami
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.15
+				conscription_factor = -0.1
+				war_support_factor = 0.05
+			}
+		}
+		AFG_spectre_of_rebellion = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_spectre_of_rebellion" }
+			picture = AFG_saqqawists
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.2
+				national_populist_drift = 0.01
+				party_popularity_stability_factor = -0.05
+			}
+		}
+		AFG_loy_afghanistan = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_loy_afghanistan" }
+			picture = DEN_occupation_laws
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				war_stability_factor = 0.1
+				conscription_factor = -0.2
+			}
+		}
+		AFG_loy_afghanistan_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_loy_afghanistan_2" }
+			name = AFG_loy_afghanistan_2
+			picture = DEN_occupation_laws
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				war_stability_factor = 0.1
+			}
+		}
+		AFG_loy_afghanistan_3 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_loy_afghanistan_3" }
+			name = AFG_loy_afghanistan_2
+			picture = DEN_occupation_laws
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				war_stability_factor = 0.1
+				conscription_factor = 0.025
+			}
+		}
+		AFG_loy_afghanistan_4 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_loy_afghanistan_4" }
+			name = AFG_loy_afghanistan_2
+			picture = DEN_occupation_laws
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				war_stability_factor = 0.1
+				conscription_factor = 0.05
+			}
+		}
+		AFG_loy_afghanistan_5 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_loy_afghanistan_5" }
+			name = AFG_loy_afghanistan_2
+			picture = DEN_occupation_laws
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.075
+				war_stability_factor = 0.1
+				conscription_factor = 0.075
+			}
+		}
+		AFG_loy_afghanistan_6 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_loy_afghanistan_6" }
+			name = AFG_loy_afghanistan_2
+			picture = DEN_occupation_laws
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.1
+				war_stability_factor = 0.1
+				conscription_factor = 0.1
+			}
+		}
+		AFG_loy_afghanistan_7 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_loy_afghanistan_7" }
+			name = AFG_loy_afghanistan_2
+			picture = DEN_occupation_laws
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.15
+				war_stability_factor = 0.15
+				conscription_factor = 0.15
+			}
+		}
+		AFG_stagnant_army = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_stagnant_army" }
+			picture = tur_disorganised_armed_forces
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army_unit_factor = -0.05
+				max_planning_factor = -0.05
+				army_attack_factor = -0.05
+			}
+		}
+		AFG_afghan_army = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_army" }
+			name = AFG_afghan_army
+			picture = advisors_afghanistan
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army_unit_factor = 0.05
+				planning_speed = 0.05
+			}
+		}
+		AFG_afghan_army_personality = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_army_personality" }
+			name = AFG_afghan_army
+			picture = advisors_afghanistan
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army_unit_factor = 0.05
+				planning_speed = 0.1
+				command_abilities_cost_factor = -0.1
+			}
+		}
+		AFG_afghan_army_tribes_traditional = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_army_tribes_traditional" }
+			name = AFG_afghan_army
+			picture = advisors_afghanistan
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army_unit_factor = 0.05
+				planning_speed = 0.05
+				army_morale_factor = 0.05
+				modifier_army_sub_unit_irregular_infantry_attack_factor = 0.05
+				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.05
+			}
+		}
+		AFG_afghan_army_tribes_reform = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_army_tribes_reform" }
+			name = AFG_afghan_army
+			picture = advisors_afghanistan
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army_unit_factor = 0.05
+				planning_speed = 0.05
+				conscription_factor = 0.1
+				army_attack_factor = 0.025
+			}
+		}
+		AFG_afghan_army_personality_tribes_traditional = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_army_personality_tribes_traditional" }
+			name = AFG_afghan_army
+			picture = advisors_afghanistan
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army_unit_factor = 0.05
+				planning_speed = 0.1
+				command_abilities_cost_factor = -0.1
+				army_morale_factor = 0.075
+				modifier_army_sub_unit_irregular_infantry_attack_factor = 0.05
+				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.05
+			}
+		}
+		AFG_afghan_army_personality_tribes_reform = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_army_personality_tribes_reform" }
+			name = AFG_afghan_army
+			picture = advisors_afghanistan
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army_unit_factor = 0.05
+				planning_speed = 0.1
+				command_abilities_cost_factor = -0.1
+				conscription_factor = 0.1
+				army_attack_factor = 0.025
+			}
+		}
+		AFG_afghan_army_standards_tribes_traditional = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_army_standards_tribes_traditional" }
+			name = AFG_afghan_army
+			picture = advisors_afghanistan
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army_unit_factor = 0.05
+				planning_speed = 0.1
+				command_abilities_cost_factor = -0.1
+				army_morale_factor = 0.1
+				modifier_army_sub_unit_irregular_infantry_attack_factor = 0.1
+				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.1
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+			}
+		}
+		AFG_afghan_army_standards_tribes_reform = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_army_standards_tribes_reform" }
+			name = AFG_afghan_army
+			picture = advisors_afghanistan
+			allowed = { always = no }
+			modifier = {
+				experience_gain_army_unit_factor = 0.05
+				planning_speed = 0.1
+				command_abilities_cost_factor = -0.1
+				conscription_factor = 0.1
+				army_attack_factor = 0.075
+				army_defence_factor = 0.05
+			}
+		}
+		AFG_modern_logistics_networks = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modern_logistics_networks" }
+			name = AFG_modern_logistics_networks
+			picture = SWE_hodgepodge_of_equipment
+			allowed = { always = no }
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+			}
+		}
+		AFG_modern_logistics_networks_supply = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modern_logistics_networks_supply" }
+			name = AFG_modern_logistics_networks
+			picture = SWE_hodgepodge_of_equipment
+			allowed = { always = no }
+			modifier = {
+				supply_node_range = 0.25
+				supply_consumption_factor = -0.05
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+			}
+		}
+		AFG_modern_logistics_networks_strongholds = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modern_logistics_networks_strongholds" }
+			name = AFG_modern_logistics_networks
+			picture = SWE_hodgepodge_of_equipment
+			allowed = { always = no }
+			modifier = {
+				supply_node_range = 0.25
+				supply_consumption_factor = -0.05
+				production_speed_bunker_factor = 0.1
+				max_dig_in_factor = 0.1
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+			}
+		}
+		AFG_above_the_land_of_mountains = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_above_the_land_of_mountains" }
+			name = AFG_above_the_land_of_mountains
+			picture = generic_air_fighter
+			allowed = { always = no }
+			modifier = {
+				ground_attack_factor = 0.05
+				air_superiority_bonus_in_combat = 0.1
+			}
+		}
+		AFG_above_the_land_of_mountains_expanded = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_above_the_land_of_mountains_expanded" }
+			name = AFG_above_the_land_of_mountains
+			picture = generic_air_fighter
+			allowed = { always = no }
+			modifier = {
+				ground_attack_factor = 0.05
+				army_bonus_air_superiority_factor = 0.1
+				air_superiority_bonus_in_combat = 0.1
+			}
+			equipment_bonus = {
+				mio_cat_eq_all_aircraft = {
+					instant = yes
+					build_cost_ic = -0.05
+				}
+			}
+		}
+		AFG_above_the_land_of_mountains_pilots = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_above_the_land_of_mountains_pilots" }
+			name = AFG_above_the_land_of_mountains
+			picture = generic_air_fighter
+			allowed = { always = no }
+			modifier = {
+				ground_attack_factor = 0.05
+				army_bonus_air_superiority_factor = 0.1
+				air_superiority_bonus_in_combat = 0.1
+				air_untrained_pilots_penalty_factor = -0.25
+				experience_gain_air = 0.1
+			}
+			equipment_bonus = {
+				mio_cat_eq_all_aircraft = {
+					instant = yes
+					build_cost_ic = -0.05
+				}
+			}
+		}
+		AFG_renovated_defence_ministry_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_renovated_defence_ministry_1" }
+			name = AFG_renovated_defence_ministry
+			picture = generic_reserve_divisions
+			allowed = { always = no }
+			modifier = {
+				max_command_power = 20
+			}
+		}
+		AFG_renovated_defence_ministry_2_limited = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_renovated_defence_ministry_2_limited" }
+			name = AFG_renovated_defence_ministry
+			picture = generic_reserve_divisions
+			allowed = { always = no }
+			modifier = {
+				max_command_power = 20
+				weekly_manpower = 500
+				training_time_factor = -0.1
+			}
+		}
+		AFG_renovated_defence_ministry_2_full = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_renovated_defence_ministry_2_full" }
+			name = AFG_renovated_defence_ministry
+			picture = generic_reserve_divisions
+			allowed = { always = no }
+			modifier = {
+				max_command_power = 20
+				conscription = 0.01
+				mobilization_speed = 0.1
+			}
+		}
+		AFG_renovated_defence_ministry_3_limited = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_renovated_defence_ministry_3_limited" }
+			name = AFG_renovated_defence_ministry
+			picture = generic_reserve_divisions
+			allowed = { always = no }
+			modifier = {
+				max_command_power = 25
+				weekly_manpower = 500
+				army_org_factor = 0.05
+				experience_gain_army_unit_factor = 0.1
+				training_time_factor = -0.1
+			}
+		}
+		AFG_renovated_defence_ministry_3_full = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_renovated_defence_ministry_3_full" }
+			name = AFG_renovated_defence_ministry
+			picture = generic_reserve_divisions
+			allowed = { always = no }
+			modifier = {
+				max_command_power = 25
+				conscription = 0.01
+				army_org_factor = 0.05
+				experience_gain_army_unit_factor = 0.1
+				mobilization_speed = 0.1
+			}
+		}
+		AFG_directorate_of_intelligence_records_idea = { #Non-DLC use
+			on_add = { log = "[GetLogRoot]: add idea AFG_directorate_of_intelligence_records_idea" }
+			picture = generic_spy_intel
+			allowed = { always = no }
+			modifier = {
+				encryption = 1
+				decryption = 1
+			}
+		}
+		AFG_industrial_revolution = { # Added after removal of AFG_national_integration_modifier
+			on_add = { log = "[GetLogRoot]: add idea AFG_industrial_revolution" }
+			picture = HOL_booming_economy
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+		AFG_industrial_revolution_2 = { # Added after removal of AFG_national_integration_modifier
+			on_add = { log = "[GetLogRoot]: add idea AFG_industrial_revolution_2" }
+			name = AFG_industrial_revolution
+			picture = HOL_booming_economy
+			allowed = { always = no }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.10
+				production_speed_buildings_factor = 0.05
+				production_factory_start_efficiency_factor = 0.05
+			}
+		}
+		AFG_growth_of_the_economic_ministry_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_growth_of_the_economic_ministry_1" }
+			name = AFG_growth_of_the_economic_ministry
+			picture = HABSBURG_economy
+			allowed = { always = no }
+			modifier = {
+				AFG_monthly_reform_points_gain = 1
+				industrial_capacity_factory = 0.05
+			}
+		}
+		AFG_growth_of_the_economic_ministry_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_growth_of_the_economic_ministry_2" }
+			name = AFG_growth_of_the_economic_ministry
+			picture = HABSBURG_economy
+			allowed = { always = no }
+			modifier = {
+				AFG_monthly_reform_points_gain = 1
+				industrial_capacity_factory = 0.05
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_growth_of_the_economic_ministry_3 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_growth_of_the_economic_ministry_3" }
+			name = AFG_growth_of_the_economic_ministry
+			picture = HABSBURG_economy
+			allowed = { always = no }
+			modifier = {
+				AFG_monthly_reform_points_gain = 1
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.1
+				production_speed_infrastructure_factor = 0.1
+			}
+		}
+		AFG_replacing_camels_with_automotives_idea = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_replacing_camels_with_automotives_idea" }
+			picture = LIT_invested_in_farms
+			allowed = { always = no }
+			equipment_bonus = {
+				motorized_equipment = {
+					build_cost_ic = -0.4 instant = yes
+				}
+			}
+		}
+		AFG_direction_of_the_education_ministry_traditional = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_direction_of_the_education_ministry_traditional" }
+			name = AFG_direction_of_the_education_ministry_idea
+			picture = JBS_Ulemma_Faction
+			allowed = { always = no }
+			available = {
+				has_any_power_balance = yes
+			}
+			modifier = {
+				research_speed_factor = -0.05
+				stability_weekly = 0.0015
+				power_balance_weekly = -0.005
+			}
+		}
+		AFG_direction_of_the_education_ministry_reformist = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_direction_of_the_education_ministry_reformist" }
+			name = AFG_direction_of_the_education_ministry_idea
+			picture = AFG_neutrality_graduates
+			allowed = { always = no }
+			available = {
+				has_any_power_balance = yes
+			}
+			modifier = {
+				research_speed_factor = 0.05
+				stability_factor = -0.05
+				power_balance_weekly = 0.005
+			}
+		}
+		AFG_army_desertions = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_army_desertions" }
+			picture = prc_the_long_march2
+			allowed = { always = no }
+			available = {
+				has_war_with = PTH
+			}
+			modifier = {
+				weekly_manpower = -300
+				army_org_factor = -0.05
+				army_morale_factor = -0.05
+			}
+		}
+
+	# Civil War Ideas #
+
+		AFG_king_of_the_army_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_king_of_the_army_1" }
+			name = AFG_king_of_the_army
+			picture = MEX_politicised_army
+			allowed = { always = no }
+			available = {
+				AFG_civil_war_ongoing = yes
+			}
+			modifier = {
+				command_power_gain = 0.4
+			}
+		}
+		AFG_king_of_the_army_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_king_of_the_army_2" }
+			name = AFG_king_of_the_army
+			picture = MEX_politicised_army
+			allowed = { always = no }
+			available = {
+				AFG_civil_war_ongoing = yes
+			}
+			modifier = {
+				command_power_gain = 0.6
+			}
+		}
+		AFG_backed_by_the_tribes = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_backed_by_the_tribes" }
+			picture = JBS_Bedouin_Faction
+			allowed = { always = no }
+			available = {
+				AFG_civil_war_ongoing = yes
+			}
+			modifier = {
+				political_power_gain = 0.4
+				AFG_monthly_reform_points_gain = 1
+			}
+		}
+
+	# Political Ideas #
+
+		AFG_modernising_the_monarchy_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_1" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.1
+			}
+		}
+		AFG_modernising_the_monarchy_2_constitution = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_2_constitution" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.1
+				party_popularity_stability_factor = 0.15
+			}
+		}
+		AFG_modernising_the_monarchy_2_assembly = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_2_assembly" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.1
+				production_factory_efficiency_gain_factor = 0.05
+				political_advisor_cost_factor = -0.33
+			}
+		}
+		AFG_modernising_the_monarchy_3_judiciary = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_3_judiciary" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.15
+				party_popularity_stability_factor = 0.15
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_modernising_the_monarchy_3_assembly_constitution = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_3_assembly_constitution" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.1
+				party_popularity_stability_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.05
+				political_advisor_cost_factor = -0.33
+			}
+		}
+		AFG_modernising_the_monarchy_4 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_4" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.15
+				party_popularity_stability_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.05
+				political_advisor_cost_factor = -0.33
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_modernising_the_monarchy_5_rollback = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_5_rollback" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.15
+				political_power_gain = 0.15
+				party_popularity_stability_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.05
+				political_advisor_cost_factor = -0.33
+				consumer_goods_factor = -0.1
+				conscription_factor = -0.1
+			}
+		}
+		AFG_modernising_the_monarchy_5_ahn = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_5_ahn" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.05
+				political_power_gain = 0.15
+				party_popularity_stability_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.05
+				political_advisor_cost_factor = -0.33
+				consumer_goods_factor = -0.1
+				conscription_factor = 0.1
+			}
+		}
+		AFG_modernising_the_monarchy_6_rollback = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_6_rollback" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.15
+				political_power_gain = 0.15
+				party_popularity_stability_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.1
+				political_advisor_cost_factor = -0.5
+				consumer_goods_factor = -0.15
+				conscription_factor = -0.1
+			}
+		}
+		AFG_modernising_the_monarchy_6_ahn = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_modernising_the_monarchy_6_ahn" }
+			name = AFG_modernising_the_monarchy
+			picture = generic_modernisation_reforms_gold
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.05
+				political_power_gain = 0.15
+				party_popularity_stability_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.1
+				political_advisor_cost_factor = -0.5
+				consumer_goods_factor = -0.15
+				conscription_factor = 0.1
+			}
+		}
+		AFG_the_entrepot_of_the_east_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_entrepot_of_the_east_1" }
+			name = AFG_the_entrepot_of_the_east
+			picture = can_wartime_prices_and_trade_board
+			allowed = { always = no }
+			modifier = {
+				trade_opinion_factor = 0.5
+				resource_trade_cost_bonus_per_factory = 2
+			}
+		}
+		AFG_the_entrepot_of_the_east_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_entrepot_of_the_east_2" }
+			name = AFG_the_entrepot_of_the_east
+			picture = can_wartime_prices_and_trade_board
+			allowed = { always = no }
+			modifier = {
+				trade_opinion_factor = 0.5
+				resource_trade_cost_bonus_per_factory = 2
+				production_speed_buildings_factor = 0.05
+				global_building_slots_factor = 0.05
+			}
+		}
+		AFG_backroom_funding_soccon = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_backroom_funding_soccon" }
+			name = AFG_backroom_funding
+			picture = ETH_corrupt_bureaucracy
+			allowed = { always = no }
+			modifier = {
+				consumer_goods_factor = 0.05
+				political_power_gain = -0.1
+				social_conservative_drift = 0.05
+			}
+		}
+		AFG_backroom_funding_soclib = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_backroom_funding_soclib" }
+			name = AFG_backroom_funding
+			picture = ETH_corrupt_bureaucracy
+			allowed = { always = no }
+			modifier = {
+				consumer_goods_factor = 0.05
+				political_power_gain = -0.1
+				social_liberal_drift = 0.05
+			}
+		}
+
+		AFG_the_realm_of_amanullah_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_realm_of_amanullah_1" }
+			name = AFG_the_realm_of_amanullah
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.05
+				war_stability_factor = 0.1
+			}
+		}
+		AFG_the_realm_of_amanullah_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_realm_of_amanullah_2" }
+			name = AFG_the_realm_of_amanullah
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				war_stability_factor = 0.1
+				war_support_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+			}
+		}
+		AFG_the_realm_of_amanullah_3 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_realm_of_amanullah_3" }
+			name = AFG_the_realm_of_amanullah
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				war_stability_factor = 0.1
+				authoritarian_democrat_drift = 0.05
+				war_support_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+				trade_laws_cost_factor = -0.5
+				mobilization_laws_cost_factor = -0.5
+			}
+		}
+		AFG_the_realm_of_amanullah_4_ahn = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_realm_of_amanullah_4_ahn" }
+			name = AFG_the_realm_of_amanullah
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				war_stability_factor = 0.1
+				authoritarian_democrat_drift = 0.05
+				war_support_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+				trade_laws_cost_factor = -0.5
+				mobilization_laws_cost_factor = -0.5
+				stability_factor = -0.1
+				conscription_factor = 0.1
+			}
+		}
+		AFG_the_realm_of_amanullah_4_fight = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_realm_of_amanullah_4_fight" }
+			name = AFG_the_realm_of_amanullah
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				war_stability_factor = 0.1
+				party_popularity_stability_factor = 0.05
+				authoritarian_democrat_drift = 0.075
+				war_support_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+				trade_laws_cost_factor = -0.5
+				mobilization_laws_cost_factor = -0.5
+			}
+		}
+		AFG_the_realm_of_amanullah_5 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_realm_of_amanullah_5" }
+			name = AFG_the_realm_of_amanullah
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				war_stability_factor = 0.1
+				party_popularity_stability_factor = 0.05
+				authoritarian_democrat_drift = 0.1
+				war_support_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+				trade_laws_cost_factor = -0.5
+				mobilization_laws_cost_factor = -0.5
+				stability_factor = -0.1
+				conscription_factor = 0.1
+			}
+		}
+		AFG_healing_the_scars_idea = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_healing_the_scars_idea" }
+			picture = generic_government_reconciliation
+			allowed = { always = no }
+			modifier = {
+				war_support_weekly = 0.001
+				stability_weekly = 0.001
+				monthly_population = 0.2
+			}
+		}
+		AFG_returning_to_tradition_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_returning_to_tradition_1" }
+			name = AFG_returning_to_tradition
+			picture = AFG_pashtunwali
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.05
+			}
+		}
+		AFG_returning_to_tradition_2_qanun = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_returning_to_tradition_2_qanun" }
+			name = AFG_returning_to_tradition
+			picture = AFG_pashtunwali
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.15
+				political_power_factor = -0.1
+			}
+		}
+		AFG_returning_to_tradition_2_jirga = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_returning_to_tradition_2_jirga" }
+			name = AFG_returning_to_tradition
+			picture = AFG_pashtunwali
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.05
+				paternal_autocrat_drift = 0.02
+				line_change_production_efficiency_factor = 0.05
+			}
+		}
+		AFG_returning_to_tradition_3_jirga_qanun = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_returning_to_tradition_3_jirga_qanun" }
+			name = AFG_returning_to_tradition
+			picture = AFG_pashtunwali
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.15
+				paternal_autocrat_drift = 0.02
+				line_change_production_efficiency_factor = 0.05
+				political_power_factor = -0.1
+			}
+		}
+		AFG_returning_to_tradition_3_dismiss = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_returning_to_tradition_3_dismiss" }
+			name = AFG_returning_to_tradition
+			picture = AFG_pashtunwali
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.1
+				paternal_autocrat_drift = 0.02
+				line_change_production_efficiency_factor = 0.05
+				industrial_capacity_factory = -0.025
+			}
+		}
+		AFG_returning_to_tradition_4 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_returning_to_tradition_4" }
+			name = AFG_returning_to_tradition
+			picture = AFG_pashtunwali
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.2
+				paternal_autocrat_drift = 0.02
+				line_change_production_efficiency_factor = 0.05
+				industrial_capacity_factory = -0.025
+				political_power_factor = -0.1
+			}
+		}
+		AFG_returning_to_tradition_5 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_returning_to_tradition_5" }
+			name = AFG_returning_to_tradition
+			picture = AFG_pashtunwali
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.2
+				paternal_autocrat_drift = 0.02
+				line_change_production_efficiency_factor = 0.05
+				industrial_capacity_factory = -0.025
+				political_power_factor = -0.1
+				political_advisor_cost_factor = -0.33
+				war_support_weekly = 0.001
+			}
+		}
+		AFG_returning_to_tradition_6 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_returning_to_tradition_6" }
+			name = AFG_returning_to_tradition
+			picture = AFG_pashtunwali
+			allowed = { always = no }
+			modifier = {
+				war_support_factor = 0.1
+				stability_factor = 0.2
+				paternal_autocrat_drift = 0.05
+				line_change_production_efficiency_factor = 0.05
+				industrial_capacity_factory = -0.025
+				political_power_factor = -0.05
+				political_advisor_cost_factor = -0.33
+				war_support_weekly = 0.001
+			}
+		}
+		AFG_the_economic_independence_plan_idea_1_plan = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_economic_independence_plan_idea_1_plan" }
+			name = AFG_the_economic_independence_plan_idea
+			picture = ARG_economic_reactivation
+			allowed = { always = no }
+			modifier = {
+				production_lack_of_resource_penalty_factor = -0.1
+				industrial_capacity_factory = 0.05
+			}
+		}
+		AFG_the_economic_independence_plan_idea_2_shirkats_aat = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_economic_independence_plan_idea_2_shirkats_aat" }
+			name = AFG_the_economic_independence_plan_idea
+			picture = ARG_economic_reactivation
+			allowed = { always = no }
+			modifier = {
+				production_lack_of_resource_penalty_factor = -0.1
+				industrial_capacity_factory = 0.1
+				military_industrial_organization_policy_cost = -0.25
+				military_industrial_organization_research_bonus = 0.10
+			}
+		}
+		AFG_the_economic_independence_plan_idea_2_shirkats_non_aat = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_economic_independence_plan_idea_2_shirkats_non_aat" }
+			name = AFG_the_economic_independence_plan_idea
+			picture = ARG_economic_reactivation
+			allowed = { always = no }
+			modifier = {
+				production_lack_of_resource_penalty_factor = -0.1
+				industrial_capacity_factory = 0.1
+				industrial_concern_cost_factor = -0.5
+				materiel_manufacturer_cost_factor = -0.5
+			}
+		}
+		AFG_the_economic_independence_plan_idea_1_inwards = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_economic_independence_plan_idea_1_inwards" }
+			name = AFG_the_economic_independence_plan_idea
+			picture = ARG_economic_reactivation
+			allowed = { always = no }
+			modifier = {
+				min_export = -0.25
+				consumer_goods_factor = -0.15
+			}
+		}
+		AFG_the_economic_independence_plan_idea_2_inwards = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_economic_independence_plan_idea_2_inwards" }
+			name = AFG_the_economic_independence_plan_idea
+			picture = ARG_economic_reactivation
+			allowed = { always = no }
+			modifier = {
+				production_lack_of_resource_penalty_factor = -0.1
+				industrial_capacity_factory = 0.05
+				min_export = -0.25
+				consumer_goods_factor = -0.15
+			}
+		}
+
+		AFG_the_end_of_westernism_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_end_of_westernism_1" }
+			name = AFG_the_end_of_westernism
+			picture = PER_islamic_traditions_ns
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 500
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+			}
+		}
+		AFG_the_end_of_westernism_2_abolish = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_end_of_westernism_2_abolish" }
+			name = AFG_the_end_of_westernism
+			picture = PER_islamic_traditions_ns
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 500
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				social_liberal_drift = -0.01
+				authoritarian_democrat_drift = -0.01
+				party_popularity_stability_factor = 0.1
+			}
+		}
+		AFG_the_end_of_westernism_2_qanun = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_end_of_westernism_2_qanun" }
+			name = AFG_the_end_of_westernism
+			picture = PER_islamic_traditions_ns
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 500
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				stability_factor = 0.1
+				political_power_factor = -0.1
+			}
+		}
+		AFG_the_end_of_westernism_3_qanun_abolish = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_end_of_westernism_3_qanun_abolish" }
+			name = AFG_the_end_of_westernism
+			picture = PER_islamic_traditions_ns
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 500
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				stability_factor = 0.1
+				political_power_factor = -0.1
+				social_liberal_drift = -0.01
+				authoritarian_democrat_drift = -0.01
+				party_popularity_stability_factor = 0.1
+			}
+		}
+		AFG_the_end_of_westernism_3_women = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_end_of_westernism_3_women" }
+			name = AFG_the_end_of_westernism
+			picture = PER_islamic_traditions_ns
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 500
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				social_liberal_drift = -0.01
+				authoritarian_democrat_drift = -0.01
+				party_popularity_stability_factor = 0.1
+				conscription_factor = -0.1
+				stability_weekly = 0.002
+			}
+		}
+		AFG_the_end_of_westernism_4 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_end_of_westernism_4" }
+			name = AFG_the_end_of_westernism
+			picture = PER_islamic_traditions_ns
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 500
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				stability_factor = 0.1
+				political_power_factor = -0.1
+				social_liberal_drift = -0.01
+				authoritarian_democrat_drift = -0.01
+				party_popularity_stability_factor = 0.1
+				conscription_factor = -0.1
+				stability_weekly = 0.002
+			}
+		}
+		AFG_the_end_of_westernism_5 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_end_of_westernism_5" }
+			name = AFG_the_end_of_westernism
+			picture = PER_islamic_traditions_ns
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 500
+				army_core_defence_factor = 0.075
+				army_core_attack_factor = 0.075
+				stability_factor = 0.1
+				political_power_factor = -0.1
+				social_liberal_drift = -0.01
+				authoritarian_democrat_drift = -0.01
+				party_popularity_stability_factor = 0.1
+				conscription_factor = -0.1
+				stability_weekly = 0.002
+				research_speed_factor = -0.025
+				social_conservative_drift = 0.02
+			}
+		}
+		AFG_the_end_of_westernism_6_mob = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_end_of_westernism_6_mob" }
+			name = AFG_the_end_of_westernism
+			picture = PER_islamic_traditions_ns
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 1000
+				army_core_defence_factor = 0.1
+				army_core_attack_factor = 0.1
+				stability_factor = 0.1
+				political_power_factor = -0.1
+				social_liberal_drift = -0.01
+				authoritarian_democrat_drift = -0.01
+				party_popularity_stability_factor = 0.1
+				conscription_factor = -0.1
+				stability_weekly = 0.002
+				research_speed_factor = -0.025
+				social_conservative_drift = 0.02
+				paternal_autocrat_drift = 0.02
+			}
+		}
+		AFG_the_end_of_westernism_6_mullahs = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_end_of_westernism_6_mullahs" }
+			name = AFG_the_end_of_westernism
+			picture = PER_islamic_traditions_ns
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 500
+				army_core_defence_factor = 0.075
+				army_core_attack_factor = 0.075
+				stability_factor = 0.15
+				political_power_factor = -0.1
+				social_liberal_drift = -0.01
+				authoritarian_democrat_drift = -0.01
+				party_popularity_stability_factor = 0.15
+				conscription_factor = -0.1
+				stability_weekly = 0.002
+				research_speed_factor = -0.025
+				social_conservative_drift = 0.02
+				national_populist_drift = 0.05
+			}
+		}
+		AFG_an_economy_for_the_people_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_an_economy_for_the_people_1" }
+			name = AFG_an_economy_for_the_people
+			picture = generic_mechanised_agriculture
+			allowed = { always = no }
+			modifier = {
+				monthly_population = 0.25
+				global_building_slots_factor = 0.1
+			}
+		}
+		AFG_an_economy_for_the_people_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_an_economy_for_the_people_2" }
+			name = AFG_an_economy_for_the_people
+			picture = generic_mechanised_agriculture
+			allowed = { always = no }
+			modifier = {
+				monthly_population = 0.25
+				global_building_slots_factor = 0.1
+				min_export = -0.25
+				consumer_goods_factor = -0.15
+			}
+		}
+
+		AFG_a_gradual_approach_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_1" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.025
+				war_support_factor = 0.025
+			}
+		}
+		AFG_a_gradual_approach_2_legislature = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_2_legislature" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.025
+				war_support_factor = 0.025
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+			}
+		}
+		AFG_a_gradual_approach_2_judicial = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_2_judicial" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.025
+				war_support_factor = 0.025
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_a_gradual_approach_3_judicial_legislature = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_3_judicial_legislature" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.025
+				war_support_factor = 0.025
+				consumer_goods_factor = -0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+			}
+		}
+		AFG_a_gradual_approach_3_judicial_liberal = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_3_judicial_liberal" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				war_support_factor = 0.025
+				consumer_goods_factor = -0.1
+				research_speed_factor = 0.05
+			}
+		}
+		AFG_a_gradual_approach_3_legislature_vilayet = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_3_legislature_vilayet" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.025
+				war_support_factor = 0.025
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				global_building_slots_factor = 0.1
+			}
+		}
+		AFG_a_gradual_approach_4_judicial_legislature_liberal = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_4_judicial_legislature_liberal" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				war_support_factor = 0.025
+				consumer_goods_factor = -0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				research_speed_factor = 0.05
+			}
+		}
+		AFG_a_gradual_approach_4_judicial_legislature_vilayet = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_4_judicial_legislature_vilayet" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.025
+				war_support_factor = 0.025
+				consumer_goods_factor = -0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				global_building_slots_factor = 0.1
+			}
+		}
+		AFG_a_gradual_approach_5 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_5" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				war_support_factor = 0.025
+				consumer_goods_factor = -0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				global_building_slots_factor = 0.1
+				research_speed_factor = 0.05
+			}
+		}
+		AFG_a_gradual_approach_6 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_gradual_approach_6" }
+			name = AFG_a_gradual_approach
+			picture = HUN_treaty_of_triannon
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				consumer_goods_factor = -0.1
+				party_popularity_stability_factor = 0.15
+				political_advisor_cost_factor = -0.33
+				global_building_slots_factor = 0.1
+				research_speed_factor = 0.05
+				social_liberal_drift = 0.01
+				paternal_autocrat_drift = 0.01
+			}
+		}
+		AFG_sensible_economic_reforms_1_industry = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_sensible_economic_reforms_1_industry" }
+			name = AFG_sensible_economic_reforms
+			picture = generic_mild_economic_recovery
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.1
+			}
+		}
+		AFG_sensible_economic_reforms_1_treasury = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_sensible_economic_reforms_1_treasury" }
+			name = AFG_sensible_economic_reforms
+			picture = generic_mild_economic_recovery
+			allowed = { always = no }
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+			}
+		}
+		AFG_sensible_economic_reforms_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_sensible_economic_reforms_2" }
+			name = AFG_sensible_economic_reforms
+			picture = generic_mild_economic_recovery
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+			}
+		}
+
+		AFG_a_steady_hand_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_steady_hand_1" }
+			name = AFG_a_steady_hand
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+		AFG_a_steady_hand_2_purdah = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_steady_hand_2_purdah" }
+			name = AFG_a_steady_hand
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+		AFG_a_steady_hand_2_legislature = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_steady_hand_2_legislature" }
+			name = AFG_a_steady_hand
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.05
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+			}
+		}
+		AFG_a_steady_hand_3_legislature_purdah = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_steady_hand_3_legislature_purdah" }
+			name = AFG_a_steady_hand
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.05
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				war_support_factor = 0.05
+			}
+		}
+		AFG_a_steady_hand_3_legislature_vilayet = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_steady_hand_3_legislature_vilayet" }
+			name = AFG_a_steady_hand
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.05
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				global_building_slots_factor = 0.1
+			}
+		}
+		AFG_a_steady_hand_4_legislature_mojadidis_purdah = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_steady_hand_4_legislature_mojadidis_purdah" }
+			name = AFG_a_steady_hand
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.05
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				social_conservative_drift = 0.01
+				paternal_autocrat_drift = 0.02
+				war_support_factor = 0.05
+			}
+		}
+		AFG_a_steady_hand_4_legislature_vilayet_purdah = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_steady_hand_4_legislature_vilayet_purdah" }
+			name = AFG_a_steady_hand
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.05
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				global_building_slots_factor = 0.1
+				war_support_factor = 0.05
+			}
+		}
+		AFG_a_steady_hand_5 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_steady_hand_5" }
+			name = AFG_a_steady_hand
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.05
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				global_building_slots_factor = 0.1
+				social_conservative_drift = 0.01
+				paternal_autocrat_drift = 0.02
+				war_support_factor = 0.05
+			}
+		}
+		AFG_a_steady_hand_6 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_a_steady_hand_6" }
+			name = AFG_a_steady_hand
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.5
+				global_building_slots_factor = 0.1
+				social_conservative_drift = 0.01
+				paternal_autocrat_drift = 0.02
+				war_support_factor = 0.05
+				mobilization_laws_cost_factor = -0.33
+				economy_cost_factor = -0.33
+			}
+		}
+
+		AFG_the_brotherly_camarilla_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_brotherly_camarilla_1" }
+			name = AFG_the_brotherly_camarilla
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_cost = -0.1
+			}
+		}
+		AFG_the_brotherly_camarilla_2_legislature = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_brotherly_camarilla_2_legislature" }
+			name = AFG_the_brotherly_camarilla
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_cost = -0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+			}
+		}
+		AFG_the_brotherly_camarilla_2_purdah = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_brotherly_camarilla_2_purdah" }
+			name = AFG_the_brotherly_camarilla
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_cost = -0.1
+				war_support_factor = 0.05
+			}
+		}
+		AFG_the_brotherly_camarilla_3_legislature_purdah = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_brotherly_camarilla_3_legislature_purdah" }
+			name = AFG_the_brotherly_camarilla
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_cost = -0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				war_support_factor = 0.05
+			}
+		}
+		AFG_the_brotherly_camarilla_3_purdah_pashtun = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_brotherly_camarilla_3_purdah_pashtun" }
+			name = AFG_the_brotherly_camarilla
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_cost = -0.1
+				war_support_factor = 0.05
+				conscription_factor = -0.05
+				army_attack_factor = 0.05
+			}
+		}
+		AFG_the_brotherly_camarilla_4_legislature_purdah_mojadidis = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_brotherly_camarilla_4_legislature_purdah_mojadidis" }
+			name = AFG_the_brotherly_camarilla
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_cost = -0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				war_support_factor = 0.05
+				social_conservative_drift = 0.01
+				paternal_autocrat_drift = 0.02
+			}
+		}
+		AFG_the_brotherly_camarilla_4_legislature_purdah_pashtun = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_brotherly_camarilla_4_legislature_purdah_pashtun" }
+			name = AFG_the_brotherly_camarilla
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_cost = -0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				war_support_factor = 0.05
+				conscription_factor = -0.05
+				army_attack_factor = 0.05
+			}
+		}
+		AFG_the_brotherly_camarilla_5 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_brotherly_camarilla_5" }
+			name = AFG_the_brotherly_camarilla
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_cost = -0.1
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				war_support_factor = 0.05
+				conscription_factor = -0.05
+				army_attack_factor = 0.05
+				social_conservative_drift = 0.01
+				paternal_autocrat_drift = 0.02
+			}
+		}
+		AFG_the_brotherly_camarilla_6 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_brotherly_camarilla_6" }
+			name = AFG_the_brotherly_camarilla
+			picture = ROM_king_carol_ii_hedonist
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_cost = -0.15
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -1
+				war_support_factor = 0.05
+				conscription_factor = -0.05
+				army_attack_factor = 0.05
+				social_conservative_drift = 0.01
+				paternal_autocrat_drift = 0.05
+			}
+		}
+
+		AFG_the_peoples_revolution_idea_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_1" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.1
+				political_power_gain = 0.1
+			}
+		}
+		AFG_the_peoples_revolution_idea_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_2" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.1
+				political_power_gain = 0.1
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+			}
+		}
+		AFG_the_peoples_revolution_idea_3_army = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_3_army" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.1
+				political_power_gain = 0.1
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+			}
+		}
+		AFG_the_peoples_revolution_idea_3_women = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_3_women" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.1
+				political_power_gain = 0.15
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+		AFG_the_peoples_revolution_idea_3_conservatives = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_3_conservatives" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.1
+				political_power_gain = 0.1
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				stability_factor = 0.1
+			}
+		}
+		AFG_the_peoples_revolution_idea_4_army_women = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_4_army_women" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.1
+				political_power_gain = 0.15
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				industrial_capacity_factory = 0.05
+			}
+		}
+		AFG_the_peoples_revolution_idea_4_army_conservatives = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_4_army_conservatives" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.1
+				political_power_gain = 0.1
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				stability_factor = 0.1
+			}
+		}
+		AFG_the_peoples_revolution_idea_5_prince_women = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_5_prince_women" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.2
+				political_power_gain = 0.15
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				industrial_capacity_factory = 0.05
+				paternal_autocrat_drift = 0.05
+			}
+		}
+		AFG_the_peoples_revolution_idea_5_prince_conservatives = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_5_prince_conservatives" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.2
+				political_power_gain = 0.10
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				stability_factor = 0.1
+				paternal_autocrat_drift = 0.05
+			}
+		}
+		AFG_the_peoples_revolution_idea_6_prince_women = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_6_prince_women" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.2
+				political_power_gain = 0.25
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				industrial_capacity_factory = 0.05
+				paternal_autocrat_drift = 0.1
+			}
+		}
+		AFG_the_peoples_revolution_idea_6_prince_conservatives = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_6_prince_conservatives" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.2
+				political_power_gain = 0.2
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				stability_factor = 0.1
+				paternal_autocrat_drift = 0.1
+			}
+		}
+		AFG_the_peoples_revolution_idea_5_veneer_women = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_5_veneer_women" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.15
+				political_power_gain = 0.15
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				industrial_capacity_factory = 0.05
+				war_support_factor = 0.05
+			}
+		}
+		AFG_the_peoples_revolution_idea_5_veneer_conservatives = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_5_veneer_conservatives" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.15
+				political_power_gain = 0.1
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				stability_factor = 0.1
+				war_support_factor = 0.05
+			}
+		}
+		AFG_the_peoples_revolution_idea_6_veneer_women = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_6_veneer_women" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.2
+				political_power_gain = 0.15
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				industrial_capacity_factory = 0.05
+				war_support_factor = 0.05
+				political_advisor_cost_factor = -0.5
+			}
+		}
+		AFG_the_peoples_revolution_idea_6_veneer_conservatives = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_6_veneer_conservatives" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.2
+				political_power_gain = 0.1
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.1
+				experience_gain_army_factor = 0.1
+				stability_factor = 0.1
+				war_support_factor = 0.05
+				political_advisor_cost_factor = -0.5
+			}
+		}
+		AFG_the_peoples_revolution_idea_5_azadism_women = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_5_azadism_women" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.1
+				political_power_gain = 0.15
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.15
+				experience_gain_army_factor = 0.1
+				industrial_capacity_factory = 0.05
+				national_populist_drift = 0.05
+			}
+		}
+		AFG_the_peoples_revolution_idea_5_azadism_conservatives = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_peoples_revolution_idea_5_azadism_conservatives" }
+			name = AFG_the_peoples_revolution
+			picture = AFG_republic_idea
+			allowed = { always = no }
+			modifier = {
+				party_popularity_stability_factor = 0.1
+				political_power_gain = 0.1
+				grant_medal_cost_factor = -0.4
+				promote_cost_factor = -0.5
+				army_org_factor = 0.05
+				conscription_factor = 0.15
+				experience_gain_army_factor = 0.1
+				stability_factor = 0.1
+				national_populist_drift = 0.05
+			}
+		}
+		AFG_the_economic_revitalisation_plan_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_economic_revitalisation_plan_1" }
+			name = AFG_the_economic_revitalisation_plan
+			picture = state_economy
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				production_factory_start_efficiency_factor = 0.1
+			}
+		}
+		AFG_the_economic_revitalisation_plan_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_economic_revitalisation_plan_2" }
+			name = AFG_the_economic_revitalisation_plan
+			picture = state_economy
+			allowed = { always = no }
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				production_factory_start_efficiency_factor = 0.1
+				global_building_slots_factor = 0.1
+			}
+		}
+		AFG_army_purges = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_army_purges" }
+			picture = generic_purge
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = -50
+				stability_factor = -0.05
+				paternal_autocrat_drift = 0.5
+				army_org_factor = -0.05
+			}
+		}
+		AFG_national_agricultural_plan_invested = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_national_agricultural_plan_invested" }
+			name = AFG_national_agricultural_plan
+			picture = generic_agrarian_reform
+			allowed = { always = no }
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = -0.05
+			}
+			on_remove = {
+				log = "[GetLogRoot]: remove idea AFG_national_agricultural_plan_invested"
+				country_event = afghanistan_events.521
+			}
+		}
+		AFG_national_agricultural_plan_regular = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_national_agricultural_plan_regular" }
+			name = AFG_national_agricultural_plan
+			picture = generic_agrarian_reform
+			allowed = { always = no }
+			modifier = {
+				consumer_goods_factor = 0.15
+				production_speed_buildings_factor = -0.05
+			}
+			on_remove = {
+				log = "[GetLogRoot]: remove idea AFG_national_agricultural_plan_invested"
+				country_event = afghanistan_events.521
+			}
+		}
+
+		AFG_reformation_of_the_afghans_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_1" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.1
+			}
+		}
+		AFG_reformation_of_the_afghans_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_2" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.1
+				stability_weekly = 0.0005
+				war_support_weekly = 0.0005
+			}
+		}
+		AFG_reformation_of_the_afghans_3_judiciary = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_3_judiciary" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.1
+				stability_weekly = 0.0005
+				war_support_weekly = 0.0005
+				political_power_gain = 0.05
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_reformation_of_the_afghans_3_democracy = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_3_democracy" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.15
+				stability_weekly = 0.0005
+				war_support_weekly = 0.0005
+				social_conservative_drift = 0.01
+				social_liberal_drift = 0.01
+				social_democrat_drift = 0.01
+				market_liberal_drift = 0.01
+			}
+		}
+		AFG_reformation_of_the_afghans_4_democracy_judiciary = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_4_democracy_judiciary" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.15
+				stability_weekly = 0.0005
+				war_support_weekly = 0.0005
+				social_conservative_drift = 0.01
+				social_liberal_drift = 0.01
+				social_democrat_drift = 0.01
+				market_liberal_drift = 0.01
+				political_power_gain = 0.05
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_reformation_of_the_afghans_4_progressivism = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_4_progressivism" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.15
+				stability_weekly = 0.0005
+				war_support_weekly = 0.0005
+				social_conservative_drift = 0.01
+				social_liberal_drift = 0.01
+				social_democrat_drift = 0.01
+				market_liberal_drift = 0.01
+				monthly_population = 0.25
+			}
+		}
+		AFG_reformation_of_the_afghans_5 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_5" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.15
+				stability_weekly = 0.0005
+				war_support_weekly = 0.0005
+				social_conservative_drift = 0.01
+				social_liberal_drift = 0.01
+				social_democrat_drift = 0.01
+				market_liberal_drift = 0.01
+				monthly_population = 0.25
+				political_power_gain = 0.05
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_reformation_of_the_afghans_6_aia = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_6_aia" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.15
+				stability_weekly = 0.001
+				war_support_weekly = 0.001
+				social_conservative_drift = 0.02
+				social_liberal_drift = 0.05
+				social_democrat_drift = 0.05
+				market_liberal_drift = 0.02
+				monthly_population = 0.25
+				political_power_gain = 0.05
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_reformation_of_the_afghans_6_marlib = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_6_marlib" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.15
+				stability_weekly = 0.001
+				war_support_weekly = 0.001
+				social_conservative_drift = 0.02
+				social_liberal_drift = 0.02
+				social_democrat_drift = 0.02
+				market_liberal_drift = 0.05
+				monthly_population = 0.25
+				political_power_gain = 0.05
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_reformation_of_the_afghans_6_soccon = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_reformation_of_the_afghans_6_soccon" }
+			name = AFG_reformation_of_the_afghans
+			picture = AFG_parliament_building
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.1
+				political_power_factor = 0.15
+				stability_weekly = 0.001
+				war_support_weekly = 0.001
+				social_conservative_drift = 0.05
+				social_liberal_drift = 0.02
+				social_democrat_drift = 0.02
+				market_liberal_drift = 0.02
+				monthly_population = 0.25
+				political_power_gain = 0.05
+				consumer_goods_factor = -0.1
+			}
+		}
+		AFG_afghan_swadeshi_1_uplifting = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_swadeshi_1_uplifting" }
+			name = AFG_afghan_swadeshi
+			picture = generic_broken_champagne
+			allowed = { always = no }
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				factory_energy_consumption = -0.1
+			}
+		}
+		AFG_afghan_swadeshi_1_combating = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_swadeshi_1_combating" }
+			name = AFG_afghan_swadeshi
+			picture = generic_broken_champagne
+			allowed = { always = no }
+			modifier = {
+				consumer_goods_expected_value = -0.1
+				production_lack_of_resource_penalty_factor = -0.1
+			}
+		}
+		AFG_afghan_swadeshi_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_afghan_swadeshi_2" }
+			name = AFG_afghan_swadeshi
+			picture = generic_broken_champagne
+			allowed = { always = no }
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				factory_energy_consumption = -0.1
+				consumer_goods_expected_value = -0.1
+				production_lack_of_resource_penalty_factor = -0.1
+			}
+		}
+
+		AFG_the_unity_of_red_and_green_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_1" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+		AFG_the_unity_of_red_and_green_2_harmony = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_2_harmony" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.2
+				party_popularity_stability_factor = -0.1
+			}
+		}
+		AFG_the_unity_of_red_and_green_2_purity = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_2_purity" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.05
+				radical_socialist_drift = 0.01
+				syndicalist_drift = 0.01
+				totalist_drift = 0.01
+				party_popularity_stability_factor = 0.1
+			}
+		}
+		AFG_the_unity_of_red_and_green_3_purity = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_3_purity" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.05
+				radical_socialist_drift = 0.01
+				syndicalist_drift = 0.01
+				totalist_drift = 0.01
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+		AFG_the_unity_of_red_and_green_3_harmony = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_3_harmony" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.2
+				party_popularity_stability_factor = -0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+		AFG_the_unity_of_red_and_green_4_harmony_ideal = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_4_harmony_ideal" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.2
+				party_popularity_stability_factor = -0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.1
+				war_support_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		AFG_the_unity_of_red_and_green_4_purity_ideal = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_4_purity_ideal" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.05
+				radical_socialist_drift = 0.01
+				syndicalist_drift = 0.01
+				totalist_drift = 0.01
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.1
+				war_support_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		AFG_the_unity_of_red_and_green_4_harmony_liberation = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_4_harmony_liberation" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.2
+				party_popularity_stability_factor = -0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+				research_speed_factor = 0.05
+				female_random_scientist_chance = 0.1
+			}
+		}
+		AFG_the_unity_of_red_and_green_4_purity_liberation = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_4_purity_liberation" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.05
+				radical_socialist_drift = 0.01
+				syndicalist_drift = 0.01
+				totalist_drift = 0.01
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+				research_speed_factor = 0.05
+				female_random_scientist_chance = 0.1
+			}
+		}
+		AFG_the_unity_of_red_and_green_5_harmony = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_5_harmony" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.2
+				party_popularity_stability_factor = -0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.1
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+				research_speed_factor = 0.05
+				female_random_scientist_chance = 0.1
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		AFG_the_unity_of_red_and_green_5_purity = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_5_purity" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.05
+				political_power_factor = 0.05
+				radical_socialist_drift = 0.01
+				syndicalist_drift = 0.01
+				totalist_drift = 0.01
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.1
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+				research_speed_factor = 0.05
+				female_random_scientist_chance = 0.1
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		AFG_the_unity_of_red_and_green_6_harmony = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_6_harmony" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.1
+				political_power_factor = 0.2
+				party_popularity_stability_factor = -0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				conscription_factor = 0.1
+				research_speed_factor = 0.05
+				female_random_scientist_chance = 0.1
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		AFG_the_unity_of_red_and_green_6_purity = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_unity_of_red_and_green_6_purity" }
+			name = AFG_the_unity_of_red_and_green
+			picture = FIN_socialist_welfare
+			allowed = { always = no }
+			modifier = {
+				army_morale_factor = 0.1
+				political_power_factor = 0.05
+				radical_socialist_drift = 0.01
+				syndicalist_drift = 0.01
+				totalist_drift = 0.01
+				party_popularity_stability_factor = 0.1
+				political_advisor_cost_factor = -0.33
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				conscription_factor = 0.1
+				research_speed_factor = 0.05
+				female_random_scientist_chance = 0.1
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		AFG_sweepers_led_by_muftis_1 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_sweepers_led_by_muftis_1" }
+			name = AFG_sweepers_led_by_muftis
+			picture = FIN_finnish_federation_of_trade_unions_heavy
+			allowed = { always = no }
+			modifier = {
+				global_building_slots_factor = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+		AFG_sweepers_led_by_muftis_2 = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_sweepers_led_by_muftis_2" }
+			name = AFG_sweepers_led_by_muftis
+			picture = FIN_finnish_federation_of_trade_unions_heavy
+			allowed = { always = no }
+			modifier = {
+				global_building_slots_factor = 0.05
+				production_speed_buildings_factor = 0.1
+				consumer_goods_factor = -0.15
+			}
+		}
+		AFG_traditionalist_resistance = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_traditionalist_resistance" }
+			picture = raj_marginalized_muslim_community
+			allowed = { always = no }
+			modifier = {
+				stability_factor = -0.1
+				war_stability_factor = -0.1
+				radical_socialist_drift = -0.01
+			}
+		}
+
+		AFG_the_arg_scheme = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_the_arg_scheme" }
+			picture = generic_fortify_the_borders
+			allowed = { always = no }
+			modifier = {
+				production_speed_bunker_factor = 0.4
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		AFG_pacifying_the_frontier_idea = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_pacifying_the_frontier_idea" }
+			picture = guns_shield
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = -25
+				stability_factor = -0.05
+			}
+		}
+
+		AFG_integrating_the_frontier_idea = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_integrating_the_frontier_idea" }
+			picture = generic_suspended_parliament
+			allowed = { always = no }
+			modifier = {
+				political_power_gain = -0.1
+			}
+		}
+		AFG_fallout_of_the_mangal_rebellion_idea = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_fallout_of_the_mangal_rebellion_idea" }
+			picture = tur_disorganised_armed_forces
+			allowed = { always = no }
+			cancel = { NOT = { has_war_with = PTH } }
+			modifier = {
+				army_morale_factor = -0.05
+				army_org_regain = -0.05
+			}
+		}
+	}
+
+	# Industrial Concerns #
+
+	industrial_concern = {
+
+		AFG_northern_company = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_northern_company" }
+			picture = northern_company
+			allowed = { original_tag = AFG }
+			available = { owns_state = 1118 }
+			traits = { industrial_manufacturer }
+			modifier = {
+				production_speed_industrial_complex_factor = 0.1
+				consumer_goods_factor = -0.15
+			}
+			research_bonus = {
+				industry = 0.15
+			}
+		}
+
+		AFG_siemens_halske = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_siemens_halske" }
+			picture = siemens
+			allowed = { original_tag = AFG }
+			available = {
+				if = {
+					limit = { has_country_flag = AFG_german_companies_withdraw_flag }
+					OR = {
+						has_country_flag = AFG_company_enabled_GER
+						is_ally_with = GER
+					}
+				}
+				NOT = { has_war_with = GER }
+				AFG_socialist_republic = no
+			}
+			traits = { railroad_company }
+			modifier = {
+				production_speed_infrastructure_factor = 0.10
+				production_factory_max_efficiency_factor = 0.05
+				local_resources_factor = 0.10
+			}
+			research_bonus = {
+				industry = 0.1
+				train_tech = 0.1
+			}
+		}
+
+		AFG_da_afghanistan_bank = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_da_afghanistan_bank" }
+			picture = AFG_afghanistan_bank
+			allowed = { original_tag = AFG }
+			available = { has_completed_focus = AFG_establish_the_bank_of_afghanistan }
+			traits = { central_bank }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				consumer_goods_factor = -0.05
+			}
+			research_bonus = {
+				industry = 0.1
+			}
+		}
+	}
+
+	# Non-DLC companies #
+
+	tank_manufacturer = {
+		designer = yes
+
+		AFG_krupp_no_dlc = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_krupp_no_dlc" }
+			name = krupp
+			picture = krupp
+			allowed = { original_tag = AFG }
+			available = {
+				if = {
+					limit = { has_country_flag = AFG_german_companies_withdraw_flag }
+					OR = {
+						has_country_flag = AFG_company_enabled_GER
+						is_ally_with = GER
+					}
+				}
+				if = {
+					limit = {
+						AFG_socialist_republic = yes
+						has_country_flag = AFG_company_enabled_GER
+					}
+					has_country_flag = AFG_socialist_mios_enabled_flag
+				}
+				NOT = { has_war_with = GER }
+			}
+			traits = {
+				infantry_tank_manufacturer_improved
+			}
+			research_bonus = {
+				armor = 0.15
+			}
+			ai_will_do = { base = 50 }
+		}
+	}
+
+	materiel_manufacturer = {
+		designer = yes
+
+		AFG_kohat_armaments_no_dlc = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_kohat_armaments_no_dlc" }
+			name = kohat_armaments
+			picture = kohat_armaments
+			allowed = {
+				OR = {
+					original_tag = AFG
+					original_tag = PTH
+				}
+			}
+			available = {
+				if = {
+					limit = { tag = AFG }
+					has_completed_focus = AFG_utilise_the_kohat_arms_industry
+				}
+			}
+			traits = { infantry_equipment_manufacturer_cheap }
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+		}
+
+		AFG_mke_no_dlc = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_mke_no_dlc" }
+			name = mke
+			picture = mke
+			allowed = { original_tag = AFG }
+			available = {
+				OR = {
+					has_country_flag = AFG_company_enabled_TUR
+					is_ally_with = TUR
+				}
+				NOT = { has_war_with = TUR }
+				if = {
+					limit = {
+						AFG_socialist_republic = yes
+						has_country_flag = AFG_company_enabled_TUR
+					}
+					has_country_flag = AFG_socialist_mios_enabled_flag
+				}
+			}
+			traits = { artillery_equipment_manufacturer_defence }
+			research_bonus = {
+				artillery = 0.15
+			}
+		}
+
+		AFG_toyota_no_dlc = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_toyota_no_dlc" }
+			name = toyota
+			picture = toyota
+			allowed = { original_tag = AFG }
+			available = {
+				OR = {
+					has_country_flag = AFG_company_enabled_JAP
+					is_ally_with = JAP
+				}
+				NOT = { has_war_with = JAP }
+				if = {
+					limit = {
+						AFG_socialist_republic = yes
+						has_country_flag = AFG_company_enabled_JAP
+					}
+					has_country_flag = AFG_socialist_mios_enabled_flag
+				}
+			}
+			traits = {
+				motorised_equipment_manufacturer
+			}
+			research_bonus = {
+				motorized_equipment = 0.15
+			}
+		}
+	}
+
+	aircraft_manufacturer = {
+		designer = yes
+
+		AFG_sokol_no_dlc = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_sokol_no_dlc" }
+			name = sokol
+			picture = sokol
+			allowed = { original_tag = AFG }
+			available = {
+				OR = {
+					has_country_flag = AFG_company_enabled_RUS
+					is_ally_with = RUS
+				}
+				NOT = { has_war_with = RUS }
+				if = {
+					limit = {
+						AFG_socialist_republic = yes
+						has_country_flag = AFG_company_enabled_RUS
+					}
+					has_country_flag = AFG_socialist_mios_enabled_flag
+				}
+			}
+			traits = { sokol_RUS }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+	}
+}

@@ -26,22 +26,10 @@ shared_focus = {
 			limit = { has_socialist_government = yes }
 			is_subject = yes
 		}
-		else_if = {
-			limit = {
-				OR = {
-					original_tag = KAZ
-					original_tag = KHI
-					original_tag = TRK
-				}
-			}
-			has_country_flag = CA_able_to_repair
-		}
-		else_if = {
-			limit = { original_tag = BUK }
+		else = {
 			custom_override_tooltip = {
-				tooltip = CA_outlasted_trk_and_khi
-				NOT = { country_exists = TRK }
-				NOT = { country_exists = KHI }
+				tooltip = country_culture|CA_able_to_repair
+				has_country_flag = CA_able_to_repair
 			}
 		}
 	}
@@ -74,17 +62,30 @@ shared_focus = {
 		if = {
 			limit = {
 				OR = {
+					original_tag = BUK
+					original_tag = TRK
+				}
+				OR = {
+					is_subject = no #Also checks if the tag is Socialist, BUK,TRK, KHI can only be socialist as puppets
 					AND = {
-						original_tag = BUK
+						is_subject_of = RUS
 						has_socialist_government = no
 					}
-					original_tag = TRK
 				}
 			}
 			has_country_flag = CA_internal_struggles_concluded
 		}
 		else_if = {
-			limit = { original_tag = KHI }
+			limit = {
+				original_tag = KHI
+				OR = {
+					is_subject = no
+					AND = {
+						is_subject_of = RUS
+						has_socialist_government = no
+					}
+				}
+			}
 			has_country_flag = KHI_Junaid_Khan_Victorious_Flag
 		}
 	}
@@ -121,14 +122,26 @@ shared_focus = {
 					original_tag = BUK
 					original_tag = TRK
 				}
-				has_socialist_government = no
+				OR = {
+					is_subject = no
+					AND = {
+						is_subject_of = RUS
+						has_socialist_government = no
+					}
+				}
 			}
 			has_country_flag = CA_internal_struggles_concluded
 		}
 		else_if = {
 			limit = {
 				original_tag = KHI
-				has_socialist_government = no
+				OR = {
+					is_subject = no
+					AND = {
+						is_subject_of = RUS
+						has_socialist_government = no
+					}
+				}
 			}
 			has_country_flag = KHI_Junaid_Khan_Victorious_Flag
 		}
@@ -196,7 +209,15 @@ shared_focus = {
 			}
 		}
 		else = {
-			custom_effect_tooltip = CA_fund_local_initiatives_build_slot_karakum_tt
+			584 = { #Karakum
+				effect_tooltip = {
+					custom_effect_tooltip = {
+						localization_key = tooltip_if_owned_by
+						COUNTRY = "[ROOT.GetName]"
+					}
+					increase_state_category_by_one_level = yes
+				}
+			}
 		}
 		custom_effect_tooltip = tooltip_white_line
 		if = {
@@ -210,7 +231,15 @@ shared_focus = {
 			}
 		}
 		else = {
-			custom_effect_tooltip = CA_fund_local_initiatives_build_slot_kyzylkum_tt
+			712 = { #Kyzylkum
+				effect_tooltip = {
+					custom_effect_tooltip = {
+						localization_key = tooltip_if_owned_by
+						COUNTRY = "[ROOT.GetName]"
+					}
+					increase_state_category_by_one_level = yes
+				}
+			}
 		}
 		custom_effect_tooltip = tooltip_white_line
 		if = {
@@ -224,7 +253,15 @@ shared_focus = {
 			}
 		}
 		else = {
-			custom_effect_tooltip = CA_fund_local_initiatives_build_slot_pamir_tt
+			804 = { #Pamir
+				effect_tooltip = {
+					custom_effect_tooltip = {
+						localization_key = tooltip_if_owned_by
+						COUNTRY = "[ROOT.GetName]"
+					}
+					increase_state_category_by_one_level = yes
+				}
+			}
 		}
 	}
 	search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_RESISTANCE FOCUS_FILTER_INDUSTRY }
@@ -333,12 +370,27 @@ shared_focus = {
 					original_tag = BUK
 					original_tag = TRK
 				}
-				has_socialist_government = no
+				OR = {
+					is_subject = no
+					AND = {
+						is_subject_of = RUS
+						has_socialist_government = no
+					}
+				}
 			}
 			has_country_flag = CA_internal_struggles_concluded
 		}
 		else_if = {
-			limit = { original_tag = KHI }
+			limit = {
+				original_tag = KHI
+				OR = {
+					is_subject = no
+					AND = {
+						is_subject_of = RUS
+						has_socialist_government = no
+					}
+				}
+			}
 			has_country_flag = KHI_Junaid_Khan_Victorious_Flag
 		}
 		else = { has_war = no }
@@ -588,22 +640,10 @@ shared_focus = {
 			limit = { has_socialist_government = yes }
 			is_subject = yes
 		}
-		else_if = {
-			limit = {
-				OR = {
-					original_tag = KAZ
-					original_tag = KHI
-					original_tag = TRK
-				}
-			}
-			has_country_flag = CA_able_to_repair
-		}
-		else_if = {
-			limit = { original_tag = BUK }
+		else = {
 			custom_override_tooltip = {
-				tooltip = CA_outlasted_trk_and_khi
-				NOT = { country_exists = TRK }
-				NOT = { country_exists = KHI }
+				tooltip = country_culture|CA_able_to_repair
+				has_country_flag = CA_able_to_repair
 			}
 		}
 	}
@@ -924,11 +964,15 @@ shared_focus = {
 		if = {
 			limit = {
 				OR = {
+					original_tag = BUK
+					original_tag = TRK
+				}
+				OR = {
+					is_subject = no
 					AND = {
-						original_tag = BUK
+						is_subject_of = RUS
 						has_socialist_government = no
 					}
-					original_tag = TRK
 				}
 			}
 			has_country_flag = CA_internal_struggles_concluded
@@ -936,7 +980,13 @@ shared_focus = {
 		else_if = {
 			limit = {
 				original_tag = KHI
-				has_socialist_government = no
+				OR = {
+					is_subject = no
+					AND = {
+						is_subject_of = RUS
+						has_socialist_government = no
+					}
+				}
 			}
 			has_country_flag = KHI_Junaid_Khan_Victorious_Flag
 		}
@@ -1077,17 +1127,30 @@ shared_focus = {
 		if = {
 			limit = {
 				OR = {
+					original_tag = BUK
+					original_tag = TRK
+				}
+				OR = {
+					is_subject = no
 					AND = {
-						original_tag = BUK
+						is_subject_of = RUS
 						has_socialist_government = no
 					}
-					original_tag = TRK
 				}
 			}
 			has_country_flag = CA_internal_struggles_concluded
 		}
 		else_if = {
-			limit = { original_tag = KHI }
+			limit = {
+				original_tag = KHI
+				OR = {
+					is_subject = no
+					AND = {
+						is_subject_of = RUS
+						has_socialist_government = no
+					}
+				}
+			}
 			has_country_flag = KHI_Junaid_Khan_Victorious_Flag
 		}
 	}

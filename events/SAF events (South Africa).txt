@@ -1143,16 +1143,12 @@ country_event = {
 			target = FROM
 			modifier = KR_approves_of_govt
 		}
-		every_country = {
-			limit = {
-				OR = {
-					original_tag = IMP
-					is_in_faction_with = ENT
+		ENT = {
+			every_faction_member = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = SAF_joined_mitteleuropa
 				}
-			}
-			add_opinion_modifier = {
-				target = ROOT
-				modifier = SAF_joined_mitteleuropa
 			}
 		}
 	}
@@ -1209,9 +1205,13 @@ country_event = {
 		custom_effect_tooltip = SAF_tt_national_becomes_natpop
 		hidden_effect = {
 			save_current_party_popularities = yes
-			set_temp_variable = { SAF_new_natpop_value = saved_popularities^7 } #authdem
-			add_to_temp_variable = { SAF_new_natpop_value = saved_popularities^8 } #pataut
-			add_to_temp_variable = { SAF_new_natpop_value = saved_popularities^9 } #natpop
+			set_temp_variable = {
+				SAF_new_natpop_value = {
+					value = saved_popularities^7 #authdem
+					add = saved_popularities^8 #pataut
+					add = saved_popularities^9 #natpop
+				}
+			}
 			set_popularities = {
 				totalist = saved_popularities^0
 				syndicalist = saved_popularities^1
@@ -1788,6 +1788,7 @@ country_event = {
 			limit = { has_idea = SAF_neutral_dominion }
 			remove_ideas = SAF_neutral_dominion
 		}
+		update_volunteer_AI = yes
 		hidden_effect = {
 			country_event = { id = south_africa_events.52 days = 7 }
 		}
@@ -2114,8 +2115,7 @@ country_event = {
 		log = "[GetLogInfo]: event south_africa_events.60 option south_africa_events.60.a"
 		name = south_africa_events.60.a
 		#add new colonists
-		set_temp_variable = { SAF_new_nuweveld_settlers = 40000 }
-		multiply_temp_variable = { SAF_new_nuweveld_settlers = 542.SAF_settling_attractiveness }
+		set_temp_variable = { SAF_new_nuweveld_settlers = { value = 40000 multiply = 542.SAF_settling_attractiveness } }
 		add_to_variable = { 542.SAF_whites_in_botswana = SAF_new_nuweveld_settlers }
 		542 = {
 			add_manpower = var:SAF_new_nuweveld_settlers
@@ -2415,8 +2415,12 @@ country_event = {
 		custom_effect_tooltip = SAF_tt_SAP_and_National_merge
 		hidden_effect = {
 			save_current_party_popularities = yes
-			set_temp_variable = { SAF_new_authdem_value = saved_popularities^6 } #soccon
-			add_to_temp_variable = { SAF_new_authdem_value = saved_popularities^7 } #authdem
+			set_temp_variable = {
+				SAF_new_authdem_value = {
+					value = saved_popularities^6 #soccon
+					add = saved_popularities^7 #authdem
+				}
+			}
 			set_popularities = {
 				totalist = saved_popularities^0
 				syndicalist = saved_popularities^1
@@ -3187,6 +3191,7 @@ country_event = {
 		else = {
 			add_popularity = { ideology = authoritarian_democrat popularity = 0.1 }
 		}
+		update_volunteer_AI = yes
 		hidden_effect = {
 			country_event = { id = south_africa_events.52 days = 7 }
 		}
@@ -3403,11 +3408,15 @@ country_event = {
 		}
 		hidden_effect = {
 			save_current_party_popularities = yes
-			set_temp_variable = { SAF_new_soccon_value = saved_popularities^6 } #soccon
-			add_to_temp_variable = { SAF_new_soccon_value = saved_popularities^7 } #authdem
 			if = {
 				limit = { has_global_flag = SAF_fusion_smuts }
-				add_to_temp_variable = { SAF_new_soccon_value = saved_popularities^4 } #social liberal
+				set_temp_variable = {
+					SAF_new_soccon_value = {
+						value = saved_popularities^6 #soccon
+						add = saved_popularities^7 #authdem
+						add = saved_popularities^4 #social liberal
+					}
+				}
 				set_popularities = {
 					totalist = saved_popularities^0
 					syndicalist = saved_popularities^1
@@ -3422,6 +3431,12 @@ country_event = {
 				}
 			}
 			else = {
+				set_temp_variable = {
+					SAF_new_soccon_value = {
+						value = saved_popularities^6 #soccon
+						add = saved_popularities^7 #authdem
+					}
+				}
 				set_popularities = {
 					totalist = saved_popularities^0
 					syndicalist = saved_popularities^1
@@ -5808,11 +5823,7 @@ country_event = { #Unemployment decreases as a result of inflation
 		log = "[GetLogInfo]: event south_africa_events.162 option south_africa_events.162.a"
 		name = south_africa_events.162.a
 		add_political_power = 25
-		subtract_from_variable = {
-			var = saf_var_unemployment
-			value = 0.02
-			tooltip = SWE_tt_unemployment_lowered
-		}
+		subtract_from_variable = { saf_var_unemployment = 0.02 tooltip = SWE_tt_unemployment_lowered }
 	}
 }
 
@@ -5883,17 +5894,23 @@ country_event = { #The yearly report of the Commission
 		#Pay interest
 		if = {
 			limit = { check_variable = { saf_var_debt > 0 } }
-			set_temp_variable = { saf_var_interest = saf_var_debt }
-			divide_temp_variable = { saf_var_interest = 10 }
-			subtract_from_variable = { saf_var_budget = saf_var_interest }
-			custom_effect_tooltip = SAF_tt_pays_interest
+			subtract_from_variable = {
+				saf_var_budget = {
+					value = saf_var_debt
+					multiply = 0.1
+				}
+				tooltip = SAF_tt_pays_interest
+			}
 		}
 		#Automatically take an extra loan if this makes your budget go below 0
 		if = {
 			limit = { check_variable = { saf_var_budget < 0 } }
-			set_temp_variable = { saf_var_extra_debt = 0 }
-			subtract_from_temp_variable = { saf_var_extra_debt = saf_var_budget }
-			add_to_variable = { saf_var_debt = saf_var_extra_debt }
+			add_to_variable = {
+				saf_var_debt = {
+					value = saf_var_budget
+					multiply = -1
+				}
+			}
 			set_variable = { saf_var_budget = 0 }
 		}
 		custom_effect_tooltip = SWE_tt_takes_loan
@@ -5910,20 +5927,14 @@ country_event = { #The yearly report of the Commission
 				check_variable = { saf_var_unemployment > 0.08 }
 			}
 			custom_effect_tooltip = SWE_tt_unemployment_lowered_two_percent_natural
-			add_to_variable = {
-				var = saf_var_unemployment
-				value = -0.02
-			}
+			add_to_variable = { saf_var_unemployment = -0.02 }
 		}
 		else_if = {
 			limit = {
 				check_variable = { saf_var_unemployment < 0.08 }
 			}
 			custom_effect_tooltip = SWE_tt_unemployment_upped_two_percent
-			add_to_variable = {
-				var = saf_var_unemployment
-				value = 0.02
-			}
+			add_to_variable = { saf_var_unemployment = 0.02 }
 		}
 	}
 }
@@ -5943,11 +5954,7 @@ country_event = { #Sovereign debt crisis
 		set_variable = { saf_var_debt = 0 }
 		add_political_power = -200
 		add_stability = -0.4
-		add_to_variable = {
-			var = saf_var_unemployment
-			value = 0.04
-			tooltip = SWE_tt_unemployment_increased
-		}
+		add_to_variable = { saf_var_unemployment = 0.04 tooltip = SWE_tt_unemployment_increased }
 		every_country = {
 			limit = {
 				OR = {

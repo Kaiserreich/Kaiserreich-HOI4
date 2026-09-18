@@ -520,11 +520,11 @@
  ARG_Vina_Dam_mission_desc: "To further boost Cordoba's industrialisation process, the local administration has proposed the construction of a large hydro-electric installation to not only power the region's evolving industry but also to provide irrigation for thousands of acres of agricultural land, the province's main economic engine. Even with governmental support, the construction will take time to complete, but the investments should pay back in the long run."
 
  ARG_immigration_decisions: "European Immigration"
- ARG_immigration_decisions_desc: "The collapse of nations all over Europe after the Weltkrieg and the rising tensions between the socialist block of the Internationale and the rest of Europe have given rise to an increased level of immigration towards our great nation. Further crises throughout the continent could even further boost these numbers and could prove an opportunity to further boost our population. To attract new immigrants directly, we should end the long-lasting civil war first.\n\nProjected Immigration Report for [GetYear] : §G[?ARG.arg_im_factor]%§!"
+ ARG_immigration_decisions_desc: "The collapse of nations all over Europe after the Weltkrieg and the rising tensions between the socialist block of the Internationale and the rest of Europe have given rise to an increased level of immigration towards our great nation. Further crises throughout the continent could even further boost these numbers and could prove an opportunity to further boost our population. To attract new immigrants directly, we should end the long-lasting civil war first.\n\nProjected Immigration Report for [GetYear] : [?ARG.arg_im_factor|0G%]"
 
  ARG_Attract_Immigrants_decision: "Attract [FROM.GetAdjective] Immigrants"
- ARG_add_immigration_tt: "Adds $RIGHT|Y0%%$ to the §GImmigration Factor§!."
- ARG_reduce_immigration: "Removes $RIGHT|Y0%%$ from the §GImmigration Factor§!."
+ ARG_add_immigration_tt: "Adds $RIGHT|Y0%$ to the §GImmigration Factor§!."
+ ARG_reduce_immigration: "Removes $RIGHT|Y0%$ from the §GImmigration Factor§!."
 
  ARG_autarky_decisions: "Striving towards Self-Sufficiency"
  ARG_autarky_decisions_desc: "While the agricultural power of our nation goes without saying, much of our raw resources and industrial equipment is shipped in from abroad, making us dependent on our trade partners to meet our needs. To combat these issues, the government has outlined 5-year plans in which we will build up and develop our heavy industry and most importantly fix our steel deficit."
@@ -814,41 +814,10 @@
  argentina_foreign_events.400.b: "'Let them come.'"
 
 ## Immigration ##
- argentina_immigration_events.1.t: "Immigration Report 1936"
- argentina_immigration_events.1.d: "Due to the collapse of the world economy in the wake of the Black Monday disaster and the rising tensions all over Europe, large swathes of immigrants have decided to cross the pond and search their fortune in our nation. With the USA slowly drifting into chaos, it comes to no surprise that many of these immigrants have chosen our nation as their primary destination where they have been freely accepted as ordained by our constitution."
+ argentina_immigration_events.1.t: "Immigration Report [GetYearBefore]"
+ argentina_immigration_events.1.d1: "Due to the collapse of the world economy in the wake of the Black Monday disaster and the rising tensions all over Europe, large swathes of immigrants have decided to cross the pond and search their fortune in our nation. With the USA slowly drifting into chaos, it comes as no surprise that many of these immigrants have chosen our nation as their primary destination where they have been freely accepted as ordained by our constitution."
+ argentina_immigration_events.1.d2: "Another year has passed and another statistic been drafted to detail the immigration to our nation. Rising tensions across the globe have once again brought in a lot of refugees from Europe albeit fewer than last year."
  argentina_immigration_events.1.a: "Welcome in Argentina!"
-
- argentina_immigration_events.2.t: "Immigration Report 1937"
- argentina_immigration_events.2.d: "Due to the collapse of the world economy in the wake of the Black Monday disaster and the rising tensions all over Europe, large swathes of immigrants have decided to cross the pond and search their fortune in our nation. With the USA slowly drifting into chaos, it comes as no surprise that many of these immigrants have chosen our nation as their primary destination where they have been freely accepted as ordained by our constitution."
- argentina_immigration_events.2.a: "Welcome in Argentina!"
-
- argentina_immigration_events.3.t: "Immigration Report 1938"
- argentina_immigration_events.3.d: "Another year has passed and another statistic been drafted to detail the immigration to our nation. Rising tensions across the globe have once again brought in a lot of refugees from Europe albeit fewer than last year."
- argentina_immigration_events.3.a: "Welcome in Argentina!"
-
- argentina_immigration_events.4.t: "Immigration Report 1939"
- argentina_immigration_events.4.d: "Another year has passed and another statistic been drafted to detail the immigration to our nation. Rising tensions across the globe have once again brought in a lot of refugees from Europe albeit fewer than last year."
- argentina_immigration_events.4.a: "Welcome in Argentina!"
-
- argentina_immigration_events.5.t: "Immigration Report 1940"
- argentina_immigration_events.5.d: "Another year has passed and another statistic been drafted to detail the immigration to our nation. Rising tensions across the globe have once again brought in a lot of refugees from Europe albeit fewer than last year."
- argentina_immigration_events.5.a: "Welcome in Argentina!"
-
- argentina_immigration_events.6.t: "Immigration Report 1941"
- argentina_immigration_events.6.d: "Another year has passed and another statistic been drafted to detail the immigration to our nation. Rising tensions across the globe have once again brought in a lot of refugees from Europe albeit fewer than last year."
- argentina_immigration_events.6.a: "Welcome in Argentina!"
-
- argentina_immigration_events.7.t: "Immigration Report 1942"
- argentina_immigration_events.7.d: "Another year has passed and another statistic been drafted to detail the immigration to our nation. Rising tensions across the globe have once again brought in a lot of refugees from Europe albeit fewer than last year."
- argentina_immigration_events.7.a: "Welcome in Argentina!"
-
- argentina_immigration_events.8.t: "Immigration Report 1943"
- argentina_immigration_events.8.d: "Another year has passed and another statistic been drafted to detail the immigration to our nation. Rising tensions across the globe have once again brought in a lot of refugees from Europe albeit fewer than last year."
- argentina_immigration_events.8.a: "Welcome in Argentina!"
-
- argentina_immigration_events.9.t: "Immigration Report 1944"
- argentina_immigration_events.9.d: "Another year has passed and another statistic been drafted to detail the immigration to our nation. Rising tensions across the globe have once again brought in a lot of refugees from Europe albeit fewer than last year."
- argentina_immigration_events.9.a: "Welcome in Argentina!"
 
 ## Black Monday ##
  argentina_black_monday_events.1.t: "Black Monday Hits the Nation"

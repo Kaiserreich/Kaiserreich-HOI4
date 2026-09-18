@@ -19,10 +19,10 @@ NZL_puppet_setup = {
 				}
 			}
 			if = {
-				limit = { NZL_cyril_louis_norton_newall = { can_be_country_leader = yes } }
-				NZL_cyril_louis_norton_newall = { remove_all_country_leader_roles = yes }
+				limit = { NZL_cyril_newall = { can_be_country_leader = yes } }
+				NZL_cyril_newall = { remove_all_country_leader_roles = yes }
 			}
-			NZL_bernard_cyril_freyberg = {
+			NZL_bernard_freyberg = {
 				set_nationality = PREV
 				remove_country_leader_role_social_democrat = yes
 				remove_country_leader_role_social_liberal = yes
@@ -35,7 +35,7 @@ NZL_puppet_setup = {
 				else = {
 					add_country_leader_role = {
 						country_leader = {
-							desc = NZL_bernard_cyril_freyberg_army_chief_desc
+							desc = NZL_bernard_freyberg_army_chief_desc
 							ideology = authoritarian_democrat_subtype
 						}
 						promote_leader = yes
@@ -48,7 +48,7 @@ NZL_puppet_setup = {
 				else = {
 					add_country_leader_role = {
 						country_leader = {
-							desc = NZL_bernard_cyril_freyberg_army_chief_desc
+							desc = NZL_bernard_freyberg_army_chief_desc
 							ideology = paternal_autocrat_subtype
 						}
 						promote_leader = yes

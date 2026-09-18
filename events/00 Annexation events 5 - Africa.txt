@@ -3090,7 +3090,14 @@ country_event = { #Fate of Morocco
 		}
 		set_temp_variable = { tag_to_release = MOR }
 		release_targeted_tag = yes
-		var:tag_to_release = { MOR_create_mohammed_v = yes }
+		var:tag_to_release = { set_cosmetic_tag = MOR_sultanate }
+		if = {
+			limit = { NOT = { has_government = national_populist } }
+			var:tag_to_release = { MOR_create_mohammed_v = yes }
+		}
+		else = {
+			var:tag_to_release = { MOR_create_al_touzounini = yes }
+		}
 	}
 
 	option = { #Give to France
@@ -3731,6 +3738,7 @@ country_event = { #Fate of Djibouti
 						}
 						annexations_france_can_annex_overseas = yes
 					}
+					annexations_is_valid_britain = no
 				}
 				save_event_target_as = can_annex
 			}
@@ -3739,7 +3747,10 @@ country_event = { #Fate of Djibouti
 				limit = {
 					269 = { #Hargeisa
 						annexations_state_owner_is_valid_grant_target = yes
-						owner = { ROOT_can_grant_land = yes }
+						owner = {
+							annexations_is_valid_britain = no
+							ROOT_can_grant_land = yes
+						}
 					}
 				}
 				var:269.owner = { save_event_target_as = somalia add_to_array = { ROOT.potential_grant_targets = THIS } }
@@ -3946,6 +3957,18 @@ country_event = { #Fate of Somalia
 				annexations_AI_give_to_britain_instead = yes
 			}
 		}
+		set_temp_variable = { tag_to_release = SOM }
+		release_targeted_tag = yes
+	}
+
+	option = { #Annex Hargeisa and liberate the rest
+		log = "[GetLogInfo]: event annexation_events.5029 option annexation_events.5029.b"
+		name = annexation_events.5029.b
+		trigger = {
+			annexations_can_annex = yes
+		}
+		ai_chance = { base = 50 }
+		269 = { add_claim_of_ROOT = yes }
 		set_temp_variable = { tag_to_release = SOM }
 		release_targeted_tag = yes
 	}
@@ -4495,6 +4518,117 @@ country_event = { #Fate of East Africa
 
 	option = { #Cancel
 		log = "[GetLogInfo]: event annexation_events.5032 option annexation_events.cancel"
+		name = annexation_events.cancel
+		ai_chance = { base = 0 }
+	}
+
+	after = {
+		recheck_annexations = yes
+	}
+}
+
+country_event = { #Fate of Zanzibar
+	id = annexation_events.5905
+	title = annexation_905
+	desc = annexation_905_desc
+	picture = GFX_report_event_generic_conference2
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			annexations_create_mittelafrika_event_target = yes
+			annexations_create_azania_event_target = yes
+			if = {
+				limit = {
+					OR = {
+						original_tag = MAF
+						original_tag = TZN
+					}
+				}
+				save_event_target_as = can_annex
+			}
+		}
+	}
+
+	option = { #Liberate
+		log = "[GetLogInfo]: event annexation_events.5905 option annexation_events.5905.a"
+		name = annexation_events.5905.a
+		trigger = {
+			is_subject = no
+		}
+		ai_chance = { base = 0 }
+		set_temp_variable = { tag_to_release = ZAN }
+		release_targeted_tag = yes
+	}
+
+	option = { #Give to TZN
+		log = "[GetLogInfo]: event annexation_events.5905 option annexation_events.africa.give_to_azania"
+		name = annexation_events.africa.give_to_azania
+		trigger = {
+			has_event_target = azania
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				annexations_can_annex = yes
+			}
+			modifier = {
+				factor = 0
+				has_subject = event_target:mittelafrika
+			}
+			modifier = {
+				factor = 0.1
+				event_target:azania = { is_subject = yes }
+			}
+		}
+		set_temp_variable = { tag_to_release = event_target:azania }
+		ZAN = { set_transfer_target_cores = yes }
+		transfer_targeted_territory = yes
+	}
+
+	option = { #Give to MAF
+		log = "[GetLogInfo]: event annexation_events.5905 option annexation_events.africa.give_to_mittelafrika"
+		name = annexation_events.africa.give_to_mittelafrika
+		trigger = {
+			has_event_target = mittelafrika
+		}
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				has_subject = event_target:mittelafrika
+				annexations_can_annex = no
+			}
+		}
+		set_temp_variable = { tag_to_release = event_target:mittelafrika }
+		ZAN = { set_transfer_target_cores = yes }
+		transfer_targeted_territory = yes
+	}
+
+	option = { #Give to overlord
+		log = "[GetLogInfo]: event annexation_events.5905 option annexation_events.give_to_overlord"
+		name = annexation_events.give_to_overlord
+		trigger = {
+			annexations_should_give_lands_to_overlord = yes
+		}
+		set_temp_variable = { tag_to_release = overlord }
+		ZAN = { set_transfer_target_cores = yes }
+		transfer_targeted_territory = yes
+	}
+
+	option = { #Annex
+		log = "[GetLogInfo]: event annexation_events.5905 option annexation_events.integration"
+		name = annexation_events.integration
+		trigger = {
+			annexations_can_annex = yes
+		}
+		ZAN = { add_claim_of_ROOT_on_valid_cores = yes }
+	}
+
+	option = { #Cancel
+		log = "[GetLogInfo]: event annexation_events.5905 option annexation_events.cancel"
 		name = annexation_events.cancel
 		ai_chance = { base = 0 }
 	}

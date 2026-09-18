@@ -1,0 +1,95 @@
+AFG_nadir_backer_country = {
+	targets = {
+		target_array = AFG.AFG_foreign_influence_countries
+
+		#GER = Amanullah then Nadir = RUS->JAP->OTT
+		#RUS = Amanullah then Nadir = OTT->GER->JAP
+		#OTT = Amanullah then Nadir = RUS->JAP->GER
+		#JAP = Amanullah then Nadir = GER->RUS->OTT
+
+		score = {
+			base = 0
+			# Germany is AFG_amanullah_backer
+			modifier = {
+				check_variable = { AFG.AFG_amanullah_backer = GER }
+				set_temp_variable = {
+					AFG_nadir_backer_chance_GER = {
+						value = 0
+						if = {
+							limit = { value = id equals = RUS }
+							add = 100
+						}
+						else_if = {
+							limit = { value = id equals = JAP }
+							add = 75
+						}
+						else = { #TUR
+							add = 50
+						}
+					}
+				}
+				add = AFG_nadir_backer_chance_GER
+			}
+			modifier = {
+				check_variable = { AFG.AFG_amanullah_backer = RUS }
+				set_temp_variable = {
+					AFG_nadir_backer_chance_RUS = {
+						value = 0
+						if = {
+							limit = { value = id equals = TUR }
+							add = 100
+						}
+						else_if = {
+							limit = { value = id equals = GER }
+							add = 75
+						}
+						else = { #JAP
+							add = 50
+						}
+					}
+				}
+				add = AFG_nadir_backer_chance_RUS
+			}
+			modifier = {
+				check_variable = { AFG.AFG_amanullah_backer = TUR }
+				set_temp_variable = {
+					AFG_nadir_backer_chance_TUR = {
+						value = 0
+						if = {
+							limit = { value = id equals = RUS }
+							add = 100
+						}
+						else_if = {
+							limit = { value = id equals = JAP }
+							add = 75
+						}
+						else = { #GER
+							add = 50
+						}
+					}
+				}
+				add = AFG_nadir_backer_chance_TUR
+			}
+			modifier = {
+				check_variable = { AFG.AFG_amanullah_backer = JAP }
+				set_temp_variable = {
+					AFG_nadir_backer_chance_TUR = {
+						value = 0
+						if = {
+							limit = { value = id equals = GER }
+							add = 100
+						}
+						else_if = {
+							limit = { value = id equals = RUS }
+							add = 75
+						}
+						else = { #TUR
+							add = 50
+						}
+					}
+				}
+				add = AFG_nadir_backer_chance_TUR
+			}
+		}
+	}
+}

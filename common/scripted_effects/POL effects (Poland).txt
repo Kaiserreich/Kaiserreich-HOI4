@@ -28,11 +28,7 @@ POL_add_royal_influence = {
 		}
 
 		# avoid values outside the allowed range
-		clamp_temp_variable = {
-			var = POL_influence_change
-			min = POL_lower_limit
-			max = POL_upper_limit
-		}
+		clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
 		#calculate proportional reductions
 		set_temp_variable = {
@@ -165,11 +161,7 @@ POL_add_syndicalist_influence = {
 	}
 
 	# avoid values outside the allowed range
-	clamp_temp_variable = {
-		var = POL_influence_change
-		min = POL_lower_limit
-		max = POL_upper_limit
-	}
+	clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
 	#calculate proportional reductions
 	set_temp_variable = {
@@ -244,11 +236,7 @@ POL_add_republican_influence = {
 	}
 
 	# avoid values outside the allowed range
-	clamp_temp_variable = {
-		var = POL_influence_change
-		min = POL_lower_limit
-		max = POL_upper_limit
-	}
+	clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
 	#calculate proportional reductions
 	set_temp_variable = {
@@ -323,11 +311,7 @@ POL_add_nationalist_influence = {
 	}
 
 	# avoid values outside the allowed range
-	clamp_temp_variable = {
-		var = POL_influence_change
-		min = POL_lower_limit
-		max = POL_upper_limit
-	}
+	clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
 	#calculate proportional reductions
 	set_temp_variable = {
@@ -377,13 +361,14 @@ POL_add_nationalist_influence = {
 }
 
 POL_predict_election = { #calculate the winner
-	set_variable = { POL_circle_victory = POL_royal_influence }
 	if = {
 		limit = { NOT = { has_idea = POL_coalition_broken } }
-		add_to_variable = { POL_circle_victory = POL_nat_influence }
+		set_variable = { POL_circle_victory = { value = POL_royal_influence add = POL_nat_influence } }
 	}
-	set_variable = { POL_centrolew_victory = POL_rep_influence }
-	add_to_variable = { POL_centrolew_victory = POL_soc_influence }
+	else = {
+		set_variable = { POL_circle_victory = POL_royal_influence }
+	}
+	set_variable = { POL_centrolew_victory = { value = POL_rep_influence add = POL_soc_influence } }
 }
 
 POL_add_austrian_influence = {
@@ -399,11 +384,7 @@ POL_add_austrian_influence = {
 
 	set_temp_variable = { POL_upper_limit = { value = POL_GER_influence add = POL_influence } }
 
-	clamp_temp_variable = {
-		var = POL_influence_change
-		min = POL_lower_limit
-		max = POL_upper_limit
-	}
+	clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
 	set_temp_variable = {
 		POL_reduction_GER = {
@@ -448,11 +429,7 @@ POL_add_german_influence = {
 
 	set_temp_variable = { POL_upper_limit = { value = POL_AUS_influence add = POL_influence } }
 
-	clamp_temp_variable = {
-		var = POL_influence_change
-		min = POL_lower_limit
-		max = POL_upper_limit
-	}
+	clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
 	set_temp_variable = {
 		POL_reduction_AUS = {
@@ -492,11 +469,7 @@ POL_add_polish_influence = {
 
 	set_temp_variable = { POL_upper_limit = { value = POL_AUS_influence add = POL_GER_influence } }
 
-	clamp_temp_variable = {
-		var = POL_influence_change
-		min = POL_lower_limit
-		max = POL_upper_limit
-	}
+	clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
 	set_temp_variable = {
 		POL_reduction_AUS = {

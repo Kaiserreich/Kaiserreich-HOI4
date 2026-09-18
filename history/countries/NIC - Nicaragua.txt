@@ -30,9 +30,14 @@ add_opinion_modifier = { target = HON modifier = NIC_holding_military }
 }
 
 set_variable = { country_guide_page_count = 1 }
+set_variable = { central_america_political_foci_count = 0 }
 
 country_event = { id = nicaragua_events.2 days = 22 }
 country_event = { id = central_america_flavour_events.18 days = 258 }
+
+### Central American flavour events ###
+country_event = { id = central_america_flavour_events.12 days = 1691 } # A Tropical Storm hits the Nicaraguan Atlantic shores
+country_event = { id = central_america_flavour_events.14 days = 2097 } # Another Hurricane Hits the Nicaraguan Atlantic shores
 
 set_stability = 0.52
 set_war_support = 0.24
@@ -132,3 +137,6 @@ NIC_guillermo_sevilla_sacasa = { set_character_flag = CEN_reactionary }
 NIC_carlos_alberto_brenes_jarquin = { set_character_flag = CEN_reactionary }
 NIC_leon_debayle_sacasa = { set_character_flag = CEN_reactionary }
 NIC_ana_salvadora = { set_character_flag = CEN_reactionary }
+
+NIC_augusto_cesar_sandino = { set_character_flag = CEN_field_marshal }
+NIC_anastasio_somoza_garcia = { set_character_flag = CEN_field_marshal }

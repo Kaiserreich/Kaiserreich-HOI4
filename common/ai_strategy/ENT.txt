@@ -674,9 +674,11 @@ ENT_sync_invasions = {
 		}
 
 		#activate every 60 days
-		set_temp_variable = { days = global.num_days }
-		modulo_temp_variable = { days = 90 }
-		check_variable = { days < 60 }
+		check_expr = {
+			value = global.num_days
+			mod = 90
+			less_than = 60
+		}
 	}
 	abort_when_not_enabled = yes
 

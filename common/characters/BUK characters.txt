@@ -706,16 +706,34 @@ characters = {
 		portraits = {
 			army = {
 				small = GFX_portrait_BUK_nisar_muhammad_yousafzai_army_small
+				large = GFX_portrait_BUK_nisar_muhammad_yousafzai_army_large
 			}
 		}
 		advisor = {
 			slot = political_advisor
 			idea_token = BUK_nisar_muhammad_yousafzai_advisor
+			desc = BUK_nisar_muhammad_yousafzai_commander_desc
 			available = {
 				has_socialist_government = yes
 				has_completed_focus = BUK_break_the_crowns
 			}
 			traits = { KR_red_afghan_exile }
+		}
+		corps_commander = {
+			desc = BUK_nisar_muhammad_yousafzai_commander_desc
+			traits = { trickster ranger }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			visible = {
+				has_socialist_government = yes
+				if = {
+					limit = { original_tag = BUK }
+					has_completed_focus = BUK_break_the_crowns
+				}
+			}
 		}
 	}
 

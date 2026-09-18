@@ -461,7 +461,6 @@ ideas = {
 			allowed = { always = no }
 			modifier = {
 				political_power_gain = 0.1
-				stability_weekly = 0
 			}
 		}
 		SHX_confucian_order = {
@@ -1853,6 +1852,7 @@ ideas = {
 			cancel_if_invalid = no
 			cancel = {
 				market_liberal < 0.1
+				NOT = { has_completed_focus = SHX_towards_the_dream_of_unification }
 			}
 			traits = { industrial_manufacturer }
 			modifier = {

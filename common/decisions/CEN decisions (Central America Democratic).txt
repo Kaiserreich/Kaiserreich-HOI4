@@ -274,7 +274,50 @@ CENdem_expansionism = {
 		cancel_if_not_visible = yes
 		war_with_target_on_remove = yes
 
-		ai_will_do = { base = 0 } # Player-only for the time being
+		ai_will_do = {
+			# Will take if target is in a war that's going poorly
+			modifier = {
+				add = 100
+				FROM = {
+					has_war_with_major = yes
+					OR = {
+						any_allied_country = {
+							is_major = yes
+							is_subject = no
+							has_capitulated = yes
+						}
+						if = {
+							limit = { is_subject = no }
+							surrender_progress > 0.2
+						}
+						else = {
+							var:FROM.overlord = { surrender_progress > 0.2 }
+						}
+					}
+				}
+			}
+			# Will take if target is WIF fighting independence war
+			modifier = {
+				add = 100
+				FROM = {
+					original_tag = WIF
+					has_war_with = ENT
+					has_socialist_government = yes
+					is_valid_peace_target = yes
+				}
+			}
+			# Will never take if the target is a player
+			modifier = {
+				factor = 0
+				if = {
+					limit = { FROM = { is_subject = no } }
+					FROM = { is_ai = no }
+				}
+				else = {
+					var:FROM.overlord = { is_ai = no }
+				}
+			}
+		}
 
 		cancel_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision cancel CENdem_demand_belize"

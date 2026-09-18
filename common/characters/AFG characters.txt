@@ -1,32 +1,4 @@
 characters = {
-	#######################
-	### Country Leaders ###
-	#######################
-	AFG_abdul_rahman_mahmoodi = {
-		name = AFG_abdul_rahman_mahmoodi
-		portraits = {
-			civilian = {
-				large = GFX_portrait_AFG_abdul_rahman_mahmoodi_civilian_large
-			}
-		}
-		country_leader = {
-			desc = AFG_abdul_rahman_mahmoodi_leader_desc
-			ideology = totalist_subtype
-		}
-		country_leader = {
-			desc = AFG_abdul_rahman_mahmoodi_leader_desc
-			ideology = syndicalist_subtype
-		}
-		country_leader = {
-			desc = AFG_abdul_rahman_mahmoodi_leader_desc
-			ideology = radical_socialist_subtype
-		}
-		country_leader = {
-			desc = AFG_abdul_rahman_mahmoodi_leader_desc
-			ideology = social_democrat_subtype
-		}
-	}
-
 	################
 	### Monarchs ###
 	################
@@ -34,19 +6,8 @@ characters = {
 		name = AFG_amanullah_khan
 		portraits = {
 			civilian = {
-				small = GFX_portrait_AFG_amanullah_khan_civilian_small
 				large = GFX_portrait_AFG_amanullah_khan_civilian_large
 			}
-		}
-		advisor = {
-			slot = army_chief
-			idea_token = AFG_amanullah_khan_army_chief
-			desc = AFG_amanullah_khan_leader_desc
-			available = {
-				has_authoritarian_government = yes
-			}
-			traits = { KR_army_chief_reform_1 }
-			cost = 50
 		}
 		country_leader = {
 			desc = AFG_amanullah_khan_leader_desc
@@ -72,13 +33,9 @@ characters = {
 			desc = AFG_amanullah_khan_leader_desc
 			ideology = paternal_autocrat_subtype
 		}
-		country_leader = {
-			desc = AFG_amanullah_khan_leader_desc
-			ideology = national_populist_subtype
-		}
 	}
 
-	AFG_mohammad_nadir_khan = {
+	AFG_mohammad_nadir_khan = { #Leader role added via content, renamed to Mohammad Nadir Shah
 		name = AFG_mohammad_nadir_khan
 		portraits = {
 			civilian = {
@@ -90,10 +47,14 @@ characters = {
 			slot = army_chief
 			idea_token = AFG_mohammad_nadir_khan_army_chief
 			available = {
-				has_authoritarian_government = yes
+				OR = {
+					AFG_is_telai = yes
+					AFG_civil_war_started = no
+				}
 			}
-			traits = { KR_army_chief_offensive_1 }
-			cost = 50
+			traits = { KR_army_chief_offensive_2 }
+			cost = 100
+			can_be_fired = no
 		}
 		field_marshal = {
 			desc = AFG_mohammad_nadir_khan_army_chief_desc
@@ -103,21 +64,632 @@ characters = {
 			defense_skill = 1
 			planning_skill = 2
 			logistics_skill = 2
-		}
-	}
-
-	AFG_habibullah_kalakani = {
-		name = AFG_habibullah_kalakani
-		portraits = {
-			civilian = {
-				large = GFX_portrait_AFG_habibullah_kalakani_civilian_large
+			visible = {
+				OR = {
+					AFG_is_telai = yes
+					AFG_civil_war_started = no
+				}
 			}
 		}
 	}
 
-	################
-	### Generals ###
-	################
+	AFG_mohammad_zahir_khan = { #Leader role added via content, renamed to Mohammad Zahir Shah
+		name = AFG_mohammad_zahir_khan
+		portraits = {
+			army = {
+				large = GFX_portrait_AFG_mohammad_zahir_khan_army_large
+				small = GFX_portrait_AFG_mohammad_zahir_khan_army_small
+			}
+		}
+		corps_commander = {
+			desc = AFG_mohammad_zahir_khan_commander_desc
+			traits = { politically_connected }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			visible = {
+				AFG_is_telai = yes
+			}
+		}
+	}
+
+	AFG_mohammad_hashim_khan = { #Leader role added via content, renamed to Mohammad Hashim Shah
+		name = AFG_mohammad_hashim_khan
+		portraits = {
+			civilian = {
+				large = GFX_portrait_AFG_mohammad_hashim_khan_civilian_large
+			}
+			army = {
+				large = GFX_portrait_AFG_mohammad_hashim_khan_army_large
+				small = GFX_portrait_AFG_mohammad_hashim_khan_army_small
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_mohammad_hashim_khan_sic
+			traits = { KR_pragmatic_statesman_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_mohammad_hashim_khan_advisor
+			desc = AFG_mohammad_hashim_khan_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				AFG_is_telai = yes
+				is_country_leader = no
+			}
+			traits = { KR_pragmatic_statesman }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = -0.05 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_reformist_path = yes
+				}
+			}
+		}
+		corps_commander = {
+			desc = AFG_mohammad_hashim_khan_sic_desc
+			traits = { politically_connected harsh_leader }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				AFG_is_telai = yes
+			}
+		}
+	}
+
+	AFG_inayatullah_khan = { #Leader role added via content
+		name = AFG_inayatullah_khan
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_inayatullah_khan_army_small
+				large = GFX_portrait_AFG_inayatullah_khan_army_large
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_inayatullah_khan_advisor
+			available = {
+				has_country_leader = { character = AFG_amanullah_khan }
+			}
+			traits = { KR_idealistic_monarchist }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.15 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+	}
+
+	##################
+	### Presidents ###
+	##################
+	AFG_mohammad_ghobar = { #Socialist leader roles added via event
+		name = AFG_mohammad_ghobar
+		portraits = {
+			civilian = {
+				large = GFX_portrait_AFG_mohammad_ghobar_civilian_large
+				small = GFX_portrait_AFG_mohammad_ghobar_civilian_small
+			}
+		}
+	}
+	AFG_abdul_hai_habibi = {
+		name = AFG_abdul_hai_habibi
+		portraits = {
+			civilian = {
+				large = GFX_portrait_AFG_abdul_hai_habibi_civilian_large
+				small = GFX_portrait_AFG_abdul_hai_habibi_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdul_hai_habibi_advisor
+			available = {
+				OR = {
+					has_democratic_government = yes
+					has_completed_focus = AFG_tolerate_liberal_dissent
+					AFG_momand_republic = yes
+				}
+			}
+			traits = { KR_enlightened_academic }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+	}
+	AFG_abdul_hadi_dawi = { #SocCon leader roles added via event
+		name = AFG_abdul_hadi_dawi
+		portraits = {
+			civilian = {
+				small = GFX_portrait_AFG_abdul_hadi_dawi_civilian_small
+				large = GFX_portrait_AFG_abdul_hadi_dawi_civilian_large
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_abdul_hadi_dawi_sic
+			traits = { KR_economic_reformer_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdul_hadi_dawi_advisor
+			desc = AFG_abdul_hadi_dawi_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				OR = {
+					has_country_leader = { character = AFG_amanullah_khan }
+					has_democratic_government = yes
+					AFG_momand_republic = yes
+				}
+			}
+			traits = { KR_economic_reformer }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.15 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+	}
+	AFG_mohammad_gul_khan_momand = { #AuthDem/PatAut/NatPop leader roles added via event
+		name = AFG_mohammad_gul_khan_momand
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_mohammad_gul_khan_momand_army_small
+				large = GFX_portrait_AFG_mohammad_gul_khan_momand_army_large
+			}
+			civilian = {
+				large = GFX_portrait_AFG_mohammad_gul_khan_momand_civilian_large
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_mohammad_gul_khan_momand_advisor
+			desc = AFG_mohammad_gul_khan_momand_army_chief_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				OR = {
+					AFG_is_telai = yes
+					AFG_civil_war_started = no
+				}
+				AFG_socialist_republic = no
+				is_country_leader = no
+			}
+			traits = { KR_general_staffer }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = AFG_mohammad_gul_khan_momand_army_chief
+			available = {
+				not_already_hired_except_as = army_chief
+				OR = {
+					AFG_is_telai = yes
+					has_country_leader = { character = AFG_mohammad_gul_khan_momand }
+				}
+				AFG_socialist_republic = no
+				AFG_civil_war_ongoing = no
+			}
+			traits = { KR_army_chief_morale_2 }
+			cost = 100
+			can_be_fired = no
+		}
+		advisor = {
+			slot = high_command
+			idea_token = AFG_mohammad_gul_khan_momand_high_command
+			desc = AFG_mohammad_gul_khan_momand_army_chief_desc
+			ledger = army
+			available = {
+				not_already_hired_except_as = high_command
+				OR = {
+					AFG_is_telai = yes
+					AFG_civil_war_started = no
+				}
+				AFG_socialist_republic = no
+				is_country_leader = no
+			}
+			traits = { KR_MHC_army_engineering_1 }
+			cost = 50
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+		corps_commander = {
+			desc = AFG_mohammad_gul_khan_momand_army_chief_desc
+			traits = { inflexible_strategist trait_cautious }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 3
+			visible = {
+				OR = {
+					AFG_is_telai = yes
+					is_country_leader = yes
+					AFG_civil_war_started = no
+				}
+				AFG_socialist_republic = no
+			}
+		}
+	}
+	###############
+	### Dummies ###
+	###############
+	AFG_purdil_khan = {
+		name = AFG_purdil_khan
+		portraits = {
+			civilian = {
+				large = GFX_Portrait_Arabia_Generic_2 #TODO portrait, most likely keep generic
+			}
+		}
+		country_leader = {
+			ideology = national_populist_subtype
+		}
+	}
+
+	##########################
+	### Seconds in Command ###
+	##########################
+	AFG_interim_leadership_mon = {
+		name = AFG_interim_leadership
+		portraits = {
+			army = {
+				small = GFX_idea_generic_empowered_executive
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_interim_leadership_mon_sic
+			visible = { is_second_in_command = yes }
+			traits = { KR_empty_sic }
+			cost = 0
+			can_be_fired = no
+		}
+	}
+	AFG_interim_leadership_rep = {
+		name = AFG_interim_leadership
+		portraits = {
+			army = {
+				small = GFX_idea_generic_empowered_executive
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_interim_leadership_rep_sic
+			visible = { is_second_in_command = yes }
+			traits = { KR_empty_sic }
+			cost = 0
+			can_be_fired = no
+		}
+	}
+	AFG_interim_leadership_soc = {
+		name = AFG_interim_leadership
+		portraits = {
+			army = {
+				small = GFX_idea_generic_empowered_executive
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_interim_leadership_soc_sic
+			visible = { is_second_in_command = yes }
+			traits = { KR_empty_sic }
+			cost = 0
+			can_be_fired = no
+		}
+	}
+	AFG_shah_mahmud_khan = {
+		name = AFG_shah_mahmud_khan
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_shah_mahmud_khan_army_small
+				large = GFX_portrait_AFG_shah_mahmud_khan_army_large
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_shah_mahmud_khan_sic
+			traits = { KR_happy_amateur_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_shah_mahmud_khan_advisor
+			desc = AFG_shah_mahmud_khan_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				AFG_is_telai = yes
+			}
+			traits = { KR_happy_amateur }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = AFG_shah_mahmud_khan_high_command
+			desc = AFG_shah_mahmud_khan_sic_desc
+			ledger = army
+			available = {
+				not_already_hired_except_as = high_command
+				AFG_is_telai = yes
+			}
+			traits = { KR_MHC_army_logistics_1 }
+			cost = 50
+		}
+		corps_commander = {
+			desc = AFG_shah_mahmud_khan_sic_desc
+			traits = { politically_connected organizer }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 2
+			visible = {
+				AFG_is_telai = yes
+			}
+		}
+	}
+	AFG_abdul_ahad_wardak = {
+		name = AFG_abdul_ahad_wardak
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_abdul_ahad_wardak_army_small
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_abdul_ahad_wardak_sic
+			traits = { KR_silent_workhorse_sic }
+			cost = 0
+			can_be_fired = no
+		}
+	}
+	AFG_ghulam_mohiuddin_arti = {
+		name = AFG_ghulam_mohiuddin_arti
+		portraits = {
+			civilian = {
+				small = GFX_portrait_AFG_ghulam_mohiuddin_arti_civilian_small
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_ghulam_mohiuddin_arti_sic
+			traits = { KR_liberal_reformer_sic }
+			cost = 0
+			can_be_fired = no
+		}
+	}
+	AFG_habibullah_khan_abawi = {
+		name = AFG_habibullah_khan_abawi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_habibullah_khan_abawi_army_small
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = AFG_habibullah_khan_abawi_army_chief
+			desc = AFG_habibullah_khan_abawi_sic_desc
+			available = {
+				AFG_is_seraj = yes
+				AFG_civil_war_ongoing = no
+			}
+			traits = { KR_army_chief_planning_2 }
+			cost = 100
+			can_be_fired = no
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_habibullah_khan_abawi_sic
+			traits = { AST_unswerving_loyalist_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_habibullah_khan_abawi_advisor
+			desc = AFG_habibullah_khan_abawi_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				AFG_is_seraj = yes
+			}
+			traits = { RUS_devout_general }
+		}
+	}
+	AFG_abdul_tawab_khan_tarzi = {
+		name = AFG_abdul_tawab_khan_tarzi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_abdul_tawab_khan_tarzi_army_small
+				large = GFX_portrait_AFG_abdul_tawab_khan_tarzi_army_large
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_abdul_tawab_khan_tarzi_sic
+			traits = { KR_diligent_reformer_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdul_tawab_khan_tarzi_advisor
+			desc = AFG_abdul_tawab_khan_tarzi_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				OR = {
+					AFG_is_seraj = yes
+					has_democratic_government = yes
+					AFG_momand_republic = yes
+				}
+			}
+			traits = { KR_reformist_administrator }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.15 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = AFG_abdul_tawab_khan_tarzi_high_command
+			desc = AFG_abdul_tawab_khan_tarzi_sic_desc
+			ledger = army
+			available = {
+				OR = {
+					AFG_is_seraj = yes
+					is_monarchy = no
+				}
+				not_already_hired_except_as = high_command
+			}
+			traits = { KR_MHC_cavalry_2 }
+			cost = 100
+		}
+		corps_commander = {
+			desc = AFG_abdul_tawab_khan_tarzi_sic_desc
+			traits = { cavalry_officer career_officer }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 1
+			visible = {
+				OR = {
+					AFG_is_seraj = yes
+					is_monarchy = no
+				}
+			}
+		}
+	}
+	AFG_abdul_majid_zabuli = {
+		name = AFG_abdul_majid_zabuli
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_abdul_majid_zabuli_army_small
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_abdul_majid_zabuli_sic
+			traits = { KR_financial_expert_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdul_majid_zabuli_advisor
+			desc = AFG_abdul_majid_zabuli_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				AFG_socialist_republic = no
+			}
+			traits = { KR_bank_president }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+	}
 	AFG_wali_khan = {
 		name = AFG_wali_khan
 		portraits = {
@@ -127,20 +699,73 @@ characters = {
 			}
 		}
 		advisor = {
+			slot = second_in_command
+			idea_token = AFG_wali_khan_sic
+			traits = { KR_silent_workhorse_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
 			slot = high_command
 			idea_token = AFG_wali_khan_high_command
+			desc = AFG_wali_khan_sic_desc
 			ledger = army
+			available = {
+				AFG_is_telai = yes
+				not_already_hired_except_as = high_command
+			}
 			traits = { KR_MHC_infantry_1 }
 			cost = 50
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = -0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_reformist_path = yes
+				}
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_wali_khan_advisor
+			desc = AFG_wali_khan_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				AFG_is_telai = yes
+			}
+			traits = { KR_silent_workhorse }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = -0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_reformist_path = yes
+				}
+			}
 		}
 		corps_commander = {
-			desc = AFG_wali_khan_high_command_desc
-			traits = { harsh_leader }
-			skill = 1
-			attack_skill = 1
-			defense_skill = 1
+			desc = AFG_wali_khan_sic_desc
+			traits = { infantry_officer }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
 			planning_skill = 1
-			logistics_skill = 1
+			logistics_skill = 2
+			visible = {
+				AFG_is_telai = yes
+			}
 		}
 	}
 	AFG_mohammad_daoud_khan = {
@@ -152,11 +777,20 @@ characters = {
 			}
 		}
 		advisor = {
+			slot = second_in_command
+			idea_token = AFG_mohammad_daoud_khan_sic
+			traits = { KR_backroom_backstabber_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
 			slot = political_advisor
 			idea_token = AFG_mohammad_daoud_khan_advisor
-			desc = AFG_mohammad_daoud_khan_high_command_desc
+			desc = AFG_mohammad_daoud_khan_sic_desc
 			available = {
 				not_already_hired_except_as = political_advisor
+				AFG_is_telai = yes
+				AFG_socialist_republic = no
 			}
 			traits = { KR_young_guard }
 		}
@@ -166,9 +800,25 @@ characters = {
 			ledger = army
 			available = {
 				not_already_hired_except_as = high_command
+				AFG_is_telai = yes
+				AFG_socialist_republic = no
 			}
 			traits = { KR_MHC_CombinedArms_1 }
 			cost = 50
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.15 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
 		}
 		corps_commander = {
 			desc = AFG_mohammad_daoud_khan_high_command_desc
@@ -178,8 +828,580 @@ characters = {
 			defense_skill = 1
 			planning_skill = 1
 			logistics_skill = 1
+			visible = {
+				OR = {
+					AFG_is_telai = yes
+					AFG_civil_war_started = no
+					AFG_momand_republic = yes
+				}
+				AFG_socialist_republic = no
+			}
 		}
 	}
+	AFG_abdul_rauf_benawa = {
+		name = AFG_abdul_rauf_benawa
+		portraits = {
+			civilian = {
+				small = GFX_portrait_AFG_abdul_rauf_benawa_civilian_small
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_abdul_rauf_benawa_sic
+			traits = { KR_media_magnate_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdul_rauf_benawa_advisor
+			desc = AFG_abdul_rauf_benawa_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				OR = {
+					has_democratic_government = yes
+					has_completed_focus = AFG_tolerate_liberal_dissent
+					AFG_momand_republic = yes
+				}
+			}
+			traits = { KR_media_magnate }
+		}
+	}
+	AFG_fazl_omar_mojadidi = {
+		name = AFG_fazl_omar_mojadidi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_fazl_omar_mojadidi_civilian_small
+			}
+		}
+		advisor = {
+			slot = second_in_command
+			idea_token = AFG_fazl_omar_mojadidi_sic
+			traits = { AFG_kingmaker_sic }
+			cost = 0
+			can_be_fired = no
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_fazl_omar_mojadidi_advisor
+			desc = AFG_fazl_omar_mojadidi_sic_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				is_monarchy = yes
+				if = {
+					limit = {
+						has_country_leader = { character = AFG_amanullah_khan }
+						AFG_civil_war_started = yes
+					}
+					NOT = { has_country_flag = AFG_amanullah_reformist_consolidation_flag }
+				}
+				else = { has_dictatorship_government = yes }
+			}
+			traits = { AFG_kingmaker }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = -0.25 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_reformist_path = yes
+				}
+			}
+		}
+	}
+
+	################
+	### Advisors ###
+	################
+	AFG_abdul_rahman_mahmoodi = {
+		name = AFG_abdul_rahman_mahmoodi
+		portraits = {
+			civilian = {
+				small = GFX_portrait_AFG_abdul_rahman_mahmoodi_civilian_small
+				large = GFX_portrait_AFG_abdul_rahman_mahmoodi_civilian_large
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdul_rahman_mahmoodi_advisor
+			available = {
+				AFG_socialist_republic = yes
+			}
+			traits = { KR_young_firebrand }
+		}
+	}
+	AFG_berthold_albert_speer = {
+		name = AFG_berthold_albert_speer
+		portraits = {
+			civilian = {
+				small = GFX_portrait_AFG_berthold_albert_speer_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_berthold_albert_speer_advisor
+			available = {
+				AFG_is_seraj = yes
+			}
+			traits = { KR_stylistic_architect }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+	}
+	AFG_franz_ruff = {
+		name = AFG_franz_ruff
+		portraits = {
+			civilian = {
+				small = GFX_portrait_AFG_franz_ruff_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_franz_ruff_advisor
+			available = {
+				AFG_is_seraj = yes
+			}
+			visible = { has_country_flag = AFG_architect_replacement_visible_flag }
+			traits = { KR_stylistic_architect }
+		}
+	}
+	AFG_faiz_mohammad_khan_zikeria = {
+		name = AFG_faiz_mohammad_khan_zikeria
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_faiz_mohammad_khan_zikeria_army_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_faiz_mohammad_khan_zikeria_advisor
+			traits = { KR_foreign_affairs_expert_generic }
+		}
+	}
+	AFG_sher_khan_nashir = {
+		name = AFG_sher_khan_nashir
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_sher_khan_nashir_army_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_sher_khan_nashir_advisor
+			available = {
+				AFG_is_telai = no
+				AFG_socialist_republic = no
+			}
+			traits = { KR_captain_of_industry }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+	}
+	AFG_ali_muhammad_khan = {
+		name = AFG_ali_muhammad_khan
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_ali_muhammad_khan_army_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_ali_muhammad_khan_advisor
+			traits = { KR_education_reformer }
+		}
+	}
+	AFG_mohammad_sadiq_mojadidi = {
+		name = AFG_mohammad_sadiq_mojadidi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_mohammad_sadiq_mojadidi_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_mohammad_sadiq_mojadidi_advisor
+			available = {
+				is_monarchy = yes
+				if = {
+					limit = {
+						has_country_leader = { character = AFG_amanullah_khan }
+						AFG_civil_war_started = yes
+					}
+					NOT = { has_country_flag = AFG_amanullah_reformist_consolidation_flag }
+				}
+				else = { has_dictatorship_government = yes }
+			}
+			traits = { KR_venerable_diplomat }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = -0.15 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_reformist_path = yes
+				}
+			}
+		}
+	}
+	AFG_ghulam_yahya_tarzi = {
+		name = AFG_ghulam_yahya_tarzi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_ghulam_yahya_tarzi_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_ghulam_yahya_tarzi_advisor
+			traits = { KR_medical_expert }
+		}
+	}
+	AFG_mohammad_aziz_khan = {
+		name = AFG_mohammad_aziz_khan
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_mohammad_aziz_khan_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_mohammad_aziz_khan_advisor
+			available = {
+				AFG_is_telai = yes
+			}
+			traits = { KR_leading_diplomat }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = -0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_reformist_path = yes
+				}
+			}
+		}
+	}
+	AFG_mohammad_naim_khan = {
+		name = AFG_mohammad_naim_khan
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_mohammad_naim_khan_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_mohammad_naim_khan_advisor
+			available = {
+				OR = {
+					AFG_is_telai = yes
+					AFG_momand_republic = yes
+				}
+			}
+			traits = { KR_industrialiser }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = 0.05 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_traditionalist_path = yes
+				}
+			}
+		}
+	}
+	AFG_abdul_ahad_malikyar = {
+		name = AFG_abdul_ahad_malikyar
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_abdul_ahad_malikyar_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdul_ahad_malikyar_advisor
+			available = {
+				AFG_momand_republic = yes
+			}
+			traits = { KR_reformer_of_the_interior }
+		}
+	}
+	AFG_najibullah_torwayana = {
+		name = AFG_najibullah_torwayana
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_najibullah_torwayana_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_najibullah_torwayana_advisor
+			available = {
+				AFG_momand_republic = yes
+			}
+			traits = { KR_resource_industrialist }
+		}
+	}
+	AFG_sayed_qassem_reshtia = {
+		name = AFG_sayed_qassem_reshtia
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_sayed_qassem_reshtia_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_sayed_qassem_reshtia_advisor
+			available = {
+				AFG_momand_republic = yes
+			}
+			traits = { RUS_minister_of_propaganda_2 }
+		}
+	}
+	AFG_shahzada_rehmatullah_khan_durrani = {
+		name = AFG_shahzada_rehmatullah_khan_durrani
+		portraits = {
+			civilian = {
+				small = GFX_portrait_AFG_shahzada_rehmatullah_khan_durrani_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_shahzada_rehmatullah_khan_durrani_advisor
+			available = {
+				NOT = { has_country_leader = { character = AFG_amanullah_khan } }
+				OR = {
+					has_democratic_government = yes
+					AFG_momand_republic = yes
+				}
+			}
+			traits = { KR_young_firebrand }
+		}
+	}
+	AFG_jamna_das_talwar = {
+		name = AFG_jamna_das_talwar
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_jamna_das_talwar_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_jamna_das_talwar_advisor
+			available = {
+				OR = {
+					AFG_aia_republic = yes
+					is_in_coalition_with_social_democrat = yes
+				}
+			}
+			traits = { KR_determined_democrat }
+		}
+	}
+	AFG_hari_kishan_talwar = {
+		name = AFG_hari_kishan_talwar
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_hari_kishan_talwar_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_hari_kishan_talwar_advisor
+			available = {
+				OR = {
+					AFG_aia_republic = yes
+					AFG_socialist_republic = yes
+				}
+			}
+			traits = { KR_peasant_populist_3 }
+		}
+	}
+	AFG_amir_chand_bombwal = {
+		name = AFG_amir_chand_bombwal
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_amir_chand_bombwal_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_amir_chand_bombwal_advisor
+			available = {
+				AFG_aia_republic = yes
+			}
+			traits = { KR_dynamic_journalist }
+		}
+	}
+	AFG_mian_akbar_shah = {
+		name = AFG_mian_akbar_shah
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_mian_akbar_shah_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_mian_akbar_shah_advisor
+			available = {
+				OR = {
+					AFG_aia_republic = yes
+					AFG_socialist_republic = yes
+				}
+			}
+			traits = { KR_adventurous_daredevil }
+		}
+	}
+	AFG_abdul_rahman_loudin = {
+		name = AFG_abdul_rahman_loudin
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_abdul_rahman_loudin_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdul_rahman_loudin_advisor
+			available = {
+				OR = {
+					AFG_aia_republic = yes
+					AFG_socialist_republic = yes
+					has_government = social_liberal
+				}
+			}
+			traits = { KR_republican_firebrand }
+		}
+	}
+	AFG_qiamuddin_khadim = {
+		name = AFG_qiamuddin_khadim
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_qiamuddin_khadim_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_qiamuddin_khadim_advisor
+			available = {
+				AFG_socialist_republic = yes
+			}
+			traits = { KR_islamic_modernist }
+		}
+	}
+	AFG_muhammad_younus_qureshi = {
+		name = AFG_muhammad_younus_qureshi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_muhammad_younus_qureshi_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_muhammad_younus_qureshi_advisor
+			available = {
+				AFG_socialist_republic = yes
+				has_completed_focus = AFG_empowering_the_rural_labourer
+			}
+			traits = { KR_union_advocate }
+		}
+	}
+	AFG_sanober_hussain_kakaji = {
+		name = AFG_sanober_hussain_kakaji
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_sanober_hussain_kakaji_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_sanober_hussain_kakaji_advisor
+			available = {
+				AFG_socialist_republic = yes
+			}
+			traits = { KR_dynamic_journalist }
+		}
+	}
+	AFG_abdul_hussain_aziz = {
+		name = AFG_abdul_hussain_aziz
+		portraits = {
+			civilian = {
+				small = GFX_portrait_AFG_abdul_hussain_aziz_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = ACC_abdul_hussain_aziz_advisor
+			allowed = {
+				has_dlc_lar = yes
+			}
+			available = {
+				has_intelligence_agency = yes
+			}
+			traits = { KR_head_of_intelligence }
+		}
+	}
+	AFG_abdul_samad_khan_achakzai = {
+		name = AFG_abdul_samad_khan_achakzai
+		portraits = {
+			civilian = {
+				small = GFX_Portrait_Middle_East_Generic_land_2_small #TODO find time accurate pic
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdul_samad_khan_achakzai_advisor
+			available = {
+				owns_state = 445 #Quetta
+			}
+			traits = { KR_integration_proponent }
+		}
+	}
+
+	####################
+	### Generals/MHC ###
+	####################
 	AFG_ali_ahmad_khan = {
 		name = AFG_ali_ahmad_khan
 		portraits = {
@@ -194,6 +1416,7 @@ characters = {
 			desc = AFG_ali_ahmad_khan_high_command_desc
 			available = {
 				not_already_hired_except_as = political_advisor
+				AFG_is_seraj = yes
 			}
 			traits = { KR_political_specialist }
 		}
@@ -203,13 +1426,251 @@ characters = {
 			ledger = air
 			available = {
 				not_already_hired_except_as = high_command
+				AFG_is_seraj = yes
 			}
 			traits = { KR_MHC_pilot_training_1 }
 			cost = 50
 		}
 		corps_commander = {
 			desc = AFG_ali_ahmad_khan_high_command_desc
-			traits = { politically_connected inflexible_strategist trait_cautious }
+			traits = { politically_connected commando trait_cautious }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+				AFG_is_seraj = yes
+			}
+		}
+	}
+	AFG_abdur_rahim_khan = {
+		name = AFG_abdur_rahim_khan
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_abdur_rahim_khan_army_small
+				large = GFX_portrait_AFG_abdur_rahim_khan_army_large
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AFG_abdur_rahim_khan_advisor
+			desc = AFG_abdur_rahim_khan_high_command_desc
+			available = {
+				not_already_hired_except_as = political_advisor
+				OR = {
+					AFG_is_seraj = yes
+					AND = {
+						AFG_is_telai = yes
+						NOT = { has_country_leader = { character = AFG_mohammad_hashim_khan } }
+						has_completed_focus = AFG_secure_ambivalent_generals
+					}
+					AFG_momand_republic = yes
+					AFG_aia_republic = yes
+				}
+			}
+			traits = { KR_public_works_administrator }
+			on_add = {
+				if = {
+					limit = { ROOT = { has_power_balance = { id = AFG_power_balance } } }
+					add_power_balance_value = { id = AFG_power_balance value = -0.1 }
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					has_power_balance = { id = AFG_power_balance }
+					AFG_ai_reformist_path = yes
+				}
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = AFG_abdur_rahim_khan_high_command
+			ledger = army
+			available = {
+				not_already_hired_except_as = high_command
+				OR = {
+					AFG_is_seraj = yes
+					AND = {
+						AFG_is_telai = yes
+						NOT = { has_country_leader = { character = AFG_mohammad_hashim_khan } }
+						has_completed_focus = AFG_secure_ambivalent_generals
+					}
+					AFG_momand_republic = yes
+					AFG_aia_republic = yes
+				}
+			}
+			traits = { KR_MHC_artillery_2 }
+			cost = 100
+		}
+		corps_commander = {
+			desc = AFG_abdur_rahim_khan_high_command_desc
+			traits = { artillery_officer artillery_specialist }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 2
+			visible = {
+				OR = {
+					AFG_is_seraj = yes
+					AND = {
+						AFG_is_telai = yes
+						NOT = { has_country_leader = { character = AFG_mohammad_hashim_khan } }
+						has_completed_focus = AFG_secure_ambivalent_generals
+					}
+					AFG_momand_republic = yes
+					AFG_aia_republic = yes
+				}
+			}
+		}
+	}
+	AFG_ghulam_nabi_khan_charkhi = {
+		name = AFG_ghulam_nabi_khan_charkhi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_ghulam_nabi_khan_charkhi_army_small
+				large = GFX_portrait_AFG_ghulam_nabi_khan_charkhi_army_large
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = AFG_ghulam_nabi_khan_charkhi_army_chief
+			available = {
+				AFG_is_telai = no
+				AFG_civil_war_ongoing = no
+			}
+			traits = { KR_army_chief_organisational_2 }
+			cost = 100
+			can_be_fired = no
+		}
+		corps_commander = {
+			desc = AFG_ghulam_nabi_khan_charkhi_army_chief_desc
+			traits = { trait_engineer infantry_leader }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+			visible = {
+				AFG_is_telai = no
+			}
+		}
+	}
+	AFG_ghulam_jailani_khan_charkhi = {
+		name = AFG_ghulam_jailani_khan_charkhi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_ghulam_jailani_khan_charkhi_army_small
+				large = GFX_portrait_AFG_ghulam_jailani_khan_charkhi_army_large
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = AFG_ghulam_jailani_khan_charkhi_high_command
+			ledger = army
+			available = {
+				AFG_is_telai = no
+			}
+			traits = { KR_MHC_infantry_2 }
+			cost = 100
+		}
+		corps_commander = {
+			desc = AFG_ghulam_jailani_khan_charkhi_high_command_desc
+			traits = { organizer infantry_leader }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			visible = {
+				AFG_is_telai = no
+			}
+		}
+	}
+	AFG_mir_zaman_khan = {
+		name = AFG_mir_zaman_khan
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_mir_zaman_khan_army_small
+				large = GFX_portrait_AFG_mir_zaman_khan_army_large
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = AFG_mir_zaman_khan_high_command
+			ledger = army
+			available = {
+				AFG_is_telai = no
+			}
+			traits = { KR_MHC_army_regrouping_2 }
+			cost = 100
+		}
+		corps_commander = {
+			desc = AFG_mir_zaman_khan_high_command_desc
+			traits = { old_guard brilliant_strategist }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			visible = {
+				AFG_is_telai = no
+			}
+		}
+	}
+	AFG_mohammad_wali_khan_darwazi = {
+		name = AFG_mohammad_wali_khan_darwazi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_mohammad_wali_khan_darwazi_army_small
+				large = GFX_portrait_AFG_mohammad_wali_khan_darwazi_army_large
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = AFG_mohammad_wali_khan_darwazi_high_command
+			ledger = army
+			available = {
+				AFG_is_telai = no
+				not_already_hired_except_as = high_command
+			}
+			traits = { KR_MHC_army_staffer_2 }
+			cost = 100
+		}
+		corps_commander = {
+			desc = AFG_mohammad_wali_khan_darwazi_high_command_desc
+			traits = { skilled_staffer politically_connected }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 3
+			visible = {
+				AFG_is_telai = no
+			}
+		}
+	}
+	AFG_ajab_khan_afridi = {
+		name = AFG_ajab_khan_afridi
+		portraits = {
+			army = {
+				small = GFX_portrait_AFG_ajab_khan_afridi_army_small
+				large = GFX_portrait_AFG_ajab_khan_afridi_army_large
+			}
+		}
+		advisor = {
+			slot = theorist
+			idea_token = AFG_ajab_khan_afridi_theorist
+			ledger = army
+			traits = { KR_military_theorist }
+			cost = 100
+		}
+		corps_commander = {
+			desc = AFG_ajab_khan_afridi_theorist_desc
+			traits = { trickster }
 			skill = 1
 			attack_skill = 1
 			defense_skill = 1
@@ -217,216 +1678,68 @@ characters = {
 			logistics_skill = 1
 		}
 	}
-	AFG_nasrullah_khan = {
-		name = AFG_nasrullah_khan
+	AFG_asal_noor_khan_afridi = {
+		name = AFG_asal_noor_khan_afridi
 		portraits = {
 			army = {
-				small = GFX_portrait_AFG_nasrullah_khan_army_small
-				large = GFX_portrait_AFG_nasrullah_khan_army_large
+				small = GFX_portrait_AFG_asal_noor_khan_afridi_army_small
+				large = GFX_portrait_AFG_asal_noor_khan_afridi_army_large
 			}
 		}
-		advisor = {
-			slot = second_in_command
-			idea_token = AFG_nasrullah_khan_sic
-			traits = { KR_man_of_the_people_sic }
-			cost = 0
-			can_be_fired = no
-		}
-		field_marshal = {
-			desc = AFG_nasrullah_khan_sic_desc
-			traits = { trait_cautious defensive_doctrine }
-			skill = 1
+		corps_commander = {
+			desc = AFG_asal_noor_khan_afridi_commander_desc
+			traits = { organizer }
+			skill = 2
 			attack_skill = 1
 			defense_skill = 1
-			planning_skill = 1
-			logistics_skill = 1
+			planning_skill = 3
+			logistics_skill = 2
 		}
 	}
-
-	##########################
-	### Seconds in Command ###
-	##########################
-	AFG_mahmud_khan = {
-		name = AFG_mahmud_khan
+	AFG_dost_muhammad_khan = {
+		name = AFG_dost_muhammad_khan
 		portraits = {
 			army = {
-				small = GFX_portrait_AFG_mahmud_khan_army_small
+				small = GFX_portrait_AFG_dost_muhammad_khan_army_small
 			}
 		}
 		advisor = {
-			slot = second_in_command
-			idea_token = AFG_mahmud_khan_sic
-			traits = { KR_happy_amateur_sic }
-			cost = 0
-			can_be_fired = no
+			slot = theorist
+			idea_token = AFG_dost_muhammad_khan_theorist
+			ledger = air
+			traits = { KR_air_warfare_theorist }
+			cost = 100
 		}
 	}
-	AFG_mohammad_ghobar = {
-		name = AFG_mohammad_ghobar
+	AFG_muhammad_ihsan_khan = {
+		name = AFG_muhammad_ihsan_khan
 		portraits = {
 			army = {
-				small = GFX_portrait_AFG_mohammad_ghobar_army_small
+				small = GFX_portrait_AFG_muhammad_ihsan_khan_army_small
 			}
 		}
 		advisor = {
-			slot = second_in_command
-			idea_token = AFG_mohammad_ghobar_sic
-			traits = { KR_naive_optimist_sic }
-			cost = 0
-			can_be_fired = no
-		}
-	}
-	AFG_abdul_hadi_dawi = {
-		name = AFG_abdul_hadi_dawi
-		portraits = {
-			army = {
-				small = GFX_portrait_AFG_abdul_hadi_dawi_army_small
-			}
-		}
-		advisor = {
-			slot = second_in_command
-			idea_token = AFG_abdul_hadi_dawi_sic
-			traits = { KR_media_magnate_sic }
-			cost = 0
-			can_be_fired = no
-		}
-	}
-
-	################
-	### Advisors ###
-	################
-	AFG_mohammad_hashim_khan = {
-		name = AFG_mohammad_hashim_khan
-		portraits = {
-			army = {
-				small = GFX_portrait_AFG_mohammad_hashim_khan_army_small
-			}
-		}
-		advisor = {
-			slot = high_command
-			idea_token = AFG_mohammad_hashim_khan_high_command
-			ledger = army
-			traits = { KR_MHC_artillery_1 }
+			slot = air_chief
+			idea_token = AFG_muhammad_ihsan_khan_air_chief
+			traits = { KR_air_chief_ground_support_1 }
 			cost = 50
 		}
 	}
-	AFG_mohammad_gul_khan_momand = {
-		name = AFG_mohammad_gul_khan_momand
+	AFG_ivan_alexandrovich_loiko = {
+		name = AFG_ivan_alexandrovich_loiko
 		portraits = {
 			army = {
-				small = GFX_portrait_AFG_mohammad_gul_khan_momand_army_small
+				small = GFX_portrait_AFG_ivan_alexandrovich_loiko_army_small
 			}
 		}
 		advisor = {
-			slot = political_advisor
-			idea_token = AFG_mohammad_gul_khan_momand_advisor
-			desc = AFG_mohammad_gul_khan_momand_high_command_desc
+			slot = air_chief
+			idea_token = AFG_ivan_alexandrovich_loiko_air_chief
 			available = {
-				not_already_hired_except_as = political_advisor
+				NOT = { has_war_with = RUS }
 			}
-			traits = { KR_general_staffer }
-		}
-		advisor = {
-			slot = high_command
-			idea_token = AFG_mohammad_gul_khan_momand_high_command
-			ledger = army
-			available = {
-				not_already_hired_except_as = high_command
-			}
-			traits = { KR_MHC_army_regrouping_1 }
-			cost = 50
-		}
-	}
-	AFG_inayatullah_khan = {
-		name = AFG_inayatullah_khan
-		portraits = {
-			army = {
-				small = GFX_portrait_AFG_inayatullah_khan_army_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = AFG_inayatullah_khan_advisor
-			desc = AFG_inayatullah_khan_high_command_desc
-			available = {
-				not_already_hired_except_as = political_advisor
-			}
-			traits = { KR_plodding_bureaucrat }
-		}
-		advisor = {
-			slot = high_command
-			idea_token = AFG_inayatullah_khan_high_command
-			ledger = army
-			available = {
-				not_already_hired_except_as = high_command
-			}
-			traits = { KR_MHC_entrenchment_1 }
-			cost = 50
-		}
-	}
-	AFG_faiz_mohammad_khan_zikeria = {
-		name = AFG_faiz_mohammad_khan_zikeria
-		portraits = {
-			army = {
-				small = GFX_portrait_AFG_faiz_mohammad_khan_zikeria_army_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = AFG_faiz_mohammad_khan_zikeria_advisor
-			traits = { KR_influential_intellectual }
-		}
-	}
-	AFG_mohammad_yusuf = {
-		name = AFG_mohammad_yusuf
-		portraits = {
-			army = {
-				small = GFX_portrait_AFG_mohammad_yusuf_army_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = AFG_mohammad_yusuf_advisor
-			traits = { KR_technocrat }
-		}
-	}
-	AFG_abdul_ahad_wardak = {
-		name = AFG_abdul_ahad_wardak
-		portraits = {
-			army = {
-				small = GFX_portrait_AFG_abdul_ahad_wardak_army_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = AFG_abdul_ahad_wardak_advisor
-			traits = { KR_silent_workhorse }
-		}
-	}
-	AFG_abdul_majid_zabuli = {
-		name = AFG_abdul_majid_zabuli
-		portraits = {
-			army = {
-				small = GFX_portrait_AFG_abdul_majid_zabuli_army_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = AFG_abdul_majid_zabuli_advisor
-			traits = { KR_bank_president }
-		}
-	}
-	AFG_sher_khan_nashir = {
-		name = AFG_sher_khan_nashir
-		portraits = {
-			army = {
-				small = GFX_portrait_AFG_sher_khan_nashir_army_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = AFG_sher_khan_nashir_advisor
-			traits = { KR_captain_of_industry }
+			traits = { KR_air_chief_safety_3 }
+			cost = 200
 		}
 	}
 }

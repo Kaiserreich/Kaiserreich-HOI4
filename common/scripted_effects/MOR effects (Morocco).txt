@@ -69,10 +69,38 @@ MOR_create_mohammed_v = {
 	}
 }
 
+MOR_create_al_touzounini = {
+	if = {
+		limit = { MOR = { MOR_mbarek_touzounini = { is_dead = no } } }
+		MOR = {
+			MOR_mbarek_touzounini = {
+				character_becomes_leader_of_ruling_party_effect_tooltip = yes
+				hidden_effect = {
+					set_nationality = PREV.PREV
+					add_country_leader_role = {
+						country_leader = {
+							desc = MOR_mohammed_alaouite_leader_desc
+							ideology = national_populist_subtype
+						}
+						promote_leader = yes
+					}
+				}
+			}
+		}
+	}
+}
+
 MOR_remove_monarchy = {
 	if = {
 		limit = { has_character = MOR_mohammed_alaouite }
 		MOR_mohammed_alaouite = {
+			hidden_effect = { remove_all_country_leader_roles = yes }
+			retire = yes
+		}
+	}
+	if = {
+		limit = { has_character = MOR_mbarek_touzounini }
+		MOR_mbarek_touzounini = {
 			hidden_effect = { remove_all_country_leader_roles = yes }
 			retire = yes
 		}

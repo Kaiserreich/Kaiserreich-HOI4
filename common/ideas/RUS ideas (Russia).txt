@@ -67,7 +67,7 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.1
+				cic_to_target_factor = 0.03
 			}
 		}
 		RUS_german_economic_influence_2 = {
@@ -87,8 +87,7 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.2
-				cic_to_target_factor = 0.03
+				cic_to_target_factor = 0.06
 			}
 		}
 		RUS_german_economic_influence_3 = {
@@ -108,8 +107,7 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.3
-				cic_to_target_factor = 0.06
+				cic_to_target_factor = 0.09
 			}
 		}
 		RUS_german_economic_influence_4 = {
@@ -129,8 +127,7 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.4
-				cic_to_target_factor = 0.09
+				cic_to_target_factor = 0.12
 			}
 		}
 		RUS_german_economic_influence_5 = {
@@ -151,8 +148,7 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.5
-				cic_to_target_factor = 0.12
+				cic_to_target_factor = 0.15
 			}
 		}
 		RUS_german_economic_influence_6 = {
@@ -173,8 +169,7 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.6
-				cic_to_target_factor = 0.15
+				cic_to_target_factor = 0.18
 			}
 		}
 		RUS_german_economic_influence_7 = {
@@ -195,8 +190,7 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.7
-				cic_to_target_factor = 0.18
+				cic_to_target_factor = 0.21
 			}
 		}
 		RUS_german_economic_influence_8 = {
@@ -217,8 +211,7 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.8
-				cic_to_target_factor = 0.21
+				cic_to_target_factor = 0.24
 			}
 		}
 		RUS_german_economic_influence_9 = {
@@ -239,8 +232,7 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.9
-				cic_to_target_factor = 0.25
+				cic_to_target_factor = 0.27
 			}
 		}
 		RUS_german_economic_influence_10 = {
@@ -261,7 +253,6 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = GER
-				trade_cost_for_target_factor = -0.95
 				cic_to_target_factor = 0.3
 			}
 		}
@@ -281,8 +272,8 @@ ideas = {
 			on_add = { log = "[GetLogRoot]: add idea RUS_brain_drain" }
 			picture = KTG_Technological_Backwater
 			modifier = {
-				research_speed_factor = -0.05
-				production_speed_buildings_factor = -0.05
+				research_speed_factor = -0.1
+				production_speed_buildings_factor = -0.1
 			}
 			research_bonus = {
 				industry = -0.1
@@ -293,8 +284,8 @@ ideas = {
 			on_add = { log = "[GetLogRoot]: add idea RUS_mitteleuropa_sanctions" }
 			picture = RUS_mitteleuropa_embargo
 			modifier = {
-				consumer_goods_factor = 0.1
-				stability_factor = -0.1
+				consumer_goods_factor = 0.2
+				stability_factor = -0.15
 				min_export = -0.2
 			}
 		}
@@ -302,7 +293,7 @@ ideas = {
 			on_add = { log = "[GetLogRoot]: add idea RUS_GER_paper_shortage" }
 			picture = HNN_hopes_dashed
 			modifier = {
-				consumer_goods_factor = 0.05
+				consumer_goods_factor = 0.1
 			}
 		}
 		RUS_GER_export_boom = {
@@ -318,16 +309,16 @@ ideas = {
 			picture = HOL_black_monday_recovery
 			modifier = {
 				stability_factor = -0.05
-				consumer_goods_factor = 0.04
+				consumer_goods_factor = 0.1
 			}
 		}
 		RUS_GER_trade_war_2 = {
 			on_add = { log = "[GetLogRoot]: add idea RUS_GER_trade_war_2" }
 			picture = HOL_black_monday
 			modifier = {
-				stability_factor = -0.05
-				consumer_goods_factor = 0.08
-				local_resources_factor = -0.05
+				stability_factor = -0.1
+				consumer_goods_factor = 0.2
+				local_resources_factor = -0.1
 			}
 		}
 		RUS_increased_interest = {
@@ -335,7 +326,7 @@ ideas = {
 			picture = HOL_high_debt
 			modifier = {
 				political_power_gain = -0.05
-				consumer_goods_factor = 0.05
+				consumer_goods_factor = 0.1
 			}
 		}
 
@@ -4248,7 +4239,7 @@ ideas = {
 				dockyard_donations = 3
 			}
 			cancel = {
-				var:361.owner = { has_war_with = var:global.russia } #Owner of Washington DC
+				var:361.owner = { has_war_with = var:global.russia } #Owner of Washington, D.C.
 			}
 		}
 		RUS_renewed_american_trade2 = {
@@ -4260,7 +4251,7 @@ ideas = {
 				dockyard_donations = 6
 			}
 			cancel = {
-				var:361.owner = { has_war_with = var:global.russia } #Owner of Washington DC
+				var:361.owner = { has_war_with = var:global.russia } #Owner of Washington, D.C.
 			}
 		}
 		RUS_chinese_military_mission_idea = { #Removed by `on_war_relation_added`

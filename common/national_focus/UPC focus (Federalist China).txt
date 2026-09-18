@@ -868,10 +868,16 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed CHN_return_to_the_world_stage_focus"
 		if = {
+			limit = { tag = YUN }
+			YUN_improve_dian_qian_divide_effect = yes #Fallback #4 in case you didn't get to it
+		}
+		else = {
+			add_political_power = 50
+		}
+		if = {
 			limit = { NOT = { has_idea = CHN_return_to_the_world_stage_idea } }
 			add_ideas = CHN_return_to_the_world_stage_idea
 		}
-		add_political_power = 50
 		add_war_support = 0.10
 		unlock_decision_tooltip = CHN_found_our_faction_decision
 		hidden_effect = {
@@ -1084,14 +1090,12 @@ shared_focus = {
 		}
 		modifier = {
 			factor = 0
-			AND = {
-				naval_strength_ratio = {
-					tag = JAP
-					ratio < 1
-				}
-				JAP = {
-					has_war_with_major = no
-				}
+			naval_strength_ratio = {
+				tag = JAP
+				ratio < 1
+			}
+			JAP = {
+				has_war_with_major = no
 			}
 		}
 	}
@@ -2081,7 +2085,7 @@ shared_focus = {
 	available = {
 		OR = {
 			country_exists = KOR
-			525 = { #Gyeonggi
+			525 = { #Kyonggi
 				owner = { NOT = { is_ally_with = ROOT } }
 			}
 		}
@@ -5160,13 +5164,13 @@ shared_focus = {
 		every_controlled_state = {
 			limit = {
 				OR = {
-					has_state_flag = yunnan_province_state
-					has_state_flag = guangxi_province_state
-					has_state_flag = qinghai_province_state
-					has_state_flag = heilongjiang_province_state
-					has_state_flag = jilin_province_state
-					has_state_flag = ningxia_province_state
-					has_state_flag = xinjiang_province_state
+					check_variable = { chinese_province_state = 325.id }
+					check_variable = { chinese_province_state = 594.id }
+					check_variable = { chinese_province_state = 353.id }
+					check_variable = { chinese_province_state = 714.id }
+					check_variable = { chinese_province_state = 886.id }
+					check_variable = { chinese_province_state = 348.id }
+					check_variable = { chinese_province_state = 617.id }
 				}
 			}
 			add_one_random_infrastructure = yes

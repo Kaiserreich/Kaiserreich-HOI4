@@ -325,7 +325,7 @@ characters = {
 		}
 		corps_commander = {
 			desc = SER_konstantin_popovic_commander_desc
-			traits = { politically_connected }
+			traits = { politically_connected artillery_officer }
 			skill = 1
 			attack_skill = 1
 			defense_skill = 1
@@ -333,21 +333,89 @@ characters = {
 			logistics_skill = 1
 		}
 	}
-	SER_arsenije_jovanovic = {
-		name = SER_arsenije_jovanovic
+	SER_sreten_zujovic = {
+		name = SER_sreten_zujovic
 		portraits = {
 			army = {
-				small = GFX_portrait_SER_arsenije_jovanovic_army_small
-				large = GFX_portrait_SER_arsenije_jovanovic_army_large
+				small = GFX_portrait_SER_sreten_zujovic_army_small
+				large = GFX_portrait_SER_sreten_zujovic_army_large
 			}
 		}
 		corps_commander = {
-			desc = SER_arsenije_jovanovic_commander_desc
-			traits = { commando }
+			desc = SER_sreten_zujovic_commander_desc
+			traits = { war_hero light_infantry_officer }
 			skill = 1
 			attack_skill = 1
 			defense_skill = 1
 			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	SER_dobrosav_milenkovic = {
+		name = SER_dobrosav_milenkovic
+		portraits = {
+			army = {
+				large = GFX_portrait_SER_dobrosav_milenkovic_army_large
+				small = GFX_portrait_SER_dobrosav_milenkovic_army_small
+			}
+		}
+		corps_commander = {
+			desc = SER_dobrosav_milenkovic_theorist_desc
+			traits = { infantry_officer }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 1
+		}
+		advisor = {
+			slot = theorist
+			idea_token = SER_dobrosav_milenkovic_theorist
+			ledger = military
+			traits = { KR_military_theorist }
+			cost = 150
+		}
+	}
+	SER_danilo_kalafatovic = {
+		name = SER_danilo_kalafatovic
+		portraits = {
+			army = {
+				small = GFX_portrait_SER_danilo_kalafatovic_army_small
+				large = GFX_portrait_SER_danilo_kalafatovic_army_large
+			}
+		}
+		corps_commander = {
+			desc = SER_danilo_kalafatovic_army_chief_desc
+			traits = { infantry_leader war_hero old_guard media_personality politically_connected }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = SER_danilo_kalafatovic_army_chief
+			ledger = military
+			traits = { KR_army_chief_drill_1 }
+			cost = 50
+		}
+	}
+	SER_milan_m_radenkovic = {
+		name = SER_milan_m_radenkovic
+		portraits = {
+			army = {
+				large = GFX_portrait_SER_milan_m_radenkovic_army_large
+				small = GFX_portrait_SER_milan_m_radenkovic_army_small
+			}
+		}
+		corps_commander = {
+			desc = SER_milan_m_radenkovic_commander_desc
+			traits = { armor_officer }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
 			logistics_skill = 1
 		}
 	}
@@ -361,7 +429,7 @@ characters = {
 		}
 		field_marshal = {
 			desc = SER_milan_nedic_commander_desc
-			traits = { old_guard career_officer }
+			traits = { career_officer }
 			skill = 3
 			attack_skill = 3
 			defense_skill = 2
@@ -891,6 +959,38 @@ characters = {
 			traits = { KR_captain_of_industry }
 		}
 	}
+	SER_dragoljub_jovanovic = {
+		name = SER_dragoljub_jovanovic
+		portraits = {
+			army = {
+				small = GFX_portrait_SER_dragoljub_jovanovic_army_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SER_dragoljub_jovanovic_advisor
+			available = {
+				has_authoritarian_government = no
+			}
+			traits = { KR_socialist_agrarian }
+		}
+	}
+	SER_kosta_novakovic = {
+		name = SER_kosta_novakovic
+		portraits = {
+			army = {
+				small = GFX_portrait_SER_kosta_novakovic_army_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SER_kosta_novakovic_advisor
+			available = {
+				has_socialist_government = yes
+			}
+			traits = { KR_integration_proponent }
+		}
+	}
 	SER_dobrica_matkovic = {
 		name = SER_dobrica_matkovic
 		portraits = {
@@ -956,16 +1056,16 @@ characters = {
 		}
 	}
 
-	SER_zdenko_ulepic = {
-		name = SER_zdenko_ulepic
+	SER_dorde_jovanovic = {
+		name = SER_dorde_jovanovic
 		portraits = {
 			army = {
-				small = GFX_portrait_SER_zdenko_ulepic_army_small
+				small = GFX_portrait_SER_dorde_jovanovic_army_small
 			}
 		}
 		advisor = {
 			slot = air_chief
-			idea_token = SER_zdenko_ulepic_air_chief
+			idea_token = SER_dorde_jovanovic_air_chief
 			traits = { KR_air_chief_all_weather_2 }
 			cost = 100
 		}

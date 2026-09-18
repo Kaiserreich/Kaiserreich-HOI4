@@ -227,7 +227,7 @@ default_market_stockpile_management_if_at_war = {
 
 default_market_convoy_purchases = {
 	enable = {
-		naval_base > 0 #not land-locked
+		any_owned_state = { naval_base > 0 } #not land-locked
 	}
 	abort_when_not_enabled = yes
 

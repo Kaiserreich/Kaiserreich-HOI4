@@ -23,44 +23,57 @@ set_popularities = {
 	radical_socialist = 6
 	social_democrat = 6
 	social_liberal = 5
-	market_liberal = 6
-	social_conservative = 3
-	authoritarian_democrat = 32
-	paternal_autocrat = 22
-	national_populist = 20
+	market_liberal = 7
+	social_conservative = 22
+	authoritarian_democrat = 27
+	paternal_autocrat = 24
+	national_populist = 3
 }
 
 add_ideas = {
 	BHU_hermit_kingdom
-	BHU_Monastic_Control
+	BHU_monastic_control
 	BHU_feudal_4
+	BHU_peace_in_our_time
 
 	closed_economy
 	isolation
 }
 
-country_event = { id = bhutan_events.78 days = 4 }
-country_event = { id = bhutan_events.67 days = 990 }
-country_event = { id = bhutan_events.68 days = 990 }
-country_event = { id = bhutan_events.71 days = 1065 }
-country_event = { id = bhutan_events.74 days = 740 }
-country_event = { id = bhutan_events.75 days = 870 }
-country_event = { id = bhutan_events.76 days = 585 }
-country_event = { id = bhutan_events.77 days = 1680 }
+set_variable = { BHU_corvee_cadre_amount = 1 }
+set_variable = { BHU_industry_remove_cost_1 = 75 }
+set_variable = { BHU_industry_remove_cost_2 = 125 }
+set_variable = { BHU_industry_remove_cost_3 = 175 }
 
-set_country_flag = { flag = bhu_feudal_unity value = 11 }
-set_country_flag = { flag = bhu_econ_dev value = 8 }
-set_country_flag = { flag = bhu_mil_invest value = 8 }
+country_event = { id = bhutan_events.1000 days = 1 }
+country_event = { id = bhutan_events.1008 days = 95 }
+country_event = { id = bhutan_events.1009 days = 95 }
 
+country_event = { id = bhutan_events.800 days = 510 }
+country_event = { id = bhutan_events.801 days = 585 }
+country_event = { id = bhutan_events.805 days = 685 }
+country_event = { id = bhutan_events.814 days = 740 }
+country_event = { id = bhutan_events.824 days = 880 }
+country_event = { id = bhutan_events.811 days = 1010 }
+country_event = { id = bhutan_events.823 days = 1080 }
+country_event = { id = bhutan_events.807 days = 1250 }
+
+set_variable = { BHU_preparation_time = 0 }
+
+set_variable = { BHU_feudal_unity = 11 }
+set_variable = { BHU_econ_dev = 8 }
+set_variable = { BHU_mil_invest = 8 }
+
+recruit_character = BHU_pasang_sherpa
 recruit_character = BHU_db_gurung
 recruit_character = BHU_mahasur_chhetri
-recruit_character = BHU_bal_bahadur_basnet
+recruit_character = BHU_yanglop_sonam_chhozing
 recruit_character = BHU_jigme_wangchuck
+recruit_character = BHU_sonam_topgye_dorji
 recruit_character = BHU_interregnum
 recruit_character = BHU_tshering_penjor
 recruit_character = BHU_choekyi_wangchuck
 recruit_character = BHU_zhabdrung_rinpoche
-recruit_character = BHU_sonam_topgye_dorji
 recruit_character = BHU_jigme_dorji_wangchuck
 recruit_character = BHU_namgyal_bahadur
 recruit_character = BHU_zamadar_chencho
@@ -69,18 +82,24 @@ recruit_character = BHU_chhoki_gyeltshen
 activate_advisor = BHU_sonam_topgye_dorji_sic
 recruit_character = BHU_chimi_dorji_rabden
 recruit_character = BHU_chogley_jigme_tenzin
+recruit_character = BHU_sey_dopola
 recruit_character = BHU_jhulendra_bahadur_pradhan
 recruit_character = BHU_phuntsho_choden
 recruit_character = BHU_samten_jamtsho
+recruit_character = BHU_ugyen_dorji_tangbi
+recruit_character = BHU_tsham_go_seb
 #recruit_character = SKM_tashi_namgyal -- in SKM file
 recruit_character = BHU_thinley_namgyel
 recruit_character = BHU_ngawang_gyaltsen
 recruit_character = BHU_pedma_chandra
 recruit_character = BHU_royal_army_council
+recruit_character = BHU_nob_gyaltsen
 
 ### Character Setup ###
-BHU_jigme_wangchuck = { set_character_as_monarch = yes }
-BHU_interregnum = { set_character_as_monarch = yes }
+BHU_jigme_wangchuck = {
+	set_character_as_monarch = yes
+	set_character_flag = show_unit_leader_role
+}
 BHU_tshering_penjor = {
 	set_character_as_monarch = yes
 	set_character_flag = show_unit_leader_role
@@ -90,4 +109,5 @@ BHU_sonam_topgye_dorji = {
 	set_character_as_monarch = yes
 	set_character_flag = show_unit_leader_role
 }
+BHU_interregnum = { set_character_as_monarch = yes }
 BHU_jigme_dorji_wangchuck = { set_character_as_monarch = yes }

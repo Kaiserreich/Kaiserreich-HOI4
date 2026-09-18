@@ -487,11 +487,9 @@ POL_Stability_of_Nation = {
 			surrender_progress < 0.2
 			if = {
 				limit = {
-					POL = { is_ai = yes }
-					has_game_rule = { rule = POL_revolts option = POL_REVOLTS_PATAUT }
+					POL = { is_ai = no }
+					NOT = { has_game_rule = { rule = POL_revolts option = POL_REVOLTS_PATAUT } }
 				}
-			}
-			else = {
 				check_variable = {
 					tooltip = POL_nationalists_are_majority
 					POL_nat_influence > 49
@@ -4931,10 +4929,9 @@ POL_Syndicalist_Republic = {
 			NOT = { command_power < 80 }
 			NOT = { has_political_power < 40 }
 		}
-		ai_hint_pp_cost = 40.0
+		ai_hint_pp_cost = 40
 		days_remove = 70
 
-		ai_will_do = { factor = 10 }
 		modifier = {
 			weekly_manpower = -320
 		}
@@ -5924,7 +5921,7 @@ foreign_politics = {
 			at_peace_or_same_enemies_as_FROM = yes
 			GER = { exists = no }
 			OR = {
-				naval_base > 0
+				any_owned_state = { naval_base > 0 }
 				any_neighbor_country = { is_in_faction_with = ENT }
 			}
 			if = {

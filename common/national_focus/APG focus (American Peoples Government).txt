@@ -1773,34 +1773,40 @@ focus_tree = {
 			USA_increase_recovery = yes
 			hidden_effect = {
 				#SCO to ADE
-				set_temp_variable = { APG_SCO_to_ADE_value = party_popularity@social_conservative }
-				subtract_from_temp_variable = { var = APG_SCO_to_ADE_value value = 0.03 }
-				clamp_temp_variable = {
-					var = APG_SCO_to_ADE_value
-					min = 0
-					max = 1
+				set_temp_variable = {
+					APG_SCO_to_ADE_value = {
+						value = party_popularity@social_conservative
+						subtract = 0.03
+						clamp = { min = 0 max = 1 }
+					}
 				}
-				set_temp_variable = { APG_SCO_to_ADE_value_reverse = 0 }
-				subtract_from_temp_variable = { var = APG_SCO_to_ADE_value_reverse value = APG_SCO_to_ADE_value }
+				set_temp_variable = {
+					APG_SCO_to_ADE_value_reverse = {
+						value = APG_SCO_to_ADE_value
+						multiply = -1
+					}
+				}
 				add_popularity = { ideology = social_conservative popularity = APG_SCO_to_ADE_value_reverse }
 				add_popularity = { ideology = authoritarian_democrat popularity = APG_SCO_to_ADE_value }
 
 				#MLI to ADE
-				set_temp_variable = { APG_MLI_to_ADE_value = party_popularity@market_liberal }
-				subtract_from_temp_variable = { var = APG_MLI_to_ADE_value value = 0.03 }
-				clamp_temp_variable = {
-					var = APG_MLI_to_ADE_value
-					min = 0
-					max = 1
+				set_temp_variable = {
+					APG_MLI_to_ADE_value = {
+						value = party_popularity@market_liberal
+						subtract = 0.03
+						clamp = { min = 0 max = 1 }
+					}
 				}
-				set_temp_variable = { APG_MLI_to_ADE_value_reverse = 0 }
-				subtract_from_temp_variable = { var = APG_MLI_to_ADE_value_reverse value = APG_MLI_to_ADE_value }
+				set_temp_variable = {
+					APG_MLI_to_ADE_value_reverse = {
+						value = APG_MLI_to_ADE_value
+						multiply = -1
+					}
+				}
 				add_popularity = { ideology = market_liberal popularity = APG_MLI_to_ADE_value_reverse }
 				add_popularity = { ideology = authoritarian_democrat popularity = APG_MLI_to_ADE_value }
 
-				set_temp_variable = { APG_total_ADE_gain = 0 }
-				add_to_temp_variable = { APG_total_ADE_gain = APG_SCO_to_ADE_value }
-				add_to_temp_variable = { APG_total_ADE_gain = APG_MLI_to_ADE_value }
+				set_temp_variable = { APG_total_ADE_gain = { value = APG_SCO_to_ADE_value add = APG_MLI_to_ADE_value } }
 			}
 			effect_tooltip = {
 				add_popularity = {
@@ -1904,7 +1910,7 @@ focus_tree = {
 			if = {
 				limit = { has_free_political_advisor_slot = yes }
 				custom_effect_tooltip = tooltip_white_line
-				activate_advisor = APG_hugo_lafayette_black_advisor
+				activate_advisor = APG_hugo_black_advisor
 			}
 		}
 	}
@@ -2449,7 +2455,7 @@ focus_tree = {
 
 	focus = {
 		id = APG_coprotate_militarism
-		icon = GFX_goal_collaborate_local_elites
+		icon = GFX_goal_generic_militarism
 		cost = 6
 
 		relative_position_id = APG_rebuilding_the_country
@@ -2516,7 +2522,7 @@ focus_tree = {
 
 	focus = {
 		id = APG_banking_act
-		icon = GFX_goal_generic_corporatism
+		icon = GFX_goal_generic_banking_legislation
 		cost = 6
 
 		relative_position_id = APG_rebuilding_the_country
@@ -2790,15 +2796,15 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed APG_Patton_Plan"
 			add_ideas = APG_Patton_plan1
-			APG_george_smith_patton = { promote_leader = yes }
+			APG_george_s_patton = { promote_leader = yes }
 			custom_effect_tooltip = tooltip_white_line
 			if = {
-				limit = { APG_george_smith_patton = { has_advisor_role = theorist } }
+				limit = { APG_george_s_patton = { has_advisor_role = theorist } }
 				custom_effect_tooltip = available_theorist
-				show_ideas_tooltip = APG_george_smith_patton_theorist
+				show_ideas_tooltip = APG_george_s_patton_theorist
 			}
 			hidden_effect = {
-				APG_robert_melville_danford = { remove_theorist_role = yes }
+				APG_robert_m_danford = { remove_theorist_role = yes }
 				APG_george_van_horn_moseley = { remove_theorist_role = yes }
 			}
 		}
@@ -2839,8 +2845,8 @@ focus_tree = {
 				show_ideas_tooltip = APG_george_van_horn_moseley_theorist
 			}
 			hidden_effect = {
-				APG_robert_melville_danford = { remove_theorist_role = yes }
-				APG_george_smith_patton = { remove_theorist_role = yes }
+				APG_robert_m_danford = { remove_theorist_role = yes }
+				APG_george_s_patton = { remove_theorist_role = yes }
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -2873,16 +2879,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed APG_Danford_Plan"
 			add_ideas = APG_Danford_plan1
-			APG_robert_melville_danford = { promote_leader = yes }
+			APG_robert_m_danford = { promote_leader = yes }
 			custom_effect_tooltip = tooltip_white_line
 			if = {
-				limit = { APG_robert_melville_danford = { has_advisor_role = theorist } }
+				limit = { APG_robert_m_danford = { has_advisor_role = theorist } }
 				custom_effect_tooltip = available_theorist
-				show_ideas_tooltip = APG_robert_melville_danford_theorist
+				show_ideas_tooltip = APG_robert_m_danford_theorist
 			}
 			hidden_effect = {
 				APG_george_van_horn_moseley = { remove_theorist_role = yes }
-				APG_george_smith_patton = { remove_theorist_role = yes }
+				APG_george_s_patton = { remove_theorist_role = yes }
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
@@ -3962,12 +3968,12 @@ focus_tree = {
 			add_ideas = APG_Le_May_reform_plan1
 			custom_effect_tooltip = tooltip_white_line
 			if = {
-				limit = { APG_curtis_emerson_lemay = { has_advisor_role = theorist } }
+				limit = { APG_curtis_lemay = { has_advisor_role = theorist } }
 				custom_effect_tooltip = available_theorist
-				show_ideas_tooltip = APG_curtis_emerson_lemay_theorist
+				show_ideas_tooltip = APG_curtis_lemay_theorist
 			}
 			hidden_effect = {
-				APG_otto_paul_weyland = { remove_theorist_role = yes }
+				APG_otto_p_weyland = { remove_theorist_role = yes }
 			}
 		}
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
@@ -4085,12 +4091,12 @@ focus_tree = {
 			add_ideas = APG_Weyland_reform_plan1
 			custom_effect_tooltip = tooltip_white_line
 			if = {
-				limit = { APG_otto_paul_weyland = { has_advisor_role = theorist } }
+				limit = { APG_otto_p_weyland = { has_advisor_role = theorist } }
 				custom_effect_tooltip = available_theorist
-				show_ideas_tooltip = APG_otto_paul_weyland_theorist
+				show_ideas_tooltip = APG_otto_p_weyland_theorist
 			}
 			hidden_effect = {
-				APG_curtis_emerson_lemay = { remove_theorist_role = yes }
+				APG_curtis_lemay = { remove_theorist_role = yes }
 			}
 		}
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }

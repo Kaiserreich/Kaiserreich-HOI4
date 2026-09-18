@@ -219,6 +219,10 @@ characters = {
 			slot = army_chief
 			idea_token = SZC_xiong_kewu_army_chief
 			desc = SZC_xiong_kewu_sic_desc
+			available = {
+				not_already_hired_except_as = army_chief
+				is_country_leader = no
+			}
 			visible = {
 				if = {
 					limit = { tag = SZC }

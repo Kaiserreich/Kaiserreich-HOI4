@@ -15,15 +15,16 @@ faction_goal_rule_the_waves = {
 	}
 	completed = {
 		has_war = yes
-		hidden_trigger = {
-			tooltip_evaluation = eval
-			set_temp_variable = { unit_type_temp = token:capital_ship }
-			set_temp_variable = { num_capital_ships_faction = 0 }
-			all_of_scopes = {
-				array = faction_members
-				add_to_temp_variable = { num_capital_ships_faction = num_ships_with_type@battleship }
-				add_to_temp_variable = { num_capital_ships_faction = num_ships_with_type@heavy_cruiser }
-				add_to_temp_variable = { num_capital_ships_faction = num_ships_with_type@battle_cruiser }
+		set_temp_variable = { unit_type_temp = token:capital_ship }
+		set_temp_variable = {
+			num_capital_ships_faction = {
+				value = 0
+				every_collection = {
+					named_collection = faction_members
+					add = num_ships_with_type@battleship
+					add = num_ships_with_type@heavy_cruiser
+					add = num_ships_with_type@battle_cruiser
+				}
 			}
 		}
 		NOT = { check_variable = { num_capital_ships_faction < 60 tooltip = count_in_collection_units_workaround_tooltip } }
@@ -78,18 +79,16 @@ faction_goal_rule_the_waves = {
 		base = 0
 		modifier = {
 			add = 1 # Don't bother unless you're somewhat likely to be able to do it
-			hidden_trigger = {
-				tooltip_evaluation = eval
-				set_temp_variable = { unit_type_temp = token:capital_ship }
-				set_temp_variable = { num_capital_ships_faction = 0 }
-				all_of_scopes = {
-					array = faction_members
-					add_to_temp_variable = { num_capital_ships_faction = num_ships_with_type@battleship }
-					add_to_temp_variable = { num_capital_ships_faction = num_ships_with_type@heavy_cruiser }
-					add_to_temp_variable = { num_capital_ships_faction = num_ships_with_type@battle_cruiser }
+			check_expr = {
+				value = 0
+				every_collection = {
+					named_collection = faction_members
+					add = num_ships_with_type@battleship
+					add = num_ships_with_type@heavy_cruiser
+					add = num_ships_with_type@battle_cruiser
 				}
+				greater_than_or_equals = 20
 			}
-			NOT = { check_variable = { num_capital_ships_faction < 20 tooltip = count_in_collection_units_workaround_tooltip } }
 			# TODO: Fix for count_in_collection crashes. Revert if count_in_collection is fixed
 			#count_in_collection = {
 			#	collection = {
@@ -118,13 +117,14 @@ faction_goal_strategic_bombing_campaign = {
 		FROM = { has_war = yes }
 	}
 	completed = {
-		hidden_trigger = {
-			tooltip_evaluation = eval
-			set_temp_variable = { unit_type_temp = token:strategic_bomber }
-			set_temp_variable = { num_strategic_bombers_faction = 0 }
-			all_of_scopes = {
-				array = faction_members
-				add_to_temp_variable = { num_strategic_bombers_faction = num_deployed_planes_with_type@large_plane_airframe }
+		set_temp_variable = { unit_type_temp = token:strategic_bomber }
+		set_temp_variable = {
+			num_strategic_bombers_faction = {
+				value = 0
+				every_collection = {
+					named_collection = faction_members
+					add = num_deployed_planes_with_type@large_plane_airframe
+				}
 			}
 		}
 		NOT = { check_variable = { num_strategic_bombers_faction < 200 tooltip = count_in_collection_units_workaround_tooltip } }
@@ -207,15 +207,14 @@ faction_goal_strategic_bombing_campaign = {
 		}
 		modifier = {
 			add = 1 # Factions with decent number of military factories should probably start caring more about strat bombing - because they can
-			hidden_trigger = {
-				tooltip_evaluation = eval
-				set_temp_variable = { faction_arms_factories = 0 }
-				all_of_scopes = {
-					array = faction_members
-					add_to_temp_variable = { faction_arms_factories = num_of_military_factories }
+			check_expr = {
+				value = 0
+				every_collection = {
+					named_collection = faction_members
+					add = num_of_military_factories
 				}
+				greater_than = 149
 			}
-			check_variable = { faction_arms_factories > 149 }
 			# TODO: Fix for collection triggers crashes. Revert if fixed
 			#count_in_collection = {
 			#	collection = {
@@ -238,8 +237,14 @@ faction_goal_liberate_territory = {
 	category = long_term
 	group = FOCUS_FILTER_ANNEXATION
 	visible = {
-		faction_get_core_states_not_fully_controlled = yes
-		check_variable = { faction_core_states_not_fully_controlled > 0 }
+		check_expr = {
+			value = 0
+			every_collection = {
+				named_collection = faction_owned_core_states_not_fully_controlled
+				add = 1
+			}
+			greater_than = 0
+		}
 		# TODO: Fix for collection triggers crashes. Revert if fixed
 		#collection_size = {
 		#	input = {
@@ -255,7 +260,15 @@ faction_goal_liberate_territory = {
 		#}
 	}
 	completed = {
-		faction_get_core_states_not_fully_controlled = yes
+		set_temp_variable = {
+			faction_core_states_not_fully_controlled = {
+				value = 0
+				every_collection = {
+					named_collection = faction_owned_core_states_not_fully_controlled
+					add = 1
+				}
+			}
+		}
 		check_variable = { faction_core_states_not_fully_controlled < 1 tooltip = faction_get_core_states_not_fully_controlled_workaround_tooltip }
 		# TODO: Fix for collection triggers crashes. Revert if fixed
 		#collection_size = {
@@ -287,8 +300,14 @@ faction_goal_liberate_territory = {
 		base = 1
 		modifier = {
 			add = 4 # If lots of territory, prioritize this
-			faction_get_core_states_not_fully_controlled = yes
-			check_variable = { faction_core_states_not_fully_controlled > 4 }
+			check_expr = {
+				value = 0
+				every_collection = {
+					named_collection = faction_owned_core_states_not_fully_controlled
+					add = 1
+				}
+				greater_than = 4
+			}
 			# TODO: Fix for collection triggers crashes. Revert if fixed
 			#collection_size = {
 			#	input = {
@@ -305,8 +324,14 @@ faction_goal_liberate_territory = {
 		}
 		modifier = {
 			add = 5 # If even more territory, prioritize this A LOT
-			faction_get_core_states_not_fully_controlled = yes
-			check_variable = { faction_core_states_not_fully_controlled > 10 }
+			check_expr = {
+				value = 0
+				every_collection = {
+					named_collection = faction_owned_core_states_not_fully_controlled
+					add = 1
+				}
+				greater_than = 10
+			}
 			# TODO: Fix for collection triggers crashes. Revert if fixed
 			#collection_size = {
 			#	input = {
@@ -331,8 +356,14 @@ faction_goal_great_offensive = {
 	group = FOCUS_FILTER_ANNEXATION
 	visible = {
 		FROM = { has_war = yes }
-		faction_get_enemy_core_states_controlled_by_us = yes
-		check_variable = { faction_enemy_core_states_controlled_by_us < 1 }
+		check_expr = {
+			value = 0
+			every_collection = {
+				named_collection = faction_controlled_enemy_core_states
+				add = 1
+			}
+			less_than = 1
+		}
 		# TODO: Fix for collection triggers crashes. Revert if fixed
 		#collection_size = {
 		#	input = {
@@ -351,7 +382,15 @@ faction_goal_great_offensive = {
 		#}
 	}
 	completed = {
-		faction_get_enemy_core_states_controlled_by_us = yes
+		set_temp_variable = {
+			faction_enemy_core_states_controlled_by_us = {
+				value = 0
+				every_collection = {
+					named_collection = faction_controlled_enemy_core_states
+					add = 1
+				}
+			}
+		}
 		check_variable = { faction_enemy_core_states_controlled_by_us > 0 tooltip = faction_get_enemy_core_states_controlled_by_us_workaround_tooltip }
 		# TODO: Fix for collection triggers crashes. Revert if fixed
 		#collection_size = {

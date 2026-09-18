@@ -1,0 +1,335 @@
+defined_text = {
+	name = AFG_GetDecentralisationCurrent
+	text = {
+		trigger = { check_variable = { AFG_reform_progress > 20 } }
+		localization_key = AFG_decentralisation_level_high
+	}
+	text = {
+		trigger = { check_variable = { AFG_reform_progress > 10 } }
+		localization_key = AFG_decentralisation_level_moderate
+	}
+	text = {
+		localization_key = AFG_decentralisation_level_slight
+	}
+}
+defined_text = {
+	name = AFG_GetAnger
+	text = {
+		trigger = { has_variable = AFG_anger_level }
+		localization_key = AFG_state_building_anger_level
+	}
+}
+defined_text = {
+	name = AFG_GetForeignInfluenceCountries
+	text = {
+		trigger = { AFG_has_any_foreign_influence = yes }
+		localization_key = AFG_crossroads_of_civilisation_country_influence_desc
+	}
+}
+defined_text = {
+	name = AFG_GetArmyTitle
+	text = {
+		trigger = { is_monarchy = yes }
+		localization_key = AFG_afghan_army_royal
+	}
+	text = {
+		localization_key = AFG_afghan_army_republican
+	}
+}
+defined_text = {
+	name = AFG_75pp_10_reform_text
+	text = {
+		trigger = { has_country_flag = AFG_bop_reform_currency_flag }
+		localization_key = AFG_reform_points_cost_text_10
+	}
+	text = {
+		localization_key = AFG_75pp_tt
+	}
+}
+defined_text = {
+	name = AFG_75pp_10_reform_blocked_text
+	text = {
+		trigger = { has_country_flag = AFG_bop_reform_currency_flag }
+		localization_key = AFG_reform_points_cost_text_10_blocked
+	}
+	text = {
+		localization_key = AFG_75pp_tt_blocked
+	}
+}
+defined_text = {
+	name = AFG_75pp_10_reform_tooltip_text
+	text = {
+		trigger = { has_country_flag = AFG_bop_reform_currency_flag }
+		localization_key = AFG_reform_points_cost_text_10_tooltip
+	}
+	text = {
+		localization_key = AFG_75pp_tt_tooltip
+	}
+}
+defined_text = {
+	name = AFG_60pp_6_reform_text
+	text = {
+		trigger = { has_country_flag = AFG_bop_reform_currency_flag }
+		localization_key = AFG_reform_points_cost_text_6
+	}
+	text = {
+		localization_key = AFG_60pp_tt
+	}
+}
+defined_text = {
+	name = AFG_60pp_6_reform_blocked_text
+	text = {
+		trigger = { has_country_flag = AFG_bop_reform_currency_flag }
+		localization_key = AFG_reform_points_cost_text_6_blocked
+	}
+	text = {
+		localization_key = AFG_60pp_tt_blocked
+	}
+}
+defined_text = {
+	name = AFG_60pp_6_reform_tooltip_text
+	text = {
+		trigger = { has_country_flag = AFG_bop_reform_currency_flag }
+		localization_key = AFG_reform_points_cost_text_6_tooltip
+	}
+	text = {
+		localization_key = AFG_60pp_tt_tooltip
+	}
+}
+defined_text = {
+	name = AFG_50pp_5_reform_text
+	text = {
+		trigger = { has_country_flag = AFG_bop_reform_currency_flag }
+		localization_key = AFG_reform_points_cost_text_5
+	}
+	text = {
+		localization_key = AFG_50pp_tt
+	}
+}
+defined_text = {
+	name = AFG_50pp_5_reform_blocked_text
+	text = {
+		trigger = { has_country_flag = AFG_bop_reform_currency_flag }
+		localization_key = AFG_reform_points_cost_text_5_blocked
+	}
+	text = {
+		localization_key = AFG_50pp_tt_blocked
+	}
+}
+defined_text = {
+	name = AFG_50pp_5_reform_tooltip_text
+	text = {
+		trigger = { has_country_flag = AFG_bop_reform_currency_flag }
+		localization_key = AFG_reform_points_cost_text_5_tooltip
+	}
+	text = {
+		localization_key = AFG_50pp_tt_tooltip
+	}
+}
+defined_text = {
+	name = AFG_random_location_name
+	text = {
+		random_list = {
+			10 = { localization_key = AFG_random_location_nuristan }
+			10 = { localization_key = AFG_random_location_tarinkot }
+			10 = { localization_key = AFG_random_location_shuhada }
+			10 = { localization_key = AFG_random_location_jawand }
+			10 = { localization_key = AFG_random_location_nahrin }
+			10 = { localization_key = AFG_random_location_dihdadi }
+			10 = { localization_key = AFG_random_location_zari }
+			10 = { localization_key = AFG_random_location_gulistan }
+			10 = { localization_key = AFG_random_location_qarabagh }
+			10 = { localization_key = AFG_random_location_nesh }
+		}
+	}
+}
+
+defined_text = {
+	name = afghanistan_civil_war_events_30_title
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_bost }
+		localization_key = afghanistan_civil_war_events.30.t.bost
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_kajran }
+		localization_key = afghanistan_civil_war_events.30.t.kajran
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_gizab }
+		localization_key = afghanistan_civil_war_events.30.t.gizab
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_chisht }
+		localization_key = afghanistan_civil_war_events.30.t.chisht
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_maiwand }
+		localization_key = afghanistan_civil_war_events.30.t.maiwand
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_sharak }
+		localization_key = afghanistan_civil_war_events.30.t.sharak
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_khost }
+		localization_key = afghanistan_civil_war_events.30.t.khost
+	}
+	text = {
+		localization_key = afghanistan_civil_war_events.30.t.bost
+	}
+}
+
+defined_text = {
+	name = afghanistan_civil_war_events_32_title
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_waras }
+		localization_key = afghanistan_civil_war_events.32.t.waras
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_ghazni }
+		localization_key = afghanistan_civil_war_events.32.t.ghazni
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_basawul }
+		localization_key = afghanistan_civil_war_events.32.t.basawul
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_kajran }
+		localization_key = afghanistan_civil_war_events.32.t.kajran
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_bamyan }
+		localization_key = afghanistan_civil_war_events.32.t.bamyan
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_baghlan }
+		localization_key = afghanistan_civil_war_events.32.t.baghlan
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_zaranj }
+		localization_key = afghanistan_civil_war_events.32.t.zaranj
+	}
+	text = {
+		localization_key = afghanistan_civil_war_events.32.t.waras
+	}
+}
+defined_text = {
+	name = AFG_remove_pashtunistan_reformist_decision_text
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = AFG_amanullah_traditionalist_consolidation_flag
+				has_completed_focus = AFG_the_steady_hand
+				has_completed_focus = AFG_the_final_fall_of_amanullah
+			}
+		}
+		localization_key = AFG_remove_pashtunistan_reformist_decision_military
+	}
+	text = {
+		localization_key = AFG_remove_pashtunistan_reformist_decision_democratic
+	}
+}
+defined_text = {
+	name = AFG_remove_pashtunistan_traditionalist_decision_text
+	text = {
+		trigger = {
+			AFG_is_telai = yes
+		}
+		localization_key = AFG_remove_pashtunistan_traditionalist_decision_telai
+	}
+	text = {
+		localization_key = AFG_remove_pashtunistan_traditionalist_decision_seraj
+	}
+}
+defined_text = {
+	name = AFG_remove_pashtunistan_reformist_decision_desc_text
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = AFG_amanullah_traditionalist_consolidation_flag
+				has_completed_focus = AFG_the_steady_hand
+				has_completed_focus = AFG_the_final_fall_of_amanullah
+			}
+		}
+		localization_key = AFG_remove_pashtunistan_reformist_decision_military_desc
+	}
+	text = {
+		localization_key = AFG_remove_pashtunistan_reformist_decision_democratic_desc
+	}
+}
+defined_text = {
+	name = AFG_remove_pashtunistan_traditionalist_decision_desc_text
+	text = {
+		trigger = {
+			AFG_is_telai = yes
+		}
+		localization_key = AFG_remove_pashtunistan_traditionalist_decision_telai_desc
+	}
+	text = {
+		localization_key = AFG_remove_pashtunistan_traditionalist_decision_seraj_desc
+	}
+}
+
+defined_text = {
+	name = AFG_loc_nadir_attack_event_pic
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_bost }
+		localization_key = GFX_report_event_AFG_Bost
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_kajran }
+		localization_key = GFX_report_event_AFG_irregulars_3
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_gizab }
+		localization_key = GFX_report_event_AFG_Gizab
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_chisht }
+		localization_key = GFX_report_event_AFG_Chisht
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_maiwand }
+		localization_key = GFX_report_event_AFG_Maiwand
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_sharak }
+		localization_key = GFX_report_event_AFG_Shahrak
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_nadir_attack_khost }
+		localization_key = GFX_report_event_AFG_Khost
+	}
+}
+
+defined_text = {
+	name = AFG_loc_amanullah_attack_event_pic
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_waras }
+		localization_key = GFX_report_event_AFG_Waras
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_ghazni }
+		localization_key = GFX_report_event_AFG_ghazni
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_basawul }
+		localization_key = GFX_report_event_AFG_irregulars_5
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_kajran }
+		localization_key = GFX_report_event_AFG_irregulars_3
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_bamyan }
+		localization_key = GFX_report_event_AFG_Bamiyan
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_baghlan }
+		localization_key = GFX_report_event_AFG_Baghlan
+	}
+	text = {
+		trigger = { has_event_target = AFG_civil_war_amanullah_attack_zaranj }
+		localization_key = GFX_report_event_AFG_irregulars_1
+	}
+}

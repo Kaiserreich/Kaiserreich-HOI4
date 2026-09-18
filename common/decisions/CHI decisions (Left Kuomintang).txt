@@ -39,10 +39,8 @@ foreign_politics = {
 		available = {
 			if = {
 				limit = { tag = ARM }
-				AND = {
-					has_completed_focus = ARM_first_popular_assembly
-					PER = { is_in_faction_with = CHI } #ARM should be able to join if PER is in the faction
-				}
+				has_completed_focus = ARM_first_popular_assembly
+				PER = { is_in_faction_with = CHI } #ARM should be able to join if PER is in the faction
 			}
 			else_if = {
 				limit = { tag = INC }
@@ -1133,10 +1131,10 @@ CHI_military_expeditions_category = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove CHI_expand_local_elections_decision"
 			if = {
-				limit = { FROM = { has_state_flag = guangxi_province_state } } #Nanning
+				limit = { FROM = { check_variable = { chinese_province_state = 594.id } } } #Nanning
 				ROOT = {
 					every_owned_state = {
-						limit = { has_state_flag = guangxi_province_state }
+						limit = { check_variable = { chinese_province_state = 594.id } }
 						add_dynamic_modifier = {
 							modifier = CHI_local_democratic_elections
 							scope = THIS
@@ -1145,10 +1143,10 @@ CHI_military_expeditions_category = {
 				}
 			}
 			else_if = {
-				limit = { FROM = { has_state_flag = yunnan_province_state } } #Kunming
+				limit = { FROM = { check_variable = { chinese_province_state = 325.id } } } #Kunming
 				ROOT = {
 					every_owned_state = {
-						limit = { has_state_flag = yunnan_province_state }
+						limit = { check_variable = { chinese_province_state = 325.id } }
 						add_dynamic_modifier = {
 							modifier = CHI_local_democratic_elections
 							scope = THIS
@@ -1157,10 +1155,10 @@ CHI_military_expeditions_category = {
 				}
 			}
 			else_if = {
-				limit = { FROM = { has_state_flag = guizhou_province_state } } #Guiyang
+				limit = { FROM = { check_variable = { chinese_province_state = 1051.id } } } #Guiyang
 				ROOT = {
 					every_owned_state = {
-						limit = { has_state_flag = guizhou_province_state }
+						limit = { check_variable = { chinese_province_state = 1051.id } }
 						add_dynamic_modifier = {
 							modifier = CHI_local_democratic_elections
 							scope = THIS
@@ -1169,10 +1167,10 @@ CHI_military_expeditions_category = {
 				}
 			}
 			else_if = {
-				limit = { FROM = { has_state_flag = hunan_province_state } } #Changsha
+				limit = { FROM = { check_variable = { chinese_province_state = 602.id } } } #Changsha
 				ROOT = {
 					every_owned_state = {
-						limit = { has_state_flag = hunan_province_state }
+						limit = { check_variable = { chinese_province_state = 602.id } }
 						add_dynamic_modifier = {
 							modifier = CHI_local_democratic_elections
 							scope = THIS
@@ -1181,10 +1179,10 @@ CHI_military_expeditions_category = {
 				}
 			}
 			else_if = {
-				limit = { FROM = { has_state_flag = sichuan_province_state } } #Chengdu
+				limit = { FROM = { check_variable = { chinese_province_state = 605.id } } } #Chengdu
 				ROOT = {
 					every_owned_state = {
-						limit = { has_state_flag = sichuan_province_state }
+						limit = { check_variable = { chinese_province_state = 605.id } }
 						add_dynamic_modifier = {
 							modifier = CHI_local_democratic_elections
 							scope = THIS
@@ -1193,10 +1191,10 @@ CHI_military_expeditions_category = {
 				}
 			}
 			else_if = {
-				limit = { FROM = { has_state_flag = hubei_province_state } } #Wuhan
+				limit = { FROM = { check_variable = { chinese_province_state = 1048.id } } } #Wuhan
 				ROOT = {
 					every_owned_state = {
-						limit = { has_state_flag = hubei_province_state }
+						limit = { check_variable = { chinese_province_state = 1048.id } }
 						add_dynamic_modifier = {
 							modifier = CHI_local_democratic_elections
 							scope = THIS

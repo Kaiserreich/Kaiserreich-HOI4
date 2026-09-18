@@ -1,0 +1,61 @@
+AFG_national_integration_modifier = {
+	icon = "GFX_idea_AFG_economic_regionalism"
+	custom_modifier_tooltip = AFG_national_integration_level_modifier_tooltip
+	mobilization_speed = AFG.AFG_national_integration_mobilization_speed #Default -0.3
+	army_org_factor = AFG.AFG_national_integration_army_org_factor #Default -0.1
+	production_speed_buildings_factor = AFG.AFG_national_integration_production_speed_buildings_factor #Default = -0.3
+	research_speed_factor = AFG.AFG_national_integration_research_speed_factor #Default -0.05
+}
+AFG_pashtunistan_autonomous_province_modifier = {
+	icon = "GFX_decision_SWI_no_elected_president"
+	remove_trigger = {
+		NOT = { is_owned_by = AFG }
+	}
+
+	local_building_slots_factor = AFG.AFG_pashtunistan_building_slots #Default -0.1
+	local_manpower = AFG.AFG_pashtunistan_local_manpower
+	state_production_speed_buildings_factor = AFG.AFG_pashtunistan_production_speed_buildings_factor
+}
+AFG_pashtunistan_autonomous_province_india_modifier = {
+	icon = "GFX_decision_SWI_no_elected_president"
+	remove_trigger = {
+		NOT = {
+			owner = { is_indian_unifier_tag = yes }
+		}
+	}
+
+	local_building_slots_factor = -0.1
+}
+AFG_chitral_treaties_modifier = {
+	icon = "GFX_decision_generic_reorganize_irregulars"
+	remove_trigger = {
+		NOT = { is_owned_by = AFG }
+	}
+
+	local_building_slots_factor = AFG.AFG_pashtunistan_building_slots
+	local_manpower = AFG.AFG_pashtunistan_local_manpower #Default -0.1
+	state_production_speed_buildings_factor = AFG.AFG_pashtunistan_production_speed_buildings_factor
+}
+AFG_electrification_campaign_modifier = {
+	icon = GFX_decision_electrify
+	remove_trigger = {
+		NOT = { is_owned_by = AFG }
+	}
+	state_production_speed_buildings_factor = 0.1
+	local_building_slots_factor = 0.1
+	state_production_speed_infrastructure_factor = 0.2
+}
+AFG_pashtunistan_devastation_modifier = {
+	icon = "GFX_decision_generic_destruction"
+
+	compliance_gain = -0.1
+	local_supplies = -0.2
+}
+AFG_conscription_exemptions_granted = { #Identical to generic but with auto remove trigger
+	icon = GFX_modifiers_conscription_exemptions_granted
+	remove_trigger = {
+		NOT = { is_owned_by = AFG }
+	}
+
+	recruitable_population_factor = -0.85
+}

@@ -2,9 +2,10 @@ on_actions = {
 
 	on_startup = {
 		effect = {
-			every_country = {
-				limit = { is_ally_with = JAP }
-				add_to_tech_sharing_group = japan_research
+			JAP = {
+				every_faction_member = {
+					add_to_tech_sharing_group = japan_research
+				}
 			}
 		}
 	}

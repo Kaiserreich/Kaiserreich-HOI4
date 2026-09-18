@@ -29,6 +29,10 @@ if = {
 add_ideas = {
 	limited_conscription
 	limited_exports
+	AFG_lands_of_villages_tribes_and_faiths_1
+	AFG_spectre_of_rebellion
+	AFG_loy_afghanistan
+	AFG_stagnant_army
 }
 
 ### Integration ###
@@ -39,10 +43,18 @@ ROOT = {
 	1042 = { enable_state_integration_50_compliance = yes } #Badakhshan
 }
 
-set_stability = 0.5
-set_war_support = 0.25
+### State Building Mechanic Set Up ###
+set_variable = { AFG_reform_progress = 30 }
+set_variable = { AFG_national_integration_mobilization_speed = -0.3 }
+set_variable = { AFG_national_integration_army_org_factor = -0.1 }
+set_variable = { AFG_national_integration_production_speed_buildings_factor = -0.3 }
+set_variable = { AFG_national_integration_research_speed_factor = -0.05 }
+add_dynamic_modifier = { modifier = AFG_national_integration_modifier }
 
-country_event = { id = afghanistan_events.0 days = 33 }
+set_variable = { AFG.generic_development_efforts_var = 0.2 }
+
+set_stability = 0.35
+set_war_support = 0.5
 
 set_politics = {
 	ruling_party = paternal_autocrat
@@ -50,52 +62,170 @@ set_politics = {
 	election_frequency = 48
 	elections_allowed = no
 }
+set_cosmetic_tag = AFG_kingdom
 
 set_popularities = {
-	totalist = 0
+	totalist = 1
 	radical_socialist = 1
-	syndicalist = 0
-	social_democrat = 1
-	social_liberal = 1
-	market_liberal = 3
-	social_conservative = 14
-	authoritarian_democrat = 11
-	paternal_autocrat = 47
-	national_populist = 22
+	syndicalist = 2
+	social_democrat = 4
+	social_liberal = 7
+	market_liberal = 8
+	social_conservative = 15
+	authoritarian_democrat = 14
+	paternal_autocrat = 33
+	national_populist = 15
 }
 
+set_variable = { country_guide_page_count = 1 }
+set_variable = { country_intro_page_count = 3 }
+
+# Pre-War Events
+country_event = { id = afghanistan_events.1 days = 5 } #The Wardak Report
+country_event = { id = afghanistan_events.2 days = 10 } #A Meeting with Nadir
+country_event = { id = afghanistan_events.3 days = 16 } #Amanullah Assembles a Loya Jirga
+country_event = { id = afghanistan_events.4 days = 25 } #The Traditionalist Stonewall
+country_event = { id = afghanistan_events.6 days = 37 } #The German Well Runs Dry
+country_event = { id = afghanistan_events.7 days = 48 } #German Companies Withdraw from Afghanistan
+country_event = { id = afghanistan_events.8 days = 61 } #Smugglers of the Amu Darya
+country_event = { id = afghanistan_events.9 days = 78 } #Reaffirming the Helmand Agreement
+country_event = { id = afghanistan_events.10 days = 92 } #Unrest in Kohistan
+country_event = { id = afghanistan_events.19 days = 112 } #Independence Day
+country_event = { id = afghanistan_events.14 days = 128 } #Growth of the Azadist Clique
+country_event = { id = afghanistan_events.20 days = 159 } #Unity Day
+country_event = { id = afghanistan_events.18 days = 223 } #Elections in Pashtunistan
+country_event = { id = afghanistan_events.21 days = 255 } #The Soldiers Left Behind
+country_event = { id = afghanistan_events.26 days = 273 } #A New Mehtar in Chitral
+country_event = { id = afghanistan_events.22 days = 291 } #Phone Line to Peshawar
+country_event = { id = afghanistan_events.23 days = 315 } #The Inland Exploration Company Concession
+country_event = { id = afghanistan_events.24 days = 350 } #The Women's Queen
+country_event = { id = afghanistan_events.25 days = 367 } #The Chains of Command
+country_event = { id = afghanistan_events.27 days = 390 } #Our Dir Brothers
+country_event = { id = afghanistan_events.28 days = 437 } #Treasures of Bagram
+country_event = { id = afghanistan_events.32 days = 743 } #The King in Your Home
+country_event = { id = afghanistan_events.33 days = 773 } #The Benefits of Japanese Agriculture
+country_event = { id = afghanistan_events.34 days = 807 } #A New Generation of Mullahs
+country_event = { id = afghanistan_events.35 days = 822 } #The Veil of the Unveiling
+country_event = { id = afghanistan_events.36 days = 868 } #The Enduring Mojadidi
+country_event = { id = afghanistan_events.37 days = 899 } #The Inevitability of Corruption
+country_event = { id = afghanistan_events.38 days = 982 } #Parliamentary Proposal Prepared
+
+# Pashtunistan Events
+country_event = { id = afghanistan_pashtunistan_events.1 days = 407 } #Tax dispute in Timergara
+country_event = { id = afghanistan_pashtunistan_events.2 days = 464 } #Timergara Tax Collectors Shot Dead
+country_event = { id = afghanistan_pashtunistan_events.3 days = 474 } #Pashtunistan Government Defends the Tribesmen
+country_event = { id = afghanistan_pashtunistan_events.4 days = 483 } #Wardak Advocates Seeking a Peaceful Solution
+country_event = { id = afghanistan_pashtunistan_events.15 days = 500 } #Mines and Marauders
+country_event = { id = afghanistan_pashtunistan_events.18 days = 549 } #The Voice of Frontier Muslims
+country_event = { id = afghanistan_pashtunistan_events.19 days = 589 } #The Faqir of Ipi Rouses Suspicion
+country_event = { id = afghanistan_pashtunistan_events.27 days = 712 } #Formation of the Frontier Defence Force
+
+# Civil War Events
+country_event = { id = afghanistan_civil_war_events.1 days = 943 } #Amanullah Declares Plans for a European Tour
+country_event = { id = afghanistan_civil_war_events.2 days = 1048 } #King Finalises Plans with Advisors
+country_event = { id = afghanistan_civil_war_events.3 days = 1075 } #Amanullah Departs
+country_event = { id = afghanistan_civil_war_events.4 days = 1092 } #Unrest in the North
+country_event = { id = afghanistan_civil_war_events.5 days = 1097 } #A Warm Welcome in Berlin
+country_event = { id = afghanistan_civil_war_events.6 days = 1102 } #Bandits Muster in the North
+country_event = { id = afghanistan_civil_war_events.7 days = 1108 } #Kunduz Taken by Saqqawists
+country_event = { id = afghanistan_civil_war_events.8 days = 1113 } #Disaster in Baghlan
+country_event = { id = afghanistan_civil_war_events.9 days = 1120 } #The Sack of Darulaman
+country_event = { id = afghanistan_civil_war_events.10 days = 1125 } #Nadir Reorganises in the West
+country_event = { id = afghanistan_civil_war_events.11 days = 1129 } #News Reaches Amanullah
+country_event = { id = afghanistan_civil_war_events.12 days = 1134 } #The March to Kabul
+country_event = { id = afghanistan_civil_war_events.13 days = 1137 } #The Nation Reclaimed
+country_event = { id = afghanistan_civil_war_events.14 days = 1141 } #Nadir Takes the Crown
+country_event = { id = afghanistan_civil_war_events.15 days = 1145 } #A Carriage of Curses
+country_event = { id = afghanistan_civil_war_events.16 days = 1151 } #The Afghan Civil War
+
+# Extra Events
+
+country_event = { id = afghanistan_events.39 days = 1410 }
+
+# Path-choosing events
+country_event = { id = afghanistan_events.9000 hours = 12 } #Amanullah vs Nadir POV
+country_event = { id = afghanistan_events.9001 hours = 13 } #Which Amanullah subpath?
+country_event = { id = afghanistan_events.9002 hours = 13 } #Which Nadir subpath?
+country_event = { id = afghanistan_events.9003 hours = 14 } #Which forpol?
+country_event = { id = afghanistan_events.9004 hours = 15 } #How to deal with Pashtunistan?
+
 ### Country Leaders ###
+#Kings
 recruit_character = AFG_amanullah_khan
 recruit_character = AFG_mohammad_nadir_khan
-recruit_character = AFG_habibullah_kalakani
+recruit_character = AFG_mohammad_zahir_khan
+recruit_character = AFG_mohammad_hashim_khan
+recruit_character = AFG_inayatullah_khan
 
-recruit_character = AFG_abdul_rahman_mahmoodi
+#Republicans
+#PTH_abdur_rahim_popalzai recruited in PTH
+#PTH_abdul_ghaffar_khan recruited in PTH
+recruit_character = AFG_mohammad_ghobar
+recruit_character = AFG_abdul_rauf_benawa
+recruit_character = AFG_abdul_hadi_dawi
+recruit_character = AFG_mohammad_gul_khan_momand
 
-### Generals ###
-recruit_character = AFG_wali_khan
-recruit_character = AFG_mohammad_daoud_khan
-recruit_character = AFG_ali_ahmad_khan
-recruit_character = AFG_nasrullah_khan
+#Dummy
+recruit_character = AFG_purdil_khan
 
 ### Seconds in Command ###
-recruit_character = AFG_mahmud_khan
-recruit_character = AFG_mohammad_ghobar
-recruit_character = AFG_abdul_hadi_dawi
+recruit_character = AFG_interim_leadership_mon
+recruit_character = AFG_interim_leadership_rep
+recruit_character = AFG_interim_leadership_soc
+recruit_character = AFG_abdul_ahad_wardak
+recruit_character = AFG_ghulam_mohiuddin_arti
+recruit_character = AFG_habibullah_khan_abawi
+recruit_character = AFG_abdul_tawab_khan_tarzi
+recruit_character = AFG_abdul_majid_zabuli
+recruit_character = AFG_wali_khan
+recruit_character = AFG_shah_mahmud_khan
+recruit_character = AFG_mohammad_daoud_khan
+recruit_character = AFG_abdul_hai_habibi
 
 ### Advisors ###
-recruit_character = AFG_mohammad_hashim_khan
-recruit_character = AFG_mohammad_gul_khan_momand
-recruit_character = AFG_inayatullah_khan
+recruit_character = AFG_abdul_rahman_mahmoodi
+recruit_character = AFG_berthold_albert_speer
+recruit_character = AFG_franz_ruff
 recruit_character = AFG_faiz_mohammad_khan_zikeria
-recruit_character = AFG_mohammad_yusuf
-recruit_character = AFG_abdul_ahad_wardak
-recruit_character = AFG_abdul_majid_zabuli
 recruit_character = AFG_sher_khan_nashir
+recruit_character = AFG_ali_muhammad_khan
+recruit_character = AFG_mohammad_sadiq_mojadidi
+recruit_character = AFG_ghulam_yahya_tarzi
+recruit_character = AFG_mohammad_aziz_khan
+recruit_character = AFG_fazl_omar_mojadidi
+recruit_character = AFG_mohammad_naim_khan
+recruit_character = AFG_abdul_ahad_malikyar
+recruit_character = AFG_najibullah_torwayana
+recruit_character = AFG_sayed_qassem_reshtia
+recruit_character = AFG_shahzada_rehmatullah_khan_durrani
+recruit_character = AFG_jamna_das_talwar
+recruit_character = AFG_hari_kishan_talwar
+recruit_character = AFG_amir_chand_bombwal
+recruit_character = AFG_mian_akbar_shah
+recruit_character = AFG_abdul_rahman_loudin
+recruit_character = AFG_qiamuddin_khadim
+recruit_character = AFG_muhammad_younus_qureshi
+recruit_character = AFG_sanober_hussain_kakaji
+recruit_character = AFG_abdul_hussain_aziz
+recruit_character = AFG_abdul_samad_khan_achakzai
 
-activate_advisor = AFG_nasrullah_khan_sic
+### Generals/MHC ###
+recruit_character = AFG_ali_ahmad_khan
+recruit_character = AFG_abdur_rahim_khan
+recruit_character = AFG_ghulam_jailani_khan_charkhi
+recruit_character = AFG_ghulam_nabi_khan_charkhi
+recruit_character = AFG_mir_zaman_khan
+recruit_character = AFG_mohammad_wali_khan_darwazi
+recruit_character = AFG_asal_noor_khan_afridi
+recruit_character = AFG_ajab_khan_afridi
+recruit_character = AFG_dost_muhammad_khan
+recruit_character = AFG_muhammad_ihsan_khan
+recruit_character = AFG_ivan_alexandrovich_loiko
+
+activate_advisor = AFG_abdul_ahad_wardak_sic
 activate_advisor = AFG_mohammad_nadir_khan_army_chief
 
 ### Character Setup ###
 AFG_amanullah_khan = { set_character_as_monarch = yes }
-AFG_habibullah_kalakani = { set_character_as_monarch = yes }
-AFG_mohammad_nadir_khan = { set_character_as_monarch = yes }
+#Other monarchs are given flags when created
+AFG_abdul_samad_khan_achakzai = { set_nationality = event_target:system } #Added via event

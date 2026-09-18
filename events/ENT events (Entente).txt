@@ -394,7 +394,6 @@ country_event = {
 			}
 		}
 		add_offsite_building = { type = industrial_complex level = 1 }
-		set_country_flag = CAN_iedc_investment
 		add_to_variable = { iedc_civ_factories = 1 }
 	}
 	option = {
@@ -402,7 +401,6 @@ country_event = {
 		name = entente_events.6.b #Military
 		ai_chance = { base = 40 }
 		add_offsite_building = { type = arms_factory level = 1 }
-		set_country_flag = CAN_iedc_investment
 		add_to_variable = { iedc_mil_factories = 1 }
 	}
 	option = {
@@ -413,8 +411,10 @@ country_event = {
 		}
 		ai_chance = { base = 30 }
 		add_offsite_building = { type = dockyard level = 1 }
-		set_country_flag = CAN_iedc_investment
 		add_to_variable = { iedc_nav_factories = 1 }
+	}
+	after = {
+		set_country_flag = { flag = CAN_iedc_investment days = 365 value = 1 }
 	}
 }
 
@@ -1478,30 +1478,19 @@ country_event = {
 			}
 		}
 		if = {
-			limit = {
-				check_variable = { king_influence > 4 }
-			}
+			limit = { check_variable = { king_influence > 4 } }
 			add_political_power = 50
 		}
 		else_if = {
-			limit = {
-				check_variable = { king_influence > 3 }
-				check_variable = { king_influence < 5 }
-			}
+			limit = { check_variable = { king_influence > 3 } }
 			add_political_power = 40
 		}
 		else_if = {
-			limit = {
-				check_variable = { king_influence > 2 }
-				check_variable = { king_influence < 4 }
-			}
+			limit = { check_variable = { king_influence > 2 } }
 			add_political_power = 30
 		}
 		else_if = {
-			limit = {
-				check_variable = { king_influence > 1 }
-				check_variable = { king_influence < 3 }
-			}
+			limit = { check_variable = { king_influence > 1 } }
 			add_political_power = 25
 		}
 		add_dynamic_modifier = {
@@ -1513,9 +1502,11 @@ country_event = {
 		name = entente_events.30.c #assist industry
 		trigger = {
 			check_variable = { king_influence > 2 }
-			set_temp_variable = { temp = king_civ_factories }
-			add_to_temp_variable = { temp = king_mil_factories }
-			check_variable = { temp < king_influence }
+			check_expr = {
+				value = king_civ_factories
+				add = king_mil_factories
+				less_than = king_influence
+			}
 		}
 		ai_chance = { base = 50 }
 		set_country_flag = CAN_exile_inc_industry
@@ -1526,9 +1517,11 @@ country_event = {
 		name = entente_events.30.c #assist industry
 		trigger = {
 			check_variable = { king_influence > 2 }
-			set_temp_variable = { temp = king_civ_factories }
-			add_to_temp_variable = { temp = king_mil_factories }
-			NOT = { check_variable = { temp < king_influence } }
+			check_expr = {
+				value = king_civ_factories
+				add = king_mil_factories
+				greater_than_or_equals = king_influence
+			}
 		}
 		ai_chance = { base = 20 }
 		add_dynamic_modifier = {
@@ -2316,13 +2309,12 @@ country_event = {
 				check_variable = { king_influence > 3 }
 			}
 		}
-		custom_effect_tooltip = CAN_exile_influence_decrease
-		if = {
-			limit = { check_variable = { king_influence > 1 } }
-			subtract_from_variable = { king_influence = 2 }
-		}
-		else = {
-			set_variable = { king_influence = 0 }
+		subtract_from_variable = {
+			king_influence = {
+				value = 2
+				clamp = { min = 0 max = king_influence }
+			}
+			tooltip = CAN_exile_influence_decrease
 		}
 		CAN_calc_exile_influence_effects = yes
 		add_stability = -0.05
@@ -2422,13 +2414,12 @@ country_event = {
 				check_variable = { king_influence > 3 }
 			}
 		}
-		custom_effect_tooltip = CAN_exile_influence_decrease
-		if = {
-			limit = { check_variable = { king_influence > 1 } }
-			subtract_from_variable = { king_influence = 2 }
-		}
-		else = {
-			set_variable = { king_influence = 0 }
+		subtract_from_variable = {
+			king_influence = {
+				value = 2
+				clamp = { min = 0 max = king_influence }
+			}
+			tooltip = CAN_exile_influence_decrease
 		}
 		CAN_calc_exile_influence_effects = yes
 		add_stability = -0.05
@@ -2536,9 +2527,13 @@ country_event = {
 
 	immediate = {
 		set_country_flag = CAN_was_exile_govt_conflict
-		set_variable = { desc_num = random }
-		multiply_variable = { desc_num = 8 }
-		round_variable = desc_num
+		set_variable = {
+			desc_num = {
+				value = random
+				multiply = 8
+				round = yes
+			}
+		}
 	}
 
 	option = {
@@ -2552,13 +2547,12 @@ country_event = {
 			}
 		}
 		add_war_support = -0.10
-		custom_effect_tooltip = CAN_exile_influence_decrease
-		if = {
-			limit = { check_variable = { king_influence > 0 } }
-			subtract_from_variable = { king_influence = 1 }
-		}
-		else = {
-			set_variable = { king_influence = 0 }
+		subtract_from_variable = {
+			king_influence = {
+				value = 1
+				clamp = { min = 0 max = king_influence }
+			}
+			tooltip = CAN_exile_influence_decrease
 		}
 		CAN_calc_exile_influence_effects = yes
 	}
@@ -2596,15 +2590,18 @@ country_event = {
 			limit = { check_variable = { king_influence > 0 } }
 			custom_effect_tooltip = CAN_exile_influence_decrease_50
 			hidden_effect = {
-				set_variable = { event_num = random }
-				multiply_variable = { event_num = 100 }
-				round_variable = event_num
 				if = {
-					limit = { check_variable = { event_num < 50 } }
+					limit = {
+						check_expr = {
+							value = random
+							multiply = 100
+							round = yes
+							less_than = 50
+						}
+					}
 					subtract_from_variable = { king_influence = 1 }
 					CAN_calc_exile_influence_effects = yes
 				}
-				clear_variable = event_num
 			}
 		}
 	}
@@ -2631,28 +2628,30 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event entente_events.55 option entente_events.55.a"
 		name = entente_events.55.a
-		custom_effect_tooltip = CAN_exile_influence_decrease
-		if = {
-			limit = { check_variable = { king_influence > 0 } }
-			subtract_from_variable = { king_influence = 1 }
-		}
-		else = {
-			set_variable = { king_influence = 0 }
+		subtract_from_variable = {
+			king_influence = {
+				value = 1
+				clamp = { min = 0 max = king_influence }
+			}
+			tooltip = CAN_exile_influence_decrease
 		}
 		CAN_calc_exile_influence_effects = yes
 		if = {
 			limit = { check_variable = { king_popularity > 0 } }
 			custom_effect_tooltip = CAN_king_popularity_decrease_50
 			hidden_effect = {
-				set_variable = { event_num = random }
-				multiply_variable = { event_num = 100 }
-				round_variable = event_num
 				if = {
-					limit = { check_variable = { event_num < 50 } }
+					limit = {
+						check_expr = {
+							value = random
+							multiply = 100
+							round = yes
+							less_than = 50
+						}
+					}
 					subtract_from_variable = { king_popularity = 1 }
 					CAN_calc_royal_visit_effects = yes
 				}
-				clear_variable = event_num
 			}
 		}
 		hidden_effect = {
@@ -2723,9 +2722,13 @@ country_event = {
 
 	immediate = {
 		set_country_flag = CAN_was_exile_improve
-		set_variable = { desc_num = random }
-		multiply_variable = { desc_num = 8 }
-		round_variable = desc_num
+		set_variable = {
+			desc_num = {
+				value = random
+				multiply = 8
+				round = yes
+			}
+		}
 	}
 
 	option = {
@@ -2801,21 +2804,24 @@ country_event = {
 
 	immediate = {
 		set_country_flag = CAN_was_exile_worsen
-		set_variable = { desc_num = random }
-		multiply_variable = { desc_num = 8 }
-		round_variable = desc_num
+		set_variable = {
+			desc_num = {
+				value = random
+				multiply = 8
+				round = yes
+			}
+		}
 	}
 
 	option = {
 		log = "[GetLogInfo]: event entente_events.57 option entente_events.57.a"
 		name = entente_events.57.a
-		custom_effect_tooltip = CAN_exile_influence_decrease
-		if = {
-			limit = { check_variable = { king_influence > 0 } }
-			subtract_from_variable = { king_influence = 1 }
-		}
-		else = {
-			set_variable = { king_influence = 0 }
+		subtract_from_variable = {
+			king_influence = {
+				value = 1
+				clamp = { min = 0 max = king_influence }
+			}
+			tooltip = CAN_exile_influence_decrease
 		}
 		CAN_calc_exile_influence_effects = yes
 		hidden_effect = {
@@ -2882,21 +2888,24 @@ country_event = {
 
 	immediate = {
 		set_country_flag = CAN_was_king_scandal
-		set_variable = { desc_num = random }
-		multiply_variable = { desc_num = 8 }
-		round_variable = desc_num
+		set_variable = {
+			desc_num = {
+				value = random
+				multiply = 8
+				round = yes
+			}
+		}
 	}
 
 	option = {
 		log = "[GetLogInfo]: event entente_events.58 option entente_events.58.a"
 		name = entente_events.58.a
-		custom_effect_tooltip = CAN_king_popularity_decrease
-		if = {
-			limit = { check_variable = { king_popularity > 0 } }
-			subtract_from_variable = { king_popularity = 1 }
-		}
-		else = {
-			set_variable = { king_popularity = 0 }
+		subtract_from_variable = {
+			king_popularity = {
+				value = 1
+				clamp = { min = 0 max = king_popularity }
+			}
+			tooltip = CAN_king_popularity_decrease
 		}
 		CAN_calc_royal_visit_effects = yes
 		hidden_effect = {
@@ -2963,9 +2972,13 @@ country_event = {
 
 	immediate = {
 		set_country_flag = CAN_was_king_gains_popularity
-		set_variable = { desc_num = random }
-		multiply_variable = { desc_num = 8 }
-		round_variable = desc_num
+		set_variable = {
+			desc_num = {
+				value = random
+				multiply = 8
+				round = yes
+			}
+		}
 	}
 
 	option = {
@@ -3010,44 +3023,41 @@ country_event = {
 
 	immediate = {
 		set_country_flag = CAN_was_king_needs_time_off
-		set_variable = { desc_num = random }
-		multiply_variable = { desc_num = 3 }
-		round_variable = desc_num
-		set_variable = { time_off = random }
-		multiply_variable = { time_off = 120 }
-		round_variable = time_off
-		clamp_variable = { var = time_off max = 120 min = 90 }
+		set_variable = {
+			desc_num = {
+				value = random
+				multiply = 3
+				round = yes
+			}
+		}
 	}
 
 	option = {
 		log = "[GetLogInfo]: event entente_events.60 option entente_events.60.a"
 		name = entente_events.60.a
-		custom_effect_tooltip = CAN_king_takes_time_off
+		set_temp_variable = {
+			time_off = {
+				value = random
+				multiply = 120
+				round = yes
+				clamp = { min = 90 max = 120 }
+			}
+			tooltip = CAN_king_takes_time_off
+		}
 		hidden_effect = {
-			meta_effect = {
-				text = {
-					set_global_flag = {
-						flag = CAN_king_busy
-						days = [time_off_var]
-						value = 1
-					}
-				}
-				time_off_var = "[?time_off|0]"
+			set_global_flag = {
+				flag = CAN_king_busy
+				days = time_off
+				value = 1
 			}
 			if = {
 				limit = { check_variable = { desc_num < 2 } }
-				meta_effect = {
-					text = {
-						set_global_flag = {
-							flag = CAN_king_on_tour
-							days = [time_off_var]
-							value = 1
-						}
-					}
-					time_off_var = "[?time_off|0]"
+				set_global_flag = {
+					flag = CAN_king_on_tour
+					days = time_off
+					value = 1
 				}
 			}
-			clear_variable = time_off
 		}
 		hidden_effect = {
 			country_event = { id = entente_events.50 days = 90 random_days = 60 }
@@ -3700,7 +3710,10 @@ country_event = {
 		log = "[GetLogInfo]: event entente_events.78 option entente_events.78.a"
 		name = entente_events.78.a
 		set_variable = { global.king_george_story = 3 }
-		custom_effect_tooltip = CAN_king_takes_time_off
+		set_temp_variable = {
+			time_off = 180
+			tooltip = CAN_king_takes_time_off
+		}
 		set_global_flag = { flag = CAN_king_busy days = 180 value = 1 }
 		hidden_effect = {
 			country_event = { id = entente_events.50 days = 90 random_days = 60 }
@@ -4175,19 +4188,14 @@ country_event = {
 		}
 		custom_effect_tooltip = CAN_edward_will_step_down
 		if = {
-			limit = {
-				check_variable = { king_popularity > 1 }
-			}
+			limit = { check_variable = { king_popularity > 1 } }
 			add_stability = -0.10
 			add_political_power = -100
 			set_temp_variable = { ideology_change_var = -0.1 }
 			change_ruling_party_popularity = yes
 		}
 		else_if = {
-			limit = {
-				check_variable = { king_popularity < 2 }
-				check_variable = { king_popularity > 0 }
-			}
+			limit = { check_variable = { king_popularity > 0 } }
 			add_stability = -0.10
 			add_political_power = -50
 			set_temp_variable = { ideology_change_var = -0.05 }
@@ -4232,18 +4240,13 @@ country_event = {
 		clr_global_flag = CAN_king_busy
 		CAN_king_becomes_unpopular = yes
 		if = {
-			limit = {
-				check_variable = { king_popularity < 2 }
-				check_variable = { king_popularity > 0 }
-			}
+			limit = { check_variable = { king_popularity = 1 } }
 			add_political_power = -100
 			set_temp_variable = { ideology_change_var = -0.1 }
 			change_ruling_party_popularity = yes
 		}
 		else_if = {
-			limit = {
-				check_variable = { king_popularity < 1 }
-			}
+			limit = { check_variable = { king_popularity < 1 } }
 			add_stability = -0.05
 			add_political_power = -200
 			set_temp_variable = { ideology_change_var = -0.2 }
@@ -5535,6 +5538,7 @@ country_event = {
 		if = {
 			limit = { has_event_target = entente_transfer_to }
 			event_target:entente_transfer_to = { CAN_transfer_entente_leader = yes }
+			remove_ideas = CAN_darkest_hour
 			hidden_effect = {
 				CAN_remove_from_iedc = yes
 				every_subject_country = {
@@ -5548,17 +5552,12 @@ country_event = {
 				event_target:entente_transfer_to = {
 					news_event = { id = entente_events.255 hours = 8 }
 					remove_from_faction = ROOT
-				}
-			}
-			remove_ideas = CAN_darkest_hour
-			hidden_effect = {
-				# peace out the rest of the Entente if appropriate
-				every_country = {
-					limit = {
-						has_war_with = event_target:entente_transfer_to
-						is_valid_peace_target = yes
+
+					# peace out the rest of the Entente if appropriate
+					every_enemy_country = {
+						limit = { is_valid_peace_target = yes }
+						country_event = { id = entente_events.258 hours = 3 }
 					}
-					country_event = { id = entente_events.258 hours = 3 }
 				}
 			}
 		}
@@ -9129,11 +9128,8 @@ country_event = {
 			country_event = { id = entente_events.349 days = 1 }
 		}
 		hidden_effect = {
-			every_country = {
-				limit = {
-					LEC_is_legation_council_member = yes
-					is_ally_with = ROOT
-				}
+			every_faction_member = {
+				limit = { LEC_is_legation_council_member = yes }
 				LEC_remove_from_legation_council = yes
 			}
 			news_event = entente_events.351

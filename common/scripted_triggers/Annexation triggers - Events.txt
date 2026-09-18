@@ -420,6 +420,7 @@ annexations_AI_will_consider_returning_colonies = {
 		original_tag = NFA
 		original_tag = LEC
 		original_tag = RAJ
+		tag = APG #Racist
 	}
 }
 
@@ -1054,7 +1055,7 @@ annexations_AI_grant_land_default_logic = {
 annexations_allowed_to_annex_strategic_territories = {
 	has_socialist_government = no
 	is_subject = no
-	naval_base > 0
+	any_owned_state = { naval_base > 0 }
 }
 
 annexations_major_can_annex_strategic_territories = {

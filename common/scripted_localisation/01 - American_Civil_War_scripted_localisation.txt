@@ -54,27 +54,21 @@ defined_text = {
 	name = GetACWOrdinalSuffix
 	text = {
 		trigger = {
-			set_temp_variable = { remainder = counter }
-			modulo_temp_variable = { remainder = 10 }
-			check_variable = { remainder = 1 }
+			check_expr = { value = counter mod = 10 equals = 1 }
 			NOT = { check_variable = { counter = 11 } }
 		}
 		localization_key = "st"
 	}
 	text = {
 		trigger = {
-			set_temp_variable = { remainder = counter }
-			modulo_temp_variable = { remainder = 10 }
-			check_variable = { remainder = 2 }
+			check_expr = { value = counter mod = 10 equals = 2 }
 			NOT = { check_variable = { counter = 12 } }
 		}
 		localization_key = "nd"
 	}
 	text = {
 		trigger = {
-			set_temp_variable = { remainder = counter }
-			modulo_temp_variable = { remainder = 10 }
-			check_variable = { remainder = 3 }
+			check_expr = { value = counter mod = 10 equals = 3 }
 			NOT = { check_variable = { counter = 13 } }
 		}
 		localization_key = "rd"
@@ -224,22 +218,37 @@ defined_text = {
 	name = GetACWDivisionCount
 	text = {
 		trigger = {
-			set_temp_variable = { unit_count = state_population_k }
-			divide_temp_variable = { unit_count = 1000 }
-			clamp_temp_variable = { var = unit_count min = 1 max = 50 }
 			if = {
-				limit = { has_resistance = no }
-				multiply_temp_variable = { unit_count = 2 }
-			}
-			else_if = {
 				limit = {
-					controller = { tag = ACC }
-					is_core_of = USA
-					is_owned_by = USA
+					OR = {
+						has_resistance = no
+						AND = {
+							controller = { tag = ACC }
+							is_core_of = USA
+							is_owned_by = USA
+						}
+					}
 				}
-				multiply_temp_variable = { unit_count = 2 }
+				set_temp_variable = {
+					unit_count = {
+						value = state_population_k
+						multiply = 0.001
+						clamp = { min = 1 max = 50 }
+						multiply = 2
+						round = yes
+					}
+				}
 			}
-			round_temp_variable = unit_count
+			else = {
+				set_temp_variable = {
+					unit_count = {
+						value = state_population_k
+						multiply = 0.001
+						clamp = { min = 1 max = 50 }
+						round = yes
+					}
+				}
+			}
 		}
 		localization_key = "[?unit_count|G0]"
 	}

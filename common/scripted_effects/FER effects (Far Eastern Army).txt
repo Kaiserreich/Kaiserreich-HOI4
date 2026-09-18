@@ -323,9 +323,7 @@ FER_japanese_favours_check = {
 	add_to_variable = { FER_japan_favours = RUS_favour_change }
 	hidden_effect = {
 		if = {
-			limit = {
-				check_variable = { FER_japan_favours > 5 }
-			}
+			limit = { check_variable = { FER_japan_favours > 5 } }
 			if = {
 				limit = { has_idea = FER_japanese_assistance_2 }
 				swap_ideas = {
@@ -342,10 +340,7 @@ FER_japanese_favours_check = {
 			}
 		}
 		else_if = {
-			limit = {
-				check_variable = { FER_japan_favours > 3 }
-				check_variable = { FER_japan_favours < 6 }
-			}
+			limit = { check_variable = { FER_japan_favours > 3 } }
 			if = {
 				limit = { has_idea = FER_japanese_assistance_1 }
 				swap_ideas = {
@@ -362,10 +357,7 @@ FER_japanese_favours_check = {
 			}
 		}
 		else_if = {
-			limit = {
-				check_variable = { FER_japan_favours > 1 }
-				check_variable = { FER_japan_favours < 4 }
-			}
+			limit = { check_variable = { FER_japan_favours > 1 } }
 			if = {
 				limit = { has_idea = FER_japanese_assistance_2 }
 				swap_ideas = {
@@ -390,10 +382,7 @@ FER_japanese_favours_check = {
 				add_ideas = FER_japanese_assistance_1
 			}
 		}
-		else_if = {
-			limit = {
-				check_variable = { FER_japan_favours < 2 }
-			}
+		else = {
 			if = {
 				limit = { has_idea = FER_japanese_assistance_1 }
 				remove_ideas = FER_japanese_assistance_1
@@ -411,7 +400,7 @@ FER_japanese_favours_check = {
 }
 
 FER_increase_favours_to_japan = {
-	add_to_variable = { var = FER_japan_favours value = 1 }
+	add_to_variable = { FER_japan_favours = 1 }
 	if = {
 		limit = {
 			check_variable = { FER_japan_favours > 4 }

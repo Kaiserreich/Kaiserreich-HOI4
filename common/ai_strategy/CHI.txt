@@ -30,6 +30,7 @@ CHI_WCA_joint_attack_on_japan = {
 		value = 500 #strategy >= 500 forces declaration
 	}
 }
+
 CHI_army_composition_1 = {
 	allowed = { original_tag = CHI }
 	enable = {
@@ -37,7 +38,7 @@ CHI_army_composition_1 = {
 			has_war_with = JAP
 			date < 1941.1.1
 		}
-		check_variable = { num_divisions < 60 }
+		num_divisions < 60
 	}
 	abort_when_not_enabled = yes
 
@@ -92,6 +93,7 @@ CHI_army_composition_1 = {
 		value = -50
 	}
 }
+
 CHI_army_composition_2 = {
 	allowed = { original_tag = CHI }
 	enable = {
@@ -99,7 +101,7 @@ CHI_army_composition_2 = {
 			has_war_with = JAP
 			date < 1941.1.1
 		}
-		check_variable = { num_divisions > 59 }
+		num_divisions > 59
 	}
 	abort_when_not_enabled = yes
 
@@ -115,6 +117,7 @@ CHI_army_composition_2 = {
 		value = 100
 	}
 }
+
 CHI_build_military_factories = {
 	allowed = {
 		original_tag = CHI
@@ -131,6 +134,7 @@ CHI_build_military_factories = {
 		value = 30
 	}
 }
+
 CHI_infantry_equipment_modernisation = {
 	allowed = {
 		original_tag = CHI
@@ -156,6 +160,7 @@ CHI_infantry_equipment_modernisation = {
 		value = 20000
 	}
 }
+
 CHI_attack_anqing = {
 	allowed = {
 		original_tag = CHI
@@ -201,6 +206,7 @@ CHI_attack_league = {
 		execute_order = yes
 	}
 }
+
 CHI_attack_shandong = {
 	allowed = {
 		original_tag = CHI
@@ -223,6 +229,7 @@ CHI_attack_shandong = {
 		execute_order = yes
 	}
 }
+
 CHI_focus_on_active_front = {
 	allowed = {
 		original_tag = CHI
@@ -265,9 +272,11 @@ CHI_freeze_china_conflicts_before_SSJW = {
 		NOT = { has_war_with = JAP }
 		NOT = { has_global_flag = JAP_defeated_by_china }
 		check_variable = { deployed_army_manpower_k > 0 }
-		set_temp_variable = { CHI_casualties_ratio = casualties_k }
-		divide_temp_variable = { CHI_casualties_ratio = deployed_army_manpower_k }
-		check_variable = { CHI_casualties_ratio > 0.7 }
+		check_expr = { #CHI_casualties_ratio
+			value = casualties_k
+			divide = deployed_army_manpower_k
+			greater_than = 0.7
+		}
 	}
 
 	abort_when_not_enabled = yes
@@ -283,6 +292,7 @@ CHI_freeze_china_conflicts_before_SSJW = {
 		execution_type = careful
 	}
 }
+
 CHI_you_should_be_prepared_for_war = {
 	allowed = {
 		tag = CHI
@@ -301,6 +311,7 @@ CHI_you_should_be_prepared_for_war = {
 		value = 100
 	}
 }
+
 SOCRUS_support_LKMT_if_FER_is_in_COPRO = {			#Far Eastern Army only joins CoPro under certain conditions, Socialist Russia should retaliate by supporting China
 	allowed = {
 		tag = RUS					#CHI will return land to Russia anyway

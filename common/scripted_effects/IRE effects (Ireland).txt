@@ -31,31 +31,35 @@
 IRE_nationalist_discontent_increase = {
 	if = {
 		limit = { has_variable = IRE_nationalist_discontent }
-
-		#make sure values are not negative
-		if = {
-			limit = { check_variable = { IRE_nationalist_discontent_delta < 0 } }
-			multiply_temp_variable = { IRE_nationalist_discontent_delta = -1 }
+		subtract_from_variable = {
+			IRE_nationalist_discontent = {
+				value = IRE_nationalist_discontent_delta
+				#make sure values are not negative
+				if = {
+					limit = { value = IRE_nationalist_discontent_delta less_than = 0 }
+					multiply = -1
+				}
+			}
+			tooltip = IRE_nationalist_discontent_increase_tt
 		}
-
-		custom_effect_tooltip = IRE_nationalist_discontent_increase_tt
-		subtract_from_variable = { IRE_nationalist_discontent = IRE_nationalist_discontent_delta }
-		clamp_variable = { var = IRE_nationalist_discontent max = 0 }
 		IRE_remove_ulster_privileges = yes
 	}
 }
 IRE_nationalist_discontent_decrease = {
 	if = {
 		limit = { has_variable = IRE_nationalist_discontent }
-
-		#make sure values are not negative
-		if = {
-			limit = { check_variable = { IRE_nationalist_discontent_delta < 0 } }
-			multiply_temp_variable = { IRE_nationalist_discontent_delta = -1 }
+		add_to_variable = {
+			IRE_nationalist_discontent = {
+				value = IRE_nationalist_discontent_delta
+				#make sure values are not negative
+				if = {
+					limit = { value = IRE_nationalist_discontent_delta less_than = 0 }
+					multiply = -1
+				}
+				clamp = { min = 0 max = { value = IRE_nationalist_discontent multiply = -1 } }
+			}
+			tooltip = IRE_nationalist_discontent_decrease_tt
 		}
-		custom_effect_tooltip = IRE_nationalist_discontent_decrease_tt
-		add_to_variable = { IRE_nationalist_discontent = IRE_nationalist_discontent_delta }
-		clamp_variable = { var = IRE_nationalist_discontent max = 0 }
 		IRE_remove_ulster_privileges = yes
 	}
 }
@@ -63,32 +67,35 @@ IRE_nationalist_discontent_decrease = {
 IRE_loyalist_anger_increase = {
 	if = {
 		limit = { has_variable = IRE_loyalist_anger }
-
-		#make sure values are not negative
-		if = {
-			limit = { check_variable = { IRE_loyalist_anger_delta < 0 } }
-			multiply_temp_variable = { IRE_loyalist_anger_delta = -1 }
+		subtract_from_variable = {
+			IRE_loyalist_anger = {
+				value = IRE_loyalist_anger_delta
+				#make sure values are not negative
+				if = {
+					limit = { value = IRE_loyalist_anger_delta less_than = 0 }
+					multiply = -1
+				}
+			}
+			tooltip = IRE_loyalist_anger_increase_tt
 		}
-
-		custom_effect_tooltip = IRE_loyalist_anger_increase_tt
-		subtract_from_variable = { IRE_loyalist_anger = IRE_loyalist_anger_delta }
-		clamp_variable = { var = IRE_loyalist_anger max = 0 }
 		IRE_remove_ulster_privileges = yes
 	}
 }
 IRE_loyalist_anger_decrease = {
 	if = {
 		limit = { has_variable = IRE_loyalist_anger }
-
-		#make sure values are not negative
-		if = {
-			limit = { check_variable = { IRE_loyalist_anger_delta < 0 } }
-			multiply_temp_variable = { IRE_loyalist_anger_delta = -1 }
+		add_to_variable = {
+			IRE_loyalist_anger = {
+				value = IRE_loyalist_anger_delta
+				#make sure values are not negative
+				if = {
+					limit = { value = IRE_loyalist_anger_delta less_than = 0 }
+					multiply = -1
+				}
+				clamp = { min = 0 max = { value = IRE_loyalist_anger multiply = -1 } }
+			}
+			tooltip = IRE_loyalist_anger_decrease_tt
 		}
-
-		custom_effect_tooltip = IRE_loyalist_anger_decrease_tt
-		add_to_variable = { IRE_loyalist_anger = IRE_loyalist_anger_delta }
-		clamp_variable = { var = IRE_loyalist_anger max = 0 }
 		IRE_remove_ulster_privileges = yes
 	}
 }
@@ -1060,45 +1067,14 @@ IRE_finish_bm_lab_duration_calc = {
 }
 
 IRE_finish_bm_lab_days_calc = {
-	if = {
-		limit = {
-			OR = {
-				check_variable = { IRE_finish_bm_lab_duration = 1 }
-				check_variable = { IRE_finish_bm_lab_duration = 2 }
-				check_variable = { IRE_finish_bm_lab_duration = 3 }
-			}
+	set_variable = {
+		IRE_finish_bm_lab_days = {
+			value = 100 #IRE_finish_bm_lab_duration > 9
+			if = { limit = { value = IRE_finish_bm_lab_duration less_than_or_equals = 3 } subtract = 80 } #20
+			else_if = { limit = { value = IRE_finish_bm_lab_duration less_than_or_equals = 5 } subtract = 60 } #40
+			else_if = { limit = { value = IRE_finish_bm_lab_duration less_than_or_equals = 7 } subtract = 40 } #60
+			else_if = { limit = { value = IRE_finish_bm_lab_duration less_than_or_equals = 9 } subtract = 20 } #80
 		}
-		set_variable = { IRE_finish_bm_lab_days = 20 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				check_variable = { IRE_finish_bm_lab_duration = 4 }
-				check_variable = { IRE_finish_bm_lab_duration = 5 }
-			}
-		}
-		set_variable = { IRE_finish_bm_lab_days = 40 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				check_variable = { IRE_finish_bm_lab_duration = 6 }
-				check_variable = { IRE_finish_bm_lab_duration = 7 }
-			}
-		}
-		set_variable = { IRE_finish_bm_lab_days = 60 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				check_variable = { IRE_finish_bm_lab_duration = 8 }
-				check_variable = { IRE_finish_bm_lab_duration = 9 }
-			}
-		}
-		set_variable = { IRE_finish_bm_lab_days = 80 }
-	}
-	else = {
-		set_variable = { IRE_finish_bm_lab_days = 100 }
 	}
 }
 
@@ -1330,6 +1306,7 @@ IRE_remove_bm_effect = {
 		clear_variable = IRE_finish_bm_lab_total
 		clear_variable = IRE_finish_bm_lab_duration
 		clear_variable = IRE_finish_bm_lab_days
+		clear_variable = IRE_finish_bm_scndp_duration
 		113 = { clr_state_flag = IRE_finish_bm_lab_done }
 		119 = { clr_state_flag = IRE_finish_bm_lab_done }
 		135 = { clr_state_flag = IRE_finish_bm_lab_done }
@@ -1374,9 +1351,16 @@ IRE_finish_bm_reward = {
 		}
 	}
 	else_if = {
-		limit = { IRE_has_pataut_govt = yes }
+		limit = { has_country_flag = IRE_govt_blueshirt_coup }
 		add_timed_idea = {
 			idea = IRE_finished_bm_blueshirt_coup_idea
+			days = 90
+		}
+	}
+	else_if = {
+		limit = { IRE_has_pataut_govt = yes }
+		add_timed_idea = {
+			idea = IRE_finished_bm_pataut_idea
 			days = 90
 		}
 	}
@@ -1516,36 +1500,43 @@ IRE_scale_down_anti_socialist_agitation = {
 	}
 }
 IRE_local_anti_socialist_agitation_effect = {
-	custom_effect_tooltip = IRE_local_anti_socialist_agitation_effect_tt
-	add_to_variable = { this.IRE_antisoc_local = temp_change_anti_socialist_agitation }
-	clamp_variable = {
-		var = this.IRE_antisoc_local
-		min = -1
-		max = 0
+	custom_effect_tooltip = {
+		localization_key = tooltip_modify_dynmod
+		DYNMOD = IRE_anti_socialist_agitation_local_modifier
+	}
+	add_to_variable = {
+		IRE_antisoc_local = {
+			value = temp_change_anti_socialist_agitation
+			clamp = {
+				min = { value = -1 subtract = IRE_antisoc_local }
+				max = { value = IRE_antisoc_local multiply = -1 }
+			}
+		}
+		tooltip = IRE_local_anti_socialist_agitation_effect_tt
 	}
 }
 IRE_increase_legitimacy = {
 	if = {
 		limit = { has_idea = IRE_low_legitimacy }
-		add_to_variable = { IRE_legitimacy = IRE_legitimacy_delta }
-		clamp_variable = {
-			var = IRE_legitimacy
-			min = 0
-			max = 100
+		add_to_variable = {
+			IRE_legitimacy = {
+				value = IRE_legitimacy_delta
+				clamp = { min = 0 max = { value = 100 subtract = IRE_legitimacy } }
+			}
+			tooltip = IRE_legitimacy_increase_tt
 		}
-		custom_effect_tooltip = IRE_legitimacy_increase_tt
 	}
 }
 IRE_decrease_legitimacy = {
 	if = {
 		limit = { has_idea = IRE_low_legitimacy }
-		subtract_from_variable = { IRE_legitimacy = IRE_legitimacy_delta }
-		clamp_variable = {
-			var = IRE_legitimacy
-			min = 0
-			max = 100
+		subtract_from_variable = {
+			IRE_legitimacy = {
+				value = IRE_legitimacy_delta
+				clamp = { min = 0 max = IRE_legitimacy }
+			}
+			tooltip = IRE_legitimacy_decrease_tt
 		}
-		custom_effect_tooltip = IRE_legitimacy_decrease_tt
 	}
 }
 
@@ -1906,8 +1897,12 @@ IRE_subtract_GER_influence = {
 	if = {
 		limit = { IRE_gateway_finished = no }
 		custom_effect_tooltip = IRE_GER_influence_subtract_tt
-		subtract_from_variable = { GER.IRE_gateway_influence = IRE_GER_delta }
-		clamp_variable = { var = GER.IRE_gateway_influence min = 0 }
+		subtract_from_variable = {
+			GER.IRE_gateway_influence = {
+				value = IRE_GER_delta
+				clamp = { min = 0 max = GER.IRE_gateway_influence }
+			}
+		}
 		IRE_influence_checks = yes
 	}
 }
@@ -1916,20 +1911,32 @@ IRE_subtract_ENG_influence = {
 	if = {
 		limit = { IRE_gateway_finished = no }
 		custom_effect_tooltip = IRE_ENG_influence_subtract_tt
-		subtract_from_variable = { ENG.IRE_gateway_influence = IRE_ENG_delta }
-		clamp_variable = { var = ENG.IRE_gateway_influence min = 0 }
+		subtract_from_variable = {
+			ENG.IRE_gateway_influence = {
+				value = IRE_ENG_delta
+				clamp = { min = 0 max = ENG.IRE_gateway_influence }
+			}
+		}
 		IRE_influence_checks = yes
 	}
 }
 
 IRE_influence_checks = {
 	IRE = {
-		set_variable = { var = IRE_relative_GER_influence value = GER.IRE_gateway_influence }
-		subtract_from_variable = { var = IRE_relative_GER_influence value = ENG.IRE_gateway_influence }
-		clamp_variable = { var = IRE_relative_GER_influence min = 0 }
-		set_variable = { var = IRE_relative_ENG_influence value = ENG.IRE_gateway_influence }
-		subtract_from_variable = { var = IRE_relative_ENG_influence value = GER.IRE_gateway_influence }
-		clamp_variable = { var = IRE_relative_ENG_influence min = 0 }
+		set_variable = {
+			IRE_relative_GER_influence = {
+				value = GER.IRE_gateway_influence
+				subtract = ENG.IRE_gateway_influence
+				clamp = { min = 0 max = 1000 }
+			}
+		}
+		set_variable = {
+			IRE_relative_ENG_influence = {
+				value = ENG.IRE_gateway_influence
+				subtract = GER.IRE_gateway_influence
+				clamp = { min = 0 max = 1000 }
+			}
+		}
 
 		if = {
 			limit = {
@@ -3805,6 +3812,7 @@ IRE_john_j_okelly_add_hos = {
 
 IRE_an_turn_autdem = {
 	custom_effect_tooltip = ireland_events.3100.a.tt
+	set_temp_variable = { IRE_sf_popularity = { value = IRE.party_popularity@authoritarian_democrat multiply = 0.8 } }
 	set_temp_variable = { IRE_an_popularity = { value = IRE.party_popularity@paternal_autocrat multiply = -0.8 } }
 	hidden_effect = {
 		add_popularity = {
@@ -3817,7 +3825,6 @@ IRE_an_turn_autdem = {
 		ideology = authoritarian_democrat
 		popularity = IRE_an_popularity
 	}
-	set_temp_variable = { IRE_sf_popularity = { value = IRE.party_popularity@authoritarian_democrat multiply = 0.8 } }
 	add_popularity = {
 		ideology = market_liberal
 		popularity = IRE_sf_popularity
@@ -5225,7 +5232,7 @@ IRE_richard_mulcahy_add_commander = {
 		if = {
 			limit = { is_unit_leader = no }
 			add_field_marshal_role = {
-				desc = IRE_cathal_brugha_army_chief_desc
+				desc = IRE_richard_mulcahy_army_chief_desc
 				traits = { trait_cautious organizer }
 				skill = 3
 				attack_skill = 2
@@ -6352,10 +6359,6 @@ IRE_add_or_swap_church_idea = {
 		set_temp_variable = { IRE_church_idea = token:IRE_church_base_idea }
 	}
 	else_if = {
-		limit = { has_idea = IRE_church_base_idea }
-		set_temp_variable = { IRE_church_idea = token:IRE_church_base_idea }
-	}
-	else_if = {
 		limit = { has_idea = IRE_church_se_idea }
 		set_temp_variable = { IRE_church_idea = token:IRE_church_se_idea }
 	}
@@ -6404,11 +6407,18 @@ IRE_add_or_swap_church_idea = {
 		set_temp_variable = { IRE_church_idea = token:IRE_church_goc_idea }
 	}
 	if = {
-		limit = { has_variable = IRE_church_idea }
+		limit = {
+			has_variable = IRE_church_idea
+			NOT = { check_variable = { IRE_church_idea = IRE_new_church_idea } }
+		}
 		swap_ideas = {
 			remove_idea = var:IRE_church_idea
 			add_idea = var:IRE_new_church_idea
 		}
+	}
+	else_if = {
+		limit = { check_variable = { IRE_church_idea = IRE_new_church_idea } }
+		effect_tooltip = { add_ideas = var:IRE_new_church_idea }
 	}
 	else = {
 		add_ideas = var:IRE_new_church_idea
@@ -7040,10 +7050,12 @@ IRE_create_govt_natpop_puppet = {
 IRE_ruling_government_popularity_change = {
 	if = {
 		limit = { IRE_has_one_party_govt = no }
-		set_temp_variable = { IRE_smaller_party_change = { value = ideology_change_var multiply = 0.4 } }
 		if = {
 			limit = { IRE_has_three_party_govt = yes }
-			multiply_temp_variable = { IRE_smaller_party_change = 0.5 }
+			set_temp_variable = { IRE_smaller_party_change = { value = ideology_change_var multiply = 0.2 } }
+		}
+		else = {
+			set_temp_variable = { IRE_smaller_party_change = { value = ideology_change_var multiply = 0.4 } }
 		}
 		multiply_temp_variable = { ideology_change_var = 0.7 } #Larger party change
 		change_ruling_party_popularity = yes

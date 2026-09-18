@@ -1,0 +1,1412 @@
+###############################
+# Pathanistan Focus Tree
+###############################
+# By Don Golian
+###############################
+
+focus_tree = {
+	id = pathanistan_focus
+
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 10
+			tag = PTH
+		}
+	}
+
+	default = no
+
+	continuous_focus_position = { x = 050 y = 900 }
+
+	focus = {
+		id = PTH_rally_the_army_of_pathanistan
+		icon = GFX_goal_flames_of_rebellion
+		cost = 2
+
+		x = 16
+		y = 5
+
+		available = {
+			has_war_with = AFG
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_rally_the_army_of_pathanistan"
+			swap_ideas = {
+				remove_idea = PTH_insurrectionary_movement_1
+				add_idea = PTH_insurrectionary_movement_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = PTH_raid_afghan_stockpiles
+		icon = GFX_focus_AFG_scavenging
+		cost = 2
+
+		relative_position_id = PTH_rally_the_army_of_pathanistan
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_rally_the_army_of_pathanistan
+		}
+
+		available = {
+			has_war_with = AFG
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_raid_afghan_stockpiles"
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 750
+				producer = AFG
+			}
+		}
+		search_filters = { FOCUS_FILTER_PRODUCTION }
+	}
+	focus = {
+		id = PTH_blow_kabul_peshawar_line
+		icon = GFX_goal_generic_seize_railway
+		cost = 2
+
+		relative_position_id = PTH_rally_the_army_of_pathanistan
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_rally_the_army_of_pathanistan
+		}
+
+		available = {
+			has_war_with = AFG
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_blow_kabul_peshawar_line"
+			267 = { # Kabul
+				damage_building = {
+					type = rail_way
+					damage = 1
+					province = 12831
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESISTANCE }
+	}
+	focus = {
+		id = PTH_use_their_enemies_from_within
+		icon = GFX_goal_generic_army_mass_assault
+		cost = 2
+
+		relative_position_id = PTH_rally_the_army_of_pathanistan
+		x = 3
+		y = 1
+
+		prerequisite = {
+			focus = PTH_rally_the_army_of_pathanistan
+		}
+
+		available = {
+			has_war_with = AFG
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_use_their_enemies_from_within"
+			AFG = { country_event = afghanistan_pashtunistan_events.28 }
+		}
+		search_filters = { FOCUS_FILTER_RESISTANCE }
+	}
+	focus = {
+		id = PTH_levy_the_waziri_irregulars
+		icon = GFX_focus_AFG_quami
+		cost = 2
+
+		relative_position_id = PTH_rally_the_army_of_pathanistan
+		x = 2
+		y = 2
+
+		prerequisite = {
+			focus = PTH_rally_the_army_of_pathanistan
+		}
+
+		available = {
+			has_war_with = AFG
+			custom_override_tooltip = {
+				tooltip = AFG_faqir_neutral_check_tt
+				AFG_faqir_neutral = no
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_levy_the_waziri_irregulars"
+			442 = { # Peshawar
+				create_unit = {
+					division = "name = \"Waziri Loyalists\" division_template = \"Tribal Division\" start_experience_factor = 0.5"
+					prioritize_location = 4998
+					owner = PTH
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {
+		id = PTH_fight_til_the_final_bullet_fires
+		icon = GFX_goal_skull_fortification
+		cost = 2
+
+		relative_position_id = PTH_rally_the_army_of_pathanistan
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = PTH_rally_the_army_of_pathanistan
+		}
+
+		available = {
+			has_war_with = AFG
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_fight_til_the_final_bullet_fires"
+			swap_ideas = {
+				remove_idea = PTH_insurrectionary_movement_2
+				add_idea = PTH_insurrectionary_movement_3
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_BONUS }
+	}
+
+	## FSP Tree
+
+	focus = {
+		id = PTH_paramountcy_marxist_maulana
+		icon = GFX_goal_ideology_radical_socialist
+		cost = 6
+
+		x = 2
+		y = 0
+
+		available = {
+			has_socialist_government = yes
+			hidden_trigger = { always = no }
+			NOT = {
+				has_war_with = AFG
+			}
+		}
+		on_uncomplete = {
+			remove_ideas = {
+				PTH_development_of_islamic_socialism_1
+				PTH_development_of_islamic_socialism_2
+				PTH_model_of_islamic_socialism_idea
+				PTH_state_controlled_media
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_paramountcy_marxist_maulana"
+			custom_effect_tooltip = unlock_focuses
+			hidden_effect = {
+				set_temp_variable = { coalition_partner_var = token:totalist }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:radical_socialist }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:syndicalist }
+				add_to_coalition = yes
+			}
+		}
+	}
+	focus = {
+		id = PTH_initiate_radical_land_reform
+		icon = GFX_goal_generic_land_reform
+		cost = 6
+
+		relative_position_id = PTH_paramountcy_marxist_maulana
+		x = -2
+		y = 1
+
+		prerequisite = {
+			focus = PTH_paramountcy_marxist_maulana
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_initiate_radical_land_reform"
+			random_owned_controlled_state = {
+				prioritize = { 442 } # Peshawar
+				add_extra_state_shared_building_slots = 1
+			}
+			add_stability = -0.05
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = PTH_spare_reaction_no_quarter
+		icon = GFX_focus_generic_ban_right_wing
+		cost = 6
+
+		relative_position_id = PTH_paramountcy_marxist_maulana
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = PTH_paramountcy_marxist_maulana
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_spare_reaction_no_quarter"
+			add_popularity = {
+				ideology = national_populist
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = social_conservative
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = -0.05
+			}
+			add_stability = -0.10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = PTH_uplifting_the_peasantry
+		icon = GFX_focus_generic_workers_and_farmers_rise
+		cost = 6
+
+		relative_position_id = PTH_spare_reaction_no_quarter
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_spare_reaction_no_quarter
+		}
+		prerequisite = {
+			focus = PTH_initiate_radical_land_reform
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_uplifting_the_peasantry"
+			add_ideas = PTH_development_of_islamic_socialism_1
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = PTH_anjuman_khuddam_insaneeat
+		icon = GFX_goal_islamic_healthcare
+		cost = 6
+
+		relative_position_id = PTH_uplifting_the_peasantry
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_uplifting_the_peasantry
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_anjuman_khuddam_insaneeat"
+			swap_ideas = {
+				remove_idea = PTH_development_of_islamic_socialism_1
+				add_idea = PTH_development_of_islamic_socialism_2
+			}
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = syndicalist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.05
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = PTH_propagate_naujawan_sarfarosh
+		icon = GFX_goal_big_news
+		cost = 6
+
+		relative_position_id = PTH_spare_reaction_no_quarter
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = PTH_spare_reaction_no_quarter
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_propagate_naujawan_sarfarosh"
+			add_ideas = PTH_state_controlled_media
+		}
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = PTH_model_of_islamic_socialism
+		icon = GFX_goal_IRQ_Red_Crescent
+		cost = 6
+
+		relative_position_id = PTH_propagate_naujawan_sarfarosh
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_propagate_naujawan_sarfarosh
+		}
+		prerequisite = {
+			focus = PTH_anjuman_khuddam_insaneeat
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_model_of_islamic_socialism"
+			swap_ideas = {
+				remove_idea = PTH_development_of_islamic_socialism_2
+				add_idea = PTH_model_of_islamic_socialism_idea
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
+	}
+	focus = { # available to socialists and AIA
+		id = PTH_popular_front_of_idealists
+		icon = GFX_goal_generic_solidarity
+		cost = 6
+
+		relative_position_id = PTH_paramountcy_marxist_maulana
+		x = 1
+		y = 2
+
+		prerequisite = {
+			focus = PTH_paramountcy_marxist_maulana
+			focus = PTH_victory_of_bacha_khan
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_popular_front_of_idealists"
+			if = {
+				limit = { has_soclib_or_socdem_government = yes }
+				set_temp_variable = { coalition_partner_var = token:totalist }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:radical_socialist }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:syndicalist }
+				add_to_coalition = yes
+			}
+			else = {
+				set_temp_variable = { coalition_partner_var = token:social_liberal }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:social_democrat }
+				add_to_coalition = yes
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	## AIA Tree
+
+	focus = {
+		id = PTH_victory_of_bacha_khan
+		icon = GFX_goal_Fight_for_Freedom
+		cost = 6
+
+		relative_position_id = PTH_paramountcy_marxist_maulana
+		x = 2
+		y = 0
+
+		available = {
+			has_soclib_or_socdem_government = yes
+			NOT = {
+				has_war_with = AFG
+			}
+		}
+		on_uncomplete = {
+			remove_ideas = {
+				PTH_building_the_islamic_progressive_ideal_1
+				PTH_building_the_islamic_progressive_ideal_2
+				PTH_beacon_of_islamic_progressivism
+				PTH_surge_of_pathan_nationalism
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_victory_of_bacha_khan"
+			custom_effect_tooltip = unlock_focuses
+			hidden_effect = {
+				set_temp_variable = { coalition_partner_var = token:social_liberal }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:social_democrat }
+				add_to_coalition = yes
+			}
+		}
+	}
+	focus = {
+		id = PTH_teachings_of_sarhadi_gandhi
+		icon = GFX_goal_ideology_social_democrat
+		cost = 6
+
+		relative_position_id = PTH_victory_of_bacha_khan
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = PTH_victory_of_bacha_khan
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_teachings_of_sarhadi_gandhi"
+			add_stability = 0.1
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = PTH_subordinate_the_tribes
+		icon = GFX_goal_generic_trial
+		cost = 6
+
+		relative_position_id = PTH_teachings_of_sarhadi_gandhi
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = PTH_teachings_of_sarhadi_gandhi
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_subordinate_the_tribes"
+			add_political_power = 75
+			add_popularity = {
+				ideology = national_populist
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = -0.05
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = PTH_foster_rural_political_participation
+		icon = GFX_goal_Winterhilfe
+		cost = 6
+
+		relative_position_id = PTH_victory_of_bacha_khan
+		x = 2
+		y = 1
+
+		prerequisite = {
+			focus = PTH_victory_of_bacha_khan
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_foster_rural_political_participation"
+			add_ideas = PTH_building_the_islamic_progressive_ideal_1
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = PTH_combat_extremities_of_feudal_power
+		icon = GFX_focus_RAJ_union_busting
+		cost = 6
+
+		relative_position_id = PTH_foster_rural_political_participation
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_foster_rural_political_participation
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_combat_extremities_of_feudal_power"
+			swap_ideas = {
+				remove_idea = PTH_building_the_islamic_progressive_ideal_1
+				add_idea = PTH_building_the_islamic_progressive_ideal_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {
+		id = PTH_spread_progressivism_through_mountains
+		icon = GFX_focus_SMB_a_land_of_mountains
+		cost = 6
+
+		relative_position_id = PTH_combat_extremities_of_feudal_power
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = PTH_combat_extremities_of_feudal_power
+		}
+		prerequisite = {
+			focus = PTH_subordinate_the_tribes
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_spread_progressivism_through_mountains"
+			swap_ideas = {
+				remove_idea = PTH_building_the_islamic_progressive_ideal_2
+				add_idea = PTH_beacon_of_islamic_progressivism
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = { # available to socialists and AIA
+		id = PTH_from_frontier_to_republic
+		icon = GFX_focus_generic_eagle
+		cost = 6
+
+		relative_position_id = PTH_spread_progressivism_through_mountains
+		x = -2
+		y = 1
+
+		prerequisite = {
+			focus = PTH_spread_progressivism_through_mountains
+			focus = PTH_model_of_islamic_socialism
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_from_frontier_to_republic"
+			add_political_power = 100
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
+	}
+
+	## United Muslims National Party tree
+
+	focus = {
+		id = PTH_the_sardar_takes_power
+		icon = GFX_goal_islamic_government
+		cost = 6
+
+		relative_position_id = PTH_victory_of_bacha_khan
+		x = 5
+		y = 0
+
+		available = {
+			OR = {
+				has_soccon_or_marlib_government = yes
+				has_government = authoritarian_democrat
+			}
+			NOT = {
+				has_war_with = AFG
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_the_sardar_takes_power"
+			custom_effect_tooltip = unlock_focuses
+		}
+		on_uncomplete = {
+			remove_ideas = {
+				PTH_a_new_national_party_1
+				PTH_a_new_national_party_2
+				PTH_surge_of_pathan_nationalism
+				PTH_tribal_autonomy
+			}
+		}
+	}
+	focus = {
+		id = PTH_reinstantiation_of_principled_governance
+		icon = GFX_goal_generic_parliament2
+		cost = 6
+
+		relative_position_id = PTH_the_sardar_takes_power
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_the_sardar_takes_power
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_reinstantiation_of_principled_governance"
+			add_political_power = 50
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = -0.1
+			}
+			add_ideas = PTH_a_new_national_party_1
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = { # available to AIA and UMNP
+		id = PTH_building_pathan_nationalism
+		icon = GFX_focus_AFG_concessions_to_pashtuns
+		cost = 6
+
+		relative_position_id = PTH_reinstantiation_of_principled_governance
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_reinstantiation_of_principled_governance
+			focus = PTH_foster_rural_political_participation
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_building_pathan_nationalism"
+			add_ideas = PTH_surge_of_pathan_nationalism
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = PTH_enfranchise_the_merchant_class
+		icon = GFX_goal_collaborate_local_elites
+		cost = 6
+
+		relative_position_id = PTH_reinstantiation_of_principled_governance
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = PTH_reinstantiation_of_principled_governance
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_enfranchise_the_merchant_class"
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			random_owned_controlled_state = {
+				prioritize = { 442 } # Peshawar
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = PTH_concessions_to_hindu_sikh_communities
+		icon = GFX_goal_generic_government_deals
+		cost = 6
+
+		relative_position_id = PTH_the_sardar_takes_power
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_the_sardar_takes_power
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_concessions_to_hindu_sikh_communities"
+			add_stability = 0.1
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = PTH_develop_local_party_chapters
+		icon = GFX_focus_AFG_pashtunistan_referendum
+		cost = 6
+
+		relative_position_id = PTH_concessions_to_hindu_sikh_communities
+		x =-1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_concessions_to_hindu_sikh_communities
+		}
+		prerequisite = {
+			focus = PTH_reinstantiation_of_principled_governance
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_develop_local_party_chapters"
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.05
+			}
+			swap_ideas = {
+				remove_idea = PTH_a_new_national_party_1
+				add_idea = PTH_a_new_national_party_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = PTH_special_privileges_to_tribes
+		icon = GFX_focus_AFG_contact_rural_loyalists
+		cost = 6
+
+		relative_position_id = PTH_concessions_to_hindu_sikh_communities
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_concessions_to_hindu_sikh_communities
+			focus = PTH_teachings_of_haji_sahab
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_special_privileges_to_tribes"
+			add_ideas = PTH_tribal_autonomy
+			add_war_support = 0.05
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
+	}
+	focus = {
+		id = PTH_role_model_of_south_asian_stability
+		icon = GFX_goal_generic_stable_government
+		cost = 6
+
+		relative_position_id = PTH_enfranchise_the_merchant_class
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_enfranchise_the_merchant_class
+		}
+		prerequisite = {
+			focus = PTH_develop_local_party_chapters
+		}
+		prerequisite = {
+			focus = PTH_special_privileges_to_tribes
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_role_model_of_south_asian_stability"
+			add_stability = 0.1
+			add_political_power = 100
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.05
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+
+	## Faqir of Ipi tree
+
+	focus = {
+		id = PTH_dominion_of_the_faqir_of_ipi
+		icon = GFX_goal_authoritarian
+		cost = 6
+
+		relative_position_id = PTH_the_sardar_takes_power
+		x = 4
+		y = 0
+
+		available = {
+			has_dictatorship_government = yes
+			NOT = {
+				has_war_with = AFG
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_dominion_of_the_faqir_of_ipi"
+			custom_effect_tooltip = unlock_focuses
+		}
+		on_uncomplete = {
+			remove_ideas = {
+				PTH_loy_waziristan_idea
+				PTH_puppet_pathan_jirga
+			}
+		}
+	}
+	focus = {
+		id = PTH_teachings_of_haji_sahab
+		icon = GFX_goal_OTT_Islamic_Education
+		cost = 6
+
+		relative_position_id = PTH_dominion_of_the_faqir_of_ipi
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_dominion_of_the_faqir_of_ipi
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_teachings_of_haji_sahab"
+			add_political_power = 50
+			add_stability = 0.05
+			add_country_leader_trait = PTH_haji_sahab
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = PTH_arm_waziri_militias
+		icon = GFX_focus_AFG_quami
+		cost = 6
+
+		relative_position_id = PTH_dominion_of_the_faqir_of_ipi
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_dominion_of_the_faqir_of_ipi
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_arm_waziri_militias"
+			add_stability = -0.1
+			hidden_effect = {
+				division_template = {
+					name = "Waziri Militias"
+					division_names_group = AFG_MIL_01
+					regiments = {
+						irregular_infantry = { x = 0 y = 0 }
+						irregular_infantry = { x = 0 y = 1 }
+						irregular_infantry = { x = 0 y = 2 }
+						irregular_infantry = { x = 1 y = 0 }
+						irregular_infantry = { x = 1 y = 1 }
+						irregular_infantry = { x = 1 y = 2 }
+						irregular_infantry = { x = 2 y = 0 }
+						irregular_infantry = { x = 2 y = 1 }
+						irregular_infantry = { x = 2 y = 2 }
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 442 } # Peshawar
+				create_unit = {
+					division = "name = \"Waziri Loyalists\" division_template = \"Waziri Militias\" start_experience_factor = 0.5"
+					prioritize_location = 4998
+					owner = PTH
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {
+		id = PTH_evict_foreign_ideologies
+		icon = GFX_goal_purge_opposition
+		cost = 6
+
+		relative_position_id = PTH_arm_waziri_militias
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_arm_waziri_militias
+		}
+		prerequisite = {
+			focus = PTH_teachings_of_haji_sahab
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_evict_foreign_ideologies"
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = -0.10
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.10
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = -0.10
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = PTH_formalise_the_pathan_jirga
+		icon = GFX_goal_generic_council
+		cost = 6
+
+		relative_position_id = PTH_evict_foreign_ideologies
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = PTH_special_privileges_to_tribes
+		}
+		prerequisite = {
+			focus = PTH_evict_foreign_ideologies
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_formalise_the_pathan_jirga"
+			add_ideas = PTH_puppet_pathan_jirga
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = PTH_loy_waziristan
+		icon = GFX_goal_national_populism
+		cost = 6
+
+		relative_position_id = PTH_arm_waziri_militias
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_arm_waziri_militias
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_loy_waziristan"
+			add_ideas = PTH_loy_waziristan_idea
+		}
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = PTH_rise_of_kingdom_of_pathanistan
+		icon = GFX_goal_monarchism_black
+		cost = 6
+
+		relative_position_id = PTH_formalise_the_pathan_jirga
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_formalise_the_pathan_jirga
+		}
+		prerequisite = {
+			focus = PTH_loy_waziristan
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_rise_of_kingdom_of_pathanistan"
+			add_political_power = 100
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = national_populist
+				popularity = 0.05
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	## Industry tree
+
+	focus = {
+		id = PTH_stochastics_of_the_mountain_economy
+		icon = GFX_Goal_YUN_The_Mountain_Economy
+		cost = 6
+
+		x = 10
+		y = 7
+
+		available = {
+			NOT = {
+				has_war_with = AFG
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_stochastics_of_the_mountain_economy"
+			add_tech_bonus = {
+				name = PTH_stochastics_of_the_mountain_economy
+				bonus = 1
+				uses = 2
+				category = industry
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = PTH_expand_textile_industry
+		icon = GFX_goal_generic_debt_negotiations
+		cost = 6
+
+		relative_position_id = PTH_stochastics_of_the_mountain_economy
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_stochastics_of_the_mountain_economy
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_expand_textile_industry"
+			random_owned_controlled_state = {
+				prioritize = { 442 } # Peshawar
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = PTH_encourage_self_sufficiency
+		icon = GFX_goal_agriculture2
+		cost = 6
+
+		relative_position_id = PTH_stochastics_of_the_mountain_economy
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = PTH_stochastics_of_the_mountain_economy
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_encourage_self_sufficiency"
+			add_ideas = PTH_self_sufficiency
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {
+		id = PTH_spelunking_in_swat
+		icon = GFX_focus_generic_uranium_extraction
+		cost = 6
+
+		relative_position_id = PTH_stochastics_of_the_mountain_economy
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_stochastics_of_the_mountain_economy
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_spelunking_in_swat"
+			add_tech_bonus = {
+				name = PTH_spelunking_in_swat
+				bonus = 1
+				uses = 1
+				category = excavation_tech
+			}
+			add_ideas = PTH_swat_gemstone_trade_1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = PTH_swat_peshawar_line
+		icon = GFX_focus_generic_railroad
+		cost = 6
+
+		relative_position_id = PTH_spelunking_in_swat
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = PTH_spelunking_in_swat
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_swat_peshawar_line"
+			build_railway = { start_province = 4558 target_province = 12717 level = 1 }
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = PTH_transform_peshawar
+		icon = GFX_focus_AFG_a_modern_economy
+		cost = 6
+
+		relative_position_id = PTH_expand_textile_industry
+		x = 0
+		y = 3
+
+		prerequisite = {
+			focus = PTH_expand_textile_industry
+		}
+		prerequisite = {
+			focus = PTH_swat_peshawar_line
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_transform_peshawar"
+			random_owned_controlled_state = {
+				prioritize = { 442 } # Peshawar
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = PTH_trade_gemstones_for_firearms
+		icon = GFX_goal_Arms_Export
+		cost = 6
+
+		relative_position_id = PTH_spelunking_in_swat
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_spelunking_in_swat
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_trade_gemstones_for_firearms"
+			swap_ideas = {
+				remove_idea = PTH_swat_gemstone_trade_1
+				add_idea = PTH_swat_gemstone_trade_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = PTH_refit_miranshah_airplanes
+		icon = GFX_goal_new_airforce
+		cost = 6
+
+		relative_position_id = PTH_trade_gemstones_for_firearms
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_trade_gemstones_for_firearms
+		}
+		prerequisite = {
+			focus = PTH_repair_british_indian_infrastructure
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_refit_miranshah_airplanes"
+			if = {
+				limit = { has_dlc_bba = yes }
+				if = {
+					limit = { NOT = { has_tech = iw_small_airframe } }
+					set_technology = { iw_small_airframe = 1 }
+				}
+				if = {
+					limit = { NOT = { has_tech = early_bombs } }
+					set_technology = { early_bombs = 1 }
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = PTH_refit_miranshah_airplanes
+					bonus = 1
+					uses = 1
+					category = mio_cat_all_light_fighter_and_modules
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_dlc_bba = yes }
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe_0
+					amount = 50
+					producer = PTH
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_0
+					amount = 50
+					producer = PTH
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+	focus = {
+		id = PTH_trade_through_miranshah
+		icon = GFX_goal_generic_railroad
+		cost = 6
+
+		relative_position_id = PTH_swat_peshawar_line
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_swat_peshawar_line
+		}
+		prerequisite = {
+			focus = PTH_refit_miranshah_airplanes
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_trade_through_miranshah"
+			442 = { # Peshawar
+				add_building_construction = {
+					type = air_base
+					level = 1
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	## military tree
+
+	focus = {
+		id = PTH_fortress_peshawar
+		icon = GFX_focus_generic_mountain_fortification
+		cost = 6
+
+		x = 15
+		y = 8
+
+		available = {
+			NOT = {
+				has_war_with = AFG
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_fortress_peshawar"
+			442 = { # Peshawar
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = bunker
+						province = 12717
+						level = 2
+					}
+					tooltip = {
+						localization_key = tooltip_add_building_on_victory_point
+						BUILDING = bunker
+						NUMBER = 2
+						VP = 12717
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = PTH_repair_british_indian_infrastructure
+		icon = GFX_focus_generic_road_investment
+		cost = 6
+
+		relative_position_id = PTH_fortress_peshawar
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_fortress_peshawar
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_repair_british_indian_infrastructure"
+			442 = { # Peshawar
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = PTH_contract_mercenary_expertise
+		icon = GFX_focus_AFG_mountain_training
+		cost = 6
+
+		relative_position_id = PTH_fortress_peshawar
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_fortress_peshawar
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_contract_mercenary_expertise"
+			army_experience = 75
+			add_tech_bonus = {
+				name = PTH_contract_mercenary_expertise
+				bonus = 1
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_XP }
+	}
+	focus = {
+		id = PTH_the_primacy_of_capable_cavalry
+		icon = GFX_goal_cavalry
+		cost = 6
+
+		relative_position_id = PTH_contract_mercenary_expertise
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = PTH_contract_mercenary_expertise
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_the_primacy_of_capable_cavalry"
+			enable_tech_at_cavalry = yes
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {
+		id = PTH_encourage_discipline_and_frugality
+		icon = GFX_goal_army_guy
+		cost = 6
+
+		relative_position_id = PTH_contract_mercenary_expertise
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = PTH_contract_mercenary_expertise
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_encourage_discipline_and_frugality"
+			add_ideas = PTH_pathan_army_1
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {
+		id = PTH_legacy_of_the_afridi_rebellion
+		icon = GFX_goal_harness_peoples_will
+		cost = 6
+
+		relative_position_id = PTH_repair_british_indian_infrastructure
+		x = 0
+		y = 3
+
+		prerequisite = {
+			focus = PTH_repair_british_indian_infrastructure
+		}
+		prerequisite = {
+			focus = PTH_the_primacy_of_capable_cavalry
+		}
+		prerequisite = {
+			focus = PTH_encourage_discipline_and_frugality
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PTH_legacy_of_the_afridi_rebellion"
+			swap_ideas = {
+				remove_idea = PTH_pathan_army_1
+				add_idea = PTH_pathan_army_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+}

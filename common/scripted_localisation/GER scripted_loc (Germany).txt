@@ -1,43 +1,95 @@
 # Black Monday GUI scripted localization
 
 defined_text = {
+	name = GER_GetCardName
+	text = {
+		localization_key = "[GER_GetCardNameActual]"
+	}
+}
+
+defined_text = {
+	name = GER_GetCardNameActual
+	text = {
+		localization_key = "[THIS.GetName]_name"
+	}
+}
+
+defined_text = {
+	name = GER_GetCardAddLines
+	text = {
+		trigger = {
+			set_temp_variable = {
+				GER_bm_cardgame_line_number = {
+					value = GER_black_monday_card:card_lines_for_tt
+					if = {
+						limit = { value = GER_black_monday_card:GER_economic_planning_played equals = 1 }
+						subtract = 4 # Avoid adding lines
+					}
+				}
+			}
+		}
+		localization_key = "GER_card_front_[?GER_bm_cardgame_line_number]_tt"
+	}
+}
+
+defined_text = {
+	name = GER_GetCardTooltip
+	text = {
+		localization_key = "[GER_GetCardTooltipActual]"
+	}
+}
+
+defined_text = {
+	name = GER_GetCardTooltipActual
+	text = {
+		localization_key = "[THIS.GetName]_tt"
+	}
+}
+
+defined_text = {
+	name = GER_GetCardLines
+	text = {
+		trigger = {
+			if = {
+				limit = {
+					has_variable = GER_black_monday_card:card_draw_value
+					set_temp_variable = { total_available_cards = 0 }
+					GER_bm_can_draw_cards = no
+				}
+				set_temp_variable = { not_enough_cards_can_be_drawn = 1 }
+			}
+			set_temp_variable = {
+				GER_bm_cardgame_line_number = {
+					value = GER_black_monday_card:card_lines_for_tt
+					if = {
+						limit = { value = GER_crisis_id equals = GER_black_monday_card:GER_card_type }
+						add = 3 #Relief Card lines if super effective
+					}
+					else_if = {
+						limit = {
+							value = { value = not_enough_cards_can_be_drawn equals = 1 } #GER_bm_cardgame_cooperation_business_object, GER_bm_cardgame_rathenauplan, GER_bm_cardgame_tbplan
+							or = { value = GER_bm_cardgame_discard_array^num less_than = GER_black_monday_card:card_draw_from_discard } #GER_bm_cardgame_corporate_assistance_object
+						}
+						add = 2 #Show that cards cannot be drawn lines
+					}
+				}
+			}
+		}
+		localization_key = "GER_card_front_[?GER_bm_cardgame_line_number]_tt"
+	}
+}
+
+defined_text = {
+	name = GER_GetCardGameDecisionName
+	text = {
+		localization_key = GER_bm_cardgame_decision
+	}
+}
+
+defined_text = {
 	name = GetGERReformIcon
-
 	text = {
-		trigger = {
-			GER = { GER_bm_cardgame_price_monitoring_idea = { check_variable = { v:card_id = THIS } } }
-		}
-		localization_key = "GFX_idea_capital_outflow"
-	}
-	text = {
-		trigger = {
-			GER = { GER_bm_cardgame_institutional_public_works_idea = { check_variable = { v:card_id = THIS } } }
-		}
-		localization_key = "GFX_idea_generic_build_infrastructure"
-	}
-
-	text = {
-		trigger = {
-			GER = { GER_bm_cardgame_economic_planning_idea = { check_variable = { v:card_id = THIS } } }
-		}
-		localization_key = "GFX_idea_NOR_syndicalist_industry_idea"
-	}
-
-	text = {
-		trigger = {
-			GER = { GER_bm_cardgame_federal_income_taxes_idea = { check_variable = { v:card_id = THIS } } }
-		}
-		localization_key = "GFX_idea_generic_broken_champagne"
-	}
-
-	text = {
-		trigger = {
-			GER = { GER_bm_cardgame_technocratic_thinking_idea = { check_variable = { v:card_id = THIS } } }
-		}
-		localization_key = "GFX_idea_generic_lightbulb"
-	}
-	text = {
-		localization_key = "GFX_idea_WIP"
+		localization_key = "[?GER_black_monday_card.GetName]_reform_icon"
 	}
 }
 
@@ -134,43 +186,61 @@ defined_text = {
 defined_text = {
 	name = GERGetCardType
 	text = {
-		trigger = {
-			check_variable = { GER_card_played:GER_card_type = 1 }
-		}
-
-		localization_key = GER_bm_money_creation_card_type
+		# Recovery Card = 0
+		# Relief Card / Money Creation = 1
+		# Relief Card / Capital Control = 2
+		# Relief Card / Work Creation = 3
+		# Reform Card = 4
+		localization_key = "[GERGetCardTypeActual]"
 	}
+}
+defined_text = {
+	name = GERGetCardTypeActual
 	text = {
-		trigger = {
-			check_variable = { GER_card_played:GER_card_type = 2 }
-		}
-
-		localization_key = GER_bm_capital_control_card_type
-	}
-	text = {
-		trigger = {
-			check_variable = { GER_card_played:GER_card_type = 3 }
-		}
-
-		localization_key = GER_bm_work_creation_card_type
+		# Recovery Card = 0
+		# Relief Card / Money Creation = 1
+		# Relief Card / Capital Control = 2
+		# Relief Card / Work Creation = 3
+		# Reform Card = 4
+		localization_key = "GER_bm_card_type_[?THIS.GER_card_type]"
 	}
 }
 defined_text = {
 	name = GERGetCurrentEconomicHealthEffects
 	text = {
-		trigger = {
-			check_variable = { GER_economic_health > -3 }
-		}
-
-		localization_key = GER_bm_consumer_goods_loss
+		trigger = { has_idea = GER_black_monday_2 }
+		localization_key = idea_desc|GER_black_monday_2
 	}
 	text = {
-		trigger = {
-			NOT = {
-				check_variable = { GER_economic_health > -3 }
-			}
-		}
-		localization_key = GER_bm_all_effects_loss
+		trigger = { has_idea = GER_black_monday_3 }
+		localization_key = idea_desc|GER_black_monday_3
+	}
+	text = {
+		trigger = { has_idea = GER_black_monday_4 }
+		localization_key = idea_desc|GER_black_monday_4
+	}
+	text = {
+		trigger = { has_idea = GER_black_monday_5 }
+		localization_key = idea_desc|GER_black_monday_5
+	}
+	text = {
+		trigger = { has_idea = GER_black_monday_6 }
+		localization_key = idea_desc|GER_black_monday_6
+	}
+	text = {
+		trigger = { has_idea = GER_black_monday_7 }
+		localization_key = idea_desc|GER_black_monday_7
+	}
+	text = {
+		trigger = { has_idea = GER_black_monday_8 }
+		localization_key = idea_desc|GER_black_monday_8
+	}
+	text = {
+		trigger = { has_idea = GER_black_monday_9 }
+		localization_key = idea_desc|GER_black_monday_9
+	}
+	text = {
+		localization_key = idea_desc|GER_black_monday_10
 	}
 }
 
@@ -227,7 +297,7 @@ defined_text = {
 		trigger = {
 			var:GER_bm_cardgame_cards_drawn_array^idx = {
 				set_temp_variable = { current_card = THIS }
-				check_variable = { total_copies > 0 }
+				check_variable = { cards_drawn > 0 }
 
 				add_to_temp_array = { already_counted_array = THIS }
 			}
@@ -608,9 +678,11 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = { GER_hugenberg_faction_rift < 50 } # Rift is under 50 percent
-			set_temp_variable = { DVLP_percents = GER_DVLP_seats_hug }
-			divide_temp_variable = { DVLP_percents = GER_DVLP_seats } # Find % of Hugenberg supporters in DVLP Reichstag
-			check_variable = { DVLP_percents < 0.5 }
+			check_expr = {
+				value = GER_DVLP_seats_hug
+				divide = GER_DVLP_seats # Find % of Hugenberg supporters in DVLP Reichstag
+				less_than = 0.5
+			}
 		}
 
 		localization_key = GER_conference_hugenberg_marginalised_tt
@@ -618,9 +690,11 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = { GER_hugenberg_faction_rift > 50 } # Rift is above 50 percent
-			set_temp_variable = { DVLP_percents = GER_DVLP_seats_hug }
-			divide_temp_variable = { DVLP_percents = GER_DVLP_seats } # Find % of Hugenberg supporters in DVLP Reichstag
-			check_variable = { DVLP_percents < 0.25 } # If rift is high, Hugenberg is more likely to split
+			check_expr = {
+				value = GER_DVLP_seats_hug
+				divide = GER_DVLP_seats # Find % of Hugenberg supporters in DVLP Reichstag
+				less_than = 0.25 # If rift is high, Hugenberg is more likely to split
+			}
 		}
 
 		localization_key = GER_conference_hugenberg_marginalised_tt
@@ -628,9 +702,11 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = { GER_hugenberg_faction_rift < 50 } # Rift is under 50 percent
-			set_temp_variable = { DVLP_percents = GER_DVLP_seats_hug }
-			divide_temp_variable = { DVLP_percents = GER_DVLP_seats } # Find % of Hugenberg supporters in DVLP Reichstag
-			check_variable = { DVLP_percents > 0.5 }
+			check_expr = {
+				value = GER_DVLP_seats_hug
+				divide = GER_DVLP_seats # Find % of Hugenberg supporters in DVLP Reichstag
+				greater_than = 0.5
+			}
 		}
 
 		localization_key = GER_conference_hugenberg_takeover_tt
@@ -672,34 +748,28 @@ defined_text = {
 		trigger = {
 			has_completed_focus = GER_abolish_universal_suffrage
 		}
-
-		localization_key = GER_paternal_autocrat_tt
+		localization_key = paternal_autocrat_coloured
 	}
 	text = {
 		trigger = {
-			has_completed_focus = GER_people_conservatism
+			OR = {
+				has_completed_focus = GER_people_conservatism
+				check_variable = { GER_swr_foci_taken > 2 }
+				check_variable = { GER_swr_dkp_foci_taken > GER_swr_dvlp_foci_taken }
+			}
 		}
-
-		localization_key = GER_authoritarian_democrat_tt
+		localization_key = authoritarian_democrat_coloured
 	}
 	text = {
-		trigger = {
-			check_variable = { GER_swr_foci_taken > 2 }
-			check_variable = { GER_swr_dkp_foci_taken > GER_swr_dvlp_foci_taken }
-		}
-
-		localization_key = GER_authoritarian_democrat_tt
-	}
-	text = {
-		trigger = {
-			check_variable = { GER_swr_foci_taken > 2 }
-			check_variable = { GER_swr_dkp_foci_taken < GER_swr_dvlp_foci_taken }
-		}
-
-		localization_key = GER_paternal_autocrat_tt
-	}
-	text = {
-		localization_key = GER_paternal_autocrat_tt
+		# For reference
+		#OR = {
+		#	AND = {
+		#		check_variable = { GER_swr_foci_taken > 2 }
+		#		check_variable = { GER_swr_dkp_foci_taken < GER_swr_dvlp_foci_taken }
+		#	}
+		#	always = yes
+		#}
+		localization_key = paternal_autocrat_coloured
 	}
 }
 defined_text = {
@@ -790,10 +860,7 @@ defined_text = {
 defined_text = { # Country
 	name = GetSecondParliamentarisationName
 	text = {
-		trigger = {
-			original_tag = GER
-			has_cosmetic_tag = GER_rep
-		}
+		trigger = { has_cosmetic_tag = GER_rep }
 		localization_key = GER_second_parliamentarisation_republican
 	}
 	text = {
@@ -803,38 +870,10 @@ defined_text = { # Country
 defined_text = {
 	name = GERDebtNegotiations
 	text = {
-		trigger = { FROM = { tag = AUS } }
-		localization_key = GER_debt_negotiations_AUS_desc
+		trigger = { tag = CAN }
+		localization_key = CAN_debt_negotiations_desc
 	}
 	text = {
-		trigger = { FROM = { tag = SWI } }
-		localization_key = GER_debt_negotiations_SWI_desc
-	}
-	text = {
-		trigger = { FROM = { tag = HOL } }
-		localization_key = GER_debt_negotiations_HOL_desc
-	}
-	text = {
-		trigger = { FROM = { tag = CAN } }
-		localization_key = GER_debt_negotiations_CAN_desc
-	}
-	text = {
-		trigger = { FROM = { tag = RUS } }
-		localization_key = GER_debt_negotiations_RUS_desc
-	}
-	text = {
-		trigger = { FROM = { tag = JAP } }
-		localization_key = GER_debt_negotiations_JAP_desc
-	}
-	text = {
-		trigger = { FROM = { tag = AST } }
-		localization_key = GER_debt_negotiations_AST_desc
-	}
-	text = {
-		trigger = { FROM = { tag = SWE } }
-		localization_key = GER_debt_negotiations_SWE_desc
-	}
-	text = {
-		localization_key = GER_debt_negotiations_generic_desc
+		localization_key = country_culture|debt_negotiations_desc
 	}
 }

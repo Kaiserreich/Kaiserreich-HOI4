@@ -1,53 +1,35 @@
 BLR_recalculate_land_reform = {
 	#Ranges
-	clamp_variable = {
-		var = BLR_Land_Reform_Success
-		min = 0
-		max = 100
-	}
-	clamp_variable = {
-		var = BLR_Land_Reform_Popularity
-		min = 0
-		max = 100
-	}
+	clamp_variable = { var = BLR_Land_Reform_Success min = 0 max = 100 }
+	clamp_variable = { var = BLR_Land_Reform_Popularity min = 0 max = 100 }
 
 	#Success effect
-	if = {
-		limit = {
-			check_variable = { BLR_Land_Reform_Success < 31 }
-		}
-		set_variable = {
-			BLR_land_reform_monthly_population = {
-				value = -0.2
+	set_variable = {
+		BLR_land_reform_monthly_population = {
+			value = 0
+			if = {
+				limit = { value = BLR_Land_Reform_Success less_than = 31 }
+				add = -0.2
 				multiply = { value = BLR_Land_Reform_Success divide = 30 }
 			}
-		}
-	}
-	else = {
-		set_variable = {
-			BLR_land_reform_monthly_population = {
-				value = 0.5
+			else = {
+				add = 0.5
 				multiply = { value = BLR_Land_Reform_Success subtract = 30 divide = 70 }
 			}
 		}
 	}
 
 	#Popularity effect
-	if = {
-		limit = {
-			check_variable = { BLR_Land_Reform_Popularity < 31 }
-		}
-		set_variable = {
-			BLR_land_reform_stability_factor = {
-				value = -0.2
+	set_variable = {
+		BLR_land_reform_stability_factor = {
+			value = 0
+			if = {
+				limit = { value = BLR_Land_Reform_Popularity less_than = 31 }
+				add = -0.2
 				multiply = { value = BLR_Land_Reform_Popularity divide = 30 }
 			}
-		}
-	}
-	else = {
-		set_variable = {
-			BLR_land_reform_stability_factor = {
-				value = 0.3
+			else = {
+				add = 0.3
 				multiply = { value = BLR_Land_Reform_Popularity subtract = 30 divide = 70 }
 			}
 		}

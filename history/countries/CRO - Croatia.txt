@@ -200,8 +200,10 @@ recruit_character = CRO_mornaricka_akademija
 ### Character Setup ###
 #######################
 
-every_character = { set_variable = { nationality = CRO } }
-
+every_character = {
+	limit = { NOT = { has_variable = nationality } } #cause of load order putting BOS guys here first
+	set_variable = { nationality = CRO }
+}
 #temp removal, to prevent generic-portrait admirals from transferring
 CRO_duro_jakcin = { clear_variable = nationality }
 CRO_edgar_angeli = { clear_variable = nationality }

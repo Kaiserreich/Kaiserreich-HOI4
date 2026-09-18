@@ -344,7 +344,7 @@ focus_tree = {
 
 	focus = {
 		id = TRP_Diminish_Misrata_Influence
-		icon = GFX_goal_DEI_focus_disband_volksraad
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
 		cost = 8
 
 		relative_position_id = TRP_State_Building
@@ -908,12 +908,13 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed TRP_Anti_Colonial_Committee"
-			every_country = {
-				limit = { is_in_faction_with = INT }
-				country_event = tripolitania_events.3
-				add_opinion_modifier = {
-					target = TRP
-					modifier = small_increase
+			INT = {
+				every_faction_member = {
+					country_event = tripolitania_events.3
+					add_opinion_modifier = {
+						target = TRP
+						modifier = small_increase
+					}
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -1159,11 +1160,12 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed TRP_Tide_Pan_Arabism"
-			every_country = {
-				limit = { is_ally_with = EGY }
-				add_opinion_modifier = {
-					target = TRP
-					modifier = small_increase
+			EGY = {
+				every_faction_member = {
+					add_opinion_modifier = {
+						target = TRP
+						modifier = small_increase
+					}
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line

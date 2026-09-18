@@ -142,7 +142,7 @@ focus_tree = {
 
 	focus = {
 		id = BEL_Abolish_Flemish_Council
-		icon = GFX_goal_DEI_focus_disband_volksraad
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
 		cost = 10
 
 		relative_position_id = BEL_Investigate_Political_Schandal
@@ -3833,7 +3833,12 @@ shared_focus = {
 
 shared_focus = {
 	id = BEL_Independent_Forces
-	icon = GFX_goal_BEL_army
+	icon = {
+		GFX_goal_BEL_army_alt = {
+			has_cosmetic_tag = BEL_flanders_wallonia
+		}
+		GFX_goal_BEL_army = yes
+	}
 	cost = 5
 
 	relative_position_id = BEL_Secondary_Military
@@ -4508,7 +4513,12 @@ shared_focus = {
 
 shared_focus = {
 	id = BEL_Fleet_of_our_own
-	icon = GFX_goal_BEL_navy
+	icon = {
+		GFX_goal_BEL_navy_alt = {
+			has_cosmetic_tag = BEL_flanders_wallonia
+		}
+		GFX_goal_BEL_navy = yes
+	}
 	cost = 5
 
 	relative_position_id = BEL_Rely_on_the_Kriegsmarine
@@ -5085,7 +5095,12 @@ shared_focus = {
 
 shared_focus = {
 	id = BEL_Masters_of_the_Skies
-	icon = GFX_goal_BEL_air_force
+	icon = {
+		GFX_goal_BEL_air_force_alt = {
+			has_cosmetic_tag = BEL_flanders_wallonia
+		}
+		GFX_goal_BEL_air_force = yes
+	}
 	cost = 5
 
 	relative_position_id = BEL_Fleet_of_our_own

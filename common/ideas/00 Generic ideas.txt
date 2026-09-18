@@ -346,6 +346,14 @@ ideas = {
 				surrender_limit = 1
 			}
 		}
+		has_scripted_peace_2 = { #A secondary idea in contexts where multiple scripted peaces could occur at the same time so as to not conflict.
+			on_add = { log = "[GetLogRoot]: add idea has_scripted_peace_2" }
+			available = { has_war = yes }
+			picture = generic_infantry_bonus
+			modifier = {
+				surrender_limit = 1
+			}
+		}
 
 		# Used by the Government in Exile decisions ported from MtG
 		idea_weapons_for_the_resistance = {

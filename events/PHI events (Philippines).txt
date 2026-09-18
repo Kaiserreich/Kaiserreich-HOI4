@@ -244,7 +244,7 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event philippines_political_events.006 option 2" #Will go conservative, result in a populist ending
 		ai_chance = {
-			base = 35 #Raised up the chance of choosing this because the external support decisions have increased both Roxas and Quezon's win rates
+			base = 30
 			modifier = {
 				factor = 0
 				OR = {
@@ -259,7 +259,7 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event philippines_political_events.006 option 3" #Will go progressive, result in a elitist ending
 		ai_chance = {
-			base = 25
+			base = 30
 			modifier = {
 				factor = 0
 				OR = {
@@ -843,7 +843,7 @@ country_event = { #The Germans Depart From Manila
 		trigger = {
 			tag = PHI
 		}
-		set_variable = { var = PHI_GEA_alignment_var value = 0 }
+		set_variable = { PHI_GEA_alignment_var = 0 }
 	}
 
 	option = {
@@ -884,7 +884,7 @@ country_event = { #The Japanese Depart From Manila
 		trigger = {
 			tag = PHI
 		}
-		set_variable = { var = PHI_CPS_alignment_var value = 0 }
+		set_variable = { PHI_CPS_alignment_var = 0 }
 	}
 
 	option = {

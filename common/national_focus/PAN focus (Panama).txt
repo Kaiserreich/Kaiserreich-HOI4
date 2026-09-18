@@ -117,16 +117,14 @@ focus_tree = {
 			}
 		}
 		bypass = {
-			AND = {
-				is_subject = no
-				NOT = {
-					country_exists = CAN
-					AND = {
-						country_exists = USA
-						OR = {
-							NOT = { has_global_flag = USA_civil_war_begun_flag }
-							has_global_flag = USA_civil_war_over_flag
-						}
+			is_subject = no
+			NOT = {
+				country_exists = CAN
+				AND = {
+					country_exists = USA
+					OR = {
+						NOT = { has_global_flag = USA_civil_war_begun_flag }
+						has_global_flag = USA_civil_war_over_flag
 					}
 				}
 			}

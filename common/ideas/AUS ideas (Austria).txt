@@ -248,6 +248,7 @@ ideas = {
 			picture = generic_volunteer_expedition_bonus
 			allowed = { always = no }
 			modifier = {
+				conscription = 0.025
 				political_power_gain = 0.5
 			}
 		}
@@ -422,6 +423,28 @@ ideas = {
 			allowed = { always = no }
 			modifier = {
 				air_defence_factor = 0.05
+			}
+		}
+
+		AUS_kuk_fliegerkorps_2a = {
+			on_add = { log = "[GetLogRoot]: add idea AUS_kuk_fliegerkorps_2a" }
+			name = AUS_kuk_fliegerkorps
+			picture = generic_airforce
+			allowed = { always = no }
+			modifier = {
+				air_defence_factor = 0.05
+				air_manpower_requirement_factor = -0.2
+			}
+		}
+
+		AUS_kuk_fliegerkorps_2b = { # Status Quo variant
+			on_add = { log = "[GetLogRoot]: add idea AUS_kuk_fliegerkorps_2b" }
+			name = AUS_kuk_fliegerkorps
+			picture = generic_airforce
+			allowed = { always = no }
+			modifier = {
+				air_defence_factor = 0.05
+				air_manpower_requirement_factor = -0.6
 			}
 		}
 

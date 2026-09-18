@@ -1011,7 +1011,7 @@ focus_tree = {
 
 	focus = {
 		id = FIN_anti_parliamentarism
-		icon = GFX_goal_DEI_focus_disband_volksraad
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
 		cost = 7
 
 		relative_position_id = FIN_the_rebellion_succeeds
@@ -1546,7 +1546,15 @@ focus_tree = {
 			is_monarchy = yes
 		}
 		prerequisite = { focus = FIN_the_old_order }
-		ai_will_do = { factor = 75 }
+
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 10
+				FIN_has_black_monday = yes #for the PP
+			}
+		}
+
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_the_monarchy"
 			add_political_power = 50
@@ -1568,7 +1576,13 @@ focus_tree = {
 			is_monarchy = yes
 		}
 		prerequisite = { focus = FIN_the_monarchy }
-		ai_will_do = { factor = 75 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 10
+				FIN_has_black_monday = yes #for the PP
+			}
+		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_support_the_king"
 			add_stability = 0.04
@@ -2280,13 +2294,7 @@ focus_tree = {
 		x = 2
 		y = 0
 
-		ai_will_do = {
-			factor = 50
-			modifier = {
-				factor = 10
-				FIN_has_black_monday = yes
-			}
-		}
+		ai_will_do = { factor = 5000 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_agricultural_subsidies"
@@ -2361,7 +2369,13 @@ focus_tree = {
 			focus = FIN_nationalise_alandsbanken
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date < 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_expand_university_helsinki"
@@ -2436,7 +2450,13 @@ focus_tree = {
 			focus = FIN_nationalise_alandsbanken
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date < 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_draw_on_oy_alkoholiliike"
@@ -2467,7 +2487,13 @@ focus_tree = {
 			focus = FIN_nationalise_alandsbanken
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date < 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_expand_outukumpu_operations"
@@ -2814,7 +2840,13 @@ focus_tree = {
 			focus = FIN_create_pohjolan_voima
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date < 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_expand_harjavalta_mines"
@@ -2884,7 +2916,13 @@ focus_tree = {
 			NOT = { 146 = { owner = { has_war_with = ROOT } } }
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date < 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_expand_imatra"
@@ -2931,7 +2969,13 @@ focus_tree = {
 			focus = FIN_expand_imatra
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date < 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_finlayson_textiles"
@@ -3377,7 +3421,13 @@ focus_tree = {
 			focus = FIN_reinforce_the_mannerheim_line
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_state_arms_factories"
@@ -3833,7 +3883,13 @@ focus_tree = {
 			focus = FIN_reinforce_the_mannerheim_line
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_integrate_suojeluskunta"
@@ -3973,7 +4029,7 @@ focus_tree = {
 			focus = FIN_integrate_suojeluskunta
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = { factor = 1500 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_national_mobilisation"
@@ -4019,7 +4075,13 @@ focus_tree = {
 			focus = FIN_reinforce_the_mannerheim_line
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_lotta_svard"
@@ -4074,7 +4136,13 @@ focus_tree = {
 			focus = FIN_lotta_svard
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_the_salpa_line"
@@ -4208,7 +4276,13 @@ focus_tree = {
 			focus = FIN_erillinen_pataljoonat
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_upgrade_sissi_units"
@@ -4317,7 +4391,13 @@ focus_tree = {
 			focus = FIN_support_jaeger_officers
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_support_old_guard_officers"
@@ -4369,7 +4449,13 @@ focus_tree = {
 			focus = FIN_support_old_guard_officers
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_encircle_and_destroy"
@@ -4441,7 +4527,13 @@ focus_tree = {
 			focus = FIN_support_old_guard_officers
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_salvage_captured_equipment"
@@ -4497,7 +4589,13 @@ focus_tree = {
 			focus = FIN_reinforce_the_mannerheim_line
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_the_white_death"
@@ -4594,7 +4692,13 @@ focus_tree = {
 			focus = FIN_the_white_death
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 5
+				date > 1938.5.1
+			}
+		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FIN_dedicated_medical_units"

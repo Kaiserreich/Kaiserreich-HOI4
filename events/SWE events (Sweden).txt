@@ -1186,8 +1186,7 @@ country_event = { #The new constitution
 			custom_effect_tooltip = SWE_tt_soccons_become_autdems
 			hidden_effect = {
 				set_temp_variable = { SWE_conservative_to_authdem_value = party_popularity@social_conservative }
-				set_temp_variable = { SWE_conservative_to_authdem_value_reverse = 0 }
-				subtract_from_temp_variable = { var = SWE_conservative_to_authdem_value_reverse value = party_popularity@social_conservative }
+				set_temp_variable = { SWE_conservative_to_authdem_value_reverse = { value = party_popularity@social_conservative multiply = -1 } }
 				add_popularity = { ideology = social_conservative popularity = SWE_conservative_to_authdem_value_reverse }
 				add_popularity = { ideology = authoritarian_democrat popularity = SWE_conservative_to_authdem_value }
 				set_politics = {
@@ -1955,11 +1954,7 @@ country_event = { #Germany retaliates
 			target = GER
 			modifier = SWE_trade_war
 		}
-		add_to_variable = {
-			var = SWE_var_unemployment
-			value = 0.04
-			tooltip = SWE_tt_unemployment_increased
-		}
+		add_to_variable = { SWE_var_unemployment = 0.04 tooltip = SWE_tt_unemployment_increased }
 	}
 }
 
@@ -2134,41 +2129,26 @@ country_event = { #The yearly report of the Commission
 			limit = {
 				check_variable = { SWE_var_debt > 0 }
 			}
-			set_temp_variable = {
-				var = SWE_var_interest
-				value = SWE_var_debt
-			}
-			divide_temp_variable = {
-				var = SWE_var_interest
-				value = 10
-			}
 			subtract_from_variable = {
-				var = SWE_var_budget
-				value = SWE_var_interest
+				SWE_var_budget = {
+					value = SWE_var_debt
+					multiply = 0.01
+				}
+				tooltip = SWE_tt_pays_interest
 			}
-			custom_effect_tooltip = SWE_tt_pays_interest
 		}
 		#Automatically take an extra loan if this makes your budget go below 0
 		if = {
 			limit = {
 				check_variable = { SWE_var_budget < 0 }
 			}
-			set_temp_variable = {
-				var = SWE_var_extra_debt
-				value = 0
-			}
-			subtract_from_temp_variable = {
-				var = SWE_var_extra_debt
-				value = SWE_var_budget
-			}
 			add_to_variable = {
-				var = SWE_var_debt
-				value = SWE_var_extra_debt
+				SWE_var_debt = {
+					value = SWE_var_budget
+					multiply = -1
+				}
 			}
-			set_variable = {
-				var = SWE_var_budget
-				value = 0
-			}
+			set_variable = { SWE_var_budget = 0 }
 		}
 		custom_effect_tooltip = SWE_tt_takes_loan
 		#Sovereign debt crisis if that makes your debt go over 100 million
@@ -2184,20 +2164,14 @@ country_event = { #The yearly report of the Commission
 				check_variable = { SWE_var_unemployment > 0.08 }
 			}
 			custom_effect_tooltip = SWE_tt_unemployment_lowered_two_percent_natural
-			add_to_variable = {
-				var = SWE_var_unemployment
-				value = -0.02
-			}
+			add_to_variable = { SWE_var_unemployment = -0.02 }
 		}
 		else_if = {
 			limit = {
 				check_variable = { SWE_var_unemployment < 0.08 }
 			}
 			custom_effect_tooltip = SWE_tt_unemployment_upped_two_percent
-			add_to_variable = {
-				var = SWE_var_unemployment
-				value = 0.02
-			}
+			add_to_variable = { SWE_var_unemployment = 0.02 }
 		}
 	}
 }
@@ -2213,18 +2187,11 @@ country_event = { #Sovereign debt crisis
 	option = { #Uh oh!
 		log = "[GetLogInfo]: event sweden_events.68 option sweden_events.68.a"
 		name = sweden_events.68.a
-		set_variable = {
-			var = SWE_var_debt
-			value = 0
-		}
+		set_variable = { SWE_var_debt = 0 }
 		add_political_power = -200
 		add_stability = -0.4
 		remove_targeted_decision = { target = THIS decision = SWE_take_a_loan }
-		add_to_variable = {
-			var = SWE_var_unemployment
-			value = 0.04
-			tooltip = SWE_tt_unemployment_increased
-		}
+		add_to_variable = { SWE_var_unemployment = 0.04 tooltip = SWE_tt_unemployment_increased }
 		every_other_country = {
 			limit = {
 				OR = {
@@ -2282,11 +2249,7 @@ country_event = { #Unemployment decreases as a result of inflation
 		log = "[GetLogInfo]: event sweden_events.70 option sweden_events.70.a"
 		name = sweden_events.70.a
 		add_political_power = 25
-		subtract_from_variable = {
-			var = SWE_var_unemployment
-			value = 0.02
-			tooltip = SWE_tt_unemployment_lowered
-		}
+		subtract_from_variable = { SWE_var_unemployment = 0.02 tooltip = SWE_tt_unemployment_lowered }
 	}
 }
 
@@ -2312,10 +2275,7 @@ country_event = { #Hyperinflation
 		add_political_power = -200
 		add_stability = -0.3
 		custom_effect_tooltip = SWE_tt_inflation_back_to_two
-		set_variable = {
-			var = SWE_var_inflation
-			value = 0.02
-		}
+		set_variable = { SWE_var_inflation = 0.02 }
 	}
 }
 

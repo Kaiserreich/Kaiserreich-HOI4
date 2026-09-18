@@ -1921,11 +1921,11 @@ calculate_days_since_game_start = {
 			#days_since_game_start
 			value = global.num_days
 			subtract = 706640
+			if = {
+				limit = { value = disable_days_to_event_clamping not_equals = 1 }
+				clamp = { min = 0 max = days_to_event }
+			}
 		}
-	}
-	if = {
-		limit = { NOT = { check_variable = { disable_days_to_event_clamping = 1 } } }
-		clamp_temp_variable = { var = days_to_event min = 0 }
 	}
 	log = "Days to event: [?days_to_event]"
 }
@@ -2135,5 +2135,22 @@ remove_all_volunteer_relation_modifiers_from_PREV = {
 	if = {
 		limit = { has_relation_modifier = { modifier = volunteer_limit_plus_hundred_percent target = PREV } }
 		remove_relation_modifier = { modifier = volunteer_limit_plus_hundred_percent target = PREV }
+	}
+}
+
+create_generic_hq_template = {
+	division_template = {
+		localization_key = "ARMY_HQ_TEMPLATE_NAME"
+		template_counter = 121
+		is_army_hq = yes
+
+		regiments = {
+			hq_infantry = { x = 0 y = 0 }
+			hq_infantry = { x = 0 y = 1 }
+		}
+
+		support = {
+			hq_support_company = { x = 0 y = 0 }
+		}
 	}
 }

@@ -76,6 +76,87 @@ political_actions = {
 	}
 }
 
+foreign_politics = {
+	PER_invade_iraq = {
+		name = invade_country
+		icon = hol_draw_up_staff_plans
+
+		allowed = { always = no } # Activated by PER_iraq_i_arab
+
+		available = {
+			NOT = { has_wargoal_against = FROM }
+			can_declare_war_on = FROM
+		}
+
+		cancel_trigger = {
+			NOT = { can_declare_war_on = FROM }
+		}
+
+		visible = {
+			is_subject = no
+			NOT = {
+				has_idea = generic_neutral_foreign_policy
+				is_ally_with = FROM
+			}
+		}
+
+		target_root_trigger = {
+			NOT = { has_idea = generic_neutral_foreign_policy }
+		}
+		target_trigger = {
+			NOT = { is_ally_with = FROM }
+		}
+
+		days_remove = 30
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				OR = {
+					country_is_in_dangerous_war = yes
+					is_in_faction_but_not_leader = yes
+					FROM = { default_attack_AI_trigger = yes }
+				}
+			}
+			modifier = {
+				# Don't take this if currently joining a faction
+				factor = 0
+				OR = {
+					focus_progress = { focus = PER_join_reichspakt progress > 0 }
+					focus_progress = { focus = PER_join_moscow_accord progress > 0 }
+					focus_progress = { focus = PER_join_internationale progress > 0 }
+					focus_progress = { focus = PER_anti_imperialism progress > 0 }
+				}
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel PER_invade_iraq"
+			clear_decision_attack_AI = yes
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete PER_invade_iraq"
+			FROM = { incoming_war_notification_effect = yes }
+			setup_decision_attack_AI = yes
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove PER_invade_iraq"
+			clear_decision_attack_AI = yes
+			declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}
+		}
+		fixed_random_seed = no
+	}
+}
+
 PER_war_for_the_gulf = {
 	# Arm Barzinji
 	PER_Arm_Barzinji = {
@@ -310,9 +391,7 @@ PER_war_for_the_gulf = {
 				date > 1939.02.01
 				EGY = { has_war_with = FROM }
 			}
-			NOT = {
-				has_global_flag = RUSSIAN_OTTOMAN_DEAL
-			}
+			OTT_russo_ottoman_convention_signed = no
 		}
 
 		visible = {

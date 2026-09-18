@@ -102,7 +102,7 @@ country_event = { # Will you support the coup?
 	id = bulgaria_events.5
 	title = bulgaria_events.5.t
 	desc = bulgaria_events.5.d
-	picture = GFX_report_event_soldiers_marching
+	picture = GFX_report_event_BUL_zveno
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -202,10 +202,13 @@ country_event = { # UPPP wants to switch sides
 				name = BUL_national_liberal_party
 			}
 		}
-		set_temp_variable = { BUL_deputies = 20 }
-		custom_effect_tooltip = BUL_increase_deputy_support_tt
-		add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		add_to_variable = {
+			BUL_parliamentary_support = {
+				value = 20
+				clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+			}
+			tooltip = BUL_increase_deputy_support_tt
+		}
 	}
 	option = {
 		log = "[GetLogInfo]: event bulgaria_events.7 option bulgaria_events.7.b"
@@ -230,7 +233,7 @@ country_event = { # Zlatev offers agreement
 	id = bulgaria_events.8
 	title = bulgaria_events.8.t
 	desc = bulgaria_events.8.d
-	picture = GFX_report_event_soldiers_marching
+	picture = GFX_report_event_BUL_zlatev
 
 	fire_only_once = yes
 	trigger = {
@@ -251,9 +254,13 @@ country_event = { # Zlatev offers agreement
 				has_game_rule = { rule = BUL_path option = BUL_PATH_PATAUT }
 			}
 		}
-		add_to_variable = { BUL_coup_success_chance = 20 }
-		clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-		custom_effect_tooltip = BUL_increase_coup_chance_tt
+		add_to_variable = {
+			BUL_coup_success_chance = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+			}
+			tooltip = BUL_increase_coup_chance_tt
+		}
 		add_timed_idea = {
 			idea = BUL_angry_military
 			days = 100
@@ -294,10 +301,13 @@ country_event = {
 		log = "[GetLogInfo]: event bulgaria_events.9 option bulgaria_events.9.a"
 		name = bulgaria_events.9.a
 		effect_tooltip = { add_ideas = BUL_ailing_economy_idea }
-		set_temp_variable = { BUL_tsar_change = 10 }
-		custom_effect_tooltip = BUL_boris_perception_worsen_tt
-		subtract_from_variable = { BUL_tsar_perception = BUL_tsar_change }
-		clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
+		add_to_variable = {
+			BUL_tsar_perception = {
+				value = -10
+				clamp = { min = { value = BUL_tsar_perception multiply = -1 } max = 0 }
+			}
+			tooltip = BUL_boris_perception_worsen_tt
+		}
 		hidden_effect = {
 			country_event = { id = bulgaria_events.10 days = 14 }
 			country_event = { id = bulgaria_events.12 days = 20 random_days = 20 }
@@ -348,10 +358,13 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event bulgaria_events.11 option bulgaria_events.11.a"
 		name = bulgaria_events.11.a
-		set_temp_variable = { BUL_deputies = 10 }
-		custom_effect_tooltip = BUL_reduce_deputy_support_tt
-		subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		subtract_from_variable = {
+			BUL_parliamentary_support = {
+				value = 10
+				clamp = { min = 0 max = BUL_parliamentary_support }
+			}
+			tooltip = BUL_reduce_deputy_support_tt
+		}
 	}
 }
 country_event = { # National Legions
@@ -373,9 +386,13 @@ country_event = { # National Legions
 			ideology = national_populist
 			popularity = 0.04
 		}
-		add_to_variable = { BUL_coup_success_chance = party_popularity_100@national_populist }
-		clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-		custom_effect_tooltip = BUL_increase_coup_chance_tt
+		add_to_variable = {
+			BUL_coup_success_chance = {
+				value = party_popularity_100@national_populist
+				clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+			}
+			tooltip = BUL_increase_coup_chance_tt
+		}
 		hidden_effect = {
 			country_event = { id = bulgaria_events.13 days = 40 random_days = 40 }
 		}
@@ -385,7 +402,7 @@ country_event = { # Lukov and Zhekov endorse SBNL
 	id = bulgaria_events.13
 	title = bulgaria_events.13.t
 	desc = bulgaria_events.13.d
-	picture = GFX_report_event_soldiers_marching
+	picture = GFX_report_event_BUL_lukov
 
 	fire_only_once = yes
 	trigger = {
@@ -406,9 +423,13 @@ country_event = { # Lukov and Zhekov endorse SBNL
 				has_game_rule = { rule = BUL_path option = BUL_PATH_PATAUT }
 			}
 		}
-		add_to_variable = { BUL_coup_success_chance = 20 }
-		clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-		custom_effect_tooltip = BUL_increase_coup_chance_tt
+		add_to_variable = {
+			BUL_coup_success_chance = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+			}
+			tooltip = BUL_increase_coup_chance_tt
+		}
 		add_popularity = {
 			ideology = national_populist
 			popularity = 0.06
@@ -470,10 +491,13 @@ country_event = { # Stamboliyski in cahoots with Petorka
 			popularity = -0.06
 		}
 		add_stability = -0.1
-		set_temp_variable = { BUL_deputies = 30 }
-		custom_effect_tooltip = BUL_reduce_deputy_support_tt
-		subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		subtract_from_variable = {
+			BUL_parliamentary_support = {
+				value = 30
+				clamp = { min = 0 max = BUL_parliamentary_support }
+			}
+			tooltip = BUL_reduce_deputy_support_tt
+		}
 	}
 	option = {
 		log = "[GetLogInfo]: event bulgaria_events.14 option bulgaria_events.14.b"
@@ -494,10 +518,13 @@ country_event = { # Serbian collusion
 		log = "[GetLogInfo]: event bulgaria_events.15 option bulgaria_events.15.a"
 		name = bulgaria_events.15.a
 		BUL = {
-			set_temp_variable = { BUL_deputies = 20 }
-			custom_effect_tooltip = BUL_increase_deputy_support_tt
-			add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-			clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+			add_to_variable = {
+				BUL_parliamentary_support = {
+					value = 20
+					clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+				}
+				tooltip = BUL_increase_deputy_support_tt
+			}
 		}
 	}
 	option = {
@@ -603,13 +630,20 @@ country_event = { # Zveno coup - You are allied with Zveno
 		}
 		add_stability = -0.1
 		add_war_support = -0.1
-		add_to_variable = { BUL_coup_success_chance = -15 }
-		clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-		custom_effect_tooltip = BUL_decrease_coup_chance_tt
-		set_temp_variable = { BUL_tsar_change = 20 }
-		custom_effect_tooltip = BUL_boris_perception_improve_tt
-		add_to_variable = { BUL_tsar_perception = BUL_tsar_change }
-		clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
+		add_to_variable = {
+			BUL_coup_success_chance = {
+				value = -15
+				clamp = { min = { value = BUL_coup_success_chance multiply = -1 } max = 0 }
+			}
+			tooltip = BUL_decrease_coup_chance_tt
+		}
+		add_to_variable = {
+			BUL_tsar_perception = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = BUL_tsar_perception } }
+			}
+			tooltip = BUL_boris_perception_improve_tt
+		}
 		clr_country_flag = BUL_coup_failure
 		clr_country_flag = BUL_stands_with_zveno
 		set_country_flag = BUL_stands_with_prince
@@ -753,9 +787,13 @@ country_event = { # Zveno coup - You are not allied with Zveno
 			popularity = -0.1
 		}
 		add_stability = -0.05
-		add_to_variable = { BUL_coup_success_chance = -15 }
-		clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-		custom_effect_tooltip = BUL_decrease_coup_chance_tt
+		add_to_variable = {
+			BUL_coup_success_chance = {
+				value = -15
+				clamp = { min = { value = BUL_coup_success_chance multiply = -1 } max = 0 }
+			}
+			tooltip = BUL_decrease_coup_chance_tt
+		}
 		hidden_effect = {
 			BUL_pencho_zlatev = { retire = yes }
 			BUL_kimon_georgiev = { retire = yes }
@@ -971,10 +1009,13 @@ country_event = { # Quick resolution to your troubles
 		}
 		unlock_national_focus = BUL_bank_consolidation
 		remove_mission = BUL_buklovi_bankruptcy_fallout
-		set_temp_variable = { BUL_deputies = 20 }
-		custom_effect_tooltip = BUL_increase_deputy_support_tt
-		add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		add_to_variable = {
+			BUL_parliamentary_support = {
+				value = 20
+				clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+			}
+			tooltip = BUL_increase_deputy_support_tt
+		}
 		BUL_start_spa_focus = yes
 	}
 	option = {
@@ -993,10 +1034,13 @@ country_event = { # Quick resolution to your troubles
 			ideology = market_liberal
 			popularity = 0.03
 		}
-		set_temp_variable = { BUL_deputies = 30 }
-		custom_effect_tooltip = BUL_increase_deputy_support_tt
-		add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		add_to_variable = {
+			BUL_parliamentary_support = {
+				value = 30
+				clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+			}
+			tooltip = BUL_increase_deputy_support_tt
+		}
 	}
 }
 country_event = { # Initiate fighting sequence
@@ -1024,7 +1068,7 @@ country_event = { # Questioning patriotism
 	id = bulgaria_events.23
 	title = bulgaria_events.23.t
 	desc = bulgaria_events.23.d
-	picture = GFX_report_event_BUL_assembly2
+	picture = GFX_report_event_BUL_hristo_kalfov
 
 	is_triggered_only = yes
 	trigger = {
@@ -1046,10 +1090,13 @@ country_event = { # Questioning patriotism
 		log = "[GetLogInfo]: event bulgaria_events.23 option bulgaria_events.23.b"
 		name = bulgaria_events.23.b
 		ai_chance = { base = 5 }
-		set_temp_variable = { BUL_deputies = 40 }
-		custom_effect_tooltip = BUL_reduce_deputy_support_tt
-		subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		subtract_from_variable = {
+			BUL_parliamentary_support = {
+				value = 40
+				clamp = { min = 0 max = BUL_parliamentary_support }
+			}
+			tooltip = BUL_reduce_deputy_support_tt
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -1083,8 +1130,6 @@ country_event = { # Georgiev's ultimatum
 		ai_chance = { base = 25 }
 		hidden_effect = {
 			set_variable = { BUL_coup_success_chance = 10 }
-			clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-			custom_effect_tooltip = BUL_increase_coup_chance_tt
 		}
 		BUL_fire_zveno_coup = yes
 	}
@@ -1097,8 +1142,6 @@ country_event = { # Georgiev's ultimatum
 		ai_chance = { base = 50 }
 		hidden_effect = {
 			set_variable = { BUL_coup_success_chance = 20 }
-			clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-			custom_effect_tooltip = BUL_increase_coup_chance_tt
 		}
 		BUL_fire_zveno_coup = yes
 	}
@@ -1106,10 +1149,13 @@ country_event = { # Georgiev's ultimatum
 		log = "[GetLogInfo]: event bulgaria_events.24 option bulgaria_events.24.b"
 		name = bulgaria_events.24.b
 		ai_chance = { base = 50 }
-		set_temp_variable = { BUL_deputies = 30 }
-		custom_effect_tooltip = BUL_reduce_deputy_support_tt
-		subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		subtract_from_variable = {
+			BUL_parliamentary_support = {
+				value = 30
+				clamp = { min = 0 max = BUL_parliamentary_support }
+			}
+			tooltip = BUL_reduce_deputy_support_tt
+		}
 		custom_effect_tooltip = BUL_cancel_state_protection_act_focus_tt
 		set_country_flag = { flag = BUL_prevented_removing_act_flag days = 3 value = 1 }
 	}
@@ -1137,10 +1183,13 @@ country_event = { # Protest from the bureaucracy
 		log = "[GetLogInfo]: event bulgaria_events.25 option bulgaria_events.25.b"
 		name = bulgaria_events.25.b
 		ai_chance = { base = 20 }
-		set_temp_variable = { BUL_deputies = 40 }
-		custom_effect_tooltip = BUL_reduce_deputy_support_tt
-		subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		subtract_from_variable = {
+			BUL_parliamentary_support = {
+				value = 40
+				clamp = { min = 0 max = BUL_parliamentary_support }
+			}
+			tooltip = BUL_reduce_deputy_support_tt
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -1155,7 +1204,7 @@ country_event = { # The Crown Prince wishes to speak
 	id = bulgaria_events.26
 	title = bulgaria_events.26.t
 	desc = bulgaria_events.26.d
-	picture = GFX_report_event_bul_boris_death
+	picture = GFX_report_event_BUL_ferdinand
 
 	is_triggered_only = yes
 	trigger = {
@@ -1177,10 +1226,13 @@ country_event = { # The Crown Prince wishes to speak
 		log = "[GetLogInfo]: event bulgaria_events.26 option bulgaria_events.26.b"
 		name = bulgaria_events.26.b
 		ai_chance = { base = 10 }
-		set_temp_variable = { BUL_deputies = 40 }
-		custom_effect_tooltip = BUL_reduce_deputy_support_tt
-		subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		subtract_from_variable = {
+			BUL_parliamentary_support = {
+				value = 40
+				clamp = { min = 0 max = BUL_parliamentary_support }
+			}
+			tooltip = BUL_reduce_deputy_support_tt
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -1224,10 +1276,13 @@ country_event = { # Agrarian Strike
 			idea = BUL_agrarian_strike
 			days = 50
 		}
-		set_temp_variable = { BUL_deputies = 30 }
-		custom_effect_tooltip = BUL_increase_deputy_support_tt
-		add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		add_to_variable = {
+			BUL_parliamentary_support = {
+				value = 30
+				clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+			}
+			tooltip = BUL_increase_deputy_support_tt
+		}
 		BUL_start_spa_focus = yes
 	}
 	option = {
@@ -1243,10 +1298,13 @@ country_event = { # Agrarian Strike
 			}
 		}
 		add_stability = -0.15
-		set_temp_variable = { BUL_deputies = 30 }
-		custom_effect_tooltip = BUL_increase_deputy_support_tt
-		add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		add_to_variable = {
+			BUL_parliamentary_support = {
+				value = 30
+				clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+			}
+			tooltip = BUL_increase_deputy_support_tt
+		}
 		add_popularity = {
 			ideology = syndicalist
 			popularity = 0.02
@@ -1644,7 +1702,7 @@ country_event = { # Zveno - economic policy
 	id = bulgaria_events.34
 	title = bulgaria_events.34.t
 	desc = bulgaria_events.34.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_BUL_vlachev
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -1711,7 +1769,7 @@ country_event = { # Zveno - cultural policy
 	id = bulgaria_events.35
 	title = bulgaria_events.35.t
 	desc = bulgaria_events.35.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_BUL_vlachev
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -1783,7 +1841,7 @@ country_event = { # Zveno - administrative policy
 	id = bulgaria_events.36
 	title = bulgaria_events.36.t
 	desc = bulgaria_events.36.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_BUL_vlachev
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -1839,7 +1897,7 @@ country_event = { # Zveno - political policy
 	id = bulgaria_events.37
 	title = bulgaria_events.37.t
 	desc = bulgaria_events.37.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_BUL_vlachev
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -2427,7 +2485,7 @@ country_event = { # Tsar Kyril
 	id = bulgaria_events.52
 	title = bulgaria_events.52.t
 	desc = bulgaria_events.52.d
-	picture = GFX_report_event_BUL_National_Legions
+	picture = GFX_report_event_BUL_kyril
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -2444,7 +2502,7 @@ country_event = { # To arms!
 	id = bulgaria_events.53
 	title = bulgaria_events.53.t
 	desc = bulgaria_events.53.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_BUL_soldier
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -2464,7 +2522,7 @@ country_event = { # Chetniks getting ready
 	id = bulgaria_events.54
 	title = bulgaria_events.54.t
 	desc = bulgaria_events.54.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_ser_chetnik
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -2525,7 +2583,7 @@ country_event = { # First Uprising
 	id = bulgaria_events.55
 	title = bulgaria_events.55.t
 	desc = bulgaria_events.55.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_ser_chetnik
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -2556,7 +2614,7 @@ country_event = { # Chetnik Relocation
 			BUL_chetnik_victory = no
 		}
 	}
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_ser_chetnik
 
 	is_triggered_only = yes
 
@@ -2581,7 +2639,7 @@ country_event = { # Chetnik Rebellion: Defeat
 	id = bulgaria_events.57
 	title = bulgaria_events.57.t
 	desc = bulgaria_events.57.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_ser_chetnik
 
 	trigger = {
 		has_variable = BUL.BUL_chetnik_strength
@@ -2631,7 +2689,7 @@ country_event = { # Chetnik Rebellion: Victory
 	id = bulgaria_events.58
 	title = bulgaria_events.58.t
 	desc = bulgaria_events.58.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_ser_chetnik
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -2861,7 +2919,7 @@ country_event = { # FF Falls
 	id = bulgaria_events.65
 	title = bulgaria_events.65.t
 	desc = bulgaria_events.65.d
-	picture = GFX_report_event_BUL_boris2
+	picture = GFX_report_event_BUL_kyril
 
 	fire_only_once = yes
 	trigger = {
@@ -2914,7 +2972,7 @@ country_event = { # Royalist resistance is defeated, now get some stability
 	id = bulgaria_events.66
 	title = bulgaria_events.66.t
 	desc = bulgaria_events.66.d
-	picture = GFX_report_event_BUL_oldguard
+	picture = GFX_report_event_BUL_zlatev
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -4309,10 +4367,13 @@ country_event = {
 			limit = {
 				has_active_mission = BUL_operation_nishava_fallout
 			}
-			set_temp_variable = { BUL_tsar_change = 10 }
-			custom_effect_tooltip = BUL_boris_perception_improve_tt
-			add_to_variable = { BUL_tsar_perception = BUL_tsar_change }
-			clamp_variable = { var = BUL_tsar_perception max = 100 min = 0 }
+			add_to_variable = {
+				BUL_tsar_perception = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = BUL_tsar_perception } }
+				}
+				tooltip = BUL_boris_perception_improve_tt
+			}
 		}
 		else = {
 			add_political_power = 25
@@ -4356,10 +4417,13 @@ country_event = {
 			limit = {
 				has_active_mission = BUL_operation_nishava_fallout
 			}
-			set_temp_variable = { BUL_deputies = 10 }
-			custom_effect_tooltip = BUL_increase_deputy_support_tt
-			add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-			clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+			add_to_variable = {
+				BUL_parliamentary_support = {
+					value = 10
+					clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+				}
+				tooltip = BUL_increase_deputy_support_tt
+			}
 			add_stability = -0.04
 		}
 		else = {
@@ -4421,10 +4485,13 @@ country_event = {
 			limit = {
 				has_active_mission = BUL_operation_nishava_fallout
 			}
-			set_temp_variable = { BUL_deputies = 5 }
-			custom_effect_tooltip = BUL_reduce_deputy_support_tt
-			subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-			clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+			subtract_from_variable = {
+				BUL_parliamentary_support = {
+					value = 5
+					clamp = { min = 0 max = BUL_parliamentary_support }
+				}
+				tooltip = BUL_reduce_deputy_support_tt
+			}
 		}
 		else = {
 			add_stability = -0.03
@@ -4655,7 +4722,7 @@ country_event = {
 	id = bulgaria_flavour_events.12
 	title = bulgaria_flavour_events.12.t
 	desc = bulgaria_flavour_events.12.d
-	picture = GFX_report_event_bul_boris_death
+	picture = GFX_report_event_BUL_ferdinand_costume
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -4673,7 +4740,7 @@ country_event = {
 	id = bulgaria_flavour_events.13
 	title = bulgaria_flavour_events.13.t
 	desc = bulgaria_flavour_events.13.d
-	picture = GFX_report_event_soldiers_marching
+	picture = GFX_report_event_BUL_peter_deunov
 
 	trigger = {
 		BUL_nikola_nedev = { is_unit_leader = yes }
@@ -4746,7 +4813,7 @@ country_event = {
 			has_country_leader = { character = BUL_boris_sakskoburggotski }
 		}
 	}
-	picture = GFX_report_event_bul_prince_simeon
+	picture = GFX_report_event_BUL_heir
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -4886,10 +4953,13 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event bulgaria_flavour_events.19 option bulgaria_flavour_events.19.a"
 		name = bulgaria_flavour_events.19.a
-		set_temp_variable = { BUL_deputies = 15 }
-		custom_effect_tooltip = BUL_increase_deputy_support_tt
-		add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-		clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+		add_to_variable = {
+			BUL_parliamentary_support = {
+				value = 15
+				clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+			}
+			tooltip = BUL_increase_deputy_support_tt
+		}
 		add_popularity = {
 			ideology = social_democrat
 			popularity = 0.02
@@ -5226,7 +5296,7 @@ news_event = {
 	}
 	title = bulgaria_flavour_events.29.t
 	desc = bulgaria_flavour_events.29.d
-	picture = GFX_news_event_bulgarian_soldiers
+	picture = GFX_news_event_BUL_zveno
 
 	is_triggered_only = yes
 
@@ -5278,7 +5348,7 @@ news_event = {
 	}
 	title = bulgaria_flavour_events.31.t
 	desc = bulgaria_flavour_events.31.d
-	picture = GFX_news_event_GRE_celebrate
+	picture = GFX_news_event_BUL_democracy
 
 	is_triggered_only = yes
 
@@ -5324,7 +5394,7 @@ news_event = {
 	immediate = { log = "[GetLogInfo]: event bulgaria_flavour_events.33" }
 	title = bulgaria_flavour_events.33.t
 	desc = bulgaria_flavour_events.33.d
-	picture = GFX_news_event_bulgarian_ff_troops
+	picture = GFX_news_event_BUL_fatherland_front
 
 	is_triggered_only = yes
 

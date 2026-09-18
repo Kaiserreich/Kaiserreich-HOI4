@@ -1,0 +1,204 @@
+AFG_national_integration_highly_decentralised = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = AFG_national_integration_check_tooltip
+			LEVEL = AFG_national_integration_highly_decentralised
+		}
+		check_variable = { AFG_reform_progress < 31 }
+	}
+}
+
+AFG_national_integration_moderately_decentralised = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = AFG_national_integration_check_tooltip
+			LEVEL = AFG_national_integration_moderately_decentralised
+		}
+		check_variable = { AFG_reform_progress < 21 }
+	}
+}
+
+AFG_national_integration_slightly_decentralised = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = AFG_national_integration_check_tooltip
+			LEVEL = AFG_national_integration_slightly_decentralised
+		}
+		check_variable = { AFG_reform_progress < 11 }
+	}
+}
+
+AFG_has_any_foreign_influence = {
+	is_in_array = { AFG.AFG_foreign_influence_countries = THIS }
+}
+
+# Execute inside country scope of tag that is part of minigame
+AFG_has_highest_foreign_influence = {
+	check_variable = { AFG.AFG_highest_foreign_influence = THIS tooltip = AFG_has_highest_foreign_influence_tooltip }
+}
+
+# Set temp var AFG_foreign_influence_check first
+# Execute inside country scope of tag that is part of minigame
+AFG_has_foreign_influence_greater_than = {
+	check_variable = { AFG.AFG_foreign_influence_@THIS > AFG_foreign_influence_check tooltip = AFG_has_foreign_influence_greater_than_tooltip }
+}
+
+AFG_has_any_foreign_influence_greater_than = {
+	custom_override_tooltip = {
+		tooltip = AFG_has_any_foreign_influence_greater_than_tooltip
+		any_of_scopes = {
+			array = AFG.AFG_foreign_influence_countries
+			AFG_has_foreign_influence_greater_than = yes
+		}
+	}
+}
+
+AFG_has_foreign_influence_less_than = {
+	check_variable = { AFG.AFG_foreign_influence_@THIS < AFG_foreign_influence_check tooltip = AFG_has_foreign_influence_less_than_tooltip }
+}
+
+AFG_has_all_foreign_influence_less_than = {
+	custom_override_tooltip = {
+		tooltip = AFG_has_all_foreign_influence_less_than_tooltip
+		all_of_scopes = {
+			array = AFG.AFG_foreign_influence_countries
+			AFG_has_foreign_influence_less_than = yes
+		}
+	}
+}
+
+# Set temp var AFG_foreign_influence_share_check first
+# Execute inside country scope of tag that is part of minigame
+AFG_has_foreign_influence_share_greater_than = {
+	check_variable = { AFG.AFG_foreign_influence_share_@THIS > AFG_foreign_influence_share_check tooltip = AFG_has_foreign_influence_share_greater_than_tooltip }
+}
+
+AFG_has_foreign_influence_share_less_than = {
+	check_variable = { AFG.AFG_foreign_influence_share_@THIS < AFG_foreign_influence_share_check tooltip = AFG_has_foreign_influence_share_less_than_tooltip }
+}
+
+AFG_is_telai = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = AFG_dynasty_branch_tt
+			BRANCH = AFG_dynasty_branch_telai
+		}
+		is_monarchy = yes
+		OR = {
+			has_country_leader = { character = AFG_mohammad_nadir_khan }
+			has_country_leader = { character = AFG_mohammad_hashim_khan }
+			has_country_leader = { character = AFG_mohammad_zahir_khan }
+			has_country_leader = { character = AFG_mohammad_gul_khan_momand }
+		}
+	}
+}
+
+AFG_is_seraj = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = AFG_dynasty_branch_tt
+			BRANCH = AFG_dynasty_branch_seraj
+		}
+		is_monarchy = yes
+		OR = {
+			has_country_leader = { character = AFG_amanullah_khan }
+			has_country_leader = { character = AFG_inayatullah_khan }
+		}
+	}
+}
+
+AFG_civil_war_started = {
+	custom_override_tooltip = {
+		tooltip = AFG_civil_war_started
+		AFG = { has_country_flag = AFG_civil_war_started_flag }
+	}
+}
+
+AFG_civil_war_ongoing = {
+	custom_override_tooltip = {
+		tooltip = AFG_civil_war_ongoing
+		AFG = { has_country_flag = AFG_civil_war_ongoing_flag }
+	}
+}
+
+AFG_momand_republic = {
+	custom_override_tooltip = {
+		tooltip = AFG_momand_republic
+		has_country_flag = AFG_momand_republic_flag
+		has_completed_focus = AFG_consolidation_of_the_republic
+	}
+}
+
+AFG_aia_republic = {
+	custom_override_tooltip = {
+		tooltip = AFG_aia_republic
+		has_country_flag = AFG_aia_republic_flag
+		has_completed_focus = AFG_consolidation_of_the_republic
+	}
+}
+
+AFG_socialist_republic = {
+	custom_override_tooltip = {
+		tooltip = AFG_socialist_republic
+		has_country_flag = AFG_socialist_republic_flag
+		has_completed_focus = AFG_consolidation_of_the_republic
+	}
+}
+
+AFG_ai_traditionalist_path = {
+	OR = {
+		has_country_flag = AFG_amanullah_traditionalist_ai
+		has_country_flag = AFG_inayatullah_ai
+		has_country_flag = AFG_nadir_traditionalist_ai
+		has_country_flag = AFG_zahir_ai
+	}
+}
+
+AFG_ai_traditionalist_trigger = {
+	AFG_ai_traditionalist_path = yes
+	NOT = { power_balance_value = { id = AFG_power_balance value < 0.05 } }
+}
+
+AFG_ai_reformist_path = {
+	OR = {
+		has_country_flag = AFG_amanullah_reformist_ai
+		has_country_flag = AFG_hashim_reactionary_ai
+		has_country_flag = AFG_hashim_palace_ai
+		has_country_flag = AFG_nadir_reformist_ai
+		has_country_flag = AFG_aut_republic_ai
+		has_country_flag = AFG_dem_republic_ai
+		has_country_flag = AFG_soc_republic_ai
+	}
+}
+
+AFG_ai_reformist_trigger = {
+	AFG_ai_reformist_path = yes
+	NOT = { power_balance_value = { id = AFG_power_balance value > -0.15 } }
+}
+
+AFG_backer_faction_blocked = {
+	OR = {
+		AND = {
+			check_variable = { AFG.AFG_amanullah_backer_alignment_var > 2 }
+			AFG_is_seraj = yes
+		}
+		AND = {
+			check_variable = { AFG.AFG_nadir_backer_alignment_var > 2 }
+			AFG_is_telai = yes
+		}
+	}
+}
+
+AFG_faqir_hostile = {
+	custom_override_tooltip = {
+		tooltip = AFG_faqir_hostile
+		PTH_mirzali_khan_wazir = { has_character_flag = AFG_faqir_hostile_flag }
+	}
+}
+
+AFG_faqir_neutral = {
+	custom_override_tooltip = {
+		tooltip = AFG_faqir_neutral
+		PTH_mirzali_khan_wazir = { has_character_flag = AFG_faqir_neutral_flag }
+	}
+}

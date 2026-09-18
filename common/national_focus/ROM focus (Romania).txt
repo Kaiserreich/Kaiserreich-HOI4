@@ -167,13 +167,13 @@ focus_tree = {
 				popularity = 0.04
 			}
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = { var = ROM.eco value = 2 }
+			add_to_variable = { ROM.eco = 2 }
 			custom_effect_tooltip = ROM_eco_captain_strong
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = -0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 			hidden_effect = { country_event = romania_events.68 }
 		}
 	}
@@ -227,13 +227,13 @@ focus_tree = {
 				popularity = 0.04
 			}
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = { var = ROM.eco value = -2 }
+			add_to_variable = { ROM.eco = -2 }
 			custom_effect_tooltip = ROM_eco_king_strong
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = 0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 			hidden_effect = { country_event = romania_events.68 }
 		}
 	}
@@ -305,13 +305,13 @@ focus_tree = {
 			}
 			add_political_power = 50
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = { var = ROM.eco value = 1 }
+			add_to_variable = { ROM.eco = 1 }
 			custom_effect_tooltip = ROM_eco_cap
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = -0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 			if = {
 				limit = { has_country_flag = ROM_selectczc }
 				custom_effect_tooltip = tooltip_white_line
@@ -360,13 +360,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ROM_export_more_than_grain"
 			add_offsite_building = { type = industrial_complex level = 2 }
-			add_to_variable = { var = ROM.eco value = -1 }
+			add_to_variable = { ROM.eco = -1 }
 			custom_effect_tooltip = ROM_eco_king
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = 0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 		}
 	}
 
@@ -434,14 +434,14 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			add_to_variable = { var = ROM.eco value = -1 }
+			add_to_variable = { ROM.eco = -1 }
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = ROM_eco_king
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = 0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 		}
 	}
 
@@ -488,13 +488,13 @@ focus_tree = {
 				remove_idea = ROM_incomplete_land_reform
 				add_idea = ROM_lr_diverse
 			}
-			add_to_variable = { var = ROM.eco value = 1 }
+			add_to_variable = { ROM.eco = 1 }
 			custom_effect_tooltip = ROM_eco_cap
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = -0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 		}
 	}
 
@@ -552,13 +552,13 @@ focus_tree = {
 					add_idea = ROM_lr_infra
 				}
 			}
-			add_to_variable = { var = ROM.eco value = -1 }
+			add_to_variable = { ROM.eco = -1 }
 			custom_effect_tooltip = ROM_eco_king
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = 0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 			if = {
 				limit = { has_country_flag = ROM_selectczc }
 				custom_effect_tooltip = tooltip_white_line
@@ -622,13 +622,13 @@ focus_tree = {
 					add_idea = ROM_lr_mech
 				}
 			}
-			add_to_variable = { var = ROM.eco value = 1 }
+			add_to_variable = { ROM.eco = 1 }
 			custom_effect_tooltip = ROM_eco_cap
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = -0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 			hidden_effect = { set_country_flag = ROM_final_reforms }
 		}
 	}
@@ -684,13 +684,13 @@ focus_tree = {
 					category = industry
 				}
 			}
-			add_to_variable = { var = ROM.eco value = 1 }
+			add_to_variable = { ROM.eco = 1 }
 			custom_effect_tooltip = ROM_eco_cap
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = -0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 		}
 	}
 
@@ -756,13 +756,13 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			add_one_random_civilian_factory = yes
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = { var = ROM.eco value = -1 }
+			add_to_variable = { ROM.eco = -1 }
 			custom_effect_tooltip = ROM_eco_king
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = 0.25
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 		}
 	}
 
@@ -815,13 +815,13 @@ focus_tree = {
 				increase_state_category_by_one_level = yes
 			}
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = { var = ROM.eco value = 2 }
+			add_to_variable = { ROM.eco = 2 }
 			custom_effect_tooltip = ROM_eco_captain_strong
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = -0.30
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 			if = {
 				limit = { has_country_flag = ROM_selectczc }
 				custom_effect_tooltip = tooltip_white_line
@@ -889,13 +889,13 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = { var = ROM.eco value = -2 }
+			add_to_variable = { ROM.eco = -2 }
 			custom_effect_tooltip = ROM_eco_king_strong
 			add_power_balance_value = {
 				id = ROM_power_balance
 				value = 0.30
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 			if = {
 				limit = { has_country_flag = ROM_selectczc }
 				custom_effect_tooltip = tooltip_white_line
@@ -1110,7 +1110,7 @@ focus_tree = {
 					}
 				}
 			}
-			add_to_variable = { var = ROM.eco_progress value = 1 }
+			add_to_variable = { ROM.eco_progress = 1 }
 			hidden_effect = { clr_country_flag = ROM_final_reforms }
 		}
 	}
@@ -3353,7 +3353,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ROM_legionary_victory"
 			add_stability = 0.1
 			hidden_effect = {
-				add_to_variable = { var = ROM.captain_influence value = 10 }
+				add_to_variable = { ROM.captain_influence = 10 }
 				clr_country_flag = ROM_selectcarol
 				#if = {
 				#	limit = { has_country_leader = { character = ROM_mihai_hohenzollern_sigmaringen } }
@@ -4081,7 +4081,7 @@ focus_tree = {
 
 	focus = {
 		id = ROM_vanguard_of_reaction
-		icon = GFX_goal_generic_corporatism
+		icon = GFX_goal_generic_militarism
 		cost = 7
 
 		relative_position_id = ROM_legionary_victory
@@ -4509,7 +4509,7 @@ focus_tree = {
 					remove_trait_from_all_country_leader_roles = yes
 				}
 				clr_country_flag = ROM_selectczc
-				add_to_variable = { var = ROM.king_influence value = 10 }
+				add_to_variable = { ROM.king_influence = 10 }
 				#set_country_leader_description = { desc = ROM_carol_hohenzollern_sigmaringen_restoration_leader_desc }
 				country_event = { id = romania_events.163 days = 7 }
 				country_event = { id = romania_events.220 days = 46 }
@@ -4958,7 +4958,7 @@ focus_tree = {
 			hidden_effect = {
 				hold_election = ROM
 				set_country_flag = ROM_had_first_election
-				add_to_variable = { var = ROM.king_influence value = 50 }
+				add_to_variable = { ROM.king_influence = 50 }
 				country_event = { id = romania_events.166 days = 21 }
 				country_event = { id = romania_events.172 days = 27 }
 				country_event = { id = romania_events.173 days = 69 }

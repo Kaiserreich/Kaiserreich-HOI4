@@ -93,6 +93,7 @@ OTT_AMN_Category = {
 			OR = {
 				NOT = { country_exists = FROM }
 				has_war_with = FROM
+				FROM = { has_socialist_government = yes }
 				FROM = {
 					is_subject = yes
 					NOT = { is_subject_of = ROOT }
@@ -121,6 +122,7 @@ OTT_AMN_Category = {
 			NOT = { has_war_with = FROM }
 			NOT = { has_global_flag = RUSSIAN_OTTOMAN_DEAL_PER_BUFFER }
 			FROM = {
+				has_socialist_government = no
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
@@ -152,6 +154,7 @@ OTT_AMN_Category = {
 			OR = {
 				NOT = { country_exists = FROM }
 				has_war_with = FROM
+				FROM = { has_socialist_government = yes }
 				FROM = {
 					is_subject = yes
 					NOT = { is_subject_of = ROOT }
@@ -180,6 +183,7 @@ OTT_AMN_Category = {
 			NOT = { has_war_with = FROM }
 			NOT = { has_global_flag = RUSSIAN_OTTOMAN_DEAL_AFG_PUPPET }
 			FROM = {
+				has_socialist_government = no
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
@@ -211,6 +215,7 @@ OTT_AMN_Category = {
 			OR = {
 				NOT = { country_exists = FROM }
 				has_war_with = FROM
+				FROM = { has_socialist_government = yes }
 				FROM = {
 					is_subject = yes
 					NOT = { is_subject_of = ROOT }
@@ -236,6 +241,7 @@ OTT_AMN_Category = {
 		target_trigger = {
 			NOT = { has_war_with = FROM }
 			FROM = {
+				has_socialist_government = no
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
@@ -268,6 +274,7 @@ OTT_AMN_Category = {
 			OR = {
 				NOT = { country_exists = FROM }
 				has_war_with = FROM
+				FROM = { has_socialist_government = yes }
 				FROM = {
 					is_subject = yes
 					NOT = { is_subject_of = ROOT }
@@ -293,6 +300,7 @@ OTT_AMN_Category = {
 		target_trigger = {
 			NOT = { has_war_with = FROM }
 			FROM = {
+				has_socialist_government = no
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
@@ -324,6 +332,7 @@ OTT_AMN_Category = {
 			OR = {
 				NOT = { country_exists = FROM }
 				has_war_with = FROM
+				FROM = { has_socialist_government = yes }
 				FROM = {
 					is_subject = yes
 					NOT = { is_subject_of = ROOT }
@@ -349,6 +358,7 @@ OTT_AMN_Category = {
 		target_trigger = {
 			NOT = { has_war_with = FROM }
 			FROM = {
+				has_socialist_government = no
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
@@ -380,6 +390,7 @@ OTT_AMN_Category = {
 			OR = {
 				NOT = { country_exists = FROM }
 				has_war_with = FROM
+				FROM = { has_socialist_government = no }
 				FROM = {
 					is_subject = yes
 					NOT = { is_subject_of = ROOT }
@@ -405,6 +416,7 @@ OTT_AMN_Category = {
 		target_trigger = {
 			NOT = { has_war_with = FROM }
 			FROM = {
+				has_socialist_government = no
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
@@ -514,6 +526,7 @@ foreign_politics = {
 			country_exists = FROM
 			FROM = {
 				is_in_faction = no
+				has_socialist_government = no
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
@@ -521,7 +534,9 @@ foreign_politics = {
 				has_capitulated = no
 				if = {
 					limit = { tag = AFG }
-					NOT = { has_global_flag = RUSSIAN_OTTOMAN_DEAL_PER_BUFFER }
+					OTT_russo_ottoman_convention_signed = no
+					AFG_civil_war_started = yes
+					AFG_civil_war_ongoing = no
 				}
 			}
 		}
@@ -537,13 +552,14 @@ foreign_politics = {
 		target_trigger = {
 			FROM = {
 				is_in_faction = no
+				has_socialist_government = no
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
 				}
 				if = {
 					limit = { tag = AFG }
-					NOT = { has_global_flag = RUSSIAN_OTTOMAN_DEAL_PER_BUFFER }
+					OTT_russo_ottoman_convention_signed = no
 				}
 			}
 		}
@@ -577,6 +593,7 @@ foreign_politics = {
 			country_exists = FROM
 			FROM = {
 				is_in_faction = no
+				has_socialist_government = no
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
@@ -638,6 +655,7 @@ foreign_politics = {
 					is_subject = no
 					is_subject_of = ROOT
 				}
+				has_socialist_government = no
 				has_capitulated = no
 			}
 		}
@@ -1034,11 +1052,12 @@ OTT_Handling_Suriye = {
 				clr_state_flag = mt_lebanon_mutasarrifate_state
 				ott_increase_revolt_risk = yes
 			}
-			add_to_variable = { syr_integration_factor = 20 tooltip = ott_increase_syr_int }
-			clamp_variable = {
-				var = syr_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				syr_integration_factor = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = syr_integration_factor } }
+				}
+				tooltip = ott_increase_syr_int
 			}
 		}
 		fixed_random_seed = no
@@ -1080,11 +1099,12 @@ OTT_Handling_Suriye = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove OTT_SYR_Central_Tax_Collection_Agency"
 			add_political_power = 100
-			add_to_variable = { syr_integration_factor = 20 tooltip = ott_increase_syr_int }
-			clamp_variable = {
-				var = syr_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				syr_integration_factor = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = syr_integration_factor } }
+				}
+				tooltip = ott_increase_syr_int
 			}
 		}
 		fixed_random_seed = no
@@ -1116,11 +1136,12 @@ OTT_Handling_Suriye = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove OTT_SYR_estabish_community_centres"
-			add_to_variable = { syr_integration_factor = 20 tooltip = ott_increase_syr_int }
-			clamp_variable = {
-				var = syr_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				syr_integration_factor = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = syr_integration_factor } }
+				}
+				tooltip = ott_increase_syr_int
 			}
 		}
 		fixed_random_seed = no
@@ -1159,11 +1180,12 @@ OTT_Handling_Suriye = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete OTT_SYR_Centralise_Infrastructural_Maintenance"
-			add_to_variable = { syr_integration_factor = 10 tooltip = ott_increase_syr_int }
-			clamp_variable = {
-				var = syr_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				syr_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = syr_integration_factor } }
+				}
+				tooltip = ott_increase_syr_int
 			}
 		}
 
@@ -1222,11 +1244,12 @@ OTT_Handling_Suriye = {
 			680 = {
 				increase_state_category_by_one_level = yes
 			}
-			add_to_variable = { syr_integration_factor = 5 tooltip = ott_increase_syr_int }
-			clamp_variable = {
-				var = syr_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				syr_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = syr_integration_factor } }
+				}
+				tooltip = ott_increase_syr_int
 			}
 		}
 		fixed_random_seed = no
@@ -1260,11 +1283,12 @@ OTT_Handling_Suriye = {
 			add_war_support = 0.05
 			set_temp_variable = { ideology_change_var = 0.05 }
 			change_ruling_party_popularity = yes
-			add_to_variable = { syr_integration_factor = 5 tooltip = ott_increase_syr_int }
-			clamp_variable = {
-				var = syr_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				syr_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = syr_integration_factor } }
+				}
+				tooltip = ott_increase_syr_int
 			}
 		}
 		fixed_random_seed = no
@@ -1317,11 +1341,12 @@ OTT_Handling_Suriye = {
 				limit = {
 					check_variable = { syr_integration_factor < 100 }
 				}
-				add_to_variable = { syr_integration_factor = 5 tooltip = ott_increase_syr_int }
-				clamp_variable = {
-					var = syr_integration_factor
-					min = 0
-					max = 100
+				add_to_variable = {
+					syr_integration_factor = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = syr_integration_factor } }
+					}
+					tooltip = ott_increase_syr_int
 				}
 			}
 		}
@@ -1364,11 +1389,12 @@ OTT_Handling_Suriye = {
 				limit = {
 					check_variable = { syr_integration_factor < 100 }
 				}
-				add_to_variable = { syr_integration_factor = 5 tooltip = ott_increase_syr_int }
-				clamp_variable = {
-					var = syr_integration_factor
-					min = 0
-					max = 100
+				add_to_variable = {
+					syr_integration_factor = {
+						value = 5
+						clamp = { min = 0 max = { value = 100 subtract = syr_integration_factor } }
+					}
+					tooltip = ott_increase_syr_int
 				}
 			}
 			454 = {
@@ -1465,11 +1491,12 @@ OTT_Handling_Greek_Vilayets = {
 				ott_increase_revolt_risk = yes
 			}
 			add_stability = -0.03
-			add_to_variable = { gre_integration_factor = 20 tooltip = ott_increase_gre_int }
-			clamp_variable = {
-				var = gre_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				gre_integration_factor = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = gre_integration_factor } }
+				}
+				tooltip = ott_increase_gre_int
 			}
 		}
 		fixed_random_seed = no
@@ -1521,11 +1548,12 @@ OTT_Handling_Greek_Vilayets = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove OTT_GRE_Central_Tax_Collection_Agency"
 			add_political_power = 50
-			add_to_variable = { gre_integration_factor = 15 tooltip = ott_increase_gre_int }
-			clamp_variable = {
-				var = gre_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				gre_integration_factor = {
+					value = 15
+					clamp = { min = 0 max = { value = 100 subtract = gre_integration_factor } }
+				}
+				tooltip = ott_increase_gre_int
 			}
 		}
 		fixed_random_seed = no
@@ -1572,11 +1600,12 @@ OTT_Handling_Greek_Vilayets = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove OTT_GRE_estabish_community_centres"
-			add_to_variable = { gre_integration_factor = 10 tooltip = ott_increase_gre_int }
-			clamp_variable = {
-				var = gre_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				gre_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = gre_integration_factor } }
+				}
+				tooltip = ott_increase_gre_int
 			}
 		}
 		fixed_random_seed = no
@@ -1622,11 +1651,12 @@ OTT_Handling_Greek_Vilayets = {
 					instant_build = yes
 				}
 			}
-			add_to_variable = { gre_integration_factor = 5 tooltip = ott_increase_gre_int }
-			clamp_variable = {
-				var = gre_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				gre_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = gre_integration_factor } }
+				}
+				tooltip = ott_increase_gre_int
 			}
 		}
 		fixed_random_seed = no
@@ -1703,11 +1733,12 @@ OTT_Handling_Greek_Vilayets = {
 				ott_increase_revolt_risk = yes
 			}
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = { gre_integration_factor = 5 tooltip = ott_increase_gre_int }
-			clamp_variable = {
-				var = gre_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				gre_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = gre_integration_factor } }
+				}
+				tooltip = ott_increase_gre_int
 			}
 		}
 		fixed_random_seed = no
@@ -1762,11 +1793,12 @@ OTT_Handling_Greek_Vilayets = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove OTT_GRE_Crack_Down_Tax_Havens"
-			add_to_variable = { gre_integration_factor = 5 tooltip = ott_increase_gre_int }
-			clamp_variable = {
-				var = gre_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				gre_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = gre_integration_factor } }
+				}
+				tooltip = ott_increase_gre_int
 			}
 		}
 		fixed_random_seed = no
@@ -1817,11 +1849,12 @@ OTT_Handling_Kurdish_Vilayets = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove OTT_KUR_Centralise_Tax_Collection"
 			add_political_power = 75
-			add_to_variable = { kur_integration_factor = 15 tooltip = ott_increase_kur_int }
-			clamp_variable = {
-				var = kur_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				kur_integration_factor = {
+					value = 15
+					clamp = { min = 0 max = { value = 100 subtract = kur_integration_factor } }
+				}
+				tooltip = ott_increase_kur_int
 			}
 		}
 		fixed_random_seed = no
@@ -1863,11 +1896,12 @@ OTT_Handling_Kurdish_Vilayets = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove OTT_KUR_estabish_community_centres"
-			add_to_variable = { kur_integration_factor = 10 tooltip = ott_increase_kur_int }
-			clamp_variable = {
-				var = kur_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				kur_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = kur_integration_factor } }
+				}
+				tooltip = ott_increase_kur_int
 			}
 		}
 		fixed_random_seed = no
@@ -1932,11 +1966,12 @@ OTT_Handling_Kurdish_Vilayets = {
 					}
 				}
 			}
-			add_to_variable = { kur_integration_factor = 10 tooltip = ott_increase_kur_int }
-			clamp_variable = {
-				var = kur_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				kur_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = kur_integration_factor } }
+				}
+				tooltip = ott_increase_kur_int
 			}
 			set_country_flag = ott_copper_line_completed
 		}
@@ -1989,11 +2024,12 @@ OTT_Handling_Kurdish_Vilayets = {
 					tooltip = OTT_KUR_Increase_Ottoman_Gendarmerie_tt
 				}
 			}
-			add_to_variable = { kur_integration_factor = 5 tooltip = ott_increase_kur_int }
-			clamp_variable = {
-				var = kur_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				kur_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = kur_integration_factor } }
+				}
+				tooltip = ott_increase_kur_int
 			}
 		}
 		fixed_random_seed = no
@@ -2031,11 +2067,12 @@ OTT_Handling_Kurdish_Vilayets = {
 			log = "[GetLogRoot]: Decision complete OTT_KUR_Abolish_the_Hamidiye"
 			add_stability = 0.05
 			add_war_support = 0.05
-			add_to_variable = { kur_integration_factor = 10 tooltip = ott_increase_kur_int }
-			clamp_variable = {
-				var = kur_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				kur_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = kur_integration_factor } }
+				}
+				tooltip = ott_increase_kur_int
 			}
 		}
 		fixed_random_seed = no
@@ -2093,11 +2130,12 @@ OTT_Handling_Arab_Vilayets = {
 					ott_increase_revolt_risk = yes
 				}
 			}
-			add_to_variable = { hej_integration_factor = 20 tooltip = ott_increase_hej_int }
-			clamp_variable = {
-				var = hej_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				hej_integration_factor = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = hej_integration_factor } }
+				}
+				tooltip = ott_increase_hej_int
 			}
 		}
 		fixed_random_seed = no
@@ -2150,11 +2188,12 @@ OTT_Handling_Arab_Vilayets = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove OTT_ARA_Centralise_Tax_Collection"
 			add_political_power = 100
-			add_to_variable = { hej_integration_factor = 15 tooltip = ott_increase_hej_int }
-			clamp_variable = {
-				var = hej_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				hej_integration_factor = {
+					value = 15
+					clamp = { min = 0 max = { value = 100 subtract = hej_integration_factor } }
+				}
+				tooltip = ott_increase_hej_int
 			}
 		}
 		fixed_random_seed = no
@@ -2201,11 +2240,12 @@ OTT_Handling_Arab_Vilayets = {
 				ideology = ROOT
 				popularity = 0.015
 			}
-			add_to_variable = { hej_integration_factor = 5 tooltip = ott_increase_hej_int }
-			clamp_variable = {
-				var = hej_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				hej_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = hej_integration_factor } }
+				}
+				tooltip = ott_increase_hej_int
 			}
 		}
 		fixed_random_seed = no
@@ -2242,11 +2282,12 @@ OTT_Handling_Arab_Vilayets = {
 				increase_state_category_by_one_level = yes
 				ott_increase_revolt_risk = yes
 			}
-			add_to_variable = { hej_integration_factor = 5 tooltip = ott_increase_hej_int }
-			clamp_variable = {
-				var = hej_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				hej_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = hej_integration_factor } }
+				}
+				tooltip = ott_increase_hej_int
 			}
 		}
 		fixed_random_seed = no
@@ -2283,11 +2324,12 @@ OTT_Handling_Arab_Vilayets = {
 					level = 2
 				}
 			}
-			add_to_variable = { hej_integration_factor = 5 tooltip = ott_increase_hej_int }
-			clamp_variable = {
-				var = hej_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				hej_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = hej_integration_factor } }
+				}
+				tooltip = ott_increase_hej_int
 			}
 		}
 		fixed_random_seed = no
@@ -2345,11 +2387,12 @@ OTT_Handling_Arab_Vilayets = {
 					ott_increase_revolt_risk = yes
 				}
 			}
-			add_to_variable = { hej_integration_factor = 20 tooltip = ott_increase_hej_int }
-			clamp_variable = {
-				var = hej_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				hej_integration_factor = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = hej_integration_factor } }
+				}
+				tooltip = ott_increase_hej_int
 			}
 		}
 		fixed_random_seed = no
@@ -2386,11 +2429,12 @@ OTT_Handling_Arab_Vilayets = {
 				ideology = ROOT
 				popularity = 0.015
 			}
-			add_to_variable = { hej_integration_factor = 5 tooltip = ott_increase_hej_int }
-			clamp_variable = {
-				var = hej_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				hej_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = hej_integration_factor } }
+				}
+				tooltip = ott_increase_hej_int
 			}
 		}
 		fixed_random_seed = no
@@ -2580,11 +2624,12 @@ OTT_Handling_Arab_Vilayets = {
 				ideology = ROOT
 				popularity = 0.015
 			}
-			add_to_variable = { hej_integration_factor = 5 tooltip = ott_increase_hej_int }
-			clamp_variable = {
-				var = hej_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				hej_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = hej_integration_factor } }
+				}
+				tooltip = ott_increase_hej_int
 			}
 		}
 		fixed_random_seed = no
@@ -2691,11 +2736,12 @@ OTT_Handling_Arab_Vilayets = {
 				ideology = ROOT
 				popularity = 0.015
 			}
-			add_to_variable = { hej_integration_factor = 5 tooltip = ott_increase_hej_int }
-			clamp_variable = {
-				var = hej_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				hej_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = hej_integration_factor } }
+				}
+				tooltip = ott_increase_hej_int
 			}
 		}
 		fixed_random_seed = no
@@ -2733,11 +2779,12 @@ OTT_Handling_Iraqi_Vilayets = {
 			812 = {
 				ott_increase_revolt_risk = yes
 			}
-			add_to_variable = { irq_integration_factor = 20 tooltip = ott_increase_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				irq_integration_factor = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+				}
+				tooltip = ott_increase_irq_int
 			}
 			if = {
 				limit = { NOT = { has_country_flag = ASY_got_an_ass_whooping } }
@@ -2783,11 +2830,12 @@ OTT_Handling_Iraqi_Vilayets = {
 					modifier = protest_action_strong
 				}
 			}
-			add_to_variable = { irq_integration_factor = 5 tooltip = ott_increase_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				irq_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+				}
+				tooltip = ott_increase_irq_int
 			}
 		}
 		fixed_random_seed = no
@@ -2856,11 +2904,12 @@ OTT_Handling_Iraqi_Vilayets = {
 				ideology = ROOT
 				popularity = 0.015
 			}
-			add_to_variable = { irq_integration_factor = 5 tooltip = ott_increase_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				irq_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+				}
+				tooltip = ott_increase_irq_int
 			}
 		}
 		fixed_random_seed = no
@@ -2909,11 +2958,12 @@ OTT_Handling_Iraqi_Vilayets = {
 				ideology = ROOT
 				popularity = 0.015
 			}
-			add_to_variable = { irq_integration_factor = 10 tooltip = ott_increase_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				irq_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+				}
+				tooltip = ott_increase_irq_int
 			}
 		}
 		fixed_random_seed = no
@@ -3002,11 +3052,12 @@ OTT_Handling_Iraqi_Vilayets = {
 				ideology = ROOT
 				popularity = 0.015
 			}
-			add_to_variable = { irq_integration_factor = 10 tooltip = ott_increase_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				irq_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+				}
+				tooltip = ott_increase_irq_int
 			}
 		}
 		fixed_random_seed = no
@@ -3065,11 +3116,12 @@ OTT_Handling_Iraqi_Vilayets = {
 			812 = {
 				ott_increase_revolt_risk = yes
 			}
-			add_to_variable = { irq_integration_factor = 10 tooltip = ott_increase_irq_int }
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				irq_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+				}
+				tooltip = ott_increase_irq_int
 			}
 		}
 		fixed_random_seed = no
@@ -3176,11 +3228,12 @@ OTT_Handling_Libyan_Vilayets = {
 				ideology = ROOT
 				popularity = 0.015
 			}
-			add_to_variable = { tri_integration_factor = 50 tooltip = ott_increase_tri_int }
-			clamp_variable = {
-				var = tri_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				tri_integration_factor = {
+					value = 50
+					clamp = { min = 0 max = { value = 100 subtract = tri_integration_factor } }
+				}
+				tooltip = ott_increase_tri_int
 			}
 		}
 		fixed_random_seed = no
@@ -3228,11 +3281,12 @@ OTT_Handling_Libyan_Vilayets = {
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = { tri_integration_factor = 5 tooltip = ott_increase_tri_int }
-			clamp_variable = {
-				var = tri_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				tri_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = tri_integration_factor } }
+				}
+				tooltip = ott_increase_tri_int
 			}
 		}
 		fixed_random_seed = no
@@ -3274,11 +3328,12 @@ OTT_Handling_Libyan_Vilayets = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove OTT_TRI_Centralise_Taxation"
 			add_political_power = 50
-			add_to_variable = { tri_integration_factor = 20 tooltip = ott_increase_tri_int }
-			clamp_variable = {
-				var = tri_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				tri_integration_factor = {
+					value = 20
+					clamp = { min = 0 max = { value = 100 subtract = tri_integration_factor } }
+				}
+				tooltip = ott_increase_tri_int
 			}
 		}
 		fixed_random_seed = no
@@ -3352,11 +3407,12 @@ OTT_Handling_Libyan_Vilayets = {
 				ideology = ROOT
 				popularity = 0.015
 			}
-			add_to_variable = { tri_integration_factor = 10 tooltip = ott_increase_tri_int }
-			clamp_variable = {
-				var = tri_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				tri_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = tri_integration_factor } }
+				}
+				tooltip = ott_increase_tri_int
 			}
 		}
 		fixed_random_seed = no
@@ -3389,11 +3445,12 @@ OTT_Handling_Libyan_Vilayets = {
 				set_temp_variable = { ideology_change_var = -0.1 }
 				change_ruling_party_popularity = yes
 			}
-			add_to_variable = { tri_integration_factor = 5 tooltip = ott_increase_tri_int }
-			clamp_variable = {
-				var = tri_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				tri_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = tri_integration_factor } }
+				}
+				tooltip = ott_increase_tri_int
 			}
 			set_country_flag = ott_combatted_senussi_influence
 		}
@@ -3430,11 +3487,12 @@ OTT_Handling_Libyan_Vilayets = {
 			448 = {
 				increase_state_category_by_one_level = yes
 			}
-			add_to_variable = { tri_integration_factor = 10 tooltip = ott_increase_tri_int }
-			clamp_variable = {
-				var = tri_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				tri_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = tri_integration_factor } }
+				}
+				tooltip = ott_increase_tri_int
 			}
 		}
 		fixed_random_seed = no

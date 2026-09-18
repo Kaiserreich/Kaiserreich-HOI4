@@ -1249,13 +1249,11 @@ YUN_GXC_war_decision_category = {
 			modifier = {
 				factor = 0
 				has_idea = YUN_GXC_war_morale_idea_3
-				AND = {
-					controls_province = 1114 #Mengzi
-					controls_province = 1319 #Kunming
-					controls_province = 5072 #Zhaotong
-					controls_province = 7965 #Dali
-					controls_province = 10413 #Jinghong
-				}
+				controls_province = 1114 #Mengzi
+				controls_province = 1319 #Kunming
+				controls_province = 5072 #Zhaotong
+				controls_province = 7965 #Dali
+				controls_province = 10413 #Jinghong
 				has_game_rule = { rule = YUN_NPA_path option = DEFAULT }
 				NOT = { has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_NZH } }
 				NOT = { has_game_rule = { rule = YUN_forpol option = YUN_FORPOL_AGJ } }
@@ -1496,6 +1494,8 @@ YUN_grand_southern_reconstruction_decision_category = {
 		fire_only_once = yes
 
 		ai_will_do = { factor = 100 }
+
+		modifier = { civilian_factory_use = 1 }
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove YUN_charcoal_kiln"
@@ -2864,10 +2864,8 @@ YUN_provisional_constitution_crisis_decisions = {
 		available = {
 			if = {
 				limit = {
-					AND = {
-						has_country_flag = YUN_KMT_favourable_governor_guizhou
-						has_country_flag = YUN_KMT_favourable_governor_yunnan
-					}
+					has_country_flag = YUN_KMT_favourable_governor_guizhou
+					has_country_flag = YUN_KMT_favourable_governor_yunnan
 				}
 				custom_trigger_tooltip = { tooltip = YUN_KMT_favourable_governor_tt }
 				num_divisions_in_states = {
@@ -2945,10 +2943,8 @@ YUN_provisional_constitution_crisis_decisions = {
 		available = {
 			if = {
 				limit = {
-					AND = {
-						has_country_flag = YUN_KMT_favourable_governor_guizhou
-						has_country_flag = YUN_KMT_favourable_governor_yunnan
-					}
+					has_country_flag = YUN_KMT_favourable_governor_guizhou
+					has_country_flag = YUN_KMT_favourable_governor_yunnan
 				}
 				custom_trigger_tooltip = { tooltip = YUN_KMT_favourable_governor_tt }
 				num_divisions_in_states = {

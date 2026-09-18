@@ -181,8 +181,14 @@ country_event = {
 		activate_advisor = GUA_roderico_anzueto_valencia_sic
 		set_temp_variable = { coalition_partner_var = token:national_populist }
 		add_to_coalition = yes
-		GUA_jorge_ubico_castaneda = { promote_to_field_marshal = yes }
-		GUA_jose_maria_orellana = { kill_character = yes }
+		GUA_jorge_ubico_castaneda = {
+			set_character_flag = CEN_field_marshal
+			promote_to_field_marshal = yes
+		}
+		GUA_jose_maria_orellana = {
+			clr_character_flag = CEN_field_marshal
+			kill_character = yes
+		}
 		if = {
 			limit = { has_idea = GUA_socialist_compensation }
 			remove_ideas = GUA_socialist_compensation
@@ -727,8 +733,10 @@ country_event = {
 			base = 10
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = GUA_path option = GUA_PATH_RADSOC }
-				has_game_rule = { rule = GUA_path option = GUA_PATH_SOCDEM }
+				OR = {
+					has_game_rule = { rule = GUA_path option = GUA_PATH_RADSOC }
+					has_game_rule = { rule = GUA_path option = GUA_PATH_SOCDEM }
+				}
 			}
 		}
 		set_politics = {
@@ -737,7 +745,10 @@ country_event = {
 		activate_advisor = GUA_roderico_anzueto_valencia_sic
 		set_temp_variable = { coalition_partner_var = token:national_populist }
 		add_to_coalition = yes
-		GUA_jorge_ubico_castaneda = { promote_to_field_marshal = yes }
+		GUA_jorge_ubico_castaneda = {
+			set_character_flag = CEN_field_marshal
+			promote_to_field_marshal = yes
+		}
 		add_stability = -0.4
 		custom_effect_tooltip = GUA_UFC_increase_to_70
 		set_variable = { UFC_power = 70 }

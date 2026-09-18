@@ -32,11 +32,9 @@ focus_tree = {
 		y = 0
 
 		allow_branch = {
-			AND = {
-				has_government = social_liberal
-				NOT = {
-					has_country_leader = { character = SER_petar_ii }
-				}
+			has_government = social_liberal
+			NOT = {
+				has_country_leader = { character = SER_petar_ii }
 			}
 		}
 		available = {
@@ -93,13 +91,7 @@ focus_tree = {
 			}
 			has_idea = SER_konspiracija_idea
 		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 4
-				has_socialist_government = yes
-			}
-		}
+		ai_will_do = { factor = 25 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		select_effect = {
 			log = "[GetLogRoot]: Select Focus SER_smoke_filled_room"
@@ -108,6 +100,10 @@ focus_tree = {
 			clr_country_flag = SER_ai_insanity_check
 			#adding this here so AI won't take decisions in the time between starting this focus and assassination mission- thus help them stockpile PP in advance
 			set_country_flag = SER_ai_insanity_check
+			if = {
+				limit = { is_ai = yes }
+				activate_targeted_decision = { decision = AI_dont_spend_PP target = THIS }
+			}
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_smoke_filled_room"
@@ -140,7 +136,13 @@ focus_tree = {
 		available = {
 			SER_can_take_anti_konspiracija_action = yes
 		}
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 4
+				has_country_flag = SER_radical_pataut_ai
+			}
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_form_republican_guard"
@@ -171,9 +173,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_promote_young_officers"
 			custom_effect_tooltip = available_chief_of_airforce
-			show_ideas_tooltip = SER_zdenko_ulepic_air_chief
+			show_ideas_tooltip = SER_dorde_jovanovic_air_chief
 			hidden_effect = {
-				SER_zdenko_ulepic = { set_nationality = ROOT }
+				SER_dorde_jovanovic = { set_nationality = ROOT }
 			}
 			custom_effect_tooltip = tooltip_white_line
 			if = {
@@ -259,6 +261,10 @@ focus_tree = {
 				}
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -288,6 +294,10 @@ focus_tree = {
 				SER_konspiracija_under_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -323,6 +333,10 @@ focus_tree = {
 				}
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		bypass = {
 			has_completed_focus = SER_socialist_establish_suzor
 		}
@@ -358,6 +372,10 @@ focus_tree = {
 				SER_konspiracija_under_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -402,6 +420,10 @@ focus_tree = {
 				SER_konspiracija_under_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -434,6 +456,10 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -463,6 +489,10 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -493,6 +523,10 @@ focus_tree = {
 				SER_konspiracija_under_level_1 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -550,7 +584,7 @@ focus_tree = {
 
 	focus = {
 		id = SER_socialist_coalition
-		icon = GFX_goal_ideology_social_democrat
+		icon = GFX_goal_ideology_coalition_social_democrat_social_liberal
 		cost = 4
 
 		x = 1
@@ -661,7 +695,7 @@ focus_tree = {
 
 	focus = {
 		id = SER_radical_coalition
-		icon = GFX_goal_ideology_market_liberal
+		icon = GFX_goal_ideology_coalition_social_liberal_market_liberal
 		cost = 4
 
 		x = 1
@@ -848,6 +882,10 @@ focus_tree = {
 				SER_konspiracija_under_level_4 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -880,6 +918,10 @@ focus_tree = {
 				SER_konspiracija_under_level_4 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -930,6 +972,10 @@ focus_tree = {
 			}
 			is_subject = no
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -969,6 +1015,10 @@ focus_tree = {
 				SER_konspiracija_under_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -987,26 +1037,6 @@ focus_tree = {
 			}
 			random_owned_controlled_state = {
 				add_extra_state_shared_building_slots = 1
-			}
-			hidden_effect = {
-				#if radicals don't have game rule set (and didn't take venere_revolutions), roll 45-55 on whether to take consolidation or not
-				##(since otherwise they would almost always take "course of history" since its the only one open)
-				if = {
-					limit = {
-						NOT = { has_completed_focus = SER_venere_revolutions }
-						NOT = { has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM } }
-					}
-					random_list = {
-						45 = {
-							# Flag is set- AI will try and wait till conditions allow them to take SER_state_of_national_consolidation
-							##reason why its 1100 days is so SER won't wait forever in the rare case war never comes.
-							set_country_flag = { flag = SER_radicals_wait_for_consolidation days = 1100 value = 1 }
-						}
-						55 = {
-							#no flag is set- SER AI most likely takes SER_retain_the_course_of_history
-						}
-					}
-				}
 			}
 		}
 	}
@@ -1051,7 +1081,14 @@ focus_tree = {
 			factor = 100
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
+				has_country_flag = SER_radical_authdem_ai
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					any_enemy_country = { is_actual_major = yes }
+					date > 1939.6.1
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -1114,7 +1151,6 @@ focus_tree = {
 			hidden_effect = {
 				country_event = { id = serbia_events.45 days = 60 random_days = 20 }
 			}
-			clr_country_flag = SER_radicals_wait_for_consolidation
 		}
 	}
 
@@ -1157,7 +1193,11 @@ focus_tree = {
 				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 25 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_organise_greenshirts"
@@ -1200,7 +1240,11 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 25 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_party_state"
@@ -1233,7 +1277,11 @@ focus_tree = {
 				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 45 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_study_legionaries"
@@ -1285,7 +1333,11 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 25 }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_three_year_plan"
@@ -1324,7 +1376,11 @@ focus_tree = {
 				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 45 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_no_communists"
@@ -1357,7 +1413,11 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 25 }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_war_against_unemployment"
@@ -1390,7 +1450,11 @@ focus_tree = {
 				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 45 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_fan_nationalist_fervor"
@@ -1431,7 +1495,11 @@ focus_tree = {
 				NOT = { has_country_flag = SER_reassured_vasic }
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 45 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_the_second_pasic"
@@ -1470,7 +1538,7 @@ focus_tree = {
 			SER_has_founded_yugoslavia = no
 			# add more availables here
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 100 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_the_final_step"
@@ -1514,7 +1582,11 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 25 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_populist_policies"
@@ -1548,7 +1620,11 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
-		ai_will_do = { factor = 10 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 25 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_mediatization_of_politics"
@@ -1571,7 +1647,7 @@ focus_tree = {
 		allow_branch = {
 			has_country_flag = SER_sonu_has_broken
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 25 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_secret_police"
@@ -1599,16 +1675,12 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
+					has_country_flag = SER_radical_pataut_ai
 					AND = {
-						has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
+						has_country_flag = SER_radical_authdem_ai
 						NOT = { has_completed_focus = SER_agrarian_coalition }
 					}
 				}
-			}
-			modifier = {
-				factor = 0
-				has_country_flag = SER_radicals_wait_for_consolidation
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -1652,6 +1724,10 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -1684,6 +1760,10 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_retain_the_course_of_history
 		}
@@ -1722,6 +1802,10 @@ focus_tree = {
 				SER_konspiracija_under_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_retain_the_course_of_history
 		}
@@ -1752,6 +1836,10 @@ focus_tree = {
 				SER_konspiracija_under_level_1 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_censor_socialist_publications
 		}
@@ -1768,7 +1856,7 @@ focus_tree = {
 
 	focus = {
 		id = SER_republican_coalition
-		icon = GFX_goal_ideology_social_liberal
+		icon = GFX_goal_ideology_coalition_social_liberal_market_liberal
 		cost = 4
 
 		x = 1
@@ -1815,7 +1903,7 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
+				has_country_flag = SER_radical_pataut_ai
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -1831,7 +1919,6 @@ focus_tree = {
 			hidden_effect = {
 				country_event = { id = serbia_flavour_events.999 days = 30 random_days = 15 }
 			}
-			clr_country_flag = SER_radicals_wait_for_consolidation
 		}
 	}
 
@@ -2240,7 +2327,7 @@ focus_tree = {
 	focus = {
 		id = SER_legacy_of_svetozar_markovic
 		icon = GFX_goal_red_star_dove
-		cost = 6
+		cost = 9
 
 		relative_position_id = SER_Victory_for_the_People
 		x = 0
@@ -2254,9 +2341,10 @@ focus_tree = {
 				has_active_mission = SER_prove_to_the_people
 				has_active_mission = SER_defang_the_army
 				has_active_mission = SER_merge_the_coalition_parties
+				has_active_mission = SER_complete_the_revolution
 			}
 		}
-		ai_will_do = { factor = 20 }
+		ai_will_do = { factor = 60 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_legacy_of_svetozar_markovic"
@@ -2266,7 +2354,7 @@ focus_tree = {
 				}
 				add_days_mission_timeout = {
 					mission = SER_prove_to_the_people
-					days = 120
+					days = 180
 				}
 			}
 			if = {
@@ -2275,7 +2363,7 @@ focus_tree = {
 				}
 				add_days_mission_timeout = {
 					mission = SER_defang_the_army
-					days = 120
+					days = 180
 				}
 			}
 			if = {
@@ -2284,7 +2372,16 @@ focus_tree = {
 				}
 				add_days_mission_timeout = {
 					mission = SER_merge_the_coalition_parties
-					days = 120
+					days = 180
+				}
+			}
+			if = {
+				limit = {
+					has_active_mission = SER_complete_the_revolution
+				}
+				add_days_mission_timeout = {
+					mission = SER_complete_the_revolution
+					days = 90
 				}
 			}
 		}
@@ -2317,6 +2414,10 @@ focus_tree = {
 				}
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 50 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
@@ -2346,6 +2447,10 @@ focus_tree = {
 				has_completed_focus = SER_Third_Revolution
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -2386,6 +2491,10 @@ focus_tree = {
 				has_completed_focus = SER_Third_Revolution
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -2429,6 +2538,10 @@ focus_tree = {
 				has_completed_focus = SER_Third_Revolution
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
@@ -2459,6 +2572,10 @@ focus_tree = {
 				has_completed_focus = SER_Third_Revolution
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -2502,6 +2619,10 @@ focus_tree = {
 				has_completed_focus = SER_Third_Revolution
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
@@ -2569,8 +2690,16 @@ focus_tree = {
 			}
 			SER_konstantin_popovic = { custom_effect_tooltip = character_becomes_a_general }
 			hidden_effect = { SER_konstantin_popovic = { set_nationality = ROOT } }
-			SER_arsenije_jovanovic = { custom_effect_tooltip = character_becomes_a_general }
-			hidden_effect = { SER_arsenije_jovanovic = { set_nationality = ROOT } }
+			if = {
+				limit = { owns_state = 105 } #Montenegro
+				MNT = {
+					MNT_arsenije_jovanovic = { custom_effect_tooltip = character_becomes_a_general }
+					hidden_effect = { MNT_arsenije_jovanovic = { set_nationality = SER } }
+					custom_effect_tooltip = tooltip_white_line
+					MNT_savo_orovic = { custom_effect_tooltip = character_becomes_a_general }
+					hidden_effect = { MNT_savo_orovic = { set_nationality = SER } }
+				}
+			}
 		}
 	}
 
@@ -2641,6 +2770,8 @@ focus_tree = {
 				SER_socialist_control = 3
 			}
 			has_socialist_government = yes
+			767 = { is_owned_by_ROOT_or_subject = yes } #Nish
+			has_global_flag = balkan_war_ended
 		}
 		prerequisite = {
 			focus = SER_young_guard_clique
@@ -2737,11 +2868,16 @@ focus_tree = {
 				#TODO: revert when bug with country_leader variable is fixed
 				SER_vukasin_markovic = { custom_effect_tooltip = character_becomes_a_general }
 			}
+			SER_sreten_zujovic = { custom_effect_tooltip = character_becomes_a_general }
+			hidden_effect = { SER_sreten_zujovic = { set_nationality = ROOT } }
 			if = {
 				limit = { owns_state = 105 } #Montenegro
 				MNT = {
 					MNT_blazo_jovanovic = { custom_effect_tooltip = character_becomes_a_general }
 					hidden_effect = { MNT_blazo_jovanovic = { set_nationality = ROOT } }
+					custom_effect_tooltip = tooltip_white_line
+					MNT_sava_kovacevic = { custom_effect_tooltip = character_becomes_a_general }
+					hidden_effect = { MNT_sava_kovacevic = { set_nationality = SER } }
 				}
 			}
 		}
@@ -3733,9 +3869,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -3743,7 +3881,7 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
+				has_country_flag = SER_monarchy_natpop_ai
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -3769,9 +3907,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -3780,8 +3920,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 				NOT = { has_completed_focus = SER_national_regeneration }
 			}
@@ -3813,9 +3953,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -3824,8 +3966,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 				NOT = { has_completed_focus = SER_national_regeneration }
 			}
@@ -3858,9 +4000,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -3869,8 +4013,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 				has_completed_focus = SER_militaristic_corporatism
 			}
@@ -3894,7 +4038,7 @@ focus_tree = {
 
 	focus = {
 		id = SER_militaristic_corporatism
-		icon = GFX_goal_generic_corporatism
+		icon = GFX_goal_generic_militarism
 		cost = 6
 
 		relative_position_id = SER_November_Sixth_Dictatorship
@@ -3907,9 +4051,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -3918,8 +4064,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 				has_completed_focus = SER_god_king_fatherland
 			}
@@ -3970,9 +4116,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -3981,8 +4129,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 				has_completed_focus = SER_militaristic_corporatism
 			}
@@ -4014,9 +4162,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -4024,7 +4174,7 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
+				has_country_flag = SER_monarchy_pataut_ai
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -4050,9 +4200,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -4061,8 +4213,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 				NOT = { has_completed_focus = SER_military_dominance }
 			}
@@ -4098,9 +4250,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -4109,8 +4263,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 				NOT = { has_completed_focus = SER_military_dominance }
 			}
@@ -4150,9 +4304,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -4189,9 +4345,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -4200,8 +4358,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 				OR = {
 					has_completed_focus = SER_establish_zbor
@@ -4236,9 +4394,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_seven_focuses_max_tt
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				check_variable = { SER_total_foci < 7 }
+				check_expr = {
+					value = SER_zivkovic_foci
+					add = SER_ljotic_foci
+					less_than = 7
+				}
 			}
 			has_dictatorship_government = yes
 		}
@@ -4247,8 +4407,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 				OR = {
 					has_completed_focus = SER_establish_zbor
@@ -4353,6 +4513,10 @@ focus_tree = {
 				SER_konspiracija_under_level_5 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_Montenegrin_Opium"
@@ -4408,7 +4572,19 @@ focus_tree = {
 		available = {
 			SER_has_black_monday = yes
 		}
-		ai_will_do = { factor = 30 }
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 4
+				has_country_flag = SER_republican_ai
+				has_active_mission = SER_black_monday_timer
+			}
+			modifier = {
+				factor = 0.25
+				NOT = { has_country_flag = SER_republican_ai }
+				has_active_mission = SER_black_monday_timer
+			}
+		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_Emergency_Economic_Relief"
@@ -4502,6 +4678,10 @@ focus_tree = {
 				SER_konspiracija_under_level_5 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
@@ -4528,6 +4708,10 @@ focus_tree = {
 				SER_konspiracija_under_level_4 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
@@ -4612,6 +4796,10 @@ focus_tree = {
 				SER_konspiracija_under_level_6 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
@@ -4652,6 +4840,10 @@ focus_tree = {
 				SER_konspiracija_under_level_6 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_Nationalize_SARTID
 		}
@@ -4684,6 +4876,10 @@ focus_tree = {
 				SER_konspiracija_under_level_5 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_Economic_Structuralism"
@@ -4712,6 +4908,10 @@ focus_tree = {
 				SER_konspiracija_under_level_4 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_State_Sponsored_Construction_Works"
@@ -4744,6 +4944,10 @@ focus_tree = {
 				SER_konspiracija_under_level_4 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_State_Sponsored_Construction_Works
 		}
@@ -4776,6 +4980,10 @@ focus_tree = {
 				SER_konspiracija_under_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_Expand_The_Bor_Mines
 		}
@@ -4803,6 +5011,10 @@ focus_tree = {
 				SER_konspiracija_under_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_Expand_The_Bor_Mines
 		}
@@ -4836,6 +5048,10 @@ focus_tree = {
 				SER_konspiracija_under_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_Expand_The_Bor_Mines
 		}
@@ -4930,8 +5146,24 @@ focus_tree = {
 				SER_konspiracija_level_1 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			factor = 40
+			modifier = {
+				factor = 4
+				has_country_flag = SER_republican_ai
+				has_active_mission = SER_revanchism_timer
+			}
+			modifier = {
+				factor = 0.3
+				has_country_flag = SER_radical_ai
+				has_active_mission = SER_revanchism_timer
+			}
+		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_conscription"
 			increase_conscription = yes
@@ -4957,8 +5189,24 @@ focus_tree = {
 				SER_konspiracija_level_1 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			factor = 40
+			modifier = {
+				factor = 4
+				has_country_flag = SER_republican_ai
+				has_active_mission = SER_revanchism_timer
+			}
+			modifier = {
+				factor = 0.3
+				has_country_flag = SER_radical_ai
+				has_active_mission = SER_revanchism_timer
+			}
+		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_raise_reserve_divisions"
 			custom_override_tooltip = {
@@ -5025,8 +5273,24 @@ focus_tree = {
 				SER_konspiracija_level_1 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 4
+				has_country_flag = SER_republican_ai
+				has_active_mission = SER_revanchism_timer
+			}
+			modifier = {
+				factor = 0.3
+				has_country_flag = SER_radical_ai
+				has_active_mission = SER_revanchism_timer
+			}
+		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_leave_free_trade_area"
 			if = {
@@ -5137,7 +5401,11 @@ focus_tree = {
 				}
 			}
 		}
-		ai_will_do = { factor = 100 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 200 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_resistance_behind_lines"
 			BUL = {
@@ -5174,7 +5442,11 @@ focus_tree = {
 				SER_konspiracija_level_2 = yes
 			}
 		}
-		ai_will_do = { factor = 100 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = { factor = 200 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_national_mobilization"
 			increase_economic_mobilisation = yes
@@ -5219,6 +5491,7 @@ focus_tree = {
 						has_completed_focus = SER_national_mobilization
 					}
 				}
+				date < 1937.2.1
 			}
 		}
 		select_effect = {
@@ -5657,6 +5930,10 @@ focus_tree = {
 		bypass = {
 			NOT = { has_war_with = MAC }
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_lure_strategy
 			focus = SER_destruction_strategy
@@ -6304,16 +6581,18 @@ focus_tree = {
 		y = 2
 
 		available = {
-			AND = {
-				106 = { is_owned_and_controlled_by = ROOT }
-				767 = { is_owned_and_controlled_by = ROOT }
-				765 = { is_owned_and_controlled_by = ROOT }
-			}
+			106 = { is_owned_and_controlled_by = ROOT }
+			767 = { is_owned_and_controlled_by = ROOT }
+			765 = { is_owned_and_controlled_by = ROOT }
 			OR = {
 				NOT = { has_idea = SER_konspiracija_idea }
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_War_Plan_Drina_March
 		}
@@ -6399,6 +6678,10 @@ focus_tree = {
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		prerequisite = {
 			focus = SER_National_Holdout
 		}
@@ -6586,7 +6869,23 @@ focus_tree = {
 				SER_konspiracija_level_1 = yes
 			}
 		}
-		ai_will_do = { factor = 25 }
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 4
+				has_country_flag = SER_republican_ai
+				has_active_mission = SER_revanchism_timer
+			}
+			modifier = {
+				factor = 0.5
+				has_country_flag = SER_radical_ai
+				has_active_mission = SER_revanchism_timer
+			}
+		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_Form_The_Military_Council"
@@ -6616,6 +6915,10 @@ focus_tree = {
 				SER_konspiracija_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
@@ -6645,6 +6948,10 @@ focus_tree = {
 				SER_konspiracija_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 4
 			modifier = {
@@ -6681,6 +6988,10 @@ focus_tree = {
 				SER_konspiracija_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 4
 			modifier = {
@@ -6723,6 +7034,10 @@ focus_tree = {
 				SER_konspiracija_level_4 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 4
 			modifier = {
@@ -6771,6 +7086,10 @@ focus_tree = {
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 4
 			modifier = {
@@ -6812,6 +7131,10 @@ focus_tree = {
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 4
 			modifier = {
@@ -6860,6 +7183,10 @@ focus_tree = {
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 4
 			modifier = {
@@ -6914,6 +7241,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = SER_Import_French_Armor
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 4
 			modifier = {
@@ -6976,6 +7307,10 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = SER_Import_Russian_Armor
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
 			factor = 4
 			modifier = {
@@ -7053,6 +7388,10 @@ focus_tree = {
 		prerequisite = {
 			focus = SER_Training_The_New_Guard
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 7 }
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
@@ -7079,8 +7418,12 @@ focus_tree = {
 				SER_konspiracija_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = {
-			factor = 4
+			factor = 10
 			modifier = {
 				factor = 2
 				has_war = yes
@@ -7196,6 +7539,10 @@ focus_tree = {
 		prerequisite = {
 			focus = SER_Form_The_Military_Council
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 3 }
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 		completion_reward = {
@@ -7280,6 +7627,10 @@ focus_tree = {
 				SER_konspiracija_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 4 }
 		search_filters = { FOCUS_FILTER_AIR_XP }
 		completion_reward = {
@@ -7306,6 +7657,10 @@ focus_tree = {
 				SER_konspiracija_level_2 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 4 }
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
 		completion_reward = {
@@ -7332,6 +7687,10 @@ focus_tree = {
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 4 }
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 		completion_reward = {
@@ -7369,6 +7728,10 @@ focus_tree = {
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 4 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
@@ -7400,6 +7763,10 @@ focus_tree = {
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 4 }
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
 		completion_reward = {
@@ -7432,6 +7799,10 @@ focus_tree = {
 				SER_konspiracija_level_4 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 4 }
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
 		completion_reward = {
@@ -7485,6 +7856,10 @@ focus_tree = {
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 4 }
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
 		completion_reward = {
@@ -7517,6 +7892,10 @@ focus_tree = {
 				SER_konspiracija_level_3 = yes
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 4 }
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
 		completion_reward = {
@@ -7560,6 +7939,10 @@ focus_tree = {
 				has_tech = basic_small_airframe
 			}
 		}
+
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+
 		ai_will_do = { factor = 4 }
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
 		completion_reward = {
@@ -8024,29 +8407,26 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_abolish_habsburg_legal_code"
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_bosnia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_BOS > 1 }
 				}
-				set_temp_variable = { checked_state = 3 } # Bosnia
+				set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_bosnia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SLV > 1 }
 				}
-				set_temp_variable = { checked_state = 4 } # Slovenia
+				set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_slovenia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			set_temp_variable = { YUG_political_capital_gain_change = 3 }
@@ -8070,16 +8450,14 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_YUG_all_ethnic_groups_level_8
-				AND = {
-					check_variable = { YUG_serbia_relations_level > 7 }
-					check_variable = { YUG_croatia_relations_level > 7 }
-					check_variable = { YUG_bosnia_relations_level > 7 }
-					check_variable = { YUG_slovenia_relations_level > 7 }
-					check_variable = { YUG_other_relations_level > 7 }
-				}
+				check_variable = { YUG_ethnicity_relations_level_SER > 7 }
+				check_variable = { YUG_ethnicity_relations_level_CRO > 7 }
+				check_variable = { YUG_ethnicity_relations_level_BOS > 7 }
+				check_variable = { YUG_ethnicity_relations_level_SLV > 7 }
+				check_variable = { YUG_ethnicity_relations_level_ALB > 7 }
 			}
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 30 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_integrate_education"
@@ -8105,10 +8483,10 @@ focus_tree = {
 		available = {
 			check_variable = {
 				tooltip = SER_YUG_bosnia_level_9
-				YUG_bosnia_relations_level > 8
+				YUG_ethnicity_relations_level_BOS > 8
 			}
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 30 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_princip_memorial"
@@ -8130,7 +8508,7 @@ focus_tree = {
 		prerequisite = {
 			focus = SER_YUG_integrate_education
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 30 }
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_invite_illyrian_officers"
@@ -8142,6 +8520,28 @@ focus_tree = {
 				CRO_mihajlo_lukic = { set_nationality = ROOT }
 				CRO_matija_canic = { set_nationality = ROOT }
 				CRO_edgar_angeli = { set_nationality = ROOT }
+			}
+			#slovene generals
+			if = {
+				limit = { has_socialist_government = yes }
+				show_unit_leaders_tooltip = SLV_franc_rozman
+				show_unit_leaders_tooltip = SLV_jaka_avsic
+				SLV = {
+					SLV_jaka_avsic = { set_nationality = ROOT }
+					SLV_franc_rozman = { set_nationality = ROOT }
+				}
+			}
+			else = {
+				show_unit_leaders_tooltip = SLV_leon_rupnik
+				show_unit_leaders_tooltip = SLV_ivan_prezelj
+				show_unit_leaders_tooltip = SLV_vladimir_vauhnik
+				show_unit_leaders_tooltip = SLV_jaka_avsic
+				SLV = {
+					SLV_leon_rupnik = { set_nationality = ROOT }
+					SLV_ivan_prezelj = { set_nationality = ROOT }
+					SLV_vladimir_vauhnik = { set_nationality = ROOT }
+					SLV_jaka_avsic = { set_nationality = ROOT }
+				}
 			}
 		}
 	}
@@ -8161,13 +8561,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_YUG_all_ethnic_groups_level_9
-				AND = {
-					check_variable = { YUG_serbia_relations_level > 8 }
-					check_variable = { YUG_croatia_relations_level > 8 }
-					check_variable = { YUG_bosnia_relations_level > 8 }
-					check_variable = { YUG_slovenia_relations_level > 8 }
-					check_variable = { YUG_other_relations_level > 8 }
-				}
+				check_variable = { YUG_ethnicity_relations_level_SER > 8 }
+				check_variable = { YUG_ethnicity_relations_level_CRO > 8 }
+				check_variable = { YUG_ethnicity_relations_level_BOS > 8 }
+				check_variable = { YUG_ethnicity_relations_level_SLV > 8 }
+				check_variable = { YUG_ethnicity_relations_level_ALB > 8 }
 			}
 		}
 		ai_will_do = { factor = 10 }
@@ -8193,13 +8591,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_YUG_all_ethnic_groups_level_9
-				AND = {
-					check_variable = { YUG_serbia_relations_level > 8 }
-					check_variable = { YUG_croatia_relations_level > 8 }
-					check_variable = { YUG_bosnia_relations_level > 8 }
-					check_variable = { YUG_slovenia_relations_level > 8 }
-					check_variable = { YUG_other_relations_level > 8 }
-				}
+				check_variable = { YUG_ethnicity_relations_level_SER > 8 }
+				check_variable = { YUG_ethnicity_relations_level_CRO > 8 }
+				check_variable = { YUG_ethnicity_relations_level_BOS > 8 }
+				check_variable = { YUG_ethnicity_relations_level_SLV > 8 }
+				check_variable = { YUG_ethnicity_relations_level_ALB > 8 }
 			}
 		}
 		ai_will_do = { factor = 10 }
@@ -8225,26 +8621,27 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = SER_YUG_all_ethnic_groups_level_10
-				check_variable = { YUG_serbia_relations_level = 10 }
-				check_variable = { YUG_croatia_relations_level = 10 }
-				check_variable = { YUG_bosnia_relations_level = 10 }
-				check_variable = { YUG_slovenia_relations_level = 10 }
-				check_variable = { YUG_other_relations_level = 10 }
+				check_variable = { YUG_ethnicity_relations_level_SER = 10 }
+				check_variable = { YUG_ethnicity_relations_level_CRO = 10 }
+				check_variable = { YUG_ethnicity_relations_level_BOS = 10 }
+				check_variable = { YUG_ethnicity_relations_level_SLV = 10 }
+				check_variable = { YUG_ethnicity_relations_level_ALB = 10 }
 			}
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 100 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_brotherhood_and_unity"
 			custom_effect_tooltip = SER_YUG_brotherhood_and_unity_tt
 			hidden_effect = {
 				remove_mission = YUG_rounds_system_mission
-				YUG_reset_yugoslavia_missions = yes
-				remove_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-				remove_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-				remove_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-				remove_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-				remove_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
+				clear_variable = 106.SER_YUG_decision_ethnicity_target #Macedonia
+				clear_variable = 765.SER_YUG_decision_ethnicity_target #Kosovo
+				clear_variable = 109.SER_YUG_decision_ethnicity_target #Central Croatia
+				clear_variable = 163.SER_YUG_decision_ethnicity_target #Dalmatia
+				clear_variable = 104.SER_YUG_decision_ethnicity_target #Bosnia
+				clear_variable = 102.SER_YUG_decision_ethnicity_target #Carniola
+				clear_variable = 107.SER_YUG_decision_ethnicity_target #Belgrade
 			}
 			custom_effect_tooltip = {
 				localization_key = tooltip_modify_dynmod
@@ -8282,7 +8679,7 @@ focus_tree = {
 		prerequisite = {
 			focus = SER_YUG_standardize_rail_gauges
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 20 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_bosnia_land_reform"
@@ -8296,14 +8693,13 @@ focus_tree = {
 			SER_increase_political_capital = yes
 			if = {
 				limit = {
-					check_variable = { YUG_bosnia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_BOS > 1 }
 					NOT = {
 						has_completed_focus = SER_YUG_brotherhood_and_unity
 					}
 				}
-				set_temp_variable = { checked_state = 3 } # Bosnia
+				set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_bosnia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 		}
@@ -8321,7 +8717,7 @@ focus_tree = {
 		prerequisite = {
 			focus = SER_YUG_bosnia_land_reform
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 20 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_croatia_land_reform"
@@ -8331,18 +8727,20 @@ focus_tree = {
 			103 = {
 				increase_state_category_by_one_level = yes
 			}
+			1125 = {
+				increase_state_category_by_one_level = yes
+			}
 			set_temp_variable = { YUG_political_capital_change = 2 }
 			SER_increase_political_capital = yes
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 					NOT = {
 						has_completed_focus = SER_YUG_brotherhood_and_unity
 					}
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 		}
@@ -8925,7 +9323,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_federal_constitution"
@@ -8949,7 +9347,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_serbo_croatian_language"
@@ -8974,16 +9372,16 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_local_governance"
 			custom_effect_tooltip = SER_YUG_local_governance_tt
-			add_to_variable = { YUG_pc_expenditure_serbia = 2 }
-			add_to_variable = { YUG_pc_expenditure_croatia = 2 }
-			add_to_variable = { YUG_pc_expenditure_bosnia = 2 }
-			add_to_variable = { YUG_pc_expenditure_slovenia = 2 }
-			add_to_variable = { YUG_pc_expenditure_other = 2 }
+			add_to_variable = { YUG_pc_expenditure_SER = 2 }
+			add_to_variable = { YUG_pc_expenditure_CRO = 2 }
+			add_to_variable = { YUG_pc_expenditure_BOS = 2 }
+			add_to_variable = { YUG_pc_expenditure_SLV = 2 }
+			add_to_variable = { YUG_pc_expenditure_ALB = 2 }
 			YUG_update_expenditure_missions = yes
 		}
 	}
@@ -9006,12 +9404,14 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 20 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_rep_bosniak_relations"
-			set_variable = { YUG_bosnia_pp_requirement = 0 }
-			custom_effect_tooltip = SER_YUG_bosnia_zero_demand_tt
+			set_temp_variable = { checked_ethnicity = BOS }
+			SER_set_ethnicity_pp_requirement_zero_target = yes
+			set_temp_variable = { YUG_political_capital_gain_change = 1 }
+			SER_increase_political_capital_gain = yes
 			add_political_power = 100
 		}
 	}
@@ -9034,17 +9434,16 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_rep_renew_precani_settlement"
 			if = {
 				limit = {
-					check_variable = { YUG_bosnia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_BOS > 1 }
 				}
-				set_temp_variable = { checked_state = 3 } # Bosnia
+				set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_bosnia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			custom_effect_tooltip = SER_YUG_rep_renew_precani_settlement_tt
@@ -9066,35 +9465,32 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_republican_concordat"
 			if = {
 				limit = {
-					check_variable = { YUG_serbia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SER > 1 }
 				}
-				set_temp_variable = { checked_state = 1 } # Serbia
+				set_temp_variable = { checked_ethnicity = SER } # Serbia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_serbia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_CRO < 10 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_croatia_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_SLV < 10 }
 				}
-				set_temp_variable = { checked_state = 4 } # Slovenia
+				set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_slovenia_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			add_stability = 0.05
@@ -9120,7 +9516,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_referendum_federalism"
@@ -9280,6 +9676,8 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_anti_imperialist_vanguard"
 			add_ideas = SER_YUG_anti_imperialist_vanguard_idea
+			clr_country_flag = SER_founded_belgradepact
+			clr_global_flag = SER_keeping_the_pact
 			if = {
 				limit = {
 					is_faction_leader = yes
@@ -9309,7 +9707,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_peoples_republics"
@@ -9335,7 +9733,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_soc_denationalization"
@@ -9358,7 +9756,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_soc_hero_cult"
@@ -9385,16 +9783,16 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_soc_collective_presidency"
 			custom_effect_tooltip = SER_YUG_local_governance_tt
-			add_to_variable = { YUG_pc_expenditure_serbia = 2 }
-			add_to_variable = { YUG_pc_expenditure_croatia = 2 }
-			add_to_variable = { YUG_pc_expenditure_bosnia = 2 }
-			add_to_variable = { YUG_pc_expenditure_slovenia = 2 }
-			add_to_variable = { YUG_pc_expenditure_other = 2 }
+			add_to_variable = { YUG_pc_expenditure_SER = 2 }
+			add_to_variable = { YUG_pc_expenditure_CRO = 2 }
+			add_to_variable = { YUG_pc_expenditure_BOS = 2 }
+			add_to_variable = { YUG_pc_expenditure_SLV = 2 }
+			add_to_variable = { YUG_pc_expenditure_ALB = 2 }
 			YUG_update_expenditure_missions = yes
 		}
 	}
@@ -9414,35 +9812,32 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_soc_secularism"
 			if = {
 				limit = {
-					check_variable = { YUG_serbia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SER > 1 }
 				}
-				set_temp_variable = { checked_state = 1 } # Serbia
+				set_temp_variable = { checked_ethnicity = SER } # Serbia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_serbia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_CRO < 10 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_SLV < 10 }
 				}
-				set_temp_variable = { checked_state = 3 } # Bosnia
+				set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_bosnia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			add_political_power = 100
@@ -9471,7 +9866,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_soc_party_supremacy"
@@ -9504,7 +9899,7 @@ focus_tree = {
 		available = {
 			104 = { is_owned_and_controlled_by = ROOT } #Bosnia
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_soc_move_the_capital"
@@ -9539,29 +9934,26 @@ focus_tree = {
 				}
 				if = {
 					limit = {
-						check_variable = { YUG_bosnia_relations_level < 8 }
+						check_variable = { YUG_ethnicity_relations_level_BOS < 8 }
 					}
-					set_temp_variable = { checked_state = 3 } # Bosnia
+					set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 					set_temp_variable = { ethnic_situation = 3 }
-					custom_effect_tooltip = YUG_bosnia_improve_relations_tt
 					YUG_update_ethnic_situation = yes
 				}
 				else_if = {
 					limit = {
-						check_variable = { YUG_bosnia_relations_level < 9 }
+						check_variable = { YUG_ethnicity_relations_level_BOS < 9 }
 					}
-					set_temp_variable = { checked_state = 3 } # Bosnia
+					set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 					set_temp_variable = { ethnic_situation = 2 }
-					custom_effect_tooltip = YUG_bosnia_improve_relations_tt
 					YUG_update_ethnic_situation = yes
 				}
 				else_if = {
 					limit = {
-						check_variable = { YUG_bosnia_relations_level < 10 }
+						check_variable = { YUG_ethnicity_relations_level_BOS < 10 }
 					}
-					set_temp_variable = { checked_state = 3 } # Bosnia
+					set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_bosnia_improve_relations_tt
 					YUG_update_ethnic_situation = yes
 				}
 			}
@@ -9712,6 +10104,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_balkan_socialist_federation"
+			clr_country_flag = SER_founded_belgradepact
+			clr_global_flag = SER_keeping_the_pact
 			if = {
 				limit = {
 					is_faction_leader = yes
@@ -9740,53 +10134,48 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_banovina_organisation"
 			if = {
 				limit = {
-					check_variable = { YUG_serbia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SER > 1 }
 				}
-				set_temp_variable = { checked_state = 1 } # Serbia
+				set_temp_variable = { checked_ethnicity = SER } # Serbia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_serbia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_bosnia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_BOS > 1 }
 				}
-				set_temp_variable = { checked_state = 3 } # Bosnia
+				set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_bosnia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SLV > 1 }
 				}
-				set_temp_variable = { checked_state = 4 } # Slovenia
+				set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_slovenia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_other_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_ALB > 1 }
 				}
-				set_temp_variable = { checked_state = 5 } # Other
+				set_temp_variable = { checked_ethnicity = ALB } # Other
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_other_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			set_temp_variable = { YUG_political_capital_gain_change = 3 }
@@ -9811,18 +10200,17 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_united_myth"
 			add_ideas = SER_YUG_national_myth
 			if = {
 				limit = {
-					check_variable = { YUG_serbia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SER > 1 }
 				}
-				set_temp_variable = { checked_state = 1 } # Serbia
+				set_temp_variable = { checked_ethnicity = SER } # Serbia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_serbia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			set_temp_variable = { YUG_political_capital_gain_change = 2 }
@@ -9848,17 +10236,16 @@ focus_tree = {
 		available = {
 			NOT = { has_country_leader = { character = SER_milan_stojadinovic } }
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_yugoslav_king"
 			if = {
 				limit = {
-					check_variable = { YUG_serbia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_SER < 10 }
 				}
-				set_temp_variable = { checked_state = 1 }
+				set_temp_variable = { checked_ethnicity = SER }
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_serbia_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			add_stability = 0.05
@@ -9882,7 +10269,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_defeat_tribalism"
@@ -9905,7 +10292,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_permeate_education"
@@ -9929,7 +10316,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_mass_integralist_movement"
@@ -9961,27 +10348,25 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_language_standardisation"
 			add_ideas = SER_YUG_serbocroatianslovenian
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SLV > 1 }
 				}
-				set_temp_variable = { checked_state = 4 } # Slovenia
+				set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_slovenia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			set_temp_variable = { YUG_political_capital_gain_change = 2 }
@@ -10007,7 +10392,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_anti_partisanship"
@@ -10192,21 +10577,21 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_award_piemont"
 			if = {
 				limit = {
-					check_variable = { YUG_serbia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_SER < 10 }
 				}
-				set_temp_variable = { checked_state = 1 }
+				set_temp_variable = { checked_ethnicity = SER }
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_serbia_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			set_temp_variable = { YUG_political_capital_gain_change = 1 }
 			SER_increase_political_capital_gain = yes
+			custom_effect_tooltip = SER_YUG_award_piemont_tt
 		}
 	}
 
@@ -10225,17 +10610,16 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_promote_cyrillic"
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 				}
-				set_temp_variable = { checked_state = 2 }
+				set_temp_variable = { checked_ethnicity = CRO }
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			set_temp_variable = { YUG_political_capital_gain_change = 1 }
@@ -10259,7 +10643,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_political_centralisation"
@@ -10282,16 +10666,16 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_ballot_box_centralization"
 			custom_effect_tooltip = SER_YUG_local_governance_tt
-			add_to_variable = { YUG_pc_expenditure_serbia = 2 }
-			add_to_variable = { YUG_pc_expenditure_croatia = 2 }
-			add_to_variable = { YUG_pc_expenditure_bosnia = 2 }
-			add_to_variable = { YUG_pc_expenditure_slovenia = 2 }
-			add_to_variable = { YUG_pc_expenditure_other = 2 }
+			add_to_variable = { YUG_pc_expenditure_SER = 2 }
+			add_to_variable = { YUG_pc_expenditure_CRO = 2 }
+			add_to_variable = { YUG_pc_expenditure_BOS = 2 }
+			add_to_variable = { YUG_pc_expenditure_SLV = 2 }
+			add_to_variable = { YUG_pc_expenditure_ALB = 2 }
 			YUG_update_expenditure_missions = yes
 		}
 	}
@@ -10311,7 +10695,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_heritage_of_two_revolutions"
@@ -10336,25 +10720,17 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_islamic_religious_community"
-			if = {
-				limit = {
-					check_variable = { YUG_bosnia_relations_level < 10 }
-				}
-				set_temp_variable = { checked_state = 3 } # Bosnia
-				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_bosnia_improve_relations_tt
-				YUG_update_ethnic_situation = yes
-			}
-			else = {
-				set_temp_variable = { YUG_political_capital_change = 1 }
-				SER_increase_political_capital = yes
-				104 = {
-					add_extra_state_shared_building_slots = 1
-				}
+			set_temp_variable = { checked_ethnicity = BOS } # Bosnia
+			set_temp_variable = { ethnic_situation = 1 }
+			YUG_update_ethnic_situation = yes
+			set_temp_variable = { YUG_political_capital_change = 1 }
+			SER_increase_political_capital = yes
+			104 = {
+				add_extra_state_shared_building_slots = 1
 			}
 		}
 	}
@@ -10374,26 +10750,24 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_renew_settlement_decrees"
 			if = {
 				limit = {
-					check_variable = { YUG_other_relations_level > 2 }
+					check_variable = { YUG_ethnicity_relations_level_ALB > 2 }
 				}
-				set_temp_variable = { checked_state = 5 }
+				set_temp_variable = { checked_ethnicity = ALB }
 				set_temp_variable = { ethnic_situation = -2 }
-				custom_effect_tooltip = YUG_other_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			else_if = {
 				limit = {
-					check_variable = { YUG_other_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_ALB > 1 }
 				}
-				set_temp_variable = { checked_state = 5 }
+				set_temp_variable = { checked_ethnicity = ALB }
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_other_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			set_temp_variable = { YUG_political_capital_gain_change = 2 }
@@ -10518,7 +10892,7 @@ focus_tree = {
 		available = {
 			is_subject = no
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_royal_form_yugosphere"
@@ -10614,7 +10988,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_royal_federal_constitution"
@@ -10638,7 +11012,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_royal_serbo_croatian_language"
@@ -10663,16 +11037,16 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_royal_local_governance"
 			custom_effect_tooltip = SER_YUG_local_governance_tt
-			add_to_variable = { YUG_pc_expenditure_serbia = 2 }
-			add_to_variable = { YUG_pc_expenditure_croatia = 2 }
-			add_to_variable = { YUG_pc_expenditure_bosnia = 2 }
-			add_to_variable = { YUG_pc_expenditure_slovenia = 2 }
-			add_to_variable = { YUG_pc_expenditure_other = 2 }
+			add_to_variable = { YUG_pc_expenditure_SER = 2 }
+			add_to_variable = { YUG_pc_expenditure_CRO = 2 }
+			add_to_variable = { YUG_pc_expenditure_BOS = 2 }
+			add_to_variable = { YUG_pc_expenditure_SLV = 2 }
+			add_to_variable = { YUG_pc_expenditure_ALB = 2 }
 			YUG_update_expenditure_missions = yes
 		}
 	}
@@ -10695,12 +11069,14 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 20 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_royal_rep_bosniak_relations"
-			set_variable = { YUG_bosnia_pp_requirement = 0 }
-			custom_effect_tooltip = SER_YUG_bosnia_zero_demand_tt
+			set_temp_variable = { checked_ethnicity = BOS }
+			SER_set_ethnicity_pp_requirement_zero_target = yes
+			set_temp_variable = { YUG_political_capital_gain_change = 1 }
+			SER_increase_political_capital_gain = yes
 			add_political_power = 100
 		}
 	}
@@ -10723,17 +11099,16 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_royal_rep_renew_precani_settlement"
 			if = {
 				limit = {
-					check_variable = { YUG_bosnia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_BOS > 1 }
 				}
-				set_temp_variable = { checked_state = 3 } # Bosnia
+				set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_bosnia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			custom_effect_tooltip = SER_YUG_rep_renew_precani_settlement_tt
@@ -10755,35 +11130,32 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_royal_republican_concordat"
 			if = {
 				limit = {
-					check_variable = { YUG_serbia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SER > 1 }
 				}
-				set_temp_variable = { checked_state = 1 } # Serbia
+				set_temp_variable = { checked_ethnicity = SER } # Serbia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_serbia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_CRO < 10 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_croatia_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_SLV < 10 }
 				}
-				set_temp_variable = { checked_state = 4 } # Slovenia
+				set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_slovenia_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			add_stability = 0.05
@@ -10809,7 +11181,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_royal_referendum_federalism"
@@ -10838,7 +11210,7 @@ focus_tree = {
 		bypass = {
 			has_completed_focus = SER_YUG_brotherhood_and_unity
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 40 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SER_YUG_royal_grace"
@@ -10846,38 +11218,34 @@ focus_tree = {
 			SER_increase_political_capital = yes
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_CRO < 10 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_croatia_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_bosnia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_BOS < 10 }
 				}
-				set_temp_variable = { checked_state = 3 } # Bosnia
+				set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_bosnia_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_SLV < 10 }
 				}
-				set_temp_variable = { checked_state = 4 } # Slovenia
+				set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_slovenia_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_other_relations_level < 10 }
+					check_variable = { YUG_ethnicity_relations_level_ALB < 10 }
 				}
-				set_temp_variable = { checked_state = 5 } # Other
+				set_temp_variable = { checked_ethnicity = ALB } # Other
 				set_temp_variable = { ethnic_situation = 1 }
-				custom_effect_tooltip = YUG_other_improve_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 		}

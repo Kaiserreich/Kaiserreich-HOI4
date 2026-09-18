@@ -3,6 +3,24 @@ RSA_setup_boldyrev = {
 		RUS = {
 			every_owned_state = { #Transfer occupied states if they exist
 				limit = {
+					OR = {
+						region = 40 #Transvolga
+						AND = {
+							region = 132 #Western Russia
+							NOT = { state = 216 } #Olonets
+						}
+						region = 133 #Central Russia
+						region = 135 #North Caucasus
+						AND = {
+							region = 137 #Caspian Lowlands
+							NOT = {
+								state = 406 #Guryev
+								state = 581 #Uralsk
+							}
+						}
+						region = 150 #Arctic Russia
+						region = 256 #Ural Mountains
+					}
 					controller = {
 						OR = {
 							tag = GER

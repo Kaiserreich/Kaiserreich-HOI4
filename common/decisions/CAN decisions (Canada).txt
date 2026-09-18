@@ -2465,6 +2465,7 @@ CAN_iedc_decisions = {
 		}
 
 		visible = {
+			has_idea = CAN_iedc_main
 			has_socialist_government = no
 			is_in_faction_with = FROM
 			FROM = {
@@ -2482,7 +2483,6 @@ CAN_iedc_decisions = {
 		target_trigger = {
 			is_in_faction_with = FROM
 			FROM = {
-				has_socialist_government = no
 				is_in_economic_sphere = no
 				NOT = { has_country_flag = CAN_refused_iedc }
 				NOT = { has_country_flag = CAN_invited_to_iedc }
@@ -2505,25 +2505,29 @@ CAN_iedc_decisions = {
 
 	CAN_iedc_economic_investment_home = {
 		icon = generic_industry
+		allowed = { always = no } #Added/removed when current leader changes
+		priority = 4
+
 		available = {
 			custom_override_tooltip = {
 				tooltip = CAN_iedc_invest_year
-				OR = {
-					NOT = { has_country_flag = CAN_iedc_investment }
-					has_country_flag = { flag = CAN_iedc_investment days > 364 }
-				}
+				NOT = { has_country_flag = CAN_iedc_investment }
 			}
 			custom_override_tooltip = {
 				tooltip = CAN_iedc_can_invest
 				check_expr = {
-					value = FROM.iedc_civ_factories
-					add = FROM.iedc_mil_factories
-					add = FROM.iedc_nav_factories
+					value = iedc_civ_factories
+					add = iedc_mil_factories
+					add = iedc_nav_factories
 					multiply = 10
 					subtract = FROM.num_of_controlled_factories
-					less_than = { value = 1 }
+					less_than = 1
 				}
 			}
+		}
+
+		visible = {
+			has_idea = CAN_iedc_main
 		}
 
 		custom_cost_text = CAN_iedc_100pp
@@ -2534,7 +2538,7 @@ CAN_iedc_decisions = {
 		fire_only_once = no
 
 		complete_effect = {
-			log = "[GetLogRoot]: Decision complete CAN_iedc_economic_investment_home"
+			log = "[GetLogRoot][GetLogFrom]: Decision complete CAN_iedc_economic_investment_home"
 			subtract_from_variable = { global.iedc_pp = 100 }
 			country_event = entente_events.6
 		}
@@ -2570,12 +2574,7 @@ CAN_iedc_decisions = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = CAN_iedc_invest_year_FROM
-				FROM = {
-					OR = {
-						NOT = { has_country_flag = CAN_iedc_investment }
-						has_country_flag = { flag = CAN_iedc_investment days > 364 }
-					}
-				}
+				FROM = { NOT = { has_country_flag = CAN_iedc_investment } }
 			}
 			custom_override_tooltip = {
 				tooltip = CAN_iedc_can_invest_FROM
@@ -2585,12 +2584,13 @@ CAN_iedc_decisions = {
 					add = FROM.iedc_nav_factories
 					multiply = 10
 					subtract = FROM.num_of_controlled_factories
-					less_than = { value = 1 }
+					less_than = 1
 				}
 			}
 		}
 
 		visible = {
+			has_idea = CAN_iedc_main
 			FROM = { is_in_economic_sphere_led_by_ROOT = yes }
 		}
 
@@ -2606,7 +2606,10 @@ CAN_iedc_decisions = {
 			has_idea = CAN_iedc_main
 		}
 		target_trigger = {
-			FROM = { is_in_economic_sphere_led_by_ROOT = yes }
+			FROM = {
+				is_in_economic_sphere_led_by_ROOT = yes
+				NOT = { has_country_flag = CAN_iedc_investment }
+			}
 		}
 
 		complete_effect = {
@@ -3844,7 +3847,7 @@ CAN_new_england_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove CAN_put_down_rebellion"
 			clr_country_flag = CAN_is_suppressing_NEE
-			add_to_variable = { var = global.CAN_yankee_rebellion value = -1 }
+			add_to_variable = { global.CAN_yankee_rebellion = -1 }
 			FROM = {
 				remove_dynamic_modifier = { modifier = CAN_nee_resistance }
 				custom_effect_tooltip = tooltip_white_line

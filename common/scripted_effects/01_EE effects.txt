@@ -3,12 +3,11 @@ MIE_form_intermarium = {
 		limit = { NOT = { has_global_flag = MIE_intermarium_formed } }
 		set_global_flag = MIE_intermarium_formed
 		set_global_flag = MIE_intermarium_active
-		every_country = {
-			limit = {
-				is_in_faction_with = GER
-				is_possible_intermarium_country = yes
+		GER = {
+			every_faction_member = {
+				limit = { is_possible_intermarium_country = yes }
+				MIE_add_to_intermarium = yes
 			}
-			MIE_add_to_intermarium = yes
 		}
 		MIE_move_to_next_intermarium_leader = yes
 		for_each_scope_loop = {

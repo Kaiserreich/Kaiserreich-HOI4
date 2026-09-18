@@ -3271,7 +3271,7 @@ focus_tree = {
 
 	focus = {
 		id = DEI_dissolve_the_volksraad
-		icon = GFX_goal_DEI_focus_disband_volksraad
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
 		cost = 5
 
 		relative_position_id = DEI_de_jonge_resigns
@@ -4118,15 +4118,11 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed HOLEX_office_of_extraordinary_affairs"
 			unlock_decision_category_tooltip = HOLEX_exiles_resistance_category
-			set_variable = { var = holex_active_resistance_members value = 0 }
-			set_variable = { var = holex_free_hiding_spots value = 0 }
-			set_variable = { var = holex_hiding_resistancemembers value = 0 }
-			clamp_variable = { var = holex_active_resistance_members min = 0 }
-			clamp_variable = { var = holex_free_hiding_spots min = 0 }
-			clamp_variable = { var = holex_hiding_resistancemembers min = 0 }
+			set_variable = { holex_active_resistance_members = 0 }
+			set_variable = { holex_free_hiding_spots = 0 }
+			set_variable = { holex_hiding_resistancemembers = 0 }
 			HOL = {
-				set_variable = { var = holex_informants value = 0 }
-				clamp_variable = { var = holex_informants min = 0 }
+				set_variable = { holex_informants = 0 }
 			}
 			if = {
 				limit = {
@@ -4172,7 +4168,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed HOLEX_activate_stay_behind"
 			custom_effect_tooltip = holex_tt_staybehind
-			add_to_variable = { var = holex_active_resistance_members value = 750 }
+			add_to_variable = { holex_active_resistance_members = 750 }
 		}
 	}
 

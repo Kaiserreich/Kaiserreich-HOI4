@@ -124,7 +124,7 @@ country_event = { #Restoration of the Dalai Lama
 		hidden_effect = {
 			news_event = { id = tibet_events.100 days = 1 } # Greeting the Dalai Lama
 			BHU = {
-				country_event = { id = bhutan_events.121 days = 14 }
+				country_event = { id = bhutan_events.740 days = 14 }
 			}
 			if = {
 				limit = { has_government = paternal_autocrat }
@@ -616,7 +616,6 @@ country_event = { # Nepal agrees to close Sikkhim border, Tibet Improvment are u
 		log = "[GetLogInfo]: event tibet_events.35 option tibet_events.35.a"
 		name = tibet_events.35.a
 		add_stability = 0.05
-		set_country_flag = TIB_Patauto_path
 		hidden_effect = {
 			country_event = { id = tibet_events.42 days = 7 }
 		}
@@ -753,7 +752,6 @@ country_event = { # Tibet Improvment soldiers are routed, 9th Pachen Lama is cap
 		log = "[GetLogInfo]: event tibet_events.39 option tibet_events.39.a"
 		name = tibet_events.39.a
 		add_stability = 0.10
-		set_country_flag = TIB_Patauto_path
 		hidden_effect = {
 			country_event = { id = tibet_events.42 days = 30 }
 		}
@@ -861,6 +859,7 @@ country_event = { # Tibet Improvment military returns to Tibet, with modernized 
 		hidden_effect = {
 			HND = { clear_embargo_ROOT = yes }
 			remove_opinion_modifier = { target = NEP modifier = KR_disapproves_of_govt }
+			BHU = { country_event = { id = bhutan_events.746 days = 31 } }
 		}
 	}
 }
@@ -962,6 +961,7 @@ country_event = { # Dmag Smar chase bandits out, declare that no Tibetan can go 
 		log = "[GetLogInfo]: event tibet_events.45 option tibet_events.45.a"
 		name = tibet_events.45.a
 		add_political_power = 10
+		set_country_flag = TIB_Patauto_path
 		add_opinion_modifier = {
 			target = RAJ
 			modifier = KR_disapproves_of_govt
@@ -976,7 +976,7 @@ country_event = { # Dmag Smar chase bandits out, declare that no Tibetan can go 
 		}
 		hidden_effect = {
 			BHU = {
-				country_event = { id = bhutan_events.126 days = 21 }
+				country_event = { id = bhutan_events.745 days = 21 }
 			}
 		}
 	}
@@ -1070,7 +1070,7 @@ country_event = { # Prime Minister Trimön has mental breakdown, walks out to cr
 			country_event = { id = tibet_events.108 days = 520 random_days = 30 }
 			country_event = { id = tibet_events.109 days = 600 random_days = 40 }
 			BHU = {
-				country_event = { id = bhutan_events.125 days = 21 }
+				country_event = { id = bhutan_events.744 days = 21 }
 			}
 			random_character = {
 				limit = { is_character = TIB_changra }
@@ -1309,7 +1309,7 @@ country_event = { # Election is held, only Tibetan male citizens were allowed to
 			popularity = 0.08
 		}
 		hidden_effect = {
-			BHU = { country_event = { id = bhutan_events.122 days = 31 } }
+			BHU = { country_event = { id = bhutan_events.741 days = 31 } }
 		}
 	}
 }

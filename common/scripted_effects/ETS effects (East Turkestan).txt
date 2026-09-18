@@ -22,18 +22,21 @@ ETS_change_popularities = {
 	set_temp_variable = { temp9 = party_popularity_100@social_liberal }
 	set_temp_variable = { temp10 = party_popularity_100@market_liberal }
 
-	set_temp_variable = { temp_total = 100 }
-	subtract_from_temp_variable = { temp_total = temp1 }
-	subtract_from_temp_variable = { temp_total = temp2 }
-	subtract_from_temp_variable = { temp_total = temp3 }
-	subtract_from_temp_variable = { temp_total = temp4 }
-	subtract_from_temp_variable = { temp_total = temp5 }
-	subtract_from_temp_variable = { temp_total = temp6 }
-	subtract_from_temp_variable = { temp_total = temp7 }
-	subtract_from_temp_variable = { temp_total = temp8 }
-	subtract_from_temp_variable = { temp_total = temp9 }
-	subtract_from_temp_variable = { temp_total = temp10 }
-	add_to_temp_variable = { temp3 = temp_total }
+	add_to_temp_variable = { #to avoid rounding errors
+		temp3 = {
+			value = 100
+			subtract = temp1
+			subtract = temp2
+			subtract = temp3
+			subtract = temp4
+			subtract = temp5
+			subtract = temp6
+			subtract = temp7
+			subtract = temp8
+			subtract = temp9
+			subtract = temp10
+		}
+	}
 
 	add_to_temp_variable = { temp1 = ETS_change }
 	subtract_from_temp_variable = { temp2 = ETS_change }

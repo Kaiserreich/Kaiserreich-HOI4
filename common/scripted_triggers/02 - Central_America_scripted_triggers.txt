@@ -16,6 +16,7 @@ CEN_country_is_friendly = {
 
 CEN_character_should_transfer_socialist = {
 	is_generic_character = no
+	NOT = { has_trait = KR_head_of_intelligence }
 	OR = {
 		can_be_country_leader = yes
 		is_unit_leader = yes
@@ -32,6 +33,7 @@ CEN_character_should_transfer_socialist = {
 
 CEN_character_should_transfer_liberal = {
 	is_generic_character = no
+	NOT = { has_trait = KR_head_of_intelligence }
 	OR = {
 		can_be_country_leader = yes
 		is_unit_leader = yes
@@ -48,6 +50,7 @@ CEN_character_should_transfer_liberal = {
 
 CEN_character_should_transfer_reactionary = {
 	is_generic_character = no
+	NOT = { has_trait = KR_head_of_intelligence }
 	OR = {
 		can_be_country_leader = yes
 		is_unit_leader = yes

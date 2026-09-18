@@ -1103,18 +1103,12 @@ country_event = {
 			target = ENT
 			modifier = KR_approves_of_govt
 		}
-		every_country = {
-			limit = {
-				OR = {
-					tag = CAN
-					tag = GBR
-					is_in_faction_with = CAN
-					is_in_faction_with = GBR
+		ENT = {
+			every_faction_member = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = KR_close_allies
 				}
-			}
-			add_opinion_modifier = {
-				target = ROOT
-				modifier = KR_close_allies
 			}
 		}
 	}

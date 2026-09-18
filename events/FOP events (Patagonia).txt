@@ -96,16 +96,13 @@ country_event = { # get support from europe
 	desc = patagonia_events.5.d
 	picture = GFX_report_event_generic_german_volunteers
 
-	immediate = {
-		set_variable = { fop_equipment_amount = 900 }
-	}
-
 	is_triggered_only = yes
 
 	option = { # manpower and some guns
 		log = "[GetLogInfo]: event patagonia_events.5 option patagonia_events.5.a"
 		name = patagonia_events.5.a
 		ai_chance = { base = 30 }
+		set_temp_variable = { fop_equipment_amount = 900 }
 		FOP_send_infantry_equipment_or_penalty_if_unavailable = yes
 		add_manpower = -9000
 		FOP = {
@@ -372,15 +369,12 @@ country_event = { # Chilean Guns
 	desc = patagonia_events.13.d
 	picture = GFX_report_event_BEL_Soldiers_Waiting
 
-	immediate = {
-		set_variable = { fop_equipment_amount = 1000 }
-	}
-
 	is_triggered_only = yes
 
 	option = {
 		log = "[GetLogInfo]: event patagonia_events.13 option patagonia_events.13.a"
 		name = patagonia_events.13.a
+		set_temp_variable = { fop_equipment_amount = 1000 }
 		FOP_send_infantry_equipment_or_penalty_if_unavailable = yes
 		hidden_effect = {
 			FOP = { country_event = patagonia_events.16 }
@@ -394,15 +388,12 @@ country_event = { # French Guns
 	desc = patagonia_events.14.d
 	picture = GFX_report_event_BEL_Soldiers_Waiting
 
-	immediate = {
-		set_variable = { fop_equipment_amount = 1000 }
-	}
-
 	is_triggered_only = yes
 
 	option = {
 		log = "[GetLogInfo]: event patagonia_events.14 option patagonia_events.14.a"
 		name = patagonia_events.14.a
+		set_temp_variable = { fop_equipment_amount = 1000 }
 		FOP_send_infantry_equipment_or_penalty_if_unavailable = yes
 		hidden_effect = {
 			FOP = { country_event = patagonia_events.17 }
@@ -416,15 +407,12 @@ country_event = { # British Guns
 	desc = patagonia_events.15.d
 	picture = GFX_report_event_BEL_Soldiers_Waiting
 
-	immediate = {
-		set_variable = { fop_equipment_amount = 1000 }
-	}
-
 	is_triggered_only = yes
 
 	option = {
 		log = "[GetLogInfo]: event patagonia_events.15 option patagonia_events.15.a"
 		name = patagonia_events.15.a
+		set_temp_variable = { fop_equipment_amount = 1000 }
 		FOP_send_infantry_equipment_or_penalty_if_unavailable = yes
 		hidden_effect = {
 			FOP = { country_event = patagonia_events.18 }
@@ -467,7 +455,7 @@ country_event = { # French Guns Arrive
 		effect_tooltip = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 750
+				amount = 1000
 				producer = FROM
 			}
 		}
@@ -488,7 +476,7 @@ country_event = { # British Guns Arrive
 		effect_tooltip = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 750
+				amount = 1000
 				producer = FROM
 			}
 		}
@@ -677,102 +665,7 @@ country_event = { 	# After unification - military revolt attempt by reactionarie
 ### Immigration ###
 ###################
 
-country_event = { # Checking if we allow immigrants into the country
-	id = patagonia_events.39
-
-	is_triggered_only = yes
-
-	hidden = yes
-
-	immediate = {
-		if = {
-			limit = {
-				has_completed_focus = FOP_the_first_national_trade_union_congress
-				NOT = {
-					country_exists = ARG
-					has_idea = FOP_anti_syndie_rebels_idea1
-					has_idea = FOP_anti_syndie_rebels_idea2
-					has_idea = FOP_anti_syndie_rebels_idea3
-					has_idea = FOP_anti_syndie_rebels_idea4
-				}
-			}
-			country_event = { id = patagonia_events.40 days = 1 }
-			else = {
-				country_event = { id = patagonia_events.39 months = 12 }
-			}
-		}
-	}
-}
-
-country_event = { # Immigration Report setting up the state variables
-	id = patagonia_events.40
-
-	is_triggered_only = yes
-
-	hidden = yes
-
-	option = {
-		log = "[GetLogInfo]: event patagonia_events.40 option 1"
-		#Value for this years Immigration
-		multiply_variable = { fop_im_factor = 0.01 }
-		set_variable = { fop_im_total_temp = 57821 }
-
-		multiply_variable = { fop_im_total_temp = fop_im_factor }
-
-		set_variable = {
-			global.fop_im_total = fop_im_total_temp
-		}
-		set_variable = {
-			fop_im_factor = 100
-		}
-
-		#Buenos Aires
-		278 = {
-			set_variable = {
-				fop_im_total_temp = global.fop_im_total
-			}
-			set_variable = {
-				fop_im_factor_ba = 0.7
-			}
-			multiply_variable = {
-				var = fop_im_factor_ba
-				value = fop_im_total_temp
-			}
-		}
-
-		#Cordoba
-		902 = {
-			set_variable = {
-				fop_im_total_temp = global.fop_im_total
-			}
-			set_variable = {
-				fop_im_factor_co = 0.2
-			}
-			multiply_variable = {
-				var = fop_im_factor_co
-				value = fop_im_total_temp
-			}
-		}
-
-		#Entre Rios
-		510 = {
-			set_variable = {
-				fop_im_total_temp = global.fop_im_total
-			}
-			set_variable = {
-				fop_im_factor_er = 0.1
-			}
-			multiply_variable = {
-				var = fop_im_factor_er
-				value = fop_im_total_temp
-			}
-		}
-
-		country_event = { id = patagonia_events.41 days = 1 } #thanks podcat for making this necessary
-	}
-}
-
-country_event = { #1936 Immigration Report adding the manpower
+country_event = { #1936-19XX Immigration Report adding the manpower
 	id = patagonia_events.41
 	title = patagonia_events.41.t
 	desc = patagonia_events.41.d
@@ -784,21 +677,7 @@ country_event = { #1936 Immigration Report adding the manpower
 	option = {
 		log = "[GetLogInfo]: event patagonia_events.41 option patagonia_events.41.a"
 		name = patagonia_events.41.a
-		#Buenos Aires
-		278 = {
-			add_manpower = fop_im_factor_ba
-		}
-		#Cordoba
-		902 = {
-			add_manpower = fop_im_factor_co
-		}
-		#Entre Rios
-		510 = {
-			add_manpower = fop_im_factor_er
-		}
-		hidden_effect = {
-			country_event = { id = patagonia_events.39 months = 12 }
-		}
+		ARG_add_annual_immigration = yes
 	}
 }
 

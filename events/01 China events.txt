@@ -306,9 +306,9 @@ country_event = { #FROM demands ROOT submit
 						}
 						FROM = { NOT = { tag = NPA } }
 					}
-					AND = { #check for QIE
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE }
-						FROM = { NOT = { tag = QIE } }
+					AND = { #check for ZHL
+						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_ZHL }
+						FROM = { china_is_aligned_with_zhili = no }
 					}
 					#outright refuse if independent
 					has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_SZC }
@@ -351,11 +351,8 @@ country_event = { #FROM demands ROOT submit
 						has_country_leader = { character = SZC_liu_wenhui }
 						OR = {
 							AND = {
-								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE } }
-								FROM = {
-									tag = QIE
-									china_is_aligned_with_manchu = no
-								}
+								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_ZHL } }
+								FROM = { china_is_aligned_with_zhili = yes }
 							}
 							AND = {
 								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ } }
@@ -694,10 +691,9 @@ country_event = { #FROM demands ROOT submit
 						}
 						FROM = { tag = NPA }
 					}
-					AND = { #check for QIE
-						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE }
-						FROM = { tag = QIE }
-						FROM = { china_is_aligned_with_manchu = no }
+					AND = { #check for ZHL
+						has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_ZHL }
+						FROM = { china_is_aligned_with_zhili = yes }
 					}
 				}
 			}
@@ -742,11 +738,8 @@ country_event = { #FROM demands ROOT submit
 						has_country_leader = { character = SZC_liu_wenhui }
 						OR = {
 							AND = {
-								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE } }
-								FROM = {
-									tag = QIE
-									china_is_aligned_with_manchu = no
-								}
+								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_ZHL } }
+								FROM = { china_is_aligned_with_zhili = yes }
 							}
 							AND = {
 								NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ } }
@@ -1456,9 +1449,9 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								}
 								FROM = { NOT = { tag = NPA } }
 							}
-							AND = { #check for QIE
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE }
-								FROM = { NOT = { tag = QIE } }
+							AND = { #check for ZHL
+								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_ZHL }
+								FROM = { china_is_aligned_with_zhili = no }
 							}
 							#outright refuse if independent
 							has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_SZC }
@@ -1501,11 +1494,8 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								has_country_leader = { character = SZC_liu_wenhui }
 								OR = {
 									AND = {
-										NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE } }
-										FROM = {
-											tag = QIE
-											china_is_aligned_with_manchu = no
-										}
+										NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_ZHL } }
+										FROM = { china_is_aligned_with_zhili = yes }
 									}
 									AND = {
 										NOT = { has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_AGJ } }
@@ -1886,9 +1876,9 @@ country_event = { #FROM invites ROOT to alliance - THIS IS FROM THE POV OF THE P
 								}
 								FROM = { tag = NPA }
 							}
-							AND = { #check for QIE
-								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_QIE }
-								FROM = { tag = QIE }
+							AND = { #check for ZHL
+								has_game_rule = { rule = SZC_forpol option = SZC_FORPOL_ZHL }
+								FROM = { china_is_aligned_with_zhili = yes }
 							}
 						}
 					}
@@ -3837,10 +3827,7 @@ country_event = { #[FROM.GetLeader] Pressures Us To Act!
 	option = {
 		log = "[GetLogInfo]: event china_events.63 option china_events.63.a"
 		name = china_events.63.a #All in due time...
-		add_to_variable = {
-			var = CHN_pressure_to_act_variable
-			value = 1
-		}
+		add_to_variable = { CHN_pressure_to_act_variable = 1 }
 		activate_mission = CHN_pressure_to_act_mission
 	}
 }
@@ -3860,11 +3847,7 @@ country_event = { #[FROM.GetLeader] Adds Further Pressure
 	option = {
 		log = "[GetLogInfo]: event china_events.64 option china_events.64.a"
 		name = china_events.64.a #We are getting to it!
-		add_to_variable = {
-			var = CHN_pressure_to_act_variable
-			value = 1
-			tooltip = CHN_pressure_to_act_tt
-		}
+		add_to_variable = { CHN_pressure_to_act_variable = 1 tooltip = CHN_pressure_to_act_tt }
 	}
 }
 
@@ -6956,8 +6939,7 @@ country_event = { #China: FROM wants compensation for concessions
 	option = {
 		log = "[GetLogInfo]: event china_events.202 option china_events.202.a"
 		name = china_events.202.a #Sure
-		set_temp_variable = { china_concession_cost = FROM.china_concession_value }
-		multiply_temp_variable = { china_concession_cost = -1 }
+		set_temp_variable = { china_concession_cost = { value = FROM.china_concession_value multiply = -1 } }
 		add_political_power = var:china_concession_cost
 
 		custom_effect_tooltip = tooltip_white_line
@@ -7065,6 +7047,10 @@ country_event = { #POR/AST/CAN/GEA/JAP: China refuses compensation for concessio
 		NOT = { has_war_with = FROM }
 	}
 
+	immediate = {
+		set_variable = { china_refused_return_of_concessions_@FROM = 1 }
+	}
+
 	is_triggered_only = yes
 
 	option = {
@@ -7100,6 +7086,10 @@ country_event = { #China: FROM refuses to return concessions
 
 	trigger = {
 		NOT = { has_war_with = FROM }
+	}
+
+	immediate = {
+		set_variable = { china_refused_return_of_concessions_@FROM = 1 }
 	}
 
 	is_triggered_only = yes
@@ -11929,10 +11919,10 @@ country_event = {
 				limit = {
 					NOT = { is_core_of = ROOT }
 					OR = {
-						has_state_flag = rehe_province_state
-						has_state_flag = heilongjiang_province_state
-						has_state_flag = jilin_province_state
-						has_state_flag = fengtian_province_state
+						check_variable = { chinese_province_state = 610.id }
+						check_variable = { chinese_province_state = 714.id }
+						check_variable = { chinese_province_state = 886.id }
+						check_variable = { chinese_province_state = 716.id }
 					}
 				}
 				add_compliance = 10
@@ -11972,10 +11962,10 @@ country_event = {
 				limit = {
 					NOT = { is_core_of = ROOT }
 					OR = {
-						has_state_flag = rehe_province_state
-						has_state_flag = heilongjiang_province_state
-						has_state_flag = jilin_province_state
-						has_state_flag = fengtian_province_state
+						check_variable = { chinese_province_state = 610.id }
+						check_variable = { chinese_province_state = 714.id }
+						check_variable = { chinese_province_state = 886.id }
+						check_variable = { chinese_province_state = 716.id }
 					}
 				}
 				add_compliance = 10
@@ -12218,10 +12208,10 @@ country_event = {
 			limit = {
 				NOT = { is_core_of = ROOT }
 				OR = {
-					has_state_flag = rehe_province_state
-					has_state_flag = heilongjiang_province_state
-					has_state_flag = jilin_province_state
-					has_state_flag = fengtian_province_state
+					check_variable = { chinese_province_state = 610.id }
+					check_variable = { chinese_province_state = 714.id }
+					check_variable = { chinese_province_state = 886.id }
+					check_variable = { chinese_province_state = 716.id }
 				}
 			}
 			add_resistance = 50
@@ -12249,10 +12239,10 @@ country_event = {
 			limit = {
 				NOT = { is_core_of = ROOT }
 				OR = {
-					has_state_flag = rehe_province_state
-					has_state_flag = heilongjiang_province_state
-					has_state_flag = jilin_province_state
-					has_state_flag = fengtian_province_state
+					check_variable = { chinese_province_state = 610.id }
+					check_variable = { chinese_province_state = 714.id }
+					check_variable = { chinese_province_state = 886.id }
+					check_variable = { chinese_province_state = 716.id }
 				}
 			}
 			add_compliance = 20
@@ -12260,7 +12250,6 @@ country_event = {
 	}
 
 	after = {
-		set_country_flag = CHN_has_occupied_dongbei_flag
 		if = {
 			limit = {
 				has_country_flag = CHN_has_recruited_zhang_xueliang_flag
@@ -14668,6 +14657,7 @@ country_event = { #The Reformation of the Republic
 				set_temp_variable = { coalition_partner_var = token:social_conservative }
 				add_to_coalition = yes
 				hidden_effect = {
+					FNG_wu_zanzhou = { CHN_recruit_character_effect = yes }
 					set_party_name = {
 						ideology = paternal_autocrat
 						name = FNG_new_peoples_society

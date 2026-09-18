@@ -1962,7 +1962,40 @@ CEN_expanding_socialism_in_central_america = {
 		cancel_if_not_visible = yes
 		war_with_target_on_remove = yes
 
-		ai_will_do = { base = 0 } # Player-only for the time being
+		ai_will_do = {
+			# Will take if target is in a war that's going poorly
+			modifier = {
+				add = 100
+				FROM = {
+					has_war_with_major = yes
+					OR = {
+						any_allied_country = {
+							is_major = yes
+							is_subject = no
+							has_capitulated = yes
+						}
+						if = {
+							limit = { is_subject = no }
+							surrender_progress > 0.2
+						}
+						else = {
+							var:FROM.overlord = { surrender_progress > 0.2 }
+						}
+					}
+				}
+			}
+			# Will never take if the target is a player
+			modifier = {
+				factor = 0
+				OR = {
+					FROM = { is_ai = no }
+					AND = {
+						FROM = { is_subject = yes }
+						var:FROM.overlord = { is_ai = no }
+					}
+				}
+			}
+		}
 
 		cancel_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision cancel CEN_demand_belize"

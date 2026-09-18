@@ -361,7 +361,7 @@ focus_tree = {
 	focus = {
 		id = NIC_begin_revolution
 		icon = GFX_goal_generic_army_mass_assault
-		cost = 2
+		cost = 0
 
 		relative_position_id = NIC_36_election
 		x = 1
@@ -374,15 +374,17 @@ focus_tree = {
 			focus = NIC_revolution_necessary
 		}
 		available = {
-			is_subject = no
-			has_country_flag = NIC_civil_war_begun
+			custom_override_tooltip = {
+				tooltip = NIC_civil_war_begun
+				always = no
+			}
 		}
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NIC_begin_revolution"
 			unlock_decision_category_tooltip = NIC_spreading_revolution_decisions
 			activate_mission = NIC_spread_revolution_mission
-			add_political_power = 50
+			add_political_power = 60
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -508,7 +510,7 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			country_event = { id = nicaragua_events.54 days = 3 } #Save 55 for Conservative party formed, 56 for flavor, and 57 for election
 			custom_effect_tooltip = elections_in_one_months
-			set_variable = { NIC_political_foci_count = 3 }
+			set_variable = { central_america_political_foci_count = 3 }
 		}
 	}
 
@@ -536,7 +538,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed NIC_free_press"
 			add_ideas = NIC_free_press_idea
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -605,7 +607,7 @@ focus_tree = {
 				category = land_doctrine
 			}
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -923,7 +925,7 @@ focus_tree = {
 			custom_effect_tooltip = if_they_accept_tt
 			event_option_tooltip = nicaragua_events.61.a
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 	}
@@ -1056,7 +1058,7 @@ focus_tree = {
 				country_event = { id = nicaragua_events.77 days = 30 }
 				custom_effect_tooltip = NIC_sandino_total_control
 			}
-			set_variable = { NIC_political_foci_count = 1 }
+			set_variable = { central_america_political_foci_count = 1 }
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -1085,7 +1087,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed NIC_religious_zeal"
 			add_ideas = NIC_religious_zeal_idea
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -1122,7 +1124,7 @@ focus_tree = {
 				}
 			}
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -1159,7 +1161,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NIC_socialist_standard"
-			add_to_variable = { NIC_political_foci_count = 1 }
+			add_to_variable = { central_america_political_foci_count = 1 }
 			army_experience = 5
 			set_variable = { ACW_supported_tag = WCA }
 			send_equipment = { type = infantry_equipment amount = 500 target = WCA }
@@ -1200,7 +1202,7 @@ focus_tree = {
 			custom_effect_tooltip = if_they_accept_tt
 			event_option_tooltip = nicaragua_events.79.a
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 	}
@@ -1366,7 +1368,7 @@ focus_tree = {
 			add_political_power = 100
 			add_war_support = 0.10
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -1396,7 +1398,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed NIC_arming_youth"
 			add_ideas = NIC_inspired_youth
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -1432,7 +1434,7 @@ focus_tree = {
 				category = land_doctrine
 			}
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 	}
@@ -1464,7 +1466,7 @@ focus_tree = {
 				add_idea = NIC_transforming_our_militia_2
 			}
 			hidden_effect = {
-				add_to_variable = { NIC_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }

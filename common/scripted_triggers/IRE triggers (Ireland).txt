@@ -554,7 +554,7 @@ IRE_combined_influence_at_least = {
 		check_expr = { #total_temp_influence
 			value = GER.IRE_gateway_influence
 			add = ENG.IRE_gateway_influence
-			greater_than_or_equals = { value = IRE_combined_at_least }
+			greater_than_or_equals = IRE_combined_at_least
 		}
 	}
 }
@@ -565,7 +565,7 @@ IRE_combined_influence_smaller_than = {
 		check_expr = { #total_temp_influence
 			value = GER.IRE_gateway_influence
 			add = ENG.IRE_gateway_influence
-			less_than_or_equals = { value = IRE_combined_at_least }
+			less_than_or_equals = IRE_combined_at_least
 		}
 	}
 }

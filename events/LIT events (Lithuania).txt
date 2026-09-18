@@ -946,7 +946,7 @@ country_event = { #King's Palace 2
 		name = lithuania_events.51.a
 		add_stability = -0.05
 		add_political_power = -25
-		set_temp_variable = { LIT_legitimacy_change = 5 }
+		set_temp_variable = { LIT_legitimacy_change = 0.05 }
 		LIT_change_legitimacy = yes
 		hidden_effect = {
 			country_event = { id = lithuania_events.52 days = 14 }
@@ -970,7 +970,7 @@ country_event = { #King's Palace finale
 		log = "[GetLogInfo]: event lithuania_events.52 option lithuania_events.52.a"
 		name = lithuania_events.52.a
 		add_political_power = -25
-		set_temp_variable = { LIT_legitimacy_change = 5 }
+		set_temp_variable = { LIT_legitimacy_change = 0.05 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -1021,7 +1021,7 @@ country_event = { # First Surprise
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.55 option lithuania_events.55.a"
 		name = lithuania_events.55.a
-		set_temp_variable = { LIT_legitimacy_change = 5 }
+		set_temp_variable = { LIT_legitimacy_change = 0.05 }
 		LIT_change_legitimacy = yes
 		hidden_effect = {
 			country_event = { id = lithuania_events.56 days = 7 }
@@ -1061,7 +1061,7 @@ country_event = { # Further Inspirations
 		log = "[GetLogInfo]: event lithuania_events.57 option lithuania_events.57.a"
 		name = lithuania_events.57.a
 		add_stability = 0.03
-		set_temp_variable = { LIT_legitimacy_change = 5 }
+		set_temp_variable = { LIT_legitimacy_change = 0.05 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -1086,7 +1086,7 @@ country_event = { # A line in the Neman
 		log = "[GetLogInfo]: event lithuania_events.58 option lithuania_events.58.b"
 		name = lithuania_events.58.b
 		add_political_power = -10
-		set_temp_variable = { LIT_legitimacy_change = 3 }
+		set_temp_variable = { LIT_legitimacy_change = 0.03 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -1106,7 +1106,7 @@ country_event = { # Prussian Lithuanians shunned
 		log = "[GetLogInfo]: event lithuania_events.59 option lithuania_events.59.a"
 		name = lithuania_events.59.a
 		add_political_power = 25
-		set_temp_variable = { LIT_legitimacy_change = -5 }
+		set_temp_variable = { LIT_legitimacy_change = -0.05 }
 		LIT_change_legitimacy = yes
 		clr_country_flag = LIT_ongoing_project
 		remove_targeted_decision = { decision = LIT_knygesiai_memorial target = 189 }
@@ -1197,7 +1197,7 @@ country_event = { # One edge of the double edge sword
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.63 option lithuania_events.63.a"
 		name = lithuania_events.63.a
-		set_temp_variable = { LIT_legitimacy_change = 2 }
+		set_temp_variable = { LIT_legitimacy_change = 0.02 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -1216,7 +1216,7 @@ country_event = { # and the other edge
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.64 option lithuania_events.64.a"
 		name = lithuania_events.64.a
-		set_temp_variable = { LIT_legitimacy_change = -2 }
+		set_temp_variable = { LIT_legitimacy_change = -0.02 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -1284,7 +1284,7 @@ country_event = { # Support them directly
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.67 option lithuania_events.67.a"
 		name = lithuania_events.67.a
-		set_temp_variable = { LIT_legitimacy_change = 5 }
+		set_temp_variable = { LIT_legitimacy_change = 0.05 }
 		LIT_change_legitimacy = yes
 		hidden_effect = {
 			country_event = { id = lithuania_events.69 days = 90 }
@@ -1400,7 +1400,7 @@ country_event = { # Lithuanian/Polish blend - Common Men happy
 				add_extra_state_shared_building_slots = 2
 			}
 		}
-		set_temp_variable = { LIT_legitimacy_change = 10 }
+		set_temp_variable = { LIT_legitimacy_change = 0.10 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -1432,7 +1432,7 @@ country_event = { # A Slice of Bavaria - Nobles Happy
 				instant_build = yes
 			}
 		}
-		set_temp_variable = { LIT_legitimacy_change = 5 }
+		set_temp_variable = { LIT_legitimacy_change = 0.05 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -1595,7 +1595,7 @@ country_event = { #Census Complete - Slow
 		log = "[GetLogInfo]: event lithuania_events.102 option lithuania_events.102.a"
 		name = lithuania_events.102.a
 		add_stability = 0.04
-		set_temp_variable = { LIT_federalisation_change = 10 }
+		set_temp_variable = { LIT_federalisation_change = 0.10 }
 		LIT_change_federalisation = yes
 	}
 }
@@ -1611,7 +1611,7 @@ country_event = { #Census Complete - Fast
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.103 option lithuania_events.103.a"
 		name = lithuania_events.103.a
-		set_temp_variable = { LIT_federalisation_change = -10 }
+		set_temp_variable = { LIT_federalisation_change = -0.10 }
 		LIT_change_federalisation = yes
 	}
 }
@@ -1626,7 +1626,7 @@ country_event = { #Curtail the Bundas
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.104 option lithuania_events.104.a"
 		name = lithuania_events.104.a
-		set_temp_variable = { ideology_change_var = -2 }
+		set_temp_variable = { ideology_change_var = -0.02 }
 		change_ruling_party_popularity = yes
 	}
 }
@@ -1644,7 +1644,7 @@ country_event = { #Language of Instruction
 		name = lithuania_events.105.a
 		add_stability = 0.05
 		add_political_power = -25
-		set_temp_variable = { LIT_federalisation_change = 5 }
+		set_temp_variable = { LIT_federalisation_change = 0.05 }
 		LIT_change_federalisation = yes
 	}
 	option = {
@@ -1658,7 +1658,7 @@ country_event = { #Language of Instruction
 		log = "[GetLogInfo]: event lithuania_events.105 option lithuania_events.105.c"
 		name = lithuania_events.105.c
 		add_stability = 0.02
-		set_temp_variable = { LIT_federalisation_change = 2 }
+		set_temp_variable = { LIT_federalisation_change = 0.02 }
 		LIT_change_federalisation = yes
 	}
 }
@@ -1682,7 +1682,7 @@ country_event = { #Iron Wolves - Rally
 			ideology = national_populist
 			popularity = 0.10
 		}
-		add_to_variable = { LIT_LAF_threat = 5 }
+		add_to_variable = { LIT_LAF_threat = 0.05 }
 		hidden_effect = {
 			country_event = { id = lithuania_events.107 days = 70 }
 		}
@@ -1700,7 +1700,7 @@ country_event = { #Bundas Rallies for Federation
 		log = "[GetLogInfo]: event lithuania_events.107 option lithuania_events.107.a"
 		name = lithuania_events.107.a
 		add_political_power = 25
-		set_temp_variable = { LIT_federalisation_change = 5 }
+		set_temp_variable = { LIT_federalisation_change = 0.05 }
 		LIT_change_federalisation = yes
 		hidden_effect = {
 			country_event = { id = lithuania_events.108 days = 70 }
@@ -1733,7 +1733,7 @@ country_event = { #Polish Delegation Mumbles
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.109 option lithuania_events.109.a"
 		name = lithuania_events.109.a
-		set_temp_variable = { LIT_federalisation_change = -5 }
+		set_temp_variable = { LIT_federalisation_change = -0.05 }
 		LIT_change_federalisation = yes
 		clr_country_flag = LIT_fast_census
 	}
@@ -1749,7 +1749,7 @@ country_event = { #Support Gained for Optimal System
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.110 option lithuania_events.110.a"
 		name = lithuania_events.110.a
-		set_temp_variable = { LIT_federalisation_change = 5 }
+		set_temp_variable = { LIT_federalisation_change = 0.05 }
 		LIT_change_federalisation = yes
 	}
 }
@@ -1825,7 +1825,7 @@ country_event = { #King's Announcement
 		add_political_power = 25
 		set_temp_variable = { ideology_change_var = 0.05 }
 		change_ruling_party_popularity = yes
-		set_temp_variable = { LIT_legitimacy_change = 5 }
+		set_temp_variable = { LIT_legitimacy_change = 0.05 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -2357,7 +2357,7 @@ country_event = { #Curtail the Priesthood
 			ideology = social_conservative
 			popularity = -0.05
 		}
-		set_temp_variable = { LIT_radicalism_change = 5 }
+		set_temp_variable = { LIT_radicalism_change = 0.05 }
 		LIT_change_radicalism = yes
 	}
 	option = { #That's not enough! Begin secularization”
@@ -2376,7 +2376,7 @@ country_event = { #Curtail the Priesthood
 			ideology = social_conservative
 			popularity = -0.10
 		}
-		set_temp_variable = { LIT_radicalism_change = 10 }
+		set_temp_variable = { LIT_radicalism_change = 0.1 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -2419,7 +2419,7 @@ country_event = { #Military Cuts Debate
 			idea = LIT_military_funding_cuts_2
 			days = 365
 		}
-		set_temp_variable = { LIT_radicalism_change = 10 }
+		set_temp_variable = { LIT_radicalism_change = 0.1 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -2463,7 +2463,7 @@ country_event = { #Further Social Spending
 			ideology = social_democrat
 			popularity = 0.05
 		}
-		set_temp_variable = { LIT_radicalism_change = 10 }
+		set_temp_variable = { LIT_radicalism_change = 0.1 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -2515,7 +2515,7 @@ country_event = { #Legalise Aušrinė
 		}
 		add_stability = 0.05
 		add_political_power = -40
-		set_temp_variable = { LIT_radicalism_change = 10 }
+		set_temp_variable = { LIT_radicalism_change = 0.1 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -2553,7 +2553,7 @@ country_event = { #Status of the Bundas - LSDP
 			}
 		}
 		add_political_power = 50
-		set_temp_variable = { LIT_radicalism_change = 10 }
+		set_temp_variable = { LIT_radicalism_change = 0.1 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -2564,7 +2564,7 @@ country_event = { #A Rainy Night in Vilnius
 	picture = GFX_report_event_LIT_night_in_vilnus
 
 	trigger = {
-		check_variable = { LIT_radicalism > 40 }
+		check_variable = { LIT_radicalism > 0.4 }
 	}
 
 	is_triggered_only = yes
@@ -2877,7 +2877,7 @@ country_event = { # Liberals express worries
 	picture = GFX_report_event_LIT_flag
 
 	trigger = {
-		check_variable = { LIT_radicalism > 49 }
+		check_variable = { LIT_radicalism > 0.49 }
 		NOT = { has_completed_focus = LIT_court_and_country }
 	}
 
@@ -2902,7 +2902,7 @@ country_event = { # Radicals express worries
 	picture = GFX_report_event_LIT_flag
 
 	trigger = {
-		check_variable = { LIT_radicalism < 10 }
+		check_variable = { LIT_radicalism < 0.1 }
 		NOT = { has_completed_focus = LIT_court_and_country }
 	}
 
@@ -2948,7 +2948,7 @@ country_event = {
 			}
 		}
 		add_stability = 0.01
-		set_temp_variable = { LIT_radicalism_change = -5 }
+		set_temp_variable = { LIT_radicalism_change = -0.05 }
 		LIT_change_radicalism = yes
 	}
 
@@ -2964,7 +2964,7 @@ country_event = {
 			}
 		}
 		add_stability = 0.01
-		set_temp_variable = { LIT_radicalism_change = 5 }
+		set_temp_variable = { LIT_radicalism_change = 0.05 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -2997,7 +2997,7 @@ country_event = {
 			}
 		}
 		add_stability = 0.01
-		set_temp_variable = { LIT_radicalism_change = -5 }
+		set_temp_variable = { LIT_radicalism_change = -0.05 }
 		LIT_change_radicalism = yes
 	}
 
@@ -3013,7 +3013,7 @@ country_event = {
 			}
 		}
 		add_stability = 0.01
-		set_temp_variable = { LIT_radicalism_change = 5 }
+		set_temp_variable = { LIT_radicalism_change = 0.05 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -3040,7 +3040,7 @@ country_event = {
 			}
 		}
 		add_stability = 0.01
-		set_temp_variable = { LIT_radicalism_change = -5 }
+		set_temp_variable = { LIT_radicalism_change = -0.05 }
 		LIT_change_radicalism = yes
 	}
 
@@ -3056,7 +3056,7 @@ country_event = {
 			}
 		}
 		add_stability = 0.01
-		set_temp_variable = { LIT_radicalism_change = 5 }
+		set_temp_variable = { LIT_radicalism_change = 0.05 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -3087,7 +3087,7 @@ country_event = {
 			popularity = 0.1
 		}
 		add_political_power = -50
-		set_temp_variable = { LIT_radicalism_change = 20 }
+		set_temp_variable = { LIT_radicalism_change = 0.2 }
 		LIT_change_radicalism = yes
 	}
 
@@ -3106,7 +3106,7 @@ country_event = {
 			ideology = social_democrat
 			popularity = 0.1
 		}
-		set_temp_variable = { LIT_radicalism_change = -10 }
+		set_temp_variable = { LIT_radicalism_change = -0.1 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -3170,7 +3170,7 @@ country_event = {
 			ideology = national_populist
 			popularity = -0.1
 		}
-		set_temp_variable = { LIT_radicalism_change = 10 }
+		set_temp_variable = { LIT_radicalism_change = 0.1 }
 		LIT_change_radicalism = yes
 	}
 }
@@ -3246,7 +3246,7 @@ country_event = { # Visit from the King's Brother
 		ai_chance = { base = 90 }
 		add_stability = -0.05
 		add_political_power = -75
-		set_temp_variable = { LIT_legitimacy_change = -5 }
+		set_temp_variable = { LIT_legitimacy_change = -0.05 }
 		LIT_change_legitimacy = yes
 		add_advisor_role = {
 			character = LIT_wilhelm_von_urach
@@ -3277,7 +3277,7 @@ country_event = { # Visit from the King's Brother
 		name = lithuania_events.231.b
 		ai_chance = { base = 10 }
 		add_stability = 0.05
-		set_temp_variable = { LIT_legitimacy_change = 10 }
+		set_temp_variable = { LIT_legitimacy_change = 0.10 }
 		LIT_change_legitimacy = yes
 		hidden_effect = {
 			country_event = { id = lithuania_events.232 days = 30 }
@@ -3340,7 +3340,7 @@ country_event = { # D-B factory opening
 		log = "[GetLogInfo]: event lithuania_events.234 option lithuania_events.234.a"
 		name = lithuania_events.234.a
 		add_stability = -0.05
-		set_temp_variable = { LIT_legitimacy_change = -5 }
+		set_temp_variable = { LIT_legitimacy_change = -0.05 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -3369,7 +3369,7 @@ country_event = { # D-B Ost factory opening
 				instant_build = yes
 			}
 		}
-		set_temp_variable = { LIT_legitimacy_change = 5 }
+		set_temp_variable = { LIT_legitimacy_change = 0.05 }
 		LIT_change_legitimacy = yes
 	}
 }
@@ -3404,7 +3404,7 @@ country_event = { #LAF Attacks
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.250 option lithuania_events.250.a"
 		name = lithuania_events.250.a
-		add_to_variable = { LIT_LAF_threat = 25 }
+		add_to_variable = { LIT_LAF_threat = 0.25 }
 		set_variable = { LIT_LAF_guerilla_activity_timeout = 75 }
 		activate_mission = LIT_LAF_guerilla_activity
 
@@ -3443,7 +3443,7 @@ country_event = { #LAF Damage Local Business
 				damage = 0.25
 			}
 		}
-		set_temp_variable = { LIT_threat_change = 2 }
+		set_temp_variable = { LIT_threat_change = 0.02 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3465,7 +3465,7 @@ country_event = { #LAF Damage Arms Factory
 				damage = 0.45
 			}
 		}
-		set_temp_variable = { LIT_threat_change = 2 }
+		set_temp_variable = { LIT_threat_change = 0.02 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3480,7 +3480,7 @@ country_event = { #Quiet
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.253 option lithuania_events.253.a"
 		name = lithuania_events.253.a
-		set_temp_variable = { LIT_threat_change = 1 }
+		set_temp_variable = { LIT_threat_change = 0.01 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3498,7 +3498,7 @@ country_event = { #LAF Repulsed
 		log = "[GetLogInfo]: event lithuania_events.254 option lithuania_events.254.a"
 		name = lithuania_events.254.a
 		add_political_power = 10
-		set_temp_variable = { LIT_threat_change = -2 }
+		set_temp_variable = { LIT_threat_change = -0.02 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3521,7 +3521,7 @@ country_event = { #LAF Damage Infrastructure
 				damage = 0.6
 			}
 		}
-		set_temp_variable = { LIT_threat_change = 3 }
+		set_temp_variable = { LIT_threat_change = 0.03 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3555,7 +3555,7 @@ country_event = { #LAF Raid Low
 			amount = var:LIT_support_equipment_lost
 		}
 		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { LIT_threat_change = 3 }
+		set_temp_variable = { LIT_threat_change = 0.03 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3599,7 +3599,7 @@ country_event = { #LAF Raid High
 			}
 		}
 		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { LIT_threat_change = 4 }
+		set_temp_variable = { LIT_threat_change = 0.04 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3672,7 +3672,7 @@ country_event = { #Intel - Radio Station
 			popularity = 0.02
 		}
 		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { LIT_threat_change = 3 }
+		set_temp_variable = { LIT_threat_change = 0.03 }
 		LIT_change_LAF_threat = yes
 		hidden_effect = {
 			country_event = { id = lithuania_events.262 days = 90 }
@@ -3777,7 +3777,7 @@ country_event = { #Successful Raid
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.267 option lithuania_events.267.a"
 		name = lithuania_events.267.a
-		set_temp_variable = { LIT_threat_change = -5 }
+		set_temp_variable = { LIT_threat_change = -0.05 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3792,7 +3792,7 @@ country_event = { #Civilians harmed
 		log = "[GetLogInfo]: event lithuania_events.268 option lithuania_events.268.a"
 		name = lithuania_events.268.a
 		add_stability = -0.02
-		set_temp_variable = { LIT_threat_change = 5 }
+		set_temp_variable = { LIT_threat_change = 0.05 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3806,7 +3806,7 @@ country_event = { #LAF strongpoint destroyed
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.269 option lithuania_events.269.a"
 		name = lithuania_events.269.a
-		set_temp_variable = { LIT_threat_change = -10 }
+		set_temp_variable = { LIT_threat_change = -0.1 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -3827,7 +3827,7 @@ country_event = { #LAF Plechavicius
 	id = lithuania_events.271
 	immediate = {
 		hidden_effect = {
-			add_to_variable = { LIT_LAF_threat = 60 }
+			add_to_variable = { LIT_LAF_threat = 0.6 }
 			set_variable = { LIT_LAF_guerilla_activity_timeout = 75 }
 			activate_mission = LIT_LAF_guerilla_activity
 			activate_targeted_decision = { target = THIS decision = LIT_counterinsurgency_raids }
@@ -3878,8 +3878,7 @@ country_event = { #The Vilnius Uprising
 				}
 			}
 			modifier = {
-				set_temp_variable = { LIT_coup_fail_chance = LIT_LAF_threat }
-				multiply_temp_variable = { LIT_coup_fail_chance = -1 }
+				set_temp_variable = { LIT_coup_fail_chance = { value = LIT_LAF_threat multiply = -100 } }
 				add = LIT_coup_fail_chance
 			}
 		}
@@ -3915,7 +3914,8 @@ country_event = { #The Vilnius Uprising
 		ai_chance = {
 			base = 0
 			modifier = {
-				add = LIT_LAF_threat
+				set_temp_variable = { LIT_LAF_threat_temp = { value = LIT_LAF_threat multiply = 100 } }
+				add = LIT_LAF_threat_temp
 			}
 			modifier = {
 				add = 100
@@ -3933,8 +3933,7 @@ country_event = { #The Vilnius Uprising
 				NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_MACEINA_NATPOP } }
 			}
 		}
-		set_temp_variable = { LIT_coup_casualties = LIT_LAF_threat }
-		multiply_temp_variable = { LIT_coup_casualties = -10 }
+		set_temp_variable = { LIT_coup_casualties = { value = LIT_LAF_threat multiply = -1000 } }
 		add_manpower = LIT_coup_casualties
 		clear_all_relations = yes
 		if = {
@@ -3976,8 +3975,7 @@ country_event = { #The Vilnius Uprising
 			}
 		}
 		GER = { country_event = lithuania_events.212 }
-		set_temp_variable = { LIT_coup_popularity = LIT_LAF_threat }
-		divide_temp_variable = { LIT_coup_popularity = 200 }
+		set_temp_variable = { LIT_coup_popularity = { value = LIT_LAF_threat multiply = 0.5 } }
 		add_popularity = {
 			ideology = national_populist
 			popularity = LIT_coup_popularity
@@ -4470,7 +4468,7 @@ country_event = { # Bundas Police Union
 			ideology = social_liberal
 			popularity = 0.05
 		}
-		set_temp_variable = { LIT_threat_change = -10 }
+		set_temp_variable = { LIT_threat_change = -0.1 }
 		LIT_change_LAF_threat = yes
 	}
 	option = { #Promote Jewish Formed Police units
@@ -4481,7 +4479,7 @@ country_event = { # Bundas Police Union
 			ideology = radical_socialist
 			popularity = 0.1
 		}
-		set_temp_variable = { LIT_threat_change = -20 }
+		set_temp_variable = { LIT_threat_change = -0.20 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -4581,7 +4579,7 @@ country_event = { #The Devil you know
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.336 option lithuania_events.336.a"
 		name = lithuania_events.336.a
-		set_temp_variable = { LIT_threat_change = -5 }
+		set_temp_variable = { LIT_threat_change = -0.05 }
 		LIT_change_LAF_threat = yes
 		hidden_effect = {
 			country_event = { id = lithuania_events.337 days = 21 }
@@ -4599,7 +4597,7 @@ country_event = { #Smetona readjusting
 	option = {
 		log = "[GetLogInfo]: event lithuania_events.337 option lithuania_events.337.a"
 		name = lithuania_events.337.a
-		set_temp_variable = { LIT_threat_change = -5 }
+		set_temp_variable = { LIT_threat_change = -0.05 }
 		LIT_change_LAF_threat = yes
 	}
 }
@@ -4615,19 +4613,9 @@ country_event = { #Narutowicz Announces His Ambitions
 		log = "[GetLogInfo]: event lithuania_events.338 option lithuania_events.338.a"
 		name = lithuania_events.338.a
 		add_stability = 0.05
+		set_variable = { lit_var_swiss_conf_vil = 100 }
+		set_variable = { lit_var_swiss_conf_kau = 100 }
 		LIT_recalculate_average_swiss_canton = yes
-		add_to_variable = { lit_var_swiss_conf_vil = 100 }
-		add_to_variable = { lit_var_swiss_conf_kau = 100 }
-		clamp_variable = {
-			var = lit_var_swiss_conf_vil
-			min = 0
-			max = 100
-		}
-		clamp_variable = {
-			var = lit_var_swiss_conf_kau
-			min = 0
-			max = 100
-		}
 	}
 }
 country_event = { #A True Lithuanian Federation
@@ -4641,31 +4629,31 @@ country_event = { #A True Lithuanian Federation
 	option = { # Hoorah
 		log = "[GetLogInfo]: event lithuania_events.339 option lithuania_events.339.a"
 		name = lithuania_events.339.a
+		add_to_variable = {
+			lit_var_swiss_conf_sam = {
+				value = 35
+				clamp = { min = 0 max = { value = 75 subtract = lit_var_swiss_conf_sam } }
+			}
+		}
+		add_to_variable = {
+			lit_var_swiss_conf_val = {
+				value = 15
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_val } }
+			}
+		}
+		add_to_variable = {
+			lit_var_swiss_conf_bia = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_bia } }
+			}
+		}
+		add_to_variable = {
+			lit_var_swiss_conf_suw = {
+				value = 20
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_suw } }
+			}
+		}
 		LIT_recalculate_average_swiss_canton = yes
-		add_to_variable = { lit_var_swiss_conf_sam = 35 }
-		add_to_variable = { lit_var_swiss_conf_suw = 15 }
-		add_to_variable = { lit_var_swiss_conf_bia = 10 }
-		add_to_variable = { lit_var_swiss_conf_val = 20 }
-		clamp_variable = {
-			var = lit_var_swiss_conf_sam
-			min = 0
-			max = 75
-		}
-		clamp_variable = {
-			var = lit_var_swiss_conf_val
-			min = 0
-			max = 100
-		}
-		clamp_variable = {
-			var = lit_var_swiss_conf_bia
-			min = 0
-			max = 100
-		}
-		clamp_variable = {
-			var = lit_var_swiss_conf_suw
-			min = 0
-			max = 100
-		}
 		hidden_effect = {
 			activate_targeted_decision = { target = THIS decision = LIT_swiss_1 }
 		}
@@ -4708,31 +4696,31 @@ country_event = { #Bundas Schools
 		add_political_power = -50
 		add_stability = 0.10
 		custom_effect_tooltip = LIT_SWISS_CON_MINOR
+		add_to_variable = {
+			lit_var_swiss_conf_sam = {
+				value = 5
+				clamp = { min = 0 max = { value = 75 subtract = lit_var_swiss_conf_sam } }
+			}
+		}
+		add_to_variable = {
+			lit_var_swiss_conf_val = {
+				value = 5
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_val } }
+			}
+		}
+		add_to_variable = {
+			lit_var_swiss_conf_bia = {
+				value = 5
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_bia } }
+			}
+		}
+		add_to_variable = {
+			lit_var_swiss_conf_suw = {
+				value = 5
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_suw } }
+			}
+		}
 		LIT_recalculate_average_swiss_canton = yes
-		add_to_variable = { lit_var_swiss_conf_sam = 5 }
-		add_to_variable = { lit_var_swiss_conf_val = 5 }
-		add_to_variable = { lit_var_swiss_conf_bia = 5 }
-		add_to_variable = { lit_var_swiss_conf_suw = 5 }
-		clamp_variable = {
-			var = lit_var_swiss_conf_sam
-			min = 0
-			max = 75
-		}
-		clamp_variable = {
-			var = lit_var_swiss_conf_val
-			min = 0
-			max = 100
-		}
-		clamp_variable = {
-			var = lit_var_swiss_conf_bia
-			min = 0
-			max = 100
-		}
-		clamp_variable = {
-			var = lit_var_swiss_conf_suw
-			min = 0
-			max = 100
-		}
 	}
 }
 country_event = { #Great Compromise
@@ -4752,25 +4740,25 @@ country_event = { #Great Compromise
 		}
 		set_country_flag = LIT_ASIS_Great_Compromise_cf
 		custom_effect_tooltip = LIT_SWISS_CON_MINOR
+		add_to_variable = {
+			lit_var_swiss_conf_val = {
+				value = 5
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_val } }
+			}
+		}
+		add_to_variable = {
+			lit_var_swiss_conf_bia = {
+				value = 5
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_bia } }
+			}
+		}
+		add_to_variable = {
+			lit_var_swiss_conf_suw = {
+				value = 5
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_suw } }
+			}
+		}
 		LIT_recalculate_average_swiss_canton = yes
-		add_to_variable = { lit_var_swiss_conf_val = 5 }
-		add_to_variable = { lit_var_swiss_conf_bia = 5 }
-		add_to_variable = { lit_var_swiss_conf_suw = 5 }
-		clamp_variable = {
-			var = lit_var_swiss_conf_val
-			min = 0
-			max = 100
-		}
-		clamp_variable = {
-			var = lit_var_swiss_conf_bia
-			min = 0
-			max = 100
-		}
-		clamp_variable = {
-			var = lit_var_swiss_conf_suw
-			min = 0
-			max = 100
-		}
 		hidden_effect = {
 			activate_targeted_decision = { target = THIS decision = LIT_swiss_2 }
 		}
@@ -4787,11 +4775,11 @@ country_event = { #Removing with an Old Thorn to be removed
 		log = "[GetLogInfo]: event lithuania_events.343 option lithuania_events.343.a"
 		name = lithuania_events.343.a
 		custom_effect_tooltip = LIT_LIT_SWISS_BAL
-		add_to_variable = { lit_var_swiss_conf_bia = 25 }
-		clamp_variable = {
-			var = lit_var_swiss_conf_bia
-			min = 0
-			max = 100
+		add_to_variable = {
+			lit_var_swiss_conf_bia = {
+				value = 25
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_bia } }
+			}
 		}
 		hidden_effect = {
 			activate_targeted_decision = { target = THIS decision = LIT_swiss_7 }
@@ -4812,11 +4800,11 @@ country_event = { #Infiltration Successful
 		name = lithuania_events.344.a
 		add_stability = 0.05
 		custom_effect_tooltip = LIT_LIT_SWISS_SUL
-		add_to_variable = { lit_var_swiss_conf_suw = 25 }
-		clamp_variable = {
-			var = lit_var_swiss_conf_suw
-			min = 0
-			max = 100
+		add_to_variable = {
+			lit_var_swiss_conf_suw = {
+				value = 25
+				clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_suw } }
+			}
 		}
 		LIT_recalculate_average_swiss_canton = yes
 		set_country_flag = LIT_SWISS_BIA_COMPLETED
@@ -4869,13 +4857,8 @@ country_event = { #Order Restored
 		name = lithuania_events.347.a
 		add_stability = 0.05
 		custom_effect_tooltip = LIT_LIT_SWISS_BAL_ACCEPTS
+		set_variable = { lit_var_swiss_conf_bia = 100 }
 		LIT_recalculate_average_swiss_canton = yes
-		add_to_variable = { lit_var_swiss_conf_bia = 100 }
-		clamp_variable = {
-			var = lit_var_swiss_conf_bia
-			min = 0
-			max = 100
-		}
 		97 = { remove_dynamic_modifier = { modifier = LIT_ASIS_bialystok_autonomous_region } }
 		97 = { add_dynamic_modifier = { modifier = LIT_ASIS_bialystok_autonomous_region_1 } }
 	}
@@ -5133,7 +5116,7 @@ country_event = {
 		add_stability = 0.03
 		add_war_support = -0.03
 		add_political_power = 20
-		set_temp_variable = { LIT_federalisation_change = 5 }
+		set_temp_variable = { LIT_federalisation_change = 0.05 }
 		LIT_change_federalisation = yes
 	}
 }
@@ -5181,7 +5164,7 @@ country_event = { #Litvins
 		log = "[GetLogInfo]: event lithuania_flavour_events.7 option lithuania_flavour_events.7.b"
 		name = lithuania_flavour_events.7.b
 		trigger = { has_government = social_conservative }
-		set_temp_variable = { LIT_federalisation_change = 5 }
+		set_temp_variable = { LIT_federalisation_change = 0.05 }
 		LIT_change_federalisation = yes
 	}
 	option = {
@@ -5272,7 +5255,7 @@ country_event = { #1863 Rebellion
 			popularity = 0.05
 		}
 		add_stability = 0.02
-		set_temp_variable = { LIT_federalisation_change = 10 }
+		set_temp_variable = { LIT_federalisation_change = 0.10 }
 		LIT_change_federalisation = yes
 	}
 	option = {
@@ -5291,7 +5274,7 @@ country_event = { #1863 Rebellion
 			popularity = 0.05
 		}
 		add_stability = 0.02
-		set_temp_variable = { LIT_radicalism_change = 5 }
+		set_temp_variable = { LIT_radicalism_change = 0.05 }
 		LIT_change_radicalism = yes
 	}
 }

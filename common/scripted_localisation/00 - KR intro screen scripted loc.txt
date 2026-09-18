@@ -139,8 +139,7 @@ defined_text = {
 	name = GetCurrPageCountryIntro
 	text = {
 		trigger = {
-			set_temp_variable = { curr_page_display = curr_page_country }
-			add_to_temp_variable = { curr_page_display = 1 }
+			set_temp_variable = { curr_page_display = { value = curr_page_country add = 1 } }
 		}
 		localization_key = "[?curr_page_display]"
 	}
@@ -149,8 +148,7 @@ defined_text = {
 	name = GetPageCountCountryIntro
 	text = {
 		trigger = {
-			set_temp_variable = { page_count_display = country_intro_page_count }
-			add_to_temp_variable = { page_count_display = 1 }
+			set_temp_variable = { page_count_display = { value = country_intro_page_count add = 1 } }
 		}
 		localization_key = "[?page_count_display]"
 	}
@@ -159,8 +157,7 @@ defined_text = {
 	name = GetCurrPageCountryGuide
 	text = {
 		trigger = {
-			set_temp_variable = { curr_page_display = curr_page_guide }
-			add_to_temp_variable = { curr_page_display = 1 }
+			set_temp_variable = { curr_page_display = { value = curr_page_guide add = 1 } }
 		}
 		localization_key = "[?curr_page_display]"
 	}
@@ -169,8 +166,7 @@ defined_text = {
 	name = GetPageCountCountryGuide
 	text = {
 		trigger = {
-			set_temp_variable = { page_count_display = country_guide_page_count }
-			add_to_temp_variable = { page_count_display = 1 }
+			set_temp_variable = { page_count_display = { value = country_guide_page_count add = 1 } }
 		}
 		localization_key = "[?page_count_display]"
 	}

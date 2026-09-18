@@ -49,8 +49,8 @@ AST_become_republic = {
 		retire_character = AST_alexander_hore_ruthven
 	}
 	if = {
-		limit = { has_character = AST_william_riddell_birdwood }
-		retire_character = AST_william_riddell_birdwood
+		limit = { has_character = AST_william_birdwood }
+		retire_character = AST_william_birdwood
 	}
 
 	hidden_effect = {
@@ -148,15 +148,15 @@ AST_puppet_setup = {
 			if = {
 				limit = { NOT = { is_in_faction_with = ENT } }
 				AST_become_republic = yes
-				AST_thomas_albert_blamey = { retire = yes }
-				AST_leslie_james_morshead = { retire = yes }
-				AST_herbert_william_lloyd = { retire = yes }
+				AST_thomas_blamey = { retire = yes }
+				AST_leslie_morshead = { retire = yes }
+				AST_herbert_lloyd = { retire = yes }
 			}
 			else = {
 				AST_remove_republic = yes
-				AST_thomas_albert_blamey = { set_nationality = PREV }
-				AST_leslie_james_morshead = { set_nationality = PREV }
-				AST_herbert_william_lloyd = { set_nationality = PREV }
+				AST_thomas_blamey = { set_nationality = PREV }
+				AST_leslie_morshead = { set_nationality = PREV }
+				AST_herbert_lloyd = { set_nationality = PREV }
 			}
 			if = {
 				limit = { has_democratic_government = yes }
@@ -441,8 +441,8 @@ AST_socdem_sic = {
 			}
 		}
 		else_if = {
-			limit = { AST_joseph_benedict_chifley = { is_second_in_command = no } }
-			activate_advisor = AST_joseph_benedict_chifley_sic
+			limit = { AST_ben_chifley = { is_second_in_command = no } }
+			activate_advisor = AST_ben_chifley_sic
 		}
 	}
 }
@@ -450,8 +450,8 @@ AST_socdem_sic = {
 AST_soclib_sic = {
 	effect_tooltip = {
 		if = {
-			limit = { AST_john_thomas_lang = { is_second_in_command = no } }
-			activate_advisor = AST_john_thomas_lang_sic
+			limit = { AST_jack_lang = { is_second_in_command = no } }
+			activate_advisor = AST_jack_lang_sic
 		}
 	}
 }
@@ -461,15 +461,15 @@ AST_marlib_sic = {
 		if = {
 			limit = { AST_is_dominion = yes }
 			if = {
-				limit = { has_character = AST_earle_christmas_grafton_page }
+				limit = { has_character = AST_earle_page }
 				if = {
-					limit = { AST_earle_christmas_grafton_page = { is_second_in_command = no } }
-					activate_advisor = AST_earle_christmas_grafton_page_sic
+					limit = { AST_earle_page = { is_second_in_command = no } }
+					activate_advisor = AST_earle_page_sic
 				}
 			}
 			else_if = {
-				limit = { AST_arthur_william_fadden = { is_second_in_command = no } }
-				activate_advisor = AST_arthur_william_fadden_sic
+				limit = { AST_arthur_fadden = { is_second_in_command = no } }
+				activate_advisor = AST_arthur_fadden_sic
 			}
 		}
 	}
@@ -480,26 +480,26 @@ AST_soccon_sic = {
 		if = {
 			limit = { AST_is_dominion = yes }
 			if = {
-				limit = { has_character = AST_stanley_melbourne_bruce }
+				limit = { has_character = AST_stanley_bruce }
 				if = {
-					limit = { AST_stanley_melbourne_bruce = { is_second_in_command = no } }
-					activate_advisor = AST_stanley_melbourne_bruce_sic
+					limit = { AST_stanley_bruce = { is_second_in_command = no } }
+					activate_advisor = AST_stanley_bruce_sic
 				}
 			}
 			else_if = {
 				limit = {
-					has_character = NZL_sidney_george_holland
-					NZL_sidney_george_holland = { can_be_country_leader = yes }
+					has_character = NZL_sidney_holland
+					NZL_sidney_holland = { can_be_country_leader = yes }
 				}
 				if = {
-					limit = { NZL_sidney_george_holland = { is_second_in_command = no } }
-					activate_advisor = NZL_sidney_george_holland_sic
+					limit = { NZL_sidney_holland = { is_second_in_command = no } }
+					activate_advisor = NZL_sidney_holland_sic
 				}
 			}
 			else = {
 				if = {
-					limit = { AST_robert_gordon_menzies = { is_second_in_command = no } }
-					activate_advisor = AST_robert_gordon_menzies_sic
+					limit = { AST_robert_menzies = { is_second_in_command = no } }
+					activate_advisor = AST_robert_menzies_sic
 				}
 			}
 		}
@@ -511,9 +511,9 @@ AST_authdem_sic = {
 		if = {
 			limit = {
 				AST_is_dominion = yes
-				AST_william_morris_hughes = { is_second_in_command = no }
+				AST_billy_hughes = { is_second_in_command = no }
 			}
-			activate_advisor = AST_william_morris_hughes_sic
+			activate_advisor = AST_billy_hughes_sic
 		}
 	}
 }

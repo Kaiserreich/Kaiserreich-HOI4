@@ -204,38 +204,13 @@ LIT_create_mindaugas = {
 LIT_change_centralisation = {
 	if = {
 		limit = { LIT_centralisation_active = yes }
-		# convert percent to absolute
-		if = {
-			limit = {
-				check_variable = { LIT_centralisation_change > -1 }
-				check_variable = { LIT_centralisation_change < 1 }
+		add_to_variable = {
+			LIT_centralisation = {
+				value = LIT_centralisation_change
+				clamp = { min = 0 max = { value = 1 subtract = LIT_centralisation } }
 			}
-			multiply_temp_variable = { LIT_centralisation_change = 100 }
+			tooltip = LIT_centralisation_tooltip
 		}
-
-		# tooltip
-		effect_tooltip = {
-			add_to_variable = {
-				LIT_centralisation = LIT_centralisation_change
-				tooltip = LIT_centralisation_tooltip
-			}
-		}
-
-		# lower limit = legitimacy * -1
-		set_temp_variable = { LIT_lower_limit = { value = LIT_centralisation multiply = -1 } }
-
-		# upper limit = 100 - legitimacy
-		set_temp_variable = { LIT_upper_limit = { value = 100 subtract = LIT_centralisation } }
-
-		# avoid values outside the allowed range
-		clamp_temp_variable = {
-			var = LIT_centralisation_change
-			min = LIT_lower_limit
-			max = LIT_upper_limit
-		}
-
-		# add the variable
-		add_to_variable = { LIT_centralisation = LIT_centralisation_change }
 	}
 }
 
@@ -243,33 +218,14 @@ LIT_change_centralisation = {
 LIT_change_radicalism = {
 	if = {
 		limit = { LIT_long_road_to_pluralism_active = yes }
-		# convert percent to absolute
-		if = {
-			limit = {
-				check_variable = { LIT_radicalism_change < -1 }
-				check_variable = { LIT_radicalism_change > 1 }
+		add_to_variable = {
+			LIT_radicalism = {
+				value = LIT_radicalism_change
+				clamp = { min = { value = LIT_radicalism multiply = -1 } max = { value = 1 subtract = LIT_radicalism } }
 			}
-			multiply_temp_variable = { LIT_radicalism_change = 100 }
 		}
-
-		# lower limit = radicalism * -1
-		set_temp_variable = { LIT_lower_limit = { value = LIT_radicalism multiply = -1 } }
-
-		# upper limit = 100 - radicalism
-		set_temp_variable = { LIT_upper_limit = { value = 100 subtract = LIT_radicalism } }
-
-		# avoid values outside the allowed range
-		clamp_temp_variable = {
-			var = LIT_radicalism_change
-			min = LIT_lower_limit
-			max = LIT_upper_limit
-		}
-
-		add_to_variable = { LIT_radicalism = LIT_radicalism_change }
 
 		# calculate the modifiers
-		multiply_temp_variable = { LIT_radicalism_change = 0.01 }
-
 		custom_effect_tooltip = {
 			localization_key = tooltip_modify_dynmod
 			DYNMOD = LIT_long_road_to_pluralism
@@ -332,38 +288,13 @@ LIT_remove_radicalism = {
 LIT_change_LAF_threat = {
 	if = {
 		limit = { has_active_mission = LIT_LAF_guerilla_activity }
-		# convert percent to absolute
-		if = {
-			limit = {
-				check_variable = { LIT_threat_change > -1 }
-				check_variable = { LIT_threat_change < 1 }
+		add_to_variable = {
+			LIT_LAF_threat = {
+				value = LIT_threat_change
+				clamp = { min = { value = LIT_LAF_threat multiply = -1 } max = { value = 1 subtract = LIT_LAF_threat } }
 			}
-			multiply_temp_variable = { LIT_threat_change = 100 }
+			tooltip = LIT_LAF_threat_tooltip
 		}
-
-		# tooltip
-		effect_tooltip = {
-			add_to_variable = {
-				LIT_LAF_threat = LIT_threat_change
-				tooltip = LIT_LAF_threat_tooltip
-			}
-		}
-
-		# lower limit = threat * -1
-		set_temp_variable = { LIT_lower_limit = { value = LIT_LAF_threat multiply = -1 } }
-
-		# upper limit = 100 - threat
-		set_temp_variable = { LIT_upper_limit = { value = 100 subtract = LIT_LAF_threat } }
-
-		# avoid values outside the allowed range
-		clamp_temp_variable = {
-			var = LIT_threat_change
-			min = LIT_lower_limit
-			max = LIT_upper_limit
-		}
-
-		# add the variable
-		add_to_variable = { LIT_LAF_threat = LIT_threat_change }
 
 		hidden_effect = {
 			if = {
@@ -379,7 +310,7 @@ LIT_change_LAF_threat = {
 					}
 				}
 				if = {
-					limit = { check_variable = { LIT_LAF_threat < 1 } }
+					limit = { check_variable = { LIT_LAF_threat < 0.01 } }
 					if = {
 						limit = { LIT_king_assassinated = yes }
 						country_event = { id = lithuania_events.318 days = 1 }
@@ -406,38 +337,13 @@ LIT_change_legitimacy = {
 			LIT_has_vytautas = yes
 			has_completed_focus = LIT_kings_speech
 		}
-		# convert percent to absolute
-		if = {
-			limit = {
-				check_variable = { LIT_legitimacy_change > -1 }
-				check_variable = { LIT_legitimacy_change < 1 }
+		add_to_variable = {
+			LIT_legitimacy = {
+				value = LIT_legitimacy_change
+				clamp = { min = { value = LIT_legitimacy multiply = -1 } max = { value = 1 subtract = LIT_legitimacy } }
 			}
-			multiply_temp_variable = { LIT_legitimacy_change = 100 }
+			tooltip = LIT_legitimacy_tooltip
 		}
-
-		# tooltip
-		effect_tooltip = {
-			add_to_variable = {
-				LIT_legitimacy = LIT_legitimacy_change
-				tooltip = LIT_legitimacy_tooltip
-			}
-		}
-
-		# lower limit = legitimacy * -1
-		set_temp_variable = { LIT_lower_limit = { value = LIT_legitimacy multiply = -1 } }
-
-		# upper limit = 100 - legitimacy
-		set_temp_variable = { LIT_upper_limit = { value = 100 subtract = LIT_legitimacy } }
-
-		# avoid values outside the allowed range
-		clamp_temp_variable = {
-			var = LIT_legitimacy_change
-			min = LIT_lower_limit
-			max = LIT_upper_limit
-		}
-
-		# add the variable
-		add_to_variable = { LIT_legitimacy = LIT_legitimacy_change }
 	}
 }
 
@@ -472,38 +378,13 @@ LIT_reduce_cultural_divide = {
 LIT_change_federalisation = {
 	if = {
 		limit = { LIT_optimal_system_active = yes }
-		# convert percent to absolute
-		if = {
-			limit = {
-				check_variable = { LIT_federalisation_change > -1 }
-				check_variable = { LIT_federalisation_change < 1 }
+		add_to_variable = {
+			LIT_federalisation = {
+				value = LIT_federalisation_change
+				clamp = { min = { value = LIT_federalisation multiply = -1 } max = { value = 1 subtract = LIT_federalisation } }
 			}
-			multiply_temp_variable = { LIT_federalisation_change = 100 }
+			tooltip = LIT_federalisation_tooltip
 		}
-
-		# tooltip
-		effect_tooltip = {
-			add_to_variable = {
-				LIT_federalisation = LIT_federalisation_change
-				tooltip = LIT_federalisation_tooltip
-			}
-		}
-
-		# lower limit = legitimacy * -1
-		set_temp_variable = { LIT_lower_limit = { value = LIT_federalisation multiply = -1 } }
-
-		# upper limit = 100 - legitimacy
-		set_temp_variable = { LIT_upper_limit = { value = 100 subtract = LIT_federalisation } }
-
-		# avoid values outside the allowed range
-		clamp_temp_variable = {
-			var = LIT_federalisation_change
-			min = LIT_lower_limit
-			max = LIT_upper_limit
-		}
-
-		# add the variable
-		add_to_variable = { LIT_federalisation = LIT_federalisation_change }
 	}
 }
 

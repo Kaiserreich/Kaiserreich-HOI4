@@ -925,10 +925,17 @@ focus_tree = {
 
 		on_uncomplete = {
 			remove_ideas = GRU_abwehr_1
+			remove_ideas = GRU_abwehr_1_no_lar
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_sword_and_shield"
-			add_ideas = GRU_abwehr_1
+			if = {
+				limit = { has_dlc_lar = yes }
+				add_ideas = GRU_abwehr_1
+			}
+			else = {
+				add_ideas = GRU_abwehr_1_no_lar
+			}
 		}
 	}
 
@@ -1002,6 +1009,7 @@ focus_tree = {
 
 		on_uncomplete = {
 			remove_ideas = GRU_abwehr_2
+			remove_ideas = GRU_abwehr_2_no_lar
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_paperclip"
@@ -1013,9 +1021,18 @@ focus_tree = {
 				ideology = totalist
 				popularity = 0.05
 			}
-			swap_ideas = {
-				remove_idea = GRU_abwehr_1
-				add_idea = GRU_abwehr_2
+			if = {
+				limit = { has_dlc_lar = yes }
+				swap_ideas = {
+					remove_idea = GRU_abwehr_1
+					add_idea = GRU_abwehr_2
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = GRU_abwehr_1_no_lar
+					add_idea = GRU_abwehr_2_no_lar
+				}
 			}
 		}
 	}
@@ -3007,10 +3024,17 @@ focus_tree = {
 
 		on_uncomplete = {
 			remove_ideas = GRU_abwehr_1
+			remove_ideas = GRU_abwehr_1_no_lar
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_verpo_merger"
-			add_ideas = GRU_abwehr_1
+			if = {
+				limit = { has_dlc_lar = yes }
+				add_ideas = GRU_abwehr_1
+			}
+			else = {
+				add_ideas = GRU_abwehr_1_no_lar
+			}
 		}
 	}
 
@@ -3275,12 +3299,22 @@ focus_tree = {
 
 		on_uncomplete = {
 			remove_ideas = GRU_abwehr_2
+			remove_ideas = GRU_abwehr_2_no_lar
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GRU_expand_secret_police"
-			swap_ideas = {
-				remove_idea = GRU_abwehr_1
-				add_idea = GRU_abwehr_2
+			if = {
+				limit = { has_dlc_lar = yes }
+				swap_ideas = {
+					remove_idea = GRU_abwehr_1
+					add_idea = GRU_abwehr_2
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = GRU_abwehr_1_no_lar
+					add_idea = GRU_abwehr_2_no_lar
+				}
 			}
 		}
 	}

@@ -17,7 +17,15 @@ country_event = { #Black Monday hits Finland
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = { add_ideas = FIN_black_monday_idea_1 }
+		hidden_effect = {
+			add_ideas = FIN_black_monday_idea_1
+			activate_targeted_decision = { decision = FIN_relief_fortification_work target = ROOT }
+			activate_targeted_decision = { decision = FIN_road_building_programme target = ROOT }
+			activate_targeted_decision = { decision = FIN_forgive_farmer_debts target = ROOT }
+			activate_targeted_decision = { decision = FIN_seek_new_markets target = ROOT }
+			activate_targeted_decision = { decision = FIN_inflation_control_measures target = ROOT }
+			country_event = { id = finland_events.4 days = 25 }
+		}
 	}
 
 	option = {
@@ -26,14 +34,6 @@ country_event = { #Black Monday hits Finland
 		add_stability = -0.1
 		effect_tooltip = { add_ideas = FIN_black_monday_idea_1 }
 		unlock_decision_category_tooltip = FIN_black_monday_decisions
-		hidden_effect = {
-			activate_targeted_decision = { decision = FIN_relief_fortification_work target = ROOT }
-			activate_targeted_decision = { decision = FIN_road_building_programme target = ROOT }
-			activate_targeted_decision = { decision = FIN_forgive_farmer_debts target = ROOT }
-			activate_targeted_decision = { decision = FIN_seek_new_markets target = ROOT }
-			activate_targeted_decision = { decision = FIN_inflation_control_measures target = ROOT }
-			country_event = { id = finland_events.4 days = 25 }
-		}
 	}
 }
 
@@ -46,14 +46,17 @@ country_event = { #Lapua Movement rally
 	fire_only_once = yes
 	is_triggered_only = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = finland_events.5 days = 25 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event finland_events.4 option finland_events.4.a"
 		name = finland_events.4.a
 		add_political_power = -45
 		add_popularity = { ideology = national_populist popularity = 0.03 }
-		hidden_effect = {
-			country_event = { id = finland_events.5 days = 25 }
-		}
 	}
 }
 
@@ -65,14 +68,17 @@ country_event = { #Finnish People's Delegation protest
 	fire_only_once = yes
 	is_triggered_only = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = finland_events.6 days = 15 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event finland_events.5 option finland_events.5.a"
 		name = finland_events.5.a
 		add_political_power = -75
 		add_popularity = { ideology = syndicalist popularity = 0.03 }
-		hidden_effect = {
-			country_event = { id = finland_events.6 days = 15 }
-		}
 	}
 }
 
@@ -94,6 +100,7 @@ country_event = { #Lapua Movement and Red Guard clash
 				}
 				save_event_target_as = factory_state
 			}
+			country_event = { id = finland_events.7 days = 10 }
 		}
 	}
 
@@ -115,9 +122,6 @@ country_event = { #Lapua Movement and Red Guard clash
 		}
 		add_popularity = { ideology = totalist popularity = 0.01 }
 		add_popularity = { ideology = national_populist popularity = 0.01 }
-		hidden_effect = {
-			country_event = { id = finland_events.7 days = 10 }
-		}
 	}
 }
 
@@ -143,7 +147,7 @@ country_event = { #The King makes his decision
 		}
 		add_stability = -0.05
 		add_political_power = -20
-		set_country_flag = FIN_sent_police
+		save_event_target_as = FIN_sent_police
 	}
 
 	option = { #The situation will sort itself out
@@ -152,7 +156,6 @@ country_event = { #The King makes his decision
 		ai_chance = { base = 50 }
 		add_stability = -0.02
 		add_political_power = 45
-		set_country_flag = FIN_did_not_send_police
 	}
 
 	after = {
@@ -169,14 +172,14 @@ country_event = { #The King's Speech
 		text = finland_events.8.d.disunity
 
 		trigger = {
-			has_country_flag = FIN_sent_police
+			has_event_target = FIN_sent_police
 		}
 	}
 	desc = {
 		text = finland_events.8.d.unity
 
 		trigger = {
-			has_country_flag = FIN_did_not_send_police
+			NOT = { has_event_target = FIN_sent_police }
 		}
 	}
 	picture = GFX_report_event_FIN_parliament_house
@@ -184,23 +187,25 @@ country_event = { #The King's Speech
 	fire_only_once = yes
 	is_triggered_only = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = finland_events.9 days = 20 }
+		}
+	}
+
 	option = { #He has bought the country needed time
 		log = "[GetLogInfo]: event finland_events.8 option finland_events.8.a"
 		name = finland_events.8.a
 		if = {
-			limit = { has_country_flag = FIN_sent_police }
+			limit = { has_event_target = FIN_sent_police }
 			add_stability = 0.03
 			add_popularity = { ideology = authoritarian_democrat popularity = 0.05 }
 		}
-		if = {
-			limit = { has_country_flag = FIN_did_not_send_police }
+		else = {
 			add_stability = 0.06
 			add_popularity = { ideology = authoritarian_democrat popularity = 0.03 }
 			add_popularity = { ideology = social_conservative popularity = 0.01 }
 			add_popularity = { ideology = social_democrat popularity = 0.01 }
-		}
-		hidden_effect = {
-			country_event = { id = finland_events.9 days = 20 }
 		}
 	}
 }
@@ -214,14 +219,17 @@ country_event = { #Wallenius rallies his troops
 	fire_only_once = yes
 	is_triggered_only = yes
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = finland_events.10 days = 15 }
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event finland_events.9 option finland_events.9.a"
 		name = finland_events.9.a
 		add_political_power = -50
 		add_popularity = { ideology = national_populist popularity = 0.02 }
-		hidden_effect = {
-			country_event = { id = finland_events.10 days = 15 }
-		}
 	}
 }
 
@@ -233,6 +241,18 @@ country_event = { #Factory workers strike
 
 	fire_only_once = yes
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { has_event_target = FIN_sent_police }
+				country_event = { id = finland_events.11 days = 15 }
+			}
+			else = {
+				country_event = { id = finland_events.13 days = 15 }
+			}
+		}
+	}
 
 	option = { #We must concede
 		log = "[GetLogInfo]: event finland_events.10 option finland_events.10.a"
@@ -248,19 +268,6 @@ country_event = { #Factory workers strike
 			days = 80
 		}
 	}
-
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = FIN_sent_police }
-				country_event = { id = finland_events.11 days = 15 }
-			}
-			if = {
-				limit = { has_country_flag = FIN_did_not_send_police }
-				country_event = { id = finland_events.13 days = 15 }
-			}
-		}
-	}
 }
 
 country_event = { #The state police stop the Lapua Movement's plot
@@ -271,6 +278,12 @@ country_event = { #The state police stop the Lapua Movement's plot
 
 	fire_only_once = yes
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = finland_events.12 days = 20 }
+		}
+	}
 
 	option = {
 		log = "[GetLogInfo]: event finland_events.11 option finland_events.11.a"
@@ -286,9 +299,6 @@ country_event = { #The state police stop the Lapua Movement's plot
 			long_name = FIN_party_patriotic_peoples_movement_long
 		}
 		retire_character = FIN_kurt_martti_wallenius
-		hidden_effect = {
-			country_event = { id = finland_events.12 days = 20 }
-		}
 	}
 }
 

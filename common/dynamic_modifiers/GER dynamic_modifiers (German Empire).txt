@@ -232,7 +232,7 @@ GER_The_Shogunate = {
 GER_Russia_Autonomies = {
 	icon = "GFX_modifier_GER_reichsland"
 	remove_trigger = {
-		NOT = { is_owned_by = RUS }
+		NOT = { is_owned_by = var:global.russia }
 	}
 	local_building_slots_factor = -0.20
 	local_manpower = -0.5

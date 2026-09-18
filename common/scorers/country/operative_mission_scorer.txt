@@ -178,15 +178,11 @@ operative_mission_counter_intelligence_scorer = {
 			}
 			modifier = {
 				set_temp_variable = {
-					army_weight = num_armies
-				}
-				divide_temp_variable = {
-					var = army_weight
-					value = 10
-				}
-				clamp_temp_variable = {
-					var = army_weight
-					max = 50
+					army_weight = {
+						value = num_armies
+						multiply = 0.1
+						clamp = { min = 0 max = 50 }
+					}
 				}
 				add = army_weight
 			}

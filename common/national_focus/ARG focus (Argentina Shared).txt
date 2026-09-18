@@ -1030,14 +1030,12 @@ shared_focus = {
 		date > 1937.3.1
 	}
 	bypass = {
-		AND = {
-			FOP = {
-				exists = no
-			}
-			ARG = {
-				owns_state = 512
-				owns_state = 1029
-			}
+		FOP = {
+			exists = no
+		}
+		ARG = {
+			owns_state = 512
+			owns_state = 1029
 		}
 	}
 
@@ -3000,15 +2998,22 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed ARG_Encourage_Spanish_Immigration"
 		add_to_variable = {
-			var = arg_im_factor
-			value = 50
+			arg_im_factor = 0.5
 			tooltip = ARG_add_immigration_tt
 		}
 		### Immigration modifier update
-		add_to_variable = { var = var_ARG_immigration_modifier_buff value = 0.022 }
-		add_to_variable = { var = var_ARG_immigration_modifier_debuff value = -0.011 }
-		clamp_variable = { var = var_ARG_immigration_modifier_buff min = 0 max = 0.30 }
-		clamp_variable = { var = var_ARG_immigration_modifier_debuff min = -0.15 max = 0 }
+		add_to_variable = {
+			var_ARG_immigration_modifier_buff = {
+				value = 0.022
+				clamp = { min = 0 max = { value = 0.30 subtract = var_ARG_immigration_modifier_buff } }
+			}
+		}
+		add_to_variable = {
+			var_ARG_immigration_modifier_debuff = {
+				value = -0.011
+				clamp = { min = { value = -0.15 subtract = var_ARG_immigration_modifier_debuff } max = 0 }
+			}
+		}
 	}
 	search_filters = { FOCUS_FILTER_MANPOWER }
 }
@@ -3028,16 +3033,14 @@ shared_focus = {
 		has_global_flag = USA_civil_war_begun_flag
 		OR = {
 			NOT = { has_global_flag = USA_civil_war_over_flag }
-			OR = {
-				country_exists = WCA
-				APG = {
-					exists = yes
-					has_dictatorship_government = yes
-				}
-				USA = {
-					exists = yes
-					has_government = paternal_autocrat
-				}
+			country_exists = WCA
+			APG = {
+				exists = yes
+				has_dictatorship_government = yes
+			}
+			USA = {
+				exists = yes
+				has_government = paternal_autocrat
 			}
 		}
 	}
@@ -3050,15 +3053,22 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed ARG_Fallout_of_the_American_Civil_War"
 		add_to_variable = {
-			var = arg_im_factor
-			value = 50
+			arg_im_factor = 0.5
 			tooltip = ARG_add_immigration_tt
 		}
 		### Immigration modifier update
-		add_to_variable = { var = var_ARG_immigration_modifier_buff value = 0.022 }
-		add_to_variable = { var = var_ARG_immigration_modifier_debuff value = -0.011 }
-		clamp_variable = { var = var_ARG_immigration_modifier_buff min = 0 max = 0.30 }
-		clamp_variable = { var = var_ARG_immigration_modifier_debuff min = -0.15 max = 0 }
+		add_to_variable = {
+			var_ARG_immigration_modifier_buff = {
+				value = 0.022
+				clamp = { min = 0 max = { value = 0.30 subtract = var_ARG_immigration_modifier_buff } }
+			}
+		}
+		add_to_variable = {
+			var_ARG_immigration_modifier_debuff = {
+				value = -0.011
+				clamp = { min = { value = -0.15 subtract = var_ARG_immigration_modifier_debuff } max = 0 }
+			}
+		}
 		country_event = argentina_foreign_events.12
 	}
 	search_filters = { FOCUS_FILTER_MANPOWER }

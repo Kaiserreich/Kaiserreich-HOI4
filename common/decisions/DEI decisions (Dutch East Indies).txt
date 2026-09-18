@@ -201,32 +201,25 @@ HOLEX_exiles_resistance_category = {
 			log = "[GetLogRoot]: Decision complete holex_support_the_resistance_cells"
 			random_list = {
 				30 = {
-					custom_effect_tooltip = holex_new_rf_10
-					add_to_variable = { var = holex_active_resistance_members value = 10 }
+					add_to_variable = { holex_active_resistance_members = 10 tooltip = holex_new_rf }
 				}
 				25 = {
-					custom_effect_tooltip = holex_new_rf_25
-					add_to_variable = { var = holex_active_resistance_members value = 25 }
+					add_to_variable = { holex_active_resistance_members = 25 tooltip = holex_new_rf }
 				}
 				20 = {
-					custom_effect_tooltip = holex_new_rf_50
-					add_to_variable = { var = holex_active_resistance_members value = 50 }
+					add_to_variable = { holex_active_resistance_members = 50 tooltip = holex_new_rf }
 				}
 				15 = {
-					custom_effect_tooltip = holex_new_rf_75
-					add_to_variable = { var = holex_active_resistance_members value = 75 }
+					add_to_variable = { holex_active_resistance_members = 75 tooltip = holex_new_rf }
 				}
 				10 = {
-					custom_effect_tooltip = holex_new_rf_150
-					add_to_variable = { var = holex_active_resistance_members value = 150 }
+					add_to_variable = { holex_active_resistance_members = 150 tooltip = holex_new_rf }
 				}
 				5 = {
-					custom_effect_tooltip = holex_new_rf_200
-					add_to_variable = { var = holex_active_resistance_members value = 200 }
+					add_to_variable = { holex_active_resistance_members = 200 tooltip = holex_new_rf }
 				}
 				5 = {
-					custom_effect_tooltip = holex_new_rf_300
-					add_to_variable = { var = holex_active_resistance_members value = 300 }
+					add_to_variable = { holex_active_resistance_members = 300 tooltip = holex_new_rf }
 				}
 			}
 		}
@@ -250,32 +243,25 @@ HOLEX_exiles_resistance_category = {
 			log = "[GetLogRoot]: Decision complete holex_establish_hiding_places"
 			random_list = {
 				30 = {
-					custom_effect_tooltip = holex_new_sh_10
-					add_to_variable = { var = holex_free_hiding_spots value = 10 }
+					add_to_variable = { holex_free_hiding_spots = 10 tooltip = holex_new_sh }
 				}
 				25 = {
-					custom_effect_tooltip = holex_new_sh_25
-					add_to_variable = { var = holex_free_hiding_spots value = 25 }
+					add_to_variable = { holex_free_hiding_spots = 25 tooltip = holex_new_sh }
 				}
 				20 = {
-					custom_effect_tooltip = holex_new_sh_50
-					add_to_variable = { var = holex_free_hiding_spots value = 50 }
+					add_to_variable = { holex_free_hiding_spots = 50 tooltip = holex_new_sh }
 				}
 				15 = {
-					custom_effect_tooltip = holex_new_sh_75
-					add_to_variable = { var = holex_free_hiding_spots value = 75 }
+					add_to_variable = { holex_free_hiding_spots = 75 tooltip = holex_new_sh }
 				}
 				10 = {
-					custom_effect_tooltip = holex_new_sh_150
-					add_to_variable = { var = holex_free_hiding_spots value = 150 }
+					add_to_variable = { holex_free_hiding_spots = 150 tooltip = holex_new_sh }
 				}
 				5 = {
-					custom_effect_tooltip = holex_new_sh_200
-					add_to_variable = { var = holex_free_hiding_spots value = 200 }
+					add_to_variable = { holex_free_hiding_spots = 200 tooltip = holex_new_sh }
 				}
 				5 = {
-					custom_effect_tooltip = holex_new_sh_300
-					add_to_variable = { var = holex_free_hiding_spots value = 300 }
+					add_to_variable = { holex_free_hiding_spots = 300 tooltip = holex_new_sh }
 				}
 			}
 		}
@@ -293,16 +279,19 @@ HOLEX_exiles_resistance_category = {
 		ai_will_do = { base = 25 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete holex_forge_false_identities"
-			custom_effect_tooltip = holex_25_resistancers_saved
-			set_temp_variable = { var = holex_identities_to_be_given value = 25 }
-			if = {
-				limit = {
-					check_variable = { holex_hiding_resistancemembers < holex_identities_to_be_given }
+			add_to_variable = {
+				holex_active_resistance_members = {
+					value = 25
+					clamp = { min = 0 max = holex_hiding_resistancemembers }
 				}
-				subtract_from_temp_variable = { var = holex_identities_to_be_given value = holex_hiding_resistancemembers }
+				tooltip = holex_resistancers_saved
 			}
-			subtract_from_variable = { var = holex_hiding_resistancemembers value = holex_identities_to_be_given }
-			add_to_variable = { var = holex_active_resistance_members value = holex_identities_to_be_given }
+			subtract_from_variable = {
+				holex_hiding_resistancemembers = {
+					value = 25
+					clamp = { min = 0 max = holex_hiding_resistancemembers }
+				}
+			}
 		}
 		days_remove = 45
 		days_re_enable = 45
@@ -323,7 +312,7 @@ HOLEX_exiles_resistance_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete holex_raise_resistance_fighters"
 			hidden_effect = {
-				subtract_from_variable = { var = holex_active_resistance_members value = 4000 }
+				subtract_from_variable = { holex_active_resistance_members = 4000 }
 			}
 			if = {
 				limit = { NOT = { has_country_flag = DEI_raised_resistance_fighters } }
@@ -414,7 +403,7 @@ HOLEX_exiles_resistance_category = {
 			log = "[GetLogRoot]: Decision complete holex_resistance_attack_civilian_fac"
 			custom_effect_tooltip = holex_civ_will_be_damaged
 			hidden_effect = {
-				subtract_from_variable = { var = holex_active_resistance_members value = 25 }
+				subtract_from_variable = { holex_active_resistance_members = 25 }
 			}
 			if = {
 				limit = {
@@ -445,7 +434,7 @@ HOLEX_exiles_resistance_category = {
 			else = {
 				hidden_effect = {
 					HOL = {
-						subtract_from_variable = { var = holex_amount_of_traps_set value = 1 }
+						subtract_from_variable = { holex_amount_of_traps_set = 1 }
 					}
 					random_list = {
 						70 = {
@@ -469,15 +458,15 @@ HOLEX_exiles_resistance_category = {
 		icon = GFX_decision_generic_ignite_civil_war
 		allowed = { always = no }
 		custom_cost_trigger = {
-			check_variable = { holex_active_resistance_members > 24 }
+			check_variable = { holex_active_resistance_members > 4 }
 		}
-		custom_cost_text = holex_tt_resistance_strength_25_or_greater
+		custom_cost_text = holex_tt_resistance_strength_5_or_greater
 		ai_will_do = { base = 5 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete holex_bomb_railway"
 			custom_effect_tooltip = holex_rw_will_be_damaged
 			hidden_effect = {
-				subtract_from_variable = { var = holex_active_resistance_members value = 25 }
+				subtract_from_variable = { holex_active_resistance_members = 5 }
 			}
 			hidden_effect = {
 				random_list = {
@@ -511,7 +500,7 @@ HOLEX_exiles_resistance_category = {
 			log = "[GetLogRoot]: Decision complete holex_resistance_attack_arms_fac"
 			custom_effect_tooltip = holex_arms_will_be_damaged
 			hidden_effect = {
-				subtract_from_variable = { var = holex_active_resistance_members value = 25 }
+				subtract_from_variable = { holex_active_resistance_members = 25 }
 			}
 			if = {
 				limit = {
@@ -542,7 +531,7 @@ HOLEX_exiles_resistance_category = {
 			else = {
 				hidden_effect = {
 					HOL = {
-						subtract_from_variable = { var = holex_amount_of_traps_set value = 1 }
+						subtract_from_variable = { holex_amount_of_traps_set = 1 }
 					}
 					random_list = {
 						70 = {
@@ -571,7 +560,7 @@ HOLEX_syndies_counterresistance_category = {
 		ai_will_do = { base = 15 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete holex_recruit_informants"
-			add_to_variable = { var = holex_informants value = 25 }
+			add_to_variable = { holex_informants = 25 }
 		}
 		days_remove = 30
 		days_re_enable = 30
@@ -589,19 +578,16 @@ HOLEX_syndies_counterresistance_category = {
 		ai_will_do = { base = 15 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete holex_lure_resistance_into_trap"
-			subtract_from_variable = { var = holex_informants value = 5 }
+			subtract_from_variable = { holex_informants = 5 }
 			custom_effect_tooltip = holex_trap_set
 			hidden_effect = {
-				if = {
-					limit = {
-						NOT = {
-							has_variable = holex_amount_of_traps_set
-						}
+				set_variable = {
+					holex_amount_of_traps_set = {
+						value = holex_amount_of_traps_set
+						clamp = { min = 0 max = 100 }
+						add = 1
 					}
-					set_variable = { var = holex_amount_of_traps_set value = 0 }
-					clamp_variable = { var = holex_amount_of_traps_set min = 0 }
 				}
-				add_to_variable = { var = holex_amount_of_traps_set value = 1 }
 			}
 		}
 		days_remove = 30
@@ -625,7 +611,7 @@ HOLEX_syndies_counterresistance_category = {
 		ai_will_do = { base = 15 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete holex_direct_razzia"
-			subtract_from_variable = { var = holex_informants value = 1 }
+			subtract_from_variable = { holex_informants = 1 }
 			random_list = {
 				34 = { #Successful Razzia, arrested 20 people
 					country_event = { id = dutch_exile_events.33 days = 2 }

@@ -243,8 +243,8 @@ focus_tree = {
 		available = {
 			has_government = social_conservative
 		}
+		prerequisite = { focus = CENdem_the_central_american_dream }
 		prerequisite = { focus = CENdem_strengthen_political_independence }
-		prerequisite = { focus = CENdem_the_industry_usurping_borders }
 		ai_will_do = { factor = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENdem_our_southern_brothers"
@@ -450,7 +450,7 @@ focus_tree = {
 		}
 
 		prerequisite = { focus = CENdem_strengthen_political_independence }
-		prerequisite = { focus = CENdem_the_central_american_dream }
+		prerequisite = { focus = CENdem_the_industry_usurping_borders }
 		ai_will_do = { factor = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed CENdem_consolidate_the_republic"
@@ -487,7 +487,7 @@ focus_tree = {
 
 	focus = {
 		id = CENdem_impose_federal_laws_on_the_republics
-		icon = GFX_goal_DEI_focus_disband_volksraad
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
 		cost = 7
 
 		relative_position_id = CENdem_start_the_constitutional_convention
@@ -2776,7 +2776,7 @@ focus_tree = {
 			if = {
 				limit = { is_faction_leader = yes }
 				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = COS_DUTY_TT
+				custom_effect_tooltip = COS_unlocks_topple_dictators_decisions
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }
@@ -3031,7 +3031,7 @@ focus_tree = {
 			if = {
 				limit = { is_faction_leader = yes }
 				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = COS_DUTY_TT
+				custom_effect_tooltip = COS_unlocks_topple_dictators_decisions
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }
@@ -3432,7 +3432,7 @@ focus_tree = {
 			if = {
 				limit = { is_faction_leader = yes }
 				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = COS_DUTY_TT
+				custom_effect_tooltip = COS_unlocks_topple_dictators_decisions
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }

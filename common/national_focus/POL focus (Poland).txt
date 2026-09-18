@@ -18,7 +18,7 @@ focus_tree = {
 	### Kingdom Tree ###
 	focus = {
 		id = POL_Emergency_Session
-		icon = GFX_goal_POL_kingdom
+		icon = GFX_goal_generic_parliament
 		cost = 1
 
 		x = 2
@@ -429,9 +429,13 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed POL_Reintroduce_The_Zloty"
 			set_temp_variable = { POL_influence_change = 5 }
 			POL_add_royal_influence = yes
-			set_temp_variable = { POL_change = 0.12 }
-			clamp_temp_variable = { var = POL_change max = POL_black_monday_consumer_goods }
-			multiply_temp_variable = { POL_change = -1 }
+			set_temp_variable = {
+				POL_change = {
+					value = 0.12
+					clamp = { min = 0 max = POL_black_monday_consumer_goods }
+					multiply = -1
+				}
+			}
 			if = {
 				limit = { NOT = { check_variable = { POL_change = 0 } } }
 				custom_effect_tooltip = {
@@ -630,9 +634,13 @@ focus_tree = {
 				localization_key = tooltip_modify_dynmod
 				DYNMOD = POL_black_monday_modifier
 			}
-			set_temp_variable = { POL_change = 0.12 }
-			clamp_temp_variable = { var = POL_change max = POL_black_monday_consumer_goods }
-			multiply_temp_variable = { POL_change = -1 }
+			set_temp_variable = {
+				POL_change = {
+					value = 0.12
+					clamp = { min = 0 max = POL_black_monday_consumer_goods }
+					multiply = -1
+				}
+			}
 			if = {
 				limit = { NOT = { check_variable = { POL_change = 0 } } }
 				add_to_variable = {
@@ -640,9 +648,13 @@ focus_tree = {
 					tooltip = consumer_goods_factor_tooltip
 				}
 			}
-			set_temp_variable = { POL_change = 0.04 }
-			clamp_temp_variable = { var = POL_change max = POL_black_monday_consumer_goods }
-			multiply_temp_variable = { POL_change = -1 }
+			set_temp_variable = {
+				POL_change = {
+					value = -0.04
+					clamp = { min = POL_black_monday_stability max = 0 }
+					multiply = -1
+				}
+			}
 			if = {
 				limit = { NOT = { check_variable = { POL_change = 0 } } }
 				add_to_variable = {
@@ -684,9 +696,13 @@ focus_tree = {
 				localization_key = tooltip_modify_dynmod
 				DYNMOD = POL_black_monday_modifier
 			}
-			set_temp_variable = { POL_change = 0.12 }
-			clamp_temp_variable = { var = POL_change max = POL_black_monday_consumer_goods }
-			multiply_temp_variable = { POL_change = -1 }
+			set_temp_variable = {
+				POL_change = {
+					value = 0.12
+					clamp = { min = 0 max = POL_black_monday_consumer_goods }
+					multiply = -1
+				}
+			}
 			if = {
 				limit = { NOT = { check_variable = { POL_change = 0 } } }
 				add_to_variable = {
@@ -694,9 +710,13 @@ focus_tree = {
 					tooltip = consumer_goods_factor_tooltip
 				}
 			}
-			set_temp_variable = { POL_change = 0.04 }
-			clamp_temp_variable = { var = POL_change max = POL_black_monday_consumer_goods }
-			multiply_temp_variable = { POL_change = -1 }
+			set_temp_variable = {
+				POL_change = {
+					value = -0.04
+					clamp = { min = POL_black_monday_stability max = 0 }
+					multiply = -1
+				}
+			}
 			if = {
 				limit = { NOT = { check_variable = { POL_change = 0 } } }
 				add_to_variable = {
@@ -734,9 +754,13 @@ focus_tree = {
 		ai_will_do = { factor = 3000 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed POL_The_Second_Four_Year_Plan"
-			set_temp_variable = { POL_change = 0.12 }
-			clamp_temp_variable = { var = POL_change max = POL_black_monday_consumer_goods }
-			multiply_temp_variable = { POL_change = -1 }
+			set_temp_variable = {
+				POL_change = {
+					value = 0.12
+					clamp = { min = 0 max = POL_black_monday_consumer_goods }
+					multiply = -1
+				}
+			}
 			if = {
 				limit = { NOT = { check_variable = { POL_change = 0 } } }
 				custom_effect_tooltip = {
@@ -3149,13 +3173,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed POL_Workers_Economy"
 			custom_effect_tooltip = POL_scales_with_eco_tt
-			set_temp_variable = { POL_eco_stab_hit = 1 }
-			set_temp_variable = { POL_eco_modifier = POL_influence }
-			divide_temp_variable = { POL_eco_modifier = -100 }
-			add_to_temp_variable = { POL_eco_stab_hit = POL_eco_modifier }
-			multiply_temp_variable = { POL_eco_stab_hit = -0.3 }
-			#subtract_from_temp_variable = { POL_eco_stab_hit = POL_influence }
-			#multiply_temp_variable = { POL_eco_stab_hit = -0.5 }
+			set_temp_variable = {
+				POL_eco_stab_hit = {
+					value = 1
+					add = {
+						value = POL_influence
+						multiply = -0.01
+					}
+					multiply = -0.3
+				}
+			}
 			add_stability = POL_eco_stab_hit
 
 			add_popularity = { ideology = syndicalist popularity = 0.05 }
@@ -4098,7 +4125,7 @@ focus_tree = {
 
 	focus = {
 		id = POL_Shackle_the_Senate
-		icon = GFX_goal_DEI_focus_disband_volksraad
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
 		cost = 8
 
 		relative_position_id = POL_Centrolew
@@ -6105,13 +6132,9 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 750
+			factor = 250
 			modifier = {
 				factor = 0
-				RUS = {
-					is_faction_leader = yes
-					surrender_progress < 0.2
-				}
 				NOT = {
 					is_in_faction_with = RUS
 					has_game_rule = { rule = POL_revolts option = POL_REVOLTS_NO_REVOLT }
@@ -6300,7 +6323,16 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = POL_Reinforce_The_Parliamentary_System }
 		available = { POL_rydz = yes }
-		ai_will_do = { factor = 500 }
+		ai_will_do = {
+			factor = 500
+			modifier = {
+				factor = 0
+				RUS = {
+					is_faction_leader = yes
+					surrender_progress > 0.05 #Don't join losing Russia
+				}
+			}
+		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed POL_The_Marshal"
 			custom_effect_tooltip = POL_war_required
@@ -6689,8 +6721,7 @@ focus_tree = {
 				limit = { has_government = national_populist }
 				custom_effect_tooltip = POL_Hijack_Endecja_tt2
 				hidden_effect = {
-					set_temp_variable = { POL_soccon_var = POL.party_popularity@social_conservative }
-					add_to_temp_variable = { POL_soccon_var = POL.party_popularity@paternal_autocrat }
+					set_temp_variable = { POL_soccon_var = { value = party_popularity@social_conservative add = party_popularity@paternal_autocrat } }
 					add_popularity = {
 						ideology = national_populist
 						popularity = POL_soccon_var
@@ -6709,8 +6740,7 @@ focus_tree = {
 				limit = { has_government = paternal_autocrat }
 				custom_effect_tooltip = POL_Hijack_Endecja_tt1
 				hidden_effect = {
-					set_temp_variable = { POL_soccon_var = POL.party_popularity@social_conservative }
-					add_to_temp_variable = { POL_soccon_var = POL.party_popularity@national_populist }
+					set_temp_variable = { POL_soccon_var = { value = party_popularity@social_conservative add = party_popularity@national_populist } }
 					add_popularity = {
 						ideology = paternal_autocrat
 						popularity = POL_soccon_var

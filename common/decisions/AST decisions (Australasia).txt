@@ -564,17 +564,13 @@ AST_anderson_policy_decisions = {
 					has_socialist_government = yes
 					has_government = national_populist
 				}
-				757 = {
-					owner = {
-						AND = {
-							country_exists = GER
-							is_ally_with = GER
-						}
-						NOT = {
-							has_war_with = AST
-							GER = { has_war_with = AST }
-							has_socialist_government = yes
-						}
+				country_exists = GER
+				var:757.owner = {
+					is_ally_with = GER
+					NOT = {
+						has_war_with = AST
+						GER = { has_war_with = AST }
+						has_socialist_government = yes
 					}
 				}
 			}
@@ -887,17 +883,13 @@ AST_anderson_policy_decisions = {
 					has_socialist_government = yes
 					has_government = national_populist
 				}
-				684 = {
-					owner = {
-						AND = {
-							country_exists = GER
-							is_ally_with = GER
-						}
-						NOT = {
-							has_war_with = AST
-							GER = { has_war_with = AST }
-							has_socialist_government = yes
-						}
+				country_exists = GER
+				var:684.owner = {
+					is_ally_with = GER
+					NOT = {
+						has_war_with = AST
+						GER = { has_war_with = AST }
+						has_socialist_government = yes
 					}
 				}
 			}

@@ -533,82 +533,56 @@ GER_heinz_guderian = { set_nationality = POL }
 
 #### Character Recruitment & Retirement ####
 recruit_character = GER_bm_cardgame_money_issuance_object
-recruit_character = GER_bm_cardgame_money_issuance_idea
 
 recruit_character = GER_bm_cardgame_capital_controls_object
-recruit_character = GER_bm_cardgame_capital_controls_idea
 
 recruit_character = GER_bm_cardgame_employment_programme_object
-recruit_character = GER_bm_cardgame_employment_programme_idea
 
 recruit_character = GER_bm_cardgame_cooperation_business_object
-recruit_character = GER_bm_cardgame_cooperation_business_idea
 
 recruit_character = GER_bm_cardgame_fireside_chat_object
-recruit_character = GER_bm_cardgame_fireside_chat_idea
 
 recruit_character = GER_bm_cardgame_eastern_assistance_object
-recruit_character = GER_bm_cardgame_eastern_assistance_idea
 
 recruit_character = GER_bm_cardgame_price_monitoring_object
-recruit_character = GER_bm_cardgame_price_monitoring_idea
 
 recruit_character = GER_bm_cardgame_rathenauplan_object
-recruit_character = GER_bm_cardgame_rathenauplan_idea
 
 recruit_character = GER_bm_cardgame_tbplan_object
-recruit_character = GER_bm_cardgame_tbplan_idea
 
 recruit_character = GER_bm_cardgame_arbeitsdienst_object
-recruit_character = GER_bm_cardgame_arbeitsdienst_idea
 
 recruit_character = GER_bm_cardgame_land_improvement_object
-recruit_character = GER_bm_cardgame_land_improvement_idea
 
 recruit_character = GER_bm_cardgame_corporate_assistance_object
-recruit_character = GER_bm_cardgame_corporate_assistance_idea
 
 recruit_character = GER_bm_cardgame_institutional_public_works_object
-recruit_character = GER_bm_cardgame_institutional_public_works_idea
 
 recruit_character = GER_bm_cardgame_import_tariffs_object
-recruit_character = GER_bm_cardgame_import_tariffs_idea
 
 recruit_character = GER_bm_cardgame_economic_planning_object
-recruit_character = GER_bm_cardgame_economic_planning_idea
 
 recruit_character = GER_bm_cardgame_mitteleuropa_loans_object
-recruit_character = GER_bm_cardgame_mitteleuropa_loans_idea
 
 recruit_character = GER_bm_cardgame_administrative_reform_object
-recruit_character = GER_bm_cardgame_administrative_reform_idea
 
 recruit_character = GER_bm_cardgame_nationalisation_of_foreign_companies_object
-recruit_character = GER_bm_cardgame_nationalisation_of_foreign_companies_idea
 
 recruit_character = GER_bm_trade_union_collaboration_object
-recruit_character = GER_bm_trade_union_collaboration_idea
 
 recruit_character = GER_bm_cardgame_strategic_tax_hikes_object
-recruit_character = GER_bm_cardgame_strategic_tax_hikes_idea
 
 recruit_character = GER_bm_cardgame_price_depression_object
-recruit_character = GER_bm_cardgame_price_depression_idea
 
 recruit_character = GER_bm_cardgame_money_issuance_large_object
-recruit_character = GER_bm_cardgame_money_issuance_large_idea
 
 recruit_character = GER_bm_cardgame_fiscal_austerity_object
-recruit_character = GER_bm_cardgame_fiscal_austerity_idea
 
 recruit_character = GER_bm_cardgame_federal_income_taxes_object
-recruit_character = GER_bm_cardgame_federal_income_taxes_idea
 
 recruit_character = GER_bm_cardgame_reichsbank_analysis_object
-recruit_character = GER_bm_cardgame_reichsbank_analysis_idea
 
 recruit_character = GER_bm_cardgame_technocratic_thinking_object
-recruit_character = GER_bm_cardgame_technocratic_thinking_idea
 
 ### Card Array ###
 
@@ -717,50 +691,23 @@ GER_bm_cardgame_technocratic_thinking_object = {
 	retire = yes
 }
 
-#### Idea Attribute ####
-
-GER_bm_cardgame_money_issuance_idea = { retire = yes }
-GER_bm_cardgame_capital_controls_idea = { retire = yes }
-GER_bm_cardgame_employment_programme_idea = { retire = yes }
-GER_bm_cardgame_cooperation_business_idea = { retire = yes }
-GER_bm_cardgame_fireside_chat_idea = { retire = yes }
-GER_bm_cardgame_eastern_assistance_idea = { retire = yes }
-GER_bm_cardgame_price_monitoring_idea = { retire = yes }
-GER_bm_cardgame_rathenauplan_idea = { retire = yes }
-GER_bm_cardgame_tbplan_idea = { retire = yes }
-GER_bm_cardgame_arbeitsdienst_idea = { retire = yes }
-GER_bm_cardgame_land_improvement_idea = { retire = yes }
-GER_bm_cardgame_corporate_assistance_idea = { retire = yes }
-GER_bm_cardgame_institutional_public_works_idea = { retire = yes }
-GER_bm_cardgame_import_tariffs_idea = { retire = yes }
-GER_bm_cardgame_economic_planning_idea = { retire = yes }
-GER_bm_cardgame_mitteleuropa_loans_idea = { retire = yes }
-GER_bm_cardgame_administrative_reform_idea = { retire = yes }
-GER_bm_cardgame_nationalisation_of_foreign_companies_idea = { retire = yes }
-GER_bm_trade_union_collaboration_idea = { retire = yes }
-GER_bm_cardgame_strategic_tax_hikes_idea = { retire = yes }
-GER_bm_cardgame_price_depression_idea = { retire = yes }
-GER_bm_cardgame_money_issuance_large_idea = { retire = yes }
-GER_bm_cardgame_fiscal_austerity_idea = { retire = yes }
-GER_bm_cardgame_federal_income_taxes_idea = { retire = yes }
-GER_bm_cardgame_reichsbank_analysis_idea = { retire = yes }
-GER_bm_cardgame_technocratic_thinking_idea = { retire = yes }
-
 #### Object Attributes ####
 
 GER_bm_cardgame_money_issuance_object = {
-	GER = { GER_bm_cardgame_money_issuance_idea = { set_variable = { PREV.PREV.card_id = THIS } } } #needed to connect both objects to each other
-	#set_character_flag = remove_after_play # Card will be be removed from deck after play. If left unset card will automatically discard.
-	#set_character_flag = reform_card # card counts as a reform card.
 	#set_character_flag = custom_card_effect #Flags card as having a custom effect defined
-	#set_character_flag = custom_card_calculations #Flags card as having special trigger-side calculations (uses defined scripted trigger to output non-default BM cardgame values like investment or stability score)
+	#set_variable = { custom_card_calculations = x } #Flags card as having special trigger-side calculations. Calculated inside math expressions
 	#set_character_flag = custom_card_tooltip #Flags card as having a custom tooltip.
-	#set_character_flag = special_card #Flags card as "special" (currently unused, planned for deck/draw tooltip).
 
-	set_variable = { GER_card_type = 1 } # THIS IS THE CARD TYPE. No card type defaults to a "recovery" card tooltip, while a reform card will always show a reform card tooltip.
+	# Card Types: No card type defaults to a "recovery" card tooltip. Cards are automatically discarded unless it's a reform card.
+	#GER_card_type = 0 (Recovery Card) Default
+	#GER_card_type = 1 (Relief Card/Money Creation)
+	#GER_card_type = 2 (Relief Card/Capital Control)
+	#GER_card_type = 3 (Relief Card/Work Creation)
+	#GER_card_type = 4 (Reform Card). Gives a permament bonus. Removed permanently from the deck after first use.
+
+	set_variable = { GER_card_type = 1 }
 
 	set_variable = { card_lines_for_tt = 3 } #Basic number of lines to use
-	set_variable = { card_lines_for_tt_extra = 3 } #extra lines to use if card is super effective
 
 	set_variable = { card_investment_value = 1000 }
 	set_variable = { card_stability_value = 500 }
@@ -770,11 +717,9 @@ GER_bm_cardgame_money_issuance_object = {
 }
 
 GER_bm_cardgame_capital_controls_object = {
-	GER = { GER_bm_cardgame_capital_controls_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
 	set_variable = { GER_card_type = 2 }
 
 	set_variable = { card_lines_for_tt = 3 } #Basic number of lines to use
-	set_variable = { card_lines_for_tt_extra = 3 } #extra lines to use if card is super effective
 
 	set_variable = { card_investment_value = 500 }
 	set_variable = { card_stability_value = 1000 }
@@ -782,11 +727,9 @@ GER_bm_cardgame_capital_controls_object = {
 }
 
 GER_bm_cardgame_employment_programme_object = {
-	GER = { GER_bm_cardgame_employment_programme_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
 	set_variable = { GER_card_type = 3 }
 
 	set_variable = { card_lines_for_tt = 3 } #Basic number of lines to use
-	set_variable = { card_lines_for_tt_extra = 3 } #extra lines to use if card is super effective
 
 	set_variable = { card_investment_value = 750 }
 	set_variable = { card_stability_value = 750 }
@@ -794,30 +737,23 @@ GER_bm_cardgame_employment_programme_object = {
 }
 
 GER_bm_cardgame_cooperation_business_object = {
-	GER = { GER_bm_cardgame_cooperation_business_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 2 }
-	set_variable = { card_lines_for_tt_extra = 2 } #extra lines to use if card is super effective
 
 	set_variable = { card_draw_value = 2 }
 	set_variable = { card_debt_value = 3 }
 }
 
 GER_bm_cardgame_fireside_chat_object = {
-	GER = { GER_bm_cardgame_fireside_chat_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
-	set_character_flag = custom_card_calculations
 	set_character_flag = custom_card_effect
 	# set_character_flag = custom_card_tooltip accounted for in effect :)
 
-	set_variable = { card_lines_for_tt = 2 } #not really necessary, but just as an internal test
+	set_variable = { card_lines_for_tt = 7 } #not really necessary, but just as an internal test
 }
 
 GER_bm_cardgame_eastern_assistance_object = {
-	GER = { GER_bm_cardgame_eastern_assistance_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
 	set_variable = { card_lines_for_tt = 6 }
 
-	set_character_flag = custom_card_calculations
+	set_variable = { custom_card_calculations = 1 }
 	set_character_flag = custom_card_tooltip
 
 	set_variable = { card_investment_value = 200 }
@@ -826,47 +762,37 @@ GER_bm_cardgame_eastern_assistance_object = {
 }
 
 GER_bm_cardgame_price_monitoring_object = {
-	GER = { GER_bm_cardgame_price_monitoring_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 5 }
 	#set_character_flag = custom_card_tooltip
 	set_character_flag = custom_card_effect
-	set_character_flag = reform_card
-	set_character_flag = remove_after_play
+
+	set_variable = { GER_card_type = 4 }
 
 	set_variable = { card_debt_value = 3 }
 }
 
 GER_bm_cardgame_rathenauplan_object = {
-	GER = { GER_bm_cardgame_rathenauplan_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 6 }
 	set_character_flag = custom_card_tooltip
-	set_character_flag = custom_card_calculations
 
+	set_variable = { card_draw_value = 1 }
 	set_variable = { card_debt_value = 3 }
 }
 
 GER_bm_cardgame_tbplan_object = {
-	GER = { GER_bm_cardgame_tbplan_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 6 }
 	set_character_flag = custom_card_tooltip
-	set_character_flag = custom_card_calculations
 
+	set_variable = { card_draw_value = 1 }
 	set_variable = { card_debt_value = 3 }
 }
 
 GER_bm_cardgame_arbeitsdienst_object = {
-	GER = { GER_bm_cardgame_arbeitsdienst_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 3 }
-	set_variable = { card_lines_for_tt_extra = 3 }
 
 	set_variable = { GER_card_type = 3 } # THIS IS THE CARD TYPE. No card type defaults to a "recovery" card tooltip, while a reform card will always show a reform card tooltip.
 
 	set_variable = { card_lines_for_tt = 3 } #Basic number of lines to use
-	set_variable = { card_lines_for_tt_extra = 3 } #extra lines to use if card is super effective
 
 	set_variable = { card_investment_value = 1500 }
 	set_variable = { card_stability_value = 2000 }
@@ -875,10 +801,7 @@ GER_bm_cardgame_arbeitsdienst_object = {
 }
 
 GER_bm_cardgame_land_improvement_object = {
-	GER = { GER_bm_cardgame_land_improvement_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 3 }
-	set_variable = { card_lines_for_tt_extra = 3 }
 
 	set_variable = { GER_card_type = 3 } # THIS IS THE CARD TYPE. No card type defaults to a "recovery" card tooltip, while a reform card will always show a reform card tooltip.
 
@@ -888,11 +811,7 @@ GER_bm_cardgame_land_improvement_object = {
 	set_variable = { card_debt_value = 3 }
 }
 GER_bm_cardgame_corporate_assistance_object = {
-	GER = { GER_bm_cardgame_corporate_assistance_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 2 }
-
-	set_character_flag = custom_card_calculations
 
 	set_variable = { card_draw_from_discard = 1 }
 
@@ -900,21 +819,15 @@ GER_bm_cardgame_corporate_assistance_object = {
 }
 
 GER_bm_cardgame_institutional_public_works_object = {
-	GER = { GER_bm_cardgame_institutional_public_works_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 6 }
 	set_character_flag = custom_card_tooltip
-	set_character_flag = reform_card
-	set_character_flag = remove_after_play
+	set_variable = { GER_card_type = 4 }
 
 	set_variable = { card_debt_value = 5 }
 }
 
 GER_bm_cardgame_import_tariffs_object = {
-	GER = { GER_bm_cardgame_import_tariffs_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 3 }
-	set_variable = { card_lines_for_tt_extra = 3 }
 
 	set_variable = { GER_card_type = 2 }
 
@@ -923,23 +836,17 @@ GER_bm_cardgame_import_tariffs_object = {
 }
 
 GER_bm_cardgame_economic_planning_object = {
-	GER = { GER_bm_cardgame_economic_planning_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_character_flag = custom_card_effect #Flags card as having a custom effect defined
 
 	set_variable = { card_lines_for_tt = 5 }
 	set_character_flag = custom_card_tooltip
-	set_character_flag = reform_card
-	set_character_flag = remove_after_play
+	set_variable = { GER_card_type = 4 }
 
 	set_variable = { card_debt_value = 5 }
 }
 
 GER_bm_cardgame_mitteleuropa_loans_object = {
-	GER = { GER_bm_cardgame_mitteleuropa_loans_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 4 }
-	set_variable = { card_lines_for_tt_extra = 3 }
 
 	set_variable = { GER_card_type = 1 }
 
@@ -950,8 +857,6 @@ GER_bm_cardgame_mitteleuropa_loans_object = {
 }
 
 GER_bm_cardgame_administrative_reform_object = {
-	GER = { GER_bm_cardgame_administrative_reform_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 4 }
 
 	set_character_flag = custom_card_tooltip
@@ -961,8 +866,6 @@ GER_bm_cardgame_administrative_reform_object = {
 }
 
 GER_bm_cardgame_nationalisation_of_foreign_companies_object = {
-	GER = { GER_bm_cardgame_nationalisation_of_foreign_companies_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 4 }
 
 	set_character_flag = custom_card_tooltip
@@ -972,20 +875,16 @@ GER_bm_cardgame_nationalisation_of_foreign_companies_object = {
 }
 
 GER_bm_trade_union_collaboration_object = {
-	GER = { GER_bm_trade_union_collaboration_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
-	set_variable = { card_lines_for_tt = 4 }
+	set_variable = { card_lines_for_tt = 5 }
 	set_character_flag = custom_card_tooltip
-	set_character_flag = custom_card_calculations
+	set_variable = { custom_card_calculations = 2 }
 
+	set_variable = { card_stability_value = 0 }
 	set_variable = { card_debt_value = 2 }
 }
 
 GER_bm_cardgame_strategic_tax_hikes_object = {
-	GER = { GER_bm_cardgame_strategic_tax_hikes_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 3 }
-	set_variable = { card_lines_for_tt_extra = 3 }
 
 	set_variable = { GER_card_type = 2 }
 
@@ -994,10 +893,7 @@ GER_bm_cardgame_strategic_tax_hikes_object = {
 }
 
 GER_bm_cardgame_price_depression_object = {
-	GER = { GER_bm_cardgame_price_depression_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 3 }
-	set_variable = { card_lines_for_tt_extra = 3 }
 
 	set_variable = { GER_card_type = 1 }
 
@@ -1006,10 +902,7 @@ GER_bm_cardgame_price_depression_object = {
 }
 
 GER_bm_cardgame_money_issuance_large_object = {
-	GER = { GER_bm_cardgame_money_issuance_large_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 3 }
-	set_variable = { card_lines_for_tt_extra = 3 }
 
 	set_variable = { GER_card_type = 1 }
 
@@ -1020,10 +913,7 @@ GER_bm_cardgame_money_issuance_large_object = {
 }
 
 GER_bm_cardgame_fiscal_austerity_object = {
-	GER = { GER_bm_cardgame_fiscal_austerity_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 3 }
-	set_variable = { card_lines_for_tt_extra = 3 }
 
 	set_variable = { GER_card_type = 2 }
 
@@ -1034,39 +924,28 @@ GER_bm_cardgame_fiscal_austerity_object = {
 }
 
 GER_bm_cardgame_federal_income_taxes_object = {
-	GER = { GER_bm_cardgame_federal_income_taxes_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_variable = { card_lines_for_tt = 5 }
 
 	set_character_flag = custom_card_tooltip
-	set_character_flag = reform_card
-	set_character_flag = remove_after_play
+	set_variable = { GER_card_type = 4 }
 
 	set_variable = { card_debt_value = 4 }
 }
 
 GER_bm_cardgame_reichsbank_analysis_object = {
-	GER = { GER_bm_cardgame_reichsbank_analysis_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
 	set_character_flag = custom_card_tooltip
 	set_character_flag = custom_card_effect
 	set_variable = { card_lines_for_tt = 2 }
 }
 
 GER_bm_cardgame_technocratic_thinking_object = {
-	GER = { GER_bm_cardgame_technocratic_thinking_idea = { set_variable = { PREV.PREV.card_id = THIS } } }
-
-	set_character_flag = remove_after_play # Card will be be removed from deck after play. If left unset card will automatically discard.
-	set_character_flag = reform_card # card counts as a reform card.
 	set_character_flag = custom_card_effect #Flags card as having a custom effect defined
-	#set_character_flag = custom_card_calculations #Flags card as having special trigger-side calculations (uses defined scripted trigger to output non-default BM cardgame values like investment or stability score)
+	#set_variable = { custom_card_calculations = x } #Flags card as having special trigger-side calculations. Calculated inside math expressions
 	set_character_flag = custom_card_tooltip #Flags card as having a custom tooltip.
-	#set_character_flag = special_card #Flags card as "special" (currently unused, planned for deck/draw tooltip).
 
-	#set_variable = { GER_card_type = 1 } # THIS IS THE CARD TYPE. No card type defaults to a "recovery" card tooltip, while a reform card will always show a reform card tooltip.
+	set_variable = { GER_card_type = 4 }
 
-	set_variable = { card_lines_for_tt = 5 } #Basic number of lines to use
-	#set_variable = { card_lines_for_tt_extra = 3 } #extra lines to use if card is super effective
+	set_variable = { card_lines_for_tt = 6 } #Basic number of lines to use
 
 	#set_variable = { card_investment_value = 1000 }
 	#set_variable = { card_stability_value = 500 }
@@ -1188,179 +1067,135 @@ every_country = {
 }
 
 recruit_character = MIT_generic_industrial_projects
-recruit_character = MIT_generic_industrial_projects_name
 
 recruit_character = MIT_generic_arms_industry
-recruit_character = MIT_generic_arms_industry_name
 
 recruit_character = MIT_generic_infrastructure
-recruit_character = MIT_generic_infrastructure_name
 
 recruit_character = MIT_generic_financial_bailout
-recruit_character = MIT_generic_financial_bailout_name
 
 recruit_character = MIT_generic_industrial_advisors
-recruit_character = MIT_generic_industrial_advisors_name
 
 recruit_character = MIT_generic_arms_experts
-recruit_character = MIT_generic_arms_experts_name
 
 recruit_character = MIT_generic_cohesion_fund
-recruit_character = MIT_generic_cohesion_fund_name
 
 recruit_character = MIT_generic_legal_reform
-recruit_character = MIT_generic_legal_reform_name
 
 recruit_character = MIT_consultative_assembly
-recruit_character = MIT_consultative_assembly_name
 
 recruit_character = MIT_directive_system
-recruit_character = MIT_directive_system_name
 
 recruit_character = MIT_qualified_majority
-recruit_character = MIT_qualified_majority_name
 
 recruit_character = MIT_assembly_approval
-recruit_character = MIT_assembly_approval_name
 
 recruit_character = MIT_regulation_system
-recruit_character = MIT_regulation_system_name
 
 recruit_character = MIT_budget_quota
-recruit_character = MIT_budget_quota_name
 
 recruit_character = MIT_enforcement_directorate
-recruit_character = MIT_enforcement_directorate_name
 
 recruit_character = MIT_enlargement_directorate
-recruit_character = MIT_enlargement_directorate_name
 
 recruit_character = MIT_common_travel_area
-recruit_character = MIT_common_travel_area_name
 
 recruit_character = MIT_support_local_production
-recruit_character = MIT_support_local_production_name
 
 recruit_character = MIT_mitteleuropa_loans
-recruit_character = MIT_mitteleuropa_loans_name
 
 recruit_character = MIT_central_europe_bank
-recruit_character = MIT_central_europe_bank_name
 
 recruit_character = MIT_europamark
-recruit_character = MIT_europamark_name
 
 recruit_character = MIT_challenge_leadership
-recruit_character = MIT_challenge_leadership_name
 
 MIT_generic_industrial_projects = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_generic_industrial_projects_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	add_to_array = { global.MIT_agendas = THIS }
 	retire = yes
 }
 MIT_generic_arms_industry = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_generic_arms_industry_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	add_to_array = { global.MIT_agendas = THIS }
 	retire = yes
 }
 MIT_generic_infrastructure = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_generic_infrastructure_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	add_to_array = { global.MIT_agendas = THIS }
 	retire = yes
 }
 MIT_generic_financial_bailout = {
-	GER = { MIT_generic_financial_bailout_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	add_to_array = { global.MIT_agendas = THIS }
 	retire = yes
 }
 MIT_generic_industrial_advisors = {
-	GER = { MIT_generic_industrial_advisors_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	add_to_array = { global.MIT_agendas = THIS }
 	retire = yes
 }
 MIT_generic_arms_experts = {
-	GER = { MIT_generic_arms_experts_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	add_to_array = { global.MIT_agendas = THIS }
 	retire = yes
 }
 MIT_generic_cohesion_fund = {
-	GER = { MIT_generic_cohesion_fund_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_generic_legal_reform = {
-	GER = { MIT_generic_legal_reform_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_directive_system = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_directive_system_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_consultative_assembly = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_consultative_assembly_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_qualified_majority = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_qualified_majority_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_assembly_approval = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_assembly_approval_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_regulation_system = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_regulation_system_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_budget_quota = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_budget_quota_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_enforcement_directorate = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_enforcement_directorate_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_enlargement_directorate = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_enlargement_directorate_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_common_travel_area = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_common_travel_area_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_support_local_production = {
-	GER = { MIT_support_local_production_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_mitteleuropa_loans = {
-	GER = { MIT_mitteleuropa_loans_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_central_europe_bank = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_central_europe_bank_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_europamark = {
 	set_character_flag = MIT_has_unique_agenda_effect
-	GER = { MIT_europamark_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	retire = yes
 }
 MIT_challenge_leadership = {
 	set_character_flag = MIT_has_unique_agenda_effect
 	set_character_flag = MIT_challenge_leadership
-	GER = { MIT_challenge_leadership_name = { set_variable = { PREV.PREV.agenda_idea = THIS } } }
 	add_to_array = { global.MIT_agendas = THIS }
 	retire = yes
 }

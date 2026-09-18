@@ -46,6 +46,27 @@ britain_create_puppet_templates = {
 			motorized = { x = 1 y = 2 }
 		}
 	}
+	if = {
+		limit = {
+			has_dlc_taog = yes
+			is_dynamic_country = yes
+		}
+		division_template = {
+			name = "Army Headquarters"
+			template_counter = 121
+			is_army_hq = yes
+
+			regiments = {
+				hq_infantry = { x = 0 y = 0 }
+				hq_infantry = { x = 0 y = 1 }
+				hq_infantry = { x = 0 y = 2 }
+			}
+
+			support = {
+				hq_support_company = { x = 0 y = 0 }
+			}
+		}
+	}
 }
 
 ### Union of Britain ###

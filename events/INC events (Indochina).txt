@@ -2983,31 +2983,20 @@ country_event = { #Landlord Resistance
 		log = "[GetLogInfo]: event indochina_events.65 option indochina_events.65.a"
 		name = indochina_events.65.a # We have no choice
 		add_war_support = -0.05
-		subtract_from_variable = {
-			var = land_reform
-			value = 10
-			tooltip = INC_reduce_land_reform_progress_tt
-		}
+		subtract_from_variable = { land_reform = 10 tooltip = INC_reduce_land_reform_progress_tt }
 	}
 	option = {
 		log = "[GetLogInfo]: event indochina_events.65 option indochina_events.65.b"
 		name = indochina_events.65.b # We need to strengthen the administration
 		add_war_support = -0.05
 		add_political_power = -25
-		subtract_from_variable = {
-			var = land_reform
-			value = 5
-			tooltip = INC_reduce_land_reform_progress_tt
-		}
+		subtract_from_variable = { land_reform = 5 tooltip = INC_reduce_land_reform_progress_tt }
 	}
 	option = {
 		log = "[GetLogInfo]: event indochina_events.65 option indochina_events.65.c"
 		name = indochina_events.65.c # Landlordism is the problem!
 		add_stability = -0.05
-		add_to_variable = {
-			var = land_reform_radicalism
-			value = 10
-		}
+		add_to_variable = { land_reform_radicalism = 10 }
 	}
 }
 
@@ -3028,10 +3017,7 @@ country_event = { #Extremism spreading
 		log = "[GetLogInfo]: event indochina_events.66 option indochina_events.66.a"
 		name = indochina_events.66.a # You call this extremism?
 		add_stability = -0.05
-		add_to_variable = {
-			var = land_reform_radicalism
-			value = 10
-		}
+		add_to_variable = { land_reform_radicalism = 10 }
 	}
 
 	option = {
@@ -3059,10 +3045,7 @@ country_event = { #Expand Class Struggle
 		log = "[GetLogInfo]: event indochina_events.67 option indochina_events.67.a"
 		name = indochina_events.67.a #We must ensure every peasant get their own land!
 		add_war_support = 0.1
-		add_to_variable = {
-			var = land_reform_radicalism
-			value = 10
-		}
+		add_to_variable = { land_reform_radicalism = 10 }
 	}
 
 	option = {
@@ -3089,10 +3072,7 @@ country_event = { #Red Terror
 		log = "[GetLogInfo]: event indochina_events.68 option indochina_events.68.a"
 		name = indochina_events.68.a # Perfect chance to eliminate feudalism physically
 		add_stability = -0.1
-		add_to_variable = {
-			var = land_reform_radicalism
-			value = 10
-		}
+		add_to_variable = { land_reform_radicalism = 10 }
 	}
 
 	option = {
@@ -4080,10 +4060,7 @@ country_event = { #Opium
 		name = indochina_events.130.a # yes
 		add_war_support = -0.03
 		custom_effect_tooltip = INC_lower_trafficking_cost
-		add_to_variable = {
-			var = INC_smuggle_cost
-			value = -5
-		}
+		add_to_variable = { INC_smuggle_cost = -5 }
 	}
 	option = { # no
 		log = "[GetLogInfo]: event indochina_events.130 option indochina_events.130.b"
@@ -4111,10 +4088,7 @@ country_event = { #Deal with Binh Xuyen
 		name = indochina_events.135.a # yes
 		add_war_support = -0.03
 		custom_effect_tooltip = INC_lower_trafficking_cost
-		add_to_variable = {
-			var = INC_smuggle_cost
-			value = -5
-		}
+		add_to_variable = { INC_smuggle_cost = -5 }
 		set_country_flag = INC_Binh_Xuyen
 	}
 	option = { # no

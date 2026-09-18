@@ -31,8 +31,7 @@ acw_surrender_progress_winning_side = {
 		score = {
 			base = 1
 			modifier = {
-				set_temp_variable = { temp_score = surrender_progress }
-				multiply_temp_variable = { temp_score = -1 }
+				set_temp_variable = { temp_score = { value = surrender_progress multiply = -1 } }
 				add = temp_score
 			}
 		}

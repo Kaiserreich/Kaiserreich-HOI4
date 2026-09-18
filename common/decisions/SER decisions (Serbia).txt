@@ -70,7 +70,7 @@ SER_socialist_workers_decisions = {
 
 		available = {
 			SER_has_black_monday = no
-			owns_state = 767
+			controls_state = 767
 			has_completed_focus = SER_practical_action_programme
 			OR = {
 				has_completed_focus = SER_consolidate_taxation
@@ -117,7 +117,7 @@ SER_socialist_workers_decisions = {
 				limit = { is_ai = no }
 				has_army_experience < 50
 			}
-			owns_state = 767
+			controls_state = 767
 			custom_override_tooltip = {
 				tooltip = SER_konspiracija_under_level_2_tt
 				national_populist < 0.1
@@ -578,19 +578,16 @@ SER_konspiracija_decisions = {
 			}
 			modifier = {
 				add = 10
-				AND = {
-					has_country_flag = SER_paying_with_np
-					national_populist > 0.15
-				}
+				has_country_flag = SER_paying_with_np
+				national_populist > 0.15
+				NOT = { has_country_flag = SER_radical_pataut_ai }
 			}
 			modifier = {
 				add = 10
-				AND = {
-					has_country_flag = SER_paying_with_pp
-					OR = {
-						political_power_daily < 0.5
-						national_populist < 0.1
-					}
+				has_country_flag = SER_paying_with_pp
+				OR = {
+					political_power_daily < 0.5
+					national_populist < 0.1
 				}
 			}
 		}
@@ -652,9 +649,10 @@ SER_konspiracija_decisions = {
 			factor = 20
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_np
+				has_country_flag = SER_paying_with_np
+				OR = {
 					national_populist > 0.1
+					has_country_flag = SER_radical_pataut_ai
 				}
 			}
 			#this flag does three things- it first prevents AI from spamming decisions one after another
@@ -747,9 +745,10 @@ SER_konspiracija_decisions = {
 			factor = 20
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_np
+				has_country_flag = SER_paying_with_np
+				OR = {
 					national_populist > 0.1
+					has_country_flag = SER_radical_pataut_ai
 				}
 			}
 			#this flag does three things- it first prevents AI from spamming decisions one after another
@@ -761,10 +760,8 @@ SER_konspiracija_decisions = {
 			}
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_pp
-					has_political_power < 100
-				}
+				has_country_flag = SER_paying_with_pp
+				has_political_power < 100
 			}
 		}
 
@@ -836,9 +833,10 @@ SER_konspiracija_decisions = {
 			factor = 20
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_np
+				has_country_flag = SER_paying_with_np
+				OR = {
 					national_populist > 0.1
+					has_country_flag = SER_radical_pataut_ai
 				}
 			}
 			#this flag does three things- it first prevents AI from spamming decisions one after another
@@ -850,10 +848,8 @@ SER_konspiracija_decisions = {
 			}
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_pp
-					has_political_power < 100
-				}
+				has_country_flag = SER_paying_with_pp
+				has_political_power < 100
 			}
 		}
 
@@ -930,9 +926,10 @@ SER_konspiracija_decisions = {
 			factor = 20
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_np
+				has_country_flag = SER_paying_with_np
+				OR = {
 					national_populist > 0.1
+					has_country_flag = SER_radical_pataut_ai
 				}
 			}
 			#this flag does three things- it first prevents AI from spamming decisions one after another
@@ -944,10 +941,8 @@ SER_konspiracija_decisions = {
 			}
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_pp
-					has_political_power < 100
-				}
+				has_country_flag = SER_paying_with_pp
+				has_political_power < 100
 			}
 		}
 
@@ -1020,9 +1015,10 @@ SER_konspiracija_decisions = {
 			factor = 20
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_np
+				has_country_flag = SER_paying_with_np
+				OR = {
 					national_populist > 0.1
+					has_country_flag = SER_radical_pataut_ai
 				}
 			}
 			#this flag does three things- it first prevents AI from spamming decisions one after another
@@ -1034,10 +1030,8 @@ SER_konspiracija_decisions = {
 			}
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_pp
-					has_political_power < 100
-				}
+				has_country_flag = SER_paying_with_pp
+				has_political_power < 100
 			}
 		}
 
@@ -1113,9 +1107,10 @@ SER_konspiracija_decisions = {
 			factor = 20
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_np
+				has_country_flag = SER_paying_with_np
+				OR = {
 					national_populist > 0.1
+					has_country_flag = SER_radical_pataut_ai
 				}
 			}
 			#this flag does three things- it first prevents AI from spamming decisions one after another
@@ -1127,10 +1122,8 @@ SER_konspiracija_decisions = {
 			}
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_pp
-					has_political_power < 100
-				}
+				has_country_flag = SER_paying_with_pp
+				has_political_power < 100
 			}
 		}
 
@@ -1209,9 +1202,10 @@ SER_konspiracija_decisions = {
 			factor = 20
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_np
+				has_country_flag = SER_paying_with_np
+				OR = {
 					national_populist > 0.1
+					has_country_flag = SER_radical_pataut_ai
 				}
 			}
 			#this flag does three things- it first prevents AI from spamming decisions one after another
@@ -1290,9 +1284,10 @@ SER_konspiracija_decisions = {
 			factor = 20
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_np
+				has_country_flag = SER_paying_with_np
+				OR = {
 					national_populist > 0.1
+					has_country_flag = SER_radical_pataut_ai
 				}
 			}
 			#this flag does three things- it first prevents AI from spamming decisions one after another
@@ -1379,9 +1374,10 @@ SER_konspiracija_decisions = {
 			factor = 20
 			modifier = {
 				factor = 0
-				AND = {
-					has_country_flag = SER_paying_with_np
+				has_country_flag = SER_paying_with_np
+				OR = {
 					national_populist > 0.1
+					has_country_flag = SER_radical_pataut_ai
 				}
 			}
 			#this flag does three things- it first prevents AI from spamming decisions one after another
@@ -1613,15 +1609,14 @@ political_actions = {
 			log = "[GetLogRoot]: Decision complete SER_IMRO_open_conflict"
 			SER_IMRO_disable_rebellion = yes
 			drop_cosmetic_tag = yes
-			every_country = {
-				limit = {
-					is_in_faction_with = SER
+			SER = {
+				every_faction_member = {
+					declare_war_on = {
+						target = PREV.PREV
+						type = annex_everything
+					}
+					country_event = serbia_events.310
 				}
-				declare_war_on = {
-					target = PREV
-					type = annex_everything
-				}
-				country_event = serbia_events.310
 			}
 		}
 		fixed_random_seed = no
@@ -3096,16 +3091,28 @@ SER_Balkan_Research_Initiative_decisions = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete SER_economic_council_application"
-			set_temp_variable = { BPL_new_modifier = global.balkan_economic_union^num }
 			if = {
 				limit = { NOT = { is_in_array = { global.balkan_economic_union = ROOT } } }
 				add_to_array = { global.balkan_economic_union = ROOT }
-				add_to_temp_variable = { BPL_new_modifier = 1 }
+				set_temp_variable = {
+					BPL_new_modifier = {
+						value = global.balkan_economic_union^num
+						add = 1
+						multiply = 0.05
+						clamp = { min = 0 max = 0.15 }
+					}
+				}
+			}
+			else = {
+				set_temp_variable = {
+					BPL_new_modifier = {
+						value = global.balkan_economic_union^num
+						multiply = 0.05
+						clamp = { min = 0 max = 0.15 }
+					}
+				}
 			}
 			add_dynamic_modifier = { modifier = BPL_pact_of_organisation }
-
-			multiply_temp_variable = { BPL_new_modifier = 0.05 }
-			clamp_temp_variable = { var = BPL_new_modifier max = 0.15 }
 			if = {
 				limit = { NOT = { check_variable = { BPL_new_modifier = global.BPL_pact_of_organisation_construction_speed } } }
 				save_event_target_as = BPL_modifier_changed
@@ -3123,9 +3130,8 @@ SER_Balkan_Research_Initiative_decisions = {
 			}
 			if = {
 				limit = { NOT = { check_variable = { global.BPL_pact_of_organisation_research_speed = 0 } } }
-				divide_temp_variable = { BPL_new_modifier = 2 }
 				set_variable = {
-					global.BPL_pact_of_organisation_research_speed = BPL_new_modifier
+					global.BPL_pact_of_organisation_research_speed = { value = BPL_new_modifier multiply = 0.5 }
 					tooltip = research_speed_factor_tooltip
 				}
 			}
@@ -3560,7 +3566,7 @@ SER_The_Road_To_Unification_decisions = {
 			factor = 50
 			modifier = {
 				factor = 0
-				OR = {
+				OR = { #keeping these the game rule so if serbia wins the war early on default ai they wont stay there forever
 					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
 					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
 				}
@@ -3577,10 +3583,9 @@ SER_The_Road_To_Unification_decisions = {
 				every_character = {
 					limit = {
 						is_advisor = yes
+						is_unit_leader = no #generals get transfered in the focus
 					}
-					set_character_flag = former_CRO # added in case Croatia returns into existance, so those advisors could return to that tag if an on_action or similar is added
 					set_nationality = SER
-					demote_to_general = yes
 				}
 			}
 			if = {
@@ -3877,7 +3882,7 @@ SER_contain_konspiracija_decisions = {
 				check_expr = {
 					value = party_popularity@national_populist
 					multiply = -1
-					less_than_or_equals = { value = SER_prodanovic_natpop_loss }
+					less_than_or_equals = SER_prodanovic_natpop_loss
 				}
 			}
 		}
@@ -3901,10 +3906,13 @@ SER_contain_konspiracija_decisions = {
 					country_event = serbia_events.19
 				}
 				else = {
-					set_temp_variable = { SER_temp_comparison_var = party_popularity@national_populist }
-					multiply_temp_variable = { SER_temp_comparison_var = -1 }
 					if = {
-						limit = { check_variable = { SER_prodanovic_natpop_loss > SER_temp_comparison_var } }
+						limit = {
+							check_expr = {
+								value = SER_prodanovic_natpop_loss
+								greater_than = { value = party_popularity@national_populist multiply = -1 }
+							}
+						}
 						set_country_flag = SER_you_fucked_up_response_flag
 						country_event = serbia_events.20
 					}
@@ -4374,6 +4382,8 @@ SER_yugoslavia_ethnic_relations_decisions = {
 	# Well you see, young coder who is trekking through Serbia rework code for some reason
 	# I wanted each level to have a differently coloured number, and this was the quickest way to do it
 	# Well actually having six separate decisions also makes pressing the button flow faster but the first answer makes it funnier
+	# Hi Aug, it's 2026, SuperGreenBeans here. Was a nice minigame but I decided to replace the decisions with buttons :)
+	# Nothing lasts forever :wink:.
 	YUG_rounds_system_mission = {
 		icon = generic_prepare_civil_war
 		priority = 120
@@ -4395,1044 +4405,6 @@ SER_yugoslavia_ethnic_relations_decisions = {
 			log = "[GetLogRoot]: Decision timeout YUG_rounds_system_mission"
 			YUG_refresh_yugoslavia_minigame = yes
 		}
-		fixed_random_seed = no
-	}
-	YUG_serbia_expenditure_0 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 200
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_serbia = YUG_AI_target_serbia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_serbia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_serbia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_serbia_expenditure_0"
-			custom_override_tooltip = {
-				tooltip = YUG_patronage_spending_SER
-				SER_decrease_political_capital = yes
-				add_to_variable = { YUG_pc_expenditure_serbia = 1 }
-			}
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_serbia_expenditure_1 target = event_target:SER_dummy }
-				remove_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-				set_variable = { YUG_decision_counter_serbia = 1 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_serbia_expenditure_1 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 200
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_serbia = YUG_AI_target_serbia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_serbia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_serbia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_serbia_expenditure_1"
-			SER_increase_expenditure_serbia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_serbia_expenditure_2 target = event_target:SER_dummy }
-				remove_targeted_decision = { decision = YUG_serbia_expenditure_1 target = event_target:SER_dummy }
-				set_variable = { YUG_decision_counter_serbia = 2 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_serbia_expenditure_2 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 200
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_serbia = YUG_AI_target_serbia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_serbia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_serbia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_serbia_expenditure_2"
-			SER_increase_expenditure_serbia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_serbia_expenditure_3 target = event_target:SER_dummy }
-				remove_targeted_decision = { decision = YUG_serbia_expenditure_2 target = event_target:SER_dummy }
-				set_variable = { YUG_decision_counter_serbia = 3 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_serbia_expenditure_3 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 200
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_serbia = YUG_AI_target_serbia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_serbia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_serbia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_serbia_expenditure_3"
-			SER_increase_expenditure_serbia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_serbia_expenditure_4 target = event_target:SER_dummy }
-				remove_targeted_decision = { decision = YUG_serbia_expenditure_3 target = event_target:SER_dummy }
-				set_variable = { YUG_decision_counter_serbia = 4 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_serbia_expenditure_4 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 200
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_serbia = YUG_AI_target_serbia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_serbia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_serbia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_serbia_expenditure_4"
-			SER_increase_expenditure_serbia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_serbia_expenditure_5 target = event_target:SER_dummy }
-				remove_targeted_decision = { decision = YUG_serbia_expenditure_4 target = event_target:SER_dummy }
-				set_variable = { YUG_decision_counter_serbia = 5 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_serbia_expenditure_5 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 200
-
-		allowed = { always = no } #manually activated
-
-		available = {
-			custom_override_tooltip = {
-				tooltip = YUG_patronage_spending_maximum_five
-				always = no
-			}
-		}
-
-		target_non_existing = yes
-		fixed_random_seed = no
-	}
-
-	YUG_croatia_expenditure_0 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 180
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_croatia = YUG_AI_target_croatia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_croatia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_croatia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_croatia_expenditure_0"
-			SER_increase_expenditure_croatia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_croatia_expenditure_1 target = CRO }
-				remove_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-				set_variable = { YUG_decision_counter_croatia = 1 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_croatia_expenditure_1 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 180
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_croatia = YUG_AI_target_croatia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_croatia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_croatia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_croatia_expenditure_1"
-			SER_increase_expenditure_croatia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_croatia_expenditure_2 target = CRO }
-				remove_targeted_decision = { decision = YUG_croatia_expenditure_1 target = CRO }
-				set_variable = { YUG_decision_counter_croatia = 2 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_croatia_expenditure_2 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 180
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_croatia = YUG_AI_target_croatia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_croatia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_croatia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_croatia_expenditure_2"
-			SER_increase_expenditure_croatia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_croatia_expenditure_3 target = CRO }
-				remove_targeted_decision = { decision = YUG_croatia_expenditure_2 target = CRO }
-				set_variable = { YUG_decision_counter_croatia = 3 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_croatia_expenditure_3 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 180
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_croatia = YUG_AI_target_croatia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_croatia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_croatia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_croatia_expenditure_3"
-			SER_increase_expenditure_croatia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_croatia_expenditure_4 target = CRO }
-				remove_targeted_decision = { decision = YUG_croatia_expenditure_3 target = CRO }
-				set_variable = { YUG_decision_counter_croatia = 4 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_croatia_expenditure_4 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 180
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_croatia = YUG_AI_target_croatia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_croatia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_croatia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_croatia_expenditure_4"
-			SER_increase_expenditure_croatia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_croatia_expenditure_5 target = CRO }
-				remove_targeted_decision = { decision = YUG_croatia_expenditure_4 target = CRO }
-				set_variable = { YUG_decision_counter_croatia = 5 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_croatia_expenditure_5 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 180
-
-		allowed = { always = no } #manually activated
-
-		available = {
-			custom_override_tooltip = {
-				tooltip = YUG_patronage_spending_maximum_five
-				always = no
-			}
-		}
-
-		target_non_existing = yes
-		fixed_random_seed = no
-	}
-
-	YUG_bosnia_expenditure_0 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 160
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_bosnia = YUG_AI_target_bosnia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_bosnia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_bosnia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_bosnia_expenditure_0"
-			SER_increase_expenditure_bosnia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_bosnia_expenditure_1 target = BOS }
-				remove_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-				set_variable = { YUG_decision_counter_bosnia = 1 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_bosnia_expenditure_1 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 160
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_bosnia = YUG_AI_target_bosnia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_bosnia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_bosnia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_bosnia_expenditure_1"
-			SER_increase_expenditure_bosnia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_bosnia_expenditure_2 target = BOS }
-				remove_targeted_decision = { decision = YUG_bosnia_expenditure_1 target = BOS }
-				set_variable = { YUG_decision_counter_bosnia = 2 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_bosnia_expenditure_2 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 160
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_bosnia = YUG_AI_target_bosnia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_bosnia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_bosnia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_bosnia_expenditure_2"
-			SER_increase_expenditure_bosnia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_bosnia_expenditure_3 target = BOS }
-				remove_targeted_decision = { decision = YUG_bosnia_expenditure_2 target = BOS }
-				set_variable = { YUG_decision_counter_bosnia = 3 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_bosnia_expenditure_3 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 160
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_bosnia = YUG_AI_target_bosnia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_bosnia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_bosnia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_bosnia_expenditure_3"
-			SER_increase_expenditure_bosnia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_bosnia_expenditure_4 target = BOS }
-				remove_targeted_decision = { decision = YUG_bosnia_expenditure_3 target = BOS }
-				set_variable = { YUG_decision_counter_bosnia = 4 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_bosnia_expenditure_4 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 160
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_bosnia = YUG_AI_target_bosnia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_bosnia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_bosnia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_bosnia_expenditure_4"
-			SER_increase_expenditure_bosnia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_bosnia_expenditure_5 target = BOS }
-				remove_targeted_decision = { decision = YUG_bosnia_expenditure_4 target = BOS }
-				set_variable = { YUG_decision_counter_bosnia = 5 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_bosnia_expenditure_5 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 160
-
-		allowed = { always = no } #manually activated
-
-		available = {
-			custom_override_tooltip = {
-				tooltip = YUG_patronage_spending_maximum_five
-				always = no
-			}
-		}
-
-		target_non_existing = yes
-		fixed_random_seed = no
-	}
-
-	YUG_slovenia_expenditure_0 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 140
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_slovenia = YUG_AI_target_slovenia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_slovenia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_slovenia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_slovenia_expenditure_0"
-			SER_increase_expenditure_slovenia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_slovenia_expenditure_1 target = SLV }
-				remove_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-				set_variable = { YUG_decision_counter_slovenia = 1 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_slovenia_expenditure_1 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 140
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_slovenia = YUG_AI_target_slovenia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_slovenia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_slovenia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_slovenia_expenditure_1"
-			SER_increase_expenditure_slovenia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_slovenia_expenditure_2 target = SLV }
-				remove_targeted_decision = { decision = YUG_slovenia_expenditure_1 target = SLV }
-				set_variable = { YUG_decision_counter_slovenia = 2 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_slovenia_expenditure_2 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 140
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_slovenia = YUG_AI_target_slovenia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_slovenia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_slovenia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_slovenia_expenditure_2"
-			SER_increase_expenditure_slovenia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_slovenia_expenditure_3 target = SLV }
-				remove_targeted_decision = { decision = YUG_slovenia_expenditure_2 target = SLV }
-				set_variable = { YUG_decision_counter_slovenia = 3 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_slovenia_expenditure_3 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 140
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_slovenia = YUG_AI_target_slovenia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_slovenia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_slovenia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_slovenia_expenditure_3"
-			SER_increase_expenditure_slovenia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_slovenia_expenditure_4 target = SLV }
-				remove_targeted_decision = { decision = YUG_slovenia_expenditure_3 target = SLV }
-				set_variable = { YUG_decision_counter_slovenia = 4 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_slovenia_expenditure_4 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 140
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_slovenia = YUG_AI_target_slovenia }
-			}
-			modifier = {
-				factor = YUG_AI_factor_slovenia #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_slovenia #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_slovenia_expenditure_4"
-			SER_increase_expenditure_slovenia = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_slovenia_expenditure_5 target = SLV }
-				remove_targeted_decision = { decision = YUG_slovenia_expenditure_4 target = SLV }
-				set_variable = { YUG_decision_counter_slovenia = 5 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_slovenia_expenditure_5 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 140
-
-		allowed = { always = no } #manually activated
-
-		available = {
-			custom_override_tooltip = {
-				tooltip = YUG_patronage_spending_maximum_five
-				always = no
-			}
-		}
-
-		target_non_existing = yes
-		fixed_random_seed = no
-	}
-
-	YUG_other_expenditure_0 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 120
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_other = YUG_AI_target_other }
-			}
-			modifier = {
-				factor = YUG_AI_factor_other #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_other #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_other_expenditure_0"
-			SER_increase_expenditure_other_yugoslavs = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_other_expenditure_1 target = ALB }
-				remove_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
-				set_variable = { YUG_decision_counter_other = 1 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_other_expenditure_1 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 120
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_other = YUG_AI_target_other }
-			}
-			modifier = {
-				factor = YUG_AI_factor_other #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_other #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_other_expenditure_1"
-			SER_increase_expenditure_other_yugoslavs = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_other_expenditure_2 target = ALB }
-				remove_targeted_decision = { decision = YUG_other_expenditure_1 target = ALB }
-				set_variable = { YUG_decision_counter_other = 2 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_other_expenditure_2 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 120
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_other = YUG_AI_target_other }
-			}
-			modifier = {
-				factor = YUG_AI_factor_other #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_other #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_other_expenditure_2"
-			SER_increase_expenditure_other_yugoslavs = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_other_expenditure_3 target = ALB }
-				remove_targeted_decision = { decision = YUG_other_expenditure_2 target = ALB }
-				set_variable = { YUG_decision_counter_other = 3 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_other_expenditure_3 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 120
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_other = YUG_AI_target_other }
-			}
-			modifier = {
-				factor = YUG_AI_factor_other #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_other #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_other_expenditure_3"
-			SER_increase_expenditure_other_yugoslavs = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_other_expenditure_4 target = ALB }
-				remove_targeted_decision = { decision = YUG_other_expenditure_3 target = ALB }
-				set_variable = { YUG_decision_counter_other = 4 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_other_expenditure_4 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 120
-
-		allowed = { always = no } #manually activated
-
-		target_non_existing = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				check_variable = { YUG_pc_expenditure_other = YUG_AI_target_other }
-			}
-			modifier = {
-				factor = YUG_AI_factor_other #5 -> 2.5 -> 1.67 -> 1.25 -> 1 depending on the turn's requirements
-			}
-			modifier = {
-				factor = YUG_AI_focus_other #10-1 depending on the current relation leve
-			}
-		}
-
-		custom_cost_text = YUG_1PC
-		custom_cost_trigger = {
-			check_variable = { YUG_political_capital > 0 }
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete YUG_other_expenditure_4"
-			SER_increase_expenditure_other_yugoslavs = yes
-			hidden_effect = {
-				activate_targeted_decision = { decision = YUG_other_expenditure_5 target = ALB }
-				remove_targeted_decision = { decision = YUG_other_expenditure_4 target = ALB }
-				set_variable = { YUG_decision_counter_other = 5 }
-			}
-		}
-		fixed_random_seed = no
-	}
-	YUG_other_expenditure_5 = {
-		icon = GFX_decision_generic_nationalism
-		priority = 120
-
-		allowed = { always = no } #manually activated
-
-		available = {
-			custom_override_tooltip = {
-				tooltip = YUG_patronage_spending_maximum_five
-				always = no
-			}
-		}
-
-		target_non_existing = yes
 		fixed_random_seed = no
 	}
 
@@ -5470,43 +4442,40 @@ SER_yugoslavia_ethnic_relations_decisions = {
 			FROM = { is_core_of = ROOT }
 		}
 
-		ai_will_do = { factor = 20 }
+		ai_will_do = {
+			base = 200
+			modifier = { #Do not set pp requirements to 0 for ethnicities that have already reached the target
+				factor = 0
+				NOT = { var:FROM.SER_YUG_decision_ethnicity_target = { check_variable = { ROOT.YUG_pc_expenditure_@THIS < ROOT.YUG_AI_target_@THIS } } }
+			}
+			modifier = { #Do not set pp requirements to 0 if it is currently possible to meet the target
+				factor = 0
+				var:FROM.SER_YUG_decision_ethnicity_target = {
+					check_expr = {
+						value = ROOT.YUG_political_capital
+						add = ROOT.YUG_pc_expenditure_@THIS
+						greater_than_or_equals = ROOT.YUG_ethnicity_pp_requirement_@THIS
+					}
+				}
+			}
+			modifier = {
+				var:FROM.SER_YUG_decision_ethnicity_target = {
+					set_temp_variable = {
+						YUG_set_pp_requirement_zero_factor = {
+							value = ROOT.YUG_ethnicity_pp_requirement_@THIS
+							multiply = 0.5
+						}
+						# 0 -> 0.5 -> 1 -> 1.5 -> 2 -> 2.5
+					}
+				}
+				factor = YUG_set_pp_requirement_zero_factor #Weight based on the actual value of taking this decision relative to the cost
+			}
+		}
 
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove SER_YUG_redraw_borders"
-			if = {
-				limit = {
-					FROM = {
-						OR = {
-							state = 106
-							state = 765
-						}
-					}
-				}
-				set_variable = { YUG_other_pp_requirement = 0 }
-				custom_effect_tooltip = SER_YUG_other_zero_demand_tt
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						OR = {
-							state = 163
-							state = 109
-						}
-					}
-				}
-				set_variable = { YUG_croatia_pp_requirement = 0 }
-				custom_effect_tooltip = SER_YUG_croatia_zero_demand_tt
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 104
-					}
-				}
-				set_variable = { YUG_bosnia_pp_requirement = 0 }
-				custom_effect_tooltip = SER_YUG_bosnia_zero_demand_tt
-			}
+			set_temp_variable = { checked_ethnicity = FROM.SER_YUG_decision_ethnicity_target }
+			SER_set_ethnicity_pp_requirement_zero_target = yes
 		}
 		fixed_random_seed = no
 	}
@@ -5536,70 +4505,43 @@ SER_yugoslavia_ethnic_relations_decisions = {
 			FROM = { is_core_of = ROOT }
 		}
 
-		ai_will_do = { factor = 20 }
+		ai_will_do = {
+			base = 200
+			modifier = { #Do not reset expenditures for ethnicities that have already reached the target
+				factor = 0
+				NOT = { var:FROM.SER_YUG_decision_ethnicity_target = { check_variable = { ROOT.YUG_pc_expenditure_@THIS < ROOT.YUG_AI_target_@THIS } } }
+			}
+			modifier = { #Avoid reseting expenditures if it is currently possible to meet the target
+				factor = 0
+				var:FROM.SER_YUG_decision_ethnicity_target = {
+					check_expr = {
+						value = ROOT.YUG_political_capital
+						add = ROOT.YUG_pc_expenditure_@THIS
+						greater_than_or_equals = ROOT.YUG_ethnicity_pp_requirement_@THIS
+					}
+				}
+			}
+			modifier = {
+				var:FROM.SER_YUG_decision_ethnicity_target = {
+					set_temp_variable = {
+						YUG_political_capital_gain_factor = {
+							value = ROOT.YUG_pc_expenditure_@THIS
+							clamp = { min = 0 max = 3 }
+							multiply = 0.5
+						}
+						# 0 -> 0.5 -> 1 -> 1.5
+					}
+				}
+				factor = YUG_political_capital_gain_factor #Weight based on the actual value of taking this decision relative to the cost
+			}
+		}
 
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove SER_YUG_denationalisation_campaign"
-			if = {
-				limit = {
-					FROM = {
-						state = 106
-					}
-				}
-				set_temp_variable = { YUG_political_capital_gain_change = YUG_pc_expenditure_other }
-				clamp_temp_variable = { var = YUG_political_capital_gain_change max = 3 }
-				SER_increase_political_capital_gain = yes
-				set_variable = { YUG_pc_expenditure_other = 0 tooltip = SER_YUG_other_zero_expenditure_tt }
-				YUG_update_expenditure_missions_other = yes
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 109
-					}
-				}
-				set_temp_variable = { YUG_political_capital_gain_change = YUG_pc_expenditure_croatia }
-				clamp_temp_variable = { var = YUG_political_capital_gain_change max = 3 }
-				SER_increase_political_capital_gain = yes
-				set_variable = { YUG_pc_expenditure_croatia = 0 tooltip = SER_YUG_croatia_zero_expenditure_tt }
-				YUG_update_expenditure_missions_croatia = yes
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 104
-					}
-				}
-				set_temp_variable = { YUG_political_capital_gain_change = YUG_pc_expenditure_bosnia }
-				clamp_temp_variable = { var = YUG_political_capital_gain_change max = 3 }
-				SER_increase_political_capital_gain = yes
-				set_variable = { YUG_pc_expenditure_bosnia = 0 tooltip = SER_YUG_bosnia_zero_expenditure_tt }
-				YUG_update_expenditure_missions_bosnia = yes
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 102
-					}
-				}
-				set_temp_variable = { YUG_political_capital_gain_change = YUG_pc_expenditure_slovenia }
-				clamp_temp_variable = { var = YUG_political_capital_gain_change max = 3 }
-				SER_increase_political_capital_gain = yes
-				set_variable = { YUG_pc_expenditure_slovenia = 0 tooltip = SER_YUG_slovenia_zero_expenditure_tt }
-				YUG_update_expenditure_missions_slovenia = yes
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 107
-					}
-				}
-				set_temp_variable = { YUG_political_capital_gain_change = YUG_pc_expenditure_serbia }
-				clamp_temp_variable = { var = YUG_political_capital_gain_change max = 3 }
-				SER_increase_political_capital_gain = yes
-				set_variable = { YUG_pc_expenditure_serbia = 0 tooltip = SER_YUG_serbia_zero_expenditure_tt }
-				YUG_update_expenditure_missions_serbia = yes
-			}
+			set_temp_variable = { checked_ethnicity = FROM.SER_YUG_decision_ethnicity_target }
+			var:checked_ethnicity = { set_temp_variable = { YUG_political_capital_gain_change = { value = ROOT.YUG_pc_expenditure_@THIS clamp = { min = 0 max = 3 } } } }
+			SER_increase_political_capital_gain = yes
+			SER_set_pc_expenditure_zero_target = yes
 		}
 		fixed_random_seed = no
 	}
@@ -5629,189 +4571,47 @@ SER_yugoslavia_ethnic_relations_decisions = {
 			FROM = { is_core_of = ROOT }
 		}
 
-		ai_will_do = { factor = 20 }
+		ai_will_do = {
+			base = 200
+			modifier = { # Avoid risking this if pol capital gain per round is low.
+				factor = 0
+				check_variable = { YUG_political_capital_gain < 10 }
+			}
+			modifier = {
+				var:FROM.SER_YUG_decision_ethnicity_target = {
+					set_temp_variable = {
+						ethnic_situation_gain_factor = { #If ethnic relations already 10 (maxxed out), the factor is 0
+							value = 3
+							clamp = { min = 0 max = { value = 10 subtract = ROOT.YUG_ethnicity_relations_level_@THIS } }
+							if = { #Prioritise lower ethnic relations
+								limit = { value = ROOT.YUG_ethnicity_relations_level_@THIS greater_than = 5 }
+								multiply = 0.5
+							}
+						}
+						# 3 (1-5 relations)
+						# 0 -> 0.5 -> 1 -> 1.5 (6-10 relations)
+					}
+				}
+				factor = ethnic_situation_gain_factor #Weight based on the actual value of taking this decision relative to the cost
+			}
+		}
 
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove SER_YUG_integralism_campaign"
+			set_temp_variable = { YUG_political_capital_gain_change = 1 }
+			SER_decrease_political_capital_gain = yes
+			set_temp_variable = { checked_ethnicity = FROM.SER_YUG_decision_ethnicity_target }
 			if = {
-				limit = {
-					FROM = {
-						state = 106
+				limit = { var:checked_ethnicity = { check_variable = { ROOT.YUG_ethnicity_relations_level_@THIS < 10 } } }
+				var:checked_ethnicity = {
+					set_temp_variable = {
+						ethnic_situation = {
+							value = 3
+							clamp = { min = 0 max = { value = 10 subtract = ROOT.YUG_ethnicity_relations_level_@THIS } }
+						}
 					}
 				}
-				set_temp_variable = { YUG_political_capital_gain_change = 1 }
-				SER_decrease_political_capital_gain = yes
-				if = {
-					limit = {
-						check_variable = { YUG_other_relations_level < 8 }
-					}
-					set_temp_variable = { checked_state = 5 }
-					set_temp_variable = { ethnic_situation = 3 }
-					custom_effect_tooltip = YUG_other_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_other_relations_level < 9 }
-					}
-					set_temp_variable = { checked_state = 5 }
-					set_temp_variable = { ethnic_situation = 2 }
-					custom_effect_tooltip = YUG_bosnia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_other_relations_level < 10 }
-					}
-					set_temp_variable = { checked_state = 5 }
-					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_other_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 109
-					}
-				}
-				set_temp_variable = { YUG_political_capital_gain_change = 1 }
-				SER_decrease_political_capital_gain = yes
-				if = {
-					limit = {
-						check_variable = { YUG_croatia_relations_level < 8 }
-					}
-					set_temp_variable = { checked_state = 2 }
-					set_temp_variable = { ethnic_situation = 3 }
-					custom_effect_tooltip = YUG_croatia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_croatia_relations_level < 9 }
-					}
-					set_temp_variable = { checked_state = 2 }
-					set_temp_variable = { ethnic_situation = 2 }
-					custom_effect_tooltip = YUG_croatia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_croatia_relations_level < 10 }
-					}
-					set_temp_variable = { checked_state = 2 }
-					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_croatia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 104
-					}
-				}
-				set_temp_variable = { YUG_political_capital_gain_change = 1 }
-				SER_decrease_political_capital_gain = yes
-				if = {
-					limit = {
-						check_variable = { YUG_bosnia_relations_level < 8 }
-					}
-					set_temp_variable = { checked_state = 3 }
-					set_temp_variable = { ethnic_situation = 3 }
-					custom_effect_tooltip = YUG_bosnia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_bosnia_relations_level < 9 }
-					}
-					set_temp_variable = { checked_state = 3 }
-					set_temp_variable = { ethnic_situation = 2 }
-					custom_effect_tooltip = YUG_bosnia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_bosnia_relations_level < 10 }
-					}
-					set_temp_variable = { checked_state = 3 }
-					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_bosnia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 102
-					}
-				}
-				set_temp_variable = { YUG_political_capital_gain_change = 1 }
-				SER_decrease_political_capital_gain = yes
-				if = {
-					limit = {
-						check_variable = { YUG_slovenia_relations_level < 8 }
-					}
-					set_temp_variable = { checked_state = 4 }
-					set_temp_variable = { ethnic_situation = 3 }
-					custom_effect_tooltip = YUG_slovenia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_slovenia_relations_level < 9 }
-					}
-					set_temp_variable = { checked_state = 4 }
-					set_temp_variable = { ethnic_situation = 2 }
-					custom_effect_tooltip = YUG_slovenia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_slovenia_relations_level < 10 }
-					}
-					set_temp_variable = { checked_state = 4 }
-					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_slovenia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						state = 107
-					}
-				}
-				set_temp_variable = { YUG_political_capital_gain_change = 1 }
-				SER_decrease_political_capital_gain = yes
-				if = {
-					limit = {
-						check_variable = { YUG_serbia_relations_level < 8 }
-					}
-					set_temp_variable = { checked_state = 1 }
-					set_temp_variable = { ethnic_situation = 3 }
-					custom_effect_tooltip = YUG_serbia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_serbia_relations_level < 9 }
-					}
-					set_temp_variable = { checked_state = 1 }
-					set_temp_variable = { ethnic_situation = 2 }
-					custom_effect_tooltip = YUG_serbia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
-				else_if = {
-					limit = {
-						check_variable = { YUG_serbia_relations_level < 10 }
-					}
-					set_temp_variable = { checked_state = 1 }
-					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_serbia_improve_relations_tt
-					YUG_update_ethnic_situation = yes
-				}
+				YUG_update_ethnic_situation = yes
 			}
 		}
 		fixed_random_seed = no
@@ -5822,7 +4622,7 @@ SER_yugoslavia_ethnic_relations_decisions = {
 		available = {
 			controls_state = FROM
 			FROM = { is_core_of = ROOT }
-			check_variable = { ROOT.YUG_political_capital > 2 }
+			NOT = { check_variable = { ROOT.YUG_political_capital < 3 tooltip = SER_YUG_political_capital_at_least_tooltip } }
 		}
 
 		visible = {
@@ -5843,7 +4643,23 @@ SER_yugoslavia_ethnic_relations_decisions = {
 			FROM = { is_core_of = ROOT }
 		}
 
-		ai_will_do = { factor = 20 }
+		ai_will_do = {
+			base = 300
+			modifier = { #Do not waste political capital if it is possible to reach any of the targets
+				factor = 0
+				any_of_scopes = {
+					array = SER_yugoslavia_ethnicities_array
+					check_variable = { ROOT.YUG_pc_expenditure_@THIS < ROOT.YUG_AI_target_@THIS }
+					check_expr = {
+						value = ROOT.YUG_political_capital
+						add = ROOT.YUG_pc_expenditure_@THIS
+						greater_than_or_equals = ROOT.YUG_ethnicity_pp_requirement_@THIS
+					}
+				}
+				#Risk rushing this decision if brotherhood and unity being completed to not lose out on bonus
+				NOT = { focus_progress = { focus = SER_YUG_brotherhood_and_unity progress > 0 } }
+			}
+		}
 
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove SER_YUG_economic_centralisation"

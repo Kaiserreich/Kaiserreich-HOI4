@@ -515,3 +515,25 @@ defined_text = {
 		localization_key = japan_news_events.2.a.generic #Can the juggernaut stand up to Japan's dominance?
 	}
 }
+
+defined_text = {
+	name = JAP_GetWithdrawFromSphereName
+	text = {
+		trigger = { has_variable = JAP_investment_buyout }
+		localization_key = JAP_nationalize_japanese_investments
+	}
+	text = {
+		localization_key = JAP_withdraw_from_sphere_default
+	}
+}
+
+defined_text = {
+	name = JAP_GetWithdrawFromSphereDesc
+	text = {
+		trigger = { has_variable = JAP_investment_buyout }
+		localization_key = JAP_nationalize_japanese_investments_desc
+	}
+	text = {
+		localization_key = JAP_withdraw_from_sphere_default_desc
+	}
+}

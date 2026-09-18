@@ -279,7 +279,6 @@ country_event = { #Miller Meets with Mansurov
 		name = bukhara_events.208.b #...listening intently
 		log = "[GetLogInfo]: event bukhara_events.208 option bukhara_events.208.b"
 		custom_effect_tooltip = BUK_tt_replobby
-		set_country_flag = BUK_replobby_flag
 	}
 }
 
@@ -354,6 +353,7 @@ country_event = { #Surviving the Samarkand Crisis
 		hidden_effect = {
 			country_event = { id = bukhara_events.701 days = 3 }
 		}
+		set_country_flag = CA_able_to_repair
 		set_country_flag = BUK_revolution_suppressed
 	}
 }
@@ -378,23 +378,16 @@ country_event = { #Game Pieces in the Great Game
 		ai_chance = { base = 0 }
 		hidden_effect = {
 			if = {
-				limit = {
-					check_variable = { BUK_russian_anger < 5 }
-					has_country_flag = BUK_monlobby_flag
-				}
+				limit = { check_variable = { BUK_russian_anger > 4 } }
+				RUS = { save_event_target_as = BUK_autonomy_lobby }
+			}
+			else_if = {
+				limit = { has_country_flag = BUK_monlobby_flag }
 				RUS = { save_event_target_as = BUK_monlobby }
 				clr_country_flag = BUK_monlobby_flag
 			}
-			else_if = {
-				limit = {
-					check_variable = { BUK_russian_anger < 5 }
-					has_country_flag = BUK_replobby_flag
-				}
-				RUS = { save_event_target_as = BUK_replobby }
-				clr_country_flag = BUK_replobby_flag
-			}
 			else = {
-				RUS = { save_event_target_as = BUK_autonomy_lobby }
+				RUS = { save_event_target_as = BUK_replobby }
 			}
 		}
 	}
@@ -1814,29 +1807,31 @@ country_event = { #The Bukharan Constitution, Part 2 (authoritarian)
 				}
 			}
 
-			set_temp_variable = { BUK_new_authdem = BUK.party_popularity_100@authoritarian_democrat }
-			divide_temp_variable = { BUK_new_authdem = 2 }
+			set_temp_variable = { BUK_new_authdem = { value = BUK.party_popularity_100@authoritarian_democrat multiply = 0.5 } }
+			set_temp_variable = { BUK_new_pataut = { value = BUK.party_popularity_100@paternal_autocrat multiply = 0.5 } }
+			set_temp_variable = {
+				BUK_new_natpop = {
+					value = party_popularity_100@national_populist
+					add = BUK_new_authdem
+					add = BUK_new_pataut
+				}
+			}
 
-			set_temp_variable = { BUK_new_pataut = BUK.party_popularity_100@paternal_autocrat }
-			divide_temp_variable = { BUK_new_pataut = 2 }
-
-			set_temp_variable = { BUK_new_natpop = BUK.party_popularity_100@national_populist }
-			add_to_temp_variable = { BUK_new_natpop = BUK_new_authdem }
-			add_to_temp_variable = { BUK_new_natpop = BUK_new_pataut }
-
-			set_temp_variable = { sum = 100 }
-			subtract_from_temp_variable = { sum = party_popularity_100@totalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@syndicalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@radical_socialist }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_democrat }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_liberal }
-			subtract_from_temp_variable = { sum = party_popularity_100@market_liberal }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_conservative }
-			subtract_from_temp_variable = { sum = BUK_new_authdem }
-			subtract_from_temp_variable = { sum = BUK_new_pataut }
-			subtract_from_temp_variable = { sum = BUK_new_natpop }
-
-			add_to_temp_variable = { BUK_new_natpop = sum } #avoid rounding errors
+			add_to_temp_variable = { #to avoid rounding errors
+				BUK_new_natpop = {
+					value = 100
+					subtract = party_popularity_100@totalist
+					subtract = party_popularity_100@syndicalist
+					subtract = party_popularity_100@radical_socialist
+					subtract = party_popularity_100@social_democrat
+					subtract = party_popularity_100@social_liberal
+					subtract = party_popularity_100@market_liberal
+					subtract = party_popularity_100@social_conservative
+					subtract = BUK_new_authdem
+					subtract = BUK_new_pataut
+					subtract = BUK_new_natpop
+				}
+			}
 
 			set_popularities = {
 				totalist = party_popularity_100@totalist

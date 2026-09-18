@@ -1138,26 +1138,6 @@ country_event = { # Willkie Addresses NAACP
 	}
 }
 
-country_event = { # Wallace's Hi-Bred Corn
-	id = united_states_events.179
-	title = united_states_events.179.t
-	desc = united_states_events.179.d
-	picture = GFX_report_event_USA_Heat_Wave_Crops
-
-	trigger = {
-		has_country_leader = { character = ACC_henry_wallace }
-	}
-
-	is_triggered_only = yes
-	fire_only_once = yes
-
-	option = { # Flavor
-		log = "[GetLogInfo]: event united_states_events.179 option united_states_events.179.a"
-		name = united_states_events.179.a
-		add_political_power = 10
-	}
-}
-
 country_event = { # Taylor's Radical Proposal in Congress
 	id = united_states_events.180
 	title = united_states_events.180.t
@@ -1165,7 +1145,7 @@ country_event = { # Taylor's Radical Proposal in Congress
 	picture = GFX_report_event_USA_capitol_hill
 
 	trigger = {
-		has_country_leader = { character = ACC_glen_taylor }
+		has_country_leader = { character = ACC_glen_h_taylor }
 	}
 
 	is_triggered_only = yes
@@ -1188,7 +1168,7 @@ country_event = { # Taylor Takes the Stage Nationwide
 	picture = GFX_report_event_BEL_Embezzlement
 
 	trigger = {
-		has_country_leader = { character = ACC_glen_taylor }
+		has_country_leader = { character = ACC_glen_h_taylor }
 	}
 
 	is_triggered_only = yes
@@ -1248,7 +1228,7 @@ country_event = { # Gangsters Miss Dewey By A Hair
 	picture = GFX_report_event_USA_Riots
 
 	trigger = {
-		has_country_leader = { character = NEE_thomas_dewey }
+		has_country_leader = { character = NEE_thomas_e_dewey }
 	}
 
 	is_triggered_only = yes
@@ -1574,7 +1554,7 @@ country_event = { #MacArthur vs Byrd
 		}
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = USA_harry_byrd
+			promote_character = USA_harry_f_byrd
 		}
 	}
 
@@ -1590,7 +1570,7 @@ country_event = { #MacArthur vs Byrd
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_SOCLIB } }
 			}
 		}
-		promote_character = USA_harry_byrd
+		promote_character = USA_harry_f_byrd
 		USA_conservative_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = {
@@ -1955,13 +1935,13 @@ country_event = {
 					has_country_leader = { character = USA_alf_landon }
 				}
 			}
-			country_event = united_states_events.208 #Lucas vs Roosevelt
+			country_event = united_states_events.208 #McNutt vs Roosevelt
 		}
 		else_if = {
 			limit = {
 				has_country_leader = { character = USA_arthur_vandenberg }
 			}
-			country_event = united_states_events.2080 #Lucas vs Vandenberg
+			country_event = united_states_events.2080 #McNutt vs Vandenberg
 		}
 		else_if = {
 			limit = {
@@ -1971,7 +1951,7 @@ country_event = {
 		}
 		else_if = {
 			limit = {
-				has_country_leader = { character = USA_harry_byrd }
+				has_country_leader = { character = USA_harry_f_byrd }
 			}
 			country_event = united_states_events.210 #Taft vs Byrd
 		}
@@ -2001,7 +1981,7 @@ country_event = { #Hoover vs Taft
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_MARLIB } }
 			}
 		}
-		promote_character = USA_robert_taft
+		promote_character = USA_robert_a_taft
 		USA_republicans_elected_effect = yes
 	}
 
@@ -2020,7 +2000,7 @@ country_event = { #Hoover vs Taft
 		USA_conservative_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = USA_herbert_hoover
-			promote_character = USA_robert_taft
+			promote_character = USA_robert_a_taft
 		}
 	}
 }
@@ -2044,7 +2024,7 @@ country_event = { #Garner vs Taft
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_MARLIB } }
 			}
 		}
-		promote_character = USA_robert_taft
+		promote_character = USA_robert_a_taft
 		USA_republicans_elected_effect = yes
 	}
 
@@ -2063,7 +2043,7 @@ country_event = { #Garner vs Taft
 		USA_conservative_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = USA_john_nance_garner
-			promote_character = USA_robert_taft
+			promote_character = USA_robert_a_taft
 		}
 	}
 }
@@ -2087,7 +2067,7 @@ country_event = { #Long vs Taft
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_MARLIB } }
 			}
 		}
-		promote_character = USA_robert_taft
+		promote_character = USA_robert_a_taft
 		USA_republicans_elected_effect = yes
 		USA_cancel_share_our_wealth = yes
 	}
@@ -2106,7 +2086,7 @@ country_event = { #Long vs Taft
 		USA_longist_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = APG_huey_long
-			promote_character = USA_robert_taft
+			promote_character = USA_robert_a_taft
 		}
 	}
 }
@@ -2130,7 +2110,7 @@ country_event = { #Barkley vs Taft
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_MARLIB } }
 			}
 		}
-		promote_character = USA_robert_taft
+		promote_character = USA_robert_a_taft
 		USA_republicans_elected_effect = yes
 	}
 
@@ -2148,14 +2128,14 @@ country_event = { #Barkley vs Taft
 		}
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = USA_robert_taft
+			promote_character = USA_robert_a_taft
 			# Barkley's flavour events
 			country_event = { id = united_states_events.182 days = 60 random_days = 660 }
 		}
 	}
 }
 
-country_event = { #Lucas vs Roosevelt
+country_event = { #McNutt vs Roosevelt
 	id = united_states_events.208
 	title = united_states_events.208.t
 
@@ -2172,7 +2152,7 @@ country_event = { #Lucas vs Roosevelt
 		}
 	}
 
-	picture = GFX_report_event_USA_Lucas_Roosevelt
+	picture = GFX_report_event_USA_McNutt_Roosevelt
 
 	is_triggered_only = yes
 
@@ -2191,13 +2171,13 @@ country_event = { #Lucas vs Roosevelt
 		promote_character = USA_quentin_roosevelt
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = USA_scott_lucas
+			promote_character = USA_paul_v_mcnutt
 			# Roosevelt's flavour events
 			country_event = { id = united_states_events.175 days = 60 random_days = 660 }
 		}
 	}
 
-	option = { # Democrat - Lucas
+	option = { # Democrat - McNutt
 		log = "[GetLogInfo]: event united_states_events.208 option united_states_events.208.b"
 		name = united_states_events.208.b
 		ai_chance = {
@@ -2208,7 +2188,7 @@ country_event = { #Lucas vs Roosevelt
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_SOCLIB } }
 			}
 		}
-		promote_character = USA_scott_lucas
+		promote_character = USA_paul_v_mcnutt
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = USA_quentin_roosevelt
@@ -2216,13 +2196,13 @@ country_event = { #Lucas vs Roosevelt
 	}
 }
 
-country_event = { #Lucas vs Vandenberg
+country_event = { #McNutt vs Vandenberg
 	id = united_states_events.2080
 	title = united_states_events.2080.t
 
 	desc = united_states_events.2080.d
 
-	picture = GFX_report_event_USA_Lucas_Vandenberg
+	picture = GFX_report_event_USA_McNutt_Vandenberg
 
 	is_triggered_only = yes
 
@@ -2241,11 +2221,11 @@ country_event = { #Lucas vs Vandenberg
 		promote_character = USA_arthur_vandenberg
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = USA_scott_lucas
+			promote_character = USA_paul_v_mcnutt
 		}
 	}
 
-	option = { # Democrat - Lucas
+	option = { # Democrat - McNutt
 		log = "[GetLogInfo]: event united_states_events.2080 option united_states_events.2080.b"
 		name = united_states_events.2080.b
 		ai_chance = {
@@ -2256,7 +2236,7 @@ country_event = { #Lucas vs Vandenberg
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_SOCLIB } }
 			}
 		}
-		promote_character = USA_scott_lucas
+		promote_character = USA_paul_v_mcnutt
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = USA_quentin_roosevelt
@@ -2326,7 +2306,7 @@ country_event = { #Byrd vs Taft
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_MARLIB } }
 			}
 		}
-		promote_character = USA_robert_taft
+		promote_character = USA_robert_a_taft
 		USA_republicans_elected_effect = yes
 	}
 
@@ -2344,7 +2324,7 @@ country_event = { #Byrd vs Taft
 		}
 		USA_conservative_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = USA_robert_taft
+			promote_character = USA_robert_a_taft
 		}
 	}
 }
@@ -2371,7 +2351,7 @@ country_event = { #Taft vs Russell Jr.
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_SOCLIB } }
 			}
 		}
-		promote_character = USA_robert_taft
+		promote_character = USA_robert_a_taft
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
 			promote_character = USA_richard_russell_jr
@@ -2392,7 +2372,7 @@ country_event = { #Taft vs Russell Jr.
 		promote_character = USA_richard_russell_jr
 		USA_conservative_democrats_elected_effect = yes
 		hidden_effect = {
-			promote_character = USA_robert_taft
+			promote_character = USA_robert_a_taft
 			# Russell Jr's flavour events
 			country_event = { id = united_states_events.183 days = 60 random_days = 660 }
 		}
@@ -2415,13 +2395,13 @@ country_event = {
 	option = {
 		if = {
 			limit = {
-				has_country_leader = { character = USA_scott_lucas }
+				has_country_leader = { character = USA_paul_v_mcnutt }
 			}
-			country_event = united_states_events.213 #Lucas vs Halleck
+			country_event = united_states_events.213 #McNutt vs Halleck
 		}
 		else_if = {
 			limit = {
-				has_country_leader = { character = USA_robert_taft }
+				has_country_leader = { character = USA_robert_a_taft }
 			}
 			country_event = united_states_events.214 #Taft vs Chandler
 		}
@@ -2456,24 +2436,24 @@ country_event = {
 	}
 }
 
-country_event = { #Lucas vs Halleck
+country_event = { #McNutt vs Halleck
 	id = united_states_events.213
 	title = united_states_events.213.t
 
 	desc = {
 		text = united_states_events.213.d.byrd
 		trigger = {
-			has_country_leader = { character = USA_harry_byrd }
+			has_country_leader = { character = USA_harry_f_byrd }
 		}
 	}
 	desc = {
-		text = united_states_events.213.d.lucas
+		text = united_states_events.213.d.mcnutt
 		trigger = {
-			NOT = { has_country_leader = { character = USA_harry_byrd } }
+			NOT = { has_country_leader = { character = USA_harry_f_byrd } }
 		}
 	}
 
-	picture = GFX_report_event_USA_Lucas_Halleck
+	picture = GFX_report_event_USA_McNutt_Halleck
 
 	is_triggered_only = yes
 
@@ -2491,11 +2471,11 @@ country_event = { #Lucas vs Halleck
 		promote_character = USA_charles_halleck
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = USA_scott_lucas
+			promote_character = USA_paul_v_mcnutt
 		}
 	}
 
-	option = { # Democrat - Lucas
+	option = { # Democrat - McNutt
 		log = "[GetLogInfo]: event united_states_events.213 option united_states_events.213.b"
 		name = united_states_events.213.b
 		ai_chance = {
@@ -2506,7 +2486,7 @@ country_event = { #Lucas vs Halleck
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_SOCLIB } }
 			}
 		}
-		promote_character = USA_scott_lucas
+		promote_character = USA_paul_v_mcnutt
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = USA_charles_halleck
@@ -2719,7 +2699,7 @@ country_event = { #Halleck vs Chandler
 	desc = {
 		text = united_states_events.217.d.byrd
 		trigger = {
-			has_country_leader = { character = USA_harry_byrd }
+			has_country_leader = { character = USA_harry_f_byrd }
 		}
 	}
 
@@ -2732,7 +2712,7 @@ country_event = { #Halleck vs Chandler
 				has_country_leader = { character = USA_arthur_vandenberg }
 				has_country_leader = { character = USA_douglas_macarthur }
 				has_country_leader = { character = USA_john_nance_garner }
-				has_country_leader = { character = USA_harry_byrd }
+				has_country_leader = { character = USA_harry_f_byrd }
 			}
 		}
 	}
@@ -2829,11 +2809,11 @@ country_event = {
 	}
 }
 
-country_event = { #Douglas vs Halleck
+country_event = { #Lucas vs Halleck
 	id = united_states_events.219
 	title = united_states_events.219.t
 	desc = united_states_events.219.d
-	picture = GFX_report_event_USA_Douglas_Halleck
+	picture = GFX_report_event_USA_Lucas_Halleck
 
 	is_triggered_only = yes
 
@@ -2850,11 +2830,11 @@ country_event = { #Douglas vs Halleck
 		}
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = USA_paul_douglas
+			promote_character = USA_scott_lucas
 		}
 	}
 
-	option = { # Democrat - Douglas
+	option = { # Democrat - Lucas
 		log = "[GetLogInfo]: event united_states_events.219 option united_states_events.219.b"
 		name = united_states_events.219.b
 		ai_chance = {
@@ -2865,7 +2845,7 @@ country_event = { #Douglas vs Halleck
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_SOCLIB } }
 			}
 		}
-		promote_character = USA_paul_douglas
+		promote_character = USA_scott_lucas
 		USA_progressive_democrats_elected_effect = yes
 	}
 }
@@ -2998,20 +2978,20 @@ country_event = { #Stassen vs Sparkman
 	}
 }
 
-country_event = { #Douglas vs Stassen
+country_event = { #Lucas vs Stassen
 	id = united_states_events.222
 	title = united_states_events.222.t
 
 	desc = {
 		text = united_states_events.222.d.taft
 		trigger = {
-			has_country_leader = { character = USA_robert_taft }
+			has_country_leader = { character = USA_robert_a_taft }
 		}
 	}
 	desc = {
-		text = united_states_events.222.d.lucas
+		text = united_states_events.222.d.mcnutt
 		trigger = {
-			has_country_leader = { character = USA_scott_lucas }
+			has_country_leader = { character = USA_paul_v_mcnutt }
 		}
 	}
 	desc = {
@@ -3024,13 +3004,13 @@ country_event = { #Douglas vs Stassen
 		text = united_states_events.222.d.fallback
 		trigger = {
 			NOT = {
-				has_country_leader = { character = USA_robert_taft }
-				has_country_leader = { character = USA_scott_lucas }
+				has_country_leader = { character = USA_robert_a_taft }
+				has_country_leader = { character = USA_paul_v_mcnutt }
 			}
 		}
 	}
 
-	picture = GFX_report_event_USA_Douglas_Stassen
+	picture = GFX_report_event_USA_Lucas_Stassen
 
 	is_triggered_only = yes
 
@@ -3048,11 +3028,11 @@ country_event = { #Douglas vs Stassen
 		promote_character = USA_harold_stassen
 		USA_republicans_elected_effect = yes
 		hidden_effect = {
-			promote_character = USA_paul_douglas
+			promote_character = USA_scott_lucas
 		}
 	}
 
-	option = { # Democrat - Douglas
+	option = { # Democrat - Lucas
 		log = "[GetLogInfo]: event united_states_events.222 option united_states_events.222.b"
 		name = united_states_events.222.b
 		ai_chance = {
@@ -3063,7 +3043,7 @@ country_event = { #Douglas vs Stassen
 				NOT = { has_game_rule = { rule = USA_path option = USA_PATH_SOCLIB } }
 			}
 		}
-		promote_character = USA_paul_douglas
+		promote_character = USA_scott_lucas
 		USA_progressive_democrats_elected_effect = yes
 		hidden_effect = {
 			promote_character = USA_harold_stassen
@@ -5769,7 +5749,7 @@ country_event = {# Chaffee Dies
 	option = {#An Unfortunate Loss
 		log = "[GetLogInfo]: event united_states_events.604 option united_states_events.604.a"
 		name = united_states_events.604.a
-		USA_adna_romanza_chaffee_jr = { kill_character = yes }
+		USA_adna_r_chaffee_jr = { kill_character = yes }
 	}
 }
 
@@ -6292,15 +6272,15 @@ country_event = {# Trial of the US Generals/Admirals
 				character_list_tooltip = {
 					limit = {
 						OR = {
-							is_character = USA_dwight_david_eisenhower
-							is_character = USA_omar_nelson_bradley
-							is_character = USA_clarence_ralph_huebner
-							is_character = USA_lesley_james_mcnair
-							is_character = USA_lloyd_ralston_fredendall
-							is_character = USA_edwin_forrest_harding
-							is_character = USA_john_clifford_hodges_lee
+							is_character = USA_dwight_d_eisenhower
+							is_character = USA_omar_bradley
+							is_character = USA_clarence_r_huebner
+							is_character = USA_lesley_j_mcnair
+							is_character = USA_lloyd_fredendall
+							is_character = USA_edwin_f_harding
+							is_character = USA_john_ch_lee
 							is_character = USA_frank_jack_fletcher
-							is_character = USA_thomas_cassin_kinkaid
+							is_character = USA_thomas_c_kinkaid
 						}
 					}
 				}
@@ -6308,15 +6288,15 @@ country_event = {# Trial of the US Generals/Admirals
 					every_character = {
 						limit = {
 							OR = {
-								is_character = USA_dwight_david_eisenhower
-								is_character = USA_omar_nelson_bradley
-								is_character = USA_clarence_ralph_huebner
-								is_character = USA_lesley_james_mcnair
-								is_character = USA_lloyd_ralston_fredendall
-								is_character = USA_edwin_forrest_harding
-								is_character = USA_john_clifford_hodges_lee
+								is_character = USA_dwight_d_eisenhower
+								is_character = USA_omar_bradley
+								is_character = USA_clarence_r_huebner
+								is_character = USA_lesley_j_mcnair
+								is_character = USA_lloyd_fredendall
+								is_character = USA_edwin_f_harding
+								is_character = USA_john_ch_lee
 								is_character = USA_frank_jack_fletcher
-								is_character = USA_thomas_cassin_kinkaid
+								is_character = USA_thomas_c_kinkaid
 							}
 						}
 						demote_to_general = yes
@@ -6332,20 +6312,20 @@ country_event = {# Trial of the US Generals/Admirals
 				character_list_tooltip = {
 					limit = {
 						OR = {
-							is_character = USA_dwight_david_eisenhower
-							is_character = USA_omar_nelson_bradley
-							is_character = USA_clarence_ralph_huebner
-							is_character = USA_joseph_warren_stilwell
-							is_character = USA_leonard_townsend_gerow
+							is_character = USA_dwight_d_eisenhower
+							is_character = USA_omar_bradley
+							is_character = USA_clarence_r_huebner
+							is_character = USA_joseph_stilwell
+							is_character = USA_leonard_t_gerow
 							is_character = USA_walter_krueger
-							is_character = USA_edwin_forrest_harding
+							is_character = USA_edwin_f_harding
 							is_character = USA_frank_jack_fletcher
-							is_character = USA_thomas_cassin_kinkaid
-							ACC = { ACC_isaac_davis_white = { is_character = PREV.PREV } }
+							is_character = USA_thomas_c_kinkaid
+							ACC = { ACC_isaac_d_white = { is_character = PREV.PREV } }
 							ACC = { ACC_albert_coady_wedemeyer = { is_character = PREV.PREV } }
-							ACC = { ACC_alexander_archer_vandegrift = { is_character = PREV.PREV } }
+							ACC = { ACC_alexander_vandegrift = { is_character = PREV.PREV } }
 							ACC = { ACC_george_windle_read_jr = { is_character = PREV.PREV } }
-							ACC = { ACC_ernest_joseph_king = { is_character = PREV.PREV } }
+							ACC = { ACC_ernest_j_king = { is_character = PREV.PREV } }
 						}
 					}
 				}
@@ -6353,20 +6333,20 @@ country_event = {# Trial of the US Generals/Admirals
 					every_character = {
 						limit = {
 							OR = {
-								is_character = USA_dwight_david_eisenhower
-								is_character = USA_omar_nelson_bradley
-								is_character = USA_clarence_ralph_huebner
-								is_character = USA_joseph_warren_stilwell
-								is_character = USA_leonard_townsend_gerow
+								is_character = USA_dwight_d_eisenhower
+								is_character = USA_omar_bradley
+								is_character = USA_clarence_r_huebner
+								is_character = USA_joseph_stilwell
+								is_character = USA_leonard_t_gerow
 								is_character = USA_walter_krueger
-								is_character = USA_edwin_forrest_harding
+								is_character = USA_edwin_f_harding
 								is_character = USA_frank_jack_fletcher
-								is_character = USA_thomas_cassin_kinkaid
-								ACC = { ACC_isaac_davis_white = { is_character = PREV.PREV } }
+								is_character = USA_thomas_c_kinkaid
+								ACC = { ACC_isaac_d_white = { is_character = PREV.PREV } }
 								ACC = { ACC_albert_coady_wedemeyer = { is_character = PREV.PREV } }
-								ACC = { ACC_alexander_archer_vandegrift = { is_character = PREV.PREV } }
+								ACC = { ACC_alexander_vandegrift = { is_character = PREV.PREV } }
 								ACC = { ACC_george_windle_read_jr = { is_character = PREV.PREV } }
-								ACC = { ACC_ernest_joseph_king = { is_character = PREV.PREV } }
+								ACC = { ACC_ernest_j_king = { is_character = PREV.PREV } }
 							}
 						}
 						set_nationality = ROOT
@@ -6435,14 +6415,14 @@ country_event = {# Trial of the APG Generals/Admirals
 				character_list_tooltip = {
 					limit = {
 						OR = {
-							is_character = APG_lewis_burwell_puller
-							is_character = APG_clifton_bledsoe_cates
-							is_character = APG_walton_harris_walker
-							is_character = APG_joseph_lawton_collins
-							is_character = APG_courtney_hicks_hodges
-							is_character = APG_george_smith_patton
+							is_character = APG_chesty_puller
+							is_character = APG_clifton_b_cates
+							is_character = APG_walton_walker
+							is_character = APG_j_lawton_collins
+							is_character = APG_courtney_hodges
+							is_character = APG_george_s_patton
 							is_character = APG_samuel_murray_robinson
-							is_character = APG_john_sidney_mccain_sr
+							is_character = APG_john_s_mccain_sr
 						}
 					}
 				}
@@ -6450,14 +6430,14 @@ country_event = {# Trial of the APG Generals/Admirals
 					every_character = {
 						limit = {
 							OR = {
-								is_character = APG_lewis_burwell_puller
-								is_character = APG_clifton_bledsoe_cates
-								is_character = APG_walton_harris_walker
-								is_character = APG_joseph_lawton_collins
-								is_character = APG_courtney_hicks_hodges
-								is_character = APG_george_smith_patton
+								is_character = APG_chesty_puller
+								is_character = APG_clifton_b_cates
+								is_character = APG_walton_walker
+								is_character = APG_j_lawton_collins
+								is_character = APG_courtney_hodges
+								is_character = APG_george_s_patton
 								is_character = APG_samuel_murray_robinson
-								is_character = APG_john_sidney_mccain_sr
+								is_character = APG_john_s_mccain_sr
 							}
 						}
 						set_nationality = ROOT
@@ -6473,13 +6453,13 @@ country_event = {# Trial of the APG Generals/Admirals
 				character_list_tooltip = {
 					limit = {
 						OR = {
-							is_character = APG_george_smith_patton
-							is_character = APG_courtney_hicks_hodges
-							is_character = APG_joseph_lawton_collins
-							is_character = APG_lewis_burwell_puller
-							is_character = APG_clifton_bledsoe_cates
-							is_character = APG_robert_melville_danford
-							is_character = APG_john_sidney_mccain_sr
+							is_character = APG_george_s_patton
+							is_character = APG_courtney_hodges
+							is_character = APG_j_lawton_collins
+							is_character = APG_chesty_puller
+							is_character = APG_clifton_b_cates
+							is_character = APG_robert_m_danford
+							is_character = APG_john_s_mccain_sr
 						}
 					}
 				}
@@ -6487,13 +6467,13 @@ country_event = {# Trial of the APG Generals/Admirals
 					every_character = {
 						limit = {
 							OR = {
-								is_character = APG_george_smith_patton
-								is_character = APG_courtney_hicks_hodges
-								is_character = APG_joseph_lawton_collins
-								is_character = APG_lewis_burwell_puller
-								is_character = APG_clifton_bledsoe_cates
-								is_character = APG_robert_melville_danford
-								is_character = APG_john_sidney_mccain_sr
+								is_character = APG_george_s_patton
+								is_character = APG_courtney_hodges
+								is_character = APG_j_lawton_collins
+								is_character = APG_chesty_puller
+								is_character = APG_clifton_b_cates
+								is_character = APG_robert_m_danford
+								is_character = APG_john_s_mccain_sr
 							}
 						}
 						set_nationality = ROOT
@@ -6560,9 +6540,9 @@ country_event = {# Trial of the ACC Generals/Admirals
 				character_list_tooltip = {
 					limit = {
 						OR = {
-							is_character = ACC_isaac_davis_white
+							is_character = ACC_isaac_d_white
 							is_character = ACC_albert_coady_wedemeyer
-							is_character = ACC_alexander_archer_vandegrift
+							is_character = ACC_alexander_vandegrift
 							is_character = ACC_george_windle_read_jr
 						}
 					}
@@ -6571,9 +6551,9 @@ country_event = {# Trial of the ACC Generals/Admirals
 					every_character = {
 						limit = {
 							OR = {
-								is_character = ACC_isaac_davis_white
+								is_character = ACC_isaac_d_white
 								is_character = ACC_albert_coady_wedemeyer
-								is_character = ACC_alexander_archer_vandegrift
+								is_character = ACC_alexander_vandegrift
 								is_character = ACC_george_windle_read_jr
 							}
 						}
@@ -6590,13 +6570,13 @@ country_event = {# Trial of the ACC Generals/Admirals
 				character_list_tooltip = {
 					limit = {
 						OR = {
-							is_character = ACC_isaac_davis_white
-							is_character = ACC_alexander_archer_vandegrift
-							is_character = ACC_james_harold_doolittle
-							is_character = ACC_henry_harley_arnold
-							is_character = ACC_george_catlett_marshall
-							is_character = ACC_william_daniel_leahy
-							is_character = ACC_chester_william_nimitz
+							is_character = ACC_isaac_d_white
+							is_character = ACC_alexander_vandegrift
+							is_character = ACC_jimmy_doolittle
+							is_character = ACC_henry_h_arnold
+							is_character = ACC_george_c_marshall
+							is_character = ACC_william_d_leahy
+							is_character = ACC_chester_w_nimitz
 						}
 					}
 				}
@@ -6604,13 +6584,13 @@ country_event = {# Trial of the ACC Generals/Admirals
 					every_character = {
 						limit = {
 							OR = {
-								is_character = ACC_isaac_davis_white
-								is_character = ACC_alexander_archer_vandegrift
-								is_character = ACC_james_harold_doolittle
-								is_character = ACC_henry_harley_arnold
-								is_character = ACC_george_catlett_marshall
-								is_character = ACC_william_daniel_leahy
-								is_character = ACC_chester_william_nimitz
+								is_character = ACC_isaac_d_white
+								is_character = ACC_alexander_vandegrift
+								is_character = ACC_jimmy_doolittle
+								is_character = ACC_henry_h_arnold
+								is_character = ACC_george_c_marshall
+								is_character = ACC_william_d_leahy
+								is_character = ACC_chester_w_nimitz
 							}
 						}
 						set_nationality = ROOT
@@ -6664,13 +6644,13 @@ country_event = {# Event for New England to Pick up USA exiles in case they deci
 			character_list_tooltip = {
 				limit = {
 					OR = {
-						is_character = USA_dwight_david_eisenhower
-						is_character = USA_omar_nelson_bradley
-						is_character = USA_clarence_ralph_huebner
-						is_character = USA_lesley_james_mcnair
-						is_character = USA_lloyd_ralston_fredendall
-						is_character = USA_edwin_forrest_harding
-						is_character = USA_john_clifford_hodges_lee
+						is_character = USA_dwight_d_eisenhower
+						is_character = USA_omar_bradley
+						is_character = USA_clarence_r_huebner
+						is_character = USA_lesley_j_mcnair
+						is_character = USA_lloyd_fredendall
+						is_character = USA_edwin_f_harding
+						is_character = USA_john_ch_lee
 					}
 				}
 			}
@@ -6678,13 +6658,13 @@ country_event = {# Event for New England to Pick up USA exiles in case they deci
 				every_character = {
 					limit = {
 						OR = {
-							is_character = USA_dwight_david_eisenhower
-							is_character = USA_omar_nelson_bradley
-							is_character = USA_clarence_ralph_huebner
-							is_character = USA_lesley_james_mcnair
-							is_character = USA_lloyd_ralston_fredendall
-							is_character = USA_edwin_forrest_harding
-							is_character = USA_john_clifford_hodges_lee
+							is_character = USA_dwight_d_eisenhower
+							is_character = USA_omar_bradley
+							is_character = USA_clarence_r_huebner
+							is_character = USA_lesley_j_mcnair
+							is_character = USA_lloyd_fredendall
+							is_character = USA_edwin_f_harding
+							is_character = USA_john_ch_lee
 						}
 					}
 					set_nationality = ROOT
@@ -6711,11 +6691,11 @@ country_event = {# Event for New England to Pick up ACC exiles in case they deci
 			character_list_tooltip = {
 				limit = {
 					OR = {
-						is_character = ACC_isaac_davis_white
-						is_character = ACC_alexander_archer_vandegrift
-						is_character = ACC_james_harold_doolittle
-						is_character = ACC_henry_harley_arnold
-						is_character = ACC_george_catlett_marshall
+						is_character = ACC_isaac_d_white
+						is_character = ACC_alexander_vandegrift
+						is_character = ACC_jimmy_doolittle
+						is_character = ACC_henry_h_arnold
+						is_character = ACC_george_c_marshall
 					}
 				}
 			}
@@ -6723,11 +6703,11 @@ country_event = {# Event for New England to Pick up ACC exiles in case they deci
 				every_character = {
 					limit = {
 						OR = {
-							is_character = ACC_isaac_davis_white
-							is_character = ACC_alexander_archer_vandegrift
-							is_character = ACC_james_harold_doolittle
-							is_character = ACC_henry_harley_arnold
-							is_character = ACC_george_catlett_marshall
+							is_character = ACC_isaac_d_white
+							is_character = ACC_alexander_vandegrift
+							is_character = ACC_jimmy_doolittle
+							is_character = ACC_henry_h_arnold
+							is_character = ACC_george_c_marshall
 						}
 					}
 					set_nationality = ROOT
@@ -8265,7 +8245,7 @@ country_event = { # The Lion of Idaho Roars
 	}
 }
 
-country_event = { # The dissappearance of Alfred M. Landon
+country_event = { # The dissappearance of Alfred Landon
 	id = united_states_leadup_events.27
 	title = united_states_leadup_events.27.t
 	desc = united_states_leadup_events.27.d
@@ -12153,9 +12133,7 @@ country_event = { # Who to meet first
 		}
 		custom_effect_tooltip = USA_borah_negotiations_values_tooltip
 		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { USA_borah_negotiations_temp_var = 1 }
-		subtract_from_variable = { USA_borah_negotiations_long_defence = USA_borah_negotiations_temp_var }
-		custom_effect_tooltip = USA_borah_long_lose_defence_tooltip
+		subtract_from_variable = { USA_borah_negotiations_long_defence = 1 tooltip = USA_borah_long_lose_defence_tooltip }
 	}
 	option = { # The South
 		log = "[GetLogInfo]: event united_states_crisis_events.58 option united_states_crisis_events.58.b"
@@ -12166,9 +12144,7 @@ country_event = { # Who to meet first
 		}
 		custom_effect_tooltip = USA_borah_negotiations_values_tooltip
 		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { USA_borah_negotiations_temp_var = 1 }
-		subtract_from_variable = { USA_borah_negotiations_south_defence = USA_borah_negotiations_temp_var }
-		custom_effect_tooltip = USA_borah_south_lose_defence_tooltip
+		subtract_from_variable = { USA_borah_negotiations_south_defence = 1 tooltip = USA_borah_south_lose_defence_tooltip }
 	}
 }
 
@@ -12201,14 +12177,11 @@ country_event = { #  First Meeting with Long
 			limit = {
 				has_country_flag = USA_borah_negotiations_soft
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 2 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 1 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 1 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_soft_attack_tooltip
 	}
 	option = { # Promise Patronage
 		log = "[GetLogInfo]: event united_states_crisis_events.59 option united_states_crisis_events.59.b"
@@ -12220,14 +12193,11 @@ country_event = { #  First Meeting with Long
 			limit = {
 				has_country_flag = USA_borah_negotiations_hard
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 2 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 1 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 1 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_hard_attack_tooltip
 	}
 }
 
@@ -12260,14 +12230,11 @@ country_event = { # South Grumbles
 			limit = {
 				has_country_flag = USA_borah_negotiations_soft
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 4 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 4 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 2 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_soft_attack_tooltip
 	}
 	option = { # Remind them of the Socialists
 		log = "[GetLogInfo]: event united_states_crisis_events.60 option united_states_crisis_events.60.b"
@@ -12279,14 +12246,11 @@ country_event = { # South Grumbles
 			limit = {
 				has_country_flag = USA_borah_negotiations_hard
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 4 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 4 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 2 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_hard_attack_tooltip
 	}
 }
 
@@ -12319,14 +12283,11 @@ country_event = { # The Southern Senators
 			limit = {
 				has_country_flag = USA_borah_negotiations_soft
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 4 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 4 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 2 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_soft_attack_tooltip
 		custom_effect_tooltip = USA_borah_long_hard_south_soft_tooltip
 	}
 	option = { # Force them into a room with Long
@@ -12339,15 +12300,12 @@ country_event = { # The Southern Senators
 			limit = {
 				has_country_flag = USA_borah_negotiations_hard
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 4 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 4 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 2 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
 		set_country_flag = USA_borah_negotiation_long_soft_south_hard
-		custom_effect_tooltip = USA_borah_gain_hard_attack_tooltip
 		custom_effect_tooltip = USA_borah_long_soft_south_hard_tooltip
 	}
 }
@@ -12381,14 +12339,11 @@ country_event = { # First Meeting with Southern Senators
 			limit = {
 				has_country_flag = USA_borah_negotiations_soft
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 2 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 1 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 1 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_soft_attack_tooltip
 	}
 	option = { # Promise Patronage
 		log = "[GetLogInfo]: event united_states_crisis_events.62 option united_states_crisis_events.62.b"
@@ -12400,14 +12355,11 @@ country_event = { # First Meeting with Southern Senators
 			limit = {
 				has_country_flag = USA_borah_negotiations_hard
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 2 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 1 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 1 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_hard_attack_tooltip
 	}
 }
 
@@ -12440,14 +12392,11 @@ country_event = { # Long Criticises Borah
 			limit = {
 				has_country_flag = USA_borah_negotiations_soft
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 4 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 4 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 2 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_soft_attack_tooltip
 	}
 	option = { # Meet with Liberals
 		log = "[GetLogInfo]: event united_states_crisis_events.63 option united_states_crisis_events.63.b"
@@ -12459,14 +12408,11 @@ country_event = { # Long Criticises Borah
 			limit = {
 				has_country_flag = USA_borah_negotiations_hard
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 4 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 4 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 2 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_hard_attack_tooltip
 	}
 }
 
@@ -12499,15 +12445,12 @@ country_event = { # Our Old Friend
 			limit = {
 				has_country_flag = USA_borah_negotiations_soft
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 4 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 4 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_soft_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_soft_attack = 2 tooltip = USA_borah_gain_soft_attack_tooltip }
 		}
 		set_country_flag = USA_borah_negotiation_long_soft_south_hard
-		custom_effect_tooltip = USA_borah_gain_soft_attack_tooltip
 		custom_effect_tooltip = USA_borah_long_soft_south_hard_tooltip
 	}
 	option = { # Gamble that he's desperate
@@ -12520,14 +12463,11 @@ country_event = { # Our Old Friend
 			limit = {
 				has_country_flag = USA_borah_negotiations_hard
 			}
-			set_temp_variable = { USA_borah_negotiations_temp_var = 4 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 4 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
 		else = {
-			set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-			add_to_variable = { USA_borah_negotiations_hard_attack = USA_borah_negotiations_temp_var }
+			add_to_variable = { USA_borah_negotiations_hard_attack = 2 tooltip = USA_borah_gain_hard_attack_tooltip }
 		}
-		custom_effect_tooltip = USA_borah_gain_hard_attack_tooltip
 		custom_effect_tooltip = USA_borah_long_hard_south_soft_tooltip
 	}
 }
@@ -12551,9 +12491,7 @@ country_event = { # Final Meeting with Long
 		ai_chance = { base = 30 }
 		custom_effect_tooltip = USA_borah_negotiations_values_tooltip
 		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { USA_borah_negotiations_temp_var = 1 }
-		subtract_from_variable = { USA_borah_negotiations_long_defence = USA_borah_negotiations_temp_var }
-		custom_effect_tooltip = USA_borah_long_lose_defence_tooltip
+		subtract_from_variable = { USA_borah_negotiations_long_defence = 1 tooltip = USA_borah_long_lose_defence_tooltip }
 	}
 	option = { # Promise to appoint Long to Cabinet
 		log = "[GetLogInfo]: event united_states_crisis_events.65 option united_states_crisis_events.65.b"
@@ -12561,9 +12499,7 @@ country_event = { # Final Meeting with Long
 		ai_chance = { base = 30 }
 		custom_effect_tooltip = USA_borah_negotiations_values_tooltip
 		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { USA_borah_negotiations_temp_var = 2 }
-		subtract_from_variable = { USA_borah_negotiations_long_defence = USA_borah_negotiations_temp_var }
-		custom_effect_tooltip = USA_borah_long_lose_defence_tooltip
+		subtract_from_variable = { USA_borah_negotiations_long_defence = 2 tooltip = USA_borah_long_lose_defence_tooltip }
 	}
 	option = { # Promise to Endorse Long
 		log = "[GetLogInfo]: event united_states_crisis_events.65 option united_states_crisis_events.65.c"
@@ -12571,10 +12507,8 @@ country_event = { # Final Meeting with Long
 		ai_chance = { base = 30 }
 		custom_effect_tooltip = USA_borah_negotiations_values_tooltip
 		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { USA_borah_negotiations_temp_var = 3 }
-		subtract_from_variable = { USA_borah_negotiations_long_defence = USA_borah_negotiations_temp_var }
+		subtract_from_variable = { USA_borah_negotiations_long_defence = 3 tooltip = USA_borah_long_lose_defence_tooltip }
 		set_country_flag = USA_borah_negotiations_long_endorsed
-		custom_effect_tooltip = USA_borah_long_lose_defence_tooltip
 		custom_effect_tooltip = USA_borah_negotiations_leak_risk_tooltip
 	}
 	after = {
@@ -15069,6 +15003,7 @@ country_event = { # Washington Massacre
 		log = "[GetLogInfo]: event united_states_crisis_events.302 option united_states_crisis_events.302.a"
 		name = united_states_crisis_events.302.a
 		add_stability = -0.10
+		add_manpower = -146
 	}
 }
 

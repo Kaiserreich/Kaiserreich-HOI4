@@ -110,47 +110,26 @@ HNN_provincial_redoubts_effect = {
 HNN_calculate_new_opposition_strength = {
 	set_temp_variable = { HNN_opposition_calculation = { value = HNN_opposition_strength add = 10 } }
 	if = {
-		limit = {
-			check_variable = { HNN_opposition_calculation > 0 }
-			check_variable = { HNN_opposition_calculation < 29 }
-		}
+		limit = { check_variable = { HNN_opposition_calculation < 29 } }
 		custom_effect_tooltip = HNN_opposition_change_nothing
 	}
 	else_if = {
-		limit = {
-			check_variable = { HNN_opposition_calculation > 29 }
-			check_variable = { HNN_opposition_calculation < 40 }
-		}
+		limit = { check_variable = { HNN_opposition_calculation < 40 } }
 		custom_effect_tooltip = HNN_opposition_change_moderate
 	}
 	else_if = {
-		limit = {
-			check_variable = { HNN_opposition_calculation > 39 }
-			check_variable = { HNN_opposition_calculation < 60 }
-		}
+		limit = { check_variable = { HNN_opposition_calculation < 60 } }
 		custom_effect_tooltip = HNN_opposition_change_nothing
 	}
 	else_if = {
-		limit = {
-			check_variable = { HNN_opposition_calculation > 49 }
-			check_variable = { HNN_opposition_calculation < 70 }
-		}
+		limit = { check_variable = { HNN_opposition_calculation < 70 } }
 		custom_effect_tooltip = HNN_opposition_change_high
 	}
 	else_if = {
-		limit = {
-			check_variable = { HNN_opposition_calculation > 60 }
-			check_variable = { HNN_opposition_calculation < 90 }
-		}
+		limit = { check_variable = { HNN_opposition_calculation < 90 } }
 		custom_effect_tooltip = HNN_opposition_change_nothing
 	}
-	else_if = {
-		limit = {
-			OR = {
-				check_variable = { HNN_opposition_calculation = 90 }
-				check_variable = { HNN_opposition_calculation > 90 }
-			}
-		}
+	else = {
 		if = {
 			limit = {
 				is_ai = no
@@ -289,10 +268,6 @@ HNN_recruit_federalist_generals_effect = {
 
 ###Election Percentage Shenanigans
 HNN_election_update_percentage_effect = {
-	clamp_variable = { var = hnn_zhao_popularity min = 0 max = 15 }
-	clamp_variable = { var = hnn_tang_popularity min = 0 max = 15 }
-	clamp_variable = { var = hnn_chen_popularity min = 0 max = 15 }
-
 	#Get the Total Strength Points of election mechanic
 	set_temp_variable = {
 		HNN_election_total_strength_temp_var = {
@@ -318,114 +293,83 @@ HNN_election_update_percentage_effect = {
 }
 HNN_zhao_pop_effect = {
 	add_to_variable = {
-		var = hnn_zhao_popularity
-		value = 1
+		hnn_zhao_popularity = {
+			value = 1
+			clamp = { min = 0 max = { value = 15 subtract = hnn_zhao_popularity } }
+		}
 		tooltip = HNN_add_zhao_votes_tt
 	}
 	HNN_election_update_percentage_effect = yes
 }
 HNN_zhao_remove_pop_effect = {
-	subtract_from_variable = {
-		var = hnn_zhao_popularity
-		value = 1
+	add_to_variable = {
+		hnn_zhao_popularity = {
+			value = -1
+			clamp = { min = { value = hnn_zhao_popularity multiply = -1 } max = 15 }
+		}
 		tooltip = HNN_remove_zhao_votes_tt
-	}
-	clamp_variable = {
-		var = hnn_zhao_popularity
-		min = 0
-		max = 100
 	}
 	HNN_election_update_percentage_effect = yes
 }
 HNN_tang_pop_effect = {
 	add_to_variable = {
-		var = hnn_tang_popularity
-		value = 1
+		hnn_tang_popularity = {
+			value = 1
+			clamp = { min = 0 max = { value = 15 subtract = hnn_tang_popularity } }
+		}
 		tooltip = HNN_add_tang_votes_tt
 	}
 	HNN_election_update_percentage_effect = yes
 }
 HNN_tang_remove_pop_effect = {
-	subtract_from_variable = {
-		var = hnn_tang_popularity
-		value = 1
+	add_to_variable = {
+		hnn_tang_popularity = {
+			value = -1
+			clamp = { min = { value = hnn_tang_popularity multiply = -1 } max = 15 }
+		}
 		tooltip = HNN_remove_tang_votes_tt
-	}
-	clamp_variable = {
-		var = hnn_tang_popularity
-		min = 0
-		max = 100
 	}
 	HNN_election_update_percentage_effect = yes
 }
 HNN_cheng_pop_effect = {
 	add_to_variable = {
-		var = hnn_chen_popularity
-		value = 1
+		hnn_chen_popularity = {
+			value = 1
+			clamp = { min = 0 max = { value = 15 subtract = hnn_chen_popularity } }
+		}
 		tooltip = HNN_add_chen_votes_tt
 	}
 	HNN_election_update_percentage_effect = yes
 }
 HNN_cheng_remove_pop_effect = {
-	subtract_from_variable = {
-		var = hnn_chen_popularity
-		value = 1
+	add_to_variable = {
+		hnn_chen_popularity = {
+			value = -1
+			clamp = { min = { value = hnn_chen_popularity multiply = -1 } max = 15 }
+		}
 		tooltip = HNN_remove_chen_votes_tt
-	}
-	clamp_variable = {
-		var = hnn_chen_popularity
-		min = 0
-		max = 100
 	}
 	HNN_election_update_percentage_effect = yes
 }
 HNN_kmt_pop_effect = {
 	random_list = {
 		50 = {
-			add_to_variable = {
-				var = hnn_chen_popularity
-				value = 1
-				tooltip = HNN_add_chen_votes_tt
-			}
-			clamp_variable = {
-				var = hnn_chen_popularity
-				min = 0
-				max = 100
-			}
+			HNN_cheng_pop_effect = yes
 		}
 		50 = {
-			add_to_variable = {
-				var = hnn_tang_popularity
-				value = 1
-				tooltip = HNN_add_tang_votes_tt
-			}
-			clamp_variable = {
-				var = hnn_tang_popularity
-				min = 0
-				max = 100
-			}
+			HNN_tang_pop_effect = yes
 		}
 	}
-	HNN_election_update_percentage_effect = yes
 }
 HNN_kmt_remove_pop_effect = {
 	random_list = {
 		50 = {
-			subtract_from_variable = {
-				var = hnn_chen_popularity
-				value = 1
-				tooltip = HNN_remove_chen_votes_tt
-			}
+			HNN_cheng_remove_pop_effect = yes
 		}
 		50 = {
-			subtract_from_variable = {
-				var = hnn_tang_popularity
-				value = 1
-				tooltip = HNN_remove_tang_votes_tt
-			}
+			HNN_tang_remove_pop_effect = yes
 		}
 	}
-	HNN_election_update_percentage_effect = yes
 }
 
 HNN_calculate_winner_effect = {
@@ -441,15 +385,7 @@ HNN_calculate_winner_effect = {
 		}
 		country_event = { id = hunan_kuomintang_events.1 days = 2 } #KMT WIN
 	}
-	else_if = { #How the hell would you even get a 50/50 split I haven't done the math but okay
-		limit = {
-			NOT = {
-				AND = {
-					check_variable = { HNN_kmt_election_percentage_var > HNN_zhao_election_percentage_var }
-					check_variable = { HNN_zhao_election_percentage_var > HNN_kmt_election_percentage_var }
-				}
-			}
-		}
+	else = { #How the hell would you even get a 50/50 split I haven't done the math but okay
 		set_country_flag = HNN_electiontie
 		country_event = { id = hunan_federalist_events.1 days = 2 }
 	}

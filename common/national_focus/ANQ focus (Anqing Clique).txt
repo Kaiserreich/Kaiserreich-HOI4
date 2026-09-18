@@ -203,34 +203,13 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ANQ_expand_shipment_capacity"
 			custom_effect_tooltip = anq_increase_jap_shipments_war_tt
 			hidden_effect = {
-				set_variable = {
-					var = anq_equip_line_vvvlarge
-					value = 450
-				}
-				set_variable = {
-					var = anq_equip_line_vvlarge
-					value = 350
-				}
-				set_variable = {
-					var = anq_equip_line_vlarge
-					value = 300
-				}
-				set_variable = {
-					var = anq_equip_line_large
-					value = 160
-				}
-				set_variable = {
-					var = anq_equip_line_medium
-					value = 110
-				}
-				set_variable = {
-					var = anq_equip_line_small
-					value = 80
-				}
-				set_variable = {
-					var = anq_equip_line_vsmall
-					value = 20
-				}
+				set_variable = { anq_equip_line_vvvlarge = 450 }
+				set_variable = { anq_equip_line_vvlarge = 350 }
+				set_variable = { anq_equip_line_vlarge = 300 }
+				set_variable = { anq_equip_line_large = 160 }
+				set_variable = { anq_equip_line_medium = 110 }
+				set_variable = { anq_equip_line_small = 80 }
+				set_variable = { anq_equip_line_vsmall = 20 }
 			}
 			596 = {
 				custom_override_tooltip = {
@@ -1189,30 +1168,12 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ANQ_increase_rail_capacity"
 			custom_effect_tooltip = anq_increase_qing_shipments_war_tt
 			hidden_effect = {
-				set_variable = {
-					var = anq_equip_line_vvlarge
-					value = 300
-				}
-				set_variable = {
-					var = anq_equip_line_vlarge
-					value = 230
-				}
-				set_variable = {
-					var = anq_equip_line_large
-					value = 150
-				}
-				set_variable = {
-					var = anq_equip_line_medium
-					value = 100
-				}
-				set_variable = {
-					var = anq_equip_line_small
-					value = 70
-				}
-				set_variable = {
-					var = anq_equip_line_vsmall
-					value = 15
-				}
+				set_variable = { anq_equip_line_vvlarge = 300 }
+				set_variable = { anq_equip_line_vlarge = 230 }
+				set_variable = { anq_equip_line_large = 150 }
+				set_variable = { anq_equip_line_medium = 100 }
+				set_variable = { anq_equip_line_small = 70 }
+				set_variable = { anq_equip_line_vsmall = 15 }
 			}
 		}
 	}
@@ -2093,14 +2054,8 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ANQ_reconstruction_cooperation"
 			custom_effect_tooltip = anq_reduce_reconstruction_timecost_ally_tt
 			hidden_effect = {
-				subtract_from_variable = {
-					var = anq_reconstruction_decision_cost?30
-					value = 15
-				}
-				subtract_from_variable = {
-					var = anq_reconstruction_decision_time?80
-					value = 30
-				}
+				subtract_from_variable = { anq_reconstruction_decision_cost?30 = 15 }
+				subtract_from_variable = { anq_reconstruction_decision_time?80 = 30 }
 
 				set_country_flag = ANQ_has_reconstruction_cooperation
 			}
@@ -2169,14 +2124,8 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ANQ_reconstruction_efforts"
 			custom_effect_tooltip = anq_reduce_reconstruction_timecost_self_tt
 			hidden_effect = {
-				subtract_from_variable = {
-					var = anq_reconstruction_decision_cost?30
-					value = 10
-				}
-				subtract_from_variable = {
-					var = anq_reconstruction_decision_time?80
-					value = 20
-				}
+				subtract_from_variable = { anq_reconstruction_decision_cost?30 = 10 }
+				subtract_from_variable = { anq_reconstruction_decision_time?80 = 20 }
 			}
 			if = {
 				limit = { controls_state = 1064 }

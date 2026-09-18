@@ -29,7 +29,7 @@ country_event = { #Reichspakt is defeated in Asia
 				}
 				has_capitulated = no
 				OR = {
-					naval_base > 0
+					any_owned_state = { naval_base > 0 }
 					any_neighbor_country = {
 						has_civil_war = no
 						if = {
@@ -111,7 +111,7 @@ country_event = { #Reichspakt is defeated in Asia
 					}
 					OR = {
 						has_capitulated = yes
-						naval_base > 0
+						any_owned_state = { naval_base > 0 }
 						any_neighbor_country = {
 							has_war_with = ROOT
 							has_civil_war = no
@@ -398,9 +398,7 @@ country_event = { #Reichspakt is defeated in Asia
 					}
 				}
 			}
-
-			every_country = {
-				limit = { is_ally_with = ROOT }
+			every_faction_member = {
 				LEC_remove_from_legation_council = yes
 			}
 		}
@@ -526,22 +524,42 @@ country_event = { #Netherlands is defeated in Asia
 		custom_effect_tooltip = asian_hol_will_proceed_to_peacedeal_we_white_peace
 		hidden_effect = {
 			# remove any Asian subjects/allies of HOL
-			every_country = {
-				limit = {
-					is_ally_with = ROOT
-					OR = {
-						is_in_asia = yes
-						is_in_australia = yes
+			if = {
+				limit = { is_in_faction = yes }
+				every_faction_member = {
+					limit = {
+						OR = {
+							is_in_asia = yes
+							is_in_australia = yes
+						}
 					}
-				}
-				overlord = {
-					set_autonomy = {
-						target = PREV
-						autonomy_state = autonomy_free
+					overlord = {
+						set_autonomy = {
+							target = PREV
+							autonomy_state = autonomy_free
+						}
 					}
+					leave_faction = yes
 				}
-				leave_faction = yes
 			}
+			else = {
+				every_subject_country = {
+					limit = {
+						OR = {
+							is_in_asia = yes
+							is_in_australia = yes
+						}
+					}
+					overlord = {
+						set_autonomy = {
+							target = PREV
+							autonomy_state = autonomy_free
+						}
+					}
+					leave_faction = yes
+				}
+			}
+
 			# release all occupied states in Asia
 			every_enemy_country = {
 				limit = {

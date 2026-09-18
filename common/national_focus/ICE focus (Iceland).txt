@@ -630,10 +630,8 @@ focus_tree = {
 
 		available = { always = no }
 		bypass = {
-			AND = {
-				has_country_flag = Vote_Held_1937
-				date > 1937.05.21
-			}
+			has_country_flag = Vote_Held_1937
+			date > 1937.05.21
 		}
 
 		ai_will_do = { factor = 100 }
@@ -657,10 +655,8 @@ focus_tree = {
 		}
 		available = { always = no }
 		bypass = {
-			AND = {
-				has_country_flag = Independence_1937
-				date > 1937.06.17
-			}
+			has_country_flag = Independence_1937
+			date > 1937.06.17
 		}
 
 		ai_will_do = { factor = 100 }
@@ -913,10 +909,8 @@ focus_tree = {
 		}
 		available = { always = no }
 		bypass = {
-			AND = {
-				has_country_flag = Status_Quo_1937
-				date > 1937.06.17
-			}
+			has_country_flag = Status_Quo_1937
+			date > 1937.06.17
 		}
 
 		ai_will_do = { factor = 100 }
@@ -1469,7 +1463,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ICE_Shepard
+		id = ICE_Shepherd
 		icon = GFX_focus_prc_agrarian_socialism
 		cost = 6
 
@@ -1488,8 +1482,8 @@ focus_tree = {
 		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed ICE_Shepard"
-			custom_effect_tooltip = ICE_Shepard_tt
+			log = "[GetLogRoot]: Focus Completed ICE_Shepherd"
+			custom_effect_tooltip = ICE_Shepherd_tt
 		}
 	}
 
@@ -1565,10 +1559,8 @@ focus_tree = {
 			focus = ICE_English_Pup
 		}
 		available = {
-			AND = {
-				has_socialist_government = yes
-				has_completed_focus = ICE_Synd_Gov_Form
-			}
+			has_socialist_government = yes
+			has_completed_focus = ICE_Synd_Gov_Form
 		}
 
 		ai_will_do = { factor = 100 }
@@ -1653,7 +1645,7 @@ focus_tree = {
 		y = 1
 
 		prerequisite = {
-			focus = ICE_Shepard
+			focus = ICE_Shepherd
 			focus = ICE_Synd_Ind
 		}
 		available = {

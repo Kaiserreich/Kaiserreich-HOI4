@@ -209,8 +209,8 @@ QIE_jiang_baili_plan_category = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = shaanxi_province_state
-						has_state_flag = hubei_province_state
+						check_variable = { chinese_province_state = 622.id }
+						check_variable = { chinese_province_state = 1048.id }
 					}
 				}
 				add_building_construction = {
@@ -889,15 +889,9 @@ QIE_buy_german_eqip_decisions = {	#purchase german small arms
 				# avoid division by zero
 				check_variable = { num_target_equipment_in_armies@light_tank_chassis > 0 }
 				set_temp_variable = {
-					QIE_light_tank_ratio = {
-						value = num_equipment_in_armies@light_tank_chassis
-						divide = num_target_equipment_in_armies@light_tank_chassis
-					}
-				}
-				set_temp_variable = {
 					QIE_purchase_light_tank_factor = {
 						value = 1
-						subtract = QIE_light_tank_ratio
+						subtract = { value = num_equipment_in_armies@light_tank_chassis divide = num_target_equipment_in_armies@light_tank_chassis }
 						multiply = 20
 					}
 				}
@@ -997,15 +991,10 @@ QIE_buy_german_eqip_decisions = {	#purchase german small arms
 				# avoid division by zero
 				check_variable = { num_target_equipment_in_armies@medium_tank_chassis > 0 }
 				set_temp_variable = {
-					QIE_medium_tank_ratio = {
-						value = num_equipment_in_armies@medium_tank_chassis
-						divide = num_target_equipment_in_armies@medium_tank_chassis
-					}
-				}
-				set_temp_variable = {
 					QIE_purchase_medium_tank_factor = {
 						value = 1
 						subtract = QIE_medium_tank_ratio
+						subtract = { value = num_equipment_in_armies@medium_tank_chassis divide = num_target_equipment_in_armies@medium_tank_chassis }
 						multiply = 20
 					}
 				}
@@ -1091,15 +1080,9 @@ QIE_buy_german_eqip_decisions = {	#purchase german small arms
 				# avoid division by zero
 				check_variable = { num_target_equipment_in_armies@motorized_equipment > 0 }
 				set_temp_variable = {
-					QIE_motorised_ratio = {
-						value = num_equipment_in_armies@motorized_equipment
-						divide = num_target_equipment_in_armies@motorized_equipment
-					}
-				}
-				set_temp_variable = {
 					QIE_purchase_motorised_factor = {
 						value = 1
-						subtract = QIE_motorised_ratio
+						subtract = { value = num_equipment_in_armies@motorized_equipment divide = num_target_equipment_in_armies@motorized_equipment }
 						multiply = 20
 					}
 				}
@@ -1273,13 +1256,13 @@ QIE_buy_german_eqip_decisions = {	#purchase german small arms
 
 		available = {
 			NOT = { has_war_with = JAP }
-			naval_base > 0
+			any_owned_state = { naval_base > 0 }
 		}
 
 		cancel_trigger = {
 			OR = {
 				has_war_with = JAP
-				naval_base < 1
+				NOT = { any_owned_state = { naval_base > 0 } }
 			}
 		}
 
@@ -1331,13 +1314,13 @@ QIE_buy_german_eqip_decisions = {	#purchase german small arms
 
 		available = {
 			NOT = { has_war_with = JAP }
-			naval_base > 0
+			any_owned_state = { naval_base > 0 }
 		}
 
 		cancel_trigger = {
 			OR = {
 				has_war_with = JAP
-				naval_base < 1
+				NOT = { any_owned_state = { naval_base > 0 } }
 			}
 		}
 
@@ -1389,13 +1372,13 @@ QIE_buy_german_eqip_decisions = {	#purchase german small arms
 
 		available = {
 			NOT = { has_war_with = JAP }
-			naval_base > 0
+			any_owned_state = { naval_base > 0 }
 		}
 
 		cancel_trigger = {
 			OR = {
 				has_war_with = JAP
-				naval_base < 1
+				NOT = { any_owned_state = { naval_base > 0 } }
 			}
 		}
 
@@ -1447,13 +1430,13 @@ QIE_buy_german_eqip_decisions = {	#purchase german small arms
 
 		available = {
 			NOT = { has_war_with = JAP }
-			naval_base > 0
+			any_owned_state = { naval_base > 0 }
 		}
 
 		cancel_trigger = {
 			OR = {
 				has_war_with = JAP
-				naval_base < 1
+				NOT = { any_owned_state = { naval_base > 0 } }
 			}
 		}
 
@@ -1505,13 +1488,13 @@ QIE_buy_german_eqip_decisions = {	#purchase german small arms
 
 		available = {
 			NOT = { has_war_with = JAP }
-			naval_base > 0
+			any_owned_state = { naval_base > 0 }
 		}
 
 		cancel_trigger = {
 			OR = {
 				has_war_with = JAP
-				naval_base < 1
+				NOT = { any_owned_state = { naval_base > 0 } }
 			}
 		}
 
@@ -1903,13 +1886,13 @@ QIE_commission_sicilian_ships = {
 
 		available = {
 			117 = { owner = { has_war = no } } #Campania
-			naval_base > 0
+			any_owned_state = { naval_base > 0 }
 		}
 
 		cancel_trigger = {
 			OR = {
 				117 = { owner = { has_war = yes } } #Campania
-				naval_base < 1
+				NOT = { any_owned_state = { naval_base > 0 } }
 			}
 		}
 
@@ -1950,13 +1933,13 @@ QIE_commission_sicilian_ships = {
 
 		available = {
 			117 = { owner = { has_war = no } } #Campania
-			naval_base > 0
+			any_owned_state = { naval_base > 0 }
 		}
 
 		cancel_trigger = {
 			OR = {
 				117 = { owner = { has_war = yes } } #Campania
-				naval_base < 1
+				NOT = { any_owned_state = { naval_base > 0 } }
 			}
 		}
 
@@ -1997,13 +1980,13 @@ QIE_commission_sicilian_ships = {
 
 		available = {
 			117 = { owner = { has_war = no } } #Campania
-			naval_base > 0
+			any_owned_state = { naval_base > 0 }
 		}
 
 		cancel_trigger = {
 			OR = {
 				117 = { owner = { has_war = yes } } #Campania
-				naval_base < 1
+				NOT = { any_owned_state = { naval_base > 0 } }
 			}
 		}
 
@@ -2042,13 +2025,13 @@ QIE_commission_sicilian_ships = {
 		allowed = { always = no }
 		available = { # Activated by focus QIE_utilising_european_dockyard or QIE_manchu_naval_academy (Manchu)
 			117 = { owner = { has_war = no } } #Campania
-			naval_base > 0
+			any_owned_state = { naval_base > 0 }
 		}
 
 		cancel_trigger = {
 			OR = {
 				117 = { owner = { has_war = yes } } #Campania
-				naval_base < 1
+				NOT = { any_owned_state = { naval_base > 0 } }
 			}
 		}
 

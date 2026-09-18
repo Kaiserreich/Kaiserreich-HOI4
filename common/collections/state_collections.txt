@@ -83,6 +83,39 @@ faction_owned_core_states = {
 	name = COLLECTION_FACTION_OWNED_CORE_STATES
 }
 
+faction_owned_core_states_not_fully_controlled = {
+	input = collection:faction_owned_core_states
+	name = FACTION_CORE_STATES_NOT_FULLY_CONTROLLED
+	operators = {
+		limit = { NOT = { is_fully_controlled_by = PREV } }
+	}
+}
+
+faction_controlled_states = {
+	input = game:scope
+	name = collection_faction_controlled_states
+	operators = {
+		faction_members
+		controlled_states
+	}
+}
+
+faction_controlled_coastal_states = {
+	input = collection:faction_controlled_states
+	operators = { limit = { is_coastal = yes } }
+}
+
+faction_controlled_enemy_core_states = {
+	input = collection:faction_controlled_states
+	name = ENEMY_FACTION_CORE_STATES_CONTROLLED_BY_US
+	operators = {
+		limit = {
+			owner = { has_war_with = ROOT }
+			is_core_of = owner
+		}
+	}
+}
+
 all_entente_cores_and_claims = {
 	input = constant:state_groups.entente_cores_and_claims
 	name = collection_all_entente_cores_and_claims

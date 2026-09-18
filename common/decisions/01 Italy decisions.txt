@@ -519,11 +519,10 @@ ITA_foreign_policy = {# Foreign Policy Stuff
 						limit = { CRO = { is_ally_with = FROM } }
 						add_to_temp_variable = { strength = CRO.num_divisions }
 					}
-					set_temp_variable = { my_strength = { value = ROOT.num_divisions clamp = { min = 1 max = 1000 } } }
 					check_expr = {
 						value = strength
-						divide = my_strength
-						greater_than = { value = 0.9 }
+						divide = { value = ROOT.num_divisions clamp = { min = 1 max = 1000 } } #my_strength
+						greater_than = 0.9
 					}
 					NOT = {
 						surrender_progress > 0.10
@@ -565,9 +564,6 @@ ITA_foreign_policy = {# Foreign Policy Stuff
 			declare_war_on = {
 				target = AUS
 				type = annex_everything
-			}
-			hidden_effect = {
-				AUS = { add_ideas = has_scripted_peace }
 			}
 		}
 		fixed_random_seed = no
@@ -2564,6 +2560,32 @@ ITA_foreign_policy = {# Foreign Policy Stuff
 			base = 100
 			modifier = {
 				factor = 0
+				SRI = {
+					exists = yes
+					NOT = { has_war_with = FROM }
+				}
+				country_exists = GER #after Germany is dead, all bets are off
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = { flag = ITA_recent_peace days < 30 }
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = { flag = second_weltkrieg_has_started days < 30 }
+			}
+			modifier = {
+				factor = 0
+				FROM = { surrender_progress > 0.30 }
+				NOT = { has_game_rule = { rule = ITA_forpol option = ITA_FORPOL_RUS } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = ITA_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = ITA_forpol option = ITA_FORPOL_RUS } }
+			}
+			modifier = {
+				factor = 0
 				OR = {
 					AND = {
 						has_war_with = ENT
@@ -2574,6 +2596,10 @@ ITA_foreign_policy = {# Foreign Policy Stuff
 						NOT = { FROM = { has_war_with = INT } }
 					}
 				}
+			}
+			modifier = {
+				factor = 20
+				FROM = { has_war_with = SRI }
 			}
 		}
 
@@ -2609,39 +2635,6 @@ ITA_foreign_policy = {# Foreign Policy Stuff
 			FROM = { ask_to_join_faction = yes }
 		}
 
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				SRI = {
-					exists = yes
-					NOT = { has_war_with = FROM }
-				}
-				country_exists = GER #after Germany is dead, all bets are off
-			}
-			modifier = {
-				factor = 0
-				has_country_flag = { flag = ITA_recent_peace days < 30 }
-			}
-			modifier = {
-				factor = 0
-				has_global_flag = { flag = second_weltkrieg_has_started days < 30 }
-			}
-			modifier = {
-				factor = 0
-				FROM = { surrender_progress > 0.30 }
-				NOT = { has_game_rule = { rule = ITA_forpol option = ITA_FORPOL_RUS } }
-			}
-			modifier = {
-				factor = 0
-				NOT = { has_game_rule = { rule = ITA_forpol option = DEFAULT } }
-				NOT = { has_game_rule = { rule = ITA_forpol option = ITA_FORPOL_RUS } }
-			}
-			modifier = {
-				factor = 20
-				FROM = { has_war_with = SRI }
-			}
-		}
 		fixed_random_seed = no
 	}
 }

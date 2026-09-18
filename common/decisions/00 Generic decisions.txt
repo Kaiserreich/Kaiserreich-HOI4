@@ -153,62 +153,61 @@ political_actions = {
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision restructure_supply_system"
-			set_variable = { node_goal = num_of_supply_nodes }
-			add_to_variable = { node_goal = 3 } #maximum 3 additional nodes
+			set_variable = { node_goal = { value = num_of_supply_nodes add = 3 } } #maximum 3 additional nodes
 		}
 
 		cancel_trigger = {
-			check_variable = { node_goal < num_of_supply_nodes } #if the number of supply nodes exceeds the old number by +3, immediately cancel
+			num_of_supply_nodes > node_goal #if the number of supply nodes exceeds the old number by +3, immediately cancel
 		}
 	}
 
-	KR_fight_for_independence = {
-		icon = generic_independence
-
-		available = {
-			has_political_power > 0
-			has_stability > 0.70
-			surrender_progress < 0.05
-		}
-
-		targets = { overlord }
-		target_trigger = {
-			has_country_flag = KR_independence_refused
-			has_autonomy_state = nominal_puppet
-			is_subject_of = FROM
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = FROM ratio < 1.0 }
-			}
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision KR_fight_for_independence"
-			clr_country_flag = KR_independence_refused
-			FROM = {
-				add_opinion_modifier = { target = ROOT modifier = KR_outraged }
-				set_autonomy = {
-					target = ROOT
-					autonomy_state = autonomy_free
-				}
-			}
-			if = {
-				limit = { is_in_faction = yes }
-				leave_faction = yes
-			}
-			separate_peace_all_wars = yes
-			FROM = {
-				country_event = { id = generic_events.109 days = 1 }
-			}
-		}
-	}
+#	KR_fight_for_independence = {
+#		icon = generic_independence
+#
+#		available = {
+#			has_political_power > 0
+#			has_stability > 0.70
+#			surrender_progress < 0.05
+#		}
+#
+#		targets = { overlord }
+#		target_trigger = {
+#			has_country_flag = KR_independence_refused
+#			has_autonomy_state = nominal_puppet
+#			is_subject_of = FROM
+#		}
+#
+#		cost = 0
+#		fire_only_once = yes
+#
+#		ai_will_do = {
+#			factor = 100
+#			modifier = {
+#				factor = 0
+#				strength_ratio = { tag = FROM ratio < 1.0 }
+#			}
+#		}
+#
+#		complete_effect = {
+#			log = "[GetLogRoot][GetLogFrom]: Decision KR_fight_for_independence"
+#			clr_country_flag = KR_independence_refused
+#			FROM = {
+#				add_opinion_modifier = { target = ROOT modifier = KR_outraged }
+#				set_autonomy = {
+#					target = ROOT
+#					autonomy_state = autonomy_free
+#				}
+#			}
+#			if = {
+#				limit = { is_in_faction = yes }
+#				leave_faction = yes
+#			}
+#			separate_peace_all_wars = yes
+#			FROM = {
+#				country_event = { id = generic_events.109 days = 1 }
+#			}
+#		}
+#	}
 
 	AI_dont_spend_PP = { #Use this to help the AI focus on PP heavy mini-games
 		icon = GFX_decision_government_down

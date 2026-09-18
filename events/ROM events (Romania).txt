@@ -150,10 +150,10 @@ country_event = {
 		set_country_flag = ROM_selectczc
 		clr_country_flag = ROM_selectcarol
 		hidden_effect = { activate_mission = ROM_reform_czc_mission }
-		set_variable = { var = ROM_IG_CZC value = 3 }
-		set_variable = { var = ROM_IG_OG value = 2 }
-		set_variable = { var = ROM_IG_CML value = 2 }
-		set_variable = { var = ROM_IG_CNTZ value = 1 }
+		set_variable = { ROM_IG_CZC = 3 }
+		set_variable = { ROM_IG_OG = 2 }
+		set_variable = { ROM_IG_CML = 2 }
+		set_variable = { ROM_IG_CNTZ = 1 }
 		set_power_balance = {
 			id = ROM_power_balance
 			left_side = ROM_power_balance_legion_losing
@@ -179,10 +179,10 @@ country_event = {
 		hidden_effect = { activate_mission = ROM_reform_carol_mission }
 		set_temp_variable = { ideology_temp = token:paternal_autocrat }
 		map_party_popularity_PP_gain_to_ideology = yes
-		set_variable = { var = ROM_IG_CZC value = 4 }
-		set_variable = { var = ROM_IG_OG value = 2 }
-		set_variable = { var = ROM_IG_CML value = 2 }
-		set_variable = { var = ROM_IG_CNTZ value = 1 }
+		set_variable = { ROM_IG_CZC = 4 }
+		set_variable = { ROM_IG_OG = 2 }
+		set_variable = { ROM_IG_CML = 2 }
+		set_variable = { ROM_IG_CNTZ = 1 }
 		set_power_balance = {
 			id = ROM_power_balance
 			left_side = ROM_power_balance_carol_winning
@@ -1642,12 +1642,11 @@ country_event = {
 			#Revolt buffs
 			if = {
 				limit = { check_variable = { ROM.revolt > 1 } }
-				if = {
-					limit = { check_variable = { ROM.revolt > 6 } }
-					set_temp_variable = { ROM_TRS_revolt_idea_days = 30 }
-				}
-				else = {
-					set_temp_variable = { ROM_TRS_revolt_idea_days = 14 }
+				set_temp_variable = {
+					ROM_TRS_revolt_idea_days = {
+						value = 14 #base
+						if = { limit = { value = ROM.revolt greater_than = 6 } add = 16 } #30
+					}
 				}
 				event_target:ROM_transylvania_target = {
 					add_timed_idea = {
@@ -6451,7 +6450,7 @@ country_event = {
 			limit = { ROM_ion_mota = { is_hired_as_advisor = no } }
 			activate_advisor = ROM_ion_mota_advisor
 		}
-		add_to_variable = { var = ROM_IG_OG value = -2 }
+		add_to_variable = { ROM_IG_OG = -2 }
 		set_country_flag = ROM_og_supported
 	}
 	option = {
@@ -6464,8 +6463,8 @@ country_event = {
 			ideology = social_conservative
 			popularity = 0.03
 		}
-		add_to_variable = { var = ROM_IG_OG value = -1 }
-		add_to_variable = { var = ROM_IG_CZC value = 2 }
+		add_to_variable = { ROM_IG_OG = -1 }
+		add_to_variable = { ROM_IG_CZC = 2 }
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = remove_political_advisor
 		show_ideas_tooltip = ROM_ion_mota_advisor
@@ -6494,7 +6493,7 @@ country_event = {
 			limit = { ROM_alexandru_cantacuzino = { is_hired_as_advisor = no } }
 			activate_advisor = ROM_gheorghe_clime_advisor
 		}
-		add_to_variable = { var = ROM_IG_CML value = -2 }
+		add_to_variable = { ROM_IG_CML = -2 }
 		set_country_flag = ROM_cml_supported
 	}
 	option = {
@@ -6514,8 +6513,8 @@ country_event = {
 			ideology = radical_socialist
 			popularity = 0.02
 		}
-		add_to_variable = { var = ROM_IG_CML value = -1 }
-		add_to_variable = { var = ROM_IG_CZC value = 2 }
+		add_to_variable = { ROM_IG_CML = -1 }
+		add_to_variable = { ROM_IG_CZC = 2 }
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = remove_political_advisor
 		show_ideas_tooltip = ROM_gheorghe_clime_advisor
@@ -6544,7 +6543,7 @@ country_event = {
 			limit = { ROM_alexandru_cantacuzino = { is_hired_as_advisor = no } }
 			activate_advisor = ROM_alexandru_cantacuzino_advisor
 		}
-		add_to_variable = { var = ROM_IG_CNTZ value = -2 }
+		add_to_variable = { ROM_IG_CNTZ = -2 }
 		set_country_flag = ROM_radicals_supported
 	}
 	option = {
@@ -6553,8 +6552,8 @@ country_event = {
 		custom_effect_tooltip = ROM_IG_CZC_tt
 		add_manpower = -11200
 		add_stability = -0.15
-		add_to_variable = { var = ROM_IG_CNTZ value = -1 }
-		add_to_variable = { var = ROM_IG_CZC value = 2 }
+		add_to_variable = { ROM_IG_CNTZ = -1 }
+		add_to_variable = { ROM_IG_CZC = 2 }
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = remove_political_advisor
 		show_ideas_tooltip = ROM_alexandru_cantacuzino_advisor
@@ -7838,7 +7837,7 @@ country_event = {
 				ROM_cross_brotherhoods_idea
 			}
 			ROM_create_mihai = yes
-			add_to_variable = { var = ROM.king_influence value = 50 }
+			add_to_variable = { ROM.king_influence = 50 }
 			country_event = { id = romania_events.172 days = 65 }
 			country_event = { id = romania_events.173 days = 126 }
 		}

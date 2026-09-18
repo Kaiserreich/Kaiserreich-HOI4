@@ -1027,10 +1027,7 @@ country_event = { #Rumours of Amu Darya Smugglers #t+30
 				}
 				country_event = { id = central_asian_crisis_events.407 days = 20 }
 			}
-			else_if = {
-				limit = {
-					check_variable = { BUK_atalyk_anger > 14 }
-				}
+			else = {
 				country_event = { id = central_asian_crisis_events.408 days = 20 }
 			}
 		}
@@ -1247,10 +1244,7 @@ country_event = { #Spies and Saboteurs #t+89
 				}
 				country_event = { id = central_asian_crisis_events.414 days = 20 }
 			}
-			else_if = {
-				limit = {
-					check_variable = { BUK_yb_anger > 14 }
-				}
+			else = {
 				country_event = { id = central_asian_crisis_events.415 days = 20 }
 			}
 		}
@@ -1740,10 +1734,7 @@ country_event = { #A Long Day in [GetMonth] #tn+232
 				}
 				country_event = { id = central_asian_crisis_events.458 days = 15 }
 			}
-			else_if = {
-				limit = {
-					check_variable = { BUK_yb_anger > 19 }
-				}
+			else = {
 				country_event = { id = central_asian_crisis_events.457 days = 15 }
 			}
 		}
@@ -2715,10 +2706,14 @@ country_event = { #Standing Against the Hegemon
 					value = 1000
 				}
 			}
-			set_variable = { KAZ.KAZ_vounteer_count = TRK_kazakh_strength }
-			multiply_variable = { KAZ.KAZ_vounteer_count = 0.5 }
-			round_variable = KAZ.KAZ_vounteer_count
-			clamp_variable = { var = KAZ.KAZ_vounteer_count min = 2 max = 4 }
+			set_variable = {
+				KAZ.KAZ_vounteer_count = {
+					value = TRK_kazakh_strength
+					multiply = 0.5
+					round = yes
+					clamp = { min = 2 max = 4 }
+				}
+			}
 			if = {
 				limit = {
 					OR = {
@@ -2987,15 +2982,17 @@ country_event = { #The Bandits Band Together!
 				}
 				add_claim_by = RUS
 			}
-			every_country = {
-				limit = {
-					OR = {
-						tag = BUK
-						tag = TRK
-						tag = KHI
-					}
-				}
-				country_event = central_asian_crisis_events.475
+			if = {
+				limit = { country_exists = BUK }
+				BUK = { country_event = central_asian_crisis_events.475 }
+			}
+			if = {
+				limit = { country_exists = TRK }
+				TRK = { country_event = central_asian_crisis_events.475 }
+			}
+			if = {
+				limit = { country_exists = KHI }
+				KHI = { country_event = central_asian_crisis_events.475 }
 			}
 		}
 		activate_mission = RUS_defeat_central_asia
@@ -3085,14 +3082,13 @@ country_event = { #Stalemate in the CA War
 				limit = {
 					BUK = { has_capitulated = yes }
 				}
-				every_country = {
-					limit = {
-						OR = {
-							tag = TRK
-							tag = KHI
-						}
-					}
-					country_event = central_asian_crisis_events.521
+				if = {
+					limit = { country_exists = TRK }
+					TRK = { country_event = central_asian_crisis_events.521 }
+				}
+				if = {
+					limit = { country_exists = KHI }
+					KHI = { country_event = central_asian_crisis_events.521 }
 				}
 			}
 			else = {
@@ -3318,10 +3314,7 @@ country_event = { #Red Banners on the Streets of Bukhara [BUK]
 				country_event = { id = central_asian_crisis_events.503 days = 14 }
 			}
 		}
-		else_if = {
-			limit = {
-				check_variable = { BUK_yb_strength > 3 }
-			}
+		else = {
 			hidden_effect = {
 				TRK = {
 					country_event = { id = central_asian_crisis_events.502 days = 14 }
@@ -4019,15 +4012,19 @@ country_event = { #Forced to Withdraw from Central Asia
 			limit = {
 				BUK = { has_capitulated = yes }
 			}
-			every_country = {
-				limit = {
-					OR = {
-						tag = TRK
-						tag = KHI
-					}
+			if = {
+				limit = { country_exists = TRK }
+				TRK = {
+					set_major = no
+					country_event = central_asian_crisis_events.521
 				}
-				set_major = no
-				country_event = central_asian_crisis_events.521
+			}
+			if = {
+				limit = { country_exists = KHI }
+				KHI = {
+					set_major = no
+					country_event = central_asian_crisis_events.521
+				}
 			}
 		}
 		else = {
@@ -4291,7 +4288,6 @@ country_event = { #Russia Takes a Red Turn
 		name = central_asian_crisis_events.580.c
 		trigger = { tag = BUK }
 		clr_country_flag = BUK_monlobby_flag
-		clr_country_flag = BUK_replobby_flag
 	}
 }
 
@@ -4701,15 +4697,17 @@ country_event = { #Forced to Withdraw from Central Asia
 			limit = {
 				BUK = { has_capitulated = yes }
 			}
-			every_country = {
-				limit = {
-					OR = {
-						tag = TRK
-						tag = KHI
-						tag = KAZ
-					}
-				}
-				country_event = central_asian_crisis_events.521
+			if = {
+				limit = { country_exists = KAZ }
+				KAZ = { country_event = central_asian_crisis_events.521 }
+			}
+			if = {
+				limit = { country_exists = TRK }
+				TRK = { country_event = central_asian_crisis_events.521 }
+			}
+			if = {
+				limit = { country_exists = KHI }
+				KHI = { country_event = central_asian_crisis_events.521 }
 			}
 		}
 		else = {

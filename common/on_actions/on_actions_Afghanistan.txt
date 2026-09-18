@@ -1,0 +1,106 @@
+on_actions = {
+
+	on_startup = {
+		effect = {
+			AFG = {
+				set_temp_variable = { coalition_partner_var = token:social_liberal }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:market_liberal }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+				add_to_coalition = yes
+			}
+		}
+	}
+	on_war_relation_added = {
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						tag = BUK
+						tag = TRK
+					}
+					FROM = {
+						OR = {
+							tag = BUK
+							tag = TRK
+						}
+					}
+				}
+				AFG = {
+					country_event = { id = afghanistan_events.29 days = 3 }
+					country_event = { id = afghanistan_events.31 days = 70 }
+				}
+			}
+		}
+	}
+	on_new_term_election = {
+		effect = {
+			if = {
+				limit = {
+					tag = AFG
+					has_country_flag = AFG_constitutional_elections_flag
+				}
+				country_event = afghanistan_events.203
+			}
+			else_if = {
+				limit = {
+					tag = AFG
+					has_country_flag = AFG_amanullah_elections_flag
+				}
+				country_event = afghanistan_events.252
+			}
+			else_if = {
+				limit = {
+					tag = AFG
+					has_country_flag = AFG_aia_elections_flag
+				}
+				country_event = afghanistan_events.551
+			}
+			else_if = {
+				limit = {
+					tag = AFG
+					OR = {
+						has_country_flag = AFG_azadist_token_elections
+						has_country_flag = AFG_azadist_partystate_elections
+					}
+				}
+				country_event = afghanistan_events.518
+			}
+		}
+	}
+	on_monthly_AFG = {
+		effect = {
+			if = { #Sind event
+				limit = { 443 = { is_owned_by = AFG } }
+				country_event = { id = afghanistan_foreign_policy_events.16 days = 5 } #Delay in case its annexed right as the month ends
+			}
+			if = { #Used to make the final forpol focus visible when conditions met
+				limit = {
+					tag = AFG
+					has_completed_focus = AFG_extend_our_authority_to_darwaz
+					has_completed_focus = AFG_free_the_western_balochs
+					NOT = {
+						has_completed_focus = AFG_champion_of_islam
+					}
+				}
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+	on_peaceconference_ended = {
+		effect = {
+			if = { #Used to make the final forpol focus visible when conditions met
+				limit = {
+					tag = AFG
+					has_completed_focus = AFG_extend_our_authority_to_darwaz
+					has_completed_focus = AFG_free_the_western_balochs
+					NOT = {
+						has_completed_focus = AFG_champion_of_islam
+					}
+				}
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+}

@@ -68,11 +68,7 @@ INC_the_resistance_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete INC_motivate_peasants_decision"
 			add_war_support = -0.05
-			add_to_variable = {
-				var = guerilla_activity
-				value = 10
-				tooltip = INC_increase_guerilla_strength_tt
-			}
+			add_to_variable = { guerilla_activity = 10 tooltip = INC_increase_guerilla_strength_tt }
 		}
 		fixed_random_seed = no
 	}
@@ -101,11 +97,7 @@ INC_the_resistance_decisions = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove INC_expand_secret_societies_decision"
-			add_to_variable = {
-				var = guerilla_activity
-				value = 10
-				tooltip = INC_increase_guerilla_strength_tt
-			}
+			add_to_variable = { guerilla_activity = 10 tooltip = INC_increase_guerilla_strength_tt }
 		}
 		fixed_random_seed = no
 	}
@@ -121,8 +113,8 @@ INC_the_resistance_decisions = {
 			check_variable = { guerilla_activity > 25 }
 			671 = {
 				OR = {
-					infrastructure > 2.0
-					naval_base > 2.0
+					infrastructure > 2
+					naval_base > 2
 				}
 			}
 		}
@@ -151,14 +143,14 @@ INC_the_resistance_decisions = {
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete INC_sabotage_tonkin_decision"
-			add_to_variable = { var = guerilla_activity value = -10 }
+			add_to_variable = { guerilla_activity = -10 }
 			671 = {
 				if = {
-					limit = { infrastructure > 2.0 }
+					limit = { infrastructure > 2 }
 					damage_building = { type = infrastructure damage = 2.0 }
 				}
 				if = {
-					limit = { naval_base > 2.0 }
+					limit = { naval_base > 2 }
 					damage_building = { type = naval_base damage = 2.0 }
 				}
 			}
@@ -177,8 +169,8 @@ INC_the_resistance_decisions = {
 			827 = {
 				NOT = { is_fully_controlled_by = INC }
 				OR = {
-					infrastructure > 2.0
-					naval_base > 4.0
+					infrastructure > 2
+					naval_base > 4
 				}
 			}
 		}
@@ -207,14 +199,14 @@ INC_the_resistance_decisions = {
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete INC_sabotage_annam_decision"
-			add_to_variable = { var = guerilla_activity value = -10 }
+			add_to_variable = { guerilla_activity = -10 }
 			827 = {
 				if = {
 					limit = { non_damaged_building_level = { building = infrastructure level > 0 } }
 					damage_building = { type = infrastructure damage = 2.0 }
 				}
 				if = {
-					limit = { naval_base > 4.0 }
+					limit = { naval_base > 4 }
 					damage_building = { type = naval_base damage = 4.0 }
 				}
 			}
@@ -253,7 +245,7 @@ INC_the_resistance_decisions = {
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete INC_support_our_troops_decision"
-			add_to_variable = { var = guerilla_activity value = -10 }
+			add_to_variable = { guerilla_activity = -10 }
 		}
 		fixed_random_seed = no
 	}
@@ -661,11 +653,7 @@ INC_the_resistance_decisions = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove INC_create_viet_bac_base_area_decision"
-			add_to_variable = {
-				var = guerilla_activity
-				value = 10
-				tooltip = INC_increase_guerilla_strength_tt
-			}
+			add_to_variable = { guerilla_activity = 10 tooltip = INC_increase_guerilla_strength_tt }
 			set_country_flag = INC_base_viet_bac
 		}
 		fixed_random_seed = no
@@ -698,11 +686,7 @@ INC_the_resistance_decisions = {
 				type = infantry_equipment_0
 				amount = -50
 			}
-			add_to_variable = {
-				var = guerilla_activity
-				value = 10
-				tooltip = INC_increase_guerilla_strength_tt
-			}
+			add_to_variable = { guerilla_activity = 10 tooltip = INC_increase_guerilla_strength_tt }
 			hidden_effect = {
 				add_manpower = -1000
 			}
@@ -743,7 +727,7 @@ INC_the_resistance_decisions = {
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete INC_intensify_harrassment_decision"
-			add_to_variable = { var = guerilla_activity value = -10 }
+			add_to_variable = { guerilla_activity = -10 }
 			GEA = { add_timed_idea = { idea = GEA_harassed_by_vc_idea days = 120 } }
 		}
 		fixed_random_seed = no
@@ -974,7 +958,7 @@ INC_the_resistance_decisions = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout INC_Tet_Quyet_Chien"
 			custom_effect_tooltip = INC_tet_failure
-			add_to_variable = { var = guerilla_activity value = -40 }
+			add_to_variable = { guerilla_activity = -40 }
 			add_war_support = -0.1
 		}
 		#Success
@@ -1513,11 +1497,7 @@ INC_land_reform_decisions = {
 			else = {
 				add_popularity = { ideology = social_democrat popularity = 0.05 }
 			}
-			add_to_variable = {
-				var = land_reform
-				value = 5
-				tooltip = INC_increase_land_reform_progress_tt
-			}
+			add_to_variable = { land_reform = 5 tooltip = INC_increase_land_reform_progress_tt }
 			modify_country_flag = { flag = INC_radicalism_inclination value = -1 }
 		}
 		fixed_random_seed = no
@@ -1568,11 +1548,7 @@ INC_land_reform_decisions = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove INC_issue_land_bond_decision"
-			add_to_variable = {
-				var = land_reform
-				value = 5
-				tooltip = INC_increase_land_reform_progress_tt
-			}
+			add_to_variable = { land_reform = 5 tooltip = INC_increase_land_reform_progress_tt }
 		}
 		fixed_random_seed = no
 	}
@@ -1623,11 +1599,7 @@ INC_land_reform_decisions = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove INC_offer_low_interest_Loan_decision"
-			add_to_variable = {
-				var = land_reform
-				value = 10
-				tooltip = INC_increase_land_reform_progress_tt
-			}
+			add_to_variable = { land_reform = 10 tooltip = INC_increase_land_reform_progress_tt }
 		}
 		fixed_random_seed = no
 	}
@@ -1653,11 +1625,7 @@ INC_land_reform_decisions = {
 		ai_will_do = { factor = 1 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete INC_declare_landholding_limit_decision"
-			add_to_variable = {
-				var = land_reform
-				value = 10
-				tooltip = INC_increase_land_reform_progress_tt
-			}
+			add_to_variable = { land_reform = 10 tooltip = INC_increase_land_reform_progress_tt }
 			hidden_effect = {
 				country_event = { id = indochina_events.65 days = 60 }
 			}
@@ -1706,12 +1674,8 @@ INC_land_reform_decisions = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove INC_encourage_peasant_struggle_decision"
-			add_to_variable = {
-				var = land_reform
-				value = 10
-				tooltip = INC_increase_land_reform_progress_tt
-			}
-			add_to_variable = { var = land_reform_radicalism value = 10 }
+			add_to_variable = { land_reform = 10 tooltip = INC_increase_land_reform_progress_tt }
+			add_to_variable = { land_reform_radicalism = 10 }
 		}
 		fixed_random_seed = no
 	}
@@ -1741,12 +1705,8 @@ INC_land_reform_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete INC_expropriate_traitors_land_decision"
 			add_war_support = 0.05
-			add_to_variable = {
-				var = land_reform
-				value = 5
-				tooltip = INC_increase_land_reform_progress_tt
-			}
-			add_to_variable = { var = land_reform_radicalism value = 5 }
+			add_to_variable = { land_reform = 5 tooltip = INC_increase_land_reform_progress_tt }
+			add_to_variable = { land_reform_radicalism = 5 }
 		}
 		fixed_random_seed = no
 	}
@@ -1782,12 +1742,8 @@ INC_land_reform_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete INC_political_instruction_decision"
 			add_popularity = { ideology = totalist popularity = 0.05 }
-			add_to_variable = {
-				var = land_reform
-				value = 5
-				tooltip = INC_increase_land_reform_progress_tt
-			}
-			add_to_variable = { var = land_reform_radicalism value = 5 }
+			add_to_variable = { land_reform = 5 tooltip = INC_increase_land_reform_progress_tt }
+			add_to_variable = { land_reform_radicalism = 5 }
 		}
 		fixed_random_seed = no
 	}
@@ -1822,12 +1778,8 @@ INC_land_reform_decisions = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove INC_expand_peasant_associations_decision"
-			add_to_variable = {
-				var = land_reform
-				value = 5
-				tooltip = INC_increase_land_reform_progress_tt
-			}
-			add_to_variable = { var = land_reform_radicalism value = 5 }
+			add_to_variable = { land_reform = 5 tooltip = INC_increase_land_reform_progress_tt }
+			add_to_variable = { land_reform_radicalism = 5 }
 		}
 		fixed_random_seed = no
 	}
@@ -1861,12 +1813,8 @@ INC_land_reform_decisions = {
 			else = {
 				add_popularity = { ideology = social_democrat popularity = -0.05 }
 			}
-			add_to_variable = {
-				var = land_reform
-				value = 10
-				tooltip = INC_increase_land_reform_progress_tt
-			}
-			add_to_variable = { var = land_reform_radicalism value = 10 }
+			add_to_variable = { land_reform = 10 tooltip = INC_increase_land_reform_progress_tt }
+			add_to_variable = { land_reform_radicalism = 10 }
 			modify_country_flag = { flag = INC_radicalism_inclination value = 1 }
 		}
 		fixed_random_seed = no
@@ -1909,12 +1857,8 @@ INC_land_reform_decisions = {
 			else = {
 				add_popularity = { ideology = social_democrat popularity = -0.05 }
 			}
-			add_to_variable = {
-				var = land_reform
-				value = 10
-				tooltip = INC_increase_land_reform_progress_tt
-			}
-			add_to_variable = { var = land_reform_radicalism value = 10 }
+			add_to_variable = { land_reform = 10 tooltip = INC_increase_land_reform_progress_tt }
+			add_to_variable = { land_reform_radicalism = 10 }
 		}
 		fixed_random_seed = no
 	}
@@ -1945,11 +1889,7 @@ INC_land_reform_decisions = {
 		ai_will_do = { factor = 5 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete INC_rectify_errors_decision"
-			add_to_variable = {
-				var = land_reform
-				value = 5
-				tooltip = INC_increase_land_reform_progress_tt
-			}
+			add_to_variable = { land_reform = 5 tooltip = INC_increase_land_reform_progress_tt }
 		}
 		fixed_random_seed = no
 	}
@@ -1958,11 +1898,6 @@ INC_land_reform_decisions = {
 		icon = generic_civil_support
 		allowed = {
 			original_tag = INC
-		}
-
-		#No Need
-		available = {
-			check_variable = { land_reform > 95 }
 		}
 
 		days_mission_timeout = 1080

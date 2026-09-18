@@ -30,18 +30,9 @@ country_event = { #Iceland expands its fishing
 				country_event = { id = iceland_events.2 days = 3 }
 			}
 			#Set up these variables now so they can be adjusted later
-			set_variable = {
-				var = resistance_ICE_popularity
-				value = 35
-			}
-			set_variable = {
-				var = resistance_ICE_strength
-				value = 0
-			}
-			set_variable = {
-				var = occupation_ENG_strength
-				value = 100
-			}
+			set_variable = { resistance_ICE_popularity = 35 }
+			set_variable = { resistance_ICE_strength = 0 }
+			set_variable = { occupation_ENG_strength = 100 }
 		}
 	}
 }
@@ -3586,10 +3577,7 @@ country_event = { #Iceland is getting rebellious (ENG)
 	option = { #Send forces
 		log = "[GetLogInfo]: event iceland_events.350 option iceland_events.350.a"
 		name = iceland_events.350.a
-		add_to_variable = {
-			var = occupation_ENG_strength
-			value = 5
-		}
+		add_to_variable = { occupation_ENG_strength = 5 }
 		ai_chance = {
 			base = 30
 			modifier = {

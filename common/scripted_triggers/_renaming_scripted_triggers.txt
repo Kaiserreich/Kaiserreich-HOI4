@@ -638,13 +638,11 @@ is_baltic_tag = {
 
 ###song play-chance triggers for the music mod
 is_starting_german_tag = {
-	AND = {
-		OR = {
-			original_tag = BAT
-			original_tag = GEA
-			original_tag = GER
-			original_tag = MAF
-		}
+	OR = {
+		original_tag = BAT
+		original_tag = GEA
+		original_tag = GER
+		original_tag = MAF
 	}
 }
 
@@ -743,5 +741,12 @@ is_usa_or_acc = {
 	OR = {
 		original_tag = USA
 		original_tag = ACC
+	}
+}
+
+is_pashtun_tag = {
+	OR = {
+		original_tag = AFG
+		original_tag = PTH
 	}
 }

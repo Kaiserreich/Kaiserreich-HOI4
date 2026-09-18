@@ -227,8 +227,7 @@ defined_text = {
 	name = OTT_congress_turkish_nationalist_opposition
 	text = {
 		trigger = {
-			set_temp_variable = { nat_tur_opp_deputies = nat_tur_deputies }
-			subtract_from_temp_variable = { nat_tur_opp_deputies = nat_tur_sup_deputies }
+			set_temp_variable = { nat_tur_opp_deputies = { value = nat_tur_deputies subtract = nat_tur_sup_deputies } }
 		}
 		localization_key = "[?nat_tur_opp_deputies]"
 	}
@@ -237,8 +236,7 @@ defined_text = {
 	name = OTT_congress_arab_nationalist_opposition
 	text = {
 		trigger = {
-			set_temp_variable = { nat_ara_opp_deputies = nat_ara_deputies }
-			subtract_from_temp_variable = { nat_ara_opp_deputies = nat_ara_sup_deputies }
+			set_temp_variable = { nat_ara_opp_deputies = { value = nat_ara_deputies subtract = nat_ara_sup_deputies } }
 		}
 		localization_key = "[?nat_ara_opp_deputies]"
 	}
@@ -247,8 +245,7 @@ defined_text = {
 	name = OTT_congress_conservative_opposition
 	text = {
 		trigger = {
-			set_temp_variable = { con_opp_deputies = con_deputies }
-			subtract_from_temp_variable = { con_opp_deputies = con_sup_deputies }
+			set_temp_variable = { con_opp_deputies = { value = con_deputies subtract = con_sup_deputies } }
 		}
 		localization_key = "[?con_opp_deputies]"
 	}
@@ -257,8 +254,7 @@ defined_text = {
 	name = OTT_congress_independent_opposition
 	text = {
 		trigger = {
-			set_temp_variable = { ind_opp_deputies = ind_deputies }
-			subtract_from_temp_variable = { ind_opp_deputies = ind_sup_deputies }
+			set_temp_variable = { ind_opp_deputies = { value = ind_deputies subtract = ind_sup_deputies } }
 		}
 		localization_key = "[?ind_opp_deputies]"
 	}

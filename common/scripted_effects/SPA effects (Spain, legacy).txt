@@ -993,31 +993,45 @@ SPA_MIO_size_and_funds_transfer = {
 
 SPA_calculate_fervor_effects = {
 	# fervor level is 1 - surrender_progress (i.e. 1 at start of war - 0 when capitulated)
-	set_variable = { fervor_level = THIS.surrender_progress }
-	multiply_variable = { fervor_level = -1 }
-	add_to_variable = { fervor_level = 1 }
+	set_variable = {
+		fervor_level = {
+			value = THIS.surrender_progress
+			multiply = -1
+			add = 1
+		}
+	}
 
 	# org modifier lerp +20% to -20%
-	set_variable = { fervor_org_modifier = fervor_level }
-	multiply_variable = { fervor_org_modifier = 0.4 }
-	add_to_variable = { fervor_org_modifier = -0.2 }
+	set_variable = {
+		fervor_org_modifier = {
+			value = fervor_level
+			multiply = 0.4
+			add = -0.2
+		}
+	}
 
 	# reinforce rate modifier lerp +3% to -3%
-	set_variable = { fervor_reinforce_modifier = fervor_org_modifier }
-	multiply_variable = { fervor_reinforce_modifier = 3 }
-	multiply_variable = { fervor_reinforce_modifier = 0.05 }
+	set_variable = {
+		fervor_reinforce_modifier = {
+			value = fervor_org_modifier
+			multiply = 0.15
+		}
+	}
 
 	# att/def modifier lerp +10% to -10%
-	set_variable = { fervor_combat_modifier = fervor_org_modifier }
-	multiply_variable = { fervor_combat_modifier = 0.5 }
+	set_variable = { fervor_combat_modifier = { value = fervor_org_modifier multiply = 0.5 } }
 
 	# movement and recovery speed modifier lerp +20% to -20%
 	set_variable = { fervor_fast_modifier = fervor_org_modifier }
 
 	# entrenchment modifier lerp 0 to -50%
-	set_variable = { fervor_dig_modifier = fervor_level }
-	multiply_variable = { fervor_dig_modifier = 0.5 }
-	add_to_variable = { fervor_dig_modifier = -0.5 }
+	set_variable = {
+		fervor_dig_modifier = {
+			value = fervor_level
+			multiply = 0.5
+			add = -0.5
+		}
+	}
 
 	log = "SCW FERVOR [THIS.GetName] LEVEL = [?fervor_level], org = [?fervor_org_modifier], def = [?fervor_combat_modifier]"
 	force_update_dynamic_modifier = yes

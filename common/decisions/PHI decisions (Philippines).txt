@@ -47,7 +47,7 @@ foreign_politics = {
 				has_war_with = JAP
 				has_war_with = GEA
 				has_war_with = ENT
-				has_war_with = var:361.owner #Owner of Washington DC
+				has_war_with = var:361.owner #Owner of Washington, D.C.
 				AND = {
 					#PHI will join American splinter if USA won the mini-game.
 					FROM = { is_american_tag_custom_tooltip = yes }
@@ -62,11 +62,9 @@ foreign_politics = {
 					var:361.owner = { NOT = { controls_state = 629 } } #Hawaii
 				}
 				hidden_trigger = {
-					AND = {
-						#Having the game rule for PHI to join the Entente will bypass all these restrictions because tbh PHI wouldn't join otherwise.
-						FROM = { tag = ENT }
-						has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_ENT }
-					}
+					#Having the game rule for PHI to join the Entente will bypass all these restrictions because tbh PHI wouldn't join otherwise.
+					FROM = { tag = ENT }
+					has_game_rule = { rule = PHI_forpol option = PHI_FORPOL_ENT }
 				}
 			}
 		}
@@ -254,13 +252,11 @@ foreign_politics = {
 						country_exists = CHI
 					}
 					#PHI will join 3I if an Asian Power is in it
-					OR = {
-						INT = { is_in_faction_with = HND }
-						INT = { tag = HND }
-					}
-					OR = {
-						INT = { is_in_faction_with = LKT }
-						INT = { tag = LKT }
+					INT = {
+						OR = {
+							is_in_faction_with = HND
+							is_in_faction_with = LKT
+						}
 					}
 					#PHI will join 3I if WCA is in it and WCA won the minigame
 					AND = {
@@ -531,11 +527,9 @@ PHI_fight_for_the_philippines_decision_cat = {
 			tag = GEA
 		}
 		visible = {
-			AND = {
-				PHI = {
-					NOT = {
-						has_country_flag = PHI_reject_german_economic_aid
-					}
+			PHI = {
+				NOT = {
+					has_country_flag = PHI_reject_german_economic_aid
 				}
 			}
 		}
@@ -589,11 +583,9 @@ PHI_fight_for_the_philippines_decision_cat = {
 			tag = GEA
 		}
 		visible = {
-			AND = {
-				PHI = {
-					NOT = {
-						has_country_flag = PHI_reject_german_military_aid
-					}
+			PHI = {
+				NOT = {
+					has_country_flag = PHI_reject_german_military_aid
 				}
 			}
 		}
@@ -854,11 +846,9 @@ PHI_fight_for_the_philippines_decision_cat = {
 			tag = JAP
 		}
 		visible = {
-			AND = {
-				PHI = {
-					NOT = {
-						has_country_flag = PHI_reject_japanese_economic_aid
-					}
+			PHI = {
+				NOT = {
+					has_country_flag = PHI_reject_japanese_economic_aid
 				}
 			}
 		}
@@ -914,11 +904,9 @@ PHI_fight_for_the_philippines_decision_cat = {
 			tag = JAP
 		}
 		visible = {
-			AND = {
-				PHI = {
-					NOT = {
-						has_country_flag = PHI_reject_japanese_military_aid
-					}
+			PHI = {
+				NOT = {
+					has_country_flag = PHI_reject_japanese_military_aid
 				}
 			}
 		}
@@ -1139,11 +1127,9 @@ PHI_fight_for_the_philippines_decision_cat = {
 			is_american_tag = yes
 		}
 		visible = {
-			AND = {
-				PHI = {
-					NOT = {
-						has_country_flag = PHI_reject_american_economic_aid
-					}
+			PHI = {
+				NOT = {
+					has_country_flag = PHI_reject_american_economic_aid
 				}
 			}
 		}
@@ -1205,11 +1191,9 @@ PHI_fight_for_the_philippines_decision_cat = {
 			is_american_tag = yes
 		}
 		visible = {
-			AND = {
-				PHI = {
-					NOT = {
-						has_country_flag = PHI_reject_american_military_aid
-					}
+			PHI = {
+				NOT = {
+					has_country_flag = PHI_reject_american_military_aid
 				}
 			}
 		}

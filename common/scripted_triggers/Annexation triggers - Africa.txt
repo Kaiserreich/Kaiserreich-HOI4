@@ -830,6 +830,15 @@ can_release_813 = { #South Zambesia
 	}
 }
 
+#Zanzibar - annexation_zanzibar
+can_release_905 = { #Zanzibar
+	905 = { annexations_state_is_tied_to_annexation_decision = yes } #Zanzibar
+	is_core_of = ZAN
+	NOT = { country_exists = ZAN }
+	add_state_to_resistance_target_array = yes
+	ROOT = { should_release_tanzania_first = yes }
+}
+
 #Zimbabwe - annexation_zimbabwe
 can_release_545 = { #Rhodesia
 	545 = { annexations_state_is_tied_to_annexation_decision = yes } #Rhodesia

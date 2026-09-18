@@ -33,9 +33,6 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ELS_37_revolution"
 			custom_effect_tooltip = unlock_focuses
-			hidden_effect = {
-				set_variable = { ELS_political_foci_count = 0 }
-			}
 		}
 	}
 
@@ -122,7 +119,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ELS_small_liberties"
 			add_ideas = ELS_new_guard1
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -153,7 +150,7 @@ focus_tree = {
 				add_idea = ELS_new_guard2
 			}
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_RESISTANCE }
@@ -185,7 +182,7 @@ focus_tree = {
 			}
 			add_popularity = { ideology = paternal_autocrat popularity = 0.2 }
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_POLITICAL }
@@ -333,7 +330,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ELS_expand_military_youth"
 			add_ideas = ELS_propatriaholds
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
@@ -365,7 +362,7 @@ focus_tree = {
 				add_idea = ELS_propatriaholds2
 			}
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -397,7 +394,7 @@ focus_tree = {
 			}
 			add_popularity = { ideology = national_populist popularity = 0.2 }
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -521,7 +518,7 @@ focus_tree = {
 				add_idea = ELS_memories_32_part_2
 			}
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
@@ -549,7 +546,7 @@ focus_tree = {
 			add_stability = 0.10
 			add_war_support = 0.10
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
@@ -576,7 +573,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ELS_militarization"
 			add_ideas = ELS_militirazation1
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_ARMY_BONUS }
@@ -609,7 +606,7 @@ focus_tree = {
 				add_idea = ELS_memories_32_part_3
 			}
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
@@ -726,7 +723,7 @@ focus_tree = {
 			add_popularity = { ideology = syndicalist popularity = 0.20 }
 			add_political_power = 100
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -754,7 +751,7 @@ focus_tree = {
 			add_ideas = ELS_classless_society
 			add_research_slot_until_five = yes
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -783,7 +780,7 @@ focus_tree = {
 			add_war_support = 0.1
 			hidden_effect = {
 				country_event = { id = el_salvador_events.201 days = 25 }
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
@@ -810,7 +807,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ELS_unifying_salvador"
 			add_ideas = ELS_divided_no_more
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_ARMY_BONUS }
@@ -856,7 +853,7 @@ focus_tree = {
 				retire_character = ELS_salvador_castaneda_castro
 			}
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_ARMY_BONUS }
@@ -885,7 +882,7 @@ focus_tree = {
 			add_stability = 0.2
 			add_ideas = ELS_no_censorship
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -938,7 +935,7 @@ focus_tree = {
 			add_ideas = ELS_democratic_salvador
 			country_event = el_salvador_events.125
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -977,7 +974,7 @@ focus_tree = {
 				else = {
 					country_event = el_salvador_events.123
 				}
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 	}
@@ -1032,7 +1029,7 @@ focus_tree = {
 			add_stability = 0.15
 			add_political_power = 100
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -1088,7 +1085,7 @@ focus_tree = {
 			add_stability = 0.15
 			add_political_power = 100
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -1117,7 +1114,7 @@ focus_tree = {
 			remove_ideas = ELS_unruly_military2
 			hidden_effect = {
 				country_event = { id = el_salvador_events.209 days = 45 }
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_ARMY_BONUS }
@@ -1260,7 +1257,7 @@ focus_tree = {
 			add_ideas = ELS_remade_constitution
 			add_popularity = { ideology = authoritarian_democrat popularity = 0.15 }
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
@@ -1292,7 +1289,7 @@ focus_tree = {
 			add_popularity = { ideology = authoritarian_democrat popularity = 0.15 }
 			add_research_slot_until_five = yes
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_RESEARCH }
@@ -1323,7 +1320,7 @@ focus_tree = {
 			add_popularity = { ideology = syndicalist popularity = -0.10 }
 			add_popularity = { ideology = radical_socialist popularity = -0.10 }
 			hidden_effect = {
-				add_to_variable = { ELS_political_foci_count = 1 }
+				add_to_variable = { central_america_political_foci_count = 1 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -2224,6 +2221,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ELS_jungle_warfare"
 			enable_tech_jungle_warfare = yes
+			custom_effect_tooltip = tooltip_white_line
 			add_doctrine_cost_reduction = {
 				name = ELS_jungle_warfare
 				cost_reduction = 0.5
@@ -2293,7 +2291,7 @@ focus_tree = {
 	focus = {
 		id = ELS_never_surrender
 		icon = GFX_goal_graveyard
-		cost = 5
+		cost = 3
 
 		x = 28
 		y = 3
@@ -2362,7 +2360,7 @@ focus_tree = {
 	focus = {
 		id = ELS_consolidated_divisions
 		icon = GFX_goal_generic_army_training
-		cost = 5
+		cost = 7
 
 		x = 32
 		y = 2
@@ -2422,7 +2420,7 @@ focus_tree = {
 	focus = {
 		id = ELS_foreign_doctrine
 		icon = GFX_goal_generic_army_doctrines
-		cost = 7
+		cost = 5
 
 		x = 34
 		y = 2

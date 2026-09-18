@@ -7,11 +7,9 @@
 COS_ZKG_decisions = {
 	COS_Combat_Social_Inequality = {
 		icon = GFX_decision_generic_independence
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated via history
 
 		cost = 25
-		fire_only_once = no
-
 		days_re_enable = 60
 
 		ai_will_do = {
@@ -19,12 +17,7 @@ COS_ZKG_decisions = {
 			modifier = {
 				add = 10
 				check_variable = { COS_ZKG_influence > 10 }
-				NOT = {
-					has_country_flag = ZKG_SURVEY
-					has_country_flag = ZKG_SURVEY2
-					has_country_flag = ZKG_SURVEY3
-					has_country_flag = ZKG_SURVEY4
-				}
+				NOT = { has_variable = COS_ZKG_survey }
 			}
 			modifier = {
 				add = 20
@@ -60,12 +53,13 @@ COS_ZKG_decisions = {
 
 	COS_German_Cultural_Program = {
 		icon = GFX_decision_hol_exchange_intelligence_data
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated via history
+
 		available = {
-			NOT = { has_war = yes }
-			custom_override_tooltip = {
-				tooltip = COS_ZKG_lower_than_98
-				check_variable = { COS_ZKG_influence < 98 }
+			has_war = no
+			check_variable = {
+				tooltip = COS_ZKG_lower_than_tt
+				COS_ZKG_influence < 98
 			}
 		}
 
@@ -99,20 +93,14 @@ COS_ZKG_decisions = {
 
 	COS_Extend_Loan_decision = {
 		icon = GFX_decision_ger_mefo_bills
-		allowed = { original_tag = COS }
-		available = {
-			has_completed_focus = COS_ZKG_Bailout
-		}
+		allowed = { always = no } # Activated by focus COS_ZKG_Bailout
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = COS_ZKG_lower_than_98
-				check_variable = { COS_ZKG_influence < 98 }
+			check_variable = {
+				tooltip = COS_ZKG_lower_than_tt
+				COS_ZKG_influence < 98
 			}
 		}
-
-		cost = 0
-		fire_only_once = no
 
 		days_re_enable = 100
 
@@ -126,20 +114,13 @@ COS_ZKG_decisions = {
 				add = 100
 				OR = {
 					check_variable = { COS_ZKG_influence < 10 }
-					has_country_flag = ZKG_SURVEY2
-					has_country_flag = ZKG_SURVEY3
-					has_country_flag = ZKG_SURVEY4
+					check_variable = { COS_ZKG_survey > 1 }
 				}
 			}
 			modifier = {
 				factor = 0
 				check_variable = { COS_ZKG_influence > 30 }
-				NOT = {
-					has_country_flag = ZKG_SURVEY
-					has_country_flag = ZKG_SURVEY2
-					has_country_flag = ZKG_SURVEY3
-					has_country_flag = ZKG_SURVEY4
-				}
+				NOT = { has_variable = COS_ZKG_survey }
 			}
 		}
 
@@ -154,20 +135,14 @@ COS_ZKG_decisions = {
 
 	COS_Sell_Government_Land_decision = {
 		icon = GFX_decision_eng_trade_unions_support
-		allowed = { original_tag = COS }
-		available = {
-			has_completed_focus = COS_Cash_Crops_Investments
-		}
+		allowed = { always = no } # Activated by focus COS_Cash_Crops_Investments
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = COS_ZKG_lower_than_95
-				check_variable = { COS_ZKG_influence < 95 }
+			check_variable = {
+				tooltip = COS_ZKG_lower_than_tt
+				COS_ZKG_influence < 93
 			}
 		}
-
-		cost = 0
-		fire_only_once = no
 
 		days_re_enable = 100
 
@@ -181,19 +156,13 @@ COS_ZKG_decisions = {
 				add = 100
 				OR = {
 					check_variable = { COS_ZKG_influence < 10 }
-					has_country_flag = ZKG_SURVEY3
-					has_country_flag = ZKG_SURVEY4
+					check_variable = { COS_ZKG_survey > 2 }
 				}
 			}
 			modifier = {
 				factor = 0
 				check_variable = { COS_ZKG_influence > 30 }
-				NOT = {
-					has_country_flag = ZKG_SURVEY
-					has_country_flag = ZKG_SURVEY2
-					has_country_flag = ZKG_SURVEY3
-					has_country_flag = ZKG_SURVEY4
-				}
+				NOT = { has_variable = COS_ZKG_survey }
 			}
 		}
 
@@ -209,33 +178,25 @@ COS_ZKG_decisions = {
 	COS_Land_Survey = {
 		icon = GFX_decision_hol_draw_up_staff_plans
 
-		allowed = {
-			original_tag = COS
-		}
+		allowed = { always = no } # Activated by COS_Deal_with_the_ZKG
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = COS_ZKG_higher_than_11
-				check_variable = { COS_ZKG_influence > 11 }
+			check_variable = {
+				tooltip = COS_ZKG_higher_than_tt
+				COS_ZKG_influence > 11
 			}
 			controls_state = 316
 		}
 
-		visible = {
-			has_country_flag = ZKG_SURVEY
-		}
-
-		cost = 0
 		fire_only_once = yes
-
 		days_remove = 90
 
-		ai_will_do = { factor = 200 }
+		ai_will_do = { base = 200 }
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Land_Survey"
-			custom_effect_tooltip = COTO_EXPANSION
-			set_country_flag = ZKG_SURVEY2
+			activate_targeted_decision = { decision = COS_Extend_Connections target = THIS }
+			add_to_variable = { COS_ZKG_survey = 1 }
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Land_Survey"
@@ -248,28 +209,20 @@ COS_ZKG_decisions = {
 	COS_Extend_Connections = {
 		icon = GFX_decision_railroad
 
-		allowed = {
-			original_tag = COS
-		}
+		allowed = { always = no } # Activated by COS_Land_Survey
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = COS_ZKG_higher_than_14
-				check_variable = { COS_ZKG_influence > 14 }
+			check_variable = {
+				tooltip = COS_ZKG_higher_than_tt
+				COS_ZKG_influence > 14
 			}
 			controls_state = 316
 		}
 
-		visible = {
-			has_country_flag = ZKG_SURVEY2
-		}
-
-		cost = 0
 		fire_only_once = yes
-
 		days_remove = 180
 
-		ai_will_do = { factor = 200 }
+		ai_will_do = { base = 200 }
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Extend_Connections"
@@ -281,7 +234,8 @@ COS_ZKG_decisions = {
 					instant_build = yes
 				}
 			}
-			set_country_flag = ZKG_SURVEY3
+			activate_targeted_decision = { decision = COS_Hire_Foreign_Engineers target = THIS }
+			add_to_variable = { COS_ZKG_survey = 1 }
 		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Extend_Connections"
@@ -294,25 +248,18 @@ COS_ZKG_decisions = {
 	COS_Hire_Foreign_Engineers = {
 		icon = GFX_decision_generic_operation
 
-		allowed = {
-			original_tag = COS
-		}
+		allowed = { always = no } # Activated by COS_Extend_Connections
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = COS_ZKG_higher_than_17
-				check_variable = { COS_ZKG_influence > 17 }
+			check_variable = {
+				tooltip = COS_ZKG_higher_than_tt
+				COS_ZKG_influence > 17
 			}
 		}
 
-		visible = {
-			has_country_flag = ZKG_SURVEY3
-		}
-
-		cost = 0
 		fire_only_once = yes
 
-		ai_will_do = { factor = 200 }
+		ai_will_do = { base = 200 }
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Hire_Foreign_Engineers"
@@ -328,7 +275,8 @@ COS_ZKG_decisions = {
 				uses = 1
 				category = excavation_tech
 			}
-			set_country_flag = ZKG_SURVEY4
+			activate_targeted_decision = { decision = COS_Plantation_Expansion target = THIS }
+			add_to_variable = { COS_ZKG_survey = 1 }
 		}
 		fixed_random_seed = no
 	}
@@ -336,23 +284,16 @@ COS_ZKG_decisions = {
 	COS_Plantation_Expansion = {
 		icon = generic_construction
 
-		allowed = {
-			original_tag = COS
-		}
+		allowed = { always = no } # Activated by COS_Hire_Foreign_Engineers
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = COS_ZKG_higher_than_20
-				check_variable = { COS_ZKG_influence > 20 }
+			check_variable = {
+				tooltip = COS_ZKG_higher_than_tt
+				COS_ZKG_influence > 20
 			}
 			controls_state = 316
 		}
 
-		visible = {
-			has_country_flag = ZKG_SURVEY4
-		}
-
-		cost = 0
 		fire_only_once = yes
 
 		days_remove = 180
@@ -362,6 +303,7 @@ COS_ZKG_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Plantation_Expansion"
 			316 = {
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
 					level = 1
@@ -381,11 +323,9 @@ COS_ZKG_decisions = {
 COS_UFC_decisions = {
 	COS_Improve_Conditions_Plantations = {
 		icon = GFX_decision_generic_independence
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated via history
 
 		cost = 25
-		fire_only_once = no
-
 		days_re_enable = 60
 
 		ai_will_do = {
@@ -425,17 +365,14 @@ COS_UFC_decisions = {
 
 	COS_Sell_Government_Land_UFC_decision = {
 		icon = GFX_decision_eng_trade_unions_support
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated via history
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_95
-				check_variable = { COS_UFC_influence < 95 }
+			check_variable = {
+				tooltip = COS_UFC_lower_than_tt
+				COS_UFC_influence < 93
 			}
 		}
-
-		cost = 0
-		fire_only_once = no
 
 		days_re_enable = 100
 
@@ -466,15 +403,15 @@ COS_UFC_decisions = {
 
 	COS_Build_New_Telephone_Lines = {
 		icon = GFX_decision_radar
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated via history
+
 		available = {
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_95
-				check_variable = { COS_UFC_influence < 95 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 93 }
+				}
 			}
 		}
 
@@ -515,12 +452,12 @@ COS_UFC_decisions = {
 
 	COS_Establish_UFC_Headquarters_decision = {
 		icon = GFX_decision_global_trade
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by focus COS_UFC_Land_Acquisition
+
 		available = {
-			has_completed_focus = COS_UFC_Land_Acquisition
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_95
-				check_variable = { COS_UFC_influence < 95 }
+			check_variable = {
+				tooltip = COS_UFC_lower_than_tt
+				COS_UFC_influence < 93
 			}
 		}
 
@@ -539,7 +476,6 @@ COS_UFC_decisions = {
 			log = "[GetLogRoot]: Decision complete COS_Establish_UFC_Headquarters_decision"
 			set_temp_variable = { cos_UFC_change = 8 }
 			update_UFC_influence = yes
-			custom_effect_tooltip = COS_UFC_HEADQUARTERS
 			custom_override_tooltip = {
 				tooltip = {
 					localization_key = tooltip_add_dynmod_empty
@@ -547,18 +483,37 @@ COS_UFC_decisions = {
 				}
 				add_ideas = COS_UFC_Profit_idea
 			}
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_category_tooltip = COS_Market_decisions
+			custom_effect_tooltip = COS_UFC_headquarters_decision_unlock
 			set_variable = { cos_profit_factor = 0 }
 			set_variable = { COS_UFC_consumer_goods = 0 }
 			set_variable = { COS_UFC_output = 0 }
 			set_variable = { COS_remove_market_decisions = 18 }
-			set_country_flag = COS_UFC_HEADQUARTERS_FLAG
+			hidden_effect = {
+				activate_targeted_decision = { decision = COS_Limon_Bananas target = THIS }
+				activate_targeted_decision = { decision = COS_Jamaica_Sugar target = THIS }
+				activate_targeted_decision = { decision = COS_Jamaica_Bananas target = THIS }
+				activate_targeted_decision = { decision = COS_Cuba_Sugar target = THIS }
+				activate_targeted_decision = { decision = COS_Nicaragua_Palm_Oil target = THIS }
+				activate_targeted_decision = { decision = COS_Honduras_Palm_Oil target = THIS }
+				activate_targeted_decision = { decision = COS_Honduras_Abaca target = THIS }
+				activate_targeted_decision = { decision = COS_Honduras_Banana target = THIS }
+				activate_targeted_decision = { decision = COS_Guatemala_Banana target = THIS }
+				activate_targeted_decision = { decision = COS_Guatemala_Abaca target = THIS }
+				activate_targeted_decision = { decision = COS_Colombia_Banana target = THIS }
+				activate_targeted_decision = { decision = COS_Purchase_Convoys target = THIS }
+				activate_targeted_decision = { decision = COS_Purchase_Trucks target = THIS }
+				activate_targeted_decision = { decision = COS_Purchase_Planes target = THIS }
+			}
 		}
 		fixed_random_seed = no
 	}
 
 	COS_Limon_Bananas = {
 		icon = GFX_decision_UFC
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
@@ -566,16 +521,15 @@ COS_UFC_decisions = {
 			controls_state = 316 # Costa Rica
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_100
-				check_variable = { COS_UFC_influence < 100 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 100 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
 			has_socialist_government = no
 		}
 
@@ -585,6 +539,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_5_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -600,12 +555,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Limon_Bananas"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 5 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Limon_Bananas"
 			set_temp_variable = { cos_UFC_change = 1 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -5 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -5 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -624,30 +587,33 @@ COS_UFC_decisions = {
 
 	COS_Jamaica_Sugar = {
 		icon = GFX_decision_generic_agriculture
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:689.owner = { # Jamaica
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:689.owner = { # Jamaica
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_100
-				check_variable = { COS_UFC_influence < 100 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 100 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 689 }
 			var:689.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -658,6 +624,7 @@ COS_UFC_decisions = {
 		fire_only_once = yes
 
 		days_remove = 60
+		cancel_if_not_visible = yes
 
 		ai_will_do = {
 			factor = 50
@@ -671,12 +638,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Jamaica_Sugar"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 5 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Jamaica_Sugar"
 			set_temp_variable = { cos_UFC_change = 1 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -5 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -5 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -695,30 +670,33 @@ COS_UFC_decisions = {
 
 	COS_Jamaica_Bananas = {
 		icon = GFX_decision_UFC
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:689.owner = { # Jamaica
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:689.owner = { # Jamaica
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_98
-				check_variable = { COS_UFC_influence < 98 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 98 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 689 }
 			var:689.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -727,6 +705,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_10_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -742,12 +721,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Jamaica_Bananas"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 10 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Jamaica_Bananas"
 			set_temp_variable = { cos_UFC_change = 3 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -10 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -10 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -766,30 +753,33 @@ COS_UFC_decisions = {
 
 	COS_Cuba_Sugar = {
 		icon = GFX_decision_generic_agriculture
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:315.owner = { # Havana
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:315.owner = { # Havana
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_98
-				check_variable = { COS_UFC_influence < 98 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 98 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 315 }
 			var:315.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -798,6 +788,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_10_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -813,12 +804,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Cuba_Sugar"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 10 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Cuba_Sugar"
 			set_temp_variable = { cos_UFC_change = 3 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -10 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -10 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -837,30 +836,33 @@ COS_UFC_decisions = {
 
 	COS_Nicaragua_Palm_Oil = {
 		icon = GFX_decision_oasis
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:1071.owner = { # Matagalpa
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:1071.owner = { # Matagalpa
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_100
-				check_variable = { COS_UFC_influence < 100 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 100 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 1071 }
 			var:1071.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -869,6 +871,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_5_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -884,12 +887,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Nicaragua_Palm_Oil"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 5 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Nicaragua_Palm_Oil"
 			set_temp_variable = { cos_UFC_change = 1 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -5 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -5 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -908,30 +919,33 @@ COS_UFC_decisions = {
 
 	COS_Honduras_Palm_Oil = {
 		icon = GFX_decision_oasis
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:312.owner = { # Honduras
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:312.owner = { # Honduras
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_100
-				check_variable = { COS_UFC_influence < 100 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 100 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 312 }
 			var:312.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -940,6 +954,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_5_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -955,12 +970,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Honduras_Palm_Oil"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 5 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Honduras_Palm_Oil"
 			set_temp_variable = { cos_UFC_change = 1 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -5 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -5 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -979,31 +1002,33 @@ COS_UFC_decisions = {
 
 	COS_Honduras_Abaca = {
 		icon = GFX_decision_oasis
-		desc = COS_Honduras_Palm_Oil_desc
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:312.owner = { # Honduras
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:312.owner = { # Honduras
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_100
-				check_variable = { COS_UFC_influence < 100 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 100 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 312 }
 			var:312.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -1012,6 +1037,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_5_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -1027,12 +1053,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Honduras_Abaca"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 5 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Honduras_Abaca"
 			set_temp_variable = { cos_UFC_change = 1 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -5 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -5 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -1051,31 +1085,34 @@ COS_UFC_decisions = {
 
 	COS_Honduras_Banana = {
 		icon = GFX_decision_UFC
-		desc = COS_Honduras_Palm_Oil_desc
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:312.owner = { # Honduras
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:312.owner = { # Honduras
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
+
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_100
-				check_variable = { COS_UFC_influence < 100 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 98 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 312 }
 			var:312.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -1084,6 +1121,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_10_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -1099,12 +1137,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Honduras_Banana"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 10 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Honduras_Banana"
 			set_temp_variable = { cos_UFC_change = 3 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -10 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -10 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -1123,30 +1169,33 @@ COS_UFC_decisions = {
 
 	COS_Guatemala_Banana = {
 		icon = GFX_decision_UFC
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:313.owner = { # Guatemala
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:313.owner = { # Guatemala
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_98
-				check_variable = { COS_UFC_influence < 98 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 98 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 313 }
 			var:313.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -1155,6 +1204,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_10_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -1170,12 +1220,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Guatemala_Banana"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 10 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Guatemala_Banana"
 			set_temp_variable = { cos_UFC_change = 3 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -10 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -10 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -1194,30 +1252,33 @@ COS_UFC_decisions = {
 
 	COS_Guatemala_Abaca = {
 		icon = GFX_decision_oasis
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:313.owner = { # Guatemala
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:313.owner = { # Guatemala
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_100
-				check_variable = { COS_UFC_influence < 100 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 100 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 313 }
 			var:313.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -1226,6 +1287,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_5_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -1241,12 +1303,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Guatemala_Abaca"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 5 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Guatemala_Abaca"
 			set_temp_variable = { cos_UFC_change = 1 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -5 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -5 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -1265,30 +1335,33 @@ COS_UFC_decisions = {
 
 	COS_Colombia_Banana = {
 		icon = GFX_decision_UFC
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
+
 		available = {
 			NOT = {
 				has_country_flag = COS_EXPANDING_OPERATIONS
 			}
-			var:493.owner = { # Caribe
-				has_opinion = { target = COS value > 59 }
+			if = {
+				limit = { is_ai = no }
+				var:493.owner = { # Guatemala
+					has_opinion = { target = ROOT value > 59 }
+				}
 			}
 			has_war = no
 			custom_override_tooltip = {
-				tooltip = COS_UFC_higher_than_15
-				check_variable = { COS_UFC_influence > 15 }
-			}
-			custom_override_tooltip = {
-				tooltip = COS_UFC_lower_than_98
-				check_variable = { COS_UFC_influence < 98 }
+				tooltip = COS_UFC_value_dual_check_tt
+				check_expr = {
+					value = { value = COS_UFC_influence greater_than = 15 }
+					and = { value = COS_UFC_influence less_than = 98 }
+				}
 			}
 		}
+
 		visible = {
-			has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-			NOT = { owns_state = 493 }
 			var:493.owner = {
 				has_socialist_government = no
 			}
+			has_socialist_government = no
 		}
 
 		custom_cost_trigger = {
@@ -1297,6 +1370,7 @@ COS_UFC_decisions = {
 		custom_cost_text = COS_10_convoys_cost
 
 		fire_only_once = yes
+		cancel_if_not_visible = yes
 
 		days_remove = 60
 
@@ -1312,12 +1386,20 @@ COS_UFC_decisions = {
 			}
 		}
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel COS_Colombia_Banana"
+			hidden_effect = {
+				add_equipment_to_stockpile = { type = convoy amount = 10 }
+			}
+			clr_country_flag = COS_EXPANDING_OPERATIONS
+		}
+
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Colombia_Banana"
 			set_temp_variable = { cos_UFC_change = 3 }
 			update_UFC_influence = yes
 			hidden_effect = {
-				add_equipment_to_stockpile = { type = convoy amount = -10 }
+				add_equipment_to_stockpile = { type = convoy_1 amount = -10 }
 			}
 			set_country_flag = COS_EXPANDING_OPERATIONS
 		}
@@ -1338,23 +1420,23 @@ COS_UFC_decisions = {
 COS_Market_decisions = {
 	COS_Purchase_Convoys = {
 		icon = generic_naval
-		allowed = { original_tag = COS }
-		available = {
-			check_variable = { cos_profit_factor > 0 }
-		}
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
 
 		custom_cost_trigger = {
 			check_variable = { cos_profit_factor > 0 }
 		}
 		custom_cost_text = UFC_Profit_1_COST
 
-		fire_only_once = no
-
 		ai_will_do = {
 			base = 0
 			modifier = {
 				add = 100
-				has_equipment = { convoy < 20 }
+				has_equipment = { convoy < 50 }
+			}
+			modifier = { # Make sure AI takes it if it ran out of UFC decisions and can't take other ones
+				add = 100
+				NOT = { check_variable = { COS_remove_market_decisions > 1 } }
+				NOT = { check_variable = { cos_profit_factor > 1 } }
 			}
 		}
 
@@ -1370,17 +1452,12 @@ COS_Market_decisions = {
 
 	COS_Purchase_Trucks = {
 		icon = GFX_decision_generic_motorized
-		allowed = { original_tag = COS }
-		available = {
-			check_variable = { cos_profit_factor > 1 }
-		}
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
 
 		custom_cost_trigger = {
 			check_variable = { cos_profit_factor > 1 }
 		}
 		custom_cost_text = UFC_Profit_2_COST
-
-		fire_only_once = no
 
 		ai_will_do = {
 			base = 5
@@ -1402,18 +1479,12 @@ COS_Market_decisions = {
 
 	COS_Purchase_Planes = {
 		icon = generic_air
-		allowed = { original_tag = COS }
-
-		available = {
-			check_variable = { cos_profit_factor > 2 }
-		}
+		allowed = { always = no } # Activated by COS_Establish_UFC_Headquarters_decision
 
 		custom_cost_trigger = {
 			check_variable = { cos_profit_factor > 2 }
 		}
 		custom_cost_text = UFC_Profit_3_COST
-
-		fire_only_once = no
 
 		ai_will_do = {
 			factor = 10
@@ -1441,7 +1512,7 @@ COS_Market_decisions = {
 COS_Guardia_decisions = {
 	COS_Combat_Footworm = {
 		icon = GFX_decision_generic_healthcare
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated when Calderón comes to power
 
 		cost = 50
 
@@ -1472,7 +1543,7 @@ COS_Guardia_decisions = {
 
 	COS_Stimulate_Fishing_Industry = {
 		icon = GFX_decision_cod
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated when Calderón comes to power
 
 		cost = 60
 
@@ -1498,7 +1569,7 @@ COS_Guardia_decisions = {
 
 	COS_Disband_Petroleum_Monopoly = {
 		icon = GFX_decision_oil
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated when Calderón comes to power
 
 		cost = 100
 
@@ -1529,7 +1600,7 @@ COS_Guardia_decisions = {
 
 	COS_Create_Housing_Cooperatives = {
 		icon = GFX_decision_generic_political_discourse
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated when Calderón comes to power
 
 		cost = 60
 
@@ -1562,10 +1633,7 @@ COS_Guardia_decisions = {
 COS_Cortes_decisions = {
 	COS_Build_New_Schools = {
 		icon = GFX_decision_generic_research
-		allowed = { original_tag = COS }
-		available = {
-			has_completed_focus = COS_Educational_Reforms
-		}
+		allowed = { always = no } # Activated by focus COS_Educational_Reforms
 
 		cost = 60
 
@@ -1595,9 +1663,13 @@ COS_Cortes_decisions = {
 
 	COS_Infrastructural_Improvements = {
 		icon = GFX_decision_generic_naval_base
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated when Cortés comes to power
+
 		available = {
-			has_idea = COS_Iron_Bars_Presidency
+			check_variable = {
+				tooltip = COS_UFC_lower_than_tt
+				COS_UFC_influence < 100
+			}
 		}
 
 		cost = 60
@@ -1642,10 +1714,7 @@ COS_Cortes_decisions = {
 
 	COS_Silence_the_Press = {
 		icon = GFX_decision_oppression
-		allowed = { original_tag = COS }
-		visible = {
-			has_country_flag = silence_trabaio
-		}
+		allowed = { always = no } # Activated by event costa_rica_events.60
 
 		cost = 70
 
@@ -1672,10 +1741,7 @@ COS_Cortes_decisions = {
 
 	COS_Expand_Manufacturing_Industry = {
 		icon = GFX_decision_generic_factory
-		allowed = { original_tag = COS }
-		available = {
-			has_idea = COS_Iron_Bars_Presidency
-		}
+		allowed = { always = no } # Activated when Cortés comes to power
 
 		cost = 150
 
@@ -1696,7 +1762,7 @@ COS_Cortes_decisions = {
 COS_Election_decisions = {
 	COS_Gather_Support_Puntarenas = {
 		icon = GFX_decision_generic_agreement
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by costa_rica_events.65
 
 		days_remove = 30
 
@@ -1714,18 +1780,14 @@ COS_Election_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Gather_Support_Puntarenas"
-			add_to_variable = {
-				var = cos_prn_factor
-				value = 3
-				tooltip = COS_PRN_support_increase
-			}
+			add_to_variable = { cos_prn_factor = 3 tooltip = COS_PRN_support_increase }
 		}
 		fixed_random_seed = no
 	}
 
 	COS_Gather_Support_San_Jose = {
 		icon = GFX_decision_generic_agreement
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by costa_rica_events.65
 
 		days_remove = 30
 
@@ -1747,17 +1809,13 @@ COS_Election_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Gather_Support_San_Jose"
-			add_to_variable = {
-				var = cos_prn_factor
-				value = 15
-				tooltip = COS_PRN_support_increase
-			}
+			add_to_variable = { cos_prn_factor = 15 tooltip = COS_PRN_support_increase }
 		}
 		fixed_random_seed = no
 	}
 	COS_Gather_Support_Cartago = {
 		icon = GFX_decision_generic_agreement
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by costa_rica_events.65
 
 		days_remove = 30
 
@@ -1779,17 +1837,13 @@ COS_Election_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Gather_Support_Cartago"
-			add_to_variable = {
-				var = cos_prn_factor
-				value = 10
-				tooltip = COS_PRN_support_increase
-			}
+			add_to_variable = { cos_prn_factor = 10 tooltip = COS_PRN_support_increase }
 		}
 		fixed_random_seed = no
 	}
 	COS_Gather_Support_Limon = {
 		icon = GFX_decision_generic_agreement
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by costa_rica_events.65
 
 		days_remove = 30
 
@@ -1811,17 +1865,13 @@ COS_Election_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Gather_Support_Limon"
-			add_to_variable = {
-				var = cos_prn_factor
-				value = 10
-				tooltip = COS_PRN_support_increase
-			}
+			add_to_variable = { cos_prn_factor = 10 tooltip = COS_PRN_support_increase }
 		}
 		fixed_random_seed = no
 	}
 	COS_Gather_Support_Heredia = {
 		icon = GFX_decision_generic_agreement
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by costa_rica_events.65
 
 		days_remove = 30
 
@@ -1843,17 +1893,13 @@ COS_Election_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Gather_Support_Heredia"
-			add_to_variable = {
-				var = cos_prn_factor
-				value = 3
-				tooltip = COS_PRN_support_increase
-			}
+			add_to_variable = { cos_prn_factor = 3 tooltip = COS_PRN_support_increase }
 		}
 		fixed_random_seed = no
 	}
 	COS_Gather_Support_Alajuela = {
 		icon = GFX_decision_generic_agreement
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by costa_rica_events.65
 
 		days_remove = 30
 
@@ -1875,17 +1921,13 @@ COS_Election_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Gather_Support_Alajuela"
-			add_to_variable = {
-				var = cos_prn_factor
-				value = 3
-				tooltip = COS_PRN_support_increase
-			}
+			add_to_variable = { cos_prn_factor = 3 tooltip = COS_PRN_support_increase }
 		}
 		fixed_random_seed = no
 	}
 	COS_Gather_Support_Guanacaste = {
 		icon = GFX_decision_generic_agreement
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by costa_rica_events.65
 
 		days_remove = 30
 
@@ -1907,11 +1949,7 @@ COS_Election_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove COS_Gather_Support_Guanacaste"
-			add_to_variable = {
-				var = cos_prn_factor
-				value = 7
-				tooltip = COS_PRN_support_increase
-			}
+			add_to_variable = { cos_prn_factor = 7 tooltip = COS_PRN_support_increase }
 		}
 		fixed_random_seed = no
 	}
@@ -1947,19 +1985,18 @@ COS_Election_decisions = {
 		}
 
 		cancel_trigger = {
-			NOT = {
-				has_country_flag = COS_ELECTIONS
-				has_country_flag = JIMMY_DOWN
+			OR = {
+				has_country_flag = COS_jimenez_withdrew_from_election
+				custom_override_tooltip = {
+					tooltip = COS_elections_ongoing_NOT
+					NOT = { has_country_flag = COS_elections_ongoing }
+				}
 			}
 		}
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Jimenez_Supporters_mission"
-			add_to_variable = {
-				var = cos_prn_factor
-				value = 1
-				tooltip = COS_PRN_support_increase
-			}
+			add_to_variable = { cos_prn_factor = 1 tooltip = COS_PRN_support_increase }
 			hidden_effect = {
 				country_event = { id = costa_rica_events.105 days = 40 }
 			}
@@ -1967,11 +2004,7 @@ COS_Election_decisions = {
 
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout COS_Jimenez_Supporters_mission"
-			subtract_from_variable = {
-				var = cos_prn_factor
-				value = 3
-				tooltip = COS_PRN_support_decrease
-			}
+			subtract_from_variable = { cos_prn_factor = 3 tooltip = COS_PRN_support_decrease }
 			hidden_effect = {
 				country_event = { id = costa_rica_events.105 days = 20 }
 			}
@@ -1982,10 +2015,6 @@ COS_Election_decisions = {
 	COS_Mora_Supporters_mission = {
 		allowed = {
 			always = no
-		}
-
-		available = {
-			has_country_flag = COS_ELECTIONS
 		}
 
 		icon = GFX_decision_generic_political_rally
@@ -2012,18 +2041,15 @@ COS_Election_decisions = {
 		}
 
 		cancel_trigger = {
-			NOT = {
-				has_country_flag = COS_ELECTIONS
+			custom_override_tooltip = {
+				tooltip = COS_elections_ongoing_NOT
+				NOT = { has_country_flag = COS_elections_ongoing }
 			}
 		}
 
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete COS_Mora_Supporters_mission"
-			add_to_variable = {
-				var = cos_prn_factor
-				value = 1
-				tooltip = COS_PRN_support_increase
-			}
+			add_to_variable = { cos_prn_factor = 1 tooltip = COS_PRN_support_increase }
 			hidden_effect = {
 				country_event = { id = costa_rica_events.104 days = 40 }
 			}
@@ -2031,11 +2057,7 @@ COS_Election_decisions = {
 
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout COS_Mora_Supporters_mission"
-			add_to_variable = {
-				var = cos_pvp_factor
-				value = 3
-				tooltip = COS_PVP_support_increase
-			}
+			add_to_variable = { cos_pvp_factor = 3 tooltip = COS_PVP_support_increase }
 			hidden_effect = {
 				country_event = { id = costa_rica_events.104 days = 20 }
 			}
@@ -2050,52 +2072,70 @@ COS_Ferrer_Aggro_decisions = {
 
 		allowed = { always = no } #activated by effect
 
+		available = {
+			can_declare_war_on = FROM
+			NOT = { has_subject = FROM }
+		}
+
+		visible = {
+			is_valid_peace_target = yes
+			country_exists = FROM
+			FROM = { has_elected_government = no }
+			NOT = { has_war_with = FROM }
+		}
+
 		cancel_trigger = {
-			NOT = {
-				has_war_with = CEN
-				can_declare_war_on = CEN
-			}
+			NOT = { can_declare_war_on = FROM }
+			has_subject = FROM
 		}
 
-		days_remove = 600
+		days_remove = 30
+		cancel_if_not_visible = yes
 		fire_only_once = yes
-		war_with_target_on_complete = yes
-
-		modifier = {
-			conscription = 0.03
-			unit_limit_bonus = 5
-			mobilization_speed = 1
-			supply_consumption_factor = -0.5
-			out_of_supply_factor = -0.5
-		}
+		war_with_target_on_remove = yes
 
 		ai_will_do = {
-			base = 0
+			base = 200
 			modifier = {
-				add = 200
-				CEN = { all_core_state = { has_state_flag = COS_supplied_rebels } }
+				factor = 0
+				FROM = { NOT = { all_core_state = { has_state_flag = COS_supplied_rebels } } }
 			}
+			modifier = {
+				factor = 0
+				FROM = { default_attack_AI_trigger = yes }
+			}
+			modifier = { # Don't start suicide wars against ENT/RP
+				factor = 0
+				FROM = {
+					OR = {
+						is_in_faction_with = GER
+						is_guaranteed_by = GER
+						is_in_faction_with = ENT
+						is_guaranteed_by = ENT
+					}
+				}
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel COS_Ferrer_takes_Control_Attack"
+			clear_decision_attack_AI = yes
+			COS_clear_legion_del_caribe_rebel_decisions = yes
 		}
 
 		complete_effect = {
-			log = "[GetLogRoot]: Decision complete COS_Ferrer_takes_Control_Attack"
-			#Check to see whether they are in the same faction + lets head of the alliance pick a side
-			if = {
-				limit = {
-					is_in_faction_with = CEN
-					is_faction_leader = no
-				}
-				faction_leader = {
-					remove_from_faction = CEN
-					remove_from_faction = COS
-					country_event = { id = costa_rica_events.113 hours = 12 }
-				}
-			}
+			log = "[GetLogRoot][GetLogFrom]: Decision complete COS_Ferrer_takes_Control_Attack"
+			FROM = { incoming_war_notification_effect = yes }
+			setup_decision_attack_AI = yes
+		}
 
-			#Declare the war
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove COS_Ferrer_takes_Control_Attack"
+			# Declare war and spawn divisions on flagged states
+			clear_decision_attack_AI = yes
 			declare_war_on = {
 				type = topple_government
-				target = CEN
+				target = FROM
 			}
 			custom_override_tooltip = {
 				tooltip = {
@@ -2118,7 +2158,7 @@ COS_Ferrer_Aggro_decisions = {
 					template_counter = 68
 				}
 			}
-			CEN = {
+			FROM = {
 				every_owned_state = {
 					limit = { has_state_flag = COS_supplied_rebels }
 					display_individual_scopes = yes
@@ -2136,8 +2176,13 @@ COS_Ferrer_Aggro_decisions = {
 				}
 			}
 
+			# Grant bonus idea for duration of the war
+			add_timed_idea = {
+				idea = COS_liberation_campaign
+				days = 600
+			}
+
 			#STOP FURTHER REBEL ACTIONS
-			set_country_flag = COS_TIME_TO_DANCE_DICKWEED
 			COS_clear_legion_del_caribe_rebel_decisions = yes
 		}
 		fixed_random_seed = no
@@ -2150,10 +2195,12 @@ COS_Ferrer_Aggro_decisions = {
 		allowed = { always = no } #activated by effect
 
 		available = {
-			OR = {
-				has_war = no
-				controls_state = FROM
-			}
+			has_war = no
+		}
+
+		visible = {
+			is_valid_peace_target = yes
+			NOT = { has_war_with = CEN }
 		}
 
 		cancel_trigger = {
@@ -2166,7 +2213,8 @@ COS_Ferrer_Aggro_decisions = {
 			NOT = { has_equipment = { infantry_equipment < 400 } }
 		}
 
-		days_remove = 30
+		days_remove = 25
+		cancel_if_not_visible = yes
 		fire_only_once = yes
 		state_target = yes
 
@@ -2192,59 +2240,16 @@ COS_Ferrer_Aggro_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove COS_Supply_Rebels"
-			if = {
-				limit = { NOT = { has_war_with = CEN } }
-				custom_effect_tooltip = {
-					localization_key = tooltip_once_at_war_with_country
-					COUNTRY = "[CEN.GetNameWithFlag]"
-				}
-				FROM = {
-					custom_effect_tooltip = {
-						localization_key = tooltip_spawn_unit
-						TYPE = "Brigada de Milicia"
-					}
-					set_state_flag = COS_supplied_rebels
-				}
+			custom_effect_tooltip = {
+				localization_key = tooltip_once_at_war_with_country
+				COUNTRY = "[CEN.GetNameWithFlag]"
 			}
-			else = {
-				if = {
-					limit = { NOT = { has_country_flag = COS_TIME_TO_DANCE_DICKWEED } }
-					custom_override_tooltip = {
-						tooltip = {
-							localization_key = tooltip_create_division_template
-							NAME = "Brigada de Milicia"
-							LINE_1 = { localization_key = line_battalion_tt NAME = militia ICON = GFX_unit_militia_icon_small COUNT = 3 }
-						}
-						if = {
-							limit = { has_template = "Brigada de Milicia" }
-							delete_unit_template_and_units = { division_template = "Brigada de Milicia" disband = yes } #no cheating
-						}
-						division_template = {
-							name = "Brigada de Milicia"
-							division_names_group = SPAN_MIL_01
-							regiments = {
-								militia = { x = 0 y = 0 }
-								militia = { x = 0 y = 1 }
-								militia = { x = 0 y = 2 }
-							}
-							template_counter = 68
-						}
-					}
-					set_country_flag = COS_TIME_TO_DANCE_DICKWEED
+			FROM = {
+				custom_effect_tooltip = {
+					localization_key = tooltip_spawn_unit
+					TYPE = "Brigada de Milicia"
 				}
-				FROM = {
-					custom_override_tooltip = {
-						tooltip = {
-							localization_key = tooltip_spawn_unit
-							TYPE = "Brigada de Milicia"
-						}
-						create_unit = {
-							division = "division_template = \"Brigada de Milicia\" start_experience_factor = 0.1 start_equipment_factor = 0.9"
-							allow_spawning_on_enemy_provs = yes
-							owner = ROOT
-						}
-					}
-				}
+				set_state_flag = COS_supplied_rebels
 			}
 		}
 		fixed_random_seed = no
@@ -2295,8 +2300,10 @@ COS_Democratic_Alliance_of_the_Caribbean_decisions = {
 				leave_faction = yes
 			}
 			create_faction_from_template = { template = faction_template_defender_of_democracy name = faction_democratic_alliance_of_the_caribbean }
-			set_faction_manifest = faction_manifest_bastion_of_american_democracy
-			hidden_effect = { set_faction_rule = joining_rule_americas_only }
+			hidden_effect = {
+				set_faction_manifest = faction_manifest_bastion_of_american_democracy
+				set_faction_rule = joining_rule_americas_only
+			}
 			save_global_event_target_as = democratic_alliance_of_the_caribbean_leader
 			hidden_effect = {
 				country_event = costa_rica_events.132
@@ -2321,10 +2328,8 @@ COS_Democratic_Alliance_of_the_Caribbean_decisions = {
 		}
 
 		available = {
-			AND = {
-				at_peace_or_same_enemies_as_FROM = yes
-				FROM = { at_peace_or_same_enemies_as_ROOT = yes }
-			}
+			at_peace_or_same_enemies_as_FROM = yes
+			FROM = { at_peace_or_same_enemies_as_ROOT = yes }
 		}
 
 		targets = { HAI DOM CUB PUE YUC CEN COS PAN ECU COL VEN }
@@ -2527,9 +2532,10 @@ COS_Democratic_Alliance_of_the_Caribbean_decisions = {
 
 		visible = {
 			is_faction_leader = yes
+			has_country_flag = COS_legion_faction
 			FROM = {
 				NOT = { has_country_flag = COS_legion_faction }
-				is_in_faction = yes
+				is_in_faction_with = ROOT
 				is_subject = no
 				has_capitulated = no
 			}
@@ -2538,10 +2544,11 @@ COS_Democratic_Alliance_of_the_Caribbean_decisions = {
 		targets = { CEN }
 		target_root_trigger = {
 			is_faction_leader = yes
+			has_country_flag = COS_legion_faction
 		}
 		target_trigger = {
 			FROM = {
-				is_in_faction = yes
+				is_in_faction_with = ROOT
 				is_subject = no
 			}
 		}
@@ -2591,7 +2598,7 @@ COS_Democratic_Alliance_of_the_Caribbean_decisions = {
 						}
 					}
 					change_tag_from = ROOT
-					set_faction_leader = yes
+					THIS = { set_faction_leader = yes } # Scoped for tooltip
 					annex_country = {
 						target = COS
 						transfer_troops = yes
@@ -2805,23 +2812,39 @@ COS_Democratic_Alliance_of_the_Caribbean_decisions = {
 	}
 }
 
-COS_foreign_policy_decisions = {
-	COS_Join_Reichspakt = {
+foreign_politics = {
+	COS_join_faction = {
+		name = join_faction
 		icon = GFX_decision_generic_flags
 
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated when guaranteed by GER/ENT
+
 		available = {
-			is_in_faction = no
 			threat > 0.5
-			all_enemy_country = { has_war_with = GER }
-		}
-		visible = {
-			is_guaranteed_by = GER
-			is_subject = no
-			has_socialist_government = no
+			all_enemy_country = { has_war_with = FROM }
 		}
 
-		cost = 0
+		visible = {
+			is_guaranteed_by = FROM
+			is_in_faction = no
+			is_subject = no
+			has_socialist_government = no
+			FROM = {
+				is_faction_leader = yes
+				is_subject = no
+			}
+			NOT = { has_war_with = FROM }
+		}
+
+		target_trigger = {
+			is_guaranteed_by = FROM
+			FROM = {
+				is_faction_leader = yes
+				NOT = { has_war_with = ROOT }
+				has_socialist_government = no
+			}
+			is_subject = no
+		}
 
 		fire_only_once = yes
 
@@ -2838,46 +2861,8 @@ COS_foreign_policy_decisions = {
 		}
 
 		complete_effect = {
-			log = "[GetLogRoot]: Decision complete COS_Join_Reichspakt"
-			GER = { country_event = costa_rica_events.120 }
-		}
-		fixed_random_seed = no
-	}
-
-	COS_Join_Entente = {
-		icon = GFX_decision_generic_flags
-
-		allowed = { original_tag = COS }
-		available = {
-			is_in_faction = no
-			threat > 0.5
-			all_enemy_country = { has_war_with = ENT }
-		}
-		visible = {
-			is_guaranteed_by = ENT
-			is_subject = no
-			has_socialist_government = no
-		}
-
-		cost = 0
-
-		fire_only_once = yes
-
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 300
-				has_war = yes
-			}
-			modifier = {
-				factor = 0
-				USA_has_boosted_loas_game_rule = yes
-			}
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete COS_Join_Entente"
-			ENT = { country_event = costa_rica_events.120 }
+			log = "[GetLogRoot][GetLogFrom]: Decision complete COS_join_faction"
+			FROM = { country_event = costa_rica_events.120 }
 		}
 		fixed_random_seed = no
 	}
@@ -2886,9 +2871,7 @@ COS_foreign_policy_decisions = {
 COS_Ferrer_Pacifist_decisions = {
 	COS_Tribunal_Sanciones_Inmediatas = {
 		icon = GFX_decision_eng_trade_unions_demand
-		allowed = { original_tag = COS }
-
-		cost = 0
+		allowed = { always = no } # Activated by COS_Ferrer_takes_Control
 
 		modifier = {
 			political_power_gain = -0.05
@@ -2909,9 +2892,7 @@ COS_Ferrer_Pacifist_decisions = {
 
 	COS_Tribunal_Probidad = {
 		icon = GFX_decision_generic_police_action
-		allowed = { original_tag = COS }
-
-		cost = 0
+		allowed = { always = no } # Activated by COS_Ferrer_takes_Control
 
 		modifier = {
 			political_power_gain = -0.05
@@ -2932,7 +2913,7 @@ COS_Ferrer_Pacifist_decisions = {
 
 	COS_Coffee_Defense_Institute = {
 		icon = GFX_decision_hand_palm_down
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Ferrer_takes_Control
 
 		visible = {
 			has_idea = COS_influence_of_the_ZKG_idea
@@ -2954,7 +2935,7 @@ COS_Ferrer_Pacifist_decisions = {
 
 	COS_Ban_PVP = {
 		icon = GFX_decision_oppression
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Ferrer_takes_Control
 
 		cost = 100
 
@@ -2980,10 +2961,7 @@ COS_Ferrer_Pacifist_decisions = {
 
 	COS_Found_ICE = {
 		icon = GFX_decision_electrify
-		allowed = { original_tag = COS }
-		available = {
-			has_completed_focus = COS_Hydro_Elelectricity
-		}
+		allowed = { always = no } # Activated by COS_Ferrer_takes_Control
 
 		cost = 100
 
@@ -3000,12 +2978,7 @@ COS_Ferrer_Pacifist_decisions = {
 
 	COS_Disband_the_Council = {
 		icon = GFX_decision_generic_break_treaty
-		allowed = { original_tag = COS }
-		available = {
-			has_completed_focus = COS_Shining_Beacon_of_Progress
-		}
-
-		cost = 0
+		allowed = { always = no } # Activated by COS_Shining_Beacon_of_Progress
 
 		fire_only_once = yes
 
@@ -3030,13 +3003,11 @@ COS_Ferrer_Pacifist_decisions = {
 
 	COS_Abolish_Army = {
 		icon = GFX_decision_peace_dove
-		allowed = { original_tag = COS }
+		allowed = { always = no } # Activated by COS_Shining_Beacon_of_Progress
+
 		available = {
-			has_completed_focus = COS_Shining_Beacon_of_Progress
 			has_war = no
 		}
-
-		cost = 0
 
 		fire_only_once = yes
 

@@ -134,7 +134,7 @@ focus_tree = {
 		available = {
 			OR = {
 				has_government = social_liberal
-				has_country_leader = { character = NEE_joseph_martin_jr }
+				has_country_leader = { character = NEE_joseph_william_martin_jr }
 			}
 		}
 		mutually_exclusive = {
@@ -207,7 +207,7 @@ focus_tree = {
 			OR = {
 				has_government = market_liberal
 				AND = {
-					has_country_leader = { character = NEE_joseph_martin_jr }
+					has_country_leader = { character = NEE_joseph_william_martin_jr }
 					has_completed_focus = NEE_NLRA
 				}
 			}
@@ -239,7 +239,7 @@ focus_tree = {
 			OR = {
 				has_government = social_liberal
 				AND = {
-					has_country_leader = { character = NEE_joseph_martin_jr }
+					has_country_leader = { character = NEE_joseph_william_martin_jr }
 					has_completed_focus = NEE_LMRA
 				}
 			}
@@ -279,8 +279,8 @@ focus_tree = {
 			if = {
 				limit = {
 					OR = {
-						has_country_leader = { character = NEE_joseph_martin_jr }
-						has_country_leader = { character = NEE_david_walsh }
+						has_country_leader = { character = NEE_joseph_william_martin_jr }
+						has_country_leader = { character = NEE_david_i_walsh }
 					}
 				}
 				hidden_effect = {
@@ -2368,11 +2368,11 @@ focus_tree = {
 				category = air_doctrine
 			}
 			custom_effect_tooltip = tooltip_white_line
-			show_unit_leaders_tooltip = NEE_ernest_harmon
+			show_unit_leaders_tooltip = NEE_ernest_n_harmon
 			custom_effect_tooltip = available_military_high_command
-			show_ideas_tooltip = NEE_ernest_harmon_high_command
+			show_ideas_tooltip = NEE_ernest_n_harmon_high_command
 			hidden_effect = {
-				NEE_ernest_harmon = { set_nationality = ROOT }
+				NEE_ernest_n_harmon = { set_nationality = ROOT }
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESEARCH }
@@ -2709,7 +2709,7 @@ focus_tree = {
 			factor = 5
 			modifier = {
 				add = 25
-				check_variable = { NEE.num_of_civilian_factories > 22 }
+				num_of_civilian_factories > 22
 			}
 		}
 		completion_reward = {
@@ -5904,12 +5904,12 @@ focus_tree = {
 					OR = {
 						AND = {
 							date > 1940.11.11
-							has_country_leader = { character = NEE_david_walsh }
+							has_country_leader = { character = NEE_david_i_walsh }
 							date < 1944.11.11
 						}
 						AND = {
 							date > 1944.11.11
-							has_country_leader = { character = NEE_maurice_tobin }
+							has_country_leader = { character = NEE_maurice_j_tobin }
 							date < 1948.11.11
 						}
 					}

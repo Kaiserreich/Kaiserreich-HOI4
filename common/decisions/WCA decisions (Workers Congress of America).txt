@@ -531,6 +531,10 @@ WCA_economic_development_decisions = {
 			owns_state = FROM
 		}
 
+		target_trigger = {
+			FROM = { infrastructure < 5 }
+		}
+
 		state_target = yes
 		cost = @WCA_economic_development_decision_cost
 		days_remove = @WCA_economic_development_decision_time

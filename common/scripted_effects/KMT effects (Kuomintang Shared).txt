@@ -2,11 +2,7 @@
 KMT_NRC_initial_reconstruction_effect = {
 	set_country_flag = KMT_NRC_initial_reconstruction_flag
 	unlock_decision_category_tooltip = KMT_national_reconstruction_category
-	set_variable = {
-		var = KMT_factory_goals
-		value = ROOT.num_of_factories
-	}
-	add_to_variable = { KMT_factory_goals = 50 }
+	set_variable = { KMT_factory_goals = { value = ROOT.num_of_factories add = 50 } }
 	if = {
 		limit = {
 			NOT = {
@@ -107,20 +103,13 @@ KMT_set_total_land_reform_effect = {
 }
 
 #Zeal Effects
-RKT_clamp_zeal_effect = {
-	clamp_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		min = 0
-		max = 1
-	}
-}
-
 RKT_add_zeal_small_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = 0.01
+		global.RKT_revolutionary_zeal_var = {
+			value = 0.01
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -151,10 +140,11 @@ RKT_add_zeal_small_effect = {
 
 RKT_add_zeal_medium_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = 0.03
+		global.RKT_revolutionary_zeal_var = {
+			value = 0.03
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -184,10 +174,11 @@ RKT_add_zeal_medium_effect = {
 }
 RKT_add_zeal_large_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = 0.05
+		global.RKT_revolutionary_zeal_var = {
+			value = 0.05
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -217,10 +208,11 @@ RKT_add_zeal_large_effect = {
 }
 RKT_add_zeal_mega_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = 0.10
+		global.RKT_revolutionary_zeal_var = {
+			value = 0.10
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -250,10 +242,11 @@ RKT_add_zeal_mega_effect = {
 }
 RKT_add_zeal_giga_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = 0.25
+		global.RKT_revolutionary_zeal_var = {
+			value = 0.25
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -283,10 +276,11 @@ RKT_add_zeal_giga_effect = {
 }
 RKT_sub_zeal_small_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = -0.01
+		global.RKT_revolutionary_zeal_var = {
+			value = -0.01
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -316,10 +310,11 @@ RKT_sub_zeal_small_effect = {
 }
 RKT_sub_zeal_medium_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = -0.03
+		global.RKT_revolutionary_zeal_var = {
+			value = -0.03
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -349,10 +344,11 @@ RKT_sub_zeal_medium_effect = {
 }
 RKT_sub_zeal_large_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = -0.05
+		global.RKT_revolutionary_zeal_var = {
+			value = -0.05
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -382,10 +378,11 @@ RKT_sub_zeal_large_effect = {
 }
 RKT_sub_zeal_mega_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = -0.10
+		global.RKT_revolutionary_zeal_var = {
+			value = -0.10
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -415,10 +412,11 @@ RKT_sub_zeal_mega_effect = {
 }
 RKT_sub_zeal_giga_effect = {
 	add_to_variable = {
-		var = global.RKT_revolutionary_zeal_var
-		value = -0.25
+		global.RKT_revolutionary_zeal_var = {
+			value = -0.25
+			clamp = { min = { value = global.RKT_revolutionary_zeal_var multiply = -1 } max = { value = 1 subtract = global.RKT_revolutionary_zeal_var } }
+		}
 	}
-	RKT_clamp_zeal_effect = yes
 	if = {
 		limit = {
 			OR = {
@@ -618,20 +616,16 @@ RKT_ext_zeal_giga_effect = {
 }
 
 KMT_recalculate_founder_minsheng_partnership_effects = {
-	set_variable = { KMT_minsheng_local_resources_var = KMT_minsheng_number_of_members_var }
-	set_variable = { KMT_minsheng_construction_var = KMT_minsheng_number_of_members_var }
-	set_variable = { KMT_minsheng_consumer_goods_var = KMT_minsheng_number_of_members_var }
-	set_variable = { KMT_minsheng_trade_opinion_var = KMT_minsheng_number_of_members_var }
-	set_variable = { KMT_minsheng_research_speed_var = KMT_minsheng_number_of_members_var }
-
-	multiply_variable = { KMT_minsheng_local_resources_var = 0.005 } #1 becomes 0.01, 10 becomes 0.10 -> 0.50%, 5.00%
-	multiply_variable = { KMT_minsheng_construction_var = 0.005 } #1 becomes 0.005, 10 becomes 0.05 -> 0.50%, 5.00%
-	multiply_variable = { KMT_minsheng_consumer_goods_var = -0.006 } #1 becomes -0.002, 10 becomes -0.025 -> -0.20%, -2.50%
-	multiply_variable = { KMT_minsheng_trade_opinion_var = 0.010 } #1 becomes 0.01, 10 becomes 0.10 -> 1.00%, 10.00%
-	multiply_variable = { KMT_minsheng_research_speed_var = 0.002 } #1 becomes 0.002, 10 becomes 0.025 -> 0.20%, 2.50%
+	set_variable = { KMT_minsheng_local_resources_var = { value = KMT_minsheng_number_of_members_var multiply = 0.005 } } #0.50%, 5.00%
+	set_variable = { KMT_minsheng_construction_var = { value = KMT_minsheng_number_of_members_var multiply = 0.005 } } #0.50%, 5.00%
+	set_variable = { KMT_minsheng_consumer_goods_var = { value = KMT_minsheng_number_of_members_var multiply = -0.006 } } #-0.20%, -2.50%
+	set_variable = { KMT_minsheng_trade_opinion_var = { value = KMT_minsheng_number_of_members_var multiply = 0.010 } } #1.00%, 10.00%
 	if = {
 		limit = { has_completed_focus = KMT_uniting_anticolonial_minds }
-		add_to_variable = { KMT_minsheng_research_speed_var = 0.05 }
+		set_variable = { KMT_minsheng_research_speed_var = { value = KMT_minsheng_number_of_members_var multiply = 0.002 add = 0.05 } }
+	}
+	else = {
+		set_variable = { KMT_minsheng_research_speed_var = { value = KMT_minsheng_number_of_members_var multiply = 0.002 } } #0.20%, 2.50%
 	}
 }
 

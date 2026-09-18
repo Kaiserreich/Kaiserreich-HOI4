@@ -169,42 +169,6 @@ RAJ_focus_on_princes = {
 	}
 }
 
-RAJ_focus_on_afghanistan = {
-	allowed = {
-		original_tag = RAJ
-	}
-	enable = {
-		date < 1936.2.16
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = conquer
-		id = AFG
-		value = 400
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = AFG
-		value = 100
-	}
-	ai_strategy = {
-		type = prepare_for_war
-		id = AFG
-		value = 100
-	}
-	ai_strategy = {
-		type = front_unit_request
-		country_trigger = { NOT = { original_tag = AFG } }
-		value = -400
-	}
-	ai_strategy = {
-		type = invade
-		id = AFG
-		value = 100
-	}
-}
-
 PRF_focus_on_raj = {
 	allowed = {
 		original_tag = PRF
@@ -326,6 +290,7 @@ india_dont_justify_on_focus_or_decision_targets = {
 	ai_strategy = { type = ignore_claim id = NEP value = 1 }
 	ai_strategy = { type = ignore_claim id = BHU value = 1 }
 	ai_strategy = { type = ignore_claim id = TIB value = 1 }
+	ai_strategy = { type = ignore_claim id = AFG value = 1 }
 
 	ai_strategy = { type = ignore_claim id = ANQ value = 1 }
 	ai_strategy = { type = ignore_claim id = CHI value = 1 }

@@ -124,6 +124,7 @@ ideas = {
 			on_add = {
 				log = "[GetLogRoot]: add idea CAN_iedc_main"
 				save_global_event_target_as = iedc_leader
+				activate_targeted_decision = { decision = CAN_iedc_economic_investment_home target = THIS }
 			}
 			on_remove = {
 				log = "[GetLogRoot]: remove idea CAN_iedc_main"
@@ -133,6 +134,7 @@ ideas = {
 						remove_targeted_decision = { decision = CAN_iedc_economic_investment target = PREV }
 					}
 				}
+				remove_targeted_decision = { decision = CAN_iedc_economic_investment_home target = THIS }
 			}
 			picture = CAN_iedc
 			allowed = { always = no }

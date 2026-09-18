@@ -87,6 +87,12 @@ on_actions = {
 						}
 					}
 					ROOT = { give_guarantee = COS }
+					COS = {
+						if = {
+							limit = { is_in_faction = no }
+							activate_targeted_decision = { decision = COS_join_faction target = ROOT }
+						}
+					}
 				}
 			}
 			if = {
@@ -115,9 +121,10 @@ on_actions = {
 					country_exists = ENT
 					has_global_flag = GER_stay_out_france_uk
 				}
-				every_country = {
-					limit = { is_in_faction_with = ENT }
-					country_event = { id = entente_events.330 days = 5 }
+				ENT = {
+					every_faction_member = {
+						country_event = { id = entente_events.330 days = 5 }
+					}
 				}
 			}
 		}
@@ -236,31 +243,33 @@ on_actions = {
 				limit = { country_exists = ENT }
 				if = {
 					limit = { has_socialist_government = yes }
-					every_country = {
-						limit = { is_ally_with = ENT }
-						embargo_ROOT = yes
-						add_opinion_modifier = {
-							target = ROOT
-							modifier = KR_hostile
-						}
-						reverse_add_opinion_modifier = {
-							target = ROOT
-							modifier = KR_hostile
+					ENT = {
+						every_faction_member = {
+							embargo_ROOT = yes
+							add_opinion_modifier = {
+								target = ROOT
+								modifier = KR_hostile
+							}
+							reverse_add_opinion_modifier = {
+								target = ROOT
+								modifier = KR_hostile
+							}
 						}
 					}
 				}
 				else = {
-					every_country = {
-						limit = { is_ally_with = ENT }
-						clear_embargo_ROOT = yes
-						remove_opinion_modifier = {
-							target = ROOT
-							modifier = KR_hostile
-						}
-						ROOT = {
+					ENT = {
+						every_faction_member = {
+							clear_embargo_ROOT = yes
 							remove_opinion_modifier = {
-								target = PREV
+								target = ROOT
 								modifier = KR_hostile
+							}
+							ROOT = {
+								remove_opinion_modifier = {
+									target = PREV
+									modifier = KR_hostile
+								}
 							}
 						}
 					}
@@ -306,31 +315,33 @@ on_actions = {
 				limit = { country_exists = ENT }
 				if = {
 					limit = { has_socialist_government = yes }
-					every_country = {
-						limit = { is_ally_with = ENT }
-						embargo_ROOT = yes
-						add_opinion_modifier = {
-							target = ROOT
-							modifier = KR_hostile
-						}
-						reverse_add_opinion_modifier = {
-							target = ROOT
-							modifier = KR_hostile
+					ENT = {
+						every_faction_member = {
+							embargo_ROOT = yes
+							add_opinion_modifier = {
+								target = ROOT
+								modifier = KR_hostile
+							}
+							reverse_add_opinion_modifier = {
+								target = ROOT
+								modifier = KR_hostile
+							}
 						}
 					}
 				}
 				else = {
-					every_country = {
-						limit = { is_ally_with = ENT }
-						clear_embargo_ROOT = yes
-						remove_opinion_modifier = {
-							target = ROOT
-							modifier = KR_hostile
-						}
-						ROOT = {
+					ENT = {
+						every_faction_member = {
+							clear_embargo_ROOT = yes
 							remove_opinion_modifier = {
-								target = PREV
+								target = ROOT
 								modifier = KR_hostile
+							}
+							ROOT = {
+								remove_opinion_modifier = {
+									target = PREV
+									modifier = KR_hostile
+								}
 							}
 						}
 					}
@@ -432,5 +443,4 @@ on_actions = {
 			}
 		}
 	}
-
 }

@@ -1257,10 +1257,6 @@ country_event = { #The National Assembly Inaugurated
 			limit = { has_country_flag = UPC_election_ban_RAD_flag }
 			add_to_temp_variable = { UPC_banned_parties_seat_temp_var = party_popularity@totalist }
 		}
-		else = {
-			set_variable = { global.UPC_RAD_seats_var = party_popularity@totalist }
-		}
-
 		if = {
 			limit = { has_country_flag = UPC_election_ban_CSP_flag }
 			add_to_temp_variable = { UPC_banned_parties_seat_temp_var = party_popularity@syndicalist }
@@ -1280,8 +1276,12 @@ country_event = { #The National Assembly Inaugurated
 
 		#Calculating the Seats the Non-Banned Parties Won
 		#Step 1: Calculate how many total percentage points are from non-banned parties. Do this before calculating banned seats variable
-		set_temp_variable = { UPC_nonbanned_parties_seat_temp_var = 1 }
-		subtract_from_temp_variable = { UPC_nonbanned_parties_seat_temp_var = UPC_banned_parties_seat_temp_var } #1 - Combined Party Popularities of Banned Parties = Combined Party Popularities of unbanned parties.
+		set_temp_variable = {
+			UPC_nonbanned_parties_seat_temp_var = {
+				value = 1
+				subtract = UPC_banned_parties_seat_temp_var #1 - Combined Party Popularities of Banned Parties = Combined Party Popularities of unbanned parties.
+			}
+		}
 		#We can also now get the number of seats banned barties would have won.
 		multiply_temp_variable = { UPC_banned_parties_seat_temp_var = global.UPC_total_seats_var } #So you get a decimal from the banned parties above, then multiply it by total seats available. Penalty is applied in the event response.
 		round_temp_variable = UPC_banned_parties_seat_temp_var
@@ -1515,8 +1515,8 @@ country_event = { #The National Assembly Inaugurated
 		}
 
 		#For whatever the reason, the seats don't exactly add up to 800 (I'm guessing the HOI4 engine rounds stuff at various points). So because I'm too lazy to figure it out, any missing seats just goes to STA.
-		set_temp_variable = {
-			UPC_missing_seats_temp_var = {
+		add_to_variable = {
+			global.UPC_STA_seats_var = {
 				value = global.UPC_total_seats_var
 				subtract = global.UPC_RAD_seats_var
 				subtract = global.UPC_CSP_seats_var
@@ -1530,7 +1530,6 @@ country_event = { #The National Assembly Inaugurated
 				subtract = global.UPC_YCP_seats_var
 			}
 		}
-		add_to_variable = { global.UPC_STA_seats_var = UPC_missing_seats_temp_var }
 
 		country_event = UPC.federalelections.002 #The [GetYear] Presidential Elections
 	}

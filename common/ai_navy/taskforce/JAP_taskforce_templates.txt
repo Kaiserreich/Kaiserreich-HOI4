@@ -185,28 +185,21 @@ JAP_ConvoyEscort_1 = {
 	}
 }
 
-JAP_MineLaying_1 = {
+JAP_ConvoyEscort_2 = {
 	allowed = {
 		original_tag = JAP
 	}
-	ai_will_do = { factor = 1 }
-	mission = { mines_planting }
+	ai_will_do = { factor = 5 }
+	mission = { convoy_escort }
 	min_composition = {
 		destroyer = {
-			amount = 1
-			role = 4
+			amount = 5
 		}
 	}
 
 	optimal_composition = {
 		destroyer = {
-			amount = 4
-			role = 4
-		}
-
-		light_cruiser = {
-			amount = 1
-			role = 4
+			amount = 10
 		}
 	}
 }

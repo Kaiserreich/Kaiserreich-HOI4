@@ -777,6 +777,10 @@ focus_tree = {
 					has_game_rule = { rule = PER_forpol option = PER_FORPOL_HND }
 				}
 			}
+			modifier = {
+				factor = 5
+				has_subject = AFG
+			}
 		}
 		will_lead_to_war_with = RAJ
 		available = {
@@ -851,6 +855,10 @@ focus_tree = {
 				has_game_rule = { rule = PER_forpol option = PER_FORPOL_CHN }
 				NOT = { CHI = { is_in_faction_with = INT } }
 			}
+			modifier = {
+				factor = 5
+				has_subject = AFG
+			}
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed PER_join_internationale"
@@ -904,11 +912,15 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
-				var:907.owner = { default_attack_AI_trigger = yes }
+				OR = {
+					is_in_faction_but_not_leader = yes
+					var:907.owner = { default_attack_AI_trigger = yes }
+				}
 			}
 		}
 		available = {
 			is_subject = no
+			NOT = { has_idea = generic_neutral_foreign_policy }
 			OTT_ottomans_defeated = yes
 			can_declare_war_on = 907.owner
 		}
@@ -966,7 +978,10 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				NOT = { has_war_with = 291.owner }
-				country_is_in_dangerous_war = yes
+				OR = {
+					is_in_faction_but_not_leader = yes
+					country_is_in_dangerous_war = yes
+				}
 			}
 			modifier = {
 				factor = 0
@@ -974,17 +989,10 @@ focus_tree = {
 				can_declare_war_on = IRQ
 				IRQ = { has_war_with = OTT }
 			}
-			modifier = {
-				factor = 0
-				NOT = { has_war_with = IRQ }
-				OR = {
-					IRQ = { dont_start_major_faction_wars = yes }
-					IRQ = { default_attack_AI_trigger = yes }
-				}
-			}
 		}
 		available = {
 			is_subject = no
+			NOT = { has_idea = generic_neutral_foreign_policy }
 			OR = {
 				291 = { owner = { has_war_with = ROOT } }
 				OTT_ottomans_defeated = yes
@@ -1002,10 +1010,7 @@ focus_tree = {
 			add_state_claim = 819
 			if = {
 				limit = { can_declare_war_on = IRQ }
-				create_wargoal = {
-					type = annex_everything
-					target = IRQ
-				}
+				activate_targeted_decision = { decision = PER_invade_iraq target = IRQ }
 			}
 			else_if = {
 				limit = { has_subject = IRQ }

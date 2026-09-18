@@ -377,9 +377,6 @@ INC_spawn_tet_offensive = {
 					owner = INC
 					count = 5
 				}
-			}
-			if = {
-				limit = { check_variable = { INC.guerilla_activity > 60 } }
 				create_unit = {
 					division = "name = \"Vietcong guerilla'\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
 					owner = INC

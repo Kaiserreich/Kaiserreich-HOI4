@@ -1890,19 +1890,13 @@ country_event = { ### Black Monday--Initial event. Please see mittelafrika_event
 			}
 		}
 		else = {
-			set_temp_variable = { MAF_civ_difference = MAF_offmap_civs }
-			multiply_temp_variable = { MAF_civ_difference = -1 }
-
-			set_temp_variable = { MAF_mil_difference = -8 }
-			add_to_temp_variable = { MAF_mil_difference = MAF_offmap_civs }
-
 			add_to_variable = {
-				MAF_offmap_civs = MAF_civ_difference
-				tooltip = industrial_factory_donations_tooltip
+				MAF_offmap_mils = { value = -8 add = MAF_offmap_civs }
+				tooltip = military_factory_donations_tooltip
 			}
 			add_to_variable = {
-				MAF_offmap_mils = MAF_mil_difference
-				tooltip = military_factory_donations_tooltip
+				MAF_offmap_civs = { value = MAF_offmap_civs multiply = -1 }
+				tooltip = industrial_factory_donations_tooltip
 			}
 		}
 		force_update_dynamic_modifier = yes

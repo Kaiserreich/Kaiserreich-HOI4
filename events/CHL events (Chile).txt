@@ -769,6 +769,7 @@ country_event = { #Seize the Galapagos
 		has_capitulated = no
 		has_navy_size = { size > 5 }
 		var:649.owner = {
+			NOT = { is_ally_with = ROOT }
 			OR = {
 				original_tag = ECU
 				original_tag = PRU
@@ -782,6 +783,7 @@ country_event = { #Seize the Galapagos
 	}
 
 	is_triggered_only = yes
+	fire_only_once = yes
 
 	option = {
 		log = "[GetLogInfo]: event chile_events.12 option chile_events.12.a"

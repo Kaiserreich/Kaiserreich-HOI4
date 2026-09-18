@@ -3,11 +3,7 @@ on_actions = {
 		effect = {
 			MAF = {
 				set_rule = { can_send_volunteers = no }
-				add_relation_rule_override = {
-					can_send_volunteers = yes
-					trigger = MAF_can_send_volunteers_to_target
-					usage_desc = MAF_can_send_volunteers_to_target_tt
-				}
+				MAF_restrict_volunteers_to_africa = yes
 				if = {
 					limit = { has_dlc_aat = yes }
 					set_rule = { can_access_market = no }
@@ -188,6 +184,10 @@ on_actions = {
 						original_tag = FROM
 						save_global_event_target_as = MAF_free_germany
 						set_cosmetic_tag = MAF_free_germany
+						if = {
+							limit = { has_dlc_taog = yes }
+							create_generic_hq_template = yes
+						}
 						reserve_dynamic_country = yes
 					}
 					every_core_state = { remove_core_of = GEX }
@@ -374,13 +374,7 @@ on_actions = {
 					has_war = no
 				}
 				every_owned_state = {
-					limit = {
-						OR = {
-							has_dynamic_modifier = { modifier = MAF_british_gold_coast }
-							has_dynamic_modifier = { modifier = MAF_british_nigeria }
-							has_dynamic_modifier = { modifier = MAF_british_kenya }
-						}
-					}
+					limit = { has_dynamic_modifier = { modifier = MAF_territory_mandate } }
 					set_demilitarized_zone = yes
 				}
 			}
@@ -393,13 +387,7 @@ on_actions = {
 				}
 				FROM = {
 					every_owned_state = {
-						limit = {
-							OR = {
-								has_dynamic_modifier = { modifier = MAF_british_gold_coast }
-								has_dynamic_modifier = { modifier = MAF_british_nigeria }
-								has_dynamic_modifier = { modifier = MAF_british_kenya }
-							}
-						}
+						limit = { has_dynamic_modifier = { modifier = MAF_territory_mandate } }
 						set_demilitarized_zone = yes
 					}
 				}

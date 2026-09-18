@@ -1697,7 +1697,6 @@ country_event = {
 		log = "KR_Event_Logging;CNT-FAI WINS SCW"
 		name = spanish_civil_war_events.220.a
 		add_political_power = 50
-		set_cosmetic_tag = SPA_socialist
 		if = {
 			limit = { has_idea = SWF_advisors_france }
 			remove_ideas = SWF_advisors_france
@@ -1830,6 +1829,10 @@ country_event = {
 					}
 					country_event = { id = spanish_civil_war_events.307 days = 10 } #fails
 				}
+			}
+			SPK = {
+				remove_targeted_decision = { target = THIS decision = SPA_secure_loyalty }
+				remove_targeted_decision = { target = THIS decision = SPA_increase_security }
 			}
 		}
 	}
@@ -2621,6 +2624,7 @@ country_event = { #Congress of Iberian Socialists
 			ideology = syndicalist
 			popularity = 0.1
 		}
+		set_cosmetic_tag = SPA_socialist_syndicalist
 		set_temp_variable = { coalition_partner_var = token:totalist }
 		add_to_coalition = yes
 		set_temp_variable = { coalition_partner_var = token:radical_socialist }
@@ -2637,6 +2641,7 @@ country_event = { #Congress of Iberian Socialists
 			}
 		}
 		set_politics = { ruling_party = radical_socialist }
+		set_cosmetic_tag = SPA_socialist_radical_socialist
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = 0.1

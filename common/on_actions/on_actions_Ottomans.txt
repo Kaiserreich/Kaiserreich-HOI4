@@ -5,6 +5,9 @@ on_actions = {
 			OTT = {
 				set_temp_variable = { coalition_partner_var = token:social_liberal }
 				add_to_coalition = yes
+
+				# Modify Pop Icon positions
+				set_variable = { state_of_interest_icon_y = 23 }
 			}
 
 		# Set State Arrays/Flags for Ottoman Provinces, Vilayets and Autonomies
@@ -196,6 +199,7 @@ on_actions = {
 						country_event = ottomans_foreign_policy_events.60 #Negotiations in Baku Break Down
 						country_event = ottomans_foreign_policy_events.771 #The End of the Russo-Ottoman Convention
 					}
+					AFG = { country_event = { id = afghanistan_events.2001 days = 4 } }
 				}
 
 				# Remove PAL demilitarized zones and ideas
@@ -225,8 +229,12 @@ on_actions = {
 						clear_variable = OTT.OTT_AMN_members
 					}
 					else = {
-						subtract_from_variable = { OTT.OTT_AMN_members = 0.01 }
-						clamp_variable = { var = OTT.OTT_AMN_members min = 0 }
+						add_to_variable = {
+							OTT.OTT_AMN_members = {
+								value = -0.01
+								clamp = { min = { value = OTT.OTT_AMN_members multiply = -1 } max = 0 }
+							}
+						}
 						force_update_dynamic_modifier = yes
 					}
 				}
@@ -393,8 +401,12 @@ on_actions = {
 					FROM = { has_dynamic_modifier = { modifier = OTT_AMN_member_modifier scope = OTT } }
 				}
 				FROM = { remove_dynamic_modifier = { modifier = OTT_AMN_member_modifier scope = OTT } }
-				subtract_from_variable = { OTT.OTT_AMN_members = 0.01 }
-				clamp_variable = { var = OTT.OTT_AMN_members min = 0 }
+				add_to_variable = {
+					OTT.OTT_AMN_members = {
+						value = -0.01
+						clamp = { min = { value = OTT.OTT_AMN_members multiply = -1 } max = 0 }
+					}
+				}
 				force_update_dynamic_modifier = yes
 			}
 			else_if = {
@@ -403,8 +415,12 @@ on_actions = {
 					has_dynamic_modifier = { modifier = OTT_AMN_member_modifier scope = OTT }
 				}
 				remove_dynamic_modifier = { modifier = OTT_AMN_member_modifier scope = OTT }
-				subtract_from_variable = { OTT.OTT_AMN_members = 0.01 }
-				clamp_variable = { var = OTT.OTT_AMN_members min = 0 }
+				add_to_variable = {
+					OTT.OTT_AMN_members = {
+						value = -0.01
+						clamp = { min = { value = OTT.OTT_AMN_members multiply = -1 } max = 0 }
+					}
+				}
 				force_update_dynamic_modifier = yes
 			}
 		}

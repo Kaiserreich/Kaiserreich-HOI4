@@ -129,7 +129,10 @@
 # Ottoman Provinces (Vilayets and Autonomies) #
 ###############################################
 
- ottoman_province_title: "[THIS.OttomansGetStateProvinceStatus]"
+ TUR_state_of_interest_state_title: "[?current_state.OttomansGetStateProvinceStatus]"
+ TUR_state_of_interest_icon: "GFX_state_constructions"
+ TUR_state_of_interest_icon_desc: "[?current_state.OTT_GUI_POPULATION_SHORT]"
+ TUR_state_of_interest_icon_desc_delayed: "[?current_state.OTT_GUI_POPULATION_LONG]"
  OTT_vilayet_state: "Vilayet of [THIS.OttomansGetStateProvinceTitle]"
  OTT_mutasarrifate_state: "Mutasarrifate of [THIS.OttomansGetStateProvinceTitle]"
  OTT_egypt_state: "Ottoman Egypt"
@@ -358,7 +361,8 @@
  SUEZ_SUCCESS: "The §GPort Said Convention§! has been signed"
  SUEZ_CANAL_BLOCKED: "The Suez Canal is blocked"
  SUEZ_REOPENED: "The Suez Canal will be §Hreopened§!."
- RUSSIAN_OTTOMAN_DEAL: "Russo-Ottoman Convention signed"
+ RUSSIAN_OTTOMAN_DEAL: "The §YRusso-Ottoman Convention§! was signed"
+ RUSSIAN_OTTOMAN_DEAL_NOT: "The §YRusso-Ottoman Convention§! was §Rnot§! signed"
  OTT_defeat_levant: "§Y[OTT.GetNameWithFlag]§! was defeated in the Levant Crisis"
 
 ### State Flags
@@ -2457,7 +2461,7 @@
  ottomans_news_events.1.a: "Is this a return to 1913?"
 
  ottomans_news_events.2.t: "Mustafa Kemal Shot!"
- ottomans_news_events.2.d: "Grand Vizier and celebrated war hero, the leader of the OHF Mustafa Kemal Gelibolu was shot earlier today in Erzurum when speaking to a massive crowd gathered to celebrate his recent reforms.\n\nThe lone gunman, of Georgian descent, a young man of Georgian descent whose suspected motive seems to have been revenge for the oppressions in Batumi following its annexation but many observers are suspecting the hand of a wider sepratist organisation in the plot, likely looking to weaken the OHF and incite the Porte into an overreaction in the eastern provinces."
+ ottomans_news_events.2.d: "Grand Vizier and celebrated war hero, the leader of the OHF Mustafa Kemal Gelibolu was shot earlier today in Erzurum when speaking to a massive crowd gathered to celebrate his recent reforms.\n\nThe lone gunman, a young man of Georgian descent whose suspected motive seems to have been revenge for the oppressions in Batumi following its annexation, but many observers are suspecting the hand of a wider sepratist organisation in the plot, likely looking to weaken the OHF and incite the Porte into an overreaction in the eastern provinces."
  ottomans_news_events.2.a: "The entire Ottoman Empire holds its breath for the future..."
 
  ottomans_news_events.3.t: "Fevzi Çakmak Seizes Power"
@@ -3170,6 +3174,7 @@
  ottomans_foreign_policy_events.65.d: "Although we have never really meddled in the affairs of the Afghanis, the Russians have nonetheless announced their claims on the ancient land connecting Central Asia to the Indian subcontinent. Although they are well aware that we are in no position to contest their claim, the Russian government demands that we don't protest their invasion and that the Sultan, as Caliph of all Muslims, abstains from denouncing the act."
  # ->OTT 66:
  ottomans_foreign_policy_events.65.a: "We won't contest their sphere of influence in Afghanistan."
+ ottomans_foreign_policy_events.65.b: "We won't let them contest our influence in Afghanistan."
 
  ottomans_foreign_policy_events.66.t: "The Future of Persia"
  ottomans_foreign_policy_events.66.d: "Split in two by the Anglo-Russian Convention before the Weltkrieg, the collapse of first the Russian and later the British Empire, have granted Persia a moment of respite, as it was able to turn inwards and restructure its struggling state apparatus. Nonetheless, it has not been able to remain at peace, as renewed border conflicts with our Empire over Iraqi Kurdistan and the Persian Gulf have placed the old rivals against each other with the daggers drawn.\n\nWith Russian interference bearing down on Central Asia and the Caucasus, our government has deemed it necessary to demand Eastern expansion, so as to ensure a buffer remains between ourselves and the Russians. Whilst most are pleading for the restoration of an independent Iran, serving as a buffer, others have urged our government to take a more decisive role in Iran and ensure that Kurdistan, Azerbaijan and Khuzestan remain in the Ottoman sphere of influence lest they would be victim to Russian interference in a weak Teheran."

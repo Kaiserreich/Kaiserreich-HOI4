@@ -11,901 +11,1735 @@ focus_tree = {
 
 	continuous_focus_position = { x = 2100 y = 50 }
 
+	### Druk Empire ###
+
+	focus = {
+		id = bhu_rise_of_thunder_dragon
+		icon = GFX_focus_CHI_cradle_of_civilization
+		cost = 5
+
+		x = 5
+		y = 0
+
+		allow_branch = {
+			has_country_flag = BHU_druk_empire_flag
+		}
+
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_rise_of_thunder_dragon"
+			add_named_threat = {
+				threat = 7
+				name = bhu_rise_of_thunder_dragon
+			}
+			324 = {
+				add_victory_points = { province = 8010 value = 7 }
+			}
+			add_war_support = 0.07
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = bhu_lhasa_road
+		icon = GFX_goal_generic_road_construction
+		cost = 8
+
+		relative_position_id = bhu_rise_of_thunder_dragon
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = bhu_rise_of_thunder_dragon
+		}
+		available = {
+			has_political_power > 100
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_lhasa_road"
+			add_political_power = -100
+			every_owned_state = {
+				limit = {
+					state = 322 #Lhasa
+					has_resistance = yes
+				}
+				add_compliance = 7
+			}
+			322 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_sponsor_monastic_exchange
+		icon = GFX_goal_KTG_Educate_natives
+		cost = 12
+
+		relative_position_id = bhu_rise_of_thunder_dragon
+		x = 0
+		y = 3
+
+		prerequisite = {
+			focus = bhu_lhasa_road
+		}
+		available = {
+			has_political_power > 150
+			num_of_factories > 25
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_sponsor_monastic_exchange"
+			add_political_power = -150
+			add_research_slot_until_five = yes
+		}
+	}
+
+	focus = {
+		id = bhu_bring_bhutan_to_every_village
+		icon = GFX_focus_generic_welfare
+		cost = 8
+
+		relative_position_id = bhu_rise_of_thunder_dragon
+		x = -2
+		y = 1
+
+		prerequisite = {
+			focus = bhu_rise_of_thunder_dragon
+		}
+		available = {
+			has_political_power > 50
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_bring_bhutan_to_every_village"
+			add_political_power = -50
+			add_stability = 0.05
+			set_temp_variable = { ideology_change_var = 0.05 }
+			change_ruling_party_popularity = yes
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 322 #Lhasa
+						state = 693 #Chamdo
+						state = 748 #Tsonyi
+						state = 858 #Tawang
+					}
+					has_resistance = yes
+				}
+				add_compliance = 5
+			}
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 323 #Nepal
+						state = 887 #Darjeeling
+					}
+					has_resistance = yes
+				}
+				add_compliance = 3
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_expel_foreign_parasites
+		icon = GFX_goal_generic_isolation
+		cost = 6
+
+		relative_position_id = bhu_rise_of_thunder_dragon
+		x = -3
+		y = 2
+
+		prerequisite = {
+			focus = bhu_bring_bhutan_to_every_village
+		}
+		mutually_exclusive = {
+			focus = bhu_airing_out_the_court
+		}
+		available = {
+			has_country_flag = BHU_druk_tradmonk_flag
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_expel_foreign_parasites"
+			add_manpower = -23
+			add_war_support = 0.05
+			set_temp_variable = { ideology_change_var = 0.05 }
+			change_ruling_party_popularity = yes
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = BHU_xenophobic_fervor
+				days = 365
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_airing_out_the_court
+		icon = GFX_focus_PER_communist_afghanistan_intervention
+		cost = 6
+
+		relative_position_id = bhu_rise_of_thunder_dragon
+		x = -1
+		y = 2
+
+		prerequisite = {
+			focus = bhu_bring_bhutan_to_every_village
+		}
+		mutually_exclusive = {
+			focus = bhu_expel_foreign_parasites
+		}
+		available = {
+			has_country_flag = BHU_druk_forbal_flag
+			command_power > 50
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_airing_out_the_court"
+			add_command_power = -50
+			add_tech_bonus = {
+				name = bhu_airing_out_the_court
+				bonus = 0.33
+				uses = 1
+				category = industry
+			}
+			add_tech_bonus = {
+				name = bhu_airing_out_the_court
+				bonus = 0.33
+				uses = 1
+				category = electronics
+			}
+			BHU = { set_variable = { generic_raise_support_decision_cost = 100 } }
+			custom_effect_tooltip = {
+				localization_key = reduce_support_decision_cost_tt
+				NUMBER = 33%
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = BHU_new_faces_new_ideas
+				days = 365
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_break_out_the_big_guns
+		icon = GFX_goal_generic_mountain_artillery
+		cost = 8
+
+		relative_position_id = bhu_rise_of_thunder_dragon
+		x = 2
+		y = 1
+
+		prerequisite = {
+			focus = bhu_rise_of_thunder_dragon
+		}
+		available = {
+			has_political_power > 50
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_break_out_the_big_guns"
+			add_political_power = -50
+			if = {
+				limit = { NOT = { has_tech = gw_artillery } }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_tech
+						TECH = gw_artillery
+					}
+					set_technology = { gw_artillery = 1 }
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = bhu_break_out_the_big_guns
+					bonus = 1
+					uses = 1
+					category = artillery
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 50
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_hone_the_knife_tip
+		icon = GFX_goal_backstab
+		cost = 6
+
+		relative_position_id = bhu_rise_of_thunder_dragon
+		x = 1
+		y = 2
+
+		prerequisite = {
+			focus = bhu_break_out_the_big_guns
+		}
+		mutually_exclusive = {
+			focus = bhu_integrate_the_conquered
+		}
+		available = {
+			has_country_flag = BHU_druk_foctech_flag
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_hone_the_knife_tip"
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Druk Sung"
+					LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 6 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+				}
+				if = {
+					limit = { has_template = "Druk Sung" }
+					delete_unit_template_and_units = { division_template = "Druk Sung" disband = yes } #no cheating
+				}
+				division_template = {
+					name = "Druk Sung"
+					division_names_group = BHU_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+					}
+					support = {
+						artillery = { x = 0 y = 0 }
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 324 } #Bhutan
+				limit = { valid_state_for_spawning_friendly_unit = yes }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 1
+						TYPE = "Druk Sung"
+					}
+					create_unit = {
+						division = "division_template = \"Druk Sung\" start_experience_factor = 0.4"
+						owner = ROOT
+						count = 1
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_mastery_bonus = {
+				name = bhu_hone_the_knife_tip
+				bonus = 0.1
+				days = 365
+				track = infantry
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_integrate_the_conquered
+		icon = GFX_focus_SOV_penal_battalions
+		cost = 6
+
+		relative_position_id = bhu_rise_of_thunder_dragon
+		x = 3
+		y = 2
+
+		prerequisite = {
+			focus = bhu_break_out_the_big_guns
+		}
+		mutually_exclusive = {
+			focus = bhu_hone_the_knife_tip
+		}
+		available = {
+			has_country_flag = BHU_druk_exp_flag
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_integrate_the_conquered"
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Dob-dob Militia"
+					LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 3 }
+				}
+				if = {
+					limit = { has_template = "Dob-dob Militia" }
+					delete_unit_template_and_units = { division_template = "Dob-dob Militia" disband = yes } #no cheating
+				}
+				division_template = {
+					name = "Dob-dob Militia"
+					division_names_group = TIB_ARMY_UNITS
+					regiments = {
+						irregular_infantry = { x = 0 y = 0 }
+						irregular_infantry = { x = 0 y = 1 }
+						irregular_infantry = { x = 0 y = 2 }
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 322 } #Lhasa
+				limit = { valid_state_for_spawning_friendly_unit = yes }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 2
+						TYPE = "Dob-dob Militia"
+					}
+					create_unit = {
+						division = "division_template = \"Dob-dob Militia\" start_experience_factor = 0.07"
+						owner = ROOT
+						count = 2
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Nepali Lashkar"
+					LINE_1 = { localization_key = line_battalion_tt NAME = irregular_infantry ICON = GFX_unit_irregular_infantry_icon_small COUNT = 4 }
+				}
+				if = {
+					limit = { has_template = "Nepali Lashkar" }
+					delete_unit_template_and_units = { division_template = "Nepali Lashkar" disband = yes } #no cheating
+				}
+				division_template = {
+					name = "Nepali Lashkar"
+					division_names_group = NEP_INF_01
+					regiments = {
+						irregular_infantry = { x = 0 y = 0 }
+						irregular_infantry = { x = 0 y = 1 }
+						irregular_infantry = { x = 0 y = 2 }
+						irregular_infantry = { x = 0 y = 3 }
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 323 } #Nepal
+				limit = { valid_state_for_spawning_friendly_unit = yes }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 2
+						TYPE = "Nepali Lashkar"
+					}
+					create_unit = {
+						division = "division_template = \"Nepali Lashkar\" start_experience_factor = 0.07"
+						owner = ROOT
+						count = 2
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = BHU_integrating_foreign_armies
+				days = 365
+			}
+		}
+	}
+
 	### Political ###
+
+	focus = {
+		id = bhu_expand_irrigation
+		icon = GFX_goal_SZC_improvised_farming_machinery
+		cost = 4.3
+
+		x = 11
+		y = 0
+
+		bypass = {
+			has_country_flag = BHU_march_on_talo
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_expand_irrigation"
+			add_political_power = -10
+			add_timed_idea = {
+				idea = BHU_repaired_irrigation
+				days = 365
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_enforce_trongsa_law
+		icon = GFX_goal_RUS_streamline_autonomies
+		cost = 4.3
+
+		relative_position_id = bhu_expand_irrigation
+		x = 6
+		y = 0
+
+		bypass = {
+			has_country_flag = BHU_march_on_talo
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_enforce_trongsa_law"
+			add_stability = -0.02
+			set_temp_variable = { BHU_feudal_unity_change = 2 }
+			increase_bhu_feudal_unity = yes
+		}
+	}
+
+	focus = {
+		id = bhu_deal_with_unsanctioned_taxation
+		icon = GFX_focus_generic_agricultural_subsidies
+		cost = 4.3
+
+		relative_position_id = bhu_expand_irrigation
+		x = 2
+		y = 0
+
+		bypass = {
+			has_country_flag = BHU_march_on_talo
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_deal_with_unsanctioned_taxation"
+			add_political_power = 15
+			country_event = bhutan_events.900
+		}
+	}
+
+	focus = {
+		id = bhu_investigate_dissenter_monks
+		icon = GFX_focus_smiling_buddha
+		cost = 4.3
+
+		relative_position_id = bhu_expand_irrigation
+		x = 4
+		y = 0
+
+		bypass = {
+			has_country_flag = BHU_march_on_talo
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_investigate_dissenter_monks"
+			add_war_support = 0.02
+			add_popularity = {
+				ideology = national_populist
+				popularity = -0.02
+			}
+			custom_effect_tooltip = BHU_tt_investigate_monks_fake_event
+			hidden_effect = {
+				if = {
+					limit = {
+						OR = {
+							has_idea = BHU_monastic_whispers
+							has_idea = BHU_split_zhungdratshang
+						}
+					}
+					country_event = bhutan_events.901
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_raising_a_host
+		icon = GFX_ITA_green_shirts
+		cost = 5
+
+		relative_position_id = bhu_expand_irrigation
+		x = 3
+		y = 1
+
+		bypass = {
+			has_country_flag = BHU_march_on_talo
+		}
+		available = {
+			has_country_flag = BHU_in_zhabdrung_crisis
+		}
+
+		prerequisite = {
+			focus = bhu_expand_irrigation
+		}
+		prerequisite = {
+			focus = bhu_enforce_trongsa_law
+		}
+		prerequisite = {
+			focus = bhu_deal_with_unsanctioned_taxation
+		}
+		prerequisite = {
+			focus = bhu_investigate_dissenter_monks
+		}
+
+		select_effect = {
+			log = "[GetLogRoot]: Select Focus bhu_raising_a_host"
+			country_event = { id = bhutan_events.902 days = 20 }
+			country_event = { id = bhutan_events.904 days = 10 }
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_raising_a_host"
+			army_experience = 10
+			swap_ideas = {
+				remove_idea = BHU_peace_in_our_time
+				add_idea = BHU_what_officers
+			}
+			country_event = bhutan_events.906
+		}
+	}
+
+	focus = {
+		id = bhu_secure_the_borders
+		icon = GFX_focus_SWE_hedgehog_defense
+		cost = 5
+
+		relative_position_id = bhu_expand_irrigation
+		x = 5
+		y = 2
+
+		bypass = {
+			has_country_flag = BHU_march_on_talo
+		}
+		prerequisite = {
+			focus = bhu_raising_a_host
+		}
+
+		select_effect = {
+			log = "[GetLogRoot]: Select Focus bhu_secure_the_borders"
+			country_event = { id = bhutan_events.908 days = 10 }
+			if = {
+				limit = {
+					check_variable = { BHU_preparation_time > 1 }
+				}
+				country_event = { id = bhutan_events.905 days = 20 }
+			}
+		}
+
+		ai_will_do = { factor = 125 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_secure_the_borders"
+
+			add_war_support = 0.05
+			add_timed_idea = {
+				idea = BHU_eyes_on_the_duars
+				days = 365
+			}
+			custom_effect_tooltip = BHU_tt_preparation_focuses
+			if = {
+				limit = {
+					check_variable = { BHU_preparation_time < 1 }
+				}
+				country_event = bhutan_events.1013
+			}
+			else_if = {
+				limit = {
+					check_variable = { BHU_preparation_time < 2 }
+				}
+				country_event = bhutan_events.1015
+			}
+			else = {
+				country_event = bhutan_events.1017
+			}
+			add_to_variable = {
+				BHU_preparation_time = 1
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_repair_ta_dzong
+		icon = GFX_goal_construction_engineering
+		cost = 5
+
+		relative_position_id = bhu_expand_irrigation
+		x = 1
+		y = 2
+
+		bypass = {
+			has_country_flag = BHU_march_on_talo
+		}
+		prerequisite = {
+			focus = bhu_raising_a_host
+		}
+
+		select_effect = {
+			log = "[GetLogRoot]: Select Focus bhu_repair_ta_dzong"
+			country_event = { id = bhutan_events.909 days = 10 }
+			if = {
+				limit = {
+					check_variable = { BHU_preparation_time > 1 }
+				}
+				country_event = bhutan_events.905
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = BHU_path option = DEFAULT } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_repair_ta_dzong"
+
+			add_timed_idea = {
+				idea = BHU_forcing_renovations
+				days = 100
+			}
+			custom_effect_tooltip = BHU_tt_preparation_focuses
+			if = {
+				limit = {
+					check_variable = { BHU_preparation_time < 1 }
+				}
+				country_event = bhutan_events.1013
+			}
+			else_if = {
+				limit = {
+					check_variable = { BHU_preparation_time < 2 }
+				}
+				country_event = bhutan_events.1015
+			}
+			else = {
+				country_event = bhutan_events.1017
+			}
+			add_to_variable = {
+				BHU_preparation_time = 1
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_reorganise_the_royal_guard
+		icon = GFX_focus_RAJ_forge_the_kshatriya_army
+		cost = 5
+
+		relative_position_id = bhu_expand_irrigation
+		x = 3
+		y = 2
+
+		bypass = {
+			has_country_flag = BHU_march_on_talo
+		}
+		prerequisite = {
+			focus = bhu_raising_a_host
+		}
+
+		select_effect = {
+			log = "[GetLogRoot]: Select Focus bhu_reorganise_the_royal_guard"
+			country_event = { id = bhutan_events.907 days = 10 }
+			if = {
+				limit = {
+					check_variable = { BHU_preparation_time > 1 }
+				}
+				country_event = bhutan_events.905
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = BHU_path option = DEFAULT } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_reorganise_the_royal_guard"
+
+			add_manpower = 25
+			add_command_power = 5
+			custom_effect_tooltip = BHU_tt_preparation_focuses
+			if = {
+				limit = {
+					check_variable = { BHU_preparation_time < 1 }
+				}
+				country_event = bhutan_events.1013
+			}
+			else_if = {
+				limit = {
+					check_variable = { BHU_preparation_time < 2 }
+				}
+				country_event = bhutan_events.1015
+			}
+			else = {
+				country_event = bhutan_events.1017
+			}
+			add_to_variable = {
+				BHU_preparation_time = 1
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_reassure_our_neighbours
+		icon = GFX_focus_SMB_a_land_of_mountains
+		cost = 10
+
+		relative_position_id = bhu_expand_irrigation
+		x = 5
+		y = 3
+
+		bypass = {
+			has_country_flag = BHU_stabilized
+		}
+		prerequisite = {
+			focus = bhu_secure_the_borders
+		}
+		available = {
+			has_country_flag = BHU_march_on_talo
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_reassure_our_neighbours"
+			add_timed_idea = {
+				idea = BHU_neighbours_reassured
+				days = 100
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_drill_our_regulars
+		icon = GFX_focus_generic_infiltration
+		cost = 10
+
+		relative_position_id = bhu_expand_irrigation
+		x = 3
+		y = 3
+
+		bypass = {
+			has_country_flag = BHU_stabilized
+		}
+		prerequisite = {
+			focus = bhu_reorganise_the_royal_guard
+		}
+		available = {
+			has_country_flag = BHU_march_on_talo
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_drill_our_regulars"
+			add_timed_idea = {
+				idea = BHU_regulars_drilled
+				days = 100
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_organise_village_defense
+		icon = GFX_goal_agrarian_soldiers
+		cost = 10
+
+		relative_position_id = bhu_expand_irrigation
+		x = 1
+		y = 3
+
+		bypass = {
+			has_country_flag = BHU_stabilized
+		}
+		prerequisite = {
+			focus = bhu_repair_ta_dzong
+		}
+		available = {
+			has_country_flag = BHU_march_on_talo
+		}
+
+		ai_will_do = { factor = 50 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_organise_village_defense"
+			add_timed_idea = {
+				idea = BHU_village_defenders
+				days = 100
+			}
+		}
+	}
 
 	focus = {
 		id = bhu_end_revolution
 		icon = GFX_goal_ANQ_institutional_chaos
-		cost = 8
+		cost = 7
 
-		x = 7
-		y = 0
+		x = 14
+		y = 4
 
 		available = {
 			has_country_flag = BHU_stabilized
+		}
+		prerequisite = {
+			focus = bhu_reassure_our_neighbours
+		}
+		prerequisite = {
+			focus = bhu_drill_our_regulars
+		}
+		prerequisite = {
+			focus = bhu_organise_village_defense
 		}
 
 		ai_will_do = { factor = 100 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed bhu_end_revolution"
-			custom_effect_tooltip = bhu_feudal_unity_upup
+			set_temp_variable = { BHU_feudal_unity_change = 2 }
+			increase_bhu_feudal_unity = yes
 			swap_ideas = {
 				remove_idea = BHU_Zhabdrung_Aftermath
 				add_idea = BHU_Zhabdrung_Aftermath2
 			}
 			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-				increase_bhu_feudal_unity = yes
 				activate_targeted_decision = { target = THIS decision = BHU_country_namechange_decision }
+				if = {
+					limit = { has_country_flag = BHU_st_win }
+					country_event = { id = bhutan_events.923 days = 5 }
+				}
+				if = {
+					limit = { NOT = { has_country_flag = BHU_z_win } }
+					country_event = { id = bhutan_events.926 days = 365 }
+				}
+				if = {
+					limit = { has_country_flag = BHU_z_win }
+					country_event = { id = bhutan_events.943 days = 365 }
+				}
 			}
 		}
 	}
 
 	focus = {
-		id = bhu_buddhist_nationalism
-		icon = GFX_focus_smiling_buddha
-		cost = 8
+		id = bhu_deal_with_banditry
+		icon = GFX_focus_generic_total_war
+		cost = 5
 
 		relative_position_id = bhu_end_revolution
 		x = 0
-		y = 1
+		y = 2
 
 		prerequisite = {
-			focus = bhu_end_revolution
-		}
-		available = {
-			has_authdem_or_pataut_government = yes
+			focus = bhu_the_open_palm
+			focus = bhu_the_tightened_fist
 		}
 
-		ai_will_do = { factor = 50 }
+		available = {
+			command_power > 15
+		}
+
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_buddhist_nationalism"
-			custom_effect_tooltip = bhu_feudal_unity_up
+			log = "[GetLogRoot]: Focus Completed bhu_deal_with_banditry"
+			add_command_power = -15
 			add_popularity = {
-				ideology = radical_socialist
-				popularity = -0.05
-			}
-			add_popularity = {
-				ideology = social_democrat
-				popularity = -0.05
+				ideology = national_populist
+				popularity = -0.01
 			}
 			add_popularity = {
 				ideology = social_liberal
-				popularity = -0.05
-			}
-			add_war_support = 0.05
-			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_increase_pension
-		icon = GFX_goal_bag_of_money
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = -1
-		y = 2
-
-		available = {
-			OR = {
-				has_country_flag = BHU_st_win
-				has_country_flag = BHU_jw_win
-			}
-		}
-		prerequisite = {
-			focus = bhu_buddhist_nationalism
-		}
-		mutually_exclusive = {
-			focus = bhu_discourage_hindu_practices
-		}
-		ai_will_do = { factor = 50 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_increase_pension"
-			custom_effect_tooltip = bhu_econ_dev_down
-			hidden_effect = {
-				decrease_bhu_econ_dev = yes
+				popularity = -0.01
 			}
 			add_popularity = {
-				ideology = national_populist
-				popularity = -0.05
+				ideology = social_democrat
+				popularity = -0.01
 			}
-			swap_ideas = {
-				remove_idea = BHU_Monastic_Control
-				add_idea = BHU_Monastic_Reform
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_discourage_hindu_practices
-		icon = GFX_goal_imprison_opposition1
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 1
-		y = 2
-
-		available = {
-			OR = {
-				has_country_flag = BHU_tp_win
-				has_country_flag = BHU_jw_win
-			}
-		}
-		prerequisite = {
-			focus = bhu_buddhist_nationalism
-		}
-		mutually_exclusive = {
-			focus = bhu_increase_pension
-		}
-		ai_will_do = { factor = 50 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_discourage_hindu_practices"
-			add_popularity = {
-				ideology = national_populist
-				popularity = 0.05
-			}
-			swap_ideas = {
-				remove_idea = BHU_Monastic_Control
-				add_idea = BHU_Monastic_Dom
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_expand_dzongs
-		icon = GFX_goal_ANQ_centralization
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 0
-		y = 3
-
-		prerequisite = {
-			focus = bhu_curtail_penlops
-			focus = bhu_meet_loyal_penlops
-		}
-
-		ai_will_do = { factor = 25 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_expand_dzongs"
-			country_event = { id = bhutan_events.92 days = 7 }
-		}
-	}
-
-	focus = {
-		id = bhu_expand_punakha
-		icon = GFX_goal_construction_engineering
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 0
-		y = 4
-
-		available = {
-			OR = {
-				has_country_flag = BHU_jw_win
-				has_country_flag = BHU_st_win
-			}
-		}
-		prerequisite = {
-			focus = bhu_expand_dzongs
-		}
-
-		ai_will_do = { factor = 50 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_expand_punakha"
-			country_event = { id = bhutan_events.93 days = 7 }
-		}
-	}
-
-	focus = {
-		id = bhu_strengthen_dynasty
-		icon = GFX_goal_BHU_monarchy
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = -2
-		y = 1
-
-		available = {
-			OR = {
-				has_country_flag = BHU_st_win
-				has_country_flag = BHU_jw_win
-			}
-		}
-		prerequisite = {
-			focus = bhu_end_revolution
-		}
-
-		ai_will_do = { factor = 100 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_strengthen_dynasty"
-			add_political_power = 125
-			add_popularity = {
-				ideology = paternal_autocrat
-				popularity = 0.03
-			}
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.03
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_meet_loyal_penlops
-		icon = GFX_goal_tripartite_pact
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = -3
-		y = 2
-
-		prerequisite = {
-			focus = bhu_strengthen_dynasty
-		}
-		ai_will_do = { factor = 100 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_meet_loyal_penlops"
-			custom_effect_tooltip = bhu_feudal_unity_up
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.05
-			}
-			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-			}
+			custom_effect_tooltip = tooltip_white_line
 			remove_ideas = BHU_Zhabdrung_Aftermath2
 		}
 	}
 
 	focus = {
-		id = bhu_national_assembly
-		icon = GFX_goal_conspiracy
-		cost = 8
+		id = bhu_reconcile_with_the_monks
+		icon = GFX_SIA_buddhisttraditions
+		cost = 7
 
 		relative_position_id = bhu_end_revolution
-		x = -4
+		x = -1
 		y = 3
 
+		available = {
+			NOT = { has_country_flag = BHU_monk_relationship_ruined }
+		}
 		prerequisite = {
-			focus = bhu_meet_loyal_penlops
+			focus = bhu_deal_with_banditry
 		}
-		mutually_exclusive = {
-			focus = bhu_entrench_feudal_hierarchy
-		}
+
 		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_national_assembly"
-			custom_effect_tooltip = bhu_feudal_unity_up
-			hidden_effect = {
-				increase_bhu_feudal_unity = yes
+			log = "[GetLogRoot]: Focus Completed bhu_reconcile_with_the_monks"
+			add_popularity = {
+				ideology = national_populist
+				popularity = -0.03
 			}
-			country_event = { id = bhutan_events.52 days = 7 }
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.03
+			}
+			country_event = bhutan_events.924
+			custom_effect_tooltip = BHU_tt_reconciling_monks
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_reasserting_stability_ppgain }
+				swap_ideas = {
+					remove_idea = BHU_reasserting_stability_ppgain
+					add_idea = BHU_reasserting_stability_both
+				}
+			}
+			else = {
+				add_ideas = BHU_reasserting_stability_stability
+			}
+			hidden_effect = {
+				random = {
+					chance = 20
+					country_event = { id = bhutan_events.819 days = 325 }
+				}
+			}
 		}
 	}
 
 	focus = {
-		id = bhu_tsatong_tax
-		icon = GFX_focus_generic_self_management
-		cost = 8
+		id = bhu_unify_the_royal_cause
+		icon = GFX_goal_BHU_monarchy
+		cost = 7
 
 		relative_position_id = bhu_end_revolution
-		x = -4
+		x = 1
+		y = 3
+
+		prerequisite = {
+			focus = bhu_deal_with_banditry
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_unify_the_royal_cause"
+			increase_bhu_feudal_unity = yes
+			country_event = bhutan_events.927
+			custom_effect_tooltip = BHU_tt_reconciling_factions
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_reasserting_stability_stability }
+				swap_ideas = {
+					remove_idea = BHU_reasserting_stability_stability
+					add_idea = BHU_reasserting_stability_both
+				}
+			}
+			else = {
+				add_ideas = BHU_reasserting_stability_ppgain
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						OR = {
+							has_country_flag = BHU_jw_win
+							has_country_flag = BHU_st_win
+						}
+					}
+					country_event = { id = bhutan_events.933 days = 5 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_weave_the_web_of_oaths
+		icon = GFX_focus_generic_national_security
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = 0
 		y = 4
+
+		#available = {
+		#	absolute authority?
+		#}
+		prerequisite = {
+			focus = bhu_reconcile_with_the_monks
+		}
+		prerequisite = {
+			focus = bhu_unify_the_royal_cause
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_weave_the_web_of_oaths"
+			if = {
+				limit = { has_idea = BHU_feudal_7 }
+				set_temp_variable = { ideology_change_var = 0.07 }
+				change_ruling_party_popularity = yes
+			}
+			else = {
+				set_temp_variable = { BHU_feudal_unity_change = 3 }
+				increase_bhu_feudal_unity = yes
+				set_temp_variable = { ideology_change_var = 0.03 }
+				change_ruling_party_popularity = yes
+			}
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_reasserting_stability_both
+				add_idea = BHU_web_of_oaths
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_the_tightened_fist
+		icon = GFX_focus_rom_royal_dictatorship
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = 3
+		y = 1
 
 		available = {
 			OR = {
-				has_country_flag = BHU_st_win
 				has_country_flag = BHU_jw_win
+				has_country_flag = BHU_tp_win
 			}
 		}
 		prerequisite = {
-			focus = bhu_national_assembly
+			focus = bhu_end_revolution
+		}
+		mutually_exclusive = {
+			focus = bhu_the_open_palm
+		}
+		allow_branch = {
+			NOT = { has_country_flag = BHU_z_win }
 		}
 
-		ai_will_do = { factor = 25 }
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = BHU_path option = BHU_PATH_JIGME_AUTDEM }
+					has_game_rule = { rule = BHU_path option = BHU_PATH_DORJI_AUTDEM }
+				}
+			}
+		}
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_tsatong_tax"
-			custom_effect_tooltip = bhu_econ_dev_down
-			hidden_effect = {
-				decrease_bhu_econ_dev = yes
+			log = "[GetLogRoot]: Focus Completed bhu_the_tightened_fist"
+			add_timed_idea = {
+				idea = BHU_retribution_campaign
+				days = 75
 			}
-			add_ideas = BHU_Labour_Fruits
+			custom_effect_tooltip = tooltip_white_line
+			add_country_leader_trait = BHU_iron_dragon
 		}
 	}
 
 	focus = {
-		id = bhu_entrench_feudal_hierarchy
-		icon = GFX_focus_rom_royal_dictatorship
-		cost = 8
+		id = bhu_entrench_the_feudal_compact
+		icon = GFX_goal_tax_slave
+		cost = 6
 
 		relative_position_id = bhu_end_revolution
-		x = -2
-		y = 3
+		x = 4
+		y = 2
 
-		available = {
-			has_government = paternal_autocrat
-		}
 		prerequisite = {
-			focus = bhu_meet_loyal_penlops
-			focus = bhu_curtail_penlops
-		}
-		mutually_exclusive = {
-			focus = bhu_national_assembly
+			focus = bhu_the_tightened_fist
 		}
 
 		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_entrench_feudal_hierarchy"
-			custom_effect_tooltip = bhu_feudal_unity_upup
-			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-				increase_bhu_feudal_unity = yes
+			log = "[GetLogRoot]: Focus Completed bhu_entrench_the_feudal_compact"
+			country_event = { id = bhutan_events.938 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = {
+				BHU_corvee_cadre_amount = 1
+				tooltip = BHU_corvee_cadre_change_tooltip
 			}
-			add_stability = 0.05
-			add_political_power = 25
-			hidden_effect = {
-				country_event = { id = bhutan_events.119 days = 45 }
-			}
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = BHU_feudal_order_1
 		}
 	}
 
 	focus = {
-		id = bhu_unifying_king
-		icon = GFX_goal_generic_national_unity
-		cost = 8
+		id = bhu_perserve_the_social_order
+		icon = GFX_focus_SWI_neutrality_on_the_move
+		cost = 6
 
 		relative_position_id = bhu_end_revolution
-		x = -2
+		x = 4
 		y = 4
 
 		prerequisite = {
-			focus = bhu_national_assembly
-			focus = bhu_entrench_feudal_hierarchy
+			focus = bhu_entrench_the_feudal_compact
 		}
 
 		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_unifying_king"
-			custom_effect_tooltip = bhu_authority_unlocked
-			country_event = { id = bhutan_events.96 days = 14 }
-			hidden_effect = {
+			log = "[GetLogRoot]: Focus Completed bhu_perserve_the_social_order"
+			add_stability = 0.03
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = -0.03
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.03
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = -0.03
+			}
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_feudal_order_1
+				add_idea = BHU_feudal_order_2
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_curtail_wayward_penlops
+		icon = GFX_focus_generic_annex_country
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = 2
+		y = 2
+
+		prerequisite = {
+			focus = bhu_the_tightened_fist
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_curtail_wayward_penlops"
+			country_event = { id = bhutan_events.939 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { BHU_feudal_unity_change = 2 }
+			increase_bhu_feudal_unity = yes
+			add_political_power = 75
+			add_popularity = {
+				ideology = market_liberal
+				popularity = -0.07
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = -0.03
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_override_tooltip = {
+				tooltip = { localization_key = BHU_unlock_decisions TYPE = BHU_feudal_unity }
 				activate_targeted_decision = { target = THIS decision = BHU_Increase_King_Authority }
 				activate_targeted_decision = { target = THIS decision = BHU_Decrease_King_Authority }
-				increase_bhu_feudal_unity = yes
 			}
 		}
 	}
 
 	focus = {
-		id = bhu_new_civil_service
-		icon = GFX_goal_generic_national_unity
-		cost = 8
+		id = bhu_militant_court
+		icon = GFX_goal_generic_join_faction
+		cost = 7
 
 		relative_position_id = bhu_end_revolution
-		x = -5
-		y = 5
-
-		available = {
-			OR = {
-				has_country_flag = BHU_st_win
-				has_country_flag = BHU_jw_win
-			}
-		}
-		prerequisite = {
-			focus = bhu_unifying_king
-		}
-		mutually_exclusive = {
-			focus = bhu_create_military_school
-		}
-
-		ai_will_do = { factor = 75 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_new_civil_service"
-			custom_effect_tooltip = bhu_feudal_unity_up
-			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-			}
-			add_ideas = BHU_Reformed_Bureaucracy_1
-		}
-	}
-
-	focus = {
-		id = bhu_rein_in_bureaucracy
-		icon = GFX_goal_generic_controlled_board
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = -5
-		y = 6
+		x = 3
+		y = 3
 
 		prerequisite = {
-			focus = bhu_new_civil_service
+			focus = bhu_entrench_the_feudal_compact
+		}
+		prerequisite = {
+			focus = bhu_curtail_wayward_penlops
 		}
 
-		ai_will_do = { factor = 75 }
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_rein_in_bureaucracy"
-			custom_effect_tooltip = bhu_econ_dev_down
-			custom_effect_tooltip = bhu_feudal_unity_upup
-			add_stability = 0.05
+			log = "[GetLogRoot]: Focus Completed bhu_militant_court"
+			country_event = { id = bhutan_events.730 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { BHU_mil_invest_change = 2 }
+			increase_bhu_mil_invest = yes
+			army_experience = 25
+			add_war_support = 0.05
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_not_yet_hired_will_hire
+			show_ideas_tooltip = BHU_chimi_dorji_rabden_advisor
+			hidden_effect = { activate_advisor = BHU_chimi_dorji_rabden_advisor }
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = BHU_namgyal_bahadur_advisor
+			show_ideas_tooltip = BHU_zamadar_chencho_advisor
 			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-				increase_bhu_feudal_unity = yes
-				decrease_bhu_econ_dev = yes
-			}
-			swap_ideas = {
-				remove_idea = BHU_Reformed_Bureaucracy_1
-				add_idea = BHU_Reformed_Bureaucracy_2
+				if = {
+					limit = { has_country_flag = BHU_jw_win }
+					country_event = { id = bhutan_events.932 days = 5 }
+				}
 			}
 		}
 	}
 
 	focus = {
 		id = bhu_create_military_school
-		icon = GFX_focus_generic_military_academy
-		cost = 8
+		icon = GFX_goal_military_research
+		cost = 6
 
 		relative_position_id = bhu_end_revolution
-		x = -3
+		x = 3
 		y = 5
 
-		available = {
-			has_government = paternal_autocrat
-		}
 		prerequisite = {
-			focus = bhu_unifying_king
+			focus = bhu_militant_court
 		}
-		mutually_exclusive = {
-			focus = bhu_new_civil_service
-		}
-		ai_will_do = { factor = 75 }
+
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed bhu_create_military_school"
-			custom_effect_tooltip = bhu_mil_invest_upup
-			army_experience = 5
-			hidden_effect = {
-				increase_bhu_mil_invest = yes
-				increase_bhu_mil_invest = yes
+			add_research_slot_until_five = yes
+			custom_effect_tooltip = tooltip_white_line
+			add_doctrine_cost_reduction = {
+				name = bhu_create_military_school
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
 			}
-			add_ideas = BHU_Military_Edu_1
+			add_tech_bonus = {
+				name = bhu_create_military_school
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+				category = support_tech
+			}
 		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }
 	}
 
 	focus = {
-		id = bhu_protector_of_bhutan
-		icon = GFX_goal_generic_defence
-		cost = 8
+		id = bhu_gather_the_royal_riders
+		icon = GFX_focus_generic_horse_studs
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = 2
+		y = 4
+
+		prerequisite = {
+			focus = bhu_militant_court
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_gather_the_royal_riders"
+			increase_bhu_mil_invest = yes
+			army_experience = 25
+			custom_effect_tooltip = tooltip_white_line
+			BHU_spawn_cavalry_units = yes
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = BHU_royal_outriders
+		}
+	}
+
+	focus = {
+		id = bhu_the_open_palm
+		icon = GFX_focus_generic_concessions
+		cost = 5
 
 		relative_position_id = bhu_end_revolution
 		x = -3
-		y = 6
+		y = 1
 
-		prerequisite = {
-			focus = bhu_create_military_school
+		available = {
+			OR = {
+				has_country_flag = BHU_jw_win
+				has_country_flag = BHU_st_win
+			}
 		}
-		ai_will_do = { factor = 75 }
+		prerequisite = {
+			focus = bhu_end_revolution
+		}
+		mutually_exclusive = {
+			focus = bhu_the_tightened_fist
+		}
+		allow_branch = {
+			NOT = { has_country_flag = BHU_z_win }
+		}
+
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_protector_of_bhutan"
-			custom_effect_tooltip = bhu_feudal_unity_upup
-			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-				increase_bhu_feudal_unity = yes
+			log = "[GetLogRoot]: Focus Completed bhu_the_open_palm"
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.03
 			}
-			add_war_support = 0.05
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = national_populist
+				popularity = 0.03
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = BHU_reconciliation_campaign
+				days = 100
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_providing_rural_relief
+		icon = GFX_focus_PRC_rural_region_development
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -4
+		y = 2
+
+		prerequisite = {
+			focus = bhu_the_open_palm
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_providing_rural_relief"
+			country_event = { id = bhutan_events.938 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			add_tech_bonus = {
+				name = bhu_providing_rural_relief
+				bonus = 0.33
+				uses = 1
+				category = cat_production
+			}
+			add_tech_bonus = {
+				name = bhu_providing_rural_relief
+				bonus = 0.33
+				uses = 1
+				category = excavation_tech
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = BHU_lifting_the_boot
+				days = 365
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = BHU_rural_relief_1
+		}
+	}
+
+	focus = {
+		id = bhu_alleviate_tsatong_appropriations
+		icon = GFX_goal_LEP_subsidize_villages
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = -4
+		y = 4
+
+		prerequisite = {
+			focus = bhu_providing_rural_relief
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_alleviate_tsatong_appropriations"
+			country_event = { id = bhutan_events.940 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { BHU_econ_change = 2 }
+			increase_bhu_econ_dev = yes
+			decrease_bhu_feudal_unity = yes
+			custom_effect_tooltip = tooltip_white_line
 			swap_ideas = {
-				remove_idea = BHU_Military_Edu_1
-				add_idea = BHU_Military_Edu_2
+				remove_idea = BHU_rural_relief_1
+				add_idea = BHU_rural_relief_2
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_codify_customary_law
+		icon = GFX_goal_OTT_constitution
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -2
+		y = 2
+
+		prerequisite = {
+			focus = bhu_the_open_palm
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_codify_customary_law"
+			set_temp_variable = { BHU_feudal_unity_change = 2 }
+			increase_bhu_feudal_unity = yes
+			add_political_power = 75
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = BHU_reformist_project_law
+		}
+	}
+
+	focus = {
+		id = bhu_national_assembly
+		icon = GFX_goal_conspiracy
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = -2
+		y = 4
+
+		prerequisite = {
+			focus = bhu_codify_customary_law
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_national_assembly"
+			country_event = bhutan_events.928
+			custom_effect_tooltip = BHU_tt_national_assembly
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_reformist_project_law_civil }
+				swap_ideas = {
+					remove_idea = BHU_reformist_project_law_civil
+					add_idea = BHU_reformist_project_law_assembly_civil
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_reformist_project_law_civil_academy }
+				swap_ideas = {
+					remove_idea = BHU_reformist_project_law_civil_academy
+					add_idea = BHU_reformist_project_law_assembly_civil_academy
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = BHU_reformist_project_law
+					add_idea = BHU_reformist_project_law_assembly
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_new_civil_service
+		icon = GFX_focus_POL_complete_april_constitution
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -3
+		y = 3
+
+		prerequisite = {
+			focus = bhu_codify_customary_law
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_new_civil_service"
+			country_event = { id = bhutan_events.939 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			custom_override_tooltip = {
+				tooltip = { localization_key = BHU_unlock_decisions TYPE = BHU_feudal_unity }
+				activate_targeted_decision = { target = THIS decision = BHU_Increase_King_Authority }
+				activate_targeted_decision = { target = THIS decision = BHU_Decrease_King_Authority }
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_reformist_project_law_assembly }
+				swap_ideas = {
+					remove_idea = BHU_reformist_project_law_assembly
+					add_idea = BHU_reformist_project_law_assembly_civil
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = BHU_reformist_project_law
+					add_idea = BHU_reformist_project_law_civil
+				}
 			}
 		}
 	}
 
 	focus = {
 		id = bhu_punakha_academy
-		icon = GFX_goal_generic_scientific_exchange
-		cost = 8
+		icon = GFX_focus_generic_military_academy
+		cost = 6
 
 		relative_position_id = bhu_end_revolution
-		x = -4
-		y = 7
+		x = -3
+		y = 5
 
 		prerequisite = {
-			focus = bhu_rein_in_bureaucracy
-			focus = bhu_protector_of_bhutan
+			focus = bhu_new_civil_service
 		}
-		ai_will_do = { factor = 125 }
+
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed bhu_punakha_academy"
+			add_research_slot_until_five = yes
+			custom_effect_tooltip = tooltip_white_line
 			if = {
-				limit = { has_idea = BHU_Military_Edu_2 }
+				limit = { has_idea = BHU_reformist_project_law_assembly_civil }
 				swap_ideas = {
-					remove_idea = BHU_Military_Edu_2
-					add_idea = BHU_Military_Edu_3
-				}
-			}
-			else_if = {
-				limit = { has_idea = BHU_Reformed_Bureaucracy_2 }
-				swap_ideas = {
-					remove_idea = BHU_Reformed_Bureaucracy_2
-					add_idea = BHU_Reformed_Bureaucracy_3
+					remove_idea = BHU_reformist_project_law_assembly_civil
+					add_idea = BHU_reformist_project_law_assembly_civil_academy
 				}
 			}
 			else = {
-				custom_effect_tooltip = {
-					localization_key = tooltip_if_focus_completed
-					FOCUS = bhu_rein_in_bureaucracy
-				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = BHU_Reformed_Bureaucracy_2
-						add_idea = BHU_Reformed_Bureaucracy_3
-					}
-				}
-				custom_effect_tooltip = {
-					localization_key = tooltip_if_focus_completed
-					FOCUS = bhu_protector_of_bhutan
-				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = BHU_Military_Edu_2
-						add_idea = BHU_Military_Edu_3
-					}
+				swap_ideas = {
+					remove_idea = BHU_reformist_project_law_civil
+					add_idea = BHU_reformist_project_law_civil_academy
 				}
 			}
-			add_research_slot_until_five = yes
-			hidden_effect = {
-				country_event = { id = bhutan_events.127 days = 75 }
-			}
 		}
 	}
 
 	focus = {
-		id = bhu_establish_planning_commission
-		icon = GFX_goal_production
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = -1
-		y = 5
-
-		available = {
-			OR = {
-				has_country_flag = BHU_st_win
-				has_country_flag = BHU_jw_win
-			}
-		}
-		prerequisite = {
-			focus = bhu_unifying_king
-		}
-		mutually_exclusive = {
-			focus = bhu_decentralisation
-		}
-
-		ai_will_do = { factor = 75 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_establish_planning_commission"
-			custom_effect_tooltip = bhu_econ_dev_upupup
-			custom_effect_tooltip = bhu_econ_reform_unlocked
-			hidden_effect = {
-				increase_bhu_econ_dev = yes
-				increase_bhu_econ_dev = yes
-				increase_bhu_econ_dev = yes
-				activate_targeted_decision = { target = THIS decision = BHU_Increase_Central_Econ_Development }
-				activate_targeted_decision = { target = THIS decision = BHU_Decrease_Central_Econ_Development }
-			}
-			add_ideas = BHU_Centralised_Economy_1
-		}
-	}
-
-	focus = {
-		id = bhu_streamline_administration
-		icon = GFX_goal_constitutional_guarantees
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = -1
-		y = 6
-
-		prerequisite = {
-			focus = bhu_establish_planning_commission
-		}
-
-		ai_will_do = { factor = 100 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_streamline_administration"
-			custom_effect_tooltip = bhu_econ_dev_up
-			hidden_effect = {
-				increase_bhu_econ_dev = yes
-			}
-			swap_ideas = {
-				remove_idea = BHU_Centralised_Economy_1
-				add_idea = BHU_Centralised_Economy_2
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_decentralisation
-		icon = GFX_goal_LEP_subsidize_villages
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 1
-		y = 5
-
-		available = {
-			has_dictatorship_government = yes
-		}
-		prerequisite = {
-			focus = bhu_unifying_king
-			focus = bhu_monastic_primacy
-		}
-		mutually_exclusive = {
-			focus = bhu_establish_planning_commission
-		}
-
-		ai_will_do = { factor = 75 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_decentralisation"
-			custom_effect_tooltip = bhu_feudal_unity_down
-			custom_effect_tooltip = bhu_econ_dev_up
-			custom_effect_tooltip = bhu_econ_reform_unlocked
-			hidden_effect = {
-				decrease_bhu_feudal_unity = yes
-				increase_bhu_econ_dev = yes
-				activate_targeted_decision = { target = THIS decision = BHU_Increase_Regional_Econ_Development }
-				activate_targeted_decision = { target = THIS decision = BHU_Decrease_Regional_Econ_Development }
-			}
-			add_ideas = BHU_Regional_Taxation_1
-		}
-	}
-
-	focus = {
-		id = bhu_increase_serfs
-		icon = GFX_goal_tax_slave
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 1
-		y = 6
-
-		prerequisite = {
-			focus = bhu_decentralisation
-		}
-
-		ai_will_do = { factor = 100 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_increase_serfs"
-			custom_effect_tooltip = bhu_econ_dev_up
-			hidden_effect = {
-				increase_bhu_econ_dev = yes
-			}
-			swap_ideas = {
-				remove_idea = BHU_Regional_Taxation_1
-				add_idea = BHU_Regional_Taxation_2
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_beginnings_of_industry
-		icon = GFX_goal_generic_railway_construction
-		cost = 8
+		id = bhu_eliminate_the_royals
+		icon = GFX_goal_crush_monarchy
+		cost = 5
 
 		relative_position_id = bhu_end_revolution
 		x = 0
-		y = 7
-
-		prerequisite = {
-			focus = bhu_streamline_administration
-			focus = bhu_increase_serfs
-		}
-
-		ai_will_do = { factor = 100 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_beginnings_of_industry"
-			custom_effect_tooltip = bhu_industry_unlocked
-			324 = { increase_state_category_by_one_level = yes }
-			hidden_effect = {
-				country_event = { id = bhutan_events.127 days = 75 }
-				activate_targeted_decision = { target = THIS decision = BHU_Industry_Expansion_1 }
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_solidify_new_regime
-		icon = GFX_goal_Centralised_Government
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 2
 		y = 1
 
 		available = {
-			OR = {
-				has_country_flag = BHU_tp_win
-				has_country_flag = BHU_z_win
-			}
+			has_government = paternal_autocrat
 		}
 		prerequisite = {
 			focus = bhu_end_revolution
 		}
+		allow_branch = {
+			has_country_flag = BHU_z_win
+		}
 
 		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_solidify_new_regime"
-			custom_effect_tooltip = bhu_feudal_unity_upup
-			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-				increase_bhu_feudal_unity = yes
+			log = "[GetLogRoot]: Focus Completed bhu_eliminate_the_royals"
+			country_event = { id = bhutan_events.939 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_royal_resistance_base
+				add_idea = BHU_royal_resistance_postfocus
 			}
-			remove_ideas = BHU_Zhabdrung_Aftermath2
+			activate_targeted_decision = { target = THIS decision = BHU_deal_with_royalist_governors }
+			activate_targeted_decision = { target = THIS decision = BHU_undercut_popular_wangchuck_support }
 		}
 	}
 
 	focus = {
-		id = bhu_curtail_penlops
-		icon = GFX_goal_step_on_skull
-		cost = 8
+		id = bhu_bind_intransigent_elders
+		icon = GFX_focus_CHI_connections_with_shanghai_elites
+		cost = 7
 
 		relative_position_id = bhu_end_revolution
-		x = 3
+		x = -3
+		y = 1
+
+		available = {
+			has_government = paternal_autocrat
+		}
+		prerequisite = {
+			focus = bhu_end_revolution
+		}
+		allow_branch = {
+			has_country_flag = BHU_z_win
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_bind_intransigent_elders"
+			set_temp_variable = { coalition_partner_var = token:social_conservative }
+			add_to_coalition = yes
+			add_popularity = {
+				ideology = social_conservative
+				popularity = -0.03
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = BHU_choekyi_wangchuck_advisor
+			hidden_effect = {
+				random = {
+					chance = 40
+					country_event = { id = bhutan_events.819 days = 325 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_deal_with_opportunists
+		icon = GFX_goal_secret_agents
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -1
 		y = 2
 
 		prerequisite = {
-			focus = bhu_solidify_new_regime
+			focus = bhu_bind_intransigent_elders
 		}
 
 		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_curtail_penlops"
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = -0.15
-			}
-			add_political_power = 75
-		}
-	}
-
-	focus = {
-		id = bhu_raid_our_neighbours
-		icon = GFX_focus_generic_support_the_left_right
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 4
-		y = 3
-
-		prerequisite = {
-			focus = bhu_curtail_penlops
-		}
-
-		ai_will_do = { factor = 50 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_raid_our_neighbours"
-			custom_effect_tooltip = bhu_raiding_unlocked
-			add_ideas = BHU_Mighty_Fruits1
-			hidden_effect = {
-				activate_targeted_decision = { target = NEP decision = BHU_Raid_Nepal }
-				activate_targeted_decision = { target = TIB decision = BHU_Raid_Tibet }
-				activate_targeted_decision = { target = HND decision = BHU_Raid_India }
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_assembling_raiders
-		icon = GFX_focus_generic_little_entente
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 4
-		y = 4
-
-		available = {
-			has_country_flag = BHU_tp_win
-		}
-		prerequisite = {
-			focus = bhu_raid_our_neighbours
-		}
-		ai_will_do = { factor = 50 }
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_assembling_raiders"
-			custom_effect_tooltip = bhu_mil_invest_upup
-			add_manpower = 500
-			add_ideas = BHU_Bhutan_Raiders
-			hidden_effect = {
-				increase_bhu_mil_invest = yes
-				increase_bhu_mil_invest = yes
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_kangyur_tengyur
-		icon = GFX_goal_OTT_constitution
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 2
-		y = 3
-
-		available = {
-			has_country_flag = BHU_z_win
-		}
-		prerequisite = {
-			focus = bhu_curtail_penlops
-		}
-		ai_will_do = { factor = 100 }
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_kangyur_tengyur"
-			add_popularity = {
-				ideology = national_populist
-				popularity = 0.05
-			}
-			add_ideas = BHU_Buddhist_Edu_1
-		}
-	}
-
-	focus = {
-		id = bhu_monastic_primacy
-		icon = GFX_TIB_army_focus
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 2
-		y = 4
-
-		prerequisite = {
-			focus = bhu_kangyur_tengyur
-		}
-		ai_will_do = { factor = 100 }
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_monastic_primacy"
-			custom_effect_tooltip = bhu_feudal_unity_up
-			custom_effect_tooltip = bhu_authority_unlocked
-			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-			}
-			swap_ideas = {
-				remove_idea = BHU_Monastic_Control
-				add_idea = BHU_Monastic_Primacy1
-			}
-			add_popularity = {
-				ideology = radical_socialist
-				popularity = -0.03
-			}
+			log = "[GetLogRoot]: Focus Completed bhu_deal_with_opportunists"
+			country_event = { id = bhutan_events.938 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
 			add_popularity = {
 				ideology = social_democrat
 				popularity = -0.03
@@ -914,112 +1748,207 @@ focus_tree = {
 				ideology = social_liberal
 				popularity = -0.03
 			}
+			add_popularity = {
+				ideology = national_populist
+				popularity = 0.03
+			}
+			custom_effect_tooltip = tooltip_white_line
+			remove_ideas = BHU_Zhabdrung_Aftermath2
+		}
+	}
+
+	focus = {
+		id = bhu_reel_in_the_radicals
+		icon = GFX_goal_RUS_solidify_power
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -3
+		y = 2
+
+		available = {
+			NOT = { has_country_flag = BHU_radical_relationship_ruined }
+		}
+		prerequisite = {
+			focus = bhu_bind_intransigent_elders
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_reel_in_the_radicals"
+			add_political_power = -50
+			custom_effect_tooltip = BHU_tt_reeling_in_radicals
 			hidden_effect = {
-				country_event = { id = bhutan_events.115 days = 70 }
+				set_temp_variable = { BHU_new_natpop = BHU.party_popularity_100@national_populist }
+				divide_temp_variable = { BHU_new_natpop = 2 }
+
+				set_temp_variable = { BHU_new_pataut = BHU.party_popularity_100@paternal_autocrat }
+				add_to_temp_variable = { BHU_new_pataut = BHU_new_natpop }
+
+				set_temp_variable = { sum = 100 }
+				subtract_from_temp_variable = { sum = party_popularity_100@totalist }
+				subtract_from_temp_variable = { sum = party_popularity_100@syndicalist }
+				subtract_from_temp_variable = { sum = party_popularity_100@radical_socialist }
+				subtract_from_temp_variable = { sum = party_popularity_100@social_democrat }
+				subtract_from_temp_variable = { sum = party_popularity_100@social_liberal }
+				subtract_from_temp_variable = { sum = party_popularity_100@market_liberal }
+				subtract_from_temp_variable = { sum = party_popularity_100@social_conservative }
+				subtract_from_temp_variable = { sum = party_popularity_100@authoritarian_democrat }
+				subtract_from_temp_variable = { sum = BHU_new_pataut }
+				subtract_from_temp_variable = { sum = BHU_new_natpop }
+
+				add_to_temp_variable = { BHU_new_pataut = sum } #avoid rounding errors
+
+				set_popularities = {
+					totalist = party_popularity_100@totalist
+					syndicalist = party_popularity_100@syndicalist
+					radical_socialist = party_popularity_100@radical_socialist
+					social_democrat = party_popularity_100@social_democrat
+					social_liberal = party_popularity_100@social_liberal
+					market_liberal = party_popularity_100@market_liberal
+					social_conservative = party_popularity_100@social_conservative
+					authoritarian_democrat = party_popularity_100@authoritarian_democrat
+					paternal_autocrat = BHU_new_pataut
+					national_populist = BHU_new_natpop
+				}
+				set_country_flag = BHU_radicals_reeled
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_where_faith_governs
+		icon = GFX_TIB_army_focus
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = 3
+		y = 1
+
+		available = {
+			has_government = paternal_autocrat
+		}
+		prerequisite = {
+			focus = bhu_end_revolution
+		}
+		allow_branch = {
+			has_country_flag = BHU_z_win
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_where_faith_governs"
+			country_event = { id = bhutan_events.930 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_monastic_control
+				add_idea = BHU_monastic_primacy_1
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_exalt_buddhist_canon
+		icon = GFX_goal_OTT_constitution
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = 3
+		y = 2
+
+		prerequisite = {
+			focus = bhu_where_faith_governs
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_exalt_buddhist_canon"
+			add_stability = 0.075
+			add_tech_bonus = {
+				name = bhu_exalt_buddhist_canon
+				bonus = 0.25
+				uses = 1
+				category = cat_production
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_buddhist_edu_college }
+				swap_ideas = {
+					remove_idea = BHU_buddhist_edu_college
+					add_idea = BHU_buddhist_edu_canon_college
+				}
+			}
+			else = {
+				add_ideas = BHU_buddhist_edu_canon
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_reform_tsa_yig
+		icon = GFX_goal_MON_Follow_Buddhist_Principles
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = 1
+		y = 2
+
+		prerequisite = {
+			focus = bhu_where_faith_governs
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_reform_tsa_yig"
+			increase_bhu_feudal_unity = yes
+			add_political_power = 75
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_monastic_primacy_1
+				add_idea = BHU_monastic_primacy_2
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_confirm_clerical_authority
+		icon = GFX_goal_ANQ_centralization
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = 0
+		y = 3
+
+		prerequisite = {
+			focus = bhu_eliminate_the_royals
+		}
+		prerequisite = {
+			focus = bhu_reform_tsa_yig
+		}
+		prerequisite = {
+			focus = bhu_deal_with_opportunists
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_confirm_clerical_authority"
+			country_event = { id = bhutan_events.730 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			custom_override_tooltip = {
+				tooltip = { localization_key = BHU_unlock_decisions TYPE = BHU_feudal_unity }
 				activate_targeted_decision = { target = THIS decision = BHU_Increase_Mon_Authority }
 				activate_targeted_decision = { target = THIS decision = BHU_Decrease_Mon_Authority }
 			}
-		}
-	}
-
-	focus = {
-		id = bhu_purge_impurities
-		icon = GFX_goal_purge_opposition
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 3
-		y = 5
-
-		available = {
-			has_country_flag = BHU_z_win
-		}
-		prerequisite = {
-			focus = bhu_monastic_primacy
-		}
-		mutually_exclusive = {
-			focus = bhu_moderate_our_message
-		}
-		ai_will_do = { factor = 25 }
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_purge_impurities"
-			custom_effect_tooltip = bhu_feudal_unity_down
-			hidden_effect = {
-				decrease_bhu_feudal_unity = yes
-				activate_targeted_decision = { target = THIS decision = BHU_End_Great_Purge }
-			}
-			add_ideas = BHU_Great_Purge
-			hidden_effect = {
-				country_event = { id = bhutan_events.113 days = 65 }
-				country_event = { id = bhutan_events.114 days = 95 }
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_moderate_our_message
-		icon = GFX_focus_generic_self_management
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 5
-		y = 5
-
-		available = {
-			has_country_flag = BHU_z_win
-		}
-		prerequisite = {
-			focus = bhu_monastic_primacy
-		}
-		mutually_exclusive = {
-			focus = bhu_purge_impurities
-		}
-		ai_will_do = { factor = 75 }
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_moderate_our_message"
-			custom_effect_tooltip = BHU_paternal_autocrat_coalition_tooltip
-			hidden_effect = {
-				set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
-				add_to_coalition = yes
-				set_variable = { BHU.coalition_stability = 0.5 }
-			}
-			add_popularity = {
-				ideology = paternal_autocrat
-				popularity = 0.1
-			}
-			hidden_effect = {
-				country_event = { id = bhutan_events.111 days = 65 }
-				country_event = { id = bhutan_events.112 days = 95 }
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_monastic_welfare
-		icon = GFX_focus_generic_concessions
-		cost = 8
-
-		relative_position_id = bhu_end_revolution
-		x = 3
-		y = 6
-
-		available = {
-			has_country_flag = BHU_z_win
-		}
-		prerequisite = {
-			focus = bhu_moderate_our_message
-			focus = bhu_purge_impurities
-		}
-		ai_will_do = { factor = 100 }
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_monastic_welfare"
-			add_popularity = {
-				ideology = national_populist
-				popularity = 0.05
-			}
+			increase_bhu_feudal_unity = yes
+			custom_effect_tooltip = tooltip_white_line
 			swap_ideas = {
-				remove_idea = BHU_Monastic_Primacy1
-				add_idea = BHU_Monastic_Primacy2
+				remove_idea = BHU_monastic_primacy_2
+				add_idea = BHU_monastic_primacy_3
 			}
 		}
 	}
@@ -1027,126 +1956,255 @@ focus_tree = {
 	focus = {
 		id = bhu_fund_monastic_schools
 		icon = GFX_SIA_buddhisttraditions
-		cost = 8
+		cost = 6
 
 		relative_position_id = bhu_end_revolution
-		x = 5
-		y = 6
+		x = -1
+		y = 4
 
-		available = {
-			has_country_flag = BHU_z_win
-		}
 		prerequisite = {
-			focus = bhu_moderate_our_message
-			focus = bhu_purge_impurities
+			focus = bhu_confirm_clerical_authority
 		}
+
 		ai_will_do = { factor = 100 }
+
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed bhu_fund_monastic_schools"
 			add_research_slot_until_five = yes
-			swap_ideas = {
-				remove_idea = BHU_Buddhist_Edu_1
-				add_idea = BHU_Buddhist_Edu_2
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_buddhist_edu_canon }
+				swap_ideas = {
+					remove_idea = BHU_buddhist_edu_canon
+					add_idea = BHU_buddhist_edu_canon_college
+				}
+			}
+			else = {
+				add_ideas = BHU_buddhist_edu_college
 			}
 		}
 	}
 
 	focus = {
-		id = bhu_revise_dual_system
-		icon = GFX_goal_XSM_promoting_buddhism
-		cost = 8
+		id = bhu_welfare_through_the_monasteries
+		icon = GFX_focus_generic_concessions
+		cost = 6
 
 		relative_position_id = bhu_end_revolution
-		x = 4
-		y = 7
+		x = 1
+		y = 4
 
-		available = {
-			has_country_flag = BHU_z_win
-		}
 		prerequisite = {
-			focus = bhu_monastic_welfare
+			focus = bhu_confirm_clerical_authority
 		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_welfare_through_the_monasteries"
+			country_event = { id = bhutan_events.931 days = 5 }
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_monastic_primacy_3
+				add_idea = BHU_monastic_primacy_4
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_the_diarchy_rejuvenated
+		icon = GFX_goal_XSM_promoting_buddhism
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = 0
+		y = 5
+
 		prerequisite = {
 			focus = bhu_fund_monastic_schools
 		}
-		ai_will_do = { factor = 150 }
+		prerequisite = {
+			focus = bhu_welfare_through_the_monasteries
+		}
+
+		ai_will_do = { factor = 100 }
+
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_revise_dual_system"
-			custom_effect_tooltip = bhu_feudal_unity_upup
-			add_political_power = 75
-			hidden_effect = {
-				increase_bhu_feudal_unity = yes
-				increase_bhu_feudal_unity = yes
-			}
-			add_ideas = BHU_Lama_Legacy
+			log = "[GetLogRoot]: Focus Completed bhu_the_diarchy_rejuvenated"
+			increase_bhu_feudal_unity = yes
+			country_event = bhutan_events.944
+			custom_effect_tooltip = tooltip_white_line
 			swap_ideas = {
-				remove_idea = BHU_Monastic_Primacy2
-				add_idea = BHU_Monastic_Primacy3
+				remove_idea = BHU_monastic_primacy_4
+				add_idea = BHU_monastic_primacy_5
 			}
 		}
 	}
 
-	### Military ###
-
 	focus = {
-		id = bhu_address_military
-		icon = GFX_goal_BHU_Bhutan_Army
-		cost = 8
+		id = bhu_standardise_weights_and_measures
+		icon = GFX_goal_generic_stable_government
+		cost = 6
 
-		x = 16
-		y = 0
-
-		available = {
-			has_country_flag = BHU_stabilized
-			OR = {
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
-
-		ai_will_do = { factor = 25 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_address_military"
-			custom_effect_tooltip = bhu_mil_invest_up
-			army_experience = 10
-			add_ideas = BHU_defence_effort1
-			hidden_effect = {
-				increase_bhu_mil_invest = yes
-			}
-		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }
-	}
-
-	focus = {
-		id = bhu_using_terrain
-		icon = GFX_focus_GRE_a_land_of_mountains
-		cost = 8
-
-		relative_position_id = bhu_address_military
-		x = 1
+		relative_position_id = bhu_end_revolution
+		x = -9
 		y = 1
 
 		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_moderate_central_authority
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
 			}
 		}
 		prerequisite = {
-			focus = bhu_address_military
+			focus = bhu_end_revolution
 		}
 
-		ai_will_do = { factor = 25 }
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_using_terrain"
-			swap_ideas = {
-				remove_idea = BHU_defence_effort1
-				add_idea = BHU_defence_effort2
+			log = "[GetLogRoot]: Focus Completed bhu_standardise_weights_and_measures"
+			activate_targeted_decision = { target = THIS decision = BHU_open_the_marketplaces }
+			activate_targeted_decision = { target = THIS decision = BHU_compel_labour }
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = BHU_building_self_sufficiency_0
+		}
+	}
+
+	focus = {
+		id = bhu_stamp_our_own_coins
+		icon = GFX_Goal_YUN_The_Mountain_Economy
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = -12
+		y = 2
+
+		prerequisite = {
+			focus = bhu_standardise_weights_and_measures
+		}
+
+		available = {
+			NOT = { has_idea = BHU_military_funding_priority }
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_stamp_our_own_coins"
+			activate_targeted_decision = { target = THIS decision = BHU_circulate_foreign_coinage }
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = BHU_importing_coins
+				days = 200
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = after_idea_expires
+			effect_tooltip = { add_ideas = BHU_nascent_market_economy_1 }
+			if = {
+				limit = {
+					has_country_flag = BHU_tp_win
+					NOT = {
+						has_completed_focus = bhu_recruit_mountain_guides
+						has_completed_focus = bhu_dust_off_stockpiles
+						has_completed_focus = bhu_establish_muster_rolls
+						has_completed_focus = bhu_next_generation_leaders
+					}
+				}
+				hidden_effect = {
+					country_event = bhutan_events.942
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_dzongs_for_a_new_age
+		icon = GFX_goal_QIE_baoding
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -8
+		y = 2
+
+		prerequisite = {
+			focus = bhu_standardise_weights_and_measures
+		}
+
+		available = {
+			NOT = { has_idea = BHU_military_funding_priority }
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_dzongs_for_a_new_age"
+			if = {
+				limit = { NOT = { has_country_flag = BHU_z_win } }
+				activate_targeted_decision = { target = THIS decision = BHU_renovate_punakha }
+			}
+			if = {
+				limit = { has_idea = BHU_mountain_fortress_mountainguides }
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_mountainguides
+					add_idea = BHU_mountain_fortress_dzongs_mountainguides
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_mountain_fortress_mountainguides_lords }
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_mountainguides_lords
+					add_idea = BHU_mountain_fortress_dzongs_mountainguides_lords
+				}
+			}
+			else = {
+				add_ideas = BHU_mountain_fortress_dzongs
+				custom_effect_tooltip = tooltip_white_line
+			}
+			country_event = bhutan_events.922
+			custom_effect_tooltip = BHU_tt_renovating_dzongs
+			custom_effect_tooltip = BHU_tt_renovating_dzongs_administrative
+			effect_tooltip = {
+				add_stability = 0.05
+			}
+			custom_effect_tooltip = BHU_tt_renovating_dzongs_defensive
+			effect_tooltip = {
+				324 = {
+					custom_override_tooltip = {
+						add_building_construction = {
+							type = bunker
+							level = 1
+							province = 8010
+							instant_build = yes
+						}
+						tooltip = {
+							localization_key = tooltip_add_building_on_victory_point
+							BUILDING = bunker
+							NUMBER = 1
+							VP = 8010
+						}
+					}
+				}
+				add_war_support = 0.03
+			}
+			if = {
+				limit = {
+					has_country_flag = BHU_tp_win
+					NOT = {
+						has_completed_focus = bhu_recruit_mountain_guides
+						has_completed_focus = bhu_dust_off_stockpiles
+						has_completed_focus = bhu_establish_muster_rolls
+						has_completed_focus = bhu_next_generation_leaders
+					}
+				}
+				hidden_effect = {
+					country_event = bhutan_events.942
+				}
 			}
 		}
 	}
@@ -1154,25 +2212,21 @@ focus_tree = {
 	focus = {
 		id = bhu_fortify_key_passes
 		icon = GFX_goal_generic_construction2
-		cost = 8
+		cost = 5
 
-		relative_position_id = bhu_address_military
-		x = 2
-		y = 2
+		relative_position_id = bhu_end_revolution
+		x = -9
+		y = 3
+
+		prerequisite = {
+			focus = bhu_dzongs_for_a_new_age
+		}
 
 		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
-		prerequisite = {
-			focus = bhu_using_terrain
+			NOT = { has_idea = BHU_military_funding_priority }
 		}
 
-		ai_will_do = { factor = 25 }
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed bhu_fortify_key_passes"
@@ -1180,488 +2234,1493 @@ focus_tree = {
 				custom_override_tooltip = {
 					add_building_construction = {
 						type = bunker
-						province = {
-							all_provinces = yes
-						}
 						level = 1
+						province = 8010
 						instant_build = yes
 					}
 					tooltip = {
-						localization_key = tooltip_add_building_on_all_provinces
+						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = bunker
 						NUMBER = 1
+						VP = 8010
 					}
 				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 12860
+					instant_build = yes
+				}
 			}
-			swap_ideas = {
-				remove_idea = BHU_defence_effort2
-				add_idea = BHU_defence_effort3
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_mountain_fortress_dzongs_mountainguides }
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_dzongs_mountainguides
+					add_idea = BHU_mountain_fortress_dzongs_keypasses_mountainguides
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_mountain_fortress_dzongs_mountainguides_lords }
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_dzongs_mountainguides_lords
+					add_idea = BHU_mountain_fortress_dzongs_keypasses_mountainguides_lords
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_dzongs
+					add_idea = BHU_mountain_fortress_dzongs_keypasses
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_completed_focus = bhu_the_tightened_fist }
+					country_event = { id = bhutan_events.822 days = 25 }
+				}
 			}
 		}
 	}
 
 	focus = {
-		id = bhu_mountain_guides
-		icon = GFX_focus_RAJ_indian_gurkhas
-		cost = 8
+		id = bhu_introduce_crop_rotation
+		icon = GFX_goal_DEI_focus_ban_rice_import
+		cost = 5
 
-		relative_position_id = bhu_address_military
-		x = 2
+		relative_position_id = bhu_end_revolution
+		x = -5
+		y = 3
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_moderate_econ
+				OR = {
+					has_idea = BHU_economy_2
+					has_idea = BHU_economy_3
+					has_idea = BHU_economy_4
+					has_idea = BHU_economy_5
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
+			}
+			NOT = { has_idea = BHU_military_funding_priority }
+		}
+		prerequisite = {
+			focus = bhu_exploit_our_natural_resources
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_introduce_crop_rotation"
+			324 = { increase_state_category_by_one_level = yes }
+			add_stability = 0.075
+		}
+	}
+
+	focus = {
+		id = bhu_introduce_new_building_techniques
+		icon = GFX_goal_generic_construction
+		cost = 3
+
+		relative_position_id = bhu_end_revolution
+		x = -7
+		y = 3
+
+		available = {
+			NOT = { has_idea = BHU_military_funding_priority }
+		}
+		prerequisite = {
+			focus = bhu_dzongs_for_a_new_age
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_introduce_new_building_techniques"
+			if = {
+				limit = {
+					OR = {
+						BHU_tshering_penjor = { is_political_advisor = yes }
+						BHU_tshering_penjor = { is_country_leader = yes }
+					}
+				}
+				custom_effect_tooltip = BHU_tt_architects_tp
+				custom_effect_tooltip = tooltip_white_line
+				add_tech_bonus = {
+					name = bhu_introduce_new_building_techniques
+					bonus = 0.25
+					uses = 2
+					category = construction_tech
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_timed_idea = {
+					idea = BHU_new_building_tech_improved
+					days = 200
+				}
+			}
+			else_if = {
+				limit = {
+					BHU_tsham_go_seb = { is_political_advisor = yes }
+				}
+				custom_effect_tooltip = BHU_tt_architects_tgs
+				custom_effect_tooltip = tooltip_white_line
+				add_tech_bonus = {
+					name = bhu_introduce_new_building_techniques
+					bonus = 0.25
+					uses = 2
+					category = construction_tech
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_timed_idea = {
+					idea = BHU_new_building_tech_improved
+					days = 200
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = bhu_introduce_new_building_techniques
+					bonus = 0.25
+					uses = 1
+					category = construction_tech
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_timed_idea = {
+					idea = BHU_new_building_tech
+					days = 150
+				}
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = BHU_tt_architects
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_build_new_workshops
+		icon = GFX_focus_generic_industry_2
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = -7
+		y = 5
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_moderate_econ
+				OR = {
+					has_idea = BHU_economy_2
+					has_idea = BHU_economy_3
+					has_idea = BHU_economy_4
+					has_idea = BHU_economy_5
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
+			}
+		}
+		prerequisite = {
+			focus = bhu_hew_the_forests
+		}
+		prerequisite = {
+			focus = bhu_introduce_new_building_techniques
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_build_new_workshops"
+			custom_effect_tooltip = BHU_tt_workshops_focus
+			hidden_effect = {
+				activate_targeted_decision = { target = THIS decision = BHU_import_machine_tools }
+				activate_targeted_decision = { target = THIS decision = BHU_steal_blueprints }
+				activate_targeted_decision = { target = THIS decision = BHU_build_water_mills }
+				increase_bhu_econ_self_sufficiency = yes
+			}
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = BHU_building_self_sufficiency_0
+					add_idea = BHU_building_self_sufficiency_1
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_exploit_our_natural_resources
+		icon = GFX_goal_generic_coal_mining
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -6
+		y = 2
+
+		prerequisite = {
+			focus = bhu_standardise_weights_and_measures
+		}
+
+		available = {
+			NOT = { has_idea = BHU_military_funding_priority }
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_exploit_our_natural_resources"
+			custom_effect_tooltip = BHU_tt_exploit_resources_focus
+			hidden_effect = {
+				activate_targeted_decision = { target = THIS decision = BHU_local_iron_development }
+				activate_targeted_decision = { target = THIS decision = BHU_dagana_sarpang_coal_mines }
+				activate_targeted_decision = { target = THIS decision = BHU_dholpani_bhurkhola_tungsten_mines }
+				increase_bhu_econ_self_sufficiency = yes
+			}
+			324 = {
+				add_resource = {
+					type = steel
+					amount = 1
+				}
+				add_resource = {
+					type = coal
+					amount = 1
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = BHU_building_self_sufficiency_0
+					add_idea = BHU_building_self_sufficiency_1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = BHU_tp_win
+					NOT = {
+						has_completed_focus = bhu_recruit_mountain_guides
+						has_completed_focus = bhu_dust_off_stockpiles
+						has_completed_focus = bhu_establish_muster_rolls
+						has_completed_focus = bhu_next_generation_leaders
+					}
+				}
+				hidden_effect = {
+					country_event = bhutan_events.942
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_hew_the_forests
+		icon = GFX_goal_generic_forestry
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = -6
+		y = 4
+
+		prerequisite = {
+			focus = bhu_exploit_our_natural_resources
+		}
+
+		available = {
+			NOT = { has_idea = BHU_military_funding_priority }
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_hew_the_forests"
+			subtract_from_variable = { BHU_industry_remove_cost_1 = 25 }
+			subtract_from_variable = { BHU_industry_remove_cost_2 = 25 }
+			subtract_from_variable = { BHU_industry_remove_cost_3 = 25 }
+			add_tech_bonus = {
+				name = bhu_hew_the_forests
+				bonus = 0.5
+				uses = 1
+				category = excavation_tech
+			}
+			custom_effect_tooltip = BHU_tt_hew_the_forests
+			custom_effect_tooltip = tooltip_white_line
+			hidden_effect = {
+				increase_bhu_econ_self_sufficiency = yes
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = BHU_building_self_sufficiency_0
+					add_idea = BHU_building_self_sufficiency_1
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_country_flag = BHU_z_win }
+					country_event = { id = bhutan_events.821 days = 20 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_lay_down_lateral_road
+		icon = GFX_focus_generic_mining_industry
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -10
+		y = 2
+
+		prerequisite = {
+			focus = bhu_standardise_weights_and_measures
+		}
+
+		available = {
+			NOT = { has_idea = BHU_military_funding_priority }
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_lay_down_lateral_road"
+			custom_effect_tooltip = BHU_tt_lateral_road_focus
+			hidden_effect = {
+				activate_targeted_decision = { target = THIS decision = BHU_lateral_road_start }
+				activate_targeted_decision = { target = THIS decision = BHU_lateral_road_east }
+				activate_targeted_decision = { target = THIS decision = BHU_lateral_road_west }
+				increase_bhu_econ_self_sufficiency = yes
+			}
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = BHU_building_self_sufficiency_0
+					add_idea = BHU_building_self_sufficiency_1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = BHU_tp_win
+					NOT = {
+						has_completed_focus = bhu_recruit_mountain_guides
+						has_completed_focus = bhu_dust_off_stockpiles
+						has_completed_focus = bhu_establish_muster_rolls
+						has_completed_focus = bhu_next_generation_leaders
+					}
+				}
+				hidden_effect = {
+					country_event = bhutan_events.942
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_revitalise_trade_routes
+		icon = GFX_goal_AST_new_markets
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -11
+		y = 3
+
+		available = {
+			has_idea = BHU_nascent_market_economy_1
+			NOT = { has_idea = BHU_military_funding_priority }
+		}
+
+		prerequisite = {
+			focus = bhu_lay_down_lateral_road
+		}
+		prerequisite = {
+			focus = bhu_stamp_our_own_coins
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_revitalise_trade_routes"
+			add_political_power = 25
+			custom_override_tooltip = {
+				tooltip = { localization_key = BHU_unlock_decisions TYPE = BHU_econ_dev }
+				activate_targeted_decision = { target = THIS decision = BHU_Increase_Econ_Development }
+				activate_targeted_decision = { target = THIS decision = BHU_Decrease_Econ_Development }
+			}
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_nascent_market_economy_1
+				add_idea = BHU_nascent_market_economy_2
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_completed_focus = bhu_the_open_palm }
+					country_event = { id = bhutan_events.820 days = 45 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_smuggle_foreign_arms
+		icon = GFX_goal_Arms_Export
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = -12
+		y = 4
+
+		prerequisite = {
+			focus = bhu_revitalise_trade_routes
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_smuggle_foreign_arms"
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 25
+				producer = GER
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 5
+				producer = RUS
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 5
+				producer = RAJ
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = BHU_tt_smuggling_focus
+			hidden_effect = {
+				activate_targeted_decision = { target = THIS decision = BHU_china_smuggling_decision }
+				activate_targeted_decision = { target = THIS decision = BHU_china_smuggling_bribe }
+				activate_targeted_decision = { target = THIS decision = BHU_china_smuggling_strengthen }
+				activate_targeted_decision = { target = THIS decision = BHU_india_smuggling_decision }
+				activate_targeted_decision = { target = THIS decision = BHU_india_smuggling_bribe }
+				activate_targeted_decision = { target = THIS decision = BHU_india_smuggling_strengthen }
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_monopolise_salt_imports
+		icon = GFX_goal_capitalist_system
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = -10
 		y = 4
 
 		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_adequate_or_extensive_econ
+				OR = {
+					has_idea = BHU_economy_4
+					has_idea = BHU_economy_5
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
 			}
 		}
 		prerequisite = {
 			focus = bhu_fortify_key_passes
 		}
+		prerequisite = {
+			focus = bhu_revitalise_trade_routes
+		}
 
-		ai_will_do = { factor = 25 }
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_mountain_guides"
-			add_tech_bonus = {
-				name = bhu_mountain_guides
-				bonus = 1
-				uses = 1
-				category = mountaineers_tech
-			}
+			log = "[GetLogRoot]: Focus Completed bhu_monopolise_salt_imports"
 			swap_ideas = {
-				remove_idea = BHU_defence_effort3
-				add_idea = BHU_defence_effort4
+				remove_idea = BHU_nascent_market_economy_2
+				add_idea = BHU_nascent_market_economy_3
 			}
 		}
 	}
 
 	focus = {
-		id = bhu_new_weapons
-		icon = GFX_focus_generic_military_equipment
-		cost = 8
+		id = bhu_import_foreign_machinery
+		icon = GFX_focus_generic_improve_roads
+		cost = 6
 
-		relative_position_id = bhu_address_military
-		x = -1
+		relative_position_id = bhu_end_revolution
+		x = -11
+		y = 5
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_moderate_econ
+				OR = {
+					has_idea = BHU_economy_2
+					has_idea = BHU_economy_3
+					has_idea = BHU_economy_4
+					has_idea = BHU_economy_5
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
+			}
+		}
+		prerequisite = {
+			focus = bhu_revitalise_trade_routes
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_import_foreign_machinery"
+			if = {
+				limit = { NOT = { has_tech = tech_trucks } }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_tech
+						TECH = motorized_equipment_0
+					}
+					set_technology = { tech_trucks = 1 }
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 20
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = bhu_import_foreign_machinery
+					bonus = 0.5
+					uses = 1
+					category = motorized_equipment
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment_0
+					amount = 25
+				}
+			}
+			if = {
+				limit = { NOT = { has_tech = basic_train } }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_tech
+						TECH = basic_train
+					}
+					set_technology = { basic_train = 1 }
+				}
+				add_equipment_to_stockpile = {
+					type = train_equipment
+					amount = 5
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = bhu_import_foreign_machinery
+					bonus = 0.5
+					uses = 1
+					category = train_tech
+				}
+				add_equipment_to_stockpile = {
+					type = train_equipment
+					amount = 5
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = BHU_dreams_of_modernity_1
+		}
+	}
+
+	focus = {
+		id = bhu_harnessing_the_dragon
+		icon = GFX_goal_SZC_dujiangyan_irrigation_system
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = -9
+		y = 6
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_adequate_or_extensive_econ
+				OR = {
+					has_idea = BHU_economy_4
+					has_idea = BHU_economy_5
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
+			}
+		}
+		prerequisite = {
+			focus = bhu_import_foreign_machinery
+		}
+		prerequisite = {
+			focus = bhu_build_new_workshops
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_harnessing_the_dragon"
+			add_tech_bonus = {
+				name = bhu_harnessing_the_dragon
+				bonus = 0.75
+				uses = 3
+				category = industry
+			}
+			add_stability = 0.05
+			set_temp_variable = { ideology_change_var = 0.05 }
+			change_ruling_party_popularity = yes
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_dreams_of_modernity_1
+				add_idea = BHU_dreams_of_modernity_2
+			}
+			add_timed_idea = {
+				idea = BHU_building_chukha_hydroelectric
+				days = 4500
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = after_idea_expires
+			effect_tooltip = {
+				324 = {
+					if = {
+						limit = { dam > 0 }
+						increase_state_category_by_one_level = yes
+					}
+					else = {
+						add_extra_state_shared_building_slots = 1
+						custom_override_tooltip = {
+							add_building_construction = {
+								type = dam
+								level = 1
+								province = 8010
+								instant_build = yes
+							}
+							tooltip = {
+								localization_key = tooltip_add_building_on_victory_point
+								BUILDING = dam
+								NUMBER = 1
+								VP = 8010
+							}
+						}
+					}
+					prioritize_state = yes
+				}
+				if = {
+					limit = { 324 = { dam < 1 } } #separate due to tooltip indentation
+					custom_effect_tooltip = {
+						localization_key = building_state_modifier|dam
+						INDENT = "    "
+					}
+					custom_effect_tooltip = tooltip_white_line
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_bowstring_to_gunshot
+		icon = GFX_focus_ETH_freedom_at_gunpoint
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = 9
 		y = 1
 
 		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_moderate_central_authority
+				OR = {
+					has_idea = BHU_feudal_5
+					has_idea = BHU_feudal_6
+					has_idea = BHU_feudal_7
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
 			}
 		}
 		prerequisite = {
-			focus = bhu_address_military
+			focus = bhu_end_revolution
 		}
 
-		ai_will_do = { factor = 25 }
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_new_weapons"
+			log = "[GetLogRoot]: Focus Completed bhu_bowstring_to_gunshot"
 			add_tech_bonus = {
-				name = bhu_new_weapons
-				bonus = 0.5
-				uses = 2
-				category = infantry_weapons
-			}
-			add_ideas = BHU_Domestic_Guns
-		}
-	}
-
-	focus = {
-		id = bhu_study_foreign_arms
-		icon = GFX_goal_Arms_Export
-		cost = 8
-
-		relative_position_id = bhu_address_military
-		x = -2
-		y = 2
-
-		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
-		prerequisite = {
-			focus = bhu_new_weapons
-		}
-
-		ai_will_do = { factor = 25 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_study_foreign_arms"
-			custom_effect_tooltip = bhu_smuggling_unlocked
-			add_tech_bonus = {
-				name = bhu_study_foreign_arms
-				bonus = 0.5
-				uses = 1
-				category = infantry_weapons
-			}
-			hidden_effect = {
-				activate_targeted_decision = { target = THIS decision = BHU_smuggle_infantry_equipment }
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-
-	focus = {
-		id = bhu_invest_in_soldiers
-		icon = GFX_goal_generic_allies_build_infantry
-		cost = 8
-
-		relative_position_id = bhu_address_military
-		x = -2
-		y = 4
-
-		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
-		prerequisite = {
-			focus = bhu_study_foreign_arms
-		}
-
-		ai_will_do = { factor = 25 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_invest_in_soldiers"
-			custom_effect_tooltip = bhu_mil_invest_upup
-			hidden_effect = {
-				increase_bhu_mil_invest = yes
-				increase_bhu_mil_invest = yes
-			}
-			add_tech_bonus = {
-				name = bhu_invest_in_soldiers
+				name = bhu_bowstring_to_gunshot
 				bonus = 1
 				uses = 1
-				category = support_tech
+				category = infantry_weapons
+			}
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_what_officers
+				add_idea = BHU_what_officers_2
 			}
 		}
 	}
 
 	focus = {
-		id = bhu_create_national_doctrine
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		cost = 8
+		id = bhu_next_generation_leaders
+		icon = GFX_goal_LEP_patronize_xiangshen
+		cost = 6
 
-		relative_position_id = bhu_address_military
-		x = 0
+		relative_position_id = bhu_end_revolution
+		x = 6
 		y = 2
 
-		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
 		prerequisite = {
-			focus = bhu_address_military
+			focus = bhu_bowstring_to_gunshot
 		}
 
-		ai_will_do = { factor = 50 }
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_create_national_doctrine"
-			add_doctrine_cost_reduction = {
-				name = bhu_create_national_doctrine
-				cost_reduction = 0.5
-				uses = 2
-				category = land_doctrine
+			log = "[GetLogRoot]: Focus Completed bhu_next_generation_leaders"
+
+			custom_effect_tooltip = tooltip_white_line
+			army_experience = 25
+			custom_effect_tooltip = CA_available_military_advisor_tt
+			show_ideas_tooltip = BHU_pedma_chandra_army_chief
+			show_ideas_tooltip = BHU_thinley_namgyel_high_command
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_what_officers_2
+				add_idea = BHU_modernising_the_military
+			}
+			if = {
+				limit = {
+					has_idea = BHU_military_funding_priority
+					has_completed_focus = bhu_recruit_mountain_guides
+					has_completed_focus = bhu_dust_off_stockpiles
+					has_completed_focus = bhu_establish_muster_rolls
+				}
+				remove_ideas = BHU_military_funding_priority
 			}
 		}
 	}
 
 	focus = {
 		id = bhu_noble_officers
-		icon = GFX_focus_RAJ_indian_gentlemen_offcers
-		cost = 8
+		icon = GFX_focus_URG_turmoil_of_paso_morlan
+		cost = 6
 
-		relative_position_id = bhu_address_military
-		x = -1
+		relative_position_id = bhu_end_revolution
+		x = 5
 		y = 3
 
-		available = {
-			OR = {
-				has_country_flag = BHU_tp_win
-				has_country_flag = BHU_jw_win
-				has_country_flag = BHU_st_win
-			}
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
 		prerequisite = {
-			focus = bhu_create_national_doctrine
+			focus = bhu_next_generation_leaders
 		}
 		mutually_exclusive = {
-			focus = bhu_promote_regional_leaders
-		}
-
-		ai_will_do = { factor = 75 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_noble_officers"
-			custom_effect_tooltip = bhu_mil_invest_up
-			custom_effect_tooltip = bhu_mil_invest_unlocked
-			army_experience = 25
-			hidden_effect = {
-				increase_bhu_mil_invest = yes
-				country_event = { id = bhutan_events.66 days = 35 }
-				activate_targeted_decision = { target = THIS decision = BHU_Increase_Prof_Military_Investment }
-				activate_targeted_decision = { target = THIS decision = BHU_Decrease_Prof_Military_Investment }
-			}
-			add_ideas = BHU_army_military_1
-		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }
-	}
-
-	focus = {
-		id = bhu_promote_regional_leaders
-		icon = GFX_goal_generic_civilian_oversight
-		cost = 8
-
-		relative_position_id = bhu_address_military
-		x = 1
-		y = 3
-
-		available = {
-			OR = {
-				has_country_flag = BHU_st_win
-				has_country_flag = BHU_jw_win
-				has_country_flag = BHU_z_win
-			}
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
-		prerequisite = {
-			focus = bhu_create_national_doctrine
-		}
-		mutually_exclusive = {
-			focus = bhu_noble_officers
-		}
-
-		ai_will_do = { factor = 75 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_promote_regional_leaders"
-			custom_effect_tooltip = bhu_mil_invest_unlocked
-			army_experience = 15
-			add_war_support = 0.05
-			set_temp_variable = { ideology_change_var = 0.05 }
-			change_ruling_party_popularity = yes
-			add_ideas = BHU_militia_military_1
-			hidden_effect = {
-				activate_targeted_decision = { target = THIS decision = BHU_Increase_Local_Military_Investment }
-				activate_targeted_decision = { target = THIS decision = BHU_Decrease_Local_Military_Investment }
-			}
-		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }
-	}
-
-	focus = {
-		id = bhu_every_family_son
-		icon = GFX_goal_generic_army_cooperation
-		cost = 8
-
-		relative_position_id = bhu_address_military
-		x = 0
-		y = 4
-
-		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
-		prerequisite = {
-			focus = bhu_noble_officers
-			focus = bhu_promote_regional_leaders
-		}
-
-		ai_will_do = { factor = 75 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_every_family_son"
-			add_manpower = 2000
-		}
-	}
-
-	focus = {
-		id = bhu_specialized_units
-		icon = GFX_focus_generic_combined_arms
-		cost = 8
-
-		relative_position_id = bhu_address_military
-		x = -1
-		y = 5
-
-		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
-		prerequisite = {
-			focus = bhu_noble_officers
-		}
-		prerequisite = {
-			focus = bhu_invest_in_soldiers
-		}
-
-		ai_will_do = { factor = 75 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_specialized_units"
-			add_tech_bonus = {
-				name = bhu_specialized_units
-				bonus = 0.5
-				uses = 1
-				category = infantry_weapons
-			}
-			swap_ideas = {
-				remove_idea = BHU_army_military_1
-				add_idea = BHU_army_military_2
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_reorganise_militia_structure
-		icon = GFX_goal_generic_army_training
-		cost = 8
-
-		relative_position_id = bhu_address_military
-		x = 1
-		y = 5
-
-		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
-		prerequisite = {
-			focus = bhu_promote_regional_leaders
-		}
-		prerequisite = {
-			focus = bhu_mountain_guides
-		}
-
-		ai_will_do = { factor = 75 }
-
-		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_reorganise_militia_structure"
-			custom_effect_tooltip = bhu_mil_invest_up
-			add_manpower = 500
-			hidden_effect = {
-				increase_bhu_mil_invest = yes
-			}
-			swap_ideas = {
-				remove_idea = BHU_militia_military_1
-				add_idea = BHU_militia_military_2
-			}
-		}
-	}
-
-	focus = {
-		id = bhu_finish_mil_reform
-		icon = GFX_goal_army_guy_2
-		cost = 8
-
-		relative_position_id = bhu_address_military
-		x = 0
-		y = 6
-
-		available = {
-			OR = {
-				has_idea = BHU_feudal_4
-				has_idea = BHU_feudal_5
-				has_idea = BHU_feudal_6
-				has_idea = BHU_feudal_7
-			}
-		}
-		prerequisite = {
-			focus = bhu_specialized_units
-			focus = bhu_reorganise_militia_structure
+			focus = bhu_meritocratic_approach
 		}
 
 		ai_will_do = { factor = 100 }
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed bhu_finish_mil_reform"
-			custom_effect_tooltip = bhu_mil_invest_up
-			if = {
-				limit = { has_idea = BHU_militia_military_2 }
-				swap_ideas = {
-					remove_idea = BHU_militia_military_2
-					add_idea = BHU_militia_military_3
-				}
+			log = "[GetLogRoot]: Focus Completed bhu_noble_officers"
+			custom_effect_tooltip = CA_available_military_advisor_tt
+			show_ideas_tooltip = BHU_namgyal_bahadur_high_command
+			show_ideas_tooltip = BHU_zamadar_chencho_high_command
+			show_ideas_tooltip = BHU_chimi_dorji_rabden_high_command
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_modernising_the_military
+				add_idea = BHU_modernising_the_military_noble
 			}
-			else_if = {
-				limit = { has_idea = BHU_army_military_2 }
-				swap_ideas = {
-					remove_idea = BHU_army_military_2
-					add_idea = BHU_army_military_3
-				}
+		}
+	}
+
+	focus = {
+		id = bhu_meritocratic_approach
+		icon = GFX_goal_generic_army_training
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = 7
+		y = 3
+
+		prerequisite = {
+			focus = bhu_next_generation_leaders
+		}
+		mutually_exclusive = {
+			focus = bhu_noble_officers
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_meritocratic_approach"
+			add_stability = -0.05
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_modernising_the_military
+				add_idea = BHU_modernising_the_military_merit
 			}
-			else = {
-				custom_effect_tooltip = {
-					localization_key = tooltip_if_focus_completed
-					FOCUS = bhu_specialized_units
-				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = BHU_army_military_2
-						add_idea = BHU_army_military_3
-					}
-				}
-				custom_effect_tooltip = {
-					localization_key = tooltip_if_focus_completed
-					FOCUS = bhu_reorganise_militia_structure
-				}
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = BHU_militia_military_2
-						add_idea = BHU_militia_military_3
-					}
-				}
-			}
+		}
+	}
+
+	focus = {
+		id = bhu_study_distant_doctrines
+		icon = GFX_goal_generic_army_grand_battleplan
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = 6
+		y = 4
+
+		prerequisite = {
+			focus = bhu_noble_officers
+			focus = bhu_meritocratic_approach
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_study_distant_doctrines"
+			army_experience = 25
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = available_theorist
+			show_ideas_tooltip = BHU_royal_army_council_theorist
+			custom_effect_tooltip = tooltip_white_line
 			add_doctrine_cost_reduction = {
-				name = bhu_finish_mil_reform
-				cost_reduction = 0.5
+				name = bhu_study_distant_doctrines
+				cost_reduction = 1
 				uses = 1
 				category = land_doctrine
 			}
-			activate_targeted_decision = { target = NEP decision = BHU_Confront_Nepal }
+		}
+	}
+
+	focus = {
+		id = bhu_establish_muster_rolls
+		icon = GFX_goal_agrarian_soldiers
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = 8
+		y = 2
+
+		prerequisite = {
+			focus = bhu_bowstring_to_gunshot
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_establish_muster_rolls"
+			activate_targeted_decision = { target = THIS decision = BHU_sword_to_plowshares }
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = BHU_village_musters_1
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = {
+					has_idea = BHU_military_funding_priority
+					has_completed_focus = bhu_recruit_mountain_guides
+					has_completed_focus = bhu_dust_off_stockpiles
+					has_completed_focus = bhu_next_generation_leaders
+				}
+				remove_ideas = BHU_military_funding_priority
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_marshalling_our_men
+		icon = GFX_focus_CHI_meritocratic_principles
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = 8
+		y = 4
+
+		prerequisite = {
+			focus = bhu_establish_muster_rolls
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_marshalling_our_men"
+			add_manpower = 750
+			custom_effect_tooltip = tooltip_white_line
+			country_event = bhutan_events.915
+			custom_effect_tooltip = BHU_tt_herding_cats_explanation
+		}
+	}
+
+	focus = {
+		id = bhu_lessons_in_logistics
+		icon = GFX_goal_generic_support_equipment
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = 7
+		y = 5
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_moderate_mil
+				OR = {
+					has_idea = BHU_military_2
+					has_idea = BHU_military_3
+					has_idea = BHU_military_4
+					has_idea = BHU_military_5
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
+			}
+		}
+		prerequisite = {
+			focus = bhu_study_distant_doctrines
+		}
+		prerequisite = {
+			focus = bhu_marshalling_our_men
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_lessons_in_logistics"
+			add_tech_bonus = {
+				name = bhu_lessons_in_logistics
+				uses = 1
+				bonus = 1
+				category = logistics_tech
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_specialists_and_auxiliaries_capture_recon }
+				swap_ideas = {
+					remove_idea = BHU_specialists_and_auxiliaries_capture_recon
+					add_idea = BHU_specialists_and_auxiliaries_complete
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_specialists_and_auxiliaries_recon }
+				swap_ideas = {
+					remove_idea = BHU_specialists_and_auxiliaries_recon
+					add_idea = BHU_specialists_and_auxiliaries_recon_logistics
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_specialists_and_auxiliaries_capture }
+				swap_ideas = {
+					remove_idea = BHU_specialists_and_auxiliaries_capture
+					add_idea = BHU_specialists_and_auxiliaries_capture_logistics
+				}
+			}
+			else = {
+				add_ideas = BHU_specialists_and_auxiliaries_logistics
+				custom_effect_tooltip = tooltip_white_line
+			}
+			custom_effect_tooltip = BHU_tt_sikkim_operation_logistics
 			hidden_effect = {
-				increase_bhu_mil_invest = yes
+				if = {
+					limit = {
+						controls_state = 888
+						has_completed_focus = bhu_arms_by_necessity
+						has_completed_focus = bhu_use_every_advantage
+					}
+					country_event = { id = bhutan_events.705 days = 15 }
+				}
+				else_if = {
+					limit = {
+						has_completed_focus = bhu_arms_by_necessity
+						has_completed_focus = bhu_use_every_advantage
+						NOT = { NEP = { has_government = authoritarian_democrat } }
+					}
+					country_event = { id = bhutan_events.700 days = 15 }
+				}
+
+				else_if = {
+					limit = {
+						has_completed_focus = bhu_arms_by_necessity
+						has_completed_focus = bhu_use_every_advantage
+						NEP = { has_government = authoritarian_democrat }
+					}
+					country_event = { id = bhutan_events.701 days = 15 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_dust_off_stockpiles
+		icon = GFX_goal_generic_machine_guns
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = 10
+		y = 2
+
+		prerequisite = {
+			focus = bhu_bowstring_to_gunshot
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_dust_off_stockpiles"
+			activate_targeted_decision = { target = THIS decision = BHU_promote_zamadar_chencho }
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 30
+				producer = BHU
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = BHU_cherish_our_rifles
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = {
+					has_idea = BHU_military_funding_priority
+					has_completed_focus = bhu_recruit_mountain_guides
+					has_completed_focus = bhu_establish_muster_rolls
+					has_completed_focus = bhu_next_generation_leaders
+				}
+				remove_ideas = BHU_military_funding_priority
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_arms_by_necessity
+		icon = GFX_focus_FIN_motti_tactics
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = 9
+		y = 3
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_moderate_mil
+				OR = {
+					has_idea = BHU_military_2
+					has_idea = BHU_military_3
+					has_idea = BHU_military_4
+					has_idea = BHU_military_5
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
+			}
+		}
+		prerequisite = {
+			focus = bhu_dust_off_stockpiles
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_arms_by_necessity"
+			add_tech_bonus = {
+				name = bhu_arms_by_necessity
+				bonus = 0.75
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				name = bhu_arms_by_necessity
+				bonus = 0.75
+				uses = 1
+				category = support_tech
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_specialists_and_auxiliaries_recon_logistics }
+				swap_ideas = {
+					remove_idea = BHU_specialists_and_auxiliaries_recon_logistics
+					add_idea = BHU_specialists_and_auxiliaries_complete
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_specialists_and_auxiliaries_logistics }
+				swap_ideas = {
+					remove_idea = BHU_specialists_and_auxiliaries_logistics
+					add_idea = BHU_specialists_and_auxiliaries_capture_logistics
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_specialists_and_auxiliaries_recon }
+				swap_ideas = {
+					remove_idea = BHU_specialists_and_auxiliaries_recon
+					add_idea = BHU_specialists_and_auxiliaries_capture_recon
+				}
+			}
+			else = {
+				add_ideas = BHU_specialists_and_auxiliaries_capture
+				custom_effect_tooltip = tooltip_white_line
+			}
+			custom_effect_tooltip = BHU_tt_sikkim_operation_necessity
+			hidden_effect = {
+				if = {
+					limit = {
+						controls_state = 888
+						has_completed_focus = bhu_lessons_in_logistics
+						has_completed_focus = bhu_use_every_advantage
+					}
+					country_event = { id = bhutan_events.705 days = 15 }
+				}
+				else_if = {
+					limit = {
+						has_completed_focus = bhu_lessons_in_logistics
+						has_completed_focus = bhu_use_every_advantage
+						NOT = { NEP = { has_government = authoritarian_democrat } }
+					}
+					country_event = { id = bhutan_events.700 days = 15 }
+				}
+
+				else_if = {
+					limit = {
+						has_completed_focus = bhu_lessons_in_logistics
+						has_completed_focus = bhu_use_every_advantage
+						NEP = { has_government = authoritarian_democrat }
+					}
+					country_event = { id = bhutan_events.701 days = 15 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_equipping_specialised_units
+		icon = GFX_focus_generic_military_equipment
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = 11
+		y = 3
+
+		prerequisite = {
+			focus = bhu_dust_off_stockpiles
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_equipping_specialised_units"
+			custom_override_tooltip = {
+				tooltip = { localization_key = BHU_unlock_decisions TYPE = BHU_mil_invest }
+				activate_targeted_decision = { target = THIS decision = BHU_Increase_Military_Investment }
+				activate_targeted_decision = { target = THIS decision = BHU_Decrease_Military_Investment }
+			}
+			custom_effect_tooltip = tooltip_white_line
+			swap_ideas = {
+				remove_idea = BHU_cherish_our_rifles
+				add_idea = BHU_cherish_our_rifles_support
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_recruit_mountain_guides
+		icon = GFX_focus_RAJ_indian_gurkhas
+		cost = 5
+
+		relative_position_id = bhu_end_revolution
+		x = 12
+		y = 2
+
+		prerequisite = {
+			focus = bhu_bowstring_to_gunshot
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_recruit_mountain_guides"
+			if = {
+				limit = { has_dlc_aat = yes }
+				if = {
+					limit = {
+						OR = {
+							has_doctrine = mountaineers_1
+							has_doctrine = mountaineers_2
+						}
+					}
+					add_mastery_bonus = {
+						name = bhu_recruit_mountain_guides
+						bonus = 0.1
+						days = 365
+						sub_doctrine = mountaineers_1
+					}
+					add_mastery_bonus = {
+						name = bhu_recruit_mountain_guides
+						bonus = 0.1
+						days = 365
+						sub_doctrine = mountaineers_2
+					}
+				}
+				else = {
+					add_doctrine_cost_reduction = {
+						name = bhu_recruit_mountain_guides
+						cost_reduction = 0.5
+						uses = 1
+						category = special_forces_doctrine
+					}
+				}
+				add_tech_bonus = {
+					name = bhu_recruit_mountain_guides
+					bonus = 0.5
+					uses = 1
+					category = mountaineers_tech
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = bhu_recruit_mountain_guides
+					bonus = 1.5
+					uses = 1
+					category = mountaineers_tech
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_mountain_fortress_dzongs }
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_dzongs
+					add_idea = BHU_mountain_fortress_dzongs_mountainguides
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_mountain_fortress_dzongs_keypasses }
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_dzongs_keypasses
+					add_idea = BHU_mountain_fortress_dzongs_keypasses_mountainguides
+				}
+			}
+			else = {
+				add_ideas = BHU_mountain_fortress_mountainguides
+				custom_effect_tooltip = tooltip_white_line
+			}
+			if = {
+				limit = {
+					has_idea = BHU_military_funding_priority
+					has_completed_focus = bhu_dust_off_stockpiles
+					has_completed_focus = bhu_establish_muster_rolls
+					has_completed_focus = bhu_next_generation_leaders
+				}
+				remove_ideas = BHU_military_funding_priority
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_lords_of_the_passes
+		icon = GFX_goal_generic_mountain_warfare2
+		cost = 6
+
+		relative_position_id = bhu_end_revolution
+		x = 12
+		y = 4
+
+		available = {
+			has_tech = tech_mountaineers
+		}
+		prerequisite = {
+			focus = bhu_recruit_mountain_guides
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_lords_of_the_passes"
+			custom_effect_tooltip = BHU_tt_lords_of_the_passes
+			custom_effect_tooltip = tech_effect|tech_mountain_warfare
+			hidden_effect = { enable_tech_mountain_warfare = yes }
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_mountain_fortress_dzongs_mountainguides }
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_dzongs_mountainguides
+					add_idea = BHU_mountain_fortress_dzongs_mountainguides_lords
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_mountain_fortress_dzongs_keypasses_mountainguides }
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_dzongs_keypasses_mountainguides
+					add_idea = BHU_mountain_fortress_dzongs_keypasses_mountainguides_lords
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = BHU_mountain_fortress_mountainguides
+					add_idea = BHU_mountain_fortress_mountainguides_lords
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_use_every_advantage
+		icon = GFX_goal_generic_recon
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = 11
+		y = 5
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_moderate_mil
+				OR = {
+					has_idea = BHU_military_2
+					has_idea = BHU_military_3
+					has_idea = BHU_military_4
+					has_idea = BHU_military_5
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
+			}
+		}
+		prerequisite = {
+			focus = bhu_lords_of_the_passes
+		}
+		prerequisite = {
+			focus = bhu_equipping_specialised_units
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_use_every_advantage"
+			add_tech_bonus = {
+				name = bhu_use_every_advantage
+				uses = 1
+				bonus = 1
+				category = recon_tech
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_idea = BHU_specialists_and_auxiliaries_capture_logistics }
+				swap_ideas = {
+					remove_idea = BHU_specialists_and_auxiliaries_capture_logistics
+					add_idea = BHU_specialists_and_auxiliaries_complete
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_specialists_and_auxiliaries_logistics }
+				swap_ideas = {
+					remove_idea = BHU_specialists_and_auxiliaries_logistics
+					add_idea = BHU_specialists_and_auxiliaries_recon_logistics
+				}
+			}
+			else_if = {
+				limit = { has_idea = BHU_specialists_and_auxiliaries_capture }
+				swap_ideas = {
+					remove_idea = BHU_specialists_and_auxiliaries_capture
+					add_idea = BHU_specialists_and_auxiliaries_capture_recon
+				}
+			}
+			else = {
+				add_ideas = BHU_specialists_and_auxiliaries_recon
+				custom_effect_tooltip = tooltip_white_line
+			}
+			custom_effect_tooltip = BHU_tt_sikkim_operation_advantage
+			hidden_effect = {
+				if = {
+					limit = {
+						controls_state = 888
+						has_completed_focus = bhu_lessons_in_logistics
+						has_completed_focus = bhu_arms_by_necessity
+					}
+					country_event = { id = bhutan_events.705 days = 15 }
+				}
+				else_if = {
+					limit = {
+						has_completed_focus = bhu_lessons_in_logistics
+						has_completed_focus = bhu_arms_by_necessity
+						NOT = { NEP = { has_government = authoritarian_democrat } }
+					}
+					country_event = { id = bhutan_events.700 days = 15 }
+				}
+
+				else_if = {
+					limit = {
+						has_completed_focus = bhu_lessons_in_logistics
+						has_completed_focus = bhu_arms_by_necessity
+						NEP = { has_government = authoritarian_democrat }
+					}
+					country_event = { id = bhutan_events.701 days = 15 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = bhu_a_force_apart
+		icon = GFX_goal_BHU_Bhutan_Army
+		cost = 7
+
+		relative_position_id = bhu_end_revolution
+		x = 9
+		y = 6
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_has_adequate_or_extensive_mil
+				OR = {
+					has_idea = BHU_military_4
+					has_idea = BHU_military_5
+					has_idea = BHU_hermit_kingdom_fully_reformed
+				}
+			}
+		}
+		prerequisite = {
+			focus = bhu_lessons_in_logistics
+		}
+		prerequisite = {
+			focus = bhu_use_every_advantage
+		}
+		prerequisite = {
+			focus = bhu_arms_by_necessity
+		}
+
+		ai_will_do = { factor = 100 }
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed bhu_a_force_apart"
+			custom_effect_tooltip = BHU_tt_military_reforms_complete
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = BHU_tt_military_reforms_complete_noble
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = BHU_military_reforms_complete_noble_tooltip
+					add_idea = BHU_military_reforms_complete_noble
+				}
+			}
+			custom_effect_tooltip = BHU_tt_military_reforms_complete_merit
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = BHU_military_reforms_complete_merit_tooltip
+					add_idea = BHU_military_reforms_complete_merit
+				}
+			}
+			custom_effect_tooltip = BHU_tt_attack_tibet_and_nepal_decisions
+			activate_targeted_decision = { target = TIB decision = BHU_attack_tibet }
+			activate_targeted_decision = { target = NEP decision = BHU_attack_nepal }
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							state = 888 #Sikkim
+							state = 322 #Lhasa
+						}
+						NOT = { is_claimed_by = ROOT }
+					}
+					add_claim_of_ROOT = yes
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 888 #Sikkim
+							state = 322 #Lhasa
+						}
+						NOT = { is_core_of = ROOT }
+					}
+					enable_state_integration_50_compliance = yes
+				}
+				if = {
+					limit = { has_idea = BHU_modernising_the_military_noble }
+					remove_ideas = BHU_modernising_the_military_noble
+					remove_ideas = BHU_cherish_our_rifles_support
+					remove_ideas = BHU_specialists_and_auxiliaries_complete
+					add_ideas = BHU_military_reforms_complete_noble
+				}
+				else = {
+					remove_ideas = BHU_modernising_the_military_merit
+					remove_ideas = BHU_cherish_our_rifles_support
+					remove_ideas = BHU_specialists_and_auxiliaries_complete
+					add_ideas = BHU_military_reforms_complete_merit
+				}
 			}
 		}
 	}

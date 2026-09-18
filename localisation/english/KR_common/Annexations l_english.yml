@@ -235,7 +235,6 @@
  annexation_events.asia.give_to_indonesia: "[indonesia.GetGrantTerritoryEventOption]"
  annexation_events.asia.give_to_malaysia: "[malaysia.GetGrantTerritoryEventOption]"
 
- annexation_events.asia.give_to_owner_of_sind: "[sind.GetGrantTerritoryEventOption]"
  annexation_events.asia.give_to_owner_of_bihar: "[bihar.GetGrantTerritoryEventOption]"
  annexation_events.asia.give_to_owner_of_bombay: "[bombay.GetGrantTerritoryEventOption]"
  annexation_events.asia.give_to_owner_of_madura: "[madura.GetGrantTerritoryEventOption]"
@@ -388,14 +387,16 @@
 
  annexation_59: "The Fate of North Germany"
  annexation_59_desc: "Before the Prussians dominated Europe, they subjugated Germany, and before they subjugated Germany, they started with the North German Federation. Now [Root.GetNameDef] has stripped even Northern Germany away, and it is up to [Root.GetNameDef] to determine what will become of the Lower Saxon lands. We could create a puppet state based in Hamburg or Brunswick, relocating the centre of German political life westward for the first time in centuries. Alternatively, we could decide to favour one of our other German allied states, possibly bolstering their legitimacy and power to reunite Germany themselves one day. Can we afford to take the chance? Or for the security of Europe, must our soldiers occupy North Germany for the foreseeable future?"
- annexation_events.1004.a: "Release a North German state."
+ annexation_events.1004.a: "Release a North German Monarchy."
+ annexation_events.1004.b: "Release a North German Republic."
 
  annexation_782: "The Fate of [782.GetName]"
  annexation_782_desc: "One of the first victims of Prussian imperialism was the Danish-speaking province of [782.GetName]. It was in the aftermath of the Second Schleswig War in the 1860s that Prussia was able to dominate Germany from a war that started around their base in the region, and although Denmark and Germany have been allies in the century since it has remained a sore point for the local population that they are ruled by foreigners. However, sometimes diplomatic and military necessity override obscure matters of linguistic history, and there is no doubt that the territory would be safer in the hands of a German ally than a Danish foe. Our military commander in the region is capably handling unrest, for now, but should we make a decision on the future of [782.GetName] and spare him the trouble?"
 
  annexation_64: "The Fate of Prussia"
  annexation_64_desc: "Brandenburg was the centre of gravity of Prussia, and thus the Prussian-formed German Empire. For decades, Berlin has bustled with activity, mostly with the politicians and diplomats of the great powers but as of [GetYear] with the barked orders and shouts of soldiers, and, now, enforced quiet under [Root.GetAdjective] martial law. With the end of the former German state comes, almost inevitably, the beginning of a new.\n\nA German state based in Berlin would be a powerful contender for a reunification of Germany one day, so some in our government have proposed granting Brandenburg and Berlin to a German statelet based in a western city, so that Prussia can never rise again. Others point to the need for a strong Prussian ally to counter our enemies on their borders, and claim that with our military supremacy over Europe Prussia would never dream of challenging us again. No doubt, of course, the Prussians could appreciate the irony of a good, long \"temporary\" military occupation."
- annexation_events.1006.a: "Release a Prussian state."
+ annexation_events.1006.a: "Release a Prussian Monarchy."
+ annexation_events.1006.b: "Release a Prussian Republic."
  annexation_events.1006.c: "[north_germany.GetGrantTerritoryEventOption]"
 
  annexation_776: "The Fate of [776.GetName]"
@@ -427,7 +428,8 @@
 
  annexation_52: "The Fate of South Germany"
  annexation_52_desc: "The entire South German region has been brought under our control. Currently, our armed forces are facing some opposition from the local populations. We could leave it up to local governments in the region to take care of any dissent."
- annexation_events.1013.a: "Release a South German state."
+ annexation_events.1013.a: "Release a South German Monarchy."
+ annexation_events.1013.b: "Release a South German Republic."
 
  annexation_10: "The Fate of Poland"
  annexation_10_desc: "Once again, Poland is on the verge of being wiped off the map of Europe. Once a powerful player in European geopolitics, the three Partitions of Poland in the late eighteenth century annexed Poland-Lithuania to its three neighbours, and only the Germany victory against Russia in the First Weltkrieg restored it, albeit as a shell of its former self. With the capitulation of authorities in Warsaw to [ROOT.GetAdjective] troops, we now control the majority of the country, and accordingly its fate is in our hands. Should we grant Poland its liberty, at least within the bounds of the limited kingdom of the last century? Of course, once we have taken this step, there is nothing stopping us from imposing a government that favours our interests, or allowing this friendly government to realise Pan-Slavic dreams of a greater Poland. On the other hand, if our interests demand it, we can follow the example of so many powers before us and haul down the Polish red-and-white bicolour for good."
@@ -1193,7 +1195,7 @@
  annexation_278: "The Fate of Argentina"
  annexation_278_desc: "After the conquest of the vast nation of Argentina we have to organise competent administrations to keep the territory under control. Now we will need to decide on the fate of the region."
  annexation_events.2045.a: "Liberate Argentina in its entirety."
- annexation_events.2045.b: "Liberate Argentina and Patagonia."
+ annexation_events.2045.b: "Liberate Argentina and Araucania."
  annexation_events.2045.c: "[patagonia.GetGrantTerritoryEventOption]"
 
  annexation_279: "The Fate of Chile"
@@ -1211,7 +1213,7 @@
 
  annexation_694: "The Fate of the French Caribbean"
  annexation_694_desc: "The islands of the French Caribbean have been brought under our control as our troops occupy the region. We must now decide what to do with it."
- annexation_events.2050.a: "Liberate the Union of the Antilles and Guyana."
+ annexation_events.2050.a: "Liberate the Antilles"
 
  annexation_1077: "The Fate of [1077.GetName]"
  annexation_1077_desc: "The island of [1077.GetName] has been brought under our control, alongside Saba and Sint Eustatius, as our troops occupy the region. We must now decide what to do with it."
@@ -1219,7 +1221,7 @@
 
  annexation_310: "The Fate of East Guyana"
  annexation_310_desc: "The formerly French colony of East Guyana has been brought under our control as our troops occupy the region. We must now decide what to do with it."
- annexation_events.2052.a: "Liberate the Union of the Antilles and Guyana."
+ annexation_events.2052.a: "Liberate Guyane"
 
  annexation_311: "The Fate of [311.GetName]"
  annexation_311_desc: "The formerly British colony of [311.GetName] has been brought under our control as our troops occupy the region. We must now decide what to do with it."
@@ -1470,14 +1472,17 @@
  annexation_445: "The Fate of Quetta"
  annexation_445_desc: "Quetta has been brought under our control as our troops occupy the region. We must now decide what to do with it."
  annexation_events.3050.a: "[peshawar.GetGrantTerritoryEventOption]"
+ annexation_events.3050.b: "[kandahar.GetGrantTerritoryEventOption]"
 
  annexation_442: "The Fate of Peshawar"
  annexation_442_desc: "Peshawar has been brought under our control as our troops occupy the region. We must now decide what to do with it."
+ annexation_events.3059.a: "Release Pathanistan."
 
  annexation_443: "The Fate of Sind"
  annexation_443_desc: "Sind has been brought under our control as our troops occupy the region. We must now decide what to do with it."
  annexation_events.3051.a: "[gujarat.GetGrantTerritoryEventOption]"
  annexation_events.3051.b: "[rajputana.GetGrantTerritoryEventOption]"
+ annexation_events.3051.c: "[baluchistan.GetGrantTerritoryEventOption]"
 
  annexation_323: "The Fate of Nepal"
  annexation_323_desc: "After our successful campaign in the Himalayas, we now have the task of establishing a new local administrative authority in order to restore peace in Kathmandu. What shall we do?"
@@ -1931,7 +1936,7 @@
  annexation_461: "The Fate of Morocco"
  annexation_461_desc: "We have freed Morocco from the Germans and our forces are now having difficulties occupying the mountainous and semi-arid regions of the country. Although the urban centres are under our control, it might be wise to hand out further control to locals."
  annexation_events.5021.a: "Liberate a Moroccan republic."
- annexation_events.5021.b: "Restore the Alaouite monarch."
+ annexation_events.5021.b: "Restore the monarchy."
 
  annexation_699: "The Fate of Rio de Oro"
  annexation_699_desc: "The desert region of Rio de Oro is now under our control, we must decide what to do with it."
@@ -1958,6 +1963,7 @@
  annexation_559: "The Fate of Somalia"
  annexation_559_desc: "We now control the territories of the former Dervish state of Somalia and this inhospitable area populated by Somalis will prove itself to be hard to maintain through occupation, maybe we should let the Somalis organise themselves to an extent?"
  annexation_events.5029.a: "Liberate Somalia."
+ annexation_events.5029.b: "Take Hargeisa and liberate the rest."
 
  annexation_547: "The Fate of Kenya"
  annexation_547_desc: "The steppes of Kenya are now under our graceful control. What should we do with them—control land directly or let the locals handle it?"
@@ -1971,6 +1977,10 @@
  annexation_965_desc: "We now occupy the crossroads of the former German colony of Mittelafrika, East Africa, and its capital Dar-es-Salaam. Should we make this a possible capital of our new colonial empire or let the locals administer this land to a degree of efficiency we could never achieve?"
  annexation_events.5032.a: "Form a Greater East Africa."
  annexation_events.5032.b: "Restore East Africa as it once was."
+
+ annexation_905: "The Fate of Zanzibar"
+ annexation_905_desc: "The islands of Zanzibar and Pemba are now under our control. The Sultanate has been a British protectorate since 1890; however, its Legislative Council represents neither the Arab nor the African populations. Authority is concentrated in the hands of foreign officials, and the sultan has no real power. Khalifa bin Harub is well-regarded by his subjects, but this does not preclude alternative arrangements for the islands."
+ annexation_events.5905.a: "Restore Zanzibar."
 
  annexation_869: "The Fate of Rwanda"
  annexation_869_desc: "After the liberation of Rwanda from the German colonial grip we're left with the choice to let the Rwandans govern themselves to an extent or not, should we do it?"

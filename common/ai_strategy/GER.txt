@@ -26,6 +26,7 @@ GER_hates_socialists = {
 		value = -1000
 	}
 }
+
 GER_hates_japan = {
 	reversed = yes
 
@@ -51,6 +52,7 @@ GER_hates_japan = {
 		value = -1000
 	}
 }
+
 reichspakt_hates_russia = {
 	allowed = {
 		OR = {
@@ -81,6 +83,7 @@ reichspakt_hates_russia = {
 		value = -1000
 	}
 }
+
 GER_dislikes_entente = {
 	reversed = yes
 
@@ -112,6 +115,7 @@ GER_dislikes_entente = {
 		value = -1000
 	}
 }
+
 reichspakt_dislikes_canada = {
 	enable = {
 		is_in_faction_with = GER
@@ -143,6 +147,7 @@ reichspakt_dislikes_canada = {
 		value = -1000
 	}
 }
+
 reichspakt_dislikes_natfrance = {
 	enable = {
 		is_in_faction_with = GER
@@ -173,6 +178,7 @@ reichspakt_dislikes_natfrance = {
 		value = -1000
 	}
 }
+
 reichspakt_dislikes_sardinia = {
 	enable = {
 		is_in_faction_with = GER
@@ -204,16 +210,52 @@ reichspakt_dislikes_sardinia = {
 	}
 }
 
+GER_support_OTT_if_has_completed_constantinople_mission = {
+	allowed = {
+		tag = GER
+	}
+	enable = {
+		has_completed_focus = GER_mission_to_constantinople
+		OR = {
+			is_in_faction_with = AZR
+			has_guaranteed = AZR
+		}
+		TUR = {
+			OR = {
+				has_war_with = EGY
+				has_war_with = PER
+				has_war_with = RUS
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = TUR
+		value = 500
+	}
+}
+
 ################
 ### Military ###
 ################
+
 GER_eyes_on_france = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		is_neighbor_of = FRA
-		FRA = { has_capitulated = no }
+		FRA = {
+			OR = {
+				has_capitulated = no
+				AND = {
+					has_capitulated = yes
+					surrender_progress < 0.80
+				}
+			}
+		}
 		surrender_progress < 0.1
 	}
 	abort_when_not_enabled = yes
@@ -491,6 +533,7 @@ GER_crush_poland = {
 		type = front_control
 		tag = POL
 		priority = 100
+		ratio = 0.8
 		ordertype = front
 		execution_type = rush_weak
 		execute_order = yes
@@ -503,8 +546,14 @@ GER_less_focus_on_russia = {
 	}
 	enable = {
 		FRA = {
-			has_capitulated = no
 			is_faction_leader = yes
+			OR = {
+				has_capitulated = no
+				AND = {
+					has_capitulated = yes
+					surrender_progress < 0.80
+				}
+			}
 		}
 		NOT = {
 			UKR = {
@@ -553,7 +602,10 @@ GER_finish_off_serbia = {
 		FRA = {
 			OR = {
 				exists = no
-				has_capitulated = yes
+				AND = {
+					has_capitulated = yes
+					surrender_progress > 0.80
+				}
 			}
 		}
 		NOT = { 202 = { is_controlled_by = RUS } } #Ukraine hasn't lost Kyiv yet
@@ -571,6 +623,7 @@ GER_finish_off_serbia = {
 		tag = SER
 		priority = 100
 		ordertype = front
+		ratio = 0.4
 		execution_type = rush_weak
 		execute_order = yes
 	}
@@ -596,7 +649,10 @@ GER_finish_off_romania = {
 		FRA = {
 			OR = {
 				exists = no
-				has_capitulated = yes
+				AND = {
+					has_capitulated = yes
+					surrender_progress > 0.80
+				}
 			}
 		}
 		NOT = { 202 = { is_controlled_by = RUS } } #Ukraine hasn't lost Kyiv yet
@@ -614,6 +670,7 @@ GER_finish_off_romania = {
 		tag = ROM
 		priority = 100
 		ordertype = front
+		ratio = 0.4
 		execution_type = rush_weak
 		execute_order = yes
 	}
@@ -639,7 +696,10 @@ GER_finish_off_italy = {
 		FRA = {
 			OR = {
 				exists = no
-				has_capitulated = yes
+				AND = {
+					has_capitulated = yes
+					surrender_progress > 0.80
+				}
 			}
 		}
 		NOT = { 202 = { is_controlled_by = RUS } } #Ukraine hasn't lost Kyiv yet
@@ -657,6 +717,7 @@ GER_finish_off_italy = {
 		tag = SRI
 		priority = 100
 		ordertype = front
+		ratio = 0.8
 		execution_type = rush_weak
 		execute_order = yes
 	}
@@ -672,19 +733,58 @@ GER_finish_off_italy = {
 	}
 }
 
+GER_prepare_dockyard = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		date > 1937.1.1
+		date < 1940.1.1
+		num_of_naval_factories < 50
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 60
+	}
+}
+
 GER_in_naval_war = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		GER_in_naval_war = yes
+		num_of_naval_factories < 100
 	}
 	abort_when_not_enabled = yes
 
 	ai_strategy = {
-		type = build_building
-		id = dockyard # Type of building
+		type = building_target
+		id = dockyard
 		value = 100
+	}
+}
+
+GER_in_naval_war_2 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		OR = {
+			has_war_with = ENG
+			has_war_with = JAP
+			has_war_with = var:361.owner
+		}
+		NOT = { has_war_with = RUS }
+		num_of_naval_factories < 150
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 200
 	}
 }
 
@@ -701,7 +801,10 @@ GER_finish_russia_off = {
 		has_war_with = RUS
 		OR = {
 			NOT = { country_exists = FRA }
-			FRA = { has_capitulated = yes }
+			FRA = {
+				has_capitulated = yes
+				surrender_progress > 0.80
+			}
 		}
 		OR = {
 			NOT = { country_exists = SRI }
@@ -712,21 +815,24 @@ GER_finish_russia_off = {
 		has_manpower > 0
 
 		#activate during the non-winter months
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 365 }
-		check_variable = { frequency > 90 } #early April
-		check_variable = { frequency < 300 } #late October
+		check_expr = {
+			value = { value = global.num_days mod = 365 greater_than = 90 } #early April
+			and = { value = global.num_days mod = 365 less_than = 300 } #late October
+		}
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency > 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			greater_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = front_control
 		tag = RUS
+		ratio = 0.3
 		priority = 100
 		ordertype = front
 		execution_type = rush_weak
@@ -778,6 +884,77 @@ GER_finish_russia_off_air = {
 	}
 }
 
+GER_endsieg_frontline = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		surrender_progress > 0.25
+		FRA = {
+			has_war_with = ROOT
+			OR = {
+				has_capitulated = no
+				surrender_progress < 0.1
+				AND = {
+					has_capitulated = yes
+					surrender_progress < 0.80
+				}
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = { NOT = { is_on_continent = europe } }
+		value = -50
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = {
+			is_core_of = GER
+			NOT = { is_fully_controlled_by = GER }
+		}
+		value = 100
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = {
+			NOT = { is_core_of = GER }
+		}
+		value = -15
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		target = asia
+		value = 200
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		target = middle_east
+		value = 200
+	}
+}
+
+GER_endsieg_frontline_2 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		GER = { surrender_progress > 0.40 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		value = 20000
+	}
+}
+
 GER_endsieg = { #Cease attacks if losing against France and has low equipment
 	allowed = {
 		original_tag = GER
@@ -796,6 +973,7 @@ GER_endsieg = { #Cease attacks if losing against France and has low equipment
 	ai_strategy = {
 		type = front_control
 		tag = FRA
+		ratio = 0.2
 		priority = 150
 		ordertype = front
 		execute_order = no
@@ -803,6 +981,7 @@ GER_endsieg = { #Cease attacks if losing against France and has low equipment
 	ai_strategy = {
 		type = front_control
 		tag = HOL
+		ratio = 0.2
 		priority = 150
 		ordertype = front
 		execute_order = no
@@ -810,6 +989,7 @@ GER_endsieg = { #Cease attacks if losing against France and has low equipment
 	ai_strategy = {
 		type = front_control
 		tag = RUS
+		ratio = 0.2
 		priority = 150
 		ordertype = front
 		execute_order = no
@@ -888,6 +1068,7 @@ GER_destroy_invasion_beachheads_oldenburg = {
 	ai_strategy = {
 		type = front_control
 		state = 56 #Oldenburg
+		ratio = 0.8
 		priority = 200
 		ordertype = front
 		execution_type = rush_weak
@@ -913,6 +1094,7 @@ GER_destroy_invasion_beachheads_hanover = {
 	ai_strategy = {
 		type = front_control
 		state = 59 #Hanover
+		ratio = 0.8
 		priority = 200
 		ordertype = front
 		execution_type = rush_weak
@@ -940,6 +1122,7 @@ GER_destroy_invasion_beachheads_schleswig = {
 		type = front_control
 		state = 58 #Schleswig-Holstein
 		state = 782 #Northern Schleswig
+		ratio = 0.8
 		priority = 200
 		ordertype = front
 		execution_type = rush_weak
@@ -965,6 +1148,7 @@ GER_destroy_invasion_beachheads_mecklenburg = {
 	ai_strategy = {
 		type = front_control
 		state = 61 #Mecklenburg
+		ratio = 0.8
 		priority = 200
 		ordertype = front
 		execution_type = rush_weak
@@ -996,6 +1180,7 @@ GER_destroy_invasion_beachheads_netherlands = {
 		type = front_control
 		tag = ENG
 		priority = 200
+		ratio = 0.8
 		ordertype = front
 		execution_type = rush_weak
 		execute_order = yes
@@ -1157,7 +1342,13 @@ GER_no_troops_in_caucasus = {
 	}
 	enable = {
 		FRA = {
-			has_capitulated = no
+			OR = {
+				has_capitulated = no
+				AND = {
+					has_capitulated = yes
+					surrender_progress < 0.80
+				}
+			}
 			is_faction_leader = yes
 		}
 		RUS = {
@@ -1423,21 +1614,24 @@ MIE_finish_off_russia = {
 		NOT = { is_neighbor_of = WCA } #== being invaded
 
 		#activate during the non-winter months
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 365 }
-		check_variable = { frequency > 90 } #early April
-		check_variable = { frequency < 300 } #late October
+		check_expr = {
+			value = { value = global.num_days mod = 365 greater_than = 90 } #early April
+			and = { value = global.num_days mod = 365 less_than = 300 } #late October
+		}
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency > 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			greater_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = front_control
 		tag = RUS
+		ratio = 0.8
 		priority = 150
 		ordertype = front
 		execution_type = rush_weak
@@ -1460,7 +1654,15 @@ MIE_no_help_strategy = {
 		has_global_flag = MIE_east_no_help
 		has_war_with = RUS
 		has_war_with = FRA
-		FRA = { has_capitulated = no }
+		FRA = {
+			OR = {
+				has_capitulated = no
+				AND = {
+					has_capitulated = yes
+					surrender_progress < 0.80
+				}
+			}
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -1530,6 +1732,37 @@ GER_dont_call_allies_into_minor_wars_before_weltkrieg = {
 	ai_strategy = { type = diplo_action_acceptance id = GER target = join_allies value = -1000 }
 }
 
+GER_government_crisis_dont_join_allies = {
+	reversed = yes
+	allowed = { tag = GER }
+	enable = {
+		is_in_faction_with = GER
+		GER = {
+			has_war = no
+			OR = {
+				has_active_mission = GER_brunswick_front_activity
+				has_active_mission = GER_iron_front_activity
+				has_active_mission = GER_DVLP_emergency_conference
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = diplo_action_desire
+		id = GER
+		value = -1000
+		target = join_allies
+	}
+
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = GER
+		value = -1000
+		target = call_allies
+	}
+}
+
 ################
 ### Industry ###
 ################
@@ -1590,22 +1823,6 @@ GER_pp_spending_hugenberg = {
 	}
 }
 
-GER_civilian_buildup = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		date < 1938.1.1
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = building_target
-		id = industrial_complex
-		value = 59
-	}
-}
-
 GER_build_more_fighters = {
 	allowed = {
 		original_tag = GER
@@ -1660,6 +1877,7 @@ GER_less_naval_focus = {
 		value = -3
 	}
 }
+
 GER_build_tanks_if_france_is_aggressive = {
 	allowed = {
 		original_tag = GER
@@ -1951,6 +2169,279 @@ GER_build_radars_kiev = {
 	}
 }
 
+GER_prepare_infrastructure = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		date < 1938.1.1
+		OR = {
+			has_idea = civilian_economy
+			has_idea = low_economic_mobilisation
+			date < 1937.1.1
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 55
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 51
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 781
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 42
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 780
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 50
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 52
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 54
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 53
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 57
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 65
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 64
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 147
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 66
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 67
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 60
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 59
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 776
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 68
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 86
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 61
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 62
+		value = 2000
+	}
+}
+
+GER_resource_buildup = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		date > 1941.1.1
+		NOT = { surrender_progress > 0.1 }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = building_target
+		id = dockyard
+		value = -100
+	}
+	ai_strategy = {
+		type = build_building
+		id = industrial_infrastructure
+		target = 28
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = industrial_infrastructure
+		target = 42
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = industrial_infrastructure
+		target = 8
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = industrial_infrastructure
+		target = 65
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = industrial_infrastructure
+		target = 66
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = industrial_infrastructure
+		target = 67
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = commercial_nuclear_reactor
+		target = 28
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = commercial_nuclear_reactor
+		target = 42
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = commercial_nuclear_reactor
+		target = 8
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = commercial_nuclear_reactor
+		target = 65
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = commercial_nuclear_reactor
+		target = 66
+		value = 2000
+	}
+	ai_strategy = {
+		type = build_building
+		id = commercial_nuclear_reactor
+		target = 67
+		value = 2000
+	}
+}
+
+GER_rubber_buildup = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		NOT = { GEA = { is_subject_of = GER } }
+		NOT = { surrender_progress > 0.1 }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = building_target
+		id = synthetic_refinery
+		value = 50
+	}
+}
 ###############
 ### Special ###
 ###############
@@ -1972,6 +2463,7 @@ GER_FRP_military_occupation_request_garrison_support = {
 		value = 1000
 	}
 }
+
 GER_GBP_military_occupation_request_garrison_support = {
 	allowed = {
 		original_tag = GBP
@@ -2031,6 +2523,7 @@ GER_FRP_military_occupation_use_intel_agency = {
 		value = 2000 # this + add_intelligence_agency_normal_upgrade_prio = 3000
 	}
 }
+
 GER_GBP_military_occupation_use_intel_agency = {
 	allowed = {
 		original_tag = GBP
@@ -2100,6 +2593,7 @@ GER_FRP_military_occupation_focus_on_suppression = {
 	ai_strategy = { type = build_army id = mountaineer	value = -1000 }
 	ai_strategy = { type = build_army id = suppression	value = -1000 }
 }
+
 GER_GBP_military_occupation_focus_on_suppression = {
 	allowed = {
 		original_tag = GBP

@@ -1,0 +1,82 @@
+capital = 442
+set_research_slots = 3
+
+set_technology = {
+	### Infantry ###
+	infantry_weapons = 1
+	tech_mountaineers = 1
+}
+enable_tech_irregulars = yes
+
+add_ideas = {
+	limited_conscription
+	limited_exports
+}
+
+### Integration ###
+ROOT = {
+	444 = { enable_state_integration_50_compliance = yes } #Baluchistan
+	445 = { enable_state_integration_50_compliance = yes } #Quetta
+}
+
+set_politics = {
+	ruling_party = radical_socialist
+	last_election = "1888.6.15"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalist = 3
+	radical_socialist = 23
+	syndicalist = 5
+	social_democrat = 27
+	social_liberal = 12
+	market_liberal = 7
+	social_conservative = 12
+	authoritarian_democrat = 4
+	paternal_autocrat = 2
+	national_populist = 5
+}
+
+### Country Leaders ###
+recruit_character = PTH_abdur_rahim_popalzai
+recruit_character = PTH_abdul_ghaffar_khan
+recruit_character = PTH_aurangzeb_khan_gandapur
+recruit_character = PTH_mirzali_khan_wazir
+
+recruit_character = PTH_abdul_jabbar_khan
+
+recruit_character = PTH_nasir_ul_mulk
+recruit_character = PTH_sukhdev_thapar
+
+### All PTH characters start in AFG ###
+PTH_abdur_rahim_popalzai = {
+	set_character_flag = PTH_character
+	set_nationality = AFG
+}
+PTH_abdul_ghaffar_khan = {
+	set_character_flag = PTH_character
+	set_nationality = AFG
+}
+PTH_aurangzeb_khan_gandapur = {
+	set_character_flag = PTH_character
+	set_nationality = AFG
+}
+PTH_mirzali_khan_wazir = {
+	set_character_as_monarch = yes
+	set_character_flag = PTH_character
+	set_nationality = AFG
+}
+PTH_abdul_jabbar_khan = {
+	set_character_flag = PTH_character
+	set_nationality = AFG
+}
+PTH_nasir_ul_mulk = {
+	set_character_flag = PTH_character
+	set_nationality = AFG
+}
+PTH_sukhdev_thapar = {
+	set_character_flag = PTH_character
+	set_nationality = AFG
+}

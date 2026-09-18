@@ -219,8 +219,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
 
-	focus = {# Red Sea Ports
-		id = EGY_red_sea_trade
+	focus = {# Expand Port Sudan
+		id = EGY_expand_port_sudan
 		icon = GFX_focus_generic_refit_civilian_ships
 		cost = 6
 
@@ -244,7 +244,7 @@ focus_tree = {
 
 		ai_will_do = { factor = 80 }
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed EGY_red_sea_trade"
+			log = "[GetLogRoot]: Focus Completed EGY_expand_port_sudan"
 			1007 = { prioritize_state = yes } #Nubia
 			add_one_random_dockyard = yes
 			add_one_random_dockyard = yes
@@ -602,7 +602,7 @@ focus_tree = {
 			focus = EGY_egyptian_oil
 		}
 		prerequisite = {
-			focus = EGY_red_sea_trade
+			focus = EGY_expand_port_sudan
 		}
 		prerequisite = {
 			focus = EGY_egyptian_steel
@@ -683,7 +683,7 @@ focus_tree = {
 			focus = EGY_egyptian_steel
 		}
 		prerequisite = {
-			focus = EGY_red_sea_trade
+			focus = EGY_expand_port_sudan
 		}
 		prerequisite = {
 			focus = EGY_unify_electrical_standards
@@ -981,7 +981,7 @@ focus_tree = {
 		y = 5
 
 		prerequisite = {
-			focus = EGY_red_sea_trade
+			focus = EGY_expand_port_sudan
 		}
 		prerequisite = {
 			focus = EGY_egyptian_steel

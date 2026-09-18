@@ -104,12 +104,10 @@ shared_focus = {
 
 	available = {
 		OR = {
-			AND = {
-				custom_override_tooltip = {
-					tooltip = ott_ruling_majority_tt
-					check_variable = { highest_party_ideology = current_party_ideology_group }
-					check_variable = { highest_party_popularity > 0.5 }
-				}
+			custom_override_tooltip = {
+				tooltip = ott_ruling_majority_tt
+				check_variable = { highest_party_ideology = current_party_ideology_group }
+				check_variable = { highest_party_popularity > 0.5 }
 			}
 			has_war = yes
 		}
@@ -3859,17 +3857,37 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed OTT_Modern_Census"
 		OTT_increase_conscription_bonus = yes
-		add_to_variable = { gre_integration_factor = 10 tooltip = ott_increase_gre_int }
-		clamp_variable = { var = gre_integration_factor min = 0 max = 100 }
+		add_to_variable = {
+			gre_integration_factor = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = gre_integration_factor } }
+			}
+			tooltip = ott_increase_gre_int
+		}
 		custom_effect_tooltip = tooltip_white_line
-		add_to_variable = { kur_integration_factor = 10 tooltip = ott_increase_kur_int }
-		clamp_variable = { var = kur_integration_factor min = 0 max = 100 }
+		add_to_variable = {
+			kur_integration_factor = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = kur_integration_factor } }
+			}
+			tooltip = ott_increase_kur_int
+		}
 		custom_effect_tooltip = tooltip_white_line
-		add_to_variable = { syr_integration_factor = 10 tooltip = ott_increase_syr_int }
-		clamp_variable = { var = syr_integration_factor min = 0 max = 100 }
+		add_to_variable = {
+			syr_integration_factor = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = syr_integration_factor } }
+			}
+			tooltip = ott_increase_syr_int
+		}
 		custom_effect_tooltip = tooltip_white_line
-		add_to_variable = { irq_integration_factor = 10 tooltip = ott_increase_irq_int }
-		clamp_variable = { var = irq_integration_factor min = 0 max = 100 }
+		add_to_variable = {
+			irq_integration_factor = {
+				value = 10
+				clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+			}
+			tooltip = ott_increase_irq_int
+		}
 		if = {
 			limit = { owns_state = 417 }
 			custom_effect_tooltip = tooltip_white_line
@@ -3955,12 +3973,10 @@ shared_focus = {
 
 	available = {
 		OR = {
-			AND = {
-				custom_override_tooltip = {
-					tooltip = ott_ruling_majority_tt
-					check_variable = { highest_party_ideology = current_party_ideology_group }
-					check_variable = { highest_party_popularity > 0.5 }
-				}
+			custom_override_tooltip = {
+				tooltip = ott_ruling_majority_tt
+				check_variable = { highest_party_ideology = current_party_ideology_group }
+				check_variable = { highest_party_popularity > 0.5 }
 			}
 			has_completed_focus = OTT_Single_Party_Dictatorship
 		}
@@ -4089,7 +4105,7 @@ focus_tree = {
 
 	focus = {
 		id = OTT_Single_Party_Dictatorship
-		icon = GFX_goal_DEI_focus_disband_volksraad
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
 		cost = 5
 
 		relative_position_id = OTT_Expand_the_Education_Ministry
@@ -4378,11 +4394,15 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed OTT_Emancipation_Push"
 			add_ideas = ott_universal_suffrage
-			every_country = {
-				limit = { is_in_faction_with = INT }
-				add_opinion_modifier = {
-					target = OTT
-					modifier = OTT_supports_emancipation
+			if = {
+				limit = { country_exists = INT }
+				INT = {
+					every_faction_member = {
+						add_opinion_modifier = {
+							target = OTT
+							modifier = OTT_supports_emancipation
+						}
+					}
 				}
 			}
 			OTT_create_halide_edip_advisor = yes
@@ -4391,7 +4411,7 @@ focus_tree = {
 
 	focus = {
 		id = OTT_Curtail_Religious_Organisations
-		icon = GFX_goal_islamic_government
+		icon = GFX_goal_TUR_curtail_the_ulema
 		cost = 5
 
 		relative_position_id = OTT_Ottoman_Constitution
@@ -4455,8 +4475,12 @@ shared_focus = {
 
 	available = {
 		if = {
-			limit = { has_completed_focus = OTT_Enshrine_Endeavour_Front }
-			NOT = { has_completed_focus = OTT_Incorporate_Kadroist_Movement }
+			limit = { has_completed_focus = OTT_State_of_Emergency }
+			OR = { # Must lock into a non-Kadro path first
+				has_completed_focus = OTT_Consolidate_Military_Dictatorship
+				has_completed_focus = OTT_Cooperate_Private_Sector
+				has_completed_focus = OTT_Break_Up_State_Monopolies_FEV
+			}
 		}
 		OTT_cairo_pact_defeated = yes
 	}
@@ -4505,7 +4529,27 @@ shared_focus = {
 		focus = OTT_Promote_Muslim_Solidarity
 	}
 
-	ai_will_do = { factor = 1000 }
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0.1
+			OR = {
+				AND = {
+					has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_AUS }
+					NOT = { has_completed_focus = OTT_Sarajevo_Accords }
+				}
+				AND = {
+					has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
+					NOT = { has_completed_focus = OTT_Gamble_in_the_Caucasus }
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT } }
+			has_active_mission = OTT_suppression_of_society
+		}
+	}
 
 	available_if_capitulated = yes
 
@@ -4562,11 +4606,15 @@ shared_focus = {
 			}
 		}
 		modifier = {
-			factor = 0
+			factor = 10
 			OR = {
 				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_AUS }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
+				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT }
 			}
+		}
+		modifier = {
+			factor = 0
+			has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
 		}
 	}
 
@@ -4593,9 +4641,7 @@ shared_focus = {
 	y = 1
 
 	available = {
-		NOT = {
-			has_global_flag = RUSSIAN_OTTOMAN_DEAL
-		}
+		OTT_russo_ottoman_convention_signed = no
 	}
 
 	bypass = {
@@ -4622,7 +4668,7 @@ shared_focus = {
 						is_in_faction_with = GER
 					}
 				}
-				has_global_flag = RUSSIAN_OTTOMAN_DEAL
+				OTT_russo_ottoman_convention_signed = yes
 			}
 			AUS = { is_valid_peace_target = no }
 		}
@@ -4658,6 +4704,11 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed OTT_Abolish_Full_Neutrality"
 		remove_ideas = ott_armed_neutrality
+		if = {
+			limit = { has_global_flag = OTT_baku_conference_ongoing }
+			country_event = ottomans_foreign_policy_events.60 #Negotiations in Baku Break Down
+			RUS = { country_event = ottomans_foreign_policy_events.60 } #Negotiations in Baku Break Down
+		}
 	}
 }
 
@@ -4828,7 +4879,13 @@ shared_focus = {
 		focus = OTT_Islamic_Economic_Union
 	}
 
-	ai_will_do = { factor = 1000 }
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			has_active_mission = OTT_suppression_of_society
+		}
+	}
 
 	available_if_capitulated = yes
 
@@ -5667,9 +5724,7 @@ shared_focus = {
 			is_in_faction_with = 361.owner
 		}
 		at_peace_or_same_enemies_as_ENT = yes
-		NOT = {
-			has_global_flag = RUSSIAN_OTTOMAN_DEAL
-		}
+		OTT_russo_ottoman_convention_signed = no
 	}
 
 	allow_branch = {
@@ -5742,9 +5797,7 @@ shared_focus = {
 			is_in_faction_with = 361.owner
 		}
 		at_peace_or_same_enemies_as_JAP = yes
-		NOT = {
-			has_global_flag = RUSSIAN_OTTOMAN_DEAL
-		}
+		OTT_russo_ottoman_convention_signed = no
 	}
 
 	allow_branch = {
@@ -5884,7 +5937,7 @@ shared_focus = {
 		focus = OTT_State_of_Emergency
 	}
 
-	ai_will_do = { factor = 100 }
+	ai_will_do = { base = 500 }
 
 	available_if_capitulated = yes
 
@@ -5918,7 +5971,7 @@ shared_focus = {
 		focus = OTT_Replace_Walis
 	}
 
-	ai_will_do = { factor = 100 }
+	ai_will_do = { base = 400 }
 
 	available_if_capitulated = yes
 
@@ -5944,7 +5997,7 @@ shared_focus = {
 		focus = OTT_Abolish_Mecelle_Fevzi
 	}
 
-	ai_will_do = { factor = 100 }
+	ai_will_do = { base = 400 }
 
 	available_if_capitulated = yes
 
@@ -5989,7 +6042,7 @@ shared_focus = {
 		focus = OTT_Replace_Walis
 	}
 
-	ai_will_do = { factor = 100 }
+	ai_will_do = { base = 300 }
 
 	available_if_capitulated = yes
 
@@ -6018,7 +6071,7 @@ shared_focus = {
 		focus = OTT_Replace_Walis
 	}
 
-	ai_will_do = { factor = 100 }
+	ai_will_do = { factor = 500 }
 
 	available_if_capitulated = yes
 
@@ -6049,7 +6102,7 @@ shared_focus = {
 		focus = OTT_Marechal_Nous_Voila
 	}
 
-	ai_will_do = { factor = 100 }
+	ai_will_do = { factor = 400 }
 
 	available_if_capitulated = yes
 
@@ -6093,7 +6146,7 @@ shared_focus = {
 	}
 
 	ai_will_do = {
-		factor = 100
+		factor = 500
 		modifier = {
 			factor = 0
 			NOT = { has_game_rule = { rule = OTT_path option = DEFAULT } }
@@ -6125,11 +6178,11 @@ shared_focus = {
 		set_variable = { OTT_centralisation = 0.01 tooltip = OTT_centralisation_add_tooltip }
 		force_update_dynamic_modifier = yes
 		hidden_effect = {
-			add_to_variable = { gre_integration_factor = 10 }
-			clamp_variable = {
-				var = gre_integration_factor
-				min = 0
-				max = 100
+			add_to_variable = {
+				gre_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = gre_integration_factor } }
+				}
 			}
 		}
 	}
@@ -6163,7 +6216,7 @@ shared_focus = {
 	}
 
 	ai_will_do = {
-		factor = 100
+		factor = 500
 		modifier = {
 			factor = 0
 			has_game_rule = { rule = OTT_path option = OTT_PATH_PATAUT }
@@ -6202,6 +6255,8 @@ shared_focus = {
 		has_government = paternal_autocrat
 	}
 
+	ai_will_do = { factor = 500 }
+
 	available_if_capitulated = yes
 
 	search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_ARMY_XP }
@@ -6230,6 +6285,14 @@ shared_focus = {
 
 	prerequisite = {
 		focus = OTT_reorganize_the_military
+	}
+
+	ai_will_do = {
+		factor = 200
+		modifier = {
+			factor = 3
+			has_war = yes
+		}
 	}
 
 	available_if_capitulated = yes
@@ -6261,6 +6324,8 @@ shared_focus = {
 
 	available_if_capitulated = yes
 
+	ai_will_do = { factor = 100 }
+
 	search_filters = { FOCUS_FILTER_STABILITY }
 
 	completion_reward = {
@@ -6281,6 +6346,8 @@ shared_focus = {
 	prerequisite = {
 		focus = OTT_relinquish_some_powers
 	}
+
+	ai_will_do = { factor = 100 }
 
 	available_if_capitulated = yes
 
@@ -6307,6 +6374,8 @@ shared_focus = {
 	prerequisite = {
 		focus = OTT_infallible_army
 	}
+
+	ai_will_do = { factor = 200 }
 
 	available_if_capitulated = yes
 
@@ -6400,7 +6469,7 @@ shared_focus = {
 	}
 
 	ai_will_do = {
-		factor = 100
+		factor = 500
 		modifier = {
 			factor = 0
 			has_game_rule = { rule = OTT_path option = OTT_PATH_ENDEAVOUR_MARLIB }
@@ -6467,7 +6536,7 @@ shared_focus = {
 		focus = OTT_Break_Up_State_Monopolies_FEV
 	}
 
-	ai_will_do = { factor = 100 }
+	ai_will_do = { factor = 200 }
 
 	search_filters = { FOCUS_FILTER_STABILITY }
 
@@ -6488,7 +6557,6 @@ shared_focus = {
 
 	available = {
 		NOT = {
-			has_completed_focus = OTT_Incorporate_Kadroist_Movement
 			has_war_with = SYR
 			has_war_with = CYP
 			has_war_with = IRQ
@@ -6502,7 +6570,7 @@ shared_focus = {
 		focus = OTT_Lift_Maintenance_Public_Order_Decree
 	}
 
-	ai_will_do = { factor = 100 }
+	ai_will_do = { factor = 300 }
 
 	search_filters = { FOCUS_FILTER_RESISTANCE }
 
@@ -6619,11 +6687,12 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed OTT_Emancipation_Vanguard_FEV"
 		add_ideas = ott_universal_suffrage
-		every_country = {
-			limit = { is_in_faction_with = INT }
-			add_opinion_modifier = {
-				target = OTT
-				modifier = OTT_supports_emancipation
+		INT = {
+			every_faction_member = {
+				add_opinion_modifier = {
+					target = OTT
+					modifier = OTT_supports_emancipation
+				}
 			}
 		}
 		OTT_create_halide_edip_advisor = yes
@@ -6675,9 +6744,8 @@ shared_focus = {
 			has_government = national_populist
 		}
 		NOT = {
-			has_completed_focus = OTT_Liberalising_National_Economy
-			has_completed_focus = OTT_Repeal_National_Protection_Law
-			has_completed_focus = OTT_Imperial_Institute_Technology
+			has_completed_focus = OTT_Promote_Muslim_Solidarity
+			has_completed_focus = OTT_Lift_Maintenance_Public_Order_Decree
 		}
 	}
 
@@ -6734,6 +6802,13 @@ shared_focus = {
 			popularity = 0.04
 		}
 		set_country_flag = OTT_unlocked_kadroist_path # this is to ensure that the Kadro path does not vanish even if one of the three countries change their ideology
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		hidden_effect = {
+			GER = { remove_targeted_decision = { target = ROOT decision = GER_OTT_settling_old_disputes } }
+		}
 	}
 }
 
@@ -8198,7 +8273,7 @@ shared_focus = {
 	}
 
 	ai_will_do = {
-		factor = 100
+		factor = 500
 		modifier = {
 			factor = 0
 			OR = {
@@ -8238,31 +8313,22 @@ shared_focus = {
 			set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
 			add_to_coalition = yes
 			add_to_variable = {
-				var = irq_integration_factor
-				value = 10
-			}
-			clamp_variable = {
-				var = irq_integration_factor
-				min = 0
-				max = 100
+				irq_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = irq_integration_factor } }
+				}
 			}
 			add_to_variable = {
-				var = gre_integration_factor
-				value = 10
-			}
-			clamp_variable = {
-				var = gre_integration_factor
-				min = 0
-				max = 100
+				gre_integration_factor = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = gre_integration_factor } }
+				}
 			}
 			add_to_variable = {
-				var = ara_integration_factor
-				value = 5
-			}
-			clamp_variable = {
-				var = ara_integration_factor
-				min = 0
-				max = 100
+				ara_integration_factor = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = ara_integration_factor } }
+				}
 			}
 		}
 	}
@@ -9201,9 +9267,7 @@ shared_focus = {
 			NOT = { has_war_with = ROOT }
 		}
 		OTT_cairo_pact_defeated = yes
-		NOT = {
-			has_global_flag = RUSSIAN_OTTOMAN_DEAL
-		}
+		OTT_russo_ottoman_convention_signed = no
 	}
 
 	prerequisite = {
@@ -9277,9 +9341,7 @@ shared_focus = {
 		}
 		at_peace_or_same_enemies_as_ENT = yes
 		OTT_cairo_pact_defeated = yes
-		NOT = {
-			has_global_flag = RUSSIAN_OTTOMAN_DEAL
-		}
+		OTT_russo_ottoman_convention_signed = no
 	}
 
 	allow_branch = {
@@ -9347,9 +9409,7 @@ shared_focus = {
 		}
 		at_peace_or_same_enemies_as_JAP = yes
 		OTT_cairo_pact_defeated = yes
-		NOT = {
-			has_global_flag = RUSSIAN_OTTOMAN_DEAL
-		}
+		OTT_russo_ottoman_convention_signed = no
 	}
 
 	allow_branch = {
@@ -11105,20 +11165,20 @@ shared_focus = {
 
 			### Parliament
 		custom_effect_tooltip = grand_assembly_tt
-		set_variable = { var = representatives_total value = 1500 }
+		set_variable = { representatives_total = 1500 }
 
-		set_variable = { var = ohf_deputies value = 0 }
-		set_variable = { var = hif_deputies value = 267 }
-		set_variable = { var = odf_deputies value = 180 }
-		set_variable = { var = con_deputies value = 480 }
-		set_variable = { var = ind_deputies value = 240 }
+		set_variable = { ohf_deputies = 0 }
+		set_variable = { hif_deputies = 267 }
+		set_variable = { odf_deputies = 180 }
+		set_variable = { con_deputies = 480 }
+		set_variable = { ind_deputies = 240 }
 
-		set_variable = { var = nat_ara_deputies value = 286 }
-		set_variable = { var = nat_ara_sup_deputies value = 35 }
-		set_variable = { var = nat_tur_deputies value = 47 }
-		set_variable = { var = nat_tur_sup_deputies value = 47 }
-		set_variable = { var = con_sup_deputies value = 302 }
-		set_variable = { var = ind_sup_deputies value = 200 }
+		set_variable = { nat_ara_deputies = 286 }
+		set_variable = { nat_ara_sup_deputies = 35 }
+		set_variable = { nat_tur_deputies = 47 }
+		set_variable = { nat_tur_sup_deputies = 47 }
+		set_variable = { con_sup_deputies = 302 }
+		set_variable = { ind_sup_deputies = 200 }
 
 		OTT_calc_coalition_strength = yes
 		OTT_recalc_congress_icon_frames = yes

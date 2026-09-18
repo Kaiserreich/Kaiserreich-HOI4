@@ -765,52 +765,61 @@ china_update_morale = {
 				is_neighbor_of = ROOT
 			}
 		}
-		add_to_variable = { china_league_war_morale = change_league_war_morale_by }
+		add_to_variable = {
+			china_league_war_morale = {
+				value = change_league_war_morale_by
+				clamp = { min = { value = china_league_war_morale multiply = -1 } max = { value = 100 subtract = china_league_war_morale } }
+			}
+		}
 		custom_effect_tooltip = china_morale_will_change_by
 
-		clamp_variable = {
-			var = china_league_war_morale
-			min = 0
-			max = 100
-		}
-		if = {
-			limit = { check_variable = { china_league_war_morale > 60 } }
-			set_variable = { china_league_war_flame_frame_var = 3 }
-		}
-		if = {
-			limit = { check_variable = { china_league_war_morale > 30 } }
-			set_variable = { china_league_war_flame_frame_var = 2 }
-		}
-		else = {
-			set_variable = { china_league_war_flame_frame_var = 1 }
+		set_variable = {
+			china_league_war_flame_frame_var = {
+				value = 1
+				if = { limit = { value = china_league_war_morale greater_than = 60 } add = 2 } #3
+				else_if = { limit = { value = china_league_war_morale greater_than = 30 } add = 1 } #2
+			}
 		}
 
 		# Calculate Political Power Gain
-		set_variable = { china_morale_dm_political_power_gain = china_league_war_morale }
-		add_to_variable = { china_morale_dm_political_power_gain = -50 }
-		multiply_variable = { china_morale_dm_political_power_gain = 0.5 }
-		multiply_variable = { china_morale_dm_political_power_gain = 0.01 }
+		set_variable = {
+			china_morale_dm_political_power_gain = {
+				value = china_league_war_morale
+				add = -50
+				multiply = 0.005
+			}
+		}
 
 		# Calculate War Support
-		set_variable = { china_morale_dm_war_support_factor = china_league_war_morale }
-		add_to_variable = { china_morale_dm_war_support_factor = -50 }
-		multiply_variable = { china_morale_dm_war_support_factor = 0.3 }
-		multiply_variable = { china_morale_dm_war_support_factor = 0.01 }
+		set_variable = {
+			china_morale_dm_war_support_factor = {
+				value = china_league_war_morale
+				add = -50
+				multiply = 0.003
+			}
+		}
 
 		# Calculate Surrender Limit
-		set_variable = { china_morale_dm_surrender_limit = china_league_war_morale }
-		multiply_variable = { china_morale_dm_surrender_limit = 0.4 }
-		add_to_variable = { china_morale_dm_surrender_limit = -30 }
-		multiply_variable = { china_morale_dm_surrender_limit = 0.01 }
+		set_variable = {
+			china_morale_dm_surrender_limit = {
+				value = china_league_war_morale
+				multiply = 0.4
+				add = -30
+				multiply = 0.01
+			}
+		}
 
 		# Calculate Breakthrough Factor
-		set_variable = { china_morale_dm_breakthrough_factor = china_league_war_morale }
-		multiply_variable = { china_morale_dm_breakthrough_factor = 0.25 }
-		multiply_variable = { china_morale_dm_breakthrough_factor = 0.01 }
+		set_variable = {
+			china_morale_dm_breakthrough_factor = {
+				value = china_league_war_morale
+				multiply = 0.0025
+			}
+		}
 
 		hidden_effect = {
 			if = {
-				limit = { check_variable = { china_league_war_morale < 30 }}
+				limit = { check_variable = { china_league_war_morale < 30 } }
 				activate_mission = china_collapsing_morale
 			}
 		}
@@ -1328,18 +1337,10 @@ CHN_add_to_civil_war_preparation_effect = {
 			limit = { is_subject = yes }
 			if = {
 				limit = { CHN_has_civil_war_prep_trigger = yes }
-				add_to_variable = {
-					var = CHN_civil_war_preparation_var
-					value = 1
-					tooltip = CHN_add_to_civil_war_preparation_tt
-				}
+				add_to_variable = { CHN_civil_war_preparation_var = 1 tooltip = CHN_add_to_civil_war_preparation_tt }
 			}
 			else = {
-				add_to_variable = {
-					var = CHN_civil_war_preparation_var
-					value = 1
-					tooltip = CHN_begin_civil_war_preparation_tt
-				}
+				add_to_variable = { CHN_civil_war_preparation_var = 1 tooltip = CHN_begin_civil_war_preparation_tt }
 				ROOT.overlord = {
 					country_event = { id = china_events.62 days = 3 }
 				}
@@ -3138,6 +3139,10 @@ china_army_reform_remove_officer_penalty = {
 ### CHN Military Disarray
 CHN_setup_military_disarray_normal_effect = {
 	if = {
+		limit = { has_country_flag = CHN_setup_military_disarray_normal_flag }
+		custom_effect_tooltip = CHN_activate_military_disarray_redundant_tt
+	}
+	else_if = {
 		limit = { has_country_flag = CHN_setup_military_disarray_early_flag }
 		#Downgrade your spirit by 1 level. Can't avoid it entirely.
 		if = {
@@ -3220,6 +3225,10 @@ CHN_improve_military_disarray_effect = {
 ### CHN Econ Devastation
 CHN_setup_economic_devastation_normal_effect = {
 	if = {
+		limit = { has_country_flag = CHN_setup_economic_devastation_normal_flag }
+		custom_effect_tooltip = CHN_activate_economic_devastation_redundant_tt
+	}
+	else_if = {
 		limit = { has_country_flag = CHN_setup_economic_devastation_early_flag }
 		#Downgrade your spirit by 1 level. Can't avoid it entirely.
 		if = {
@@ -4345,6 +4354,14 @@ CHN_update_china_alignment_gui = {
 	set_variable_to_random = china_alignment_gui_update
 }
 
+CHN_china_GUI_daily_update = {
+	if = {
+		limit = { has_country_flag = china_alignment_gui_visibility }
+		CHN_calculate_china_alignment_gui_effect = yes
+		CHN_update_china_alignment_gui = yes
+	}
+}
+
 ### Scientist Transfer ###
 CHN_scientist_transfer_effect = {
 	if = {
@@ -4504,6 +4521,12 @@ china_create_united_front_faction = {
 		days = 30
 		value = 1
 	}
+	if = {
+		limit = {
+			is_ai = yes
+		}
+		add_timed_idea = { idea = has_scripted_peace days = 60 } #Make sure CUF + other formables doesn't cap until they get a chance to invite people.
+	}
 }
 
 china_form_SCPC_effect = {
@@ -4554,12 +4577,12 @@ china_form_SCPC_effect = {
 				is_claimed_by = ROOT
 			}
 			OR = {
-				has_state_flag = guangxi_province_state
-				has_state_flag = guangdong_province_state
-				has_state_flag = yunnan_province_state
-				has_state_flag = sichuan_province_state
-				has_state_flag = hunan_province_state
-				has_state_flag = guizhou_province_state
+				check_variable = { chinese_province_state = 594.id }
+				check_variable = { chinese_province_state = 592.id }
+				check_variable = { chinese_province_state = 325.id }
+				check_variable = { chinese_province_state = 605.id }
+				check_variable = { chinese_province_state = 602.id }
+				check_variable = { chinese_province_state = 1051.id }
 			}
 		}
 		add_claim_by = ROOT

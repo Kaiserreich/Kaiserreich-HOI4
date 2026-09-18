@@ -760,14 +760,14 @@ country_event = { #Who will guide the Republic?
 					AND = {
 						has_game_rule = { rule = BEL_forpol option = BEL_FORPOL_BEL }
 						NOT = {
-							has_game_rule = { rule = HOL_path option = HOL_PATH_TOTALIST }
-							has_game_rule = { rule = HOL_path option = HOL_PATH_NAS_SYNDIE }
-							has_game_rule = { rule = HOL_path option = HOL_PATH_KAPN_SYNDIE }
-							has_game_rule = { rule = HOL_path option = HOL_PATH_RSAP_RADSOC }
-							has_game_rule = { rule = HOL_path option = HOL_PATH_SDAP_RADSOC }
 							HOL = {
-								is_ai = no
-								has_socialist_government = no
+								OR = {
+									has_country_flag = HOL_socialist_ai
+									AND = {
+										is_ai = no
+										has_socialist_government = no
+									}
+								}
 							}
 						}
 					}
@@ -3748,6 +3748,12 @@ country_event = { #Feldgendarmerie
 			}
 			complete_national_focus = BEL_Feldgendarmerie
 		}
+		hidden_effect = {
+			set_temp_variable = { days_to_event = 562 }
+			calculate_days_since_game_start = yes
+			clamp_temp_variable = { var = days_to_event min = 10 }
+			country_event = { id = flanders_wallonia_events.18 days = days_to_event }
+		}
 	}
 	option = {
 		log = "[GetLogInfo]: event belgium_events.805 option belgium_events.805.b"
@@ -4930,17 +4936,36 @@ country_event = { #Hendrik Elias declares himself mayor
 	}
 }
 
+country_event = { #Train Crash loop
+	id = flanders_wallonia_events.1100
+	hidden = yes
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event flanders_wallonia_events.1100 option 1"
+		if = {
+			limit = {
+				is_subject_of = GER
+				date < 1938.01.01
+			}
+			country_event = flanders_wallonia_events.11
+		}
+		else_if = {
+			limit = { date < 1938.01.01 } #Stop looping by 1938
+			country_event = { id = flanders_wallonia_events.1100 days = 30 }
+		}
+	}
+}
+
 country_event = { #Train Crash
 	id = flanders_wallonia_events.11
 	title = flanders_wallonia_events.11.t
 	desc = flanders_wallonia_events.11.d
 	picture = GFX_report_event_BEL_Derailed_Train
 
-	fire_only_once = yes
+	is_triggered_only = yes
 
 	trigger = {
-		tag = BEL
-		date > 1937.01.12
 		is_subject_of = GER
 	}
 
@@ -5037,6 +5062,12 @@ country_event = { #Vlaamse Wacht Escalation 1
 		}
 		country_event = { id = flanders_wallonia_events.15 days = 10 }
 		set_country_flag = Small_Vlaamse_Wacht
+		hidden_effect = {
+			set_temp_variable = { days_to_event = 463 }
+			calculate_days_since_game_start = yes
+			clamp_temp_variable = { var = days_to_event min = 10 }
+			country_event = { id = flanders_wallonia_events.17 days = days_to_event }
+		}
 	}
 	option = {
 		log = "[GetLogInfo]: event flanders_wallonia_events.14 option flanders_wallonia_events.14.b"
@@ -5058,6 +5089,17 @@ country_event = { #Vlaamse Wacht Escalation 1
 		}
 		add_political_power = -50
 		BEL_increase_flemish_coup_chance = yes
+		hidden_effect = {
+			set_temp_variable = { days_to_event = 463 }
+			calculate_days_since_game_start = yes
+			clamp_temp_variable = { var = days_to_event min = 10 }
+			country_event = { id = flanders_wallonia_events.16 days = days_to_event }
+
+			set_temp_variable = { days_to_event = 562 }
+			calculate_days_since_game_start = yes
+			clamp_temp_variable = { var = days_to_event min = 15 }
+			country_event = { id = flanders_wallonia_events.18 days = days_to_event }
+		}
 	}
 }
 
@@ -5083,14 +5125,11 @@ country_event = { #Vrij België (with Vlaamse Wacht not reduced)
 	picture = GFX_report_event_BEL_Vlaamse_Wacht
 
 	fire_only_once = yes
+	is_triggered_only = yes
 
 	trigger = {
-		tag = BEL
-		date > 1937.04.07
 		is_subject_of = GER
-		NOT = {
-			has_country_flag = Small_Vlaamse_Wacht
-		}
+		NOT = { has_country_flag = Small_Vlaamse_Wacht }
 	}
 
 	option = {
@@ -5107,11 +5146,9 @@ country_event = { #Vrij België (with Vlaamse Wacht reduced)
 	desc = flanders_wallonia_events.17.d
 	picture = GFX_report_event_BEL_Vlaamse_Wacht
 
-	fire_only_once = yes
+	is_triggered_only = yes
 
 	trigger = {
-		tag = BEL
-		date > 1937.04.07
 		is_subject_of = GER
 		has_country_flag = Small_Vlaamse_Wacht
 	}
@@ -5134,17 +5171,14 @@ country_event = { #Weapons smuggling
 	picture = GFX_report_event_BEL_Weapons_Smuggling
 
 	fire_only_once = yes
+	is_triggered_only = yes
 
 	trigger = {
-		tag = BEL
 		is_subject_of = GER
 		OR = {
 			has_country_flag = Feldgendarmerie
-			NOT = {
-				has_country_flag = Small_Vlaamse_Wacht
-			}
+			NOT = { has_country_flag = Small_Vlaamse_Wacht }
 		}
-		date > 1937.07.15
 	}
 
 	option = {
@@ -6247,6 +6281,10 @@ country_event = { #The Commune of Belgium declares its independence
 		}
 	}
 
+	mean_time_to_happen = {
+		days = 5
+	}
+
 	fire_only_once = yes
 
 	option = { #The Fires of Revolution burn throughout the nation
@@ -6254,17 +6292,21 @@ country_event = { #The Commune of Belgium declares its independence
 		name = flanders_wallonia_events.45.a
 		if = {
 			limit = {
-				set_temp_variable = { base_stability = stability }
-				subtract_from_temp_variable = { base_stability = modifier@stability_factor }
-				check_variable = { base_stability < 0.5 }
+				check_expr = { #base_stability
+					value = stability
+					subtract = modifier@stability_factor
+					less_than = 0.5
+				}
 			}
 			set_stability = 0.5
 		}
 		if = {
 			limit = {
-				set_temp_variable = { base_war_support = has_war_support }
-				subtract_from_temp_variable = { base_war_support = modifier@war_support_factor }
-				check_variable = { base_war_support < 0.35 }
+				check_expr = { #base_war_support
+					value = has_war_support
+					subtract = modifier@war_support_factor
+					less_than = 0.35
+				}
 			}
 			set_war_support = 0.35
 		}
@@ -7633,6 +7675,7 @@ country_event = { #For BEL/HOL attacked by INT: join the RP temporarily?
 		}
 		NOT = {
 			any_enemy_country = {
+				is_in_europe = yes
 				has_socialist_government = no
 				NOT = { is_ally_with = INT }
 				NOT = { has_war_with = GER }

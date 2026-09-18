@@ -363,7 +363,7 @@ PHI_update_pie_chart = {
 
 		set_temp_variable = {
 			PHI_piechart_CPS = {
-				value = PHI_foropl_CPS_percentage_var
+				value = PHI_forpol_CPS_percentage_var
 				multiply = 100
 				round = yes
 			}
@@ -391,313 +391,193 @@ PHI_update_pie_chart = {
 }
 
 PHI_add_IND_alignment_small_effect = {
-	add_to_variable = {
-		var = PHI.PHI_IND_alignment_var
-		value = @PHI_size_small
-		tooltip = PHI_add_IND_alignment_small_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_IND_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_IND_alignment_var = @PHI_size_small tooltip = PHI_add_IND_alignment_small_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_IND_alignment_medium_effect = {
-	add_to_variable = {
-		var = PHI.PHI_IND_alignment_var
-		value = @PHI_size_medium
-		tooltip = PHI_add_IND_alignment_medium_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_IND_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_IND_alignment_var = @PHI_size_medium tooltip = PHI_add_IND_alignment_medium_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_IND_alignment_large_effect = {
-	add_to_variable = {
-		var = PHI.PHI_IND_alignment_var
-		value = @PHI_size_large
-		tooltip = PHI_add_IND_alignment_large_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_IND_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_IND_alignment_var = @PHI_size_large tooltip = PHI_add_IND_alignment_large_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_IND_alignment_small_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_IND_alignment_var
-		value = @PHI_size_small
+		PHI.PHI_IND_alignment_var = {
+			value = @PHI_size_small
+			clamp = { min = 0 max = PHI.PHI_IND_alignment_var }
+		}
 		tooltip = PHI_sub_IND_alignment_small_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_IND_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_IND_alignment_medium_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_IND_alignment_var
-		value = @PHI_size_medium
+		PHI.PHI_IND_alignment_var = {
+			value = @PHI_size_medium
+			clamp = { min = 0 max = PHI.PHI_IND_alignment_var }
+		}
 		tooltip = PHI_sub_IND_alignment_medium_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_IND_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_IND_alignment_large_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_IND_alignment_var
-		value = @PHI_size_large
+		PHI.PHI_IND_alignment_var = {
+			value = @PHI_size_large
+			clamp = { min = 0 max = PHI.PHI_IND_alignment_var }
+		}
 		tooltip = PHI_sub_IND_alignment_large_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_IND_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_CPS_alignment_small_effect = {
-	add_to_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		value = @PHI_size_small
-		tooltip = PHI_add_CPS_alignment_small_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_CPS_alignment_var = @PHI_size_small tooltip = PHI_add_CPS_alignment_small_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_CPS_alignment_medium_effect = {
-	add_to_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		value = @PHI_size_medium
-		tooltip = PHI_add_CPS_alignment_medium_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_CPS_alignment_var = @PHI_size_medium tooltip = PHI_add_CPS_alignment_medium_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_CPS_alignment_large_effect = {
-	add_to_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		value = @PHI_size_large
-		tooltip = PHI_add_CPS_alignment_large_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_CPS_alignment_var = @PHI_size_large tooltip = PHI_add_CPS_alignment_large_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_CPS_alignment_small_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		value = @PHI_size_small
+		PHI.PHI_CPS_alignment_var = {
+			value = @PHI_size_small
+			clamp = { min = 0 max = PHI.PHI_CPS_alignment_var }
+		}
 		tooltip = PHI_sub_CPS_alignment_small_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_CPS_alignment_medium_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		value = @PHI_size_medium
+		PHI.PHI_CPS_alignment_var = {
+			value = @PHI_size_medium
+			clamp = { min = 0 max = PHI.PHI_CPS_alignment_var }
+		}
 		tooltip = PHI_sub_CPS_alignment_medium_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_CPS_alignment_large_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		value = @PHI_size_large
+		PHI.PHI_CPS_alignment_var = {
+			value = @PHI_size_large
+			clamp = { min = 0 max = PHI.PHI_CPS_alignment_var }
+		}
 		tooltip = PHI_sub_CPS_alignment_large_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_CPS_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_GEA_alignment_small_effect = {
-	add_to_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		value = @PHI_size_small
-		tooltip = PHI_add_GEA_alignment_small_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_GEA_alignment_var = @PHI_size_small tooltip = PHI_add_GEA_alignment_small_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_GEA_alignment_medium_effect = {
-	add_to_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		value = @PHI_size_medium
-		tooltip = PHI_add_GEA_alignment_medium_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_GEA_alignment_var = @PHI_size_medium tooltip = PHI_add_GEA_alignment_medium_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_GEA_alignment_large_effect = {
-	add_to_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		value = @PHI_size_large
-		tooltip = PHI_add_GEA_alignment_large_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_GEA_alignment_var = @PHI_size_large tooltip = PHI_add_GEA_alignment_large_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_GEA_alignment_small_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		value = @PHI_size_small
+		PHI.PHI_GEA_alignment_var = {
+			value = @PHI_size_small
+			clamp = { min = 0 max = PHI.PHI_GEA_alignment_var }
+		}
 		tooltip = PHI_sub_GEA_alignment_small_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_GEA_alignment_medium_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		value = @PHI_size_medium
+		PHI.PHI_GEA_alignment_var = {
+			value = @PHI_size_medium
+			clamp = { min = 0 max = PHI.PHI_GEA_alignment_var }
+		}
 		tooltip = PHI_sub_GEA_alignment_medium_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_GEA_alignment_large_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		value = @PHI_size_large
+		PHI.PHI_GEA_alignment_var = {
+			value = @PHI_size_large
+			clamp = { min = 0 max = PHI.PHI_GEA_alignment_var }
+		}
 		tooltip = PHI_sub_GEA_alignment_large_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_GEA_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_USA_alignment_small_effect = {
-	add_to_variable = {
-		var = PHI.PHI_USA_alignment_var
-		value = @PHI_size_small
-		tooltip = PHI_add_USA_alignment_small_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_USA_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_USA_alignment_var = @PHI_size_small tooltip = PHI_add_USA_alignment_small_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_USA_alignment_medium_effect = {
-	add_to_variable = {
-		var = PHI.PHI_USA_alignment_var
-		value = @PHI_size_medium
-		tooltip = PHI_add_USA_alignment_medium_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_USA_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_USA_alignment_var = @PHI_size_medium tooltip = PHI_add_USA_alignment_medium_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_add_USA_alignment_large_effect = {
-	add_to_variable = {
-		var = PHI.PHI_USA_alignment_var
-		value = @PHI_size_large
-		tooltip = PHI_add_USA_alignment_large_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_USA_alignment_var
-		min = 0
-	}
+	add_to_variable = { PHI.PHI_USA_alignment_var = @PHI_size_large tooltip = PHI_add_USA_alignment_large_tt }
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_USA_alignment_small_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_USA_alignment_var
-		value = @PHI_size_small
+		PHI.PHI_USA_alignment_var = {
+			value = @PHI_size_small
+			clamp = { min = 0 max = PHI.PHI_USA_alignment_var }
+		}
 		tooltip = PHI_sub_USA_alignment_small_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_USA_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_USA_alignment_medium_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_USA_alignment_var
-		value = @PHI_size_medium
+		PHI.PHI_USA_alignment_var = {
+			value = @PHI_size_medium
+			clamp = { min = 0 max = PHI.PHI_USA_alignment_var }
+		}
 		tooltip = PHI_sub_USA_alignment_medium_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_USA_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }
 
 PHI_sub_USA_alignment_large_effect = {
 	subtract_from_variable = {
-		var = PHI.PHI_USA_alignment_var
-		value = @PHI_size_large
+		PHI.PHI_USA_alignment_var = {
+			value = @PHI_size_large
+			clamp = { min = 0 max = PHI.PHI_USA_alignment_var }
+		}
 		tooltip = PHI_sub_USA_alignment_large_tt
-	}
-	clamp_variable = {
-		var = PHI.PHI_USA_alignment_var
-		min = 0
 	}
 	PHI_update_pie_chart = yes
 }

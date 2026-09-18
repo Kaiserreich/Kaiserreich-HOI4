@@ -286,7 +286,7 @@ LIT_architect_king_decisions = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove LIT_monument_to_emilia_plater"
 			country_event = lithuania_events.55
 			clr_country_flag = LIT_ongoing_project
-			set_temp_variable = { LIT_legitimacy_change = 5 }
+			set_temp_variable = { LIT_legitimacy_change = 0.05 }
 			LIT_change_legitimacy = yes
 			hidden_effect = {
 				remove_targeted_decision = { decision = LIT_monument_to_emilia_plater target = FROM }
@@ -334,7 +334,7 @@ LIT_architect_king_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove LIT_knygesiai_memorial"
 			country_event = lithuania_events.60
-			set_temp_variable = { LIT_legitimacy_change = 5 }
+			set_temp_variable = { LIT_legitimacy_change = 0.05 }
 			LIT_change_legitimacy = yes
 			clr_country_flag = LIT_ongoing_project
 			hidden_effect = {
@@ -382,7 +382,7 @@ LIT_architect_king_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove LIT_church_of_saint_joseph_the_betrothed"
 			country_event = lithuania_events.61
-			set_temp_variable = { LIT_legitimacy_change = 5 }
+			set_temp_variable = { LIT_legitimacy_change = 0.05 }
 			LIT_change_legitimacy = yes
 			clr_country_flag = LIT_ongoing_project
 			hidden_effect = {
@@ -430,7 +430,7 @@ LIT_architect_king_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove LIT_year_of_1918"
 			country_event = lithuania_events.65
-			set_temp_variable = { LIT_legitimacy_change = 5 }
+			set_temp_variable = { LIT_legitimacy_change = 0.05 }
 			LIT_change_legitimacy = yes
 			clr_country_flag = LIT_ongoing_project
 			hidden_effect = {
@@ -482,7 +482,7 @@ LIT_architect_king_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove LIT_kings_model_town"
 			country_event = lithuania_events.70
-			set_temp_variable = { LIT_legitimacy_change = 5 }
+			set_temp_variable = { LIT_legitimacy_change = 0.05 }
 			LIT_change_legitimacy = yes
 			clr_country_flag = LIT_ongoing_project
 			hidden_effect = {
@@ -535,7 +535,7 @@ LIT_architect_king_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove LIT_memorial_to_wladyslaw_syrokomla"
 			country_event = lithuania_events.75
-			set_temp_variable = { LIT_legitimacy_change = 5 }
+			set_temp_variable = { LIT_legitimacy_change = 0.05 }
 			LIT_change_legitimacy = yes
 			clr_country_flag = LIT_ongoing_project
 			hidden_effect = {
@@ -553,7 +553,7 @@ LIT_architect_king_decisions = {
 			NOT = {
 				check_variable = {
 					tooltip = LIT_legitimacy_check_tooltip
-					LIT_legitimacy < 70
+					LIT_legitimacy < 0.7
 				}
 			}
 			controls_state = FROM
@@ -956,7 +956,7 @@ LIT_LAF_insurgency_decisions = {
 						set_temp_variable = {
 							LIT_major_attack_factor = {
 								value = LIT_LAF_threat
-								multiply = 0.05
+								multiply = 5
 								clamp = { min = 1 max = 100 }
 							}
 						}
@@ -969,7 +969,7 @@ LIT_LAF_insurgency_decisions = {
 						set_temp_variable = {
 							LIT_minor_attack_factor = {
 								value = LIT_LAF_threat
-								multiply = 0.05
+								multiply = 5
 								clamp = { min = 1 max = 100 }
 							}
 						}
@@ -982,7 +982,7 @@ LIT_LAF_insurgency_decisions = {
 						set_temp_variable = {
 							LIT_military_sabotage_factor = {
 								value = LIT_LAF_threat
-								multiply = 0.04
+								multiply = 4
 								clamp = { min = 1 max = 100 }
 							}
 						}
@@ -995,7 +995,7 @@ LIT_LAF_insurgency_decisions = {
 						set_temp_variable = {
 							LIT_civilian_sabotage_factor = {
 								value = LIT_LAF_threat
-								multiply = 0.02
+								multiply = 2
 								clamp = { min = 1 max = 100 }
 							}
 						}
@@ -1008,7 +1008,7 @@ LIT_LAF_insurgency_decisions = {
 						set_temp_variable = {
 							LIT_infrastructure_sabotage_factor = {
 								value = LIT_LAF_threat
-								multiply = 0.02
+								multiply = 2
 								clamp = { min = 1 max = 100 }
 							}
 						}
@@ -1018,16 +1018,24 @@ LIT_LAF_insurgency_decisions = {
 				}
 				40 = {
 					modifier = {
-						set_temp_variable = { LIT_no_attack_chance = { value = LIT_LAF_threat multiply = 0.01 } }
-						set_temp_variable = { LIT_no_attack_factor = { value = 1 subtract = LIT_no_attack_chance } }
+						set_temp_variable = {
+							LIT_no_attack_factor = {
+								value = 1
+								subtract = LIT_LAF_threat
+							}
+						}
 						factor = LIT_no_attack_factor #0% at 100% threat
 					}
 					country_event = lithuania_events.253 #Quiet
 				}
 				20 = {
 					modifier = {
-						set_temp_variable = { LIT_attack_fail_chance = { value = LIT_LAF_threat multiply = 0.0025 } }
-						set_temp_variable = { LIT_attack_fail_factor = { value = 1 subtract = LIT_attack_fail_chance } }
+						set_temp_variable = {
+							LIT_attack_fail_factor = {
+								value = 1
+								subtract = { value = LIT_LAF_threat multiply = 0.25 }
+							}
+						}
 						factor = LIT_attack_fail_factor #15% at 100% threat
 					}
 					country_event = lithuania_events.254 #LAF repulsed
@@ -1145,7 +1153,7 @@ LIT_LAF_insurgency_decisions = {
 			}
 			modifier = {
 				factor = 0
-				check_variable = { LIT_LAF_threat > 25 } #save for the other decisions
+				check_variable = { LIT_LAF_threat > 0.25 } #save for the other decisions
 			}
 		}
 
@@ -1195,7 +1203,8 @@ LIT_LAF_insurgency_decisions = {
 				NOT = { has_country_flag = LIT_enact_federal_police_act_completed }
 			}
 			modifier = {
-				factor = LIT_LAF_threat
+				set_temp_variable = { LIT_LAF_threat_temp = { value = LIT_LAF_threat multiply = 100 } }
+				factor = LIT_LAF_threat_temp
 			}
 			modifier = {
 				factor = 0
@@ -1219,7 +1228,7 @@ LIT_LAF_insurgency_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_sweep_the_countryside"
-			set_temp_variable = { LIT_threat_change = -10 }
+			set_temp_variable = { LIT_threat_change = -0.1 }
 			LIT_change_LAF_threat = yes
 		}
 		fixed_random_seed = no
@@ -1250,7 +1259,8 @@ LIT_LAF_insurgency_decisions = {
 				NOT = { has_country_flag = LIT_enact_federal_police_act_completed }
 			}
 			modifier = {
-				factor = LIT_LAF_threat
+				set_temp_variable = { LIT_LAF_threat_temp = { value = LIT_LAF_threat multiply = 100 } }
+				factor = LIT_LAF_threat_temp
 			}
 			modifier = {
 				factor = 0
@@ -1274,7 +1284,7 @@ LIT_LAF_insurgency_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_erode_nationalist_support"
-			set_temp_variable = { LIT_threat_change = -10 }
+			set_temp_variable = { LIT_threat_change = -0.1 }
 			LIT_change_LAF_threat = yes
 		}
 		fixed_random_seed = no
@@ -1302,7 +1312,8 @@ LIT_LAF_insurgency_decisions = {
 				NOT = { has_country_flag = LIT_enact_federal_police_act_completed }
 			}
 			modifier = {
-				factor = LIT_LAF_threat
+				set_temp_variable = { LIT_LAF_threat_temp = { value = LIT_LAF_threat multiply = 100 } }
+				factor = LIT_LAF_threat_temp
 			}
 			modifier = {
 				factor = 0
@@ -1326,7 +1337,7 @@ LIT_LAF_insurgency_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_demoralisation_campaign"
-			set_temp_variable = { LIT_threat_change = -20 }
+			set_temp_variable = { LIT_threat_change = -0.2 }
 			LIT_change_LAF_threat = yes
 		}
 	}
@@ -1354,7 +1365,7 @@ LIT_LAF_insurgency_decisions = {
 			base = 2000
 			modifier = {
 				factor = 0
-				check_variable = { LIT_LAF_threat < 15 }
+				check_variable = { LIT_LAF_threat < 0.15 }
 			}
 			modifier = {
 				factor = 0
@@ -1382,7 +1393,7 @@ LIT_LAF_insurgency_decisions = {
 			set_country_flag = LIT_enact_federal_police_act_completed
 			custom_effect_tooltip = LIT_LAF_guerillas_less_frequent
 			set_variable = { LIT_LAF_guerilla_activity_timeout = 60 }
-			set_temp_variable = { LIT_threat_change = -10 }
+			set_temp_variable = { LIT_threat_change = -0.1 }
 			LIT_change_LAF_threat = yes
 		}
 		fixed_random_seed = no
@@ -1414,7 +1425,7 @@ LIT_LAF_insurgency_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_Plech_indiscriminate_arrests"
 			add_stability = -0.05
-			set_temp_variable = { LIT_threat_change = -15 }
+			set_temp_variable = { LIT_threat_change = -0.15 }
 			LIT_change_LAF_threat = yes
 		}
 		fixed_random_seed = no
@@ -1450,7 +1461,7 @@ LIT_LAF_insurgency_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_Plech_intensify_military_presence"
 			add_political_power = -25
-			set_temp_variable = { LIT_threat_change = -20 }
+			set_temp_variable = { LIT_threat_change = -0.20 }
 			LIT_change_LAF_threat = yes
 		}
 		fixed_random_seed = no
@@ -1475,7 +1486,7 @@ LIT_LAF_insurgency_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_Naruto_rural_outreach"
 			add_stability = 0.03
-			set_temp_variable = { LIT_threat_change = -15 }
+			set_temp_variable = { LIT_threat_change = -0.15 }
 			LIT_change_LAF_threat = yes
 		}
 		fixed_random_seed = no
@@ -1500,7 +1511,7 @@ LIT_LAF_insurgency_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_Naruto_economic_assistance"
-			set_temp_variable = { LIT_threat_change = -15 }
+			set_temp_variable = { LIT_threat_change = -0.15 }
 			LIT_change_LAF_threat = yes
 		}
 		modifier = {
@@ -1543,7 +1554,7 @@ LIT_LAF_insurgency_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_Naruto_arm_polish"
 			add_stability = -0.05
-			set_temp_variable = { LIT_threat_change = -25 }
+			set_temp_variable = { LIT_threat_change = -0.25 }
 			LIT_change_LAF_threat = yes
 		}
 		fixed_random_seed = no
@@ -1557,15 +1568,10 @@ LIT_tears_among_the_left_decisions = {
 		available = {
 			if = {
 				limit = {
-					is_ai = yes
-					has_game_rule = { rule = LIT_path option = LIT_PATH_RADSOC }
+					is_ai = no
+					NOT = { has_game_rule = { rule = LIT_path option = LIT_PATH_RADSOC } }
 				}
-			}
-			else = {
-				check_variable = {
-					tooltip = LIT_radicalism_above_60_percent
-					LIT_radicalism > 59
-				}
+				check_variable = { LIT_radicalism > 0.60 tooltip = LIT_radicalism_above_60_percent }
 			}
 			second_weltkrieg_has_begun = yes
 			has_capitulated = no
@@ -1710,7 +1716,7 @@ LIT_tears_among_the_left_decisions = {
 		allowed = { always = no }	# Activated by modifier LIT_long_road_to_pluralism_modifier
 		visible = {
 			has_government = social_democrat
-			check_variable = { LIT_radicalism < 100 }
+			check_variable = { LIT_radicalism < 1 }
 			is_in_coalition_with_radical_socialist = yes
 		}
 
@@ -1722,7 +1728,7 @@ LIT_tears_among_the_left_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_internationale_propaganda"
-			set_temp_variable = { LIT_radicalism_change = 10 }
+			set_temp_variable = { LIT_radicalism_change = 0.1 }
 			LIT_change_radicalism = yes
 		}
 		fixed_random_seed = no
@@ -1744,7 +1750,7 @@ LIT_tears_among_the_left_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_commit_to_the_reichspakt"
-			set_temp_variable = { LIT_radicalism_change = -10 }
+			set_temp_variable = { LIT_radicalism_change = -0.1 }
 			LIT_change_radicalism = yes
 		}
 		fixed_random_seed = no
@@ -1765,7 +1771,7 @@ LIT_tears_among_the_left_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_encourage_agricultural_cooperatives"
-			set_temp_variable = { LIT_radicalism_change = 10 }
+			set_temp_variable = { LIT_radicalism_change = 0.1 }
 			LIT_change_radicalism = yes
 		}
 		fixed_random_seed = no
@@ -1789,7 +1795,7 @@ LIT_tears_among_the_left_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_combat_nationalist_sentiment"
-			set_temp_variable = { LIT_radicalism_change = 10 }
+			set_temp_variable = { LIT_radicalism_change = 0.1 }
 			LIT_change_radicalism = yes
 		}
 		fixed_random_seed = no
@@ -1829,7 +1835,7 @@ LIT_tears_among_the_left_decisions = {
 			modifier = {
 				factor = 0
 				has_game_rule = { rule = LIT_path option = LIT_PATH_RADSOC }
-				NOT = { check_variable = { LIT_radicalism > 94 } }
+				NOT = { check_variable = { LIT_radicalism > 0.94 } }
 			}
 		}
 
@@ -1837,7 +1843,7 @@ LIT_tears_among_the_left_decisions = {
 			log = "[GetLogRoot]: Decision complete LIT_make_peace_with_santara"
 			add_stability = -0.05
 			remove_mission = LIT_rightwing_complaints
-			set_temp_variable = { LIT_radicalism_change = -25 }
+			set_temp_variable = { LIT_radicalism_change = -0.25 }
 			LIT_change_radicalism = yes
 			hidden_effect = {
 				remove_targeted_decision = { target = THIS decision = LIT_make_peace_with_santara }
@@ -1918,7 +1924,7 @@ LIT_tears_among_the_left_decisions = {
 			log = "[GetLogRoot]: Decision complete LIT_appease_the_radicals"
 			add_stability = -0.05
 			remove_mission = LIT_leftwing_complaints
-			set_temp_variable = { LIT_radicalism_change = 25 }
+			set_temp_variable = { LIT_radicalism_change = 0.25 }
 			LIT_change_radicalism = yes
 			hidden_effect = {
 				remove_targeted_decision = { target = THIS decision = LIT_crack_down_on_syndicalism }
@@ -2036,7 +2042,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_encourage_free_debate"
-			set_temp_variable = { LIT_federalisation_change = 5 }
+			set_temp_variable = { LIT_federalisation_change = 0.05 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2053,7 +2059,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_promote_political_corporations"
-			set_temp_variable = { LIT_federalisation_change = 5 }
+			set_temp_variable = { LIT_federalisation_change = 0.05 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2070,7 +2076,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_liberalise_the_press"
-			set_temp_variable = { LIT_federalisation_change = 5 }
+			set_temp_variable = { LIT_federalisation_change = 0.05 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2091,7 +2097,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_pass_labour_safety_laws"
-			set_temp_variable = { LIT_federalisation_change = 5 }
+			set_temp_variable = { LIT_federalisation_change = 0.05 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2112,7 +2118,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_establish_cooperatives"
-			set_temp_variable = { LIT_federalisation_change = 5 }
+			set_temp_variable = { LIT_federalisation_change = 0.05 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2133,7 +2139,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_wealth_redistribution_taxes"
-			set_temp_variable = { LIT_federalisation_change = 5 }
+			set_temp_variable = { LIT_federalisation_change = 0.05 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2150,7 +2156,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_compromise_with_the_bund"
-			set_temp_variable = { LIT_federalisation_change = 5 }
+			set_temp_variable = { LIT_federalisation_change = 0.05 }
 			LIT_change_federalisation = yes
 			country_event = lithuania_events.104
 		}
@@ -2167,7 +2173,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_form_northern_polish_corporate_federations"
-			set_temp_variable = { LIT_federalisation_change = 15 }
+			set_temp_variable = { LIT_federalisation_change = 0.15 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2183,7 +2189,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_form_southern_polish_corporate_federations"
-			set_temp_variable = { LIT_federalisation_change = 15 }
+			set_temp_variable = { LIT_federalisation_change = 0.15 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2199,7 +2205,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_form_belarusian_corporate_federations"
-			set_temp_variable = { LIT_federalisation_change = 15 }
+			set_temp_variable = { LIT_federalisation_change = 0.15 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2215,7 +2221,7 @@ LIT_optimal_system_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_form_litvak_corporate_federations"
-			set_temp_variable = { LIT_federalisation_change = 15 }
+			set_temp_variable = { LIT_federalisation_change = 0.15 }
 			LIT_change_federalisation = yes
 		}
 		fixed_random_seed = no
@@ -2242,7 +2248,7 @@ LIT_centralisation_decisions = {
 				ideology = authoritarian_democrat
 				popularity = 0.05
 			}
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 		}
 		fixed_random_seed = no
@@ -2266,7 +2272,7 @@ LIT_centralisation_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_solidify_control_in_the_north"
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 		}
 		fixed_random_seed = no
@@ -2290,7 +2296,7 @@ LIT_centralisation_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_solidify_control_of_sudovia"
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 		}
 		fixed_random_seed = no
@@ -2314,7 +2320,7 @@ LIT_centralisation_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_secure_kaunas"
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 		}
 		fixed_random_seed = no
@@ -2338,7 +2344,7 @@ LIT_centralisation_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_secure_vilnius"
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 		}
 		fixed_random_seed = no
@@ -2362,7 +2368,7 @@ LIT_centralisation_decisions = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_secure_gardinas"
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 			hidden_effect = {
 				country_event = { id = lithuania_events.165 days = 45 }
@@ -2400,7 +2406,7 @@ LIT_centralisation_decisions = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_abolish_valkaviskas_autonomy"
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 		}
 		fixed_random_seed = no
@@ -2435,7 +2441,7 @@ LIT_centralisation_decisions = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove LIT_abolish_bialystok_autonomy"
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 		}
 		fixed_random_seed = no
@@ -2632,31 +2638,31 @@ LIT_Naru_Swiss = { #Swiss
 			country_event = lithuania_flavour_events.7
 			custom_effect_tooltip = LIT_SWISS_CON_MINOR
 			hidden_effect = {
+				add_to_variable = {
+					lit_var_swiss_conf_sam = {
+						value = 10
+						clamp = { min = 0 max = { value = 75 subtract = lit_var_swiss_conf_sam } }
+					}
+				}
+				add_to_variable = {
+					lit_var_swiss_conf_val = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_val } }
+					}
+				}
+				add_to_variable = {
+					lit_var_swiss_conf_bia = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_bia } }
+					}
+				}
+				add_to_variable = {
+					lit_var_swiss_conf_suw = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_suw } }
+					}
+				}
 				LIT_recalculate_average_swiss_canton = yes
-				add_to_variable = { lit_var_swiss_conf_sam = 10 }
-				add_to_variable = { lit_var_swiss_conf_val = 10 }
-				add_to_variable = { lit_var_swiss_conf_bia = 10 }
-				add_to_variable = { lit_var_swiss_conf_suw = 10 }
-				clamp_variable = {
-					var = lit_var_swiss_conf_sam
-					min = 0
-					max = 75
-				}
-				clamp_variable = {
-					var = lit_var_swiss_conf_val
-					min = 0
-					max = 100
-				}
-				clamp_variable = {
-					var = lit_var_swiss_conf_bia
-					min = 0
-					max = 100
-				}
-				clamp_variable = {
-					var = lit_var_swiss_conf_suw
-					min = 0
-					max = 100
-				}
 			}
 		}
 		fixed_random_seed = no

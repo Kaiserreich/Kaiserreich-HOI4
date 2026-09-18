@@ -65,44 +65,7 @@ defined_text = {
 defined_text = {
 	name = GetRulingIdeologyColour
 	text = {
-		trigger = { has_government = totalist }
-		localization_key = colour_totalist
-	}
-	text = {
-		trigger = { has_government = syndicalist }
-		localization_key = colour_syndicalist
-	}
-	text = {
-		trigger = { has_government = radical_socialist }
-		localization_key = colour_radsoc
-	}
-	text = {
-		trigger = { has_government = social_democrat }
-		localization_key = colour_socdem
-	}
-	text = {
-		trigger = { has_government = social_liberal }
-		localization_key = colour_soclib
-	}
-	text = {
-		trigger = { has_government = market_liberal }
-		localization_key = colour_marlib
-	}
-	text = {
-		trigger = { has_government = social_conservative }
-		localization_key = colour_soccon
-	}
-	text = {
-		trigger = { has_government = authoritarian_democrat }
-		localization_key = colour_autdem
-	}
-	text = {
-		trigger = { has_government = paternal_autocrat }
-		localization_key = colour_pataut
-	}
-	text = {
-		trigger = { has_government = national_populist }
-		localization_key = colour_natpop
+		localization_key = "colour_[?current_party_ideology_group.GetTokenKey]"
 	}
 }
 
@@ -125,8 +88,7 @@ defined_text = {
 	name = GetYearBefore
 	text = {
 		trigger = {
-			set_temp_variable = { year_before = global.year }
-			subtract_from_temp_variable = { year_before = 1 }
+			set_temp_variable = { year_before = { value = global.year subtract = 1 } }
 		}
 		localization_key = "[?year_before]"
 	}
@@ -136,8 +98,7 @@ defined_text = {
 	name = GetYearAfter
 	text = {
 		trigger = {
-			set_temp_variable = { year_after = global.year }
-			add_to_temp_variable = { year_after = 1 }
+			set_temp_variable = { year_after = { value = global.year add = 1 } }
 		}
 		localization_key = "[?year_after]"
 	}

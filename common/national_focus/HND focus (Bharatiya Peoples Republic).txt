@@ -4222,10 +4222,11 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			factor = 150
+			factor = 500
 			modifier = {
 				factor = 0
 				india_reconstruction_ongoing = yes
+				NOT = { has_subject = AFG }
 			}
 		}
 
@@ -4291,6 +4292,57 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed HND_resolving_the_nepal_conflict"
 			india_claim_nepal_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+
+	focus = {
+		id = HND_fate_of_the_frontier
+		icon = {
+			GFX_goal_generic_attack_afghanistan_republic = {
+				AFG = {
+					is_monarchy = no
+					has_socialist_government = no
+				}
+			}
+			GFX_goal_generic_attack_afghanistan_socialist = {
+				AFG = {
+					has_socialist_government = yes
+				}
+			}
+			GFX_goal_generic_attack_afghanistan = yes
+		}
+		cost = 5
+		dynamic = yes
+
+		relative_position_id = HND_resolving_the_nepal_conflict
+		x = 3
+		y = 1
+
+		prerequisite = { focus = HND_resolving_the_nepal_conflict }
+		available = {
+			india_can_claim_peshawar = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 10
+				var:442.owner = { enemies_strength_ratio > 0.5 }
+			}
+			modifier = {
+				factor = 0
+				india_reconstruction_ongoing = yes
+			}
+		}
+
+		bypass = {
+			india_bypass_peshawar_claim = yes
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed HND_fate_of_the_frontier"
+			india_claim_peshawar_effect = yes
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 	}

@@ -1,13 +1,7 @@
 lba_evaluate_volunteers = {
 	LBA = {
-		set_variable = {
-			var = lba_volunteers
-			value = 0
-		}
-		set_variable = {
-			var = lba_camel_power
-			value = 0
-		}
+		set_variable = { lba_volunteers = 0 }
+		set_variable = { lba_camel_power = 0 }
 
 		hidden_effect = {
 			every_state = {
@@ -16,14 +10,8 @@ lba_evaluate_volunteers = {
 						has_state_flag = lba_zawiya_2
 					}
 					LBA = {
-						add_to_variable = {
-							var = lba_volunteers
-							value = 50
-						}
-						add_to_variable = {
-							var = lba_camel_power
-							value = 0.02
-						}
+						add_to_variable = { lba_volunteers = 50 }
+						add_to_variable = { lba_camel_power = 0.02 }
 					}
 				}
 				else_if = {
@@ -31,14 +19,8 @@ lba_evaluate_volunteers = {
 						has_state_flag = lba_zawiya_1
 					}
 					LBA = {
-						add_to_variable = {
-							var = lba_volunteers
-							value = 25
-						}
-						add_to_variable = {
-							var = lba_camel_power
-							value = 0.01
-						}
+						add_to_variable = { lba_volunteers = 25 }
+						add_to_variable = { lba_camel_power = 0.01 }
 					}
 				}
 			}

@@ -30,6 +30,7 @@ if = {
 }
 
 set_variable = { country_guide_page_count = 1 }
+set_variable = { central_america_political_foci_count = 0 }
 
 country_event = { id = el_salvador_events.2 days = 47 }
 country_event = { id = el_salvador_events.17 days = 84 }
@@ -48,7 +49,17 @@ country_event = { id = el_salvador_events.210 days = 370 }
 country_event = { id = el_salvador_events.213 days = 156 }
 country_event = { id = el_salvador_events.215 days = 127 }
 country_event = { id = el_salvador_events.216 days = 1200 }
-country_event = { id = central_america_flavour_events.18 days = 258 }
+
+### Central American flavour events ###
+country_event = { id = central_america_flavour_events.1 days = 1409 } # Archaeological Expedition to the San Andres Site
+country_event = { id = central_america_flavour_events.2 days = 1137 } # The Izalco Volcano Intensifies Its Strombolian Activity
+country_event = { id = central_america_flavour_events.3 days = 1904 } # The Izalco Volcano Intensifies Its Strombolian Activity Even Further
+country_event = { id = central_america_flavour_events.4 days = 3765 } # The Izalco Volcano Goes Back to Normal Activity Levels
+country_event = { id = central_america_flavour_events.5 days = 3573 } # Flooding at San Salvador
+country_event = { id = central_america_flavour_events.9 days = 352 } # Earthquake Hits El Salvador (1936)
+country_event = { id = central_america_flavour_events.10 days = 717 } # Earthquake Hits El Salvador (1937)
+country_event = { id = central_america_flavour_events.11 days = 5601 } # Earthquake Hits El Salvador (1951)
+country_event = { id = central_america_flavour_events.18 days = 258 } # Annual Celebration of the '15 de Septiembre'
 
 activate_targeted_decision = { decision = CEN_unite_central_america target = THIS }
 
@@ -89,25 +100,32 @@ recruit_character = ELS_alfonso_quinonez_molina
 recruit_character = ELS_osmin_aguirre_y_salinas
 recruit_character = ELS_salvador_castaneda_castro
 recruit_character = ELS_maximiliano_hernandez_martinez
+
 recruit_character = ELS_andres_ignacio_menendez
+recruit_character = ELS_jose_asensio_menendez
+recruit_character = ELS_alfonso_marroquin_calvo
+recruit_character = ELS_jose_castellanos_contreras
+
 recruit_character = ELS_miguel_marmol
 recruit_character = ELS_claudia_lars
 recruit_character = ELS_jose_gustavo_guerrero
-recruit_character = ELS_jose_castellanos_contreras
 recruit_character = ELS_oscar_osorio
 recruit_character = ELS_fidel_cristino_garay
 recruit_character = ELS_mauro_espinola_castro
 recruit_character = ELS_humberto_alejandro_aberle
 recruit_character = ELS_juan_ramon_munes
-
+recruit_character = ELS_antonio_claramount_lucero
+recruit_character = ELS_tito_tomas_calvo
+recruit_character = ELS_felix_de_jesus_osegueda
 recruit_character = ELS_abel_cuenca
 recruit_character = ELS_graciela_amaya_de_garcia
 recruit_character = ELS_modesto_ramirez
 recruit_character = ELS_hector_escobar_serrano
 recruit_character = ELS_julio_enrique_avila
-recruit_character = ELS_jose_ascencio_menendez
 recruit_character = ELS_alberto_gomez_zarate
 recruit_character = ELS_salvador_pena_trejo
+recruit_character = ELS_joaquin_adolfo_ferman
+recruit_character = ELS_jose_antonio_lorenzana
 recruit_character = ELS_oscar_bolanos
 recruit_character = ELS_joaquin_valdes
 recruit_character = ELS_reynaldo_galindo_pohl
@@ -115,6 +133,9 @@ recruit_character = ELS_reynaldo_galindo_pohl
 ### Exiled Characters ###
 ELS_agustin_farabundo_marti = { retire = yes }
 ELS_feliciano_ama = { retire = yes }
+ELS_antonio_claramount_lucero = { retire = yes }
+ELS_tito_tomas_calvo = { retire = yes }
+ELS_felix_de_jesus_osegueda = { retire = yes }
 
 ### Character Flags ###
 ELS_abel_cuenca = { set_character_flag = CEN_socialist }
@@ -123,7 +144,9 @@ ELS_graciela_amaya_de_garcia = { set_character_flag = CEN_socialist }
 ELS_modesto_ramirez = { set_character_flag = CEN_socialist }
 
 ELS_julio_enrique_avila = { set_character_flag = CEN_liberal }
-ELS_jose_ascencio_menendez = { set_character_flag = CEN_liberal }
 ELS_alberto_gomez_zarate = { set_character_flag = CEN_liberal }
 
 ELS_salvador_pena_trejo = { set_character_flag = CEN_reactionary }
+
+ELS_agustin_farabundo_marti = { set_character_flag = CEN_field_marshal }
+ELS_maximiliano_hernandez_martinez = { set_character_flag = CEN_field_marshal }

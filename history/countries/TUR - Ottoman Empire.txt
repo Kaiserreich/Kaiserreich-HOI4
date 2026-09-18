@@ -97,26 +97,26 @@ if = {
 }
 
 ### Parliament
-set_variable = { var = representatives_support value = 0 }
-set_variable = { var = representatives_total value = 500 }
+set_variable = { representatives_support = 0 }
+set_variable = { representatives_total = 500 }
 
-set_variable = { var = ohf_deputies value = 150 }
-set_variable = { var = hif_deputies value = 54 }
-set_variable = { var = odf_deputies value = 33 }
+set_variable = { ohf_deputies = 150 }
+set_variable = { hif_deputies = 54 }
+set_variable = { odf_deputies = 33 }
 
-set_variable = { var = con_deputies value = 105 }
-set_variable = { var = con_sup_deputies value = 55 }
+set_variable = { con_deputies = 105 }
+set_variable = { con_sup_deputies = 55 }
 
-set_variable = { var = nat_ara_deputies value = 86 }
-set_variable = { var = nat_ara_sup_deputies value = 0 }
+set_variable = { nat_ara_deputies = 86 }
+set_variable = { nat_ara_sup_deputies = 0 }
 
-set_variable = { var = nat_tur_deputies value = 47 }
-set_variable = { var = nat_tur_sup_deputies value = 0 }
+set_variable = { nat_tur_deputies = 47 }
+set_variable = { nat_tur_sup_deputies = 0 }
 
-set_variable = { var = ind_deputies value = 25 }
-set_variable = { var = ind_sup_deputies value = 0 }
+set_variable = { ind_deputies = 25 }
+set_variable = { ind_sup_deputies = 0 }
 
-set_variable = { var = coalition_stability value = 0.25 }
+set_variable = { coalition_stability = 0.25 }
 OTT_calc_coalition_strength = yes
 OTT_recalc_congress_icon_frames = yes
 
@@ -189,30 +189,12 @@ add_dynamic_modifier = { modifier = OTT_literacy_negative_dynamic_modifier }
 OTT_evaluate_stability_modifier = yes
 OTT_evaluate_centralisation = yes
 
-set_variable = {
-	var = syr_integration_factor
-	value = 25
-}
-set_variable = {
-	var = gre_integration_factor
-	value = 40
-}
-set_variable = {
-	var = kur_integration_factor
-	value = 50
-}
-set_variable = {
-	var = hej_integration_factor
-	value = 15
-}
-set_variable = {
-	var = irq_integration_factor
-	value = 40
-}
-set_variable = {
-	var = tri_integration_factor
-	value = 10
-}
+set_variable = { syr_integration_factor = 25 }
+set_variable = { gre_integration_factor = 40 }
+set_variable = { kur_integration_factor = 50 }
+set_variable = { hej_integration_factor = 15 }
+set_variable = { irq_integration_factor = 40 }
+set_variable = { tri_integration_factor = 10 }
 
 set_politics = {
 	ruling_party = authoritarian_democrat

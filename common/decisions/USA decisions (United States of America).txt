@@ -602,7 +602,7 @@ USA_new_monroe_doctrine = {
 			FROM = { at_peace_or_same_enemies_as_ROOT = yes }
 			FROM = {
 				OR = {
-					naval_base > 0
+					any_owned_state = { naval_base > 0 }
 					any_home_area_neighbor_country = { is_ally_with = ROOT }
 				}
 			}

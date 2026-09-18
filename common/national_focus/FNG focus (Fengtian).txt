@@ -2425,12 +2425,12 @@ focus_tree = {
 			if = {
 				limit = { FNG_JAP_hostile = no }
 				custom_effect_tooltip = FNG_from_poverty_to_extravagance_tt
-				set_temp_variable = { FNG_stability_loss_temp_var = FNG.FNG_JAP_influence_variable }
-				multiply_temp_variable = { FNG_stability_loss_temp_var = -0.5 }
-				clamp_temp_variable = {
-					var = FNG_stability_loss_temp_var
-					min = -1
-					max = 0
+				set_temp_variable = {
+					FNG_stability_loss_temp_var = {
+						value = FNG.FNG_JAP_influence_variable
+						multiply = -0.5
+						clamp = { min = -1 max = 0 }
+					}
 				}
 				add_stability = FNG_stability_loss_temp_var
 			}
@@ -2873,14 +2873,14 @@ focus_tree = {
 				limit = {
 					is_china_claim_area = yes
 					OR = {
-						has_state_flag = guangdong_province_state
-						has_state_flag = guangxi_province_state
-						has_state_flag = yunnan_province_state
-						has_state_flag = hunan_province_state
-						has_state_flag = sichuan_province_state
-						has_state_flag = jiangxi_province_state
-						has_state_flag = fujian_province_state
-						has_state_flag = zhejiang_province_state
+						check_variable = { chinese_province_state = 592.id }
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 602.id }
+						check_variable = { chinese_province_state = 605.id }
+						check_variable = { chinese_province_state = 600.id }
+						check_variable = { chinese_province_state = 595.id }
+						check_variable = { chinese_province_state = 596.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -2941,12 +2941,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed FNG_the_president_of_providence"
 			custom_effect_tooltip = FNG_the_president_of_providence_tt
-			set_temp_variable = { FNG_stability_loss_temp_var = ROOT.party_popularity@authoritarian_democrat }
-			multiply_temp_variable = { FNG_stability_loss_temp_var = -0.33 }
-			clamp_temp_variable = {
-				var = FNG_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				FNG_stability_loss_temp_var = {
+					value = party_popularity@authoritarian_democrat
+					divide = -3
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = FNG_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -3750,7 +3750,7 @@ focus_tree = {
 
 	focus = {
 		id = FNG_tofu_on_puppet_strings
-		icon = GFX_goal_RUS_dominate_japan
+		icon = GFX_focus_generic_authoritarian_government
 		cost = 8
 
 		relative_position_id = FNG_a_reformed_government

@@ -3096,47 +3096,41 @@ focus_tree = {
 			}
 			OR = {
 				NOT = { country_exists = HNN }
-				OR = {
-					HNN = { china_is_aligned_with_federalists = no }
-					if = {
-						limit = { HNN = { is_subject = yes } }
-						HNN = { overlord = { china_is_aligned_with_federalists = no } }
-					}
-					else = {
-						hidden_trigger = {
-							always = no
-						}
+				HNN = { china_is_aligned_with_federalists = no }
+				if = {
+					limit = { HNN = { is_subject = yes } }
+					HNN = { overlord = { china_is_aligned_with_federalists = no } }
+				}
+				else = {
+					hidden_trigger = {
+						always = no
 					}
 				}
 				HNN = { is_subject_of = QIE }
 			}
 			OR = {
 				NOT = { country_exists = SZC }
-				OR = {
-					SZC = { china_is_aligned_with_federalists = no }
-					if = {
-						limit = { SZC = { is_subject = yes } }
-						SZC = { overlord = { china_is_aligned_with_federalists = no } }
-					}
-					else = {
-						hidden_trigger = {
-							always = no
-						}
+				SZC = { china_is_aligned_with_federalists = no }
+				if = {
+					limit = { SZC = { is_subject = yes } }
+					SZC = { overlord = { china_is_aligned_with_federalists = no } }
+				}
+				else = {
+					hidden_trigger = {
+						always = no
 					}
 				}
 			}
 			OR = {
 				NOT = { country_exists = YUN }
-				OR = {
-					YUN = { china_is_aligned_with_federalists = no }
-					if = {
-						limit = { YUN = { is_subject = yes } }
-						YUN = { overlord = { china_is_aligned_with_federalists = no } }
-					}
-					else = {
-						hidden_trigger = {
-							always = no
-						}
+				YUN = { china_is_aligned_with_federalists = no }
+				if = {
+					limit = { YUN = { is_subject = yes } }
+					YUN = { overlord = { china_is_aligned_with_federalists = no } }
+				}
+				else = {
+					hidden_trigger = {
+						always = no
 					}
 				}
 			}
@@ -3759,9 +3753,9 @@ focus_tree = {
 				MON = {
 					every_core_state = { add_claim_by = ROOT }
 				}
-				add_state_claim = 1111
-				add_state_claim = 1042
-				add_state_claim = 329
+				add_state_claim = 1111 #Hukawng Valley
+				add_state_claim = 1042 #Bazakhshan
+				add_state_claim = 329 #Tuva
 			}
 		}
 		search_filters = {

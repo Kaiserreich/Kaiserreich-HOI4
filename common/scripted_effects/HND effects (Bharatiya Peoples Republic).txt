@@ -158,70 +158,52 @@ HND_faction_update_percentage_effect = {
 	set_variable = { HND_totalist_score_percentage_var = { value = HND_totalist_score divide = HND_faction_total_strength_temp_var } }
 }
 HND_radsoc_score_increase_effect = {
-	add_to_variable = {
-		var = HND_radsoc_score
-		value = 1
-		tooltip = HND_radsoc_score_increase_tt
-	}
+	add_to_variable = { HND_radsoc_score = 1 tooltip = HND_radsoc_score_increase_tt }
 	HND_faction_update_percentage_effect = yes
 }
 HND_syndicalist_score_increase_effect = {
-	add_to_variable = {
-		var = HND_syndicalist_score
-		value = 1
-		tooltip = HND_syndicalist_score_increase_tt
-	}
+	add_to_variable = { HND_syndicalist_score = 1 tooltip = HND_syndicalist_score_increase_tt }
 	HND_faction_update_percentage_effect = yes
 }
 HND_totalist_score_increase_effect = {
-	add_to_variable = {
-		var = HND_totalist_score
-		value = 1
-		tooltip = HND_totalist_score_increase_tt
-	}
+	add_to_variable = { HND_totalist_score = 1 tooltip = HND_totalist_score_increase_tt }
 	HND_faction_update_percentage_effect = yes
 }
 HND_radsoc_score_decrease_effect = {
 	add_to_variable = {
-		var = HND_radsoc_score
-		value = -1
+		HND_radsoc_score = {
+			value = -1
+			clamp = { min = { value = 1 subtract = HND_radsoc_score } max = 0 }
+		}
 		tooltip = HND_radsoc_score_decrease_tt
 	}
-	clamp_variable = { var = HND_radsoc_score min = 1 }
 	HND_faction_update_percentage_effect = yes
 }
 HND_syndicalist_score_decrease_effect = {
 	add_to_variable = {
-		var = HND_syndicalist_score
-		value = -1
+		HND_syndicalist_score = {
+			value = -1
+			clamp = { min = { value = 1 subtract = HND_syndicalist_score } max = 0 }
+		}
 		tooltip = HND_syndicalist_score_decrease_tt
 	}
-	clamp_variable = { var = HND_syndicalist_score min = 1 }
 	HND_faction_update_percentage_effect = yes
 }
 HND_totalist_score_decrease_effect = {
 	add_to_variable = {
-		var = HND_totalist_score
-		value = -1
+		HND_totalist_score = {
+			value = -1
+			clamp = { min = { value = 1 subtract = HND_totalist_score } max = 0 }
+		}
 		tooltip = HND_totalist_score_decrease_tt
 	}
-	clamp_variable = { var = HND_totalist_score min = 1 }
 	HND_faction_update_percentage_effect = yes
 }
 
 HND_faction_score_setup_effect = {
-	add_to_variable = {
-		var = HND_radsoc_score
-		value = 4
-	}
-	add_to_variable = {
-		var = HND_totalist_score
-		value = 7
-	}
-	add_to_variable = {
-		var = HND_syndicalist_score
-		value = 9
-	}
+	add_to_variable = { HND_radsoc_score = 4 }
+	add_to_variable = { HND_totalist_score = 7 }
+	add_to_variable = { HND_syndicalist_score = 9 }
 	HND_faction_update_percentage_effect = yes
 }
 HND_poverty_recovery_effect = {

@@ -1404,7 +1404,7 @@ country_event = { # natpops take power
 			unlock_national_focus = MON_for_the_preservation_of_the_regency
 		}
 		hidden_effect = {
-			BHU = { country_event = { id = bhutan_events.123 days = 7 } }
+			BHU = { country_event = { id = bhutan_events.742 days = 7 } }
 		}
 	}
 }
@@ -1495,6 +1495,9 @@ country_event = { # authdems take power
 		if = {
 			limit = { NOT = { has_completed_focus = MON_true_heirs_of_mongol_society } }
 			unlock_national_focus = MON_true_heirs_of_mongol_society
+		}
+		hidden_effect = {
+			BHU = { country_event = { id = bhutan_events.742 days = 7 } }
 		}
 	}
 }
@@ -4603,9 +4606,7 @@ country_event = {#
 	is_triggered_only = yes
 
 	trigger = {
-		ACC = { exists = yes }
-		USA = { exists = yes }
-		ACC = { NOT = { has_country_leader = { character = ACC_henry_wallace } } }
+		WCA = { exists = yes }
 	}
 
 	option = {#

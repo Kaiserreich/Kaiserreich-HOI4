@@ -190,9 +190,11 @@ EGY_crush_levant = {
 		NOT = { has_idea = EGY_levant_crisis_initiative_lost }
 
 		#activate every 25 days, then pause for another 25
-		set_temp_variable = { frequency = global.num_days }
-		modulo_temp_variable = { frequency = 50 }
-		check_variable = { frequency < 25 }
+		check_expr = {
+			value = global.num_days
+			mod = 50
+			less_than = 25
+		}
 	}
 	abort_when_not_enabled = yes
 

@@ -312,10 +312,10 @@ country_event = {
 		CAN_remove_current_british_pm = yes
 		if = {
 			limit = { has_global_flag = GBR_british_pm_slot_changed }
-			activate_advisor = GBR_robert_gascoyne_cecil_sic
+			activate_advisor = GBR_robert_cecil_sic
 		}
 		else = {
-			activate_advisor = GBR_robert_gascoyne_cecil_advisor
+			activate_advisor = GBR_robert_cecil_advisor
 		}
 		if = {
 			limit = { check_variable = { king_influence > 0 } }
@@ -1095,8 +1095,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_character = CAN_william_avery_bishop
-		CAN_william_avery_bishop = {
+		has_character = CAN_billy_bishop
+		CAN_billy_bishop = {
 			OR = {
 				is_air_chief = yes
 				is_high_command = yes
@@ -1667,7 +1667,7 @@ country_event = {
 				has_government = social_conservative
 			}
 		}
-		set_global_flag = CAN_C7_full_interventionism
+		set_variable = { global.CAN_C7_full_interventionism = 1 }
 		custom_effect_tooltip = CAN_modify_bill_7
 		add_to_variable = {
 			global.CAN_b7_industrial_capacity_factory = 0.1
@@ -1688,7 +1688,7 @@ country_event = {
 				has_government = market_liberal
 			}
 		}
-		set_global_flag = CAN_C7_austerity
+		set_variable = { global.CAN_C7_austerity = 1 }
 		custom_effect_tooltip = CAN_modify_bill_7
 		add_to_variable = {
 			global.CAN_b7_consumer_goods_factor = -0.15
@@ -1706,7 +1706,7 @@ country_event = {
 				has_government = market_liberal
 			}
 		}
-		set_global_flag = CAN_C7_limited_interventionism
+		set_variable = { global.CAN_C7_limited_interventionism = 1 }
 		custom_effect_tooltip = CAN_modify_bill_7
 		add_to_variable = {
 			global.CAN_b7_consumer_goods_factor = -0.075
@@ -1747,7 +1747,7 @@ country_event = {
 				has_government = social_conservative
 			}
 		}
-		set_global_flag = CAN_C7_econ_lib
+		set_variable = { global.CAN_C7_econ_lib = 1 }
 		custom_effect_tooltip = CAN_modify_bill_7
 		add_to_variable = {
 			global.CAN_b7_global_building_slots_factor = 0.2
@@ -1768,7 +1768,7 @@ country_event = {
 				has_government = market_liberal
 			}
 		}
-		set_global_flag = CAN_C7_econ_conserv
+		set_variable = { global.CAN_C7_econ_conserv = 1 }
 		custom_effect_tooltip = CAN_modify_bill_7
 		add_to_variable = {
 			global.CAN_b7_production_speed_arms_factory_factor = 0.2
@@ -1790,7 +1790,7 @@ country_event = {
 			}
 		}
 		add_political_power = 25
-		set_global_flag = CAN_C7_econ_comp
+		set_variable = { global.CAN_C7_econ_comp = 1 }
 		custom_effect_tooltip = CAN_modify_bill_7
 		add_to_variable = {
 			global.CAN_b7_global_building_slots_factor = 0.1
@@ -1838,7 +1838,7 @@ country_event = {
 		add_political_power = 50
 		set_temp_variable = { ideology_change_var = -0.1 }
 		change_ruling_party_popularity = yes
-		set_global_flag = CAN_C7_sec_winter
+		set_variable = { global.CAN_C7_sec_winter = 1 }
 		custom_effect_tooltip = CAN_secret_police_winter
 	}
 	option = {
@@ -1852,7 +1852,7 @@ country_event = {
 		}
 		set_temp_variable = { ideology_change_var = -0.05 }
 		change_ruling_party_popularity = yes
-		set_global_flag = CAN_C7_sec_lapointe
+		set_variable = { global.CAN_C7_sec_lapointe = 1 }
 		custom_effect_tooltip = CAN_secret_police_lapointe
 	}
 	option = {
@@ -1864,7 +1864,7 @@ country_event = {
 				has_government = social_conservative
 			}
 		}
-		set_global_flag = CAN_C7_sec_none
+		set_variable = { global.CAN_C7_sec_none = 1 }
 		set_temp_variable = { ideology_change_var = 0.05 }
 		change_ruling_party_popularity = yes
 	}
@@ -1891,47 +1891,26 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = { is_ai = no }
-				set_variable = { chance_pass = 40 }
 				if = {
-					limit = { has_global_flag = CAN_C7_limited_interventionism }
-					add_to_variable = { chance_pass = 20 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_austerity }
-					add_to_variable = { chance_pass = 10 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_full_interventionism }
-					subtract_from_variable = { chance_pass = 20 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_econ_comp }
-					add_to_variable = { chance_pass = 15 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_econ_conserv }
-					add_to_variable = { chance_pass = 10 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_econ_lib }
-					subtract_from_variable = { chance_pass = 15 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_sec_none }
-					subtract_from_variable = { chance_pass = 15 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_sec_lapointe }
-					add_to_variable = { chance_pass = 10 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_sec_winter }
-					add_to_variable = { chance_pass = 25 }
-				}
-				set_variable = { vote = random }
-				multiply_variable = { vote = 100 }
-				if = {
-					limit = { check_variable = { vote < chance_pass } }
+					limit = {
+						check_expr = {
+							value = random multiply = 100
+							less_than = {
+								value = 40 #chance_pass
+								if = { limit = { value = global.CAN_C7_limited_interventionism equals = 1 } add = 20 }
+								else_if = { limit = { value = global.CAN_C7_austerity equals = 1 } add = 10 }
+								else_if = { limit = { value = global.CAN_C7_full_interventionism equals = 1 } subtract = 20 }
+
+								if = { limit = { value = global.CAN_C7_econ_comp equals = 1 } add = 15 }
+								else_if = { limit = { value = global.CAN_C7_econ_conserv equals = 1 } add = 10 }
+								else_if = { limit = { value = global.CAN_C7_econ_lib equals = 1 } subtract = 15 }
+
+								if = { limit = { value = global.CAN_C7_sec_none equals = 1 } subtract = 15 }
+								else_if = { limit = { value = global.CAN_C7_sec_lapointe equals = 1 } add = 10 }
+								else_if = { limit = { value = global.CAN_C7_sec_winter equals = 1 } add = 25 }
+							}
+						}
+					}
 					country_event = { id = canada_events.59 days = 1 }
 				}
 				else = {
@@ -1957,43 +1936,25 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = { is_ai = no }
-				set_variable = { chance_pass = 40 }
 				if = {
-					limit = { has_global_flag = CAN_C7_limited_interventionism }
-					subtract_from_variable = { chance_pass = 10 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_austerity }
-					subtract_from_variable = { chance_pass = 20 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_full_interventionism }
-					add_to_variable = { chance_pass = 30 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_econ_conserv }
-					subtract_from_variable = { chance_pass = 20 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_econ_lib }
-					add_to_variable = { chance_pass = 20 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_sec_none }
-					add_to_variable = { chance_pass = 10 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_sec_lapointe }
-					subtract_from_variable = { chance_pass = 20 }
-				}
-				if = {
-					limit = { has_global_flag = CAN_C7_sec_winter }
-					subtract_from_variable = { chance_pass = 30 }
-				}
-				set_variable = { vote = random }
-				multiply_variable = { vote = 100 }
-				if = {
-					limit = { check_variable = { vote < chance_pass } }
+					limit = {
+						check_expr = { #vote
+							value = random multiply = 100
+							less_than = { #chance_pass
+								value = 40
+								if = { limit = { value = global.CAN_C7_limited_interventionism equals = 1 } subtract = 10 }
+								else_if = { limit = { value = global.CAN_C7_austerity equals = 1 } subtract = 20 }
+								else_if = { limit = { value = global.CAN_C7_full_interventionism equals = 1 } add = 30 }
+
+								if = { limit = { value = global.CAN_C7_econ_conserv equals = 1 } subtract = 20 }
+								else_if = { limit = { value = global.CAN_C7_econ_lib equals = 1 } add = 20 }
+
+								if = { limit = { value = global.CAN_C7_sec_none equals = 1 } add = 10 }
+								else_if = { limit = { value = global.CAN_C7_sec_lapointe equals = 1 } subtract = 20 }
+								else_if = { limit = { value = global.CAN_C7_sec_winter equals = 1 } subtract = 30 }
+							}
+						}
+					}
 					country_event = { id = canada_events.59 days = 1 }
 				}
 				else = {
@@ -2034,7 +1995,7 @@ country_event = {
 		add_dynamic_modifier = { modifier = CAN_bill_7_modifier }
 		# add industry changes
 		if = {
-			limit = { has_global_flag = CAN_C7_econ_lib }
+			limit = { has_variable = global.CAN_C7_econ_lib }
 			276 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -2057,9 +2018,10 @@ country_event = {
 			739 = {
 				add_extra_state_shared_building_slots = 1
 			}
+			clear_variable = global.CAN_C7_econ_lib
 		}
 		if = {
-			limit = { has_global_flag = CAN_C7_econ_conserv }
+			limit = { has_variable = global.CAN_C7_econ_conserv }
 			276 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -2076,9 +2038,10 @@ country_event = {
 					instant_build = yes
 				}
 			}
+			clear_variable = global.CAN_C7_econ_conserv
 		}
 		if = {
-			limit = { has_global_flag = CAN_C7_econ_comp }
+			limit = { has_variable = global.CAN_C7_econ_comp }
 			276 = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -2095,28 +2058,24 @@ country_event = {
 			832 = {
 				add_extra_state_shared_building_slots = 1
 			}
+			clear_variable = global.CAN_C7_econ_comp
 		}
 		# add security changes
 		if = {
-			limit = { has_global_flag = CAN_C7_sec_winter }
+			limit = { has_variable = global.CAN_C7_sec_winter }
 			add_ideas = CAN_mounties_2
+			clear_variable = global.CAN_C7_sec_winter
 		}
 		if = {
-			limit = { has_global_flag = CAN_C7_sec_lapointe }
+			limit = { has_variable = global.AN_C7_sec_lapointe }
 			add_ideas = CAN_mounties_1
+			clear_variable = global.CAN_C7_sec_lapointe
 		}
 
 		set_global_flag = CAN_C7_passed
-		clear_variable = chance_pass
-		clear_variable = vote
-		clr_global_flag = CAN_C7_full_interventionism
-		clr_global_flag = CAN_C7_austerity
-		clr_global_flag = CAN_C7_limited_interventionism
-		clr_global_flag = CAN_C7_econ_lib
-		clr_global_flag = CAN_C7_econ_conserv
-		clr_global_flag = CAN_C7_econ_comp
-		clr_global_flag = CAN_C7_sec_winter
-		clr_global_flag = CAN_C7_sec_lapointe
+		clear_variable = global.CAN_C7_full_interventionism
+		clear_variable = global.CAN_C7_austerity
+		clear_variable = global.CAN_C7_limited_interventionism
 
 		hidden_effect = {
 			if = {
@@ -2237,7 +2196,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_character = CAN_richard_bedford_bennett
+		has_character = CAN_rb_bennett
 		has_elected_government = yes
 	}
 
@@ -2247,11 +2206,11 @@ country_event = {
 		add_popularity = { ideology = social_conservative popularity = 0.05 }
 		if = {
 			limit = { CAN_is_dominion = no }
-			promote_character = CAN_richard_bedford_bennett
+			promote_character = CAN_rb_bennett
 		}
 		else_if = {
 			limit = { has_government = social_conservative }
-			activate_advisor = CAN_richard_bedford_bennett_sic
+			activate_advisor = CAN_rb_bennett_sic
 		}
 		hidden_effect = {
 			CAN_robert_manion = { remove_second_in_command_role = yes }
@@ -2445,16 +2404,14 @@ country_event = {
 		}
 
 		set_global_flag = CAN_C7_passed
-		clear_variable = chance_pass
-		clear_variable = vote
-		clr_global_flag = CAN_C7_full_interventionism
-		clr_global_flag = CAN_C7_austerity
-		clr_global_flag = CAN_C7_limited_interventionism
-		clr_global_flag = CAN_C7_econ_lib
-		clr_global_flag = CAN_C7_econ_conserv
-		clr_global_flag = CAN_C7_econ_comp
-		clr_global_flag = CAN_C7_sec_winter
-		clr_global_flag = CAN_C7_sec_lapointe
+		clear_variable = global.CAN_C7_full_interventionism
+		clear_variable = global.CAN_C7_austerity
+		clear_variable = global.CAN_C7_limited_interventionism
+		clear_variable = global.CAN_C7_econ_lib
+		clear_variable = global.CAN_C7_econ_conserv
+		clear_variable = global.CAN_C7_econ_comp
+		clear_variable = global.CAN_C7_sec_winter
+		clear_variable = global.CAN_C7_sec_lapointe
 
 		hidden_effect = {
 			activate_targeted_decision = { decision = CAN_enact_full_conscription target = ROOT }
@@ -2529,16 +2486,14 @@ country_event = {
 		add_ideas = CAN_mounties_1
 
 		set_global_flag = CAN_C7_passed
-		clear_variable = chance_pass
-		clear_variable = vote
-		clr_global_flag = CAN_C7_full_interventionism
-		clr_global_flag = CAN_C7_austerity
-		clr_global_flag = CAN_C7_limited_interventionism
-		clr_global_flag = CAN_C7_econ_lib
-		clr_global_flag = CAN_C7_econ_conserv
-		clr_global_flag = CAN_C7_econ_comp
-		clr_global_flag = CAN_C7_sec_winter
-		clr_global_flag = CAN_C7_sec_lapointe
+		clear_variable = global.CAN_C7_full_interventionism
+		clear_variable = global.CAN_C7_austerity
+		clear_variable = global.CAN_C7_limited_interventionism
+		clear_variable = global.CAN_C7_econ_lib
+		clear_variable = global.CAN_C7_econ_conserv
+		clear_variable = global.CAN_C7_econ_comp
+		clear_variable = global.CAN_C7_sec_winter
+		clear_variable = global.CAN_C7_sec_lapointe
 	}
 }
 
@@ -2573,6 +2528,7 @@ country_event = {
 				election_frequency = 60
 				elections_allowed = yes
 			}
+			promote_character = CAN_louis_st_laurent
 			set_temp_variable = { coalition_partner_var = token:market_liberal }
 			add_to_coalition = yes
 			CAN_add_louis_st_laurent_sic = yes
@@ -2599,6 +2555,15 @@ country_event = {
 				long_name = CAN_liberal_party_long
 				name = CAN_liberal_party
 			}
+			if = {
+				limit = {
+					has_government = social_conservative
+					is_part_of_government_social_liberal = yes
+				}
+				set_temp_variable = { coalition_partner_var = token:social_liberal }
+				remove_from_coalition = yes #Accounts for the Progressives being replaced by the Liberals for SocLib
+				add_popularity = { ideology = social_conservative popularity = 0.10 } #Makes up for the lack of coalition partner
+			}
 		}
 	}
 }
@@ -2613,21 +2578,21 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_character = CAN_james_shaver_woodsworth
+		has_character = CAN_js_woodsworth
 	}
 
 	option = {
 		log = "[GetLogInfo]: event canada_events.72 option canada_events.72.a"
 		name = canada_events.72.a
-		retire_character = CAN_james_shaver_woodsworth
+		retire_character = CAN_js_woodsworth
 		add_popularity = { ideology = social_democrat popularity = 0.05 }
 		if = {
 			limit = { CAN_is_dominion = no }
-			promote_character = CAN_major_james_coldwell
+			promote_character = CAN_mj_coldwell
 		}
 		else_if = {
 			limit = { has_government = social_democrat }
-			activate_advisor = CAN_major_james_coldwell_sic
+			activate_advisor = CAN_mj_coldwell_sic
 		}
 	}
 }
@@ -2723,7 +2688,7 @@ country_event = {
 					AND = {
 						has_game_rule = { rule = CAN_path option = CAN_PATH_SOCDEM }
 						has_completed_focus = CAN_return_of_the_king
-						NOT = { has_character = CAN_james_shaver_woodsworth }
+						NOT = { has_character = CAN_js_woodsworth }
 					}
 				}
 			}
@@ -2863,7 +2828,7 @@ country_event = {
 		name = canada_events.75.c # CCF wins minority with Liberal support
 		trigger = {
 			has_completed_focus = CAN_return_of_the_king
-			NOT = { has_character = CAN_james_shaver_woodsworth }
+			NOT = { has_character = CAN_js_woodsworth }
 		}
 		ai_chance = {
 			base = 10
@@ -2929,7 +2894,7 @@ country_event = {
 	trigger = {
 		date > 1941.1.1
 		OR = {
-			has_character = CAN_richard_bedford_bennett
+			has_character = CAN_rb_bennett
 			has_character = CAN_robert_manion
 		}
 	}
@@ -2964,7 +2929,7 @@ country_event = {
 				name = CAN_prog_conservative_party_old
 			}
 			if = {
-				limit = { has_character = CAN_richard_bedford_bennett }
+				limit = { has_character = CAN_rb_bennett }
 				CAN_robert_manion = { remove_second_in_command_role = yes }
 			}
 			if = {
@@ -3016,13 +2981,12 @@ country_event = {
 		else = {
 			activate_advisor = GBR_robert_vansittart_advisor
 		}
-		custom_effect_tooltip = CAN_exile_influence_decrease
-		if = {
-			limit = { check_variable = { king_influence > 0 } }
-			subtract_from_variable = { king_influence = 1 }
-		}
-		else = {
-			set_variable = { king_influence = 0 }
+		subtract_from_variable = {
+			king_influence = {
+				value = 1
+				clamp = { min = 0 max = king_influence }
+			}
+			tooltip = CAN_exile_influence_decrease
 		}
 		CAN_calc_exile_influence_effects = yes
 	}
@@ -4244,10 +4208,7 @@ country_event = {
 		name = canada_events.173.a
 		add_political_power = 50
 		hidden_effect = {
-			add_to_variable = {
-				var = resistance_ICE_strength
-				value = 10
-			}
+			add_to_variable = { resistance_ICE_strength = 10 }
 		}
 	}
 }
@@ -4618,9 +4579,11 @@ country_event = {
 			modifier = {
 				factor = 0.5
 				country_exists = WCA
-				check_variable = { WCA.num_controlled_states > USA.num_controlled_states }
-				check_variable = { WCA.num_controlled_states > APG.num_controlled_states }
-				check_variable = { WCA.num_controlled_states > ACC.num_controlled_states }
+				WCA = {
+					num_of_controlled_states > USA.num_controlled_states
+					num_of_controlled_states > APG.num_controlled_states
+					num_of_controlled_states > ACC.num_controlled_states
+				}
 			}
 			modifier = {
 				factor = 0
@@ -4678,7 +4641,7 @@ country_event = {
 			modifier = {
 				factor = 0.5
 				OR = {
-					check_variable = { USA.num_controlled_states < 5 }
+					USA = { num_of_controlled_states < 5 }
 					USA = { surrender_progress > 0.50 }
 				}
 			}
@@ -4724,7 +4687,7 @@ country_event = {
 			modifier = {
 				factor = 0.5
 				OR = {
-					check_variable = { ACC.num_controlled_states < 5 }
+					ACC = { num_of_controlled_states < 5 }
 					ACC = { surrender_progress > 0.50 }
 				}
 			}
@@ -4774,7 +4737,7 @@ country_event = {
 			modifier = {
 				factor = 0.5
 				OR = {
-					check_variable = { APG.num_controlled_states < 5 }
+					APG = { num_of_controlled_states < 5 }
 					APG = { surrender_progress > 0.50 }
 				}
 			}
@@ -5861,8 +5824,7 @@ country_event = {
 					is_in_north_america = yes
 					NOT = {
 						tag = ROOT
-						tag = CAN
-						is_in_faction_with = CAN
+						is_ally_with = CAN
 					}
 					is_in_central_america = no
 				}
@@ -5923,12 +5885,7 @@ country_event = {
 		log = "[GetLogInfo]: event canada_events.222 option canada_events.222.a"
 		name = canada_events.222.a
 		every_country = {
-			limit = {
-				OR = {
-					tag = CAN
-					is_in_faction_with = CAN
-				}
-			}
+			limit = { is_ally_with = CAN }
 			hidden_effect = {
 				add_opinion_modifier = { target = ROOT 	modifier = KR_approves_of_govt }
 				reverse_add_opinion_modifier = { target = ROOT 	modifier = KR_approves_of_govt }
@@ -7377,16 +7334,16 @@ country_event = {
 		log = "[GetLogInfo]: event canada_events.327 option canada_events.327.a"
 		name = canada_events.327.a
 		show_unit_leaders_tooltip = CAN_john_hamilton_roberts
-		show_unit_leaders_tooltip = CAN_harry_leonard_nowell_salmon
+		show_unit_leaders_tooltip = CAN_hln_salmon
 		show_unit_leaders_tooltip = CAN_george_kitching
-		show_unit_leaders_tooltip = CAN_garner_ormsby_currie
-		show_unit_leaders_tooltip = CAN_horatio_nelson_lay
+		show_unit_leaders_tooltip = CAN_garner_currie
+		show_unit_leaders_tooltip = CAN_horatio_lay
 		hidden_effect = {
 			CAN_john_hamilton_roberts = { set_nationality = ROOT }
-			CAN_harry_leonard_nowell_salmon = { set_nationality = ROOT }
+			CAN_hln_salmon = { set_nationality = ROOT }
 			CAN_george_kitching = { set_nationality = ROOT }
-			CAN_garner_ormsby_currie = { set_nationality = ROOT }
-			CAN_horatio_nelson_lay = { set_nationality = ROOT }
+			CAN_garner_currie = { set_nationality = ROOT }
+			CAN_horatio_lay = { set_nationality = ROOT }
 		}
 	}
 }

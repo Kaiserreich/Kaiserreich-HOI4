@@ -242,8 +242,18 @@ ideas = {
 		}
 
 ### Soc Military Ideas ###
-		GRU_abwehr_1 = {
-			on_add = { log = "[GetLogRoot]: add idea GRU_abwehr_1" }
+		GRU_abwehr_1_no_lar = {
+			on_add = { log = "[GetLogRoot]: add idea GRU_abwehr_1_no_lar" }
+			name = GRU_abwehr_1
+			picture = generic_officer
+			allowed = { always = no }
+			research_bonus = {
+				encryption_tech = 0.10
+			}
+		}
+		GRU_abwehr_2_no_lar = {
+			on_add = { log = "[GetLogRoot]: add idea GRU_abwehr_2_no_lar" }
+			name = GRU_abwehr_1
 			picture = generic_officer
 			allowed = { always = no }
 			research_bonus = {
@@ -251,15 +261,19 @@ ideas = {
 				encryption_tech = 0.10
 			}
 		}
+		GRU_abwehr_1 = {
+			on_add = { log = "[GetLogRoot]: add idea GRU_abwehr_1" }
+			picture = advisors_germany
+			allowed = { always = no }
+			modifier = {
+				intel_network_gain = 0.20
+			}
+		}
 		GRU_abwehr_2 = {
 			on_add = { log = "[GetLogRoot]: add idea GRU_abwehr_2" }
 			name = GRU_abwehr_1
 			picture = advisors_germany
 			allowed = { always = no }
-			research_bonus = {
-				decryption_tech = 0.10
-				encryption_tech = 0.10
-			}
 			modifier = {
 				operative_slot = 1
 				intel_network_gain = 0.20

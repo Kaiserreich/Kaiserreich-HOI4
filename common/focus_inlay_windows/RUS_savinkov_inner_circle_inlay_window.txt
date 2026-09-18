@@ -29,20 +29,33 @@ RUS_savinkov_inner_circle_inlay_window = {
 
 		### BoP Bars ###
 		RUS_power_balance_left_side = {
-			GFX_power_balance_left = {
-				OR = {
-					power_balance_value = { id = RUS_power_balance value < 0 }
-					is_power_balance_in_range = { id = RUS_power_balance range = RUS_bop_balanced }
-				}
+			GFX_power_balance_left_moving = {
+				power_balance_daily_change = { id = RUS_power_balance value < 0 }
 			}
+			GFX_power_balance_right_moving = {
+				power_balance_daily_change = { id = RUS_power_balance value > 0 }
+			}
+			GFX_power_balance_left = yes
 		}
 		RUS_power_balance_right_side = {
-			GFX_power_balance_right = {
-				OR = {
-					power_balance_value = { id = RUS_power_balance value > 0 }
-					is_power_balance_in_range = { id = RUS_power_balance range = RUS_bop_balanced }
-				}
+			GFX_power_balance_left_moving = {
+				power_balance_daily_change = { id = RUS_power_balance value < 0 }
 			}
+			GFX_power_balance_right_moving = {
+				power_balance_daily_change = { id = RUS_power_balance value > 0 }
+			}
+			GFX_power_balance_right = yes
+		}
+	}
+
+	scripted_progressbars = {
+		# 25-50
+		RUS_power_balance_left_side = {
+			progress = RUS_power_balance_left_side_var?25
+		}
+		#50-75
+		RUS_power_balance_right_side = {
+			progress = RUS_power_balance_right_side_var?75
 		}
 	}
 }

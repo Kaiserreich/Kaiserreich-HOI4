@@ -2456,6 +2456,9 @@ country_event = {
 			SWI = {
 				country_event = { id = switzerland_events.80 days = 5 }
 			}
+			DEN = {
+				country_event = { id = denmark_events.1003 days = 13 }
+			}
 			news_event = { id = union_of_britain_events.2002 days = 10 }
 		}
 	}
@@ -2468,6 +2471,12 @@ country_event = {
 	picture = GFX_report_event_journalists_speech
 
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = socialist_italy_events.2 days = 8 }
+		}
+	}
 
 	option = {
 		log = "[GetLogInfo]: event union_of_britain_events.1021 option union_of_britain_events.1021.a"
@@ -2785,17 +2794,6 @@ news_event = {
 	is_triggered_only = yes
 	major = yes
 	trigger = { wants_world_news = yes } #Global news event
-
-	immediate = {
-		hidden_effect = {
-			SRI = {
-				country_event = { id = socialist_italy_events.2 days = 3 }
-			}
-			DEN = {
-				country_event = { id = denmark_events.1003 days = 3 }
-			}
-		}
-	}
 
 	option = {
 		name = union_of_britain_events.2002.a

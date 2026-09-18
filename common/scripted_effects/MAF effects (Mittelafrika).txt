@@ -2,37 +2,50 @@
 ###  MITTELAFRIKA ON STARTUP EFFECTS  ###
 #########################################
 
+MAF_restrict_volunteers_to_africa = {
+	MAF = {
+		if = {
+			limit = { NOT = { tag = GEX } }
+			add_relation_rule_override = {
+				can_send_volunteers = yes
+				trigger = MAF_can_send_volunteers_to_target
+				usage_desc = MAF_can_send_volunteers_to_target_tt
+			}
+		}
+	}
+}
+
 MAF_startup_nigeria_state_effect = {
 	set_variable = { mittelafrika_territory_capital_state = 973 }
-	add_dynamic_modifier = { modifier = MAF_british_nigeria }
+	add_dynamic_modifier = { modifier = MAF_territory_mandate }
 	set_demilitarized_zone = yes
 }
 
 MAF_startup_gold_coast_state_effect = {
 	set_variable = { mittelafrika_territory_capital_state = 274 }
-	add_dynamic_modifier = { modifier = MAF_british_gold_coast }
+	add_dynamic_modifier = { modifier = MAF_territory_mandate }
 	set_demilitarized_zone = yes
 }
 
 MAF_startup_kenya_state_effect = {
 	set_variable = { mittelafrika_territory_capital_state = 547 }
-	add_dynamic_modifier = { modifier = MAF_british_kenya }
+	add_dynamic_modifier = { modifier = MAF_territory_mandate }
 	set_demilitarized_zone = yes
 }
 
 MAF_startup_uganda_state_effect = {
 	set_variable = { mittelafrika_territory_capital_state = 548 }
-	add_dynamic_modifier = { modifier = MAF_british_uganda }
+	add_dynamic_modifier = { modifier = MAF_territory_mandate }
 }
 
 MAF_startup_northern_rhodesia_state_effect = {
 	set_variable = { mittelafrika_territory_capital_state = 813 }
-	add_dynamic_modifier = { modifier = MAF_british_rhodesia }
+	add_dynamic_modifier = { modifier = MAF_territory_mandate }
 }
 
 MAF_startup_nyasaland_state_effect = {
 	set_variable = { mittelafrika_territory_capital_state = 871 }
-	add_dynamic_modifier = { modifier = MAF_british_nyasaland }
+	add_dynamic_modifier = { modifier = MAF_territory_mandate }
 }
 
 #########################################
@@ -535,6 +548,10 @@ MAF_collapse = {
 			original_tag = MAF
 			save_global_event_target_as = MAF_free_germany
 			set_cosmetic_tag = MAF_free_germany
+			if = {
+				limit = { has_dlc_taog = yes }
+				create_generic_hq_template = yes
+			}
 			reserve_dynamic_country = yes
 		}
 		clear_array = global.MAF_collapse_tags
@@ -617,6 +634,7 @@ MAF_collapse = {
 				promote_leader = yes
 			}
 		}
+		retire_character = MAF_reichskolonialamt
 
 		set_popularities = {
 			totalist = 0
@@ -1135,7 +1153,7 @@ GHA_british_setup = {
 		}
 		every_state = {
 			limit = { is_claim_or_core_of_PREV = yes }
-			remove_dynamic_modifier = { modifier = MAF_british_gold_coast }
+			remove_dynamic_modifier = { modifier = MAF_territory_mandate }
 			set_demilitarized_zone = no
 
 			remove_core_of = MAF
@@ -1174,7 +1192,7 @@ NGA_british_setup = {
 		}
 		every_state = {
 			limit = { is_claim_or_core_of_PREV = yes }
-			remove_dynamic_modifier = { modifier = MAF_british_nigeria }
+			remove_dynamic_modifier = { modifier = MAF_territory_mandate }
 			set_demilitarized_zone = no
 
 			remove_core_of = MAF
@@ -1311,6 +1329,10 @@ MAF_mau_mau_revolt_setup = {
 			mountaineers = { x = 2 y = 2 }
 		}
 		priority = 2
+	}
+	if = {
+		limit = { has_dlc_taog = yes }
+		create_generic_hq_template = yes
 	}
 	if = {
 		limit = { has_global_flag = MAF_Kikuyu2 }

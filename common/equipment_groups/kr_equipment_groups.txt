@@ -15,10 +15,15 @@ mio_cat_eq_only_cv_fighter = {
 mio_cat_eq_all_aircraft = {
 	equipment_type = {
 		small_plane_airframe
-		cv_small_plane_airframe
 		medium_plane_airframe
 		large_plane_airframe
+		cv_small_plane_airframe
 		transport_plane_equipment
+		mothership_equipment
+		strat_bomber_intercontinental_equipment
+		nuclear_missile
+		ballistic_missile_equipment
+		sam_missile_equipment
 		guided_missile_equipment
 	}
 }
@@ -73,6 +78,16 @@ mio_cat_eq_all_artillery_and_rocket_artillery = {
 	}
 }
 
+mio_cat_eq_all_artillery_rocket_artillery_howitzers = {
+	equipment_type = {
+		artillery_equipment
+		rocket_artillery_equipment
+		motorized_rocket_equipment
+		super_heavy_artillery_equipment
+		self_propelled_super_heavy_artillery_equipment
+	}
+}
+
 mio_cat_eq_all_surface_ships = {
 	equipment_type = {
 		ship_hull_carrier
@@ -89,20 +104,7 @@ mio_cat_eq_all_ships = {
 		ship_hull_cruiser
 		ship_hull_light
 		ship_hull_submarine
-	}
-}
-
-mio_cat_eq_all_cas_aircraft = {
-	equipment_type = {
-		small_plane_cas_airframe
-		cv_small_plane_cas_airframe
-	}
-}
-
-mio_cat_eq_all_naval_bomber_aircraft = {
-	equipment_type = {
-		small_plane_naval_bomber_airframe
-		cv_small_plane_naval_bomber_airframe
+		convoy_1
 	}
 }
 
@@ -119,5 +121,12 @@ mio_cat_eq_all_mechanised = {
 	equipment_type = {
 		mechanized_equipment
 		amphibious_mechanized_equipment
+	}
+}
+
+mio_cat_eq_all_railway_guns = {
+	equipment_type = {
+		railway_gun_equipment
+		super_heavy_railway_gun_equipment
 	}
 }

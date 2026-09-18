@@ -620,22 +620,18 @@ ETS_military_operation = {
 				DYNMOD = ETS_fledgling_military
 			}
 			add_to_variable = {
-				ETS_fledgling_military_army_morale_factor = 0.1
+				ETS_fledgling_military_army_morale_factor = {
+					value = 0.1
+					clamp = { min = -1 max = { value = ETS_fledgling_military_army_morale_factor multiply = -1 } }
+				}
 				tooltip = army_morale_factor_tooltip
 			}
 			add_to_variable = {
-				ETS_fledgling_military_army_org_factor = 0.05
+				ETS_fledgling_military_army_org_factor = {
+					value = 0.05
+					clamp = { min = -1 max = { value = ETS_fledgling_military_army_org_factor multiply = -1 } }
+				}
 				tooltip = army_org_factor_tooltip
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_army_morale_factor
-				min = -1
-				max = 0
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_army_org_factor
-				min = -1
-				max = 0
 			}
 			force_update_dynamic_modifier = yes
 		}
@@ -675,22 +671,18 @@ ETS_military_operation = {
 				DYNMOD = ETS_fledgling_military
 			}
 			add_to_variable = {
-				ETS_fledgling_military_army_morale_factor = 0.05
+				ETS_fledgling_military_army_morale_factor = {
+					value = 0.05
+					clamp = { min = -1 max = { value = ETS_fledgling_military_army_morale_factor multiply = -1 } }
+				}
 				tooltip = army_morale_factor_tooltip
 			}
 			add_to_variable = {
-				ETS_fledgling_military_army_org_factor = 0.025
+				ETS_fledgling_military_army_org_factor = {
+					value = 0.025
+					clamp = { min = -1 max = { value = ETS_fledgling_military_army_org_factor multiply = -1 } }
+				}
 				tooltip = army_org_factor_tooltip
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_army_morale_factor
-				min = -1
-				max = 0
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_army_org_factor
-				min = -1
-				max = 0
 			}
 			force_update_dynamic_modifier = yes
 		}
@@ -732,31 +724,25 @@ ETS_military_operation = {
 				DYNMOD = ETS_fledgling_military
 			}
 			add_to_variable = {
-				ETS_fledgling_military_army_attack_factor = 0.1
+				ETS_fledgling_military_army_attack_factor = {
+					value = 0.1
+					clamp = { min = -1 max = { value = ETS_fledgling_military_army_attack_factor multiply = -1 } }
+				}
 				tooltip = army_attack_factor_tooltip
 			}
 			add_to_variable = {
-				ETS_fledgling_military_army_defence_factor = 0.1
+				ETS_fledgling_military_army_defence_factor = {
+					value = 0.1
+					clamp = { min = -1 max = { value = ETS_fledgling_military_army_defence_factor multiply = -1 } }
+				}
 				tooltip = army_defence_factor_tooltip
 			}
 			add_to_variable = {
-				ETS_fledgling_military_recon_factor = 0.1
+				ETS_fledgling_military_recon_factor = {
+					value = 0.1
+					clamp = { min = -1 max = { value = ETS_fledgling_military_recon_factor multiply = -1 } }
+				}
 				tooltip = recon_factor_tooltip
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_army_attack_factor
-				min = -1
-				max = 0
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_army_defence_factor
-				min = -1
-				max = 0
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_recon_factor
-				min = -1
-				max = 0
 			}
 			force_update_dynamic_modifier = yes
 		}
@@ -797,31 +783,25 @@ ETS_military_operation = {
 				DYNMOD = ETS_fledgling_military
 			}
 			add_to_variable = {
-				ETS_fledgling_military_army_attack_factor = 0.05
+				ETS_fledgling_military_army_attack_factor = {
+					value = 0.05
+					clamp = { min = -1 max = { value = ETS_fledgling_military_army_attack_factor multiply = -1 } }
+				}
 				tooltip = army_attack_factor_tooltip
 			}
 			add_to_variable = {
-				ETS_fledgling_military_army_defence_factor = 0.05
+				ETS_fledgling_military_army_defence_factor = {
+					value = 0.05
+					clamp = { min = -1 max = { value = ETS_fledgling_military_army_defence_factor multiply = -1 } }
+				}
 				tooltip = army_defence_factor_tooltip
 			}
 			add_to_variable = {
-				ETS_fledgling_military_recon_factor = 0.05
+				ETS_fledgling_military_recon_factor = {
+					value = 0.05
+					clamp = { min = -1 max = { value = ETS_fledgling_military_recon_factor multiply = -1 } }
+				}
 				tooltip = recon_factor_tooltip
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_army_attack_factor
-				min = -1
-				max = 0
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_army_defence_factor
-				min = -1
-				max = 0
-			}
-			clamp_variable = {
-				var = ETS_fledgling_military_recon_factor
-				min = -1
-				max = 0
 			}
 			force_update_dynamic_modifier = yes
 		}

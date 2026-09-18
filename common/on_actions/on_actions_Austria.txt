@@ -10,36 +10,42 @@ on_actions = {
 						AUS_crownland_revolt_2
 					}
 					CRO = {
+						AUS_remove_army_ideas = yes
 						if = {
 							limit = { has_cosmetic_tag = CRO_illyria_habsburg }
 							set_cosmetic_tag = CRO_illyria
 						}
 					}
 					HUN = {
+						AUS_remove_army_ideas = yes
 						if = {
 							limit = { has_cosmetic_tag = HUN_habsburg }
 							drop_cosmetic_tag = yes
 						}
 					}
 					CZE = {
+						AUS_remove_army_ideas = yes
 						if = {
 							limit = { has_cosmetic_tag = CZE_habsburg }
 							drop_cosmetic_tag = yes
 						}
 					}
 					GAL = {
+						AUS_remove_army_ideas = yes
 						if = {
 							limit = { has_cosmetic_tag = GAL_habsburg }
 							drop_cosmetic_tag = yes
 						}
 					}
 					SLO = {
+						AUS_remove_army_ideas = yes
 						if = {
 							limit = { has_cosmetic_tag = SLO_habsburg }
 							drop_cosmetic_tag = yes
 						}
 					}
 					TRS = {
+						AUS_remove_army_ideas = yes
 						if = {
 							limit = { has_cosmetic_tag = TRS_habsburg }
 							drop_cosmetic_tag = yes
@@ -52,6 +58,7 @@ on_actions = {
 						}
 					}
 					BOS = {
+						AUS_remove_army_ideas = yes
 						if = {
 							limit = { has_cosmetic_tag = BOS_habsburg }
 							drop_cosmetic_tag = yes
@@ -93,6 +100,29 @@ on_actions = {
 					}
 				}
 				AUS = { country_event = ausgleich_events.702 }
+			}
+		}
+	}
+
+	on_war_relation_added = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { original_tag = AUS }
+					NOT = { original_tag = HUN } # Keeps these ideas during anti-AUS war
+					is_danubian_tag = yes
+				}
+				AUS_remove_army_ideas = yes
+			}
+			else_if = {
+				limit = {
+					original_tag = AUS
+					FROM = {
+						NOT = { original_tag = HUN }
+						is_danubian_tag = yes
+					}
+				}
+				FROM = { AUS_remove_army_ideas = yes }
 			}
 		}
 	}

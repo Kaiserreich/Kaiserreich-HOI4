@@ -1302,11 +1302,7 @@ ICE_Resist_Invaders = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove ICE_Spread_Propaganda"
-			add_to_variable = {
-				var = resistance_ICE_popularity
-				value = 10
-				tooltip = ICE_resistance_popularity_increased
-			}
+			add_to_variable = { resistance_ICE_popularity = 10 tooltip = ICE_resistance_popularity_increased }
 			activate_targeted_decision = { target = THIS decision = ICE_Spread_Propaganda }
 		}
 		fixed_random_seed = no
@@ -1334,11 +1330,7 @@ ICE_Resist_Invaders = {
 		}
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove ICE_Broadcast_Propaganda"
-			add_to_variable = {
-				var = resistance_ICE_popularity
-				value = 20
-				tooltip = ICE_resistance_popularity_increased
-			}
+			add_to_variable = { resistance_ICE_popularity = 20 tooltip = ICE_resistance_popularity_increased }
 			hidden_effect = {
 				random_list = {
 					10 = { ENG = { country_event = { id = iceland_events.350 days = 2 } } }
@@ -1394,11 +1386,7 @@ ICE_Resist_Invaders = {
 			random_list = {
 				70 = {
 					ICE = {
-						add_to_variable = {
-							var = resistance_ICE_strength
-							value = 10
-							tooltip = ICE_resistance_strength_increased
-						}
+						add_to_variable = { resistance_ICE_strength = 10 tooltip = ICE_resistance_strength_increased }
 					}
 					modifier = {
 						factor = 1.5
@@ -1408,11 +1396,7 @@ ICE_Resist_Invaders = {
 				}
 				30 = {
 					ICE = {
-						subtract_from_variable = {
-							var = resistance_ICE_strength
-							value = 5
-							tooltip = ICE_resistance_strength_lowered
-						}
+						subtract_from_variable = { resistance_ICE_strength = 5 tooltip = ICE_resistance_strength_lowered }
 					}
 					clr_country_flag = ICE_scouted_enemy
 				}
@@ -1441,11 +1425,7 @@ ICE_Resist_Invaders = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove ICE_Scout"
 			custom_effect_tooltip = ICE_Scout_tt
-			add_to_variable = {
-				var = resistance_ICE_strength
-				value = 5
-				tooltip = ICE_resistance_strength_increased
-			}
+			add_to_variable = { resistance_ICE_strength = 5 tooltip = ICE_resistance_strength_increased }
 			set_country_flag = ICE_scouted_enemy
 			activate_targeted_decision = { target = THIS decision = ICE_Scout }
 		}
@@ -1485,16 +1465,8 @@ ICE_Resist_Invaders = {
 				65 = {
 					custom_effect_tooltip = ICE_Sabotage_Success
 					ICE = {
-						subtract_from_variable = {
-							var = occupation_ENG_strength
-							value = 15
-							tooltip = ICE_occupation_strength_lowered
-						}
-						subtract_from_variable = {
-							var = resistance_ICE_popularity
-							value = 10
-							tooltip = ICE_resistance_popularity_lowered
-						}
+						subtract_from_variable = { occupation_ENG_strength = 15 tooltip = ICE_occupation_strength_lowered }
+						subtract_from_variable = { resistance_ICE_popularity = 10 tooltip = ICE_resistance_popularity_lowered }
 					}
 					modifier = {
 						factor = 1.75
@@ -1505,16 +1477,8 @@ ICE_Resist_Invaders = {
 				35 = {
 					custom_effect_tooltip = ICE_Sabotage_Fail
 					ICE = {
-						subtract_from_variable = {
-							var = resistance_ICE_strength
-							value = 10
-							tooltip = ICE_resistance_strength_lowered
-						}
-						subtract_from_variable = {
-							var = resistance_ICE_popularity
-							value = 5
-							tooltip = ICE_resistance_popularity_lowered
-						}
+						subtract_from_variable = { resistance_ICE_strength = 10 tooltip = ICE_resistance_strength_lowered }
+						subtract_from_variable = { resistance_ICE_popularity = 5 tooltip = ICE_resistance_popularity_lowered }
 					}
 					clr_country_flag = ICE_scouted_enemy
 				}
@@ -1561,37 +1525,17 @@ ICE_Resist_Invaders = {
 				60 = { #Hit a civilian
 					custom_effect_tooltip = ICE_Mine_Fail
 					ICE = {
-						subtract_from_variable = {
-							var = resistance_ICE_strength
-							value = 5
-							tooltip = ICE_resistance_strength_lowered
-						}
-						subtract_from_variable = {
-							var = resistance_ICE_popularity
-							value = 20
-							tooltip = ICE_resistance_popularity_lowered
-						}
+						subtract_from_variable = { resistance_ICE_strength = 5 tooltip = ICE_resistance_strength_lowered }
+						subtract_from_variable = { resistance_ICE_popularity = 20 tooltip = ICE_resistance_popularity_lowered }
 					}
 					clr_country_flag = ICE_scouted_enemy
 				}
 				35 = { #Hit the british
 					custom_effect_tooltip = ICE_Mine_Success
 					ICE = {
-						subtract_from_variable = {
-							var = resistance_ICE_strength
-							value = 5
-							tooltip = ICE_resistance_strength_lowered
-						}
-						subtract_from_variable = {
-							var = resistance_ICE_popularity
-							value = 10
-							tooltip = ICE_resistance_popularity_lowered
-						}
-						subtract_from_variable = {
-							var = occupation_ENG_strength
-							value = 15
-							tooltip = ICE_occupation_strength_lowered
-						}
+						subtract_from_variable = { resistance_ICE_strength = 5 tooltip = ICE_resistance_strength_lowered }
+						subtract_from_variable = { resistance_ICE_popularity = 10 tooltip = ICE_resistance_popularity_lowered }
+						subtract_from_variable = { occupation_ENG_strength = 15 tooltip = ICE_occupation_strength_lowered }
 					}
 					modifier = {
 						factor = 1.75
@@ -1602,11 +1546,7 @@ ICE_Resist_Invaders = {
 				5 = { #Mine is a dud
 					custom_effect_tooltip = ICE_Mine_Dud
 					ICE = {
-						subtract_from_variable = {
-							var = resistance_ICE_strength
-							value = 5
-							tooltip = ICE_resistance_strength_lowered
-						}
+						subtract_from_variable = { resistance_ICE_strength = 5 tooltip = ICE_resistance_strength_lowered }
 					}
 					clr_country_flag = ICE_scouted_enemy
 				}

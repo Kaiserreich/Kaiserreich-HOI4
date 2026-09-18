@@ -921,10 +921,8 @@ focus_tree = {
 			modifier = {
 				add = 1
 				OR = {
-					OR = {
-						has_country_flag = UKR_revolt_over
-						has_completed_focus = UKR_the_young_hetman
-					}
+					has_country_flag = UKR_revolt_over
+					has_completed_focus = UKR_the_young_hetman
 					AND = {
 						has_completed_focus = UKR_undermine_vdr_legitimacy
 						has_completed_focus = UKR_promises_of_reforms
@@ -1002,10 +1000,8 @@ focus_tree = {
 			modifier = {
 				add = 1
 				OR = {
-					OR = {
-						has_country_flag = UKR_revolt_over
-						has_completed_focus = UKR_the_young_hetman
-					}
+					has_country_flag = UKR_revolt_over
+					has_completed_focus = UKR_the_young_hetman
 					AND = {
 						has_completed_focus = UKR_undermine_vdr_legitimacy
 						has_completed_focus = UKR_promises_of_reforms
@@ -2209,7 +2205,7 @@ focus_tree = {
 
 	focus = {
 		id = UKR_deed_and_sacrifice
-		icon = GFX_goal_generic_corporatism
+		icon = GFX_goal_generic_militarism
 		cost = 8
 
 		relative_position_id = UKR_war_for_survival
@@ -5529,9 +5525,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 			has_government = authoritarian_democrat
 			NOT = { has_country_flag = UKR_vdr_side }
@@ -5573,9 +5571,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 			has_government = authoritarian_democrat
 		}
@@ -5610,9 +5610,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 			has_government = authoritarian_democrat
 		}
@@ -5664,9 +5666,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 			has_government = authoritarian_democrat
 		}
@@ -5697,9 +5701,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 			has_government = authoritarian_democrat
 		}
@@ -5740,9 +5746,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 			NOT = { has_country_flag = UKR_vdr_side }
 		}
@@ -5794,9 +5802,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 		}
 		ai_will_do = {
@@ -5838,9 +5848,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 		}
 		ai_will_do = {
@@ -5896,9 +5908,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 			NOT = { has_idea = UKR_army_in_chaos }
 		}
@@ -5947,9 +5961,11 @@ focus_tree = {
 		available = {
 			custom_override_tooltip = {
 				tooltip = UKR_five_foci_max_tt
-				set_temp_variable = { UKR_total_foci = UKR_authdem_foci }
-				add_to_temp_variable = { UKR_total_foci = UKR_pataut_foci }
-				check_variable = { UKR_total_foci < 5 }
+				check_expr = {
+					value = UKR_authdem_foci
+					add = UKR_pataut_foci
+					less_than = 5
+				}
 			}
 			NOT = { has_idea = UKR_army_in_chaos }
 		}
@@ -6551,14 +6567,14 @@ focus_tree = {
 				ideology = social_conservative
 				popularity = 0.05
 			}
-			add_to_variable = { UKR_opposition_strength = -30 }
-			clamp_variable = {
-				var = UKR_opposition_strength
-				min = 0
-				max = 100
-			}
 			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = UKR_weaken_the_opposition_big
+			add_to_variable = {
+				UKR_opposition_strength = {
+					value = -30
+					clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_weaken_the_opposition_big
+			}
 			hidden_effect = {
 				if = {
 					limit = {
@@ -6647,20 +6663,20 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_defang_the_borotbists"
 			add_political_power = 15
-			add_to_variable = { UKR_opposition_strength = -30 }
-			clamp_variable = {
-				var = UKR_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				UKR_opposition_strength = {
+					value = -30
+					clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_weaken_the_opposition_big
 			}
-			custom_effect_tooltip = UKR_weaken_the_opposition_big
-			add_to_variable = { UKR_government_strength = -20 }
-			clamp_variable = {
-				var = UKR_government_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				UKR_government_strength = {
+					value = -20
+					clamp = { min = { value = UKR_government_strength multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_weaken_the_vdr_moderate
 			}
-			custom_effect_tooltip = UKR_weaken_the_vdr_moderate
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = UKR_alienate_borotbyst_officers
 			add_popularity = {
@@ -6703,15 +6719,14 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_support_the_usdrp"
-			add_to_variable = { UKR_opposition_strength = 10 }
-			clamp_variable = {
-				var = UKR_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				UKR_opposition_strength = {
+					value = 10
+					clamp = { min = 0 max = { value = 100 subtract = UKR_opposition_strength } }
+				}
+				tooltip = UKR_strengthen_the_opposition_slight
 			}
-
 			set_country_flag = UKR_lift_ban_on_socialists_unlocked
-			custom_effect_tooltip = UKR_strengthen_the_opposition_slight
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = UKR_lift_ban_on_socialists_unlocked_tt
 			hidden_effect = {
@@ -6790,13 +6805,13 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_bring_the_military_in_line"
-			add_to_variable = { UKR_opposition_strength = -40 }
-			clamp_variable = {
-				var = UKR_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				UKR_opposition_strength = {
+					value = -40
+					clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_weaken_the_opposition_big
 			}
-			custom_effect_tooltip = UKR_weaken_the_opposition_big
 			hidden_effect = {
 				add_days_mission_timeout = {
 					mission = UKR_complete_the_reforms
@@ -6863,14 +6878,14 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_union_dark_horse"
-			add_to_variable = { UKR_opposition_strength = -20 }
 			retire_character = UKR_ivan_poltavets_ostrianytsia
-			clamp_variable = {
-				var = UKR_opposition_strength
-				min = 0
-				max = 100
+			add_to_variable = {
+				UKR_opposition_strength = {
+					value = -20
+					clamp = { min = { value = UKR_opposition_strength multiply = -1 } max = 0 }
+				}
+				tooltip = UKR_weaken_the_opposition_moderate
 			}
-			custom_effect_tooltip = UKR_weaken_the_opposition_moderate
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -8408,7 +8423,7 @@ focus_tree = {
 
 		available = {
 			market_liberal > 0.15
-			set_temp_variable = { UKR_score_check > 50 }
+			set_temp_variable = { UKR_score_check = 50 }
 			UKR_industry_score_check = yes
 			hidden_trigger = { has_government = paternal_autocrat }
 		}
@@ -8465,8 +8480,7 @@ focus_tree = {
 				limit = { has_active_mission = UKR_landreform_mission }
 				custom_effect_tooltip = UKR_favour_loyal_landowners_tt
 			}
-			set_temp_variable = { temp_stab_bonus_SHD = UKR_land_reform_score }
-			divide_temp_variable = { temp_stab_bonus_SHD = 1000 }
+			set_temp_variable = { temp_stab_bonus_SHD = { value = UKR_land_reform_score multiply = 0.001 } }
 			add_stability = temp_stab_bonus_SHD
 			UKR_add_land_reform_score_based_on_current_score = yes
 			activate_targeted_decision = { target = ROOT decision = UKR_deals_with_landowners }
@@ -8596,9 +8610,9 @@ focus_tree = {
 		ai_will_do = { base = 10 }
 
 		available = {
-			set_temp_variable = { UKR_score_check > 40 }
+			set_temp_variable = { UKR_score_check = 40 }
 			UKR_reform_score_check = yes
-			set_temp_variable = { UKR_score_check > 60 }
+			set_temp_variable = { UKR_score_check = 60 }
 			UKR_industry_score_check = yes
 			hidden_trigger = { has_government = paternal_autocrat }
 		}
@@ -8895,7 +8909,7 @@ focus_tree = {
 		available = {
 			OR = {
 				paternal_autocrat > 0.4
-				set_temp_variable = { UKR_score_check > 50 }
+				set_temp_variable = { UKR_score_check = 50 }
 				UKR_reform_score_check = yes
 			}
 			hidden_trigger = { has_government = paternal_autocrat }
@@ -8936,7 +8950,7 @@ focus_tree = {
 			set_temp_variable = { UKR_ivan_influence_check = 4 }
 			custom_override_tooltip = {
 				tooltip = UKR_ivan_influence_less_than_or_equals_tt
-				NOT = { check_variable = { UKR_ivan_influence_variable > UKR_ivan_influence_check } }
+				NOT = { check_variable = { UKR_ivan_influence_variable > 4 } }
 			}
 			hidden_trigger = { has_government = paternal_autocrat }
 		}
@@ -9369,11 +9383,9 @@ focus_tree = {
 				factor = 0
 				has_country_flag = UKR_uskhd_ai
 				OR = {
-					OR = {
-						has_active_mission = UKR_hetman_scrutiny
-						has_active_mission = UKR_concerns_among_union
-						has_active_mission = UKR_scepticism_within_the_party
-					}
+					has_active_mission = UKR_hetman_scrutiny
+					has_active_mission = UKR_concerns_among_union
+					has_active_mission = UKR_scepticism_within_the_party
 					NOT = { has_completed_focus = UKR_classocratic_principle }
 				}
 			}
@@ -9429,8 +9441,7 @@ focus_tree = {
 				limit = { has_active_mission = UKR_landreform_mission }
 				custom_effect_tooltip = UKR_expand_land_credit_bank_tt
 			}
-			set_temp_variable = { temp_stab_bonus = UKR_land_reform_score }
-			divide_temp_variable = { temp_stab_bonus = 1000 }
+			set_temp_variable = { temp_stab_bonus = { value = UKR_land_reform_score multiply = 0.001 } }
 			add_stability = temp_stab_bonus
 			UKR_add_land_reform_score_based_on_current_score = yes
 		}
@@ -9667,10 +9678,7 @@ focus_tree = {
 				custom_effect_tooltip = UKR_if_empower_class_aristocracy_tt
 				custom_effect_tooltip = tooltip_white_line
 			}
-			else_if = {
-				limit = {
-					check_variable = { UKR_land_reform_score > 35 }
-				}
+			else = {
 				set_temp_variable = { UKR_influence_change = 3 }
 				UKR_reform_score = yes
 			}
@@ -10154,7 +10162,13 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_hetman_evil_spirit"
-			activate_advisor = UKR_ihor_kistiakovskyi_sic
+			if = {
+				limit = { has_character = UKR_ihor_kistiakovskyi }
+				activate_advisor = UKR_ihor_kistiakovskyi_sic
+			}
+			else = {
+				activate_advisor = UKR_volodymyr_korostovets_sic
+			}
 			custom_effect_tooltip = tooltip_white_line
 			hidden_effect = {
 				country_event = { id = ukraine_coalition_events.28 days = 365 }
@@ -11136,22 +11150,30 @@ focus_tree = {
 				UKR_coalition_partner_relationship_worsen = yes
 				if = {
 					limit = { UKR_has_any_failstate = no }
-					set_temp_variable = { UKR_usdrp_idealism_points_temp = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_usdrp_idealism_points_temp min = 0 max = 4 }
+					set_temp_variable = {
+						UKR_usdrp_idealism_points_temp = {
+							value = UKR_usdrp_idealism_points
+							clamp = { min = 0 max = 4 }
+						}
+					}
 
 					# Party Popularity UKR_ideology_change = -0.05 + (UKR_usdrp_idealism_points_temp * -0.03)
 					# Range of -0.17 to -0.05
-					set_temp_variable = { UKR_ideology_change = -0.05 } #Base
-					set_temp_variable = { UKR_ideology_change_factor = UKR_usdrp_idealism_points_temp }
-					multiply_temp_variable = { UKR_ideology_change_factor = -0.03 }
-					add_to_temp_variable = { UKR_ideology_change = UKR_ideology_change_factor }
+					set_temp_variable = {
+						UKR_ideology_change = {
+							value = -0.05
+							add = { value = UKR_usdrp_idealism_points_temp multiply = -0.03 }
+						}
+					}
 
-					# Political Power UKR_ideology_change = 25 * (UKR_usdrp_idealism_points_temp + 1)
+					# Political Power UKR_political_power_change = 25 * (UKR_usdrp_idealism_points_temp + 1)
 					# Range of 25 to 125
-					set_temp_variable = { UKR_political_power_change = 25 } #Base
-					set_temp_variable = { UKR_political_power_change_factor = UKR_usdrp_idealism_points_temp }
-					add_to_temp_variable = { UKR_political_power_change_factor = 1 }
-					multiply_temp_variable = { UKR_political_power_change = UKR_political_power_change_factor }
+					set_temp_variable = {
+						UKR_political_power_change = {
+							value = 25 #Base
+							multiply = { value = UKR_usdrp_idealism_points_temp add = 1 }
+						}
+					}
 
 					add_popularity = { ideology = paternal_autocrat popularity = UKR_ideology_change }
 					add_popularity = { ideology = national_populist popularity = UKR_ideology_change }
@@ -11243,29 +11265,32 @@ focus_tree = {
 					}
 				}
 				hidden_effect = {
-					set_temp_variable = { UKR_new_radsoc = UKR.party_popularity_100@radical_socialist }
-					divide_temp_variable = { UKR_new_radsoc = 2 }
+					set_temp_variable = { UKR_new_radsoc = { value = party_popularity_100@radical_socialist multiply = 0.5 } }
+					set_temp_variable = { UKR_new_syndie = { value = party_popularity_100@syndicalist multiply = 0.5 } }
 
-					set_temp_variable = { UKR_new_syndie = UKR.party_popularity_100@syndicalist }
-					divide_temp_variable = { UKR_new_syndie = 2 }
+					set_temp_variable = {
+						UKR_new_socdem = {
+							value = party_popularity_100@social_democrat
+							add = UKR_new_radsoc
+							add = UKR_new_syndie
+						}
+					}
 
-					set_temp_variable = { UKR_new_socdem = UKR.party_popularity_100@social_democrat }
-					add_to_temp_variable = { UKR_new_socdem = UKR_new_radsoc }
-					add_to_temp_variable = { UKR_new_socdem = UKR_new_syndie }
-
-					set_temp_variable = { sum = 100 }
-					subtract_from_temp_variable = { sum = party_popularity_100@totalist }
-					subtract_from_temp_variable = { sum = UKR_new_syndie }
-					subtract_from_temp_variable = { sum = UKR_new_radsoc }
-					subtract_from_temp_variable = { sum = UKR_new_socdem }
-					subtract_from_temp_variable = { sum = party_popularity_100@social_liberal }
-					subtract_from_temp_variable = { sum = party_popularity_100@market_liberal }
-					subtract_from_temp_variable = { sum = party_popularity_100@social_conservative }
-					subtract_from_temp_variable = { sum = party_popularity_100@authoritarian_democrat }
-					subtract_from_temp_variable = { sum = party_popularity_100@paternal_autocrat }
-					subtract_from_temp_variable = { sum = party_popularity_100@national_populist }
-
-					add_to_temp_variable = { UKR_new_socdem = sum } #avoid rounding errors
+					add_to_temp_variable = { #avoid rounding errors
+						UKR_new_socdem = {
+							value = 100
+							subtract = party_popularity_100@totalist
+							subtract = UKR_new_syndie
+							subtract = UKR_new_radsoc
+							subtract = UKR_new_socdem
+							subtract = party_popularity_100@social_liberal
+							subtract = party_popularity_100@market_liberal
+							subtract = party_popularity_100@social_conservative
+							subtract = party_popularity_100@authoritarian_democrat
+							subtract = party_popularity_100@paternal_autocrat
+							subtract = party_popularity_100@national_populist
+						}
+					}
 
 					set_popularities = {
 						totalist = party_popularity_100@totalist
@@ -11301,29 +11326,32 @@ focus_tree = {
 				custom_effect_tooltip = UKR_beyond_mitteleuropa_3_tt
 				add_political_power = 100
 				hidden_effect = {
-					set_temp_variable = { UKR_new_radsoc = UKR.party_popularity_100@radical_socialist }
-					divide_temp_variable = { UKR_new_radsoc = 2 }
+					set_temp_variable = { UKR_new_radsoc = { value = party_popularity_100@radical_socialist multiply = 0.5 } }
+					set_temp_variable = { UKR_new_syndie = { value = party_popularity_100@syndicalist multiply = 0.5 } }
 
-					set_temp_variable = { UKR_new_syndie = UKR.party_popularity_100@syndicalist }
-					divide_temp_variable = { UKR_new_syndie = 2 }
+					set_temp_variable = {
+						UKR_new_socdem = {
+							value = party_popularity_100@social_democrat
+							add = UKR_new_radsoc
+							add = UKR_new_syndie
+						}
+					}
 
-					set_temp_variable = { UKR_new_socdem = UKR.party_popularity_100@social_democrat }
-					add_to_temp_variable = { UKR_new_socdem = UKR_new_radsoc }
-					add_to_temp_variable = { UKR_new_socdem = UKR_new_syndie }
-
-					set_temp_variable = { sum = 100 }
-					subtract_from_temp_variable = { sum = party_popularity_100@totalist }
-					subtract_from_temp_variable = { sum = UKR_new_syndie }
-					subtract_from_temp_variable = { sum = UKR_new_radsoc }
-					subtract_from_temp_variable = { sum = UKR_new_socdem }
-					subtract_from_temp_variable = { sum = party_popularity_100@social_liberal }
-					subtract_from_temp_variable = { sum = party_popularity_100@market_liberal }
-					subtract_from_temp_variable = { sum = party_popularity_100@social_conservative }
-					subtract_from_temp_variable = { sum = party_popularity_100@authoritarian_democrat }
-					subtract_from_temp_variable = { sum = party_popularity_100@paternal_autocrat }
-					subtract_from_temp_variable = { sum = party_popularity_100@national_populist }
-
-					add_to_temp_variable = { UKR_new_socdem = sum } #avoid rounding errors
+					add_to_temp_variable = { #avoid rounding errors
+						UKR_new_socdem = {
+							value = 100
+							subtract = party_popularity_100@totalist
+							subtract = UKR_new_syndie
+							subtract = UKR_new_radsoc
+							subtract = UKR_new_socdem
+							subtract = party_popularity_100@social_liberal
+							subtract = party_popularity_100@market_liberal
+							subtract = party_popularity_100@social_conservative
+							subtract = party_popularity_100@authoritarian_democrat
+							subtract = party_popularity_100@paternal_autocrat
+							subtract = party_popularity_100@national_populist
+						}
+					}
 
 					set_popularities = {
 						totalist = party_popularity_100@totalist
@@ -11362,10 +11390,14 @@ focus_tree = {
 					UKR_coalition_partner_relationship_improve = yes
 
 					#Every additional idealism point adds an extra 25 political power
-					set_temp_variable = { UKR_political_power_change = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_political_power_change min = 0 max = 4 }
-					add_to_temp_variable = { UKR_political_power_change = 1 }
-					multiply_temp_variable = { UKR_political_power_change = 25 }
+					set_temp_variable = {
+						UKR_political_power_change = {
+							value = UKR_usdrp_idealism_points
+							clamp = { min = 0 max = 4 }
+							add = 1
+							multiply = 25
+						}
+					}
 
 					add_political_power = UKR_political_power_change
 					add_popularity = {
@@ -11447,10 +11479,14 @@ focus_tree = {
 					limit = { UKR_has_any_failstate = no }
 					# Every addtional idealism point adds extra 0.03 stability, base 0.05
 					# UKR_stability_change = ( UKR_usdrp_idealism_points * 0.03) + 0.05
-					set_temp_variable = { UKR_stability_change = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_stability_change min = 0 max = 4 }
-					multiply_temp_variable = { UKR_stability_change = 0.03 }
-					add_to_temp_variable = { UKR_stability_change = 0.05 } #Base
+					set_temp_variable = {
+						UKR_stability_change = {
+							value = UKR_usdrp_idealism_points
+							clamp = { min = 0 max = 4 }
+							multiply = 0.03
+							add = 0.05 #Base
+						}
+					}
 
 					add_stability = UKR_stability_change
 					custom_effect_tooltip = tooltip_white_line
@@ -11803,12 +11839,16 @@ focus_tree = {
 				if = {
 					limit = { UKR_has_any_failstate = no }
 
-					set_temp_variable = { UKR_ideology_change = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_ideology_change min = 0 max = 4 }
-					add_to_temp_variable = { UKR_ideology_change = 1 }
-					multiply_temp_variable = { UKR_ideology_change = 0.02 }
-
 					# Every extra idealism point +0.02
+					set_temp_variable = {
+						UKR_ideology_change = {
+							value = UKR_usdrp_idealism_points
+							clamp = { min = 0 max = 4 }
+							add = 1
+							multiply = 0.02
+						}
+					}
+
 					add_popularity = {
 						ideology = social_democrat
 						popularity = UKR_ideology_change
@@ -11963,10 +12003,14 @@ focus_tree = {
 				if = {
 					limit = { NOT = { has_idea = UKR_minority_government } }
 					# Every additional idealism point grants an extra 15 political power
-					set_temp_variable = { UKR_political_power_change = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_political_power_change min = 0 max = 4 }
-					add_to_temp_variable = { UKR_political_power_change = 1 }
-					multiply_temp_variable = { UKR_political_power_change = 15 }
+					set_temp_variable = {
+						UKR_political_power_change = {
+							value = UKR_usdrp_idealism_points
+							clamp = { min = 0 max = 4 }
+							add = 1
+							multiply = 15
+						}
+					}
 					add_political_power = UKR_political_power_change
 
 					custom_effect_tooltip = UKR_urdp_effects_modified_by_tt
@@ -12032,10 +12076,14 @@ focus_tree = {
 					limit = { UKR_has_any_failstate = no }
 					# For every additonal idealism point, UKR_influence_change increases by 2, base 3
 					# UKR_influence_change = ( 2 * UKR_usdrp_idealism_points) + 3
-					set_temp_variable = { UKR_influence_change = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_influence_change min = 0 max = 4 }
-					multiply_temp_variable = { UKR_influence_change = 2 }
-					add_to_temp_variable = { UKR_influence_change = 3 } #Base
+					set_temp_variable = {
+						UKR_influence_change = {
+							value = UKR_usdrp_idealism_points
+							clamp = { min = 0 max = 4 }
+							multiply = 2
+							add = 3 #Base
+						}
+					}
 
 					# Both use same var UKR_influence_change
 					UKR_reform_score = yes
@@ -12392,29 +12440,42 @@ focus_tree = {
 						UKR_has_any_failstate = yes
 					}
 				}
-				set_temp_variable = { UKR_coalition_partner_vars_change = UKR_usdrp_idealism_points }
-				clamp_temp_variable = { var = UKR_coalition_partner_vars_change min = 0 max = 4 }
-				multiply_temp_variable = { UKR_coalition_partner_vars_change = 0.01 }
-
-				#Indifferent
-				#UKR_coalition_partner_indifferent_industrial_capacity_factory start at 0.01, +0.01 per extra lvl above 0
-				set_temp_variable = { UKR_coalition_partner_indifferent_change = 0.01 } #Base
-				add_to_temp_variable = { UKR_coalition_partner_indifferent_change = UKR_coalition_partner_vars_change }
-
-				#Cooperative
-				#UKR_coalition_partner_cooperative_industrial_capacity_factory start at 0.03, +0.01 per extra lvl above 0
-				set_temp_variable = { UKR_coalition_partner_cooperative_change = 0.03 } #Base
-				add_to_temp_variable = { UKR_coalition_partner_cooperative_change = UKR_coalition_partner_vars_change }
-
-				#Amenable
-				#UKR_coalition_partner_amenable_industrial_capacity_factory start at 0.05, +0.01 per extra lvl above 0
-				set_temp_variable = { UKR_coalition_partner_amenable_change = 0.05 } #Base
-				add_to_temp_variable = { UKR_coalition_partner_amenable_change = UKR_coalition_partner_vars_change }
+				set_temp_variable = {
+					UKR_coalition_partner_vars_change = {
+						value = UKR_usdrp_idealism_points
+						clamp = { min = 0 max = 4 }
+						multiply = 0.01
+					}
+				}
 
 				custom_effect_tooltip = UKR_urdp_effects_modified_by_tt
-				add_to_variable = { UKR.UKR_coalition_partner_indifferent_industrial_capacity_factory = UKR_coalition_partner_indifferent_change tooltip = UKR_industrial_capacity_factory_indifferent }
-				add_to_variable = { UKR.UKR_coalition_partner_cooperative_industrial_capacity_factory = UKR_coalition_partner_cooperative_change tooltip = UKR_industrial_capacity_factory_cooperative }
-				add_to_variable = { UKR.UKR_coalition_partner_amenable_industrial_capacity_factory = UKR_coalition_partner_amenable_change tooltip = UKR_industrial_capacity_factory_amenable }
+				#Indifferent
+				#UKR_coalition_partner_indifferent_industrial_capacity_factory start at 0.01, +0.01 per extra lvl above 0
+				add_to_variable = {
+					UKR.UKR_coalition_partner_indifferent_industrial_capacity_factory = {
+						value = 0.01
+						add = UKR_coalition_partner_vars_change
+					}
+					tooltip = UKR_industrial_capacity_factory_indifferent
+				}
+				#Cooperative
+				#UKR_coalition_partner_cooperative_industrial_capacity_factory start at 0.03, +0.01 per extra lvl above 0
+				add_to_variable = {
+					UKR.UKR_coalition_partner_cooperative_industrial_capacity_factory = {
+						value = 0.03
+						add = UKR_coalition_partner_vars_change
+					}
+					tooltip = UKR_industrial_capacity_factory_cooperative
+				}
+				#Amenable
+				#UKR_coalition_partner_amenable_industrial_capacity_factory start at 0.05, +0.01 per extra lvl above 0
+				add_to_variable = {
+					UKR.UKR_coalition_partner_amenable_industrial_capacity_factory = {
+						value = 0.05
+						add = UKR_coalition_partner_vars_change
+					}
+					tooltip = UKR_industrial_capacity_factory_amenable
+				}
 				custom_effect_tooltip = tooltip_white_line
 				UKR_idealism_spend = yes
 				custom_effect_tooltip = UKR_support_for_nruz_3_tt
@@ -12569,18 +12630,19 @@ focus_tree = {
 				}
 				if = {
 					limit = { UKR_has_any_failstate = no }
-					set_temp_variable = { UKR_beyond_mitteleuropa_vars_change = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_beyond_mitteleuropa_vars_change min = 0 max = 4 }
-					add_to_temp_variable = { UKR_beyond_mitteleuropa_vars_change = 1 }
-					set_temp_variable = { UKR_beyond_mitteleuropa_vars_change_2 = UKR_beyond_mitteleuropa_vars_change }
-
-					multiply_temp_variable = { UKR_beyond_mitteleuropa_vars_change = 0.02 } #Others
-					multiply_temp_variable = { UKR_beyond_mitteleuropa_vars_change_2 = -0.02 } #Consumer goods
+					set_temp_variable = {
+						UKR_beyond_mitteleuropa_vars_change = {
+							value = UKR_usdrp_idealism_points
+							clamp = { min = 0 max = 4 }
+							add = 1
+							multiply = 0.02
+						}
+					}
 
 					# All effects range from 0.02 to 0.10
 					add_to_variable = { UKR_beyond_mitteleuropa_pp_gain = UKR_beyond_mitteleuropa_vars_change tooltip = political_power_gain_tooltip }
 					add_to_variable = { UKR_beyond_mitteleuropa_production_speed_buildings_factor = UKR_beyond_mitteleuropa_vars_change tooltip = production_speed_buildings_factor_tooltip }
-					add_to_variable = { UKR_beyond_mitteleuropa_consumer_goods_factor = UKR_beyond_mitteleuropa_vars_change_2 tooltip = consumer_goods_factor_tooltip }
+					add_to_variable = { UKR_beyond_mitteleuropa_consumer_goods_factor = { value = UKR_beyond_mitteleuropa_vars_change multiply = -1 } tooltip = consumer_goods_factor_tooltip }
 					add_to_variable = { UKR_beyond_mitteleuropa_trade_opinion_factor = UKR_beyond_mitteleuropa_vars_change tooltip = trade_opinion_factor_tooltip }
 					custom_effect_tooltip = tooltip_white_line
 					UKR_idealism_spend = yes
@@ -12657,9 +12719,13 @@ focus_tree = {
 				if = {
 					limit = { UKR_has_any_failstate = no }
 					# One extra UKR_coalition_partner_attitude_change per lvl of idealism above 0
-					set_temp_variable = { UKR_coalition_partner_attitude_change = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_coalition_partner_attitude_change min = 0 max = 4 }
-					add_to_temp_variable = { UKR_coalition_partner_attitude_change = 1 }
+					set_temp_variable = {
+						UKR_coalition_partner_attitude_change = {
+							value = UKR_usdrp_idealism_points
+							clamp = { min = 0 max = 4 }
+							add = 1
+						}
+					}
 					UKR_coalition_partner_relationship_improve = yes
 					set_variable = { UKR_scepticism_days_timeout = 120 }
 					custom_effect_tooltip = UKR_keeping_the_flame_tt_3
@@ -12775,11 +12841,15 @@ focus_tree = {
 				}
 
 				#Every idealism point gives additonal 2 industrial score, base of 3
-				set_temp_variable = { UKR_influence_change = UKR_usdrp_idealism_points }
-				clamp_temp_variable = { var = UKR_influence_change min = 0 max = 4 }
 				# UKR_influence_change = (UKR_usdrp_idealism_points * 2) + 3
-				multiply_temp_variable = { UKR_influence_change = 2 }
-				add_to_temp_variable = { UKR_influence_change = 3 }
+				set_temp_variable = {
+					UKR_influence_change = {
+						value = UKR_usdrp_idealism_points
+						clamp = { min = 0 max = 4 }
+						multiply = 2
+						add = 3
+					}
+				}
 				UKR_industrial_score = yes
 				add_days_mission_timeout = {
 					mission = UKR_scepticism_within_the_party
@@ -13130,23 +13200,30 @@ focus_tree = {
 				add_one_random_military_factory = yes
 				if = {
 					limit = { UKR_has_any_failstate = no }
-					set_temp_variable = { UKR_urdp_idealism_points_temp = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_urdp_idealism_points_temp min = 0 max = 4 }
+					set_temp_variable = { UKR_urdp_idealism_points_temp = { value = UKR_usdrp_idealism_points clamp = { min = 0 max = 4 } } }
 
 					# Industrial Score
 					# UKR_influence_change = (3 * UKR_urdp_idealism_points) + 2
 					# Every additional idealism point adds an extra 3 industrial score
-					set_temp_variable = { UKR_influence_change = UKR_urdp_idealism_points_temp }
-					multiply_temp_variable = { UKR_influence_change = 3 }
-					add_to_temp_variable = { UKR_influence_change = 2 } #base
+					set_temp_variable = {
+						UKR_influence_change = {
+							value = UKR_urdp_idealism_points_temp
+							multiply = 3
+							add = 2 #base
+						}
+					}
 					UKR_industrial_score = yes
 
 					# Stability
 					# UKR_stability_change = (1 + UKR_urdp_idealism_points) * 0.02
 					# Every additional idealism point adds an extra 2% stability
-					set_temp_variable = { UKR_stability_change = UKR_urdp_idealism_points_temp }
-					add_to_temp_variable = { UKR_stability_change = 1 }
-					multiply_temp_variable = { UKR_stability_change = 0.02 } #base
+					set_temp_variable = {
+						UKR_stability_change = {
+							value = UKR_urdp_idealism_points_temp
+							add = 1
+							multiply = 0.02 #base
+						}
+					}
 					add_stability = UKR_stability_change
 					custom_effect_tooltip = tooltip_white_line
 					custom_effect_tooltip = UKR_wont_spend_idealism_tt
@@ -13499,45 +13576,49 @@ focus_tree = {
 			else = {
 				if = {
 					limit = { UKR_has_any_failstate = no }
-					set_temp_variable = { UKR_coalition_partner_vars_change = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_coalition_partner_vars_change min = 0 max = 4 }
-					multiply_temp_variable = { UKR_coalition_partner_vars_change = 0.02 }
-
-					# Uncooperative
-					#UKR_coalition_partner_uncooperative_production_factory_start_efficiency_factor start at 0.01, +0.02 per extra lvl above 0
-					set_temp_variable = { UKR_coalition_partner_uncooperative_change = 0.01 } #Base
-					add_to_temp_variable = { UKR_coalition_partner_uncooperative_change = UKR_coalition_partner_vars_change }
-
-					# Indifferent
-					#UKR_coalition_partner_indifferent_production_factory_start_efficiency_factor start at 0.03, +0.02 per extra lvl above 0
-					set_temp_variable = { UKR_coalition_partner_indifferent_change = 0.03 } #Base
-					add_to_temp_variable = { UKR_coalition_partner_indifferent_change = UKR_coalition_partner_vars_change }
-
-					# Cooperative
-					#UKR_coalition_partner_cooperative_production_factory_start_efficiency_factor start at 0.05, +0.02 per extra lvl above 0
-					set_temp_variable = { UKR_coalition_partner_cooperative_change = 0.05 } #Base
-					add_to_temp_variable = { UKR_coalition_partner_cooperative_change = UKR_coalition_partner_vars_change }
-
-					# Amenable
-					#UKR_coalition_partner_amenable_production_factory_start_efficiency_factor start at 0.07, +0.02 per extra lvl above 0
-					set_temp_variable = { UKR_coalition_partner_amenable_change = 0.07 } #Base
-					add_to_temp_variable = { UKR_coalition_partner_amenable_change = UKR_coalition_partner_vars_change }
+					set_temp_variable = {
+						UKR_coalition_partner_vars_change = {
+							value = UKR_usdrp_idealism_points
+							clamp = { min = 0 max = 4 }
+							multiply = 0.02
+						}
+					}
 
 					custom_effect_tooltip = UKR_urdp_effects_modified_by_tt
+					# Uncooperative
+					#UKR_coalition_partner_uncooperative_production_factory_start_efficiency_factor start at 0.01, +0.02 per extra lvl above 0
 					add_to_variable = {
-						UKR.UKR_coalition_partner_uncooperative_production_factory_start_efficiency_factor = UKR_coalition_partner_uncooperative_change
+						UKR.UKR_coalition_partner_uncooperative_production_factory_start_efficiency_factor = {
+							value = 0.01 #Base
+							add = UKR_coalition_partner_vars_change
+						}
 						tooltip = UKR_production_factory_start_efficiency_factor_uncooperative
 					}
+					# Indifferent
+					#UKR_coalition_partner_indifferent_production_factory_start_efficiency_factor start at 0.03, +0.02 per extra lvl above 0
 					add_to_variable = {
-						UKR.UKR_coalition_partner_indifferent_production_factory_start_efficiency_factor = UKR_coalition_partner_indifferent_change
+						UKR.UKR_coalition_partner_indifferent_production_factory_start_efficiency_factor = {
+							value = 0.03
+							add = UKR_coalition_partner_vars_change
+						}
 						tooltip = UKR_production_factory_start_efficiency_factor_indifferent
 					}
+					# Cooperative
+					#UKR_coalition_partner_cooperative_production_factory_start_efficiency_factor start at 0.05, +0.02 per extra lvl above 0
 					add_to_variable = {
-						UKR.UKR_coalition_partner_cooperative_production_factory_start_efficiency_factor = UKR_coalition_partner_cooperative_change
+						UKR.UKR_coalition_partner_cooperative_production_factory_start_efficiency_factor = {
+							value = 0.05
+							add = UKR_coalition_partner_vars_change
+						}
 						tooltip = UKR_production_factory_start_efficiency_factor_cooperative
 					}
+					# Amenable
+					#UKR_coalition_partner_amenable_production_factory_start_efficiency_factor start at 0.07, +0.02 per extra lvl above 0
 					add_to_variable = {
-						UKR.UKR_coalition_partner_amenable_production_factory_start_efficiency_factor = UKR_coalition_partner_amenable_change
+						UKR.UKR_coalition_partner_amenable_production_factory_start_efficiency_factor = {
+							value = 0.07
+							add = UKR_coalition_partner_vars_change
+						}
 						tooltip = UKR_production_factory_start_efficiency_factor_amenable
 					}
 					custom_effect_tooltip = tooltip_white_line
@@ -13603,20 +13684,27 @@ focus_tree = {
 				set_temp_variable = { UKR_influence_change = 4 }
 				UKR_industrial_score = yes
 
-				set_temp_variable = { UKR_usdrp_idealism_points_temp = UKR_usdrp_idealism_points }
-				clamp_temp_variable = { var = UKR_usdrp_idealism_points_temp min = 0 max = 4 }
+				set_temp_variable = { UKR_usdrp_idealism_points_temp = { value = UKR_usdrp_idealism_points clamp = { min = 0 max = 4 } } }
 
 				# UKR_industry_remove_cost_change = ( 1 + UKR_usdrp_idealism_points) * 10
 				# Every additional idealism reduces UKR_industry_remove_cost by 10
-				set_temp_variable = { UKR_industry_remove_cost_change = UKR_usdrp_idealism_points_temp }
-				add_to_temp_variable = { UKR_industry_remove_cost_change = 1 }
-				multiply_temp_variable = { UKR_industry_remove_cost_change = 10 }
+				set_temp_variable = {
+					UKR_industry_remove_cost_change = {
+						value = UKR_usdrp_idealism_points_temp
+						add = 1
+						multiply = 10
+					}
+				}
 
 				# UKR_industry_cost_change = ( 1 + UKR_usdrp_idealism_points) * 5
 				# Every additional idealism reduces UKR_industry_cost by 5
-				set_temp_variable = { UKR_industry_cost_change = UKR_usdrp_idealism_points_temp }
-				add_to_temp_variable = { UKR_industry_cost_change = 1 }
-				multiply_temp_variable = { UKR_industry_cost_change = 5 }
+				set_temp_variable = {
+					UKR_industry_cost_change = {
+						value = UKR_usdrp_idealism_points_temp
+						add = 1
+						multiply = 5
+					}
+				}
 
 				custom_effect_tooltip = UKR_our_own_industrial_revolution_tt_2
 				subtract_from_variable = { UKR_industry_remove_cost_1 = UKR_industry_remove_cost_change }
@@ -13723,14 +13811,18 @@ focus_tree = {
 				if = {
 					limit = { UKR_has_any_failstate = no }
 					# Every extra idealism point improves UKR_workers_control idea
-					set_temp_variable = { UKR_workers_control_level = UKR_usdrp_idealism_points }
-					clamp_temp_variable = { var = UKR_workers_control_level min = 0 max = 4 }
+
+					set_temp_variable = { UKR_workers_control_level = { value = UKR_usdrp_idealism_points clamp = { min = 0 max = 4 } } }
 
 					# Every extra idealism point improves UKR_workers_control idea duration
 					# Base 300, +25 per extra ideaalism
-					set_temp_variable = { UKR_timed_idea_days = UKR_workers_control_level }
-					multiply_temp_variable = { UKR_timed_idea_days = 25 }
-					add_to_temp_variable = { UKR_timed_idea_days = 300 } #Base
+					set_temp_variable = {
+						UKR_timed_idea_days = {
+							value = UKR_workers_control_level
+							multiply = 25
+							add = 300 #Base
+						}
+					}
 
 					meta_effect = {
 						text = {
@@ -13926,8 +14018,7 @@ focus_tree = {
 			add_to_variable = { UKR.UKR_coalition_partner_cooperative_stability_factor = 0.1 tooltip = UKR_stability_factor_cooperative }
 			add_to_variable = { UKR.UKR_coalition_partner_amenable_stability_factor = 0.1 tooltip = UKR_stability_factor_amenable }
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { UKR_usdrp_idealism_points_temp = UKR_usdrp_idealism_points }
-			clamp_temp_variable = { var = UKR_usdrp_idealism_points_temp min = 0 max = 4 }
+			set_temp_variable = { UKR_usdrp_idealism_points_temp = { value = UKR_usdrp_idealism_points clamp = { min = 0 max = 4 } } }
 			meta_effect = {
 				text = {
 					UKR_isaak_mazepa = {
@@ -14760,25 +14851,28 @@ focus_tree = {
 						UKR_rrb_radicals_dominant = yes
 					}
 				}
-				set_temp_variable = { sum = UKR_rrb_moderate_var }
-				subtract_from_temp_variable = { sum = UKR_rrb_radical_var }
-				if = {
-					limit = {
-						check_variable = { sum < 0 }
+				set_temp_variable = {
+					sum = {
+						value = UKR_rrb_moderate_var
+						subtract = UKR_rrb_radical_var
+						if = {
+							limit = { value = UKR_rrb_moderate_var less_than = UKR_rrb_radical_var }
+							multiply = -1
+						}
 					}
-					multiply_temp_variable = { sum = -1 }
 				}
 				if = {
-					limit = {
-						NOT = { check_variable = { sum > 10 } }
-					}
+					limit = { NOT = { check_variable = { sum > 10 } } }
 					custom_effect_tooltip = UKR_legacy_gain_1_tt
-					set_temp_variable = { pp_gain = 150 }
-					multiply_temp_variable = { sum = 10 }
-					subtract_from_temp_variable = { pp_gain = sum }
-					clamp_variable = {
-						var = pp_gain
-						min = 10
+					set_temp_variable = {
+						pp_gain = {
+							value = 150
+							subtract = {
+								value = sum
+								multiply = 10
+							}
+							clamp = { min = 10 max = 500 }
+						}
 					}
 					add_political_power = pp_gain
 				}
@@ -14793,25 +14887,28 @@ focus_tree = {
 						UKR_upsr_radicals_dominant = yes
 					}
 				}
-				set_temp_variable = { sum = UKR_upsr_moderate_var }
-				subtract_from_temp_variable = { sum = UKR_upsr_radical_var }
-				if = {
-					limit = {
-						check_variable = { sum < 0 }
+				set_temp_variable = {
+					sum = {
+						value = UKR_upsr_moderate_var
+						subtract = UKR_upsr_radical_var
+						if = {
+							limit = { value = UKR_upsr_moderate_var less_than = UKR_upsr_radical_var }
+							multiply = -1
+						}
 					}
-					multiply_temp_variable = { sum = -1 }
 				}
 				if = {
-					limit = {
-						NOT = { check_variable = { sum > 10 } }
-					}
+					limit = { NOT = { check_variable = { sum > 10 } } }
 					custom_effect_tooltip = UKR_legacy_gain_2_tt
-					set_temp_variable = { pp_gain = 100 }
-					multiply_temp_variable = { sum = 10 }
-					subtract_from_temp_variable = { pp_gain = sum }
-					clamp_variable = {
-						var = pp_gain
-						min = 10
+					set_temp_variable = {
+						pp_gain = {
+							value = 100
+							subtract = {
+								value = sum
+								multiply = 10
+							}
+							clamp = { min = 10 max = 500 }
+						}
 					}
 					add_political_power = pp_gain
 				}
@@ -16030,10 +16127,7 @@ focus_tree = {
 			custom_effect_tooltip = UKR_khvyliovyi_buff2_tt
 			UKR_improve_unfinished_revolution_spirit = yes
 			hidden_effect = {
-				set_variable = {
-					var = UKR_khvyliovyi_anger_variable
-					value = 0
-				}
+				set_variable = { UKR_khvyliovyi_anger_variable = 0 }
 				country_event = { id = ukraine_borotbyst_events.62 days = 20 }
 			}
 		}
@@ -16767,19 +16861,19 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_bsd_customs_union"
 			custom_effect_tooltip = UKR_bsd_customs_union_tt
-			set_variable = { UKR_bsd_consumer_goods = UKR_bsu_members } #1111 make this smaller and each country joining increases it, needs decisions
-			multiply_variable = { UKR_bsd_consumer_goods = -0.05 }
-			set_variable = { UKR_bsd_factory_output = UKR_bsu_members }
-			multiply_variable = { UKR_bsd_factory_output = 0.02 }
-			clamp_variable = {
-				var = UKR_bsd_consumer_goods
-				min = -0.25
-				max = 0
+			set_variable = {
+				UKR_bsd_consumer_goods = { #1111 make this smaller and each country joining increases it, needs decisions
+					value = UKR_bsu_members
+					multiply = -0.05
+					clamp = { min = -0.25 max = 0 }
+				}
 			}
-			clamp_variable = {
-				var = UKR_bsd_factory_output
-				min = 0
-				max = 0.1
+			set_variable = {
+				UKR_bsd_factory_output = {
+					value = UKR_bsu_members
+					multiply = 0.02
+					clamp = { min = 0 max = 0.1 }
+				}
 			}
 			force_update_dynamic_modifier = yes
 		}
@@ -16803,19 +16897,19 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_bsd_political_union"
 			custom_effect_tooltip = UKR_bsd_political_union_tt
-			set_variable = { UKR_bsd_political_power = UKR_bsu_members }
-			multiply_variable = { UKR_bsd_political_power = 0.02 }
-			set_variable = { UKR_bsd_stability = UKR_bsu_members }
-			multiply_variable = { UKR_bsd_stability = 0.02 }
-			clamp_variable = {
-				var = UKR_bsd_political_power
-				min = 0
-				max = 0.2
+			set_variable = {
+				UKR_bsd_political_power = {
+					value = UKR_bsu_members
+					multiply = 0.02
+					clamp = { min = 0 max = 0.2 }
+				}
 			}
-			clamp_variable = {
-				var = UKR_bsd_stability
-				min = 0
-				max = 0.1
+			set_variable = {
+				UKR_bsd_stability = {
+					value = UKR_bsu_members
+					multiply = 0.02
+					clamp = { min = 0 max = 0.1 }
+				}
 			}
 			force_update_dynamic_modifier = yes
 		}
@@ -17057,8 +17151,7 @@ focus_tree = {
 				UKR_mykola_kapustianskyi = { promote_leader = yes }
 			}
 			hidden_effect = {
-				set_variable = { UKR_lun_stability = UKR.party_popularity@authoritarian_democrat }
-				multiply_variable = { UKR_lun_stability = 0.3 }
+				set_variable = { UKR_lun_stability = { value = UKR.party_popularity@authoritarian_democrat multiply = 0.3 } }
 				add_dynamic_modifier = { modifier = UKR_lun_stability_dyn_mod }
 				force_update_dynamic_modifier = yes
 				if = {
@@ -17117,8 +17210,7 @@ focus_tree = {
 					add_idea = UKR_lun_natiocracy_k2
 				}
 			}
-			set_variable = { UKR_lun_stability = UKR.party_popularity@authoritarian_democrat }
-			multiply_variable = { UKR_lun_stability = 0.3 }
+			set_variable = { UKR_lun_stability = { value = UKR.party_popularity@authoritarian_democrat multiply = 0.3 } }
 			force_update_dynamic_modifier = yes
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_PRODUCTION }
@@ -17153,8 +17245,7 @@ focus_tree = {
 			}
 			add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
 			hidden_effect = {
-				set_variable = { UKR_lun_stability = UKR.party_popularity@paternal_autocrat }
-				multiply_variable = { UKR_lun_stability = 0.3 }
+				set_variable = { UKR_lun_stability = { value = UKR.party_popularity@paternal_autocrat multiply = 0.3 } }
 				add_dynamic_modifier = { modifier = UKR_lun_stability_dyn_mod }
 				force_update_dynamic_modifier = yes
 				if = {
@@ -17206,8 +17297,7 @@ focus_tree = {
 			}
 			add_popularity = { ideology = paternal_autocrat popularity = 0.10 }
 			add_stability = -0.05
-			set_variable = { UKR_lun_stability = UKR.party_popularity@paternal_autocrat }
-			multiply_variable = { UKR_lun_stability = 0.3 }
+			set_variable = { UKR_lun_stability = { value = UKR.party_popularity@paternal_autocrat multiply = 0.3 } }
 			force_update_dynamic_modifier = yes
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -17386,22 +17476,14 @@ focus_tree = {
 					limit = { has_completed_focus = UKR_true_camaraderie }
 					custom_effect_tooltip = UKR_unity_of_action_tt1
 					hidden_effect = {
-						set_temp_variable = { UKR_natpop_var = UKR.party_popularity@national_populist }
-						if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 3 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.2 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 4 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.4 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 5 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.6 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 6 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.8 }
+						set_temp_variable = {
+							UKR_natpop_var = {
+								value = party_popularity@national_populist
+								if = { limit = { value = UKR_lun_mechanic_variable less_than = 3 } multiply = 0.2 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 4 } multiply = 0.4 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 5 } multiply = 0.6 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 6 } multiply = 0.8 }
+							}
 						}
 						add_popularity = {
 							ideology = authoritarian_democrat
@@ -17412,22 +17494,15 @@ focus_tree = {
 							ideology = national_populist
 							popularity = UKR_natpop_var
 						}
-						set_temp_variable = { UKR_natpop_var = UKR.party_popularity@paternal_autocrat }
-						if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 3 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.2 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 4 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.4 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 5 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.6 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 6 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.8 }
+
+						set_temp_variable = {
+							UKR_natpop_var = {
+								value = party_popularity@paternal_autocrat
+								if = { limit = { value = UKR_lun_mechanic_variable less_than = 3 } multiply = 0.2 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 4 } multiply = 0.4 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 5 } multiply = 0.6 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 6 } multiply = 0.8 }
+							}
 						}
 						add_popularity = {
 							ideology = authoritarian_democrat
@@ -17444,22 +17519,14 @@ focus_tree = {
 					limit = { has_completed_focus = UKR_organised_nationalism }
 					custom_effect_tooltip = UKR_unity_of_action_tt2
 					hidden_effect = {
-						set_temp_variable = { UKR_natpop_var = UKR.party_popularity@authoritarian_democrat }
-						if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 3 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.2 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 4 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.4 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 5 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.6 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 6 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.8 }
+						set_temp_variable = {
+							UKR_natpop_var = {
+								value = party_popularity@authoritarian_democrat
+								if = { limit = { value = UKR_lun_mechanic_variable less_than = 3 } multiply = 0.2 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 4 } multiply = 0.4 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 5 } multiply = 0.6 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 6 } multiply = 0.8 }
+							}
 						}
 						add_popularity = {
 							ideology = paternal_autocrat
@@ -17470,22 +17537,15 @@ focus_tree = {
 							ideology = authoritarian_democrat
 							popularity = UKR_natpop_var
 						}
-						set_temp_variable = { UKR_natpop_var = UKR.party_popularity@national_populist }
-						if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 3 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.2 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 4 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.4 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 5 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.6 }
-						}
-						else_if = {
-							limit = { check_variable = { UKR_lun_mechanic_variable < 6 } }
-							multiply_temp_variable = { UKR_natpop_var = 0.8 }
+
+						set_temp_variable = {
+							UKR_natpop_var = {
+								value = party_popularity@national_populist
+								if = { limit = { value = UKR_lun_mechanic_variable less_than = 3 } multiply = 0.2 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 4 } multiply = 0.4 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 5 } multiply = 0.6 }
+								else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 6 } multiply = 0.8 }
+							}
 						}
 						add_popularity = {
 							ideology = paternal_autocrat
@@ -17500,22 +17560,14 @@ focus_tree = {
 					else = {
 						custom_effect_tooltip = UKR_unity_of_action_tt
 						hidden_effect = {
-							set_temp_variable = { UKR_natpop_var = UKR.party_popularity@authoritarian_democrat }
-							if = {
-								limit = { check_variable = { UKR_lun_mechanic_variable < 3 } }
-								multiply_temp_variable = { UKR_natpop_var = 0.2 }
-							}
-							else_if = {
-								limit = { check_variable = { UKR_lun_mechanic_variable < 4 } }
-								multiply_temp_variable = { UKR_natpop_var = 0.4 }
-							}
-							else_if = {
-								limit = { check_variable = { UKR_lun_mechanic_variable < 5 } }
-								multiply_temp_variable = { UKR_natpop_var = 0.6 }
-							}
-							else_if = {
-								limit = { check_variable = { UKR_lun_mechanic_variable < 6 } }
-								multiply_temp_variable = { UKR_natpop_var = 0.8 }
+							set_temp_variable = {
+								UKR_natpop_var = {
+									value = party_popularity@authoritarian_democrat
+									if = { limit = { value = UKR_lun_mechanic_variable less_than = 3 } multiply = 0.2 }
+									else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 4 } multiply = 0.4 }
+									else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 5 } multiply = 0.6 }
+									else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 6 } multiply = 0.8 }
+								}
 							}
 							add_popularity = {
 								ideology = national_populist
@@ -17526,22 +17578,15 @@ focus_tree = {
 								ideology = authoritarian_democrat
 								popularity = UKR_natpop_var
 							}
-							set_temp_variable = { UKR_natpop_var = UKR.party_popularity@paternal_autocrat }
-							if = {
-								limit = { check_variable = { UKR_lun_mechanic_variable < 3 } }
-								multiply_temp_variable = { UKR_natpop_var = 0.2 }
-							}
-							else_if = {
-								limit = { check_variable = { UKR_lun_mechanic_variable < 4 } }
-								multiply_temp_variable = { UKR_natpop_var = 0.4 }
-							}
-							else_if = {
-								limit = { check_variable = { UKR_lun_mechanic_variable < 5 } }
-								multiply_temp_variable = { UKR_natpop_var = 0.6 }
-							}
-							else_if = {
-								limit = { check_variable = { UKR_lun_mechanic_variable < 6 } }
-								multiply_temp_variable = { UKR_natpop_var = 0.8 }
+
+							set_temp_variable = {
+								UKR_natpop_var = {
+									value = party_popularity@paternal_autocrat
+									if = { limit = { value = UKR_lun_mechanic_variable less_than = 3 } multiply = 0.2 }
+									else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 4 } multiply = 0.4 }
+									else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 5 } multiply = 0.6 }
+									else_if = { limit = { value = UKR_lun_mechanic_variable less_than = 6 } multiply = 0.8 }
+								}
 							}
 							add_popularity = {
 								ideology = national_populist
@@ -17560,8 +17605,7 @@ focus_tree = {
 				set_temp_variable = { UKR_cohesion_change = 1 }
 				UKR_cohesion_update = yes
 			}
-			set_variable = { UKR_lun_stability = UKR.party_popularity@authoritarian_democrat }
-			multiply_variable = { UKR_lun_stability = 0.3 }
+			set_variable = { UKR_lun_stability = { value = UKR.party_popularity@authoritarian_democrat multiply = 0.3 } }
 			force_update_dynamic_modifier = yes
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -17875,9 +17919,13 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_power_to_class_councils"
-			set_temp_variable = { USKHD_stability = UKR_uskhd_points }
-			divide_temp_variable = { USKHD_stability = 77 }
-			add_to_temp_variable = { USKHD_stability = 0.1 }
+			set_temp_variable = {
+				USKHD_stability = {
+					value = UKR_uskhd_points
+					divide = 77
+					add = 0.1
+				}
+			}
 			add_stability = USKHD_stability
 		}
 		search_filters = { FOCUS_FILTER_STABILITY }
@@ -17898,10 +17946,13 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_against_the_law_of_capital"
-			set_temp_variable = { USKHD_popularity = UKR_uskhd_points }
-			divide_temp_variable = { USKHD_popularity = 55 }
-			add_to_temp_variable = { USKHD_popularity = 0.1 }
-			set_temp_variable = { ideology_change_var = USKHD_popularity }
+			set_temp_variable = {
+				ideology_change_var = {
+					value = UKR_uskhd_points
+					divide = 55
+					add = 0.1
+				}
+			}
 			change_ruling_party_popularity = yes
 			add_political_power = -50
 		}
@@ -17924,8 +17975,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_dedication_and_will"
-			set_temp_variable = { USKHD_pp = UKR_uskhd_points }
-			multiply_temp_variable = { USKHD_pp = 20 }
+			set_temp_variable = { USKHD_pp = { value = UKR_uskhd_points multiply = 20 } }
 			add_political_power = USKHD_pp
 			UKR_uskhd_organic_state_idea = yes
 			country_event = ukraine_coalition_events.72
@@ -18699,9 +18749,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed UKR_collectocratic_ideal"
 			country_event = ukraine_republican_events.143
-			set_temp_variable = { temp = party_popularity@radical_socialist }
-			divide_temp_variable = { temp = 2 }
-			set_variable = { UKR_red_divine_research_speed = temp }
+			set_variable = { UKR_red_divine_research_speed = { value = party_popularity@radical_socialist multiply = 0.5 } }
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = UKR_volodymyr_chekhivskyi_trait
 			hidden_effect = {

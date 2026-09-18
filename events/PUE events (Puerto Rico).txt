@@ -1057,6 +1057,7 @@ country_event = { #SocCon coup in case pop drops too low
 		name = puerto_rico_events.65.a
 		add_stability = -0.20
 		complete_national_focus = PUE_No_deal
+		end_puppet = USA
 		leave_faction = yes
 		separate_peace_all_wars = yes
 		set_politics = {
@@ -2184,11 +2185,19 @@ country_event = { #Flag event for Nats
 	option = {#Keep current
 		log = "[GetLogInfo]: event puerto_rico_events.201 option puerto_rico_events.201.a"
 		name = puerto_rico_events.201.a
+		ai_chance = { base = 100 }
 		add_political_power = -50
 	}
 	option = {#Use the Grito de Lares one
 		log = "[GetLogInfo]: event puerto_rico_events.201 option puerto_rico_events.201.b"
 		name = puerto_rico_events.201.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = PUE_election option = DEFAULT } }
+			}
+		}
 		PUE = {
 			set_cosmetic_tag = PUE_LARES
 		}
@@ -2196,6 +2205,13 @@ country_event = { #Flag event for Nats
 	option = {#Use the Separatist one
 		log = "[GetLogInfo]: event puerto_rico_events.201 option puerto_rico_events.201.c"
 		name = puerto_rico_events.201.c
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = PUE_election option = DEFAULT } }
+			}
+		}
 		PUE = {
 			set_cosmetic_tag = PUE_NAT_DEM
 			add_political_power = 25

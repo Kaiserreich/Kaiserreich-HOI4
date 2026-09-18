@@ -1,498 +1,7 @@
 BHU_reforms_decision_category = {
-	BHU_feudal_timer = {
-		icon = generic_prepare_civil_war
-
-		allowed = { always = no } #manually activated
-
-		available = {
-			has_idea = BHU_feudal_7
-			has_idea = BHU_military_1
-			has_idea = BHU_economy_1
-		}
-
-		selectable_mission = no
-		is_good = no
-		days_mission_timeout = 500
-
-		timeout_effect = {
-			log = "[GetLogRoot]: Decision timeout BHU_feudal_timer"
-			decrease_bhu_feudal_unity = yes
-			custom_effect_tooltip = bhu_feudal_unity_down
-			activate_mission = BHU_feudal_timer
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_End_Great_Purge = {
-		icon = decision_generic_political_discourse
-		allowed = { always = no }	# Activated by focus bhu_purge_impurities
-
-		available = {
-			has_stability < 0.25
-		}
-
-		visible = {
-			has_idea = BHU_Great_Purge
-		}
-
-		cost = 50
-		days_remove = 10
-		fire_only_once = yes
-
-		ai_will_do = { base = 50 }
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_End_Great_Purge"
-			remove_ideas = BHU_Great_Purge
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Increase_King_Authority = {
-		icon = GFX_decision_hand_grab #generic_political_discourse
-		allowed = { always = no }	# Activated by focus bhu_unifying_king
-		available = {
-			has_country_flag = {
-				flag = bhu_feudal_unity
-				value < 20
-			}
-		}
-
-		cost = 100
-		days_re_enable = 10
-		days_remove = 25
-		fire_only_once = no
-
-		ai_will_do = {
-			base = 500
-			modifier = {
-				factor = 0
-				has_country_flag = BHU_tp_win
-				has_idea = BHU_feudal_6
-			}
-		}
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Increase_King_Authority"
-			increase_bhu_feudal_unity = yes
-			increase_bhu_feudal_unity = yes
-			custom_effect_tooltip = bhu_feudal_unity_upup
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Decrease_King_Authority = {
-		icon = GFX_decision_hand_out
-		allowed = { always = no }	# Activated by focus bhu_unifying_king
-		available = {
-			has_country_flag = {
-				flag = bhu_feudal_unity
-				value > 2
-			}
-		}
-
-		days_re_enable = 10
-		days_remove = 15
-		fire_only_once = no
-
-		ai_will_do = { base = 0 }
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Decrease_King_Authority"
-			add_political_power = 75
-			decrease_bhu_feudal_unity = yes
-			decrease_bhu_feudal_unity = yes
-			custom_effect_tooltip = bhu_feudal_unity_downdown
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Increase_Prof_Military_Investment = {
-		icon = GFX_decision_shield
-		allowed = { always = no }	# Activated by focus bhu_noble_officers
-		available = {
-			has_country_flag = {
-				flag = bhu_mil_invest
-				value < 20
-			}
-		}
-
-		cost = 75
-		days_re_enable = 10
-		days_remove = 25
-		fire_only_once = no
-
-		ai_will_do = {
-			base = 0
-			modifier = {
-				factor = 0
-				OR = {
-					has_idea = BHU_feudal_1
-					has_idea = BHU_feudal_2
-					has_idea = BHU_feudal_3
-				}
-			}
-			modifier = {
-				factor = 0
-				date < 1940.1.1
-				political_power_daily < 1
-			}
-			modifier = {
-				factor = 0
-				date > 1940.1.1
-				political_power_daily < 0.5
-			}
-			modifier = {
-				add = 100
-				OR = {
-					has_war = yes
-					any_claim = yes
-				}
-			}
-		}
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Increase_Prof_Military_Investment"
-			increase_bhu_mil_invest = yes
-			increase_bhu_mil_invest = yes
-			custom_effect_tooltip = bhu_mil_invest_upup
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Decrease_Prof_Military_Investment = {
-		icon = GFX_decision_soldierly_discipline #generic_prepare_civil_war
-		allowed = { always = no }	# Activated by focus bhu_noble_officers
-		available = {
-			has_country_flag = {
-				flag = bhu_mil_invest
-				value > 2
-			}
-		}
-
-		days_re_enable = 10
-		days_remove = 15
-		fire_only_once = no
-
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 50
-				political_power_daily < 1
-				has_war = no
-				NOT = { any_claim = yes }
-			}
-		}
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Decrease_Prof_Military_Investment"
-			add_political_power = 50
-			decrease_bhu_mil_invest = yes
-			decrease_bhu_mil_invest = yes
-			custom_effect_tooltip = bhu_mil_invest_downdown
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Increase_Central_Econ_Development = {
-		icon = GFX_decision_give_cash #generic_construction
-		allowed = { always = no }	# Activated by focus bhu_establish_planning_commission
-		available = {
-			has_country_flag = {
-				flag = bhu_econ_dev
-				value < 20
-			}
-		}
-
-		cost = 75
-		days_re_enable = 10
-		days_remove = 25
-		fire_only_once = no
-
-		ai_will_do = {
-			base = 125
-			modifier = {
-				factor = 0
-				OR = {
-					has_idea = BHU_feudal_1
-					has_idea = BHU_feudal_2
-					has_idea = BHU_feudal_3
-				}
-			}
-			modifier = {
-				factor = 0
-				date < 1940.1.1
-				political_power_daily < 1
-			}
-			modifier = {
-				factor = 0
-				date > 1940.1.1
-				political_power_daily < 0.5
-			}
-			modifier = {
-				factor = 0.4
-				OR = {
-					has_war = yes
-					any_claim = yes
-				}
-			}
-		}
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Increase_Central_Econ_Development"
-			increase_bhu_econ_dev = yes
-			increase_bhu_econ_dev = yes
-			custom_effect_tooltip = bhu_econ_dev_upup
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Decrease_Central_Econ_Development = {
-		icon = GFX_decision_generic_inflation
-		allowed = { always = no }	# Activated by focus bhu_establish_planning_commission
-		available = {
-			has_country_flag = {
-				flag = bhu_econ_dev
-				value > 2
-			}
-		}
-
-		days_re_enable = 10
-		days_remove = 15
-		fire_only_once = no
-
-		ai_will_do = { base = 0 }
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Decrease_Central_Econ_Development"
-			add_political_power = 50
-			decrease_bhu_econ_dev = yes
-			decrease_bhu_econ_dev = yes
-			custom_effect_tooltip = bhu_econ_dev_downdown
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Increase_Mon_Authority = {
-		icon = GFX_decision_hand_grab
-		allowed = { always = no }	# Activated by focus bhu_monastic_primacy
-		available = {
-			has_country_flag = {
-				flag = bhu_feudal_unity
-				value < 20
-			}
-		}
-
-		cost = 100
-		days_re_enable = 10
-		days_remove = 25
-		fire_only_once = no
-
-		ai_will_do = { base = 500 }
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Increase_Mon_Authority"
-			increase_bhu_feudal_unity = yes
-			increase_bhu_feudal_unity = yes
-			custom_effect_tooltip = bhu_feudal_unity_upup
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Decrease_Mon_Authority = {
-		icon = GFX_decision_generic_political_discourse
-		allowed = { always = no }	# Activated by focus bhu_monastic_primacy
-		available = {
-			has_country_flag = {
-				flag = bhu_feudal_unity
-				value > 2
-			}
-		}
-
-		days_re_enable = 10
-		days_remove = 15
-		fire_only_once = no
-
-		ai_will_do = { base = 0 }
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Decrease_Mon_Authority"
-			add_political_power = 75
-			decrease_bhu_feudal_unity = yes
-			decrease_bhu_feudal_unity = yes
-			custom_effect_tooltip = bhu_feudal_unity_downdown
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Increase_Local_Military_Investment = {
-		icon = generic_prepare_civil_war
-		allowed = { always = no }	# Activated by focus bhu_promote_regional_leaders
-		available = {
-			has_country_flag = {
-				flag = bhu_mil_invest
-				value < 20
-			}
-		}
-
-		cost = 75
-		days_re_enable = 10
-		days_remove = 25
-		fire_only_once = no
-
-		ai_will_do = {
-			base = 0
-			modifier = {
-				factor = 0
-				OR = {
-					has_idea = BHU_feudal_1
-					has_idea = BHU_feudal_2
-					has_idea = BHU_feudal_3
-				}
-			}
-			modifier = {
-				factor = 0
-				date < 1940.1.1
-				political_power_daily < 1
-			}
-			modifier = {
-				factor = 0
-				date > 1940.1.1
-				political_power_daily < 0.5
-			}
-			modifier = {
-				add = 100
-				OR = {
-					has_war = yes
-					any_claim = yes
-				}
-			}
-		}
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Increase_Local_Military_Investment"
-			increase_bhu_mil_invest = yes
-			increase_bhu_mil_invest = yes
-			custom_effect_tooltip = bhu_mil_invest_upup
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Decrease_Local_Military_Investment = {
-		icon = GFX_decision_freedom
-		allowed = { always = no }	# Activated by focus bhu_promote_regional_leaders
-		available = {
-			has_country_flag = {
-				flag = bhu_mil_invest
-				value > 2
-			}
-		}
-
-		days_re_enable = 10
-		days_remove = 15
-		fire_only_once = no
-
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 50
-				political_power_daily < 1
-				has_war = no
-				NOT = { any_claim = yes }
-			}
-		}
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Decrease_Local_Military_Investment"
-			add_political_power = 50
-			decrease_bhu_mil_invest = yes
-			decrease_bhu_mil_invest = yes
-			custom_effect_tooltip = bhu_mil_invest_downdown
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Increase_Regional_Econ_Development = {
-		icon = GFX_decision_generic_agreement
-		allowed = { always = no }	# Activated by focus bhu_decentralisation
-		available = {
-			has_country_flag = {
-				flag = bhu_econ_dev
-				value < 20
-			}
-		}
-
-		cost = 75
-		days_re_enable = 10
-		days_remove = 25
-		fire_only_once = no
-
-		ai_will_do = {
-			base = 125
-			modifier = {
-				factor = 0
-				OR = {
-					has_idea = BHU_feudal_1
-					has_idea = BHU_feudal_2
-					has_idea = BHU_feudal_3
-				}
-			}
-			modifier = {
-				factor = 0
-				date < 1940.1.1
-				political_power_daily < 1
-			}
-			modifier = {
-				factor = 0
-				date > 1940.1.1
-				political_power_daily < 0.5
-			}
-			modifier = {
-				factor = 0.4
-				OR = {
-					has_war = yes
-					any_claim = yes
-				}
-			}
-		}
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Increase_Regional_Econ_Development"
-			increase_bhu_econ_dev = yes
-			increase_bhu_econ_dev = yes
-			custom_effect_tooltip = bhu_econ_dev_upup
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Decrease_Regional_Econ_Development = {
-		icon = GFX_decision_generic_inflation
-		allowed = { always = no }	# Activated by focus bhu_decentralisation
-		available = {
-			has_country_flag = {
-				flag = bhu_econ_dev
-				value > 2
-			}
-		}
-
-		days_re_enable = 10
-		days_remove = 15
-		fire_only_once = no
-
-		ai_will_do = { base = 0 }
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Decrease_Regional_Econ_Development"
-			add_political_power = 50
-			decrease_bhu_econ_dev = yes
-			decrease_bhu_econ_dev = yes
-			custom_effect_tooltip = bhu_econ_dev_downdown
-		}
-		fixed_random_seed = no
-	}
-
 	BHU_country_namechange_decision = {
 		icon = generic_form_nation
+		priority = 100
 		allowed = { always = no }	# Activated by focus bhu_end_revolution
 
 		available = {
@@ -505,7 +14,7 @@ BHU_reforms_decision_category = {
 			owns_state = 888 #Sikkim
 			owns_state = 323 #Nepal
 			owns_state = 322 #Lhasa
-			owns_state = 1086 #Gar
+			owns_state = 1086 #Gartok
 			owns_state = 748 #Tsonyi
 			owns_state = 693 #Chamdo
 		}
@@ -518,14 +27,21 @@ BHU_reforms_decision_category = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete BHU_country_namechange_decision"
 			set_cosmetic_tag = BHU_DRUK
+			country_event = bhutan_events.601
 			add_ideas = BHU_drukpa_renaissance
+			custom_effect_tooltip = tooltip_white_line
 			add_timed_idea = {
 				idea = BHU_growing_pains
 				days = 365
 			}
+			custom_effect_tooltip = tooltip_white_line
+			set_variable = { BHU_var_growing_pains_time = 3 }
 			every_state = {
 				limit = {
-					region = 146 #Himalayas
+					OR = {
+						state = 322 #Lhasa
+						state = 888 #Sikkim
+					}
 					NOT = { is_core_of = ROOT }
 				}
 				remove_claim_and_add_core_of_ROOT = yes
@@ -533,6 +49,18 @@ BHU_reforms_decision_category = {
 			every_state = {
 				limit = {
 					OR = {
+						state = 1086 #Gartok
+						state = 748 #Tsonyi
+						state = 693 #Chamdo
+					}
+				}
+				add_claim_of_ROOT = yes
+				enable_state_integration_50_compliance = yes
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 323 #Nepal
 						state = 814 #Uttaranchal
 						state = 887 #Darjeeling
 						state = 858 #Tawang
@@ -547,420 +75,1921 @@ BHU_reforms_decision_category = {
 		}
 		fixed_random_seed = no
 	}
-}
 
-foreign_politics = {
-	BHU_Raid_Nepal = {
-		icon = GFX_decision_generic_nationalism
-		allowed = { always = no }	# Activated by focus bhu_raid_our_neighbours
+	BHU_feudal_timer = {
+		icon = generic_prepare_civil_war
+		priority = 99
+		allowed = { always = no } #manually activated
+
 		available = {
-			has_war = no
-			NOT = {
-				has_country_flag = bhu_raiding
-			}
-		}
-		visible = {
-			is_ai = no
-			OR = {
-				888 = {
-					is_owned_and_controlled_by = NEP
-				}
-				887 = {
-					is_owned_and_controlled_by = NEP
-				}
-				AND = {
-					888 = {
-						is_owned_and_controlled_by = BHU
-					}
-					323 = {
-						is_owned_and_controlled_by = NEP
-					}
-				}
-			}
-
-			is_subject = no
-			NEP = {
-				is_subject = no
-			}
+			has_idea = BHU_feudal_7
+			has_idea = BHU_military_5
+			has_idea = BHU_economy_5
+			has_idea = BHU_building_self_sufficiency_15
 		}
 
-		custom_cost_text = army_xp_5
-		custom_cost_trigger = {
-			NOT = { has_army_experience < 5 }
-		}
+		selectable_mission = yes
+		is_good = no
+		days_mission_timeout = 500
 
-		days_remove = 15
+		ai_will_do = { factor = 100 }
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout BHU_feudal_timer"
+			decrease_bhu_feudal_unity = yes
+			add_stability = -0.03
+			activate_mission = BHU_feudal_timer
+			custom_effect_tooltip = BHU_tt_reform_bhutan
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_feudal_timer"
+			country_event = bhutan_events.600
+			custom_effect_tooltip = tooltip_event_allows_choice
+			custom_effect_tooltip = tooltip_event_choice_option_1
+			event_option_tooltip = bhutan_events.600.a
+			custom_effect_tooltip = tooltip_event_choice_option_2
+			event_option_tooltip = bhutan_events.600.b
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_deal_with_royalist_governors = {
+		icon = generic_military
+		allowed = { always = no } #manually activated
 		fire_only_once = yes
-
-		ai_will_do = {
-			base = 50
-			modifier = {
-				factor = 0
-				NEP = {
-					has_war = no
-				}
-			}
+		custom_cost_trigger = {
+			NOT = { command_power < 30 }
 		}
+		custom_cost_text = CP_30
+		days_remove = 60
+		priority = 49
+
+		ai_will_do = { factor = 100 }
 
 		complete_effect = {
-			log = "[GetLogRoot]: Decision complete BHU_Raid_Nepal"
-			hidden_effect = {
-				army_experience = -5
-				set_country_flag = bhu_raiding
-			}
+			log = "[GetLogRoot]: Decision complete BHU_deal_with_royalist_governors"
+			hidden_effect = { add_command_power = -30 }
 		}
+
 		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Raid_Nepal"
-			custom_effect_tooltip = BHU_raid_reward_tooltip
-			hidden_effect = {
-				BHU = {
-					country_event = { id = bhutan_events.97 days = 5 }
+			log = "[GetLogRoot]: Decision remove BHU_deal_with_royalist_governors"
+			increase_bhu_feudal_unity = yes
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = -0.03
+			}
+			if = {
+				limit = { has_idea = BHU_royal_resistance_postfocus }
+				swap_ideas = {
+					remove_idea = BHU_royal_resistance_postfocus
+					add_idea = BHU_royal_resistance_postfocus_noad
 				}
+			}
+			else = {
+				remove_ideas = BHU_royal_resistance_postfocus_noml
 			}
 		}
 		fixed_random_seed = no
 	}
 
-	BHU_Raid_Tibet = {
+	BHU_undercut_popular_wangchuck_support = {
+		icon = generic_military
+		allowed = { always = no } #manually activated
+		fire_only_once = yes
+		custom_cost_trigger = {
+			NOT = { command_power < 40 }
+		}
+		custom_cost_text = CP_40
+		days_remove = 75
+		priority = 48
+
+		ai_will_do = { factor = 100 }
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_undercut_popular_wangchuck_support"
+			hidden_effect = { add_command_power = -40 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_undercut_popular_wangchuck_support"
+			increase_bhu_feudal_unity = yes
+			add_popularity = {
+				ideology = market_liberal
+				popularity = -0.03
+			}
+			if = {
+				limit = { has_idea = BHU_royal_resistance_postfocus }
+				swap_ideas = {
+					remove_idea = BHU_royal_resistance_postfocus
+					add_idea = BHU_royal_resistance_postfocus_noml
+				}
+			}
+			else = {
+				remove_ideas = BHU_royal_resistance_postfocus_noad
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_Increase_King_Authority = {
+		icon = GFX_decision_hand_grab #generic_political_discourse
+		allowed = { always = no }	# Activated by focus bhu_unifying_king
+		available = {
+			check_variable = { BHU_feudal_unity < 20 tooltip = BHU_feudal_authority_less_than_tooltip }
+		}
+
+		cost = 100
+		days_re_enable = 0
+		days_remove = 15
+		priority = 30
+		fire_only_once = no
+
+		ai_will_do = {
+			base = 500
+			modifier = {
+				factor = 0
+				has_country_flag = BHU_tp_win
+				has_idea = BHU_feudal_6
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_Increase_King_Authority"
+			set_temp_variable = { BHU_feudal_unity_change = 2 }
+			increase_bhu_feudal_unity = yes
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_Decrease_King_Authority = {
+		icon = GFX_decision_hand_out
+		allowed = { always = no }	# Activated by focus bhu_unifying_king
+		available = {
+			check_variable = { BHU_feudal_unity > 2 tooltip = BHU_feudal_authority_greater_than_tooltip }
+		}
+
+		days_re_enable = 0
+		days_remove = 10
+		priority = 29
+		fire_only_once = no
+
+		ai_will_do = { base = 0 }
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_Decrease_King_Authority"
+			add_political_power = 75
+			set_temp_variable = { BHU_feudal_unity_change = 2 }
+			decrease_bhu_feudal_unity = yes
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_Increase_Mon_Authority = {
+		icon = GFX_decision_hand_grab
+		allowed = { always = no }	# Activated by focus bhu_monastic_primacy
+		available = {
+			check_variable = { BHU_feudal_unity < 20 tooltip = BHU_feudal_authority_less_than_tooltip }
+		}
+
+		cost = 100
+		days_re_enable = 0
+		days_remove = 15
+		priority = 28
+		fire_only_once = no
+
+		ai_will_do = { base = 500 }
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_Increase_Mon_Authority"
+			set_temp_variable = { BHU_feudal_unity_change = 2 }
+			increase_bhu_feudal_unity = yes
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_Decrease_Mon_Authority = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { always = no }	# Activated by focus bhu_monastic_primacy
+		available = {
+			check_variable = { BHU_feudal_unity > 2 tooltip = BHU_feudal_authority_greater_than_tooltip }
+		}
+
+		days_re_enable = 0
+		days_remove = 10
+		priority = 27
+		fire_only_once = no
+
+		ai_will_do = { base = 0 }
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_Decrease_Mon_Authority"
+			add_political_power = 75
+			set_temp_variable = { BHU_feudal_unity_change = 2 }
+			decrease_bhu_feudal_unity = yes
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_Increase_Econ_Development = {
+		icon = GFX_decision_give_cash #generic_construction
+		allowed = { always = no }	# Activated by focus bhu_establish_planning_commission
+		available = {
+			check_variable = { BHU_econ_dev < 25 tooltip = BHU_econ_dev_less_than_tooltip }
+		}
+
+		visible = {
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+
+		target_trigger = {
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+
+		cost = 75
+		days_re_enable = 0
+		days_remove = 15
+		priority = 26
+		fire_only_once = no
+
+		ai_will_do = {
+			base = 125
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = BHU_feudal_1
+					has_idea = BHU_feudal_2
+					has_idea = BHU_feudal_3
+				}
+			}
+			modifier = {
+				factor = 0
+				date < 1940.1.1
+				political_power_daily < 1
+			}
+			modifier = {
+				factor = 0
+				date > 1940.1.1
+				political_power_daily < 0.5
+			}
+			modifier = {
+				factor = 0.4
+				OR = {
+					has_war = yes
+					any_claim = yes
+				}
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove BHU_Increase_Econ_Development"
+			set_temp_variable = { BHU_econ_change = 2 }
+			increase_bhu_econ_dev = yes
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_Decrease_Econ_Development = {
+		icon = GFX_decision_generic_inflation
+		allowed = { always = no }	# Activated by focus bhu_establish_planning_commission
+		available = {
+			check_variable = { BHU_econ_dev > 2 tooltip = BHU_econ_dev_greater_than_tooltip }
+		}
+
+		visible = {
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+
+		target_trigger = {
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+
+		days_re_enable = 0
+		days_remove = 10
+		priority = 25
+		fire_only_once = no
+
+		ai_will_do = { base = 0 }
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove BHU_Decrease_Econ_Development"
+			add_political_power = 50
+			set_temp_variable = { BHU_econ_change = 2 }
+			decrease_bhu_econ_dev = yes
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_Increase_Military_Investment = {
+		icon = generic_prepare_civil_war
+		allowed = { always = no }	# Activated by focus bhu_equipping_specialised_units
+		available = {
+			check_variable = { BHU_mil_invest < 25 tooltip = BHU_mil_invest_less_than_tooltip }
+		}
+
+		visible = {
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+
+		target_trigger = {
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+
+		cost = 75
+		days_re_enable = 0
+		days_remove = 15
+		priority = 24
+		fire_only_once = no
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = BHU_feudal_1
+					has_idea = BHU_feudal_2
+					has_idea = BHU_feudal_3
+				}
+			}
+			modifier = {
+				factor = 0
+				date < 1940.1.1
+				political_power_daily < 1
+			}
+			modifier = {
+				factor = 0
+				date > 1940.1.1
+				political_power_daily < 0.5
+			}
+			modifier = {
+				add = 100
+				OR = {
+					has_war = yes
+					any_claim = yes
+				}
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove BHU_Increase_Military_Investment"
+			set_temp_variable = { BHU_mil_invest_change = 2 }
+			increase_bhu_mil_invest = yes
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_Decrease_Military_Investment = {
+		icon = GFX_decision_soldierly_discipline
+		allowed = { always = no }	# Activated by focus bhu_equipping_specialised_units
+		available = {
+			check_variable = { BHU_mil_invest > 2 tooltip = BHU_mil_invest_greater_than_tooltip }
+		}
+
+		visible = {
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+
+		target_trigger = {
+			NOT = { has_idea = BHU_hermit_kingdom_fully_reformed }
+		}
+
+		days_re_enable = 0
+		days_remove = 10
+		priority = 23
+		fire_only_once = no
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 50
+				political_power_daily < 1
+				has_war = no
+				NOT = { any_claim = yes }
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision remove BHU_Decrease_Military_Investment"
+			add_political_power = 50
+			set_temp_variable = { BHU_mil_invest_change = 2 }
+			decrease_bhu_mil_invest = yes
+		}
+		fixed_random_seed = no
+	}
+}
+
+BHU_army_decision_category = {
+	BHU_attack_tibet = {
 		icon = GFX_decision_generic_nationalism
-		allowed = { always = no }	# Activated by focus bhu_raid_our_neighbours
+		priority = 98
+		allowed = { always = no }	# Activated by focus bhu_a_force_apart
 		available = {
 			has_war = no
-			NOT = {
-				has_country_flag = bhu_raiding
-			}
+			is_neighbor_of = TIB
 		}
 		visible = {
 			is_ai = no
-			322 = {
-				is_owned_and_controlled_by = TIB
-			}
 
 			is_subject = no
 			TIB = {
+				exists = yes
+				has_capitulated = no
 				is_subject = no
-			}
-		}
-
-		custom_cost_text = army_xp_5
-		custom_cost_trigger = {
-			NOT = { has_army_experience < 5 }
-		}
-
-		days_remove = 15
-		fire_only_once = yes
-
-		ai_will_do = {
-			base = 50
-			modifier = {
-				factor = 0
-				TIB = {
-					has_war = no
+				NOT = {
+					has_war_with = ROOT
+					is_subject_of = ROOT
+					is_ally_of_ROOT = yes
 				}
 			}
 		}
 
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete BHU_Raid_Tibet"
-			hidden_effect = {
-				army_experience = -5
-				set_country_flag = bhu_raiding
-			}
-		}
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Raid_Tibet"
-			custom_effect_tooltip = BHU_raid_reward_tooltip
-			hidden_effect = {
-				BHU = {
-					country_event = { id = bhutan_events.98 days = 5 }
-				}
-			}
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Raid_India = {
-		icon = GFX_decision_generic_nationalism
-		allowed = { always = no }	# Activated by focus bhu_raid_our_neighbours
-		available = {
-			has_war = no
-			NOT = {
-				has_country_flag = bhu_raiding
-			}
-		}
-		visible = {
-			is_ai = no
-			432 = {
-				is_owned_and_controlled_by = HND
-			}
-
-			is_subject = no
-			HND = {
-				is_subject = no
-			}
-		}
-
-		custom_cost_text = army_xp_5
-		custom_cost_trigger = {
-			NOT = { has_army_experience < 5 }
-		}
-
-		days_remove = 15
-		fire_only_once = yes
-
-		ai_will_do = {
-			base = 50
-			modifier = {
-				factor = 0
-				HND = {
-					has_war = no
-				}
-			}
-		}
-
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete BHU_Raid_India"
-			hidden_effect = {
-				army_experience = -5
-				set_country_flag = bhu_raiding
-			}
-		}
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Raid_India"
-			custom_effect_tooltip = BHU_raid_reward_tooltip
-			hidden_effect = {
-				BHU = {
-					country_event = { id = bhutan_events.99 days = 5 }
-				}
-			}
-		}
-		fixed_random_seed = no
-	}
-
-	BHU_Confront_Nepal = {
-		icon = GFX_decision_generic_nationalism
-		allowed = { always = no }	# Activated by focus bhu_beginnings_of_industry
-		available = {
-			has_war = no
-			OR = {
-				has_country_flag = BHU_jw_win
-				has_country_flag = BHU_st_win
-			}
-		}
-		visible = {
-			is_ai = no
-			NOT = {
-				has_country_flag = BHU_no_sikdec
-			}
-			888 = {
-				is_owned_and_controlled_by = NEP
-			}
-			is_subject = no
-			NEP = {
-				is_subject = no
-			}
-		}
-
-		cost = 0
+		cost = 50
+		days_remove = 30
 
 		fire_only_once = yes
 
 		ai_will_do = { base = 0 }
 
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel BHU_attack_tibet"
+			clear_decision_attack_AI = yes
+		}
+
 		complete_effect = {
-			log = "[GetLogRoot]: Decision complete BHU_Confront_Nepal"
-			add_state_claim = 888
-			NEP = {
-				country_event = bhutan_events.33
+			log = "[GetLogRoot]: Decision complete BHU_attack_tibet"
+			TIB = { incoming_war_notification_effect = yes }
+			setup_decision_attack_AI = yes
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_attack_tibet"
+			if = {
+				limit = {
+					NOT = {
+						322 = {
+							OR = {
+								is_claimed_by = ROOT
+								is_core_of = ROOT
+							}
+						}
+					}
+				}
+				add_state_claim = 322 #Lhasa
+			}
+			clear_decision_attack_AI = yes
+			declare_war_on = {
+				target = TIB
+				type = annex_everything
 			}
 		}
 		fixed_random_seed = no
 	}
 
-	BHU_Integrate_Nepal = {
+	BHU_attack_nepal = {
 		icon = GFX_decision_generic_nationalism
-		allowed = { original_tag = BHU }
+		priority = 97
+		allowed = { always = no }	# Activated by focus bhu_a_force_apart
 		available = {
 			has_war = no
+			is_neighbor_of = NEP
 		}
 		visible = {
-			888 = {
-				is_owned_and_controlled_by = ROOT
+			is_ai = no
+
+			is_subject = no
+			NEP = {
+				exists = yes
+				has_capitulated = no
+				is_subject = no
 				NOT = {
-					is_core_of = ROOT
+					has_war_with = ROOT
+					is_subject_of = ROOT
+					is_ally_of_ROOT = yes
 				}
 			}
 		}
 
 		cost = 50
-
-		days_remove = 90
+		days_remove = 30
 
 		fire_only_once = yes
 
-		ai_will_do = { factor = 15 }
+		ai_will_do = { base = 0 }
+
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel BHU_attack_nepal"
+			clear_decision_attack_AI = yes
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_attack_nepal"
+			NEP = { incoming_war_notification_effect = yes }
+			setup_decision_attack_AI = yes
+		}
 
 		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Integrate_Nepal"
-			hidden_effect = {
-				remove_state_claim = 888
+			log = "[GetLogRoot]: Decision remove BHU_attack_nepal"
+			if = {
+				limit = {
+					NOT = {
+						888 = {
+							OR = {
+								is_claimed_by = ROOT
+								is_core_of = ROOT
+							}
+						}
+					}
+				}
+				add_state_claim = 888 #Sikkim
 			}
-			add_state_core = 888
+			clear_decision_attack_AI = yes
+			declare_war_on = {
+				target = NEP
+				type = annex_everything
+			}
 		}
 		fixed_random_seed = no
 	}
-}
 
-operations = {
-	BHU_smuggle_infantry_equipment = {
+	BHU_sikkim_preparation_timer = {
 		icon = generic_prepare_civil_war
-		allowed = { always = no }	# Activated by focus bhu_study_foreign_arms
-		visible = {
-			num_of_military_factories < 3
-			has_equipment = { infantry_equipment < 350 }
+		priority = 100
+		allowed = { always = no } #manually activated
+		available = {
+			hidden_trigger = { always = no }
 		}
-		cost = 50
-		days_re_enable = 75
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 150
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout BHU_sikkim_preparation_timer"
+			custom_effect_tooltip = BHU_tt_sikkim_prewar_decisions
+			clr_country_flag = BHU_pre_sikkim_fight_decisions_available
+			hidden_effect = {
+				country_event = bhutan_events.702
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_sikkim_war_timer = {
+		icon = generic_prepare_civil_war
+		priority = 100
+		allowed = { always = no } #manually activated
+		available = {
+			hidden_trigger = { always = no }
+		}
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 150
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout BHU_sikkim_war_timer"
+			custom_effect_tooltip = BHU_tt_sikkim_bhu_war_timer
+			if = {
+				limit = {
+					887 = { is_controlled_by_ROOT_or_ally = yes }
+				}
+				custom_effect_tooltip = BHU_tt_sikkim_bhu_war_timer_good_darj
+				set_country_flag = BHU_controls_darj_flag
+			}
+			else_if = {
+				limit = {
+					888 = { is_controlled_by_ROOT_or_ally = yes }
+				}
+				custom_effect_tooltip = BHU_tt_sikkim_bhu_war_timer_good_sik
+			}
+			else = {
+				custom_effect_tooltip = BHU_tt_sikkim_bhu_war_timer_bad
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_organise_sikkim_buddhists = {
+		icon = GFX_decision_eng_blackshirt_march
+		allowed = { always = no }	# Activated by event
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		custom_cost_text = army_xp_10
+		custom_cost_trigger = {
+			NOT = { has_army_experience < 10 }
+		}
 		days_remove = 25
-		fire_only_once = no
+		priority = 50
+
+		visible = {
+			has_country_flag = BHU_pre_sikkim_fight_decisions_available
+		}
+
+		available = {
+			NOT = { has_country_flag = BHU_ongoing_sikkim_decision }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_organise_sikkim_buddhists"
+			hidden_effect = { army_experience = -10 }
+			set_country_flag = BHU_ongoing_sikkim_decision
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_organise_sikkim_buddhists"
+			add_to_variable = {
+				BHU_sikkim_revolt_unity = 1
+				tooltip = BHU_tt_increase_sikkim_revolt_unity
+			}
+			clr_country_flag = BHU_ongoing_sikkim_decision
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_parade_sikkim_exiles = {
+		icon = GFX_decision_generic_nationalism
+		allowed = { always = no }	# Activated by event
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 25
+		priority = 49
+
+		visible = {
+			has_country_flag = BHU_pre_sikkim_fight_decisions_available
+		}
+
+		available = {
+			NOT = { has_country_flag = BHU_ongoing_sikkim_decision }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_parade_sikkim_exiles"
+			set_country_flag = BHU_ongoing_sikkim_decision
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_parade_sikkim_exiles"
+			add_to_variable = {
+				BHU_sikkim_revolt_unity = 1
+				tooltip = BHU_tt_increase_sikkim_revolt_unity
+			}
+			clr_country_flag = BHU_ongoing_sikkim_decision
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_arm_bhutia_clans = {
+		icon = generic_disband_irregulars
+		allowed = { always = no }	# Activated by event
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		custom_cost_text = 100_guns
+		custom_cost_trigger = {
+			NOT = { has_equipment = { infantry_equipment < 100 } }
+		}
+		days_remove = 25
+		priority = 48
+
+		visible = {
+			has_country_flag = BHU_pre_sikkim_fight_decisions_available
+		}
+
+		available = {
+			NOT = { has_country_flag = BHU_ongoing_sikkim_decision }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_arm_bhutia_clans"
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -100
+				}
+			}
+			set_country_flag = BHU_ongoing_sikkim_decision
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_arm_bhutia_clans"
+			add_to_variable = {
+				BHU_sikkim_revolt_size = 1
+				tooltip = BHU_tt_increase_sikkim_revolt_size
+			}
+			clr_country_flag = BHU_ongoing_sikkim_decision
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_marshal_tibetan_adventurers = {
+		icon = GFX_decision_soldierly_discipline
+		allowed = { always = no }	# Activated by event
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			NOT = { command_power < 25 }
+		}
+		custom_cost_text = CP_25
+		days_remove = 25
+		priority = 47
+
+		visible = {
+			has_country_flag = BHU_pre_sikkim_fight_decisions_available
+		}
+
+		available = {
+			NOT = { has_country_flag = BHU_ongoing_sikkim_decision }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_marshal_tibetan_adventurers"
+			hidden_effect = { add_command_power = -25 }
+			set_country_flag = BHU_ongoing_sikkim_decision
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_marshal_tibetan_adventurers"
+			add_to_variable = {
+				BHU_sikkim_revolt_size = 1
+				tooltip = BHU_tt_increase_sikkim_revolt_size
+			}
+			clr_country_flag = BHU_ongoing_sikkim_decision
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_outsiders_and_outcasts = {
+		icon = generic_disband_irregulars
+		allowed = { always = no } #manually activated
+		fire_only_once = yes
+		custom_cost_trigger = {
+			NOT = { command_power < 25 }
+		}
+		custom_cost_text = CP_25
+		days_remove = 50
+		priority = 46
+
+		ai_will_do = { factor = 0 }
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_outsiders_and_outcasts"
+			hidden_effect = { add_command_power = -25 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_outsiders_and_outcasts"
+			if = {
+				limit = { has_idea = BHU_village_musters_3 }
+				swap_ideas = {
+					remove_idea = BHU_village_musters_3
+					add_idea = BHU_village_musters_4
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = BHU_village_musters_2
+					add_idea = BHU_village_musters_3
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_son_from_every_family = {
+		icon = generic_political_discourse
+		allowed = { always = no } #manually activated
+		fire_only_once = yes
+		custom_cost_trigger = {
+			NOT = { command_power < 25 }
+		}
+		custom_cost_text = CP_25
+		days_remove = 100
+		priority = 45
+
+		ai_will_do = { factor = 0 }
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_son_from_every_family"
+			hidden_effect = { add_command_power = -25 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_son_from_every_family"
+			if = {
+				limit = { has_idea = BHU_village_musters_3 }
+				swap_ideas = {
+					remove_idea = BHU_village_musters_3
+					add_idea = BHU_village_musters_4
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = BHU_village_musters_2
+					add_idea = BHU_village_musters_3
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_promote_zamadar_chencho = {
+		icon = GFX_decision_soldierly_discipline
+		allowed = { always = no } #manually activated
+		fire_only_once = yes
+
+		available = {
+			has_completed_focus = bhu_next_generation_leaders
+		}
+
+		custom_cost_text = army_xp_25
+		custom_cost_trigger = {
+			NOT = { has_army_experience < 25 }
+		}
+		days_remove = 30
+		priority = 44
 
 		ai_will_do = { factor = 10 }
 
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_promote_zamadar_chencho"
+			hidden_effect = { army_experience = -25 }
+		}
+
 		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_smuggle_infantry_equipment"
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_0
-				amount = 50
-				producer = HND
+			log = "[GetLogRoot]: Decision remove BHU_promote_zamadar_chencho"
+			country_event = bhutan_events.934
+			BHU_zamadar_chencho = {
+				gain_xp = 100
 			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_0
-				amount = 25
-				producer = CAN
+			BHU_zamadar_chencho = {
+				add_trait = { trait = organizer }
 			}
 		}
 		fixed_random_seed = no
 	}
 }
 
-economy_decisions = {
-	BHU_Industry_Expansion_1 = {
-		icon = GFX_decision_global_trade
-		allowed = { always = no }	# Activated by focus bhu_beginnings_of_industry
-		ai_will_do = { factor = 100 }
+BHU_smuggling_decision_category = {
+	BHU_china_smuggling_decision = {
+		icon = generic_prepare_civil_war
+		allowed = { always = no }	# Activated by focus bhu_smuggle_foreign_arms
 
-		fire_only_once = yes
-		cost = 75
-		days_remove = 90
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Industry_Expansion_1"
-			add_ideas = civilian_economy
-			activate_targeted_decision = { target = THIS decision = BHU_Industry_Expansion_2 }
+		ai_will_do = { factor = 10 }
+		custom_cost_trigger = {
+			NOT = { command_power < 15 }
 		}
-		fixed_random_seed = no
-	}
+		custom_cost_text = CP_15
+		days_re_enable = 0
+		days_remove = 125
+		fire_only_once = no
+		priority = 50
 
-	BHU_Industry_Expansion_2 = {
-		icon = GFX_decision_generic_operation
-		allowed = { always = no }	# Activated by decision BHU_Industry_Expansion_1
-		ai_will_do = { factor = 100 }
-
-		fire_only_once = yes
-		cost = 50
-		days_remove = 50
-
-		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Industry_Expansion_2"
-			add_tech_bonus = {
-				name = BHU_Industry_Expansion_2
-				bonus = 1
-				uses = 1
-				category = industry
-			}
-			activate_targeted_decision = { target = THIS decision = BHU_Industry_Expansion_3 }
+		visible = {
+			NOT = { has_country_flag = BHU_smuggling_china_angry_2 }
 		}
-		fixed_random_seed = no
-	}
 
-	BHU_Industry_Expansion_3 = {
-		icon = GFX_decision_generic_construction
-		allowed = { always = no }	# Activated by decision BHU_Industry_Expansion_2
-		ai_will_do = { factor = 100 }
-
-		fire_only_once = yes
-		cost = 50
-		days_remove = 90
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_china_smuggling_decision"
+			hidden_effect = { add_command_power = -15 }
+		}
 
 		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Industry_Expansion_3"
-			324 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
+			log = "[GetLogRoot]: Decision remove BHU_china_smuggling_decision"
+			custom_effect_tooltip = BHU_tt_smuggling_china_baseline
+			if = {
+				limit = {
+					has_country_flag = BHU_smuggling_strengthened_china
+					has_country_flag = BHU_smuggling_bribed_china
+				}
+				random_list = {
+					80 = {
+						custom_effect_tooltip = BHU_tt_smuggling_successful
+						hidden_effect = {
+							country_event = bhutan_events.916
+						}
+					}
+					20 = {
+						custom_effect_tooltip = BHU_tt_smuggling_encounter_trouble
+						hidden_effect = {
+							country_event = bhutan_events.918
+						}
+					}
 				}
 			}
+			else_if = {
+				limit = { has_country_flag = BHU_smuggling_strengthened_china }
+				random_list = {
+					40 = {
+						custom_effect_tooltip = BHU_tt_smuggling_successful
+						hidden_effect = {
+							country_event = bhutan_events.916
+						}
+					}
+					40 = {
+						custom_effect_tooltip = BHU_tt_smuggling_demand_bribe
+						hidden_effect = {
+							country_event = bhutan_events.917
+						}
+					}
+					20 = {
+						custom_effect_tooltip = BHU_tt_smuggling_encounter_trouble
+						hidden_effect = {
+							country_event = bhutan_events.918
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_smuggling_bribed_china }
+				random_list = {
+					60 = {
+						custom_effect_tooltip = BHU_tt_smuggling_successful
+						hidden_effect = {
+							country_event = bhutan_events.916
+						}
+					}
+					40 = {
+						custom_effect_tooltip = BHU_tt_smuggling_encounter_trouble
+						hidden_effect = {
+							country_event = bhutan_events.918
+						}
+					}
+				}
+			}
+			else = {
+				random_list = {
+					30 = {
+						custom_effect_tooltip = BHU_tt_smuggling_successful
+						hidden_effect = {
+							country_event = bhutan_events.916
+						}
+					}
+					30 = {
+						custom_effect_tooltip = BHU_tt_smuggling_demand_bribe
+						hidden_effect = {
+							country_event = bhutan_events.917
+						}
+					}
+					40 = {
+						custom_effect_tooltip = BHU_tt_smuggling_encounter_trouble
+						hidden_effect = {
+							country_event = bhutan_events.918
+						}
+					}
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_china_smuggling_strengthen = {
+		icon = GFX_decision_border_war
+		allowed = { always = no }	# Activated by focus bhu_smuggle_foreign_arms
+		ai_will_do = { factor = 10 }
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			NOT = { command_power < 50 }
+		}
+		custom_cost_text = CP_50
+		days_remove = 200
+		priority = 49
+
+		visible = {
+			NOT = { has_country_flag = BHU_smuggling_china_angry_2 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_china_smuggling_strengthen"
+			hidden_effect = { add_command_power = -50 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_china_smuggling_strengthen"
+			custom_effect_tooltip = BHU_tt_smuggling_chinese_strengthened
+			set_country_flag = BHU_smuggling_strengthened_china
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_china_smuggling_bribe = {
+		icon = GFX_decision_generic_fundraising
+		allowed = { always = no }	# Activated by focus bhu_smuggle_foreign_arms
+		ai_will_do = { factor = 10 }
+
+		fire_only_once = yes
+		cost = 25
+		days_remove = 300
+		priority = 48
+
+		visible = {
+			NOT = { has_country_flag = BHU_smuggling_china_angry_2 }
+		}
+
+		available = {
+			NOT = { has_country_flag = BHU_convincing_smugglers }
+		}
+
+		modifier = {
+			political_power_cost = 0.1
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_china_smuggling_bribe"
+			set_country_flag = BHU_convincing_smugglers
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_china_smuggling_bribe"
+			custom_effect_tooltip = BHU_tt_smuggling_chinese_bribed
+			set_country_flag = BHU_smuggling_bribed_china
+			clr_country_flag = BHU_convincing_smugglers
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_india_smuggling_decision = {
+		icon = generic_prepare_civil_war
+		allowed = { always = no }	# Activated by focus bhu_smuggle_foreign_arms
+
+		ai_will_do = { factor = 10 }
+		custom_cost_trigger = {
+			NOT = { command_power < 25 }
+		}
+		custom_cost_text = CP_15
+		days_re_enable = 0
+		days_remove = 75
+		fire_only_once = no
+		priority = 47
+
+		visible = {
+			NOT = { has_country_flag = BHU_smuggling_india_angry_2 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_india_smuggling_decision"
+			hidden_effect = { add_command_power = -25 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_india_smuggling_decision"
+			custom_effect_tooltip = BHU_tt_smuggling_india_baseline
+			if = {
+				limit = {
+					has_country_flag = BHU_smuggling_strengthened_india
+					has_country_flag = BHU_smuggling_bribed_india
+				}
+				random_list = {
+					80 = {
+						custom_effect_tooltip = BHU_tt_smuggling_successful
+						hidden_effect = {
+							country_event = bhutan_events.919
+						}
+					}
+					20 = {
+						custom_effect_tooltip = BHU_tt_smuggling_encounter_trouble
+						hidden_effect = {
+							country_event = bhutan_events.921
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_smuggling_strengthened_india }
+				random_list = {
+					40 = {
+						custom_effect_tooltip = BHU_tt_smuggling_successful
+						hidden_effect = {
+							country_event = bhutan_events.919
+						}
+					}
+					40 = {
+						custom_effect_tooltip = BHU_tt_smuggling_demand_bribe
+						hidden_effect = {
+							country_event = bhutan_events.920
+						}
+					}
+					20 = {
+						custom_effect_tooltip = BHU_tt_smuggling_encounter_trouble
+						hidden_effect = {
+							country_event = bhutan_events.921
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_smuggling_bribed_india }
+				random_list = {
+					60 = {
+						custom_effect_tooltip = BHU_tt_smuggling_successful
+						hidden_effect = {
+							country_event = bhutan_events.919
+						}
+					}
+					40 = {
+						custom_effect_tooltip = BHU_tt_smuggling_encounter_trouble
+						hidden_effect = {
+							country_event = bhutan_events.921
+						}
+					}
+				}
+			}
+			else = {
+				random_list = {
+					30 = {
+						custom_effect_tooltip = BHU_tt_smuggling_successful
+						hidden_effect = {
+							country_event = bhutan_events.919
+						}
+					}
+					30 = {
+						custom_effect_tooltip = BHU_tt_smuggling_demand_bribe
+						hidden_effect = {
+							country_event = bhutan_events.920
+						}
+					}
+					40 = {
+						custom_effect_tooltip = BHU_tt_smuggling_encounter_trouble
+						hidden_effect = {
+							country_event = bhutan_events.921
+						}
+					}
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_india_smuggling_strengthen = {
+		icon = GFX_decision_border_war
+		allowed = { always = no }	# Activated by focus bhu_smuggle_foreign_arms
+		ai_will_do = { factor = 10 }
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			NOT = { command_power < 50 }
+		}
+		custom_cost_text = CP_50
+		days_remove = 200
+		priority = 46
+
+		visible = {
+			NOT = { has_country_flag = BHU_smuggling_india_angry_2 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_india_smuggling_strengthen"
+			hidden_effect = { add_command_power = -50 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_india_smuggling_strengthen"
+			custom_effect_tooltip = BHU_tt_smuggling_indians_strengthened
+			set_country_flag = BHU_smuggling_strengthened_india
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_india_smuggling_bribe = {
+		icon = GFX_decision_generic_fundraising
+		allowed = { always = no }	# Activated by focus bhu_smuggle_foreign_arms
+		ai_will_do = { factor = 10 }
+
+		fire_only_once = yes
+		cost = 25
+		days_remove = 300
+		priority = 45
+
+		visible = {
+			NOT = { has_country_flag = BHU_smuggling_india_angry_2 }
+		}
+
+		available = {
+			NOT = { has_country_flag = BHU_convincing_smugglers }
+		}
+
+		modifier = {
+			political_power_cost = 0.1
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_india_smuggling_bribe"
+			set_country_flag = BHU_convincing_smugglers
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_india_smuggling_bribe"
+			custom_effect_tooltip = BHU_tt_smuggling_indians_bribed
+			set_country_flag = BHU_smuggling_bribed_india
+			clr_country_flag = BHU_convincing_smugglers
+		}
+		fixed_random_seed = no
+	}
+}
+
+BHU_economy_decision_category = {
+	BHU_sword_to_plowshares = {
+		icon = GFX_decision_soldierly_discipline
+		allowed = { always = no }	# Activated by focus bhu_establish_muster_rolls
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			NOT = { command_power < 30 }
+			NOT = { has_manpower < 500 }
+		}
+		custom_cost_text = CP_30_manpower_500
+
+		days_remove = 25
+		priority = 50
+
+		visible = {
+			NOT = { has_idea = BHU_building_self_sufficiency_15 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_sword_to_plowshares"
+			hidden_effect = {
+				add_command_power = -30
+				add_manpower = -500
+			}
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_sword_to_plowshares"
+			add_to_variable = {
+				BHU_corvee_cadre_amount = 1
+				tooltip = BHU_corvee_cadre_change_tooltip
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_compel_labour = {
+		icon = GFX_decision_eng_blackshirt_march
+		allowed = { always = no }	# Activated by focus bhu_standardise_weights_and_measures
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 30
+		days_remove = 25
+		priority = 49
+
+		visible = {
+			NOT = { has_idea = BHU_building_self_sufficiency_15 }
+		}
+
+		available = {
+			NOT = { has_idea = BHU_villages_drained }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_compel_labour"
+			add_stability = -0.05
+			add_to_variable = {
+				BHU_corvee_cadre_amount = 1
+				tooltip = BHU_corvee_cadre_change_tooltip
+			}
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_open_the_marketplaces = {
+		icon = GFX_decision_global_trade
+		allowed = { always = no }	# Activated by focus bhu_standardise_weights_and_measures
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 30
+		days_remove = BHU_industry_remove_cost_1
+		priority = 48
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_open_the_marketplaces"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_open_the_marketplaces"
+			if = {
+				limit = { has_country_flag = BHU_isolation_switch }
+				hidden_effect = {
+					country_event = bhutan_events.911
+				}
+				clr_country_flag = BHU_isolation_switch
+			}
+			else = {
+				set_country_flag = BHU_isolation_switch
+			}
+			custom_effect_tooltip = BHU_tt_open_the_marketplaces
+			effect_tooltip = {
+				add_ideas = civilian_economy
+			}
+			custom_effect_tooltip = tooltip_white_line
+			hidden_effect = {
+				increase_bhu_econ_self_sufficiency = yes
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = BHU_building_self_sufficiency_0
+					add_idea = BHU_building_self_sufficiency_1
+				}
+			}
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_circulate_foreign_coinage = {
+		icon = GFX_decision_generic_welfare
+		allowed = { always = no }	# Activated by focus bhu_stamp_our_own_coins
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 30
+		days_remove = BHU_industry_remove_cost_1
+		priority = 47
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_circulate_foreign_coinage"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_circulate_foreign_coinage"
+			if = {
+				limit = { has_country_flag = BHU_isolation_switch }
+				hidden_effect = {
+					country_event = bhutan_events.911
+				}
+				clr_country_flag = BHU_isolation_switch
+			}
+			else = {
+				set_country_flag = BHU_isolation_switch
+			}
+			custom_effect_tooltip = BHU_tt_circulate_coins
+			effect_tooltip = {
+				add_ideas = civilian_economy
+			}
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_local_iron_development = {
+		icon = GFX_decision_steel
+		allowed = { always = no }	# Activated by focus bhu_exploit_our_natural_resources
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 40
+		days_remove = BHU_industry_remove_cost_2
+		priority = 46
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_local_iron_development"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_local_iron_development"
 			324 = {
 				add_resource = {
 					type = steel
 					amount = 2
 				}
 			}
-			activate_targeted_decision = { target = THIS decision = BHU_Industry_Expansion_4 }
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
 		}
 		fixed_random_seed = no
 	}
 
-	BHU_Industry_Expansion_4 = {
-		icon = GFX_decision_generic_industry
-		allowed = { always = no }	# Activated by decision BHU_Industry_Expansion_3
+	BHU_dagana_sarpang_coal_mines = {
+		icon = coal
+		allowed = { always = no }	# Activated by focus bhu_exploit_our_natural_resources
 		ai_will_do = { factor = 100 }
-		modifier = {
-			production_speed_buildings_factor = -0.10
-		}
+
 		fire_only_once = yes
-		cost = 50
-		days_remove = 140
+		cost = 40
+		days_remove = BHU_industry_remove_cost_2
+		priority = 45
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_dagana_sarpang_coal_mines"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
 
 		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Industry_Expansion_4"
+			log = "[GetLogRoot]: Decision remove BHU_dagana_sarpang_coal_mines"
+			custom_effect_tooltip = BHU_tt_circulate_coins
 			324 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
+				add_resource = {
+					type = coal
+					amount = 2
 				}
 			}
-			activate_targeted_decision = { target = THIS decision = BHU_Industry_Expansion_5 }
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = BHU_tt_dagana_sarpang
+			if = {
+				limit = { has_country_flag = BHU_civilian_decision_2 }
+				hidden_effect = {
+					country_event = bhutan_events.913
+				}
+				clr_country_flag = BHU_civilian_decision_2
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_civilian_decision_1 }
+				clr_country_flag = BHU_civilian_decision_1
+				set_country_flag = BHU_civilian_decision_2
+			}
+			else = {
+				set_country_flag = BHU_civilian_decision_1
+			}
+			effect_tooltip = {
+				324 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
 		}
 		fixed_random_seed = no
 	}
 
-	BHU_Industry_Expansion_5 = {
-		icon = GFX_decision_factories
-		allowed = { always = no }	# Activated by decision BHU_Industry_Expansion_4
+	BHU_dholpani_bhurkhola_tungsten_mines = {
+		icon = GFX_decision_tungsten
+		allowed = { always = no }	# Activated by focus bhu_exploit_our_natural_resources
 		ai_will_do = { factor = 100 }
-		modifier = {
-			production_speed_buildings_factor = -0.35
-		}
+
 		fire_only_once = yes
-		cost = 75
-		days_remove = 300
+		cost = 40
+		days_remove = BHU_industry_remove_cost_2
+		priority = 44
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_dholpani_bhurkhola_tungsten_mines"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
 
 		remove_effect = {
-			log = "[GetLogRoot]: Decision remove BHU_Industry_Expansion_5"
+			log = "[GetLogRoot]: Decision remove BHU_dholpani_bhurkhola_tungsten_mines"
 			324 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
+				add_resource = {
+					type = tungsten
+					amount = 2
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_lateral_road_start = {
+		icon = GFX_decision_road
+		allowed = { always = no }	# Activated by focus bhu_lay_down_lateral_road
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 40
+		days_remove = BHU_industry_remove_cost_2
+		priority = 43
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_lateral_road_start"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_lateral_road_start"
+			custom_effect_tooltip = BHU_tt_lateralstart_infra
+			if = {
+				limit = { has_country_flag = BHU_infrastruture_decision_2 }
+				hidden_effect = {
+					country_event = bhutan_events.912
+				}
+				clr_country_flag = BHU_infrastruture_decision_2
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_infrastruture_decision_1 }
+				clr_country_flag = BHU_infrastruture_decision_1
+				set_country_flag = BHU_infrastruture_decision_2
+			}
+			else = {
+				set_country_flag = BHU_infrastruture_decision_1
+			}
+			effect_tooltip = {
+				324 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = BHU_tt_lateralstart_civ
+			if = {
+				limit = { has_country_flag = BHU_civilian_decision_2 }
+				hidden_effect = {
+					country_event = { id = bhutan_events.913 days = 5 }
+				}
+				clr_country_flag = BHU_civilian_decision_2
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_civilian_decision_1 }
+				clr_country_flag = BHU_civilian_decision_1
+				set_country_flag = BHU_civilian_decision_2
+			}
+			else = {
+				set_country_flag = BHU_civilian_decision_1
+			}
+			effect_tooltip = {
+				324 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_lateral_road_east = {
+		icon = GFX_RAJ_decision_investment_infra_icon
+		allowed = { always = no }	# Activated by focus bhu_lay_down_lateral_road
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 40
+		days_remove = BHU_industry_remove_cost_2
+		priority = 42
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_lateral_road_east"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_lateral_road_east"
+			custom_effect_tooltip = BHU_tt_lateraleast_infra
+			if = {
+				limit = { has_country_flag = BHU_infrastruture_decision_2 }
+				hidden_effect = {
+					country_event = bhutan_events.912
+				}
+				clr_country_flag = BHU_infrastruture_decision_2
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_infrastruture_decision_1 }
+				clr_country_flag = BHU_infrastruture_decision_1
+				set_country_flag = BHU_infrastruture_decision_2
+			}
+			else = {
+				set_country_flag = BHU_infrastruture_decision_1
+			}
+			effect_tooltip = {
+				324 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_lateral_road_west = {
+		icon = GFX_RAJ_decision_investment_infra_icon
+		allowed = { always = no }	# Activated by focus bhu_lay_down_lateral_road
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 40
+		days_remove = BHU_industry_remove_cost_2
+		priority = 41
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_lateral_road_west"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_lateral_road_west"
+			custom_effect_tooltip = BHU_tt_lateralwest_infra
+			if = {
+				limit = { has_country_flag = BHU_infrastruture_decision_2 }
+				hidden_effect = {
+					country_event = bhutan_events.912
+				}
+				clr_country_flag = BHU_infrastruture_decision_2
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_infrastruture_decision_1 }
+				clr_country_flag = BHU_infrastruture_decision_1
+				set_country_flag = BHU_infrastruture_decision_2
+			}
+			else = {
+				set_country_flag = BHU_infrastruture_decision_1
+			}
+			effect_tooltip = {
+				324 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_import_machine_tools = {
+		icon = GFX_decision_generic_wreckers
+		allowed = { always = no }	# Activated by focus bhu_build_new_workshops
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 50
+		days_remove = BHU_industry_remove_cost_3
+		priority = 40
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_import_machine_tools"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_import_machine_tools"
+			custom_effect_tooltip = BHU_tt_machinetool_mil
+			if = {
+				limit = { has_country_flag = BHU_milfactory_decision_2 }
+				hidden_effect = {
+					country_event = bhutan_events.914
+				}
+				clr_country_flag = BHU_milfactory_decision_2
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_milfactory_decision_1 }
+				clr_country_flag = BHU_milfactory_decision_1
+				set_country_flag = BHU_milfactory_decision_2
+			}
+			else = {
+				set_country_flag = BHU_milfactory_decision_1
+			}
+			effect_tooltip = {
+				324 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_steal_blueprints = {
+		icon = GFX_decision_generic_operation
+		allowed = { always = no }	# Activated by focus bhu_build_new_workshops
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 50
+		days_remove = BHU_industry_remove_cost_3
+		priority = 40
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_steal_blueprints"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_steal_blueprints"
+			custom_effect_tooltip = BHU_tt_blueprint_mil
+			if = {
+				limit = { has_country_flag = BHU_milfactory_decision_2 }
+				hidden_effect = {
+					country_event = bhutan_events.914
+				}
+				clr_country_flag = BHU_milfactory_decision_2
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_milfactory_decision_1 }
+				clr_country_flag = BHU_milfactory_decision_1
+				set_country_flag = BHU_milfactory_decision_2
+			}
+			else = {
+				set_country_flag = BHU_milfactory_decision_1
+			}
+			effect_tooltip = {
+				324 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_build_water_mills = {
+		icon = GFX_RAJ_decision_investment_civs_icon
+		allowed = { always = no }	# Activated by focus bhu_build_new_workshops
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 50
+		days_remove = BHU_industry_remove_cost_3
+		priority = 38
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_build_water_mills"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove BHU_build_water_mills"
+			custom_effect_tooltip = BHU_tt_watermill_civ
+			if = {
+				limit = { has_country_flag = BHU_civilian_decision_2 }
+				hidden_effect = {
+					country_event = bhutan_events.913
+				}
+				clr_country_flag = BHU_civilian_decision_2
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_civilian_decision_1 }
+				clr_country_flag = BHU_civilian_decision_1
+				set_country_flag = BHU_civilian_decision_2
+			}
+			else = {
+				set_country_flag = BHU_civilian_decision_1
+			}
+			effect_tooltip = {
+				324 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = BHU_tt_watermill_mil
+			if = {
+				limit = { has_country_flag = BHU_milfactory_decision_2 }
+				hidden_effect = {
+					country_event = { id = bhutan_events.914 days = 5 }
+				}
+				clr_country_flag = BHU_milfactory_decision_2
+			}
+			else_if = {
+				limit = { has_country_flag = BHU_milfactory_decision_1 }
+				clr_country_flag = BHU_milfactory_decision_1
+				set_country_flag = BHU_milfactory_decision_2
+			}
+			else = {
+				set_country_flag = BHU_milfactory_decision_1
+			}
+			effect_tooltip = {
+				324 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			increase_bhu_econ_self_sufficiency = yes
+			add_to_variable = { BHU_corvee_cadre_amount = 1 }
+		}
+		fixed_random_seed = no
+	}
+
+	BHU_renovate_punakha = {
+		icon = GFX_decision_generic_operation
+		allowed = { always = no }	# Activated by focus bhu_dzongs_for_a_new_age
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		cost = 50
+		priority = 37
+
+		custom_cost_text = BHU_corvee_cadre_1
+		custom_cost_trigger = {
+			check_variable = { BHU_corvee_cadre_amount > 0 }
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete BHU_renovate_punakha"
+			subtract_from_variable = { BHU_corvee_cadre_amount = 1 }
+			custom_effect_tooltip = tooltip_white_line
+			country_event = bhutan_events.935
+			custom_effect_tooltip = BHU_tt_renovating_capital_time
+			effect_tooltip = {
+				country_event = bhutan_events.937
+				add_timed_idea = {
+					idea = BHU_expanded_government_offices
+					days = 365
 				}
 			}
 		}
 		fixed_random_seed = no
 	}
 }
-

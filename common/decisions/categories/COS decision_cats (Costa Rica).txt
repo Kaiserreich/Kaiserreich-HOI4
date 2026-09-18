@@ -6,53 +6,38 @@
 
 COS_Election_decisions = {
 	icon = GFX_decision_category_generic_democracy
-	allowed = {
-		original_tag = COS
-	}
-	visible = {
-		has_country_flag = COS_ELECTIONS
-	}
+	allowed = { original_tag = COS }
+
+	visible = { has_country_flag = COS_elections_ongoing }
+
+	visible_when_empty = yes
+	priority = 100
 }
 
 COS_Guardia_decisions = {
 	icon = GFX_decision_category_eng_concessions_to_the_trade_unions
-	allowed = {
-		original_tag = COS
-	}
-	visible = {
-		has_country_flag = GUARDIA
-		has_government = social_democrat
-	}
+	allowed = { always = no } # Decisions are activated manually
+	priority = 100
 }
 
 COS_Cortes_decisions = {
 	icon = GFX_decision_category_generic_industry
-	allowed = {
-		original_tag = COS
-	}
-	visible = {
-		has_country_flag = CORTES
-		has_government = social_conservative
-	}
+	allowed = { always = no } # Decisions are activated manually
+	priority = 100
 }
 
 COS_Ferrer_Pacifist_decisions = {
 	icon = GFX_decision_category_generic_political_actions
 	picture = GFX_decision_cat_picture_chi_political_support
-	allowed = {
-		original_tag = COS
-	}
-	visible = {
-		has_completed_focus = COS_Ferrer_takes_Control
-	}
+	allowed = { always = no } # Decisions are activated manually
+	priority = 200
 }
 
 COS_Ferrer_Aggro_decisions = {
 	icon = GFX_decision_category_border_conflicts
 	picture = GFX_decision_cat_generic_united_central_america
-	allowed = {
-		always = no #activated by effect
-	}
+	allowed = { always = no } # Decisions are activated manually
+	priority = 100
 }
 
 COS_Democratic_Alliance_of_the_Caribbean_decisions = {
@@ -70,45 +55,35 @@ COS_Democratic_Alliance_of_the_Caribbean_decisions = {
 			has_country_flag = COS_legion_faction
 		}
 	}
-}
-
-COS_foreign_policy_decisions = {
-	icon = GFX_decision_category_border_conflicts
-	allowed = {
-		original_tag = COS
-	}
+	priority = 1000
 }
 
 COS_ZKG_decisions = {
 	icon = GFX_decision_category_gre_investment_decisions
 	picture = GFX_decision_cat_west_indies_jean_martial
-	allowed = {
-		original_tag = COS
-	}
+	allowed = { original_tag = COS }
+
 	visible = {
 		has_idea = COS_influence_of_the_ZKG_idea
 	}
+	visible_when_empty = yes
+	priority = -5
 }
 
 COS_UFC_decisions = {
 	icon = GFX_decision_category_generic_economy
 	picture = GFX_decision_cat_west_indies_plantation
-	allowed = {
-		original_tag = COS
-	}
-	visible = {
-		has_idea = COS_influence_of_the_UFC_idea
-	}
+	allowed = { original_tag = COS }
+
+	visible = { has_idea = COS_influence_of_the_UFC_idea }
+
+	visible_when_empty = yes
+	priority = -10
 }
 
 COS_Market_decisions = {
 	icon = GFX_decision_category_generic_arms_trade
-	allowed = {
-		original_tag = COS
-	}
-	visible = {
-		has_idea = COS_influence_of_the_UFC_idea
-		has_country_flag = COS_UFC_HEADQUARTERS_FLAG
-	}
+	allowed = { always = no } # Decisions are activated manually
+	priority = -15
 }
 

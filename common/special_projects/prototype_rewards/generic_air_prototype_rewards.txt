@@ -168,14 +168,9 @@ sp_air_generic_reward_scientist_xp_1 = {
 
 		iteration_output = {
 			scientist_effects = {
-				if = {
-					limit = {
-
-					}
-					add_scientist_xp = {
-						experience = constant:sp_scientist_xp_gain.low
-						specialization = specialization_air
-					}
+				add_scientist_xp = {
+					experience = constant:sp_scientist_xp_gain.low
+					specialization = specialization_air
 				}
 				FROM = { set_project_flag = sp_air_generic_reward_scientist_xp_flag }
 			}

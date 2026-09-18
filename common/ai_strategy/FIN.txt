@@ -1,0 +1,65 @@
+FIN_focus_on_russia = {
+	allowed = {
+		original_tag = FIN
+		has_socialist_government = no
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = GER
+		value = 100
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = UKR
+		value = 100
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = WHR
+		value = 100
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = LIT
+		value = 100
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = BAT
+		value = 100
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = POL
+		value = 100
+	}
+	ai_strategy = {
+		type = front_control
+		tag = RUS
+		execute_order = no
+		manual_attack = yes
+	}
+	ai_strategy = {
+		type = garrison
+		value = -100
+	}
+	ai_strategy = {
+		type = spare_unit_factor
+		value = -200
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = RUS
+		value = 100
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = RUS
+		value = 40
+	}
+}

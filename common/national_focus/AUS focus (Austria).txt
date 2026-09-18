@@ -343,6 +343,11 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AUS_reform_AOK"
 			add_ideas = AUS_modern_army
+			custom_effect_tooltip = tooltip_white_line
+			every_subject_country = {
+				limit = { has_autonomy_state = crownland }
+				add_ideas = AUS_modern_army
+			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
@@ -507,6 +512,13 @@ focus_tree = {
 				remove_idea = AUS_modern_army
 				add_idea = AUS_modern_army_jansa
 			}
+			every_subject_country = {
+				limit = { has_autonomy_state = crownland }
+				swap_ideas = {
+					remove_idea = AUS_modern_army
+					add_idea = AUS_modern_army_jansa
+				}
+			}
 			add_tech_bonus = {
 				name = AUS_communications
 				bonus = 1
@@ -533,6 +545,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AUS_better_support_equipment"
 			add_ideas = AUS_artillery_production
+			custom_effect_tooltip = tooltip_white_line
+			every_subject_country = {
+				limit = { has_autonomy_state = crownland }
+				add_ideas = AUS_artillery_production
+			}
+			custom_effect_tooltip = tooltip_white_line
 			add_tech_bonus = {
 				name = AUS_better_support_equipment
 				bonus = 1
@@ -561,6 +579,13 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = AUS_modern_army
 				add_idea = AUS_modern_army_von_hubicki
+			}
+			every_subject_country = {
+				limit = { has_autonomy_state = crownland }
+				swap_ideas = {
+					remove_idea = AUS_modern_army
+					add_idea = AUS_modern_army_von_hubicki
+				}
 			}
 			add_tech_bonus = {
 				name = AUS_mech_cavalry
@@ -654,6 +679,13 @@ focus_tree = {
 					remove_idea = AUS_modern_army
 					add_idea = AUS_modern_army_hickmann
 				}
+				every_subject_country = {
+					limit = { has_autonomy_state = crownland }
+					swap_ideas = {
+						remove_idea = AUS_modern_army
+						add_idea = AUS_modern_army_hickmann
+					}
+				}
 			}
 			else_if = {
 				limit = { has_idea = AUS_modern_army_von_hubicki }
@@ -661,11 +693,25 @@ focus_tree = {
 					remove_idea = AUS_modern_army_von_hubicki
 					add_idea = AUS_modern_army_von_hubicki_2
 				}
+				every_subject_country = {
+					limit = { has_autonomy_state = crownland }
+					swap_ideas = {
+						remove_idea = AUS_modern_army_von_hubicki
+						add_idea = AUS_modern_army_von_hubicki_2
+					}
+				}
 			}
 			else = {
 				swap_ideas = {
 					remove_idea = AUS_modern_army_jansa
 					add_idea = AUS_modern_army_jansa_2
+				}
+				every_subject_country = {
+					limit = { has_autonomy_state = crownland }
+					swap_ideas = {
+						remove_idea = AUS_modern_army_jansa
+						add_idea = AUS_modern_army_jansa_2
+					}
 				}
 			}
 			add_mastery_bonus = {
@@ -804,6 +850,19 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AUS_flugschule"
+			if = {
+				limit = { has_completed_focus = AUS_status_quo }
+				swap_ideas = {
+					remove_idea = AUS_kuk_fliegerkorps
+					add_idea = AUS_kuk_fliegerkorps_2b
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = AUS_kuk_fliegerkorps
+					add_idea = AUS_kuk_fliegerkorps_2a
+				}
+			}
 			air_experience = 25
 			add_doctrine_cost_reduction = {
 				name = AUS_flugschule
@@ -1373,6 +1432,13 @@ focus_tree = {
 					remove_idea = AUS_modern_army_hickmann
 					add_idea = AUS_modern_army_hickmann_2
 				}
+				every_subject_country = {
+					limit = { has_autonomy_state = crownland }
+					swap_ideas = {
+						remove_idea = AUS_modern_army_hickmann
+						add_idea = AUS_modern_army_hickmann_2
+					}
+				}
 			}
 			else_if = {
 				limit = { has_idea = AUS_modern_army_von_hubicki_2 }
@@ -1380,11 +1446,25 @@ focus_tree = {
 					remove_idea = AUS_modern_army_von_hubicki_2
 					add_idea = AUS_modern_army_von_hubicki_3
 				}
+				every_subject_country = {
+					limit = { has_autonomy_state = crownland }
+					swap_ideas = {
+						remove_idea = AUS_modern_army_von_hubicki_2
+						add_idea = AUS_modern_army_von_hubicki_3
+					}
+				}
 			}
 			else = {
 				swap_ideas = {
 					remove_idea = AUS_modern_army_jansa_2
 					add_idea = AUS_modern_army_jansa_3
+				}
+				every_subject_country = {
+					limit = { has_autonomy_state = crownland }
+					swap_ideas = {
+						remove_idea = AUS_modern_army_jansa_2
+						add_idea = AUS_modern_army_jansa_3
+					}
 				}
 			}
 		}
@@ -3235,20 +3315,18 @@ focus_tree = {
 			country_event = austria_events.100
 		}
 		bypass = {
-			AND = {
-				OR = {
-					NOT = { country_exists = SIC }
-					SIC = { is_subject = yes }
-					SIC = { is_in_faction = yes }
-					has_war_with = SIC
-				}
-				OR = {
-					NOT = { country_exists = ITA }
-					ITA = { is_subject = yes }
-					ITA = { is_in_faction = yes }
-					has_war_with = ITA
-					ITA = { has_government = national_populist }
-				}
+			OR = {
+				NOT = { country_exists = SIC }
+				SIC = { is_subject = yes }
+				SIC = { is_in_faction = yes }
+				has_war_with = SIC
+			}
+			OR = {
+				NOT = { country_exists = ITA }
+				ITA = { is_subject = yes }
+				ITA = { is_in_faction = yes }
+				has_war_with = ITA
+				ITA = { has_government = national_populist }
 			}
 		}
 	}
@@ -3556,6 +3634,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AUS_status_quo"
 			add_stability = 0.1
+			if = {
+				limit = { has_idea = AUS_kuk_fliegerkorps_2a }
+				swap_ideas = {
+					remove_idea = AUS_kuk_fliegerkorps_2a
+					add_idea = AUS_kuk_fliegerkorps_2b
+				}
+			}
 			log = "KR_Event_Logging;AUS AUSGLEICH PATH - Status Quo"
 		}
 	}
@@ -3574,6 +3659,8 @@ focus_tree = {
 		prerequisite = {
 			focus = AUS_status_quo
 		}
+
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AUS_kk_Ministeria"
@@ -3615,6 +3702,8 @@ focus_tree = {
 			focus = AUS_kk_Ministeria
 		}
 
+		ai_will_do = { factor = 100 }
+
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AUS_kk_Education_Reform"
 			add_stability = 0.1
@@ -3636,6 +3725,8 @@ focus_tree = {
 		prerequisite = {
 			focus = AUS_kk_Education_Reform
 		}
+
+		ai_will_do = { factor = 100 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AUS_the_kk_Identity"
@@ -3831,6 +3922,8 @@ focus_tree = {
 		prerequisite = {
 			focus = AUS_status_quo
 		}
+
+		ai_will_do = { factor = 150 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AUS_cisleithanian_development_scheme"
@@ -4289,6 +4382,7 @@ focus_tree = {
 					set_temp_variable = { tag_to_release = SLO }
 					release_targeted_tag = yes
 					var:tag_to_release = {
+						AUS_refresh_crownland_army_ideas = yes
 						set_cosmetic_tag = SLO_habsburg
 						if = {
 							limit = { ROOT = { GER_is_in_mitteleuropa = yes } }
@@ -4329,6 +4423,7 @@ focus_tree = {
 					set_temp_variable = { tag_to_release = TRS }
 					release_targeted_tag = yes
 					var:tag_to_release = {
+						AUS_refresh_crownland_army_ideas = yes
 						set_cosmetic_tag = TRS_habsburg
 						if = {
 							limit = { ROOT = { GER_is_in_mitteleuropa = yes } }
@@ -4417,6 +4512,7 @@ focus_tree = {
 					set_temp_variable = { tag_to_release = HUN }
 					release_targeted_tag = yes
 					var:tag_to_release = {
+						AUS_refresh_crownland_army_ideas = yes
 						set_cosmetic_tag = HUN_habsburg
 						HUN_gusztav_gratz_sic = yes
 						every_state = { remove_claim_by = PREV }

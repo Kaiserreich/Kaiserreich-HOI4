@@ -3212,6 +3212,11 @@ focus_tree = {
 				134 = {
 					custom_effect_tooltip = tooltip_line_break
 					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_add_building_shared
+							BUILDING = bunker
+							NUMBER = 2
+						}
 						add_building_construction = {
 							type = bunker
 							province = {
@@ -3220,17 +3225,17 @@ focus_tree = {
 							}
 							level = 2
 							instant_build = yes
-						}
-						tooltip = {
-							localization_key = tooltip_add_building_shared
-							BUILDING = bunker
-							NUMBER = 2
 						}
 					}
 				}
 				135 = {
 					custom_effect_tooltip = tooltip_line_break
 					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_add_building_shared
+							BUILDING = bunker
+							NUMBER = 2
+						}
 						add_building_construction = {
 							type = bunker
 							province = {
@@ -3239,11 +3244,6 @@ focus_tree = {
 							}
 							level = 2
 							instant_build = yes
-						}
-						tooltip = {
-							localization_key = tooltip_add_building_shared
-							BUILDING = bunker
-							NUMBER = 2
 						}
 					}
 				}
@@ -3705,7 +3705,7 @@ focus_tree = {
 				}
 			}
 			else = {
-				if = { #Volunteers
+				if = { #Volunteers + Workshops
 					limit = { has_idea = IRE_curragh_camp_peoples_4 }
 					hidden_effect = {
 						swap_ideas = {
@@ -3764,35 +3764,10 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
-			if = {
-				limit = { has_completed_focus = IRE_professional_army }
-				if = { #Volunteers + DMI
-					limit = { has_idea = IRE_curragh_camp_professional_3_lar }
-					swap_ideas = {
-						remove_idea = IRE_curragh_camp_professional_3_lar
-						add_idea = IRE_curragh_camp_professional_5_lar
-					}
-				}
-				else = {
-					swap_ideas = {
-						remove_idea = IRE_curragh_camp_professional_2
-						add_idea = IRE_curragh_camp_professional_4
-					}
-				}
-			}
-			else = {
-				if = { #Volunteers + DMI
-					limit = { has_idea = IRE_curragh_camp_peoples_3_lar }
-					swap_ideas = {
-						remove_idea = IRE_curragh_camp_peoples_3_lar
-						add_idea = IRE_curragh_camp_peoples_5_lar
-					}
-				}
-				else = {
-					swap_ideas = {
-						remove_idea = IRE_curragh_camp_peoples_2
-						add_idea = IRE_curragh_camp_peoples_4
-					}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = IRE_curragh_camp_peoples_2
+					add_idea = IRE_curragh_camp_peoples_4
 				}
 			}
 			custom_effect_tooltip = IRE_extra_mil_bonuses_tt
@@ -3803,25 +3778,64 @@ focus_tree = {
 				}
 			}
 			if = {
-				limit = { has_idea = IRE_professionalism_21 }
-				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = IRE_combined_mil_idea_tt
-				custom_effect_tooltip = tooltip_white_line
-				add_ideas = IRE_professionalism_final_lar
-				hidden_effect = {
-					remove_ideas = IRE_professionalism_21
-					remove_ideas = IRE_curragh_camp_professional_5_lar
+				limit = { has_completed_focus = IRE_professional_army }
+				if = { #Volunteers + DMI
+					limit = { has_idea = IRE_curragh_camp_professional_3_lar }
+					hidden_effect = {
+						swap_ideas = {
+							remove_idea = IRE_curragh_camp_professional_3_lar
+							add_idea = IRE_curragh_camp_professional_5_lar
+						}
+					}
+					if = {
+						limit = { has_idea = IRE_professionalism_21 }
+						custom_effect_tooltip = tooltip_white_line
+						custom_effect_tooltip = IRE_combined_mil_idea_tt
+						custom_effect_tooltip = tooltip_white_line
+						add_ideas = IRE_professionalism_final_lar
+						hidden_effect = {
+							remove_ideas = IRE_professionalism_21
+							remove_ideas = IRE_curragh_camp_professional_5_lar
+						}
+					}
+				}
+				else = {
+					hidden_effect = {
+						swap_ideas = {
+							remove_idea = IRE_curragh_camp_professional_2
+							add_idea = IRE_curragh_camp_professional_4
+						}
+					}
 				}
 			}
-			else_if = {
-				limit = { has_idea = IRE_guerilla_10 }
-				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = IRE_combined_mil_idea_tt
-				custom_effect_tooltip = tooltip_white_line
-				add_ideas = IRE_guerilla_final_lar
-				hidden_effect = {
-					remove_ideas = IRE_guerilla_10
-					remove_ideas = IRE_curragh_camp_peoples_5_lar
+			else = {
+				if = { #Volunteers + DMI
+					limit = { has_idea = IRE_curragh_camp_peoples_3_lar }
+					hidden_effect = {
+						swap_ideas = {
+							remove_idea = IRE_curragh_camp_peoples_3_lar
+							add_idea = IRE_curragh_camp_peoples_5_lar
+						}
+					}
+					if = {
+						limit = { has_idea = IRE_guerilla_10 }
+						custom_effect_tooltip = tooltip_white_line
+						custom_effect_tooltip = IRE_combined_mil_idea_tt
+						custom_effect_tooltip = tooltip_white_line
+						add_ideas = IRE_guerilla_final_lar
+						hidden_effect = {
+							remove_ideas = IRE_guerilla_10
+							remove_ideas = IRE_curragh_camp_peoples_5_lar
+						}
+					}
+				}
+				else = {
+					hidden_effect = {
+						swap_ideas = {
+							remove_idea = IRE_curragh_camp_peoples_2
+							add_idea = IRE_curragh_camp_peoples_4
+						}
+					}
 				}
 			}
 			hidden_effect = {
@@ -3909,7 +3923,7 @@ focus_tree = {
 				}
 			}
 			else = {
-				if = { #Volunteers
+				if = { #Volunteers + Workshops
 					limit = { has_idea = IRE_curragh_camp_peoples_4 }
 					hidden_effect = {
 						swap_ideas = {
@@ -3979,35 +3993,10 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
-			if = {
-				limit = { has_completed_focus = IRE_professional_army }
-				if = { #Volunteers + DMI
-					limit = { has_idea = IRE_curragh_camp_professional_3_no_lar }
-					swap_ideas = {
-						remove_idea = IRE_curragh_camp_professional_3_no_lar
-						add_idea = IRE_curragh_camp_professional_5_no_lar
-					}
-				}
-				else = {
-					swap_ideas = {
-						remove_idea = IRE_curragh_camp_professional_2
-						add_idea = IRE_curragh_camp_professional_4
-					}
-				}
-			}
-			else = {
-				if = { #Volunteers + DMI
-					limit = { has_idea = IRE_curragh_camp_peoples_3_no_lar }
-					swap_ideas = {
-						remove_idea = IRE_curragh_camp_peoples_3_no_lar
-						add_idea = IRE_curragh_camp_peoples_5_no_lar
-					}
-				}
-				else = {
-					swap_ideas = {
-						remove_idea = IRE_curragh_camp_peoples_2
-						add_idea = IRE_curragh_camp_peoples_4
-					}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = IRE_curragh_camp_peoples_2
+					add_idea = IRE_curragh_camp_peoples_4
 				}
 			}
 			custom_effect_tooltip = IRE_extra_mil_bonuses_tt
@@ -4018,25 +4007,64 @@ focus_tree = {
 				}
 			}
 			if = {
-				limit = { has_idea = IRE_professionalism_21 }
-				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = IRE_combined_mil_idea_tt
-				custom_effect_tooltip = tooltip_white_line
-				add_ideas = IRE_professionalism_final_no_lar
-				hidden_effect = {
-					remove_ideas = IRE_professionalism_21
-					remove_ideas = IRE_curragh_camp_professional_5_no_lar
+				limit = { has_completed_focus = IRE_professional_army }
+				if = { #Volunteers + DMI
+					limit = { has_idea = IRE_curragh_camp_professional_3_no_lar }
+					hidden_effect = {
+						swap_ideas = {
+							remove_idea = IRE_curragh_camp_professional_3_no_lar
+							add_idea = IRE_curragh_camp_professional_5_no_lar
+						}
+					}
+					if = {
+						limit = { has_idea = IRE_professionalism_21 }
+						custom_effect_tooltip = tooltip_white_line
+						custom_effect_tooltip = IRE_combined_mil_idea_tt
+						custom_effect_tooltip = tooltip_white_line
+						add_ideas = IRE_professionalism_final_no_lar
+						hidden_effect = {
+							remove_ideas = IRE_professionalism_21
+							remove_ideas = IRE_curragh_camp_professional_5_no_lar
+						}
+					}
+				}
+				else = {
+					hidden_effect = {
+						swap_ideas = {
+							remove_idea = IRE_curragh_camp_professional_2
+							add_idea = IRE_curragh_camp_professional_4
+						}
+					}
 				}
 			}
-			else_if = {
-				limit = { has_idea = IRE_guerilla_10 }
-				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = IRE_combined_mil_idea_tt
-				custom_effect_tooltip = tooltip_white_line
-				add_ideas = IRE_guerilla_final_no_lar
-				hidden_effect = {
-					remove_ideas = IRE_guerilla_10
-					remove_ideas = IRE_curragh_camp_peoples_5_no_lar
+			else = {
+				if = { #Volunteers + DMI
+					limit = { has_idea = IRE_curragh_camp_peoples_3_no_lar }
+					hidden_effect = {
+						swap_ideas = {
+							remove_idea = IRE_curragh_camp_peoples_3_no_lar
+							add_idea = IRE_curragh_camp_peoples_5_no_lar
+						}
+					}
+					if = {
+						limit = { has_idea = IRE_guerilla_10 }
+						custom_effect_tooltip = tooltip_white_line
+						custom_effect_tooltip = IRE_combined_mil_idea_tt
+						custom_effect_tooltip = tooltip_white_line
+						add_ideas = IRE_guerilla_final_no_lar
+						hidden_effect = {
+							remove_ideas = IRE_guerilla_10
+							remove_ideas = IRE_curragh_camp_peoples_5_no_lar
+						}
+					}
+				}
+				else = {
+					hidden_effect = {
+						swap_ideas = {
+							remove_idea = IRE_curragh_camp_peoples_2
+							add_idea = IRE_curragh_camp_peoples_4
+						}
+					}
 				}
 			}
 			hidden_effect = {
@@ -4091,6 +4119,11 @@ focus_tree = {
 			119 = {
 				custom_effect_tooltip = tooltip_line_break
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 2
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -4099,17 +4132,17 @@ focus_tree = {
 						}
 						level = 2
 						instant_build = yes
-					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 2
 					}
 				}
 			}
 			113 = {
 				custom_effect_tooltip = tooltip_line_break
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 2
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -4119,38 +4152,33 @@ focus_tree = {
 						level = 2
 						instant_build = yes
 					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 2
-					}
 				}
 			}
 			135 = {
 				custom_override_tooltip = {
-					add_building_construction = {
-						type = coastal_bunker
-						province = 11237
-						level = 2
-					}
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = coastal_bunker
 						NUMBER = 2
 						VP = 11237
 					}
-				}
-				custom_override_tooltip = {
 					add_building_construction = {
 						type = coastal_bunker
-						province = 7394
+						province = 11237
 						level = 2
 					}
+				}
+				custom_override_tooltip = {
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = coastal_bunker
 						NUMBER = 2
 						VP = 7394
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						province = 7394
+						level = 2
 					}
 				}
 				add_building_construction = {
@@ -4201,6 +4229,11 @@ focus_tree = {
 				add_building_construction = { type = air_base level = 1 }
 				add_building_construction = { type = radar_station level = 1 }
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 1
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -4209,11 +4242,6 @@ focus_tree = {
 						}
 						level = 1
 						instant_build = yes
-					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 1
 					}
 				}
 			}
@@ -4222,6 +4250,11 @@ focus_tree = {
 				add_building_construction = { type = air_base level = 2 }
 				add_building_construction = { type = radar_station level = 1 }
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 1
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -4231,38 +4264,33 @@ focus_tree = {
 						level = 1
 						instant_build = yes
 					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 1
-					}
 				}
 			}
 			135 = {
 				custom_override_tooltip = {
-					add_building_construction = {
-						type = coastal_bunker
-						province = 11237
-						level = 1
-					}
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = coastal_bunker
 						NUMBER = 1
 						VP = 11237
 					}
-				}
-				custom_override_tooltip = {
 					add_building_construction = {
 						type = coastal_bunker
-						province = 7394
+						province = 11237
 						level = 1
 					}
+				}
+				custom_override_tooltip = {
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = coastal_bunker
 						NUMBER = 1
 						VP = 7394
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						province = 7394
+						level = 1
 					}
 				}
 				add_building_construction = {
@@ -4935,17 +4963,17 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = { type = dockyard level = 2 }
 				custom_override_tooltip = {
-					add_building_construction = {
-						type = naval_base
-						level = 2
-						province = 7394
-						instant_build = yes
-					}
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = naval_base
 						NUMBER = 2
 						VP = 7394
+					}
+					add_building_construction = {
+						type = naval_base
+						level = 2
+						province = 7394
+						instant_build = yes
 					}
 				}
 			}
@@ -6826,11 +6854,15 @@ focus_tree = {
 				}
 				IRE_improve_bm = yes
 			}
-			add_political_power = 50
-			activate_targeted_decision = { target = GER decision = IRE_buyout_foreign_owners }
-			activate_targeted_decision = { target = ENG decision = IRE_buyout_foreign_owners }
-			custom_effect_tooltip = IRE_buyout_foreign_owners_tt
-			effect_tooltip = { add_offsite_building = { type = industrial_complex level = 1 } }
+			if = {
+				limit = { IRE_gateway_finished = no }
+				add_political_power = 50
+				activate_targeted_decision = { target = GER decision = IRE_buyout_foreign_owners }
+				activate_targeted_decision = { target = ENG decision = IRE_buyout_foreign_owners }
+				custom_effect_tooltip = IRE_buyout_foreign_owners_tt
+				effect_tooltip = { add_offsite_building = { type = industrial_complex level = 1 } }
+			}
+			else = { add_offsite_building = { type = industrial_complex level = 1 } }
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
 	}
@@ -7463,6 +7495,11 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed IRE_expand_coastal_batteries"
 			119 = {
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 1
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -7471,16 +7508,16 @@ focus_tree = {
 						}
 						level = 1
 						instant_build = yes
-					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 1
 					}
 				}
 			}
 			113 = {
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 1
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -7490,38 +7527,33 @@ focus_tree = {
 						level = 1
 						instant_build = yes
 					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 1
-					}
 				}
 			}
 			135 = {
 				custom_override_tooltip = {
-					add_building_construction = {
-						type = coastal_bunker
-						province = 11237
-						level = 1
-					}
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = coastal_bunker
 						NUMBER = 1
 						VP = 11237
 					}
-				}
-				custom_override_tooltip = {
 					add_building_construction = {
 						type = coastal_bunker
-						province = 7394
+						province = 11237
 						level = 1
 					}
+				}
+				custom_override_tooltip = {
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = coastal_bunker
 						NUMBER = 1
 						VP = 7394
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						province = 7394
+						level = 1
 					}
 				}
 				add_building_construction = {
@@ -7586,7 +7618,10 @@ focus_tree = {
 		available = {
 			is_in_faction_with = GER
 			has_country_flag = IRE_gateway_IRE_victory
-			GER_is_in_mitteleuropa = yes
+			custom_override_tooltip = {
+				tooltip = IRE_mitteleuropa_member
+				GER_is_in_mitteleuropa = yes
+			}
 			custom_override_tooltip = {
 				tooltip = IRE_host_germans_tt
 				GER = {
@@ -8228,7 +8263,10 @@ focus_tree = {
 			has_country_flag = IRE_gateway_IRE_victory
 			OR = {
 				has_global_flag = USA_civil_war_over_flag
-				GER_is_in_mitteleuropa = yes
+				custom_override_tooltip = {
+					tooltip = IRE_mitteleuropa_member
+					GER_is_in_mitteleuropa = yes
+				}
 			}
 			has_war = no
 		}
@@ -8349,6 +8387,11 @@ focus_tree = {
 			113 = {
 				add_building_construction = { type = anti_air_building level = 2 }
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 2
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -8358,29 +8401,29 @@ focus_tree = {
 						level = 2
 						instant_build = yes
 					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 2
-					}
 				}
 				custom_override_tooltip = {
-					add_building_construction = {
-						type = bunker
-						province = 11293
-						level = 3
-					}
 					tooltip = {
 						localization_key = tooltip_add_building_on_victory_point
 						BUILDING = bunker
 						NUMBER = 3
 						VP = 11293
 					}
+					add_building_construction = {
+						type = bunker
+						province = 11293
+						level = 3
+					}
 				}
 			}
 			119 = {
 				add_building_construction = { type = anti_air_building level = 2 }
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 2
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -8389,17 +8432,17 @@ focus_tree = {
 						}
 						level = 2
 						instant_build = yes
-					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 2
 					}
 				}
 			}
 			135 = {
 				add_building_construction = { type = anti_air_building level = 2 }
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 2
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -8408,17 +8451,17 @@ focus_tree = {
 						}
 						level = 2
 						instant_build = yes
-					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 2
 					}
 				}
 			}
 			134 = {
 				add_building_construction = { type = anti_air_building level = 2 }
 				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 2
+					}
 					add_building_construction = {
 						type = coastal_bunker
 						province = {
@@ -8427,11 +8470,6 @@ focus_tree = {
 						}
 						level = 2
 						instant_build = yes
-					}
-					tooltip = {
-						localization_key = tooltip_add_building_on_coastal_provinces
-						BUILDING = coastal_bunker
-						NUMBER = 2
 					}
 				}
 			}
@@ -9370,8 +9408,7 @@ focus_tree = {
 						add_idea = IRE_loas_soc_idea_2
 					}
 				}
-				every_country = {
-					limit = { is_ally_with = ROOT }
+				every_faction_member = {
 					add_ideas = IRE_loas_member_idea
 				}
 			}
@@ -9442,7 +9479,7 @@ focus_tree = {
 				faction_leader = { has_elected_government = yes }
 			}
 			GFX_goal_USA_domain = {
-				faction_leader = { has_authoritarian_government = yes  }
+				faction_leader = { has_authoritarian_government = yes }
 			}
 			GFX_focus_SOV_builder_of_the_red_army = yes
 		}
@@ -12897,15 +12934,14 @@ focus_tree = {
 		id = IRE_republic_maintained
 
 		icon = {
-			GFX_goal_COS_Ferrer_Coup = {
-				NOT = {
-					AND = {
-						has_country_flag = IRE_govt_parliamentary_an
-						has_country_flag = IRE_gateway_GER_victory
-					}
+			GFX_focus_generic_authoritarian_government = {
+				OR = {
+					has_country_flag = IRE_govt_parliamentary_an
+					has_country_flag = IRE_govt_military
 				}
+				has_country_flag = IRE_gateway_GER_victory
 			}
-			GFX_focus_generic_authoritarian_government = yes
+			GFX_goal_COS_Ferrer_Coup = yes
 		}
 
 		cost = 5
@@ -16173,10 +16209,23 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed IRE_reorganise_ica"
 			add_ideas = IRE_reorganised_ICA
-			set_temp_variable = { IRE_ulster_resistance_delta = -0.08 }		# If editing, be sure to edit the loc tooltip aswell
-			add_to_variable = { IRE_ulster_resistance = IRE_ulster_resistance_delta }
-			force_update_dynamic_modifier = yes
-			IRE_update_resistance = yes
+			if = {
+				limit = { check_variable = { IRE_ulster_resistance > 0 } }
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = IRE_reluctant_countrymen
+				}
+				add_to_variable = {
+					IRE_ulster_resistance = {
+						value = -0.08
+						clamp = { min = { value = IRE_ulster_resistance multiply = -1 } max = 0 }
+					}
+					tooltip = resistance_target_tooltip
+				}
+				force_update_dynamic_modifier = yes
+				IRE_update_resistance = yes
+			}
 			if = {
 				limit = { has_active_mission = IRE_reactionary_resistance_grows }
 				custom_effect_tooltip = tooltip_white_line

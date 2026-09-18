@@ -72,6 +72,8 @@
 ### Tooltips ###
  GBR_syndicalist_resistance_higher: "The §Y$MODIFIER_STABILITY_FACTOR$§! effect of §Y$GBR_syndicalist_resistance$§! is $RIGHT|R%0$ or more"
  GBR_syndicalist_resistance_lower: "The §Y$MODIFIER_STABILITY_FACTOR$§! effect of §Y$GBR_syndicalist_resistance$§! is $RIGHT|R%0$ or less"
+
+ GBR_postwar_devastation_modifier_change_tooltip: "$industrial_capacity_factory_tooltip$\n$industrial_capacity_dockyard_tooltip$\n$local_resources_factor_tooltip$\n$production_speed_buildings_factor_tooltip$"
  ENT_britain_agree_northire: "the British agreed to give up on Northern Ireland"
  GBR_Ireland_leave_Entente: "§RWe will leave the Entente in disgust§!"
  GBR_Ireland_leave_faction: "§RWe will leave our faction in disgust§!"
@@ -709,6 +711,7 @@
  united_kingdom_events.121.a: "Give them back the land."
  united_kingdom_events.121.b: "No, we'll keep it all."
  united_kingdom_events.121.c: "We must inform our overlords immediately..."
+ united_kingdom_events.121.e: "We cannot refuse them anyway."
 
  united_kingdom_events.122.t: "[From.GetNameDefCap] Agrees"
  united_kingdom_events.122.d: "The [From.GetAdjective] government has agreed with our request and has transferred the colonies to our control."
@@ -867,25 +870,25 @@
  GBR_arnold_leese: "Arnold Leese"
  GBP_arnold_leese_leader_desc: "§YBorn:§! §LNovember 16th, 1878, in Lytham St Annes, Lancashire, England§!"
 
- GBR_austen_chamberlain: "Joseph Austen Chamberlain"
+ GBR_austen_chamberlain: "Austen Chamberlain" # Joseph Austen Chamberlain
  GBR_austen_chamberlain_sic_desc: "§YBorn:§! §LOctober 16th, 1863, in Birmingham, Warwickshire, England§!"
- GBR_anthony_eden: "Robert Anthony Eden"
+ GBR_anthony_eden: "Anthony Eden" # Robert Anthony Eden
  GBR_anthony_eden_sic_desc: "§YBorn:§! §LJune 12th, 1897, in Rushyford, Durham, England§!"
- GBR_robert_gascoyne_cecil: "Edgar Algernon Robert Gascoyne-Cecil"
- GBR_robert_gascoyne_cecil_sic_desc: "§YBorn:§! §LSeptember 14th, 1864, in Marylebone, London, England§!"
- GBR_robert_vansittart: "Robert Gilbert Vansittart"
+ GBR_robert_cecil: "Robert Cecil" # Edgar Algernon Robert Gascoyne-Cecil
+ GBR_robert_cecil_sic_desc: "§YBorn:§! §LSeptember 14th, 1864, in Marylebone, London, England§!"
+ GBR_robert_vansittart: "Robert Vansittart" # Robert Gilbert Vansittart
  GBR_robert_vansittart_sic_desc: "§YBorn:§! §LJune 25th, 1881, in Farnham, Surrey, England§!"
  GBR_henry_page_croft: "Henry Page Croft"
  GBR_henry_page_croft_sic_desc: "§YBorn:§! §LJune 22nd, 1881, in Ware, Hertfordshire, England§!"
  GBR_houses_of_parliament: "Houses of Parliament"
  GBR_houses_of_parliament_sic_desc: "§YFounded:§! §LJanuary 1st, 1801, in the Palace of Westminster, London, England§!"
- GBR_richard_crossman: "Richard Howard Stafford Crossman"
+ GBR_richard_crossman: "Richard Crossman" # Richard Howard Stafford Crossman
  GBR_richard_crossman_sic_desc: "§YBorn:§! §LDecember 15th, 1907, in London, England§!"
- GBR_john_simon: "John Allsebrook Simon"
+ GBR_john_simon: "John Simon" # John Allsebrook Simon
  GBR_john_simon_sic_desc: "§YBorn:§! §LFebruary 28th, 1873, in Moss Side, Manchester, England§!"
 
- GBR_william_maxwell_aitken: "William Maxwell Aitken"
- GBR_william_maxwell_aitken_advisor_desc: "§YBorn:§! §LMay 25th, 1879, in Maple, Ontario, Dominion of Canada§!"
+ GBR_max_aitken: "Max Aitken" # William Maxwell Aitken
+ GBR_max_aitken_advisor_desc: "§YBorn:§! §LMay 25th, 1879, in Maple, Ontario, Dominion of Canada§!"
  GBR_joseph_kenworthy: "Joseph Kenworthy"
  GBR_joseph_kenworthy_advisor_desc: "§YBorn:§! §LMarch 7th, 1879, in Leamington, Warwickshire, England§!"
  GBR_philip_noel_baker: "Philip Noel-Baker"
@@ -894,8 +897,8 @@
  GBR_percy_harris_advisor_desc: "§YBorn:§! §LMarch 6th, 1876, in Kensington, London, England§!"
  GBR_norman_birkett: "Norman Birkett"
  GBR_norman_birkett_advisor_desc: "§YBorn:§! §LSeptember 6th, 1883, in Ulverston, Lancashire, England§!"
- GBR_arthur_kenneth_chesterton: "Arthur Kenneth Chesterton"
- GBR_arthur_kenneth_chesterton_advisor_desc: "§YBorn:§! §LMay 1st, 1899, in Krugersdorp, South African Republic§!"
+ GBR_ak_chesterton: "A.K. Chesterton" # Arthur Kenneth Chesterton
+ GBR_ak_chesterton_advisor_desc: "§YBorn:§! §LMay 1st, 1899, in Krugersdorp, South African Republic§!"
  GBR_frank_cyril_tiarks: "Frank Cyril Tiarks"
  GBR_frank_cyril_tiarks_advisor_desc: "§YBorn:§! §LJuly 9th, 1874, in Balham, Surrey, England§!"
  GBR_barry_domvile: "Barry Domvile"
@@ -914,28 +917,28 @@
  GBR_john_anderson_advisor_desc: "§YBorn:§! §LJuly 8th, 1882, in Edinburgh, Edinburghshire, Scotland§!"
  GBR_montagu_norman: "Montagu Norman"
  GBR_montagu_norman_advisor_desc: "§YBorn:§! §LSeptember 6th, 1871, in Kensington, London, England§!"
- GBR_charles_henry_maxwell_knight: "Charles Henry Maxwell Knight"
- GBR_charles_henry_maxwell_knight_advisor_desc: "§YBorn:§! §LJuly 9th, 1900, in Mitcham, Surrey, England§!"
+ GBR_maxwell_knight: "Maxwell Knight" # Charles Henry Maxwell Knight
+ GBR_maxwell_knight_advisor_desc: "§YBorn:§! §LJuly 9th, 1900, in Mitcham, Surrey, England§!"
 
- GBR_bernard_montgomery: "Bernard Law Montgomery"
+ GBR_bernard_montgomery: "Bernard Montgomery" # Bernard Law Montgomery
  GBR_bernard_montgomery_army_chief_desc: "§YBorn:§! §LNovember 17th, 1887, in Kennington, Surrey, England§!"
- GBR_harold_alexander: "Harold Rupert Alexander"
+ GBR_harold_alexander: "Harold Alexander" # Harold Rupert Alexander
  GBR_harold_alexander_army_chief_desc: "§YBorn:§! §LDecember 10th, 1891, in London, England§!"
- GBR_henry_maitland_wilson: "Henry Maitland Wilson"
- GBR_henry_maitland_wilson_commander_desc: "§YBorn:§! §LSeptember 5th, 1881, in London, England§!"
+ GBR_henry_wilson: "Henry Wilson" # Henry Maitland Wilson
+ GBR_henry_wilson_commander_desc: "§YBorn:§! §LSeptember 5th, 1881, in London, England§!"
  GBR_adrian_carton_de_wiart: "Adrian Carton de Wiart"
  GBR_adrian_carton_de_wiart_commander_desc: "§YBorn:§! §LMay 5th, 1880, in Brussels, Brabant, Kingdom of Belgium§!"
- GBR_orde_wingate: "Orde Charles Wingate"
+ GBR_orde_wingate: "Orde Wingate" # Orde Charles Wingate
  GBR_orde_wingate_high_command_desc: "§YBorn:§! §LFebruary 26th, 1903, in Naini Tal, United Provinces of Agra and Oudh, British India§!"
  GBR_robert_brooke_popham: "Robert Brooke-Popham"
  GBR_robert_brooke_popham_commander_desc: "§YBorn:§! §LSeptember 18th, 1878, in Mendlesham, Suffolk, England§!"
  GBR_philip_neame: "Philip Neame"
  GBR_philip_neame_commander_desc: "§YBorn:§! §LDecember 12th, 1888, in Faversham, Kent, England§!"
- GBR_alan_brooke: "Alan Francis Brooke"
+ GBR_alan_brooke: "Alan Brooke" # Alan Francis Brooke
  GBR_alan_brooke_army_chief_desc: "§YBorn:§! §LJuly 23rd, 1883, in Bagnères-de-Bigorre, Hautes-Pyrénées, French Republic§!"
- GBR_richard_o_connor: "Richard Nugent O'Connor"
+ GBR_richard_o_connor: "Richard O'Connor" # Richard Nugent O'Connor
  GBR_richard_o_connor_commander_desc: "§YBorn:§! §LAugust 21st, 1889, in Srinagar, Jammu and Kashmir, India§!"
- GBR_john_dill: "John Greer Dill"
+ GBR_john_dill: "John Dill" # John Greer Dill
  GBR_john_dill_commander_desc: "§YBorn:§! §LDecember 25th, 1881, in Lurgan, Co. Armagh, Ireland§!"
  GBR_john_vereker: "John Vereker"
  GBR_john_vereker_commander_desc: "§YBorn:§! §LJuly 10th, 1886, in Westminster, London, England§!"
@@ -946,25 +949,25 @@
  GBR_louis_mountbatten: "Louis Mountbatten"
  GBR_louis_mountbatten_navy_chief_desc: "§YBorn:§! §LJune 25th, 1900, in Frogmore House, Windsor, Berkshire, England§!"
  GBR_louis_mountbatten_leader_desc: "§YBorn:§! §LJune 25th, 1900, in Frogmore House, Windsor, Berkshire, England§!"
- GBR_tom_phillips: "Tom Spencer Vaughan Phillips"
+ GBR_tom_phillips: "Tom Phillips" # Tom Spencer Vaughan Phillips
  GBR_tom_phillips_theorist_desc: "§YBorn:§! §LFebruary 19th, 1888, in Falmouth, Cornwall, England§!"
- GBR_dudley_pound: "Alfred Dudley Pound"
+ GBR_dudley_pound: "Dudley Pound" # Alfred Dudley Pound
  GBR_dudley_pound_high_command_desc: "§YBorn:§! §LAugust 29th, 1877, in Ventnor, Isle of Wight, England§!"
- GBR_james_somerville: "James Fownes Somerville"
+ GBR_james_somerville: "James Somerville" # James Fownes Somerville
  GBR_james_somerville_navy_chief_desc: "§YBorn:§! §LJuly 17th, 1882, in Weybridge, Surrey, England§!"
- GBR_john_tovey: "John Cronyn Tovey"
+ GBR_john_tovey: "John Tovey" # John Cronyn Tovey
  GBR_john_tovey_admiral_desc: "§YBorn:§! §LMarch 7th, 1885, in Rochester, Kent, England§!"
 
- GBR_arthur_travers_harris: "Arthur Travers Harris"
- GBR_arthur_travers_harris_air_chief_desc: "§YBorn:§! §LApril 13th, 1892, in Cheltenham, Gloucestershire, England§!"
- GBR_charles_frederick_algernon_portal: "Charles Frederick Algernon Portal"
- GBR_charles_frederick_algernon_portal_air_chief_desc: "§YBorn:§! §LMay 21st, 1893, in Hungerford, Berkshire, England§!"
- GBR_hugh_montague_trenchard: "Hugh Montague Trenchard"
- GBR_hugh_montague_trenchard_high_command_desc: "§YBorn:§! §LFebruary 3rd, 1873, in Taunton, Somerset, England§!"
- GBR_john_frederick_charles_fuller: "John Frederick Charles Fuller"
- GBR_john_frederick_charles_fuller_theorist_desc: "§YBorn:§! §LSeptember 1st, 1878, in Chichester, West Sussex, England§!"
+ GBR_arthur_harris: "Arthur Harris" # Arthur Travers Harris
+ GBR_arthur_harris_air_chief_desc: "§YBorn:§! §LApril 13th, 1892, in Cheltenham, Gloucestershire, England§!"
+ GBR_charles_portal: "Charles Portal" # Charles Frederick Algernon Portal
+ GBR_charles_portal_air_chief_desc: "§YBorn:§! §LMay 21st, 1893, in Hungerford, Berkshire, England§!"
+ GBR_hugh_trenchard: "Hugh Trenchard" # Hugh Montague Trenchard
+ GBR_hugh_trenchard_high_command_desc: "§YBorn:§! §LFebruary 3rd, 1873, in Taunton, Somerset, England§!"
+ GBR_jfc_fuller: "J.F.C. Fuller"  # John Frederick Charles Fuller
+ GBR_jfc_fuller_theorist_desc: "§YBorn:§! §LSeptember 1st, 1878, in Chichester, West Sussex, England§!"
 
- GBR_thomas_edward_lawrence: "Thomas Edward Lawrence"
+ GBR_te_lawrence: "T.E. Lawrence" # Thomas Edward Lawrence
 
 ### Traits ###
  GBR_british_pm_in_exile: "British PM in Exile"

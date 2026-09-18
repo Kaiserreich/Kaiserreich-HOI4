@@ -176,11 +176,8 @@ GRU_move_german_republican_leaders = {
 			promote_character = syndicalist_subtype
 		}
 		GER_paul_frolich = {
-			if = {
-				limit = { NOT = { country_exists = RHI } }
-				set_nationality = PREV.PREV
-				promote_character = radical_socialist_subtype
-			}
+			set_nationality = PREV.PREV
+			promote_character = radical_socialist_subtype
 		}
 		GER_kurt_schumacher = {
 			set_nationality = PREV.PREV
@@ -495,42 +492,6 @@ GRU_reset_focus_completion = {
 	}
 }
 
-RHI_puppet_setup = {
-	hidden_effect = {
-		GER = {
-			GER_paul_frolich = {
-				set_nationality = var:tag_to_release
-				if = {
-					limit = { NOT = { has_ideology = totalist_subtype } }
-					add_country_leader_role = {
-						country_leader = {
-							desc = GER_paul_frolich_leader_desc
-							ideology = totalist_subtype
-						}
-						promote_leader = yes
-					}
-				}
-				else = {
-					promote_character = totalist_subtype
-				}
-				if = {
-					limit = { NOT = { has_ideology = syndicalist_subtype } }
-					add_country_leader_role = {
-						country_leader = {
-							desc = GER_paul_frolich_leader_desc
-							ideology = syndicalist_subtype
-						}
-						promote_leader = yes
-					}
-				}
-				else = {
-					promote_character = syndicalist_subtype
-				}
-			}
-		}
-	}
-}
-
 create_socialist_german_government = {
 	set_politics = {
 		ruling_party = radical_socialist
@@ -775,6 +736,28 @@ germany_create_puppet_templates = {
 		}
 		support = {
 			military_police = { x = 0 y = 0 }
+		}
+	}
+	if = {
+		limit = {
+			has_dlc_taog = yes
+			is_dynamic_country = yes
+		}
+		division_template = {
+			name = "AOK"
+			template_counter = 121
+			is_army_hq = yes
+
+			regiments = {
+				hq_infantry = { x = 0 y = 0 }
+				hq_infantry = { x = 0 y = 1 }
+				hq_infantry = { x = 0 y = 2 }
+				hq_infantry = { x = 0 y = 3 }
+			}
+
+			support = {
+				hq_support_company = { x = 0 y = 0 }
+			}
 		}
 	}
 }

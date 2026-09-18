@@ -2470,7 +2470,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed JAP_colonial_investments"
 			if = {
 				limit = { 527 = { is_owned_and_controlled_by = ROOT } }
-				527 = { #Yangseo
+				527 = { #Yangso
 					increase_state_category_by_one_level = yes
 					add_building_construction = {
 						type = infrastructure
@@ -2669,7 +2669,7 @@ focus_tree = {
 		}
 		available = {
 			has_tech = atomic_research
-			controls_state = 1100 #Gwanbuk
+			controls_state = 1100 #Kwanbuk
 		}
 		ai_will_do = { factor = 10 }
 		completion_reward = {
@@ -3346,10 +3346,10 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed JAP_colonial_incentives"
 			if = {
 				limit = { JAP_owns_korea = yes }
-				525 = { #Gyeonggi
+				525 = { #Kyonggi
 					increase_state_category_by_one_level = yes
 				}
-				527 = { #Yangseo
+				527 = { #Yangso
 					increase_state_category_by_one_level = yes
 					custom_override_tooltip = {
 						add_building_construction = {
@@ -3383,7 +3383,7 @@ focus_tree = {
 						}
 					}
 				}
-				1100 = { #Gwanbuk
+				1100 = { #Kwanbuk
 					increase_state_category_by_one_level = yes
 				}
 				country_event = { id = japan_korean_events.006 days = 3 } #The Fate of Korean Culture
@@ -4618,7 +4618,6 @@ focus_tree = {
 					has_dlc_lar = yes
 					has_completed_focus = JAP_short_war_doctrine
 				}
-				set_variable = { JAP_dummy_var = 20 }
 				custom_effect_tooltip = JAP_change_war_prep
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = JAP_change_strike_against
@@ -4627,7 +4626,6 @@ focus_tree = {
 			}
 			else_if = {
 				limit = { has_completed_focus = JAP_short_war_doctrine }
-				set_variable = { JAP_dummy_var = 20 }
 				custom_effect_tooltip = JAP_change_war_prep_not_lar
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = JAP_change_strike_against
@@ -4652,7 +4650,6 @@ focus_tree = {
 					FOCUS = JAP_short_war_doctrine
 				}
 				effect_tooltip = {
-					set_variable = { JAP_dummy_var = 20 }
 					custom_effect_tooltip = JAP_change_war_prep
 					custom_effect_tooltip = tooltip_white_line
 					custom_effect_tooltip = JAP_change_strike_against
@@ -4677,7 +4674,6 @@ focus_tree = {
 					FOCUS = JAP_short_war_doctrine
 				}
 				effect_tooltip = {
-					set_variable = { JAP_dummy_var = 20 }
 					custom_effect_tooltip = JAP_change_war_prep_not_lar
 					custom_effect_tooltip = tooltip_white_line
 					custom_effect_tooltip = JAP_change_strike_against
@@ -7372,7 +7368,14 @@ focus_tree = {
 		bypass = {
 			has_global_flag = JAP_defeated_by_china
 		}
-		ai_will_do = { factor = 50 }
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				has_idea = war_economy
+				tot_economic_mobilisation_available = yes
+			}
+		}
 		prerequisite = {
 			focus = JAP_support_allies
 			focus = JAP_five_races_under_the_sun
@@ -7462,6 +7465,7 @@ focus_tree = {
 		prerequisite = { focus = JAP_continental_warfare }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed JAP_victory_with_vision"
+			activate_targeted_decision = { target = 591 decision = JAP_take_over_qiongya }
 			custom_effect_tooltip = JAP_victory_with_vision_tt
 			custom_effect_tooltip = tooltip_white_line
 			if = {

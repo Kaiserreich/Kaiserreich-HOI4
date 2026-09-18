@@ -133,13 +133,11 @@ country_event = { #Assemblymen respects honesty
 		log = "[GetLogInfo]: event haiti_events.7 option haiti_events.7.a"
 		name = haiti_events.7.a
 		add_to_variable = {
-			HAI_council_support = 1
+			HAI_council_support = {
+				value = 1
+				clamp = { min = 0 max = { value = 21 subtract = HAI_council_support } }
+			}
 			tooltip = HAI_add_council_support
-		}
-		clamp_variable = {
-			var = HAI_council_support
-			min = 0
-			max = 21
 		}
 	}
 }
@@ -188,22 +186,18 @@ country_event = { #Jean Price-Mars Endorses Calixte
 		log = "[GetLogInfo]: event haiti_events.9 option haiti_events.9.a"
 		name = haiti_events.9.a
 		add_to_variable = {
-			HAI_assembly_support = 5
+			HAI_assembly_support = {
+				value = 5
+				clamp = { min = 0 max = { value = 40 subtract = HAI_assembly_support } }
+			}
 			tooltip = HAI_add_assembly_support
 		}
-		clamp_variable = {
-			var = HAI_assembly_support
-			min = 0
-			max = 40
-		}
 		add_to_variable = {
-			HAI_council_support = 3
+			HAI_council_support = {
+				value = 3
+				clamp = { min = 0 max = { value = 21 subtract = HAI_council_support } }
+			}
 			tooltip = HAI_add_council_support
-		}
-		clamp_variable = {
-			var = HAI_council_support
-			min = 0
-			max = 21
 		}
 	}
 }
@@ -220,13 +214,11 @@ country_event = { #Jean Price-Mars Rebukes Calixte
 		log = "[GetLogInfo]: event haiti_events.10 option haiti_events.10.a"
 		name = haiti_events.10.a
 		subtract_from_variable = {
-			HAI_assembly_support = 3
+			HAI_assembly_support = {
+				value = 3
+				clamp = { min = 0 max = HAI_assembly_support }
+			}
 			tooltip = HAI_remove_assembly_support
-		}
-		clamp_variable = {
-			var = HAI_assembly_support
-			min = 0
-			max = 40
 		}
 	}
 }
@@ -244,13 +236,11 @@ country_event = { #Calixte Sworn in as the new Minister of Justice
 		log = "[GetLogInfo]: event haiti_events.11 option haiti_events.11.a"
 		name = haiti_events.11.a
 		subtract_from_variable = {
-			HAI_assembly_support = 3
+			HAI_assembly_support = {
+				value = 3
+				clamp = { min = 0 max = HAI_assembly_support }
+			}
 			tooltip = HAI_remove_assembly_support
-		}
-		clamp_variable = {
-			var = HAI_assembly_support
-			min = 0
-			max = 40
 		}
 		hidden_effect = {
 			country_event = { id = haiti_events.12 days = 5 }
@@ -270,13 +260,11 @@ country_event = { #National Assembly Protests
 		log = "[GetLogInfo]: event haiti_events.12 option haiti_events.12.a"
 		name = haiti_events.12.a
 		subtract_from_variable = {
-			HAI_assembly_support = 2
+			HAI_assembly_support = {
+				value = 2
+				clamp = { min = 0 max = HAI_assembly_support }
+			}
 			tooltip = HAI_remove_assembly_support
-		}
-		clamp_variable = {
-			var = HAI_assembly_support
-			min = 0
-			max = 40
 		}
 		hidden_effect = {
 			country_event = { id = haiti_events.13 days = 5 }
@@ -297,13 +285,11 @@ country_event = { #Councillors caught calluding with LEscot
 		log = "[GetLogInfo]: event haiti_events.13 option haiti_events.13.a"
 		name = haiti_events.13.a
 		add_to_variable = {
-			HAI_council_support = 2
+			HAI_council_support = {
+				value = 2
+				clamp = { min = 0 max = { value = 21 subtract = HAI_council_support } }
+			}
 			tooltip = HAI_add_council_support
-		}
-		clamp_variable = {
-			var = HAI_council_support
-			min = 0
-			max = 21
 		}
 	}
 
@@ -327,7 +313,10 @@ country_event = { #A New Commander of the Guarde d'Haiti
 		log = "[GetLogInfo]: event haiti_events.14 option haiti_events.14.a"
 		name = haiti_events.14.a
 		add_to_variable = {
-			HAI_assembly_support = 1
+			HAI_assembly_support = {
+				value = 1
+				clamp = { min = 0 max = { value = 40 subtract = HAI_assembly_support } }
+			}
 			tooltip = HAI_add_assembly_support
 		}
 	}
@@ -337,16 +326,11 @@ country_event = { #A New Commander of the Guarde d'Haiti
 		name = haiti_events.14.b
 		add_political_power = 25
 		subtract_from_variable = {
-			HAI_assembly_support = 1
+			HAI_assembly_support = {
+				value = 1
+				clamp = { min = 0 max = HAI_assembly_support }
+			}
 			tooltip = HAI_remove_assembly_support
-		}
-	}
-
-	after = {
-		clamp_variable = {
-			var = HAI_assembly_support
-			min = 0
-			max = 40
 		}
 	}
 }
@@ -687,10 +671,7 @@ country_event = { #The End of the Second American Civil War
 		trigger = {
 			NOT = { country_exists = WCA }
 		}
-		add_to_variable = {
-			var = HAI_american_influence
-			value = 1
-		}
+		add_to_variable = { HAI_american_influence = 1 }
 		custom_effect_tooltip = HAI_increase_American_influence
 	}
 
@@ -704,10 +685,7 @@ country_event = { #The End of the Second American Civil War
 			limit = {
 				has_government = social_democrat
 			}
-			add_to_variable = {
-				var = HAI_american_influence
-				value = 1
-			}
+			add_to_variable = { HAI_american_influence = 1 }
 			custom_effect_tooltip = HAI_increase_American_influence
 		}
 	}
@@ -936,11 +914,12 @@ country_event = { ##National Assembly Elections
 		trigger = {
 			check_variable = { HAI_calixte_electability = 2 }
 		}
-		add_to_variable = { HAI_assembly_support = 5 }
-		clamp_variable = {
-			var = HAI_assembly_support
-			min = 0
-			max = 40
+		add_to_variable = {
+			HAI_assembly_support = {
+				value = 5
+				clamp = { min = 0 max = { value = 40 subtract = HAI_assembly_support } }
+			}
+			tooltip = HAI_add_assembly_support
 		}
 	}
 
@@ -1514,13 +1493,11 @@ country_event = { #Bribing Councillors?
 		log = "[GetLogInfo]: event haiti_civil_war_events.19 option haiti_civil_war_events.19.a"
 		name = haiti_civil_war_events.19.a
 		add_to_variable = {
-			HAI_council_support = 2
+			HAI_council_support = {
+				value = 2
+				clamp = { min = 0 max = { value = 21 subtract = HAI_council_support } }
+			}
 			tooltip = HAI_add_council_support
-		}
-		clamp_variable = {
-			var = HAI_council_support
-			min = 0
-			max = 21
 		}
 		add_stability = -0.05
 		hidden_effect = {
@@ -1703,13 +1680,11 @@ country_event = { #Councillors Trust the Legitimacy of the Elecition
 		log = "[GetLogInfo]: event haiti_civil_war_events.25 option haiti_civil_war_events.25.a"
 		name = haiti_civil_war_events.25.a
 		add_to_variable = {
-			HAI_council_support = 5
+			HAI_council_support = {
+				value = 5
+				clamp = { min = 0 max = { value = 21 subtract = HAI_council_support } }
+			}
 			tooltip = HAI_add_council_support
-		}
-		clamp_variable = {
-			var = HAI_council_support
-			min = 0
-			max = 21
 		}
 	}
 }

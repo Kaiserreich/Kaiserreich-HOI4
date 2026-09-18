@@ -209,9 +209,12 @@ LEP_reduce_widespread_destruction = {
 }
 
 LEP_increase_kmt_unrest_level = {
-	add_to_variable = { lep_kmt_unrest_level = 1 }
-	clamp_variable = { var = lep_kmt_unrest_level min = 0 max = 4 }
-
+	add_to_variable = {
+		lep_kmt_unrest_level = {
+			value = 1
+			clamp = { min = { value = lep_kmt_unrest_level multiply = -1 } max = { value = 4 subtract = lep_kmt_unrest_level } }
+		}
+	}
 	set_variable = {
 		lep_suppress_kmt_mission_timeout = {
 			value = 120
@@ -220,9 +223,12 @@ LEP_increase_kmt_unrest_level = {
 	}
 }
 LEP_decrease_kmt_unrest_level = {
-	add_to_variable = { lep_kmt_unrest_level = -1 }
-	clamp_variable = { var = lep_kmt_unrest_level min = 0 max = 4 }
-
+	add_to_variable = {
+		lep_kmt_unrest_level = {
+			value = -1
+			clamp = { min = { value = lep_kmt_unrest_level multiply = -1 } max = { value = 4 subtract = lep_kmt_unrest_level } }
+		}
+	}
 	set_variable = {
 		lep_suppress_kmt_mission_timeout = {
 			value = 120
@@ -231,9 +237,12 @@ LEP_decrease_kmt_unrest_level = {
 	}
 }
 LEP_increase_rural_banditry_unrest_level = {
-	add_to_variable = { lep_rural_unrest_level = 1 }
-	clamp_variable = { var = lep_rural_unrest_level min = 0 max = 4 }
-
+	add_to_variable = {
+		lep_rural_unrest_level = {
+			value = 1
+			clamp = { min = { value = lep_rural_unrest_level multiply = -1 } max = { value = 4 subtract = lep_rural_unrest_level } }
+		}
+	}
 	set_variable = {
 		lep_suppress_rural_banditry_mission_timeout = {
 			value = 120
@@ -242,9 +251,12 @@ LEP_increase_rural_banditry_unrest_level = {
 	}
 }
 LEP_decrease_rural_banditry_unrest_level = {
-	add_to_variable = { lep_rural_unrest_level = -1 }
-	clamp_variable = { var = lep_rural_unrest_level min = 0 max = 4 }
-
+	add_to_variable = {
+		lep_rural_unrest_level = {
+			value = -1
+			clamp = { min = { value = lep_rural_unrest_level multiply = -1 } max = { value = 4 subtract = lep_rural_unrest_level } }
+		}
+	}
 	set_variable = {
 		lep_suppress_rural_banditry_mission_timeout = {
 			value = 120

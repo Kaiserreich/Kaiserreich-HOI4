@@ -1231,8 +1231,12 @@ NEE_Great_Depression_decisions = {
 					instant_build = yes
 				}
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 3 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 3
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1268,8 +1272,12 @@ NEE_Great_Depression_decisions = {
 					instant_build = yes
 				}
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 5 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 5
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1302,8 +1310,12 @@ NEE_Great_Depression_decisions = {
 				target_province = 11654
 				level = 2
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 5 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 5
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1344,8 +1356,12 @@ NEE_Great_Depression_decisions = {
 				amount = 2
 				state = 930
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 8 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 8
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1381,8 +1397,12 @@ NEE_Great_Depression_decisions = {
 				}
 			}
 			hidden_effect = { country_event = new_england_events.178 }
-			subtract_from_variable = { NEE_GD_timer_var = 5 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 5
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1424,8 +1444,12 @@ NEE_Great_Depression_decisions = {
 				level = 2
 				path = { 9693 3806 908 3710 6732 }
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 5 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 5
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1460,8 +1484,12 @@ NEE_Great_Depression_decisions = {
 					instant_build = yes
 				}
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 2 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 2
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 			hidden_effect = {
 				country_event = { id = new_england_events.167 days = 1400 }
 			}
@@ -1506,8 +1534,12 @@ NEE_Great_Depression_decisions = {
 					instant_build = yes
 				}
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 3 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 3
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1545,8 +1577,12 @@ NEE_Great_Depression_decisions = {
 					instant_build = yes
 				}
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 3 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 3
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1593,8 +1629,12 @@ NEE_Great_Depression_decisions = {
 				}
 				unlock_decision_tooltip = NEE_Moore_Dam
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 2 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 2
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1629,8 +1669,12 @@ NEE_Great_Depression_decisions = {
 			934 = {
 				increase_state_category_by_one_level = yes
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 3 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 3
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1682,8 +1726,12 @@ NEE_Great_Depression_decisions = {
 				localization_key = building_state_modifier|dam
 				INDENT = "    "
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 6 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 6
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -1722,8 +1770,12 @@ NEE_Great_Depression_decisions = {
 					instant_build = yes
 				}
 			}
-			subtract_from_variable = { NEE_GD_timer_var = 4 }
-			clamp_variable = { var = NEE_GD_timer_var min = 5 max = 110 }
+			subtract_from_variable = {
+				NEE_GD_timer_var = {
+					value = 4
+					clamp = { min = 0 max = { value = NEE_GD_timer_var subtract = 5 } }
+				}
+			}
 		}
 		fixed_random_seed = no
 	}
@@ -4948,7 +5000,7 @@ NEE_OAS_decisions = {
 				limit = {
 					FROM = {
 						tag = BRA
-						has_country_leader = { character = BRA_getulio_dornelles_vargas }
+						has_country_leader = { character = BRA_getulio_vargas }
 					}
 				}
 				FROM = {

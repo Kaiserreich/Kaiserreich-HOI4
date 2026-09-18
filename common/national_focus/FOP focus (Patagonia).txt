@@ -3091,17 +3091,10 @@ focus_tree = {
 			focus = FOP_create_the_CSE
 		}
 		bypass = {
-			AND = {
-				NOT = {
-					FRA = {
-						exists = yes
-						has_socialist_government = yes
-					}
-					ENG = {
-						exists = yes
-						has_socialist_government = yes
-					}
-				}
+			all_country_of = {
+				target = { FRA ENG }
+				exists = no
+				has_socialist_government = no
 			}
 		}
 		available = {

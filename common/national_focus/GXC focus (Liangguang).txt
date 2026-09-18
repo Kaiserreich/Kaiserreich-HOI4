@@ -680,7 +680,7 @@ focus_tree = {
 			}
 			#Not gonna let you freely build militias until later.
 			#if = {
-			#	limit = { NOT = { has_country_flag = unlocked_subunit_militia }  }
+			#	limit = { NOT = { has_country_flag = unlocked_subunit_militia } }
 			#	set_country_flag = unlocked_subunit_militia
 			#	enable_tech_militias = yes
 			#}
@@ -3086,10 +3086,8 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				china_is_potential_government = no
-				AND = {
-					has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
-					NOT = { is_ally_with = AGJ }
-				}
+				has_game_rule = { rule = GXC_forpol option = GXC_FORPOL_AGJ }
+				NOT = { is_ally_with = AGJ }
 			}
 			modifier = {
 				factor = 1.5
@@ -3238,7 +3236,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GXC_farmers_bank_of_guangxi"
 			add_stability = 0.1
 			every_owned_state = {
-				limit = { has_state_flag = guangxi_province_state }
+				limit = { check_variable = { chinese_province_state = 594.id } }
 				GXC = { activate_targeted_decision = { target = PREV decision = china_generic_land_reform_decision } }
 			}
 			hidden_effect = {
@@ -3295,9 +3293,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_ambitious_water_control_projects"
 			random_owned_state = {
-				limit = {
-					check_variable = { building_level@infrastructure < 5 }
-				}
+				limit = { infrastructure < 5 }
 				prioritize = { 593 } #Qingyuan
 				add_building_construction = {
 					type = infrastructure
@@ -3306,9 +3302,7 @@ focus_tree = {
 				}
 			}
 			random_owned_state = {
-				limit = {
-					check_variable = { building_level@infrastructure < 5 }
-				}
+				limit = { infrastructure < 5 }
 				prioritize = { 594 } #Nanning
 				add_building_construction = {
 					type = infrastructure
@@ -5047,13 +5041,11 @@ focus_tree = {
 			x = -7
 			y = 0
 			trigger = {
-				AND = {
-					OR = {
-						GXC_is_phase_2_trigger = yes
-						GXC_is_phase_3_trigger = yes
-					}
-					china_is_aligned_with_federalists = yes
+				OR = {
+					GXC_is_phase_2_trigger = yes
+					GXC_is_phase_3_trigger = yes
 				}
+				china_is_aligned_with_federalists = yes
 			}
 		}
 		prerequisite = { focus = GXC_twin_provinces_one_destiny }
@@ -5331,7 +5323,7 @@ focus_tree = {
 			every_core_state = {
 				limit = {
 					is_owned_by = ROOT
-					has_state_flag = guangxi_province_state
+					check_variable = { chinese_province_state = 594.id }
 					free_building_slots = { building = infrastructure size > 0 }
 				}
 				add_building_construction = {
@@ -5457,13 +5449,11 @@ focus_tree = {
 			x = 8
 			y = 0
 			trigger = {
-				AND = {
-					OR = {
-						GXC_is_phase_2_trigger = yes
-						GXC_is_phase_3_trigger = yes
-					}
-					china_is_aligned_with_kmt = yes
+				OR = {
+					GXC_is_phase_2_trigger = yes
+					GXC_is_phase_3_trigger = yes
 				}
+				china_is_aligned_with_kmt = yes
 			}
 		}
 		available = {
@@ -8905,7 +8895,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_rally_the_red_guards"
 			if = {
-				limit = { NOT = { has_country_flag = unlocked_subunit_militia }  }
+				limit = { NOT = { has_country_flag = unlocked_subunit_militia } }
 				set_country_flag = unlocked_subunit_militia
 				enable_tech_militias = yes
 			}
@@ -9435,15 +9425,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_the_third_party_prevails"
 			custom_effect_tooltip = GXC_the_third_party_prevails_effect_tt
-			set_temp_variable = { GXC_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@radical_socialist }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_democrat_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.50 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@social_democrat
+					add = party_popularity@radical_socialist
+					multiply = -0.5
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			GXC_KMT_popular_support_effect = yes
@@ -9623,16 +9611,12 @@ focus_tree = {
 				localization_key = tooltip_modify_dynmod
 				DYNMOD = GXC_shaoshuren_geming_effect
 			}
-			set_temp_variable = { GXC_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			multiply_temp_variable = { GXC_social_democrat_pop_temp_var = 0.5 }
 			add_to_variable = {
-				GXC_expand_provinical_party_committees_experience_gain_factor = GXC_social_democrat_pop_temp_var
+				GXC_expand_provinical_party_committees_experience_gain_factor = { value = party_popularity@social_democrat multiply = 0.5 }
 				tooltip = experience_gain_factor_tooltip
 			}
-			set_temp_variable = { GXC_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			multiply_temp_variable = { GXC_radical_socialist_pop_temp_var = 0.5 }
 			add_to_variable = {
-				GXC_expand_provinical_party_committees_monthly_population = GXC_radical_socialist_pop_temp_var
+				GXC_expand_provinical_party_committees_monthly_population = { value = party_popularity@radical_socialist multiply = 0.5 }
 				tooltip = monthly_population_tooltip
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -9924,20 +9908,20 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = guangxi_province_state
-						has_state_flag = yunnan_province_state
-						has_state_flag = sichuan_province_state
-						has_state_flag = guizhou_province_state
-						has_state_flag = henan_province_state
-						has_state_flag = jiangxi_province_state
-						has_state_flag = fujian_province_state
-						has_state_flag = shaanxi_province_state
-						has_state_flag = chahar_province_state
-						has_state_flag = suiyuan_province_state
-						has_state_flag = gansu_province_state
-						has_state_flag = heilongjiang_province_state
-						has_state_flag = qinghai_province_state
-						has_state_flag = xinjiang_province_state
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 605.id }
+						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 607.id }
+						check_variable = { chinese_province_state = 600.id }
+						check_variable = { chinese_province_state = 595.id }
+						check_variable = { chinese_province_state = 622.id }
+						check_variable = { chinese_province_state = 611.id }
+						check_variable = { chinese_province_state = 621.id }
+						check_variable = { chinese_province_state = 283.id }
+						check_variable = { chinese_province_state = 714.id }
+						check_variable = { chinese_province_state = 353.id }
+						check_variable = { chinese_province_state = 617.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -10019,15 +10003,13 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_awaken_the_peoples_consciousness"
 			custom_effect_tooltip = GXC_awaken_the_peoples_consciousness_effect_tt
-			set_temp_variable = { GXC_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@syndicalist }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_democrat_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.50 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@social_democrat
+					add = party_popularity@syndicalist
+					multiply = -0.5
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			GXC_KMT_popular_support_effect = yes
@@ -10106,20 +10088,20 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = guangxi_province_state
-						has_state_flag = yunnan_province_state
-						has_state_flag = sichuan_province_state
-						has_state_flag = guizhou_province_state
-						has_state_flag = henan_province_state
-						has_state_flag = jiangxi_province_state
-						has_state_flag = fujian_province_state
-						has_state_flag = shaanxi_province_state
-						has_state_flag = chahar_province_state
-						has_state_flag = suiyuan_province_state
-						has_state_flag = gansu_province_state
-						has_state_flag = heilongjiang_province_state
-						has_state_flag = qinghai_province_state
-						has_state_flag = xinjiang_province_state
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 605.id }
+						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 607.id }
+						check_variable = { chinese_province_state = 600.id }
+						check_variable = { chinese_province_state = 595.id }
+						check_variable = { chinese_province_state = 622.id }
+						check_variable = { chinese_province_state = 611.id }
+						check_variable = { chinese_province_state = 621.id }
+						check_variable = { chinese_province_state = 283.id }
+						check_variable = { chinese_province_state = 714.id }
+						check_variable = { chinese_province_state = 353.id }
+						check_variable = { chinese_province_state = 617.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -10193,26 +10175,27 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GXC_expel_the_landlords"
 			custom_effect_tooltip = GXC_expel_the_landlords_tt
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { GXC_social_liberal_pop_temp_var = party_popularity@social_liberal }
-			set_temp_variable = { GXC_market_liberal_pop_temp_var = party_popularity@market_liberal }
-			set_temp_variable = { GXC_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { GXC_authoritarian_democrat_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { GXC_paternal_autocrat_pop_temp_var = party_popularity@paternal_autocrat }
-			set_temp_variable = { GXC_landlord_influence_var = GXC_social_liberal_pop_temp_var }
-			add_to_temp_variable = { GXC_landlord_influence_var = GXC_market_liberal_pop_temp_var }
-			add_to_temp_variable = { GXC_landlord_influence_var = GXC_social_conservative_pop_temp_var }
-			add_to_temp_variable = { GXC_landlord_influence_var = GXC_authoritarian_democrat_pop_temp_var }
-			add_to_temp_variable = { GXC_landlord_influence_var = GXC_paternal_autocrat_pop_temp_var }
-			set_temp_variable = { GXC_landlord_influence_var_neg_val = GXC_landlord_influence_var }
-			multiply_temp_variable = { GXC_landlord_influence_var_neg_val = -0.5 }
-			multiply_temp_variable = { GXC_social_liberal_pop_temp_var = -1 }
-			multiply_temp_variable = { GXC_market_liberal_pop_temp_var = -1 }
-			multiply_temp_variable = { GXC_social_conservative_pop_temp_var = -1 }
-			multiply_temp_variable = { GXC_authoritarian_democrat_pop_temp_var = -1 }
-			multiply_temp_variable = { GXC_paternal_autocrat_pop_temp_var = -1 }
-			multiply_temp_variable = { GXC_landlord_influence_var = 300 }
+			set_temp_variable = {
+				GXC_landlord_influence_var_party_pop_sums = {
+					value = party_popularity@social_liberal
+					add = party_popularity@market_liberal
+					add = party_popularity@social_conservative
+					add = party_popularity@authoritarian_democrat
+					add = party_popularity@paternal_autocrat
+				}
+			}
+
+			set_temp_variable = { GXC_landlord_influence_var_neg_val = { value = GXC_landlord_influence_var_party_pop_sums multiply = -0.5 } }
 			add_stability = GXC_landlord_influence_var_neg_val
+
+			set_temp_variable = { GXC_landlord_influence_var = { value = GXC_landlord_influence_var_party_pop_sums multiply = 300 } }
 			add_political_power = GXC_landlord_influence_var
+
+			set_temp_variable = { GXC_social_liberal_pop_temp_var = { value = party_popularity@social_liberal multiply = -1 } }
+			set_temp_variable = { GXC_market_liberal_pop_temp_var = { value = party_popularity@market_liberal multiply = -1 } }
+			set_temp_variable = { GXC_social_conservative_pop_temp_var = { value = party_popularity@social_conservative multiply = -1 } }
+			set_temp_variable = { GXC_authoritarian_democrat_pop_temp_var = { value = party_popularity@authoritarian_democrat multiply = -1 } }
+			set_temp_variable = { GXC_paternal_autocrat_pop_temp_var = { value = party_popularity@paternal_autocrat multiply = -1 } }
 			add_popularity = { ideology = social_liberal popularity = GXC_social_liberal_pop_temp_var }
 			add_popularity = { ideology = market_liberal popularity = GXC_market_liberal_pop_temp_var }
 			add_popularity = { ideology = social_conservative popularity = GXC_social_conservative_pop_temp_var }
@@ -10476,14 +10459,14 @@ focus_tree = {
 			mark_focus_tree_layout_dirty = yes
 			#Lose Stability Proportionate to Difference between 100% and Radical Socialist Party Popularity
 			custom_effect_tooltip = GXC_sunset_of_the_white_sun_effect_tt
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@radical_socialist }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@syndicalist }
-			subtract_from_temp_variable = { GXC_stability_loss_temp_var = 1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@radical_socialist
+					add = party_popularity@syndicalist
+					subtract = 1
+					multiply = 0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			GXC_KMT_popular_support_effect = yes
@@ -10590,14 +10573,13 @@ focus_tree = {
 			hidden_effect = { country_event = { id = GXC.endgame.222 days = 3 } } #The United Front
 			set_temp_variable = { coalition_partner_var = token:syndicalist }
 			add_to_coalition = yes
-			set_temp_variable = { GXC_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			multiply_temp_variable = { GXC_social_democrat_pop_temp_var = 0.5 }
-			multiply_temp_variable = { GXC_social_democrat_pop_temp_var = -1 }
-			clamp_temp_variable = {
-				var = GXC_social_democrat_pop_temp_var
-				max = 0.5
+			add_to_variable = {
+				GXC_united_front_effect_political_advisor_cost_factor = {
+					value = party_popularity@social_democrat
+					multiply = -0.5
+					clamp = { min = -0.5 max = 0 }
+				}
 			}
-			add_to_variable = { GXC_united_front_effect_political_advisor_cost_factor = GXC_social_democrat_pop_temp_var }
 			hidden_effect = { add_dynamic_modifier = { modifier = GXC_united_front_effect } }
 			add_popularity = { ideology = syndicalist popularity = 0.05 }
 			custom_effect_tooltip = GXC_proclaim_a_true_united_front_effect_tt
@@ -11817,21 +11799,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_reorganising_the_dsp"
 			custom_effect_tooltip = GXC_reorganising_the_dsp_effect_tt
-			set_temp_variable = { GXC_totalist_pop_temp_var = party_popularity@totalist }
-			set_temp_variable = { GXC_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { GXC_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			set_temp_variable = { GXC_syndicalist_pop_temp_var = party_popularity@syndicalist }
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@national_populist }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_totalist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_conservative_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_radical_socialist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_syndicalist_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@totalist
+					add = party_popularity@syndicalist
+					add = party_popularity@radical_socialist
+					add = party_popularity@social_conservative
+					add = party_popularity@national_populist
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -12102,12 +12079,12 @@ focus_tree = {
 			every_controlled_state = {
 				limit = {
 					OR = {
-						has_state_flag = ningxia_province_state
-						has_state_flag = gansu_province_state
-						has_state_flag = qinghai_province_state
-						has_state_flag = heilongjiang_province_state
-						has_state_flag = jilin_province_state
-						has_state_flag = rehe_province_state
+						check_variable = { chinese_province_state = 348.id }
+						check_variable = { chinese_province_state = 283.id }
+						check_variable = { chinese_province_state = 353.id }
+						check_variable = { chinese_province_state = 714.id }
+						check_variable = { chinese_province_state = 886.id }
+						check_variable = { chinese_province_state = 610.id }
 						china_is_chinese_frontier_trigger = yes
 					}
 				}
@@ -12372,21 +12349,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_chen_jiongming_legacy"
 			custom_effect_tooltip = GXC_chen_jiongmings_legacy_effect_tt
-			set_temp_variable = { GXC_totalist_pop_temp_var = party_popularity@totalist }
-			set_temp_variable = { GXC_market_liberal_pop_temp_var = party_popularity@market_liberal }
-			set_temp_variable = { GXC_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			set_temp_variable = { GXC_syndicalist_pop_temp_var = party_popularity@syndicalist }
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@social_democrat }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_totalist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_market_liberal_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_radical_socialist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_syndicalist_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@totalist
+					add = party_popularity@syndicalist
+					add = party_popularity@radical_socialist
+					add = party_popularity@social_democrat
+					add = party_popularity@market_liberal
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -12520,10 +12492,10 @@ focus_tree = {
 			every_controlled_state = {
 				limit = {
 					OR = {
-						has_state_flag = jiangsu_province_state
-						has_state_flag = shandong_province_state
-						has_state_flag = zhili_province_state
-						has_state_flag = fengtian_province_state
+						check_variable = { chinese_province_state = 613.id }
+						check_variable = { chinese_province_state = 597.id }
+						check_variable = { chinese_province_state = 608.id }
+						check_variable = { chinese_province_state = 716.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -12593,7 +12565,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GXC_entrenching_the_yue_clique"
 			custom_effect_tooltip = GXC_entrenching_the_yue_clique_tt
 			every_controlled_state = {
-				limit = { has_state_flag = guangdong_province_state }
+				limit = { check_variable = { chinese_province_state = 592.id } }
 				add_dynamic_modifier = {
 					modifier = GXC_entrenched_yue_dominance
 				}
@@ -13013,20 +12985,15 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GXC_unification_and_reconstruction"
 			custom_effect_tooltip = GXC_unification_and_reconstruction_stab_tt
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { GXC_social_liberal_pop_temp_var = party_popularity@social_democrat }
-			set_temp_variable = { GXC_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { GXC_paternal_autocrat_pop_temp_var = party_popularity@paternal_autocrat }
-			set_temp_variable = { GXC_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { GXC_CDL_opposition_influence_var = GXC_social_liberal_pop_temp_var }
-			add_to_temp_variable = { GXC_CDL_opposition_influence_var = GXC_national_populist_pop_temp_var }
-			add_to_temp_variable = { GXC_CDL_opposition_influence_var = GXC_paternal_autocrat_pop_temp_var }
-			add_to_temp_variable = { GXC_CDL_opposition_influence_var = GXC_social_conservative_pop_temp_var }
-			multiply_temp_variable = { GXC_CDL_opposition_influence_var = -1 }
-			multiply_temp_variable = { GXC_CDL_opposition_influence_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_CDL_opposition_influence_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_CDL_opposition_influence_var = {
+					value = party_popularity@social_liberal
+					add = party_popularity@social_conservative
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@national_populist
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_CDL_opposition_influence_var
 			army_experience = 50
@@ -13252,13 +13219,12 @@ focus_tree = {
 				IDEOLOGY = social_democrat_coloured
 			}
 			end_coalition = yes
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@social_democrat }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@social_democrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -13583,20 +13549,15 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed GXC_guiding_provincial_federalism"
 			custom_effect_tooltip = GXC_guiding_provincial_federalism_tt
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { GXC_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			set_temp_variable = { GXC_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { GXC_market_liberal_pop_temp_var = party_popularity@market_liberal }
-			set_temp_variable = { GXC_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { GXC_yue_opposition_influence_var = GXC_social_democrat_pop_temp_var }
-			add_to_temp_variable = { GXC_yue_opposition_influence_var = GXC_national_populist_pop_temp_var }
-			add_to_temp_variable = { GXC_yue_opposition_influence_var = GXC_market_liberal_pop_temp_var }
-			add_to_temp_variable = { GXC_yue_opposition_influence_var = GXC_social_conservative_pop_temp_var }
-			multiply_temp_variable = { GXC_yue_opposition_influence_var = -1 }
-			multiply_temp_variable = { GXC_yue_opposition_influence_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_yue_opposition_influence_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_yue_opposition_influence_var = {
+					value = party_popularity@social_democrat
+					add = party_popularity@market_liberal
+					add = party_popularity@social_conservative
+					add = party_popularity@national_populist
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_yue_opposition_influence_var
 			army_experience = 50
@@ -13675,10 +13636,10 @@ focus_tree = {
 			every_controlled_state = {
 				limit = {
 					OR = {
-						has_state_flag = guangxi_province_state
-						has_state_flag = yunnan_province_state
-						has_state_flag = guizhou_province_state
-						has_state_flag = fujian_province_state
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 595.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -13820,7 +13781,7 @@ focus_tree = {
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = GXC_entrenching_the_yue_clique_tt
 				every_controlled_state = {
-					limit = { has_state_flag = guangdong_province_state }
+					limit = { check_variable = { chinese_province_state = 592.id } }
 					add_dynamic_modifier = {
 						modifier = GXC_entrenched_yue_dominance
 					}
@@ -13889,13 +13850,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = paternal_autocrat_coloured
 			}
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@paternal_autocrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -13973,13 +13933,13 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_non_ideology_tt
 				IDEOLOGY = paternal_autocrat_coloured
 			}
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			subtract_from_temp_variable = { GXC_stability_loss_temp_var = 1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@paternal_autocrat
+					subtract = 1
+					multiply = 0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -15701,7 +15661,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_organising_a_national_merchant_corps"
 			if = {
-				limit = { NOT = { has_country_flag = unlocked_subunit_militia }  }
+				limit = { NOT = { has_country_flag = unlocked_subunit_militia } }
 				set_country_flag = unlocked_subunit_militia
 				enable_tech_militias = yes
 			}
@@ -16347,19 +16307,15 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_beiyang_of_the_south"
 			custom_effect_tooltip = GXC_beiyang_of_the_south_effect_tt
-			set_temp_variable = { GXC_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { GXC_market_liberal_pop_temp_var = party_popularity@market_liberal }
-			set_temp_variable = { GXC_social_liberal_pop_temp_var = party_popularity@social_liberal }
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@social_democrat }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_conservative_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_market_liberal_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_liberal_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@social_democrat
+					add = party_popularity@social_liberal
+					add = party_popularity@market_liberal
+					add = party_popularity@social_conservative
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -16470,13 +16426,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = paternal_autocrat_coloured
 			}
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@paternal_autocrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -16557,13 +16512,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = authoritarian_democrat_coloured
 			}
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@authoritarian_democrat }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@authoritarian_democrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -16642,17 +16596,14 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_a_young_face_for_an_ancient_civilisation"
 			custom_effect_tooltip = GXC_young_face_for_an_ancient_civilisation_tt
-			set_temp_variable = { GXC_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { GXC_social_liberal_pop_temp_var = party_popularity@social_liberal }
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@social_democrat }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_conservative_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_liberal_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@social_democrat
+					add = party_popularity@social_liberal
+					add = party_popularity@social_conservative
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -16799,13 +16750,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = authoritarian_democrat_coloured
 			}
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@authoritarian_democrat }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@authoritarian_democrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -16895,13 +16845,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = paternal_autocrat_coloured
 			}
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@paternal_autocrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -16978,15 +16927,13 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_2_tt
 				IDEOLOGY1 = authoritarian_democrat_coloured IDEOLOGY2 = paternal_autocrat_coloured
 			}
-			set_temp_variable = { GXC_authoritarian_democrat_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { GXC_stability_loss_temp_var = party_popularity@paternal_autocrat }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_authoritarian_democrat_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@authoritarian_democrat
+					add = party_popularity@paternal_autocrat
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -17127,17 +17074,14 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_freedom_of_commerce"
 			custom_effect_tooltip = GXC_freedom_of_commerce_tt
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@social_democrat }
-			set_temp_variable = { GXC_social_liberal_pop_temp_var = ROOT.party_popularity@social_liberal }
-			set_temp_variable = { GXC_market_liberal_pop_temp_var = ROOT.party_popularity@market_liberal }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_liberal_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_market_liberal_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@social_democrat
+					add = party_popularity@social_liberal
+					add = party_popularity@market_liberal
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -17223,13 +17167,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = social_conservative_coloured
 			}
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@social_conservative }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@social_conservative
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -17676,7 +17619,7 @@ focus_tree = {
 			}
 			#Now you can freely create your own militia templates.
 			if = {
-				limit = { NOT = { has_country_flag = unlocked_subunit_militia }  }
+				limit = { NOT = { has_country_flag = unlocked_subunit_militia } }
 				set_country_flag = unlocked_subunit_militia
 				enable_tech_militias = yes
 			}
@@ -19820,21 +19763,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_victory_of_the_reconstruction_faction"
 			custom_effect_tooltip = GXC_victory_of_the_reconstruction_faction_effect_tt
-			set_temp_variable = { GXC_totalist_pop_temp_var = party_popularity@totalist }
-			set_temp_variable = { GXC_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { GXC_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			set_temp_variable = { GXC_syndicalist_pop_temp_var = party_popularity@syndicalist }
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_totalist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_national_populist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_radical_socialist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_syndicalist_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@totalist
+					add = party_popularity@syndicalist
+					add = party_popularity@radical_socialist
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@national_populist
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -19865,12 +19803,12 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = jiangsu_province_state
-						has_state_flag = fujian_province_state
-						has_state_flag = zhejiang_province_state
-						has_state_flag = anhui_province_state
-						has_state_flag = jiangxi_province_state
-						has_state_flag = guangdong_province_state
+						check_variable = { chinese_province_state = 613.id }
+						check_variable = { chinese_province_state = 595.id }
+						check_variable = { chinese_province_state = 596.id }
+						check_variable = { chinese_province_state = 606.id }
+						check_variable = { chinese_province_state = 600.id }
+						check_variable = { chinese_province_state = 592.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -20209,24 +20147,11 @@ focus_tree = {
 			custom_effect_tooltip = GXC_draft_a_provisional_constitution_tt
 			if = { #RCF
 				limit = { GXC_liang_hancao = { is_second_in_command = yes } }
-				set_temp_variable = { GXC_political_power_gain_var = ROOT.party_popularity@social_liberal }
-				multiply_temp_variable = { GXC_political_power_gain_var = 100 }
-				clamp_temp_variable = {
-					var = GXC_political_power_gain_var
-					min = 0
-					max = 100
-				}
-				add_political_power = GXC_political_power_gain_var
+				add_political_power = party_popularity_100@social_liberal
 			}
 			if = { #WHC
 				limit = { GXC_zou_lu = { is_second_in_command = yes } }
-				set_temp_variable = { GXC_stability_gain_var = ROOT.party_popularity@social_conservative }
-				multiply_temp_variable = { GXC_stability_gain_var = 0.3 }
-				clamp_temp_variable = {
-					var = GXC_stability_gain_var
-					min = 0
-					max = 100
-				}
+				set_temp_variable = { GXC_stability_gain_var = { value = party_popularity@social_conservative multiply = 0.3 } }
 				add_stability = GXC_stability_gain_var
 			}
 		}
@@ -20370,8 +20295,7 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = GXC_constitutionalism_triumphs_regionalism_modifier_tt
 			hidden_effect = {
-				set_temp_variable = { GXC_constitutionalism_triumphs_regionalism_soc_con_temp_var = ROOT.party_popularity@social_conservative }
-				multiply_temp_variable = { GXC_constitutionalism_triumphs_regionalism_soc_con_temp_var = -1 }
+				set_variable = { GXC_constitutionalism_triumphs_regionalism_soc_con_temp_var = { value = party_popularity@social_conservative multiply = -1 } }
 				add_dynamic_modifier = { modifier = GXC_constitutionalism_triumphs_regionalism_modifier }
 			}
 		}
@@ -20422,21 +20346,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_triumph_of_the_western_hills"
 			custom_effect_tooltip = GXC_triumph_of_the_western_hills_effect_tt
-			set_temp_variable = { GXC_totalist_pop_temp_var = party_popularity@totalist }
-			set_temp_variable = { GXC_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { GXC_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			set_temp_variable = { GXC_syndicalist_pop_temp_var = party_popularity@syndicalist }
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_totalist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_national_populist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_radical_socialist_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_syndicalist_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.33 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@totalist
+					add = party_popularity@syndicalist
+					add = party_popularity@radical_socialist
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@national_populist
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -20809,13 +20728,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_vision_of_the_elders_clique"
 			custom_effect_tooltip = GXC_vision_of_the_elders_clique_tt
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.50 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@paternal_autocrat
+					multiply = -0.5
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			GXC_KMT_popular_support_effect = yes
@@ -20956,19 +20874,18 @@ focus_tree = {
 		mutually_exclusive = { focus = GXC_promise_a_thorough_tutelage }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_emphasize_a_speedy_tutelage"
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@authoritarian_democrat }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.5 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
-			}
-			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = authoritarian_democrat_coloured
 			}
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@authoritarian_democrat
+					multiply = -0.5
+					clamp = { min = -1 max = 0 }
+				}
+			}
+			add_stability = GXC_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
 			GXC_RCF_medium_effect = yes
 			GXC_WHC_medium_effect = yes
@@ -21210,17 +21127,14 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GXC_dominance_of_new_guangdong"
 			custom_effect_tooltip = GXC_dominance_of_new_guangdong_effect_tt
-			set_temp_variable = { GXC_social_liberal_pop_temp_var = party_popularity@social_liberal }
-			set_temp_variable = { GXC_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { GXC_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_liberal_pop_temp_var }
-			add_to_temp_variable = { GXC_stability_loss_temp_var = GXC_social_conservative_pop_temp_var }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { GXC_stability_loss_temp_var = 0.5 }
-			clamp_temp_variable = {
-				var = GXC_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				GXC_stability_loss_temp_var = {
+					value = party_popularity@social_liberal
+					add = party_popularity@social_conservative
+					add = party_popularity@paternal_autocrat
+					multiply = -0.5
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = GXC_stability_loss_temp_var
 			GXC_KMT_popular_support_effect = yes
@@ -21456,13 +21370,13 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = fujian_province_state
-						has_state_flag = zhejiang_province_state
-						has_state_flag = hubei_province_state
-						has_state_flag = jiangxi_province_state
-						has_state_flag = yunnan_province_state
-						has_state_flag = hunan_province_state
-						has_state_flag = sichuan_province_state
+						check_variable = { chinese_province_state = 595.id }
+						check_variable = { chinese_province_state = 596.id }
+						check_variable = { chinese_province_state = 1048.id }
+						check_variable = { chinese_province_state = 600.id }
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 602.id }
+						check_variable = { chinese_province_state = 605.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -21536,8 +21450,8 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = guangxi_province_state
-						has_state_flag = guangdong_province_state
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 592.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -21813,13 +21727,13 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = fujian_province_state
-						has_state_flag = zhejiang_province_state
-						has_state_flag = hubei_province_state
-						has_state_flag = jiangxi_province_state
-						has_state_flag = yunnan_province_state
-						has_state_flag = hunan_province_state
-						has_state_flag = sichuan_province_state
+						check_variable = { chinese_province_state = 595.id }
+						check_variable = { chinese_province_state = 596.id }
+						check_variable = { chinese_province_state = 1048.id }
+						check_variable = { chinese_province_state = 600.id }
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 602.id }
+						check_variable = { chinese_province_state = 605.id }
 					}
 				}
 				add_dynamic_modifier = {

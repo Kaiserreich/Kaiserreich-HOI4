@@ -4,7 +4,7 @@ bookmarks = {
 		desc = KR_scenario_desc
 		date = 1936.1.1.1
 		picture = GFX_select_date_1936
-		default_country = GXC
+		default_country = AFG
 		default = yes
 
 		sort_unplayed_first = no
@@ -34,6 +34,7 @@ bookmarks = {
 			# 1.4 all_the_russias
 			# 1.5 brave_new_world
 			# 1.6 what_happened_in_ju
+			# 1.7 crossroads_of_civilisation
 
 	### Major Countries ###
 		USA = {
@@ -620,7 +621,7 @@ bookmarks = {
 			focuses = {
 				ICE_Reform_Althing
 				ICE_NATO
-				ICE_Shepard
+				ICE_Shepherd
 			}
 		}
 
@@ -961,7 +962,6 @@ bookmarks = {
 			version = beta
 			history = POR_KR_gathering_storm_desc
 			ideology = national_populist
-			label = { recommended_label }
 			ideas = {
 				POR_integralist_ethos
 			}
@@ -1439,7 +1439,7 @@ bookmarks = {
 			version = what_happened_in_ju
 			history = GXC_KR_gathering_storm_desc
 			ideology = authoritarian_democrat
-			label = { new_content_label recommended_label }
+			label = { recommended_label }
 			ideas = {
 				GXC_shared_popular_support_0
 				GXC_divided_military_idea
@@ -1508,7 +1508,7 @@ bookmarks = {
 			version = what_happened_in_ju
 			history = SZC_KR_gathering_storm_desc
 			ideology = authoritarian_democrat
-			label = { new_content_label recommended_label }
+			label = { recommended_label }
 			ideas = {
 				SZC_internal_divisions
 				SZC_federal_governmental_legitimacy_democracys_five_spirits
@@ -1542,7 +1542,7 @@ bookmarks = {
 			version = what_happened_in_ju
 			history = YUN_KR_gathering_storm_desc
 			ideology = authoritarian_democrat
-			label = { new_content_label recommended_label }
+			label = { recommended_label }
 			ideas = {
 				YUN_autonomous_armies_level0
 				YUN_dian_qian_divide_1
@@ -1641,6 +1641,24 @@ bookmarks = {
 		}
 
 		### South Asia ###
+		AFG = {
+			minor = yes
+			version = crossroads_of_civilisation
+			history = AFG_KR_gathering_storm_desc
+			ideology = paternal_autocrat
+			label = { new_content_label recommended_label }
+			ideas = {
+				AFG_lands_of_villages_tribes_and_faiths_1
+				AFG_spectre_of_rebellion
+				AFG_loy_afghanistan
+			}
+			focuses = {
+				AFG_renewal_of_the_realm
+				AFG_to_the_victor
+				AFG_from_the_frontier_to_the_heartlands
+			}
+		}
+
 		HND = {
 			minor = yes
 			version = brave_new_world
@@ -1661,19 +1679,19 @@ bookmarks = {
 
 		BHU = {
 			minor = yes
-			version = beta
+			version = crossroads_of_civilisation
 			history = BHU_KR_gathering_storm_desc
 			ideology = paternal_autocrat
-			label = { recommended_label }
+			label = { new_content_label recommended_label }
 			ideas = {
 				BHU_hermit_kingdom
 				BHU_Monastic_Control
 				BHU_feudal_4
 			}
 			focuses = {
-				bhu_expand_dzongs
-				bhu_revise_dual_system
-				bhu_every_family_son
+				bhu_lords_of_the_passes
+				bhu_national_assembly
+				bhu_the_diarchy_rejuvenated
 			}
 		}
 
@@ -1682,7 +1700,7 @@ bookmarks = {
 			version = what_happened_in_ju
 			history = NEP_KR_gathering_storm_desc
 			ideology = paternal_autocrat
-			label = { new_content_label recommended_label }
+			label = { recommended_label }
 			ideas = {
 				NEP_royal_army_0
 				NEP_an_economy_of_corruption_and_stagnation

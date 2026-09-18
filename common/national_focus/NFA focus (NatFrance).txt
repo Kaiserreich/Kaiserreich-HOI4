@@ -4458,10 +4458,12 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NATFRA_attract_investments_from_the_entente"
-			every_country = {
+			if = {
 				limit = { is_in_faction_with = ENT }
-				add_opinion_modifier = { target = NFA modifier = NFA_entente_investments }
-				reverse_add_opinion_modifier = { target = NFA modifier = NFA_entente_investments }
+				every_faction_member = {
+					add_opinion_modifier = { target = NFA modifier = NFA_entente_investments }
+					reverse_add_opinion_modifier = { target = NFA modifier = NFA_entente_investments }
+				}
 			}
 			add_offsite_building = {
 				type = industrial_complex
@@ -6795,18 +6797,16 @@ focus_tree = {
 			x = -2
 			y = 0
 			trigger = {
-				AND = {
-					NFA_controls_major_city = yes
-					OR = {
-						GER = {
-							OR = {
-								exists = no
-								is_faction_leader = no
-							}
+				NFA_controls_major_city = yes
+				OR = {
+					GER = {
+						OR = {
+							exists = no
+							is_faction_leader = no
 						}
-						FRP = {
-							is_in_faction_with = GER
-						}
+					}
+					FRP = {
+						is_in_faction_with = GER
 					}
 				}
 			}
@@ -6840,18 +6840,16 @@ focus_tree = {
 
 		ai_will_do = { factor = 100 }
 		allow_branch = {
-			AND = {
-				NFA_controls_major_city = yes
-				GER = {
-					is_faction_leader = yes
-					has_capitulated = no
-				}
-				FRP = {
-					OR = {
-						exists = no
-						NOT = {
-							is_in_faction_with = GER
-						}
+			NFA_controls_major_city = yes
+			GER = {
+				is_faction_leader = yes
+				has_capitulated = no
+			}
+			FRP = {
+				OR = {
+					exists = no
+					NOT = {
+						is_in_faction_with = GER
 					}
 				}
 			}

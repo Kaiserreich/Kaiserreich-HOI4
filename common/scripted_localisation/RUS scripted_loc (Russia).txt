@@ -1118,28 +1118,24 @@ defined_text = {
 	name = RUS_VST_PSR_status
 	text = {
 		trigger = {
-			is_in_coalition_with_radical_socialist = yes
+			is_in_coalition_with_radical_socialist = no
+		}
+		localization_key = RUS_VST_PSR_status_no_coalition
+	}
+	text = {
+		trigger = {
 			check_variable = { sr_var > 6 }
 		}
 		localization_key = RUS_VST_PSR_status_support
 	}
 	text = {
 		trigger = {
-			is_in_coalition_with_radical_socialist = yes
 			check_variable = { sr_var > 3 }
-			check_variable = { sr_var < 7 }
 		}
 		localization_key = RUS_VST_PSR_status_normal
 	}
 	text = {
-		trigger = {
-			is_in_coalition_with_radical_socialist = yes
-			check_variable = { sr_var < 4 }
-		}
 		localization_key = RUS_VST_PSR_status_bad
-	}
-	text = {
-		localization_key = RUS_VST_PSR_status_no_coalition
 	}
 }
 
@@ -1172,37 +1168,30 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			RUS_VST_centre = yes
 			check_variable = { vst_centre_unity > 7 }
 		}
 		localization_key = RUS_VST_centre_status_1
 	}
 	text = {
 		trigger = {
-			RUS_VST_centre = yes
 			check_variable = { vst_centre_unity > 4 }
-			check_variable = { vst_centre_unity < 8 }
 		}
 		localization_key = RUS_VST_centre_status_2
 	}
 	text = {
 		trigger = {
-			RUS_VST_centre = yes
 			check_variable = { vst_centre_unity > 2 }
-			check_variable = { vst_centre_unity < 5 }
 		}
 		localization_key = RUS_VST_centre_status_3
 	}
 	text = {
 		trigger = {
-			RUS_VST_centre = yes
 			check_variable = { vst_centre_unity < 3 }
 		}
 		localization_key = RUS_VST_centre_status_4
 	}
 	text = {
 		trigger = {
-			RUS_VST_centre = yes
 			RUS_daniil_sulimov = { is_country_leader = yes }
 		}
 		localization_key = RUS_VST_centre_status_5
@@ -1217,7 +1206,6 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			RUS_VST_left = yes
 			has_country_flag = RUS_dvoika_minigame
 			check_variable = { vst_left_radicalism < 4 }
 		}
@@ -1225,18 +1213,14 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			RUS_VST_left = yes
 			has_country_flag = RUS_dvoika_minigame
-			check_variable = { vst_left_radicalism > 3 }
 			check_variable = { vst_left_radicalism < 8 }
 		}
 		localization_key = RUS_VST_left_radicalism_status_2
 	}
 	text = {
 		trigger = {
-			RUS_VST_left = yes
 			has_country_flag = RUS_dvoika_minigame
-			check_variable = { vst_left_radicalism > 7 }
 		}
 		localization_key = RUS_VST_left_radicalism_status_3
 	}

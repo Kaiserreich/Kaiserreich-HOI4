@@ -34,6 +34,10 @@ mobile_infantry = {
 			category_cavalry = {
 				breakthrough = 0.20
 			}
+			recon = {
+				breakthrough = 0.1
+				defense = 0.1
+			}
 		}
 		combined_arms_planning = {
 			category_all_infantry = {
@@ -46,7 +50,9 @@ mobile_infantry = {
 				max_organisation = 20
 			}
 			category_regimental_support_artillery = {
-				soft_attack = 0.15
+				soft_attack = 0.1
+				breakthrough = 0.05
+				defense = 0.05
 			}
 		}
 		delegated_authority = {
@@ -61,7 +67,7 @@ mobile_infantry = {
 				maximum_speed = 0.2
 			}
 			mot_fire_support = {
-				max_organisation = 5
+				max_organisation = 10
 				soft_attack = 0.1
 			}
 		}
@@ -93,6 +99,7 @@ defensive_postures = {
 			fire_support = {
 				supply_consumption = -0.01
 				soft_attack = 0.2
+				entrenchment = 0.2
 			}
 		}
 		elastic_operations = {
@@ -111,7 +118,7 @@ defensive_postures = {
 				soft_attack = 0.1
 			}
 			category_regimental_support_artillery = {
-				soft_attack = 0.2
+				soft_attack = 0.1
 			}
 		}
 		field_construction_training = {
@@ -214,7 +221,7 @@ assault_infantry = {
 
 	#OTHER BASE REWARDS
 	artillery = {
-		soft_attack = 0.1
+		soft_attack = 0.2
 	}
 
 	rewards = {
@@ -226,9 +233,6 @@ assault_infantry = {
 					soft_attack = 0.2
 				}
 			}
-			field_guns = {
-				soft_attack = 0.2
-			}
 		}
 		organic_battalion_fire_support = {
 		#2
@@ -236,11 +240,11 @@ assault_infantry = {
 				soft_attack = 0.1
 			}
 			anti_tank_battery = {
-				ap_attack = 0.1
-				hard_attack = 0.1
+				ap_attack = 0.05
+				hard_attack = 0.05
 			}
 			anti_air_battery = {
-				air_attack = 0.1
+				air_attack = 0.05
 			}
 		}
 
@@ -397,25 +401,30 @@ mounted_infantry = {
 		}
 		beasts_of_war = {
 			category_cavalry = {
-				maximum_speed = 0.5
+				maximum_speed = 0.4
 				max_strength = 0.05
 			}
 			recon = {
-				maximum_speed = 0.5
+				maximum_speed = 0.4
+				battalion_mult = {
+					category = category_cavalry
+					max_strength = 5
+					add = yes
+				}
 			}
 		}
 		limbered_combat_support = {
 			artillery_brigade = {
-				maximum_speed = 0.5
+				maximum_speed = 1
 			}
 			anti_tank_brigade = {
-				maximum_speed = 0.5
+				maximum_speed = 1
 			}
 			anti_air_brigade = {
-				maximum_speed = 0.5
+				maximum_speed = 1
 			}
 			rocket_artillery_brigade = {
-				maximum_speed = 0.5
+				maximum_speed = 1
 			}
 		}
 	}
@@ -689,11 +698,13 @@ peoples_war = {
 				equipment_capture_factor = 0.01
 			}
 			field_guns = {
-				soft_attack = 0.15
+				soft_attack = 0.1
+				breakthrough = 0.1
 			}
 		}
 		quick_decision_offensive_warfare = {
 		#3
+			mastery = 50
 			militia = {
 				initiative = 0.015
 				max_organisation = 10
@@ -760,11 +771,11 @@ great_war_infantry = {
 				battalion_mult = {
 					category = category_light_infantry
 					soft_attack = 0.1
-					breakthrough = 0.05
+					breakthrough = 0.1
 				}
 			}
 			category_regimental_support_artillery = {
-				soft_attack = 0.2
+				soft_attack = 0.1
 			}
 		}
 		field_fortification_emphasis = {
@@ -776,6 +787,7 @@ great_war_infantry = {
 		}
 		redoubt_networks = {
 			dig_in_speed_factor = 0.10
+			max_dig_in = 5
 		}
 	}
 }

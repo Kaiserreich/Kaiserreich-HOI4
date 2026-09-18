@@ -265,6 +265,15 @@ leader_traits = {
 
 		ai_will_do = { factor = 1 }
 	}
+	KR_political_showman = {
+		sprite = 10
+		random = no
+		consumer_goods_expected_value = -0.10
+		local_building_slots_factor = 0.15
+		political_power_gain = -0.10
+
+		ai_will_do = { factor = 1 }
+	}
 
 	### Military ###
 
@@ -808,6 +817,19 @@ leader_traits = {
 		political_power_gain = 0.05
 		command_power_gain_mult = 0.10
 	}
+	KR_liberal_journalist = {
+		sprite = 13
+		random = no
+		consumer_goods_expected_value = -0.15
+		social_liberal_drift = 0.04
+		market_liberal_drift = 0.04
+	}
+	KR_influential_poet = {
+		sprite = 13
+		random = no
+		political_power_factor = 0.05
+		war_support_weekly = 0.001
+	}
 }
 
 ### Custom KR Advisor Traits ###
@@ -921,13 +943,14 @@ leader_traits = {
 		random = no
 		political_power_gain = 0.15
 		political_power_factor = 0.05
-		production_speed_buildings_factor = 0.10
+		production_speed_buildings_factor = 0.05
 		ai_will_do = { factor = 2 }
 	}
 	KR_venerable_diplomat = {
 		sprite = 13
 		random = no
 		war_support_factor = 0.05
+		production_factory_efficiency_gain_factor = 0.05
 		opinion_gain_monthly_factor = 0.25
 		send_volunteer_size = 1
 		ai_will_do = { factor = 1 }
@@ -958,9 +981,9 @@ leader_traits = {
 	KR_nepalese_collaborator = {
 		sprite = 15
 		random = no
-		stability_weekly = 0.001
+		stability_weekly = 0.002
 		non_core_manpower = 0.02
-		resistance_target = -0.03
+		resistance_target = -0.05
 		ai_will_do = { factor = 1 }
 	}
 	KR_queen_mother = {
@@ -976,6 +999,22 @@ leader_traits = {
 		random = no
 		political_power_factor = -0.05
 		stability_factor = 0.15
+		ai_will_do = { factor = 1 }
+	}
+	KR_affable_aristocrat = {
+		sprite = 13
+		random = no
+		stability_factor = 0.05
+		political_advisor_cost_factor = -0.25
+		high_command_cost_factor = -0.25
+		ai_will_do = { factor = 1 }
+	}
+	KR_shrine_builder = {
+		sprite = 13
+		random = no
+		stability_weekly = 0.0010
+		production_speed_buildings_factor = 0.05
+		political_power_factor = -0.05
 		ai_will_do = { factor = 1 }
 	}
 
@@ -1432,6 +1471,14 @@ leader_traits = {
 		civilian_intel_factor = 0.25
 		trade_opinion_factor = 0.5
 		trade_laws_cost_factor = -0.2
+		ai_will_do = { factor = 1 }
+	}
+	KR_foreign_affairs_expert_generic = { #Generic variant of the GER one without Mitteleuropa score+with slight buffs to compensate
+		sprite = 13
+		random = no
+		civilian_intel_factor = 0.35
+		trade_opinion_factor = 0.5
+		trade_laws_cost_factor = -0.25
 		ai_will_do = { factor = 1 }
 	}
 	KR_marxist_economist = {
@@ -3277,6 +3324,14 @@ leader_traits = {
 			}
 		}
 	}
+	KR_head_of_the_romanticists = { #Steinberg
+		random = no
+		sprite = 13
+		production_factory_start_efficiency_factor = 0.05
+		line_change_production_efficiency_factor = 0.05
+		global_building_slots_factor = 0.2
+		industrial_capacity_factory = 0.05
+	}
 	KR_sr_blyumkin = {
 		random = no
 	}
@@ -3836,6 +3891,33 @@ leader_traits = {
 		sprite = 13
 		consumer_goods_factor = -0.15
 		custom_modifier_tooltip = SAF_zimbabwe_modifier
+
+		ai_will_do = { factor = 1 }
+	}
+	SAF_dynamic_militant = {
+		random = no
+		sprite = 18
+		army_morale = 10
+		recruitable_population_factor = 0.1
+		supply_consumption_factor = -0.1
+
+		ai_will_do = { factor = 1 }
+	}
+	SAF_anc_founding_president = {
+		random = no
+		sprite = 13
+		compliance_growth = 0.1
+		production_speed_industrial_complex_factor = 0.1
+		production_speed_infrastructure_factor = 0.1
+
+		ai_will_do = { factor = 1 }
+	}
+	SAF_university_of_cape_town_principal = {
+		random = no
+		sprite = 13
+		special_project_speed_factor = 0.25 # if it's too weak, increase
+		research_speed_factor = 0.05
+		political_power_factor = -0.1
 
 		ai_will_do = { factor = 1 }
 	}

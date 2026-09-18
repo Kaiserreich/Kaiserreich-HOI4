@@ -1485,12 +1485,16 @@ country_event = {
 			end_wars = no
 		}
 		hidden_effect = {
-			var:tag_to_release = { set_cosmetic_tag = BOS_habsburg }
+			var:tag_to_release = {
+				AUS_refresh_crownland_army_ideas = yes
+				set_cosmetic_tag = BOS_habsburg
+			}
 		}
 	}
 	option = { # Croatia-Slavonia to Hungary, Illyrian Condominium
 		log = "[GetLogInfo]: event ausgleich_events.330 option ausgleich_events.330.b"
 		name = ausgleich_events.330.b
+		custom_effect_tooltip = AUS_stop_centralization_tt
 		every_state = {
 			limit = {
 				is_owned_by_ROOT_or_subject = yes
@@ -1523,7 +1527,10 @@ country_event = {
 			end_wars = no
 		}
 		hidden_effect = {
-			var:tag_to_release = { set_cosmetic_tag = CRO_illyria_habsburg }
+			var:tag_to_release = {
+				AUS_refresh_crownland_army_ideas = yes
+				set_cosmetic_tag = CRO_illyria_habsburg
+			}
 		}
 	}
 	option = { # Occupy the whole thing for now
@@ -2030,10 +2037,8 @@ country_event = {
 
 	trigger = {
 		tag = AUS
-		AND = {
-			has_war_with = HUN
-			HUN = { is_valid_peace_target_against_PREV = yes }
-		}
+		has_war_with = HUN
+		HUN = { is_valid_peace_target_against_PREV = yes }
 		is_subject = no
 		OR = {
 			NOT = { controls_state = 4 } #Vienna
@@ -2236,6 +2241,7 @@ country_event = {
 		ai_chance = { base = 0 }
 		add_political_power = -100
 		hidden_effect = {
+			AUS_remove_army_ideas = yes
 			AUS = { remove_ideas = has_scripted_peace }
 		}
 	}
@@ -2274,6 +2280,7 @@ country_event = {
 			GER_remove_from_mitteleuropa = yes
 			separate_peace_all_wars = yes
 		}
+		AUS_remove_army_ideas = yes
 		remove_puppet_and_leave_faction = yes
 		declare_war_on = {
 			target = AUS
@@ -3365,6 +3372,7 @@ country_event = { #Fall of the Habsburgs
 				drop_cosmetic_tag = yes
 				remove_ideas = HUN_financial_ties_broken
 				AUS_remove_monarchy = yes
+				AUS_remove_army_ideas = yes
 			}
 			every_state = {
 				limit = { is_core_austria = no }

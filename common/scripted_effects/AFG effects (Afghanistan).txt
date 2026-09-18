@@ -1,21 +1,7 @@
-### New SiCs
-
-AFG_mahmud_khan_sic = {
-	activate_advisor = AFG_mahmud_khan_sic
-}
-
-AFG_mohammad_ghobar_sic = {
-	activate_advisor = AFG_mohammad_ghobar_sic
-}
-
-AFG_abdul_hadi_dawi_sic = {
-	activate_advisor = AFG_abdul_hadi_dawi_sic
-}
-
 AFG_create_amanullah = {
 	if = {
 		limit = { AFG = { AFG_amanullah_khan = { is_dead = no } } }
-		hidden_effect = { drop_cosmetic_tag = yes }
+		hidden_effect = { set_cosmetic_tag = AFG_kingdom }
 		AFG = {
 			AFG_amanullah_khan = {
 				character_becomes_leader_of_ruling_party_effect_tooltip = yes
@@ -64,26 +50,77 @@ AFG_create_amanullah = {
 						}
 						promote_leader = yes
 					}
-					add_country_leader_role = {
-						country_leader = {
-							desc = AFG_amanullah_khan_leader_desc
-							ideology = national_populist_subtype
-						}
-						promote_leader = yes
-					}
+					set_character_as_monarch = yes
 				}
 			}
 		}
 	}
-	else = {
-		AFG_create_nadir = yes
+}
+
+AFG_create_inayatullah = {
+	if = {
+		limit = { AFG = { AFG_inayatullah_khan = { is_dead = no } } }
+		hidden_effect = { set_cosmetic_tag = AFG_kingdom }
+		AFG = {
+			AFG_inayatullah_khan = {
+				character_becomes_leader_of_ruling_party_effect_tooltip = yes
+				hidden_effect = {
+					set_nationality = PREV.PREV
+					remove_all_country_leader_roles = yes
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_inayatullah_khan_leader_desc
+							ideology = social_democrat_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_inayatullah_khan_leader_desc
+							ideology = social_liberal_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_inayatullah_khan_leader_desc
+							ideology = market_liberal_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_inayatullah_khan_leader_desc
+							ideology = social_conservative_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_inayatullah_khan_leader_desc
+							ideology = authoritarian_democrat_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_inayatullah_khan_leader_desc
+							ideology = paternal_autocrat_subtype
+						}
+						promote_leader = yes
+					}
+					set_character_as_monarch = yes
+				}
+			}
+		}
+		set_country_flag = AFG_durrani_conspiracy_flag
 	}
 }
 
 AFG_create_nadir = {
 	if = {
 		limit = { AFG = { AFG_mohammad_nadir_khan = { is_dead = no } } }
-		hidden_effect = { set_cosmetic_tag = AFG_nadir }
+		hidden_effect = { set_cosmetic_tag = AFG_kingdom }
 		AFG = {
 			AFG_mohammad_nadir_khan = {
 				character_becomes_leader_of_ruling_party_effect_tooltip = yes
@@ -92,125 +129,201 @@ AFG_create_nadir = {
 					remove_all_country_leader_roles = yes
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_mohammad_nadir_khan_army_chief_desc
+							desc = AFG_mohammad_nadir_khan_leader_desc
 							ideology = social_democrat_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_mohammad_nadir_khan_army_chief_desc
+							desc = AFG_mohammad_nadir_khan_leader_desc
 							ideology = social_liberal_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_mohammad_nadir_khan_army_chief_desc
+							desc = AFG_mohammad_nadir_khan_leader_desc
 							ideology = market_liberal_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_mohammad_nadir_khan_army_chief_desc
+							desc = AFG_mohammad_nadir_khan_leader_desc
 							ideology = social_conservative_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_mohammad_nadir_khan_army_chief_desc
+							desc = AFG_mohammad_nadir_khan_leader_desc
 							ideology = authoritarian_democrat_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_mohammad_nadir_khan_army_chief_desc
+							desc = AFG_mohammad_nadir_khan_leader_desc
 							ideology = paternal_autocrat_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_mohammad_nadir_khan_army_chief_desc
+							desc = AFG_mohammad_nadir_khan_leader_desc
 							ideology = national_populist_subtype
 						}
 						promote_leader = yes
 					}
+					set_character_as_monarch = yes
+					set_character_name = AFG_mohammad_nadir_khan_monarch
 				}
 			}
 		}
+		AFG_telai_party_names_effect = yes
 	}
 }
 
-AFG_create_habibullah = {
+AFG_create_zahir = {
 	if = {
-		limit = { AFG = { AFG_habibullah_kalakani = { is_dead = no } } }
-		hidden_effect = { drop_cosmetic_tag = yes }
+		limit = { AFG = { AFG_mohammad_zahir_khan = { is_dead = no } } }
+		hidden_effect = { set_cosmetic_tag = AFG_kingdom }
 		AFG = {
-			AFG_habibullah_kalakani = {
+			AFG_mohammad_zahir_khan = {
+				set_character_name = AFG_mohammad_zahir_khan_monarch
 				character_becomes_leader_of_ruling_party_effect_tooltip = yes
 				hidden_effect = {
 					set_nationality = PREV.PREV
 					remove_all_country_leader_roles = yes
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_habibullah_kalakani_leader_desc
+							desc = AFG_mohammad_zahir_khan_leader_desc
 							ideology = social_democrat_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_habibullah_kalakani_leader_desc
+							desc = AFG_mohammad_zahir_khan_leader_desc
 							ideology = social_liberal_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_habibullah_kalakani_leader_desc
+							desc = AFG_mohammad_zahir_khan_leader_desc
 							ideology = market_liberal_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_habibullah_kalakani_leader_desc
+							desc = AFG_mohammad_zahir_khan_leader_desc
 							ideology = social_conservative_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_habibullah_kalakani_leader_desc
+							desc = AFG_mohammad_zahir_khan_leader_desc
 							ideology = authoritarian_democrat_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_habibullah_kalakani_leader_desc
+							desc = AFG_mohammad_zahir_khan_leader_desc
 							ideology = paternal_autocrat_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = AFG_habibullah_kalakani_leader_desc
+							desc = AFG_mohammad_zahir_khan_leader_desc
 							ideology = national_populist_subtype
 						}
 						promote_leader = yes
 					}
+					set_character_as_monarch = yes
 				}
 			}
 		}
+		AFG_telai_party_names_effect = yes
+	}
+}
+
+AFG_create_hashim = {
+	if = {
+		limit = { AFG = { AFG_mohammad_hashim_khan = { is_dead = no } } }
+		hidden_effect = { set_cosmetic_tag = AFG_kingdom }
+		AFG = {
+			AFG_mohammad_hashim_khan = {
+				set_character_name = AFG_mohammad_hashim_khan_monarch
+				character_becomes_leader_of_ruling_party_effect_tooltip = yes
+				hidden_effect = {
+					set_nationality = PREV.PREV
+					remove_all_country_leader_roles = yes
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_mohammad_hashim_khan_leader_desc
+							ideology = social_democrat_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_mohammad_hashim_khan_leader_desc
+							ideology = social_liberal_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_mohammad_hashim_khan_leader_desc
+							ideology = market_liberal_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_mohammad_hashim_khan_leader_desc
+							ideology = social_conservative_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_mohammad_hashim_khan_leader_desc
+							ideology = authoritarian_democrat_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_mohammad_hashim_khan_leader_desc
+							ideology = paternal_autocrat_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = AFG_mohammad_hashim_khan_leader_desc
+							ideology = national_populist_subtype
+						}
+						promote_leader = yes
+					}
+					set_character_as_monarch = yes
+				}
+			}
+		}
+		AFG_telai_party_names_effect = yes
+		set_country_flag = AFG_peasant_revolt_flag
 	}
 }
 
 AFG_remove_monarchy = {
+	drop_cosmetic_tag = yes
 	if = {
 		limit = { has_character = AFG_amanullah_khan }
 		AFG_amanullah_khan = {
@@ -225,11 +338,1933 @@ AFG_remove_monarchy = {
 			retire = yes
 		}
 	}
+}
+
+### Reform Points and Anger Effects ###
+#Set temp vars first
+AFG_change_anger = {
 	if = {
-		limit = { has_character = AFG_habibullah_kalakani }
-		AFG_habibullah_kalakani = {
-			hidden_effect = { remove_all_country_leader_roles = yes }
-			retire = yes
+		limit = {
+			has_variable = AFG_anger_level
+			NOT = { check_variable = { AFG_anger_change = 0 } }
+		}
+		# Add Stability loss when anger goes over 50%
+		# 50% - 75% Anger, stability falls by -0.5% per unit of anger
+		# 75% - 100% Anger, stability falls by -1% per unit of anger.
+		set_temp_variable = { AFG_anger_level_after = { value = AFG_anger_level add = AFG_anger_change } }
+		if = {
+			limit = {
+				check_variable = { AFG_anger_level_after > 0.5 }
+				check_variable = { AFG_anger_change > 0 }
+			}
+			set_temp_variable = {
+				AFG_relevant_anger_level_change = {
+					value = 0
+					if = { #Exclude Anger changes that are not relevant to stability loss
+						limit = { value = AFG_anger_level less_than = 0.5 }
+						add = AFG_anger_level_after
+						subtract = 0.5
+					}
+					else = { add = AFG_anger_change }
+				}
+			}
+			set_temp_variable = {
+				AFG_anger_stability_loss = {
+					value = 0
+					if = {
+						limit = { value = AFG_anger_level_after less_than_or_equals = 0.75 }
+						# Low stability loss
+						add = AFG_relevant_anger_level_change
+						multiply = -0.5
+					}
+					else_if = {
+						limit = { value = AFG_anger_level less_than_or_equals = 0.75 }
+						# High stability loss
+						add = {
+							value = AFG_anger_level_after
+							subtract = 0.75
+						}
+						# Low stability loss
+						add = {
+							value = 0.75
+							subtract = AFG_anger_level
+							multiply = 0.5
+						}
+						multiply = -1
+					}
+					else = {
+						# High stability loss
+						add = AFG_relevant_anger_level_change
+						multiply = -1
+					}
+				}
+			}
+			custom_effect_tooltip = AFG_anger_stability_loss_tooltip
+			add_stability = AFG_anger_stability_loss
+		}
+
+		# Add Anger
+		effect_tooltip = { add_to_variable = { AFG_anger_level = AFG_anger_change tooltip = AFG_anger_change_tooltip } }
+		hidden_effect = {
+			add_to_variable = {
+				AFG_anger_level = {
+					value = AFG_anger_change
+					clamp = { min = { value = AFG_anger_level multiply = -1 } max = { value = 1 subtract = AFG_anger_level } }
+				}
+			}
 		}
 	}
 }
+
+AFG_change_reform_points = {
+	if = {
+		limit = { NOT = { check_variable = { AFG_reform_points_change = 0 } } }
+		add_to_variable = {
+			AFG_reform_points = {
+				value = AFG_reform_points_change
+				clamp = { min = { value = AFG_reform_points multiply = -1 } max = 100 }
+			}
+			tooltip = AFG_reform_points_change_tooltip
+		}
+	}
+}
+
+### National Integration Mechanic ###
+# This is the number of times the effect must be ran to remove the dynmod. Is negative to ensure modifier changes always positive.
+# It also influences by how much it changes the modifiers each time, dictated by what the max debuffs were after BM.
+@AFG_reform_progress_amount = -30
+# Below are constants of the max debuffs of it post black monday
+@AFG_national_integration_mobilization_speed_cap = -0.45
+@AFG_national_integration_army_org_factor_cap = -0.15
+@AFG_national_integration_production_speed_buildings_factor_cap = -0.6
+@AFG_national_integration_research_speed_factor_cap = -0.12
+
+# Effect to be ran when BM starts and foreign aid cut off
+AFG_decrease_national_integration = {
+	custom_effect_tooltip = {
+		localization_key = tooltip_modify_dynmod
+		DYNMOD = AFG_national_integration_modifier
+	}
+	# Mobilisation Speed
+	add_to_variable = {
+		AFG_national_integration_mobilization_speed = {
+			value = @AFG_national_integration_mobilization_speed_cap
+			subtract = AFG_national_integration_mobilization_speed
+		}
+		tooltip = mobilization_speed_tooltip
+	}
+
+	# Division Organisation
+	add_to_variable = {
+		AFG_national_integration_army_org_factor = {
+			value = @AFG_national_integration_army_org_factor_cap
+			subtract = AFG_national_integration_army_org_factor
+		}
+		tooltip = army_org_factor_tooltip
+	}
+
+	# Construction Speed
+	add_to_variable = {
+		AFG_national_integration_production_speed_buildings_factor = {
+			value = @AFG_national_integration_production_speed_buildings_factor_cap
+			subtract = AFG_national_integration_production_speed_buildings_factor
+		}
+		tooltip = production_speed_buildings_factor_tooltip
+	}
+
+	# Research Speed
+	add_to_variable = {
+		AFG_national_integration_research_speed_factor = {
+			value = @AFG_national_integration_research_speed_factor_cap
+			subtract = AFG_national_integration_research_speed_factor
+		}
+		tooltip = research_speed_factor_tooltip
+	}
+
+	force_update_dynamic_modifier = yes
+	set_country_flag = AFG_investment_collapse_flag
+}
+
+# Nothing needs to be set to first run this effect
+AFG_increase_national_integration = {
+	if = {
+		limit = { has_dynamic_modifier = { modifier = AFG_national_integration_modifier } }
+		if = {
+			limit = { check_expr = { value = AFG_reform_progress subtract = 1 equals = 0 } }
+			remove_dynamic_modifier = { modifier = AFG_national_integration_modifier }
+			clear_variable = AFG_reform_progress
+			clear_variable = AFG_national_integration_mobilization_speed
+			clear_variable = AFG_national_integration_army_org_factor
+			clear_variable = AFG_national_integration_production_speed_buildings_factor
+			clear_variable = AFG_national_integration_research_speed_factor
+		}
+		else = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = AFG_national_integration_modifier
+			}
+			subtract_from_variable = { AFG_reform_progress = 1 }
+
+			# Mobilisation Speed
+			add_to_variable = {
+				AFG_national_integration_mobilization_speed = {
+					value = @AFG_national_integration_mobilization_speed_cap
+					divide = @AFG_reform_progress_amount
+				}
+				tooltip = mobilization_speed_tooltip
+			}
+
+			# Division Organisation
+			add_to_variable = {
+				AFG_national_integration_army_org_factor = {
+					value = @AFG_national_integration_army_org_factor_cap
+					divide = @AFG_reform_progress_amount
+				}
+				tooltip = army_org_factor_tooltip
+			}
+
+			# Construction Speed
+			add_to_variable = {
+				AFG_national_integration_production_speed_buildings_factor = {
+					value = @AFG_national_integration_production_speed_buildings_factor_cap
+					divide = @AFG_reform_progress_amount
+				}
+				tooltip = production_speed_buildings_factor_tooltip
+			}
+
+			# Research Speed
+			add_to_variable = {
+				AFG_national_integration_research_speed_factor = {
+					value = @AFG_national_integration_research_speed_factor_cap
+					divide = @AFG_reform_progress_amount
+				}
+				tooltip = research_speed_factor_tooltip
+			}
+		}
+	}
+	else_if = {
+		limit = { has_idea = AFG_industrial_revolution }
+		swap_ideas = {
+			remove_idea = AFG_industrial_revolution
+			add_idea = AFG_industrial_revolution_2
+		}
+	}
+	else_if = {
+		limit = { NOT = { has_idea = AFG_industrial_revolution_2 } }
+		add_ideas = AFG_industrial_revolution
+	}
+	else = {
+		# Extra bonus in case there is still ability to do more
+		add_one_random_civilian_factory = yes
+	}
+}
+
+AFG_state_building_activate_initial_decisions = {
+	activate_targeted_decision = { decision = AFG_improving_the_darulaman_tramway target = 267 }
+	activate_targeted_decision = { decision = AFG_home_building_in_farah target = 1117 }
+	activate_targeted_decision = { decision = AFG_supporting_kunduz_cotton target = 1118 }
+	activate_targeted_decision = { decision = AFG_distributing_paper_afghanis target = ROOT }
+	activate_targeted_decision = { decision = AFG_founding_the_baghlan_sugar_factory target = 1118 }
+	activate_targeted_decision = { decision = AFG_mining_efforts_in_qaramqol target = 1118 }
+}
+AFG_state_building_activate_rural_decisions = {
+	activate_targeted_decision = { decision = AFG_develop_nangarhar_sugar_plantations target = 267 }
+	activate_targeted_decision = { decision = AFG_replacing_camels_with_automotives target = ROOT }
+	activate_targeted_decision = { decision = AFG_growth_of_karakul_herding target = 1118 }
+	activate_targeted_decision = { decision = AFG_encourage_mining_along_the_logar target = 267 }
+}
+AFG_state_building_activate_crossing_decisions = {
+	activate_targeted_decision = { decision = AFG_improve_connections_to_iran target = 415 }
+	activate_targeted_decision = { decision = AFG_develop_border_towns target = 415 }
+	activate_targeted_decision = { decision = AFG_tapping_the_sabzak_pass target = 415 }
+}
+AFG_state_building_activate_turkestan_decisions = {
+	activate_targeted_decision = { decision = AFG_bridging_the_kunduz target = 1118 }
+	activate_targeted_decision = { decision = AFG_expand_pashtun_colonisation_efforts target = 1118 }
+}
+AFG_state_building_activate_architects_decisions = {
+	if = {
+		limit = { has_global_flag = USA_civil_war_begun_flag }
+		activate_targeted_decision = { decision = AFG_welcoming_american_refugees target = ROOT }
+	}
+	else = {
+		hidden_effect = { activate_targeted_decision = { decision = AFG_welcoming_american_refugees target = ROOT } }
+	}
+	activate_targeted_decision = { decision = AFG_the_kandahar_development_plan target = 1117 }
+	activate_targeted_decision = { decision = AFG_the_grand_mazar_i_sharif_bazaar target = 1118 }
+	activate_targeted_decision = { decision = AFG_carrying_out_a_geological_survey target = ROOT }
+}
+AFG_state_building_activate_kariz_decisions = {
+	activate_targeted_decision = { decision = AFG_irrigation_renovation_in_wardak target = 267 }
+	activate_targeted_decision = { decision = AFG_bringing_drinking_water_to_nimruz target = 1117 }
+}
+AFG_state_building_activate_electrification_decisions = {
+	activate_targeted_decision = { decision = AFG_electrification_campaign_in_state target = 267 }
+	activate_targeted_decision = { decision = AFG_electrification_campaign_in_state target = 415 }
+	activate_targeted_decision = { decision = AFG_electrification_campaign_in_state target = 1117 }
+	activate_targeted_decision = { decision = AFG_electrification_campaign_in_state target = 1118 }
+	activate_targeted_decision = { decision = AFG_electrification_campaign_in_state target = 442 }
+	activate_targeted_decision = { decision = AFG_electrification_campaign_in_state target = 445 }
+	activate_targeted_decision = { decision = AFG_electrification_campaign_in_state target = 444 }
+	activate_targeted_decision = { decision = AFG_electrification_campaign_in_state target = 410 }
+	activate_targeted_decision = { decision = AFG_electrification_campaign_in_state target = 1042 }
+}
+AFG_state_building_activate_capital_decisions = {
+	activate_targeted_decision = { decision = AFG_building_shirkat_monopolies target = ROOT }
+	activate_targeted_decision = { decision = AFG_branching_out_the_bank target = ROOT }
+	activate_targeted_decision = { decision = AFG_generalised_investment_schemes target = ROOT }
+}
+AFG_state_building_activate_all_decisions_debug = {
+	AFG_state_building_activate_initial_decisions = yes
+	AFG_state_building_activate_rural_decisions = yes
+	AFG_state_building_activate_crossing_decisions = yes
+	AFG_state_building_activate_turkestan_decisions = yes
+	AFG_state_building_activate_architects_decisions = yes
+	AFG_state_building_activate_kariz_decisions = yes
+	AFG_state_building_activate_electrification_decisions = yes
+	AFG_state_building_activate_capital_decisions = yes
+}
+
+### Crossroads of Civilisation Mechanic ###
+AFG_setup_crossroads_of_civilisation = {
+	unlock_decision_category_tooltip = AFG_crossroads_of_civilisation_decisions
+	set_country_flag = AFG_crossroads_category_active
+
+	### Setup Starting Influences ###
+	clear_array = AFG.AFG_foreign_influence_countries
+	add_to_array = { AFG.AFG_foreign_influence_countries = GER } #AFG_foreign_influence_countries^0 = GER
+	add_to_array = { AFG.AFG_foreign_influence_countries = RUS } #AFG_foreign_influence_countries^1 = RUS
+	add_to_array = { AFG.AFG_foreign_influence_countries = TUR } #AFG_foreign_influence_countries^2 = TUR
+	add_to_array = { AFG.AFG_foreign_influence_countries = JAP } #AFG_foreign_influence_countries^3 = JAP
+
+	set_variable = { AFG_foreign_influence_@GER = 7 }
+	set_variable = { AFG_foreign_influence_@RUS = 6 }
+	set_variable = { AFG_foreign_influence_@TUR = 4 }
+	set_variable = { AFG_foreign_influence_@JAP = 3 }
+	AFG_calculate_foreign_influence_share = yes
+
+	### Enable Decisions ###
+	hidden_effect = {
+		for_each_scope_loop = {
+			array = AFG.AFG_foreign_influence_countries
+			PREV = {
+				activate_targeted_decision = { decision = AFG_entice_companies target = PREV }
+			}
+		}
+		activate_targeted_decision = { decision = AFG_attract_foreign_investment_GER target = GER }
+		activate_targeted_decision = { decision = AFG_attract_foreign_investment_RUS target = RUS }
+		activate_targeted_decision = { decision = AFG_attract_foreign_investment_TUR target = TUR }
+		activate_targeted_decision = { decision = AFG_attract_foreign_investment_JAP target = JAP }
+		activate_targeted_decision = { decision = AFG_the_hajigak_mine_concession target = GER }
+		activate_targeted_decision = { decision = AFG_combat_exercises_with_the_russians target = RUS }
+		activate_targeted_decision = { decision = AFG_inviting_turkish_military_experts target = TUR }
+		activate_targeted_decision = { decision = AFG_commit_to_the_eurasian_rail_scheme target = JAP }
+	}
+}
+
+AFG_calculate_foreign_influence_share = {
+	set_temp_variable = {
+		AFG_foreign_influence_total = {
+			value = AFG.AFG_foreign_influence_@GER
+			add = AFG.AFG_foreign_influence_@RUS
+			add = AFG.AFG_foreign_influence_@TUR
+			add = AFG.AFG_foreign_influence_@JAP
+		}
+	}
+
+	set_temp_variable = { AFG_foreign_influence_share_total = 1 }
+	set_temp_variable = { AFG_highest_foreign_influence_amount = 0 }
+	for_each_scope_loop = {
+		array = AFG.AFG_foreign_influence_countries
+		add_to_temp_variable = { AFG_loop_current = 1 }
+
+		### Calculate each Respective Share ###
+		if = {
+			limit = { check_variable = { AFG.AFG_foreign_influence_countries^num = AFG_loop_current } }
+			set_variable = { AFG.AFG_foreign_influence_share_@THIS = AFG_foreign_influence_share_total }
+		}
+		else = {
+			set_variable = {
+				AFG.AFG_foreign_influence_share_@THIS = {
+					value = AFG.AFG_foreign_influence_@THIS
+					divide = AFG_foreign_influence_total
+					multiply = 100
+					round = yes
+					divide = 100
+				}
+			}
+			subtract_from_temp_variable = { AFG_foreign_influence_share_total = AFG.AFG_foreign_influence_share_@THIS }
+		}
+
+		### Determine who has highest influence ###
+		if = {
+			limit = { check_variable = { AFG_highest_foreign_influence_amount < AFG.AFG_foreign_influence_@THIS } }
+			set_temp_variable = { AFG_highest_foreign_influence_amount = AFG.AFG_foreign_influence_@THIS }
+			set_variable = { AFG.AFG_highest_foreign_influence = THIS }
+		}
+	}
+	AFG_calculate_foreign_investment_cost = yes
+}
+
+@AFG_foreign_influence_pp_ratio = 3 # 1 influence = 3 political power
+# 25% influence share = x1 AFG_foreign_influence_share_multiplier
+# 50% influence share = x2 AFG_foreign_influence_share_multiplier
+# 75% influence share = x3 AFG_foreign_influence_share_multiplier
+# 100% influence share = x4 AFG_foreign_influence_share_multiplier
+AFG_calculate_foreign_investment_cost = {
+	# Investment Cost Formula: (Influence * @AFG_foreign_influence_pp_ratio) * AFG_foreign_influence_share_multiplier
+	# AFG_foreign_influence_share_multiplier Formula:
+	# AFG_foreign_influence_share_multiplier = 1 | AFG_foreign_influence_share_@THIS <= 0.25
+	# AFG_foreign_influence_share_multiplier = (AFG_foreign_influence_share_@THIS * 4) | AFG_foreign_influence_share_@THIS > 0.25
+	for_each_scope_loop = {
+		array = AFG_foreign_influence_countries
+		set_variable = {
+			AFG.AFG_foreign_investment_cost_@THIS = {
+				value = AFG.AFG_foreign_influence_@THIS
+				multiply = @AFG_foreign_influence_pp_ratio
+				multiply = { #AFG_foreign_influence_share_multiplier
+					value = AFG.AFG_foreign_influence_share_@THIS
+					multiply = 4
+					clamp = { min = 1 max = 4 }
+				}
+				round = yes
+				clamp = { min = 10 max = 500 }
+			}
+		}
+	}
+}
+
+# Set temp var AFG_foreign_influence_change before executing
+AFG_change_influence_GER = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = AFG_foreign_influence_change_tooltip
+			COUNTRY = "[GER.GetTag]"
+		}
+		add_to_variable = {
+			AFG.AFG_foreign_influence_@GER = {
+				value = AFG_foreign_influence_change
+				clamp = { min = { value = AFG.AFG_foreign_influence_@GER multiply = -1 } max = 1000 }
+			}
+		}
+		AFG_calculate_foreign_influence_share = yes
+	}
+}
+AFG_change_influence_RUS = {
+	if = {
+		limit = { has_variable = AFG.AFG_foreign_influence_RUS }
+		custom_override_tooltip = {
+			tooltip = {
+				localization_key = AFG_foreign_influence_change_tooltip
+				COUNTRY = "[RUS.GetTag]"
+			}
+			add_to_variable = {
+				AFG.AFG_foreign_influence_@RUS = {
+					value = AFG_foreign_influence_change
+					clamp = { min = { value = AFG.AFG_foreign_influence_@RUS multiply = -1 } max = 1000 }
+				}
+			}
+			AFG_calculate_foreign_influence_share = yes
+		}
+	}
+}
+AFG_change_influence_TUR = {
+	if = {
+		limit = { has_variable = AFG.AFG_foreign_influence_TUR }
+		custom_override_tooltip = {
+			tooltip = {
+				localization_key = AFG_foreign_influence_change_tooltip
+				COUNTRY = "[TUR.GetTag]"
+			}
+			add_to_variable = {
+				AFG.AFG_foreign_influence_@TUR = {
+					value = AFG_foreign_influence_change
+					clamp = { min = { value = AFG.AFG_foreign_influence_@TUR multiply = -1 } max = 1000 }
+				}
+			}
+			AFG_calculate_foreign_influence_share = yes
+		}
+	}
+}
+AFG_change_influence_JAP = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = AFG_foreign_influence_change_tooltip
+			COUNTRY = "[JAP.GetTag]"
+		}
+		add_to_variable = {
+			AFG.AFG_foreign_influence_@JAP = {
+				value = AFG_foreign_influence_change
+				clamp = { min = { value = AFG.AFG_foreign_influence_@JAP multiply = -1 } max = 1000 }
+			}
+		}
+		AFG_calculate_foreign_influence_share = yes
+	}
+}
+AFG_change_influence_FROM = {
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = AFG_foreign_influence_change_tooltip
+			COUNTRY = "[FROM.GetTag]"
+		}
+		add_to_variable = {
+			AFG.AFG_foreign_influence_@FROM = {
+				value = AFG_foreign_influence_change
+				clamp = { min = { value = AFG.AFG_foreign_influence_@FROM multiply = -1 } max = 1000 }
+			}
+		}
+		AFG_calculate_foreign_influence_share = yes
+	}
+}
+
+AFG_remove_foreign_influence = {
+	# Set temp var AFG_remove_foreign_influence_country
+	custom_effect_tooltip = AFG_remove_foreign_influence_tooltip
+
+	### Remove all Variables and Arrays ###
+	var:AFG_remove_foreign_influence_country = {
+		remove_from_array = { AFG.AFG_foreign_influence_countries = THIS }
+		clear_variable = AFG.AFG_foreign_influence_@THIS
+		clear_variable = AFG.AFG_foreign_influence_share_@THIS
+		clear_variable = AFG.AFG_foreign_investment_cost_@THIS
+	}
+	### Remove All Decisions ###
+	remove_targeted_decision = { decision = AFG_entice_companies target = var:AFG_remove_foreign_influence_country }
+	if = {
+		limit = { check_variable = { AFG_remove_foreign_influence_country = RUS } }
+		remove_targeted_decision = { decision = AFG_attract_foreign_investment_RUS target = RUS }
+		remove_targeted_decision = { decision = AFG_combat_exercises_with_the_russians target = RUS }
+	}
+	else = {
+		remove_targeted_decision = { decision = AFG_attract_foreign_investment_TUR target = TUR }
+		remove_targeted_decision = { decision = AFG_inviting_turkish_military_experts target = TUR }
+	}
+
+	### Recalculate Foreign Influence ###
+	AFG_calculate_foreign_influence_share = yes
+}
+
+AFG_end_crossroads_of_civilisation = {
+	### Determine Civil War Backers ###
+	for_each_scope_loop = {
+		array = AFG.AFG_foreign_influence_countries
+		add_to_temp_array = { AFG_foreign_influences = AFG.AFG_foreign_influence_@THIS }
+		log = "[THIS.GetName] Influence: [?AFG.AFG_foreign_influence_@THIS]"
+		clear_variable = AFG.AFG_foreign_influence_@THIS
+		clear_variable = AFG.AFG_foreign_influence_share_@THIS
+		clear_variable = AFG_foreign_investment_cost_@THIS
+	}
+
+	# Determine Amanullah Backer
+	find_highest_in_array = { array = AFG_foreign_influences }
+	set_variable = { AFG_amanullah_backer = AFG.AFG_foreign_influence_countries^i }
+	remove_from_array = { array = AFG.AFG_foreign_influence_countries index = i }
+
+	# Determine Nadir Backer
+	get_highest_scored_country_temp = { scorer = AFG_nadir_backer_country }
+	set_variable = { AFG_nadir_backer = highest_scored_country }
+
+	log = "Amanullah's backer: [?AFG_amanullah_backer.GetName]"
+	log = "Nadir's backer: [?AFG_nadir_backer.GetName]"
+
+	### Remove all Decisions ###
+	for_each_scope_loop = {
+		array = AFG.AFG_foreign_influence_countries
+		PREV = {
+			remove_targeted_decision = { decision = AFG_entice_companies target = PREV }
+		}
+	}
+	remove_targeted_decision = { decision = AFG_attract_foreign_investment_GER target = GER }
+	remove_targeted_decision = { decision = AFG_attract_foreign_investment_RUS target = RUS }
+	remove_targeted_decision = { decision = AFG_attract_foreign_investment_TUR target = TUR }
+	remove_targeted_decision = { decision = AFG_attract_foreign_investment_JAP target = JAP }
+	remove_targeted_decision = { decision = AFG_the_hajigak_mine_concession target = GER }
+	remove_targeted_decision = { decision = AFG_combat_exercises_with_the_russians target = RUS }
+	remove_targeted_decision = { decision = AFG_inviting_turkish_military_experts target = TUR }
+	remove_targeted_decision = { decision = AFG_commit_to_the_eurasian_rail_scheme target = JAP }
+
+	### Clear all variables and arrays ###
+	clear_array = AFG.AFG_foreign_influence_countries
+	clear_variable = AFG.AFG_highest_foreign_influence
+	clr_country_flag = AFG_crossroads_category_active
+}
+
+AFG_pashtunistan_revolt_effect = {
+	#set_global_flag = AFG_pashtunistan_revolt_fired
+
+	442 = { #Peshawar
+		add_core_of = PTH
+		remove_core_of = ROOT
+		add_claim_by = ROOT
+	}
+	AFG_pathanistan_leader_setup_effect = yes
+	PTH = {
+		### Templates ###
+		division_template = {
+			name = "Tribal Division"
+			division_names_group = AFG_MIL_01
+			regiments = {
+				irregular_infantry = { x = 0 y = 0 }
+				irregular_infantry = { x = 0 y = 1 }
+				irregular_infantry = { x = 0 y = 2 }
+				irregular_infantry = { x = 1 y = 0 }
+				irregular_infantry = { x = 1 y = 1 }
+				irregular_infantry = { x = 1 y = 2 }
+				irregular_infantry = { x = 2 y = 0 }
+				irregular_infantry = { x = 2 y = 1 }
+				irregular_infantry = { x = 2 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Tribal Rider Division"
+			division_names_group = AFG_CAV_01
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+				cavalry = { x = 1 y = 0 }
+				cavalry = { x = 1 y = 1 }
+				cavalry = { x = 1 y = 2 }
+			}
+		}
+
+		### States ###
+		442 = {
+			teleport_armies = {
+				limit = { is_ally_with = ROOT }
+				to_state = PREV.capital
+			}
+			transfer_state_to = PTH
+		}
+
+		### War ###
+		add_civil_war_target = AFG
+		ROOT = {
+			declare_war_on = {
+				target = PREV
+				type = annex_everything
+			}
+		}
+
+		### Units ###
+		random_owned_controlled_state = {
+			prioritize = { 442 }
+			create_unit = {
+				division = "name = \"Pashtun Militia\" division_template = \"Tribal Division\" start_experience_factor = 0.5"
+				prioritize_location = 12717
+				owner = PTH
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Pashtun Militia\" division_template = \"Tribal Division\" start_experience_factor = 0.5"
+				prioritize_location = 12717
+				owner = PTH
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Pashtun Militia\" division_template = \"Tribal Division\" start_experience_factor = 0.5"
+				prioritize_location = 4998
+				owner = PTH
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Pashtun Riders\" division_template = \"Tribal Rider Division\" start_experience_factor = 0.5"
+				prioritize_location = 12763
+				owner = PTH
+				allow_spawning_on_enemy_provs = yes
+			}
+		}
+
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 2000
+			producer = AFG
+		}
+		### National Spirits ###
+		add_ideas = {
+			PTH_insurrectionary_movement_1
+			PTH_neither_afghan_nor_indian
+			PTH_confused_national_ambitions
+		}
+	}
+}
+AFG_pathanistan_puppet_setup_effect = {
+	AFG_pathanistan_leader_setup_effect = yes
+	PTH = {
+		uncomplete_national_focus = {
+			focus = PTH_paramountcy_marxist_maulana
+			uncomplete_children = yes
+		}
+		uncomplete_national_focus = {
+			focus = PTH_victory_of_bacha_khan
+			uncomplete_children = yes
+		}
+		uncomplete_national_focus = {
+			focus = PTH_the_sardar_takes_power
+			uncomplete_children = yes
+		}
+		uncomplete_national_focus = {
+			focus = PTH_dominion_of_the_faqir_of_ipi
+			uncomplete_children = yes
+		}
+		if = {
+			limit = { PREV = { has_socialist_government = yes } }
+			complete_national_focus = PTH_paramountcy_marxist_maulana
+		}
+		else_if = {
+			limit = { PREV = { has_soclib_or_socdem_government = yes } }
+			complete_national_focus = PTH_victory_of_bacha_khan
+		}
+		else_if = {
+			limit = {
+				PREV = {
+					OR = {
+						has_soccon_or_marlib_government = yes
+						has_government = authoritarian_democrat
+					}
+				}
+			}
+			complete_national_focus = PTH_the_sardar_takes_power
+		}
+		else = {
+			complete_national_focus = PTH_dominion_of_the_faqir_of_ipi
+		}
+	}
+}
+
+
+AFG_pathanistan_leader_setup_effect = {
+
+	AFG = {
+		every_character = {
+			limit = { has_character_flag = PTH_character }
+			set_nationality = PTH
+		}
+	}
+	PTH = {
+		PTH_abdur_rahim_popalzai = {
+			promote_character = totalist_subtype
+			promote_character = syndicalist_subtype
+			promote_character = radical_socialist_subtype
+		}
+		PTH_abdul_ghaffar_khan = {
+			remove_country_leader_role_social_democrat = yes
+			remove_country_leader_role_social_liberal = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = PTH_abdul_ghaffar_khan_leader_desc
+					ideology = social_democrat_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = PTH_abdul_ghaffar_khan_leader_desc
+					ideology = social_liberal_subtype
+				}
+				promote_leader = yes
+			}
+		}
+		PTH_aurangzeb_khan_gandapur = {
+			remove_country_leader_role_authoritarian_democrat = yes
+			remove_country_leader_role_social_conservative = yes
+			remove_country_leader_role_market_liberal = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = PTH_mirzali_khan_wazir_leader_desc
+					ideology = authoritarian_democrat_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = PTH_aurangzeb_khan_gandapur_leader_desc
+					ideology = social_conservative_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = PTH_aurangzeb_khan_gandapur_leader_desc
+					ideology = market_liberal_subtype
+				}
+				promote_leader = yes
+			}
+		}
+		PTH_mirzali_khan_wazir = {
+			remove_country_leader_role_paternal_autocrat = yes
+			remove_country_leader_role_national_populist = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = PTH_mirzali_khan_wazir_leader_desc
+					ideology = paternal_autocrat_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = PTH_mirzali_khan_wazir_leader_desc
+					ideology = national_populist_subtype
+				}
+				promote_leader = yes
+			}
+		}
+	}
+}
+
+@AFG_strength_level_min = 0.25
+@AFG_strength_level_max = 0.75
+AFG_civil_war_setup_effect_immediate = {
+	set_country_flag = AFG_civil_war_started_flag
+	set_country_flag = AFG_civil_war_ongoing_flag
+	AFG_end_crossroads_of_civilisation = yes
+	remove_mission = AFG_monthly_reform_progress_mission
+	# Determine Strength
+	# Amanullah's Strength Formula: (1 - AFG_anger_level)
+	# Hence, Nadir's Strength Formula: AFG_anger_level
+	# Strength clamped between values @AFG_strength_level_min and @AFG_strength_level_max to avoid extremes
+	set_variable = {
+		AFG_strength_level = {
+			value = 1
+			subtract = AFG_anger_level
+			clamp = { min = @AFG_strength_level_min max = @AFG_strength_level_max }
+		}
+	}
+	clear_variable = AFG_anger_level
+}
+
+AFG_civil_war_setup_effect_after = {
+	custom_effect_tooltip = AFG_crossroads_of_civilisation_decisions_disabled_tooltip
+	unlock_decision_category_tooltip = AFG_afghan_civil_war_decisions
+	hidden_effect = {
+		add_command_power = -300
+		set_variable = { AFG_political_power_refund_var = political_power }
+		set_political_power = 0
+		#news_event = afghanistan_civil_war_events.X # news event about civil war perhaps?
+		activate_mission = AFG_civil_war_duration_mission
+		set_variable = { AFG.AFG_cw_tribe_decision_cost_var = 6 }
+		set_variable = { AFG.AFG_cw_command_power_final_decision_cost_var = 100 }
+		if = {
+			limit = { has_country_flag = AFG_amanullah_chosen_flag }
+			activate_mission = AFG_nadir_makes_his_move
+			267 = { set_demilitarized_zone = yes }
+			1118 = { set_demilitarized_zone = yes }
+			415 = { set_demilitarized_zone = yes }
+			activate_targeted_decision = { target = 415 decision = AFG_launch_an_assault_against_herat }
+			activate_targeted_decision = { target = 267 decision = AFG_securing_the_path_to_kabul }
+			activate_targeted_decision = { target = AFG decision = AFG_rally_the_amanites }
+			activate_targeted_decision = { target = AFG decision = AFG_promise_payments_to_the_fighters }
+			activate_targeted_decision = { target = var:AFG_amanullah_backer decision = AFG_reach_out_to_backer }
+			set_variable = { AFG.AFG_amanite_decision_cost_var = 50 }
+			var:AFG_amanullah_backer = { country_event = { id = afghanistan_civil_war_events.20 days = 5 } }
+			var:AFG_nadir_backer = { country_event = { id = afghanistan_civil_war_events.23 days = 6 } }
+			load_oob = AFG_civil_war_amanullah
+		}
+		else = {
+			activate_mission = AFG_amanullah_makes_his_move
+			1117 = { set_demilitarized_zone = yes }
+			activate_targeted_decision = { target = 267 decision = AFG_drive_loyalists_from_jalalabad }
+			activate_targeted_decision = { target = 267 decision = AFG_crush_scattered_loyalists }
+			activate_targeted_decision = { target = AFG decision = AFG_keeping_the_army_loyal }
+			activate_targeted_decision = { target = AFG decision = AFG_reassert_state_control }
+			activate_targeted_decision = { target = var:AFG_nadir_backer decision = AFG_reach_out_to_backer }
+			var:AFG_nadir_backer = { country_event = { id = afghanistan_civil_war_events.20 days = 5 } }
+			var:AFG_amanullah_backer = { country_event = { id = afghanistan_civil_war_events.23 days = 6 } }
+			load_oob = AFG_civil_war_nadir
+		}
+		if = {
+			limit = {
+				owns_state = 442
+				has_country_flag = AFG_pashtunistan_reformist_success_flag
+			}
+			country_event = { id = afghanistan_civil_war_events.35 days = 7 }
+		}
+		else_if = {
+			limit = {
+				owns_state = 442
+				has_country_flag = AFG_pashtunistan_traditionalist_success_flag
+			}
+			country_event = { id = afghanistan_civil_war_events.36 days = 7 }
+		}
+		complete_national_focus = AFG_anarchy_in_afghanistan
+		mark_focus_tree_layout_dirty = yes
+		###AI cheat for Game rule just to make sure they win the war
+		if = {
+			limit = {
+				is_ai = yes
+				NOT = { has_game_rule = { rule = AFG_path option = DEFAULT } }
+			}
+			add_command_power = 150
+			if = {
+				limit = { has_country_flag = AFG_amanullah_pov_flag }
+				set_temp_variable = { AFG_strength_change = 0.5 }
+			}
+			else = {
+				set_temp_variable = { AFG_strength_change = -0.5 }
+			}
+			AFG_change_strength_level = yes
+		}
+	}
+}
+
+AFG_change_strength_level = {
+	# Set temp var AFG_strength_change
+	if = {
+		limit = { NOT = { check_variable = { AFG_strength_change = 0 } } }
+		if = {
+			limit = { has_country_flag = AFG_amanullah_chosen_flag }
+			add_to_variable = {
+				AFG_strength_level = {
+					value = AFG_strength_change
+					clamp = { min = { value = AFG_strength_level multiply = -1 } max = { value = 1 subtract = AFG_strength_level } }
+				}
+				tooltip = AFG_strength_change_amanullah_tooltip
+			}
+		}
+		else = {
+			add_to_variable = {
+				AFG_strength_level = {
+					value = AFG_strength_change
+					clamp = { min = { value = AFG_strength_level multiply = -1 } max = { value = 1 subtract = AFG_strength_level } }
+				}
+				tooltip = AFG_strength_change_nadir_tooltip
+			}
+		}
+	}
+}
+
+AFG_end_civil_war_effect = {
+	hidden_effect = {
+		if = {
+			limit = { has_country_flag = AFG_amanullah_chosen_flag }
+			remove_mission = AFG_nadir_makes_his_move
+		}
+		else = {
+			remove_mission = AFG_amanullah_makes_his_move
+		}
+		every_owned_state = {
+			limit = { is_demilitarized_zone = yes }
+			set_demilitarized_zone = no
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { AFG_political_power_refund_var > 0 }
+		}
+		custom_effect_tooltip = AFG_civil_war_refund_effect_tt
+		hidden_effect = { add_political_power = AFG_political_power_refund_var }
+	}
+	clear_variable = AFG_political_power_refund_var
+	clear_variable = AFG_strength_level
+	clr_country_flag = AFG_civil_war_ongoing_flag
+	clr_country_flag = AFG_amanullah_pov_flag
+	clr_country_flag = AFG_nadir_pov_flag
+	mark_focus_tree_layout_dirty = yes
+}
+
+AFG_telai_party_names_effect = {
+	hidden_effect = {
+		set_party_name = {
+			ideology = social_liberal
+			name = AFG_telai_social_liberal_party
+			long_name = AFG_telai_social_liberal_party_long
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			name = AFG_telai_authoritarian_democrat_party
+			long_name = AFG_telai_authoritarian_democrat_party_long
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			name = AFG_telai_paternal_autocrat_party
+			long_name = AFG_telai_paternal_autocrat_party_long
+		}
+		set_party_name = {
+			ideology = national_populist
+			name = AFG_telai_national_populist_party
+			long_name = AFG_telai_national_populist_party_long
+		}
+	}
+}
+
+AFG_telai_puppet_party_names_effect = {
+	AFG_telai_party_names_effect = yes
+	hidden_effect = {
+		set_party_name = {
+			ideology = social_democrat
+			name = AFG_social_democrat_party
+			long_name = AFG_social_democrat_party_long
+		}
+		set_party_name = {
+			ideology = market_liberal
+			name = AFG_market_liberal_party
+			long_name = AFG_market_liberal_party_long
+		}
+		set_party_name = {
+			ideology = social_conservative
+			name = AFG_social_conservative_party
+			long_name = AFG_social_conservative_party_long
+		}
+	}
+}
+
+AFG_inayatullah_party_names_effect = {
+	hidden_effect = {
+		set_party_name = {
+			ideology = social_democrat
+			long_name = AFG_social_democrat_party_long
+			name = AFG_social_democrat_party
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = AFG_inayatullah_social_liberal_party_long
+			name = AFG_inayatullah_social_liberal_party
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = AFG_republic_market_liberal_party_tt
+			name = AFG_republic_market_liberal_party
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = AFG_inayatullah_social_conservative_party_long
+			name = AFG_inayatullah_social_conservative_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = AFG_inayatullah_authoritarian_democrat_party_long
+			name = AFG_inayatullah_authoritarian_democrat_party
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = AFG_paternal_autocrat_party_long
+			name = AFG_paternal_autocrat_party
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = AFG_seraj_national_populist_party_long
+			name = AFG_seraj_national_populist_party
+		}
+	}
+}
+
+AFG_amanullah_party_names_effect = {
+	hidden_effect = {
+		set_party_name = {
+			ideology = social_democrat
+			long_name = AFG_social_democrat_party_long
+			name = AFG_social_democrat_party
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = AFG_amanullah_social_liberal_party_long
+			name = AFG_amanullah_social_liberal_party
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = AFG_market_liberal_party_long
+			name = AFG_market_liberal_party
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = AFG_social_conservative_party_long
+			name = AFG_social_conservative_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = AFG_amanullah_authoritarian_democrat_party_long
+			name = AFG_amanullah_authoritarian_democrat_party
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = AFG_paternal_autocrat_party_long
+			name = AFG_paternal_autocrat_party
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = AFG_seraj_national_populist_party_long
+			name = AFG_seraj_national_populist_party
+		}
+	}
+}
+
+AFG_republic_party_names_effect = {
+	hidden_effect = {
+		set_party_name = {
+			ideology = totalist
+			long_name = AFG_republic_AIA_totalist_party_long
+			name = AFG_republic_AIA_totalist_party
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = AFG_republic_syndicalist_party_long
+			name = AFG_republic_syndicalist_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = AFG_republic_radical_socialist_party_long
+			name = AFG_republic_radical_socialist_party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = AFG_republic_social_democrat_party_long
+			name = AFG_republic_social_democrat_party
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = AFG_republic_social_liberal_party_long
+			name = AFG_republic_social_liberal_party
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = AFG_republic_market_liberal_party_long
+			name = AFG_republic_market_liberal_party
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = AFG_republic_social_conservative_party_long
+			name = AFG_republic_social_conservative_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = AFG_republic_authoritarian_democrat_party_long
+			name = AFG_republic_authoritarian_democrat_party
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = AFG_republic_paternal_autocrat_party_long
+			name = AFG_republic_paternal_autocrat_party
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = AFG_republic_national_populist_party_long
+			name = AFG_republic_national_populist_party
+		}
+	}
+}
+
+AFG_puppet_setup = {
+	AFG_reset_content_effect = yes
+	if = {
+		limit = { has_variable = release_monarchy }
+		if = {
+			limit = { PREV = { has_elected_government = yes } }
+			AFG_create_inayatullah = yes
+			AFG_inayatullah_party_names_effect = yes
+			if = {
+				limit = { has_government = social_conservative }
+				activate_advisor = AFG_abdul_hadi_dawi_sic
+			}
+			else_if = {
+				limit = { has_government = market_liberal }
+				activate_advisor = AFG_abdul_rauf_benawa_sic
+			}
+			else_if = {
+				limit = { has_government = social_liberal }
+				activate_advisor = AFG_ghulam_mohiuddin_arti_sic
+			}
+			else_if = {
+				limit = { has_character = PTH_abdul_jabbar_khan }
+				activate_advisor = PTH_abdul_jabbar_khan_sic
+			}
+			else = {
+				activate_advisor = AFG_interim_leadership_mon_sic
+			}
+			# Durrani Conspiracy tree
+		}
+		else_if = {
+			limit = { PREV = { has_authdem_or_pataut_government = yes } }
+			if = {
+				limit = {
+					AFG = {
+						AFG_mohammad_nadir_khan = { is_dead = yes }
+						AFG_amanullah_khan = { is_dead = yes }
+					}
+				}
+				AFG_create_zahir = yes
+				AFG_telai_puppet_party_names_effect = yes
+			}
+			else_if = {
+				limit = { AFG = { AFG_mohammad_nadir_khan = { is_dead = yes } } }
+				AFG_create_amanullah = yes
+				AFG_amanullah_party_names_effect = yes
+				complete_national_focus = AFG_an_end_to_the_chaos
+				if = {
+					limit = { has_government = paternal_autocrat }
+					set_country_flag = AFG_amanullah_traditionalist_consolidation_flag
+				}
+				else = {
+					set_country_flag = AFG_amanullah_reformist_consolidation_flag
+				}
+			}
+			else = {
+				AFG_create_nadir = yes
+				AFG_telai_puppet_party_names_effect = yes
+				set_country_flag = AFG_nadir_consolidated_flag
+				if = {
+					limit = { has_government = paternal_autocrat }
+					complete_national_focus = AFG_the_steady_hand
+				}
+				else = {
+					complete_national_focus = AFG_the_gradual_approach
+				}
+			}
+		}
+		else = {
+			AFG_create_hashim = yes
+			AFG_telai_puppet_party_names_effect = yes
+		}
+	}
+	else = {
+		complete_national_focus = AFG_consolidation_of_the_republic
+		AFG_republic_party_names_effect = yes
+		# Setup country leaders
+		AFG_mohammad_ghobar = {
+			character_becomes_leader_of_ruling_party_effect_tooltip = yes
+			hidden_effect = {
+				remove_all_country_leader_roles = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_mohammad_ghobar_leader_desc
+						ideology = totalist_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_mohammad_ghobar_leader_desc
+						ideology = syndicalist_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_mohammad_ghobar_leader_desc
+						ideology = radical_socialist_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		if = {
+			limit = { has_character = PTH_abdul_ghaffar_khan }
+			PTH_abdul_ghaffar_khan = {
+				remove_all_country_leader_roles = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = PTH_abdul_ghaffar_khan_leader_desc
+						ideology = social_democrat_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = PTH_abdul_ghaffar_khan_leader_desc
+						ideology = social_liberal_subtype
+					}
+					promote_leader = yes
+				}
+			}
+			AFG_abdul_hai_habibi = {
+				set_nationality = PREV #Unpurges just in case
+				remove_all_country_leader_roles = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_abdul_hai_habibi_leader_desc
+						ideology = market_liberal_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		else = {
+			AFG_abdul_hai_habibi = {
+				set_nationality = PREV #Unpurges just in case
+				remove_all_country_leader_roles = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_abdul_hai_habibi_leader_desc
+						ideology = social_democrat_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_abdul_hai_habibi_leader_desc
+						ideology = social_liberal_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_abdul_hai_habibi_leader_desc
+						ideology = market_liberal_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		AFG_abdul_hadi_dawi = {
+			set_nationality = AFG #Unpurges just in case
+			remove_all_country_leader_roles = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_abdul_hadi_dawi_leader_desc
+					ideology = social_conservative_subtype
+				}
+				promote_leader = yes
+			}
+		}
+		AFG_mohammad_gul_khan_momand = {
+			set_nationality = PREV #Unpurges just in case
+			remove_all_country_leader_roles = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_mohammad_gul_khan_momand_leader_desc
+					ideology = authoritarian_democrat_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_mohammad_gul_khan_momand_leader_desc
+					ideology = paternal_autocrat_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_mohammad_gul_khan_momand_leader_desc
+					ideology = national_populist_subtype
+				}
+				promote_leader = yes
+			}
+			set_character_as_republican = yes
+		}
+		# Setup SiC and Path
+		if = {
+			limit = { PREV = { has_socialist_government = yes } }
+			if = {
+				limit = { has_character = PTH_abdur_rahim_popalzai }
+				activate_advisor = PTH_abdur_rahim_popalzai_sic
+			}
+			else = {
+				activate_advisor = AFG_interim_leadership_soc_sic
+			}
+			set_country_flag = AFG_socialist_republic_flag
+		}
+		else_if = {
+			limit = { PREV = { has_elected_government = yes } }
+			if = {
+				limit = { has_character = PTH_abdul_jabbar_khan }
+				activate_advisor = PTH_abdul_jabbar_khan_sic
+			}
+			else = {
+				activate_advisor = AFG_interim_leadership_rep_sic
+			}
+			set_country_flag = AFG_aia_republic_flag
+		}
+		else = {
+			activate_advisor = AFG_mohammad_daoud_khan_sic
+			set_country_flag = AFG_momand_republic_flag
+		}
+	}
+	mark_focus_tree_layout_dirty = yes
+}
+
+AFG_reset_content_effect = {
+	uncomplete_national_focus = {
+		focus = AFG_the_durrani_conspiracy
+		uncomplete_children = yes
+	}
+	uncomplete_national_focus = {
+		focus = AFG_an_end_to_the_chaos
+		uncomplete_children = yes
+	}
+	uncomplete_national_focus = {
+		focus = AFG_the_final_fall_of_amanullah
+		uncomplete_children = yes
+	}
+	uncomplete_national_focus = {
+		focus = AFG_the_gradual_approach
+		uncomplete_children = yes
+	}
+	uncomplete_national_focus = {
+		focus = AFG_the_steady_hand
+		uncomplete_children = yes
+	}
+	uncomplete_national_focus = {
+		focus = AFG_the_cabal_of_kabul
+		uncomplete_children = yes
+	}
+	uncomplete_national_focus = {
+		focus = AFG_consolidation_of_the_republic
+		uncomplete_children = yes
+	}
+	clr_country_flag = AFG_durrani_conspiracy_flag
+	clr_country_flag = AFG_amanullah_traditionalist_consolidation_flag
+	clr_country_flag = AFG_amanullah_reformist_consolidation_flag
+	clr_country_flag = AFG_peasant_revolt_flag
+	clr_country_flag = AFG_nadir_consolidated_flag
+	clr_country_flag = AFG_momand_republic_flag
+	clr_country_flag = AFG_aia_republic_flag
+	clr_country_flag = AFG_socialist_republic_flag
+	remove_ideas = {
+		AFG_loy_afghanistan
+		AFG_loy_afghanistan_2
+		AFG_loy_afghanistan_3
+		AFG_loy_afghanistan_4
+		AFG_loy_afghanistan_5
+		AFG_loy_afghanistan_6
+		AFG_loy_afghanistan_7
+		AFG_spectre_of_rebellion
+	}
+}
+
+AFG_republic_setup_effect = {
+	drop_cosmetic_tag = yes
+	hidden_effect = {
+		if = {
+			limit = { has_character = PTH_abdur_rahim_popalzai }
+			PTH_abdur_rahim_popalzai = {
+				remove_country_leader_role_totalist = yes
+				remove_country_leader_role_syndicalist = yes
+				remove_country_leader_role_radical_socialist = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = PTH_abdur_rahim_popalzai_leader_desc
+						ideology = totalist_subtype
+						traits = { AFG_marxist_maulana }
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = PTH_abdur_rahim_popalzai_leader_desc
+						ideology = syndicalist_subtype
+						traits = { AFG_marxist_maulana }
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = PTH_abdur_rahim_popalzai_leader_desc
+						ideology = radical_socialist_subtype
+						traits = { AFG_marxist_maulana }
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		else = {
+			AFG_abdul_rahman_mahmoodi = {
+				remove_country_leader_role_totalist = yes
+				remove_country_leader_role_syndicalist = yes
+				remove_country_leader_role_radical_socialist = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_abdul_rahman_mahmoodi_advisor_desc
+						ideology = totalist_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_abdul_rahman_mahmoodi_advisor_desc
+						ideology = syndicalist_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_abdul_rahman_mahmoodi_advisor_desc
+						ideology = radical_socialist_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		if = {
+			limit = { has_character = PTH_abdul_ghaffar_khan }
+			PTH_abdul_ghaffar_khan = {
+				remove_country_leader_role_social_democrat = yes
+				remove_country_leader_role_social_liberal = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = PTH_abdul_ghaffar_khan_leader_desc
+						ideology = social_democrat_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = PTH_abdul_ghaffar_khan_leader_desc
+						ideology = social_liberal_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		else = {
+			AFG_abdul_rahman_loudin = {
+				remove_country_leader_role_social_democrat = yes
+				remove_country_leader_role_social_liberal = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_abdul_rahman_loudin_advisor_desc
+						ideology = social_democrat_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = AFG_abdul_rahman_loudin_advisor_desc
+						ideology = social_liberal_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		AFG_abdul_hai_habibi = {
+			set_nationality = AFG #Unpurges just in case
+			remove_country_leader_role_market_liberal = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_abdul_hai_habibi_leader_desc
+					ideology = market_liberal_subtype
+				}
+				promote_leader = yes
+			}
+		}
+		AFG_abdul_hadi_dawi = {
+			set_nationality = AFG #Unpurges just in case
+			remove_country_leader_role_social_conservative = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_abdul_hadi_dawi_leader_desc
+					ideology = social_conservative_subtype
+				}
+				promote_leader = yes
+			}
+		}
+		AFG_abdul_rauf_benawa = { set_nationality = AFG } #Unpurges just in case
+		AFG_mohammad_gul_khan_momand = {
+			set_nationality = AFG #Unpurges just in case
+			remove_country_leader_role_authoritarian_democrat = yes
+			remove_country_leader_role_paternal_autocrat = yes
+			remove_country_leader_role_national_populist = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_mohammad_gul_khan_momand_leader_desc
+					ideology = authoritarian_democrat_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_mohammad_gul_khan_momand_leader_desc
+					ideology = paternal_autocrat_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_mohammad_gul_khan_momand_leader_desc
+					ideology = national_populist_subtype
+				}
+				promote_leader = yes
+			}
+			set_character_as_republican = yes
+		}
+		AFG_mohammad_daoud_khan = { set_nationality = AFG } #Unpurges just in case
+		AFG_abdul_majid_zabuli = { set_nationality = AFG } #Unpurges just in case
+		set_party_name = {
+			ideology = social_democrat
+			long_name = AFG_republic_social_democrat_party_long
+			name = AFG_republic_social_democrat_party
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = AFG_republic_social_liberal_party_long
+			name = AFG_republic_social_liberal_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = AFG_republic_army_authoritarian_democrat_party_long
+			name = AFG_republic_army_authoritarian_democrat_party
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = AFG_republic_army_paternal_autocrat_party_long
+			name = AFG_republic_army_paternal_autocrat_party
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = AFG_republic_army_national_populist_party_long
+			name = AFG_republic_army_national_populist_party
+		}
+		complete_national_focus = AFG_the_state_of_the_people
+		set_country_flag = AFG_republic_declared_flag
+	}
+}
+
+AFG_momand_republic_setup_effect = {
+	set_country_flag = AFG_momand_republic_flag
+	set_politics = {
+		ruling_party = authoritarian_democrat
+		elections_allowed = no
+		long_name = AFG_republic_army_authoritarian_democrat_party_long
+		name = AFG_republic_army_authoritarian_democrat_party
+	}
+	effect_tooltip = {
+		add_country_leader_role = {
+			character = AFG_mohammad_gul_khan_momand
+			country_leader = {
+				desc = AFG_mohammad_gul_khan_momand_leader_desc
+				ideology = authoritarian_democrat_subtype
+			}
+			promote_leader = yes
+		}
+	}
+	hidden_effect = {
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+	}
+}
+AFG_republic_aia_setup_effect = {
+	clr_country_flag = AFG_momand_republic_flag
+	clr_country_flag = AFG_socialist_republic_flag
+	set_country_flag = AFG_aia_republic_flag
+	set_politics = {
+		ruling_party = social_democrat
+		elections_allowed = no
+	}
+	if = {
+		limit = { has_character = PTH_abdul_jabbar_khan }
+		activate_advisor = PTH_abdul_jabbar_khan_sic
+	}
+	else = { activate_advisor = AFG_ghulam_mohiuddin_arti_sic }
+	set_temp_variable = { coalition_partner_var = token:social_liberal }
+	add_to_coalition = yes
+}
+AFG_republic_socialist_setup_effect = {
+	clr_country_flag = AFG_momand_republic_flag
+	clr_country_flag = AFG_aia_republic_flag
+	set_country_flag = AFG_socialist_republic_flag
+	set_politics = {
+		ruling_party = radical_socialist
+		elections_allowed = no
+	}
+	activate_advisor = AFG_interim_leadership_soc_sic
+	set_temp_variable = { coalition_partner_var = token:syndicalist }
+	add_to_coalition = yes
+}
+AFG_republic_socialist_political_setup_effect = {
+	set_party_name = {
+		ideology = radical_socialist
+		long_name = AFG_republic_syndicalist_party_tt
+		name = AFG_republic_radical_socialist_party
+	}
+	hidden_effect = {
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = AFG_republic_radical_socialist_party_long
+			name = AFG_republic_radical_socialist_party
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = AFG_republic_syndicalist_party_long
+			name = AFG_republic_syndicalist_party
+		}
+	}
+	AFG_mohammad_ghobar = {
+		character_becomes_leader_of_ruling_party_effect_tooltip = yes
+		hidden_effect = {
+			remove_all_country_leader_roles = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_mohammad_ghobar_leader_desc
+					ideology = totalist_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_mohammad_ghobar_leader_desc
+					ideology = syndicalist_subtype
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				country_leader = {
+					desc = AFG_mohammad_ghobar_leader_desc
+					ideology = radical_socialist_subtype
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	activate_advisor = PTH_abdur_rahim_popalzai_sic
+}
+
+AFG_constitutional_monarchy_setup_effect = {
+	AFG_amanullah_khan = { kill_character = yes }
+	hidden_effect = {
+		AFG_create_inayatullah = yes
+		activate_advisor = AFG_interim_leadership_mon_sic
+	}
+	effect_tooltip = {
+		add_country_leader_role = {
+			character = AFG_inayatullah_khan
+			country_leader = {
+				desc = AFG_inayatullah_khan_leader_desc
+				ideology = authoritarian_democrat_subtype
+			}
+			promote_leader = yes
+		}
+	}
+	set_politics = {
+		ruling_party = authoritarian_democrat
+		elections_allowed = no
+	}
+	set_party_name = {
+		ideology = authoritarian_democrat
+		name = AFG_inayatullah_authoritarian_democrat_party
+		long_name = AFG_inayatullah_authoritarian_democrat_party
+	}
+	hidden_effect = {
+		set_party_name = {
+			ideology = authoritarian_democrat
+			name = AFG_inayatullah_authoritarian_democrat_party
+			long_name = AFG_inayatullah_authoritarian_democrat_party_long
+		}
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:market_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		#Unpurges reformers in case they were previously purged
+		AFG_abdul_hadi_dawi = { set_nationality = AFG }
+		AFG_abdul_hai_habibi = { set_nationality = AFG }
+		AFG_abdul_rauf_benawa = { set_nationality = AFG }
+	}
+}
+
+AFG_peasant_revolt_setup_effect = {
+	AFG_amanullah_khan = { kill_character = yes }
+	hidden_effect = { AFG_create_hashim = yes }
+	effect_tooltip = {
+		add_country_leader_role = {
+			character = AFG_mohammad_hashim_khan
+			country_leader = {
+				desc = AFG_mohammad_hashim_khan_leader_desc
+				ideology = national_populist_subtype
+			}
+			promote_leader = yes
+		}
+	}
+	hidden_effect = {
+		AFG_fazl_omar_mojadidi = { set_nationality = AFG } #Unpurges just in case
+	}
+	activate_advisor = AFG_fazl_omar_mojadidi_sic
+	set_politics = {
+		ruling_party = national_populist
+		elections_allowed = no
+	}
+	hidden_effect = {
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_conservative }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+	}
+}
+
+AFG_nadir_monarchy_setup_effect = {
+	AFG_create_nadir = yes
+	activate_advisor = AFG_mohammad_hashim_khan_sic
+}
+
+AFG_zahir_monarchy_setup_effect = {
+	hidden_effect = { AFG_create_zahir = yes }
+	effect_tooltip = {
+		add_country_leader_role = {
+			character = AFG_mohammad_zahir_khan
+			country_leader = {
+				desc = AFG_mohammad_zahir_khan_leader_desc
+				ideology = paternal_autocrat_subtype
+			}
+			promote_leader = yes
+		}
+	}
+}
+
+AFG_improve_loy_afghanistan_effect = {
+	if = {
+		limit = { has_idea = AFG_loy_afghanistan_2 }
+		swap_ideas = {
+			remove_idea = AFG_loy_afghanistan_2
+			add_idea = AFG_loy_afghanistan_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = AFG_loy_afghanistan_3 }
+		swap_ideas = {
+			remove_idea = AFG_loy_afghanistan_3
+			add_idea = AFG_loy_afghanistan_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = AFG_loy_afghanistan_4 }
+		swap_ideas = {
+			remove_idea = AFG_loy_afghanistan_4
+			add_idea = AFG_loy_afghanistan_5
+		}
+	}
+	else = {
+		swap_ideas = {
+			remove_idea = AFG_loy_afghanistan_5
+			add_idea = AFG_loy_afghanistan_6
+		}
+	}
+}
+
+AFG_traditionalist_amanullah_events_effect = {
+	country_event = { id = afghanistan_events.253 days = 57 }
+	country_event = { id = afghanistan_events.256 days = 168 }
+}
+
+AFG_reformist_amanullah_events_effect = {
+	country_event = { id = afghanistan_events.256 days = 168 }
+	country_event = { id = afghanistan_events.254 days = 245 }
+}
+
+AFG_constitutional_monarchy_events_effect = {
+	#country_event = { id = afghanistan_events.204 days = 30 }
+}
+
+AFG_constitutional_monarchy_soclib_events_effect = {
+	country_event = { id = afghanistan_events.208 days = 52 }
+	country_event = { id = afghanistan_events.209 days = 109 }
+	country_event = { id = afghanistan_events.210 days = 147 }
+}
+
+AFG_peasant_revolt_events_effect = {
+	if = {
+		limit = { is_subject = no }
+		country_event = { id = afghanistan_events.300 days = 1 }
+		country_event = { id = afghanistan_events.301 days = 23 }
+		country_event = { id = afghanistan_events.302 days = 75 }
+		country_event = { id = afghanistan_events.303 days = 113 }
+		country_event = { id = afghanistan_events.351 days = 145 }
+		country_event = { id = afghanistan_events.304 days = 164 }
+		country_event = { id = afghanistan_events.305 days = 210 }
+		country_event = { id = afghanistan_events.306 days = 260 }
+		country_event = { id = afghanistan_events.307 days = 325 }
+		country_event = { id = afghanistan_events.308 days = 370 }
+		country_event = { id = afghanistan_civil_war_events.65 days = 411 }
+	}
+}
+
+AFG_nadir_shared_events_effect = {
+	country_event = { id = afghanistan_events.368 days = 14 }
+	country_event = { id = afghanistan_events.365 days = 39 }
+	country_event = { id = afghanistan_events.350 days = 60 }
+	country_event = { id = afghanistan_events.351 days = 80 }
+	country_event = { id = afghanistan_events.352 days = 120 }
+	country_event = { id = afghanistan_events.353 days = 160 }
+	country_event = { id = afghanistan_events.363 days = 193 }
+	country_event = { id = afghanistan_events.367 days = 309 }
+}
+
+AFG_zahir_events_effect = {
+	country_event = { id = afghanistan_events.400 days = 1 }
+	country_event = { id = afghanistan_events.401 days = 10 }
+	country_event = { id = afghanistan_events.402 days = 24 }
+	country_event = { id = afghanistan_events.403 days = 57 }
+	country_event = { id = afghanistan_events.351 days = 99 }
+	country_event = { id = afghanistan_events.352 days = 130 }
+	country_event = { id = afghanistan_events.353 days = 159 }
+	country_event = { id = afghanistan_events.404 days = 190 }
+	country_event = { id = afghanistan_events.405 days = 222 }
+}
+
+AFG_azadist_constitution_events_effect = {
+	if = {
+		limit = { is_subject = no }
+		country_event = { id = afghanistan_events.510 days = 30 }
+		country_event = { id = afghanistan_events.511 days = 45 }
+		country_event = { id = afghanistan_events.512 days = 60 }
+		country_event = { id = afghanistan_events.513 days = 75 }
+		country_event = { id = afghanistan_events.514 days = 90 }
+		country_event = { id = afghanistan_events.515 days = 105 }
+		country_event = { id = afghanistan_events.516 days = 120 }
+	}
+}
+
+AFG_azadist_natpop_events_effect = {
+	country_event = { id = afghanistan_events.519 days = 47 }
+	country_event = { id = afghanistan_events.523 days = 83 }
+	country_event = { id = afghanistan_events.522 days = 139 }
+}
+AFG_azadist_pataut_events_effect = {
+	country_event = { id = afghanistan_events.528 days = 47 }
+	country_event = { id = afghanistan_events.529 days = 83 }
+}
+AFG_azadist_authdem_events_effect = {
+	country_event = { id = afghanistan_events.531 days = 47 }
+	country_event = { id = afghanistan_events.532 days = 83 }
+}
+
+AFG_aia_events_effect = {
+	if = {
+		limit = { has_character = PTH_abdur_rahim_popalzai }
+		PTH_abdur_rahim_popalzai = {
+			unit_leader_event = { id = afghanistan_events.553 days = 35 }
+		}
+	}
+	country_event = { id = afghanistan_events.552 days = 105 }
+	country_event = { id = afghanistan_events.554 days = 140 }
+	country_event = { id = afghanistan_events.555 days = 180 }
+	country_event = { id = afghanistan_events.557 days = 270 }
+	country_event = { id = afghanistan_events.561 days = 335 }
+	country_event = { id = afghanistan_events.562 days = 389 }
+	country_event = { id = afghanistan_events.563 days = 415 }
+}
+AFG_socialist_events_effect = {
+	country_event = { id = afghanistan_events.605 days = 25 }
+	country_event = { id = afghanistan_events.614 days = 85 }
+	country_event = { id = afghanistan_events.615 days = 150 }
+	if = {
+		limit = {
+			has_global_flag = india_united
+			HND = { exists = yes }
+		}
+		country_event = { id = afghanistan_events.616 days = 180 }
+	}
+}
+
+AFG_enable_removing_pashtunistan_modifier_decision_effect = {
+	if = {
+		limit = {
+			442 = { has_dynamic_modifier = { modifier = AFG_pashtunistan_autonomous_province_modifier } }
+			NOT = { has_country_flag = AFG_durrani_conspiracy_flag }
+		}
+		custom_effect_tooltip = tooltip_white_line
+		hidden_effect = { activate_targeted_decision = { decision = AFG_remove_pashtunistan_reformist_modifier_decision target = 442 } }
+		custom_effect_tooltip = AFG_remove_pashtunistan_modifier_decision_tt
+	}
+	else_if = {
+		limit = {
+			442 = { has_dynamic_modifier = { modifier = AFG_chitral_treaties_modifier } }
+		}
+		custom_effect_tooltip = tooltip_white_line
+		hidden_effect = { activate_targeted_decision = { decision = AFG_remove_pashtunistan_traditionalist_modifier_decision target = 442 } }
+		custom_effect_tooltip = AFG_remove_pashtunistan_modifier_decision_tt
+	}
+}
+

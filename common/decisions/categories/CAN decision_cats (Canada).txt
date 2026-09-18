@@ -51,8 +51,16 @@ CAN_kings_influence_decisions = {
 CAN_iedc_decisions = {
 	icon = GFX_decision_cat_can_iedc
 	priority = 5
-	visible = {
-		has_idea = CAN_iedc_main
+	allowed = {
+		NOT = {
+			tag = FRA
+			tag = ENG
+			tag = WCA
+			tag = SRI
+			tag = SWF
+			tag = FOP
+			tag = HND
+		}
 	}
 }
 

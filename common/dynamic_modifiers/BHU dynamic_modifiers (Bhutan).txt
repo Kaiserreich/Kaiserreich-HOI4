@@ -1,0 +1,23 @@
+BHU_semi_autonomous_region = {
+	icon = "GFX_decision_eng_trade_unions_support"
+	enable = { is_controlled_by = BHU }
+	remove_trigger = {
+		NOT = { is_owned_by = BHU }
+	}
+
+	local_building_slots_factor = -0.15
+	local_manpower = -0.2
+	state_resources_factor = -0.15
+}
+
+BHU_fully_autonomous_region = {
+	icon = "GFX_decision_eng_trade_unions_support"
+	enable = { is_controlled_by = BHU }
+	remove_trigger = {
+		NOT = { is_owned_by = BHU }
+	}
+
+	local_building_slots_factor = -0.3
+	local_manpower = -0.4
+	state_resources_factor = -0.3
+}

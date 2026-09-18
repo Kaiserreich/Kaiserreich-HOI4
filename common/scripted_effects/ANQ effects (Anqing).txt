@@ -129,8 +129,7 @@ ANQ_remove_beijing_spirit = {
 
 			# Calculate QIE_anqing_level
 			# Find remainder of ANQ_beijing_level
-			set_temp_variable = { ANQ_beijing_level_remainder = ANQ_beijing_level }
-			modulo_temp_variable = { ANQ_beijing_level_remainder = 2 }
+			set_temp_variable = { ANQ_beijing_level_remainder = { value = ANQ_beijing_level mod = 2 } }
 
 			set_temp_variable = {
 				QIE_anqing_level = {
@@ -195,8 +194,7 @@ ANQ_modify_beijing_spirit = {
 
 		# Calculate QIE_anqing_level_old
 		# Find remainder of ANQ_beijing_level_old
-		set_temp_variable = { ANQ_beijing_level_remainder = ANQ_beijing_level_old }
-		modulo_temp_variable = { ANQ_beijing_level_remainder = 2 }
+		set_temp_variable = { ANQ_beijing_level_remainder = { value = ANQ_beijing_level_old mod = 2 } }
 
 		set_temp_variable = {
 			QIE_anqing_level_temp_old = {
@@ -209,8 +207,7 @@ ANQ_modify_beijing_spirit = {
 
 		# Calculate QIE_anqing_level_new
 		# Find remainder of ANQ_beijing_level_new
-		set_temp_variable = { ANQ_beijing_level_remainder = ANQ_beijing_level_new }
-		modulo_temp_variable = { ANQ_beijing_level_remainder = 2 }
+		set_temp_variable = { ANQ_beijing_level_remainder = { value = ANQ_beijing_level_new mod = 2 } }
 
 		set_temp_variable = {
 			QIE_anqing_level_temp_new = {
@@ -414,8 +411,12 @@ ANQ_increase_beijing_anger = {
 
 ANQ_recalculate_beijing_anger = {
 	# Reduction of ANQ_beijing_anger by 1 every week
-	subtract_from_variable = { ANQ_beijing_anger = 2 }
-	clamp_variable = { var = ANQ_beijing_anger min = 0 }
+	add_to_variable = {
+		ANQ_beijing_anger = {
+			value = -2
+			clamp = { min = { value = ANQ_beijing_anger multiply = -1 } max = 0 }
+		}
+	}
 
 	### Calculation ###
 	# Determine new anger level
@@ -635,9 +636,12 @@ ANQ_modify_fengtian_spirit = {
 }
 
 ANQ_increase_kmt_unrest_level = {
-	add_to_variable = { anq_kmt_unrest_level = 1 }
-	clamp_variable = { var = anq_kmt_unrest_level min = 0 max = 3 }
-
+	add_to_variable = {
+		anq_kmt_unrest_level = {
+			value = 1
+			clamp = { min = { value = anq_kmt_unrest_level multiply = -1 } max = { value = 3 subtract = anq_kmt_unrest_level } }
+		}
+	}
 	set_variable = {
 		anq_suppress_kmt_mission_timeout = {
 			value = 120
@@ -646,9 +650,12 @@ ANQ_increase_kmt_unrest_level = {
 	}
 }
 ANQ_decrease_kmt_unrest_level = {
-	add_to_variable = { anq_kmt_unrest_level = -1 }
-	clamp_variable = { var = anq_kmt_unrest_level min = 0 max = 3 }
-
+	add_to_variable = {
+		anq_kmt_unrest_level = {
+			value = -1
+			clamp = { min = { value = anq_kmt_unrest_level multiply = -1 } max = { value = 3 subtract = anq_kmt_unrest_level } }
+		}
+	}
 	set_variable = {
 		anq_suppress_kmt_mission_timeout = {
 			value = 120
@@ -657,9 +664,12 @@ ANQ_decrease_kmt_unrest_level = {
 	}
 }
 ANQ_increase_yiguandao_unrest_level = {
-	add_to_variable = { anq_yiguandao_unrest_level = 1 }
-	clamp_variable = { var = anq_yiguandao_unrest_level min = 0 max = 2 }
-
+	add_to_variable = {
+		anq_yiguandao_unrest_level = {
+			value = 1
+			clamp = { min = { value = anq_yiguandao_unrest_level multiply = -1 } max = { value = 2 subtract = anq_yiguandao_unrest_level } }
+		}
+	}
 	set_variable = {
 		anq_suppress_yiguandao_mission_timeout = {
 			value = 120
@@ -668,9 +678,12 @@ ANQ_increase_yiguandao_unrest_level = {
 	}
 }
 ANQ_decrease_yiguandao_unrest_level = {
-	add_to_variable = { anq_yiguandao_unrest_level = -1 }
-	clamp_variable = { var = anq_yiguandao_unrest_level min = 0 max = 2 }
-
+	add_to_variable = {
+		anq_yiguandao_unrest_level = {
+			value = -1
+			clamp = { min = { value = anq_yiguandao_unrest_level multiply = -1 } max = { value = 2 subtract = anq_yiguandao_unrest_level } }
+		}
+	}
 	set_variable = {
 		anq_suppress_yiguandao_mission_timeout = {
 			value = 120
@@ -1028,14 +1041,8 @@ ANQ_break_relations_fengtian = {
 			clr_country_flag = ANQ_commits_reclamation
 			if = {
 				limit = { has_completed_focus = ANQ_reconstruction_cooperation }
-				add_to_variable = {
-					var = anq_reconstruction_decision_cost?30
-					value = 5
-				}
-				add_to_variable = {
-					var = anq_reconstruction_decision_time?80
-					value = 10
-				}
+				add_to_variable = { anq_reconstruction_decision_cost?30 = 5 }
+				add_to_variable = { anq_reconstruction_decision_time?80 = 10 }
 			}
 			# Decisions
 			remove_targeted_decision = { target = FNG decision = ANQ_reduce_fng_influence }

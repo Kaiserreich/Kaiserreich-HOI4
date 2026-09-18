@@ -14,7 +14,7 @@ ACC_can_elect_farmer_labor = {
 APG_long_in_power = {
 	OR = {
 		has_country_leader = { character = APG_huey_long }
-		has_country_leader = { character = APG_earl_kemp_long }
+		has_country_leader = { character = APG_earl_long }
 	}
 }
 
@@ -274,34 +274,46 @@ USA_can_join_iadc = {
 	NOT = { is_in_tech_sharing_group = us_research }
 }
 
-ACW_strength_factor = {
-	divide_temp_variable = { strength_factor = 5 }
-	add_to_temp_variable = { strength_factor = 1 }
-}
-
-ACW_strength_factor_reverse = {
-	subtract_from_temp_variable = { strength_factor = 3 }
-	multiply_temp_variable = { strength_factor = 0.2 }
-	clamp_temp_variable = { var = strength_factor max = 0 }
-	add_to_temp_variable = { strength_factor = 1 }
-}
-
 ACW_SPA_strength_factor = {
-	set_temp_variable = { strength_factor = USA.SPA_strength }
-	ACW_strength_factor = yes
+	set_temp_variable = {
+		strength_factor = {
+			value = USA.SPA_strength
+			multiply = 0.2
+			add = 1
+		}
+	}
 }
 
 ACW_SPA_strength_factor_reverse = {
-	set_temp_variable = { strength_factor = USA.SPA_strength }
-	ACW_strength_factor_reverse = yes
+	set_temp_variable = {
+		strength_factor = {
+			value = USA.SPA_strength
+			subtract = 3
+			multiply = 0.2
+			clamp = { min = -1000 max = 0 }
+			add = 1
+		}
+	}
 }
 
 ACW_long_strength_factor = {
-	set_temp_variable = { strength_factor = USA.Long_strength }
-	ACW_strength_factor = yes
+	set_temp_variable = {
+		strength_factor = {
+			value = USA.Long_strength
+			multiply = 0.2
+			add = 1
+		}
+	}
 }
 
 ACW_long_strength_factor_reverse = {
-	set_temp_variable = { strength_factor = USA.Long_strength }
-	ACW_strength_factor_reverse = yes
+	set_temp_variable = {
+		strength_factor = {
+			value = USA.Long_strength
+			subtract = 3
+			multiply = 0.2
+			clamp = { min = -1000 max = 0 }
+			add = 1
+		}
+	}
 }

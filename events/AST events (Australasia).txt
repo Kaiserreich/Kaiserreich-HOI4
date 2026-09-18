@@ -315,7 +315,7 @@ country_event = {
 	fire_only_once = yes
 
 	trigger = {
-		has_country_leader = { character = AST_william_riddell_birdwood }
+		has_country_leader = { character = AST_william_birdwood }
 		has_democratic_government = yes
 	}
 
@@ -350,7 +350,7 @@ country_event = {
 			target = CAN
 			modifier = KR_disapproves_of_govt
 		}
-		retire_character = AST_william_riddell_birdwood
+		retire_character = AST_william_birdwood
 		AST_create_governor_general_hore_ruthven = yes
 	}
 	option = {
@@ -368,7 +368,7 @@ country_event = {
 			target = CAN
 			modifier = KR_approves_of_govt
 		}
-		retire_character = AST_william_riddell_birdwood
+		retire_character = AST_william_birdwood
 		if = {
 			limit = { ENT_king_george_vi = yes }
 			AST_create_governor_general_prince_henry = yes
@@ -1670,9 +1670,9 @@ country_event = {
 			long_name = AST_national_populist_banned_party_long
 		}
 		add_country_leader_role = {
-			character = AST_thomas_albert_blamey
+			character = AST_thomas_blamey
 			country_leader = {
-				desc = AST_thomas_albert_blamey_commander_desc
+				desc = AST_thomas_blamey_commander_desc
 				ideology = national_populist_subtype
 			}
 			promote_leader = yes
@@ -1706,7 +1706,7 @@ country_event = {
 		set_country_flag = AST_new_guard_dissolved
 		add_stability = 0.10
 		retire_character = AST_eric_campbell
-		retire_character = AST_thomas_albert_blamey
+		retire_character = AST_thomas_blamey
 		add_popularity = {
 			ideology = national_populist
 			popularity = -0.05
@@ -2717,7 +2717,7 @@ country_event = {
 			elections_allowed = yes
 			election_frequency = 60
 		}
-		promote_character = AST_frederick_woolnough_paterson
+		promote_character = AST_fred_paterson
 	}
 	option = {
 		log = "[GetLogInfo]: event australasia_events.101 option australasia_events.101.b"
@@ -2743,7 +2743,7 @@ country_event = {
 			election_frequency = 60
 		}
 		hidden_effect = {
-			promote_character = AST_frederick_woolnough_paterson
+			promote_character = AST_fred_paterson
 		}
 	}
 	after = {
@@ -3268,9 +3268,9 @@ country_event = {
 		log = "[GetLogInfo]: event australasia_events.160 option australasia_events.160.a"
 		name = australasia_events.160.a
 		AST_eric_campbell = { kill_character = yes }
-		effect_tooltip = { retire_character = AST_thomas_albert_blamey }
+		effect_tooltip = { retire_character = AST_thomas_blamey }
 		hidden_effect = {
-			AST_thomas_albert_blamey = { set_nationality = NZL }
+			AST_thomas_blamey = { set_nationality = NZL }
 			if = {
 				limit = { ENT = { is_faction_leader = yes } }
 				ENT = {
@@ -3446,11 +3446,11 @@ country_event = {
 			name = AST_national_populist_banned_party
 			long_name = AST_national_populist_banned_party_long
 		}
-		AST_thomas_albert_blamey = {
+		AST_thomas_blamey = {
 			set_nationality = ROOT
 			add_country_leader_role = {
 				country_leader = {
-					desc = AST_thomas_albert_blamey_commander_desc
+					desc = AST_thomas_blamey_commander_desc
 					ideology = national_populist_subtype
 				}
 				promote_leader = yes
@@ -3723,8 +3723,8 @@ country_event = {
 		character_list_tooltip = {
 			limit = {
 				OR = {
-					is_character = AST_leslie_james_morshead
-					is_character = AST_herbert_william_lloyd
+					is_character = AST_leslie_morshead
+					is_character = AST_herbert_lloyd
 					has_character_flag = NZL_character
 				}
 			}
@@ -3734,8 +3734,8 @@ country_event = {
 			every_character = {
 				limit = {
 					OR = {
-						is_character = AST_leslie_james_morshead
-						is_character = AST_herbert_william_lloyd
+						is_character = AST_leslie_morshead
+						is_character = AST_herbert_lloyd
 						has_character_flag = NZL_character
 					}
 				}
@@ -3746,17 +3746,17 @@ country_event = {
 				set_nationality = NZL
 			}
 			NZL = {
-				NZL_bernard_cyril_freyberg = {
+				NZL_bernard_freyberg = {
 					add_country_leader_role = {
 						country_leader = {
-							desc = NZL_bernard_cyril_freyberg_army_chief_desc
+							desc = NZL_bernard_freyberg_army_chief_desc
 							ideology = authoritarian_democrat_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = NZL_bernard_cyril_freyberg_army_chief_desc
+							desc = NZL_bernard_freyberg_army_chief_desc
 							ideology = paternal_autocrat_subtype
 						}
 						promote_leader = yes
@@ -4107,11 +4107,11 @@ country_event = {
 			name = AST_national_populist_banned_party
 			long_name = AST_national_populist_banned_party_long
 		}
-		AST_thomas_albert_blamey = {
+		AST_thomas_blamey = {
 			set_nationality = ROOT
 			add_country_leader_role = {
 				country_leader = {
-					desc = AST_thomas_albert_blamey_commander_desc
+					desc = AST_thomas_blamey_commander_desc
 					ideology = national_populist_subtype
 				}
 				promote_leader = yes
@@ -4573,7 +4573,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		naval_base > 0
+		any_owned_state = { naval_base > 0 }
 	}
 
 	option = {
@@ -4607,7 +4607,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		naval_base > 0
+		any_owned_state = { naval_base > 0 }
 	}
 
 	option = {
@@ -4634,7 +4634,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		naval_base > 0
+		any_owned_state = { naval_base > 0 }
 	}
 
 	option = {
@@ -5829,17 +5829,17 @@ country_event = {
 				set_nationality = NZL
 			}
 			NZL = {
-				NZL_bernard_cyril_freyberg = {
+				NZL_bernard_freyberg = {
 					add_country_leader_role = {
 						country_leader = {
-							desc = NZL_bernard_cyril_freyberg_army_chief_desc
+							desc = NZL_bernard_freyberg_army_chief_desc
 							ideology = authoritarian_democrat_subtype
 						}
 						promote_leader = yes
 					}
 					add_country_leader_role = {
 						country_leader = {
-							desc = NZL_bernard_cyril_freyberg_army_chief_desc
+							desc = NZL_bernard_freyberg_army_chief_desc
 							ideology = paternal_autocrat_subtype
 						}
 						promote_leader = yes
@@ -6488,7 +6488,7 @@ country_event = {
 		log = "[GetLogInfo]: event australasia_events.301 option australasia_events.301.a"
 		name = australasia_events.301.a
 		add_political_power = -20
-		AST_joseph_aloysius_lyons = { kill_character = yes }
+		AST_joseph_lyons = { kill_character = yes }
 	}
 }
 
@@ -6538,7 +6538,7 @@ country_event = {
 
 	trigger = {
 		date > 1942.1.1
-		has_character = AST_stanley_melbourne_bruce
+		has_character = AST_stanley_bruce
 		has_democratic_government = yes
 	}
 
@@ -6546,13 +6546,13 @@ country_event = {
 		log = "[GetLogInfo]: event australasia_events.303 option australasia_events.303.a"
 		name = australasia_events.303.a #Robert Menzies steps up as the new leader
 		ai_chance = { base = 60 }
-		retire_character = AST_stanley_melbourne_bruce
+		retire_character = AST_stanley_bruce
 		if = {
 			limit = { AST_is_dominion = no }
 			add_country_leader_role = {
-				character = AST_robert_gordon_menzies
+				character = AST_robert_menzies
 				country_leader = {
-					desc = AST_robert_gordon_menzies_sic_desc
+					desc = AST_robert_menzies_sic_desc
 					ideology = social_conservative_subtype
 				}
 				promote_leader = yes
@@ -6560,15 +6560,15 @@ country_event = {
 		}
 		else = {
 			add_country_leader_role = {
-				character = AST_robert_gordon_menzies
+				character = AST_robert_menzies
 				country_leader = {
-					desc = AST_robert_gordon_menzies_sic_desc
+					desc = AST_robert_menzies_sic_desc
 					ideology = social_conservative_subtype
 				}
 			}
 			if = {
 				limit = { has_government = social_conservative }
-				activate_advisor = AST_robert_gordon_menzies_sic
+				activate_advisor = AST_robert_menzies_sic
 			}
 		}
 		hidden_effect = {
@@ -6580,17 +6580,17 @@ country_event = {
 		log = "[GetLogInfo]: event australasia_events.303 option australasia_events.303.b"
 		name = australasia_events.303.b #Sidney Holland becomes the first New Zealander to lead the party
 		trigger = {
-			has_character = NZL_sidney_george_holland
+			has_character = NZL_sidney_holland
 		}
 		ai_chance = { base = 40 }
 		add_political_power = -25
-		retire_character = AST_stanley_melbourne_bruce
+		retire_character = AST_stanley_bruce
 		if = {
 			limit = { AST_is_dominion = no }
 			add_country_leader_role = {
-				character = NZL_sidney_george_holland
+				character = NZL_sidney_holland
 				country_leader = {
-					desc = NZL_sidney_george_holland_sic_desc
+					desc = NZL_sidney_holland_sic_desc
 					ideology = social_conservative_subtype
 				}
 				promote_leader = yes
@@ -6598,15 +6598,15 @@ country_event = {
 		}
 		else = {
 			add_country_leader_role = {
-				character = NZL_sidney_george_holland
+				character = NZL_sidney_holland
 				country_leader = {
-					desc = NZL_sidney_george_holland_sic_desc
+					desc = NZL_sidney_holland_sic_desc
 					ideology = social_conservative_subtype
 				}
 			}
 			if = {
 				limit = { has_government = social_conservative }
-				activate_advisor = NZL_sidney_george_holland_sic
+				activate_advisor = NZL_sidney_holland_sic
 			}
 		}
 	}
@@ -6665,19 +6665,19 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_character = AST_earle_christmas_grafton_page
+		has_character = AST_earle_page
 	}
 
 	option = {
 		log = "[GetLogInfo]: event australasia_events.305 option australasia_events.305.a"
 		name = australasia_events.305.a
-		retire_character = AST_earle_christmas_grafton_page
+		retire_character = AST_earle_page
 		if = {
 			limit = { AST_is_dominion = no }
 			add_country_leader_role = {
-				character = AST_arthur_william_fadden
+				character = AST_arthur_fadden
 				country_leader = {
-					desc = AST_arthur_william_fadden_sic_desc
+					desc = AST_arthur_fadden_sic_desc
 					ideology = market_liberal_subtype
 				}
 				promote_leader = yes
@@ -6685,15 +6685,15 @@ country_event = {
 		}
 		else = {
 			add_country_leader_role = {
-				character = AST_arthur_william_fadden
+				character = AST_arthur_fadden
 				country_leader = {
-					desc = AST_arthur_william_fadden_sic_desc
+					desc = AST_arthur_fadden_sic_desc
 					ideology = market_liberal_subtype
 				}
 			}
 			if = {
 				limit = { has_government = market_liberal }
-				activate_advisor = AST_arthur_william_fadden_sic
+				activate_advisor = AST_arthur_fadden_sic
 			}
 		}
 	}
@@ -6712,8 +6712,8 @@ country_event = {
 		log = "[GetLogInfo]: event australasia_events.306 option australasia_events.306.a"
 		name = australasia_events.306.a
 		add_stability = -0.02
-		retire_character = AST_john_bramwell_miles
-		promote_character = AST_lawrence_louis_sharkey
+		retire_character = AST_jb_miles
+		promote_character = AST_lawrence_sharkey
 	}
 }
 
@@ -6755,16 +6755,16 @@ country_event = {
 
 	trigger = {
 		has_socialist_government = yes
-		has_character = AST_frederick_woolnough_paterson
+		has_character = AST_fred_paterson
 	}
 
 	option = {
 		log = "[GetLogInfo]: event australasia_events.308 option australasia_events.308.a"
 		name = australasia_events.308.a #Elsie Farrely will take his place
 		trigger = {
-			has_character = NZL_elsie_violet_farrelly
+			has_character = NZL_elsie_farrelly
 		}
-		promote_character = NZL_elsie_violet_farrelly
+		promote_character = NZL_elsie_farrelly
 	}
 	option = {
 		log = "[GetLogInfo]: event australasia_events.308 option australasia_events.308.b"
@@ -6772,7 +6772,7 @@ country_event = {
 		promote_character = AST_john_anderson
 	}
 	after = {
-		retire_character = AST_frederick_woolnough_paterson
+		retire_character = AST_fred_paterson
 	}
 }
 
@@ -6815,9 +6815,9 @@ country_event = {
 		if = {
 			limit = { AST_is_dominion = no }
 			add_country_leader_role = {
-				character = AST_joseph_benedict_chifley
+				character = AST_ben_chifley
 				country_leader = {
-					desc = AST_joseph_benedict_chifley_sic_desc
+					desc = AST_ben_chifley_sic_desc
 					ideology = social_democrat_subtype
 				}
 				promote_leader = yes
@@ -6825,15 +6825,15 @@ country_event = {
 		}
 		else = {
 			add_country_leader_role = {
-				character = AST_joseph_benedict_chifley
+				character = AST_ben_chifley
 				country_leader = {
-					desc = AST_joseph_benedict_chifley_sic_desc
+					desc = AST_ben_chifley_sic_desc
 					ideology = social_democrat_subtype
 				}
 			}
 			if = {
 				limit = { has_government = social_democrat }
-				activate_advisor = AST_joseph_benedict_chifley_sic
+				activate_advisor = AST_ben_chifley_sic
 			}
 		}
 		hidden_effect = {

@@ -126,6 +126,8 @@
 ### At War Notice ###
  has_scripted_peace: "We Are At War"
  has_scripted_peace_desc: "The country is at war, and is determined to achieve victory - though chances are our resistance is a bit more brittle than it seems. (Note: this exists for wars where a scripted peace event exists, and chances are the event will fire long before this elevated surrender limit is hit, just so you're aware.)"
+ has_scripted_peace_2: "We Are At War 2"
+ has_scripted_peace_2_desc: "The country is at war, and is determined to achieve victory - though chances are our resistance is a bit more brittle than it seems. (Note: this exists for wars where a scripted peace event exists, and chances are the event will fire long before this elevated surrender limit is hit, just so you're aware. This is another iteration of the same national spirit in case multiple scripted peaces fire at the same time.)"
 
 ### Demobilisation ###
  mobilisation_penalty_modifier: "Above Division Limit"
@@ -159,8 +161,9 @@
  unit_limit_core_population_desc: "$unit_limit_list_item$Core Population: [?core_base|G2=]"
  unit_limit_noncore_population_desc: "$unit_limit_list_item$Non-Core Population: [?non_core_base|G2=]"
  unit_limit_states_desc: "$unit_limit_list_item$Owned States: [?num_owned_states|G0=]"
- unit_limit_factories_low_desc: "$unit_limit_list_item$[?factory_delta|R0]/[?factory_cutoff|R0] Factories: [?base_factories|R2=]"
- unit_limit_factories_high_desc: "$unit_limit_list_item$[?factory_delta|G0]/[?factory_cutoff|G0] Factories: [?base_factories|G2=]"
+ unit_limit_factories_low_desc: "$unit_limit_list_item$[?factory_delta|-0]/[?factory_cutoff|-0] Factories: [?base_factories|+=2]"
+ unit_limit_factories_high_desc: "$unit_limit_list_item$[?factory_delta|+0]/[?factory_cutoff|+0] Factories: [?base_factories|+=2]"
+ unit_limit_factories_equalised_desc: "$unit_limit_list_item$[?factory_delta|Y0]/[?factory_cutoff|Y0] Factories: §HNo change§!"
  unit_limit_subject_bonus_desc: "$unit_limit_list_item$§HSubjects§!: [?base_subjects|G2=][unit_limit_subject_bonus_breakdown]"
  unit_limit_subject_bonus_breakdown_desc: "$unit_limit_list_item_detailed$[?scope.GetNameWithFlag]: [?scope:divisions_from_subject|G2=][unit_limit_subject_bonus_breakdown]"
  unit_limit_additional_multipliers_desc: "\n\nAdditional Multipliers:"
@@ -174,7 +177,7 @@
  unit_limit_above_limit_text: "§RWe have currently exceeded our capacity, and the only way to alleviate the stress on our country will be to disband some of our divisions.§!\n\n$MODIFIER_ARMY_ORG_FACTOR$: [?mobilisation_penalty_var|+=%1]\n$MODIFIER_CONSUMER_GOODS_FACTOR$: [?mobilisation_penalty_var_positive|=%H1]\n$MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$: [?mobilisation_penalty_var|+=%]\n$MODIFIER_TRAINING_TIME_ARMY_FACTOR$: [?mobilisation_penalty_var_positive|-=%]\n$MODIFIER_LAND_REINFORCE_RATE$: [?mobilisation_penalty_var|+=%1]"
 
  unit_limit_breakdown_desc: "[unit_limit_breakdown_desc]"
- unit_limit_breakdown_desc_enabled: "Every country only has the ability to support a certain number of individual military divisions before their economy and infrastructure struggle to maintain them.\n\nThe maximum number of supported units is based on the country's §Ypopulation§!, §Ynumber of owned states§!, and its §Yfactory count§! relative to the former two.\n\nIn §Hcivil wars§!, the base values are calculated from the sum of all states owned by all participants."
+ unit_limit_breakdown_desc_enabled: "Every country only has the ability to support a certain number of individual military divisions before their economy and infrastructure struggle to maintain them.\n\nThe maximum number of supported units is based on the country's §Ypopulation§!, §Ynumber of owned states§!, and its §Yfactory count§! relative to the former two.\n\nIn §Hcivil wars§!, the base values are calculated from the sum of all states owned by all participants.\n\nArmy Headquarters are always excluded from the division limit."
  unit_limit_breakdown_desc_disabled: "§HMaximum Supported Divisions§! has been disabled by game rules."
 
 ### Tooltips ###

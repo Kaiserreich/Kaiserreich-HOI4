@@ -187,9 +187,13 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed BUL_curtail_military_league"
-			add_to_variable = { BUL_coup_success_chance = -10 }
-			clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-			custom_effect_tooltip = BUL_decrease_coup_chance_tt
+			add_to_variable = {
+				BUL_coup_success_chance = {
+					value = -10
+					clamp = { min = { value = BUL_coup_success_chance multiply = -1 } max = 0 }
+				}
+				tooltip = BUL_increase_coup_chance_tt
+			}
 			add_stability = 0.02
 			add_to_variable = { BUL_curtail_focus_amount_var = 1 }
 			if = {
@@ -252,24 +256,34 @@ focus_tree = {
 					limit = {
 						has_country_flag = BUL_stands_with_opposition
 					}
-					set_temp_variable = { BUL_deputies = 20 }
-					custom_effect_tooltip = BUL_reduce_deputy_support_tt
-					subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-					clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+					subtract_from_variable = {
+						BUL_parliamentary_support = {
+							value = 20
+							clamp = { min = 0 max = BUL_parliamentary_support }
+						}
+						tooltip = BUL_reduce_deputy_support_tt
+					}
 				}
 				else_if = {
 					limit = {
 						has_country_flag = BUL_stands_with_zveno
 					}
-					add_to_variable = { BUL_coup_success_chance = -10 }
-					clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-					custom_effect_tooltip = BUL_decrease_coup_chance_tt
+					add_to_variable = {
+						BUL_coup_success_chance = {
+							value = -10
+							clamp = { min = { value = BUL_coup_success_chance multiply = -1 } max = 0 }
+						}
+						tooltip = BUL_decrease_coup_chance_tt
+					}
 				}
 				else = {
-					set_temp_variable = { BUL_deputies = 20 }
-					custom_effect_tooltip = BUL_increase_deputy_support_tt
-					add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-					clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+					add_to_variable = {
+						BUL_parliamentary_support = {
+							value = 20
+							clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+						}
+						tooltip = BUL_increase_deputy_support_tt
+					}
 				}
 			}
 		}
@@ -509,16 +523,22 @@ focus_tree = {
 					limit = {
 						has_country_flag = BUL_stands_with_opposition
 					}
-					set_temp_variable = { BUL_deputies = 20 }
-					custom_effect_tooltip = BUL_reduce_deputy_support_tt
-					subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-					clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+					subtract_from_variable = {
+						BUL_parliamentary_support = {
+							value = 20
+							clamp = { min = 0 max = BUL_parliamentary_support }
+						}
+						tooltip = BUL_reduce_deputy_support_tt
+					}
 				}
 				else = {
-					set_temp_variable = { BUL_deputies = 20 }
-					custom_effect_tooltip = BUL_increase_deputy_support_tt
-					add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-					clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+					add_to_variable = {
+						BUL_parliamentary_support = {
+							value = 20
+							clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+						}
+						tooltip = BUL_increase_deputy_support_tt
+					}
 				}
 			}
 		}
@@ -561,16 +581,22 @@ focus_tree = {
 					limit = {
 						has_country_flag = BUL_stands_with_opposition
 					}
-					set_temp_variable = { BUL_deputies = 10 }
-					custom_effect_tooltip = BUL_reduce_deputy_support_tt
-					subtract_from_variable = { BUL_parliamentary_support = BUL_deputies }
-					clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+					subtract_from_variable = {
+						BUL_parliamentary_support = {
+							value = 10
+							clamp = { min = 0 max = BUL_parliamentary_support }
+						}
+						tooltip = BUL_reduce_deputy_support_tt
+					}
 				}
 				else = {
-					set_temp_variable = { BUL_deputies = 10 }
-					custom_effect_tooltip = BUL_increase_deputy_support_tt
-					add_to_variable = { BUL_parliamentary_support = BUL_deputies }
-					clamp_variable = { var = BUL_parliamentary_support max = 280 min = 0 }
+					add_to_variable = {
+						BUL_parliamentary_support = {
+							value = 10
+							clamp = { min = 0 max = { value = 280 subtract = BUL_parliamentary_support } }
+						}
+						tooltip = BUL_increase_deputy_support_tt
+					}
 				}
 			}
 		}
@@ -634,9 +660,13 @@ focus_tree = {
 				limit = {
 					has_active_mission = BUL_operation_nishava_fallout
 				}
-				add_to_variable = { BUL_coup_success_chance = 15 }
-				clamp_variable = { var = BUL_coup_success_chance max = 100 min = 0 }
-				custom_effect_tooltip = BUL_increase_coup_chance_tt
+				add_to_variable = {
+					BUL_coup_success_chance = {
+						value = 15
+						clamp = { min = 0 max = { value = 100 subtract = BUL_coup_success_chance } }
+					}
+					tooltip = BUL_increase_coup_chance_tt
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -1526,8 +1556,7 @@ focus_tree = {
 				uses = 1
 				category = industry
 			}
-			set_variable = { BUL_factory_goals = num_of_factories }
-			add_to_variable = { BUL_factory_goals = 10 }
+			set_variable = { BUL_factory_goals = { value = num_of_factories add = 10 } }
 			if = {
 				limit = {
 					NOT = {
@@ -3244,12 +3273,10 @@ focus_tree = {
 		available = {
 			has_government = paternal_autocrat
 			has_war = no
-			AND = {
-				has_completed_focus = BUL_pars_not_toto
-				has_completed_focus = BUL_ministry_of_national_economy
-				has_completed_focus = BUL_general_directorate_of_renewal
-				has_completed_focus = BUL_centralization_zveno
-			}
+			has_completed_focus = BUL_pars_not_toto
+			has_completed_focus = BUL_ministry_of_national_economy
+			has_completed_focus = BUL_general_directorate_of_renewal
+			has_completed_focus = BUL_centralization_zveno
 		}
 		bypass = {
 			NOT = {
@@ -4630,7 +4657,7 @@ focus_tree = {
 
 	focus = {
 		id = BUL_society_ceaseless_war
-		icon = GFX_goal_generic_corporatism
+		icon = GFX_goal_generic_militarism
 		cost = 6
 
 		relative_position_id = BUL_young_officers

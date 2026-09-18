@@ -23,8 +23,12 @@ china_target_scorer = {
 				all_subject_countries = {
 					if = {
 						limit = { is_chinese_tag = yes }
-						add_to_temp_variable = { subject_factories_and_divisions = num_of_factories }
-						add_to_temp_variable = { subject_factories_and_divisions = num_divisions }
+						add_to_temp_variable = {
+							subject_factories_and_divisions = {
+								value = num_of_factories
+								add = num_divisions
+							}
+						}
 					}
 				}
 				add = subject_factories_and_divisions
@@ -91,8 +95,12 @@ strongest_chinese_government = {
 				all_subject_countries = {
 					if = {
 						limit = { is_chinese_tag = yes }
-						add_to_temp_variable = { subject_factories_and_divisions = num_of_factories }
-						add_to_temp_variable = { subject_factories_and_divisions = num_divisions }
+						add_to_temp_variable = {
+							subject_factories_and_divisions = {
+								value = num_of_factories
+								add = num_divisions
+							}
+						}
 					}
 				}
 				add = subject_factories_and_divisions
@@ -157,8 +165,12 @@ best_tag_for_chinese_united_front_leader = {
 				all_subject_countries = {
 					if = {
 						limit = { is_chinese_tag = yes }
-						add_to_temp_variable = { subject_factories_and_divisions = num_of_factories }
-						add_to_temp_variable = { subject_factories_and_divisions = num_divisions }
+						add_to_temp_variable = {
+							subject_factories_and_divisions = {
+								value = num_of_factories
+								add = num_divisions
+							}
+						}
 					}
 				}
 				add = subject_factories_and_divisions

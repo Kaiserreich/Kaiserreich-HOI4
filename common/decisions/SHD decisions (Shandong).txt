@@ -319,9 +319,9 @@ SHD_war_intervention_decisions = {
 			every_state = {
 				limit = {
 					OR = {
-						has_state_flag = hunan_province_state
-						has_state_flag = guangdong_province_state
-						has_state_flag = guangxi_province_state
+						check_variable = { chinese_province_state = 602.id }
+						check_variable = { chinese_province_state = 592.id }
+						check_variable = { chinese_province_state = 594.id }
 					}
 				}
 				add_claim_by = SHD

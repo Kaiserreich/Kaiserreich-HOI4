@@ -2574,14 +2574,12 @@ focus_tree = {
 			has_government = authoritarian_democrat
 		}
 		bypass = {
-			AND = {
-				has_government = authoritarian_democrat
-				OR = {
-					is_subject = yes
-					is_in_faction = yes
-					has_war_with = TUR
-					has_war_with = GER
-				}
+			has_government = authoritarian_democrat
+			OR = {
+				is_subject = yes
+				is_in_faction = yes
+				has_war_with = TUR
+				has_war_with = GER
 			}
 		}
 		prerequisite = {
@@ -3208,10 +3206,8 @@ focus_tree = {
 			factor = 100
 			modifier = {
 				factor = 0
-				AND = {
-					NOT = { PER = { is_in_faction_with = INT } }
-					has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
-				}
+				NOT = { PER = { is_in_faction_with = INT } }
+				has_game_rule = { rule = ARM_forpol option = ARM_FORPOL_PER }
 			}
 		}
 

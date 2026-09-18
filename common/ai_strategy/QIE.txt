@@ -180,7 +180,7 @@ QIE_army_composition = {
 			}
 			date < 1941.1.1
 		}
-		check_variable = { num_divisions < 100 }
+		num_divisions < 100
 	}
 	abort_when_not_enabled = yes
 
@@ -196,10 +196,11 @@ QIE_army_composition = {
 		value = 25
 	}
 }
+
 QIE_army_composition_2 = {
 	allowed = { original_tag = QIE }
 	enable = {
-		check_variable = { num_divisions > 99 }
+		num_divisions > 99
 		NOT = { surrender_progress > 0.2 }
 	}
 	abort_when_not_enabled = yes
@@ -210,10 +211,11 @@ QIE_army_composition_2 = {
 		value = -50
 	}
 }
+
 QIE_army_composition_qing = {
 	allowed = { original_tag = QIE }
 	enable = {
-		check_variable = { num_divisions < 100 }
+		num_divisions < 100
 		has_completed_focus = QIE_purge_zhili
 	}
 	abort_when_not_enabled = yes
@@ -230,6 +232,7 @@ QIE_army_composition_qing = {
 		value = -125
 	}
 }
+
 QIE_basic_production = {
 	allowed = {
 		original_tag = QIE
@@ -266,6 +269,7 @@ QIE_basic_production = {
 		value = -1
 	}
 }
+
 QIE_infantry_equipment_modernisation = {
 	allowed = {
 		original_tag = QIE
@@ -294,6 +298,7 @@ QIE_infantry_equipment_modernisation = {
 		value = 20000
 	}
 }
+
 QIE_research_tool3 = {
 	allowed = {
 		original_tag = QIE
@@ -313,6 +318,7 @@ QIE_research_tool3 = {
 		value = 2000
 	}
 }
+
 QIE_research_tool4 = {
 	allowed = {
 		original_tag = QIE
@@ -332,6 +338,7 @@ QIE_research_tool4 = {
 		value = 2000
 	}
 }
+
 QIE_research_tool5 = {
 	allowed = {
 		original_tag = QIE
@@ -351,6 +358,7 @@ QIE_research_tool5 = {
 		value = 2000
 	}
 }
+
 QIE_research_ind3 = {
 	allowed = {
 		original_tag = QIE
@@ -375,6 +383,7 @@ QIE_research_ind3 = {
 		value = 500
 	}
 }
+
 QIE_research_ind4 = {
 	allowed = {
 		original_tag = QIE
@@ -399,6 +408,7 @@ QIE_research_ind4 = {
 		value = 500
 	}
 }
+
 QIE_research_ind5 = {
 	allowed = {
 		original_tag = QIE
@@ -423,16 +433,17 @@ QIE_research_ind5 = {
 		value = 500
 	}
 }
+
 QIE_aggressive_push_with_buff = {
 	allowed = { tag = QIE }
 	enable = {
 		has_idea = QIE_attack_FNG_idea
 		has_war_with = FNG
 		OR = {
-			AND = {
-				set_temp_variable = { QIE_aggro_day = global.num_days }
-				modulo_temp_variable = { QIE_aggro_day = 30 }
-				check_variable = { QIE_aggro_day < 7 }
+			check_expr = { #QIE_aggro_day
+				value = global.num_days
+				mod = 30
+				less_than = 7
 			}
 			AND = {
 				716 = { is_controlled_by = QIE }
@@ -440,10 +451,10 @@ QIE_aggressive_push_with_buff = {
 					surrender_progress > 0.5
 					has_capitulated = no
 				}
-				AND = {
-					set_temp_variable = { QIE_aggro_day_2 = global.num_days }
-					modulo_temp_variable = { QIE_aggro_day_2 = 30 }
-					check_variable = { QIE_aggro_day_2 < 14 }
+				check_expr = { #QIE_aggro_day_2
+					value = global.num_days
+					mod = 30
+					less_than = 14
 				}
 			}
 		}
@@ -470,6 +481,7 @@ QIE_aggressive_push_with_buff = {
 		execute_order = yes
 	}
 }
+
 QIE_avoid_shanxi = {
 	allowed = {
 		original_tag = QIE
@@ -480,13 +492,9 @@ QIE_avoid_shanxi = {
 		NOT = { 1072 = { is_controlled_by = SHX } }
 		OR = {
 			date > 1939.1.1
-			AND = {
-				set_temp_variable = { QIE_shanxi_day = global.num_days }
-				modulo_temp_variable = { QIE_shanxi_day = 365 }
-				OR = {
-					check_variable = { QIE_shanxi_day > 300 }
-					check_variable = { QIE_shanxi_day < 90 }
-				}
+			check_expr = {
+				value = { value = global.num_days mod = 365 greater_than = 300 }
+				or = { value = global.num_days mod = 365 less_than = 90 }
 			}
 		}
 	}
@@ -503,6 +511,7 @@ QIE_avoid_shanxi = {
 		execute_order = no
 	}
 }
+
 QIE_play_safe_against_fengtian = {
 	allowed = {
 		original_tag = QIE

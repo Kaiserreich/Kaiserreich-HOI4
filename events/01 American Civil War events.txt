@@ -3276,6 +3276,10 @@ country_event = { # ACW country can peace out with Canada
 		name = american_civil_war_events.163.a # forget it
 		ai_chance = { base = 0 }
 		add_political_power = -50
+		if = {
+			limit = { NOT = { has_global_flag = USA_civil_war_over_flag } }
+			custom_effect_tooltip = USA_civil_war_will_not_end_warning
+		}
 		hidden_effect = {
 			CAN = { remove_ideas = has_scripted_peace }
 		}
@@ -4876,7 +4880,6 @@ country_event = { # Minnesota flips to WCA
 			391 = {
 				if = {
 					limit = { industrial_complex < 1 }
-					set_temp_variable = { minnesota_factories = 1 }
 					if = {
 						limit = {
 							USA = {
@@ -4884,13 +4887,15 @@ country_event = { # Minnesota flips to WCA
 								has_country_flag = USA_minnesota_order
 							}
 						}
-						add_to_temp_variable = { minnesota_factories = 1 }
 						if = {
 							limit = { arms_factory < 1 }
 							add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 						}
+						set_temp_variable = { minnesota_factories = { value = 2 subtract = building_level@industrial_complex } }
 					}
-					subtract_from_temp_variable = { minnesota_factories = 391.building_level@industrial_complex }
+					else = {
+						set_temp_variable = { minnesota_factories = { value = 1 subtract = building_level@industrial_complex } }
+					}
 					add_building_construction = { type = industrial_complex level = minnesota_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -4976,14 +4981,12 @@ country_event = { # North Carolina flips to AUS
 			363 = {
 				if = {
 					limit = { industrial_complex < 3 }
-					set_temp_variable = { north_carolina_factories = 3 }
-					subtract_from_temp_variable = { north_carolina_factories = 363.building_level@industrial_complex }
+					set_temp_variable = { north_carolina_factories = { value = 3 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = north_carolina_factories instant_build = yes }
 				}
 				if = {
 					limit = { dockyard < 2 }
-					set_temp_variable = { north_carolina_dockyards = 2 }
-					subtract_from_temp_variable = { north_carolina_dockyards = 363.building_level@dockyard }
+					set_temp_variable = { north_carolina_dockyards = { value = 2 subtract = building_level@dockyard } }
 					add_building_construction = { type = dockyard level = north_carolina_dockyards instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -5065,7 +5068,6 @@ country_event = { # Tennessee flips to AUS
 			368 = {
 				if = {
 					limit = { industrial_complex < 5 }
-					set_temp_variable = { tennessee_factories = 5 }
 					if = {
 						limit = {
 							USA = {
@@ -5073,13 +5075,15 @@ country_event = { # Tennessee flips to AUS
 								has_country_flag = USA_tennessee_order
 							}
 						}
-						add_to_temp_variable = { tennessee_factories = 1 }
 						if = {
 							limit = { arms_factory < 1 }
 							add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 						}
+						set_temp_variable = { tennessee_factories = { value = 6 subtract = building_level@industrial_complex } }
 					}
-					subtract_from_temp_variable = { tennessee_factories = 368.building_level@industrial_complex }
+					else = {
+						set_temp_variable = { tennessee_factories = { value = 5 subtract = building_level@industrial_complex } }
+					}
 					add_building_construction = { type = industrial_complex level = tennessee_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -5161,14 +5165,12 @@ country_event = { # New Jersey flips to WCA
 			359 = {
 				if = {
 					limit = { industrial_complex < 4 }
-					set_temp_variable = { new_jersey_factories = 4 }
-					subtract_from_temp_variable = { new_jersey_factories = 359.building_level@industrial_complex }
+					set_temp_variable = { new_jersey_factories = { value = 4 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = new_jersey_factories instant_build = yes }
 				}
 				if = {
 					limit = { dockyard < 2 }
-					set_temp_variable = { new_jersey_dockyards = 2 }
-					subtract_from_temp_variable = { new_jersey_dockyards = 359.building_level@dockyard }
+					set_temp_variable = { new_jersey_dockyards = { value = 2 subtract = building_level@dockyard } }
 					add_building_construction = { type = dockyard level = new_jersey_dockyards instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -5260,8 +5262,7 @@ country_event = { # Southern Texas flips to USA
 			833 = {
 				if = {
 					limit = { industrial_complex < 4 }
-					set_temp_variable = { south_texas_factories = 4 }
-					subtract_from_temp_variable = { south_texas_factories = 833.building_level@industrial_complex }
+					set_temp_variable = { south_texas_factories = { value = 4 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = south_texas_factories instant_build = yes }
 				}
 				if = {
@@ -5272,7 +5273,7 @@ country_event = { # Southern Texas flips to USA
 						}
 						dockyard < 2
 					}
-					subtract_from_temp_variable = { south_texas_dockyards = 833.building_level@dockyard }
+					set_temp_variable = { south_texas_dockyards = { value = 2 subtract = building_level@dockyard } }
 					add_building_construction = { type = dockyard level = south_texas_dockyards instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -5374,7 +5375,6 @@ country_event = { # Iowa flips to WCA
 			392 = {
 				if = {
 					limit = { industrial_complex < 2 }
-					set_temp_variable = { iowa_factories = 2 }
 					if = {
 						limit = {
 							USA = {
@@ -5382,13 +5382,15 @@ country_event = { # Iowa flips to WCA
 								has_country_flag = USA_iowa_order
 							}
 						}
-						add_to_temp_variable = { iowa_factories = 1 }
 						if = {
 							limit = { arms_factory < 1 }
 							add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 						}
+						set_temp_variable = { iowa_factories = { value = 3 subtract = building_level@industrial_complex } }
 					}
-					subtract_from_temp_variable = { iowa_factories = 392.building_level@industrial_complex }
+					else = {
+						set_temp_variable = { iowa_factories = { value = 2 subtract = building_level@industrial_complex } }
+					}
 					add_building_construction = { type = industrial_complex level = iowa_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -5473,8 +5475,7 @@ country_event = { # Missouri flips to WCA
 			373 = {
 				if = {
 					limit = { industrial_complex < 6 }
-					set_temp_variable = { missouri_factories = 6 }
-					subtract_from_temp_variable = { missouri_factories = 373.building_level@industrial_complex }
+					set_temp_variable = { missouri_factories = { value = 6 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = missouri_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -5525,8 +5526,7 @@ country_event = { # Kentucky flips to WCA
 			369 = {
 				if = {
 					limit = { industrial_complex < 3 }
-					set_temp_variable = { kentucky_factories = 3 }
-					subtract_from_temp_variable = { kentucky_factories = 369.building_level@industrial_complex }
+					set_temp_variable = { kentucky_factories = { value = 3 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = kentucky_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -5577,8 +5577,7 @@ country_event = { # Kentucky flips to AUS
 			369 = {
 				if = {
 					limit = { industrial_complex < 3 }
-					set_temp_variable = { kentucky_factories = 3 }
-					subtract_from_temp_variable = { kentucky_factories = 369.building_level@industrial_complex }
+					set_temp_variable = { kentucky_factories = { value = 3 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = kentucky_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -5633,14 +5632,12 @@ country_event = { # Virginia flips to AUS
 				}
 				if = {
 					limit = { industrial_complex < 4 }
-					set_temp_variable = { virginia_factories = 4 }
-					subtract_from_temp_variable = { virginia_factories = 362.building_level@industrial_complex }
+					set_temp_variable = { virginia_factories = { value = 4 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = virginia_factories instant_build = yes }
 				}
 				if = {
 					limit = { dockyard < 3 }
-					set_temp_variable = { virginia_dockyards = 3 }
-					subtract_from_temp_variable = { virginia_dockyards = 362.building_level@dockyard }
+					set_temp_variable = { virginia_dockyards = { value = 3 subtract = building_level@dockyard } }
 					add_building_construction = { type = dockyard level = virginia_dockyards instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -5865,12 +5862,13 @@ country_event = {
 			modifier = {
 				factor = 3
 				# we are both way ahead of the enemy
-				set_temp_variable = { enemy_advantage = 0 }
-				add_to_temp_variable = { enemy_advantage = event_target:enemy_country.num_of_military_factories }
-				multiply_temp_variable = { enemy_advantage = 2.0 }
-				subtract_from_temp_variable = { enemy_advantage = ROOT.num_of_military_factories }
-				subtract_from_temp_variable = { enemy_advantage = event_target:truce_country.num_of_military_factories }
-				check_variable = { enemy_advantage < 0 }
+				check_expr = { #enemy_advantage
+					value = event_target:enemy_country.num_of_military_factories
+					multiply = 2
+					subtract = ROOT.num_of_military_factories
+					subtract = event_target:truce_country.num_of_military_factories
+					less_than = 0
+				}
 				# also I am ahead of the other truce country
 				strength_ratio = { tag = event_target:truce_country ratio > 1.5 }
 			}
@@ -6462,10 +6460,14 @@ country_event = {
 					is_mainland_america = yes
 					state_population_k > 3000
 				}
-				set_variable = { USA_num_of_units_to_raise = THIS.state_population_k }
-				multiply_variable = { USA_num_of_units_to_raise = 0.001 }
-				round_variable = USA_num_of_units_to_raise
-				subtract_from_variable = { USA_num_of_units_to_raise = 2 }
+				set_variable = {
+					USA_num_of_units_to_raise = {
+						value = THIS.state_population_k
+						multiply = 0.001
+						round = yes
+						subtract = 2
+					}
+				}
 			}
 		}
 	}
@@ -6996,7 +6998,6 @@ country_event = {
 			391 = {
 				if = {
 					limit = { industrial_complex < 1 }
-					set_temp_variable = { minnesota_factories = 1 }
 					if = {
 						limit = {
 							USA = {
@@ -7004,13 +7005,15 @@ country_event = {
 								has_country_flag = USA_minnesota_order
 							}
 						}
-						add_to_temp_variable = { minnesota_factories = 1 }
 						if = {
 							limit = { arms_factory < 1 }
 							add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 						}
+						set_temp_variable = { minnesota_factories = { value = 2 subtract = building_level@industrial_complex } }
 					}
-					subtract_from_temp_variable = { minnesota_factories = 391.building_level@industrial_complex }
+					else = {
+						set_temp_variable = { minnesota_factories = { value = 1 subtract = building_level@industrial_complex } }
+					}
 					add_building_construction = { type = industrial_complex level = minnesota_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -7060,7 +7063,6 @@ country_event = {
 			392 = {
 				if = {
 					limit = { industrial_complex < 2 }
-					set_temp_variable = { iowa_factories = 2 }
 					if = {
 						limit = {
 							USA = {
@@ -7068,13 +7070,15 @@ country_event = {
 								has_country_flag = USA_iowa_order
 							}
 						}
-						add_to_temp_variable = { iowa_factories = 1 }
 						if = {
 							limit = { arms_factory < 1 }
 							add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 						}
+						set_temp_variable = { iowa_factories = { value = 3 subtract = building_level@industrial_complex } }
 					}
-					subtract_from_temp_variable = { iowa_factories = 392.building_level@industrial_complex }
+					else = {
+						set_temp_variable = { iowa_factories = { value = 2 subtract = building_level@industrial_complex } }
+					}
 					add_building_construction = { type = industrial_complex level = iowa_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -7341,14 +7345,15 @@ country_event = {
 		382 = {
 			if = {
 				limit = { industrial_complex < 1 }
-				set_temp_variable = { colorado_factories = 1 }
 				if = {
 					limit = {
 						ROOT = { has_completed_focus = USA_new_industrial_act }
 					}
-					add_to_temp_variable = { colorado_factories = 1 }
+					set_temp_variable = { colorado_factories = { value = 2 subtract = building_level@industrial_complex } }
 				}
-				subtract_from_temp_variable = { colorado_factories = 382.building_level@industrial_complex }
+				else = {
+					set_temp_variable = { colorado_factories = { value = 1 subtract = building_level@industrial_complex } }
+				}
 				add_building_construction = { type = industrial_complex level = colorado_factories instant_build = yes }
 			}
 			remove_core_of = USA
@@ -7537,8 +7542,7 @@ country_event = {
 		373 = {
 			if = {
 				limit = { industrial_complex < 6 }
-				set_temp_variable = { missouri_factories = 6 }
-				subtract_from_temp_variable = { missouri_factories = 373.building_level@industrial_complex }
+				set_temp_variable = { missouri_factories = { value = 6 subtract = building_level@industrial_complex } }
 				add_building_construction = { type = industrial_complex level = missouri_factories instant_build = yes }
 			}
 			set_demilitarized_zone = no
@@ -7728,7 +7732,6 @@ country_event = {
 		368 = {
 			if = {
 				limit = { industrial_complex < 5 }
-				set_temp_variable = { tennessee_factories = 5 }
 				if = {
 					limit = {
 						USA = {
@@ -7736,13 +7739,15 @@ country_event = {
 							has_country_flag = USA_tennessee_order
 						}
 					}
-					add_to_temp_variable = { tennessee_factories = 1 }
 					if = {
 						limit = { arms_factory < 1 }
 						add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 					}
+					set_temp_variable = { tennessee_factories = { value = 6 subtract = building_level@industrial_complex } }
 				}
-				subtract_from_temp_variable = { tennessee_factories = 368.building_level@industrial_complex }
+				else = {
+					set_temp_variable = { tennessee_factories = { value = 5 subtract = building_level@industrial_complex } }
+				}
 				add_building_construction = { type = industrial_complex level = tennessee_factories instant_build = yes }
 			}
 			set_demilitarized_zone = no
@@ -7891,8 +7896,7 @@ country_event = {
 		369 = {
 			if = {
 				limit = { industrial_complex < 3 }
-				set_temp_variable = { kentucky_factories = 3 }
-				subtract_from_temp_variable = { kentucky_factories = 369.building_level@industrial_complex }
+				set_temp_variable = { kentucky_factories = { value = 3 subtract = building_level@industrial_complex } }
 				add_building_construction = { type = industrial_complex level = kentucky_factories instant_build = yes }
 			}
 			set_demilitarized_zone = no
@@ -8074,14 +8078,12 @@ country_event = {
 		363 = {
 			if = {
 				limit = { industrial_complex < 3 }
-				set_temp_variable = { north_carolina_factories = 3 }
-				subtract_from_temp_variable = { north_carolina_factories = 363.building_level@industrial_complex }
+				set_temp_variable = { north_carolina_factories = { value = 3 subtract = building_level@industrial_complex } }
 				add_building_construction = { type = industrial_complex level = north_carolina_factories instant_build = yes }
 			}
 			if = {
 				limit = { dockyard < 2 }
-				set_temp_variable = { north_carolina_dockyards = 2 }
-				subtract_from_temp_variable = { north_carolina_dockyards = 363.building_level@dockyard }
+				set_temp_variable = { north_carolina_dockyards = { value = 2 subtract = building_level@dockyard } }
 				add_building_construction = { type = dockyard level = north_carolina_dockyards instant_build = yes }
 			}
 			set_demilitarized_zone = no
@@ -8433,8 +8435,7 @@ country_event = {
 							check_variable = { philadelphia_civilian_factories_removed < 3 }
 						}
 					}
-					set_temp_variable = { philadelphia_civilian_factories = 3 }
-					subtract_from_temp_variable = { philadelphia_civilian_factories = philadelphia_civilian_factories_removed }
+					set_temp_variable = { philadelphia_civilian_factories = { value = 3 subtract = philadelphia_civilian_factories_removed } }
 					set_building_level = { type = industrial_complex level = philadelphia_civilian_factories instant_build = yes }
 				}
 				else_if = {
@@ -8692,14 +8693,12 @@ country_event = {
 			359 = {
 				if = {
 					limit = { industrial_complex < 4 }
-					set_temp_variable = { new_jersey_factories = 4 }
-					subtract_from_temp_variable = { new_jersey_factories = 359.building_level@industrial_complex }
+					set_temp_variable = { new_jersey_factories = { value = 4 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = new_jersey_factories instant_build = yes }
 				}
 				if = {
 					limit = { dockyard < 2 }
-					set_temp_variable = { new_jersey_dockyards = 2 }
-					subtract_from_temp_variable = { new_jersey_dockyards = 359.building_level@dockyard }
+					set_temp_variable = { new_jersey_dockyards = { value = 2 subtract = building_level@dockyard } }
 					add_building_construction = { type = dockyard level = new_jersey_dockyards instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -8825,8 +8824,7 @@ country_event = {
 			930 = {
 				if = {
 					limit = { industrial_complex < 4 }
-					set_temp_variable = { buffalo_factories = 4 }
-					subtract_from_temp_variable = { buffalo_factories = 930.building_level@industrial_complex }
+					set_temp_variable = { buffalo_factories = { value = 4 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = buffalo_factories instant_build = yes }
 				}
 				if = {
@@ -9161,8 +9159,7 @@ country_event = {
 			833 = {
 				if = {
 					limit = { industrial_complex < 4 }
-					set_temp_variable = { south_texas_factories = 4 }
-					subtract_from_temp_variable = { south_texas_factories = 833.building_level@industrial_complex }
+					set_temp_variable = { south_texas_factories = { value = 4 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = south_texas_factories instant_build = yes }
 				}
 				if = {
@@ -9173,7 +9170,7 @@ country_event = {
 						}
 						dockyard < 2
 					}
-					subtract_from_temp_variable = { south_texas_dockyards = 833.building_level@dockyard }
+					set_temp_variable = { south_texas_dockyards = { value = 2 subtract = building_level@dockyard } }
 					add_building_construction = { type = dockyard level = south_texas_dockyards instant_build = yes }
 				}
 
@@ -9235,7 +9232,7 @@ country_event = {
 			372 = {
 				if = {
 					limit = { industrial_complex < 2 }
-					subtract_from_temp_variable = { arkansas_factories = 372.building_level@industrial_complex }
+					set_temp_variable = { arkansas_factories = { value = 2 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = arkansas_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -9309,7 +9306,7 @@ country_event = {
 			375 = {
 				if = {
 					limit = { industrial_complex < 8 }
-					subtract_from_temp_variable = { north_texas_factories = 375.building_level@industrial_complex }
+					set_temp_variable = { north_texas_factories = { value = 8 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = north_texas_factories instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -9379,14 +9376,12 @@ country_event = {
 			363 = {
 				if = {
 					limit = { industrial_complex < 3 }
-					set_temp_variable = { north_carolina_factories = 3 }
-					subtract_from_temp_variable = { north_carolina_factories = 363.building_level@industrial_complex }
+					set_temp_variable = { north_carolina_factories = { value = 3 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = north_carolina_factories instant_build = yes }
 				}
 				if = {
 					limit = { dockyard < 2 }
-					set_temp_variable = { north_carolina_dockyards = 2 }
-					subtract_from_temp_variable = { north_carolina_dockyards = 363.building_level@dockyard }
+					set_temp_variable = { north_carolina_dockyards = { value = 2 subtract = building_level@dockyard } }
 					add_building_construction = { type = dockyard level = north_carolina_dockyards instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -9444,8 +9439,7 @@ country_event = {
 							check_variable = { virginia_civilian_factory_removed < 4 }
 						}
 					}
-					set_temp_variable = { virginia_civilian_factory = 4 }
-					subtract_from_temp_variable = { virginia_civilian_factory = virginia_civilian_factory_removed }
+					set_temp_variable = { virginia_civilian_factory = { value = 4 subtract = virginia_civilian_factory_removed } }
 					set_building_level = { type = industrial_complex level = virginia_civilian_factory instant_build = yes }
 				}
 				else_if = {
@@ -9658,7 +9652,6 @@ country_event = {
 		368 = {
 			if = {
 				limit = { industrial_complex < 5 }
-				set_temp_variable = { tennessee_factories = 5 }
 				if = {
 					limit = {
 						USA = {
@@ -9666,13 +9659,15 @@ country_event = {
 							has_country_flag = USA_tennessee_order
 						}
 					}
-					add_to_temp_variable = { tennessee_factories = 1 }
 					if = {
 						limit = { arms_factory < 1 }
 						add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 					}
+					set_temp_variable = { tennessee_factories = { value = 6 subtract = building_level@industrial_complex } }
 				}
-				subtract_from_temp_variable = { tennessee_factories = 368.building_level@industrial_complex }
+				else = {
+					set_temp_variable = { tennessee_factories = { value = 5 subtract = building_level@industrial_complex } }
+				}
 				add_building_construction = { type = industrial_complex level = tennessee_factories instant_build = yes }
 			}
 			remove_core_of = USA
@@ -9686,8 +9681,7 @@ country_event = {
 		369 = {
 			if = {
 				limit = { industrial_complex < 3 }
-				set_temp_variable = { kentucky_factories = 3 }
-				subtract_from_temp_variable = { kentucky_factories = 369.building_level@industrial_complex }
+				set_temp_variable = { kentucky_factories = { value = 3 subtract = building_level@industrial_complex } }
 				add_building_construction = { type = industrial_complex level = kentucky_factories instant_build = yes }
 			}
 			remove_core_of = USA
@@ -9852,14 +9846,12 @@ country_event = {
 			361 = {
 				if = {
 					limit = { industrial_complex < 7 }
-					set_temp_variable = { maryland_factories = 7 }
-					subtract_from_temp_variable = { maryland_factories = 361.building_level@industrial_complex }
+					set_temp_variable = { maryland_factories = { value = 7 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = north_carolina_factories instant_build = yes }
 				}
 				if = {
 					limit = { dockyard < 2 }
-					set_temp_variable = { maryland_dockyards = 2 }
-					subtract_from_temp_variable = { maryland_dockyards = 361.building_level@dockyard }
+					set_temp_variable = { maryland_dockyards = { value = 2 subtract = building_level@dockyard } }
 					add_building_construction = { type = dockyard level = maryland_dockyards instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -10022,14 +10014,12 @@ country_event = {
 			359 = {
 				if = {
 					limit = { industrial_complex < 4 }
-					set_temp_variable = { new_jersey_factories = 4 }
-					subtract_from_temp_variable = { new_jersey_factories = 359.building_level@industrial_complex }
+					set_temp_variable = { new_jersey_factories = { value = 4 subtract = building_level@industrial_complex } }
 					add_building_construction = { type = industrial_complex level = new_jersey_factories instant_build = yes }
 				}
 				if = {
 					limit = { dockyard < 2 }
-					set_temp_variable = { new_jersey_dockyards = 2 }
-					subtract_from_temp_variable = { new_jersey_dockyards = 359.building_level@dockyard }
+					set_temp_variable = { new_jersey_dockyards = { value = 2 subtract = building_level@dockyard } }
 					add_building_construction = { type = dockyard level = new_jersey_dockyards instant_build = yes }
 				}
 				set_demilitarized_zone = no
@@ -10148,8 +10138,7 @@ country_event = {
 						USA = { has_variable = washington_civilian_factories_removed }
 						USA = { check_variable = { washington_civilian_factories_removed < 2 } }
 					}
-					set_temp_variable = { washington_civilian_factories = 2 }
-					subtract_from_temp_variable = { washington_civilian_factories = washington_civilian_factories_removed }
+					set_temp_variable = { washington_civilian_factories = { value = 2 subtract = washington_civilian_factories_removed } }
 					set_building_level = { type = industrial_complex level = washington_civilian_factories instant_build = yes }
 				}
 				else_if = {
@@ -10278,7 +10267,7 @@ country_event = {
 		NEE = {
 			OR = {
 				has_character = NEE_leslie_groves_jr
-				has_character = NEE_mark_clark
+				has_character = NEE_mark_w_clark
 			}
 		}
 	}
@@ -10341,8 +10330,7 @@ country_event = {
 		log = "[GetLogInfo]: event american_civil_war_events.802 option american_civil_war_events.802.a"
 		name = american_civil_war_events.802.a
 		add_war_support = 0.01
-		set_temp_variable = { deserting_divisions = FROM.num_divisions }
-		multiply_temp_variable = { deserting_divisions = 30 }
+		set_temp_variable = { deserting_divisions = { value = FROM.num_divisions multiply = 30 } }
 		add_manpower = deserting_divisions
 	}
 }
@@ -10410,8 +10398,7 @@ country_event = {
 		log = "[GetLogInfo]: event american_civil_war_events.805 option american_civil_war_events.805.a"
 		name = american_civil_war_events.805.a
 		add_war_support = 0.01
-		set_temp_variable = { deserting_divisions = FROM.num_divisions }
-		multiply_temp_variable = { deserting_divisions = 30 }
+		set_temp_variable = { deserting_divisions = { value = FROM.num_divisions multiply = 30 } }
 		add_manpower = deserting_divisions
 	}
 }

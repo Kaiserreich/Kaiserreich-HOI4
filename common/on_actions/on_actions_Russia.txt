@@ -798,20 +798,47 @@ on_actions = {
 					}
 				}
 			}
+			else_if = {
+				limit = { has_power_balance = { id = RUS_power_balance } }
+				if = {
+					limit = { power_balance_value = { id = RUS_power_balance value < 0 } }
+					set_variable = {
+						RUS_power_balance_left_side_var = {
+							value = 25
+							multiply = {
+								value = 2
+								subtract = power_balance_value@RUS_power_balance
+							}
+							round = yes
+						}
+					}
+					set_variable = { RUS_power_balance_right_side_var = 50 }
+				}
+				else_if = {
+					limit = { power_balance_value = { id = RUS_power_balance value > 0 } }
+					set_variable = { RUS_power_balance_left_side_var = 50 }
+					set_variable = {
+						RUS_power_balance_right_side_var = {
+							value = 25
+							multiply = {
+								value = 2
+								add = power_balance_value@RUS_power_balance
+							}
+							round = yes
+						}
+					}
+				}
+				else = {
+					set_variable = { RUS_power_balance_left_side_var = 50 }
+					set_variable = { RUS_power_balance_right_side_var = 50 }
+				}
+			}
 			if = { ### Russian MIO weekly updates
 				limit = { has_dlc_aat = yes }
 				RUS_Update_MIO_Research_Speeds = yes
 				RUS_Update_MIO_XP_Gains = yes
 				#RUS_Update_Sokol = yes		Currently disabled as it isn't completely WAD
 				RUS_Update_Decaying_Funds_Bonus = yes
-			}
-			if = {
-				limit = {
-					NOT = { has_country_flag = RUS_report_done }
-					date > 1940.1.1
-				}
-				RUS_Balance_Report = yes
-				set_country_flag = RUS_report_done
 			}
 		}
 	}
@@ -1543,6 +1570,26 @@ on_actions = {
 			else_if = {
 				limit = { FROM = { is_ally_with = MEC } }
 				RUS_remove_from_economic_treaty = yes
+			}
+
+			if = {
+				limit = {
+					ROOT = {
+						OR = {
+							original_tag = RSA
+							original_tag = GER
+						}
+					}
+					FROM = {
+						OR = {
+							original_tag = RSA
+							original_tag = GER
+						}
+					}
+					has_global_flag = RSA_enabled
+				}
+				# Disable releasing Boldyrev if you decide to kill them off
+				clr_global_flag = RSA_enabled
 			}
 		}
 	}

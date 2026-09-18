@@ -255,6 +255,40 @@ india_claim_nepal_effect = {
 	}
 }
 
+india_claim_peshawar_effect = {
+	if = {
+		limit = { 442 = { is_claim_or_core_of_ROOT = no } } #Peshawar
+		add_state_claim = 442
+	}
+	if = {
+		limit = { can_declare_war_on = AFG }
+		if = {
+			limit = {
+				AFG = {
+					OR = {
+						is_subject = yes
+						has_capitulated = yes
+					}
+				}
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = AFG
+			}
+		}
+		else = {
+			country_event = india_events.86
+		}
+	}
+	else = {
+		create_wargoal = {
+			type = take_claimed_state
+			target = 442.owner
+			generator = { 442 }
+		}
+	}
+}
+
 india_claim_bhutan_effect = {
 	if = {
 		limit = { NOT = { country_exists = BHU } }
@@ -271,16 +305,8 @@ india_claim_bhutan_effect = {
 			target = BHU
 		}
 	}
-	else_if = {
-		limit = { original_tag = RAJ }
-		country_event = bhutan_events.106
-	}
-	else_if = {
-		limit = { original_tag = PRF }
-		country_event = bhutan_events.102
-	}
 	else = {
-		country_event = bhutan_events.109
+		country_event = bhutan_events.723
 	}
 }
 

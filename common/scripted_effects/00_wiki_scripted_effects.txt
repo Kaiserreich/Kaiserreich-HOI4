@@ -24,8 +24,8 @@ gather_country_data_1936_start = {
 			}
 			add_to_temp_variable = { number_of_building_slots = modifier@local_building_slots }
 		}
-		divide_temp_variable = { core_population = 1000 } #To make population be in millions
-		divide_temp_variable = { non_core_population = 1000 } #To make population be in millions
+		multiply_temp_variable = { core_population = 0.001 } #To make population be in millions
+		multiply_temp_variable = { non_core_population = 0.001 } #To make population be in millions
 		log = "[THIS.GetTag] | [?current_party_ideology_group.GetTokenLocalizedKey] | [?num_owned_states] | [?original_research_slots] | [?core_population|2] | [?non_core_population|2] | [?number_of_building_slots] | [?num_of_military_factories] | [?num_of_naval_factories] | [?num_of_civilian_factories]"
 	}
 	log = "L ----------------------------------------"

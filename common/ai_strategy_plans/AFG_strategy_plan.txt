@@ -1,0 +1,103 @@
+AFG_pashtunistan_reform_plan = {
+	name = "AFG_pashtunistan_reform_plan"
+	desc = ""
+
+	allowed = {
+		original_tag = AFG
+	}
+	enable = {
+		has_country_flag = AFG_pashtunistan_reformist_ai
+	}
+	abort = {
+		has_country_flag = AFG_pashtunistan_reformist_success_flag
+	}
+
+	ai_national_focuses = {
+		AFG_complete_the_kabul_peshawar_railroad
+		AFG_taming_the_winter_capital
+		AFG_turkestan_infrastructure_projects
+		AFG_harness_the_chak
+		AFG_swat_hydroelectric_developments
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+	}
+}
+
+AFG_civil_war_plan = {
+	name = "AFG_civil_war_plan"
+	desc = ""
+
+	allowed = {
+		original_tag = AFG
+	}
+	enable = {
+		has_country_flag = AFG_civil_war_started_flag
+	}
+	abort = {
+		NOT = { has_power_balance = { id = AFG_power_balance } } #this is my way to check if there has been a post civil war consolidation
+	}
+
+	focus_factors = {
+		AFG_quest_for_a_national_economy = 0.0
+		AFG_complete_the_kabul_peshawar_railroad = 0.0
+		AFG_towards_a_trans_afghan_railway = 0.0
+		AFG_diversify_transport_infrastructure = 0.0
+		AFG_taming_the_winter_capital = 0.0
+		AFG_crowning_the_kings_city = 0.0
+		AFG_rejection_of_rural_neglect = 0.0
+		AFG_develop_the_herat_crossing = 0.0
+		AFG_turkestan_infrastructure_projects = 0.0
+		AFG_inviting_additional_architects = 0.0
+		AFG_harness_the_chak = 0.0
+		AFG_swat_hydroelectric_developments = 0.0
+		AFG_modernise_the_kariz = 0.0
+		AFG_national_electrification_campaign = 0.0
+		AFG_the_dawn_of_afghan_capital = 0.0
+		AFG_nationhood_in_the_20th_century = 0.0
+		AFG_renovation_of_the_defence_ministry = 0.0
+		AFG_further_administrative_reach = 0.0
+		AFG_budding_security_state = 0.0
+		AFG_emulating_foreign_policing = 0.0
+		AFG_founding_an_information_ministry = 0.0
+		AFG_expand_military_governance = 0.0
+		AFG_seeking_alternate_foreign_investment = 0.0
+		AFG_reverse_the_economic_ministrys_decay = 0.0
+		AFG_establish_the_bank_of_afghanistan = 0.0
+		AFG_prioritise_economic_liberalisation = 0.0
+		AFG_building_civilian_institutions = 0.0
+		AFG_forming_the_transport_ministry = 0.0
+		AFG_decentralised_state_revenue = 0.0
+		AFG_centralised_taxation_systems = 0.0
+		AFG_priorities_of_the_education_ministry = 0.0
+		AFG_found_the_university_of_kabul = 0.0
+		AFG_rely_on_edwardes_and_islamia = 0.0
+		AFG_royal_army_reform_of_1936 = 0.0
+		AFG_armies_of_personality = 0.0
+		AFG_contributions_of_tribal_militias = 0.0
+		AFG_attracting_western_army_aid = 0.0
+		AFG_modern_training_methods = 0.0
+		AFG_combined_arms_experiments = 0.0
+		AFG_utilise_the_kohat_arms_industry = 0.0
+		AFG_upholding_professional_standards = 0.0
+		AFG_arsenals_of_kandahar_and_herat = 0.0
+		AFG_afghan_supply_corps = 0.0
+		AFG_advanced_communication_systems = 0.0
+		AFG_strongholds_of_the_hindu_kush = 0.0
+		AFG_building_conscription_infrastructure = 0.0
+		AFG_favour_foreign_instructors = 0.0
+		AFG_prioritise_afghan_officers = 0.0
+		AFG_expanding_the_royal_airforce = 0.0
+		AFG_ahmad_shah_airfield = 0.0
+		AFG_pilot_training_schemes = 0.0
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+	}
+}

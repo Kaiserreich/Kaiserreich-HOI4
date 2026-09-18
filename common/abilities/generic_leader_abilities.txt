@@ -19,11 +19,8 @@ ability = {
 					command_power > 1.5
 				}
 				check_variable = { num_units_offensive_combats > 6 }
-
-				set_temp_variable = { temp = avg_offensive_combat_status }
-				check_variable = { temp > 0.45 }
-				check_variable = { ai_random > temp }
-
+				check_variable = { avg_offensive_combat_status > 0.45 }
+				check_variable = { ai_random > avg_offensive_combat_status }
 				add = 2
 			}
 		}
@@ -71,13 +68,9 @@ ability = {
 				FROM = {
 					has_war_support > 0.4
 				}
-
 				check_variable = { num_units_defensive_combats > 6 }
-
-				set_temp_variable = { temp = avg_defensive_combat_status }
-				check_variable = { temp < 0.40 }
-				check_variable = { ai_random > temp }
-
+				check_variable = { avg_defensive_combat_status < 0.4 }
+				check_variable = { ai_random > avg_defensive_combat_status }
 				add = 2
 			}
 		}
@@ -104,7 +97,7 @@ ability = {
 				FROM = {
 					command_power > 2.0
 				}
-				check_variable = { num_units > 6 }
+				num_units > 6
 				check_variable = { unit_ratio_ready_for_plan > 0.55 }
 				check_variable = { avg_unit_planning_ratio < 0.4 }
 
@@ -139,13 +132,12 @@ ability = {
 				FROM = {
 					command_power > 1.5
 				}
-
-				set_temp_variable = { temp = num_units_offensive_combats }
-				check_variable = { temp > 6 }
-				set_temp_variable = { temp2 = num_units_offensive_combats_against@fort }
-				divide_temp_variable = { temp2 = temp }
-				check_variable = { temp2 > 0.5 }
-
+				check_variable = { num_units_offensive_combats > 6 }
+				check_expr = {
+					value = num_units_offensive_combats_against@fort
+					divide = num_units_offensive_combats
+					greater_than = 0.5
+				}
 				add = 2
 			}
 		}
@@ -286,15 +278,11 @@ ability = {
 					command_power > 2
 				}
 				check_variable = { num_units_offensive_combats > 6 }
-
-				set_temp_variable = { temp = avg_offensive_combat_status }
-				check_variable = { temp > 0.2 }
-				check_variable = { ai_random > temp }
-
+				check_variable = { avg_offensive_combat_status > 0.2 }
+				check_variable = { ai_random > avg_offensive_combat_status }
 				add = 2
 			}
 		}
-
 
 		cost = 0.22
 		duration = 336
@@ -323,14 +311,13 @@ ability = {
 			dig_in_speed = 6.0
 		}
 
-
 		ai_will_do = {
 			factor = -1
 			modifier = {
 				FROM = {
 					command_power > 2.0
 				}
-				check_variable = { num_units > 6 }
+				num_units > 6
 				check_variable = { unit_ratio_ready_for_plan > 0.6 }
 				check_variable = { avg_unit_entrenchment_ratio < 0.4 }
 
@@ -406,7 +393,7 @@ ability = {
 			factor = -1
 			modifier = {
 				FROM = { command_power > 6.0 }
-				check_variable = { num_units > 6 }
+				num_units > 6
 				check_variable = { num_units_in_combat > 4 }
 				check_variable = { avg_combat_status > 0.7 }
 				add = 2

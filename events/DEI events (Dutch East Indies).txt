@@ -3638,10 +3638,7 @@ country_event = { #Resistance raids a factory, successful
 	option = { #Great!
 		log = "[GetLogInfo]: event dutch_exile_events.12 option dutch_exile_events.12.a"
 		name = dutch_exile_events.12.a
-		add_to_variable = {
-			var = holex_active_resistance_members
-			value = 25
-		}
+		add_to_variable = { holex_active_resistance_members = 25 }
 		custom_effect_tooltip = holex_tt_everyone_survived
 	}
 }
@@ -3687,38 +3684,16 @@ country_event = { #Resistance raids a factory, partially successful but 4 killed
 		log = "[GetLogInfo]: event dutch_exile_events.14 option dutch_exile_events.14.a"
 		name = dutch_exile_events.14.a
 		custom_effect_tooltip = holex_tt_four_dead_two_arrested_nineteen_hiding
-		hidden_effect = {
-			subtract_from_variable = {
-				var = holex_active_resistance_members
-				value = 25
-			}
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
 				value = 19
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
-			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
+				value = 19
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}
@@ -3757,38 +3732,16 @@ country_event = { #Resistance fails the raid, hits a patrol and loses 7 good men
 		log = "[GetLogInfo]: event dutch_exile_events.16 option dutch_exile_events.16.a"
 		name = dutch_exile_events.16.a
 		custom_effect_tooltip = holex_tt_seven_dead_one_arrested_seventeen_hiding
-		hidden_effect = {
-			subtract_from_variable = {
-				var = holex_active_resistance_members
-				value = 25
-			}
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
 				value = 17
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
-			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
+				value = 17
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}
@@ -3827,38 +3780,22 @@ country_event = { #Resistance raids a factory, but it was a trap set by the auth
 		log = "[GetLogInfo]: event dutch_exile_events.18 option dutch_exile_events.18.a"
 		name = dutch_exile_events.18.a
 		custom_effect_tooltip = holex_tt_all_fourteen_dead_eleven_arrested_another_thirty_possibly_contaminated
-		hidden_effect = {
-			subtract_from_variable = {
-				var = holex_active_resistance_members
-				value = 55
-			}
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		subtract_from_variable = {
+			holex_active_resistance_members = {
 				value = 30
+				clamp = { min = 0 max = holex_active_resistance_members }
 			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
+		}
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
+				value = 30
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
+				value = 30
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}
@@ -3919,10 +3856,7 @@ country_event = { #Resistance raids a factory, successful
 	option = { #Great!
 		log = "[GetLogInfo]: event dutch_exile_events.21 option dutch_exile_events.21.a"
 		name = dutch_exile_events.21.a
-		add_to_variable = {
-			var = holex_active_resistance_members
-			value = 25
-		}
+		add_to_variable = { holex_active_resistance_members = 25 }
 		custom_effect_tooltip = holex_tt_everyone_survived
 	}
 }
@@ -3968,34 +3902,16 @@ country_event = { #Resistance raids a factory, partially successful but 4 killed
 		log = "[GetLogInfo]: event dutch_exile_events.23 option dutch_exile_events.23.a"
 		name = dutch_exile_events.23.a
 		custom_effect_tooltip = holex_tt_four_dead_two_arrested_nineteen_hiding
-		hidden_effect = {
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
 				value = 19
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
-			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
+				value = 19
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}
@@ -4034,34 +3950,16 @@ country_event = { #Resistance fails the raid, hits a patrol and loses 7 good men
 		log = "[GetLogInfo]: event dutch_exile_events.25 option dutch_exile_events.25.a"
 		name = dutch_exile_events.25.a
 		custom_effect_tooltip = holex_tt_eleven_dead_two_arrested_twelve_hiding
-		hidden_effect = {
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
 				value = 12
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
-			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
+				value = 12
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}
@@ -4100,38 +3998,22 @@ country_event = { #Resistance raids a factory, but it was a trap set by the auth
 		log = "[GetLogInfo]: event dutch_exile_events.27 option dutch_exile_events.27.a"
 		name = dutch_exile_events.27.a
 		custom_effect_tooltip = holex_tt_all_fourteen_dead_eleven_arrested_another_thirty_possibly_contaminated
-		hidden_effect = {
-			subtract_from_variable = {
-				var = holex_active_resistance_members
+		subtract_from_variable = {
+			holex_active_resistance_members = {
 				value = 30
+				clamp = { min = 0 max = holex_active_resistance_members }
 			}
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		}
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
 				value = 30
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
-			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
+				value = 30
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}
@@ -4192,10 +4074,7 @@ country_event = { #Resistance bombs a railway, successful
 	option = { #Oh no!
 		log = "[GetLogInfo]: event dutch_exile_events.30 option dutch_exile_events.30.a"
 		name = dutch_exile_events.30.a
-		add_to_variable = {
-			var = holex_active_resistance_members
-			value = 5
-		}
+		add_to_variable = { holex_active_resistance_members = 5 }
 	}
 }
 
@@ -4230,38 +4109,17 @@ country_event = { #Resistance bombs a railway, failed
 		log = "[GetLogInfo]: event dutch_exile_events.32 option dutch_exile_events.32.a"
 		name = dutch_exile_events.32.a
 		custom_effect_tooltip = holex_tt_all_two_arrested_three_possibly_contaminated
-		hidden_effect = {
-			subtract_from_variable = {
-				var = holex_active_resistance_members
+		add_to_variable = { holex_active_resistance_members = 2 }
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
 				value = 3
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
 				value = 3
-			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
-			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}
@@ -4298,38 +4156,22 @@ country_event = { #Razzia in [From.GetNameDef]
 		name = dutch_exile_events.34.a
 		custom_effect_tooltip = holex_tt_resistance_eight_arrested
 		custom_effect_tooltip = holex_tt_resistance_five_hiding
-		hidden_effect = {
-			subtract_from_variable = {
-				var = holex_active_resistance_members
+		subtract_from_variable = {
+			holex_active_resistance_members = {
 				value = 13
+				clamp = { min = 0 max = holex_active_resistance_members }
 			}
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		}
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
 				value = 5
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
-			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
+				value = 5
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}
@@ -4366,38 +4208,22 @@ country_event = { #Razzia in [From.GetNameDef]
 		name = dutch_exile_events.36.a
 		custom_effect_tooltip = holex_tt_resistance_four_arrested
 		custom_effect_tooltip = holex_tt_resistance_nine_hiding
-		hidden_effect = {
-			subtract_from_variable = {
-				var = holex_active_resistance_members
+		subtract_from_variable = {
+			holex_active_resistance_members = {
 				value = 13
+				clamp = { min = 0 max = holex_active_resistance_members }
 			}
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		}
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
 				value = 9
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
-			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
+				value = 9
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}
@@ -4433,38 +4259,22 @@ country_event = { #Razzia in [From.GetNameDef]
 		log = "[GetLogInfo]: event dutch_exile_events.38 option dutch_exile_events.38.a"
 		name = dutch_exile_events.38.a
 		custom_effect_tooltip = holex_tt_resistance_none_arrested
-		hidden_effect = {
-			subtract_from_variable = {
-				var = holex_active_resistance_members
+		subtract_from_variable = {
+			holex_active_resistance_members = {
 				value = 8
+				clamp = { min = 0 max = holex_active_resistance_members }
 			}
-			set_temp_variable = {
-				var = holex_hiding_spots_required
+		}
+		add_to_variable = {
+			holex_hiding_resistancemembers = {
 				value = 8
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
-			if = {
-				limit = {
-					check_variable = { holex_free_hiding_spots < holex_hiding_spots_required }
-				}
-				set_temp_variable = {
-					holex_lack_of_hiding_spots = holex_hiding_spots_required
-				}
-				subtract_from_temp_variable = {
-					var = holex_lack_of_hiding_spots
-					value = holex_free_hiding_spots
-				}
-				subtract_from_temp_variable = {
-					var = holex_hiding_spots_required
-					value = holex_lack_of_hiding_spots
-				}
-			}
-			subtract_from_variable = {
-				var = holex_free_hiding_spots
-				value = holex_hiding_spots_required
-			}
-			add_to_variable = {
-				var = holex_hiding_resistancemembers
-				value = holex_hiding_spots_required
+		}
+		subtract_from_variable = {
+			holex_free_hiding_spots = {
+				value = 8
+				clamp = { min = 0 max = holex_free_hiding_spots }
 			}
 		}
 	}

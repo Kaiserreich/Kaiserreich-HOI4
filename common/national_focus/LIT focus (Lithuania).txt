@@ -228,7 +228,7 @@ focus_tree = {
 					localization_key = tooltip_add_dynmod
 					DYNMOD = LIT_long_road_to_pluralism_modifier
 				}
-				set_variable = { LIT_radicalism = 20 }
+				set_variable = { LIT_radicalism = 0.20 }
 				add_dynamic_modifier = { modifier = LIT_long_road_to_pluralism_modifier }
 			}
 			set_variable = { LIT_radicalism_pp_gain = 0.1 tooltip = political_power_gain_tooltip }
@@ -547,10 +547,8 @@ focus_tree = {
 				}
 			}
 			else = {
-				set_temp_variable = { LIT_stability_temp = LIT_radicalism_stability_weekly }
-				multiply_temp_variable = { LIT_stability_temp = -1 }
 				add_to_variable = {
-					LIT_radicalism_stability_weekly = LIT_stability_temp
+					LIT_radicalism_stability_weekly = { value = LIT_radicalism_stability_weekly multiply = -1 }
 					tooltip = stability_weekly_tooltip
 				}
 			}
@@ -1223,7 +1221,7 @@ focus_tree = {
 			NOT = {
 				check_variable = {
 					tooltip = LIT_federalisation_check_tooltip
-					LIT_federalisation < 95
+					LIT_federalisation < 0.95
 				}
 			}
 		}
@@ -1503,7 +1501,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_censor_the_press"
 			LIT_reduce_cultural_divide = yes
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 		}
 	}
@@ -1554,7 +1552,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_administrative_language_reforms"
 			LIT_reduce_cultural_divide = yes
-			set_temp_variable = { LIT_centralisation_change = 10 }
+			set_temp_variable = { LIT_centralisation_change = 0.1 }
 			LIT_change_centralisation = yes
 			hidden_effect = {
 				country_event = { id = lithuania_events.159 days = 3 }
@@ -1627,7 +1625,7 @@ focus_tree = {
 
 	focus = {
 		id = LIT_abolish_the_seimas
-		icon = GFX_goal_DEI_focus_disband_volksraad
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
 		cost = 6
 
 		relative_position_id = LIT_curtail_the_bund
@@ -1793,7 +1791,7 @@ focus_tree = {
 			NOT = {
 				check_variable = {
 					tooltip = LIT_centralisation_check_tooltip
-					LIT_centralisation < 95
+					LIT_centralisation < 0.95
 				}
 			}
 			NOT = { has_active_mission = LIT_LAF_guerilla_activity }
@@ -2548,7 +2546,7 @@ focus_tree = {
 
 	focus = {
 		id = LIT_a_total_national_state
-		icon = GFX_goal_generic_corporatism
+		icon = GFX_goal_generic_militarism
 		cost = 6
 
 		relative_position_id = LIT_naujoji_romuva
@@ -2916,7 +2914,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed LIT_gain_farmer_support"
 			add_political_power = 50
 			activate_targeted_decision = { target = THIS decision = LIT_Naruto_rural_outreach }
-			set_temp_variable = { LIT_threat_change = -10 }
+			set_temp_variable = { LIT_threat_change = -0.1 }
 			LIT_change_LAF_threat = yes
 		}
 	}
@@ -3008,7 +3006,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed LIT_seek_southern_support"
 			add_stability = 0.05
 			add_political_power = 100
-			set_temp_variable = { LIT_threat_change = -10 }
+			set_temp_variable = { LIT_threat_change = -0.1 }
 			LIT_change_LAF_threat = yes
 			activate_targeted_decision = { target = THIS decision = LIT_Naruto_arm_polish }
 			hidden_effect = { country_event = { days = 21 id = lithuania_events.331 } }
@@ -3055,7 +3053,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LIT_loyalty_to_the_kingdom"
 			add_war_support = 0.10
-			set_temp_variable = { LIT_threat_change = -10 }
+			set_temp_variable = { LIT_threat_change = -0.1 }
 			LIT_change_LAF_threat = yes
 			country_event = lithuania_events.336
 		}
@@ -3081,7 +3079,7 @@ focus_tree = {
 				remove_idea = LIT_cultural_divide_1
 				add_idea = LIT_cultural_divide_2
 			}
-			set_temp_variable = { LIT_threat_change = -10 }
+			set_temp_variable = { LIT_threat_change = -0.1 }
 			LIT_change_LAF_threat = yes
 		}
 	}
@@ -3186,17 +3184,17 @@ focus_tree = {
 			add_ideas = LIT_land_reforms_ASIS
 			custom_effect_tooltip = LIT_SWISS_CON_MINOR
 			hidden_effect = {
-				add_to_variable = { lit_var_swiss_conf_sam = 65 }
-				add_to_variable = { lit_var_swiss_conf_suw = 40 }
-				clamp_variable = {
-					var = lit_var_swiss_conf_sam
-					min = 0
-					max = 75
+				add_to_variable = {
+					lit_var_swiss_conf_sam = {
+						value = 65
+						clamp = { min = 0 max = { value = 75 subtract = lit_var_swiss_conf_sam } }
+					}
 				}
-				clamp_variable = {
-					var = lit_var_swiss_conf_suw
-					min = 0
-					max = 100
+				add_to_variable = {
+					lit_var_swiss_conf_suw = {
+						value = 40
+						clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_suw } }
+					}
 				}
 				LIT_recalculate_average_swiss_canton = yes
 			}
@@ -3665,31 +3663,31 @@ focus_tree = {
 			}
 			custom_effect_tooltip = LIT_SWISS_CON_MINOR
 			hidden_effect = {
+				add_to_variable = {
+					lit_var_swiss_conf_sam = {
+						value = 10
+						clamp = { min = 0 max = { value = 75 subtract = lit_var_swiss_conf_sam } }
+					}
+				}
+				add_to_variable = {
+					lit_var_swiss_conf_val = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_val } }
+					}
+				}
+				add_to_variable = {
+					lit_var_swiss_conf_bia = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_bia } }
+					}
+				}
+				add_to_variable = {
+					lit_var_swiss_conf_suw = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_suw } }
+					}
+				}
 				LIT_recalculate_average_swiss_canton = yes
-				add_to_variable = { lit_var_swiss_conf_sam = 10 }
-				add_to_variable = { lit_var_swiss_conf_val = 10 }
-				add_to_variable = { lit_var_swiss_conf_bia = 10 }
-				add_to_variable = { lit_var_swiss_conf_suw = 10 }
-				clamp_variable = {
-					var = lit_var_swiss_conf_sam
-					min = 0
-					max = 75
-				}
-				clamp_variable = {
-					var = lit_var_swiss_conf_val
-					min = 0
-					max = 100
-				}
-				clamp_variable = {
-					var = lit_var_swiss_conf_bia
-					min = 0
-					max = 100
-				}
-				clamp_variable = {
-					var = lit_var_swiss_conf_suw
-					min = 0
-					max = 100
-				}
 			}
 		}
 	}
@@ -3723,29 +3721,29 @@ focus_tree = {
 				add_idea = LIT_cultural_divide_4
 			}
 			custom_effect_tooltip = LIT_SWISS_CON_MINOR
-			add_to_variable = { lit_var_swiss_conf_sam = 5 }
-			add_to_variable = { lit_var_swiss_conf_val = 5 }
-			add_to_variable = { lit_var_swiss_conf_bia = 5 }
-			add_to_variable = { lit_var_swiss_conf_suw = 5 }
-			clamp_variable = {
-				var = lit_var_swiss_conf_sam
-				min = 0
-				max = 75
+			add_to_variable = {
+				lit_var_swiss_conf_sam = {
+					value = 5
+					clamp = { min = 0 max = { value = 75 subtract = lit_var_swiss_conf_sam } }
+				}
 			}
-			clamp_variable = {
-				var = lit_var_swiss_conf_val
-				min = 0
-				max = 100
+			add_to_variable = {
+				lit_var_swiss_conf_val = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_val } }
+				}
 			}
-			clamp_variable = {
-				var = lit_var_swiss_conf_bia
-				min = 0
-				max = 100
+			add_to_variable = {
+				lit_var_swiss_conf_bia = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_bia } }
+				}
 			}
-			clamp_variable = {
-				var = lit_var_swiss_conf_suw
-				min = 0
-				max = 100
+			add_to_variable = {
+				lit_var_swiss_conf_suw = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_suw } }
+				}
 			}
 			LIT_recalculate_average_swiss_canton = yes
 		}
@@ -3827,29 +3825,29 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed LIT_from_vilnius_to_bialystok"
 			97 = { increase_state_category_by_one_level = yes }
 			custom_effect_tooltip = LIT_SWISS_CON_MINOR
-			add_to_variable = { lit_var_swiss_conf_sam = 5 }
-			add_to_variable = { lit_var_swiss_conf_val = 5 }
-			add_to_variable = { lit_var_swiss_conf_bia = 5 }
-			add_to_variable = { lit_var_swiss_conf_suw = 5 }
-			clamp_variable = {
-				var = lit_var_swiss_conf_sam
-				min = 0
-				max = 75
+			add_to_variable = {
+				lit_var_swiss_conf_sam = {
+					value = 5
+					clamp = { min = 0 max = { value = 75 subtract = lit_var_swiss_conf_sam } }
+				}
 			}
-			clamp_variable = {
-				var = lit_var_swiss_conf_val
-				min = 0
-				max = 100
+			add_to_variable = {
+				lit_var_swiss_conf_val = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_val } }
+				}
 			}
-			clamp_variable = {
-				var = lit_var_swiss_conf_bia
-				min = 0
-				max = 100
+			add_to_variable = {
+				lit_var_swiss_conf_bia = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_bia } }
+				}
 			}
-			clamp_variable = {
-				var = lit_var_swiss_conf_suw
-				min = 0
-				max = 100
+			add_to_variable = {
+				lit_var_swiss_conf_suw = {
+					value = 5
+					clamp = { min = 0 max = { value = 100 subtract = lit_var_swiss_conf_suw } }
+				}
 			}
 			LIT_recalculate_average_swiss_canton = yes
 		}
@@ -3857,7 +3855,7 @@ focus_tree = {
 
 	focus = {
 		id = LIT_succession_question
-		icon = GFX_goal_LEP_governor_question
+		icon = GFX_goal_RUS_regency
 		cost = 1
 
 		relative_position_id = LIT_minority_representation
@@ -3976,7 +3974,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed LIT_declare_martial_law"
 			add_war_support = 0.2
 			add_ideas = LIT_martial_law
-			set_temp_variable = { LIT_threat_change = -25 }
+			set_temp_variable = { LIT_threat_change = -0.25 }
 			LIT_change_LAF_threat = yes
 		}
 	}
@@ -4002,7 +4000,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed LIT_secure_rural_areas"
 			add_political_power = 50
 			activate_targeted_decision = { target = THIS decision = LIT_Plech_intensify_military_presence }
-			set_temp_variable = { LIT_threat_change = -15 }
+			set_temp_variable = { LIT_threat_change = -0.15 }
 			LIT_change_LAF_threat = yes
 		}
 	}
@@ -4029,7 +4027,7 @@ focus_tree = {
 			add_war_support = 0.40
 			add_stability = -0.10
 			activate_targeted_decision = { target = THIS decision = LIT_Plech_indiscriminate_arrests }
-			set_temp_variable = { LIT_threat_change = -15 }
+			set_temp_variable = { LIT_threat_change = -0.15 }
 			LIT_change_LAF_threat = yes
 		}
 	}
@@ -4058,7 +4056,7 @@ focus_tree = {
 				remove_idea = LIT_cultural_divide_1
 				add_idea = LIT_cultural_divide_2
 			}
-			set_temp_variable = { LIT_threat_change = -5 }
+			set_temp_variable = { LIT_threat_change = -0.05 }
 			LIT_change_LAF_threat = yes
 		}
 	}
@@ -4085,7 +4083,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed LIT_loyalty_to_plechavicius"
 			add_war_support = 0.1
 			retire_character = LIT_kazys_skirpa
-			set_temp_variable = { LIT_threat_change = -15 }
+			set_temp_variable = { LIT_threat_change = -0.15 }
 			LIT_change_LAF_threat = yes
 		}
 	}
@@ -6463,7 +6461,7 @@ shared_focus = {
 	available = {
 		OR = {
 			owns_state = 188
-			naval_base > 3
+			any_owned_state = { naval_base > 3 }
 		}
 	}
 	prerequisite = {

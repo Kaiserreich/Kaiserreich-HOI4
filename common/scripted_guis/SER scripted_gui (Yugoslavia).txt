@@ -2,6 +2,89 @@ scripted_gui = {
 	yugoslavia_decision_cat_gui = {
 		context_type = decision_category
 		window_name = "yugoslavia_decision_cat_gui"
+
+		ai_enabled = { tag = SER }
+		ai_check = { NOT = { has_completed_focus = SER_YUG_brotherhood_and_unity } }
+		ai_test_interval = 40 #very 40 hours
+		ai_max_weight_taken_per_test = 1 #click 1 button every 40 hours
+		# So, max possible button clicks every round is (45*24)/40 = 27 clicks
+		# This needs to be minimum 25 clicks per round to assume worst case scenario.
+
+		dynamic_lists = {
+			SER_yugoslavia_ethnicity_grid = {
+				array = SER_yugoslavia_ethnicities_array
+				entry_container = SER_yugoslavia_ethnicity_entry
+				value = ethnicity
+				change_scope = yes
+
+				ai_weights = {
+					SER_yugoslavia_ethnicity_button_click = {
+						ai_will_do = {
+							base = 10
+							# THIS = current ethnicity (TAG)
+							# ROOT = current player country (SER)
+							modifier = {
+								factor = 0
+								check_variable = { ROOT.days_mission_timeout@YUG_rounds_system_mission > 45 }
+							}
+							modifier = {
+								factor = 0
+								NOT = { check_variable = { ROOT.YUG_pc_expenditure_@THIS < ROOT.YUG_AI_target_@THIS } }
+							}
+							modifier = {
+								factor = 0
+								check_expr = {
+									value = ROOT.YUG_political_capital
+									add = ROOT.YUG_pc_expenditure_@THIS
+									less_than = ROOT.YUG_ethnicity_pp_requirement_@THIS
+								}
+							}
+							modifier = { #finish investing in ones you already started
+								factor = 10
+								check_variable = { ROOT.YUG_pc_expenditure_@THIS > 0 }
+							}
+							modifier = {
+								factor = ROOT.YUG_AI_factor_@THIS #3 -> 1.5 -> 1 -> 1 -> 1 depending on the turn's requirements
+							}
+							modifier = {
+								factor = ROOT.YUG_AI_focus_@THIS #10-1 depending on the current relation level
+							}
+						}
+					}
+				}
+			}
+		}
+
+		triggers = {
+			SER_yugoslavia_ethnicity_button_visible = {
+				ROOT = { NOT = { has_completed_focus = SER_YUG_brotherhood_and_unity } }
+			}
+			SER_yugoslavia_ethnicity_button_click_enabled = {
+				if = {
+					limit = { check_variable = { ROOT.YUG_pc_expenditure_@THIS > 4 } }
+					custom_override_tooltip = {
+						tooltip = YUG_patronage_spending_maximum_five
+						always = no
+					}
+				}
+				else = {
+					check_variable = { ROOT.YUG_political_capital > 0 tooltip = YUG_1PC }
+				}
+			}
+		}
+
+		effects = {
+			SER_yugoslavia_ethnicity_button_click = {
+				hidden_effect = { ROOT = { SER_decrease_political_capital = yes } }
+				add_to_variable = { ROOT.YUG_pc_expenditure_@THIS = 1 tooltip = YUG_patronage_spending_tooltip }
+			}
+		}
+
+		properties = {
+			SER_yugoslavia_ethnicity_icon = {
+				image = "[SER_GetYugoIcon]"
+			}
+		}
 	}
 }
 

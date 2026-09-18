@@ -33,6 +33,10 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed COS_ZKG_Bailout"
+			if = {
+				limit = { has_idea = COS_influence_of_the_ZKG_idea }
+				activate_targeted_decision = { decision = COS_Extend_Loan_decision target = THIS }
+			}
 			swap_ideas = {
 				remove_idea = COS_black_monday
 				add_idea = COS_black_monday_bailout
@@ -105,7 +109,10 @@ focus_tree = {
 				set_temp_variable = { cos_UFC_change = 3 }
 				update_UFC_influence = yes
 			}
-			custom_effect_tooltip = UFC_DEAL
+			if = {
+				limit = { has_idea = COS_influence_of_the_UFC_idea }
+				activate_targeted_decision = { decision = COS_Establish_UFC_Headquarters_decision target = THIS }
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -121,7 +128,7 @@ focus_tree = {
 
 		available = {
 			has_stability > 0.30
-			has_country_flag = UFC_Labour_Accord
+			NOT = { has_idea = COS_labour_conflicts }
 		}
 		prerequisite = {
 			focus = COS_UFC_Land_Acquisition
@@ -251,7 +258,7 @@ focus_tree = {
 			date > 1938.01.01
 			has_stability > 0.15
 			custom_override_tooltip = {
-				tooltip = cos_black_monday_tt
+				tooltip = COS_ZKG_bankruptcy_not_solved_tt
 				OR = {
 					has_idea = COS_black_monday_bailout
 					has_idea = COS_black_monday_american_answer
@@ -361,6 +368,10 @@ focus_tree = {
 				}
 			}
 			else = {
+				if = {
+					limit = { has_idea = COS_influence_of_the_ZKG_idea }
+					activate_targeted_decision = { decision = COS_Sell_Government_Land_decision target = THIS }
+				}
 				set_temp_variable = { cos_ZKG_change = 3 }
 				update_ZKG_influence = yes
 				set_temp_variable = { cos_UFC_change = 3 }
@@ -381,11 +392,14 @@ focus_tree = {
 		y = 3
 
 		available = {
-			custom_override_tooltip = {
-				tooltip = COS_ZKG_higher_than_10
-				check_variable = { COS_ZKG_influence > 10 }
+			check_variable = {
+				tooltip = COS_ZKG_higher_than_tt
+				COS_ZKG_influence > 10
 			}
-			has_country_flag = ZKG_Labour_Accord
+			custom_override_tooltip = {
+				tooltip = COS_ZKG_labour_accord_tt
+				NOT = { has_idea = COS_labour_conflicts }
+			}
 		}
 		prerequisite = {
 			focus = COS_Cash_Crops_Investments
@@ -400,10 +414,8 @@ focus_tree = {
 			add_offsite_building = { type = industrial_complex level = 1 }
 			set_temp_variable = { cos_ZKG_change = 8 }
 			update_ZKG_influence = yes
-			hidden_effect = {
-				set_country_flag = ZKG_SURVEY
-			}
-			custom_effect_tooltip = ZKG_DEAL
+			activate_targeted_decision = { decision = COS_Land_Survey target = THIS }
+			set_variable = { COS_ZKG_survey = 1 }
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -488,7 +500,7 @@ focus_tree = {
 			date > 1938.01.01
 			has_stability > 0.15
 			custom_override_tooltip = {
-				tooltip = cos_black_monday_tt
+				tooltip = COS_ZKG_bankruptcy_not_solved_tt
 				has_idea = COS_black_monday_bailout
 			}
 		}
@@ -968,6 +980,10 @@ focus_tree = {
 				localization_key = building_state_modifier|dam
 				INDENT = "    "
 			}
+			if = {
+				limit = { has_country_leader = { character = COS_jose_figueres_ferrer } }
+				activate_targeted_decision = { decision = COS_Found_ICE target = THIS }
+			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -1121,6 +1137,7 @@ focus_tree = {
 			add_political_power = -50
 			add_research_slot_until_five = yes
 			add_stability = 0.05
+			activate_targeted_decision = { decision = COS_Build_New_Schools target = THIS }
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH FOCUS_FILTER_STABILITY }
 	}
@@ -1221,7 +1238,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed COS_Iron_Bars_Presidency"
-			add_ideas = COS_Iron_Bars_Presidency
+			add_ideas = COS_Iron_Bars_Presidency_Idea
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -1312,9 +1329,9 @@ focus_tree = {
 
 		available = {
 			has_government = social_conservative
-			custom_override_tooltip = {
-				tooltip = COS_ZKG_higher_than_10
-				check_variable = { COS_ZKG_influence > 10 }
+			check_variable = {
+				tooltip = COS_ZKG_higher_than_tt
+				COS_ZKG_influence > 10
 			}
 		}
 		prerequisite = {
@@ -1440,6 +1457,9 @@ focus_tree = {
 			country_event = costa_rica_events.98
 			custom_effect_tooltip = which_has_the_following_effect
 			event_option_tooltip = costa_rica_events.98.a
+			hidden_effect = {
+				country_event = { id = costa_rica_events.81 days = 3 random_days = 5 } # Persecution of Foreign Landowners
+			}
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
 	}
@@ -1795,6 +1815,7 @@ focus_tree = {
 				ideology = social_democrat
 				popularity = 0.08
 			}
+			COS_enable_ferrer_pacifist_decisions = yes
 			unlock_decision_tooltip = COS_form_faction
 			if = {
 				limit = { is_in_faction = yes }
@@ -1804,6 +1825,12 @@ focus_tree = {
 					separate_peace_all_wars = yes
 					leave_faction = yes
 					create_faction_from_template = { template = faction_template_defender_of_democracy name = faction_democratic_alliance_of_the_caribbean }
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { NIC = { has_authoritarian_government = no } }
+					country_event = { id = costa_rica_events.125 days = 365 random_days = 50 } # Deutscher Aero Lloyd Flight 134
 				}
 			}
 		}
@@ -1977,6 +2004,7 @@ focus_tree = {
 		y = 4
 
 		available = {
+			is_faction_leader = yes
 			is_subject = no
 			has_government = social_democrat
 			all_country_of = {
@@ -2013,7 +2041,7 @@ focus_tree = {
 				remove_idea = COS_beacon_democracy_2
 				add_idea = COS_beacon_democracy_3b
 			}
-			custom_effect_tooltip = COS_DUTY_TT
+			custom_effect_tooltip = COS_unlocks_topple_dictators_decisions
 			hidden_effect = {
 				DOM = {
 					if = {
@@ -2063,7 +2091,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed COS_Shining_Beacon_of_Progress"
-			custom_effect_tooltip = COS_PROGRESS_TT
+			activate_targeted_decision = { decision = COS_Disband_the_Council target = THIS }
+			activate_targeted_decision = { decision = COS_Abolish_Army target = THIS }
 		}
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
 	}

@@ -9,13 +9,7 @@ central_america_unification_wars_guatemala = {
 	enable = {
 		has_war_with = GUA
 		is_in_faction = yes
-		faction_leader = {
-			OR = {
-				is_in_faction_with = event_target:CEN_socialist_leader
-				is_in_faction_with = event_target:CEN_liberal_leader
-				is_in_faction_with = event_target:CEN_military_leader
-			}
-		}
+		scope:faction = { has_variable = central_america_unification_faction }
 	}
 
 	abort_when_not_enabled = yes
@@ -54,13 +48,7 @@ central_america_unification_wars_el_salvador = {
 	enable = {
 		has_war_with = ELS
 		is_in_faction = yes
-		faction_leader = {
-			OR = {
-				is_in_faction_with = event_target:CEN_socialist_leader
-				is_in_faction_with = event_target:CEN_liberal_leader
-				is_in_faction_with = event_target:CEN_military_leader
-			}
-		}
+		scope:faction = { has_variable = central_america_unification_faction }
 	}
 
 	abort_when_not_enabled = yes
@@ -99,13 +87,7 @@ central_america_unification_wars_honduras = {
 	enable = {
 		has_war_with = HON
 		is_in_faction = yes
-		faction_leader = {
-			OR = {
-				is_in_faction_with = event_target:CEN_socialist_leader
-				is_in_faction_with = event_target:CEN_liberal_leader
-				is_in_faction_with = event_target:CEN_military_leader
-			}
-		}
+		scope:faction = { has_variable = central_america_unification_faction }
 	}
 
 	abort_when_not_enabled = yes
@@ -144,13 +126,7 @@ central_america_unification_wars_nicaragua = {
 	enable = {
 		has_war_with = NIC
 		is_in_faction = yes
-		faction_leader = {
-			OR = {
-				is_in_faction_with = event_target:CEN_socialist_leader
-				is_in_faction_with = event_target:CEN_liberal_leader
-				is_in_faction_with = event_target:CEN_military_leader
-			}
-		}
+		scope:faction = { has_variable = central_america_unification_faction }
 	}
 
 	abort_when_not_enabled = yes

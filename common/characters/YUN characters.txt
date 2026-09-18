@@ -115,12 +115,7 @@ characters = {
 			visible = {
 				if = {
 					limit = { tag = YUN }
-					OR = {
-						has_completed_focus = YUN_waking_the_tiger
-						has_completed_focus = YUN_contacting_the_yunnan_labour_unions
-						has_completed_focus = YUN_to_enact_minsheng_geming
-						has_completed_focus = YUN_reconcile_with_the_socialists
-					}
+					has_country_flag = YUN_unlock_YUN_wang_fusheng_advisor
 					NOT = { has_country_flag = YUN_wang_fusheng_hidden_flag }
 				}
 			}
@@ -1417,7 +1412,7 @@ characters = {
 		}
 		corps_commander = {
 			desc = YUN_wang_boling_army_chief_desc
-			traits = { CHN_RKT_officer_trait career_officer trait_cautious organizer infantry_officer }
+			traits = { CHN_RKT_officer_trait career_officer trait_cautious organizer infantry_officer war_hero }
 			skill = 2
 			attack_skill = 2
 			defense_skill = 1

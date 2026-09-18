@@ -50,6 +50,16 @@ focus_tree = {
 			NOT = { has_country_flag = NEP_revolution_flag }
 		}
 
+		bypass = {
+			hidden_trigger = {
+				OR = {
+					has_country_flag = NEP_rana_regency_flag
+					has_country_flag = NEP_royal_restoration_flag
+					has_country_flag = NEP_revolution_flag
+				}
+			}
+		}
+
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NEP_rooting_out_the_traitors"
 			NEP = { set_temp_variable = { NEP_conspiracy_influence_change = 5 } }
@@ -341,6 +351,16 @@ focus_tree = {
 			NOT = { has_country_flag = NEP_rana_regency_flag }
 			NOT = { has_country_flag = NEP_royal_restoration_flag }
 			NOT = { has_country_flag = NEP_revolution_flag }
+		}
+
+		bypass = {
+			hidden_trigger = {
+				OR = {
+					has_country_flag = NEP_rana_regency_flag
+					has_country_flag = NEP_royal_restoration_flag
+					has_country_flag = NEP_revolution_flag
+				}
+			}
 		}
 
 		completion_reward = {
@@ -642,6 +662,10 @@ focus_tree = {
 			focus = NEP_the_darjeeling_conspiracy
 		}
 
+		bypass = {
+			NEP_conspiracy_ongoing = no
+		}
+
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed NEP_limit_the_spread_of_propaganda"
 			custom_override_tooltip = {
@@ -682,6 +706,10 @@ focus_tree = {
 
 		prerequisite = {
 			focus = NEP_limit_the_spread_of_propaganda
+		}
+
+		bypass = {
+			NEP_conspiracy_ongoing = no
 		}
 
 		completion_reward = {
@@ -725,6 +753,10 @@ focus_tree = {
 		prerequisite = {
 			focus = NEP_rooting_out_the_traitors
 			focus = NEP_the_darjeeling_conspiracy
+		}
+
+		bypass = {
+			NEP_conspiracy_ongoing = no
 		}
 
 		completion_reward = {
@@ -798,6 +830,10 @@ focus_tree = {
 					has_completed_focus = NEP_sowing_the_seeds_for_democracy
 				}
 			}
+		}
+
+		bypass = {
+			NEP_conspiracy_ongoing = no
 		}
 
 		completion_reward = {
@@ -1982,7 +2018,20 @@ focus_tree = {
 			is_subject = no
 			owns_state = 887 #Darjeeling
 			owns_state = 888 #Sikkim
-
+			custom_trigger_tooltip = {
+				tooltip = BHU_tt_no_sikkim_protests
+				NOT = {
+					OR = {
+						has_idea = BHU_sikkim_protests_1
+						has_idea = BHU_sikkim_protests_2
+						has_idea = BHU_sikkim_protests_3
+					}
+				}
+			}
+			BHU = {
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+			}
 			set_temp_variable = { target_state = 324.id } #Bhutan
 			has_truce_with_owner_of_state = no
 			has_non_aggression_pact_with_owner_of_state = no
@@ -1997,10 +2046,8 @@ focus_tree = {
 				is_in_same_economic_sphere_as_owner_of_state = yes
 				# Do not ruin observer games
 				hidden_trigger = {
-					AND = {
-						BHU = { is_ai = yes }
-						is_ai = yes
-					}
+					BHU = { is_ai = yes }
+					is_ai = yes
 				}
 			}
 		}
@@ -2104,6 +2151,10 @@ focus_tree = {
 			NEP_royal_restoration_focus_valid_government = yes
 			is_subject = no
 
+			TIB = {
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+			}
 			set_temp_variable = { target_state = 322.id } #Lhasa
 			has_truce_with_owner_of_state = no
 			has_non_aggression_pact_with_owner_of_state = no

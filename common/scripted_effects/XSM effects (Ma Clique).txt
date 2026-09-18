@@ -5,91 +5,81 @@
 
 XSM_add_5_lin = {
 	custom_effect_tooltip = XSM_add_5_lin_tooltip
-
-	add_to_variable = { var = XSM_lin_qinghai_control value = 5 }
-	subtract_from_variable = { var = XSM_bufang_qinghai_control value = 5 }
-
-	clamp_variable = {
-		var = XSM_lin_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_lin_qinghai_control = {
+			value = 5
+			clamp = { min = { value = XSM_lin_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_lin_qinghai_control } }
+		}
 	}
-	clamp_variable = {
-		var = XSM_bufang_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_bufang_qinghai_control = {
+			value = -5
+			clamp = { min = { value = XSM_bufang_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_bufang_qinghai_control } }
+		}
 	}
 }
 
 XSM_add_3_lin = {
 	custom_effect_tooltip = XSM_add_3_lin_tooltip
-
-	add_to_variable = { var = XSM_lin_qinghai_control value = 3 }
-	subtract_from_variable = { var = XSM_bufang_qinghai_control value = 3 }
-
-	clamp_variable = {
-		var = XSM_lin_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_lin_qinghai_control = {
+			value = 3
+			clamp = { min = { value = XSM_lin_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_lin_qinghai_control } }
+		}
 	}
-	clamp_variable = {
-		var = XSM_bufang_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_bufang_qinghai_control = {
+			value = -3
+			clamp = { min = { value = XSM_bufang_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_bufang_qinghai_control } }
+		}
 	}
 }
 
 XSM_add_10_bufang = {
 	custom_effect_tooltip = XSM_add_10_bufang_tooltip
-
-	add_to_variable = { var = XSM_bufang_qinghai_control value = 10 }
-	subtract_from_variable = { var = XSM_lin_qinghai_control value = 10 }
-
-	clamp_variable = {
-		var = XSM_bufang_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_bufang_qinghai_control = {
+			value = 10
+			clamp = { min = { value = XSM_bufang_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_bufang_qinghai_control } }
+		}
 	}
-	clamp_variable = {
-		var = XSM_lin_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_lin_qinghai_control = {
+			value = -10
+			clamp = { min = { value = XSM_lin_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_lin_qinghai_control } }
+		}
 	}
 }
 
 XSM_add_5_bufang = {
 	custom_effect_tooltip = XSM_add_5_bufang_tooltip
-
-	add_to_variable = { var = XSM_bufang_qinghai_control value = 5 }
-	subtract_from_variable = { var = XSM_lin_qinghai_control value = 5 }
-
-	clamp_variable = {
-		var = XSM_bufang_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_bufang_qinghai_control = {
+			value = 5
+			clamp = { min = { value = XSM_bufang_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_bufang_qinghai_control } }
+		}
 	}
-	clamp_variable = {
-		var = XSM_lin_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_lin_qinghai_control = {
+			value = -5
+			clamp = { min = { value = XSM_lin_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_lin_qinghai_control } }
+		}
 	}
 }
 
 XSM_add_3_bufang = {
 	custom_effect_tooltip = XSM_add_3_bufang_tooltip
-
-	add_to_variable = { var = XSM_bufang_qinghai_control value = 3 }
-	subtract_from_variable = { var = XSM_lin_qinghai_control value = 3 }
-
-	clamp_variable = {
-		var = XSM_bufang_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_bufang_qinghai_control = {
+			value = 3
+			clamp = { min = { value = XSM_bufang_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_bufang_qinghai_control } }
+		}
 	}
-	clamp_variable = {
-		var = XSM_lin_qinghai_control
-		min = 0
-		max = 100
+	add_to_variable = {
+		XSM_lin_qinghai_control = {
+			value = -3
+			clamp = { min = { value = XSM_lin_qinghai_control multiply = -1 } max = { value = 100 subtract = XSM_lin_qinghai_control } }
+		}
 	}
 }
 
@@ -126,19 +116,25 @@ XSM_deactivate_yushu_conflict_mechanic = {
 }
 
 XSM_increase_ma_control = {
-	add_to_variable = { XSM.yushu_control = XSM_yushu_control_change tooltip = XSM_increase_ma_control_tooltip }
-	subtract_from_variable = { TIB.yushu_control = XSM_yushu_control_change }
-
-	clamp_variable = { var = TIB.yushu_control min = 0 max = 100 }
-	clamp_variable = { var = XSM.yushu_control min = 0 max = 100 }
+	add_to_variable = {
+		XSM.yushu_control = {
+			value = XSM_yushu_control_change
+			clamp = { min = 0 max = { value = 100 subtract = XSM.yushu_control } }
+		}
+		tooltip = XSM_increase_ma_control_tooltip
+	}
+	set_variable = { TIB.yushu_control = { value = 100 subtract = XSM.yushu_control } }
 }
 
 XSM_increase_tibetan_control = {
-	add_to_variable = { TIB.yushu_control = XSM_yushu_control_change tooltip = XSM_increase_tibetan_control_tooltip }
-	subtract_from_variable = { XSM.yushu_control = XSM_yushu_control_change }
-
-	clamp_variable = { var = TIB.yushu_control min = 0 max = 100 }
-	clamp_variable = { var = XSM.yushu_control min = 0 max = 100 }
+	add_to_variable = {
+		TIB.yushu_control = {
+			value = XSM_yushu_control_change
+			clamp = { min = 0 max = { value = 100 subtract = TIB.yushu_control } }
+		}
+		tooltip = XSM_increase_tibetan_control_tooltip
+	}
+	set_variable = { XSM.yushu_control = { value = 100 subtract = TIB.yushu_control } }
 }
 
 XSM_change_yushu_tensions = {

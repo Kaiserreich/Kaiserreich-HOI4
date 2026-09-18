@@ -476,13 +476,7 @@ HOL_prepare_the_inundation_lines = {
 		fire_only_once = no
 
 		highlight_states = {
-			highlight_state_targets = { state = 7 }
-			highlight_provinces = {
-				9498
-				391
-				11456
-				6241
-			}
+			highlight_provinces = { 9498 391 11456 6241 }
 		}
 
 		ai_will_do = {
@@ -506,17 +500,26 @@ HOL_prepare_the_inundation_lines = {
 						id = 391
 					}
 				}
-				damage_building = {
-					type = infrastructure
-					damage = 3
+				if = {
+					limit = { non_damaged_building_level = { building = infrastructure level > 3 } }
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
 				}
-				damage_building = {
-					type = industrial_complex
-					damage = 1.5
+				if = {
+					limit = { non_damaged_building_level = { building = industrial_complex level > 1.5 } }
+					damage_building = {
+						type = industrial_complex
+						damage = 1.5
+					}
 				}
-				damage_building = {
-					type = arms_factory
-					damage = 1.5
+				if = {
+					limit = { non_damaged_building_level = { building = arms_factory level > 1.5 } }
+					damage_building = {
+						type = arms_factory
+						damage = 1.5
+					}
 				}
 			}
 			866 = {
@@ -527,17 +530,26 @@ HOL_prepare_the_inundation_lines = {
 						id = 11456
 					}
 				}
-				damage_building = {
-					type = infrastructure
-					damage = 3
+				if = {
+					limit = { non_damaged_building_level = { building = infrastructure level > 3 } }
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
 				}
-				damage_building = {
-					type = industrial_complex
-					damage = 1.5
+				if = {
+					limit = { non_damaged_building_level = { building = industrial_complex level > 1.5 } }
+					damage_building = {
+						type = industrial_complex
+						damage = 1.5
+					}
 				}
-				damage_building = {
-					type = arms_factory
-					damage = 1.5
+				if = {
+					limit = { non_damaged_building_level = { building = arms_factory level > 1.5 } }
+					damage_building = {
+						type = arms_factory
+						damage = 1.5
+					}
 				}
 			}
 			set_global_flag = HOL_inundation_lines_flooded
@@ -557,7 +569,7 @@ HOL_prepare_the_inundation_lines = {
 		fire_only_once = no
 
 		highlight_states = {
-			highlight_provinces = { 9498 13544 11456 }
+			highlight_provinces = { 9498 391 11456 6241 }
 		}
 
 		visible = {
@@ -595,19 +607,12 @@ HOL_prepare_the_inundation_lines = {
 					}
 				}
 			}
-			35 = {
-				remove_province_modifier = {
-					static_modifiers = { flooded }
-					province = {
-						id = 11456
-					}
-				}
-			}
-			36 = {
+			866 = {
 				remove_province_modifier = {
 					static_modifiers = { flooded }
 					province = {
 						id = 6241
+						id = 11456
 					}
 				}
 			}

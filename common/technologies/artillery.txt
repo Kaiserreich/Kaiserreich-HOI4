@@ -92,6 +92,9 @@ technologies = {
 		category_self_propelled_artillery = {
 			soft_attack = 0.15
 		}
+		field_guns = {
+			soft_attack = 0.05
+		}
 
 		enable_equipment_modules = {
 			tank_small_cannon_2
@@ -225,6 +228,9 @@ technologies = {
 		category_self_propelled_artillery = {
 			soft_attack = 0.1
 		}
+		field_guns = {
+			soft_attack = 0.05
+		}
 
 		path = {
 			leads_to_tech = artillery3
@@ -288,6 +294,9 @@ technologies = {
 			soft_attack = 0.1
 		}
 		category_self_propelled_artillery = {
+			soft_attack = 0.05
+		}
+		field_guns = {
 			soft_attack = 0.05
 		}
 
@@ -408,6 +417,9 @@ technologies = {
 		category_self_propelled_artillery = {
 			soft_attack = 0.05
 		}
+		field_guns = {
+			soft_attack = 0.05
+		}
 
 		enable_equipment_modules = {
 			auto_loader
@@ -456,6 +468,11 @@ technologies = {
 			rocket_artillery_equipment_1
 		}
 
+		enable_subunits = {
+			rocket_battery
+			#rocket_artillery_brigade
+		}
+
 		enable_equipment_modules = {
 			tank_rocket_launcher
 			rocket_rails
@@ -501,7 +518,7 @@ technologies = {
 		}
 
 		rocket_battery = {
-			soft_attack = 0.15
+			soft_attack = 0.1
 		}
 
 		path = {
@@ -537,7 +554,7 @@ technologies = {
 			soft_attack = 0.15
 		}
 		rocket_battery = {
-			soft_attack = 0.15
+			soft_attack = 0.1
 		}
 
 		path = {
@@ -672,22 +689,15 @@ technologies = {
 	}
 
 	antiair1 = {
-		anti_air = {
-			air_attack = 0.1
-		}
-		anti_air_brigade = {
-			air_attack = 0.1
-		}
-		anti_air_battery = {
-			air_attack = 0.1
-		}
-		mot_anti_air_brigade = {
+		category_anti_air = {
 			air_attack = 0.1
 		}
 		category_self_propelled_anti_air = {
 			air_attack = 0.15
 		}
-
+		category_self_propelled_anti_air_regimental_support = {
+			air_attack = 0.05
+		}
 		tech_air_damage_factor = -0.02
 
 		path = {
@@ -797,20 +807,14 @@ technologies = {
 	}
 
 	antiair3 = {
-		anti_air = {
-			air_attack = 0.1
-		}
-		anti_air_brigade = {
-			air_attack = 0.1
-		}
-		anti_air_battery = {
-			air_attack = 0.1
-		}
-		mot_anti_air_brigade = {
+		category_anti_air = {
 			air_attack = 0.1
 		}
 		category_self_propelled_anti_air = {
 			air_attack = 0.1
+		}
+		category_self_propelled_anti_air_regimental_support = {
+			air_attack = 0.05
 		}
 
 		enable_equipment_modules = {
@@ -862,19 +866,13 @@ technologies = {
 	}
 
 	antiair4 = {
-		anti_air = {
-			air_attack = 0.1
-		}
-		anti_air_brigade = {
-			air_attack = 0.1
-		}
-		anti_air_battery = {
-			air_attack = 0.1
-		}
-		mot_anti_air_brigade = {
+		category_anti_air = {
 			air_attack = 0.1
 		}
 		category_self_propelled_anti_air = {
+			air_attack = 0.05
+		}
+		category_self_propelled_anti_air_regimental_support = {
 			air_attack = 0.05
 		}
 
@@ -1056,7 +1054,11 @@ technologies = {
 
 		category_tank_destroyers = {
 			hard_attack = 0.15
-			ap_attack = 0.2
+			ap_attack = 0.05
+		}
+		category_tank_destroyer_regimental_support = {
+			hard_attack = 0.05
+			ap_attack = 0.05
 		}
 
 		enable_equipment_modules = {
@@ -1106,10 +1108,6 @@ technologies = {
 	}
 
 	antitank2 = {
-		mot_anti_tank_brigade = {
-			hard_attack = 0.1
-			ap_attack = 0.1
-		}
 		armored_car = {
 			ap_attack = 0.1
 		}
@@ -1176,6 +1174,10 @@ technologies = {
 			hard_attack = 0.1
 			ap_attack = 0.05
 		}
+		category_tank_destroyer_regimental_support = {
+			hard_attack = 0.05
+			ap_attack = 0.05
+		}
 
 		path = {
 			leads_to_tech = antitank4
@@ -1235,6 +1237,11 @@ technologies = {
 		}
 
 		category_tank_destroyers = {
+			hard_attack = 0.05
+			ap_attack = 0.05
+		}
+
+		category_tank_destroyer_regimental_support = {
 			hard_attack = 0.05
 			ap_attack = 0.05
 		}
@@ -1497,6 +1504,9 @@ technologies = {
 		category_self_propelled_artillery = {
 			soft_attack = 0.1
 		}
+		field_guns = {
+			soft_attack = 0.05
+		}
 
 		force_use_small_tech_layout = yes
 		research_cost = 1.5
@@ -1522,7 +1532,6 @@ technologies = {
 		artillery_brigade = {
 			combat_width = -0.1
 		}
-
 	}
 
 	sp_land_large_caliber_kinetic_energy_sabot_gd_tech = {
@@ -1646,6 +1655,9 @@ technologies = {
 			ap_attack = 0.15
 		}
 		category_tank_destroyers = {
+			ap_attack = 0.05
+		}
+		category_tank_destroyer_regimental_support = {
 			ap_attack = 0.05
 		}
 

@@ -662,7 +662,7 @@ ideas = {
 
 		HOL_idea_leftist_coalition = {
 			on_add = { log = "[GetLogRoot]: add idea HOL_idea_leftist_coalition" }
-			picture = generic_syndicalist_worker
+			picture = generic_leftist_compromise
 			allowed = { always = no }
 			modifier = {
 				industrial_capacity_factory = 0.1
@@ -673,7 +673,7 @@ ideas = {
 
 		HOL_idea_rightist_coalition = {
 			on_add = { log = "[GetLogRoot]: add idea HOL_idea_rightist_coalition" }
-			picture = state_economy
+			picture = generic_far_right_compromise
 			allowed = { always = no }
 			modifier = {
 				production_factory_max_efficiency_factor = 0.1
@@ -684,7 +684,7 @@ ideas = {
 
 		HOL_idea_agreement_with_left_0 = {
 			on_add = { log = "[GetLogRoot]: add idea HOL_idea_agreement_with_left_0" }
-			picture = generic_deal_with_the_devil
+			picture = generic_leftist_negotiations
 			allowed = { always = no }
 			modifier = {
 				syndicalist_acceptance = 15
@@ -695,7 +695,7 @@ ideas = {
 		HOL_idea_agreement_with_left_1 = {
 			on_add = { log = "[GetLogRoot]: add idea HOL_idea_agreement_with_left_1" }
 			name = HOL_idea_agreement_with_left_0
-			picture = generic_deal_with_the_devil
+			picture = generic_leftist_negotiations
 			allowed = { always = no }
 			modifier = {
 				consumer_goods_factor = 0.1
@@ -707,7 +707,7 @@ ideas = {
 		HOL_idea_agreement_with_left_2 = {
 			on_add = { log = "[GetLogRoot]: add idea HOL_idea_agreement_with_left_2" }
 			name = HOL_idea_agreement_with_left_0
-			picture = generic_deal_with_the_devil
+			picture = generic_leftist_negotiations
 			allowed = { always = no }
 			modifier = {
 				consumer_goods_factor = 0.2
@@ -718,7 +718,7 @@ ideas = {
 
 		HOL_idea_agreement_with_right_1 = {
 			on_add = { log = "[GetLogRoot]: add idea HOL_idea_agreement_with_right_1" }
-			picture = generic_deal_with_the_devil2
+			picture = generic_far_right_negotiations
 			allowed = { always = no }
 			modifier = {
 				trade_opinion_factor = -0.1
@@ -730,7 +730,7 @@ ideas = {
 		HOL_idea_agreement_with_right_2 = {
 			on_add = { log = "[GetLogRoot]: add idea HOL_idea_agreement_with_right_2" }
 			name = HOL_idea_agreement_with_right_1
-			picture = generic_deal_with_the_devil2
+			picture = generic_far_right_negotiations
 			allowed = { always = no }
 			modifier = {
 				trade_opinion_factor = -0.2

@@ -3081,7 +3081,7 @@ focus_tree = {
 
 	focus = {
 		id = SZC_The_Industrial_Army
-		icon = GFX_goal_generic_corporatism
+		icon = GFX_goal_generic_militarism
 		cost = 5
 
 		relative_position_id = SZC_Army_Drills
@@ -8452,20 +8452,15 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed SZC_leading_by_word_and_deed"
 			custom_effect_tooltip = SZC_leading_by_word_and_deed_tt
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { SZC_market_liberal_pop_temp_var = party_popularity@market_liberal }
-			set_temp_variable = { SZC_social_liberal_pop_temp_var = party_popularity@social_liberal }
-			set_temp_variable = { SZC_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			set_temp_variable = { SZC_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { SZC_STA_opposition_influence_var = SZC_market_liberal_pop_temp_var }
-			add_to_temp_variable = { SZC_STA_opposition_influence_var = SZC_social_liberal_pop_temp_var }
-			add_to_temp_variable = { SZC_STA_opposition_influence_var = SZC_social_democrat_pop_temp_var }
-			add_to_temp_variable = { SZC_STA_opposition_influence_var = SZC_social_conservative_pop_temp_var }
-			multiply_temp_variable = { SZC_STA_opposition_influence_var = -1 }
-			multiply_temp_variable = { SZC_STA_opposition_influence_var = 0.33 }
-			clamp_temp_variable = {
-				var = SZC_STA_opposition_influence_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				SZC_STA_opposition_influence_var = {
+					value = party_popularity@market_liberal
+					add = party_popularity@social_liberal
+					add = party_popularity@social_democrat
+					add = party_popularity@social_conservative
+					divide = -3
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = SZC_STA_opposition_influence_var
 			army_experience = 100
@@ -8503,20 +8498,15 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed SZC_the_vibrant_bipartisan_democracy"
 			custom_effect_tooltip = SZC_the_vibrant_bipartisan_democracy_tt
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { SZC_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			set_temp_variable = { SZC_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { SZC_paternal_autocrat_pop_temp_var = party_popularity@paternal_autocrat }
-			set_temp_variable = { SZC_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			set_temp_variable = { SZC_GRA_opposition_influence_var = SZC_radical_socialist_pop_temp_var }
-			add_to_temp_variable = { SZC_GRA_opposition_influence_var = SZC_national_populist_pop_temp_var }
-			add_to_temp_variable = { SZC_GRA_opposition_influence_var = SZC_paternal_autocrat_pop_temp_var }
-			add_to_temp_variable = { SZC_GRA_opposition_influence_var = SZC_social_democrat_pop_temp_var }
-			multiply_temp_variable = { SZC_GRA_opposition_influence_var = -1 }
-			multiply_temp_variable = { SZC_GRA_opposition_influence_var = 0.33 }
-			clamp_temp_variable = {
-				var = SZC_GRA_opposition_influence_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				SZC_GRA_opposition_influence_var = {
+					value = party_popularity@radical_socialist
+					add = party_popularity@national_populist
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@social_democrat
+					divide = -3
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = SZC_GRA_opposition_influence_var
 			army_experience = 50
@@ -8633,13 +8623,13 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = fujian_province_state
-						has_state_flag = zhejiang_province_state
-						has_state_flag = hubei_province_state
-						has_state_flag = jiangxi_province_state
-						has_state_flag = yunnan_province_state
-						has_state_flag = hunan_province_state
-						has_state_flag = sichuan_province_state
+						check_variable = { chinese_province_state = 595.id }
+						check_variable = { chinese_province_state = 596.id }
+						check_variable = { chinese_province_state = 1048.id }
+						check_variable = { chinese_province_state = 600.id }
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 602.id }
+						check_variable = { chinese_province_state = 605.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -8919,20 +8909,15 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed SZC_from_resistance_to_reconstruction"
 			custom_effect_tooltip = SZC_from_resistance_to_reconstruction_tt
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { SZC_authoritarian_democrat_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { SZC_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { SZC_paternal_autocrat_pop_temp_var = party_popularity@paternal_autocrat }
-			set_temp_variable = { SZC_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { SZC_CDL_opposition_influence_var = SZC_authoritarian_democrat_pop_temp_var }
-			add_to_temp_variable = { SZC_CDL_opposition_influence_var = SZC_national_populist_pop_temp_var }
-			add_to_temp_variable = { SZC_CDL_opposition_influence_var = SZC_paternal_autocrat_pop_temp_var }
-			add_to_temp_variable = { SZC_CDL_opposition_influence_var = SZC_social_conservative_pop_temp_var }
-			multiply_temp_variable = { SZC_CDL_opposition_influence_var = -1 }
-			multiply_temp_variable = { SZC_CDL_opposition_influence_var = 0.33 }
-			clamp_temp_variable = {
-				var = SZC_CDL_opposition_influence_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				SZC_CDL_opposition_influence_var = {
+					value = party_popularity@authoritarian_democrat
+					add = party_popularity@national_populist
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@social_conservative
+					divide = -3
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = SZC_CDL_opposition_influence_var
 			add_political_power = 50
@@ -9557,10 +9542,10 @@ focus_tree = {
 			every_controlled_state = {
 				limit = {
 					OR = {
-						has_state_flag = ningxia_province_state
-						has_state_flag = gansu_province_state
-						has_state_flag = qinghai_province_state
-						has_state_flag = sichuan_province_state
+						check_variable = { chinese_province_state = 348.id }
+						check_variable = { chinese_province_state = 283.id }
+						check_variable = { chinese_province_state = 353.id }
+						check_variable = { chinese_province_state = 605.id }
 						china_is_chinese_frontier_trigger = yes
 					}
 				}
@@ -11640,47 +11625,39 @@ focus_tree = {
 			}
 			OR = {
 				NOT = { country_exists = HNN }
-				OR = {
-					HNN = { china_is_aligned_with_federalists = no }
-					if = {
-						limit = { HNN = { is_subject = yes } }
-						HNN = { overlord = { china_is_aligned_with_federalists = no } }
-					}
-					else = {
-						hidden_trigger = {
-							always = no
-						}
-					}
+				HNN = { china_is_aligned_with_federalists = no }
+				if = {
+					limit = { HNN = { is_subject = yes } }
+					HNN = { overlord = { china_is_aligned_with_federalists = no } }
+				}
+				else = {
+					hidden_trigger = { always = no }
 				}
 				HNN = { is_subject_of = QIE }
 			}
 			OR = {
 				NOT = { country_exists = SZC }
-				OR = {
-					SZC = { china_is_aligned_with_federalists = no }
-					if = {
-						limit = { SZC = { is_subject = yes } }
-						SZC = { overlord = { china_is_aligned_with_federalists = no } }
-					}
-					else = {
-						hidden_trigger = {
-							always = no
-						}
+				SZC = { china_is_aligned_with_federalists = no }
+				if = {
+					limit = { SZC = { is_subject = yes } }
+					SZC = { overlord = { china_is_aligned_with_federalists = no } }
+				}
+				else = {
+					hidden_trigger = {
+						always = no
 					}
 				}
 			}
 			OR = {
 				NOT = { country_exists = YUN }
-				OR = {
-					YUN = { china_is_aligned_with_federalists = no }
-					if = {
-						limit = { YUN = { is_subject = yes } }
-						YUN = { overlord = { china_is_aligned_with_federalists = no } }
-					}
-					else = {
-						hidden_trigger = {
-							always = no
-						}
+				YUN = { china_is_aligned_with_federalists = no }
+				if = {
+					limit = { YUN = { is_subject = yes } }
+					YUN = { overlord = { china_is_aligned_with_federalists = no } }
+				}
+				else = {
+					hidden_trigger = {
+						always = no
 					}
 				}
 			}
@@ -12225,7 +12202,7 @@ focus_tree = {
 
 	focus = {
 		id = SZC_Tie_Up_Loose_Ends
-		icon = GFX_goal_ANQ_rural_outreach
+		icon = GFX_goal_China_Beiyang_soldier_five_colour_flag
 		cost = 5
 
 		relative_position_id = SZC_five_races_under_one_union_forever_more

@@ -40,103 +40,103 @@ ROM_increase_selected = {
 ROM_IG_CZC = {
 	if = {
 		limit = { ROM_legion_factions_enabled = yes }
-		add_to_variable = { var = ROM_IG_CZC value = 1 }
+		add_to_variable = { ROM_IG_CZC = 1 }
 		custom_effect_tooltip = ROM_IG_CZC_tt
 		if = {
 			limit = {
 				check_variable = { ROM_IG_OG > ROM_IG_CML }
 				check_variable = { ROM_IG_OG > ROM_IG_CNTZ }
 			}
-			add_to_variable = { var = ROM_IG_OG value = -2 }
+			add_to_variable = { ROM_IG_OG = -2 }
 		}
 		else_if = {
 			limit = {
 				check_variable = { ROM_IG_CML > ROM_IG_OG }
 				check_variable = { ROM_IG_CML > ROM_IG_CNTZ }
 			}
-			add_to_variable = { var = ROM_IG_CML value = -2 }
+			add_to_variable = { ROM_IG_CML = -2 }
 		}
 		else_if = {
 			limit = {
 				check_variable = { ROM_IG_CNTZ > ROM_IG_OG }
 				check_variable = { ROM_IG_CNTZ > ROM_IG_CML }
 			}
-			add_to_variable = { var = ROM_IG_CNTZ value = -2 }
+			add_to_variable = { ROM_IG_CNTZ = -2 }
 		}
 		else_if = {
 			limit = {
 				check_variable = { ROM_IG_OG = ROM_IG_CNTZ }
 				check_variable = { ROM_IG_OG = ROM_IG_CML }
 			}
-			add_to_variable = { var = ROM_IG_OG value = -1 }
-			add_to_variable = { var = ROM_IG_CNTZ value = -1 }
-			add_to_variable = { var = ROM_IG_CML value = -1 }
+			add_to_variable = { ROM_IG_OG = -1 }
+			add_to_variable = { ROM_IG_CNTZ = -1 }
+			add_to_variable = { ROM_IG_CML = -1 }
 		}
 		else_if = {
 			limit = {
 				check_variable = { ROM_IG_OG = ROM_IG_CML }
 			}
-			add_to_variable = { var = ROM_IG_OG value = -1 }
-			add_to_variable = { var = ROM_IG_CML value = -1 }
+			add_to_variable = { ROM_IG_OG = -1 }
+			add_to_variable = { ROM_IG_CML = -1 }
 		}
 		else_if = {
 			limit = {
 				check_variable = { ROM_IG_OG = ROM_IG_CNTZ }
 			}
-			add_to_variable = { var = ROM_IG_OG value = -1 }
-			add_to_variable = { var = ROM_IG_CNTZ value = -1 }
+			add_to_variable = { ROM_IG_OG = -1 }
+			add_to_variable = { ROM_IG_CNTZ = -1 }
 		}
 		else_if = {
 			limit = {
 				check_variable = { ROM_IG_CNTZ = ROM_IG_CML }
 			}
-			add_to_variable = { var = ROM_IG_CNTZ value = -1 }
-			add_to_variable = { var = ROM_IG_CML value = -1 }
+			add_to_variable = { ROM_IG_CNTZ = -1 }
+			add_to_variable = { ROM_IG_CML = -1 }
 		}
 		else = {
-			add_to_variable = { var = ROM_IG_CZC value = 1 }
+			add_to_variable = { ROM_IG_CZC = 1 }
 		}
 	}
 }
 ROM_IG_OG = {
 	if = {
 		limit = { ROM_legion_factions_enabled = yes }
-		add_to_variable = { var = ROM_IG_OG value = 1 }
+		add_to_variable = { ROM_IG_OG = 1 }
 		custom_effect_tooltip = ROM_IG_OG_tt
 	}
 }
 ROM_IG_OG3 = {
 	if = {
 		limit = { ROM_legion_factions_enabled = yes }
-		add_to_variable = { var = ROM_IG_OG value = 2 }
+		add_to_variable = { ROM_IG_OG = 2 }
 		custom_effect_tooltip = ROM_IG_OG3_tt
 	}
 }
 ROM_IG_CML = {
 	if = {
 		limit = { ROM_legion_factions_enabled = yes }
-		add_to_variable = { var = ROM_IG_CML value = 1 }
+		add_to_variable = { ROM_IG_CML = 1 }
 		custom_effect_tooltip = ROM_IG_CML_tt
 	}
 }
 ROM_IG_CML3 = {
 	if = {
 		limit = { ROM_legion_factions_enabled = yes }
-		add_to_variable = { var = ROM_IG_CML value = 2 }
+		add_to_variable = { ROM_IG_CML = 2 }
 		custom_effect_tooltip = ROM_IG_CML3_tt
 	}
 }
 ROM_IG_CNTZ = {
 	if = {
 		limit = { ROM_legion_factions_enabled = yes }
-		add_to_variable = { var = ROM_IG_CNTZ value = 1 }
+		add_to_variable = { ROM_IG_CNTZ = 1 }
 		custom_effect_tooltip = ROM_IG_CNTZ_tt
 	}
 }
 ROM_IG_CNTZ3 = {
 	if = {
 		limit = { ROM_legion_factions_enabled = yes }
-		add_to_variable = { var = ROM_IG_CNTZ value = 2 }
+		add_to_variable = { ROM_IG_CNTZ = 2 }
 		custom_effect_tooltip = ROM_IG_CNTZ3_tt
 	}
 }
@@ -144,7 +144,7 @@ ROM_IG_ALL = {
 	if = {
 		limit = { ROM_legion_factions_enabled = yes }
 		custom_effect_tooltip = ROM_IG_ALL_tt
-		add_to_variable = { var = ROM_IG_CZC value = -1 }
+		add_to_variable = { ROM_IG_CZC = -1 }
 	}
 }
 ROM_check_factions = {
@@ -166,22 +166,10 @@ ROM_check_factions = {
 			else = {
 				country_event = { id = romania_events.902 days = 70 }
 			}
-			if = {
-				limit = { check_variable = { ROM_IG_CZC < 0 } }
-				set_variable = { var = ROM_IG_CZC value = 0 }
-			}
-			if = {
-				limit = { check_variable = { ROM_IG_OG < 0 } }
-				set_variable = { var = ROM_IG_OG value = 0 }
-			}
-			if = {
-				limit = { check_variable = { ROM_IG_CML < 0 } }
-				set_variable = { var = ROM_IG_CML value = 0 }
-			}
-			if = {
-				limit = { check_variable = { ROM_IG_CNTZ < 0 } }
-				set_variable = { var = ROM_IG_CNTZ value = 0 }
-			}
+			clamp_variable = { var = ROM_IG_CZC min = 0 }
+			clamp_variable = { var = ROM_IG_OG min = 0 }
+			clamp_variable = { var = ROM_IG_CML min = 0 }
+			clamp_variable = { var = ROM_IG_CNTZ min = 0 }
 		}
 	}
 }

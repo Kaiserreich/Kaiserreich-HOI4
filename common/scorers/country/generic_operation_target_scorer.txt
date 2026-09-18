@@ -187,10 +187,14 @@ ai_generic_operation_target_scorer = {
 
 			# larger countries are a bit more prio
 			modifier = {
-				set_temp_variable = { temp_score = armies^num }
-				divide_temp_variable = { temp_score = 100 }
-				add_to_temp_variable = { temp_score = 1.0 }
-				clamp_temp_variable = { var = temp_score max = 1.5 }
+				set_temp_variable = {
+					temp_score = {
+						value = num_armies
+						multiply = 0.01
+						add = 1
+						clamp = { min = 0 max = 1.5 }
+					}
+				}
 				factor = temp_score
 			}
 

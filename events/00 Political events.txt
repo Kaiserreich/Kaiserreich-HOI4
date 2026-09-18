@@ -373,6 +373,11 @@ country_event = { #Country is invited to faction
 				FROM = { tag = GER }
 				OR = {
 					AND = {
+						tag = AFG
+						NOT = { has_game_rule = { rule = AFG_FORPOL option = DEFAULT } }
+						NOT = { has_game_rule = { rule = AFG_FORPOL option = AFG_FORPOL_GER } }
+					}
+					AND = {
 						tag = ALB
 						NOT = { has_game_rule = { rule = ALB_forpol option = DEFAULT } }
 						NOT = { has_game_rule = { rule = ALB_forpol option = ALB_FORPOL_GER } }
@@ -479,6 +484,11 @@ country_event = { #Country is invited to faction
 				add = 100
 				FROM = { tag = GER }
 				OR = {
+					AND = {
+						tag = AFG
+						NOT = { has_game_rule = { rule = AFG_FORPOL option = DEFAULT } }
+						NOT = { has_game_rule = { rule = AFG_FORPOL option = AFG_FORPOL_GER } }
+					}
 					AND = {
 						tag = ALB
 						NOT = { has_game_rule = { rule = ALB_forpol option = DEFAULT } }
@@ -1254,89 +1264,89 @@ country_event = {
 }
 
 # Nominal Puppet who is a major can become free
-country_event = {
-	id = generic_events.106
-	title = generic_events.106.t
-	desc = generic_events.106.d
-	picture = GFX_report_event_generic_diplomacy4
-
-	trigger = {
-		has_autonomy_state = nominal_puppet
-		NOT = { has_country_flag = KR_can_become_free }
-		has_political_power > 0
-		has_stability > 0.70
-		has_army_manpower = { size > 100000 }
-		is_actual_major = yes
-		overlord = {
-			NOT = { strength_ratio = { tag = ROOT ratio > 3.0 } }
-			OR = {
-				has_war = no
-				all_enemy_country = { has_war_with = ROOT }
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 36
-		modifier = {
-			factor = 0.5
-			overlord = { has_elected_government = yes }
-		}
-		modifier = {
-			factor = 1.5
-			overlord = {
-				OR = {
-					has_authoritarian_government = yes
-					has_government = totalist
-				}
-			}
-		}
-		modifier = {
-			factor = 0.8
-			overlord = {
-				strength_ratio = { tag = ROOT ratio < 2.0 }
-			}
-		}
-		modifier = {
-			factor = 0.8
-			overlord = {
-				strength_ratio = { tag = ROOT ratio < 1.5 }
-			}
-		}
-		modifier = {
-			factor = 0.5
-			overlord = {
-				strength_ratio = { tag = ROOT ratio < 1.0 }
-			}
-		}
-		modifier = {
-			factor = 0.5
-			overlord = {
-				strength_ratio = { tag = ROOT ratio < 0.75 }
-			}
-		}
-		modifier = {
-			factor = 0.8
-			has_stability > 0.80
-		}
-	}
-
-	immediate = {
-		set_country_flag = KR_can_become_free
-	}
-
-	option = {
-		log = "[GetLogInfo]: event generic_events.106 option generic_events.106.b"
-		name = generic_events.106.b # Demand independence
-		overlord = { country_event = generic_events.107 }
-	}
-	option = {
-		log = "[GetLogInfo]: event generic_events.106 option generic_events.106.c"
-		name = generic_events.106.c # Leave it be
-		ai_chance = { base = 0 }
-		add_stability = -0.10
-	}
-}
+#country_event = {
+#	id = generic_events.106
+#	title = generic_events.106.t
+#	desc = generic_events.106.d
+#	picture = GFX_report_event_generic_diplomacy4
+#
+#	trigger = {
+#		has_autonomy_state = nominal_puppet
+#		NOT = { has_country_flag = KR_can_become_free }
+#		has_political_power > 0
+#		has_stability > 0.70
+#		has_army_manpower = { size > 100000 }
+#		is_actual_major = yes
+#		overlord = {
+#			NOT = { strength_ratio = { tag = ROOT ratio > 3.0 } }
+#			OR = {
+#				has_war = no
+#				all_enemy_country = { has_war_with = ROOT }
+#			}
+#		}
+#	}
+#
+#	mean_time_to_happen = {
+#		months = 36
+#		modifier = {
+#			factor = 0.5
+#			overlord = { has_elected_government = yes }
+#		}
+#		modifier = {
+#			factor = 1.5
+#			overlord = {
+#				OR = {
+#					has_authoritarian_government = yes
+#					has_government = totalist
+#				}
+#			}
+#		}
+#		modifier = {
+#			factor = 0.8
+#			overlord = {
+#				strength_ratio = { tag = ROOT ratio < 2.0 }
+#			}
+#		}
+#		modifier = {
+#			factor = 0.8
+#			overlord = {
+#				strength_ratio = { tag = ROOT ratio < 1.5 }
+#			}
+#		}
+#		modifier = {
+#			factor = 0.5
+#			overlord = {
+#				strength_ratio = { tag = ROOT ratio < 1.0 }
+#			}
+#		}
+#		modifier = {
+#			factor = 0.5
+#			overlord = {
+#				strength_ratio = { tag = ROOT ratio < 0.75 }
+#			}
+#		}
+#		modifier = {
+#			factor = 0.8
+#			has_stability > 0.80
+#		}
+#	}
+#
+#	immediate = {
+#		set_country_flag = KR_can_become_free
+#	}
+#
+#	option = {
+#		log = "[GetLogInfo]: event generic_events.106 option generic_events.106.b"
+#		name = generic_events.106.b # Demand independence
+#		overlord = { country_event = generic_events.107 }
+#	}
+#	option = {
+#		log = "[GetLogInfo]: event generic_events.106 option generic_events.106.c"
+#		name = generic_events.106.c # Leave it be
+#		ai_chance = { base = 0 }
+#		add_stability = -0.10
+#	}
+#}
 
 country_event = {
 	id = generic_events.107
@@ -1384,7 +1394,7 @@ country_event = {
 		clr_country_flag = KR_can_become_free
 		set_country_flag = KR_independence_refused
 		add_war_support = 0.10
-		unlock_decision_tooltip = KR_fight_for_independence
+		#unlock_decision_tooltip = KR_fight_for_independence
 	}
 }
 
@@ -1416,44 +1426,44 @@ country_event = {
 }
 
 # Peace event for independence war
-country_event = {
-	id = generic_events.110
-	title = generic_events.110.t
-	desc = generic_events.110.d
-
-	trigger = {
-		has_war = yes
-		has_country_flag = { flag = KR_independence_war days > 180 }
-		surrender_progress < 0.10
-		OR = {
-			is_in_faction = no
-			is_faction_leader = yes
-		}
-		any_enemy_country = {
-			has_country_flag = KR_independence_war_overlord
-			surrender_progress < 0.10
-		}
-	}
-
-	mean_time_to_happen = {
-		days = 30
-	}
-
-	option = {
-		log = "[GetLogInfo]: event generic_events.110 option generic_events.110.a"
-		name = generic_events.110.a #Let's end this
-		random_country = {
-			limit = { has_country_flag = KR_independence_war_overlord }
-			country_event = generic_events.111
-		}
-	}
-	option = {
-		log = "[GetLogInfo]: event generic_events.110 option generic_events.110.a"
-		name = generic_events.110.a #Fight on
-		ai_chance = { base = 0 }
-		add_war_support = -0.10
-	}
-}
+#country_event = {
+#	id = generic_events.110
+#	title = generic_events.110.t
+#	desc = generic_events.110.d
+#
+#	trigger = {
+#		has_war = yes
+#		has_country_flag = { flag = KR_independence_war days > 180 }
+#		surrender_progress < 0.10
+#		OR = {
+#			is_in_faction = no
+#			is_faction_leader = yes
+#		}
+#		any_enemy_country = {
+#			has_country_flag = KR_independence_war_overlord
+#			surrender_progress < 0.10
+#		}
+#	}
+#
+#	mean_time_to_happen = {
+#		days = 30
+#	}
+#
+#	option = {
+#		log = "[GetLogInfo]: event generic_events.110 option generic_events.110.a"
+#		name = generic_events.110.a #Let's end this
+#		random_country = {
+#			limit = { has_country_flag = KR_independence_war_overlord }
+#			country_event = generic_events.111
+#		}
+#	}
+#	option = {
+#		log = "[GetLogInfo]: event generic_events.110 option generic_events.110.a"
+#		name = generic_events.110.a #Fight on
+#		ai_chance = { base = 0 }
+#		add_war_support = -0.10
+#	}
+#}
 
 country_event = {
 	id = generic_events.111

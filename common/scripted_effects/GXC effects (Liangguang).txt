@@ -868,13 +868,6 @@ GXC_KMT_set_initial_parties = {
 }
 
 #Strengthening EDC
-GXC_add_EDC_effect = {
-	add_popularity = {
-		ideology = authoritarian_democrat
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_EDC_mechanic_effect = {
 	if = {
 		limit = {
@@ -902,39 +895,42 @@ GXC_EDC_mechanic_effect = {
 }
 
 GXC_EDC_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_EDC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_EDC_mechanic_effect = yes
 }
 GXC_EDC_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_EDC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_EDC_mechanic_effect = yes
 }
 GXC_EDC_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_EDC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_EDC_mechanic_effect = yes
 }
 GXC_EDC_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_EDC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_EDC_mechanic_effect = yes
 }
 GXC_EDC_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_EDC_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_EDC_mechanic_effect = yes
 }
 
 #Strengthening NGD
-GXC_add_NGD_effect = {
-	add_popularity = {
-		ideology = authoritarian_democrat
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_NGD_mechanic_effect = {
 	if = {
 		limit = {
@@ -962,39 +958,42 @@ GXC_NGD_mechanic_effect = {
 }
 
 GXC_NGD_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_NGD_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_NGD_mechanic_effect = yes
 }
 GXC_NGD_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_NGD_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_NGD_mechanic_effect = yes
 }
 GXC_NGD_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_NGD_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_NGD_mechanic_effect = yes
 }
 GXC_NGD_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_NGD_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_NGD_mechanic_effect = yes
 }
 GXC_NGD_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_NGD_effect = yes
+	add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_NGD_mechanic_effect = yes
 }
 
 #Strengthening NGX
-GXC_add_NGX_effect = {
-	add_popularity = {
-		ideology = paternal_autocrat
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_NGX_mechanic_effect = {
 	if = {
 		limit = {
@@ -1022,39 +1021,42 @@ GXC_NGX_mechanic_effect = {
 }
 
 GXC_NGX_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_NGX_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_NGX_mechanic_effect = yes
 }
 GXC_NGX_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_NGX_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_NGX_mechanic_effect = yes
 }
 GXC_NGX_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_NGX_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_NGX_mechanic_effect = yes
 }
 GXC_NGX_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_NGX_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_NGX_mechanic_effect = yes
 }
 GXC_NGX_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_NGX_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_NGX_mechanic_effect = yes
 }
 
 #Strengthening WHC
-GXC_add_WHC_effect = {
-	add_popularity = {
-		ideology = social_conservative
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_WHC_mechanic_effect = {
 	if = {
 		limit = {
@@ -1082,39 +1084,42 @@ GXC_WHC_mechanic_effect = {
 }
 
 GXC_WHC_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_WHC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_WHC_mechanic_effect = yes
 }
 GXC_WHC_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_WHC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_WHC_mechanic_effect = yes
 }
 GXC_WHC_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_WHC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_WHC_mechanic_effect = yes
 }
 GXC_WHC_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_WHC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_WHC_mechanic_effect = yes
 }
 GXC_WHC_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_WHC_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_WHC_mechanic_effect = yes
 }
 
 #Strengthening RCF
-GXC_add_RCF_effect = {
-	add_popularity = {
-		ideology = social_liberal
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_RCF_mechanic_effect = {
 	if = {
 		limit = {
@@ -1142,178 +1147,201 @@ GXC_RCF_mechanic_effect = {
 }
 
 GXC_RCF_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_RCF_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_RCF_mechanic_effect = yes
 }
 GXC_RCF_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_RCF_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_RCF_mechanic_effect = yes
 }
 GXC_RCF_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_RCF_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_RCF_mechanic_effect = yes
 }
 GXC_RCF_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_RCF_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_RCF_mechanic_effect = yes
 }
 GXC_RCF_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_RCF_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_RCF_mechanic_effect = yes
 }
 #Strengthening PPP
-GXC_add_PPP_effect = {
+GXC_PPP_small_effect = {
 	add_popularity = {
 		ideology = social_democrat
-		popularity = var:GXC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-GXC_PPP_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_PPP_effect = yes
-}
 GXC_PPP_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_PPP_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.medium
+	}
 }
 GXC_PPP_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_PPP_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.large
+	}
 }
 GXC_PPP_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_PPP_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.mega
+	}
 }
 GXC_PPP_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_PPP_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.giga
+	}
 }
 
 #Strengthening GPA
-GXC_add_GPA_effect = {
+GXC_GPA_small_effect = {
 	add_popularity = {
 		ideology = syndicalist
-		popularity = var:GXC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-GXC_GPA_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_GPA_effect = yes
-}
 GXC_GPA_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_GPA_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 GXC_GPA_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_GPA_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.large
+	}
 }
 GXC_GPA_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_GPA_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 GXC_GPA_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_GPA_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.giga
+	}
 }
 
 #Strengthening GFA
-GXC_add_GFA_effect = {
+GXC_GFA_small_effect = {
 	add_popularity = {
 		ideology = radical_socialist
-		popularity = var:GXC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-GXC_GFA_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_GFA_effect = yes
-}
 GXC_GFA_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_GFA_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 GXC_GFA_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_GFA_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.large
+	}
 }
 GXC_GFA_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_GFA_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 GXC_GFA_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_GFA_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.giga
+	}
 }
 
 #Strengthening SPO
-GXC_add_SPO_effect = {
+GXC_SPO_small_effect = {
 	add_popularity = {
 		ideology = syndicalist
-		popularity = var:GXC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-GXC_SPO_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_SPO_effect = yes
-}
 GXC_SPO_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_SPO_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 GXC_SPO_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_SPO_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.large
+	}
 }
 GXC_SPO_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_SPO_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 GXC_SPO_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_SPO_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.giga
+	}
 }
 
 #Strengthening SPR
-GXC_add_SPR_effect = {
+GXC_SPR_small_effect = {
 	add_popularity = {
 		ideology = totalist
-		popularity = var:GXC_size_var
+		popularity = constant:party_pop.gain.small
 	}
 }
-GXC_SPR_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_SPR_effect = yes
-}
 GXC_SPR_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_SPR_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 GXC_SPR_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_SPR_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.large
+	}
 }
 GXC_SPR_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_SPR_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 GXC_SPR_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_SPR_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.giga
+	}
 }
 
 #Strengthening DSP
-GXC_add_DSP_effect = {
-	add_popularity = {
-		ideology = social_democrat
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_DSP_mechanic_effect = {
 	if = {
 		limit = {
@@ -1341,39 +1369,42 @@ GXC_DSP_mechanic_effect = {
 }
 
 GXC_DSP_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_DSP_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_DSP_mechanic_effect = yes
 }
 GXC_DSP_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_DSP_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_DSP_mechanic_effect = yes
 }
 GXC_DSP_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_DSP_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_DSP_mechanic_effect = yes
 }
 GXC_DSP_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_DSP_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_DSP_mechanic_effect = yes
 }
 GXC_DSP_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_DSP_effect = yes
+	add_popularity = {
+		ideology = social_democrat
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_DSP_mechanic_effect = yes
 }
 
 #Strengthening PIP
-GXC_add_PIP_effect = {
-	add_popularity = {
-		ideology = social_liberal
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_PIP_mechanic_effect = {
 	if = {
 		limit = {
@@ -1413,51 +1444,42 @@ GXC_PIP_mechanic_effect = {
 }
 
 GXC_PIP_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_PIP_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_PIP_mechanic_effect = yes
 }
 GXC_PIP_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_PIP_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_PIP_mechanic_effect = yes
 }
 GXC_PIP_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_PIP_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_PIP_mechanic_effect = yes
 }
 GXC_PIP_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_PIP_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_PIP_mechanic_effect = yes
 }
 GXC_PIP_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_PIP_effect = yes
+	add_popularity = {
+		ideology = social_liberal
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_PIP_mechanic_effect = yes
 }
 
 #Strengthening CMC
-GXC_add_CMC_effect = {
-	if = {
-		limit = {
-			china_is_aligned_with_federalists = no
-			china_is_aligned_with_kmt = no
-		}
-		add_popularity = {
-			ideology = social_conservative
-			popularity = var:GXC_size_var
-		}
-	}
-	else = {
-		add_popularity = {
-			ideology = market_liberal
-			popularity = var:GXC_size_var
-		}
-	}
-}
-
 GXC_CMC_mechanic_effect = {
 	if = {
 		limit = {
@@ -1504,39 +1526,102 @@ GXC_CMC_mechanic_effect = {
 }
 
 GXC_CMC_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_CMC_effect = yes
+	if = {
+		limit = {
+			china_is_aligned_with_federalists = no
+			china_is_aligned_with_kmt = no
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.small
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.small
+		}
+	}
 	GXC_CMC_mechanic_effect = yes
 }
 GXC_CMC_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_CMC_effect = yes
+	if = {
+		limit = {
+			china_is_aligned_with_federalists = no
+			china_is_aligned_with_kmt = no
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.medium
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.medium
+		}
+	}
 	GXC_CMC_mechanic_effect = yes
 }
 GXC_CMC_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_CMC_effect = yes
+	if = {
+		limit = {
+			china_is_aligned_with_federalists = no
+			china_is_aligned_with_kmt = no
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.large
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.large
+		}
+	}
 	GXC_CMC_mechanic_effect = yes
 }
 GXC_CMC_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_CMC_effect = yes
+	if = {
+		limit = {
+			china_is_aligned_with_federalists = no
+			china_is_aligned_with_kmt = no
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.mega
+		}
+	}
 	GXC_CMC_mechanic_effect = yes
 }
 GXC_CMC_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_CMC_effect = yes
+	if = {
+		limit = {
+			china_is_aligned_with_federalists = no
+			china_is_aligned_with_kmt = no
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = constant:party_pop.gain.giga
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = market_liberal
+			popularity = constant:party_pop.gain.giga
+		}
+	}
 	GXC_CMC_mechanic_effect = yes
 }
 
 #Strengthening GIM
-GXC_add_GIM_effect = {
-	add_popularity = {
-		ideology = social_conservative
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_GIM_mechanic_effect = {
 	if = {
 		limit = {
@@ -1566,51 +1651,42 @@ GXC_GIM_mechanic_effect = {
 }
 
 GXC_GIM_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_GIM_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_GIM_mechanic_effect = yes
 }
 GXC_GIM_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_GIM_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_GIM_mechanic_effect = yes
 }
 GXC_GIM_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_GIM_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_GIM_mechanic_effect = yes
 }
 GXC_GIM_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_GIM_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_GIM_mechanic_effect = yes
 }
 GXC_GIM_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_GIM_effect = yes
+	add_popularity = {
+		ideology = social_conservative
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_GIM_mechanic_effect = yes
 }
 
 #Strengthening YUE
-GXC_add_YUE_effect = {
-	if = {
-		limit = {
-			has_government = paternal_autocrat
-			has_country_leader = { character = GXC_ye_ju } #Ye Ju can be auth dem so need both checks
-		}
-		add_popularity = {
-			ideology = paternal_autocrat
-			popularity = var:GXC_size_var
-		}
-	}
-	else = {
-		add_popularity = {
-			ideology = authoritarian_democrat
-			popularity = var:GXC_size_var
-		}
-	}
-}
-
 GXC_YUE_mechanic_effect = {
 	if = {
 		limit = {
@@ -1640,39 +1716,102 @@ GXC_YUE_mechanic_effect = {
 }
 
 GXC_YUE_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_YUE_effect = yes
+	if = {
+		limit = {
+			has_government = paternal_autocrat
+			has_country_leader = { character = GXC_ye_ju } #Ye Ju can be auth dem so need both checks
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.small
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.small
+		}
+	}
 	GXC_YUE_mechanic_effect = yes
 }
 GXC_YUE_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_YUE_effect = yes
+	if = {
+		limit = {
+			has_government = paternal_autocrat
+			has_country_leader = { character = GXC_ye_ju } #Ye Ju can be auth dem so need both checks
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.medium
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.medium
+		}
+	}
 	GXC_YUE_mechanic_effect = yes
 }
 GXC_YUE_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_YUE_effect = yes
+	if = {
+		limit = {
+			has_government = paternal_autocrat
+			has_country_leader = { character = GXC_ye_ju } #Ye Ju can be auth dem so need both checks
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.large
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.large
+		}
+	}
 	GXC_YUE_mechanic_effect = yes
 }
 GXC_YUE_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_YUE_effect = yes
+	if = {
+		limit = {
+			has_government = paternal_autocrat
+			has_country_leader = { character = GXC_ye_ju } #Ye Ju can be auth dem so need both checks
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.mega
+		}
+	}
 	GXC_YUE_mechanic_effect = yes
 }
 GXC_YUE_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_YUE_effect = yes
+	if = {
+		limit = {
+			has_government = paternal_autocrat
+			has_country_leader = { character = GXC_ye_ju } #Ye Ju can be auth dem so need both checks
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.giga
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.giga
+		}
+	}
 	GXC_YUE_mechanic_effect = yes
 }
 
 #Strengthening SAF
-GXC_add_SAF_effect = {
-	add_popularity = {
-		ideology = paternal_autocrat
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_SAF_mechanic_effect = {
 	if = {
 		limit = {
@@ -1719,67 +1858,42 @@ GXC_SAF_mechanic_effect = {
 }
 
 GXC_SAF_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_SAF_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_SAF_mechanic_effect = yes
 }
 GXC_SAF_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_SAF_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_SAF_mechanic_effect = yes
 }
 GXC_SAF_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_SAF_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_SAF_mechanic_effect = yes
 }
 GXC_SAF_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_SAF_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_SAF_mechanic_effect = yes
 }
 GXC_SAF_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_SAF_effect = yes
+	add_popularity = {
+		ideology = paternal_autocrat
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_SAF_mechanic_effect = yes
 }
 
 #Strengthening YGF
-GXC_add_YGF_effect = {
-	if = {
-		limit = {
-			has_completed_focus = GXC_a_young_face_for_an_ancient_civilisation
-			GXC_ma_ji = { is_second_in_command = yes }
-		}
-		add_popularity = {
-			ideology = paternal_autocrat
-			popularity = var:GXC_size_var
-		}
-	}
-	else = {
-		add_popularity = {
-			ideology = authoritarian_democrat
-			popularity = var:GXC_size_var
-		}
-	}
-}
-GXC_YGF_mechanic_event_effect = {
-	if = {
-		limit = {
-			NOT = { has_country_flag = GXC_YGF_event_one_flag }
-			GXC_YGF_level_one_trigger = yes
-		}
-		hidden_effect = { country_event = { id = GXC.midgame.836 days = 3 } } #The Young Marshal of the South
-	}
-	else_if = {
-		limit = {
-			NOT = { has_country_flag = GXC_YGF_event_two_flag }
-			GXC_YGF_level_two_trigger = yes
-		}
-		hidden_effect = { country_event = { id = GXC.midgame.837 days = 3 } } #Marshal Lu and the Triumvirs
-	}
-}
-
 GXC_YGF_mechanic_effect = {
 	if = {
 		limit = {
@@ -1789,44 +1903,120 @@ GXC_YGF_mechanic_effect = {
 				GXC_is_phase_5_trigger = yes
 			}
 		}
-		GXC_YGF_mechanic_event_effect = yes
+		if = {
+			limit = {
+				NOT = { has_country_flag = GXC_YGF_event_one_flag }
+				GXC_YGF_level_one_trigger = yes
+			}
+			hidden_effect = { country_event = { id = GXC.midgame.836 days = 3 } } #The Young Marshal of the South
+		}
+		else_if = {
+			limit = {
+				NOT = { has_country_flag = GXC_YGF_event_two_flag }
+				GXC_YGF_level_two_trigger = yes
+			}
+			hidden_effect = { country_event = { id = GXC.midgame.837 days = 3 } } #Marshal Lu and the Triumvirs
+		}
 	}
 }
 
 GXC_YGF_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_YGF_effect = yes
+	if = {
+		limit = {
+			has_completed_focus = GXC_a_young_face_for_an_ancient_civilisation
+			GXC_ma_ji = { is_second_in_command = yes }
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.small
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.small
+		}
+	}
 	GXC_YGF_mechanic_effect = yes
 }
 GXC_YGF_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_YGF_effect = yes
+	if = {
+		limit = {
+			has_completed_focus = GXC_a_young_face_for_an_ancient_civilisation
+			GXC_ma_ji = { is_second_in_command = yes }
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.medium
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.medium
+		}
+	}
 	GXC_YGF_mechanic_effect = yes
 }
 GXC_YGF_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_YGF_effect = yes
+	if = {
+		limit = {
+			has_completed_focus = GXC_a_young_face_for_an_ancient_civilisation
+			GXC_ma_ji = { is_second_in_command = yes }
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.large
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.large
+		}
+	}
 	GXC_YGF_mechanic_effect = yes
 }
 GXC_YGF_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_YGF_effect = yes
+	if = {
+		limit = {
+			has_completed_focus = GXC_a_young_face_for_an_ancient_civilisation
+			GXC_ma_ji = { is_second_in_command = yes }
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.mega
+		}
+	}
 	GXC_YGF_mechanic_effect = yes
 }
 GXC_YGF_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_YGF_effect = yes
+	if = {
+		limit = {
+			has_completed_focus = GXC_a_young_face_for_an_ancient_civilisation
+			GXC_ma_ji = { is_second_in_command = yes }
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = constant:party_pop.gain.giga
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = constant:party_pop.gain.giga
+		}
+	}
 	GXC_YGF_mechanic_effect = yes
 }
 
 #Strengthening PSC
-GXC_add_PSC_effect = {
-	add_popularity = {
-		ideology = market_liberal
-		popularity = var:GXC_size_var
-	}
-}
-
 GXC_PSC_mechanic_effect = {
 	if = {
 		limit = {
@@ -1858,28 +2048,38 @@ GXC_PSC_mechanic_effect = {
 }
 
 GXC_PSC_small_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.small }
-	GXC_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.small
+	}
 	GXC_PSC_mechanic_effect = yes
 }
 GXC_PSC_medium_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.medium }
-	GXC_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.medium
+	}
 	GXC_PSC_mechanic_effect = yes
 }
 GXC_PSC_large_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.large }
-	GXC_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.large
+	}
 	GXC_PSC_mechanic_effect = yes
 }
 GXC_PSC_mega_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.mega }
-	GXC_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.mega
+	}
 	GXC_PSC_mechanic_effect = yes
 }
 GXC_PSC_giga_effect = {
-	set_temp_variable = { GXC_size_var = constant:party_pop.gain.giga }
-	GXC_add_PSC_effect = yes
+	add_popularity = {
+		ideology = market_liberal
+		popularity = constant:party_pop.gain.giga
+	}
 	GXC_PSC_mechanic_effect = yes
 }
 
@@ -4454,7 +4654,7 @@ GXC_clear_popular_support_effect = {
 
 GXC_create_NRA_defectors_template = {
 	if = {
-		limit = { NOT = { has_country_flag = unlocked_subunit_militia }  }
+		limit = { NOT = { has_country_flag = unlocked_subunit_militia } }
 		set_country_flag = unlocked_subunit_militia
 		enable_tech_militias = yes
 	}

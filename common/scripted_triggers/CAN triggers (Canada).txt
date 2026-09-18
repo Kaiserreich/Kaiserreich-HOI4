@@ -33,7 +33,13 @@ CAN_is_valid_imperial_conference_target = {
 }
 
 CAN_can_surrender_to_america = {
-	surrender_progress < 0.20
+	OR = {
+		surrender_progress < 0.20
+		AND = { #Bypass surrender progress requirement if existing surrender progress is low enough
+			surrender_progress < 0.60
+			CAN = { surrender_progress > 0.70 }
+		}
+	}
 	is_subject = no
 	is_in_faction = no
 	NOT = { has_country_flag = CAN_considering_peace }

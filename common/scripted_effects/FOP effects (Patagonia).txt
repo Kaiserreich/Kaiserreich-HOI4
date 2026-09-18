@@ -224,9 +224,17 @@ FOP_clear_araucania = {
 
 FOP_setup_araucania = {
 	set_cosmetic_tag = FOP_puppet
+	set_party_name = {
+		ideology = national_populist
+		long_name = FOP_national_populist_rename_long
+		name = FOP_national_populist_rename
+	}
 	if = {
-		limit = { ROOT = { owns_state = 507 } } #Magallanes
-		set_capital = { state = 507 }
+		limit = { owns_state = 1113 }
+		set_capital = { state = 1113 remember_old_capital = no }
+		1113 = {
+			set_victory_points = { province = 5121 value = 6 }
+		}
 	}
 	hidden_effect = {
 		remove_ideas = {
@@ -341,18 +349,7 @@ FOP_setup_araucania = {
 
 FOP_send_infantry_equipment_or_penalty_if_unavailable = {
 	if = {
-		limit = {
-			NOT = {
-				has_variable = fop_equipment_amount
-			}
-		}
-		set_variable = { fop_equipment_amount = 1000 }
-	}
-
-	if = {
-		limit = {
-			has_equipment = { infantry_equipment > var:fop_equipment_amount }
-		}
+		limit = { has_equipment = { infantry_equipment > var:fop_equipment_amount } }
 		send_equipment = {
 			target = FOP
 			type = infantry_equipment
@@ -381,8 +378,6 @@ FOP_send_infantry_equipment_or_penalty_if_unavailable = {
 			}
 		}
 	}
-
-	clear_variable = fop_equipment_amount
 }
 
 FOP_initialize_development_scheme_decisions = {

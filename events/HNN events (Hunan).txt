@@ -1193,13 +1193,13 @@ country_event = { #Zhao Hengti Democratic Victory
 			HNN_purge_KMT = yes
 			every_other_country = {
 				limit = {
-					china_is_aligned_with_left_kmt = yes
+					china_alignment_left_kuomintang = yes
 				}
 				country_event = { id = hunan_events.107 days = 1 } #alerts kmt to Zhao Hengti victory in hunan
 			}
 			random_other_country = {
 				limit = {
-					china_is_aligned_with_right_kmt = yes
+					china_alignment_right_kuomintang = yes
 				}
 				country_event = { id = hunan_events.109 days = 1 } #Alerts RKMT to Cheng Qian's retreat
 			}
@@ -2254,16 +2254,13 @@ country_event = { #An Admiral's Last Hurrah
 		}
 		add_ideas = HNN_local_militias
 		add_ideas = HNN_popular_support_1
-		set_temp_variable = { HNN_pat_aut_party_pop = ROOT.party_popularity@paternal_autocrat }
-		multiply_temp_variable = { HNN_pat_aut_party_pop = -1 }
+		set_temp_variable = { HNN_pat_aut_party_pop = { value = party_popularity@paternal_autocrat multiply = -1 } }
 		add_popularity = {
 			ideology = paternal_autocrat
 			popularity = HNN_pat_aut_party_pop
 		}
-		set_temp_variable = { HNN_cheng_support = HNN_cheng_election_percentage_var }
-		set_temp_variable = { HNN_tang_Support = HNN_tang_election_percentage_var }
-		multiply_temp_variable = { HNN_cheng_support = 0.25 }
-		multiply_temp_variable = { HNN_tang_Support = 0.25 }
+		set_temp_variable = { HNN_cheng_support = { value = HNN_cheng_election_percentage_var multiply = 0.25 } }
+		set_temp_variable = { HNN_tang_Support = { value = HNN_tang_election_percentage_var multiply = 0.25 } }
 		add_popularity = {
 			ideology = social_democrat
 			popularity = HNN_tang_Support
@@ -2378,14 +2375,12 @@ country_event = { #Traitor's Due
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			set_temp_variable = { HNN_pat_aut_party_pop = ROOT.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { HNN_pat_aut_party_pop = -1 }
+			set_temp_variable = { HNN_pat_aut_party_pop = { value = party_popularity@paternal_autocrat multiply = -1 } }
 			add_popularity = {
 				ideology = paternal_autocrat
 				popularity = HNN_pat_aut_party_pop
 			}
-			set_temp_variable = { HNN_nat_pop_party_pop = ROOT.party_popularity@national_populist }
-			multiply_temp_variable = { HNN_nat_pop_party_pop = -1 }
+			set_temp_variable = { HNN_nat_pop_party_pop = { value = party_popularity@national_populist multiply = -1 } }
 			add_popularity = {
 				ideology = national_populist
 				popularity = HNN_nat_pop_party_pop

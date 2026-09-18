@@ -1415,15 +1415,13 @@ focus_tree = {
 
 		available = {
 			custom_override_tooltip = {
-				AND = {
-					has_country_flag = DOM_electricity_complete
-					has_country_flag = DOM_party_complete
-					has_country_flag = DOM_elites_complete
-					has_country_flag = DOM_bureau_complete
-					has_country_flag = {
-						flag = domadscore
-						value > 3
-					}
+				has_country_flag = DOM_electricity_complete
+				has_country_flag = DOM_party_complete
+				has_country_flag = DOM_elites_complete
+				has_country_flag = DOM_bureau_complete
+				has_country_flag = {
+					flag = domadscore
+					value > 3
 				}
 				tooltip = DOM_trujillogov_tooltip
 			}
@@ -1474,34 +1472,32 @@ focus_tree = {
 
 		available = {
 			custom_override_tooltip = {
-				AND = {
-					has_country_flag = DOM_electricity_complete
-					has_country_flag = DOM_party_complete
-					has_country_flag = DOM_elites_complete
-					has_country_flag = DOM_bureau_complete
-					OR = {
-						has_country_flag = {
-							flag = dompascore
-							value > 3
+				has_country_flag = DOM_electricity_complete
+				has_country_flag = DOM_party_complete
+				has_country_flag = DOM_elites_complete
+				has_country_flag = DOM_bureau_complete
+				OR = {
+					has_country_flag = {
+						flag = dompascore
+						value > 3
+					}
+					AND = {
+						NOT = {
+							has_country_flag = {
+								flag = domadscore
+								value > 3
+							}
 						}
-						AND = {
-							NOT = {
-								has_country_flag = {
-									flag = domadscore
-									value > 3
-								}
+						NOT = {
+							has_country_flag = {
+								flag = dompascore
+								value > 3
 							}
-							NOT = {
-								has_country_flag = {
-									flag = dompascore
-									value > 3
-								}
-							}
-							NOT = {
-								has_country_flag = {
-									flag = domtmscore
-									value > 3
-								}
+						}
+						NOT = {
+							has_country_flag = {
+								flag = domtmscore
+								value > 3
 							}
 						}
 					}
@@ -1564,15 +1560,13 @@ focus_tree = {
 
 		available = {
 			custom_override_tooltip = {
-				AND = {
-					has_country_flag = DOM_electricity_complete
-					has_country_flag = DOM_party_complete
-					has_country_flag = DOM_elites_complete
-					has_country_flag = DOM_bureau_complete
-					has_country_flag = {
-						flag = domtmscore
-						value > 3
-					}
+				has_country_flag = DOM_electricity_complete
+				has_country_flag = DOM_party_complete
+				has_country_flag = DOM_elites_complete
+				has_country_flag = DOM_bureau_complete
+				has_country_flag = {
+					flag = domtmscore
+					value > 3
 				}
 				tooltip = DOM_trujillogov_tooltip
 			}
@@ -1789,22 +1783,20 @@ focus_tree = {
 
 		available = {
 			custom_override_tooltip = {
-				AND = {
-					OR = {
-						has_country_flag = DOM_rojo_election
-						has_country_flag = DOM_repub_election
-						has_country_flag = DOM_estrella_wins
-						has_country_flag = DOM_trujillo_wins
-						has_country_flag = DOM_estrella_gone
-					}
-					OR = {
-						has_idea = DOM_depression_bm
-						has_idea = DOM_depression_bm_2
-						has_idea = DOM_depression_bm_3
-						has_idea = DOM_depression_bm_4
-						has_idea = DOM_depression_bm_5
-						has_country_flag = DOM_depover
-					}
+				OR = {
+					has_country_flag = DOM_rojo_election
+					has_country_flag = DOM_repub_election
+					has_country_flag = DOM_estrella_wins
+					has_country_flag = DOM_trujillo_wins
+					has_country_flag = DOM_estrella_gone
+				}
+				OR = {
+					has_idea = DOM_depression_bm
+					has_idea = DOM_depression_bm_2
+					has_idea = DOM_depression_bm_3
+					has_idea = DOM_depression_bm_4
+					has_idea = DOM_depression_bm_5
+					has_country_flag = DOM_depover
 				}
 				tooltip = DOM_bypass_tooltip2
 			}

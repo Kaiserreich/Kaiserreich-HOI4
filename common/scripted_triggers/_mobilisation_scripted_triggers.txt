@@ -99,42 +99,22 @@ has_unattained_important_goals = {
 
 has_reached_ninety_percent_of_maximum_divisions = {
 	has_variable = max_divisions #make sure the values have been initialised first
-
-	set_temp_variable = {
-		max_divisions_temp = {
+	check_expr = {
+		value = num_actual_divisions?num_divisions
+		greater_than_or_equals = {
 			value = max_divisions
 			multiply = 0.9
 			round = yes
 		}
 	}
-
-	if = {
-		limit = { has_variable = num_actual_divisions }
-		NOT = { check_variable = { num_actual_divisions < max_divisions_temp } }
-	}
-	else = {
-		NOT = { check_variable = { num_divisions < max_divisions_temp } }
-	}
 }
 
 has_reached_maximum_divisions = {
 	has_variable = max_divisions #make sure the values have been initialised first
-	if = {
-		limit = { has_variable = num_actual_divisions }
-		NOT = { check_variable = { num_actual_divisions < max_divisions } }
-	}
-	else = {
-		NOT = { check_variable = { num_divisions < max_divisions } }
-	}
+	NOT = { check_variable = { num_actual_divisions?num_divisions < max_divisions } }
 }
 
 has_exceeded_maximum_divisions = {
 	has_variable = max_divisions #make sure the values have been initialised first
-	if = {
-		limit = { has_variable = num_actual_divisions }
-		check_variable = { num_actual_divisions > max_divisions }
-	}
-	else = {
-		check_variable = { num_divisions > max_divisions }
-	}
+	check_variable = { num_actual_divisions?num_divisions > max_divisions }
 }

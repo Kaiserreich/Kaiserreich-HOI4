@@ -1,0 +1,111 @@
+AFG_power_balance = {
+	initial_value = 0.25
+	left_side = AFG_traditionalist_side
+	right_side = AFG_reformist_side
+	decision_category = AFG_balance_of_power_category
+
+	range = {
+		id = AFG_bop_balance_range
+		min = -0.25
+		max = 0.25
+		modifier = {
+			AFG_monthly_reform_points_gain = 4
+		}
+		on_activate = {
+			set_variable = { AFG_monthly_anger_change_bop = 0 }
+			set_variable = { AFG_monthly_reform_points_gain_bop = 4 }
+		}
+	}
+
+	side = {
+		id = AFG_traditionalist_side
+		icon = GFX_idea_AFG_quami
+
+		range = {
+			id = AFG_bop_traditionalist_partial_control_range
+			max = -0.25
+			min = -0.5
+			modifier = {
+				AFG_monthly_stability_change = 0.005
+				AFG_monthly_anger_change = -0.01
+				AFG_monthly_reform_points_gain = 2
+			}
+			on_activate = {
+				set_variable = { AFG_monthly_anger_change_bop = -0.01 }
+				set_variable = { AFG_monthly_reform_points_gain_bop = 2 }
+			}
+		}
+		range = {
+			id = AFG_bop_traditionalist_significant_control_range
+			max = -0.5
+			min = -0.75
+			modifier = {
+				AFG_monthly_stability_change = 0.01
+				AFG_monthly_anger_change = -0.03
+				AFG_monthly_reform_points_gain = 1
+			}
+			on_activate = {
+				set_variable = { AFG_monthly_anger_change_bop = -0.03 }
+				set_variable = { AFG_monthly_reform_points_gain_bop = 1 }
+			}
+		}
+		range = {
+			id = AFG_bop_traditionalist_total_control_range
+			max = -0.75
+			min = -1
+			modifier = {
+				AFG_monthly_stability_change = 0.025
+				AFG_monthly_anger_change = -0.05
+			}
+			on_activate = {
+				set_variable = { AFG_monthly_anger_change_bop = -0.05 }
+				set_variable = { AFG_monthly_reform_points_gain_bop = 0 }
+			}
+		}
+	}
+
+	side = {
+		id = AFG_reformist_side
+		icon = GFX_idea_AFG_republic_idea
+
+		range = {
+			id = AFG_bop_reformist_partial_control_range
+			min = 0.25
+			max = 0.5
+			modifier = {
+				AFG_monthly_anger_change = 0.01
+				AFG_monthly_reform_points_gain = 6
+			}
+			on_activate = {
+				set_variable = { AFG_monthly_anger_change_bop = 0.01 }
+				set_variable = { AFG_monthly_reform_points_gain_bop = 6 }
+			}
+		}
+		range = {
+			id = AFG_bop_reformist_significant_control_range
+			min = 0.5
+			max = 0.75
+			modifier = {
+				AFG_monthly_anger_change = 0.03
+				AFG_monthly_reform_points_gain = 8
+			}
+			on_activate = {
+				set_variable = { AFG_monthly_anger_change_bop = 0.03 }
+				set_variable = { AFG_monthly_reform_points_gain_bop = 8 }
+			}
+		}
+		range = {
+			id = AFG_bop_reformist_total_control_range
+			min = 0.75
+			max = 1
+			modifier = {
+				AFG_monthly_anger_change = 0.05
+				AFG_monthly_reform_points_gain = 10
+			}
+			on_activate = {
+				set_variable = { AFG_monthly_anger_change_bop = 0.05 }
+				set_variable = { AFG_monthly_reform_points_gain_bop = 10 }
+			}
+		}
+	}
+}

@@ -127,14 +127,10 @@ can_release_444 = { #Baluchistan
 		OR = {
 			is_subject = yes
 			any_state_of = {
-				target = { 410 443 445 1117 } #Sistan, Sind, Quetta, Kandahar
+				target = { 410 445 1117 } #Sistan, Quetta, Kandahar
 				is_claim_or_core_of_ROOT = yes
 			}
 			410 = { #Sistan
-				annexations_state_owner_is_valid_grant_target = yes
-				owner = { ROOT_can_grant_land = yes }
-			}
-			443 = { #Sind
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
 			}
@@ -152,7 +148,6 @@ can_release_444 = { #Baluchistan
 	ROOT = {
 		should_release_persia_first = yes
 		should_release_afghanistan_first = yes
-		443 = { annexations_state_has_valid_annexation = no } #Sind
 		445 = { annexations_state_has_valid_annexation = no } #Quetta
 	}
 }
@@ -473,8 +468,10 @@ can_release_445 = { #Quetta
 	ROOT = {
 		OR = {
 			is_subject = yes
-			any_state_of = {
-				target = { 442 443 } #Peshawar, Sind
+			442 = { #Peshawar
+				is_claim_or_core_of_ROOT = yes
+			}
+			1117 = { #Kandahar
 				is_claim_or_core_of_ROOT = yes
 			}
 			891 = { #West Punjab
@@ -485,10 +482,6 @@ can_release_445 = { #Quetta
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land = yes }
 			}
-			443 = { #Sind
-				annexations_state_owner_is_valid_grant_target = yes
-				owner = { ROOT_can_grant_land = yes }
-			}
 			891 = { #West Punjab
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = {
@@ -496,14 +489,17 @@ can_release_445 = { #Quetta
 					ROOT_can_grant_land = yes
 				}
 			}
+			1117 = { #Kandahar
+				annexations_state_owner_is_valid_grant_target = yes
+				owner = { ROOT_can_grant_land = yes }
+			}
 		}
 	}
 	add_state_to_resistance_target_array = yes
 	ROOT = {
 		should_release_punjab_first = yes
 		should_release_afghanistan_first = yes
-		442 = { annexations_state_has_valid_annexation = no } #Peshawar
-		443 = { annexations_state_has_valid_annexation = no } #Sind
+		should_release_peshawar_first = yes
 	}
 }
 
@@ -561,6 +557,15 @@ can_release_443 = { #Sind
 				target = { 428 433 } #Gujarat, Rajputana
 				is_claim_or_core_of_ROOT = yes
 			}
+			AND = {
+				is_pashtun_tag = yes
+				444 = { #Baluchistan
+					is_claim_or_core_of_ROOT = yes
+				}
+				445 = { #Quetta
+					is_claim_or_core_of_ROOT = yes
+				}
+			}
 			891 = { #West Punjab
 				is_claim_or_core_of_ROOT = yes
 				NOT = { ROOT = { original_tag = KHA } }
@@ -580,6 +585,16 @@ can_release_443 = { #Sind
 					ROOT_can_grant_land = yes
 				}
 			}
+			AND = {
+				444 = { #Baluchistan
+					annexations_state_owner_is_valid_grant_target = yes
+					owner = { ROOT_can_grant_land = yes }
+				}
+				445 = { #Quetta
+					annexations_state_owner_is_valid_grant_target = yes
+					owner = { ROOT_can_grant_land = yes }
+				}
+			}
 		}
 	}
 	add_state_to_resistance_target_array = yes
@@ -587,6 +602,8 @@ can_release_443 = { #Sind
 		should_release_punjab_first = yes
 		should_release_gujarat_first = yes
 		should_release_rajasthan_first = yes
+		444 = { annexations_state_has_valid_annexation = no } #Baluchistan
+		445 = { annexations_state_has_valid_annexation = no } #Quetta
 	}
 }
 
@@ -799,5 +816,12 @@ should_release_sikkim_first = {
 	OR = {
 		country_exists = SKM
 		888 = { annexations_state_has_valid_annexation = no } #Sikkim
+	}
+}
+
+should_release_peshawar_first = {
+	OR = {
+		country_exists = PTH
+		442 = { annexations_state_has_valid_annexation = no } #Peshawar
 	}
 }

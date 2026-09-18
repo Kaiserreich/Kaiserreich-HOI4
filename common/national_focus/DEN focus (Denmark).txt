@@ -935,15 +935,16 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed DEN_recovery"
-			set_temp_variable = { DEN_BM_remove_time = 365 }
-			set_temp_variable = { DEN_economic_credits_remaining = DEN_economic_credits }
-			clamp_temp_variable = {
-				var = DEN_economic_credits_remaining
-				min = 0
-				max = 5
+			set_temp_variable = {
+				DEN_BM_remove_time = {
+					value = 365
+					subtract = {
+						value = DEN_economic_credits
+						clamp = { min = 0 max = 5 }
+						multiply = 50
+					}
+				}
 			}
-			multiply_temp_variable = { DEN_economic_credits_remaining = 50 }
-			subtract_from_temp_variable = { DEN_BM_remove_time = DEN_economic_credits_remaining }
 			if = {
 				limit = { has_idea = DEN_idea_state_relief_programmes_02 }
 				hidden_effect = {
@@ -2958,7 +2959,7 @@ focus_tree = {
 				}
 				add_equipment_production = {
 					equipment = {
-						type = ship_hull_light_3
+						type = ship_hull_light_2
 						version_name = "Nisse Class"
 					}
 					name = "HDMS Dokkalfar"
@@ -2966,7 +2967,7 @@ focus_tree = {
 				}
 				add_equipment_production = {
 					equipment = {
-						type = ship_hull_light_3
+						type = ship_hull_light_2
 						version_name = "Nisse Class"
 					}
 					name = "HDMS Ljosalfar"
@@ -2974,7 +2975,7 @@ focus_tree = {
 				}
 				add_equipment_production = {
 					equipment = {
-						type = ship_hull_light_3
+						type = ship_hull_light_2
 						version_name = "Nisse Class"
 					}
 					name = "HDMS Dværg"
@@ -2982,7 +2983,7 @@ focus_tree = {
 				}
 				add_equipment_production = {
 					equipment = {
-						type = ship_hull_light_3
+						type = ship_hull_light_2
 						version_name = "Nisse Class"
 					}
 					name = "HDMS Valkyrie"
@@ -3064,41 +3065,41 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = ship_hull_light_2
-							version_name = "HDMS Nisse"
+							version_name = "Nisse Class"
 						}
-						name = "Nisse Class"
+						name = "HDMS Nisse"
 						progress = 0.35
 					}
 					add_equipment_production = {
 						equipment = {
-							type = ship_hull_light_3
-							version_name = "HDMS Dokkalfar"
+							type = ship_hull_light_2
+							version_name = "Nisse Class"
 						}
-						name = "Nisse Class"
+						name = "HDMS Dokkalfar"
 						progress = 0.35
 					}
 					add_equipment_production = {
 						equipment = {
-							type = ship_hull_light_3
-							version_name = "HDMS Ljosalfar"
+							type = ship_hull_light_2
+							version_name = "Nisse Class"
 						}
-						name = "Nisse Class"
+						name = "HDMS Ljosalfar"
 						progress = 0.35
 					}
 					add_equipment_production = {
 						equipment = {
-							type = ship_hull_light_3
-							version_name = "HDMS Dværg"
+							type = ship_hull_light_2
+							version_name = "Nisse Class"
 						}
-						name = "Nisse Class"
+						name = "HDMS Dværg"
 						progress = 0.35
 					}
 					add_equipment_production = {
 						equipment = {
-							type = ship_hull_light_3
-							version_name = "HDMS Valkyrie"
+							type = ship_hull_light_2
+							version_name = "Nisse Class"
 						}
-						name = "Nisse Class"
+						name = "HDMS Valkyrie"
 						progress = 0.35
 					}
 				}
@@ -4161,10 +4162,8 @@ focus_tree = {
 		ai_will_do = { factor = 100 }
 		available = {
 			has_war = no
-			AND = {
-				NOT = { country_exists = FRA }
-				RUS = { is_faction_leader = no }
-			}
+			NOT = { country_exists = FRA }
+			RUS = { is_faction_leader = no }
 		}
 		prerequisite = {
 			focus = DEN_for_god_king_and_fatherland
@@ -4236,10 +4235,8 @@ focus_tree = {
 		available = {
 			OR = {
 				has_government = authoritarian_democrat
-				OR = {
-					DEN_jack_westergaard = { is_second_in_command = yes }
-					has_completed_focus = DEN_restore_democracy_question
-				}
+				DEN_jack_westergaard = { is_second_in_command = yes }
+				has_completed_focus = DEN_restore_democracy_question
 			}
 		}
 		prerequisite = {
@@ -4931,10 +4928,8 @@ focus_tree = {
 
 		ai_will_do = { factor = 100 }
 		available = {
-			AND = {
-				has_country_flag = DEN_minigame_win_king
-				has_government = market_liberal
-			}
+			has_country_flag = DEN_minigame_win_king
+			has_government = market_liberal
 		}
 		mutually_exclusive = {
 			focus = DEN_staunings_denmark

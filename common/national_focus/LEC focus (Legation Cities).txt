@@ -526,10 +526,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 60
 			modifier = {
-				set_temp_variable = { LEC_help_britain_desire = party_popularity@social_conservative }
-				multiply_temp_variable = { LEC_help_britain_desire = 100 }
-				add = LEC_help_britain_desire
-				always = yes
+				add = party_popularity_100@social_conservative
 			}
 		}
 	}
@@ -585,10 +582,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 60
 			modifier = {
-				set_temp_variable = { LEC_help_britain_desire = party_popularity@social_conservative }
-				multiply_temp_variable = { LEC_help_britain_desire = 100 }
-				add = LEC_help_britain_desire
-				always = yes
+				add = party_popularity_100@social_conservative
 			}
 		}
 	}
@@ -720,10 +714,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 60
 			modifier = {
-				set_temp_variable = { LEC_help_japan_desire = party_popularity@national_populist }
-				multiply_temp_variable = { LEC_help_japan_desire = 100 }
-				add = LEC_help_japan_desire
-				always = yes
+				add = party_popularity_100@national_populist
 			}
 			modifier = {
 				factor = 2
@@ -762,10 +753,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 60
 			modifier = {
-				set_temp_variable = { LEC_help_japan_desire = party_popularity@national_populist }
-				multiply_temp_variable = { LEC_help_japan_desire = 100 }
-				add = LEC_help_japan_desire
-				always = yes
+				add = party_popularity_100@national_populist
 			}
 		}
 	}
@@ -1690,7 +1678,7 @@ focus_tree = {
 
 	focus = {
 		id = LEC_maintain_western_rule
-		icon = GFX_goal_DEI_focus_disband_volksraad
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
 		cost = 10
 
 		relative_position_id = LEC_stabilize_shanghai
@@ -1820,7 +1808,7 @@ focus_tree = {
 
 	focus = {
 		id = LEC_cooperate_with_the_lep
-		icon = GFX_goal_LEP_personality_cult
+		icon = GFX_goal_LEP_generic_flag
 		cost = 10
 
 		relative_position_id = LEC_stabilize_shanghai
@@ -1948,8 +1936,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 			modifier = {
-				set_temp_variable = { LEC_currency_temp = 10 }
-				subtract_from_temp_variable = { LEC_currency_temp = LEC_currency_reserves }
+				set_temp_variable = { LEC_currency_temp = { value = 10 subtract = LEC_currency_reserves } }
 				factor = LEC_currency_temp
 			}
 			modifier = {
@@ -2032,8 +2019,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 			modifier = {
-				set_temp_variable = { LEC_currency_temp = 10 }
-				subtract_from_temp_variable = { LEC_currency_temp = LEC_currency_reserves }
+				set_temp_variable = { LEC_currency_temp = { value = 10 subtract = LEC_currency_reserves } }
 				factor = LEC_currency_temp
 			}
 			modifier = {
@@ -2078,8 +2064,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 60
 			modifier = {
-				set_temp_variable = { LEC_currency_temp = 10 }
-				subtract_from_temp_variable = { LEC_currency_temp = LEC_currency_reserves }
+				set_temp_variable = { LEC_currency_temp = { value = 10 subtract = LEC_currency_reserves } }
 				factor = LEC_currency_temp
 			}
 			modifier = {
@@ -2122,8 +2107,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 			modifier = {
-				set_temp_variable = { LEC_currency_temp = 10 }
-				subtract_from_temp_variable = { LEC_currency_temp = LEC_currency_reserves }
+				set_temp_variable = { LEC_currency_temp = { value = 10 subtract = LEC_currency_reserves } }
 				factor = LEC_currency_temp
 			}
 			modifier = {
@@ -2574,8 +2558,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 60
 			modifier = {
-				set_temp_variable = { LEC_currency_temp = 10 }
-				subtract_from_temp_variable = { LEC_currency_temp = LEC_currency_reserves }
+				set_temp_variable = { LEC_currency_temp = { value = 10 subtract = LEC_currency_reserves } }
 				factor = LEC_currency_temp
 			}
 			modifier = {
@@ -3047,8 +3030,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 60
 			modifier = {
-				set_temp_variable = { LEC_currency_temp = 10 }
-				subtract_from_temp_variable = { LEC_currency_temp = LEC_currency_reserves }
+				set_temp_variable = { LEC_currency_temp = { value = 10 subtract = LEC_currency_reserves } }
 				factor = LEC_currency_temp
 			}
 			modifier = {

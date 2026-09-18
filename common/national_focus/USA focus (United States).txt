@@ -462,9 +462,10 @@ focus_tree = {
 			set_temp_variable = { ideology_change_var = 0.01 }
 			change_ruling_party_popularity = yes
 			add_political_power = 100
-			every_country = {
-				limit = { is_in_faction_with = CAN }
-				reverse_add_opinion_modifier = { target = USA modifier = KR_trade_sanctions }
+			CAN = {
+				every_faction_member = {
+					reverse_add_opinion_modifier = { target = USA modifier = KR_trade_sanctions }
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -2437,16 +2438,16 @@ focus_tree = {
 			add_political_power = -50
 			add_ideas = USA_Chaffee_plan1
 			if = {
-				limit = { USA_adna_romanza_chaffee_jr = { has_advisor_role = theorist } }
+				limit = { USA_adna_r_chaffee_jr = { has_advisor_role = theorist } }
 				custom_effect_tooltip = tooltip_white_line
-				USA_adna_romanza_chaffee_jr = { promote_leader = yes }
+				USA_adna_r_chaffee_jr = { promote_leader = yes }
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = available_theorist
-				show_ideas_tooltip = USA_adna_romanza_chaffee_jr_theorist
+				show_ideas_tooltip = USA_adna_r_chaffee_jr_theorist
 			}
 			hidden_effect = {
 				USA_malin_craig = { remove_theorist_role = yes }
-				USA_lesley_james_mcnair = { remove_theorist_role = yes }
+				USA_lesley_j_mcnair = { remove_theorist_role = yes }
 				country_event = { id = united_states_events.613 days = 200 random_days = 600 }
 			}
 		}
@@ -2481,15 +2482,15 @@ focus_tree = {
 			add_political_power = -25
 			add_ideas = USA_McNair_plan1
 			if = {
-				limit = { USA_lesley_james_mcnair = { has_advisor_role = theorist } }
+				limit = { USA_lesley_j_mcnair = { has_advisor_role = theorist } }
 				custom_effect_tooltip = tooltip_white_line
-				USA_lesley_james_mcnair = { promote_leader = yes }
+				USA_lesley_j_mcnair = { promote_leader = yes }
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = available_theorist
-				show_ideas_tooltip = USA_lesley_james_mcnair_theorist
+				show_ideas_tooltip = USA_lesley_j_mcnair_theorist
 			}
 			hidden_effect = {
-				USA_adna_romanza_chaffee_jr = { remove_theorist_role = yes }
+				USA_adna_r_chaffee_jr = { remove_theorist_role = yes }
 				USA_malin_craig = { remove_theorist_role = yes }
 				country_event = { id = united_states_events.612 days = 200 random_days = 600 }
 			}
@@ -3294,7 +3295,7 @@ focus_tree = {
 				show_ideas_tooltip = USA_elwood_richard_quesada_theorist
 			}
 			hidden_effect = {
-				USA_carl_andrew_spaatz = { remove_theorist_role = yes }
+				USA_carl_spaatz = { remove_theorist_role = yes }
 			}
 		}
 		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
@@ -3327,10 +3328,10 @@ focus_tree = {
 			add_political_power = -25
 			add_ideas = USA_USAAF_Formed1
 			if = {
-				limit = { USA_carl_andrew_spaatz = { has_advisor_role = theorist } }
+				limit = { USA_carl_spaatz = { has_advisor_role = theorist } }
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = available_theorist
-				show_ideas_tooltip = USA_carl_andrew_spaatz_theorist
+				show_ideas_tooltip = USA_carl_spaatz_theorist
 			}
 			hidden_effect = {
 				USA_elwood_richard_quesada = { remove_theorist_role = yes }
@@ -4026,8 +4027,8 @@ focus_tree = {
 				show_ideas_tooltip = USA_malin_craig_theorist
 			}
 			hidden_effect = {
-				USA_adna_romanza_chaffee_jr = { remove_theorist_role = yes }
-				USA_lesley_james_mcnair = { remove_theorist_role = yes }
+				USA_adna_r_chaffee_jr = { remove_theorist_role = yes }
+				USA_lesley_j_mcnair = { remove_theorist_role = yes }
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESEARCH }
@@ -4869,36 +4870,36 @@ shared_focus = {# New Admirals
 		navy_experience = -20
 		if = {
 			limit = { tag = USA }
-			show_unit_leaders_tooltip = USA_charles_maynard_cooke_jr
-			show_unit_leaders_tooltip = USA_alfred_melville_pride
-			show_unit_leaders_tooltip = USA_daniel_edward_barbey
+			show_unit_leaders_tooltip = USA_charles_m_cooke_jr
+			show_unit_leaders_tooltip = USA_alfred_m_pride
+			show_unit_leaders_tooltip = USA_daniel_e_barbey
 			hidden_effect = {
-				USA_charles_maynard_cooke_jr = { set_nationality = ROOT }
-				USA_alfred_melville_pride = { set_nationality = ROOT }
-				USA_daniel_edward_barbey = { set_nationality = ROOT }
+				USA_charles_m_cooke_jr = { set_nationality = ROOT }
+				USA_alfred_m_pride = { set_nationality = ROOT }
+				USA_daniel_e_barbey = { set_nationality = ROOT }
 			}
 		}
 		else_if = {
 			limit = { tag = ACC }
-			show_unit_leaders_tooltip = ACC_harry_wilbur_hill
-			show_unit_leaders_tooltip = ACC_felix_budwell_stump
-			show_unit_leaders_tooltip = ACC_harvey_edward_overesch
-			show_unit_leaders_tooltip = ACC_james_henry_doyle
+			show_unit_leaders_tooltip = ACC_harry_w_hill
+			show_unit_leaders_tooltip = ACC_felix_stump
+			show_unit_leaders_tooltip = ACC_harvey_overesch
+			show_unit_leaders_tooltip = ACC_james_h_doyle
 			hidden_effect = {
-				ACC_harry_wilbur_hill = { set_nationality = ROOT }
-				ACC_felix_budwell_stump = { set_nationality = ROOT }
-				ACC_harvey_edward_overesch = { set_nationality = ROOT }
-				ACC_james_henry_doyle = { set_nationality = ROOT }
+				ACC_harry_w_hill = { set_nationality = ROOT }
+				ACC_felix_stump = { set_nationality = ROOT }
+				ACC_harvey_overesch = { set_nationality = ROOT }
+				ACC_james_h_doyle = { set_nationality = ROOT }
 			}
 		}
 		else = {
-			show_unit_leaders_tooltip = APG_willis_augustus_lee_jr
+			show_unit_leaders_tooltip = APG_willis_a_lee_jr
 			show_unit_leaders_tooltip = APG_jerauld_wright
-			show_unit_leaders_tooltip = APG_arthur_leroy_bristol_jr
+			show_unit_leaders_tooltip = APG_arthur_l_bristol_jr
 			hidden_effect = {
-				APG_willis_augustus_lee_jr = { set_nationality = ROOT }
+				APG_willis_a_lee_jr = { set_nationality = ROOT }
 				APG_jerauld_wright = { set_nationality = ROOT }
-				APG_arthur_leroy_bristol_jr = { set_nationality = ROOT }
+				APG_arthur_l_bristol_jr = { set_nationality = ROOT }
 			}
 		}
 	}

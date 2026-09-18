@@ -201,8 +201,8 @@ USA_release_WCA = {
 			add_claim_by = WCA
 		}
 
-		WCA_herbert_charles_heitke = {
-			set_leader_description = WCA_herbert_charles_heitke_WCA_commander_desc
+		WCA_herbert_c_holdridge = {
+			set_leader_description = WCA_herbert_c_holdridge_WCA_commander_desc
 			set_nationality = WCA
 		}
 		WCA_smedley_butler = {
@@ -211,24 +211,24 @@ USA_release_WCA = {
 			set_nationality = WCA
 		}
 
-		WCA_jack_reed = { set_nationality = WCA }
+		WCA_john_reed = { set_nationality = WCA }
 		WCA_norman_thomas = { set_nationality = WCA }
 		WCA = {
 			add_civil_war_target = USA
-			promote_character = WCA_jack_reed
+			promote_character = WCA_john_reed
 			promote_character = WCA_norman_thomas
 			every_owned_state = {
 				set_demilitarized_zone = no
 				USA_remove_support_modifiers_from_state = yes
 			}
-			WCA_james_kelly_parsons = {
+			WCA_james_k_parsons = {
 				add_timed_unit_leader_trait = { trait = recently_promoted days = 100 }
 			}
 
-			WCA_john_whiteside_parsons = { set_nationality = PREV }
-			WCA_julius_robert_oppenheimer = { set_nationality = PREV }
+			WCA_jack_parsons = { set_nationality = PREV }
+			WCA_j_robert_oppenheimer = { set_nationality = PREV }
 			WCA_karl_probst = { set_nationality = PREV }
-			WCA_peyton_marshall_magruder = { set_nationality = PREV }
+			WCA_peyton_m_magruder = { set_nationality = PREV }
 
 			set_temp_variable = { coalition_partner_var = token:totalist }
 			add_to_coalition = yes
@@ -264,6 +264,9 @@ USA_release_WCA = {
 			set_temp_variable = { days_to_event = 1633 }
 			calculate_days_since_game_start = yes
 			country_event = { id = america_workers_congress_events.216 days = days_to_event random_days = 180 } #Smedley Butler Passes Away
+			set_temp_variable = { days_to_event = 995 }
+			calculate_days_since_game_start = yes
+			country_event = { id = new_england_events.39 days = days_to_event random_days = 20 } #New England Hurricane
 		}
 
 		every_owned_state = {
@@ -353,8 +356,8 @@ USA_release_APG = {
 			promote_leader = yes
 			set_nationality = APG
 		}
-		APG_george_smith_patton = {
-			set_leader_description = APG_george_smith_patton_APG_commander_desc
+		APG_george_s_patton = {
+			set_leader_description = APG_george_s_patton_APG_commander_desc
 			set_nationality = APG
 		}
 		APG_george_van_horn_moseley = {
@@ -385,9 +388,9 @@ USA_release_APG = {
 		APG = {
 			add_civil_war_target = USA
 			add_civil_war_target = WCA
-			APG_emory_scott_land = { set_nationality = PREV }
-			APG_john_walter_christie = { set_nationality = PREV }
-			APG_robert_hutchings_goddard = { set_nationality = PREV }
+			APG_emory_s_land = { set_nationality = PREV }
+			APG_j_walter_christie = { set_nationality = PREV }
+			APG_robert_h_goddard = { set_nationality = PREV }
 
 			every_owned_state = {
 				set_demilitarized_zone = no
@@ -424,6 +427,9 @@ USA_release_APG = {
 
 			country_event = { id = america_peoples_government_events.150 days = 7 } #Initial Events
 			country_event = { id = american_civil_war_events.46 days = 10 } # Appeal to Reason
+			set_temp_variable = { days_to_event = 995 }
+			calculate_days_since_game_start = yes
+			country_event = { id = new_england_events.39 days = days_to_event random_days = 20 } #New England Hurricane
 		}
 
 		363 = { set_demilitarized_zone = yes } #North Carolina
@@ -494,22 +500,22 @@ USA_release_ACC = {
 			add_claim_by = ACC
 		}
 
-		ACC_john_lesesne_dewitt = {
+		ACC_john_l_dewitt = {
 			promote_leader = yes
 			set_nationality = ACC
 		}
-		ACC_george_catlett_marshall = {
-			set_leader_description = ACC_george_catlett_marshall_ACC_commander_desc
+		ACC_george_c_marshall = {
+			set_leader_description = ACC_george_c_marshall_ACC_commander_desc
 			promote_leader = yes
 			set_nationality = ACC
 		}
-		ACC_henry_harley_arnold = {
-			set_leader_description = ACC_henry_harley_arnold_ACC_commander_desc
+		ACC_henry_h_arnold = {
+			set_leader_description = ACC_henry_h_arnold_ACC_commander_desc
 			set_nationality = ACC
 		}
-		ACC_william_daniel_leahy = { set_nationality = ACC }
-		ACC_chester_william_nimitz = { set_nationality = ACC }
-		ACC_ernest_joseph_king = { set_nationality = ACC }
+		ACC_william_d_leahy = { set_nationality = ACC }
+		ACC_chester_w_nimitz = { set_nationality = ACC }
+		ACC_ernest_j_king = { set_nationality = ACC }
 
 		send_equipment_fraction = { target = ACC value = 0.45 } #45% of the remaining 55% = ~25%
 
@@ -524,10 +530,10 @@ USA_release_ACC = {
 			add_civil_war_target = APG
 			every_owned_state = { set_demilitarized_zone = no }
 
-			ACC_andrew_irwin_mckee = { set_nationality = PREV }
-			ACC_edward_curtis_wells = { set_nationality = PREV }
-			ACC_edwin_mattison_mcmillan = { set_nationality = PREV }
-			ACC_ernest_orlando_lawrence = { set_nationality = PREV }
+			ACC_andrew_mckee = { set_nationality = PREV }
+			ACC_edward_c_wells = { set_nationality = PREV }
+			ACC_edwin_mcmillan = { set_nationality = PREV }
+			ACC_ernest_lawrence = { set_nationality = PREV }
 			ACC_paul_pigott = { set_nationality = PREV }
 
 			every_other_country = {
@@ -551,6 +557,9 @@ USA_release_ACC = {
 			set_temp_variable = { days_to_event = 3110 }
 			calculate_days_since_game_start = yes
 			#country_event = { id = united_states_events.187 days = days_to_event random_days = 180 } #Al Smith Passes Away
+			set_temp_variable = { days_to_event = 995 }
+			calculate_days_since_game_start = yes
+			country_event = { id = new_england_events.39 days = days_to_event random_days = 20 } #New England Hurricane
 		}
 
 		# Pacific Fleet
@@ -1221,19 +1230,19 @@ remove_ACW_claims = {
 }
 
 WCA_add_extra_units_based_on_strength = {
-	set_temp_variable = { strength = USA.SPA_strength }
 	if = {
 		limit = { USA = { has_country_flag = USA_ACW_austerity_rejected } }
-		multiply_temp_variable = { strength = 2 }
+		set_temp_variable = { strength = { value = USA.SPA_strength multiply = 2 } }
+	}
+	else = {
+		set_temp_variable = { strength = USA.SPA_strength }
 	}
 	if = {
 		limit = { check_variable = { strength > 0 } }
 		for_loop_effect = {
 			end = strength
-			set_temp_variable = { w = v }
-			modulo_temp_variable = { w = 4 }
 			if = {
-				limit = { check_variable = { w = 3 } }
+				limit = { check_expr = { value = v mod = 4 equals = 3 } }
 				capital_scope = {
 					create_unit = {
 						division = "division_template = \"Continental Line\" start_experience_factor = 0.3"
@@ -1243,7 +1252,7 @@ WCA_add_extra_units_based_on_strength = {
 				}
 			}
 			else_if = {
-				limit = { check_variable = { w = 2 } }
+				limit = { check_expr = { value = v mod = 4 equals = 2 } }
 				capital_scope = {
 					create_unit = {
 						division = "division_template = \"Continental Cavalry\" start_experience_factor = 0.3"
@@ -1271,10 +1280,8 @@ APG_add_extra_units_from_strength = {
 		limit = { check_variable = { strength > 0 } }
 		for_loop_effect = {
 			end = strength
-			set_temp_variable = { w = v }
-			modulo_temp_variable = { w = 4 }
 			if = {
-				limit = { check_variable = { w = 3 } }
+				limit = { check_expr = { value = v mod = 4 equals = 3 } }
 				capital_scope = {
 					create_unit = {
 						division = "division_template = \"National Guardsmen\" start_experience_factor = 0.3"
@@ -1284,7 +1291,7 @@ APG_add_extra_units_from_strength = {
 				}
 			}
 			else_if = {
-				limit = { check_variable = { w = 2 } }
+				limit = { check_expr = { value = v mod = 4 equals = 2 } }
 				capital_scope = {
 					create_unit = {
 						division = "division_template = \"National Cavalry\" start_experience_factor = 0.3"
@@ -1547,7 +1554,6 @@ USA_restore_deleted_factories_USA = {
 		391 = { #Minnesota
 			if = {
 				limit = { industrial_complex < 1 }
-				set_temp_variable = { minnesota_factories = 1 }
 				if = {
 					limit = {
 						USA = {
@@ -1555,20 +1561,21 @@ USA_restore_deleted_factories_USA = {
 							has_country_flag = USA_minnesota_order
 						}
 					}
-					add_to_temp_variable = { minnesota_factories = 1 }
 					if = {
 						limit = { arms_factory < 1 }
 						add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 					}
+					set_temp_variable = { minnesota_factories = { value = 2 subtract = building_level@industrial_complex } }
 				}
-				subtract_from_temp_variable = { minnesota_factories = building_level@industrial_complex }
+				else = {
+					set_temp_variable = { minnesota_factories = { value = 1 subtract = building_level@industrial_complex } }
+				}
 				add_building_construction = { type = industrial_complex level = minnesota_factories instant_build = yes }
 			}
 		}
 		392 = { #Iowa
 			if = {
 				limit = { industrial_complex < 2 }
-				set_temp_variable = { iowa_factories = 2 }
 				if = {
 					limit = {
 						USA = {
@@ -1576,13 +1583,15 @@ USA_restore_deleted_factories_USA = {
 							has_country_flag = USA_iowa_order
 						}
 					}
-					add_to_temp_variable = { iowa_factories = 1 }
 					if = {
 						limit = { arms_factory < 1 }
 						add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 					}
+					set_temp_variable = { iowa_factories = { value = 3 subtract = building_level@industrial_complex } }
 				}
-				subtract_from_temp_variable = { iowa_factories = building_level@industrial_complex }
+				else = {
+					set_temp_variable = { iowa_factories = { value = 2 subtract = building_level@industrial_complex } }
+				}
 				add_building_construction = { type = industrial_complex level = iowa_factories instant_build = yes }
 			}
 		}
@@ -1601,7 +1610,6 @@ USA_restore_deleted_factories_USA = {
 		368 = { #Tennessee
 			if = {
 				limit = { industrial_complex < 5 }
-				set_temp_variable = { tennessee_factories = 5 }
 				if = {
 					limit = {
 						USA = {
@@ -1609,13 +1617,15 @@ USA_restore_deleted_factories_USA = {
 							has_country_flag = USA_tennessee_order
 						}
 					}
-					add_to_temp_variable = { tennessee_factories = 1 }
 					if = {
 						limit = { arms_factory < 1 }
 						add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 					}
+					set_temp_variable = { tennessee_factories = { value = 6 subtract = building_level@industrial_complex } }
 				}
-				subtract_from_temp_variable = { tennessee_factories = building_level@industrial_complex }
+				else = {
+					set_temp_variable = { tennessee_factories = { value = 5 subtract = building_level@industrial_complex } }
+				}
 				add_building_construction = { type = industrial_complex level = tennessee_factories instant_build = yes }
 			}
 		}
@@ -1643,7 +1653,6 @@ USA_restore_deleted_factories_USA = {
 			}
 			if = {
 				limit = { dockyard < 7 }
-				set_temp_variable = { new_york_dockyards = 7 }
 				if = {
 					limit = {
 						USA = {
@@ -1651,9 +1660,11 @@ USA_restore_deleted_factories_USA = {
 							has_country_flag = USA_new_york_order
 						}
 					}
-					add_to_temp_variable = { new_york_dockyards = 2 }
+					set_temp_variable = { new_york_dockyards = { value = 9 subtract = building_level@dockyard } }
 				}
-				subtract_from_temp_variable = { new_york_dockyards = building_level@dockyard }
+				else = {
+					set_temp_variable = { new_york_dockyards = { value = 7 subtract = building_level@dockyard } }
+				}
 				add_building_construction = { type = dockyard level = new_york_dockyards instant_build = yes }
 			}
 		}
@@ -1718,7 +1729,6 @@ USA_restore_deleted_factories_USA = {
 		382 = { #Colorado
 			if = {
 				limit = { industrial_complex < 1 }
-				set_temp_variable = { colorado_factories = 1 }
 				if = {
 					limit = {
 						USA = {
@@ -1730,9 +1740,11 @@ USA_restore_deleted_factories_USA = {
 							}
 						}
 					}
-					add_to_temp_variable = { colorado_factories = 1 }
+					set_temp_variable = { colorado_factories = { value = 2 subtract = building_level@industrial_complex } }
 				}
-				subtract_from_temp_variable = { colorado_factories = building_level@industrial_complex }
+				else = {
+					set_temp_variable = { colorado_factories = { value = 1 subtract = building_level@industrial_complex } }
+				}
 				add_building_construction = { type = industrial_complex level = colorado_factories instant_build = yes }
 			}
 		}
@@ -2095,8 +2107,8 @@ ACW_navy_redistribution_APG = {
 		}
 		APG = {
 			APG_samuel_murray_robinson = { set_nationality = APG }
-			APG_david_worth_bagley = { set_nationality = APG }
-			APG_john_sidney_mccain_sr = { set_nationality = APG }
+			APG_david_w_bagley = { set_nationality = APG }
+			APG_john_s_mccain_sr = { set_nationality = APG }
 
 			annex_country = { target = event_target:system }
 			load_oob = ACW_APG_naval
@@ -2716,6 +2728,14 @@ USA_canada_seizes_new_england = {
 	USA_restore_deleted_factories_NEE = yes
 	CAN = {
 		complete_national_focus = CAN_new_england_question
+		hidden_effect = {
+			set_temp_variable = { days_to_event = 995 }
+			calculate_days_since_game_start = yes
+			if = {
+				limit = { check_variable = { days_to_event > 0 } }
+				country_event = { id = new_england_events.39 days = days_to_event random_days = 20 } #New England Hurricane
+			}
+		}
 	}
 	USA = {
 		every_owned_state = {
@@ -2903,7 +2923,7 @@ USA_spawn_new_england = {
 			transfer_ship = { prefer_name = "USS Nautilus" type = submarine target = event_target:system }
 		}
 		NEE = {
-			NEE_harold_stark = { set_nationality = PREV }
+			NEE_harold_r_stark = { set_nationality = PREV }
 
 			NEE_arthur_william_sidney_herrington = { set_nationality = PREV }
 			NEE_vannevar_bush = { set_nationality = PREV }
@@ -2927,6 +2947,9 @@ USA_spawn_new_england = {
 			country_event = new_england_events.500
 			country_event = new_england_events.501
 			country_event = new_england_events.502
+			set_temp_variable = { days_to_event = 995 }
+			calculate_days_since_game_start = yes
+			country_event = { id = new_england_events.39 days = days_to_event random_days = 20 } #New England Hurricane
 		}
 		if = {
 			limit = { has_dlc_lar = yes }
@@ -2952,18 +2975,19 @@ ACW_spawn_militia_divisions = {
 	set_state_flag = ACW_recruited_militias
 
 	### calculate number of units to spawn
-	set_temp_variable = {
-		units_to_spawn = {
-			value = state_population_k
-			multiply = 0.001
-			clamp = { min = 1 max = 50 } ### failsafe so at least one unit is always spawned
-		}
-	}
 
 	### if core, get twice the units
 	if = {
 		limit = { is_core_of = ROOT }
-		multiply_temp_variable = { units_to_spawn = 2 }
+		set_temp_variable = {
+			units_to_spawn = {
+				value = state_population_k
+				multiply = 0.001
+				clamp = { min = 1 max = 50 } ### failsafe so at least one unit is always spawned
+				multiply = 2
+				round = yes
+			}
+		}
 	}
 	### ACC gets more units and cores in USA-owned cores
 	else_if = {
@@ -2972,9 +2996,26 @@ ACW_spawn_militia_divisions = {
 			is_core_of = USA
 			is_owned_by = USA
 		}
-		multiply_temp_variable = { units_to_spawn = 2 }
+		set_temp_variable = {
+			units_to_spawn = {
+				value = state_population_k
+				multiply = 0.001
+				clamp = { min = 1 max = 50 } ### failsafe so at least one unit is always spawned
+				multiply = 2
+				round = yes
+			}
+		}
 	}
-	round_temp_variable = units_to_spawn
+	else = {
+		set_temp_variable = {
+			units_to_spawn = {
+				value = state_population_k
+				multiply = 0.001
+				clamp = { min = 1 max = 50 } ### failsafe so at least one unit is always spawned
+				round = yes
+			}
+		}
+	}
 
 	### tooltip
 	custom_effect_tooltip = ACW_recruit_units
@@ -3014,7 +3055,6 @@ ACW_spawn_militia_divisions = {
 				state = 833 #Southern Texas
 			}
 		}
-		set_temp_variable = { mounties_to_spawn = 1 }
 		if = {
 			limit = {
 				OR = {
@@ -3022,7 +3062,10 @@ ACW_spawn_militia_divisions = {
 					state = 375 #Northern Texas
 				}
 			}
-			add_to_temp_variable = { mounties_to_spawn = 1 } #Texas gets two units
+			set_temp_variable = { mounties_to_spawn = 2 } #Texas gets two units
+		}
+		else = {
+			set_temp_variable = { mounties_to_spawn = 1 }
 		}
 		subtract_from_temp_variable = { units_to_spawn = mounties_to_spawn }
 	}
@@ -4395,13 +4438,13 @@ america_move_scientists_effect = {
 	### USA ###
 	###########
 	if = {
-		limit = { NOT = { has_character = USA_john_charles_niedermair } }
+		limit = { NOT = { has_character = USA_john_niedermair } }
 		custom_override_tooltip = {
 			tooltip = {
 				localization_key = tooltip_available_scientist
-				CHARACTER = USA_john_charles_niedermair
+				CHARACTER = USA_john_niedermair
 			}
-			USA = { USA_john_charles_niedermair = { set_nationality = ROOT } }
+			USA = { USA_john_niedermair = { set_nationality = ROOT } }
 		}
 	}
 	if = {
@@ -4424,23 +4467,23 @@ america_move_scientists_effect = {
 			NOT = { has_government = paternal_autocrat }
 		}
 		if = {
-			limit = { NOT = { has_character = WCA_john_whiteside_parsons } }
+			limit = { NOT = { has_character = WCA_jack_parsons } }
 			custom_override_tooltip = {
 				tooltip = {
 					localization_key = tooltip_available_scientist
-					CHARACTER = WCA_john_whiteside_parsons
+					CHARACTER = WCA_jack_parsons
 				}
-				WCA = { WCA_john_whiteside_parsons = { set_nationality = ROOT } }
+				WCA = { WCA_jack_parsons = { set_nationality = ROOT } }
 			}
 		}
 		if = {
-			limit = { NOT = { has_character = WCA_julius_robert_oppenheimer } }
+			limit = { NOT = { has_character = WCA_j_robert_oppenheimer } }
 			custom_override_tooltip = {
 				tooltip = {
 					localization_key = tooltip_available_scientist
-					CHARACTER = WCA_julius_robert_oppenheimer
+					CHARACTER = WCA_j_robert_oppenheimer
 				}
-				WCA = { WCA_julius_robert_oppenheimer = { set_nationality = ROOT } }
+				WCA = { WCA_j_robert_oppenheimer = { set_nationality = ROOT } }
 			}
 		}
 	}
@@ -4455,13 +4498,13 @@ america_move_scientists_effect = {
 		}
 	}
 	if = {
-		limit = { NOT = { has_character = WCA_peyton_marshall_magruder } }
+		limit = { NOT = { has_character = WCA_peyton_m_magruder } }
 		custom_override_tooltip = {
 			tooltip = {
 				localization_key = tooltip_available_scientist
-				CHARACTER = WCA_peyton_marshall_magruder
+				CHARACTER = WCA_peyton_m_magruder
 			}
-			WCA = { WCA_peyton_marshall_magruder = { set_nationality = ROOT } }
+			WCA = { WCA_peyton_m_magruder = { set_nationality = ROOT } }
 		}
 	}
 
@@ -4469,36 +4512,36 @@ america_move_scientists_effect = {
 	### ACC ###
 	###########
 	if = {
-		limit = { NOT = { has_character = ACC_edward_curtis_wells } }
+		limit = { NOT = { has_character = ACC_edward_c_wells } }
 		custom_override_tooltip = {
 			tooltip = {
 				localization_key = tooltip_available_scientist
-				CHARACTER = ACC_edward_curtis_wells
+				CHARACTER = ACC_edward_c_wells
 			}
-			ACC = { ACC_edward_curtis_wells = { set_nationality = ROOT } }
+			ACC = { ACC_edward_c_wells = { set_nationality = ROOT } }
 		}
 	}
 	if = {
-		limit = { NOT = { has_character = ACC_edwin_mattison_mcmillan } }
+		limit = { NOT = { has_character = ACC_edwin_mcmillan } }
 		custom_override_tooltip = {
 			tooltip = {
 				localization_key = tooltip_available_scientist
-				CHARACTER = ACC_edwin_mattison_mcmillan
+				CHARACTER = ACC_edwin_mcmillan
 			}
-			ACC = { ACC_edwin_mattison_mcmillan = { set_nationality = ROOT } }
+			ACC = { ACC_edwin_mcmillan = { set_nationality = ROOT } }
 		}
 	}
 	if = {
 		limit = {
 			has_socialist_government = no
-			NOT = { has_character = ACC_ernest_orlando_lawrence }
+			NOT = { has_character = ACC_ernest_lawrence }
 		}
 		custom_override_tooltip = {
 			tooltip = {
 				localization_key = tooltip_available_scientist
-				CHARACTER = ACC_ernest_orlando_lawrence
+				CHARACTER = ACC_ernest_lawrence
 			}
-			ACC = { ACC_ernest_orlando_lawrence = { set_nationality = ROOT } }
+			ACC = { ACC_ernest_lawrence = { set_nationality = ROOT } }
 		}
 	}
 	if = {
@@ -4563,13 +4606,13 @@ america_move_scientists_effect = {
 	### APG ###
 	###########
 	if = {
-		limit = { NOT = { has_character = APG_robert_hutchings_goddard } }
+		limit = { NOT = { has_character = APG_robert_h_goddard } }
 		custom_override_tooltip = {
 			tooltip = {
 				localization_key = tooltip_available_scientist
-				CHARACTER = APG_robert_hutchings_goddard
+				CHARACTER = APG_robert_h_goddard
 			}
-			APG = { APG_robert_hutchings_goddard = { set_nationality = ROOT } }
+			APG = { APG_robert_h_goddard = { set_nationality = ROOT } }
 		}
 	}
 }

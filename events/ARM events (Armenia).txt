@@ -95,14 +95,8 @@ country_event = { ####constituent assembly####
 		log = "[GetLogInfo]: event armenia_events.12 option armenia_events.12.a"
 		name = armenia_events.12.a
 		hidden_effect = {
-			set_variable = {
-				var = arm_rad_soc
-				value = 0
-			}
-			set_variable = {
-				var = arm_communists
-				value = 0
-			}
+			set_variable = { arm_rad_soc = 0 }
+			set_variable = { arm_communists = 0 }
 			country_event = { id = armenia_events.13 days = 3 }
 		}
 	}

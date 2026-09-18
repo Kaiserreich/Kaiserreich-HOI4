@@ -1959,13 +1959,11 @@ ideas = {
 			cancel = {
 				OR = {
 					NOT = { country_exists = GER }
-					OR = {
-						any_neighbor_country = { is_in_faction_with = INT }
-						AND = {
-							any_neighbor_country = {
-								has_socialist_government = yes
-								is_in_faction_with = RUS
-							}
+					any_neighbor_country = { is_in_faction_with = INT }
+					AND = {
+						any_neighbor_country = {
+							has_socialist_government = yes
+							is_in_faction_with = RUS
 						}
 					}
 				}

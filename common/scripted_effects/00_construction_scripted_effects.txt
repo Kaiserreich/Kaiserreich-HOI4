@@ -145,12 +145,12 @@ construction_add_building_slot_in_best_random_state_effect = {
 construction_build_in_best_random_state_effect = {
 	if = {
 		limit = { has_variable = building_token } #prevents error log spam
-		if = {
-			limit = { check_variable = { building_token = token:dockyard } }
-			set_temp_variable = { building_token_trigger = token:dockyard }
-		}
-		else = {
-			set_temp_variable = { building_token_trigger = token:industrial_complex }
+		set_temp_variable = {
+			building_token_trigger = {
+				value = 0
+				if = { limit = { value = building_token equals = token:dockyard } add = token:dockyard }
+				else = { add = token:industrial_complex }
+			}
 		}
 		meta_effect = {
 			text = {
@@ -278,12 +278,11 @@ construction_build_in_best_random_state_effect = {
 construction_build_in_best_random_state_effect_no_shared_slot = {
 	if = {
 		limit = { has_variable = building_token } #prevents error log spam
-		if = {
-			limit = { check_variable = { building_token = token:radar_station } }
-			set_temp_variable = { max_slots = 6 }
-		}
-		else = {
-			set_temp_variable = { max_slots = 5 }
+		set_temp_variable = {
+			max_slots = {
+				value = 5
+				if = { limit = { value = building_token equals = token:radar_station } add = 1 }
+			}
 		}
 
 		meta_effect = {

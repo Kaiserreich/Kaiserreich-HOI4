@@ -262,10 +262,16 @@ focus_tree = {
 					is_in_faction_with = GER
 					any_owned_state = { is_claim_or_core_of_ROOT = yes }
 				}
+				NOT = { has_game_rule = { rule = SAF_path option = SAF_PATH_PATAUT_GER } }
 			}
 			modifier = {
 				factor = 0
 				GER = { surrender_progress > 0.40 }
+				NOT = { has_game_rule = { rule = SAF_path option = SAF_PATH_PATAUT_GER } }
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = SAF_path option = SAF_PATH_PATAUT }
 			}
 		}
 		prerequisite = {
@@ -305,6 +311,10 @@ focus_tree = {
 			modifier = {
 				factor = 0.1
 				has_government = national_populist
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = SAF_path option = SAF_PATH_PATAUT_GER }
 			}
 		}
 		prerequisite = {
@@ -496,17 +506,16 @@ focus_tree = {
 			factor = 100
 			modifier = {
 				factor = 0
-				AND = { #if they got a game rule that needs this to pass, don't take it until they have right conditions
+				#if they got a game rule that needs this to pass, don't take it until they have right conditions
+				OR = {
+					has_game_rule = { rule = SAF_path option = SAF_PATH_SAP_SOCLIB }
+					has_game_rule = { rule = SAF_path option = SAF_PATH_SOCDEM }
+					has_game_rule = { rule = SAF_path option = SAF_PATH_UNITED_SOCLIB }
+				}
+				NOT = {
 					OR = {
-						has_game_rule = { rule = SAF_path option = SAF_PATH_SAP_SOCLIB }
-						has_game_rule = { rule = SAF_path option = SAF_PATH_SOCDEM }
-						has_game_rule = { rule = SAF_path option = SAF_PATH_UNITED_SOCLIB }
-					}
-					NOT = {
-						OR = {
-							has_completed_focus = SAF_natives_consolidation_act
-							has_global_flag = SAF_liberal_labour_coalition
-						}
+						has_completed_focus = SAF_natives_consolidation_act
+						has_global_flag = SAF_liberal_labour_coalition
 					}
 				}
 			}

@@ -2446,7 +2446,6 @@ RUS_economy_decisions = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove RUS_Rural_Development"
 			RUS_rural_development_effects = yes
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = { RUS_rural_development_var = 1 }
 			FROM = {
 				add_dynamic_modifier = { modifier = RUS_sponsored_rural_region }
 			}
@@ -3105,7 +3104,7 @@ RUS_trade_decisions = {
 		}
 		target_trigger = {
 			FROM = {
-				owns_state = 361  #Washington DC
+				owns_state = 361  #Washington, D.C.
 				NOT = { has_war_with = ROOT }
 			}
 		}
@@ -3563,10 +3562,18 @@ RUS_stavka_cat_decisions = {
 		selectable_mission = no
 		is_good = no
 		days_mission_timeout = 220
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel RUS_the_rush_for_berlin"
+			RUS_remove_western_march_ideas = yes
+			clr_country_flag = RUS_taken_kiev_before
+			clr_country_flag = RUS_taken_minsk_before
+			clr_country_flag = RUS_taken_kiev_before
+		}
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete RUS_the_rush_for_berlin"
 			add_political_power = 100
 			add_stability = 0.1
+			RUS_remove_western_march_ideas = yes
 			clr_country_flag = RUS_taken_kiev_before
 			clr_country_flag = RUS_taken_minsk_before
 			clr_country_flag = RUS_taken_kiev_before
@@ -5291,8 +5298,7 @@ RUS_german_influence = {
 			set_temp_variable = { RUS_influence_change = -1 }
 			RUS_change_german_economic_influence = yes
 			custom_effect_tooltip = RUS_tariff_tt
-			set_temp_variable = { RUS_tariff_damage = RUS_german_economic_influence }
-			multiply_temp_variable = { RUS_tariff_damage = -0.02 }
+			set_temp_variable = { RUS_tariff_damage = { value = RUS.RUS_german_economic_influence multiply = -0.02 } }
 			add_stability = RUS_tariff_damage
 			set_country_flag = RUS_tariff_wall
 			GER = { set_country_flag = RUS_tariff_wall }
@@ -5485,20 +5491,21 @@ RUS_GER_german_influence = {
 			add_to_variable = { RUS_sanction_points = -1 }
 			hidden_effect = {
 				RUS = { country_event = { id = russia_events.413 days = 60 } }
-				every_country = {
-					limit = {
-						OR = {
-							tag = UKR
-							tag = POL
-							tag = BLR
-							tag = LIT
-							tag = BAT
-							tag = EST
+				GER = {
+					every_faction_member = {
+						limit = {
+							OR = {
+								tag = UKR
+								tag = POL
+								tag = BLR
+								tag = LIT
+								tag = BAT
+								tag = EST
+							}
+							has_socialist_government = no
 						}
-						is_in_faction_with = GER
-						has_socialist_government = no
+						country_event = { id = russia_events.415 days = 90 } #Businesses Re-establish in EE
 					}
-					country_event = { id = russia_events.415 days = 90 } #Businesses Re-establish in EE
 				}
 			}
 		}
@@ -5714,10 +5721,7 @@ RUS_GER_german_influence = {
 				tooltip = RUS_ongoing_influence_action_NOT
 				NOT = { has_country_flag = RUS_ongoing_influence_action }
 			}
-			custom_override_tooltip = {
-				tooltip = GER_economic_health_level_6_tt
-				check_variable = { GER_economic_health > -7 }
-			}
+			NOT = { check_variable = { GER_economic_health < -6 tooltip = GER_economic_health_level_tt } }
 		}
 		visible = { has_variable = RUS.RUS_german_economic_influence }
 		custom_cost_text = RUS_GER_sanction_1
@@ -6633,14 +6637,16 @@ RUS_maklakov_decisions = {
 		}
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout RUS_political_apathy"
-			clamp_variable = { var = RUS_apathy_var min = 0 }
 			custom_effect_tooltip = RUS_apathy_tt
-			add_to_variable = { RUS_apathy_var = 1 }
-			set_temp_variable = { RUS_apathy_temp = RUS_apathy_var }
-			divide_temp_variable = { RUS_apathy_temp = -100 }
-			set_temp_variable = { ideology_change_var = RUS_apathy_temp }
+			add_to_variable = {
+				RUS_apathy_var = {
+					value = 1
+					if = { limit = { value = RUS_apathy_var less_than = 0 } subtract = RUS_apathy_var }
+				}
+			}
+			set_temp_variable = { ideology_change_var = { value = RUS_apathy_var multiply = -0.01 } }
 			change_ruling_party_popularity = yes
-			add_war_support = RUS_apathy_temp
+			add_war_support = ideology_change_var
 			activate_mission = RUS_political_apathy
 		}
 	}
@@ -7243,8 +7249,7 @@ RUS_monarchy_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision remove RUS_NMD_rallies"
 			add_war_support = 0.05
-			set_temp_variable = { RUS_solonevich_pp = party_popularity_100@authoritarian_democrat }
-			add_to_temp_variable = { RUS_solonevich_pp = party_popularity_100@social_conservative }
+			set_temp_variable = { RUS_solonevich_pp = { value = party_popularity_100@authoritarian_democrat add = party_popularity_100@social_conservative } }
 			add_political_power = RUS_solonevich_pp
 			if = {
 				limit = { has_completed_focus = RUS_NMD }
@@ -9853,8 +9858,7 @@ RUS_USNS_decision_cat = {
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete RUS_counter_insurgency"
 			hidden_effect = {
-				add_to_temp_variable = { RUS_temp_CP_cost = RUS_USNS_cp_cost }
-				multiply_temp_variable = { RUS_temp_CP_cost = -1 }
+				set_temp_variable = { RUS_temp_CP_cost = { value = RUS_USNS_cp_cost multiply = -1 } }
 				add_command_power = RUS_temp_CP_cost
 				add_equipment_to_stockpile = {
 					type = infantry_equipment
@@ -10972,10 +10976,6 @@ RUS_russian_sphere_decisions = {
 			log = "[GetLogRoot]: Decision complete RUS_defeat_central_asia"
 		}
 
-		complete_effect = {
-			log = "[GetLogRoot]: Decision complete RUS_defeat_central_asia"
-		}
-
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout RUS_defeat_central_asia"
 			country_event = central_asian_crisis_events.473
@@ -11153,7 +11153,7 @@ RUS_russian_sphere_decisions = {
 			LIT = {
 				country_event = lithuania_events.257 #LAF Raid High
 				effect_tooltip = {
-					set_temp_variable = { LIT_threat_change = 4 }
+					set_temp_variable = { LIT_threat_change = 0.04 }
 					LIT_change_LAF_threat = yes
 				}
 			}
@@ -11781,20 +11781,15 @@ RUS_russian_sphere_decisions = {
 							is_in_faction = yes
 							is_guaranteed_by = GER
 							tag = GEO
-						}
-					}
-				}
-				has_completed_focus = RUS_preemptive_war
-			}
-			if = {
-				limit = {
-					tag = RUS
-					FROM = {
-						tag = PER
-						NOT = { has_country_flag = RUS_will_attack_persia }
-						if = {
-							limit = { has_global_flag = RUSSIAN_OTTOMAN_DEAL_PER_BUFFER }
-							ROOT = { NOT = { has_non_aggression_pact_with = TUR } }
+							tag = ARM
+							AND = {
+								tag = PER
+								NOT = { has_country_flag = RUS_will_attack_persia }
+								if = {
+									limit = { has_global_flag = RUSSIAN_OTTOMAN_DEAL_PER_BUFFER }
+									ROOT = { NOT = { has_non_aggression_pact_with = TUR } }
+								}
+							}
 						}
 					}
 				}
@@ -11804,7 +11799,7 @@ RUS_russian_sphere_decisions = {
 				limit = { FROM = { tag = AZR } }
 				NOT = { has_non_aggression_pact_with = TUR }
 			}
-			if = {
+			else_if = {
 				limit = { FROM = { is_tag_in_china_area = yes } }
 				NOT = { has_global_flag = RUS_CHN_postwar_agreement }
 			}
@@ -11852,6 +11847,11 @@ RUS_russian_sphere_decisions = {
 					is_valid_peace_target = yes
 				}
 				NOT = { has_country_flag = RUS_alliance_refused_@FROM }
+			}
+			modifier = {
+				factor = 0
+				FROM = { tag = AFG }
+				second_weltkrieg_has_begun = no
 			}
 			modifier = {
 				factor = 0
@@ -11911,7 +11911,10 @@ RUS_russian_sphere_decisions = {
 				factor = 0
 				has_war_with_major = yes
 				FROM = {
-					tag = AFG
+					OR = {
+						tag = AFG
+						tag = ARM
+					}
 				}
 			}
 		}
@@ -12317,6 +12320,10 @@ RUS_russian_sphere_decisions = {
 			modifier = {
 				factor = 0
 				FROM = { RUS_dont_attack_if_faction_is_stronger = yes }
+			}
+			modifier = {
+				factor = 0
+				FROM = { is_in_faction_with = INT }
 			}
 		}
 
@@ -13200,16 +13207,21 @@ RUS_russian_sphere_decisions = {
 					OTT_ottomans_defeated = yes
 				}
 			}
-			if = {
+			else_if = {
 				limit = { FROM = { tag = SWE } }
 				any_country_with_original_tag_of = {
 					target = { DEN NOR }
 					has_socialist_government = yes
 				}
 			}
-			if = {
+			else_if = {
 				limit = { FROM = { tag = KUM } }
 				NOT = { has_global_flag = RUS_CHN_postwar_agreement }
+			}
+			else_if = {
+				limit = { FROM = { tag = AFG } }
+				AFG_civil_war_started = yes
+				AFG_civil_war_ongoing = no
 			}
 		}
 
@@ -13276,6 +13288,13 @@ RUS_russian_sphere_decisions = {
 					}
 				}
 			}
+			modifier = {
+				factor = 0
+				FROM = {
+					tag = AFG
+				}
+				second_weltkrieg_has_begun = no
+			}
 		}
 
 		complete_effect = {
@@ -13308,7 +13327,7 @@ RUS_russian_sphere_decisions = {
 			country_exists = INT
 			FROM = {
 				is_faction_leader = yes
-				NOT = { is_ally_with = 361.owner } #Washington DC
+				NOT = { is_ally_with = 361.owner } #Washington, D.C.
 			}
 		}
 
@@ -14000,7 +14019,7 @@ RUS_Spreading_the_Revolution_decisions = {
 					has_soclib_or_socdem_government = yes
 					has_socialist_government = yes
 				}
-				has_war = no
+				at_peace_or_same_enemies_as_ROOT = yes
 			}
 		}
 
@@ -15080,7 +15099,7 @@ RUS_socrus_coalition_mechanic_decisions = {
 				check_variable = { vst_left_var < 10 }
 				NOT = { has_country_flag = RUS_VST_left_revolt }
 			}
-			if = {
+			else_if = {
 				limit = { RUS_VST_right = yes }
 				check_variable = { vst_centre_var < 10 }
 				NOT = { has_country_flag = RUS_VST_centre_revolt }
@@ -15146,7 +15165,7 @@ RUS_socrus_coalition_mechanic_decisions = {
 				check_variable = { vst_right_var < 10 }
 				NOT = { has_country_flag = RUS_VST_right_revolt }
 			}
-			if = {
+			else_if = {
 				limit = { RUS_VST_left = yes }
 				check_variable = { vst_centre_var < 10 }
 				NOT = { has_country_flag = RUS_VST_centre_revolt }
@@ -16156,12 +16175,10 @@ RUS_sr_parliamentarian_decision_cat = {
 					has_country_flag = RUS_siberian_direction_complete
 					custom_override_tooltip = {
 						tooltip = RUS_completed_all_tambov_decisions
-						AND = {
-							has_country_flag = RUS_completed_incentivise_creation_of_rural_enterprises
-							has_country_flag = RUS_completed_modernisation_of_agricultural_communes
-							has_country_flag = RUS_completed_mordva_autonomies
-							has_country_flag = RUS_completed_peoples_militia_reform
-						}
+						has_country_flag = RUS_completed_incentivise_creation_of_rural_enterprises
+						has_country_flag = RUS_completed_modernisation_of_agricultural_communes
+						has_country_flag = RUS_completed_mordva_autonomies
+						has_country_flag = RUS_completed_peoples_militia_reform
 					}
 					AND = {
 						has_completed_focus = RUS_pool_armour_innovation
@@ -16184,12 +16201,10 @@ RUS_sr_parliamentarian_decision_cat = {
 					has_country_flag = RUS_siberian_direction_complete
 					custom_override_tooltip = {
 						tooltip = RUS_completed_all_tambov_decisions
-						AND = {
-							has_country_flag = RUS_completed_incentivise_creation_of_rural_enterprises
-							has_country_flag = RUS_completed_modernisation_of_agricultural_communes
-							has_country_flag = RUS_completed_mordva_autonomies
-							has_country_flag = RUS_completed_peoples_militia_reform
-						}
+						has_country_flag = RUS_completed_incentivise_creation_of_rural_enterprises
+						has_country_flag = RUS_completed_modernisation_of_agricultural_communes
+						has_country_flag = RUS_completed_mordva_autonomies
+						has_country_flag = RUS_completed_peoples_militia_reform
 					}
 					AND = {
 						has_completed_focus = RUS_pool_armour_innovation
@@ -16425,31 +16440,23 @@ RUS_sr_maximalist_decision_cat = {
 			log = "[GetLogRoot]: Decision timeout RUS_appointment_of_interior_ministry"
 			country_event = russia_socialist_events.130
 			if = {
-				limit = {
-					check_variable = { RUS_interior_var < 10 }
-				}
+				limit = { check_variable = { RUS_interior_var < 10 } }
 				custom_effect_tooltip = RUS_appointment_sufficient_stage_zero
 				effect_tooltip = {
 					add_stability = -0.02
 					add_war_support = -0.02
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { RUS_interior_var > 10 }
-					check_variable = { RUS_interior_var < 20 }
-				}
+			else_if = {
+				limit = { check_variable = { RUS_interior_var < 20 } }
 				custom_effect_tooltip = RUS_appointment_sufficient_stage_one
 				effect_tooltip = {
 					add_stability = 0.05
 					add_war_support = 0.05
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { RUS_interior_var > 19 }
-					check_variable = { RUS_interior_var < 30 }
-				}
+			else_if = {
+				limit = { check_variable = { RUS_interior_var < 30 } }
 				custom_effect_tooltip = RUS_appointment_sufficient_stage_two
 				effect_tooltip = {
 					add_stability = 0.05
@@ -16462,11 +16469,8 @@ RUS_sr_maximalist_decision_cat = {
 					RUS_maximalist_influence = yes
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { RUS_interior_var > 29 }
-					check_variable = { RUS_interior_var < 40 }
-				}
+			else_if = {
+				limit = { check_variable = { RUS_interior_var < 40 } }
 				custom_effect_tooltip = RUS_appointment_sufficient_stage_three
 				effect_tooltip = {
 					add_stability = 0.05
@@ -16481,11 +16485,8 @@ RUS_sr_maximalist_decision_cat = {
 					RUS_maximalist_suspicion = yes
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { RUS_interior_var > 39 }
-					check_variable = { RUS_interior_var < 50 }
-				}
+			else_if = {
+				limit = { check_variable = { RUS_interior_var < 50 } }
 				custom_effect_tooltip = RUS_appointment_sufficient_stage_four
 				effect_tooltip = {
 					add_stability = 0.1
@@ -16500,10 +16501,7 @@ RUS_sr_maximalist_decision_cat = {
 					RUS_maximalist_suspicion = yes
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { RUS_interior_var > 49 }
-				}
+			else = {
 				custom_effect_tooltip = RUS_appointment_sufficient_stage_five
 				effect_tooltip = {
 					add_stability = 0.1
@@ -16547,11 +16545,7 @@ RUS_sr_maximalist_decision_cat = {
 		days_remove = 3
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove RUS_fearmonger_in_congress"
-			add_to_variable = {
-				var = RUS_interior_var
-				value = 2
-				tooltip = REW_interior_ministry_ten_effect_tt
-			}
+			add_to_variable = { RUS_interior_var = 2 tooltip = REW_interior_ministry_ten_effect_tt }
 		}
 		fixed_random_seed = no
 	}
@@ -16563,11 +16557,7 @@ RUS_sr_maximalist_decision_cat = {
 		days_remove = 3
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove RUS_pressure_kamkov"
-			add_to_variable = {
-				var = RUS_interior_var
-				value = 4
-				tooltip = REW_interior_ministry_twenty_effect_tt
-			}
+			add_to_variable = { RUS_interior_var = 4 tooltip = REW_interior_ministry_twenty_effect_tt }
 		}
 		fixed_random_seed = no
 	}
@@ -16579,11 +16569,7 @@ RUS_sr_maximalist_decision_cat = {
 		days_remove = 3
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove RUS_reach_out_to_blyumkin"
-			add_to_variable = {
-				var = RUS_interior_var
-				value = 6
-				tooltip = REW_interior_ministry_thirty_effect_tt
-			}
+			add_to_variable = { RUS_interior_var = 6 tooltip = REW_interior_ministry_thirty_effect_tt }
 		}
 		fixed_random_seed = no
 	}
@@ -16595,11 +16581,7 @@ RUS_sr_maximalist_decision_cat = {
 		days_remove = 3
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove RUS_convince_the_vst"
-			add_to_variable = {
-				var = RUS_interior_var
-				value = 8
-				tooltip = REW_interior_ministry_forty_effect_tt
-			}
+			add_to_variable = { RUS_interior_var = 8 tooltip = REW_interior_ministry_forty_effect_tt }
 		}
 		fixed_random_seed = no
 	}
@@ -17861,4 +17843,3 @@ RUS_MIO_decisions = {
 		fixed_random_seed = no
 	}
 }
-

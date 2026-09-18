@@ -285,6 +285,32 @@ india_bypass_goa_claim = {
 	owns_state = 321 #Goa
 }
 
+india_can_claim_peshawar = {
+	is_subject = no
+	442 = { is_owned_by = AFG }
+	442 = { any_neighbor_state = { is_owned_by = ROOT } }
+	if = {
+		limit = {
+			AFG = { AFG_aia_republic = yes }
+		}
+		AFG = { has_country_flag = AFG_aia_india_negotiations_failed_flag }
+	}
+	set_temp_variable = { target = 442.owner }
+	is_TARGET_valid_for_war_or_wargoal = yes
+}
+
+india_bypass_peshawar_claim = {
+	OR = {
+		owns_state = 442 #Peshawar
+		AND = {
+			AFG = { has_country_flag = AFG_aia_india_negotiations_over_flag }
+			AFG = {
+				NOT = { has_country_flag = AFG_aia_india_negotiations_failed_flag }
+			}
+		}
+	}
+}
+
 india_can_claim_pondicherry = {
 	is_subject = no
 	owns_state = 320 #Madras

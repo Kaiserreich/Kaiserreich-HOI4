@@ -1748,12 +1748,13 @@ country_event = { # Ultimatum Over British Honduras; used by every ideology
 		name = central_america_socialist_events.040.a
 		ai_chance = {
 			base = 0
-			# Will accept if in a war that's going poorly; subject to change
+			# Will accept if in a war that's going poorly
 			modifier = {
 				add = 100
 				has_war_with_major = yes
 				OR = {
 					any_allied_country = {
+						is_major = yes
 						is_subject = no
 						has_capitulated = yes
 					}
@@ -1767,6 +1768,11 @@ country_event = { # Ultimatum Over British Honduras; used by every ideology
 				has_war_with = ENT
 				has_socialist_government = yes
 				is_valid_peace_target = yes
+			}
+			# Failsafe to never have a war over Belize with the AI
+			modifier = {
+				add = 100
+				FROM = { is_ai = yes }
 			}
 		}
 
@@ -1792,6 +1798,7 @@ country_event = { # Ultimatum Over British Honduras; used by every ideology
 				has_war_with_major = yes
 				OR = {
 					any_allied_country = {
+						is_major = yes
 						is_subject = no
 						has_capitulated = yes
 					}
@@ -1804,6 +1811,10 @@ country_event = { # Ultimatum Over British Honduras; used by every ideology
 				has_war_with = ENT
 				has_socialist_government = yes
 				is_valid_peace_target = yes
+			}
+			modifier = {
+				factor = 0
+				FROM = { is_ai = yes }
 			}
 		}
 

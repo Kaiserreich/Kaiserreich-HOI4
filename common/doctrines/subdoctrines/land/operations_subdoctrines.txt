@@ -16,7 +16,7 @@ mission_type_tactics = {
 	}
 
 	# EFFECTS
-	command_power_gain = 0.02
+	command_power_gain = 0.2
 	category_all_infantry = {
 		max_organisation = 15
 	}
@@ -75,6 +75,14 @@ last_stand = {
 
 	available = {
 		has_war = yes #ye may as well since it is op lol
+		#Vanilla:
+		#OR = {
+		#	has_defensive_war = yes
+		#	AND = {
+		#		surrender_progress > 0.1
+		#		has_war_support > 0.5
+		#	}
+		#}
 	}
 	# EFFECTS
 	conscription = 0.05
@@ -138,7 +146,7 @@ infiltration_tactics = {
 
 	# EFFECTS
 	enable_tactic = tactic_infantry_charge
-	max_planning = 0.05
+	max_planning = 0.1
 
 	rewards = {
 		infiltration_assault = {
@@ -158,7 +166,7 @@ infiltration_tactics = {
 		self_sustaining_infiltration_units = {
 		#3
 			supply_consumption_factor = -0.10
-			command_power_gain = 0.015
+			command_power_gain = 0.1
 			category_tanks = {
 				max_organisation = 2
 			}
@@ -780,14 +788,14 @@ dispersed_operations = {
 
 	ai_will_do = { base = 1 }
 
-    # EFFECTS
+	# EFFECTS
 	enemy_army_bonus_air_superiority_factor = -0.10
 	land_reinforce_rate = 0.05
 
 	rewards = {
 
 		camouflage_discipline = {
-        #1
+		#1
 			enemy_army_bonus_air_superiority_factor = -0.15
 			logistics_company = {
 				battalion_mult = {
@@ -799,7 +807,7 @@ dispersed_operations = {
 		}
 
 		hardened_logistics = {
-        #2
+		#2
 			logistics_company = {
 				max_organisation = 5
 			}
@@ -807,7 +815,7 @@ dispersed_operations = {
 		}
 
 		local_air_defense = {
-        #3            
+		#3
 			anti_air_battery = {
 				air_attack = 0.20
 			}
@@ -820,12 +828,12 @@ dispersed_operations = {
 		}
 
 		scattered_formations = {
-        #4            
+		#4
 			cas_damage_reduction = 0.05
 		}
 
 		independent_operations = {
-        #5
+		#5
 			category_all_infantry = {
 				initiative = 0.01
 				breakthrough = 0.1

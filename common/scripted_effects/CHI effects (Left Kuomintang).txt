@@ -219,10 +219,7 @@ CHI_send_advisors_and_guns_effect = {
 		type = arms_factory
 		level = 1
 	}
-	subtract_from_variable = {
-		var = CHI_foreign_offmap_mils_var
-		value = 1
-	}
+	subtract_from_variable = { CHI_foreign_offmap_mils_var = 1 }
 	CHI_LCS_medium_effect = yes
 }
 
@@ -252,14 +249,6 @@ CHI_insurgent_army_transition_effect = {
 #####- Section 2: Power Struggle - #####
 ########################################
 
-#Radicalism Base Effect
-CHI_clamp_rad_effect = {
-	clamp_variable = {
-		var = CHI.CHI_radicalism_var
-		min = 0
-		max = 1
-	}
-}
 CHI_RAD_warning_event_effect = {
 	if = {
 		limit = { has_any_power_balance = yes }
@@ -293,101 +282,105 @@ CHI_RAD_warning_event_effect = {
 		}
 	}
 }
+
 CHI_add_rad_small_effect = {
 	add_to_variable = {
-		var = CHI.CHI_radicalism_var
-		value = 0.01
+		CHI.CHI_radicalism_var = {
+			value = 0.01
+			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+		}
 		tooltip = CHI_add_rad_small_tt
 	}
-	CHI_clamp_rad_effect = yes
 	CHI_RAD_warning_event_effect = yes
 }
 CHI_add_rad_medium_effect = {
 	add_to_variable = {
-		var = CHI.CHI_radicalism_var
-		value = 0.03
+		CHI.CHI_radicalism_var = {
+			value = 0.03
+			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+		}
 		tooltip = CHI_add_rad_medium_tt
 	}
-	CHI_clamp_rad_effect = yes
 	CHI_RAD_warning_event_effect = yes
 }
 CHI_add_rad_large_effect = {
 	add_to_variable = {
-		var = CHI.CHI_radicalism_var
-		value = 0.05
+		CHI.CHI_radicalism_var = {
+			value = 0.05
+			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+		}
 		tooltip = CHI_add_rad_large_tt
 	}
-	CHI_clamp_rad_effect = yes
 	CHI_RAD_warning_event_effect = yes
 }
 CHI_add_rad_mega_effect = {
 	add_to_variable = {
-		var = CHI.CHI_radicalism_var
-		value = 0.10
+		CHI.CHI_radicalism_var = {
+			value = 0.10
+			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+		}
 		tooltip = CHI_add_rad_mega_tt
 	}
-	CHI_clamp_rad_effect = yes
 	CHI_RAD_warning_event_effect = yes
 }
 CHI_add_rad_giga_effect = {
 	add_to_variable = {
-		var = CHI.CHI_radicalism_var
-		value = 0.25
+		CHI.CHI_radicalism_var = {
+			value = 0.25
+			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+		}
 		tooltip = CHI_add_rad_giga_tt
 	}
-	CHI_clamp_rad_effect = yes
 	CHI_RAD_warning_event_effect = yes
 }
 CHI_sub_rad_small_effect = {
 	add_to_variable = {
-		var = CHI.CHI_radicalism_var
-		value = -0.01
+		CHI.CHI_radicalism_var = {
+			value = -0.01
+			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+		}
 		tooltip = CHI_sub_rad_small_tt
 	}
-	CHI_clamp_rad_effect = yes
 }
 CHI_sub_rad_medium_effect = {
 	add_to_variable = {
-		var = CHI.CHI_radicalism_var
-		value = -0.03
+		CHI.CHI_radicalism_var = {
+			value = -0.03
+			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+		}
 		tooltip = CHI_sub_rad_medium_tt
 	}
-	CHI_clamp_rad_effect = yes
 }
 CHI_sub_rad_large_effect = {
 	add_to_variable = {
-		var = CHI.CHI_radicalism_var
-		value = -0.05
+		CHI.CHI_radicalism_var = {
+			value = -0.05
+			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+		}
 		tooltip = CHI_sub_rad_large_tt
 	}
-	CHI_clamp_rad_effect = yes
 }
 CHI_sub_rad_mega_effect = {
 	add_to_variable = {
-		var = CHI.CHI_radicalism_var
-		value = -0.10
+		CHI.CHI_radicalism_var = {
+			value = -0.10
+			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+		}
 		tooltip = CHI_sub_rad_mega_tt
 	}
-	CHI_clamp_rad_effect = yes
 }
 #CHI_sub_rad_giga_effect = {
 #	add_to_variable = {
-#		var = CHI.CHI_radicalism_var
-#		value = -0.25
+#		CHI.CHI_radicalism_var = {
+#			value = -0.25
+#			clamp = { min = { value = CHI.CHI_radicalism_var multiply = -1 } max = { value = 1 subtract = CHI.CHI_radicalism_var } }
+#		}
 #		tooltip = CHI_sub_rad_giga_tt
 #	}
-#	CHI_clamp_rad_effect = yes
 #}
 
 #Strengthening RCA
-CHI_add_RCA_effect = {
-	add_popularity = {
-		ideology = radical_socialist
-		popularity = var:CHI_size_var
-	}
-}
 CHI_RCA_small_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.small }
 	if = {
 		limit = { has_any_power_balance = yes }
 		#Sucks but atm add power balance doesn't accept variables
@@ -397,10 +390,12 @@ CHI_RCA_small_effect = {
 			tooltip_side = CHI_RCA_winning_side
 		}
 	}
-	CHI_add_RCA_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.small
+	}
 }
 CHI_RCA_medium_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.medium }
 	if = {
 		limit = { has_any_power_balance = yes }
 		#Sucks but atm add power balance doesn't accept variables
@@ -410,10 +405,12 @@ CHI_RCA_medium_effect = {
 			tooltip_side = CHI_RCA_winning_side
 		}
 	}
-	CHI_add_RCA_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.medium
+	}
 }
 CHI_RCA_large_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.large }
 	if = {
 		limit = { has_any_power_balance = yes }
 		#Sucks but atm add power balance doesn't accept variables
@@ -423,10 +420,12 @@ CHI_RCA_large_effect = {
 			tooltip_side = CHI_RCA_winning_side
 		}
 	}
-	CHI_add_RCA_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.large
+	}
 }
 CHI_RCA_mega_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.mega }
 	if = {
 		limit = { has_any_power_balance = yes }
 		#Sucks but atm add power balance doesn't accept variables
@@ -436,7 +435,10 @@ CHI_RCA_mega_effect = {
 			tooltip_side = CHI_RCA_winning_side
 		}
 	}
-	CHI_add_RCA_effect = yes
+	add_popularity = {
+		ideology = radical_socialist
+		popularity = constant:party_pop.gain.mega
+	}
 }
 #CHI_RCA_giga_effect = {
 #	set_temp_variable = { CHI_size_var = constant:party_pop.gain.giga }
@@ -449,24 +451,12 @@ CHI_RCA_mega_effect = {
 #			tooltip_side = CHI_RCA_winning_side
 #		}
 #	}
-#	CHI_add_RCA_effect = yes
+#	add_popularity = {
+#		ideology = radical_socialist
+#		popularity = constant:party_pop.gain.giga
+#	}
 #}
 #Strengthening PAC
-CHI_add_PAC_effect = {
-	if = {
-		limit = { CHI_Song_victory_trigger = no }
-		add_popularity = {
-			ideology = social_democrat
-			popularity = var:CHI_size_var
-		}
-	}
-	else = {
-		add_popularity = {
-			ideology = radical_socialist
-			popularity = var:CHI_size_var
-		}
-	}
-}
 CHI_PAC_small_effect = {
 	if = {
 		limit = { has_any_power_balance = yes }
@@ -477,8 +467,19 @@ CHI_PAC_small_effect = {
 			tooltip_side = CHI_PAC_winning_side
 		}
 	}
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.small }
-	CHI_add_PAC_effect = yes
+	if = {
+		limit = { CHI_Song_victory_trigger = no }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = constant:party_pop.gain.small
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = constant:party_pop.gain.small
+		}
+	}
 }
 CHI_PAC_medium_effect = {
 	if = {
@@ -490,8 +491,19 @@ CHI_PAC_medium_effect = {
 			tooltip_side = CHI_PAC_winning_side
 		}
 	}
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.medium }
-	CHI_add_PAC_effect = yes
+	if = {
+		limit = { CHI_Song_victory_trigger = no }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = constant:party_pop.gain.medium
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = constant:party_pop.gain.medium
+		}
+	}
 }
 CHI_PAC_large_effect = {
 	if = {
@@ -503,8 +515,19 @@ CHI_PAC_large_effect = {
 			tooltip_side = CHI_PAC_winning_side
 		}
 	}
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.large }
-	CHI_add_PAC_effect = yes
+	if = {
+		limit = { CHI_Song_victory_trigger = no }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = constant:party_pop.gain.large
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = constant:party_pop.gain.large
+		}
+	}
 }
 CHI_PAC_mega_effect = {
 	if = {
@@ -516,8 +539,19 @@ CHI_PAC_mega_effect = {
 			tooltip_side = CHI_PAC_winning_side
 		}
 	}
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.mega }
-	CHI_add_PAC_effect = yes
+	if = {
+		limit = { CHI_Song_victory_trigger = no }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = constant:party_pop.gain.mega
+		}
+	}
+	else = {
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = constant:party_pop.gain.mega
+		}
+	}
 }
 #CHI_PAC_giga_effect = {
 #	if = {
@@ -529,49 +563,58 @@ CHI_PAC_mega_effect = {
 #			tooltip_side = CHI_PAC_winning_side
 #		}
 #	}
-#	set_temp_variable = { CHI_size_var = constant:party_pop.gain.giga }
-#	CHI_add_PAC_effect = yes
+#	if = {
+#		limit = { CHI_Song_victory_trigger = no }
+#		add_popularity = {
+#			ideology = social_democrat
+#			popularity = constant:party_pop.gain.giga
+#		}
+#	}
+#	else = {
+#		add_popularity = {
+#			ideology = radical_socialist
+#			popularity = constant:party_pop.gain.giga
+#		}
+#	}
 #}
 #Strengthening CRS
-CHI_add_CRS_effect = {
+CHI_CRS_small_effect = {
 	add_popularity = {
 		ideology = totalist
-		popularity = var:CHI_size_var
+		popularity = constant:party_pop.gain.small
 	}
-}
-CHI_CRS_small_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.small }
-	CHI_add_CRS_effect = yes
 	CHI_add_rad_small_effect = yes
 }
 CHI_CRS_medium_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.medium }
-	CHI_add_CRS_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.medium
+	}
 	CHI_add_rad_medium_effect = yes
 }
 CHI_CRS_large_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.large }
-	CHI_add_CRS_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.large
+	}
 	CHI_add_rad_large_effect = yes
 }
 CHI_CRS_mega_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.mega }
-	CHI_add_CRS_effect = yes
+	add_popularity = {
+		ideology = totalist
+		popularity = constant:party_pop.gain.mega
+	}
 	CHI_add_rad_mega_effect = yes
 }
 #CHI_CRS_giga_effect = {
-#	set_temp_variable = { CHI_size_var = constant:party_pop.gain.giga }
-#	CHI_add_CRS_effect = yes
+#	add_popularity = {
+#		ideology = totalist
+#		popularity = constant:party_pop.gain.giga
+#	}
 #	CHI_add_rad_giga_effect = yes
 #}
 
 #Strengthening RCF
-CHI_add_RCF_effect = {
-	add_popularity = {
-		ideology = social_liberal
-		popularity = var:CHI_size_var
-	}
-}
 CHI_RCF_mechanic_event_warning_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = CHI_RCF_warning_one_flag } }
@@ -629,34 +672,72 @@ CHI_RCF_mechanic_effect = {
 	}
 }
 CHI_RCF_small_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.small }
 	#Effect tooltip used because it looks ugly to have the tooltip above the add soc lib popularity effect.
 	#Also keep the actual add soc lib popularity effect below the mechanic effect because otherwise the tooltip lies.
-	effect_tooltip = { CHI_add_RCF_effect = yes }
+	effect_tooltip = {
+		add_popularity = {
+			ideology = social_liberal
+			popularity = constant:party_pop.gain.small
+		}
+	}
 	CHI_RCF_mechanic_effect = yes
-	hidden_effect = { CHI_add_RCF_effect = yes }
+	hidden_effect = {
+		add_popularity = {
+			ideology = social_liberal
+			popularity = constant:party_pop.gain.small
+		}
+	}
 }
 CHI_RCF_medium_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.medium }
-	effect_tooltip = { CHI_add_RCF_effect = yes }
+	effect_tooltip = {
+		add_popularity = {
+			ideology = social_liberal
+			popularity = constant:party_pop.gain.medium
+		}
+	}
 	CHI_RCF_mechanic_effect = yes
-	hidden_effect = { CHI_add_RCF_effect = yes }
+	hidden_effect = {
+		add_popularity = {
+			ideology = social_liberal
+			popularity = constant:party_pop.gain.medium
+		}
+	}
 }
 CHI_RCF_large_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.large }
-	effect_tooltip = { CHI_add_RCF_effect = yes }
+	effect_tooltip = {
+		add_popularity = {
+			ideology = social_liberal
+			popularity = constant:party_pop.gain.large
+		}
+	}
 	CHI_RCF_mechanic_effect = yes
-	hidden_effect = { CHI_add_RCF_effect = yes }
+	hidden_effect = {
+		add_popularity = {
+			ideology = social_liberal
+			popularity = constant:party_pop.gain.large
+		}
+	}
 }
 CHI_RCF_mega_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.mega }
-	effect_tooltip = { CHI_add_RCF_effect = yes }
+	effect_tooltip = {
+		add_popularity = {
+			ideology = social_liberal
+			popularity = constant:party_pop.gain.mega
+		}
+	}
 	CHI_RCF_mechanic_effect = yes
-	hidden_effect = { CHI_add_RCF_effect = yes }
+	hidden_effect = {
+		add_popularity = {
+			ideology = social_liberal
+			popularity = constant:party_pop.gain.mega
+		}
+	}
 }
 #CHI_RCF_giga_effect = {
-#	set_temp_variable = { CHI_size_var = constant:party_pop.gain.giga }
-#	CHI_add_RCF_effect = yes
+#	add_popularity = {
+#		ideology = social_liberal
+#		popularity = constant:party_pop.gain.giga
+#	}
 #	CHI_RCF_mechanic_effect = yes
 #}
 #Strengthening LCS
@@ -680,35 +761,56 @@ CHI_LCS_mechanic_event_warning_effect = {
 		}
 	}
 }
-CHI_add_LCS_effect = {
+CHI_LCS_small_effect = {
 	add_popularity = {
 		ideology = syndicalist
-		popularity = var:CHI_size_var
+		popularity = constant:party_pop.gain.small
 	}
 	if = {
 		limit = { has_any_power_balance = yes }
 		CHI_LCS_mechanic_event_warning_effect = yes
 	}
 }
-CHI_LCS_small_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.small }
-	CHI_add_LCS_effect = yes
-}
 CHI_LCS_medium_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.medium }
-	CHI_add_LCS_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.medium
+	}
+	if = {
+		limit = { has_any_power_balance = yes }
+		CHI_LCS_mechanic_event_warning_effect = yes
+	}
 }
 CHI_LCS_large_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.large }
-	CHI_add_LCS_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.large
+	}
+	if = {
+		limit = { has_any_power_balance = yes }
+		CHI_LCS_mechanic_event_warning_effect = yes
+	}
 }
 CHI_LCS_mega_effect = {
-	set_temp_variable = { CHI_size_var = constant:party_pop.gain.mega }
-	CHI_add_LCS_effect = yes
+	add_popularity = {
+		ideology = syndicalist
+		popularity = constant:party_pop.gain.mega
+	}
+	if = {
+		limit = { has_any_power_balance = yes }
+		CHI_LCS_mechanic_event_warning_effect = yes
+	}
 }
 #CHI_LCS_giga_effect = {
 #	set_temp_variable = { CHI_size_var = constant:party_pop.gain.giga }
-#	CHI_add_LCS_effect = yes
+#	add_popularity = {
+#		ideology = syndicalist
+#		popularity = constant:party_pop.gain.giga
+#	}
+#	if = {
+#		limit = { has_any_power_balance = yes }
+#		CHI_LCS_mechanic_event_warning_effect = yes
+#	}
 #}
 CHI_LCS_clear_flags_effect = {
 	if = {
@@ -777,27 +879,15 @@ CHI_LCS_mechanic_effect = {
 	}
 }
 CHI_CSP_ORT_effect = {
-	add_to_variable = {
-		var = CHI_CSP_ORT_strength_var
-		value = 1
-		tooltip = CHI_CSP_ORT_tt
-	}
+	add_to_variable = { CHI_CSP_ORT_strength_var = 1 tooltip = CHI_CSP_ORT_tt }
 	CHI_LCS_mechanic_effect = yes
 }
 CHI_CSP_RAD_effect = {
-	add_to_variable = {
-		var = CHI_CSP_RAD_strength_var
-		value = 1
-		tooltip = CHI_CSP_RAD_tt
-	}
+	add_to_variable = { CHI_CSP_RAD_strength_var = 1 tooltip = CHI_CSP_RAD_tt }
 	CHI_LCS_mechanic_effect = yes
 }
 CHI_WRD_SOC_effect = {
-	add_to_variable = {
-		var = CHI_WRD_SOC_strength_var
-		value = 1
-		tooltip = CHI_WRD_SOC_tt
-	}
+	add_to_variable = { CHI_WRD_SOC_strength_var = 1 tooltip = CHI_WRD_SOC_tt }
 	CHI_LCS_mechanic_effect = yes
 }
 
@@ -1549,30 +1639,47 @@ CHI_set_up_civil_war_effect = {
 	CHI_purge_LCS_generals_effect = yes
 
 	#Set Up Initial Strength Values
-	set_variable = { CHI_crs_civ_war_var = party_popularity@totalist }
-	set_variable = { CHI_lcs_civ_war_var = party_popularity@syndicalist }
-	set_variable = { CHI_rca_civ_war_var = party_popularity@radical_socialist }
-	set_variable = { CHI_pac_civ_war_var = party_popularity@social_democrat }
-	#Gov Value will be set later
-
 	#Multiply by 10 (So they should be a value between 0-10)
-	multiply_variable = { CHI_crs_civ_war_var = 10 }
-	multiply_variable = { CHI_lcs_civ_war_var = 10 }
-	multiply_variable = { CHI_rca_civ_war_var = 10 }
-	multiply_variable = { CHI_pac_civ_war_var = 10 }
-
 	#Round All By 10
-	round_variable = CHI_crs_civ_war_var
-	round_variable = CHI_lcs_civ_war_var
-	round_variable = CHI_rca_civ_war_var
-	round_variable = CHI_pac_civ_war_var
+	set_variable = {
+		CHI_crs_civ_war_var = {
+			value = party_popularity@totalist
+			multiply = 10
+			round = yes
+		}
+	}
+	set_variable = {
+		CHI_lcs_civ_war_var = {
+			value = party_popularity@syndicalist
+			multiply = 10
+			round = yes
+		}
+	}
+	set_variable = {
+		CHI_rca_civ_war_var = {
+			value = party_popularity@radical_socialist
+			multiply = 10
+			round = yes
+		}
+	}
+	set_variable = {
+		CHI_pac_civ_war_var = {
+			value = party_popularity@social_democrat
+			multiply = 10
+			round = yes
+		}
+	}
 
 	#Get the Gov Strength Variable (In theory, all should add up to 10)
-	set_variable = { CHI_gov_civ_war_var = 10 }
-	subtract_from_variable = { CHI_gov_civ_war_var = CHI_crs_civ_war_var }
-	subtract_from_variable = { CHI_gov_civ_war_var = CHI_lcs_civ_war_var }
-	subtract_from_variable = { CHI_gov_civ_war_var = CHI_rca_civ_war_var }
-	subtract_from_variable = { CHI_gov_civ_war_var = CHI_pac_civ_war_var }
+	set_variable = {
+		CHI_gov_civ_war_var = {
+			value = 10
+			subtract = CHI_crs_civ_war_var
+			subtract = CHI_lcs_civ_war_var
+			subtract = CHI_rca_civ_war_var
+			subtract = CHI_pac_civ_war_var
+		}
+	}
 
 	#Distribute LCS Popularity
 	if = {

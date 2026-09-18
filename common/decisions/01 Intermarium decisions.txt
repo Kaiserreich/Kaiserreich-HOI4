@@ -1276,6 +1276,15 @@ MIE_decisions_GER = {
 				add = 10
 				check_variable = { POL_GER_influence > 50 }
 			}
+			modifier = {
+				add = -100
+				OR = {
+					has_active_mission = GER_brunswick_front_activity
+					has_active_mission = GER_iron_front_activity
+					has_active_mission = GER_DVLP_emergency_conference
+					political_power_daily < 1
+				}
+			}
 		}
 
 		complete_effect = {
@@ -1487,13 +1496,17 @@ MIE_decisions_GER = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete POL_GER_promises"
 			if = {
-				limit = { check_variable = { GER_Polish_loyalty > 0 } }
+				limit = {
+					check_variable = { GER_Polish_loyalty > 0 }
+					check_variable = { GER_Polish_loyalty < 100 }
+				}
 				add_to_variable = {
-					var = GER_Polish_loyalty
-					value = 10
+					GER_Polish_loyalty = {
+						value = 10
+						clamp = { min = 0 max = { value = 100 subtract = GER_Polish_loyalty } }
+					}
 					tooltip = GER_Polish_loyalty_gain
 				}
-				clamp_variable = { var = GER_Polish_loyalty max = 100 min = 0 }
 			}
 		}
 		remove_effect = {

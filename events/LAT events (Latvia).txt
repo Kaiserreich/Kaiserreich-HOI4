@@ -229,14 +229,8 @@ country_event = { ####constituent assembly####
 		log = "[GetLogInfo]: event latvia_events.10 option latvia_events.10.a"
 		name = latvia_events.10.a
 		hidden_effect = {
-			set_variable = {
-				var = cons_liberal
-				value = 0
-			}
-			set_variable = {
-				var = cons_autho
-				value = 0
-			}
+			set_variable = { cons_liberal = 0 }
+			set_variable = { cons_autho = 0 }
 			country_event = { id = latvia_events.11 days = 3 }
 		}
 	}
@@ -989,14 +983,8 @@ country_event = { ####collectivisation####
 		log = "[GetLogInfo]: event latvia_socialist_events.6 option latvia_socialist_events.6.a"
 		name = latvia_socialist_events.6.a
 		hidden_effect = {
-			set_variable = {
-				var = complete_collectivization
-				value = 0
-			}
-			set_variable = {
-				var = partial_collectivization
-				value = 0
-			}
+			set_variable = { complete_collectivization = 0 }
+			set_variable = { partial_collectivization = 0 }
 			country_event = { id = latvia_socialist_events.7 days = 5 }
 		}
 	}

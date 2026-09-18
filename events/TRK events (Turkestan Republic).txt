@@ -708,25 +708,30 @@ country_event = { #TRK Event Upon Winning Against Khiva
 			}
 			activate_advisor = TRK_alihan_tura_sic
 
-			set_temp_variable = { TRK_new_authdem = TRK.party_popularity_100@authoritarian_democrat }
-			divide_temp_variable = { TRK_new_authdem = 2 }
+			set_temp_variable = { TRK_new_authdem = { value = party_popularity_100@authoritarian_democrat multiply = 0.5 } }
 
-			set_temp_variable = { TRK_new_soccon = TRK.party_popularity_100@social_conservative }
-			add_to_temp_variable = { TRK_new_soccon = TRK_new_authdem }
+			set_temp_variable = {
+				TRK_new_soccon = {
+					value = party_popularity_100@social_conservative
+					add = TRK_new_authdem
+				}
+			}
 
-			set_temp_variable = { sum = 100 }
-			subtract_from_temp_variable = { sum = party_popularity_100@totalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@syndicalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@radical_socialist }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_democrat }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_liberal }
-			subtract_from_temp_variable = { sum = party_popularity_100@market_liberal }
-			subtract_from_temp_variable = { sum = TRK_new_soccon }
-			subtract_from_temp_variable = { sum = TRK_new_authdem }
-			subtract_from_temp_variable = { sum = TRK.party_popularity_100@paternal_autocrat }
-			subtract_from_temp_variable = { sum = party_popularity_100@national_populist }
-
-			add_to_temp_variable = { TRK_new_soccon = sum } #avoid rounding errors
+			add_to_temp_variable = { #avoid rounding errors
+				TRK_new_soccon = {
+					value = 100
+					subtract = party_popularity_100@totalist
+					subtract = party_popularity_100@syndicalist
+					subtract = party_popularity_100@radical_socialist
+					subtract = party_popularity_100@social_democrat
+					subtract = party_popularity_100@social_liberal
+					subtract = party_popularity_100@market_liberal
+					subtract = TRK_new_soccon
+					subtract = TRK_new_authdem
+					subtract = party_popularity_100@paternal_autocrat
+					subtract = party_popularity_100@national_populist
+				}
+			}
 
 			set_popularities = {
 				totalist = party_popularity_100@totalist
@@ -763,25 +768,30 @@ country_event = { #TRK Event Upon Winning Against Khiva
 				}
 			}
 
-			set_temp_variable = { TRK_new_authdem = TRK.party_popularity_100@authoritarian_democrat }
-			divide_temp_variable = { TRK_new_authdem = 2 }
+			set_temp_variable = { TRK_new_authdem = { value = party_popularity_100@authoritarian_democrat multiply = 0.5 } }
 
-			set_temp_variable = { TRK_new_pataut = TRK.party_popularity_100@paternal_autocrat }
-			add_to_temp_variable = { TRK_new_pataut = TRK_new_authdem }
+			set_temp_variable = {
+				TRK_new_pataut = {
+					value = party_popularity_100@paternal_autocrat
+					add = TRK_new_authdem
+				}
+			}
 
-			set_temp_variable = { sum = 100 }
-			subtract_from_temp_variable = { sum = party_popularity_100@totalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@syndicalist }
-			subtract_from_temp_variable = { sum = party_popularity_100@radical_socialist }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_democrat }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_liberal }
-			subtract_from_temp_variable = { sum = party_popularity_100@market_liberal }
-			subtract_from_temp_variable = { sum = party_popularity_100@social_conservative }
-			subtract_from_temp_variable = { sum = TRK_new_authdem }
-			subtract_from_temp_variable = { sum = TRK_new_pataut }
-			subtract_from_temp_variable = { sum = party_popularity_100@national_populist }
-
-			add_to_temp_variable = { TRK_new_pataut = sum } #avoid rounding errors
+			add_to_temp_variable = { #avoid rounding errors
+				TRK_new_pataut = {
+					value = 100
+					subtract = party_popularity_100@totalist
+					subtract = party_popularity_100@syndicalist
+					subtract = party_popularity_100@radical_socialist
+					subtract = party_popularity_100@social_democrat
+					subtract = party_popularity_100@social_liberal
+					subtract = party_popularity_100@market_liberal
+					subtract = party_popularity_100@social_conservative
+					subtract = TRK_new_authdem
+					subtract = TRK_new_pataut
+					subtract = party_popularity_100@national_populist
+				}
+			}
 
 			set_popularities = {
 				totalist = party_popularity_100@totalist

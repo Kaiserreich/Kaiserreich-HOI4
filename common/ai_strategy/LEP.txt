@@ -99,6 +99,7 @@ LEP_build_military_factories = {
 		value = 30
 	}
 }
+
 LEP_army_composition = {
 	allowed = { original_tag = LEP }
 	enable = {
@@ -106,7 +107,7 @@ LEP_army_composition = {
 			has_war_with = JAP
 			date < 1941.1.1
 		}
-		check_variable = { num_divisions < 100 }
+		num_divisions < 100
 	}
 	abort_when_not_enabled = yes
 
@@ -122,6 +123,7 @@ LEP_army_composition = {
 		value = -50
 	}
 }
+
 LEP_basic_production = {
 	allowed = {
 		original_tag = LEP
@@ -147,6 +149,7 @@ LEP_basic_production = {
 		value = 1
 	}
 }
+
 LEP_basic_production_2 = {
 	allowed = {
 		original_tag = LEP
@@ -167,6 +170,7 @@ LEP_basic_production_2 = {
 		value = 2
 	}
 }
+
 LEP_basic_production_3 = {
 	allowed = {
 		original_tag = LEP
@@ -218,6 +222,7 @@ LEP_infantry_equipment_modernisation = {
 		value = 20000
 	}
 }
+
 LEP_standby_for_league_war = {
 	allowed = {
 		original_tag = LEP
@@ -240,8 +245,8 @@ LEP_standby_for_league_war = {
 		subtract_invasions_from_need = no
 		subtract_fronts_from_need = no
 	}
-
 }
+
 LEP_attack_anqing = {
 	allowed = {
 		original_tag = LEP
@@ -263,7 +268,6 @@ LEP_attack_anqing = {
 		execution_type = rush
 		execute_order = yes
 	}
-
 }
 
 LEP_attack_mingan = {
@@ -294,8 +298,8 @@ LEP_attack_mingan = {
 		execution_type = rush
 		execute_order = yes
 	}
-
 }
+
 LEP_attack_shandong = {
 	allowed = {
 		original_tag = LEP
@@ -324,8 +328,8 @@ LEP_attack_shandong = {
 		execution_type = rush
 		execute_order = yes
 	}
-
 }
+
 LEP_preserve_of_north_zhili_strength_for_SSJW = {
 	allowed = {
 		original_tag = LEP
@@ -368,6 +372,7 @@ LEP_preserve_of_north_zhili_strength_for_SSJW = {
 		value = -2000
 	}
 }
+
 LEP_freeze_china_conflicts_before_SSJW = {
 	allowed = {
 		original_tag = LEP
@@ -377,9 +382,11 @@ LEP_freeze_china_conflicts_before_SSJW = {
 		NOT = { has_war_with = JAP }
 		NOT = { has_global_flag = JAP_defeated_by_china }
 		check_variable = { deployed_army_manpower_k > 0 }
-		set_temp_variable = { LEP_casualties_ratio = casualties_k }
-		divide_temp_variable = { LEP_casualties_ratio = deployed_army_manpower_k }
-		check_variable = { LEP_casualties_ratio > 0.7 }
+		check_expr = { #LEP_casualties_ratio
+			value = casualties_k
+			divide = deployed_army_manpower_k
+			greater_than = 0.7
+		}
 	}
 
 	abort_when_not_enabled = yes
@@ -395,6 +402,7 @@ LEP_freeze_china_conflicts_before_SSJW = {
 		execution_type = careful
 	}
 }
+
 LEP_go_to_war_with_former_overlord = {
 	allowed = {
 		original_tag = LEP

@@ -2501,6 +2501,9 @@ focus_tree = {
 					}
 					NEP = { country_event = nepal_events.30 }
 				}
+				BHU = {
+					country_event = { id = bhutan_events.728 days = 5 }
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -2915,6 +2918,57 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RAJ_fate_of_the_frontier
+		icon = {
+			GFX_goal_generic_attack_afghanistan_republic = {
+				AFG = {
+					is_monarchy = no
+					has_socialist_government = no
+				}
+			}
+			GFX_goal_generic_attack_afghanistan_socialist = {
+				AFG = {
+					has_socialist_government = yes
+				}
+			}
+			GFX_goal_generic_attack_afghanistan = yes
+		}
+		cost = 5
+		dynamic = yes
+
+		relative_position_id = RAJ_nepal
+		x = -1
+		y = 1
+
+		prerequisite = { focus = RAJ_nepal }
+		available = {
+			india_can_claim_peshawar = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 10
+				var:442.owner = { enemies_strength_ratio > 0.5 }
+			}
+			modifier = {
+				factor = 0
+				india_reconstruction_ongoing = yes
+			}
+		}
+
+		bypass = {
+			india_bypass_peshawar_claim = yes
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed RAJ_fate_of_the_frontier"
+			india_claim_peshawar_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+
+	focus = {
 		id = RAJ_bhutan
 		icon = GFX_goal_BHU_monarchy
 		cost = 5
@@ -3057,8 +3111,8 @@ focus_tree = {
 		cost = 5
 
 		relative_position_id = RAJ_indian_nightmare
-		x = -2
-		y = 1
+		x = -3
+		y = 2
 
 		prerequisite = { focus = RAJ_indian_nightmare }
 		available = {
@@ -3094,8 +3148,8 @@ focus_tree = {
 		cost = 5
 
 		relative_position_id = RAJ_indian_nightmare
-		x = -3
-		y = 2
+		x = -4
+		y = 1
 
 		prerequisite = { focus = RAJ_indian_nightmare }
 		available = {
@@ -3141,8 +3195,8 @@ focus_tree = {
 		cost = 5
 
 		relative_position_id = RAJ_indian_nightmare
-		x = -1
-		y = 2
+		x = -2
+		y = 1
 
 		prerequisite = { focus = RAJ_indian_nightmare }
 		available = {
@@ -3201,8 +3255,8 @@ focus_tree = {
 		cost = 5
 
 		relative_position_id = RAJ_indian_nightmare
-		x = -4
-		y = 1
+		x = -5
+		y = 2
 
 		prerequisite = { focus = RAJ_indian_nightmare }
 		available = {
@@ -3251,8 +3305,8 @@ focus_tree = {
 		cost = 5
 
 		relative_position_id = RAJ_burma
-		x = 0
-		y = 2
+		x = 1
+		y = 1
 
 		prerequisite = { focus = RAJ_burma }
 		available = {

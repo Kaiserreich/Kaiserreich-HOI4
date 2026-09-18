@@ -10,6 +10,214 @@ add_namespace = serbia_puppet_events
 add_namespace = yugoslavia_mechanics_events
 add_namespace = yugoslavia_events
 
+country_event = { #This is how AI picks paths - this who they will favour in the election.
+	id = serbia_events.10000
+	title = serbia_events.10000.t
+	desc = serbia_events.10000.d
+	picture = GFX_report_event_generic_diplomacy1
+	hidden = yes
+	is_triggered_only = yes
+	trigger = { is_ai = yes }
+
+	option = { #Republicans
+		log = "[GetLogInfo]: event serbia_events.10000 option serbia_events.10000.a"
+		name = serbia_events.10000.a
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_REP_SOCLIB } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_SOCDEM } }
+			}
+		}
+		set_country_flag = SER_republican_ai
+		#ai decides subpaths after the election
+	}
+	option = { #Radicals
+		log = "[GetLogInfo]: event serbia_events.10000 option serbia_events.10000.b"
+		name = serbia_events.10000.b
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_AUTDEM } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_REP_PATAUT } }
+			}
+		}
+		set_country_flag = SER_radical_ai
+		#ai decides subpaths after the election
+	}
+	option = { #Socialists
+		log = "[GetLogInfo]: event serbia_events.10000 option serbia_events.10000.c"
+		name = serbia_events.10000.c
+		ai_chance = {
+			base = 15
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_RADSOC } }
+			}
+		}
+		set_country_flag = SER_socialist_ai
+	}
+	option = { #Monarchy
+		log = "[GetLogInfo]: event serbia_events.10000 option serbia_events.10000.d"
+		name = serbia_events.10000.d
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_MON_PATAUT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_NATPOP } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_MON_SOCLIB } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_SOCCON } }
+			}
+		}
+		set_country_flag = SER_monarchy_ai
+		#ai decides subpaths after the election
+	}
+}
+
+country_event = { #This is how AI picks paths.
+	id = serbia_events.10001
+	title = serbia_events.10001.t
+	desc = serbia_events.10001.d
+	picture = GFX_report_event_generic_diplomacy1
+	hidden = yes
+	is_triggered_only = yes
+	trigger = { is_ai = yes }
+
+	option = { #Republicans - Liberal
+		log = "[GetLogInfo]: event serbia_events.10001 option serbia_events.10001.a"
+		name = serbia_events.10001.a
+		ai_chance = {
+			base = 60
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_REP_SOCLIB } }
+			}
+		}
+		set_country_flag = SER_republican_liberal_ai
+	}
+	option = { #Republicans - social democrat
+		log = "[GetLogInfo]: event serbia_events.10001 option serbia_events.10001.b"
+		name = serbia_events.10001.b
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_SOCDEM } }
+			}
+		}
+		set_country_flag = SER_republican_socdem_ai
+	}
+}
+
+country_event = { #This is how AI picks paths.
+	id = serbia_events.10002
+	title = serbia_events.10002.t
+	desc = serbia_events.10002.d
+	picture = GFX_report_event_generic_diplomacy1
+	hidden = yes
+	is_triggered_only = yes
+	trigger = { is_ai = yes }
+
+	option = { #Radicals - Authdem
+		log = "[GetLogInfo]: event serbia_events.10002 option serbia_events.10002.a"
+		name = serbia_events.10002.a
+		ai_chance = {
+			base = 55
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_AUTDEM } }
+			}
+		}
+		set_country_flag = SER_radical_authdem_ai
+	}
+	option = { #Radicals - Pataut
+		log = "[GetLogInfo]: event serbia_events.10002 option serbia_events.10002.b"
+		name = serbia_events.10002.b
+		ai_chance = {
+			base = 45
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_REP_PATAUT } }
+			}
+		}
+		set_country_flag = SER_radical_pataut_ai
+	}
+}
+
+country_event = { #This is how AI picks paths.
+	id = serbia_events.10003
+	title = serbia_events.10003.t
+	desc = serbia_events.10003.d
+	picture = GFX_report_event_generic_diplomacy1
+	hidden = yes
+	is_triggered_only = yes
+	trigger = { is_ai = yes }
+
+	option = { #Monarchy - Pataut
+		log = "[GetLogInfo]: event serbia_events.10003 option serbia_events.10003.a"
+		name = serbia_events.10003.a
+		ai_chance = {
+			base = 45
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_MON_PATAUT } }
+			}
+		}
+		set_country_flag = SER_monarchy_pataut_ai
+	}
+	option = { #Monarchy - Natpop
+		log = "[GetLogInfo]: event serbia_events.10003 option serbia_events.10003.b"
+		name = serbia_events.10003.b
+		ai_chance = {
+			base = 45
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_NATPOP } }
+			}
+		}
+		set_country_flag = SER_monarchy_natpop_ai
+	}
+	option = { #Monarchy - Liberal
+		log = "[GetLogInfo]: event serbia_events.10003 option serbia_events.10003.c"
+		name = serbia_events.10003.c
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_MON_SOCLIB } }
+			}
+		}
+		set_country_flag = SER_monarchy_soclib_ai
+	}
+	option = { #Monarchy - social conservative
+		log = "[GetLogInfo]: event serbia_events.10003 option serbia_events.10003.c"
+		name = serbia_events.10003.c
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SER_PATH option = DEFAULT } }
+				NOT = { has_game_rule = { rule = SER_PATH option = SER_PATH_SOCCON } }
+			}
+		}
+		set_country_flag = SER_monarchy_soccon_ai
+	}
+}
+
 country_event = { #Black Monday Hits Serbia!
 	id = serbia_events.1
 	title = serbia_events.1.t
@@ -132,12 +340,7 @@ country_event = { # Socialists growing
 			base = 45
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-				}
+				has_country_flag = SER_radical_ai
 			}
 		}
 		custom_effect_tooltip = SER_socialists_gain
@@ -154,11 +357,8 @@ country_event = { # Socialists growing
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -182,11 +382,8 @@ country_event = { # Konspiracija offer
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -202,18 +399,7 @@ country_event = { # Konspiracija offer
 	option = {
 		log = "[GetLogInfo]: event serbia_events.5 option serbia_events.5.b"
 		name = serbia_events.5.b #It's too risky
-		ai_chance = {
-			base = 60
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-				}
-			}
-		}
+		ai_chance = { base = 60 }
 	}
 }
 
@@ -232,10 +418,7 @@ country_event = { # Greenshirts
 			base = 45
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-				}
+				has_country_flag = SER_radical_ai
 			}
 		}
 		add_political_power = -50
@@ -250,13 +433,8 @@ country_event = { # Greenshirts
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -282,13 +460,9 @@ country_event = { # Countryside problems
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_republican_ai
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -303,13 +477,9 @@ country_event = { # Countryside problems
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_radical_ai
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -324,10 +494,8 @@ country_event = { # Countryside problems
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
+					has_country_flag = SER_republican_ai
+					has_country_flag = SER_radical_ai
 				}
 			}
 		}
@@ -344,7 +512,7 @@ country_event = { # Republican Strategy
 	id = serbia_events.8
 	title = serbia_events.8.t
 	desc = serbia_events.8.d
-	picture = GFX_report_event_AUS_Ausgleich_prag
+	picture = GFX_report_event_ser_vasic
 
 	is_triggered_only = yes
 
@@ -356,13 +524,9 @@ country_event = { # Republican Strategy
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_radical_ai
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -376,11 +540,14 @@ country_event = { # Republican Strategy
 			base = 1
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
+				has_country_flag = SER_radical_ai
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = SER_republican_ai
+				check_expr = {
+					value = SER_radical_strength
+					less_than = SER_republican_strength
 				}
 			}
 		}
@@ -399,13 +566,16 @@ country_event = { # Republican Strategy
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
+				}
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = SER_republican_ai
+				check_expr = {
+					value = SER_socialist_strength
+					less_than = SER_republican_strength
 				}
 			}
 		}
@@ -431,13 +601,16 @@ country_event = { # Radical Strategy
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
+				}
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = SER_republican_ai
+				check_expr = {
+					value = SER_radical_strength add = SER_agrarian_strength
+					greater_than_or_equals = SER_republican_strength
 				}
 			}
 		}
@@ -451,9 +624,10 @@ country_event = { # Radical Strategy
 			base = 35
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
+				has_country_flag = SER_radical_ai
+				check_expr = {
+					value = SER_radical_strength add = SER_agrarian_strength
+					less_than_or_equals = SER_republican_strength
 				}
 			}
 		}
@@ -469,15 +643,9 @@ country_event = { # Radical Strategy
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_republican_ai
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -505,10 +673,8 @@ country_event = { # Socialist strategy
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
+					has_country_flag = SER_republican_ai
+					has_country_flag = SER_radical_ai
 				}
 			}
 		}
@@ -523,11 +689,16 @@ country_event = { # Socialist strategy
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
+				}
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = SER_republican_ai
+				check_expr = {
+					value = SER_radical_strength add = SER_agrarian_strength
+					greater_than_or_equals = SER_republican_strength
 				}
 			}
 		}
@@ -544,13 +715,9 @@ country_event = { # Socialist strategy
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_radical_ai
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -588,8 +755,18 @@ country_event = { # The Election
 		log = "[GetLogInfo]: event serbia_events.11 option serbia_events.11.a"
 		name = serbia_events.11.a
 		trigger = {
-			SER_rep_no_coalition = yes
+			OR = {
+				SER_rep_no_coalition = yes
+				AND = { #just to make sure they always go the right path with game rules on
+					OR = {
+						has_game_rule = { rule = SER_PATH option = SER_PATH_AUTDEM }
+						has_game_rule = { rule = SER_PATH option = SER_PATH_REP_PATAUT }
+					}
+					is_ai = yes
+				}
+			}
 		}
+		ai_chance = { base = 1000 }
 		add_popularity = {
 			ideology = social_liberal
 			popularity = 0.1
@@ -603,8 +780,18 @@ country_event = { # The Election
 		log = "[GetLogInfo]: event serbia_events.11 option serbia_events.11.b"
 		name = serbia_events.11.b
 		trigger = {
-			SER_rad_no_coalition = yes
+			OR = {
+				SER_rad_no_coalition = yes
+				AND = { #just to make sure they always go the right path with game rules on
+					OR = {
+						has_game_rule = { rule = SER_PATH option = SER_PATH_AUTDEM }
+						has_game_rule = { rule = SER_PATH option = SER_PATH_REP_PATAUT }
+					}
+					is_ai = yes
+				}
+			}
 		}
+		ai_chance = { base = 1000 }
 		add_popularity = {
 			ideology = market_liberal
 			popularity = 0.1
@@ -678,8 +865,21 @@ country_event = { # The Election
 		log = "[GetLogInfo]: event serbia_events.11 option serbia_events.11.f"
 		name = serbia_events.11.f
 		trigger = {
-			SER_jointsoc_coalition = yes
+			OR = {
+				SER_jointsoc_coalition = yes
+				AND = { #just to make sure they always go the right path with game rules on
+					OR = {
+						has_game_rule = { rule = SER_PATH option = SER_PATH_RADSOC }
+						has_game_rule = { rule = SER_PATH option = SER_PATH_MON_PATAUT }
+						has_game_rule = { rule = SER_PATH option = SER_PATH_NATPOP }
+						has_game_rule = { rule = SER_PATH option = SER_PATH_MON_SOCLIB }
+						has_game_rule = { rule = SER_PATH option = SER_PATH_SOCCON }
+					}
+					is_ai = yes
+				}
+			}
 		}
+		ai_chance = { base = 1000 }
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = 0.07
@@ -913,6 +1113,24 @@ country_event = { # The Election
 		set_country_flag = SER_has_completed_1936_elc
 		SER_recalculate_konspiracija = yes
 		mark_focus_tree_layout_dirty = yes
+		if = {
+			limit = {
+				is_ai = yes
+				has_government = social_liberal
+			}
+			country_event = { id = serbia_events.10001 hours = 6 random_hours = 24 }
+		}
+		else_if = {
+			limit = {
+				is_ai = yes
+				has_government = market_liberal
+			}
+			country_event = { id = serbia_events.10002 hours = 6 random_hours = 24 }
+		}
+		else_if = {
+			limit = { has_government = radical_socialist }
+			set_cosmetic_tag = SER_republic #this is to prevent pre third revolution serbia from being socialist republic
+		}
 	}
 }
 
@@ -920,7 +1138,7 @@ country_event = { #Chetnik organizations worried
 	id = serbia_events.12
 	title = serbia_events.12.t
 	desc = serbia_events.12.d
-	picture = GFX_report_event_ser_white_hand_coup
+	picture = GFX_report_event_ser_chetnik
 
 	trigger = {
 		OR = {
@@ -941,13 +1159,9 @@ country_event = { #Chetnik organizations worried
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_republican_ai
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -962,11 +1176,9 @@ country_event = { #Chetnik organizations worried
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
+					has_country_flag = SER_republican_ai
+					has_country_flag = SER_radical_ai
+					has_country_flag = SER_socialist_ai
 				}
 			}
 		}
@@ -985,12 +1197,8 @@ country_event = { #Chetnik organizations worried
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_radical_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -1017,12 +1225,13 @@ country_event = { #Military putsch
 			base = 1
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
-				}
+				NOT = { has_country_flag = SER_monarchy_ai }
+				has_country_flag = SER_chetniks_agitated1
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = SER_monarchy_ai
+				has_country_flag = SER_chetniks_agitated2
 			}
 		}
 		custom_effect_tooltip = SER_will_people_support_tooltip
@@ -1043,11 +1252,13 @@ country_event = { #Military putsch
 			base = 1
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-				}
+				NOT = { has_country_flag = SER_monarchy_ai }
+				has_country_flag = SER_chetniks_agitated2
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = SER_monarchy_ai
+				has_country_flag = SER_chetniks_agitated1
 			}
 		}
 		custom_effect_tooltip = SER_will_army_support_tooltip
@@ -1116,10 +1327,14 @@ country_event = { #Putsch succeeds
 			BUL = {
 				country_event = serbia_flavour_events.2
 			}
-			news_event = serbia_flavour_events.41
+			news_event = serbia_flavour_events.35
 			country_event = { id = serbia_events.64 days = 10 }
 		}
 		mark_focus_tree_layout_dirty = yes
+		if = {
+			limit = { is_ai = yes }
+			country_event = { id = serbia_events.10003 hours = 6 random_hours = 24 }
+		}
 	}
 }
 
@@ -1178,7 +1393,7 @@ country_event = { #Arrival of King Petar II
 	id = serbia_events.17
 	title = serbia_events.17.t
 	desc = serbia_events.17.d
-	picture = GFX_report_event_generic_happy_crowd
+	picture = GFX_report_event_ser_petar
 
 	is_triggered_only = yes
 
@@ -1226,6 +1441,10 @@ country_event = { # Assassination of Jaša Prodanovic
 		activate_mission = SER_prodanovic_assassination_fallout
 		set_variable = { SER_prodanovic_natpop_loss = -0.08 }
 		add_ideas = SER_konspiracija_conflict
+		if = {
+			limit = { is_ai = yes }
+			remove_targeted_decision = { decision = AI_dont_spend_PP target = THIS }
+		}
 	}
 }
 
@@ -1233,7 +1452,7 @@ country_event = { #MISSION SUCCESS!
 	id = serbia_events.19
 	title = serbia_events.19.t
 	desc = serbia_events.19.d
-	picture = GFX_report_event_generic_diplomacy3
+	picture = GFX_report_event_ser_rally
 
 	is_triggered_only = yes
 
@@ -1324,8 +1543,7 @@ country_event = { #Post-1936 Elections
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
+					has_country_flag = SER_radical_ai
 				}
 			}
 		}
@@ -1383,8 +1601,7 @@ country_event = { #Post-1936 Elections
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
+					has_country_flag = SER_republican_ai
 				}
 			}
 		}
@@ -1447,8 +1664,7 @@ country_event = { #Post-1936 Elections
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
+					has_country_flag = SER_republican_ai
 				}
 			}
 		}
@@ -1497,7 +1713,7 @@ country_event = { # Mihajlov crosses the border
 	id = serbia_events.22
 	title = serbia_events.22.t
 	desc = serbia_events.22.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_mihajlov
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -1526,7 +1742,7 @@ country_event = { #The IMRO rises
 		text = serbia_events.23.d.at_war
 		trigger = { has_war = yes }
 	}
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_IMRO
 
 	trigger = {
 		106 = { is_owned_and_controlled_by = ROOT }
@@ -1599,7 +1815,7 @@ country_event = { # The IMRO Game - Round system
 	id = serbia_events.24
 	title = serbia_events.24.t
 	desc = serbia_events.24.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_IMRO
 
 	trigger = {
 		OR = {
@@ -1661,7 +1877,7 @@ country_event = { # Serbia gets a win
 	id = serbia_events.25
 	title = serbia_events.25.t
 	desc = serbia_events.25.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_army_1
 
 	trigger = {
 		has_war_with = MAC
@@ -1694,7 +1910,7 @@ country_event = { # IMRO gets a win
 	id = serbia_events.26
 	title = serbia_events.26.t
 	desc = serbia_events.26.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_IMRO
 
 	trigger = {
 		has_war_with = MAC
@@ -1716,7 +1932,7 @@ country_event = { # Round results
 	id = serbia_events.27
 	title = serbia_events.27.t
 	desc = serbia_events.27.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_IMRO
 
 	trigger = {
 		has_war_with = MAC
@@ -1795,7 +2011,7 @@ country_event = { # IMRO chaos sowed
 	id = serbia_events.28
 	title = serbia_events.28.t
 	desc = serbia_events.28.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_IMRO
 
 	trigger = {
 		has_war_with = MAC
@@ -1817,7 +2033,7 @@ country_event = { # Occupation of Pirin
 	id = serbia_events.29
 	title = serbia_events.29.t
 	desc = serbia_events.29.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_IMRO
 
 	trigger = {
 		SER = { has_war_with = MAC }
@@ -1886,7 +2102,7 @@ country_event = { # Fifth Balkan War (IMRO yeets Serbia in Bulgaria)
 	id = serbia_events.31
 	title = serbia_events.31.t
 	desc = serbia_events.31.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_IMRO
 
 	is_triggered_only = yes
 
@@ -2009,7 +2225,7 @@ country_event = { # IMRO goes free (Serbia has gone to war with someone)
 	id = serbia_events.310
 	title = serbia_events.310.t
 	desc = serbia_events.310.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_IMRO
 
 	is_triggered_only = yes
 
@@ -2057,7 +2273,7 @@ country_event = { # IMRO is defeated
 	id = serbia_events.3100
 	title = serbia_events.3100.t
 	desc = serbia_events.3100.d
-	picture = GFX_report_event_GRE_army
+	picture = GFX_report_event_ser_IMRO
 
 	trigger = {
 		owns_state = 106
@@ -2848,6 +3064,14 @@ country_event = { #FROM wants to join Russia
 				remove_claim_by = ROOT
 			}
 		}
+		if = {
+			limit = {
+				FROM = { original_tag = ROM }
+				is_russian_tag = yes
+			}
+			set_country_flag = RUS_gave_up_on_bessarabia
+			hidden_effect = { remove_targeted_decision = { decision = RUS_Demand_Bessarabia target = FROM } }
+		}
 		hidden_effect = {
 			GER = { embargo_FROM = yes }
 		}
@@ -2994,7 +3218,7 @@ country_event = { # Conflict between Radicals and Republicans
 			is_in_coalition_with_radical_socialist = yes
 		}
 	}
-	picture = GFX_report_event_generic_trial_big
+	picture = GFX_report_event_ser_parliament
 
 	is_triggered_only = yes
 
@@ -3043,7 +3267,7 @@ country_event = { # Vasic visits Stojadinovic
 	id = serbia_events.48
 	title = serbia_events.48.t
 	desc = serbia_events.48.d
-	picture = GFX_report_event_generic_trial_big
+	picture = GFX_report_event_ser_vasic
 
 	is_triggered_only = yes
 
@@ -3054,12 +3278,20 @@ country_event = { # Vasic visits Stojadinovic
 	option = {
 		log = "[GetLogInfo]: event serbia_events.48 option serbia_events.48.a"
 		name = serbia_events.48.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = SER_PATH option = SER_PATH_REP_PATAUT }
+			}
+		}
 		set_country_flag = SER_reassured_vasic
 		custom_effect_tooltip = SER_vasic_is_not_so_pissed_tt
 	}
 	option = {
 		log = "[GetLogInfo]: event serbia_events.48 option serbia_events.48.b"
 		name = serbia_events.48.b
+		ai_chance = { base = 70 }
 		hidden_effect = {
 			country_event = { id = serbia_events.49 days = 3 }
 		}
@@ -3070,7 +3302,7 @@ country_event = { # Fall of SONU
 	id = serbia_events.49
 	title = serbia_events.49.t
 	desc = serbia_events.49.d
-	picture = GFX_report_event_generic_trial_big
+	picture = GFX_report_event_ser_parliament
 
 	is_triggered_only = yes
 
@@ -3614,6 +3846,10 @@ country_event = { # The Revolution Successful
 				ruling_party = radical_socialist
 				elections_allowed = no
 			}
+			if = {
+				limit = { has_cosmetic_tag = SER_republic }
+				drop_cosmetic_tag = yes
+			}
 		}
 		if = {
 			limit = { has_character = SER_dusan_simovic }
@@ -3635,6 +3871,10 @@ country_event = { # The Revolution Successful
 			limit = { has_character = SER_dragoljub_mihailovic }
 			retire_character = SER_dragoljub_mihailovic
 		}
+		if = {
+			limit = { has_character = SER_danilo_kalafatovic }
+			retire_character = SER_danilo_kalafatovic
+		}
 		remove_ideas = SER_konspiracija_idea
 		add_ideas = SER_revolution_purged_army
 		if = {
@@ -3648,7 +3888,7 @@ country_event = { # Collapse of the SRP
 	id = serbia_events.63
 	title = serbia_events.63.t
 	desc = serbia_events.63.d
-	picture = GFX_report_event_generic_happy_crowd
+	picture = GFX_report_event_ser_socialists_congress
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -3718,7 +3958,7 @@ country_event = { # The radical monarchists
 	id = serbia_events.64
 	title = serbia_events.64.t
 	desc = serbia_events.64.d
-	picture = GFX_report_event_generic_diplomacy3
+	picture = GFX_report_event_ser_white_eagles
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -3745,7 +3985,7 @@ country_event = { # Dictatorship of 6 November
 	id = serbia_events.65
 	title = serbia_events.65.t
 	desc = serbia_events.65.d
-	picture = GFX_report_event_generic_diplomacy3
+	picture = GFX_report_event_ser_zivkovic
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -3871,10 +4111,8 @@ country_event = { # Royalists flavor
 	is_triggered_only = yes
 
 	immediate = {
-		set_temp_variable = { SER_zivkovic_temp = SER_zivkovic_foci }
-		add_to_temp_variable = { SER_zivkovic_temp = 1 }
-		set_temp_variable = { SER_ljotic_temp = SER_ljotic_foci }
-		add_to_temp_variable = { SER_ljotic_temp = 1 }
+		set_temp_variable = { SER_zivkovic_temp = { value = SER_zivkovic_foci add = 1 } }
+		set_temp_variable = { SER_ljotic_temp = { value = SER_ljotic_foci add = 1 } }
 		if = {
 			limit = {
 				check_variable = { SER_ljotic_foci > SER_zivkovic_temp }
@@ -3932,7 +4170,7 @@ country_event = { # March Coup Proposal
 	id = serbia_events.68
 	title = serbia_events.68.t
 	desc = serbia_events.68.d
-	picture = GFX_report_event_yugoslavian_king_peter
+	picture = GFX_report_event_ser_simovic
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -3945,15 +4183,15 @@ country_event = { # March Coup Proposal
 		check_variable = { SER_petar_score = 2 }
 		OR = {
 			check_variable = { SER_ljotic_foci = SER_zivkovic_foci }
-			AND = {
-				set_temp_variable = { SER_total_foci = SER_ljotic_foci }
-				add_to_temp_variable = { SER_total_foci = 1 }
-				check_variable = { SER_total_foci = SER_zivkovic_foci }
+			check_expr = {
+				value = SER_ljotic_foci
+				add = 1
+				equals = SER_zivkovic_foci
 			}
-			AND = {
-				set_temp_variable = { SER_total_foci = SER_zivkovic_foci }
-				add_to_temp_variable = { SER_total_foci = 1 }
-				check_variable = { SER_total_foci = SER_ljotic_foci }
+			check_expr = {
+				value = SER_zivkovic_foci
+				add = 1
+				equals = SER_ljotic_foci
 			}
 		}
 		SER_has_founded_yugoslavia = no
@@ -3993,8 +4231,8 @@ country_event = { # March Coup Proposal
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 			}
 		}
@@ -4096,7 +4334,7 @@ country_event = { #Forming a government
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+				has_country_flag = SER_monarchy_soccon_ai
 			}
 		}
 		add_popularity = {
@@ -4124,7 +4362,7 @@ country_event = { #Forming a government
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
+				has_country_flag = SER_monarchy_soclib_ai
 			}
 		}
 		add_popularity = {
@@ -4182,7 +4420,7 @@ country_event = { #Kingdom Elections
 			}
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+				has_country_flag = SER_monarchy_soccon_ai
 			}
 		}
 		add_popularity = {
@@ -4207,7 +4445,7 @@ country_event = { #Kingdom Elections
 			}
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
+				has_country_flag = SER_monarchy_soclib_ai
 			}
 		}
 		add_popularity = {
@@ -4505,7 +4743,7 @@ country_event = { # Nedić Brothers Coup
 	id = serbia_events.73
 	title = serbia_events.73.t
 	desc = serbia_events.73.d
-	picture = GFX_report_event_generic_diplomacy3
+	picture = GFX_report_event_ser_nedic
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -4577,7 +4815,6 @@ country_event = { # Nedić Brothers Coup
 		}
 		hidden_effect = {
 			remove_mission = YUG_rounds_system_mission
-			YUG_reset_yugoslavia_missions = yes
 			set_party_name = {
 				ideology = national_populist
 				long_name = SER_national_populist_party_puppet_long
@@ -4760,7 +4997,7 @@ country_event = { #event for Serbia, Bulgaria is defeated
 	id = serbia_events.77
 	title = serbia_events.77.t
 	desc = serbia_events.77.d
-	picture = GFX_report_event_generic_diplomacy2
+	picture = GFX_report_event_ser_army_2
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -4881,9 +5118,8 @@ country_event = { # Rebellions in the North
 				type = annex_everything
 			}
 		}
-		set_temp_variable = { checked_state = 2 } # Croatia
+		set_temp_variable = { checked_ethnicity = CRO } # Croatia
 		set_temp_variable = { ethnic_situation = 5 }
-		custom_effect_tooltip = YUG_croatia_improve_relations_tt
 		YUG_update_ethnic_situation = yes
 	}
 }
@@ -4916,9 +5152,8 @@ country_event = { # Rebellions in the North
 				type = annex_everything
 			}
 		}
-		set_temp_variable = { checked_state = 3 } # Bosnia
+		set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 		set_temp_variable = { ethnic_situation = 5 }
-		custom_effect_tooltip = YUG_bosnia_improve_relations_tt
 		YUG_update_ethnic_situation = yes
 	}
 }
@@ -4952,9 +5187,8 @@ country_event = { # Rebellions in the North
 				type = annex_everything
 			}
 		}
-		set_temp_variable = { checked_state = 4 } # Slovenia
+		set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 		set_temp_variable = { ethnic_situation = 5 }
-		custom_effect_tooltip = YUG_slovenia_improve_relations_tt
 		YUG_update_ethnic_situation = yes
 	}
 }
@@ -5448,30 +5682,19 @@ country_event = {
 		name = serbia_puppet_events.13.a
 		hidden_effect = {
 			if = {
-				limit = {
-					check_variable = { ser_stealth > 7 }
-				}
+				limit = { check_variable = { ser_stealth > 7 } }
 				country_event = { id = serbia_puppet_events.14 days = 7 }
 			}
 			else_if = {
-				limit = {
-					check_variable = { ser_stealth < 4 }
-					check_variable = { ser_stealth > 1 }
-				}
+				limit = { check_variable = { ser_stealth > 3 } }
+				country_event = { id = serbia_puppet_events.17 days = 7 }
+			}
+			else_if = {
+				limit = { check_variable = { ser_stealth > 1 } }
 				country_event = { id = serbia_puppet_events.15 days = 7 }
 			}
-			else_if = {
-				limit = {
-					check_variable = { ser_stealth < 2 }
-				}
+			else = {
 				country_event = { id = serbia_puppet_events.16 days = 7 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { ser_stealth > 3 }
-					check_variable = { ser_stealth < 8 }
-				}
-				country_event = { id = serbia_puppet_events.17 days = 7 }
 			}
 			BUL = {
 				country_event = { id = bulgaria_events.67 days = 1 }
@@ -5682,7 +5905,7 @@ country_event = { # The Return of the Karadordevics
 	id = serbia_flavour_events.2
 	title = serbia_flavour_events.2.t
 	desc = serbia_flavour_events.2.d
-	picture = GFX_report_event_yugoslavian_king_peter
+	picture = GFX_report_event_ser_petar
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -5971,8 +6194,8 @@ country_event = { # Bojovic comes to help
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 			}
 		}
@@ -6021,7 +6244,7 @@ country_event = { # Vasic's last speech
 	id = serbia_flavour_events.14
 	title = serbia_flavour_events.14.t
 	desc = serbia_flavour_events.14.d
-	picture = GFX_report_event_AST_curtinspeech
+	picture = GFX_report_event_ser_vasic
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -6040,7 +6263,7 @@ country_event = { # Prince Paul visits
 	id = serbia_flavour_events.15
 	title = serbia_flavour_events.15.t
 	desc = serbia_flavour_events.15.d
-	picture = GFX_report_event_yugoslavian_king_peter
+	picture = GFX_report_event_ser_paul
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -6062,8 +6285,8 @@ country_event = { # Prince Paul visits
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 			}
 		}
@@ -6094,7 +6317,7 @@ country_event = { # Lapčević criticizes war policy
 	id = serbia_flavour_events.17
 	title = serbia_flavour_events.17.t
 	desc = serbia_flavour_events.17.d
-	picture = GFX_report_event_AST_curtinspeech
+	picture = GFX_report_event_ser_parliament
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -6141,8 +6364,8 @@ country_event = { # Countryside tours
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 			}
 		}
@@ -6177,8 +6400,8 @@ country_event = { # Failed assassination attempt
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_monarchy_soclib_ai
+					has_country_flag = SER_monarchy_soccon_ai
 				}
 			}
 		}
@@ -6203,7 +6426,7 @@ country_event = { # Ljotic and Stojadinovic mad at one another
 	id = serbia_flavour_events.20
 	title = serbia_flavour_events.20.t
 	desc = serbia_flavour_events.20.d
-	picture = GFX_report_event_SAF_parliament_3
+	picture = GFX_report_event_ser_parliament
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -6267,7 +6490,7 @@ country_event = { # Konspiracija warning
 	}
 	title = serbia_flavour_events.23.t
 	desc = serbia_flavour_events.23.d
-	picture = GFX_report_event_GER_march
+	picture = GFX_report_event_ser_army_2
 
 	trigger = {
 		NOT = {
@@ -6288,7 +6511,7 @@ country_event = { # Mustafa Golubić
 	id = serbia_flavour_events.24
 	title = serbia_flavour_events.24.t
 	desc = serbia_flavour_events.24.d
-	picture = GFX_report_event_GER_march
+	picture = GFX_report_event_ser_golubic
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -6378,7 +6601,7 @@ country_event = { # Golubić
 	id = serbia_flavour_events.25
 	title = serbia_flavour_events.25.t
 	desc = serbia_flavour_events.25.d
-	picture = GFX_report_event_GER_march
+	picture = GFX_report_event_ser_golubic
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -6986,13 +7209,9 @@ country_event = { # Montenegrin Federalists
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_republican_ai
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -7007,13 +7226,9 @@ country_event = { # Montenegrin Federalists
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_RADSOC }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_PATAUT }
-					has_game_rule = { rule = SER_path option = SER_PATH_NATPOP }
-					has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+					has_country_flag = SER_radical_ai
+					has_country_flag = SER_socialist_ai
+					has_country_flag = SER_monarchy_ai
 				}
 			}
 		}
@@ -7028,10 +7243,8 @@ country_event = { # Montenegrin Federalists
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
+					has_country_flag = SER_republican_ai
+					has_country_flag = SER_radical_ai
 				}
 			}
 		}
@@ -7174,7 +7387,7 @@ news_event = {
 	immediate = { log = "[GetLogInfo]: event serbia_flavour_events.42" }
 	title = serbia_flavour_events.42.t
 	desc = serbia_flavour_events.42.d
-	picture = GFX_news_event_ITA_big_crowd
+	picture = GFX_news_event_SER_yugoslavia
 
 	major = yes
 	fire_for_sender = no
@@ -7322,9 +7535,8 @@ country_event = { #Yugoslavia Elections
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
+					has_country_flag = SER_republican_socdem_ai
+					has_country_flag = SER_radical_ai
 				}
 			}
 		}
@@ -7366,8 +7578,7 @@ country_event = { #Yugoslavia Elections
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_SOCDEM }
+					has_country_flag = SER_republican_ai
 				}
 			}
 		}
@@ -7414,9 +7625,8 @@ country_event = { #Yugoslavia Elections
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_SOCLIB }
-					has_game_rule = { rule = SER_path option = SER_PATH_AUTDEM }
-					has_game_rule = { rule = SER_path option = SER_PATH_REP_PATAUT }
+					has_country_flag = SER_republican_liberal_ai
+					has_country_flag = SER_radical_ai
 				}
 			}
 		}
@@ -7456,7 +7666,7 @@ country_event = { #Yugoslavia Elections
 			}
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_SOCCON }
+				has_country_flag = SER_monarchy_soccon_ai
 			}
 		}
 		add_popularity = {
@@ -7483,7 +7693,7 @@ country_event = { #Yugoslavia Elections
 			}
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = SER_path option = SER_PATH_MON_SOCLIB }
+				has_country_flag = SER_monarchy_soclib_ai
 			}
 		}
 		add_popularity = {
@@ -7636,12 +7846,10 @@ country_event = { # The Radicals Radicalize
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_serbia_pp_requirement < 5 }
+				check_variable = { YUG_ethnicity_pp_requirement_SER < 5 }
 			}
-			set_temp_variable = { added_need = 1 }
-			custom_effect_tooltip = YUG_serbia_increase_turn_req_tt
-			add_to_variable = { YUG_serbia_pp_requirement = added_need }
-			YUG_update_AI_variables_serbia = yes
+			add_to_variable = { YUG_ethnicity_pp_requirement_SER = 1 tooltip = YUG_serbia_increase_turn_req_tt }
+			SER = { YUG_update_AI_variables_target = yes }
 		}
 	}
 }
@@ -7661,37 +7869,29 @@ country_event = { # Fate of the Konspiracija
 		log = "[GetLogInfo]: event yugoslavia_events.4 option yugoslavia_events.4.a"
 		name = yugoslavia_events.4.a
 		if = {
-			limit = {
-				set_temp_variable = { natpop_popularity = ROOT.party_popularity@national_populist }
-				NOT = { check_variable = { natpop_popularity > 0.1 } }
-			}
+			limit = { NOT = { national_populist > 0.1 } }
 			add_ideas = SER_YUG_constitutionalist_military
 			set_temp_variable = { YUG_political_capital_change = 2 }
 			SER_increase_political_capital = yes
 			retire_character = SER_serbian_cultural_club
 		}
 		else_if = {
-			limit = {
-				set_temp_variable = { natpop_popularity = ROOT.party_popularity@national_populist }
-				NOT = { check_variable = { natpop_popularity > 0.2 } }
-			}
+			limit = { NOT = { national_populist > 0.2 } }
 			add_ideas = SER_YUG_interferent_military
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SLV > 1 }
 				}
-				set_temp_variable = { checked_state = 4 } # Slovenia
+				set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_slovenia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 		}
@@ -7699,56 +7899,50 @@ country_event = { # Fate of the Konspiracija
 			add_ideas = SER_YUG_deep_state
 			if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level > 2 }
+					check_variable = { YUG_ethnicity_relations_level_CRO > 2 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = -2 }
-				custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			else_if = {
 				limit = {
-					check_variable = { YUG_croatia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 				}
-				set_temp_variable = { checked_state = 2 } # Croatia
+				set_temp_variable = { checked_ethnicity = CRO } # Croatia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_bosnia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_BOS > 1 }
 				}
-				set_temp_variable = { checked_state = 3 } # Bosnia
+				set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_bosnia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level > 2 }
+					check_variable = { YUG_ethnicity_relations_level_SLV > 2 }
 				}
-				set_temp_variable = { checked_state = 4 } # Slovenia
+				set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 				set_temp_variable = { ethnic_situation = -2 }
-				custom_effect_tooltip = YUG_slovenia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			else_if = {
 				limit = {
-					check_variable = { YUG_slovenia_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_SLV > 1 }
 				}
-				set_temp_variable = { checked_state = 4 } # Slovenia
+				set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_slovenia_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 			if = {
 				limit = {
-					check_variable = { YUG_other_relations_level > 1 }
+					check_variable = { YUG_ethnicity_relations_level_ALB > 1 }
 				}
-				set_temp_variable = { checked_state = 5 } # Other
+				set_temp_variable = { checked_ethnicity = ALB } # Other
 				set_temp_variable = { ethnic_situation = -1 }
-				custom_effect_tooltip = YUG_other_reduce_relations_tt
 				YUG_update_ethnic_situation = yes
 			}
 		}
@@ -7787,7 +7981,7 @@ country_event = { # ORJUNA
 	id = yugoslavia_events.6
 	title = yugoslavia_events.6.t
 	desc = yugoslavia_events.6.d
-	picture = GFX_report_event_generic_conference2
+	picture = GFX_report_event_ser_orjuna
 
 	is_triggered_only = yes
 	trigger = {
@@ -7933,11 +8127,10 @@ country_event = { # Party of Rights
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_croatia_relations_level > 1 }
+				check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 			}
-			set_temp_variable = { checked_state = 2 } # Croatia
+			set_temp_variable = { checked_ethnicity = CRO } # Croatia
 			set_temp_variable = { ethnic_situation = -1 }
-			custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		hidden_effect = {
@@ -7949,7 +8142,7 @@ country_event = { # Socialist National Conference
 	id = yugoslavia_events.11
 	title = yugoslavia_events.11.t
 	desc = yugoslavia_events.11.d
-	picture = GFX_report_event_generic_conference2
+	picture = GFX_report_event_ser_vukovar_congress
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -8105,16 +8298,14 @@ country_event = { # ohno
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_croatia_relations_level > 1 }
+				check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 			}
-			set_temp_variable = { checked_state = 2 } # Croatia
+			set_temp_variable = { checked_ethnicity = CRO } # Croatia
 			set_temp_variable = { ethnic_situation = -1 }
-			custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
-		set_variable = { YUG_pc_expenditure_croatia = 0 }
-		custom_effect_tooltip = SER_YUG_croatia_zero_expenditure_tt
-		YUG_update_expenditure_missions_croatia = yes
+		set_temp_variable = { checked_ethnicity = CRO }
+		SER_set_pc_expenditure_zero_target = yes
 		set_country_flag = YUG_ustase_is_established
 		custom_effect_tooltip = YUG_ustase_is_established_tt
 	}
@@ -8213,44 +8404,40 @@ country_event = { # Yugoslavia random event
 			20 = {
 				if = {
 					limit = {
-						check_variable = { YUG_croatia_relations_level < 10 }
+						check_variable = { YUG_ethnicity_relations_level_CRO < 10 }
 					}
-					set_temp_variable = { checked_state = 2 } # Croatia
+					set_temp_variable = { checked_ethnicity = CRO } # Croatia
 					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_croatia_improve_relations_tt
 					YUG_update_ethnic_situation = yes
 				}
 			}
 			20 = {
 				if = {
 					limit = {
-						check_variable = { YUG_bosnia_relations_level < 10 }
+						check_variable = { YUG_ethnicity_relations_level_BOS < 10 }
 					}
-					set_temp_variable = { checked_state = 3 } # Bosnia
+					set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_bosnia_improve_relations_tt
 					YUG_update_ethnic_situation = yes
 				}
 			}
 			20 = {
 				if = {
 					limit = {
-						check_variable = { YUG_slovenia_relations_level < 10 }
+						check_variable = { YUG_ethnicity_relations_level_SLV < 10 }
 					}
-					set_temp_variable = { checked_state = 4 } # Slovenia
+					set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_slovenia_improve_relations_tt
 					YUG_update_ethnic_situation = yes
 				}
 			}
 			20 = {
 				if = {
 					limit = {
-						check_variable = { YUG_other_relations_level < 10 }
+						check_variable = { YUG_ethnicity_relations_level_ALB < 10 }
 					}
-					set_temp_variable = { checked_state = 5 } # Other
+					set_temp_variable = { checked_ethnicity = ALB } # Other
 					set_temp_variable = { ethnic_situation = 1 }
-					custom_effect_tooltip = YUG_other_improve_relations_tt
 					YUG_update_ethnic_situation = yes
 				}
 			}
@@ -8268,56 +8455,50 @@ country_event = { # Yugoslavia random event
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_serbia_relations_level < 10 }
+				check_variable = { YUG_ethnicity_relations_level_SER < 10 }
 			}
-			set_temp_variable = { checked_state = 1 }
+			set_temp_variable = { checked_ethnicity = SER }
 			set_temp_variable = { ethnic_situation = 1 }
-			custom_effect_tooltip = YUG_serbia_improve_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_other_relations_level < 10 }
+				check_variable = { YUG_ethnicity_relations_level_ALB < 10 }
 			}
-			set_temp_variable = { checked_state = 5 }
+			set_temp_variable = { checked_ethnicity = ALB }
 			set_temp_variable = { ethnic_situation = 1 }
-			custom_effect_tooltip = YUG_other_improve_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_croatia_relations_level > 2 }
+				check_variable = { YUG_ethnicity_relations_level_CRO > 2 }
 			}
-			set_temp_variable = { checked_state = 2 }
+			set_temp_variable = { checked_ethnicity = CRO }
 			set_temp_variable = { ethnic_situation = -2 }
-			custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		else_if = {
 			limit = {
-				check_variable = { YUG_croatia_relations_level > 1 }
+				check_variable = { YUG_ethnicity_relations_level_CRO > 1 }
 			}
-			set_temp_variable = { checked_state = 2 }
+			set_temp_variable = { checked_ethnicity = CRO }
 			set_temp_variable = { ethnic_situation = -1 }
-			custom_effect_tooltip = YUG_croatia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_slovenia_relations_level > 2 }
+				check_variable = { YUG_ethnicity_relations_level_SLV > 2 }
 			}
-			set_temp_variable = { checked_state = 4 }
+			set_temp_variable = { checked_ethnicity = SLV }
 			set_temp_variable = { ethnic_situation = -2 }
-			custom_effect_tooltip = YUG_slovenia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		else_if = {
 			limit = {
-				check_variable = { YUG_slovenia_relations_level > 1 }
+				check_variable = { YUG_ethnicity_relations_level_SLV > 1 }
 			}
-			set_temp_variable = { checked_state = 4 }
+			set_temp_variable = { checked_ethnicity = SLV }
 			set_temp_variable = { ethnic_situation = -1 }
-			custom_effect_tooltip = YUG_slovenia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 	}
@@ -8329,56 +8510,50 @@ country_event = { # Yugoslavia random event
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_croatia_relations_level < 10 }
+				check_variable = { YUG_ethnicity_relations_level_CRO < 10 }
 			}
-			set_temp_variable = { checked_state = 2 } # Croatia
+			set_temp_variable = { checked_ethnicity = CRO } # Croatia
 			set_temp_variable = { ethnic_situation = 1 }
-			custom_effect_tooltip = YUG_croatia_improve_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_slovenia_relations_level < 10 }
+				check_variable = { YUG_ethnicity_relations_level_SLV < 10 }
 			}
-			set_temp_variable = { checked_state = 4 } # Slovenia
+			set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 			set_temp_variable = { ethnic_situation = 1 }
-			custom_effect_tooltip = YUG_slovenia_improve_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_serbia_relations_level > 2 }
+				check_variable = { YUG_ethnicity_relations_level_SER > 2 }
 			}
-			set_temp_variable = { checked_state = 1 } # Serbia
+			set_temp_variable = { checked_ethnicity = SER } # Serbia
 			set_temp_variable = { ethnic_situation = -2 }
-			custom_effect_tooltip = YUG_serbia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		else_if = {
 			limit = {
-				check_variable = { YUG_serbia_relations_level > 1 }
+				check_variable = { YUG_ethnicity_relations_level_SER > 1 }
 			}
-			set_temp_variable = { checked_state = 1 } # Serbia
+			set_temp_variable = { checked_ethnicity = SER } # Serbia
 			set_temp_variable = { ethnic_situation = -1 }
-			custom_effect_tooltip = YUG_serbia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_other_relations_level > 2 }
+				check_variable = { YUG_ethnicity_relations_level_ALB > 2 }
 			}
-			set_temp_variable = { checked_state = 5 } # Other
+			set_temp_variable = { checked_ethnicity = ALB } # Other
 			set_temp_variable = { ethnic_situation = -2 }
-			custom_effect_tooltip = YUG_other_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		else_if = {
 			limit = {
-				check_variable = { YUG_other_relations_level > 1 }
+				check_variable = { YUG_ethnicity_relations_level_ALB > 1 }
 			}
-			set_temp_variable = { checked_state = 5 } # Other
+			set_temp_variable = { checked_ethnicity = ALB } # Other
 			set_temp_variable = { ethnic_situation = -1 }
-			custom_effect_tooltip = YUG_other_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 	}
@@ -8420,11 +8595,10 @@ country_event = { # Yugoslavia random event
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_bosnia_relations_level > 1 }
+				check_variable = { YUG_ethnicity_relations_level_BOS > 1 }
 			}
-			set_temp_variable = { checked_state = 3 } # Bosnia
+			set_temp_variable = { checked_ethnicity = BOS } # Bosnia
 			set_temp_variable = { ethnic_situation = -1 }
-			custom_effect_tooltip = YUG_bosnia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 	}
@@ -8445,11 +8619,10 @@ country_event = { # Yugoslavia random event
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_other_relations_level > 1 }
+				check_variable = { YUG_ethnicity_relations_level_ALB > 1 }
 			}
-			set_temp_variable = { checked_state = 5 } # Other
+			set_temp_variable = { checked_ethnicity = ALB } # Other
 			set_temp_variable = { ethnic_situation = -1 }
-			custom_effect_tooltip = YUG_other_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 	}
@@ -8493,7 +8666,7 @@ country_event = { # The Unification Congress
 			}
 		}
 	}
-	picture = GFX_report_event_generic_conference2
+	picture = GFX_report_event_ser_vukovar_congress
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -8637,7 +8810,7 @@ country_event = { # New party leader
 	id = yugoslavia_events.18
 	title = yugoslavia_events.18.t
 	desc = yugoslavia_events.18.d
-	picture = GFX_report_event_generic_conference2
+	picture = GFX_report_event_ser_vukovar_congress
 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -8648,12 +8821,10 @@ country_event = { # New party leader
 		add_political_power = -25
 		if = {
 			limit = {
-				check_variable = { YUG_serbia_pp_requirement > 1 }
+				check_variable = { YUG_ethnicity_pp_requirement_SER > 1 }
 			}
-			set_temp_variable = { added_need = -1 }
-			custom_effect_tooltip = YUG_serbia_decrease_turn_req_tt
-			add_to_variable = { YUG_serbia_pp_requirement = added_need }
-			YUG_update_AI_variables_serbia = yes
+			subtract_from_variable = { YUG_ethnicity_pp_requirement_SER = 1 tooltip = YUG_serbia_decrease_turn_req_tt }
+			SER = { YUG_update_AI_variables_target = yes }
 		}
 	}
 	option = {
@@ -8669,29 +8840,26 @@ country_event = { # New party leader
 		promote_character = SER_milan_gorkic
 		if = {
 			limit = {
-				check_variable = { YUG_serbia_relations_level > 1 }
+				check_variable = { YUG_ethnicity_relations_level_SER > 1 }
 			}
-			set_temp_variable = { checked_state = 1 } # Serbia
+			set_temp_variable = { checked_ethnicity = SER } # Serbia
 			set_temp_variable = { ethnic_situation = -1 }
-			custom_effect_tooltip = YUG_serbia_reduce_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_croatia_relations_level < 10 }
+				check_variable = { YUG_ethnicity_relations_level_CRO < 10 }
 			}
-			set_temp_variable = { checked_state = 2 } # Croatia
+			set_temp_variable = { checked_ethnicity = CRO } # Croatia
 			set_temp_variable = { ethnic_situation = 1 }
-			custom_effect_tooltip = YUG_croatia_improve_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		if = {
 			limit = {
-				check_variable = { YUG_slovenia_relations_level < 10 }
+				check_variable = { YUG_ethnicity_relations_level_SLV < 10 }
 			}
-			set_temp_variable = { checked_state = 4 } # Slovenia
+			set_temp_variable = { checked_ethnicity = SLV } # Slovenia
 			set_temp_variable = { ethnic_situation = 1 }
-			custom_effect_tooltip = YUG_slovenia_improve_relations_tt
 			YUG_update_ethnic_situation = yes
 		}
 		hidden_effect = {
@@ -8703,7 +8871,7 @@ country_event = { # Is this a heckin reference
 	id = yugoslavia_events.19
 	title = yugoslavia_events.19.t
 	desc = yugoslavia_events.19.d
-	picture = GFX_report_event_generic_conference2
+	picture = GFX_report_event_ser_socialists_congress
 
 	is_triggered_only = yes
 	trigger = {

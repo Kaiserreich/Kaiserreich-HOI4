@@ -101,12 +101,12 @@ SER_increase_scars = {
 	}
 }
 SER_recalculate_konspiracija = {
-	set_variable = { var_KONS_influence = { value = SER.party_popularity@national_populist multiply = -1 } }
 	if = {
-		limit = {
-			has_completed_focus = SER_the_final_step
-		}
-		multiply_variable = { var_KONS_influence = 0.5 }
+		limit = { has_completed_focus = SER_the_final_step }
+		set_variable = { var_KONS_influence = { value = SER.party_popularity@national_populist multiply = -0.5 } }
+	}
+	else = {
+		set_variable = { var_KONS_influence = { value = SER.party_popularity@national_populist multiply = -1 } }
 	}
 	force_update_dynamic_modifier = yes
 }
@@ -532,95 +532,62 @@ SER_enable_bulgarian_integration = {
 }
 
 YUG_set_up_yugoslavia_minigame = {
+	if = {
+		limit = { NOT = { has_variable = SER_yugoslavia_ethnicities_array^num } }
+		add_to_array = { SER_yugoslavia_ethnicities_array = SER }
+		add_to_array = { SER_yugoslavia_ethnicities_array = CRO }
+		add_to_array = { SER_yugoslavia_ethnicities_array = BOS }
+		add_to_array = { SER_yugoslavia_ethnicities_array = SLV }
+		add_to_array = { SER_yugoslavia_ethnicities_array = ALB }
+	}
 	## Serbia
-	set_variable = { YUG_serbia_relations_level = 10 } # Starts at max level
+	set_variable = { YUG_ethnicity_relations_level_SER = 10 } # Starts at max level
 	set_variable = { YUG_serbia_political_power_factor = 0.1 } # starts at 0.1 reduced by -0.05 each level
 	set_variable = { YUG_serbia_war_support_factor = 0.05 } # starts at 0.05 reduced by -0.025 each level
 	set_variable = { YUG_serbia_army_org_factor = 0.05 } # starts at 0.05 reduced by -0.025 each level
 	## Croatia
-	set_variable = { YUG_croatia_relations_level = 7 }
+	set_variable = { YUG_ethnicity_relations_level_CRO = 7 }
 	set_variable = { YUG_croatia_political_power_factor = -0.05 } # starts at 0.1 reduced by -0.05 each level
 	set_variable = { YUG_croatia_stability_factor = -0.025 } # starts at 0.05 reduced by -0.025 each level
 	set_variable = { YUG_croatia_conscription_factor = -0.05 } # starts at 0.1 reduced by -0.05 each level
 	## Bosnia
-	set_variable = { YUG_bosnia_relations_level = 9 }
+	set_variable = { YUG_ethnicity_relations_level_BOS = 9 }
 	set_variable = { YUG_bosnia_political_power_factor = 0.05 } # starts at 0.1 reduced by -0.05 each level
 	set_variable = { YUG_bosnia_stability_factor = 0.025 } # starts at 0.05 reduced by -0.025 each level
 	set_variable = { YUG_bosnia_consumer_goods_factor = -0.075 } # starts at -0.15 reduced by 0.075 each level
 	## Slovenia
-	set_variable = { YUG_slovenia_relations_level = 8 }
+	set_variable = { YUG_ethnicity_relations_level_SLV = 8 }
 	set_variable = { YUG_slovenia_political_power_factor = 0 } # starts at 0.1 reduced by -0.05 each level
 	set_variable = { YUG_slovenia_stability_factor = 0 } # starts at 0.05 reduced by -0.025 each level
 	set_variable = { YUG_slovenia_industrial_capacity_factory = 0 } # starts at 0.1 reduced by -0.05 each level
 	## Other
-	set_variable = { YUG_other_relations_level = 8 }
+	set_variable = { YUG_ethnicity_relations_level_ALB = 8 }
 	set_variable = { YUG_other_political_power_factor = 0 } # starts at 0.1 reduced by -0.05 each level
 	set_variable = { YUG_other_stability_factor = 0 } # starts at 0.05 reduced by -0.025 each level
 	set_variable = { YUG_other_production_speed_buildings_factor = 0 } # starts at 0.1 reduced by -0.05 each level
 
 	### AI variables
-	set_variable = {
-		YUG_AI_focus_serbia = {
-			value = 10
-			divide = YUG_serbia_relations_level
-			clamp = { min = 1 max = 10 }
-		}
-	}
-
-	set_variable = {
-		YUG_AI_focus_croatia = {
-			value = 10
-			divide = YUG_croatia_relations_level
-			clamp = { min = 1 max = 10 }
-		}
-	}
-
-	set_variable = {
-		YUG_AI_focus_bosnia = {
-			value = 10
-			divide = YUG_bosnia_relations_level
-			clamp = { min = 1 max = 10 }
-		}
-	}
-
-	set_variable = {
-		YUG_AI_focus_slovenia = {
-			value = 10
-			divide = YUG_slovenia_relations_level
-			clamp = { min = 1 max = 10 }
-		}
-	}
-
-	set_variable = {
-		YUG_AI_focus_other = {
-			value = 10
-			divide = YUG_other_relations_level
-			clamp = { min = 1 max = 10 }
+	for_each_scope_loop = {
+		array = SER_yugoslavia_ethnicities_array
+		set_variable = {
+			ROOT.YUG_AI_focus_@THIS = {
+				value = 10
+				divide = ROOT.YUG_ethnicity_relations_level_@THIS
+				clamp = { min = 1 max = 10 }
+			}
 		}
 	}
 
 	## Setting up Yugoslavia mechanics
 	set_variable = { YUG_political_capital = 10 }
 	set_variable = { YUG_political_capital_gain = 8 }
-	set_variable = { YUG_pc_expenditure_serbia = 0 }
-	set_variable = { YUG_pc_expenditure_croatia = 0 }
-	set_variable = { YUG_pc_expenditure_bosnia = 0 }
-	set_variable = { YUG_pc_expenditure_slovenia = 0 }
-	set_variable = { YUG_pc_expenditure_other = 0 }
+	set_variable = { YUG_pc_expenditure_SER = 0 }
+	set_variable = { YUG_pc_expenditure_CRO = 0 }
+	set_variable = { YUG_pc_expenditure_BOS = 0 }
+	set_variable = { YUG_pc_expenditure_SLV = 0 }
+	set_variable = { YUG_pc_expenditure_ALB = 0 }
 
 	hidden_effect = {
-		### dummy Serbia so that the correct flag is shown in the decisions
-		create_dynamic_country = {
-			original_tag = SER
-			save_global_event_target_as = SER_dummy
-			set_politics = {
-				ruling_party = social_liberal
-				elections_allowed = no
-			}
-			reserve_dynamic_country = yes
-		}
-		every_core_state = { remove_core_of = event_target:SER_dummy }
-
 		add_dynamic_modifier = { modifier = YUG_serbia_dynamic_modifier }
 		add_dynamic_modifier = { modifier = YUG_croatia_dynamic_modifier }
 		add_dynamic_modifier = { modifier = YUG_bosnia_dynamic_modifier }
@@ -628,136 +595,79 @@ YUG_set_up_yugoslavia_minigame = {
 		add_dynamic_modifier = { modifier = YUG_other_dynamic_modifier }
 		YUG_randomise_pp_requirements = yes
 		activate_mission = YUG_rounds_system_mission
-		activate_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-		activate_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-		activate_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-		activate_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-		activate_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
+		ALB = {
+			set_variable = { 106.SER_YUG_decision_ethnicity_target = THIS } #Macedonia
+			set_variable = { 765.SER_YUG_decision_ethnicity_target = THIS } #Kosovo
+		}
+		CRO = {
+			set_variable = { 109.SER_YUG_decision_ethnicity_target = THIS } #Central Croatia
+			set_variable = { 163.SER_YUG_decision_ethnicity_target = THIS } #Dalmatia
+		}
+		BOS = {
+			set_variable = { 104.SER_YUG_decision_ethnicity_target = THIS } #Bosnia
+		}
+		SLV = {
+			set_variable = { 102.SER_YUG_decision_ethnicity_target = THIS } #Carniola
+		}
+		SER = {
+			set_variable = { 107.SER_YUG_decision_ethnicity_target = THIS } #Belgrade
+		}
 	}
 
 	country_event = yugoslavia_mechanics_events.6
 }
 YUG_refresh_yugoslavia_minigame = {
 	# Check situation in Serbia
-	set_temp_variable = { checked_state = 1 } # Serbia
-	set_temp_variable = { pp_spent = YUG_pc_expenditure_serbia }
-	set_temp_variable = { pp_need = YUG_serbia_pp_requirement }
-	set_temp_variable = { current_level = YUG_serbia_relations_level }
-	YUG_check_ethnic_situation = yes
+	set_temp_variable = { checked_ethnicity = SER } # Serbia
+	var:checked_ethnicity = { YUG_check_ethnic_situation = yes }
 	YUG_update_ethnic_situation = yes
 
 	# Check situation in Croatia
-	set_temp_variable = { checked_state = 2 } # Croatia
-	set_temp_variable = { pp_spent = YUG_pc_expenditure_croatia }
-	set_temp_variable = { pp_need = YUG_croatia_pp_requirement }
-	set_temp_variable = { current_level = YUG_croatia_relations_level }
-	YUG_check_ethnic_situation = yes
+	set_temp_variable = { checked_ethnicity = CRO } # Croatia
+	var:checked_ethnicity = { YUG_check_ethnic_situation = yes }
 	YUG_update_ethnic_situation = yes
 
 	# Check situation in Bosnia
-	set_temp_variable = { checked_state = 3 } # Bosnia
-	set_temp_variable = { pp_spent = YUG_pc_expenditure_bosnia }
-	set_temp_variable = { pp_need = YUG_bosnia_pp_requirement }
-	set_temp_variable = { current_level = YUG_bosnia_relations_level }
-	YUG_check_ethnic_situation = yes
+	set_temp_variable = { checked_ethnicity = BOS } # Bosnia
+	var:checked_ethnicity = { YUG_check_ethnic_situation = yes }
 	YUG_update_ethnic_situation = yes
 
 	# Check situation in Slovenia
-	set_temp_variable = { checked_state = 4 } # Slovenia
-	set_temp_variable = { pp_spent = YUG_pc_expenditure_slovenia }
-	set_temp_variable = { pp_need = YUG_slovenia_pp_requirement }
-	set_temp_variable = { current_level = YUG_slovenia_relations_level }
-	YUG_check_ethnic_situation = yes
+	set_temp_variable = { checked_ethnicity = SLV } # Slovenia
+	var:checked_ethnicity = { YUG_check_ethnic_situation = yes }
 	YUG_update_ethnic_situation = yes
 
 	# Check situation in other states
-	set_temp_variable = { checked_state = 5 } # Other
-	set_temp_variable = { pp_spent = YUG_pc_expenditure_other }
-	set_temp_variable = { pp_need = YUG_other_pp_requirement }
-	set_temp_variable = { current_level = YUG_other_relations_level }
-	YUG_check_ethnic_situation = yes
+	set_temp_variable = { checked_ethnicity = ALB } # Other
+	var:checked_ethnicity = { YUG_check_ethnic_situation = yes }
 	YUG_update_ethnic_situation = yes
 
 	#Fire revolts if you are at level 1
 	hidden_effect = {
 		if = {
-			limit = { check_variable = { YUG_croatia_relations_level = 1 } }
+			limit = { check_variable = { YUG_ethnicity_relations_level_CRO = 1 } }
 			country_event = { id = yugoslavia_mechanics_events.1 hours = 8 }
 		}
 		if = {
-			limit = { check_variable = { YUG_bosnia_relations_level = 1 } }
+			limit = { check_variable = { YUG_ethnicity_relations_level_BOS = 1 } }
 			country_event = { id = yugoslavia_mechanics_events.2 hours = 12 }
 		}
 		if = {
-			limit = { check_variable = { YUG_slovenia_relations_level = 1 } }
+			limit = { check_variable = { YUG_ethnicity_relations_level_SLV = 1 } }
 			country_event = { id = yugoslavia_mechanics_events.3 hours = 16 }
 		}
 	}
-	YUG_reset_yugoslavia_missions = yes
 
 	set_variable = { YUG_political_capital = YUG_political_capital_gain }
-	set_variable = { YUG_pc_expenditure_serbia = 0 }
-	set_variable = { YUG_pc_expenditure_croatia = 0 }
-	set_variable = { YUG_pc_expenditure_bosnia = 0 }
-	set_variable = { YUG_pc_expenditure_slovenia = 0 }
-	set_variable = { YUG_pc_expenditure_other = 0 }
+	set_variable = { YUG_pc_expenditure_SER = 0 }
+	set_variable = { YUG_pc_expenditure_CRO = 0 }
+	set_variable = { YUG_pc_expenditure_BOS = 0 }
+	set_variable = { YUG_pc_expenditure_SLV = 0 }
+	set_variable = { YUG_pc_expenditure_ALB = 0 }
 	YUG_randomise_pp_requirements = yes
 
 	activate_mission = YUG_rounds_system_mission
 	hidden_effect = { country_event = yugoslavia_mechanics_events.7 }
-}
-
-YUG_reset_yugoslavia_missions = {
-	if = {
-		limit = { NOT = { check_variable = { YUG_decision_counter_serbia = 0 } } }
-		remove_targeted_decision = { decision = YUG_serbia_expenditure_1 target = event_target:SER_dummy }
-		remove_targeted_decision = { decision = YUG_serbia_expenditure_2 target = event_target:SER_dummy }
-		remove_targeted_decision = { decision = YUG_serbia_expenditure_3 target = event_target:SER_dummy }
-		remove_targeted_decision = { decision = YUG_serbia_expenditure_4 target = event_target:SER_dummy }
-		remove_targeted_decision = { decision = YUG_serbia_expenditure_5 target = event_target:SER_dummy }
-		activate_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-		set_variable = { YUG_decision_counter_serbia = 0 }
-	}
-	if = {
-		limit = { NOT = { check_variable = { YUG_decision_counter_croatia = 0 } } }
-		remove_targeted_decision = { decision = YUG_croatia_expenditure_1 target = CRO }
-		remove_targeted_decision = { decision = YUG_croatia_expenditure_2 target = CRO }
-		remove_targeted_decision = { decision = YUG_croatia_expenditure_3 target = CRO }
-		remove_targeted_decision = { decision = YUG_croatia_expenditure_4 target = CRO }
-		remove_targeted_decision = { decision = YUG_croatia_expenditure_5 target = CRO }
-		activate_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-		set_variable = { YUG_decision_counter_croatia = 0 }
-	}
-	if = {
-		limit = { NOT = { check_variable = { YUG_decision_counter_bosnia = 0 } } }
-		remove_targeted_decision = { decision = YUG_bosnia_expenditure_1 target = BOS }
-		remove_targeted_decision = { decision = YUG_bosnia_expenditure_2 target = BOS }
-		remove_targeted_decision = { decision = YUG_bosnia_expenditure_3 target = BOS }
-		remove_targeted_decision = { decision = YUG_bosnia_expenditure_4 target = BOS }
-		remove_targeted_decision = { decision = YUG_bosnia_expenditure_5 target = BOS }
-		activate_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-		set_variable = { YUG_decision_counter_bosnia = 0 }
-	}
-	if = {
-		limit = { NOT = { check_variable = { YUG_decision_counter_slovenia = 0 } } }
-		remove_targeted_decision = { decision = YUG_slovenia_expenditure_1 target = SLV }
-		remove_targeted_decision = { decision = YUG_slovenia_expenditure_2 target = SLV }
-		remove_targeted_decision = { decision = YUG_slovenia_expenditure_3 target = SLV }
-		remove_targeted_decision = { decision = YUG_slovenia_expenditure_4 target = SLV }
-		remove_targeted_decision = { decision = YUG_slovenia_expenditure_5 target = SLV }
-		activate_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-		set_variable = { YUG_decision_counter_slovenia = 0 }
-	}
-	if = {
-		limit = { NOT = { check_variable = { YUG_decision_counter_other = 0 } } }
-		remove_targeted_decision = { decision = YUG_other_expenditure_1 target = ALB }
-		remove_targeted_decision = { decision = YUG_other_expenditure_2 target = ALB }
-		remove_targeted_decision = { decision = YUG_other_expenditure_3 target = ALB }
-		remove_targeted_decision = { decision = YUG_other_expenditure_4 target = ALB }
-		remove_targeted_decision = { decision = YUG_other_expenditure_5 target = ALB }
-		activate_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
-		set_variable = { YUG_decision_counter_other = 0 }
-	}
 }
 
 YUG_randomise_pp_requirements = {
@@ -767,33 +677,35 @@ YUG_randomise_pp_requirements = {
 			10 = {
 				modifier = {
 					factor = 2
-					check_variable = { YUG_serbia_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_SER < 5 }
 				}
 				modifier = {
 					factor = 2
 					OR = {
 						has_completed_focus = SER_YUG_federal_constitution
 						has_completed_focus = SER_YUG_royal_federal_constitution
+						has_completed_focus = SER_YUG_award_piemont
 					}
 				}
-				set_variable = { YUG_serbia_pp_requirement = 1 }
+				set_variable = { YUG_ethnicity_pp_requirement_SER = 1 }
 			}
 			30 = {
 				modifier = {
 					factor = 3
-					check_variable = { YUG_serbia_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_SER < 5 }
 				}
 				modifier = {
 					factor = 2
 					OR = {
 						has_completed_focus = SER_YUG_federal_constitution
 						has_completed_focus = SER_YUG_royal_federal_constitution
+						has_completed_focus = SER_YUG_award_piemont
 					}
 				}
-				set_variable = { YUG_serbia_pp_requirement = 2 }
+				set_variable = { YUG_ethnicity_pp_requirement_SER = 2 }
 			}
-			30 = { set_variable = { YUG_serbia_pp_requirement = 3 } }
-			20 = { set_variable = { YUG_serbia_pp_requirement = 4 } }
+			30 = { set_variable = { YUG_ethnicity_pp_requirement_SER = 3 } }
+			20 = { set_variable = { YUG_ethnicity_pp_requirement_SER = 4 } }
 			10 = {
 				modifier = {
 					factor = 0
@@ -802,7 +714,7 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_federal_constitution
 					}
 				}
-				set_variable = { YUG_serbia_pp_requirement = 5 }
+				set_variable = { YUG_ethnicity_pp_requirement_SER = 5 }
 			}
 		}
 
@@ -811,7 +723,7 @@ YUG_randomise_pp_requirements = {
 			10 = {
 				modifier = {
 					factor = 2
-					check_variable = { YUG_croatia_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_CRO < 5 }
 				}
 				modifier = {
 					factor = 2
@@ -828,12 +740,12 @@ YUG_randomise_pp_requirements = {
 					factor = 0
 					has_country_flag = YUG_ustase_is_established
 				}
-				set_variable = { YUG_croatia_pp_requirement = 1 }
+				set_variable = { YUG_ethnicity_pp_requirement_CRO = 1 }
 			}
 			10 = {
 				modifier = {
 					factor = 3
-					check_variable = { YUG_croatia_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_CRO < 5 }
 				}
 				modifier = {
 					factor = 2
@@ -846,21 +758,21 @@ YUG_randomise_pp_requirements = {
 					factor = 0
 					has_country_flag = YUG_ustase_is_established
 				}
-				set_variable = { YUG_croatia_pp_requirement = 2 }
+				set_variable = { YUG_ethnicity_pp_requirement_CRO = 2 }
 			}
 			20 = {
 				modifier = {
 					factor = 0
 					has_country_flag = YUG_ustase_is_established
 				}
-				set_variable = { YUG_croatia_pp_requirement = 3 }
+				set_variable = { YUG_ethnicity_pp_requirement_CRO = 3 }
 			}
 			30 = {
 				modifier = {
 					factor = 2
 					has_country_flag = YUG_orjuna_is_established
 				}
-				set_variable = { YUG_croatia_pp_requirement = 4 }
+				set_variable = { YUG_ethnicity_pp_requirement_CRO = 4 }
 			}
 			30 = {
 				modifier = {
@@ -880,7 +792,7 @@ YUG_randomise_pp_requirements = {
 					factor = 1.2
 					has_country_flag = YUG_orjuna_is_established
 				}
-				set_variable = { YUG_croatia_pp_requirement = 5 }
+				set_variable = { YUG_ethnicity_pp_requirement_CRO = 5 }
 			}
 		}
 
@@ -889,7 +801,7 @@ YUG_randomise_pp_requirements = {
 			20 = {
 				modifier = {
 					factor = 2
-					check_variable = { YUG_bosnia_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_BOS < 5 }
 				}
 				modifier = {
 					factor = 2
@@ -898,12 +810,12 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_federal_constitution
 					}
 				}
-				set_variable = { YUG_bosnia_pp_requirement = 1 }
+				set_variable = { YUG_ethnicity_pp_requirement_BOS = 1 }
 			}
 			20 = {
 				modifier = {
 					factor = 3
-					check_variable = { YUG_bosnia_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_BOS < 5 }
 				}
 				modifier = {
 					factor = 2
@@ -912,9 +824,9 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_federal_constitution
 					}
 				}
-				set_variable = { YUG_bosnia_pp_requirement = 2 }
+				set_variable = { YUG_ethnicity_pp_requirement_BOS = 2 }
 			}
-			30 = { set_variable = { YUG_bosnia_pp_requirement = 3 } }
+			30 = { set_variable = { YUG_ethnicity_pp_requirement_BOS = 3 } }
 			20 = {
 				modifier = {
 					factor = 0
@@ -927,7 +839,7 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_rep_renew_precani_settlement
 					}
 				}
-				set_variable = { YUG_bosnia_pp_requirement = 4 }
+				set_variable = { YUG_ethnicity_pp_requirement_BOS = 4 }
 			}
 			10 = {
 				modifier = {
@@ -939,7 +851,7 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_rep_renew_precani_settlement
 					}
 				}
-				set_variable = { YUG_bosnia_pp_requirement = 5 }
+				set_variable = { YUG_ethnicity_pp_requirement_BOS = 5 }
 			}
 		}
 
@@ -948,7 +860,7 @@ YUG_randomise_pp_requirements = {
 			20 = {
 				modifier = {
 					factor = 2
-					check_variable = { YUG_slovenia_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_SLV < 5 }
 				}
 				modifier = {
 					factor = 2
@@ -957,12 +869,12 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_federal_constitution
 					}
 				}
-				set_variable = { YUG_slovenia_pp_requirement = 1 }
+				set_variable = { YUG_ethnicity_pp_requirement_SLV = 1 }
 			}
 			20 = {
 				modifier = {
 					factor = 3
-					check_variable = { YUG_slovenia_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_SLV < 5 }
 				}
 				modifier = {
 					factor = 2
@@ -971,10 +883,10 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_federal_constitution
 					}
 				}
-				set_variable = { YUG_slovenia_pp_requirement = 2 }
+				set_variable = { YUG_ethnicity_pp_requirement_SLV = 2 }
 			}
-			20 = { set_variable = { YUG_slovenia_pp_requirement = 3 } }
-			20 = { set_variable = { YUG_slovenia_pp_requirement = 4 } }
+			20 = { set_variable = { YUG_ethnicity_pp_requirement_SLV = 3 } }
+			20 = { set_variable = { YUG_ethnicity_pp_requirement_SLV = 4 } }
 			20 = {
 				modifier = {
 					factor = 0
@@ -983,7 +895,7 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_federal_constitution
 					}
 				}
-				set_variable = { YUG_slovenia_pp_requirement = 5 }
+				set_variable = { YUG_ethnicity_pp_requirement_SLV = 5 }
 			}
 		}
 
@@ -992,7 +904,7 @@ YUG_randomise_pp_requirements = {
 			30 = {
 				modifier = {
 					factor = 2
-					check_variable = { YUG_other_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_ALB < 5 }
 				}
 				modifier = {
 					factor = 2
@@ -1001,12 +913,12 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_federal_constitution
 					}
 				}
-				set_variable = { YUG_other_pp_requirement = 1 }
+				set_variable = { YUG_ethnicity_pp_requirement_ALB = 1 }
 			}
 			10 = {
 				modifier = {
 					factor = 3
-					check_variable = { YUG_other_relations_level < 5 }
+					check_variable = { YUG_ethnicity_relations_level_ALB < 5 }
 				}
 				modifier = {
 					factor = 2
@@ -1015,10 +927,10 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_federal_constitution
 					}
 				}
-				set_variable = { YUG_other_pp_requirement = 2 }
+				set_variable = { YUG_ethnicity_pp_requirement_ALB = 2 }
 			}
-			10 = { set_variable = { YUG_other_pp_requirement = 3 } }
-			30 = { set_variable = { YUG_other_pp_requirement = 4 } }
+			10 = { set_variable = { YUG_ethnicity_pp_requirement_ALB = 3 } }
+			30 = { set_variable = { YUG_ethnicity_pp_requirement_ALB = 4 } }
 			20 = {
 				modifier = {
 					factor = 0
@@ -1027,7 +939,7 @@ YUG_randomise_pp_requirements = {
 						has_completed_focus = SER_YUG_royal_federal_constitution
 					}
 				}
-				set_variable = { YUG_other_pp_requirement = 5 }
+				set_variable = { YUG_ethnicity_pp_requirement_ALB = 5 }
 			}
 		}
 
@@ -1036,624 +948,105 @@ YUG_randomise_pp_requirements = {
 }
 
 YUG_update_AI_variables = {
-	YUG_update_AI_variables_serbia = yes
-	YUG_update_AI_variables_croatia = yes
-	YUG_update_AI_variables_bosnia = yes
-	YUG_update_AI_variables_slovenia = yes
-	YUG_update_AI_variables_other = yes
+	for_each_scope_loop = {
+		array = SER_yugoslavia_ethnicities_array
+		YUG_update_AI_variables_target = yes
+	}
 }
 
-YUG_update_AI_variables_serbia = {
-	set_variable = { YUG_AI_target_serbia = YUG_serbia_pp_requirement } #used as targets for AI spending
-	if = {
-		limit = { check_variable = { YUG_serbia_relations_level < 10 } }
-		add_to_variable = { YUG_AI_target_serbia = 1 }
-	}
-
-	set_variable = {
-		YUG_AI_factor_serbia = {
-			value = 5
-			divide = YUG_serbia_pp_requirement #used to make the AI focus on smaller requirements first
-			clamp = { min = 1 max = 5 }
+YUG_update_AI_variables_target = {
+	set_variable = { #used as targets for AI spending
+		ROOT.YUG_AI_target_@THIS = {
+			value = ROOT.YUG_ethnicity_pp_requirement_@THIS
+			if = { limit = { value = ROOT.YUG_ethnicity_relations_level_@THIS less_than = 10 } add = 1 }
 		}
 	}
-}
-
-YUG_update_AI_variables_croatia = {
-	set_variable = { YUG_AI_target_croatia = YUG_croatia_pp_requirement }
-	if = {
-		limit = { check_variable = { YUG_croatia_relations_level < 10 } }
-		add_to_variable = { YUG_AI_target_croatia = 1 }
-	}
-
 	set_variable = {
-		YUG_AI_factor_croatia = {
-			value = 5
-			divide = YUG_croatia_pp_requirement
-			clamp = { min = 1 max = 5 }
-		}
-	}
-}
-
-YUG_update_AI_variables_bosnia = {
-	set_variable = { YUG_AI_target_bosnia = YUG_bosnia_pp_requirement }
-	if = {
-		limit = { check_variable = { YUG_bosnia_relations_level < 10 } }
-		add_to_variable = { YUG_AI_target_bosnia = 1 }
-	}
-
-	set_variable = {
-		YUG_AI_factor_bosnia = {
-			value = 5
-			divide = YUG_bosnia_pp_requirement
-			clamp = { min = 1 max = 5 }
-		}
-	}
-}
-
-YUG_update_AI_variables_slovenia = {
-	set_variable = { YUG_AI_target_slovenia = YUG_slovenia_pp_requirement }
-	if = {
-		limit = { check_variable = { YUG_slovenia_relations_level < 10 } }
-		add_to_variable = { YUG_AI_target_slovenia = 1 }
-	}
-
-	set_variable = {
-		YUG_AI_factor_slovenia = {
-			value = 5
-			divide = YUG_slovenia_pp_requirement
-			clamp = { min = 1 max = 5 }
-		}
-	}
-}
-
-YUG_update_AI_variables_other = {
-	set_variable = { YUG_AI_target_other = YUG_other_pp_requirement }
-	if = {
-		limit = { check_variable = { YUG_other_relations_level < 10 } }
-		add_to_variable = { YUG_AI_target_other = 1 }
-	}
-
-	set_variable = {
-		YUG_AI_factor_other = {
-			value = 5
-			divide = YUG_other_pp_requirement
-			clamp = { min = 1 max = 5 }
+		ROOT.YUG_AI_factor_@THIS = {
+			value = 3
+			divide = ROOT.YUG_ethnicity_pp_requirement_@THIS #used to make the AI focus on smaller requirements first
+			clamp = { min = 1 max = 3 }
 		}
 	}
 }
 
 YUG_check_ethnic_situation = {
-	if = {
-		limit = {
-			check_variable = { pp_spent > pp_need }
-			check_variable = { current_level < 10 }
+	set_temp_variable = {
+		ethnic_situation = {
+			value = 0
+			if = {
+				limit = {
+					value = { value = ROOT.YUG_pc_expenditure_@THIS greater_than = ROOT.YUG_ethnicity_pp_requirement_@THIS }
+					and = { value = ROOT.YUG_ethnicity_relations_level_@THIS less_than = 10 }
+				}
+				add = 1 # 1 = +1 relations level
+			}
+			else_if = {
+				limit = {
+					value = { value = ROOT.YUG_pc_expenditure_@THIS less_than = ROOT.YUG_ethnicity_pp_requirement_@THIS }
+					and = { value = ROOT.YUG_ethnicity_relations_level_@THIS greater_than = 1 }
+				}
+				subtract = 1 # -1 = -1 relations level
+			}
 		}
-		set_temp_variable = { ethnic_situation = 1 } # 1 = +1 relations level
-	}
-	else_if = {
-		limit = {
-			check_variable = { pp_spent < pp_need }
-			check_variable = { current_level > 1 }
-		}
-		set_temp_variable = { ethnic_situation = -1 } # -1 = -1 relations level
-	}
-	else = {
-		set_temp_variable = { ethnic_situation = 0 }
 	}
 }
 YUG_update_ethnic_situation = {
 	if = {
-		limit = {
-			check_variable = { checked_state = 1 }
-		}
+		limit = { check_variable = { checked_ethnicity = SER } }
 		add_to_variable = { YUG_serbia_political_power_factor = { value = 0.05 multiply = ethnic_situation } }
 		add_to_variable = { YUG_serbia_war_support_factor = { value = 0.025 multiply = ethnic_situation } }
 		add_to_variable = { YUG_serbia_army_org_factor = { value = 0.025 multiply = ethnic_situation } }
-		add_to_variable = { YUG_serbia_relations_level = ethnic_situation }
-
-		### AI variables
-		set_variable = {
-			YUG_AI_focus_serbia = {
-				value = 10
-				divide = YUG_serbia_relations_level
-				clamp = { min = 1 max = 10 }
-			}
-		}
 	}
 	else_if = {
-		limit = {
-			check_variable = { checked_state = 2 }
-		}
+		limit = { check_variable = { checked_ethnicity = CRO } }
 		add_to_variable = { YUG_croatia_political_power_factor = { value = 0.05 multiply = ethnic_situation } }
 		add_to_variable = { YUG_croatia_stability_factor = { value = 0.025 multiply = ethnic_situation } }
 		add_to_variable = { YUG_croatia_conscription_factor = { value = 0.05 multiply = ethnic_situation } }
-		add_to_variable = { YUG_croatia_relations_level = ethnic_situation }
-
-		### AI variables
-		set_variable = {
-			YUG_AI_focus_croatia = {
-				value = 10
-				divide = YUG_croatia_relations_level
-				clamp = { min = 1 max = 10 }
-			}
-		}
 	}
 	else_if = {
-		limit = {
-			check_variable = { checked_state = 3 }
-		}
+		limit = { check_variable = { checked_ethnicity = BOS } }
 		add_to_variable = { YUG_bosnia_political_power_factor = { value = 0.05 multiply = ethnic_situation } }
 		add_to_variable = { YUG_bosnia_stability_factor = { value = 0.025 multiply = ethnic_situation } }
 		add_to_variable = { YUG_bosnia_consumer_goods_factor = { value = -0.075 multiply = ethnic_situation } }
-		add_to_variable = { YUG_bosnia_relations_level = ethnic_situation }
-
-		### AI variables
-		set_variable = {
-			YUG_AI_focus_bosnia = {
-				value = 10
-				divide = YUG_bosnia_relations_level
-				clamp = { min = 1 max = 10 }
-			}
-		}
 	}
 	else_if = {
-		limit = {
-			check_variable = { checked_state = 4 }
-		}
+		limit = { check_variable = { checked_ethnicity = SLV } }
 		add_to_variable = { YUG_slovenia_political_power_factor = { value = 0.05 multiply = ethnic_situation } }
 		add_to_variable = { YUG_slovenia_stability_factor = { value = 0.025 multiply = ethnic_situation } }
 		add_to_variable = { YUG_slovenia_industrial_capacity_factory = { value = 0.05 multiply = ethnic_situation } }
-		add_to_variable = { YUG_slovenia_relations_level = ethnic_situation }
-
-		### AI variables
-		set_variable = {
-			YUG_AI_focus_slovenia = {
-				value = 10
-				divide = YUG_slovenia_relations_level
-				clamp = { min = 1 max = 10 }
-			}
-		}
 	}
 	else_if = {
-		limit = {
-			check_variable = { checked_state = 5 }
-		}
+		limit = { check_variable = { checked_ethnicity = ALB } }
 		add_to_variable = { YUG_other_political_power_factor = { value = 0.05 multiply = ethnic_situation } }
 		add_to_variable = { YUG_other_stability_factor = { value = 0.025 multiply = ethnic_situation } }
 		add_to_variable = { YUG_other_production_speed_buildings_factor = { value = 0.05 multiply = ethnic_situation } }
-		add_to_variable = { YUG_other_relations_level = ethnic_situation }
+	}
 
-		### AI variables
+	if = {
+		limit = { check_variable = { ethnic_situation > 0 } }
+		custom_effect_tooltip = YUG_improve_relations_tt
+	}
+	else_if = {
+		limit = { check_variable = { ethnic_situation < 0 } }
+		custom_effect_tooltip = YUG_reduce_relations_tt
+	}
+	var:checked_ethnicity = {
+		add_to_variable = { PREV.YUG_ethnicity_relations_level_@THIS = ethnic_situation }
 		set_variable = {
-			YUG_AI_focus_other = {
+			PREV.YUG_AI_focus_@THIS = {
 				value = 10
-				divide = YUG_other_relations_level
+				divide = PREV.YUG_ethnicity_relations_level_@THIS
 				clamp = { min = 1 max = 10 }
 			}
 		}
+		YUG_update_AI_variables_target = yes
 	}
 }
 YUG_update_expenditure_missions = {
-	YUG_update_expenditure_missions_serbia = yes
-	YUG_update_expenditure_missions_croatia = yes
-	YUG_update_expenditure_missions_bosnia = yes
-	YUG_update_expenditure_missions_slovenia = yes
-	YUG_update_expenditure_missions_other = yes
-}
-YUG_update_expenditure_missions_serbia = {
-	clamp_variable = { var = YUG_pc_expenditure_serbia max = 10 min = 0 }
-	hidden_effect = {
-		if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_serbia = 0 }
-				NOT = { check_variable = { YUG_decision_counter_serbia = 0 } }
-			}
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_1 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_2 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_3 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_4 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_5 target = event_target:SER_dummy }
-			activate_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-			set_variable = { YUG_decision_counter_serbia = 0 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_serbia = 1 }
-				NOT = { check_variable = { YUG_decision_counter_serbia = 1 } }
-			}
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_2 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_3 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_4 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_5 target = event_target:SER_dummy }
-			activate_targeted_decision = { decision = YUG_serbia_expenditure_1 target = event_target:SER_dummy }
-			set_variable = { YUG_decision_counter_serbia = 1 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_serbia = 2 }
-				NOT = { check_variable = { YUG_decision_counter_serbia = 2 } }
-			}
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_1 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_3 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_4 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_5 target = event_target:SER_dummy }
-			activate_targeted_decision = { decision = YUG_serbia_expenditure_2 target = event_target:SER_dummy }
-			set_variable = { YUG_decision_counter_serbia = 2 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_serbia = 3 }
-				NOT = { check_variable = { YUG_decision_counter_serbia = 3 } }
-			}
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_1 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_2 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_4 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_5 target = event_target:SER_dummy }
-			activate_targeted_decision = { decision = YUG_serbia_expenditure_3 target = event_target:SER_dummy }
-			set_variable = { YUG_decision_counter_serbia = 3 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_serbia = 4 }
-				NOT = { check_variable = { YUG_decision_counter_serbia = 4 } }
-			}
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_1 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_2 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_3 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_5 target = event_target:SER_dummy }
-			activate_targeted_decision = { decision = YUG_serbia_expenditure_4 target = event_target:SER_dummy }
-			set_variable = { YUG_decision_counter_serbia = 4 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_serbia > 4 }
-				NOT = { check_variable = { YUG_decision_counter_serbia = 5 } }
-			}
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_0 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_1 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_2 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_3 target = event_target:SER_dummy }
-			remove_targeted_decision = { decision = YUG_serbia_expenditure_4 target = event_target:SER_dummy }
-			activate_targeted_decision = { decision = YUG_serbia_expenditure_5 target = event_target:SER_dummy }
-			set_variable = { YUG_decision_counter_serbia = 5 }
-		}
-	}
-}
-YUG_update_expenditure_missions_croatia = {
-	clamp_variable = { var = YUG_pc_expenditure_croatia max = 10 min = 0 }
-	hidden_effect = {
-		if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_croatia = 0 }
-				NOT = { check_variable = { YUG_decision_counter_croatia = 0 } }
-			}
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_1 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_2 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_3 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_4 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_5 target = CRO }
-			activate_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-			set_variable = { YUG_decision_counter_croatia = 0 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_croatia = 1 }
-				NOT = { check_variable = { YUG_decision_counter_croatia = 1 } }
-			}
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_2 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_3 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_4 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_5 target = CRO }
-			activate_targeted_decision = { decision = YUG_croatia_expenditure_1 target = CRO }
-			set_variable = { YUG_decision_counter_croatia = 1 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_croatia = 2 }
-				NOT = { check_variable = { YUG_decision_counter_croatia = 2 } }
-			}
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_1 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_3 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_4 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_5 target = CRO }
-			activate_targeted_decision = { decision = YUG_croatia_expenditure_2 target = CRO }
-			set_variable = { YUG_decision_counter_croatia = 2 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_croatia = 3 }
-				NOT = { check_variable = { YUG_decision_counter_croatia = 3 } }
-			}
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_1 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_2 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_4 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_5 target = CRO }
-			activate_targeted_decision = { decision = YUG_croatia_expenditure_3 target = CRO }
-			set_variable = { YUG_decision_counter_croatia = 3 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_croatia = 4 }
-				NOT = { check_variable = { YUG_decision_counter_croatia = 4 } }
-			}
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_1 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_2 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_3 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_5 target = CRO }
-			activate_targeted_decision = { decision = YUG_croatia_expenditure_4 target = CRO }
-			set_variable = { YUG_decision_counter_croatia = 4 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_croatia > 4 }
-				NOT = { check_variable = { YUG_decision_counter_croatia = 5 } }
-			}
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_0 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_1 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_2 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_3 target = CRO }
-			remove_targeted_decision = { decision = YUG_croatia_expenditure_4 target = CRO }
-			activate_targeted_decision = { decision = YUG_croatia_expenditure_5 target = CRO }
-			set_variable = { YUG_decision_counter_croatia = 5 }
-		}
-	}
-}
-YUG_update_expenditure_missions_bosnia = {
-	clamp_variable = { var = YUG_pc_expenditure_bosnia max = 10 min = 0 }
-	hidden_effect = {
-		if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_bosnia = 0 }
-				NOT = { check_variable = { YUG_decision_counter_bosnia = 0 } }
-			}
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_1 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_2 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_3 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_4 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_5 target = BOS }
-			activate_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-			set_variable = { YUG_decision_counter_bosnia = 0 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_bosnia = 1 }
-				NOT = { check_variable = { YUG_decision_counter_bosnia = 1 } }
-			}
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_2 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_3 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_4 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_5 target = BOS }
-			activate_targeted_decision = { decision = YUG_bosnia_expenditure_1 target = BOS }
-			set_variable = { YUG_decision_counter_bosnia = 1 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_bosnia = 2 }
-				NOT = { check_variable = { YUG_decision_counter_bosnia = 2 } }
-			}
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_1 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_3 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_4 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_5 target = BOS }
-			activate_targeted_decision = { decision = YUG_bosnia_expenditure_2 target = BOS }
-			set_variable = { YUG_decision_counter_bosnia = 2 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_bosnia = 3 }
-				NOT = { check_variable = { YUG_decision_counter_bosnia = 3 } }
-			}
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_1 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_2 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_4 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_5 target = BOS }
-			activate_targeted_decision = { decision = YUG_bosnia_expenditure_3 target = BOS }
-			set_variable = { YUG_decision_counter_bosnia = 3 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_bosnia = 4 }
-				NOT = { check_variable = { YUG_decision_counter_bosnia = 4 } }
-			}
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_1 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_2 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_3 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_5 target = BOS }
-			activate_targeted_decision = { decision = YUG_bosnia_expenditure_4 target = BOS }
-			set_variable = { YUG_decision_counter_bosnia = 4 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_bosnia > 4 }
-				NOT = { check_variable = { YUG_decision_counter_bosnia = 5 } }
-			}
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_0 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_1 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_2 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_3 target = BOS }
-			remove_targeted_decision = { decision = YUG_bosnia_expenditure_4 target = BOS }
-			activate_targeted_decision = { decision = YUG_bosnia_expenditure_5 target = BOS }
-			set_variable = { YUG_decision_counter_bosnia = 5 }
-		}
-	}
-}
-YUG_update_expenditure_missions_slovenia = {
-	clamp_variable = { var = YUG_pc_expenditure_slovenia max = 10 min = 0 }
-	hidden_effect = {
-		if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_slovenia = 0 }
-				NOT = { check_variable = { YUG_decision_counter_slovenia = 0 } }
-			}
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_1 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_2 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_3 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_4 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_5 target = SLV }
-			activate_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-			set_variable = { YUG_decision_counter_slovenia = 0 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_slovenia = 1 }
-				NOT = { check_variable = { YUG_decision_counter_slovenia = 1 } }
-			}
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_2 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_3 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_4 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_5 target = SLV }
-			activate_targeted_decision = { decision = YUG_slovenia_expenditure_1 target = SLV }
-			set_variable = { YUG_decision_counter_slovenia = 1 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_slovenia = 2 }
-				NOT = { check_variable = { YUG_decision_counter_slovenia = 2 } }
-			}
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_1 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_3 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_4 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_5 target = SLV }
-			activate_targeted_decision = { decision = YUG_slovenia_expenditure_2 target = SLV }
-			set_variable = { YUG_decision_counter_slovenia = 2 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_slovenia = 3 }
-				NOT = { check_variable = { YUG_decision_counter_slovenia = 3 } }
-			}
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_1 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_2 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_4 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_5 target = SLV }
-			activate_targeted_decision = { decision = YUG_slovenia_expenditure_3 target = SLV }
-			set_variable = { YUG_decision_counter_slovenia = 3 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_slovenia = 4 }
-				NOT = { check_variable = { YUG_decision_counter_slovenia = 4 } }
-			}
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_1 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_2 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_3 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_5 target = SLV }
-			activate_targeted_decision = { decision = YUG_slovenia_expenditure_4 target = SLV }
-			set_variable = { YUG_decision_counter_slovenia = 4 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_slovenia > 4 }
-				NOT = { check_variable = { YUG_decision_counter_slovenia = 5 } }
-			}
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_0 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_1 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_2 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_3 target = SLV }
-			remove_targeted_decision = { decision = YUG_slovenia_expenditure_4 target = SLV }
-			activate_targeted_decision = { decision = YUG_slovenia_expenditure_5 target = SLV }
-			set_variable = { YUG_decision_counter_slovenia = 5 }
-		}
-	}
-}
-YUG_update_expenditure_missions_other = {
-	clamp_variable = { var = YUG_pc_expenditure_other max = 10 min = 0 }
-	hidden_effect = {
-		if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_other = 0 }
-				NOT = { check_variable = { YUG_decision_counter_other = 0 } }
-			}
-			remove_targeted_decision = { decision = YUG_other_expenditure_1 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_2 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_3 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_4 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_5 target = ALB }
-			activate_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
-			set_variable = { YUG_decision_counter_other = 0 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_other = 1 }
-				NOT = { check_variable = { YUG_decision_counter_other = 1 } }
-			}
-			remove_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_2 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_3 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_4 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_5 target = ALB }
-			activate_targeted_decision = { decision = YUG_other_expenditure_1 target = ALB }
-			set_variable = { YUG_decision_counter_other = 1 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_other = 2 }
-				NOT = { check_variable = { YUG_decision_counter_other = 2 } }
-			}
-			remove_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_1 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_3 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_4 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_5 target = ALB }
-			activate_targeted_decision = { decision = YUG_other_expenditure_2 target = ALB }
-			set_variable = { YUG_decision_counter_other = 2 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_other = 3 }
-				NOT = { check_variable = { YUG_decision_counter_other = 3 } }
-			}
-			remove_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_1 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_2 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_4 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_5 target = ALB }
-			activate_targeted_decision = { decision = YUG_other_expenditure_3 target = ALB }
-			set_variable = { YUG_decision_counter_other = 3 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_other = 4 }
-				NOT = { check_variable = { YUG_decision_counter_other = 4 } }
-			}
-			remove_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_1 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_2 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_3 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_5 target = ALB }
-			activate_targeted_decision = { decision = YUG_other_expenditure_4 target = ALB }
-			set_variable = { YUG_decision_counter_other = 4 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { YUG_pc_expenditure_other > 4 }
-				NOT = { check_variable = { YUG_decision_counter_other = 5 } }
-			}
-			remove_targeted_decision = { decision = YUG_other_expenditure_0 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_1 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_2 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_3 target = ALB }
-			remove_targeted_decision = { decision = YUG_other_expenditure_4 target = ALB }
-			activate_targeted_decision = { decision = YUG_other_expenditure_5 target = ALB }
-			set_variable = { YUG_decision_counter_other = 5 }
-		}
+	for_each_scope_loop = {
+		array = SER_yugoslavia_ethnicities_array
+		clamp_variable = { var = ROOT.YUG_pc_expenditure_@THIS min = 0 max = 10 }
 	}
 }
 
@@ -1663,15 +1056,14 @@ YUG_bulgarian_integration_relations_effect = {
 		set_temp_variable = {
 			ethnic_situation = {
 				value = 5
-				clamp = { min = 1 max = YUG_other_relations_level }
+				clamp = { min = 1 max = YUG_ethnicity_relations_level_ALB }
 				subtract = 1
 				multiply = -1
 			}
 		}
 		if = {
 			limit = { check_variable = { ethnic_situation < 0 } }
-			set_temp_variable = { checked_state = 5 } # Other
-			custom_effect_tooltip = YUG_other_reduce_relations_tt
+			set_temp_variable = { checked_ethnicity = ALB } # Other
 			YUG_update_ethnic_situation = yes
 		}
 		set_temp_variable = { YUG_political_capital_gain_change = 3 }
@@ -1680,11 +1072,17 @@ YUG_bulgarian_integration_relations_effect = {
 }
 
 YUG_spawn_slovenia_rebellion = {
+	every_character = {
+		limit = { has_variable = nationality }
+		if = {
+			limit = { check_variable = { nationality = SLV } }
+			set_nationality = SLV
+		}
+	}
 	SLV = {
 		add_state_core = 102
 		transfer_state = 102
 		set_war_support = 0.9
-		SLV_move_back_generals = yes
 		add_ideas = {
 			SER_YUG_anti_serb_rebellion
 			war_economy
@@ -1740,8 +1138,11 @@ YUG_spawn_croatia_rebellion = {
 		transfer_state_to = CRO
 	}
 	every_character = {
-		limit = { has_character_flag = former_CRO }
-		set_nationality = CRO
+		limit = { has_variable = nationality }
+		if = {
+			limit = { check_variable = { nationality = CRO } }
+			set_nationality = CRO
+		}
 	}
 	CRO = {
 		set_capital = { state = 109 }
@@ -1878,6 +1279,17 @@ YUG_spawn_croatia_rebellion = {
 	}
 }
 YUG_spawn_bosnia_rebellion = {
+	every_character = {
+		limit = { has_variable = nationality }
+		if = {
+			limit = { check_variable = { nationality = BOS } }
+			set_nationality = BOS
+			if = {
+				limit = { BOS = { can_be_country_leader = PREV } }
+				promote_character = yes
+			}
+		}
+	}
 	BOS = {
 		add_state_core = 104 #Bosnia
 		add_state_core = 1109 #Herzegovina
@@ -1975,7 +1387,7 @@ YUG_spawn_socialist_rebellion = {
 		save_global_event_target_as = ASOS_uprising
 
 		set_politics = {
-			ruling_party = syndicalist
+			ruling_party = totalist
 			elections_allowed = no
 		}
 		add_ideas = {
@@ -1986,16 +1398,21 @@ YUG_spawn_socialist_rebellion = {
 		}
 		set_war_support = 0.9
 		set_popularities = {
-			totalist = 0
-			radical_socialist = 20
-			syndicalist = 40
-			social_democrat = 10
-			social_liberal = 20
+			totalist = 35
+			radical_socialist = 15
+			syndicalist = 18
+			social_democrat = 8
+			social_liberal = 16
 			market_liberal = 5
-			social_conservative = 5
+			social_conservative = 3
 			authoritarian_democrat = 0
 			paternal_autocrat = 0
 			national_populist = 0
+		}
+		set_party_name = {
+			ideology = totalist
+			name = SER_asos_srp
+			long_name = SER_asos_long
 		}
 		set_party_name = {
 			ideology = syndicalist
@@ -2053,6 +1470,10 @@ YUG_spawn_socialist_rebellion = {
 				recon = { x = 0 y = 0 }
 			}
 		}
+		if = {
+			limit = { has_dlc_taog = yes }
+			create_generic_hq_template = yes
+		}
 		105 = {
 			create_unit = {
 				division = "division_template = \"Proleterska udarna brigada\" start_experience_factor = 0.3"
@@ -2097,6 +1518,10 @@ YUG_spawn_socialist_rebellion = {
 	}
 	SER_vukasin_markovic = { set_nationality = event_target:ASOS_uprising }
 	SER_konstantin_popovic = { set_nationality = event_target:ASOS_uprising }
+	MNT_arsenije_jovanovic = { set_nationality = event_target:ASOS_uprising }
+	MNT_sava_kovacevic = { set_nationality = event_target:ASOS_uprising }
+	MNT_savo_orovic = { set_nationality = event_target:ASOS_uprising }
+	SER_sreten_zujovic = { set_nationality = event_target:ASOS_uprising }
 	MNT = { MNT_blazo_jovanovic = { set_nationality = event_target:ASOS_uprising } }
 	event_target:ASOS_uprising = {
 		SER_vukasin_markovic = {
@@ -2292,8 +1717,13 @@ SER_increase_political_capital_gain = {
 }
 
 SER_decrease_political_capital_gain = {
-	subtract_from_variable = { YUG_political_capital_gain = YUG_political_capital_gain_change?1 tooltip = YUG_modify_pp_gain_decrease_tt }
-	clamp_variable = { var = YUG_political_capital_gain min = 0 }
+	subtract_from_variable = {
+		YUG_political_capital_gain = {
+			value = YUG_political_capital_gain_change?1
+			clamp = { min = 0 max = YUG_political_capital_gain }
+		}
+		tooltip = YUG_modify_pp_gain_decrease_tt
+	}
 }
 
 SER_increase_political_capital = {
@@ -2301,46 +1731,28 @@ SER_increase_political_capital = {
 }
 
 SER_decrease_political_capital = {
-	subtract_from_variable = { YUG_political_capital = YUG_political_capital_change?1 tooltip = YUG_pp_loss_tt }
-	clamp_variable = { var = YUG_political_capital min = 0 }
-}
-
-SER_increase_expenditure_serbia = {
-	custom_override_tooltip = {
-		tooltip = YUG_patronage_spending_SER
-		SER_decrease_political_capital = yes
-		add_to_variable = { YUG_pc_expenditure_serbia = 1 }
+	subtract_from_variable = {
+		YUG_political_capital = {
+			value = YUG_political_capital_change?1
+			clamp = { min = 0 max = YUG_political_capital }
+		}
+		tooltip = YUG_pp_loss_tt
 	}
 }
 
-SER_increase_expenditure_croatia = {
+SER_set_ethnicity_pp_requirement_zero_target = {
 	custom_override_tooltip = {
-		tooltip = YUG_patronage_spending_CRO
-		SER_decrease_political_capital = yes
-		add_to_variable = { YUG_pc_expenditure_croatia = 1 }
+		tooltip = SER_YUG_zero_demand_tt
+		var:checked_ethnicity = {
+			set_variable = { ROOT.YUG_ethnicity_pp_requirement_@THIS = 0 }
+			YUG_update_AI_variables_target = yes
+		}
 	}
 }
 
-SER_increase_expenditure_bosnia = {
+SER_set_pc_expenditure_zero_target = {
 	custom_override_tooltip = {
-		tooltip = YUG_patronage_spending_BOS
-		SER_decrease_political_capital = yes
-		add_to_variable = { YUG_pc_expenditure_bosnia = 1 }
-	}
-}
-
-SER_increase_expenditure_slovenia = {
-	custom_override_tooltip = {
-		tooltip = YUG_patronage_spending_SLV
-		SER_decrease_political_capital = yes
-		add_to_variable = { YUG_pc_expenditure_slovenia = 1 }
-	}
-}
-
-SER_increase_expenditure_other_yugoslavs = {
-	custom_override_tooltip = {
-		tooltip = YUG_patronage_spending_OTH
-		SER_decrease_political_capital = yes
-		add_to_variable = { YUG_pc_expenditure_other = 1 }
+		tooltip = SER_YUG_zero_expenditure_tt
+		var:checked_ethnicity = { set_variable = { ROOT.YUG_pc_expenditure_@THIS = 0 } }
 	}
 }

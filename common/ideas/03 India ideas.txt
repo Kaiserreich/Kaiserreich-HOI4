@@ -358,9 +358,18 @@ ideas = {
 
 		karachi_shipyard = {
 			on_add = { log = "[GetLogRoot]: add idea karachi_shipyard" }
-			allowed = { is_indian_tag = yes }
+			allowed = {
+				OR = {
+					is_indian_tag = yes
+					original_tag = AFG
+				}
+			}
 			available = {
 				owns_state = 443 #Sind
+				if = {
+					limit = { original_tag = AFG }
+					has_completed_focus = AFG_the_conquest_of_karachi
+				}
 			}
 			traits = { raider_ship_manufacturer }
 			research_bonus = {

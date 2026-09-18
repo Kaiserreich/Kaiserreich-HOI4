@@ -204,6 +204,73 @@ unique_id = kr_achievements
 	}
 }
 
+AFG_musical_thrones_achievement = {
+	possible = {
+		tag = AFG
+	}
+
+	happened = {
+		if = {
+			limit = {
+				NOT = { has_global_flag = disallow_achievements_flag }
+				OR = {
+					NOT = { has_global_flag = on_startup_completed }
+					is_ai = no
+				}
+			}
+			has_country_flag = AFG_civil_war_won_achievement_flag
+		}
+		else_if = {
+			limit = { has_global_flag = disallow_achievements_flag }
+			custom_override_tooltip = {
+				tooltip = achievements_disabled
+				always = no
+			}
+		}
+		else = {
+			custom_override_tooltip = {
+				tooltip = achievements_disabled_observer
+				always = no
+			}
+		}
+	}
+}
+
+AFG_this_achievement_is_dedicated_to_achievement = {
+	possible = {
+		tag = AFG
+	}
+
+	happened = {
+		if = {
+			limit = {
+				NOT = { has_global_flag = disallow_achievements_flag }
+				OR = {
+					NOT = { has_global_flag = on_startup_completed }
+					is_ai = no
+				}
+			}
+			custom_override_tooltip = {
+				tooltip = this_achievement_is_dedicated_to_achievement_tt
+				has_completed_focus = AFG_champion_of_islam
+			}
+		}
+		else_if = {
+			limit = { has_global_flag = disallow_achievements_flag }
+			custom_override_tooltip = {
+				tooltip = achievements_disabled
+				always = no
+			}
+		}
+		else = {
+			custom_override_tooltip = {
+				tooltip = achievements_disabled_observer
+				always = no
+			}
+		}
+	}
+}
+
 ARG_reconquest_of_the_desert_achievement = {
 	possible = {
 		tag = ARG

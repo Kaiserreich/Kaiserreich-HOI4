@@ -107,12 +107,15 @@ defined_text = {
 	name = GetCoalitionStability
 	text = {
 		trigger = {
-			if = {
-				limit = { NOT = { check_variable = { coalition_stability_array^ideology_index_current = 0 } } }
-				set_temp_variable = { coalition_stab = coalition_stability_array^ideology_index_current }
-			}
-			else = {
-				set_temp_variable = { coalition_stab = coalition_stability?0.5 }
+			set_temp_variable = {
+				coalition_stab = {
+					value = 0
+					if = {
+						limit = { value = coalition_stability_array^ideology_index_current not_equals = 0 }
+						add = coalition_stability_array^ideology_index_current
+					}
+					else = { add = coalition_stability?0.5 }
+				}
 			}
 		}
 		localization_key = party_pop_coalition_stability
@@ -141,64 +144,7 @@ defined_text = {
 defined_text = {
 	name = GetCoalitionTooltipColour
 	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:totalist }
-		}
-		localization_key = colour_totalist
-	}
-	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:syndicalist }
-		}
-		localization_key = colour_syndicalist
-	}
-	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:radical_socialist }
-		}
-		localization_key = colour_radsoc
-	}
-	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:social_democrat }
-		}
-		localization_key = colour_socdem
-	}
-	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:social_liberal }
-		}
-		localization_key = colour_soclib
-	}
-	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:market_liberal }
-		}
-		localization_key = colour_marlib
-	}
-	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:social_conservative }
-		}
-		localization_key = colour_soccon
-	}
-	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:authoritarian_democrat }
-		}
-		localization_key = colour_autdem
-	}
-	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:paternal_autocrat }
-		}
-		localization_key = colour_pataut
-	}
-	text = {
-		trigger = {
-			check_variable = { coalition_partner_var = token:national_populist }
-		}
-		localization_key = colour_natpop
+		localization_key = "colour_[?coalition_partner_var.GetTokenKey]"
 	}
 }
 
@@ -296,9 +242,12 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			NOT = { check_variable = { base_factories = 0 } }
+			check_variable = { base_factories > 0 }
 		}
 		localization_key = unit_limit_factories_high_desc
+	}
+	text = {
+		localization_key = unit_limit_factories_equalised_desc
 	}
 }
 
@@ -502,6 +451,66 @@ defined_text = {
 	}
 	text = {
 		localization_key = economic_sphere_label_tooltip_delayed_text
+	}
+}
+
+### State of Interest ###
+defined_text = {
+	name = GetStateOfInterestStateIcon
+	text = {
+		trigger = { set_temp_variable = { current_state = THIS } }
+		localization_key = "[?owner.GetStateOfInterestStateIconCountrySpecific]"
+	}
+}
+defined_text = {
+	name = GetStateOfInterestStateIconCountrySpecific
+	#NOTE: dynamic countries require special exceptions
+	text = {
+		localization_key = country_culture|state_of_interest_icon
+	}
+}
+
+defined_text = {
+	name = GetStateOfInterestStateIconTooltip
+	text = {
+		trigger = { set_temp_variable = { current_state = THIS } }
+		localization_key = "[?owner.GetStateOfInterestStateIconTooltipCountrySpecific]"
+	}
+}
+defined_text = {
+	name = GetStateOfInterestStateIconTooltipCountrySpecific
+	#NOTE: dynamic countries require special exceptions
+	text = {
+		localization_key = country_culture|state_of_interest_icon_desc
+	}
+}
+defined_text = {
+	name = GetStateOfInterestStateIconTooltipDelayed
+	text = {
+		trigger = { set_temp_variable = { current_state = THIS } }
+		localization_key = "[?owner.GetStateOfInterestStateIconTooltipDelayedCountrySpecific]"
+	}
+}
+defined_text = {
+	name = GetStateOfInterestStateIconTooltipDelayedCountrySpecific
+	#NOTE: dynamic countries require special exceptions
+	text = {
+		localization_key = country_culture|state_of_interest_icon_desc_delayed
+	}
+}
+
+defined_text = {
+	name = GetStateOfInterestStateTitle
+	text = {
+		trigger = { set_temp_variable = { current_state = THIS } }
+		localization_key = "[?owner.GetStateOfInterestStateTitleCountrySpecific]"
+	}
+}
+defined_text = {
+	name = GetStateOfInterestStateTitleCountrySpecific
+	#NOTE: dynamic countries require special exceptions
+	text = {
+		localization_key = country_culture|state_of_interest_state_title
 	}
 }
 

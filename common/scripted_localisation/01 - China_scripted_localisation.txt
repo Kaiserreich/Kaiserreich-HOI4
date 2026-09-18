@@ -3,126 +3,17 @@
 ##############
 
 defined_text = {
+	name = ChinaGetStateProvinceFullTitle
+	text = {
+		localization_key = "[THIS.ChinaGetStateProvinceTitle] [THIS.ChinaGetStateRegionType]"
+	}
+}
+
+defined_text = {
 	name = ChinaGetStateProvinceTitle
 	text = {
-		trigger = { has_state_flag = guangdong_province_state }
-		localization_key = guangdong_province_state
-	}
-	text = {
-		trigger = { has_state_flag = guangxi_province_state }
-		localization_key = guangxi_province_state
-	}
-	text = {
-		trigger = { has_state_flag = zhili_province_state }
-		localization_key = zhili_province_state
-	}
-	text = {
-		trigger = { has_state_flag = henan_province_state }
-		localization_key = henan_province_state
-	}
-	text = {
-		trigger = { has_state_flag = hubei_province_state }
-		localization_key = hubei_province_state
-	}
-	text = {
-		trigger = { has_state_flag = hunan_province_state }
-		localization_key = hunan_province_state
-	}
-	text = {
-		trigger = { has_state_flag = jiangsu_province_state }
-		localization_key = jiangsu_province_state
-	}
-	text = {
-		trigger = { has_state_flag = jiangxi_province_state }
-		localization_key = jiangxi_province_state
-	}
-	text = {
-		trigger = { has_state_flag = shaanxi_province_state }
-		localization_key = shaanxi_province_state
-	}
-	text = {
-		trigger = { has_state_flag = shanxi_province_state }
-		localization_key = shanxi_province_state
-	}
-	text = {
-		trigger = { has_state_flag = shandong_province_state }
-		localization_key = shandong_province_state
-	}
-	text = {
-		trigger = { has_state_flag = anhui_province_state }
-		localization_key = anhui_province_state
-	}
-	text = {
-		trigger = { has_state_flag = zhejiang_province_state }
-		localization_key = zhejiang_province_state
-	}
-	text = {
-		trigger = { has_state_flag = fujian_province_state }
-		localization_key = fujian_province_state
-	}
-	text = {
-		trigger = { has_state_flag = sichuan_province_state }
-		localization_key = sichuan_province_state
-	}
-	text = {
-		trigger = { has_state_flag = guizhou_province_state }
-		localization_key = guizhou_province_state
-	}
-	text = {
-		trigger = { has_state_flag = yunnan_province_state }
-		localization_key = yunnan_province_state
-	}
-	text = {
-		trigger = { has_state_flag = qinghai_province_state }
-		localization_key = qinghai_province_state
-	}
-	text = {
-		trigger = { has_state_flag = gansu_province_state }
-		localization_key = gansu_province_state
-	}
-	text = {
-		trigger = { has_state_flag = ningxia_province_state }
-		localization_key = ningxia_province_state
-	}
-	text = {
-		trigger = { has_state_flag = fengtian_province_state }
-		localization_key = fengtian_province_state
-	}
-	text = {
-		trigger = { has_state_flag = jilin_province_state }
-		localization_key = jilin_province_state
-	}
-	text = {
-		trigger = { has_state_flag = heilongjiang_province_state }
-		localization_key = heilongjiang_province_state
-	}
-	text = {
-		trigger = { has_state_flag = suiyuan_province_state }
-		localization_key = suiyuan_province_state
-	}
-	text = {
-		trigger = { has_state_flag = rehe_province_state }
-		localization_key = rehe_province_state
-	}
-	text = {
-		trigger = { has_state_flag = chahar_province_state }
-		localization_key = chahar_province_state
-	}
-	text = {
-		trigger = { has_state_flag = xinjiang_province_state }
-		localization_key = xinjiang_province_state
-	}
-	text = {
-		trigger = { has_state_flag = taiwan_province_state }
-		localization_key = taiwan_province_state
-	}
-	text = {
-		trigger = { has_state_flag = mongolia_province_state }
-		localization_key = mongolia_province_state
-	}
-	text = {
-		trigger = { has_state_flag = tibet_province_state }
-		localization_key = tibet_province_state
+		trigger = { has_variable = chinese_province_state }
+		localization_key = "chinese_province_state_[?chinese_province_state.GetID]"
 	}
 	text = {
 		localization_key = "BUG - STATE TARGETED IS NOT PART OF CHINA"
@@ -141,14 +32,6 @@ defined_text = {
 		localization_key = CHN_state_is_autonomous_region
 	}
 	text = {
-		trigger = {
-			NOT = {
-				has_dynamic_modifier = {
-					modifier = CHN_autonomous_region_modifier
-					scope = THIS
-				}
-			}
-		}
 		localization_key = CHN_state_is_province
 	}
 }
@@ -466,13 +349,15 @@ defined_text = {
 	text = {
 		trigger = {
 			FROM = {
-				set_temp_variable = { refusal_weight = mtth:china_integration_refusal_chance }
-
-				set_temp_variable = { total_weight = mtth:china_integration_acceptance_chance }
-				add_to_temp_variable = { total_weight = refusal_weight }
-
-				divide_temp_variable = { refusal_weight = total_weight }
-
+				set_temp_variable = {
+					refusal_weight = {
+						value = mtth:china_integration_refusal_chance
+						divide = { #total weight
+							value = mtth:china_integration_refusal_chance
+							add = mtth:china_integration_acceptance_chance
+						}
+					}
+				}
 				check_variable = { refusal_weight > 0 }
 			}
 		}

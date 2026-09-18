@@ -582,8 +582,7 @@ defined_text = {
 	name = USA_GetDefectionChanceMult_Socialist
 	text = {
 		trigger = {
-			set_temp_variable = { multiplier = USA.SPA_strength }
-			multiply_temp_variable = { multiplier = 2.5 }
+			set_temp_variable = { multiplier = { value = USA.SPA_strength multiply = 2.5 } }
 		}
 		localization_key = USA_state_defection_chance_mult_tt
 	}
@@ -593,8 +592,7 @@ defined_text = {
 	name = USA_GetDefectionChanceMult_Longist
 	text = {
 		trigger = {
-			set_temp_variable = { multiplier = USA.Long_strength }
-			multiply_temp_variable = { multiplier = 2.5 }
+			set_temp_variable = { multiplier = { value = USA.Long_strength multiply = 2.5 } }
 		}
 		localization_key = USA_state_defection_chance_mult_tt
 	}

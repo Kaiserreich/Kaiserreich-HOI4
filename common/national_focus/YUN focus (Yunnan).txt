@@ -1167,14 +1167,8 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			if = {
 				limit = { china_is_aligned_with_kmt = yes }
-				custom_effect_tooltip = available_political_advisor
-				show_ideas_tooltip = YUN_wang_fusheng_advisor
-			}
-			hidden_effect = {
-				if = {
-					limit = { china_is_aligned_with_kmt = yes }
-					YUN_wang_fusheng = { CHN_recruit_character_effect = yes }
-				}
+				hidden_effect = { YUN_wang_fusheng = { CHN_recruit_character_effect = yes } }
+				YUN_unlock_YUN_wang_fusheng_advisor_effect = yes
 			}
 			country_event = { id = YUN.lategame.200 days = 1 }
 			custom_effect_tooltip = tooltip_event_allows_choice
@@ -6241,10 +6235,10 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = yunnan_province_state
-						has_state_flag = guizhou_province_state
-						has_state_flag = guangdong_province_state
-						has_state_flag = guangxi_province_state
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 592.id }
+						check_variable = { chinese_province_state = 594.id }
 					}
 				}
 				add_building_construction = {
@@ -8002,7 +7996,7 @@ focus_tree = {
 				category = cat_production
 			}
 			custom_effect_tooltip = tooltip_white_line
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = YUN_liang_shiqiu_advisor
@@ -8870,7 +8864,7 @@ focus_tree = {
 				UPC_sub_enthusiasm_medium_effect = yes
 			}
 			every_state = {
-				limit = { has_state_flag = yunnan_province_state }
+				limit = { check_variable = { chinese_province_state = 325.id } }
 				increase_state_category_by_one_level = yes
 			}
 		}
@@ -9502,7 +9496,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_spreading_popular_education"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			add_tech_bonus = {
 				name = YUN_spreading_popular_education
 				uses = 2
@@ -9672,11 +9666,11 @@ focus_tree = {
 					is_china_claim_area = yes
 					has_resistance = yes
 					OR = {
-						has_state_flag = sichuan_province_state
-						has_state_flag = guizhou_province_state
-						has_state_flag = hunan_province_state
-						has_state_flag = guangxi_province_state
-						has_state_flag = guangdong_province_state
+						check_variable = { chinese_province_state = 605.id }
+						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 602.id }
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 592.id }
 					}
 					is_controlled_by = ROOT
 				}
@@ -9700,7 +9694,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_refuge_for_intellectuals"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			add_tech_bonus = {
 				name = YUN_refuge_for_intellectuals
 				uses = 2
@@ -9782,7 +9776,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = YUN_li_xin_advisor
-			show_ideas_tooltip = YUN_wang_fusheng_advisor
+			YUN_unlock_YUN_wang_fusheng_advisor_effect = yes
 			custom_effect_tooltip = tooltip_white_line
 			YUN_UPC_improve_popular_support_effect = yes
 			hidden_effect = {
@@ -10025,7 +10019,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_a_patriots_war"
 			if = {
-				limit = { NOT = { has_country_flag = unlocked_subunit_militia }  }
+				limit = { NOT = { has_country_flag = unlocked_subunit_militia } }
 				set_country_flag = unlocked_subunit_militia
 				enable_tech_militias = yes
 			}
@@ -10410,21 +10404,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_the_fight_for_human_rights"
 			custom_effect_tooltip = YUN_the_fight_for_human_rights_stab_tt
-			set_temp_variable = { YUN_totalist_pop_temp_var = party_popularity@totalist }
-			set_temp_variable = { YUN_authoritarian_democrat_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { YUN_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			set_temp_variable = { YUN_paternal_autocrat_pop_temp_var = party_popularity@paternal_autocrat }
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@national_populist }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_totalist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_conservative_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_radical_socialist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_syndicalist_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.33 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@totalist
+					add = party_popularity@radical_socialist
+					add = party_popularity@authoritarian_democrat
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@national_populist
+					multiply = -0.33
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -10543,15 +10532,13 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_2_tt
 				IDEOLOGY1 = authoritarian_democrat_coloured IDEOLOGY2 = social_conservative_coloured
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@authoritarian_democrat }
-			set_temp_variable = { YUN_social_conservative_pop_temp_var = ROOT.party_popularity@social_conservative }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_conservative_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@social_conservative
+					add = party_popularity@authoritarian_democrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -10705,15 +10692,13 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_2_tt
 				IDEOLOGY1 = authoritarian_democrat_coloured IDEOLOGY2 = social_conservative_coloured
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@authoritarian_democrat }
-			set_temp_variable = { YUN_social_conservative_pop_temp_var = ROOT.party_popularity@social_conservative }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_conservative_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@social_conservative
+					add = party_popularity@authoritarian_democrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -10859,7 +10844,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_mandatory_public_education"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = YUN_mandatory_public_education_tt
 			custom_effect_tooltip = tooltip_white_line
@@ -11061,13 +11046,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = authoritarian_democrat_coloured
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@authoritarian_democrat }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@authoritarian_democrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -11370,29 +11354,34 @@ focus_tree = {
 				limit = {
 					has_country_flag = YUN_UPC_satellite_election_path_flag
 				}
+				set_temp_variable = { coalition_partner_var = token:market_liberal } #Yeah they're mad but now docile since ultimately still your party.
+				add_to_coalition = yes
 				custom_effect_tooltip = {
 					localization_key = CHN_deduct_stab_relative_to_ideology_tt
 					IDEOLOGY = market_liberal_coloured
 				}
-				set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@market_liberal }
-				set_temp_variable = { coalition_partner_var = token:market_liberal } #Yeah they're mad but now docile since ultimately still your party.
-				add_to_coalition = yes
+				set_temp_variable = {
+					YUN_stability_loss_temp_var = {
+						value = party_popularity@market_liberal
+						multiply = -0.75
+						clamp = { min = -1 max = 0 }
+					}
+				}
 			}
 			else = {
+				set_temp_variable = { coalition_partner_var = token:social_conservative } #Yeah they're mad but now docile since ultimately still your party.
+				add_to_coalition = yes
 				custom_effect_tooltip = {
 					localization_key = CHN_deduct_stab_relative_to_ideology_tt
 					IDEOLOGY = social_conservative_coloured
 				}
-				set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@social_conservative }
-				set_temp_variable = { coalition_partner_var = token:social_conservative } #Yeah they're mad but now docile since ultimately still your party.
-				add_to_coalition = yes
-			}
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+				set_temp_variable = {
+					YUN_stability_loss_temp_var = {
+						value = party_popularity@social_conservative
+						multiply = -0.75
+						clamp = { min = -1 max = 0 }
+					}
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -12546,7 +12535,7 @@ focus_tree = {
 			RKT_sub_zeal_large_effect = yes
 			YUN_PSC_large_effect = yes
 			custom_effect_tooltip = tooltip_white_line
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			unlock_decision_tooltip = RKT_reform_the_administration
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = available_political_advisor
@@ -12872,7 +12861,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_incentivising_the_enlightenment"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			add_tech_bonus = {
 				name = YUN_incentivising_the_enlightenment
 				uses = 2
@@ -12972,6 +12961,7 @@ focus_tree = {
 			add_political_power = 35
 			YUN_3AR_medium_effect = yes
 			YUN_PSC_medium_effect = yes
+			YUN_improve_dian_qian_divide_effect = yes #KMT Dian-Qian 2 (Satellite)
 			custom_effect_tooltip = tooltip_white_line
 			if = {
 				limit = { is_subject_of = CHI }
@@ -13057,8 +13047,7 @@ focus_tree = {
 				days = 365
 			}
 			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = YUN_wang_fusheng_advisor
+			YUN_unlock_YUN_wang_fusheng_advisor_effect = yes
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -13374,7 +13363,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_expanding_kunming_university"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			325 = { increase_state_category_by_one_level = yes }
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -13947,7 +13936,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_expand_public_education"
 			custom_effect_tooltip = YUN_expand_public_education_tt
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			custom_effect_tooltip = tooltip_white_line
 			YUN_expand_public_education_effect = yes
 			custom_effect_tooltip = tooltip_white_line
@@ -14241,7 +14230,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed YUN_academia_sinica"
 			if = {
 				limit = { has_global_flag = china_united }
-				add_research_slot_until_five = yes
+				china_add_research_slots = yes
 			}
 			else = {
 				china_add_research_slots = yes #Backup in case you missed it earlier in the tree.
@@ -15375,7 +15364,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_preliminary_plan_for_education"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			YUN_CCC_large_effect = yes
 			hidden_effect = { country_event = { id = YUN.endgame.108 days = 21 } }
 		}
@@ -15660,13 +15649,13 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_non_ideology_tt
 				IDEOLOGY = paternal_autocrat_coloured
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			subtract_from_temp_variable = { YUN_stability_loss_temp_var = 1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@paternal_autocrat
+					subtract = 1
+					multiply = 0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -15730,11 +15719,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_curtail_internal_disunity"
 			custom_effect_tooltip = YUN_curtail_internal_disunity_tt
-			set_temp_variable = { YUN_autdem_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { YUN_party_temp_var = YUN_autdem_pop_temp_var }
-			multiply_temp_variable = { YUN_autdem_pop_temp_var = 250 }
-			multiply_temp_variable = { YUN_party_temp_var = 0.5 }
+			set_temp_variable = { YUN_autdem_pop_temp_var = { value = party_popularity@authoritarian_democrat multiply = 250 } }
 			add_political_power = YUN_autdem_pop_temp_var
+			set_temp_variable = { YUN_party_temp_var = { value = party_popularity@authoritarian_democrat multiply = 0.5 } }
 			add_war_support = YUN_party_temp_var
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
@@ -15813,13 +15800,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = paternal_autocrat_coloured
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.50 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@paternal_autocrat
+					multiply = -0.5
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -16047,10 +16033,10 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = qinghai_province_state
-						has_state_flag = gansu_province_state
-						has_state_flag = ningxia_province_state
-						has_state_flag = suiyuan_province_state
+						check_variable = { chinese_province_state = 353.id }
+						check_variable = { chinese_province_state = 283.id }
+						check_variable = { chinese_province_state = 348.id }
+						check_variable = { chinese_province_state = 621.id }
 						china_is_chinese_frontier_trigger = yes
 					}
 				}
@@ -16110,7 +16096,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_the_militarisation_of_education"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			army_experience = 20
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -16277,19 +16263,15 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = YUN_a_second_reorganisation_effect_tt
-			set_temp_variable = { YUN_market_liberal_pop_temp_var = party_popularity@market_liberal }
-			set_temp_variable = { YUN_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { YUN_authoritarian_democrat_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_market_liberal_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_national_populist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_authoritarian_democrat_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@market_liberal
+					add = party_popularity@authoritarian_democrat
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@national_populist
+					multiply = -0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			every_character = {
@@ -16437,20 +16419,20 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = guangxi_province_state
-						has_state_flag = yunnan_province_state
-						has_state_flag = sichuan_province_state
-						has_state_flag = guizhou_province_state
-						has_state_flag = henan_province_state
-						has_state_flag = jiangxi_province_state
-						has_state_flag = fujian_province_state
-						has_state_flag = shaanxi_province_state
-						has_state_flag = chahar_province_state
-						has_state_flag = suiyuan_province_state
-						has_state_flag = gansu_province_state
-						has_state_flag = heilongjiang_province_state
-						has_state_flag = qinghai_province_state
-						has_state_flag = xinjiang_province_state
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 605.id }
+						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 607.id }
+						check_variable = { chinese_province_state = 600.id }
+						check_variable = { chinese_province_state = 595.id }
+						check_variable = { chinese_province_state = 622.id }
+						check_variable = { chinese_province_state = 611.id }
+						check_variable = { chinese_province_state = 621.id }
+						check_variable = { chinese_province_state = 283.id }
+						check_variable = { chinese_province_state = 714.id }
+						check_variable = { chinese_province_state = 353.id }
+						check_variable = { chinese_province_state = 617.id }
 					}
 				}
 				add_dynamic_modifier = {
@@ -16987,21 +16969,16 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_spiritual_authoritarianism"
 			custom_effect_tooltip = YUN_spiritual_authoritarianism_effect_tt
-			set_temp_variable = { YUN_social_liberal_pop_temp_var = party_popularity@social_liberal }
-			set_temp_variable = { YUN_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { YUN_totalist_pop_temp_var = party_popularity@totalist }
-			set_temp_variable = { YUN_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@syndicalist }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_liberal_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_conservative_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_totalist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_radical_socialist_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@totalist
+					add = party_popularity@syndicalist
+					add = party_popularity@radical_socialist
+					add = party_popularity@social_liberal
+					add = party_popularity@social_conservative
+					multiply = -0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			every_character = {
@@ -17013,9 +16990,9 @@ focus_tree = {
 			}
 			army_experience = 100
 			custom_effect_tooltip = tooltip_white_line
+			add_dynamic_modifier = { modifier = YUN_spiritual_authoritarianism_effect }
 			custom_effect_tooltip = YUN_spiritual_authoritarianism_dynamic_modifier_tt
 			hidden_effect = {
-				add_dynamic_modifier = { modifier = YUN_spiritual_authoritarianism_effect }
 				if = {
 					limit = { is_subject = no }
 					news_event = china_events.351 #The Whampoa Clique Returns
@@ -17634,7 +17611,6 @@ focus_tree = {
 			hidden_effect = {
 				set_temp_variable = { trait_token = token:YUN_the_crude_reformist }
 				YUN_he_yingqin = { add_trait_to_all_country_leader_roles = yes }
-				country_event = { id = YUN.endgame.044 days = 14 }
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -17976,19 +17952,15 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = YUN_purge_the_old_party_effect_tt
-			set_temp_variable = { YUN_market_liberal_pop_temp_var = party_popularity@market_liberal }
-			set_temp_variable = { YUN_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			set_temp_variable = { YUN_authoritarian_democrat_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_market_liberal_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_democrat_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_authoritarian_democrat_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@social_democrat
+					add = party_popularity@market_liberal
+					add = party_popularity@authoritarian_democrat
+					add = party_popularity@paternal_autocrat
+					multiply = -0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			every_character = {
@@ -18561,23 +18533,17 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_under_the_auspices_of_workers_and_peasants"
 			custom_effect_tooltip = YUN_under_the_auspices_of_workers_and_peasants_effect_tt
-			set_temp_variable = { YUN_social_liberal_pop_temp_var = party_popularity@social_liberal }
-			set_temp_variable = { YUN_market_liberal_pop_temp_var = party_popularity@market_liberal }
-			set_temp_variable = { YUN_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { YUN_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { YUN_authoritarian_democrat_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_market_liberal_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_liberal_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_conservative_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_national_populist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_authoritarian_democrat_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@social_liberal
+					add = party_popularity@market_liberal
+					add = party_popularity@social_conservative
+					add = party_popularity@authoritarian_democrat
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@national_populist
+					multiply = -0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -18696,7 +18662,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_to_enact_minsheng_geming"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			add_stability = 0.05
 			add_war_support = 0.05
 			add_popularity = {
@@ -18717,11 +18683,7 @@ focus_tree = {
 				random_select_amount = 6
 				increase_state_category_by_one_level = yes
 			}
-			if = {
-				limit = { NOT = { has_character = YUN_wang_fusheng } }
-				custom_effect_tooltip = available_political_advisor
-				show_ideas_tooltip = YUN_wang_fusheng_advisor
-			}
+			YUN_unlock_YUN_wang_fusheng_advisor_effect = yes
 			if = {
 				limit = { NOT = { has_character = YUN_li_xin } }
 				custom_effect_tooltip = available_political_advisor
@@ -18878,23 +18840,17 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_the_partys_most_loyal"
 			custom_effect_tooltip = YUN_the_partys_most_loyal_effect_tt
-			set_temp_variable = { YUN_syndicalist_pop_temp_var = party_popularity@syndicalist }
-			set_temp_variable = { YUN_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			set_temp_variable = { YUN_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			set_temp_variable = { YUN_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { YUN_authoritarian_democrat_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_syndicalist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_radical_socialist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_democrat_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_national_populist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_authoritarian_democrat_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@syndicalist
+					add = party_popularity@radical_socialist
+					add = party_popularity@social_democrat
+					add = party_popularity@authoritarian_democrat
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@national_populist
+					multiply = -0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -19019,11 +18975,11 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						has_state_flag = guangxi_province_state
-						has_state_flag = yunnan_province_state
-						has_state_flag = heilongjiang_province_state
-						has_state_flag = jilin_province_state
-						has_state_flag = fengtian_province_state
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 714.id }
+						check_variable = { chinese_province_state = 886.id }
+						check_variable = { chinese_province_state = 716.id }
 						china_is_chinese_frontier_trigger = yes
 					}
 					is_owned_and_controlled_by_ROOT_or_subject = yes
@@ -19056,7 +19012,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_revolution_safeguarded_by_its_warriors"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			effect_tooltip = { add_country_leader_trait = YUN_safeguarding_chinese_democracy_trait }
 			hidden_effect = {
 				set_temp_variable = { trait_token = token:YUN_safeguarding_chinese_democracy_trait }
@@ -19256,25 +19212,18 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_flourish_of_the_kuomintang_liberals"
 			custom_effect_tooltip = YUN_flourish_of_the_kuomintang_liberals_effect_tt
-			set_temp_variable = { YUN_social_conservative_pop_temp_var = party_popularity@social_conservative }
-			set_temp_variable = { YUN_national_populist_pop_temp_var = party_popularity@national_populist }
-			set_temp_variable = { YUN_social_democrat_pop_temp_var = party_popularity@social_democrat }
-			set_temp_variable = { YUN_radical_socialist_pop_temp_var = party_popularity@radical_socialist }
-			set_temp_variable = { YUN_syndicalist_pop_temp_var = party_popularity@syndicalist }
-			set_temp_variable = { YUN_authoritarian_democrat_pop_temp_var = party_popularity@authoritarian_democrat }
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_democrat_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_radical_socialist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_syndicalist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_conservative_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_national_populist_pop_temp_var }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_authoritarian_democrat_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@syndicalist
+					add = party_popularity@radical_socialist
+					add = party_popularity@social_democrat
+					add = party_popularity@social_conservative
+					add = party_popularity@authoritarian_democrat
+					add = party_popularity@paternal_autocrat
+					add = party_popularity@national_populist
+					multiply = -0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -19434,33 +19383,21 @@ focus_tree = {
 						QIE_gu_zhongxiu = { is_second_in_command = yes }
 					}
 				}
-				set_temp_variable = { YUN_political_power_gain_var = ROOT.party_popularity@market_liberal }
-				multiply_temp_variable = { YUN_political_power_gain_var = 100 }
-				clamp_temp_variable = {
-					var = YUN_political_power_gain_var
-					min = 0
-					max = 100
-				}
-				add_political_power = YUN_political_power_gain_var
+				add_political_power = party_popularity_100@market_liberal
 			}
-			if = {  #MCC/Zhu Peide
+			else_if = {  #MCC/Zhu Peide
 				limit = {
 					OR = {
 						if = {
 							limit = { YUN = { has_character = CHI_sun_fo } }
 							CHI_sun_fo = { is_second_in_command = yes }
 						}
+						else = { always = no }
 						GXC_zou_lu = { is_second_in_command = yes }
 						GXC_hu_hanmin = { is_second_in_command = yes }
 					}
 				}
-				set_temp_variable = { YUN_stability_gain_var = ROOT.party_popularity@social_conservative }
-				multiply_temp_variable = { YUN_stability_gain_var = 0.3 }
-				clamp_temp_variable = {
-					var = YUN_stability_gain_var
-					min = 0
-					max = 100
-				}
+				set_temp_variable = { YUN_stability_gain_var = { value = party_popularity@social_conservative multiply = 0.3 } }
 				add_stability = YUN_stability_gain_var
 			}
 		}
@@ -19590,7 +19527,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_rule_of_national_experts_and_gentlemen"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			custom_effect_tooltip = tooltip_white_line
 			add_timed_idea = {
 				idea = YUN_handshakes_in_the_business_world
@@ -19970,7 +19907,7 @@ focus_tree = {
 			YUN_YCD_large_effect = yes
 			YUN_CMS_large_effect = yes
 			custom_effect_tooltip = tooltip_white_line
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			custom_effect_tooltip = tooltip_white_line
 			add_tech_bonus = {
 				name = YUN_expanding_our_universities
@@ -20158,7 +20095,7 @@ focus_tree = {
 		ai_will_do = { base = 100 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_kunming_as_a_safehaven"
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			custom_effect_tooltip = tooltip_white_line
 			if = {
 				limit = { YUN_cun_shusheng = { is_political_advisor = yes } }
@@ -20346,7 +20283,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed YUN_the_vigorous_notion_of_sacrifice"
 			if = {
-				limit = { NOT = { has_country_flag = unlocked_subunit_militia }  }
+				limit = { NOT = { has_country_flag = unlocked_subunit_militia } }
 				set_country_flag = unlocked_subunit_militia
 				enable_tech_militias = yes
 			}
@@ -21278,13 +21215,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = paternal_autocrat_coloured
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.5 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@paternal_autocrat
+					multiply = -0.5
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -21590,15 +21526,13 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_2_tt
 				IDEOLOGY1 = social_liberal_coloured IDEOLOGY2 = paternal_autocrat_coloured
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			set_temp_variable = { YUN_social_liberal_pop_temp_var = ROOT.party_popularity@social_liberal }
-			add_to_temp_variable = { YUN_stability_loss_temp_var = YUN_social_liberal_pop_temp_var }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.5 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@social_liberal
+					add = party_popularity@paternal_autocrat
+					multiply = -0.5
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -21737,13 +21671,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = authoritarian_democrat_coloured
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@authoritarian_democrat }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@authoritarian_democrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -21842,13 +21775,12 @@ focus_tree = {
 				localization_key = CHN_deduct_stab_relative_to_ideology_tt
 				IDEOLOGY = paternal_autocrat_coloured
 			}
-			set_temp_variable = { YUN_stability_loss_temp_var = ROOT.party_popularity@paternal_autocrat }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = -1 }
-			multiply_temp_variable = { YUN_stability_loss_temp_var = 0.75 }
-			clamp_temp_variable = {
-				var = YUN_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				YUN_stability_loss_temp_var = {
+					value = party_popularity@paternal_autocrat
+					multiply = -0.75
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = YUN_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line
@@ -22040,13 +21972,13 @@ focus_tree = {
 				limit = {
 					is_china_claim_area = yes
 					OR = {
-						has_state_flag = yunnan_province_state
-						has_state_flag = guangxi_province_state
-						has_state_flag = sichuan_province_state
-						has_state_flag = hunan_province_state
-						has_state_flag = henan_province_state
-						has_state_flag = sichuan_province_state
-						has_state_flag = shaanxi_province_state
+						check_variable = { chinese_province_state = 325.id }
+						check_variable = { chinese_province_state = 594.id }
+						check_variable = { chinese_province_state = 605.id }
+						check_variable = { chinese_province_state = 602.id }
+						check_variable = { chinese_province_state = 607.id }
+						check_variable = { chinese_province_state = 605.id }
+						check_variable = { chinese_province_state = 622.id }
 					}
 				}
 				add_extra_state_shared_building_slots = 2
@@ -22074,7 +22006,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed YUN_on_the_issue_of_those_of_merit"
 			add_stability = 0.05
 			add_war_support = 0.05
-			add_research_slot_until_five = yes
+			china_add_research_slots = yes
 			custom_effect_tooltip = tooltip_white_line
 			QIE = {
 				QIE_wellington_koo = { CHN_recruit_character_effect = yes }

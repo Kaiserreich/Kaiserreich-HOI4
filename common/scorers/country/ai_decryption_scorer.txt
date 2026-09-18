@@ -22,9 +22,13 @@ ai_decryption_target_scorer = {
 			modifier = {
 				FROM = {
 					is_decrypting = PREV
-					set_temp_variable = { temp_score = decryption_progress@PREV }
-					multiply_temp_variable = { temp_score = 100 }
-					add_to_temp_variable = { temp_score = 20 }
+					set_temp_variable = {
+						temp_score = {
+							value = ecryption_progress@PREV
+							multiply = 100
+							add = 20
+						}
+					}
 				}
 				add = temp_score
 			}
@@ -185,10 +189,14 @@ ai_decryption_target_scorer = {
 
 			# larger countries are a bit more prio
 			modifier = {
-				set_temp_variable = { temp_score = owned_states^num }
-				divide_temp_variable = { temp_score = 20 }
-				add_to_temp_variable = { temp_score = 1.0 }
-				clamp_temp_variable = { var = temp_score max = 1.2 }
+				set_temp_variable = {
+					temp_score = {
+						value = num_owned_states
+						multiply = 0.05
+						add = 1
+						clamp = { min = 0 max = 1.2 }
+					}
+				}
 				factor = temp_score
 			}
 		}

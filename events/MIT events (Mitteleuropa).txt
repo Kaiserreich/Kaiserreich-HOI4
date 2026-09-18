@@ -204,21 +204,27 @@ country_event = { #Agenda election results
 			}
 			modifier = {
 				factor = 0
-				set_temp_variable = { support_comparison = event_target:MIT_second_place_agenda.agenda_score }
-				divide_temp_variable = { support_comparison = event_target:MIT_first_place_agenda.agenda_score }
-				check_variable = { support_comparison < 0.3 }
+				check_expr = {
+					value = event_target:MIT_second_place_agenda.agenda_score
+					divide = event_target:MIT_first_place_agenda.agenda_score
+					less_than = 0.3
+				}
 			}
 			modifier = {
 				factor = 0.25
-				set_temp_variable = { support_comparison = event_target:MIT_second_place_agenda.agenda_score }
-				divide_temp_variable = { support_comparison = event_target:MIT_first_place_agenda.agenda_score }
-				check_variable = { support_comparison < 0.5 }
+				check_expr = {
+					value = event_target:MIT_second_place_agenda.agenda_score
+					divide = event_target:MIT_first_place_agenda.agenda_score
+					less_than = 0.5
+				}
 			}
 			modifier = {
 				factor = 0.5
-				set_temp_variable = { support_comparison = event_target:MIT_second_place_agenda.agenda_score }
-				divide_temp_variable = { support_comparison = event_target:MIT_first_place_agenda.agenda_score }
-				check_variable = { support_comparison < 0.75 }
+				check_expr = {
+					value = event_target:MIT_second_place_agenda.agenda_score
+					divide = event_target:MIT_first_place_agenda.agenda_score
+					less_than = 0.75
+				}
 			}
 			modifier = {
 				add = 100
@@ -260,39 +266,51 @@ country_event = { #Agenda election results
 			}
 			modifier = {
 				factor = 0
-				set_temp_variable = { support_comparison = event_target:MIT_third_place_agenda.agenda_score }
-				divide_temp_variable = { support_comparison = event_target:MIT_first_place_agenda.agenda_score }
-				check_variable = { support_comparison < 0.3 }
+				check_expr = {
+					value = event_target:MIT_third_place_agenda.agenda_score
+					divide = event_target:MIT_first_place_agenda.agenda_score
+					less_than = 0.3
+				}
 			}
 			modifier = {
 				factor = 0
-				set_temp_variable = { support_comparison = event_target:MIT_third_place_agenda.agenda_score }
-				divide_temp_variable = { support_comparison = event_target:MIT_second_place_agenda.agenda_score }
-				check_variable = { support_comparison < 0.6 }
+				check_expr = {
+					value = event_target:MIT_third_place_agenda.agenda_score
+					divide = event_target:MIT_second_place_agenda.agenda_score
+					less_than = 0.6
+				}
 			}
 			modifier = {
 				factor = 0.25
-				set_temp_variable = { support_comparison = event_target:MIT_third_place_agenda.agenda_score }
-				divide_temp_variable = { support_comparison = event_target:MIT_first_place_agenda.agenda_score }
-				check_variable = { support_comparison < 0.5 }
+				check_expr = {
+					value = event_target:MIT_third_place_agenda.agenda_score
+					divide = event_target:MIT_first_place_agenda.agenda_score
+					less_than = 0.5
+				}
 			}
 			modifier = {
 				factor = 0.25
-				set_temp_variable = { support_comparison = event_target:MIT_third_place_agenda.agenda_score }
-				divide_temp_variable = { support_comparison = event_target:MIT_second_place_agenda.agenda_score }
-				check_variable = { support_comparison < 0.75 }
+				check_expr = {
+					value = event_target:MIT_third_place_agenda.agenda_score
+					divide = event_target:MIT_second_place_agenda.agenda_score
+					less_than = 0.75
+				}
 			}
 			modifier = {
 				factor = 0.5
-				set_temp_variable = { support_comparison = event_target:MIT_third_place_agenda.agenda_score }
-				divide_temp_variable = { support_comparison = event_target:MIT_first_place_agenda.agenda_score }
-				check_variable = { support_comparison < 0.75 }
+				check_expr = {
+					value = event_target:MIT_third_place_agenda.agenda_score
+					divide = event_target:MIT_first_place_agenda.agenda_score
+					less_than = 0.75
+				}
 			}
 			modifier = {
 				factor = 0.5
-				set_temp_variable = { support_comparison = event_target:MIT_third_place_agenda.agenda_score }
-				divide_temp_variable = { support_comparison = event_target:MIT_second_place_agenda.agenda_score }
-				check_variable = { support_comparison < 1 }
+				check_expr = {
+					value = event_target:MIT_third_place_agenda.agenda_score
+					divide = event_target:MIT_second_place_agenda.agenda_score
+					less_than = 1
+				}
 			}
 			modifier = {
 				add = 100
@@ -941,10 +959,8 @@ country_event = { #FROM Leaves Mitteleuropa!
 		trigger = {
 			FROM = {
 				has_socialist_government = no
-				AND = {
-					is_in_faction = yes
-					NOT = { is_in_faction_with = GER }
-				}
+				is_in_faction = yes
+				NOT = { is_in_faction_with = GER }
 			}
 		}
 	}

@@ -90,17 +90,11 @@ defined_text = {
 		localization_key = POL_election1
 	}
 	text = {
-		trigger = {
-			check_variable = { POL.POL_centrolew_victory > 49 }
-			check_variable = { POL.POL_centrolew_victory < 61 }
-		}
+		trigger = { check_variable = { POL.POL_centrolew_victory > 49 } }
 		localization_key = POL_election2
 	}
 	text = {
-		trigger = {
-			check_variable = { POL.POL_centrolew_victory > 29 }
-			check_variable = { POL.POL_centrolew_victory < 50 }
-		}
+		trigger = { check_variable = { POL.POL_centrolew_victory > 29 } }
 		localization_key = POL_election3
 	}
 	text = {
@@ -114,17 +108,11 @@ defined_text = {
 		localization_key = POL_election1
 	}
 	text = {
-		trigger = {
-			check_variable = { POL.POL_circle_victory > 49 }
-			check_variable = { POL.POL_circle_victory < 61 }
-		}
+		trigger = { check_variable = { POL.POL_circle_victory > 49 } }
 		localization_key = POL_election2
 	}
 	text = {
-		trigger = {
-			check_variable = { POL.POL_circle_victory > 29 }
-			check_variable = { POL.POL_circle_victory < 50 }
-		}
+		trigger = { check_variable = { POL.POL_circle_victory > 29 } }
 		localization_key = POL_election3
 	}
 	text = {
@@ -249,24 +237,8 @@ defined_text = {
 defined_text = {
 	name = POL_ruling_party
 	text = {
-		trigger = { has_government = market_liberal }
-		localization_key = colour_gradient_yellow
-	}
-	text = {
-		trigger = { has_government = social_conservative }
-		localization_key = colour_soccon
-	}
-	text = {
-		trigger = { has_government = authoritarian_democrat }
-		localization_key = colour_autdem
-	}
-	text = {
-		trigger = { has_government = social_democrat }
-		localization_key = colour_socdem
-	}
-	text = {
-		trigger = { has_government = social_liberal }
-		localization_key = colour_soclib
+		trigger = { has_democratic_government = yes }
+		localization_key = "[GetCoalitionTooltipColour]"
 	}
 	text = {
 		localization_key = colour_white

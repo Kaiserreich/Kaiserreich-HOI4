@@ -283,12 +283,20 @@ NEP_join_overlord_faction_effect = {
 
 NEP_check_influence = {
 	NEP = {
-		set_variable = { var = NEP_relative_HND_influence value = NEP.NEP_conspiracy_influence_var_HND }
-		subtract_from_variable = { var = NEP_relative_HND_influence value = NEP_conspiracy_influence_var_RAJ }
-		clamp_variable = { var = NEP_relative_HND_influence min = 0 }
-		set_variable = { var = NEP_relative_RAJ_influence value = NEP.NEP_conspiracy_influence_var_RAJ }
-		subtract_from_variable = { var = NEP_relative_RAJ_influence value = NEP_conspiracy_influence_var_HND }
-		clamp_variable = { var = NEP_relative_RAJ_influence min = 0 }
+		set_variable = {
+			NEP_relative_HND_influence = {
+				value = NEP.NEP_conspiracy_influence_var_HND
+				subtract = NEP_conspiracy_influence_var_RAJ
+				clamp = { min = 0 max = 1000 }
+			}
+		}
+		set_variable = {
+			NEP_relative_RAJ_influence = {
+				value = NEP.NEP_conspiracy_influence_var_RAJ
+				subtract = NEP_conspiracy_influence_var_HND
+				clamp = { min = 0 max = 1000 }
+			}
+		}
 	}
 }
 
@@ -298,9 +306,11 @@ NEP_change_influence_FROM = {
 			localization_key = NEP_conspiracy_influence_change_tooltip
 			COUNTRY = "[FROM.GetTag]"
 		}
-		NEP = {
-			add_to_variable = { NEP.NEP_conspiracy_influence_var_@FROM = NEP_conspiracy_influence_change }
-			clamp_variable = { var = NEP.NEP_conspiracy_influence_var_@FROM min = 0 }
+		add_to_variable = {
+			NEP.NEP_conspiracy_influence_var_@FROM = {
+				value = NEP_conspiracy_influence_change
+				clamp = { min = { value = NEP.NEP_conspiracy_influence_var_@FROM multiply = -1 } max = 1000 }
+			}
 		}
 	}
 	NEP_check_influence = yes
@@ -312,9 +322,11 @@ NEP_change_influence_ROOT = {
 			localization_key = NEP_conspiracy_influence_change_tooltip
 			COUNTRY = "[ROOT.GetTag]"
 		}
-		NEP = {
-			add_to_variable = { NEP.NEP_conspiracy_influence_var_@ROOT = NEP_conspiracy_influence_change }
-			clamp_variable = { var = NEP.NEP_conspiracy_influence_var_@ROOT min = 0 }
+		add_to_variable = {
+			NEP.NEP_conspiracy_influence_var_@ROOT = {
+				value = NEP_conspiracy_influence_change
+				clamp = { min = { value = NEP.NEP_conspiracy_influence_var_@ROOT multiply = -1 } max = 1000 }
+			}
 		}
 	}
 	NEP_check_influence = yes
@@ -326,9 +338,11 @@ NEP_change_influence_HND = {
 			localization_key = NEP_conspiracy_influence_change_tooltip
 			COUNTRY = "[HND.GetTag]"
 		}
-		NEP = {
-			add_to_variable = { NEP.NEP_conspiracy_influence_var_@HND = NEP_conspiracy_influence_change }
-			clamp_variable = { var = NEP.NEP_conspiracy_influence_var_@HND min = 0 }
+		add_to_variable = {
+			NEP.NEP_conspiracy_influence_var_@HND = {
+				value = NEP_conspiracy_influence_change
+				clamp = { min = { value = NEP.NEP_conspiracy_influence_var_@HND multiply = -1 } max = 1000 }
+			}
 		}
 	}
 	NEP_check_influence = yes
@@ -340,9 +354,11 @@ NEP_change_influence_RAJ = {
 			localization_key = NEP_conspiracy_influence_change_tooltip
 			COUNTRY = "[RAJ.GetTag]"
 		}
-		NEP = {
-			add_to_variable = { NEP.NEP_conspiracy_influence_var_@RAJ = NEP_conspiracy_influence_change }
-			clamp_variable = { var = NEP.NEP_conspiracy_influence_var_@RAJ min = 0 }
+		add_to_variable = {
+			NEP.NEP_conspiracy_influence_var_@RAJ = {
+				value = NEP_conspiracy_influence_change
+				clamp = { min = { value = NEP.NEP_conspiracy_influence_var_@RAJ multiply = -1 } max = 1000 }
+			}
 		}
 	}
 	NEP_check_influence = yes

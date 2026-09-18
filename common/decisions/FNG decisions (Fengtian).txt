@@ -312,7 +312,8 @@ FNG_grand_marshals_favor_category = {
 	}
 }
 
-FNG_fixing_the_economy_category = { # Wang Yongjiang's Legacy
+FNG_fixing_the_economy_category = {
+	# Wang Yongjiang's Legacy
 	FNG_Centralise_the_Banks = {
 		icon = GFX_decision_hol_attract_foreign_investors
 
@@ -447,7 +448,8 @@ FNG_fixing_the_economy_category = { # Wang Yongjiang's Legacy
 		fixed_random_seed = no
 	}
 
-	FNG_Encourage_Chinese_Investment = { #Solicit Chinese Investment
+	FNG_Encourage_Chinese_Investment = {
+		#Solicit Chinese Investment
 		icon = GFX_decision_give_cash
 
 		allowed = { always = no }
@@ -635,7 +637,8 @@ FNG_fixing_the_economy_category = { # Wang Yongjiang's Legacy
 		fixed_random_seed = no
 	}
 
-	FNG_Encourage_Russian_Investment = { #Solicit Russian Investment
+	FNG_Encourage_Russian_Investment = {
+		#Solicit Russian Investment
 		icon = GFX_decision_give_cash
 
 		allowed = { always = no }
@@ -815,7 +818,8 @@ FNG_fixing_the_economy_category = { # Wang Yongjiang's Legacy
 		fixed_random_seed = no
 	}
 
-	FNG_Encourage_Japanese_Investment = { #Solicit Japanese Investment
+	FNG_Encourage_Japanese_Investment = {
+		#Solicit Japanese Investment
 		icon = GFX_decision_give_cash
 
 		allowed = { always = no }
@@ -2277,7 +2281,8 @@ FNG_Preparing_For_The_Princes_Visit = {
 }
 
 FNG_railways = {
-	FNG_Break_Mantetsu_Monopoly = { #Break Mantetsu's Monopoly
+	FNG_Break_Mantetsu_Monopoly = {
+		#Break Mantetsu's Monopoly
 		icon = GFX_decision_train
 
 		available = {
@@ -2929,8 +2934,10 @@ FNG_railways = {
 	}
 }
 
-FNG_foreign_policy = { #The Road to Reclamation
-	FNG_Denounce_Qing_Monarchism = { #Denounce Qing Monarchism
+FNG_foreign_policy = {
+	#The Road to Reclamation
+	FNG_Denounce_Qing_Monarchism = {
+		#Denounce Qing Monarchism
 		icon = GFX_decision_eng_support_imperialist_coup
 
 		allowed = { always = no }
@@ -3031,7 +3038,8 @@ FNG_foreign_policy = { #The Road to Reclamation
 		}
 		fixed_random_seed = no
 	}
-	FNG_National_Irredentism = { #Promote National Irredentism
+	FNG_National_Irredentism = {
+		#Promote National Irredentism
 		icon = GFX_decision_generic_civil_support
 		priority = 3
 
@@ -3274,53 +3282,45 @@ FNG_foreign_policy = { #The Road to Reclamation
 				}
 				else_if = {
 					limit = {
-						AND = {
-							OR = {
-								NOT = { 608 = { is_core_of = FNG } } #Beijing
-								NOT = { 608 = { is_owned_by = FNG } } #controlled cores don't count towards surrender limit, only owned cores do
-							}
-							OR = {
-								NOT = { 609 = { is_core_of = FNG } } #Tianjin
-								NOT = { 609 = { is_owned_by = FNG } } #controlled cores don't count towards surrender limit, only owned cores do
-							}
+						OR = {
+							NOT = { 608 = { is_core_of = FNG } } #Beijing
+							NOT = { 608 = { is_owned_by = FNG } } #controlled cores don't count towards surrender limit, only owned cores do
+						}
+						OR = {
+							NOT = { 609 = { is_core_of = FNG } } #Tianjin
+							NOT = { 609 = { is_owned_by = FNG } } #controlled cores don't count towards surrender limit, only owned cores do
 						}
 					}
 					surrender_progress > 0.1 #Fengtian should call in Japan often if they dont have Beijing or Tianjin
 				}
 				else_if = {
 					limit = {
-						AND = {
-							609 = { is_core_of = FNG } #Tianjin
-							609 = { is_owned_by = FNG } #controlled cores don't count towards surrender limit, only owned cores do
-							OR = {
-								NOT = { 608 = { is_core_of = FNG } } #Beijing
-								NOT = { 608 = { is_owned_by = FNG } } #controlled cores don't count towards surrender limit, only owned cores do
-							}
+						609 = { is_core_of = FNG } #Tianjin
+						609 = { is_owned_by = FNG } #controlled cores don't count towards surrender limit, only owned cores do
+						OR = {
+							NOT = { 608 = { is_core_of = FNG } } #Beijing
+							NOT = { 608 = { is_owned_by = FNG } } #controlled cores don't count towards surrender limit, only owned cores do
 						}
 					}
 					surrender_progress > 0.2 #Fengtian should call in Japan less often if they have Tianjin but not Beijing
 				}
 				else_if = {
 					limit = {
-						AND = {
-							608 = { is_core_of = FNG } #Beijing
-							608 = { is_owned_by = FNG } #controlled cores don't count towards surrender limit, only owned cores do
-							OR = {
-								NOT = { 609 = { is_core_of = FNG } } #Tianjin
-								NOT = { 609 = { is_owned_by = FNG } } #controlled cores don't count towards surrender limit, only owned cores do
-							}
+						608 = { is_core_of = FNG } #Beijing
+						608 = { is_owned_by = FNG } #controlled cores don't count towards surrender limit, only owned cores do
+						OR = {
+							NOT = { 609 = { is_core_of = FNG } } #Tianjin
+							NOT = { 609 = { is_owned_by = FNG } } #controlled cores don't count towards surrender limit, only owned cores do
 						}
 					}
 					surrender_progress > 0.30 #Fengtian should call in Japan even less often if they have Beijing but not Tianjin
 				}
 				else_if = {
 					limit = {
-						AND = {
-							608 = { is_core_of = FNG } #Beijing
-							608 = { is_owned_by = FNG } #controlled cores don't count towards surrender limit, only owned cores do
-							609 = { is_core_of = FNG } #Tianjin
-							609 = { is_owned_by = FNG } #controlled cores don't count towards surrender limit, only owned cores do
-						}
+						608 = { is_core_of = FNG } #Beijing
+						608 = { is_owned_by = FNG } #controlled cores don't count towards surrender limit, only owned cores do
+						609 = { is_core_of = FNG } #Tianjin
+						609 = { is_owned_by = FNG } #controlled cores don't count towards surrender limit, only owned cores do
 					}
 					surrender_progress > 0.40 #Fengtian should call in Japan even less often if they have both Beijing and Tianjin
 				}
@@ -4650,7 +4650,8 @@ FNG_Commission_Japanese_Ships = {
 	}
 }
 
-FNG_Restoring_Order = { #Restoring Order to Manchuria
+FNG_Restoring_Order = {
+	#Restoring Order to Manchuria
 	FNG_Crush_the_Old_Guard = {
 		icon = GFX_decision_generic_ignite_civil_war
 

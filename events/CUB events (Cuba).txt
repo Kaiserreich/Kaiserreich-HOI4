@@ -630,7 +630,7 @@ country_event = { # start of chain for socialist internal struggle/calling congr
 	option = { #agree to congress
 		log = "[GetLogInfo]: event cuba_events.10 option cuba_events.10.a"
 		name = cuba_events.10.a
-
+		ai_chance = { base = 50 }
 		set_country_flag = { flag = cubantotalistscore value = 0 }
 		set_country_flag = { flag = cubansyndiescore value = 0 }
 		set_country_flag = { flag = cubanradsocscore value = 0 }
@@ -1175,6 +1175,7 @@ country_event = { # US event for victorious coup
 				modifier = KR_disapproves_of_govt
 			}
 		}
+		hidden_effect = { news_event = { id = cuba_events.506 days = 1 } }
 	}
 
 	option = { # pressure for greater control
@@ -1268,6 +1269,7 @@ country_event = { # US - Cuba accepts concessions
 		log = "[GetLogInfo]: event cuba_events.24 option cuba_events.24.a"
 		name = cuba_events.24.a
 		clear_embargo_ROOT = yes
+		hidden_effect = { news_event = { id = cuba_events.506 days = 1 } }
 	}
 }
 
@@ -1342,6 +1344,7 @@ country_event = { # US backs down
 		name = cuba_events.26.a
 
 		set_country_flag = CUB_mildirectrule
+		hidden_effect = { news_event = { id = cuba_events.506 days = 1 } }
 	}
 }
 
@@ -1468,6 +1471,7 @@ country_event = { # America Directly Established Puppet Govt.
 		CUB_remove_reactionary_generals = yes
 		activate_targeted_decision = { target = THIS decision = CUB_fate_milleaders_decision }
 		set_country_flag = CUB_USpuppet
+		hidden_effect = { news_event = cuba_events.506 }
 	}
 }
 
@@ -1763,6 +1767,8 @@ country_event = { # syndie victory with mella - mella coup attempt
 		set_temp_variable = { coalition_partner_var = token:radical_socialist }
 		remove_from_coalition = yes
 		hidden_effect = {
+			set_country_flag = { flag = CUB_attempted_coup days = 5 value = 1 }
+			news_event = cuba_events.503
 			country_event = { id = cuba_events.40 days = 1 }
 		}
 		set_country_flag = syndiecongvic
@@ -1792,6 +1798,8 @@ country_event = { # syndie victory with mella - mella coup attempt
 		}
 		set_country_flag = totalistcongvic
 		hidden_effect = {
+			set_country_flag = { flag = CUB_attempted_coup days = 5 value = 1 }
+			news_event = cuba_events.504
 			country_event = { id = cuba_events.41 days = 1 }
 		}
 	}
@@ -1818,6 +1826,7 @@ country_event = { # syndie victory without mella
 		set_temp_variable = { coalition_partner_var = token:radical_socialist }
 		remove_from_coalition = yes
 		hidden_effect = {
+			news_event = cuba_events.503
 			country_event = { id = cuba_events.232 days = 800 }
 		}
 		set_country_flag = syndiecongvic
@@ -1868,6 +1877,7 @@ country_event = { # radsoc victory with mella - mella demands HoG and non-bourg 
 			country_event = { id = cuba_events.42 days = 1 }
 		}
 	}
+	after = { hidden_effect = { news_event = cuba_events.505 } }
 }
 
 country_event = { # radsoc victory without mella
@@ -1889,6 +1899,7 @@ country_event = { # radsoc victory without mella
 		set_country_flag = radsoccongvic
 		hidden_effect = {
 			country_event = { id = cuba_events.232 days = 800 }
+			news_event = cuba_events.505
 		}
 	}
 }
@@ -1912,6 +1923,7 @@ country_event = { # totalist victory with mella
 		}
 		set_country_flag = totalistcongvic
 		promote_character = CUB_julio_mella_mcpartland
+		hidden_effect = { news_event = cuba_events.504 }
 	}
 }
 
@@ -1934,6 +1946,7 @@ country_event = { # totalist victory without mella
 		}
 		set_country_flag = totalistcongvic
 		hidden_effect = {
+			news_event = cuba_events.504
 			country_event = { id = cuba_events.232 days = 800 }
 		}
 	}
@@ -2102,6 +2115,7 @@ country_event = { # The Congress is Refused
 		}
 		CUB_remove_juan_blas_as_general = yes
 		set_country_flag = no_congress
+		hidden_effect = { news_event = cuba_events.503 }
 	}
 
 	option = {
@@ -2158,10 +2172,12 @@ country_event = { # Coup Fails
 		}
 		CUB_remove_juan_blas_as_general = yes
 		CUB_julio_mella_mcpartland = { kill_character = yes }
+		set_country_flag = no_congress
+		set_country_flag = { flag = CUB_attempted_coup days = 5 value = 1 }
 		hidden_effect = {
 			country_event = { id = cuba_events.232 days = 800 }
+			news_event = cuba_events.503
 		}
-		set_country_flag = no_congress
 	}
 }
 
@@ -2195,10 +2211,11 @@ country_event = { # Coup Succeeds
 		}
 		promote_character = CUB_julio_mella_mcpartland
 		CUB_antonio_guiteras_holmes = { kill_character = yes }
+		set_country_flag = no_congress_mellacoup
 		hidden_effect = {
+			news_event = cuba_events.504
 			country_event = { id = cuba_events.48 days = 30 }
 		}
-		set_country_flag = no_congress_mellacoup
 	}
 }
 
@@ -2429,6 +2446,7 @@ country_event = { #Radsoc attempt to overthrow old friends
 		set_country_flag = CUB_radsoccoup
 		hidden_effect = {
 			activate_targeted_decision = { target = THIS decision = CUB_radsoceconreplace_decision }
+			news_event = cuba_events.505
 		}
 	}
 
@@ -2596,6 +2614,7 @@ country_event = { #march on Havana
 			USA = {
 				country_event = { id = cuba_events.56 days = 1 }
 			}
+			news_event = cuba_events.502
 		}
 	}
 }
@@ -3495,6 +3514,7 @@ country_event = { # New Elections
 			country_event = { id = cuba_events.77 days = 1 }
 		}
 		hidden_effect = {
+			news_event = cuba_events.500
 			country_event = { id = cuba_events.232 days = 800 }
 		}
 	}
@@ -3756,6 +3776,10 @@ country_event = {
 			limit = { has_idea = CUB_emergency_powersidea }
 			remove_ideas = CUB_emergency_powersidea
 		}
+		if = {
+			limit = { NOT = { has_country_flag = CUB_USpuppet } }
+			hidden_effect = { news_event = cuba_events.501 }
+		}
 	}
 }
 
@@ -3934,7 +3958,10 @@ country_event = {
 			limit = { has_socialist_government = yes }
 			activate_targeted_decision = { target = THIS decision = CUB_socialist_flag_decision }
 			activate_targeted_decision = { target = THIS decision = CUB_socialist_military_decision }
-			activate_targeted_decision = { target = THIS decision = CUB_socialist_removedis }
+			if = {
+				limit = { has_idea = CUB_americabackdis }
+				activate_targeted_decision = { target = THIS decision = CUB_socialist_removedis }
+			}
 			activate_targeted_decision = { target = GER decision = CUB_stoptrade_decision }
 			activate_targeted_decision = { target = CAN decision = CUB_stoptrade_decision }
 		}
@@ -4534,7 +4561,6 @@ country_event = { #Local Relations
 					tag = VEN
 					tag = CEN
 				}
-				both_socialist_or_both_not_socialist = yes
 			}
 			country_event = { id = cuba_events.137 days = 1 }
 			add_opinion_modifier = {
@@ -5117,7 +5143,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 5 }
+			add_to_temp_variable = { cub_new_market_temp = 5 }
 		}
 		if = {
 			limit = {
@@ -5126,7 +5152,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 2 }
+			add_to_temp_variable = { cub_new_market_temp = 2 }
 		}
 		if = {
 			limit = {
@@ -5135,7 +5161,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 1 }
+			add_to_temp_variable = { cub_new_market_temp = 1 }
 		}
 		if = {
 			limit = {
@@ -5144,7 +5170,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 1 }
+			add_to_temp_variable = { cub_new_market_temp = 1 }
 		}
 		if = {
 			limit = {
@@ -5153,7 +5179,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 1 }
+			add_to_temp_variable = { cub_new_market_temp = 1 }
 		}
 		if = {
 			limit = {
@@ -5162,7 +5188,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 1 }
+			add_to_temp_variable = { cub_new_market_temp = 1 }
 		}
 		if = {
 			limit = {
@@ -5171,7 +5197,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 1 }
+			add_to_temp_variable = { cub_new_market_temp = 1 }
 		}
 		if = {
 			limit = {
@@ -5180,7 +5206,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 1 }
+			add_to_temp_variable = { cub_new_market_temp = 1 }
 		}
 		if = {
 			limit = {
@@ -5189,7 +5215,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 1 }
+			add_to_temp_variable = { cub_new_market_temp = 1 }
 		}
 		if = {
 			limit = {
@@ -5198,7 +5224,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 4 }
+			add_to_temp_variable = { cub_new_market_temp = 4 }
 		}
 		if = {
 			limit = {
@@ -5207,7 +5233,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 2 }
+			add_to_temp_variable = { cub_new_market_temp = 2 }
 		}
 		if = {
 			limit = {
@@ -5216,7 +5242,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 3 }
+			add_to_temp_variable = { cub_new_market_temp = 3 }
 		}
 		if = {
 			limit = {
@@ -5225,7 +5251,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 3 }
+			add_to_temp_variable = { cub_new_market_temp = 3 }
 		}
 		if = {
 			limit = {
@@ -5234,7 +5260,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 5 }
+			add_to_temp_variable = { cub_new_market_temp = 5 }
 		}
 		if = {
 			limit = {
@@ -5243,7 +5269,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 5 }
+			add_to_temp_variable = { cub_new_market_temp = 5 }
 		}
 		if = {
 			limit = {
@@ -5253,7 +5279,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 5 }
+			add_to_temp_variable = { cub_new_market_temp = 5 }
 		}
 		if = {
 			limit = {
@@ -5263,7 +5289,7 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 1 }
+			add_to_temp_variable = { cub_new_market_temp = 1 }
 		}
 		if = {
 			limit = {
@@ -5272,34 +5298,25 @@ country_event = { #New Markets
 					NOT = { has_war_with = CUB }
 				}
 			}
-			add_to_temp_variable = { var = cub_new_market_temp value = 2 }
+			add_to_temp_variable = { cub_new_market_temp = 2 }
 		}
 
 		#Check which idea to add
 		if = {
-			limit = {
-				check_variable = { cub_new_market_temp > 5 }
-				check_variable = { cub_new_market_temp < 13 }
-			}
-			add_ideas = CUB_new_market_1
+			limit = { check_variable = { cub_new_market_temp > 24 } }
+			add_ideas = CUB_new_market_4
 		}
 		else_if = {
-			limit = {
-				check_variable = { cub_new_market_temp > 12 }
-				check_variable = { cub_new_market_temp < 20 }
-			}
-			add_ideas = CUB_new_market_2
-		}
-		else_if = {
-			limit = {
-				check_variable = { cub_new_market_temp > 19 }
-				check_variable = { cub_new_market_temp < 25 }
-			}
+			limit = { check_variable = { cub_new_market_temp > 19 } }
 			add_ideas = CUB_new_market_3
 		}
 		else_if = {
-			limit = { check_variable = { cub_new_market_temp > 24 } }
-			add_ideas = CUB_new_market_4
+			limit = { check_variable = { cub_new_market_temp > 12 } }
+			add_ideas = CUB_new_market_2
+		}
+		else_if = {
+			limit = { check_variable = { cub_new_market_temp > 5 } }
+			add_ideas = CUB_new_market_1
 		}
 	}
 
@@ -6802,7 +6819,7 @@ country_event = { #refugees to soccub part 2
 
 		add_stability = 0.02
 		add_manpower = -5000
-		add_to_variable = { var = CUB_refugees value = 1 }
+		add_to_variable = { CUB_refugees = 1 }
 		set_global_flag = CUB_refugee1
 		hidden_effect = {
 			country_event = { id = cuba_events.154 days = 60 }
@@ -7985,6 +8002,7 @@ country_event = {
 			elections_allowed = yes
 		}
 		hidden_effect = {
+			news_event = cuba_events.504
 			country_event = { id = cuba_events.2141 days = 1 }
 		}
 	}
@@ -8001,6 +8019,7 @@ country_event = {
 			elections_allowed = yes
 		}
 		hidden_effect = {
+			news_event = cuba_events.504
 			country_event = { id = cuba_events.2141 days = 1 }
 		}
 	}
@@ -8020,6 +8039,7 @@ country_event = {
 			elections_allowed = yes
 		}
 		hidden_effect = {
+			news_event = cuba_events.504
 			country_event = { id = cuba_events.2141 days = 1 }
 		}
 	}
@@ -8108,13 +8128,13 @@ country_event = {
 		log = "[GetLogInfo]: event cuba_events.215 option cuba_events.215.a"
 		name = cuba_events.215.a
 		set_country_flag = CUB_melstrongarmblasag
-		add_to_variable = { var = CUB_socdeal_mella_count value = 1 }
+		add_to_variable = { CUB_socdeal_mella_count = 1 }
 	}
 
 	option = { #blas
 		log = "[GetLogInfo]: event cuba_events.215 option cuba_events.215.b"
 		name = cuba_events.215.b
-		add_to_variable = { var = CUB_socdeal_blas_count value = 1 }
+		add_to_variable = { CUB_socdeal_blas_count = 1 }
 	}
 
 	after = {
@@ -8134,13 +8154,13 @@ country_event = {
 		log = "[GetLogInfo]: event cuba_events.2150 option cuba_events.2150.a"
 		name = cuba_events.2150.a
 		set_country_flag = CUB_melstrongarmblaspol
-		add_to_variable = { var = CUB_socdeal_mella_count value = 1 }
+		add_to_variable = { CUB_socdeal_mella_count = 1 }
 	}
 
 	option = { #blas
 		log = "[GetLogInfo]: event cuba_events.2150 option cuba_events.2150.b"
 		name = cuba_events.2150.b
-		add_to_variable = { var = CUB_socdeal_blas_count value = 1 }
+		add_to_variable = { CUB_socdeal_blas_count = 1 }
 	}
 
 	after = {
@@ -8160,13 +8180,13 @@ country_event = {
 		log = "[GetLogInfo]: event cuba_events.2151 option cuba_events.2151.a"
 		name = cuba_events.2151.a
 		set_country_flag = CUB_melstrongarmblasmil
-		add_to_variable = { var = CUB_socdeal_mella_count value = 1 }
+		add_to_variable = { CUB_socdeal_mella_count = 1 }
 	}
 
 	option = { #blas
 		log = "[GetLogInfo]: event cuba_events.2151 option cuba_events.2151.b"
 		name = cuba_events.2151.b
-		add_to_variable = { var = CUB_socdeal_blas_count value = 1 }
+		add_to_variable = { CUB_socdeal_blas_count = 1 }
 	}
 
 	after = {
@@ -8184,7 +8204,7 @@ country_event = {
 		log = "[GetLogInfo]: event cuba_events.216 option cuba_events.216.a"
 		name = cuba_events.216.a
 
-		add_to_variable = { var = CUB_socdeal_mella_count value = 2 }
+		add_to_variable = { CUB_socdeal_mella_count = 2 }
 		add_ideas = CUB_mellatranssociety
 	}
 
@@ -8192,7 +8212,7 @@ country_event = {
 		log = "[GetLogInfo]: event cuba_events.216 option cuba_events.216.b"
 		name = cuba_events.216.b
 
-		add_to_variable = { var = CUB_socdeal_blas_count value = 2 }
+		add_to_variable = { CUB_socdeal_blas_count = 2 }
 		add_ideas = CUB_blastranssociety
 	}
 
@@ -8200,8 +8220,8 @@ country_event = {
 		log = "[GetLogInfo]: event cuba_events.216 option cuba_events.216.c"
 		name = cuba_events.216.c
 
-		add_to_variable = { var = CUB_socdeal_mella_count value = 1 }
-		add_to_variable = { var = CUB_socdeal_blas_count value = 1 }
+		add_to_variable = { CUB_socdeal_mella_count = 1 }
+		add_to_variable = { CUB_socdeal_blas_count = 1 }
 		add_ideas = CUB_comptranssociety
 	}
 }
@@ -9760,3 +9780,361 @@ country_event = {# Denounce/Support Socialists
 	}
 }
 
+### News Events
+
+news_event = {  # MarLib/SocLib/SocDem
+	id = cuba_events.500
+	immediate = { log = "[GetLogInfo]: event cuba_events.500" }
+	title = cuba_events.500.t
+
+	desc = {
+		text = cuba_events.500.d1
+		trigger = { has_government = market_liberal }
+	}
+	desc = {
+		text = cuba_events.500.d2
+		trigger = { has_government = social_liberal }
+	}
+	desc = {
+		text = cuba_events.500.d3
+		trigger = { has_government = social_democrat }
+	}
+
+	picture = GFX_news_event_CUB_election
+
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
+
+	trigger = { wants_world_news = yes }
+
+	show_major = { regional_america_news = yes }
+
+	option = {
+		name = cuba_events.500.a
+		trigger = {
+			has_democratic_government = yes
+		}
+	}
+	option = {
+		name = cuba_events.500.b
+		trigger = {
+			has_dictatorship_government = yes
+		}
+	}
+	option = {
+		name = cuba_events.500.c
+		trigger = {
+			has_socialist_government = yes
+		}
+	}
+}
+
+news_event = {  # Diaz
+	id = cuba_events.501
+	immediate = { log = "[GetLogInfo]: event cuba_events.501" }
+	title = cuba_events.501.t
+
+	desc = {
+		text = cuba_events.501.d1	# Diaz in through military junta
+		trigger = { has_country_flag = CUB_mildirectrule }
+	}
+	desc = {
+		text = cuba_events.501.d2	# Diaz in through presidential guard coup
+		trigger = { has_country_flag = CUB_presgcoup }
+	}
+	desc = {
+		text = cuba_events.501.d3	# Diaz in through enacting emergency powers (AutDem)
+		trigger = { has_country_flag = CUB_enacted_emergency_powers }
+	}
+
+	picture = GFX_news_event_CUB_diaz
+
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
+
+	trigger = { wants_world_news = yes }
+
+	show_major = { regional_america_news = yes }
+
+	option = {
+		name = cuba_events.501.a
+		trigger = {
+			has_democratic_government = yes
+			NOT = {
+				tag = USA
+				tag = GER
+			}
+		}
+	}
+	option = {
+		name = cuba_events.501.b
+		trigger = {
+			OR = {
+				has_dictatorship_government = yes
+				tag = USA
+				tag = GER
+			}
+		}
+	}
+	option = {
+		name = cuba_events.501.c
+		trigger = {
+			NOT = {
+				has_democratic_government = yes
+				has_dictatorship_government = yes
+				tag = USA
+				tag = GER
+			}
+		}
+	}
+}
+
+news_event = {  # Autenticos
+	id = cuba_events.502
+	immediate = { log = "[GetLogInfo]: event cuba_events.502" }
+	title = cuba_events.502.t
+	desc = cuba_events.502.d
+	picture = GFX_news_event_CUB_autenticos
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
+
+	trigger = { wants_world_news = yes }
+
+	show_major = { regional_america_news = yes }
+
+	option = {
+		name = cuba_events.502.a
+		trigger = {
+			has_democratic_government = yes
+			NOT = {
+				tag = DOM
+				tag = HAI
+			}
+		}
+	}
+	option = {
+		name = cuba_events.502.b
+		trigger = {
+			OR = {
+				has_dictatorship_government = yes
+				tag = DOM
+				tag = HAI
+			}
+		}
+	}
+	option = {
+		name = cuba_events.502.c
+		trigger = {
+			NOT = {
+				has_democratic_government = yes
+				has_authoritarian_government = yes
+				tag = DOM
+				tag = HAI
+			}
+		}
+	}
+}
+
+news_event = {  # Syndies
+	id = cuba_events.503
+	immediate = { log = "[GetLogInfo]: event cuba_events.503" }
+	title = cuba_events.503.t
+
+	desc = {
+		text = cuba_events.503.d1	# There was no attempted coup
+		trigger = {
+			NOT = { has_country_flag = no_congress }
+			NOT = { has_country_flag = CUB_attempted_coup }
+		}
+	}
+	desc = {
+		text = cuba_events.503.d2	# There was an attempted coup
+		trigger = {
+			NOT = { has_country_flag = no_congress }
+			has_country_flag = CUB_attempted_coup
+		}
+	}
+	desc = {
+		text = cuba_events.503.d3	# There was no congress and no attempted coup
+		trigger = {
+			has_country_flag = no_congress
+			NOT = { has_country_flag = CUB_attempted_coup }
+		}
+	}
+	desc = {
+		text = cuba_events.503.d4	# There was no congress and an attempted coup
+		trigger = {
+			has_country_flag = no_congress
+			has_country_flag = CUB_attempted_coup
+		}
+	}
+
+	picture = GFX_news_event_CUB_guiteras
+
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
+
+	trigger = { wants_world_news = yes }
+
+	show_major = {
+		OR = {
+			regional_america_news = yes
+			has_socialist_government = yes
+		}
+	}
+
+	option = {
+		name = cuba_events.503.a
+		trigger = {
+			has_socialist_government = no
+		}
+	}
+	option = {
+		name = cuba_events.502.b
+		trigger = {
+			has_socialist_government = yes
+		}
+	}
+}
+
+news_event = {  # Totalists
+	id = cuba_events.504
+	immediate = { log = "[GetLogInfo]: event cuba_events.504" }
+	title = cuba_events.503.t
+
+	desc = {
+		text = cuba_events.504.d1	# There was no attempted coup - Mella in charge
+		trigger = {
+			has_country_leader = { character = CUB_julio_mella_mcpartland }
+			NOT = { has_country_flag = CUB_attempted_coup }
+			NOT = { has_country_flag = no_congress_mellacoup }
+		}
+	}
+	desc = {
+		text = cuba_events.504.d2	# There was no attempted coup - Mella not in charge
+		trigger = {
+			NOT = { has_country_leader = { character = CUB_julio_mella_mcpartland } }
+		}
+	}
+	desc = {
+		text = cuba_events.504.d3	# There was a successful coup
+		trigger = { has_country_flag = CUB_attempted_coup }
+	}
+	desc = {
+		text = cuba_events.504.d4	# There was no congress and a successful coup
+		trigger = { has_country_flag = no_congress_mellacoup }
+	}
+
+	picture = "[CUB_pic_totalistleader]"
+
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
+
+	trigger = { wants_world_news = yes }
+
+	show_major = {
+		OR = {
+			regional_america_news = yes
+			has_socialist_government = yes
+		}
+	}
+
+	option = {
+		name = cuba_events.504.a
+		trigger = {
+			has_socialist_government = yes
+		}
+	}
+	option = {
+		name = cuba_events.504.b
+		trigger = {
+			has_socialist_government = no
+		}
+	}
+}
+
+news_event = {  # RadSocs
+	id = cuba_events.505
+	immediate = { log = "[GetLogInfo]: event cuba_events.505" }
+	title = cuba_events.503.t
+
+	desc = {
+		text = cuba_events.505.d1	# Totalists not in coalition
+		trigger = { is_in_coalition_with_totalist = no }
+	}
+	desc = {
+		text = cuba_events.505.d2	# Totalists in coalition
+		trigger = { is_in_coalition_with_totalist = yes }
+	}
+
+	picture = GFX_news_event_CUB_hernandez
+
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
+
+	trigger = { wants_world_news = yes }
+
+	show_major = {
+		OR = {
+			regional_america_news = yes
+			has_socialist_government = yes
+		}
+	}
+
+	option = {
+		name = cuba_events.505.a
+		trigger = {
+			has_socialist_government = no
+		}
+	}
+	option = {
+		name = cuba_events.505.b
+		trigger = {
+			has_socialist_government = yes
+		}
+	}
+}
+
+news_event = {  # US coup
+	id = cuba_events.506
+	immediate = { log = "[GetLogInfo]: event cuba_events.506" }
+	title = cuba_events.506.t
+
+	desc = {
+		text = cuba_events.506.d1
+		trigger = { has_government = paternal_autocrat }
+	}
+	desc = {
+		text = cuba_events.506.d2
+		trigger = { has_government = authoritarian_democrat }
+	}
+
+	picture = GFX_news_event_CUB_marines
+
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
+
+	trigger = { wants_world_news = yes }
+
+	show_major = { regional_america_news = yes }
+
+	option = {
+		name = cuba_events.506.a
+		trigger = {
+			NOT = { tag = USA }
+		}
+	}
+	option = {
+		name = cuba_events.506.b
+		trigger = {
+			tag = USA
+		}
+	}
+}

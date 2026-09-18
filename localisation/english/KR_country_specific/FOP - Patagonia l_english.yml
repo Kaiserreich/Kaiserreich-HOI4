@@ -769,7 +769,7 @@
  patagonia_events.29.d: "The defeat of the old regime in Buenos Aires still left many officers bitter and resentful of our glorious revolution. In response, a cabal of these former officers that we were unable to capture after our victory has mobilised against us once more and attacked Buenos Aires with those men loyal to them still along with a stockpile of old weapons and artillery. We were able to crush this reactionary rebellion but not without considerable loss of military and civilian human resources along with sustaining damage to a nearby industrial factory."
  patagonia_events.29.a: "When will the fighting end?"
 
- patagonia_events.41.t: "Immigration Report, [GetYear]"
+ patagonia_events.41.t: "Immigration Report [GetYearBefore]"
  patagonia_events.41.d: "With rising tensions in Europe, and many socialists seeing our nation as the perfect place to continue the revolution, large swathes of immigrants have decided to cross the pond and live free under socialism."
  patagonia_events.41.a: "Welcome to Argentina!"
 
@@ -1420,7 +1420,7 @@
  patagonia_news_events.3.b: "Comrade against comrade, is this really the way?"
 
  patagonia_news_events.4.t: "Radical Anarchists Seize Power in Argentina"
- patagonia_news_events.4.d: "After the Socialist victory in the Argentino-Chilean War, the government seemed to be slowly settling down for the Argentinian Nation. However, the results of the recent Argentinian Trade Union Congress seemed to have not been satisfactory for the Unión Sindical Argentina (USA). While the moderates accepted the result, radicals quickly staged their own takeover, led by Severino di Giovanni.\nAfter marching on the Presidential house, they proceded to take over the Congress, where Severino has now been sworn is a Chairman, and the rivaling unions of the USA have been removed from the Congress.\nWhether this will put an end to the violent political disputes in Argentina or further inflame tensions with the war weary populace, it remains to be seen..."
+ patagonia_news_events.4.d: "After the Socialist victory in the Argentino-Chilean War, the government seemed to be slowly settling down for the Argentinian Nation. However, the results of the recent Argentinian Trade Union Congress seemed to have not been satisfactory for the Unión Sindical Argentina (USA). While the moderates accepted the result, radicals quickly staged their own takeover, led by Severino di Giovanni.\nAfter marching on the Presidential house, they proceeded to take over the Congress, where Severino has now been sworn is a Chairman, and the rivaling unions of the USA have been removed from the Congress.\nWhether this will put an end to the violent political disputes in Argentina or further inflame tensions with the war weary populace, it remains to be seen..."
  patagonia_news_events.4.a: "Socialist calls for unity only go so far, it seems..."
  patagonia_news_events.4.b: "Comrade against comrade, is this really the way?"
 
@@ -1448,7 +1448,7 @@
  FOP_naval_bases_dec: "Expand the Southern Atlantic Naval Bases"
 
  FOP_immigration_decisions: "Socialist Immigration"
- FOP_immigration_decisions_desc: "After stabilising our nation, we are now able to take advantage of the rising immigration to our nation. Many socialists and syndicalists in Europe see the necessity of spreading their ideology to the world, and we are the first socialist South American nation that has the chance to spread it across the continent. This gives us the opportunity to further boost our population and to become the South American home for socialism.\n\nProjected Immigration Report for [GetYear] : §G[?FOP.fop_im_factor]%§!"
+ FOP_immigration_decisions_desc: "After stabilising our nation, we are now able to take advantage of the rising immigration to our nation. Many socialists and syndicalists in Europe see the necessity of spreading their ideology to the world, and we are the first socialist South American nation that has the chance to spread it across the continent. This gives us the opportunity to further boost our population and to become the South American home for socialism.\n\nProjected Immigration Report for [GetYear] : [?FOP.arg_im_factor|0G%]"
  FOP_Attract_Immigrants_decision: "Attract [FROM.GetAdjective] Socialists"
 
  ARG_immigration_dynamic_modifier: "Immigration to Argentina"
@@ -1524,7 +1524,7 @@
  FOP_radical_socialist_party: "FORA"
  FOP_radical_socialist_party_long: "Federación Obrera Regional Argentina (IX Congreso)\n§LThe Federación Obrera Regional Argentina (FORA), sometimes simply called Partido Socialista (PS), is a broad moderate socialist party which mostly backs the course of Soto and Lopez Arango. The party is dominated by two influential and charismatic figures: Manuel Baldomero Ugarte, an old guard socialist with nationalist anti-imperialist and Hispanicist roots and Alfredo Palacios, who was the fist elected socialist deputy in the Americas back in 1904. Baldomero's and Palacios' alliance however is quite weak and they are only interested in upholding their pact until the country is finally “liberated”. Other important members of the PS include Alicia Moreau de Justo, leading Argentine anarchist, and Nicolás Repetto, called by some the 'Father of Argentinian Socialism' who however mostly lives off of past glories.\n\nFounded: §Y1901§!\nIdeology:\n- Radical Socialism§!\n"
  FOP_syndicalist_party: "USA"
- FOP_syndicalist_party_long: "Unión de Sindicatos Argentinos\n§LIn 1936, The Anarcho-Syndicalists are by far the most influential political faction in the Patagonian Worker's Front. The moderates, under the leadership of Antonio Soto, hero of the Patagonian Rebellion, and Emilio López Arango, one of the most important theorists of the anarchist labourmovement in Argentina and a FORA member from Buenos Aires, have ruled the FOP in a stable coalition for over ten years; Soto and Arango are seen as ideological unifiers, however radical circles within the party have begun to criticise the moderates louder than ever in recent times, demanding further decentralisation of the state to finally achieve the long-awaited Anarchist utopia. The radical wing of the USA is dominated by Severino Di Giovanni, a native Italian who only arrived in Patagonia after the horrors of the Italian Civil War, and Miguel Arcángel Roscigna, a known criminal pushing for the very controversial 'expropriative anarchism'.\n\nFounded: §Y1922§!\nIdeology:\n- Syndicalism\n- Anarchism§!\n"
+ FOP_syndicalist_party_long: "Unión de Sindicatos Argentinos\n§LIn 1936, The Anarcho-Syndicalists are by far the most influential political faction in the Patagonian Workers' Front. The moderates, under the leadership of Antonio Soto, hero of the Patagonian Rebellion, and Emilio López Arango, one of the most important theorists of the anarchist labourmovement in Argentina and a FORA member from Buenos Aires, have ruled the FOP in a stable coalition for over ten years; Soto and Arango are seen as ideological unifiers, however radical circles within the party have begun to criticise the moderates louder than ever in recent times, demanding further decentralisation of the state to finally achieve the long-awaited Anarchist utopia. The radical wing of the USA is dominated by Severino Di Giovanni, a native Italian who only arrived in Patagonia after the horrors of the Italian Civil War, and Miguel Arcángel Roscigna, a known criminal pushing for the very controversial 'expropriative anarchism'.\n\nFounded: §Y1922§!\nIdeology:\n- Syndicalism\n- Anarchism§!\n"
  FOP_totalist_party: "CUSC"
  FOP_totalist_party_long: "Comité de Unión Sindical Clasista\n§LThe CUSC is dominated by Bolsheviks, communists and other right-leaning socialists, many of whom hail from Russia. Chairman of the party is Victorio Codovilla, former leader of the old Buenos Aires-based Communist Party of Argentina, but the true power within the CUSC lays in the hands of Rodolfo Ghioldi; Young, charismatic and radical, he is seen as superior to Codovilla by many of his party colleagues. The latter however has good relations to the Bolshevik émigré community in the Commune of France and therefore to the Syndicalist International as a whole, making his position fairly entrenched as of now. The infamous bandit Alfredo Fonte, while largely irrelevant in politics, also has ties to the CUSC leadership, along with the infamous 'politician' Liborio Justo.\n\nFounded: §Y1929§!\nIdeology:\n- Communism§!\n"
 
@@ -1537,6 +1537,8 @@
  FOP_social_democrat_rename_long: "Unión Democrática"
  FOP_market_liberal_rename: "UD"
  FOP_market_liberal_rename_long: "Unión Democrática"
+ FOP_national_populist_rename: "CA"
+ FOP_national_populist_rename_long: "Corporación Araucana"
 
 ### Cosmetic Tags ###
  FOP: "Argentina"
@@ -1550,9 +1552,9 @@
  FOP_radical_socialist: "Socialist Republic of Argentina"
  FOP_radical_socialist_DEF: "the Socialist Republic of Argentina"
 
- FOP_puppet: "Araucania"
+ FOP_puppet: "Araucanía"
  FOP_puppet_ADJ: "Araucanian"
- FOP_puppet_DEF: "Araucania"
+ FOP_puppet_DEF: "the Kingdom of Araucanía and Patagonia"
 
  FOP_AND: "Andesia"
  FOP_AND_ADJ: "Andesian"

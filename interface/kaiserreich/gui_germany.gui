@@ -11,7 +11,7 @@ guitypes = {
 
 		instantTextBoxType = {
 			name ="economic_health_label"
-			position = { x = -150 y = 92 }
+			position = { x = -140 y = 92 }
 			font = "hoi_30header"
 			text = "GER_economic_health_label"
 			format = center
@@ -21,7 +21,7 @@ guitypes = {
 		}
 		instantTextBoxType = {
 			name ="debt_label"
-			position = { x = -200 y = 122 }
+			position = { x = -190 y = 122 }
 			font = "hoi_30header"
 			text = "GER_debt_label"
 			format = center
@@ -32,7 +32,7 @@ guitypes = {
 
 		iconType = {
 			name = "deck_icon"
-			position = { x = 200 y = 122 }
+			position = { x = 210 y = 122 }
 			spriteType = "GFX_card_deck"
 			orientation = center
 			pdx_tooltip = "GER_total_cards_in_deck_tt"
@@ -40,7 +40,7 @@ guitypes = {
 
 		iconType = {
 			name = "hand_icon"
-			position = { x = -250 y = 122 }
+			position = { x = -240 y = 122 }
 			spriteType = "GFX_card_hand"
 			orientation = center
 			pdx_tooltip = "GER_total_cards_in_hand_tt"
@@ -48,7 +48,7 @@ guitypes = {
 
 		containerWindowType = {
 			name = "ger_decline_vs_stability_container"
-			position = { x = -19 y = 2 }
+			position = { x = -9 y = 2 }
 			size = { width = 157 height = 246 }
 			origo = upper_right
 			orientation = upper_right
@@ -103,7 +103,7 @@ guitypes = {
 
 		containerWindowType = {
 			name = "ger_investment_vs_stagnation_container"
-			position = { x = 2 y = 2 }
+			position = { x = 8 y = 2 }
 			size = { width = 157 height = 246 }
 
 			background = {
@@ -156,7 +156,7 @@ guitypes = {
 
 		instantTextBoxType = {
 			name ="current_crisis_heading"
-			position = { x = -59 y = 0 }
+			position = { x = -47 y = 0 }
 			font = "hoi_18mbs"
 			text = "GER_current_crisis_heading"
 			pdx_tooltip = ""
@@ -168,7 +168,7 @@ guitypes = {
 
 		containerWindowType = {
 			name = "ger_crisis_container"
-			position = { x = -9 y = -85 }
+			position = { x = 3 y = -85 }
 			size = { width = 150 height = 120 }
 			origo = center
 			orientation = center
@@ -209,7 +209,7 @@ guitypes = {
 
 		instantTextBoxType = {
 			name = "active_reforms_heading"
-			position = { x = -84 y = 0 }
+			position = { x = -74 y = -25 }
 			font = "hoi_18mbs"
 			text = "GER_active_reforms_heading"
 			orientation = center
@@ -219,7 +219,7 @@ guitypes = {
 
 		containerWindowType = {
 			name = "ger_reforms_container"
-			position = { x = -9 y = 36 }
+			position = { x = 3 y = 41 }
 			size = { width = 150 height = 90 }
 			origo = center
 			orientation = center
@@ -258,7 +258,15 @@ guitypes = {
 			#spriteType = "GFX_idea_capital_outflow"
 			scale = 0.5
 			orientation = UPPER_LEFT
-			pdx_tooltip = "GER_reform_icon_tt"
+			pdx_tooltip = GER_reform_icon_tt
+		}
+
+		### this is a hidden button used to create scripted loc for GER_reform_icon_tt above
+		buttonType = {
+			name = "ger_reform_icon_delayed_tooltip"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_name_list_item_bg"
+			hide = yes
 		}
 	}
 }

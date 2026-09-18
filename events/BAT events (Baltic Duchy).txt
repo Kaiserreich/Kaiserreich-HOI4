@@ -159,8 +159,7 @@ country_event = { # This is a hidden event to override PP loss while doing foci 
 			limit = {
 				check_variable = { ROOT.political_power_growth < 0 }
 			}
-			set_temp_variable = { BAT_pp_delta = BAT.political_power_growth }
-			multiply_temp_variable = { BAT_pp_delta = -1 }
+			set_temp_variable = { BAT_pp_delta = { value = BAT.political_power_growth multiply = -1 } }
 			add_political_power = BAT_pp_delta
 		}
 		country_event = { id = united_baltic_duchy_events.9 days = 1 }

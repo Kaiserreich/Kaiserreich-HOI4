@@ -241,23 +241,23 @@ add_ideas = {
 }
 
 ### Country Leaders ###
-recruit_character = CAN_thomas_alexander_mcewen
-recruit_character = CAN_timothy_buck
-recruit_character = CAN_arthur_herbert_evans
+recruit_character = CAN_tom_mcewen
+recruit_character = CAN_tim_buck
+recruit_character = CAN_arthur_slim_evans
 recruit_character = CAN_annie_buller
 recruit_character = CAN_clarence_gillis
-recruit_character = CAN_james_shaver_woodsworth
-recruit_character = CAN_major_james_coldwell
+recruit_character = CAN_js_woodsworth
+recruit_character = CAN_mj_coldwell
 recruit_character = CAN_thomas_crerar
 recruit_character = CAN_louis_st_laurent
 recruit_character = CAN_william_lyon_mackenzie_king
-recruit_character = CAN_charles_gavan_power
+recruit_character = CAN_charles_power
 recruit_character = CAN_robert_manion
-recruit_character = CAN_richard_bedford_bennett
+recruit_character = CAN_rb_bennett
 recruit_character = CAN_john_bracken
 recruit_character = CAN_hugh_guthrie
 recruit_character = CAN_george_stewart_henry
-recruit_character = CAN_joseph_farr
+recruit_character = CAN_joseph_c_farr
 recruit_character = CAN_john_horne_blackmore
 
 ### Governor-General ###
@@ -269,19 +269,19 @@ recruit_character = CAN_canadian_parliament
 
 ### Advisors ###
 #recruit_character = QUE_maurice_duplessis -- in QUE file
-recruit_character = CAN_clarence_decatur_howe
+recruit_character = CAN_cd_howe
 recruit_character = CAN_ernest_lapointe
-recruit_character = CAN_charles_avery_dunning
+recruit_character = CAN_charles_dunning
 recruit_character = CAN_james_ralston
 recruit_character = CAN_ernest_charles_manning
 #recruit_character = QUE_louis_even -- in QUE file
-recruit_character = CAN_henry_herbert_stevens
+recruit_character = CAN_hh_stevens
 recruit_character = CAN_arthur_meighen
-recruit_character = CAN_thomas_clement_douglas
+recruit_character = CAN_tommy_douglas
 recruit_character = CAN_percy_bengough
-recruit_character = CAN_arthur_blaikie_purvis
-recruit_character = CAN_frederick_grant_banting
-recruit_character = CAN_william_samuel_stephenson
+recruit_character = CAN_arthur_purvis
+recruit_character = CAN_frederick_banting
+recruit_character = CAN_william_stephenson
 
 ### Generals ###
 recruit_character = CAN_bert_hoffmeister
@@ -292,26 +292,26 @@ recruit_character = CAN_andrew_mcnaughton
 recruit_character = CAN_kenneth_stuart
 recruit_character = CAN_georges_vanier
 recruit_character = CAN_john_hamilton_roberts
-recruit_character = CAN_harry_leonard_nowell_salmon
+recruit_character = CAN_hln_salmon
 recruit_character = CAN_george_kitching
-recruit_character = CAN_garner_ormsby_currie
+recruit_character = CAN_garner_currie
 
 ### Admirals ###
 recruit_character = CAN_percy_nelles
 recruit_character = CAN_harry_dewolf
 recruit_character = CAN_leonard_murray
-recruit_character = CAN_horatio_nelson_lay
+recruit_character = CAN_horatio_lay
 
 ### Military Staff ###
-recruit_character = CAN_harry_farnham_germain_letson
-recruit_character = CAN_william_avery_bishop
-recruit_character = CAN_clifford_mackay_mcewen
-recruit_character = CAN_george_owen_johnson
+recruit_character = CAN_hfg_letson
+recruit_character = CAN_billy_bishop
+recruit_character = CAN_clifford_mcewen
+recruit_character = CAN_george_johnson
 recruit_character = CAN_robert_leckie
 
 ### Scientists ###
-recruit_character = CAN_bernice_weldon_sargent
-recruit_character = CAN_charles_frederick_goodeve
+recruit_character = CAN_bernice_sargent
+recruit_character = CAN_charles_goodeve
 
 ### Operatives ###
 if = {
@@ -325,8 +325,8 @@ if = {
 		nationalities = { IMP ENG }
 	}
 	create_operative_leader = {
-		name = GBR_thomas_edward_lawrence
-		GFX = GFX_portrait_GBR_thomas_edward_lawrence_operative
+		name = GBR_te_lawrence
+		GFX = GFX_portrait_GBR_te_lawrence_operative
 		traits = { operative_infiltrator }
 		bypass_recruitment = no
 		available_to_spy_master = yes
@@ -340,10 +340,10 @@ every_character = { set_character_flag = CAN_character }
 activate_advisor = CAN_william_lyon_mackenzie_king_sic
 
 CAN_john_hamilton_roberts = { retire = yes }
-CAN_harry_leonard_nowell_salmon = { retire = yes }
+CAN_hln_salmon = { retire = yes }
 CAN_george_kitching = { retire = yes }
-CAN_garner_ormsby_currie = { retire = yes }
-CAN_horatio_nelson_lay = { retire = yes }
+CAN_garner_currie = { retire = yes }
+CAN_horatio_lay = { retire = yes }
 
 ### Variants ###
 CAN_add_starting_variants = yes
@@ -449,7 +449,7 @@ create_dynamic_country = {
 	### Seconds in Command ###
 	recruit_character = GBR_austen_chamberlain
 	recruit_character = GBR_anthony_eden
-	recruit_character = GBR_robert_gascoyne_cecil
+	recruit_character = GBR_robert_cecil
 	recruit_character = GBR_robert_vansittart
 	recruit_character = GBR_henry_page_croft
 	recruit_character = GBR_houses_of_parliament
@@ -464,7 +464,7 @@ create_dynamic_country = {
 	recruit_character = GBR_philip_noel_baker
 	recruit_character = GBR_percy_harris
 	recruit_character = GBR_norman_birkett
-	recruit_character = GBR_arthur_kenneth_chesterton
+	recruit_character = GBR_ak_chesterton
 	recruit_character = GBR_frank_cyril_tiarks
 	recruit_character = GBR_barry_domvile
 	recruit_character = GBR_walter_runciman
@@ -474,13 +474,13 @@ create_dynamic_country = {
 	recruit_character = GBR_gerald_wallop
 	recruit_character = GBR_john_anderson
 	recruit_character = GBR_montagu_norman
-	recruit_character = GBR_charles_henry_maxwell_knight
-	recruit_character = GBR_william_maxwell_aitken
+	recruit_character = GBR_maxwell_knight
+	recruit_character = GBR_max_aitken
 
 	### Generals ###
 	recruit_character = GBR_bernard_montgomery
 	recruit_character = GBR_harold_alexander
-	recruit_character = GBR_henry_maitland_wilson
+	recruit_character = GBR_henry_wilson
 	recruit_character = GBR_adrian_carton_de_wiart
 	recruit_character = GBR_orde_wingate
 	recruit_character = GBR_robert_brooke_popham
@@ -499,10 +499,10 @@ create_dynamic_country = {
 	recruit_character = GBR_john_tovey
 
 	### Military Staff ###
-	recruit_character = GBR_arthur_travers_harris
-	recruit_character = GBR_charles_frederick_algernon_portal
-	recruit_character = GBR_hugh_montague_trenchard
-	recruit_character = GBR_john_frederick_charles_fuller
+	recruit_character = GBR_arthur_harris
+	recruit_character = GBR_charles_portal
+	recruit_character = GBR_hugh_trenchard
+	recruit_character = GBR_jfc_fuller
 
 	### Move all relevant characters to Canada ###
 	every_character = { set_character_flag = GBR_character }
@@ -537,15 +537,15 @@ create_dynamic_country = {
 
 	GBR_austen_chamberlain = { set_nationality = CAN }
 	GBR_anthony_eden = { set_nationality = CAN }
-	GBR_robert_gascoyne_cecil = { set_nationality = CAN }
+	GBR_robert_cecil = { set_nationality = CAN }
 	GBR_robert_vansittart = { set_nationality = CAN }
 	GBR_henry_page_croft = { set_nationality = CAN }
 
-	GBR_william_maxwell_aitken = { set_nationality = CAN }
+	GBR_max_aitken = { set_nationality = CAN }
 
-	GBR_arthur_travers_harris = { set_nationality = CAN }
-	GBR_charles_frederick_algernon_portal = { set_nationality = CAN }
-	GBR_hugh_montague_trenchard = { set_nationality = CAN }
+	GBR_arthur_harris = { set_nationality = CAN }
+	GBR_charles_portal = { set_nationality = CAN }
+	GBR_hugh_trenchard = { set_nationality = CAN }
 
 	CAN = {
 		GBR_george_frederick_windsor = {

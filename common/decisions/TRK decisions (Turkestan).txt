@@ -9,12 +9,10 @@ TRK_consolidation_decisions = {
 
 		allowed = { always = no } #manually activated
 		available = {
-			AND = {
-				has_completed_focus = TRK_support_dissidents_abroad
-				OR = {
-					has_completed_focus = TRK_court_moderate_clergy
-					has_completed_focus = TRK_tashkent_city_fathers
-				}
+			has_completed_focus = TRK_support_dissidents_abroad
+			OR = {
+				has_completed_focus = TRK_court_moderate_clergy
+				has_completed_focus = TRK_tashkent_city_fathers
 			}
 		}
 		selectable_mission = no
@@ -1186,8 +1184,6 @@ TRK_reconstructing_turkestan_decisions = {
 		cost = 0
 		days_remove = 30
 		priority = 7
-
-		ai_will_do = { factor = 1 }
 
 		available = {
 			has_completed_focus = TRK_tashkent_city_fathers

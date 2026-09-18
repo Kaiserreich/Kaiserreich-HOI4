@@ -198,13 +198,13 @@ focus_tree = {
 				IDEOLOGY = totalist_coloured
 			}
 			#Lose Stability Proportionate to Difference between 100% and Totalist Party Popularity, reused a CHN tooltip
-			set_temp_variable = { JAP_stability_loss_temp_var = ROOT.party_popularity@totalist }
-			subtract_from_temp_variable = { JAP_stability_loss_temp_var = 1 }
-			multiply_temp_variable = { JAP_stability_loss_temp_var = 0.25 }
-			clamp_temp_variable = {
-				var = JAP_stability_loss_temp_var
-				min = -1
-				max = 0
+			set_temp_variable = {
+				JAP_stability_loss_temp_var = {
+					value = party_popularity@totalist
+					subtract = 1
+					multiply = 0.25
+					clamp = { min = -1 max = 0 }
+				}
 			}
 			add_stability = JAP_stability_loss_temp_var
 			custom_effect_tooltip = tooltip_white_line

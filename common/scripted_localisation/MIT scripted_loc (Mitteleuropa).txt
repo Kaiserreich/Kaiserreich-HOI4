@@ -46,6 +46,20 @@ defined_text = { #Global
 		localization_key = mitteleuropa_next_election_soon
 	}
 }
+defined_text = { #character
+	name = GetMitteleuropaAgendaNameBase
+	text = {
+		localization_key = "[GetMitteleuropaAgendaNameActual]"
+	}
+}
+
+defined_text = { #character
+	name = GetMitteleuropaAgendaNameActual
+	text = {
+		localization_key = "[THIS.GetName]_idea"
+	}
+}
+
 defined_text = { #Country
 	name = GetMitteleuropaAgendaScore
 	text = {
@@ -60,8 +74,12 @@ defined_text = { #Country
 	name = GetMitteleuropaAgendaSupportersScore
 	text = {
 		trigger = {
-			set_temp_variable = { other_supporters_value = MIT_supported_agenda:agenda_score }
-			subtract_from_temp_variable = { other_supporters_value = mtth:mitteleuropa_agenda_score_calculation }
+			set_temp_variable = {
+				other_supporters_value = {
+					value = MIT_supported_agenda:agenda_score
+					subtract = mtth:mitteleuropa_agenda_score_calculation
+				}
+			}
 		}
 		localization_key = agenda_score_supporters_value
 	}

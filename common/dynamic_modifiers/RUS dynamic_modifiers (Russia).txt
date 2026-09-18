@@ -90,11 +90,11 @@ RUS_USNS_rebels = {
 	compliance_gain = -0.05
 	resistance_growth = 0.25
 	resistance_target = 0.3
-	enable = { is_controlled_by = RUS }
+	enable = { is_controlled_by = var:global.russia }
 	remove_trigger = {
 		OR = {
-			is_core_of = RUS
-			NOT = { is_owned_by = RUS }
+			is_core_of = var:global.russia
+			NOT = { is_owned_by = var:global.russia }
 		}
 	}
 }
@@ -105,11 +105,11 @@ RUS_generic_rebels = {
 	compliance_gain = -0.05
 	resistance_growth = 0.25
 	resistance_target = 0.3
-	enable = { is_controlled_by = RUS }
+	enable = { is_controlled_by = var:global.russia }
 	remove_trigger = {
 		OR = {
-			is_core_of = RUS
-			NOT = { is_owned_by = RUS }
+			is_core_of = var:global.russia
+			NOT = { is_owned_by = var:global.russia }
 		}
 	}
 }

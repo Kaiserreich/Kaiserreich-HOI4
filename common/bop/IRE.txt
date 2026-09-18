@@ -12,7 +12,13 @@ IRE_an_power_balance = {
 		modifier = {
 		}
 		on_activate = {
-			custom_effect_tooltip = IRE_bop_moving_centre
+			custom_effect_tooltip = IRE_bop_moving_inwards
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = IRE_loyalist_anger_decrease_tt
+					RIGHT = 0.025
+				}
+			}
 		}
 		on_deactivate = {
 		}
@@ -32,8 +38,32 @@ IRE_an_power_balance = {
 				political_power_factor = -0.025
 			}
 			on_activate = {
-				set_temp_variable = { IRE_loyalist_anger_delta = 0.025 }
-				custom_effect_tooltip = IRE_bop_moving
+				if = {
+					limit = {
+						NOT = {
+							power_balance_value = {
+								id = IRE_an_power_balance
+								value < -0.45
+							}
+						}
+					}
+					custom_effect_tooltip = IRE_bop_moving_outwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_increase_tt
+							RIGHT = 0.025
+						}
+					}
+				}
+				else = {
+					custom_effect_tooltip = IRE_bop_moving_inwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_decrease_tt
+							RIGHT = 0.025
+						}
+					}
+				}
 				hidden_effect = {
 					if = {
 						limit = { has_country_flag = IRE_bop_going_left }
@@ -64,8 +94,32 @@ IRE_an_power_balance = {
 				national_populist_drift = -0.01
 			}
 			on_activate = {
-				set_temp_variable = { IRE_loyalist_anger_delta = 0.05 }
-				custom_effect_tooltip = IRE_bop_moving
+				if = {
+					limit = {
+						NOT = {
+							power_balance_value = {
+								id = IRE_an_power_balance
+								value < -0.65
+							}
+						}
+					}
+					custom_effect_tooltip = IRE_bop_moving_outwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_increase_tt
+							RIGHT = 0.05
+						}
+					}
+				}
+				else = {
+					custom_effect_tooltip = IRE_bop_moving_inwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_decrease_tt
+							RIGHT = 0.05
+						}
+					}
+				}
 				hidden_effect = {
 					if = {
 						limit = { has_country_flag = IRE_bop_going_left }
@@ -97,8 +151,32 @@ IRE_an_power_balance = {
 				stability_weekly = -0.001
 			}
 			on_activate = {
-				set_temp_variable = { IRE_loyalist_anger_delta = 0.075 }
-				custom_effect_tooltip = IRE_bop_moving
+				if = {
+					limit = {
+						NOT = {
+							power_balance_value = {
+								id = IRE_an_power_balance
+								value < -0.85
+							}
+						}
+					}
+					custom_effect_tooltip = IRE_bop_moving_outwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_increase_tt
+							RIGHT = 0.075
+						}
+					}
+				}
+				else = {
+					custom_effect_tooltip = IRE_bop_moving_inwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_decrease_tt
+							RIGHT = 0.075
+						}
+					}
+				}
 				hidden_effect = {
 					if = {
 						limit = { has_country_flag = IRE_bop_going_left }
@@ -130,8 +208,13 @@ IRE_an_power_balance = {
 				stability_weekly = -0.005
 			}
 			on_activate = {
-				set_temp_variable = { IRE_loyalist_anger_delta = 0.1 }
-				custom_effect_tooltip = IRE_bop_moving
+				custom_effect_tooltip = IRE_bop_moving_outwards
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = IRE_loyalist_anger_increase_tt
+						RIGHT = 0.1
+					}
+				}
 				hidden_effect = {
 					if = {
 						limit = { has_country_flag = IRE_bop_going_left }
@@ -166,8 +249,30 @@ IRE_an_power_balance = {
 				stability_factor = -0.05
 			}
 			on_activate = {
-				set_temp_variable = { IRE_loyalist_anger_delta = 0.025 }
-				custom_effect_tooltip = IRE_bop_moving
+				if = {
+					limit = {
+						power_balance_value = {
+							id = IRE_an_power_balance
+							value < 0.45
+						}
+					}
+					custom_effect_tooltip = IRE_bop_moving_outwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_increase_tt
+							RIGHT = 0.025
+						}
+					}
+				}
+				else = {
+					custom_effect_tooltip = IRE_bop_moving_inwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_decrease_tt
+							RIGHT = 0.025
+						}
+					}
+				}
 				hidden_effect = {
 					if = {
 						limit = { has_country_flag = IRE_bop_going_right }
@@ -196,8 +301,30 @@ IRE_an_power_balance = {
 				stability_factor = -0.1
 			}
 			on_activate = {
-				set_temp_variable = { IRE_loyalist_anger_delta = 0.05 }
-				custom_effect_tooltip = IRE_bop_moving
+				if = {
+					limit = {
+						power_balance_value = {
+							id = IRE_an_power_balance
+							value < 0.65
+						}
+					}
+					custom_effect_tooltip = IRE_bop_moving_outwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_increase_tt
+							RIGHT = 0.05
+						}
+					}
+				}
+				else = {
+					custom_effect_tooltip = IRE_bop_moving_inwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_decrease_tt
+							RIGHT = 0.05
+						}
+					}
+				}
 				hidden_effect = {
 					if = {
 						limit = { has_country_flag = IRE_bop_going_right }
@@ -229,8 +356,30 @@ IRE_an_power_balance = {
 				stability_weekly = -0.001
 			}
 			on_activate = {
-				set_temp_variable = { IRE_loyalist_anger_delta = 0.075 }
-				custom_effect_tooltip = IRE_bop_moving
+				if = {
+					limit = {
+						power_balance_value = {
+							id = IRE_an_power_balance
+							value < 0.85
+						}
+					}
+					custom_effect_tooltip = IRE_bop_moving_outwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_increase_tt
+							RIGHT = 0.075
+						}
+					}
+				}
+				else = {
+					custom_effect_tooltip = IRE_bop_moving_inwards
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = IRE_loyalist_anger_decrease_tt
+							RIGHT = 0.075
+						}
+					}
+				}
 				hidden_effect = {
 					if = {
 						limit = { has_country_flag = IRE_bop_going_right }
@@ -262,8 +411,13 @@ IRE_an_power_balance = {
 				stability_weekly = -0.005
 			}
 			on_activate = {
-				set_temp_variable = { IRE_loyalist_anger_delta = 0.1 }
-				custom_effect_tooltip = IRE_bop_moving
+				custom_effect_tooltip = IRE_bop_moving_outwards
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = IRE_loyalist_anger_increase_tt
+						RIGHT = 0.1
+					}
+				}
 				hidden_effect = {
 					if = {
 						limit = { has_country_flag = IRE_bop_going_right }

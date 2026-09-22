@@ -1699,15 +1699,15 @@ shared_focus = {
 		custom_override_tooltip = {
 			tooltip = {
 				localization_key = tooltip_create_division_template
-				NAME = "Yulbars' Guard"
+				NAME = "Yulbars' Guard 2"
 				LINE_1 = { localization_key = line_battalion_tt NAME = cavalry ICON = GFX_unit_cavalry_icon_small COUNT = 3 }
 			}
 			if = {
-				limit = { has_template = "Yulbars' Guard" }
-				delete_unit_template_and_units = { division_template = "Yulbars' Guard" disband = yes } #no cheating
+				limit = { has_template = "Yulbars' Guard 2" }
+				delete_unit_template_and_units = { division_template = "Yulbars' Guard 2" disband = yes } #no cheating
 			}
 			division_template = {
-				name = "Yulbars' Guard"
+				name = "Yulbars' Guard 2"
 				division_names_group = CA_CAV_01
 				regiments = {
 					cavalry = { x = 0 y = 0 }
@@ -1722,10 +1722,10 @@ shared_focus = {
 			custom_override_tooltip = {
 				tooltip = {
 					localization_key = tooltip_spawn_unit
-					TYPE = "Yulbars' Guard"
+					TYPE = "Yulbars' Guard 2"
 				}
 				create_unit = {
-					division = "name = \"Yulbars' Guard\" division_template = \"Yulbars' Guard\" start_experience_factor = 0.8"
+					division = "name = \"Yulbars' Guard\" division_template = \"Yulbars' Guard 2\" start_experience_factor = 0.8"
 					owner = ROOT
 				}
 			}

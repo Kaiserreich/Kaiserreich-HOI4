@@ -2156,8 +2156,11 @@ country_event = {
 	title = bhutan_events.743.t
 	desc = bhutan_events.743.d
 	picture = GFX_report_event_LEP_march
-	fire_only_once = yes
 	is_triggered_only = yes
+
+	trigger = {
+		XSM = { has_war_with = TIB }
+	}
 
 	option = { #We will pray for their victory!
 		log = "[GetLogInfo]: event bhutan_events.743 option bhutan_events.743.a"

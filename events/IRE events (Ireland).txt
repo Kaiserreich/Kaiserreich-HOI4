@@ -16147,14 +16147,14 @@ country_event = { # A check for the H&W MIO to set research speed (donotlog)
 		set_temp_variable = {
 			IRE_harland_wolff_dockyard_bonus = {
 				value = 3
-				multiply = 119.building_level@dockyard
+				multiply = var:119.building_level@dockyard
 				multiply = 0.01
 			}
 		}
 		set_temp_variable = {
 			IRE_harland_wolff_civilian_bonus = {
 				value = 5
-				multiply = 119.building_level@industrial_complex
+				multiply = var:119.building_level@industrial_complex
 				add = 100
 				multiply = 0.01
 			}
@@ -16162,7 +16162,7 @@ country_event = { # A check for the H&W MIO to set research speed (donotlog)
 		set_temp_variable = {
 			IRE_harland_wolff_military_bonus = {
 				value = 9
-				subtract = 119.building_level@arms_factory
+				subtract = var:119.building_level@arms_factory
 				multiply = 0.5
 				clamp = { min = 0 max = 5 }
 				multiply = 0.01

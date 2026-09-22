@@ -163,55 +163,60 @@ log_unit_limits = {
 	}
 }
 
-calculate_available_factories_based_on_compliance = {
-	# Add to factory_points based on state factories + compliance multiplier
-	add_to_temp_variable = {
-		# state_factories_non_core
-		factory_points = {
-			value = building_level@industrial_complex
-			add = building_level@arms_factory
-			add = building_level@dockyard
-			multiply = { #compliance_multiplier
-				value = 0.75
-				add = modifier@local_factories #negative
-				add = 0.25
-				clamp = { min = 0 max = 1 }
-			}
-			round = yes
-		}
-	}
-}
-
 calculate_maximum_divisions = {
 	### calculate base values - population and total factory count
-	clear_variable = non_core_base
-	clear_variable = base_units
-	set_temp_variable = { factory_points = 0 }
-
 	### normal behaviour - check all owned states of PREV
 	set_variable = { base_states = num_owned_states }
-	every_owned_state = {
-		if = {
-			limit = { is_core_of = PREV }
-			add_to_variable = { PREV.base_units = state_population_k }
-			add_to_temp_variable = {
-				factory_points = {
-					value = building_level@industrial_complex
-					add = building_level@arms_factory
-					add = building_level@dockyard
-				}
+
+	set_variable = {
+		base_units = {
+			value = 0
+			every_collection = {
+				named_collection = owned_core_states
+				add = state_population_k
 			}
 		}
-		else = {
-			add_to_variable = { #calculate_manpower_based_on_compliance
-				PREV.non_core_base = {
+	}
+	set_variable = {
+		non_core_base = {
+			value = 0
+			every_collection = {
+				named_collection = owned_non_core_states
+				#calculate_manpower_based_on_compliance
+				add = {
 					value = 0.02
 					add = modifier@local_non_core_manpower
 					multiply = state_population_k
 				}
 			}
+		}
+	}
 
-			calculate_available_factories_based_on_compliance = yes
+	set_temp_variable = {
+		factory_points = {
+			value = 0
+			every_collection = {
+				named_collection = owned_core_states
+				add = building_level@industrial_complex
+				add = building_level@arms_factory
+				add = building_level@dockyard
+			}
+			every_collection = {
+				named_collection = owned_non_core_states
+				add = {
+					value = building_level@industrial_complex
+					add = building_level@arms_factory
+					add = building_level@dockyard
+					#calculate_available_factories_based_on_compliance
+					multiply = { #compliance_multiplier
+						value = 0.75
+						add = modifier@local_factories #negative
+						add = 0.25
+						clamp = { min = 0 max = 1 }
+					}
+					round = yes
+				}
+			}
 		}
 	}
 
@@ -221,28 +226,56 @@ calculate_maximum_divisions = {
 		every_enemy_country = {
 			limit = { civilwar_target = PREV }
 			add_to_variable = { PREV.base_states = num_owned_states }
-			every_owned_state = {
-				if = {
-					limit = { is_core_of = PREV.PREV }
-					add_to_variable = { PREV.PREV.base_units = state_population_k }
-					add_to_temp_variable = {
-						factory_points = {
-							value = building_level@industrial_complex
-							add = building_level@arms_factory
-							add = building_level@dockyard
-						}
+
+			add_to_variable = {
+				PREV.PREV.base_units = {
+					value = 0
+					every_collection = {
+						named_collection = owned_core_states_PREVPREV
+						add = state_population_k
 					}
 				}
-				else = {
-					add_to_variable = { #calculate_manpower_based_on_compliance
-						PREV.PREV.non_core_base = {
+			}
+			add_to_variable = {
+				PREV.PREV.non_core_base = {
+					value = 0
+					every_collection = {
+						named_collection = owned_non_core_states_PREVPREV
+						#calculate_manpower_based_on_compliance
+						add = {
 							value = 0.02
 							add = modifier@local_non_core_manpower
 							multiply = state_population_k
 						}
 					}
+				}
+			}
 
-					calculate_available_factories_based_on_compliance = yes
+			add_to_temp_variable = {
+				factory_points = {
+					value = 0
+					every_collection = {
+						named_collection = owned_core_states_PREVPREV
+						add = building_level@industrial_complex
+						add = building_level@dockyard
+						add = building_level@arms_factory
+					}
+					every_collection = {
+						named_collection = owned_non_core_states_PREVPREV
+						add = {
+							value = building_level@industrial_complex
+							add = building_level@arms_factory
+							add = building_level@dockyard
+							#calculate_available_factories_based_on_compliance
+							multiply = { #compliance_multiplier
+								value = 0.75
+								add = modifier@local_factories #negative
+								add = 0.25
+								clamp = { min = 0 max = 1 }
+							}
+							round = yes
+						}
+					}
 				}
 			}
 		}

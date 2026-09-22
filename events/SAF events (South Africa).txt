@@ -2115,7 +2115,7 @@ country_event = {
 		log = "[GetLogInfo]: event south_africa_events.60 option south_africa_events.60.a"
 		name = south_africa_events.60.a
 		#add new colonists
-		set_temp_variable = { SAF_new_nuweveld_settlers = { value = 40000 multiply = 542.SAF_settling_attractiveness } }
+		set_temp_variable = { SAF_new_nuweveld_settlers = { value = 40000 multiply = var:542.SAF_settling_attractiveness } }
 		add_to_variable = { 542.SAF_whites_in_botswana = SAF_new_nuweveld_settlers }
 		542 = {
 			add_manpower = var:SAF_new_nuweveld_settlers

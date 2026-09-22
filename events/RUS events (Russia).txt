@@ -39402,8 +39402,28 @@ country_event = { #End of the Second Russo-Japanese War (can only fire if FER do
 						is_claimed_by = ROOT
 						is_mongolia = yes
 						AND = {
+							is_greater_tibet = yes
+							OR = {
+								any_state_in = {
+									strategic_region = 214 #Upper Yangtze
+									owner = { is_ally_with = ROOT }
+								}
+								any_state_in = {
+									strategic_region = 220 #Xibei
+									owner = { is_ally_with = ROOT }
+								}
+								any_state_in = {
+									strategic_region = 221 #Tarim Basin
+									owner = { is_ally_with = ROOT }
+								}
+							}
+						}
+						AND = {
 							CHN = { is_subject_of = JAP }
-							is_claimed_by = CHN
+							OR = {
+								is_claimed_by = CHN
+								has_variable = ambition_area_@CHN
+							}
 						}
 						region = 148 #Primorye
 						region = 260 #Amur
@@ -39413,6 +39433,24 @@ country_event = { #End of the Second Russo-Japanese War (can only fire if FER do
 					}
 				}
 				transfer_state_during_war = yes
+			}
+			hidden_effect = {
+				TIB = {
+					if = {
+						limit = { is_ally_with = FROM }
+						leave_faction = yes
+						if = {
+							limit = { is_subject = yes }
+							overlord = {
+								set_autonomy = {
+									target = PREV
+									autonomy_state = autonomy_free
+								}
+							}
+						}
+						peace_out_non_neighbours_after_leaving_faction = yes
+					}
+				}
 			}
 		}
 		else = {
@@ -39424,6 +39462,26 @@ country_event = { #End of the Second Russo-Japanese War (can only fire if FER do
 						is_claimed_by = ROOT
 						region = 148 #Primorye
 						region = 260 #Amur
+					}
+				}
+				transfer_state_during_war = yes
+			}
+		}
+		if = {
+			limit = {
+				AFG = {
+					is_ally_with = JAP
+					is_subject = no
+				}
+			}
+			set_temp_variable = { target = AFG }
+			every_state = {
+				limit = {
+					owner = { is_ally_with = FROM }
+					OR = {
+						is_claimed_by = AFG
+						is_core_of = AFG
+						has_variable = ambition_area_@AFG
 					}
 				}
 				transfer_state_during_war = yes

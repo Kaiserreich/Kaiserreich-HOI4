@@ -937,6 +937,9 @@ country_event = { #The Crisis in Turkestan
 		set_temp_variable = { AFG_foreign_influence_change = 1 }
 		AFG_change_influence_GER = yes
 		TRK = { country_event = { id = afghanistan_events.30 days = 5 } }
+		custom_effect_tooltip = tooltip_white_line
+		activate_targeted_decision = { target = AFG decision = AFG_escalate_intervention_in_central_asia }
+		set_country_flag = AFG_aided_TRK_flag
 	}
 	option = { #We must help the Russians maintain order.
 		log = "[GetLogInfo]: event afghanistan_events.29 option afghanistan_events.29.b"
@@ -949,6 +952,9 @@ country_event = { #The Crisis in Turkestan
 		set_temp_variable = { AFG_foreign_influence_change = 1 }
 		AFG_change_influence_RUS = yes
 		BUK = { country_event = { id = afghanistan_events.30 days = 5 } }
+		custom_effect_tooltip = tooltip_white_line
+		activate_targeted_decision = { target = AFG decision = AFG_escalate_intervention_in_central_asia }
+		set_country_flag = AFG_aided_RUS_flag
 	}
 	option = { #We have enough of our own people to use those guns on.
 		log = "[GetLogInfo]: event afghanistan_events.29 option afghanistan_events.29.c"
@@ -5687,6 +5693,10 @@ country_event = { #Failure on the Frontier
 		effect_tooltip = {
 			PTH = { white_peace_with_ROOT = yes }
 		}
+		if = {
+			limit = { has_template = "Dir Militia" }
+			delete_unit_template_and_units = { division_template = "Dir Militia" disband = yes }
+		}
 		hidden_effect = {
 			PTH = {
 				country_event = { id = afghanistan_pashtunistan_events.14 days = 4 }
@@ -5712,6 +5722,10 @@ country_event = { #Rebellion Crushed
 		add_popularity = { ideology = social_democrat popularity = -0.1 }
 		set_temp_variable = { AFG_anger_change = -0.05 }
 		AFG_change_anger = yes
+		if = {
+			limit = { has_template = "Dir Militia" }
+			delete_unit_template_and_units = { division_template = "Dir Militia" disband = yes }
+		}
 		hidden_effect = {
 			if = {
 				limit = { has_country_flag = AFG_looting_allowed }
@@ -8846,6 +8860,405 @@ country_event = { #Honouring the Shah of Baluchistan
 		name = afghanistan_foreign_policy_events.18.b
 		add_political_power = 25
 		add_stability = 0.025
+	}
+}
+country_event = { #Afghanistan Demands Peace (India)
+	id = afghanistan_foreign_policy_events.19
+	title = afghanistan_foreign_policy_events.19.t
+	desc = {
+		text = afghanistan_foreign_policy_events.19.d.india
+		trigger = { is_indian_unifier_tag = yes }
+	}
+	desc = {
+		text = afghanistan_foreign_policy_events.19.d.other
+		trigger = { is_indian_unifier_tag = no }
+	}
+	picture = GFX_report_event_RAJ_soldiers_in_afghanistan
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #There's no point continuing a losing battle.
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.19 option afghanistan_foreign_policy_events.19.a"
+		name = afghanistan_foreign_policy_events.19.a
+		ai_chance = { base = 100 }
+		add_political_power = -50
+		FROM = {
+			country_event = { id = afghanistan_foreign_policy_events.20 days = 4 }
+		}
+		effect_tooltip = {
+			if = {
+				limit = { is_in_faction = yes }
+				every_faction_member = {
+					limit = {
+						any_owned_state = {
+							OR = {
+								is_core_of = FROM
+								is_claimed_by = FROM
+								has_variable = ambition_area_@FROM
+							}
+						}
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								is_core_of = FROM
+								is_claimed_by = FROM
+								has_variable = ambition_area_@FROM
+							}
+						}
+						transfer_state_to = FROM
+					}
+				}
+			}
+			else = {
+				every_owned_state = {
+					limit = {
+						OR = {
+							is_core_of = FROM
+							is_claimed_by = FROM
+							has_variable = ambition_area_@FROM
+						}
+					}
+					transfer_state_to = FROM
+				}
+				every_subject_country = {
+					limit = {
+						any_owned_state = {
+							OR = {
+								is_core_of = FROM
+								is_claimed_by = FROM
+								has_variable = ambition_area_@FROM
+							}
+						}
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								is_core_of = FROM
+								is_claimed_by = FROM
+								has_variable = ambition_area_@FROM
+							}
+						}
+						transfer_state_to = FROM
+					}
+				}
+			}
+			FROM = { white_peace_with_ROOT = yes }
+		}
+	}
+	option = { #We refuse to surrender an inch to them.
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.19 option afghanistan_foreign_policy_events.19.b"
+		name = afghanistan_foreign_policy_events.19.b
+		ai_chance = { base = 0 }
+		FROM = {
+			country_event = { id = afghanistan_foreign_policy_events.21 days = 4 }
+		}
+		if = {
+			limit = { is_indian_unifier_tag = yes }
+			add_war_support = -0.1
+			add_stability = -0.05
+		}
+		else = { add_political_power = -150 }
+	}
+}
+country_event = { #India Surrenders!
+	id = afghanistan_foreign_policy_events.20
+	title = afghanistan_foreign_policy_events.20.t
+	desc = afghanistan_foreign_policy_events.20.d
+	picture = GFX_report_event_RAJ_soldiers_in_afghanistan
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #A Great Victory for the Fortress of Islam!
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.20 option afghanistan_foreign_policy_events.20.a"
+		name = afghanistan_foreign_policy_events.20.a
+		FROM = {
+			if = {
+				limit = { is_in_faction = yes }
+				every_faction_member = {
+					limit = {
+						any_owned_state = {
+							OR = {
+								is_core_of = ROOT
+								is_claimed_by = ROOT
+								has_variable = ambition_area_@ROOT
+							}
+						}
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								is_core_of = ROOT
+								is_claimed_by = ROOT
+								has_variable = ambition_area_@ROOT
+							}
+						}
+						transfer_state_to = ROOT
+					}
+				}
+			}
+			else = {
+				every_owned_state = {
+					limit = {
+						OR = {
+							is_core_of = ROOT
+							is_claimed_by = ROOT
+							has_variable = ambition_area_@ROOT
+						}
+					}
+					transfer_state_to = ROOT
+				}
+				every_subject_country = {
+					limit = {
+						any_owned_state = {
+							OR = {
+								is_core_of = ROOT
+								is_claimed_by = ROOT
+								has_variable = ambition_area_@ROOT
+							}
+						}
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								is_core_of = ROOT
+								is_claimed_by = ROOT
+								has_variable = ambition_area_@ROOT
+							}
+						}
+						transfer_state_to = ROOT
+					}
+				}
+			}
+			every_faction_member = {
+				limit = {
+					OR = {
+						is_russian_tag = yes
+						is_indian_unifier_tag = yes
+					}
+				}
+				set_country_flag = AFG_enemy_lost_flag
+			}
+			white_peace_with_ROOT = yes
+			clr_country_flag = AFG_in_peace_negotiations
+		}
+	}
+}
+country_event = { #India Refuses to Surrender.
+	id = afghanistan_foreign_policy_events.21
+	title = afghanistan_foreign_policy_events.21.t
+	desc = afghanistan_foreign_policy_events.21.d
+	picture = GFX_report_event_RAJ_soldiers_in_afghanistan
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Then we shall not stop until our banner is over Delhi!
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.21 option afghanistan_foreign_policy_events.21.a"
+		name = afghanistan_foreign_policy_events.21.a
+		add_war_support = 0.05
+		clr_country_flag = AFG_in_peace_negotiations
+	}
+}
+country_event = { #Afghanistan Demands Peace (Russia)
+	id = afghanistan_foreign_policy_events.22
+	title = afghanistan_foreign_policy_events.22.t
+	desc = {
+		text = afghanistan_foreign_policy_events.22.d.russia
+		trigger = { is_russian_tag = yes }
+	}
+	desc = {
+		text = afghanistan_foreign_policy_events.22.d.other
+		trigger = { is_russian_tag = no }
+	}
+	picture = GFX_report_event_RAJ_soldiers_in_afghanistan
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #There's no point continuing a losing battle.
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.22 option afghanistan_foreign_policy_events.22.a"
+		name = afghanistan_foreign_policy_events.22.a
+		ai_chance = { base = 100 }
+		add_political_power = -50
+		FROM = {
+			country_event = { id = afghanistan_foreign_policy_events.23 days = 4 }
+		}
+		effect_tooltip = {
+			if = {
+				limit = { is_in_faction = yes }
+				every_faction_member = {
+					limit = {
+						any_owned_state = {
+							OR = {
+								is_core_of = FROM
+								is_claimed_by = FROM
+								has_variable = ambition_area_@FROM
+							}
+						}
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								is_core_of = FROM
+								is_claimed_by = FROM
+								has_variable = ambition_area_@FROM
+							}
+						}
+						transfer_state_to = FROM
+					}
+				}
+			}
+			else = {
+				every_owned_state = {
+					limit = {
+						OR = {
+							is_core_of = FROM
+							is_claimed_by = FROM
+							has_variable = ambition_area_@FROM
+						}
+					}
+					transfer_state_to = FROM
+				}
+				every_subject_country = {
+					limit = {
+						any_owned_state = {
+							OR = {
+								is_core_of = FROM
+								is_claimed_by = FROM
+								has_variable = ambition_area_@FROM
+							}
+						}
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								is_core_of = FROM
+								is_claimed_by = FROM
+								has_variable = ambition_area_@FROM
+							}
+						}
+						transfer_state_to = FROM
+					}
+				}
+			}
+			FROM = { white_peace_with_ROOT = yes }
+		}
+	}
+	option = { #We refuse to surrender an inch to them.
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.22 option afghanistan_foreign_policy_events.22.b"
+		name = afghanistan_foreign_policy_events.22.b
+		ai_chance = { base = 0 }
+		FROM = {
+			country_event = { id = afghanistan_foreign_policy_events.24 days = 4 }
+		}
+		if = {
+			limit = { is_russian_tag = yes }
+			add_war_support = -0.05
+		}
+		else = { add_political_power = -100 }
+	}
+}
+country_event = { #Russia Surrenders!
+	id = afghanistan_foreign_policy_events.23
+	title = afghanistan_foreign_policy_events.23.t
+	desc = afghanistan_foreign_policy_events.23.d
+	picture = GFX_report_event_RAJ_soldiers_in_afghanistan
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #A Great Victory for the Fortress of Islam!
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.23 option afghanistan_foreign_policy_events.23.a"
+		name = afghanistan_foreign_policy_events.23.a
+		FROM = {
+			if = {
+				limit = { is_in_faction = yes }
+				every_faction_member = {
+					limit = {
+						any_owned_state = {
+							OR = {
+								is_core_of = ROOT
+								is_claimed_by = ROOT
+								has_variable = ambition_area_@ROOT
+							}
+						}
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								is_core_of = ROOT
+								is_claimed_by = ROOT
+								has_variable = ambition_area_@ROOT
+							}
+						}
+						transfer_state_to = ROOT
+					}
+				}
+			}
+			else = {
+				every_owned_state = {
+					limit = {
+						OR = {
+							is_core_of = ROOT
+							is_claimed_by = ROOT
+							has_variable = ambition_area_@ROOT
+						}
+					}
+					transfer_state_to = ROOT
+				}
+				every_subject_country = {
+					limit = {
+						any_owned_state = {
+							OR = {
+								is_core_of = ROOT
+								is_claimed_by = ROOT
+								has_variable = ambition_area_@ROOT
+							}
+						}
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								is_core_of = ROOT
+								is_claimed_by = ROOT
+								has_variable = ambition_area_@ROOT
+							}
+						}
+						transfer_state_to = ROOT
+					}
+				}
+			}
+			every_faction_member = {
+				limit = {
+					OR = {
+						is_russian_tag = yes
+						is_indian_unifier_tag = yes
+					}
+				}
+				set_country_flag = AFG_enemy_lost_flag
+			}
+			white_peace_with_ROOT = yes
+			clr_country_flag = AFG_in_peace_negotiations
+		}
+	}
+}
+country_event = { #Russia Refuses to Surrender.
+	id = afghanistan_foreign_policy_events.24
+	title = afghanistan_foreign_policy_events.24.t
+	desc = afghanistan_foreign_policy_events.24.d
+	picture = GFX_report_event_RAJ_soldiers_in_afghanistan
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #Then we shall not stop until our banner is over Delhi!
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.24 option afghanistan_foreign_policy_events.24.a"
+		name = afghanistan_foreign_policy_events.24.a
+		add_war_support = 0.05
+		clr_country_flag = AFG_in_peace_negotiations
 	}
 }
 

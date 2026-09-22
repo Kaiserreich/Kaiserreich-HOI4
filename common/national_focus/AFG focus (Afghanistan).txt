@@ -2813,7 +2813,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AFG_good_king_bad_boyars"
-			add_manpower = 59
+			add_manpower = -59
 			add_popularity = { ideology = social_liberal popularity = -0.1 }
 			set_temp_variable = { coalition_partner_var = token:social_liberal }
 			remove_from_coalition = yes
@@ -8576,7 +8576,7 @@ focus_tree = {
 		cost = 5
 
 		relative_position_id = AFG_restore_the_foreign_ministry
-		x = 1
+		x = 3
 		y = 3
 		will_lead_to_war_with = TRK
 		will_lead_to_war_with = BUK
@@ -8633,7 +8633,7 @@ focus_tree = {
 		cost = 3
 
 		relative_position_id = AFG_restore_the_foreign_ministry
-		x = 2
+		x = 3
 		y = 4
 
 		ai_will_do = { factor = 100 }
@@ -8744,7 +8744,7 @@ focus_tree = {
 		cost = 5
 
 		relative_position_id = AFG_restore_the_foreign_ministry
-		x = 3
+		x = 1
 		y = 3
 		will_lead_to_war_with = PER
 
@@ -8761,7 +8761,7 @@ focus_tree = {
 		}
 
 		prerequisite = {
-			focus = AFG_unify_pashtunistan
+			focus = AFG_liberating_the_colonised_pashtuns
 		}
 		available = {
 			OR = {
@@ -8829,7 +8829,7 @@ focus_tree = {
 		cost = 5
 
 		relative_position_id = AFG_restore_the_foreign_ministry
-		x = 3
+		x = 2
 		y = 5
 
 		ai_will_do = { factor = 100 }
@@ -8849,6 +8849,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = AFG_extend_our_authority_to_darwaz
+		}
+		prerequisite = {
+			focus = AFG_unify_pashtunistan
 		}
 		available = {
 			has_war = no

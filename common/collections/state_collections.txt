@@ -64,6 +64,31 @@ every_state_in_central_america = {
 }
 
 ###############
+### GENERIC ###
+###############
+
+owned_states = {
+	input = game:scope
+	operators = { owned_states }
+}
+owned_core_states = {
+	input = collection:owned_states
+	operators = { is_core_of = PREV }
+}
+owned_core_states_PREVPREV = {
+	input = collection:owned_states
+	operators = { is_core_of = PREV.PREV }
+}
+owned_non_core_states = {
+	input = collection:owned_states
+	operators = { is_not_core_of = PREV }
+}
+owned_non_core_states_PREVPREV = {
+	input = collection:owned_states
+	operators = { is_not_core_of = PREV.PREV }
+}
+
+###############
 ### FACTION ###
 ###############
 faction_owned_states = {
@@ -77,9 +102,7 @@ faction_owned_states = {
 
 faction_owned_core_states = {
 	input = collection:faction_owned_states
-	operators = {
-		limit = { is_core_of = PREV }
-	}
+	operators = { is_core_of = PREV }
 	name = COLLECTION_FACTION_OWNED_CORE_STATES
 }
 
@@ -109,10 +132,8 @@ faction_controlled_enemy_core_states = {
 	input = collection:faction_controlled_states
 	name = ENEMY_FACTION_CORE_STATES_CONTROLLED_BY_US
 	operators = {
-		limit = {
-			owner = { has_war_with = ROOT }
-			is_core_of = owner
-		}
+		is_core_of = owner
+		limit = { owner = { has_war_with = ROOT } }
 	}
 }
 

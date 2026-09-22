@@ -30,33 +30,54 @@ POL_add_royal_influence = {
 		# avoid values outside the allowed range
 		clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
-		#calculate proportional reductions
-		set_temp_variable = {
-			POL_reduction_republican = {
-				value = POL_rep_influence
-				divide = POL_upper_limit
-				multiply = POL_influence_change
+		if = { #Ensure the case where all of the sides equal 0 is accounted for to avoid dividing by zero.
+			limit = {
+				check_variable = { POL_upper_limit = 0 }
+				check_variable = { POL_influence_change < 0 }
+			}
+			# Split equally across the others
+			set_temp_variable = { POL_reduction_republican = { value = POL_influence_change divide = 3 } }
+			set_temp_variable = { POL_reduction_nationalist = { value = POL_influence_change divide = 3 } }
+			set_temp_variable = { POL_reduction_syndicalist = { value = POL_influence_change divide = 3 } }
+		}
+		else_if = { #In the case where the populairty of the others vanishes completely
+			limit = {
+				check_variable = { POL_influence_change = POL_upper_limit }
+				check_variable = { POL_influence_change > 0 }
+			}
+			set_temp_variable = { POL_reduction_republican = POL_rep_influence }
+			set_temp_variable = { POL_reduction_nationalist = POL_nat_influence }
+			set_temp_variable = { POL_reduction_syndicalist = POL_soc_influence }
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { POL_influence_change = 0 } } }
+			#calculate proportional reductions
+			set_temp_variable = {
+				POL_reduction_republican = {
+					value = POL_rep_influence
+					divide = POL_upper_limit
+					multiply = POL_influence_change
+				}
+			}
+
+			#calculate proportional reductions
+			set_temp_variable = {
+				POL_reduction_nationalist = {
+					value = POL_nat_influence
+					divide = POL_upper_limit
+					multiply = POL_influence_change
+				}
+			}
+
+			#calculate proportional reductions
+			set_temp_variable = {
+				POL_reduction_syndicalist = {
+					value = POL_soc_influence
+					divide = POL_upper_limit
+					multiply = POL_influence_change
+				}
 			}
 		}
-
-		#calculate proportional reductions
-		set_temp_variable = {
-			POL_reduction_nationalist = {
-				value = POL_nat_influence
-				divide = POL_upper_limit
-				multiply = POL_influence_change
-			}
-		}
-
-		#calculate proportional reductions
-		set_temp_variable = {
-			POL_reduction_syndicalist = {
-				value = POL_soc_influence
-				divide = POL_upper_limit
-				multiply = POL_influence_change
-			}
-		}
-
 		#make sure the above values add up to POL_influence_change
 		add_to_temp_variable = {
 			POL_reduction_nationalist = {
@@ -78,63 +99,6 @@ POL_add_royal_influence = {
 	}
 }
 
-POL_account_for_disabled_royal_influence = {
-	if = {
-		limit = { is_monarchy = no }
-		#calculate the total non-royal influence
-		set_temp_variable = {
-			POL_non_royal_total = {
-				value = POL_soc_influence
-				add = POL_rep_influence
-				add = POL_nat_influence
-			}
-		}
-
-		#calculate proportional syndicalist increase
-		set_temp_variable = {
-			POL_royal_to_soc = {
-				value = POL_royal_influence
-				multiply = POL_soc_influence
-				divide = POL_non_royal_total
-			}
-		}
-
-		#calculate proportional republican increase
-		set_temp_variable = {
-			POL_royal_to_rep = {
-				value = POL_royal_influence
-				multiply = POL_rep_influence
-				divide = POL_non_royal_total
-			}
-		}
-
-		#calculate proportional nationalist increase
-		set_temp_variable = {
-			POL_royal_to_nat = {
-				value = POL_royal_influence
-				multiply = POL_nat_influence
-				divide = POL_non_royal_total
-			}
-		}
-
-		#make sure the above values add up to POL_royal_influence
-		add_to_temp_variable = {
-			POL_royal_to_rep = {
-				value = POL_royal_influence
-				subtract = POL_royal_to_soc
-				subtract = POL_royal_to_rep
-				subtract = POL_royal_to_nat
-			}
-		}
-
-		#finally set the variables
-		add_to_variable = { POL_soc_influence = POL_royal_to_soc }
-		add_to_variable = { POL_rep_influence = POL_royal_to_rep }
-		add_to_variable = { POL_nat_influence = POL_royal_to_nat }
-		set_variable = { POL_royal_influence = 0 }
-	}
-}
-
 POL_add_syndicalist_influence = {
 	POL_percent_to_absolute = yes
 	if = {
@@ -145,8 +109,6 @@ POL_add_syndicalist_influence = {
 		limit = { check_variable = { POL_influence_change < 0 } }
 		custom_effect_tooltip = POL_soc_reduce_tt
 	}
-
-	POL_account_for_disabled_royal_influence = yes
 
 	# lower limit = syndicalist influence * -1
 	set_temp_variable = { POL_lower_limit = { value = POL_soc_influence multiply = -1 } }
@@ -163,33 +125,59 @@ POL_add_syndicalist_influence = {
 	# avoid values outside the allowed range
 	clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
-	#calculate proportional reductions
-	set_temp_variable = {
-		POL_reduction_republican = {
-			value = POL_rep_influence
-			divide = POL_upper_limit
-			multiply = POL_influence_change
+	if = { #Ensure the case where all of the sides equal 0 is accounted for to avoid dividing by zero.
+		limit = {
+			check_variable = { POL_upper_limit = 0 }
+			check_variable = { POL_influence_change < 0 }
+		}
+		# Split equally across the others
+		if = {
+			limit = { is_monarchy = yes }
+			set_temp_variable = { POL_reduction_republican = { value = POL_influence_change divide = 3 } }
+			set_temp_variable = { POL_reduction_nationalist = { value = POL_influence_change divide = 3 } }
+			set_temp_variable = { POL_reduction_royal = { value = POL_influence_change divide = 3 } }
+		}
+		else = {
+			set_temp_variable = { POL_reduction_republican = { value = POL_influence_change multiply = 0.5 } }
+			set_temp_variable = { POL_reduction_nationalist = { value = POL_influence_change multiply = 0.5 } }
 		}
 	}
+	else_if = { #In the case where the populairty of the others vanishes completely
+		limit = {
+			check_variable = { POL_influence_change = POL_upper_limit }
+			check_variable = { POL_influence_change > 0 }
+		}
+		set_temp_variable = { POL_reduction_republican = POL_rep_influence }
+		set_temp_variable = { POL_reduction_nationalist = POL_nat_influence }
+		set_temp_variable = { POL_reduction_royal = POL_royal_influence }
+	}
+	else_if = {
+		limit = { NOT = { check_variable = { POL_influence_change = 0 } } }
+		#calculate proportional reductions
+		set_temp_variable = {
+			POL_reduction_republican = {
+				value = POL_rep_influence
+				divide = POL_upper_limit
+				multiply = POL_influence_change
+			}
+		}
 
-	#calculate proportional reductions
-	set_temp_variable = {
-		POL_reduction_nationalist = {
-			value = POL_nat_influence
-			divide = POL_upper_limit
-			multiply = POL_influence_change
+		set_temp_variable = {
+			POL_reduction_nationalist = {
+				value = POL_nat_influence
+				divide = POL_upper_limit
+				multiply = POL_influence_change
+			}
+		}
+
+		set_temp_variable = {
+			POL_reduction_royal = {
+				value = POL_royal_influence
+				divide = POL_upper_limit
+				multiply = POL_influence_change
+			}
 		}
 	}
-
-	#calculate proportional reductions
-	set_temp_variable = {
-		POL_reduction_royal = {
-			value = POL_royal_influence
-			divide = POL_upper_limit
-			multiply = POL_influence_change
-		}
-	}
-
 	#make sure the above values add up to POL_influence_change
 	add_to_temp_variable = {
 		POL_reduction_nationalist = {
@@ -221,8 +209,6 @@ POL_add_republican_influence = {
 		custom_effect_tooltip = POL_rep_reduce_tt
 	}
 
-	POL_account_for_disabled_royal_influence = yes
-
 	# lower limit = republican influence * -1
 	set_temp_variable = { POL_lower_limit = { value = POL_rep_influence multiply = -1 } }
 
@@ -238,33 +224,59 @@ POL_add_republican_influence = {
 	# avoid values outside the allowed range
 	clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
-	#calculate proportional reductions
-	set_temp_variable = {
-		POL_reduction_syndicalist = {
-			value = POL_soc_influence
-			divide = POL_upper_limit
-			multiply = POL_influence_change
+	if = { #Ensure the case where all of the sides equal 0 is accounted for to avoid dividing by zero.
+		limit = {
+			check_variable = { POL_upper_limit = 0 }
+			check_variable = { POL_influence_change < 0 }
+		}
+		# Split equally across the others
+		if = {
+			limit = { is_monarchy = yes }
+			set_temp_variable = { POL_reduction_syndicalist = { value = POL_influence_change divide = 3 } }
+			set_temp_variable = { POL_reduction_nationalist = { value = POL_influence_change divide = 3 } }
+			set_temp_variable = { POL_reduction_royal = { value = POL_influence_change divide = 3 } }
+		}
+		else = {
+			set_temp_variable = { POL_reduction_syndicalist = { value = POL_influence_change multiply = 0.5 } }
+			set_temp_variable = { POL_reduction_nationalist = { value = POL_influence_change multiply = 0.5 } }
 		}
 	}
+	else_if = { #In the case where the populairty of the others vanishes completely
+		limit = {
+			check_variable = { POL_influence_change = POL_upper_limit }
+			check_variable = { POL_influence_change > 0 }
+		}
+		set_temp_variable = { POL_reduction_syndicalist = POL_soc_influence }
+		set_temp_variable = { POL_reduction_nationalist = POL_nat_influence }
+		set_temp_variable = { POL_reduction_royal = POL_royal_influence }
+	}
+	else_if = {
+		limit = { NOT = { check_variable = { POL_influence_change = 0 } } }
+		#calculate proportional reductions
+		set_temp_variable = {
+			POL_reduction_syndicalist = {
+				value = POL_soc_influence
+				divide = POL_upper_limit
+				multiply = POL_influence_change
+			}
+		}
 
-	#calculate proportional reductions
-	set_temp_variable = {
-		POL_reduction_nationalist = {
-			value = POL_nat_influence
-			divide = POL_upper_limit
-			multiply = POL_influence_change
+		set_temp_variable = {
+			POL_reduction_nationalist = {
+				value = POL_nat_influence
+				divide = POL_upper_limit
+				multiply = POL_influence_change
+			}
+		}
+
+		set_temp_variable = {
+			POL_reduction_royal = {
+				value = POL_royal_influence
+				divide = POL_upper_limit
+				multiply = POL_influence_change
+			}
 		}
 	}
-
-	#calculate proportional reductions
-	set_temp_variable = {
-		POL_reduction_royal = {
-			value = POL_royal_influence
-			divide = POL_upper_limit
-			multiply = POL_influence_change
-		}
-	}
-
 	#make sure the above values add up to POL_influence_change
 	add_to_temp_variable = {
 		POL_reduction_syndicalist = {
@@ -296,8 +308,6 @@ POL_add_nationalist_influence = {
 		custom_effect_tooltip = POL_nat_reduce_tt
 	}
 
-	POL_account_for_disabled_royal_influence = yes
-
 	# lower limit = nationalist influence * -1
 	set_temp_variable = { POL_lower_limit = { value = POL_nat_influence multiply = -1 } }
 
@@ -313,30 +323,57 @@ POL_add_nationalist_influence = {
 	# avoid values outside the allowed range
 	clamp_temp_variable = { var = POL_influence_change min = POL_lower_limit max = POL_upper_limit }
 
-	#calculate proportional reductions
-	set_temp_variable = {
-		POL_reduction_syndicalist = {
-			value = POL_soc_influence
-			divide = POL_upper_limit
-			multiply = POL_influence_change
+	if = { #Ensure the case where all of the sides equal 0 is accounted for to avoid dividing by zero.
+		limit = {
+			check_variable = { POL_upper_limit = 0 }
+			check_variable = { POL_influence_change < 0 }
+		}
+		# Split equally across the others
+		if = {
+			limit = { is_monarchy = yes }
+			set_temp_variable = { POL_reduction_syndicalist = { value = POL_influence_change divide = 3 } }
+			set_temp_variable = { POL_reduction_republican = { value = POL_influence_change divide = 3 } }
+			set_temp_variable = { POL_reduction_royal = { value = POL_influence_change divide = 3 } }
+		}
+		else = {
+			set_temp_variable = { POL_reduction_syndicalist = { value = POL_influence_change multiply = 0.5 } }
+			set_temp_variable = { POL_reduction_republican = { value = POL_influence_change multiply = 0.5 } }
 		}
 	}
-
-	#calculate proportional reductions
-	set_temp_variable = {
-		POL_reduction_republican = {
-			value = POL_rep_influence
-			divide = POL_upper_limit
-			multiply = POL_influence_change
+	else_if = { #In the case where the populairty of the others vanishes completely
+		limit = {
+			check_variable = { POL_influence_change = POL_upper_limit }
+			check_variable = { POL_influence_change > 0 }
 		}
+		set_temp_variable = { POL_reduction_syndicalist = POL_soc_influence }
+		set_temp_variable = { POL_reduction_republican = POL_rep_influence }
+		set_temp_variable = { POL_reduction_royal = POL_royal_influence }
 	}
+	else_if = {
+		limit = { NOT = { check_variable = { POL_influence_change = 0 } } }
+		#calculate proportional reductions
+		set_temp_variable = {
+			POL_reduction_syndicalist = {
+				value = POL_soc_influence
+				divide = POL_upper_limit
+				multiply = POL_influence_change
+			}
+		}
 
-	#calculate proportional reductions
-	set_temp_variable = {
-		POL_reduction_royal = {
-			value = POL_royal_influence
-			divide = POL_upper_limit
-			multiply = POL_influence_change
+		set_temp_variable = {
+			POL_reduction_republican = {
+				value = POL_rep_influence
+				divide = POL_upper_limit
+				multiply = POL_influence_change
+			}
+		}
+
+		set_temp_variable = {
+			POL_reduction_royal = {
+				value = POL_royal_influence
+				divide = POL_upper_limit
+				multiply = POL_influence_change
+			}
 		}
 	}
 
@@ -420,7 +457,8 @@ POL_add_german_influence = {
 	POL_percent_to_absolute = yes
 	custom_effect_tooltip = POL_add_POL_GER_influence_tt
 	hidden_effect = {
-		if = { limit = { check_variable = { POL_influence_change > 0 } }
+		if = {
+			limit = { check_variable = { POL_influence_change > 0 } }
 			add_popularity = { ideology = authoritarian_democrat popularity = 0.01 }
 		}
 	}

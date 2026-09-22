@@ -1032,7 +1032,6 @@ AFG_pathanistan_puppet_setup_effect = {
 	}
 }
 
-
 AFG_pathanistan_leader_setup_effect = {
 
 	AFG = {
@@ -1483,6 +1482,7 @@ AFG_puppet_setup = {
 				}
 				AFG_create_zahir = yes
 				AFG_telai_puppet_party_names_effect = yes
+				activate_advisor = AFG_mohammad_hashim_khan_sic
 			}
 			else_if = {
 				limit = { AFG = { AFG_mohammad_nadir_khan = { is_dead = yes } } }
@@ -2101,6 +2101,7 @@ AFG_zahir_monarchy_setup_effect = {
 			promote_leader = yes
 		}
 	}
+	activate_advisor = AFG_mohammad_hashim_khan_sic
 }
 
 AFG_improve_loy_afghanistan_effect = {

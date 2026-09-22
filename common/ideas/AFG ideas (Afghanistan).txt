@@ -2530,6 +2530,49 @@ ideas = {
 				army_org_regain = -0.05
 			}
 		}
+		AFG_northern_volunteers_rus = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_northern_volunteers_rus" }
+			name = AFG_northern_volunteers
+			picture = generic_volunteer_expedition_bonus
+			allowed = { always = no }
+			available = {
+				RUS = { has_war_with = TRK }
+			}
+			targeted_modifier = {
+				tag = TRK
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+			targeted_modifier = {
+				tag = KHI
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+			targeted_modifier = {
+				tag = KAZ
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+		}
+		AFG_northern_volunteers_trk = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_northern_volunteers_trk" }
+			name = AFG_northern_volunteers
+			picture = generic_volunteer_expedition_bonus
+			allowed = { always = no }
+			available = {
+				RUS = { has_war_with = TRK }
+			}
+			targeted_modifier = {
+				tag = RUS
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+			targeted_modifier = {
+				tag = BUK
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+		}
 	}
 
 	# Industrial Concerns #

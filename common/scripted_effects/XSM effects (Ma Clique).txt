@@ -113,6 +113,11 @@ XSM_deactivate_yushu_conflict_mechanic = {
 		remove_targeted_decision = { decision = XSM_yushu_government_police2 target = 353 }
 		remove_targeted_decision = { decision = XSM_reinforce_border2 target = 353 }
 	}
+	hidden_effect = {
+		BHU = {
+			country_event = { id = bhutan_events.743 days = 3 }
+		}
+	}
 }
 
 XSM_increase_ma_control = {

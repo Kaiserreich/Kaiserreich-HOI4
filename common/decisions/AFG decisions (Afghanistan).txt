@@ -1961,6 +1961,39 @@ AFG_crossroads_of_civilisation_decisions = {
 		}
 		fixed_random_seed = no
 	}
+	AFG_escalate_intervention_in_central_asia = {
+		icon = GFX_decision_railroad
+		allowed = { always = no }
+		available = {
+			RUS = { has_war_with = TRK }
+		}
+		visible = {
+			RUS = { has_war_with = TRK }
+		}
+
+		priority = 500
+		cost = 25
+		fire_only_once = yes
+		ai_will_do = { base = 0 } #AI doesn't send volunteers to CA
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete AFG_escalate_intervention_in_central_asia"
+			if = {
+				limit = { has_country_flag = AFG_aided_RUS_flag }
+				add_ideas = AFG_northern_volunteers_rus
+				set_temp_variable = { AFG_foreign_influence_change = 1 }
+				AFG_change_influence_RUS = yes
+			}
+			else = {
+				add_ideas = AFG_northern_volunteers_trk
+				set_temp_variable = { AFG_foreign_influence_change = 1 }
+				AFG_change_influence_GER = yes
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = AFG_northern_volunteers_expire_tt
+		}
+		fixed_random_seed = no
+	}
 }
 
 AFG_pashtunistan_crisis_decisions = {
@@ -4086,6 +4119,189 @@ AFG_unifying_the_pashtuns = {
 }
 
 political_actions = {
+
+	AFG_push_india_into_surrender = {
+		icon = generic_ignite_civil_war
+		allowed = { always = no } #manually activated
+		priority = 1000
+
+		available = {
+			custom_override_tooltip = {
+				tooltip = AFG_india_war_only_one_government_tt
+				any_country_of = {
+					count = 2
+					target = { HND PRF RAJ }
+					exists = no
+				}
+			}
+			is_in_faction = no
+			all_owned_state = { is_fully_controlled_by = ROOT }
+			has_country_flag = { flag = AFG_india_war_tracker_flag days > 270 }
+			442 = { is_fully_controlled_by = ROOT } #Peshawar
+			445 = { is_fully_controlled_by = ROOT } #Quetta
+			444 = { is_fully_controlled_by = ROOT } #Baluchistan
+			443 = { is_fully_controlled_by = ROOT } #Sind
+			if = {
+				limit = {
+					FROM = {
+						is_in_faction = yes
+						faction_leader = {
+							1042 = { is_owned_by_PREV_or_subject = yes } #Badakhshan
+							804 = { is_owned_by_PREV_or_subject = yes } #Pamir
+						}
+					}
+				}
+				1042 = { is_fully_controlled_by = ROOT } #Badakhshan
+				804 = { is_fully_controlled_by = ROOT } #Pamir
+			}
+			NOT = { owns_state = 891 } # West Punjab
+			NOT = { has_country_flag = AFG_in_peace_negotiations }
+		}
+
+		visible = {
+			has_war_with = FROM
+			is_valid_peace_target = yes
+			OR = {
+				FROM = {
+					OR = {
+						owns_state = 442 #Peshawar
+						owns_state = 443 #Sind
+						owns_state = 444 #Baluchistan
+						owns_state = 445 #Quetta
+					}
+				}
+				owns_state = 442 #Peshawar
+				owns_state = 443 #Sind
+				owns_state = 444 #Baluchistan
+				owns_state = 445 #Quetta
+			}
+		}
+
+		fire_only_once = yes
+
+		target_trigger = {
+			has_war_with = FROM
+		}
+
+		ai_will_do = { factor = 100 }
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_push_india_into_surrender"
+			set_country_flag = { flag = AFG_in_peace_negotiations days = 50 value = 1 } #Timed as a failsafe
+			FROM = { save_event_target_as = AFG_indian_peace_recipient }
+			if = {
+				limit = {
+					FROM = {
+						is_in_faction = yes
+						is_ai = yes
+					}
+				}
+				FROM.faction_leader = { country_event = afghanistan_foreign_policy_events.19 }
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						is_in_faction = yes
+						any_allied_country = { is_ai = no }
+					}
+				}
+				FROM = {
+					random_allied_country = {
+						limit = { is_ai = no }
+						country_event = afghanistan_foreign_policy_events.19
+					}
+				}
+			}
+			else = {
+				FROM = { country_event = afghanistan_foreign_policy_events.19 }
+			}
+		}
+		fixed_random_seed = no
+	}
+	AFG_demand_peace_with_russia = {
+		icon = generic_ignite_civil_war
+		allowed = { always = no } #manually activated
+		priority = 1000
+
+		available = {
+			is_in_faction = no
+			all_owned_state = { is_fully_controlled_by = ROOT }
+			has_country_flag = { flag = AFG_russia_war_tracker_flag days > 180 }
+			1042 = { is_fully_controlled_by = ROOT } #Badakhshan
+			804 = { is_fully_controlled_by = ROOT } #Pamir
+			NOT = { has_country_flag = AFG_in_peace_negotiations }
+		}
+
+		visible = {
+			has_war_with = FROM
+			is_valid_peace_target = yes
+			OR = {
+				1042 = { is_owned_by_FROM_or_subject = yes } #Badakhshan
+				804 = { is_owned_by_FROM_or_subject = yes } #Pamir
+			}
+			NOT = {
+				AND = {
+					any_country_of = {
+						target = { HND PRF RAJ }
+						is_ally_with = FROM
+						OR = {
+							owns_state = 442 #Peshawar
+							owns_state = 443 #Sind
+							owns_state = 444 #Baluchistan
+							owns_state = 445 #Quetta
+						}
+					}
+					OR = {
+						owns_state = 442 #Peshawar
+						owns_state = 443 #Sind
+						owns_state = 444 #Baluchistan
+						owns_state = 445 #Quetta
+					}
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		target_trigger = {
+			has_war_with = FROM
+		}
+
+		ai_will_do = { factor = 100 }
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete AFG_demand_peace_with_russia"
+			set_country_flag = { flag = AFG_in_peace_negotiations days = 50 value = 1 } #Timed as a failsafe
+			FROM = { save_event_target_as = AFG_russian_peace_recipient }
+			if = {
+				limit = {
+					FROM = {
+						is_in_faction = yes
+						is_ai = yes
+					}
+				}
+				FROM.faction_leader = { country_event = afghanistan_foreign_policy_events.22 }
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						is_in_faction = yes
+						any_allied_country = { is_ai = no }
+					}
+				}
+				FROM = {
+					random_allied_country = {
+						limit = { is_ai = no }
+						country_event = afghanistan_foreign_policy_events.22
+					}
+				}
+			}
+			else = {
+				FROM = { country_event = afghanistan_foreign_policy_events.22 }
+			}
+		}
+		fixed_random_seed = no
+	}
 	AFG_remove_pashtunistan_reformist_modifier_decision = {
 		icon = generic_civil_support
 		ai_will_do = { #TODO

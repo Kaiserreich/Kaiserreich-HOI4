@@ -32,6 +32,56 @@ on_actions = {
 					country_event = { id = afghanistan_events.31 days = 70 }
 				}
 			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							original_tag = AFG
+							FROM = { is_indian_unifier_tag = yes }
+						}
+						AND = {
+							FROM = { original_tag = AFG }
+							is_indian_unifier_tag = yes
+						}
+					}
+				}
+				AFG = {
+					if = {
+						limit = {
+							NOT = { has_country_flag = AFG_india_war_tracker_flag }
+						}
+						set_country_flag = AFG_india_war_tracker_flag
+					}
+					activate_targeted_decision = { target = HND decision = AFG_push_india_into_surrender }
+					activate_targeted_decision = { target = RAJ decision = AFG_push_india_into_surrender }
+					activate_targeted_decision = { target = PRF decision = AFG_push_india_into_surrender }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							original_tag = AFG
+							FROM = { is_russian_tag = yes }
+						}
+						AND = {
+							FROM = { original_tag = AFG }
+							is_russian_tag = yes
+						}
+					}
+				}
+				AFG = {
+					if = {
+						limit = {
+							NOT = { has_country_flag = AFG_russia_war_tracker_flag }
+						}
+						set_country_flag = AFG_russia_war_tracker_flag
+					}
+					activate_targeted_decision = { target = RUS decision = AFG_demand_peace_with_russia }
+					activate_targeted_decision = { target = RSA decision = AFG_demand_peace_with_russia }
+					activate_targeted_decision = { target = FER decision = AFG_demand_peace_with_russia }
+				}
+			}
 		}
 	}
 	on_new_term_election = {

@@ -25011,6 +25011,10 @@ country_event = { #Fate of Dunkirk
 			annexations_can_annex = yes
 		}
 		29 = { add_claim_of_ROOT = yes } #Dunkirk
+		if = {
+			limit = { is_belgian_tag = yes }
+			29 = { enable_state_integration_50_compliance = yes }
+		}
 	}
 
 	option = { #Cancel

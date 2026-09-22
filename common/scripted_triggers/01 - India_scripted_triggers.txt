@@ -295,6 +295,10 @@ india_can_claim_peshawar = {
 		}
 		AFG = { has_country_flag = AFG_aia_india_negotiations_failed_flag }
 	}
+	if = {
+		limit = { has_country_flag = AFG_enemy_lost_flag }
+		NOT = { has_country_flag = AFG_enemy_lost_flag }
+	}
 	set_temp_variable = { target = 442.owner }
 	is_TARGET_valid_for_war_or_wargoal = yes
 }

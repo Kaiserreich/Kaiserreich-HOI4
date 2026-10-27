@@ -61,6 +61,9 @@ new_mobile_warfare = {
 		{
 			#Armor
 			additional_brigade_column_size = 1
+			category_army = {
+				breakthrough = 0.15
+			}
 			enable_tactic = tactic_blitz
 
 			effect = {
@@ -358,14 +361,17 @@ mass_assault = {
 
 	# EFFECTS
 	no_supply_grace = 48
-	out_of_supply_factor = -0.10
+	out_of_supply_factor = -0.15
 	enable_tactic = tactic_relentless_assault
 
 	milestones = {
 		{
 			#Infantry
 			enable_tactic = tactic_human_wave_tactics
-			additional_brigade_column_size = 1
+			#additional_brigade_column_size = 1
+			infantry = {
+				combat_width = -0.2
+			}
 			category_regimental_support_battalions = {
 				supply_consumption = -0.02
 				default_morale = 0.1
@@ -388,8 +394,10 @@ mass_assault = {
 		{
 			#Artillery/Support
 			enable_tactic = tactic_elastic_defense
-			out_of_supply_factor = -0.05
-			minimum_training_level = -0.05
+			#out_of_supply_factor = -0.05
+			additional_brigade_column_size = 1
+			land_reinforce_rate = 0.02
+			#minimum_training_level = -0.05
 		}
 		{
 			#Armor
@@ -414,8 +422,9 @@ mass_assault = {
 			#Operations
 			enable_tactic = tactic_backhand_blow
 			weekly_casualties_war_support = 0.001
-			minimum_training_level = -0.05
-			dig_in_speed_factor = 0.05
+			minimum_training_level = -0.1
+			supply_consumption_factor = -0.15
+			#dig_in_speed_factor = 0.05
 
 			effect = {
 				if = {

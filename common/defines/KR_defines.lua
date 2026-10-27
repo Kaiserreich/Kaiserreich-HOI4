@@ -91,6 +91,8 @@ NDefines.NAI.SEND_VOLUNTEER_EVAL_CONTAINMENT_FACTOR = 0						-- Vanilla is 0.1
 NDefines.NDiplomacy.VOLUNTEERS_DIVISIONS_REQUIRED = 0						-- Vanilla is 30
 NDefines.NDiplomacy.VOLUNTEERS_PER_TARGET_PROVINCE = 0.025					-- Vanilla is 0.05
 NDefines.NDiplomacy.VOLUNTEERS_PER_COUNTRY_ARMY = 0.025						-- Vanilla is 0.05
+NDefines.NDiplomacy.SEND_VOLUNTEERS_AGAIN_COOLDOWN = 30						-- Vanilla is 180
+NDefines.NDiplomacy.RECALL_VOLUNTEERS_AFTER_ARRIVAL_COOLDOWN = 30 			-- Vanilla is 180
 
 -- MIOs
 NDefines.NIndustrialOrganisation.ASSIGN_DESIGN_TEAM_PP_COST_PER_DAY = 0.05	-- Vanilla is 0.1

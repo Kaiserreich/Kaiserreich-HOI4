@@ -15,7 +15,19 @@ should_have_soviet_medals_trigger = {
 }
 
 should_have_english_medals_trigger = {
-	is_british_tag = yes
+	OR = {
+		is_british_tag = yes
+		AND = {
+			is_ally_with = ENT
+			OR = {
+				tag = CAN
+				original_tag = AST
+				original_tag = NZL
+				original_tag = SAF
+				original_tag = RAJ
+			}
+		}
+	}
 }
 
 should_have_french_medals_trigger = {

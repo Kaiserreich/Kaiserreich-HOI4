@@ -3,26 +3,27 @@
 ## Default scope is FROM
 
 scripted_diplomatic_actions = {
-	recall_volunteers = {
+	recall_volunteers_ai = {
 		allowed = { always = yes }
 		visible = {
 			has_volunteers_amount_from = { tag = ROOT count > 0 }
+			ROOT = { is_ai = yes }
 			NOT = { ROOT = { has_country_flag = recalling_volunteers_from_@PREV } }
 		}
 
 		cost = 0
 		requires_acceptance = no
 		show_acceptance_on_action_button = no
-		send_description = RECALL_VOLUNTEERS_ACTION_SEND_DESC
+		send_description = RECALL_VOLUNTEERS_AI_ACTION_SEND_DESC
 
 		complete_effect = {
+			#if = {
+			#	limit = {
+			#		ROOT = { is_ai = no }
+			#	}
+			#	log = "[ROOT.GetName] is recalling volunteers from [FROM.GetName] due to player choice"
+			#}
 			if = {
-				limit = {
-					ROOT = { is_ai = no }
-				}
-				log = "[ROOT.GetName] is recalling volunteers from [FROM.GetName] due to player choice"
-			}
-			else_if = {
 				limit = {
 					ROOT = { has_imminent_war = yes }
 				}

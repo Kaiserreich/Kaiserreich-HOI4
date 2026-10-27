@@ -2,7 +2,7 @@
 
 Thank you for downloading **Kaiserreich** for **Hearts of Iron IV**.
 
-This release is built for **Hearts of Iron IV version 1.19.3**.
+This release is built for **Hearts of Iron IV version 1.19.4**.
 Compatibility with subsequent hotfixes is expected but not guaranteed.
 
 ---

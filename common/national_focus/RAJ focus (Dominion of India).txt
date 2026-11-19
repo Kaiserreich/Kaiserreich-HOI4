@@ -2445,12 +2445,13 @@ focus_tree = {
 		available = {
 			NOT = { country_exists = PRF }
 			NOT = { country_exists = HND }
-			427 = { is_owned_and_controlled_by = ROOT } #Hyderabad
-			431 = { is_owned_and_controlled_by = ROOT } #West Bengal
-			891 = { is_owned_and_controlled_by = ROOT } #West Punjab
+			has_global_flag = india_united
+			NOT = {
+				any_home_area_neighbor_country = { has_war_with = ROOT }
+			}
 		}
 
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 1000 }
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed RAJ_indian_nightmare"
@@ -2954,6 +2955,10 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				india_reconstruction_ongoing = yes
+			}
+			modifier = {
+				factor = 0
+				country_is_in_dangerous_war = yes
 			}
 		}
 
@@ -4749,7 +4754,7 @@ focus_tree = {
 	}
 	focus = {
 		id = RAJ_cemented_unionist_legacy
-		icon = GFX_goal_liberty
+		icon = GFX_goal_ideology_coalition_social_conservative_authoritarian_democrat
 		cost = 5
 
 		relative_position_id = RAJ_propound_party_anglophilia

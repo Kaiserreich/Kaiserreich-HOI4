@@ -28,7 +28,10 @@ on_actions = {
 				ETS = { PREV = { enable_state_integration_80_compliance = yes } }
 			}
 			every_state = {
-				limit = { is_xinjiang = yes }
+				limit = {
+					is_xinjiang = yes
+					NOT = { state = 1042 } #Badakhshan
+				}
 				KAZ = { PREV = { enable_state_integration_80_compliance = yes } }
 				TRK = { PREV = { enable_state_integration_80_compliance = yes } }
 				BUK = { PREV = { enable_state_integration_80_compliance = yes } }

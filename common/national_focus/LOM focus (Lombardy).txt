@@ -2825,7 +2825,7 @@ focus_tree = {
 		x = 0
 		y = 2
 
-		available = { has_country_flag = ITA_united_italia }
+		available = { italy_country_has_reunited_italy = yes }
 		prerequisite = { focus = LOM_unification }
 		ai_will_do = { factor = 1000 }
 		completion_reward = {
@@ -2866,7 +2866,7 @@ focus_tree = {
 		ai_will_do = { factor = 15 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LOM_naples_officers"
-			ITA_recruit_sicilian_generals = yes
+			italy_recruit_sicilian_generals = yes
 		}
 	}
 
@@ -2946,7 +2946,7 @@ focus_tree = {
 		ai_will_do = { factor = 15 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed LOM_sardinian_officers"
-			ITA_recruit_sardinian_generals = yes
+			italy_recruit_sardinian_generals = yes
 		}
 	}
 }

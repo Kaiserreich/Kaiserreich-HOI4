@@ -77,6 +77,43 @@ AFG_has_foreign_influence_share_less_than = {
 	check_variable = { AFG.AFG_foreign_influence_share_@THIS < AFG_foreign_influence_share_check tooltip = AFG_has_foreign_influence_share_less_than_tooltip }
 }
 
+AFG_is_potential_socialist_overlord = {
+	has_socialist_government = yes
+	if = {
+		limit = { tag = HND }
+		has_global_flag = india_united
+	}
+	else_if = {
+		limit = { tag = CHN }
+		has_global_flag = china_united
+	}
+	OR = {
+		is_in_faction_with = INT
+		is_subject = no
+	}
+	exists = yes
+	NOT = { has_country_flag = AFG_declined_socialist_backing }
+}
+AFG_has_INT_potential_overlord = {
+	any_home_area_neighbor_country = {
+		AFG_is_potential_socialist_overlord = yes
+		NOT = { tag = HND }
+		NOT = { tag = RUS }
+		NOT = { tag = PER }
+		NOT = { tag = CHN }
+		NOT = { INT = { has_country_flag = AFG_declined_socialist_backing } }
+	}
+}
+AFG_has_potential_socialist_overlord = {
+	OR = {
+		HND = { AFG_is_potential_socialist_overlord = yes }
+		RUS = { AFG_is_potential_socialist_overlord = yes }
+		PER = { AFG_is_potential_socialist_overlord = yes }
+		CHN = { AFG_is_potential_socialist_overlord = yes }
+		AFG_has_INT_potential_overlord = yes
+	}
+}
+
 AFG_is_telai = {
 	custom_override_tooltip = {
 		tooltip = {
@@ -181,10 +218,18 @@ AFG_backer_faction_blocked = {
 		AND = {
 			check_variable = { AFG.AFG_amanullah_backer_alignment_var > 2 }
 			AFG_is_seraj = yes
+			var:AFG.AFG_amanullah_backer = {
+				is_subject = no
+				is_in_faction = yes
+			}
 		}
 		AND = {
 			check_variable = { AFG.AFG_nadir_backer_alignment_var > 2 }
 			AFG_is_telai = yes
+			var:AFG.AFG_nadir_backer = {
+				is_subject = no
+				is_in_faction = yes
+			}
 		}
 	}
 }

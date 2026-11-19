@@ -7,3 +7,16 @@ GER_east_asian_naval_yards = {
 
 	local_building_slots = GER_east_asian_slots
 }
+GEA_bao_dai_government_modifier = {
+	icon = "GFX_decision_eng_trade_unions_support"
+	enable = {
+		is_controlled_by = GEA
+	}
+	remove_trigger = {
+		NOT = { is_owned_by = GEA }
+	}
+
+	production_speed_buildings_factor = -0.1
+	recruitable_population_factor = -0.2
+	local_building_slots_factor = 0.15
+}

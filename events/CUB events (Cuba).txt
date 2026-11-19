@@ -9789,15 +9789,15 @@ news_event = {  # MarLib/SocLib/SocDem
 
 	desc = {
 		text = cuba_events.500.d1
-		trigger = { has_government = market_liberal }
+		trigger = { CUB = { has_government = market_liberal } }
 	}
 	desc = {
 		text = cuba_events.500.d2
-		trigger = { has_government = social_liberal }
+		trigger = { CUB = { has_government = social_liberal } }
 	}
 	desc = {
 		text = cuba_events.500.d3
-		trigger = { has_government = social_democrat }
+		trigger = { CUB = { has_government = social_democrat } }
 	}
 
 	picture = GFX_news_event_CUB_election
@@ -9837,15 +9837,15 @@ news_event = {  # Diaz
 
 	desc = {
 		text = cuba_events.501.d1	# Diaz in through military junta
-		trigger = { has_country_flag = CUB_mildirectrule }
+		trigger = { CUB = { has_country_flag = CUB_mildirectrule } }
 	}
 	desc = {
 		text = cuba_events.501.d2	# Diaz in through presidential guard coup
-		trigger = { has_country_flag = CUB_presgcoup }
+		trigger = { CUB = { has_country_flag = CUB_presgcoup } }
 	}
 	desc = {
 		text = cuba_events.501.d3	# Diaz in through enacting emergency powers (AutDem)
-		trigger = { has_country_flag = CUB_enacted_emergency_powers }
+		trigger = { CUB = { has_country_flag = CUB_enacted_emergency_powers } }
 	}
 
 	picture = GFX_news_event_CUB_diaz
@@ -9946,29 +9946,37 @@ news_event = {  # Syndies
 	desc = {
 		text = cuba_events.503.d1	# There was no attempted coup
 		trigger = {
-			NOT = { has_country_flag = no_congress }
-			NOT = { has_country_flag = CUB_attempted_coup }
+			CUB = {
+				NOT = { has_country_flag = no_congress }
+				NOT = { has_country_flag = CUB_attempted_coup }
+			}
 		}
 	}
 	desc = {
 		text = cuba_events.503.d2	# There was an attempted coup
 		trigger = {
-			NOT = { has_country_flag = no_congress }
-			has_country_flag = CUB_attempted_coup
+			CUB = {
+				NOT = { has_country_flag = no_congress }
+				has_country_flag = CUB_attempted_coup
+			}
 		}
 	}
 	desc = {
 		text = cuba_events.503.d3	# There was no congress and no attempted coup
 		trigger = {
-			has_country_flag = no_congress
-			NOT = { has_country_flag = CUB_attempted_coup }
+			CUB = {
+				has_country_flag = no_congress
+				NOT = { has_country_flag = CUB_attempted_coup }
+			}
 		}
 	}
 	desc = {
 		text = cuba_events.503.d4	# There was no congress and an attempted coup
 		trigger = {
-			has_country_flag = no_congress
-			has_country_flag = CUB_attempted_coup
+			CUB = {
+				has_country_flag = no_congress
+				has_country_flag = CUB_attempted_coup
+			}
 		}
 	}
 
@@ -10009,24 +10017,28 @@ news_event = {  # Totalists
 	desc = {
 		text = cuba_events.504.d1	# There was no attempted coup - Mella in charge
 		trigger = {
-			has_country_leader = { character = CUB_julio_mella_mcpartland }
-			NOT = { has_country_flag = CUB_attempted_coup }
-			NOT = { has_country_flag = no_congress_mellacoup }
+			CUB = {
+				has_country_leader = { character = CUB_julio_mella_mcpartland }
+				NOT = { has_country_flag = CUB_attempted_coup }
+				NOT = { has_country_flag = no_congress_mellacoup }
+			}
 		}
 	}
 	desc = {
 		text = cuba_events.504.d2	# There was no attempted coup - Mella not in charge
 		trigger = {
-			NOT = { has_country_leader = { character = CUB_julio_mella_mcpartland } }
+			CUB = {
+				NOT = { has_country_leader = { character = CUB_julio_mella_mcpartland } }
+			}
 		}
 	}
 	desc = {
 		text = cuba_events.504.d3	# There was a successful coup
-		trigger = { has_country_flag = CUB_attempted_coup }
+		trigger = { CUB = { has_country_flag = CUB_attempted_coup } }
 	}
 	desc = {
 		text = cuba_events.504.d4	# There was no congress and a successful coup
-		trigger = { has_country_flag = no_congress_mellacoup }
+		trigger = { CUB = { has_country_flag = no_congress_mellacoup } }
 	}
 
 	picture = "[CUB_pic_totalistleader]"
@@ -10065,11 +10077,11 @@ news_event = {  # RadSocs
 
 	desc = {
 		text = cuba_events.505.d1	# Totalists not in coalition
-		trigger = { is_in_coalition_with_totalist = no }
+		trigger = { CUB = { is_in_coalition_with_totalist = no } }
 	}
 	desc = {
 		text = cuba_events.505.d2	# Totalists in coalition
-		trigger = { is_in_coalition_with_totalist = yes }
+		trigger = { CUB = { is_in_coalition_with_totalist = yes } }
 	}
 
 	picture = GFX_news_event_CUB_hernandez
@@ -10108,11 +10120,11 @@ news_event = {  # US coup
 
 	desc = {
 		text = cuba_events.506.d1
-		trigger = { has_government = paternal_autocrat }
+		trigger = { CUB = { has_government = paternal_autocrat } }
 	}
 	desc = {
 		text = cuba_events.506.d2
-		trigger = { has_government = authoritarian_democrat }
+		trigger = { CUB = { has_government = authoritarian_democrat } }
 	}
 
 	picture = GFX_news_event_CUB_marines

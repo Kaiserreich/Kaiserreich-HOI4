@@ -684,21 +684,20 @@ RUS_starting_plane_variants = {
 				special_type_slot_1 = lmg_defense_turret #1 DA or ShKAS in second seat
 				special_type_slot_2 = non_strategic_materials_small #represent simple design
 			}
-			icon = GFX_RUS_early_cas_u2_medium
+			icon = GFX_RUS_early_cas_u2_forest_medium
 		}
 		create_equipment_variant = {
 			name = "R-5"
 			show_position = no
-			type = small_plane_airframe_0
+			type = small_plane_cas_airframe_0
 			modules = {
-				fixed_main_weapon_slot = light_mg_2x #1 aviation Maxim
-				fixed_auxiliary_weapon_slot_1 = recon_camera
+				fixed_main_weapon_slot = bomb_locks
+				fixed_auxiliary_weapon_slot_1 = empty
 				engine_type_slot = engine_1_1x #1 M-17
 				special_type_slot_1 = lmg_defense_turret #paired DA in second seat
-				special_type_slot_2 = non_strategic_materials_small #represent simple design
+				special_type_slot_2 = empty
 			}
-			obsolete = yes
-			icon = GFX_RUS_early_scout_r5_medium
+			icon = GFX_RUS_early_scout_r5_forest_medium
 		}
 		create_equipment_variant = {
 			name = "R-5T"
@@ -706,10 +705,9 @@ RUS_starting_plane_variants = {
 			type = small_plane_naval_bomber_airframe_0
 			modules = {
 				fixed_main_weapon_slot = torpedo_mounting #gameplay adjusted - Russian torpedoes are heavy and basically start from torpedo_mounting_2
-				fixed_auxiliary_weapon_slot_1 = light_mg_2x #1 aviation Maxim
+				fixed_auxiliary_weapon_slot_1 = empty
 				engine_type_slot = engine_1_1x #1 M-17
 				special_type_slot_1 = empty #removed paired DA
-				special_type_slot_2 = non_strategic_materials_small #represent simple design
 			}
 			obsolete = yes
 			icon = GFX_RUS_early_naval_scout_shon_medium
@@ -719,13 +717,13 @@ RUS_starting_plane_variants = {
 			show_position = no
 			type = small_plane_airframe_0
 			modules = {
-				fixed_main_weapon_slot = light_mg_4x #4 aviation Maxim
+				fixed_main_weapon_slot = light_mg_2x #2 aviation Maxim
 				fixed_auxiliary_weapon_slot_1 = empty
 				engine_type_slot = engine_1_1x #1 M-22
 				special_type_slot_1 = empty
 			}
 			obsolete = yes
-			icon = GFX_RUS_early_fighter_i5_medium
+			icon = GFX_RUS_early_fighter_i5_forest_medium
 		}
 		create_equipment_variant = {
 			name = "I-15"
@@ -746,22 +744,36 @@ RUS_starting_plane_variants = {
 			modules = {
 				fixed_main_weapon_slot = light_mg_4x #4 aviation maxim
 				fixed_auxiliary_weapon_slot_1 = bomb_locks #150 kgs
-				engine_type_slot = engine_2_1x #1 M-25
+				engine_type_slot = engine_1_1x #1 M-25
 				special_type_slot_1 = empty
 			}
-			icon = GFX_RUS_early_fighter_i15bis_medium
+			icon = GFX_RUS_early_fighter_i15bis_forest_medium
+		}
+		create_equipment_variant = {
+			name = "DI-6"
+			show_position = no
+			type = small_plane_airframe_0
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x #2 ShKAS
+				fixed_auxiliary_weapon_slot_1 = empty
+				engine_type_slot = engine_1_1x #1 M-25
+				special_type_slot_1 = lmg_defense_turret #1 ShKAS
+			}
+			obsolete = yes
+			icon = GFX_RUS_early_cas_di6_forest_medium
 		}
 		create_equipment_variant = {
 			name = "DI-6Sh"
 			show_position = no
-			type = small_plane_cas_airframe_0
+			mark_older_equipment_obsolete = yes
+			type = small_plane_airframe_0
 			modules = {
-				fixed_main_weapon_slot = bomb_locks #80 kgs
-				fixed_auxiliary_weapon_slot_1 = light_mg_4x #6 aviation Maxim
-				engine_type_slot = engine_2_1x #1 M-25
+				fixed_main_weapon_slot = light_mg_4x #6 aviation Maxim
+				fixed_auxiliary_weapon_slot_1 = bomb_locks #80 kgs
+				engine_type_slot = engine_1_1x #1 M-25
 				special_type_slot_1 = lmg_defense_turret #1 ShKAS
 			}
-			icon = GFX_RUS_early_cas_di6_medium
+			icon = GFX_RUS_early_cas_di6_forest_medium
 		}
 		create_equipment_variant = {
 			name = "I-16"
@@ -789,13 +801,13 @@ RUS_starting_plane_variants = {
 		create_equipment_variant = {
 			name = "BSh"
 			show_position = no
+			mark_older_equipment_obsolete = yes
 			type = small_plane_naval_bomber_airframe_1
 			modules = {
 				fixed_main_weapon_slot = torpedo_mounting #gameplay adjusted - Russian torpedoes are heavy and basically start from torpedo_mounting_2
-				fixed_auxiliary_weapon_slot_1 = light_mg_4x #4 ShKAS - gameplay adjusted
+				fixed_auxiliary_weapon_slot_1 = empty
 				engine_type_slot = engine_2_1x #1 M-62
 				special_type_slot_1 = lmg_defense_turret #1 ShKAS in second seat
-				special_type_slot_2 = armor_plate_small #armored plates in important places
 			}
 			icon = GFX_RUS_naval_bomber1_medium
 		}
@@ -805,8 +817,7 @@ RUS_starting_plane_variants = {
 			type = medium_plane_airframe_0
 			modules = {
 				fixed_main_weapon_slot = medium_bomb_bay #500 kgs
-				fixed_auxiliary_weapon_slot_1 = light_mg_2x #1 DA machine gun
-				fixed_auxiliary_weapon_slot_2 = empty #Bombers cannot have recon role
+				fixed_auxiliary_weapon_slot_1 = empty
 				engine_type_slot = engine_1_2x #2 M-17
 				special_type_slot_1 = lmg_defense_turret_2x #2 turrets with 2 DA machine guns in each
 			}
@@ -822,9 +833,8 @@ RUS_starting_plane_variants = {
 				engine_type_slot = engine_1_2x #1 M-34
 				special_type_slot_1 = flying_boat_medium
 				special_type_slot_2 = lmg_defense_turret #2 DA/ShKAS machine guns
-				special_type_slot_3 = lmg_defense_turret #1 DA/ShKAS machine gun
 			}
-			icon = GFX_RUS_early_medium_flying_boat_mbr2_medium
+			icon = GFX_RUS_early_medium_flying_boat_mbr2_forest_medium
 		}
 		create_equipment_variant = {
 			name = "SB"
@@ -832,7 +842,7 @@ RUS_starting_plane_variants = {
 			type = medium_plane_airframe_1
 			modules = {
 				fixed_main_weapon_slot = medium_bomb_bay #600 kg
-				fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks #1000 kgs
+				fixed_auxiliary_weapon_slot_1 = empty
 				fixed_auxiliary_weapon_slot_2 = empty
 				engine_type_slot = engine_2_2x #2 M-103
 				special_type_slot_1 = lmg_defense_turret_2x #2 turrets with 2 ShKAS machine guns in each
@@ -876,9 +886,10 @@ RUS_starting_plane_variants = {
 				engine_type_slot = engine_2_6x #6 M-34FN + 2 on roof
 				special_type_slot_1 = lmg_defense_turret_2x #2 turrets with 2 DA machine guns in each
 				special_type_slot_2 = lmg_defense_turret_2x #2 turrets with 2 ShKAS machine guns in each
-				special_type_slot_3 = hmg_defense_turret_2x #2 turrets with Oerlikon cannons in each
+				special_type_slot_3 = lmg_defense_turret_2x #2 adjusted Oerlikon Cannons
+				special_type_slot_4 = lmg_defense_turret_2x #2 adjusted Oerlikon Cannons
 			}
-			icon = GFX_RUS_early_large_bomber_tk_medium
+			icon = GFX_RUS_early_large_bomber_tk_forest_medium
 		}
 		create_equipment_variant = {
 			name = "MK"
@@ -889,13 +900,13 @@ RUS_starting_plane_variants = {
 				fixed_auxiliary_weapon_slot_1 = torpedo_mounting #up to 4 torpedoes - gameplay adjusted
 				fixed_auxiliary_weapon_slot_2 = torpedo_mounting #up to 4 torpedoes - gameplay adjusted
 				fixed_auxiliary_weapon_slot_3 = large_bomb_bay
-				engine_type_slot = engine_2_6x #6 M-34R
+				engine_type_slot = engine_2_6x #6 M-34R, adjusted or else it doesn't really fly
 				special_type_slot_1 = flying_boat_large
 				special_type_slot_2 = lmg_defense_turret_2x #2 turrets with 2 DA machine guns in each
 				special_type_slot_3 = lmg_defense_turret_2x #2 turrets with 2 ShKAS machine guns in each
-				special_type_slot_4 = hmg_defense_turret_2x #2 turrets with Oerlikon cannons in each
+				special_type_slot_4 = lmg_defense_turret
 			}
-			icon = GFX_RUS_early_large_flying_boat_mk_medium
+			icon = GFX_RUS_early_large_flying_boat_mk_forest_medium
 		}
 	}
 }
@@ -1796,7 +1807,7 @@ RUS_spawn_CAS_planes = {
 					special_type_slot_2 = self_sealing_fuel_tanks_small #represent full armoring
 					special_type_slot_3 = hmg_defense_turret #1 UB machine gun
 				}
-				icon = GFX_RUS_improved_cas_bsh2d_medium
+				icon = GFX_RUS_improved_cas_bsh2d_forest_medium
 			}
 			create_equipment_variant = { #Il-2T improved
 				name = "BSh-2F"
@@ -1829,7 +1840,7 @@ RUS_spawn_CAS_planes = {
 					# special_type_slot_2 = self_sealing_fuel_tanks_small #represent full armoring - no weight
 					# special_type_slot_3 = empty
 				}
-				icon = GFX_RUS_improved_cas_bsh2_medium
+				icon = GFX_RUS_improved_cas_bsh2_forest_medium
 			}
 		}
 	}
@@ -1855,7 +1866,7 @@ RUS_spawn_fighters = {
 					special_type_slot_2 = self_sealing_fuel_tanks_small #protected fuel tanks
 					special_type_slot_3 = drop_tanks
 				}
-				icon = GFX_RUS_improved_fighter_i18bis_medium
+				icon = GFX_RUS_improved_fighter_i18bis_forest_medium
 			}
 		}
 		else_if = {
@@ -1876,7 +1887,7 @@ RUS_spawn_fighters = {
 					special_type_slot_2 = self_sealing_fuel_tanks_small #protected fuel tanks
 					special_type_slot_3 = drop_tanks
 				}
-				icon = GFX_RUS_improved_fighter_i18bis_medium
+				icon = GFX_RUS_improved_fighter_i18bis_forest_medium
 			}
 		}
 		else = {
@@ -1891,7 +1902,7 @@ RUS_spawn_fighters = {
 					engine_type_slot = engine_2_1x #1 M-88 #Downgraded for balance
 					special_type_slot_1 = armor_plate_small #armor plates
 				}
-				icon = GFX_RUS_improved_fighter_i180_medium
+				icon = GFX_RUS_improved_fighter_i180_forest_medium
 			}
 			create_equipment_variant = { #I-16 type 18
 				name = "I-168"
@@ -1916,7 +1927,7 @@ RUS_spawn_fighters = {
 					engine_type_slot = engine_2_1x #1 M-62 #Downgraded for balance
 					special_type_slot_1 = empty
 				}
-				icon = GFX_RUS_early_fighter_i153_medium
+				icon = GFX_RUS_early_fighter_i153_forest_medium
 			}
 		}
 	}
@@ -1943,7 +1954,7 @@ RUS_spawn_medium_bombers = {
 					special_type_slot_2 = fuel_tanks_medium #a lot of fuel tanks
 					special_type_slot_3 = self_sealing_fuel_tanks_medium #protected fuel tanks
 				}
-				icon = GFX_RUS_advanced_medium_bomber_pb108_medium
+				icon = GFX_RUS_advanced_medium_bomber_pb108_forest_medium
 			}
 			create_equipment_variant = { #DB-108 (VM-17) fighter variant
 				name = "DI-108"
@@ -1960,7 +1971,7 @@ RUS_spawn_medium_bombers = {
 					special_type_slot_2 = fuel_tanks_medium #a lot of fuel tanks
 					special_type_slot_3 = self_sealing_fuel_tanks_medium #protected fuel tanks
 				}
-				icon = GFX_RUS_advanced_medium_bomber_pb108_medium
+				icon = GFX_RUS_advanced_medium_bomber_pb108_forest_medium
 			}
 		}
 		else_if = {
@@ -1995,7 +2006,7 @@ RUS_spawn_medium_bombers = {
 					special_type_slot_2 = fuel_tanks_medium #a lot of fuel tanks
 					special_type_slot_3 = self_sealing_fuel_tanks_medium #protected fuel tanks
 				}
-				icon = GFX_RUS_improved_medium_fighter_di100_medium
+				icon = GFX_RUS_improved_medium_fighter_di100_forest_medium
 			}
 			create_equipment_variant = { #Pe-3
 				name = "VR-100"
@@ -2054,7 +2065,7 @@ RUS_spawn_heavy_fighters = {
 					special_type_slot_3 = self_sealing_fuel_tanks_small #armored fuel tanks
 					special_type_slot_4 = drop_tanks
 				}
-				icon = GFX_RUS_advanced_fighter_i37_medium
+				icon = GFX_RUS_advanced_fighter_i37_forest_medium
 			}
 			create_equipment_variant = { #Republic XP-47B naval modification
 				name = "I-37F"
@@ -2166,7 +2177,7 @@ RUS_spawn_light_planes_2 = {
 					special_type_slot_2 = self_sealing_fuel_tanks_small #armored fuel tanks
 					special_type_slot_3 = drop_tanks
 				}
-				icon = GFX_RUS_improved_fighter_i29_medium
+				icon = GFX_RUS_improved_fighter_i29_forest_medium
 			}
 			create_equipment_variant = { #La-7
 				name = "I-44"
@@ -2198,7 +2209,7 @@ RUS_spawn_light_planes_2 = {
 					special_type_slot_1 = non_strategic_materials_small #made of wood
 					special_type_slot_2 = empty
 				}
-				icon = GFX_RUS_improved_fighter_i26_medium
+				icon = GFX_RUS_improved_fighter_i26_forest_medium
 			}
 			create_equipment_variant = { #LaGG-3
 				name = "I-22"
@@ -2212,7 +2223,7 @@ RUS_spawn_light_planes_2 = {
 					special_type_slot_1 = non_strategic_materials_small #made of wood
 					special_type_slot_2 = fuel_tanks_small #additional fuel tanks
 				}
-				icon = GFX_RUS_improved_fighter_i22_medium
+				icon = GFX_RUS_improved_fighter_i22_forest_medium
 			}
 		}
 	}
@@ -2241,7 +2252,7 @@ RUS_spawn_heavy_bombers = {
 					special_type_slot_5 = bomb_sights_2 #OPB-1R bomb sights
 					special_type_slot_6 = radio_navigation_1 #a little outdated due to lack of american components
 				}
-				icon = GFX_RUS_advanced_large_bomber_dvb4_medium
+				icon = GFX_RUS_advanced_large_bomber_dvb4_forest_medium
 			}
 			create_equipment_variant = { #Tu-4 torpedo composition
 				name = "DVB-4F"
@@ -2282,7 +2293,7 @@ RUS_spawn_heavy_bombers = {
 					special_type_slot_5 = fuel_tanks_large #better system of and additional fuel tanks
 					special_type_slot_6 = bomb_sights_2 #OPB-1R bomb sights
 				}
-				icon = GFX_RUS_improved_large_bomber_dvb_medium
+				icon = GFX_RUS_improved_large_bomber_dvb_forest_medium
 			}
 		}
 		else = {
@@ -2301,7 +2312,7 @@ RUS_spawn_heavy_bombers = {
 					special_type_slot_4 = self_sealing_fuel_tanks_large
 					special_type_slot_5 = bomb_sights_1 #OPB-1M bomb sights
 				}
-				icon = GFX_RUS_improved_large_bomber_dvb_medium
+				icon = GFX_RUS_improved_large_bomber_dvb_forest_medium
 			}
 		}
 		if = {
@@ -2323,7 +2334,7 @@ RUS_spawn_heavy_bombers = {
 					special_type_slot_4 = self_sealing_fuel_tanks_medium #protected fuel tanks
 					special_type_slot_5 = bomb_sights_2 #OPB-1R bomb sights
 				}
-				icon = GFX_RUS_advanced_medium_bomber_db6_medium
+				icon = GFX_RUS_advanced_medium_bomber_db6_forest_medium
 			}
 			create_equipment_variant = { #Il-6T
 				name = "DB-6F"
@@ -2361,7 +2372,7 @@ RUS_spawn_heavy_bombers = {
 					# special_type_slot_4 = self_sealing_fuel_tanks_medium #protected fuel tanks
 					# special_type_slot_5 = bomb_sights_1 #OPB-1M bomb sights
 				}
-				icon = GFX_RUS_improved_medium_bomber_db3f_medium
+				icon = GFX_RUS_improved_medium_bomber_db3f_forest_medium
 			}
 			create_equipment_variant = { #Il-4T
 				name = "DB-3FT"
@@ -2405,7 +2416,7 @@ RUS_spawn_naval_bombers = {
 					special_type_slot_2 = lmg_defense_turret #turret with 2 ShKAS machine guns
 					special_type_slot_3 = cannon_defense_turret #turret with 2 ShVAK guns
 				}
-				icon = GFX_RUS_improved_large_flying_boat_mtb2_medium
+				icon = GFX_RUS_improved_large_flying_boat_mtb2_forest_medium
 			}
 		}
 		else_if = {
@@ -2425,7 +2436,7 @@ RUS_spawn_naval_bombers = {
 					special_type_slot_2 = lmg_defense_turret #turret with 2 ShKAS machine guns
 					special_type_slot_3 = self_sealing_fuel_tanks_large
 				}
-				icon = GFX_RUS_basic_large_flying_boat_mtb4_medium
+				icon = GFX_RUS_basic_large_flying_boat_mtb4_forest_medium
 			}
 		}
 		if = {
@@ -2462,7 +2473,7 @@ RUS_spawn_naval_bombers = {
 				special_type_slot_2 = lmg_defense_turret #1 ShKAS machine gun
 				special_type_slot_3 = hmg_defense_turret #1 UB machine gun
 			}
-			icon = GFX_RUS_basic_medium_flying_boat_mdr6_medium
+			icon = GFX_RUS_basic_medium_flying_boat_mdr6_forest_medium
 		}
 	}
 }

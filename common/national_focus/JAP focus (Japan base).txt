@@ -6884,13 +6884,9 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
-					is_in_array = { global.JAP_possible_allies_array = INC }
-					is_in_array = { global.JAP_possible_allies_array = VIN }
-				}
+				is_in_array = { global.JAP_possible_allies_array = VIN }
 			}
 		}
-		will_lead_to_war_with = INC
 		will_lead_to_war_with = VIN
 		will_lead_to_war_with = LAO
 		will_lead_to_war_with = CAM
@@ -6898,7 +6894,6 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed JAP_target_indochina"
 			custom_effect_tooltip = JAP_may_war_with_indochina
 			hidden_effect = {
-				activate_targeted_decision = { target = INC decision = JAP_attack_indochina }
 				activate_targeted_decision = { target = VIN decision = JAP_attack_indochina }
 				activate_targeted_decision = { target = LAO decision = JAP_attack_indochina }
 				activate_targeted_decision = { target = CAM decision = JAP_attack_indochina }

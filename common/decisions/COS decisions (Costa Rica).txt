@@ -3068,26 +3068,32 @@ political_actions = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout CEN_COS_peace_timer"
 			if = {
-				limit = {
+				limit = { PAN = { is_ally_with = COS } }
+				if = {
+					limit = { PAN = { has_capitulated = yes } }
 					PAN = {
-						is_ally_with = COS
-						has_capitulated = yes
-					}
-				}
-				PAN = {
-					if = {
-						limit = { is_subject = yes }
-						overlord = {
-							set_autonomy = {
-								target = PREV
-								autonomy_state = autonomy_free
+						if = {
+							limit = { is_subject = yes }
+							overlord = {
+								set_autonomy = {
+									target = PREV
+									autonomy_state = autonomy_free
+								}
 							}
 						}
+						if = {
+							limit = { is_in_faction_with = COS }
+							leave_faction = yes
+						}
 					}
-					if = {
-						limit = { is_in_faction_with = COS }
-						leave_faction = yes
+				}
+				else_if = {
+					limit = {
+						NOT = { var:685.owner = { is_ally_with = PAN } } # Panama Canal
+						1126 = { is_claim_or_core_of_PREV = yes }
+						controls_state = 1126 # Western Panama
 					}
+					1126 = { transfer_state_to = ROOT } # Western Panama
 				}
 			}
 			if = {
@@ -3173,36 +3179,44 @@ political_actions = {
 			log = "[GetLogRoot]: Decision timeout COS_peace_timer"
 			effect_tooltip = {
 				if = {
-					limit = {
+					limit = { PAN = { is_ally_with = COS } }
+					if = {
+						limit = { PAN = { has_capitulated = yes } }
 						PAN = {
-							is_ally_with = ROOT
-							has_capitulated = yes
-						}
-					}
-					PAN = {
-						if = {
-							limit = { is_subject = yes }
-							overlord = {
-								set_autonomy = {
-									target = PREV
-									autonomy_state = autonomy_free
+							if = {
+								limit = { is_subject = yes }
+								overlord = {
+									set_autonomy = {
+										target = PREV
+										autonomy_state = autonomy_free
+									}
 								}
+							}
+							if = {
+								limit = { is_in_faction_with = COS }
+								leave_faction = yes
 							}
 						}
 						if = {
-							limit = { is_in_faction_with = ROOT }
-							leave_faction = yes
+							limit = { tag = PAN }
+							custom_effect_tooltip = GAME_OVER_TT
 						}
 					}
-					if = {
-						limit = { tag = PAN }
-						custom_effect_tooltip = GAME_OVER_TT
+					else_if = {
+						limit = {
+							NOT = { var:685.owner = { is_ally_with = PAN } } # Panama Canal
+							event_target:costa_rica_attacker = {
+								1126 = { is_claim_or_core_of_PREV = yes }
+								controls_state = 1126 # Western Panama
+							}
+						}
+						1126 = { transfer_state_to = event_target:costa_rica_attacker } # Western Panama
 					}
 				}
 				if = {
 					limit = {
 						YUC = {
-							is_ally_with = ROOT
+							is_ally_with = COS
 							has_capitulated = yes
 						}
 					}
@@ -3217,7 +3231,7 @@ political_actions = {
 							}
 						}
 						if = {
-							limit = { is_in_faction_with = ROOT }
+							limit = { is_in_faction_with = COS }
 							leave_faction = yes
 						}
 					}
@@ -3228,7 +3242,7 @@ political_actions = {
 				}
 				if = {
 					limit = {
-						var:311.owner = { is_ally_with = ROOT } # Belize
+						var:311.owner = { is_ally_with = COS } # Belize
 						event_target:costa_rica_attacker = { controls_state = 311 }
 					}
 					311 = { transfer_state_to = event_target:costa_rica_attacker }
@@ -3245,7 +3259,7 @@ political_actions = {
 						}
 					}
 					if = {
-						limit = { is_in_faction_with = ROOT }
+						limit = { is_in_faction_with = COS }
 						set_temp_variable = { peace_target = faction_leader }
 						leave_faction = yes
 					}

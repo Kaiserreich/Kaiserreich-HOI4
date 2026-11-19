@@ -4674,16 +4674,12 @@ shared_focus = {
 		}
 		modifier = {
 			factor = 0.1
-			GER = {
-				surrender_progress > 0.2
-			}
+			GER = { surrender_progress > 0.2 }
 			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER } }
 		}
 		modifier = {
 			factor = 0.1
-			AUS = {
-				surrender_progress > 0.2
-			}
+			AUS = { surrender_progress > 0.2 }
 			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_AUS } }
 		}
 		modifier = {
@@ -4738,11 +4734,8 @@ shared_focus = {
 		factor = 1000
 		modifier = {
 			factor = 0
-			OR = {
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_AUS }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_ENT }
-			}
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
+			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT } }
 		}
 	}
 
@@ -4785,11 +4778,8 @@ shared_focus = {
 		factor = 1000
 		modifier = {
 			factor = 0
-			OR = {
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_ENT }
-			}
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
+			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_AUS } }
 		}
 	}
 
@@ -4840,7 +4830,8 @@ shared_focus = {
 		factor = 100
 		modifier = {
 			factor = 0
-			has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_ENT }
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
+			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER } }
 		}
 	}
 
@@ -5132,10 +5123,8 @@ shared_focus = {
 		factor = 1000
 		modifier = {
 			factor = 0
-			OR = {
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_AUS }
-			}
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
+			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER } }
 		}
 	}
 
@@ -5752,11 +5741,8 @@ shared_focus = {
 		factor = 1000
 		modifier = {
 			factor = 0
-			OR = {
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_AUS }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
-			}
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
+			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_ENT } }
 		}
 	}
 
@@ -5823,11 +5809,7 @@ shared_focus = {
 		factor = 1000
 		modifier = {
 			factor = 0
-			OR = {
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_AUS }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
-			}
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
 		}
 	}
 
@@ -9291,12 +9273,11 @@ shared_focus = {
 				}
 				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
 			}
-			NOT = {
-				OR = {
-					has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT }
-					has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_ENT }
-				}
-			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
+			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER } }
 		}
 	}
 
@@ -9365,10 +9346,8 @@ shared_focus = {
 		factor = 1000
 		modifier = {
 			factor = 0
-			OR = {
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT }
-			}
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
+			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_ENT } }
 		}
 	}
 
@@ -9431,10 +9410,7 @@ shared_focus = {
 		factor = 1000
 		modifier = {
 			factor = 0
-			OR = {
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT }
-			}
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
 		}
 	}
 
@@ -9923,10 +9899,8 @@ shared_focus = {
 		factor = 100
 		modifier = {
 			factor = 0
-			OR = {
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_GER }
-				has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_ENT }
-			}
+			NOT = { has_game_rule = { rule = OTT_forpol option = DEFAULT } }
+			NOT = { has_game_rule = { rule = OTT_forpol option = OTT_FORPOL_OTT } }
 		}
 	}
 

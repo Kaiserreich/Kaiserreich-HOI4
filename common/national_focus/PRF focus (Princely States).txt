@@ -1829,6 +1829,7 @@ focus_tree = {
 				limit = {
 					RUS = {
 						exists = yes
+						has_socialist_government = no
 						has_opinion = { target = PRF value > 49 }
 					}
 				}
@@ -1843,7 +1844,13 @@ focus_tree = {
 					producer = RUS
 				}
 			}
-			else = {
+			else_if = {
+				limit = {
+					RUS = {
+						exists = yes
+						has_socialist_government = no
+					}
+				}
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = PRF_equipment_deliveries_tt
@@ -1885,7 +1892,10 @@ focus_tree = {
 					producer = JAP
 				}
 			}
-			else = {
+			else_if = {
+				limit = {
+					JAP = { exists = yes }
+				}
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = PRF_equipment_deliveries_tt
@@ -1927,7 +1937,10 @@ focus_tree = {
 					producer = GER
 				}
 			}
-			else = {
+			else_if = {
+				limit = {
+					GER = { exists = yes }
+				}
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = PRF_equipment_deliveries_tt
@@ -2456,9 +2469,10 @@ focus_tree = {
 		available = {
 			NOT = { country_exists = RAJ }
 			NOT = { country_exists = HND }
-			427 = { is_owned_and_controlled_by = ROOT } #Hyderabad
-			431 = { is_owned_and_controlled_by = ROOT } #West Bengal
-			891 = { is_owned_and_controlled_by = ROOT } #West Punjab
+			has_global_flag = india_united
+			NOT = {
+				any_home_area_neighbor_country = { has_war_with = ROOT }
+			}
 		}
 
 		ai_will_do = { factor = 1000 }
@@ -3308,6 +3322,10 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			set_temp_variable = { coalition_partner_var = token:social_conservative }
 			add_to_coalition = yes
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.05
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_PRODUCTION }
 	}
@@ -5226,6 +5244,10 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				india_reconstruction_ongoing = yes
+			}
+			modifier = {
+				factor = 0
+				country_is_in_dangerous_war = yes
 			}
 		}
 

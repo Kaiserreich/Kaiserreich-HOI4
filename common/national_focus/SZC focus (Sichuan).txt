@@ -8562,10 +8562,20 @@ focus_tree = {
 			add_war_support = 0.05
 			SZC_improve_federalist_goverment_legitimacy = yes
 			custom_effect_tooltip = SZC_promoting_harmonious_bipartisanship_tt
-			custom_effect_tooltip = tooltip_white_line
-			UPC_REP_joins_governing_coalition_effect = yes
-			custom_effect_tooltip = tooltip_white_line
-			UPC_DCP_joins_governing_coalition_effect = yes
+			if = {
+				limit = {
+					NOT = { has_country_flag = UPC_REP_in_governing_coalition_flag }
+				}
+				custom_effect_tooltip = tooltip_white_line
+				UPC_REP_joins_governing_coalition_effect = yes
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = UPC_DCP_in_governing_coalition_flag }
+				}
+				custom_effect_tooltip = tooltip_white_line
+				UPC_DCP_joins_governing_coalition_effect = yes
+			}
 		}
 	}
 

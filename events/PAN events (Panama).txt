@@ -179,129 +179,6 @@ country_event = { ####Conservative government
 	}
 }
 
-country_event = { ####Canal In Crisis
-	id = panama_events.5
-	title = panama_events.5.t
-	desc = panama_events.5.d
-
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.5 option panama_events.5.a"
-		name = panama_events.5.a #Ok cool
-		complete_national_focus = PAN_canal_in_crisis
-		unlock_decision_category_tooltip = PAN_panama_canal_category
-	}
-}
-
-country_event = { ####Canada requests Panama in Entente
-	id = panama_events.6
-	title = panama_events.6.t
-	desc = panama_events.6.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.6 option panama_events.6.a"
-		name = panama_events.6.a #Ok cool - PAN gets added to Entente, gets reduced Canal Profits spirit
-		ai_chance = {
-			base = 90
-			modifier = {
-				factor = 0
-				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_WAR }
-			}
-		}
-		set_country_flag = PAN_canada_accepted
-		complete_national_focus = PAN_entente_support
-		CAN = {
-			add_to_faction = PAN
-			country_event = { id = panama_events.101 days = 1 }
-		}
-		hidden_effect = {
-			news_event = panama_events.108
-		}
-	}
-	option = {
-		log = "[GetLogInfo]: event panama_events.6 option panama_events.6.b"
-		name = panama_events.6.b #Begone thots - CAN gets the OH SHOOT THEY DECLINED event
-		ai_chance = {
-			base = 10
-			modifier = {
-				factor = 0
-				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_ENT }
-			}
-		}
-		complete_national_focus = PAN_stand_alone
-		CAN = {
-			country_event = { id = panama_events.102 days = 1 }
-		}
-	}
-}
-
-country_event = { ####Canada demands Panama Canal
-	id = panama_events.7
-	title = panama_events.7.t
-	desc = panama_events.7.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.7 option panama_events.7.a"
-		name = panama_events.7.a #Ok cool - PAN gets to keep its independence, old status quo restored with CAN ruling over Canal instead of USA
-		ai_chance = {
-			base = 90
-			modifier = {
-				factor = 0
-				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_WAR }
-			}
-		}
-		set_country_flag = PAN_canada_accepted
-		CAN = {
-			transfer_state = 685
-			country_event = { id = panama_events.101 days = 1 }
-			give_guarantee = PAN
-		}
-		custom_effect_tooltip = tooltip_white_line
-		complete_national_focus = PAN_entente_support
-		activate_targeted_decision = { target = COS decision = PAN_pressure_coto_2 }
-		hidden_effect = {
-			news_event = { id = panama_events.108 days = 2 }
-			set_country_flag = PAN_give_up_canal
-		}
-	}
-	option = {
-		log = "[GetLogInfo]: event panama_events.7 option panama_events.7.b"
-		name = panama_events.7.b #Begone thots - CAN gets the OH SHOOT THEY DECLINED event
-		ai_chance = {
-			base = 10
-			modifier = {
-				factor = 0
-				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_CAN }
-			}
-		}
-		complete_national_focus = PAN_stand_alone
-		CAN = {
-			country_event = { id = panama_events.102 days = 1 }
-		}
-	}
-}
-
-country_event = { ####Canada prepares to invade
-	id = panama_events.8
-	title = panama_events.8.t
-	desc = panama_events.8.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.8 option panama_events.8.a"
-		name = panama_events.8.a #Oh no
-		PAN = {
-			activate_mission = PAN_survive_invasion
-		}
-	}
-}
-
 country_event = { ####Ensuring the loyalty of the police
 	id = panama_events.9
 	title = panama_events.9.t
@@ -1329,7 +1206,11 @@ country_event = { ####Land clearing
 		set_temp_variable = { ideology_change_var = 0.05 }
 		change_ruling_party_popularity = yes
 		add_political_power = -50
-		304 = {
+		random_owned_controlled_state = {
+			prioritize = { 304 }
+			limit = {
+				is_valid_state_for_development = yes
+			}
 			add_extra_state_shared_building_slots = 1
 		}
 	}
@@ -1337,16 +1218,13 @@ country_event = { ####Land clearing
 		log = "[GetLogInfo]: event panama_events.27 option panama_events.27.b"
 		name = panama_events.27.b #Prioritize agriculture
 		add_stability = 0.025
-		if = {
-			limit = { 304 = { has_state_category = five } }
-			304 = {
+		random_owned_controlled_state = {
+			prioritize = { 304 }
+			if = {
+				limit = { has_state_category = five }
 				add_extra_state_shared_building_slots = 1
 			}
-		}
-		else = {
-			304 = {
-				increase_state_category_by_one_level = yes
-			}
+			else = { increase_state_category_by_one_level = yes }
 		}
 	}
 }
@@ -1523,244 +1401,6 @@ country_event = { ####Fate of the coalition - it either falls apart here or it d
 	}
 }
 
-country_event = { ####Canadian reaction to canal seized
-	id = panama_events.99
-	title = panama_events.99.t
-	desc = panama_events.99.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.99 option panama_events.99.a"
-		name = panama_events.99.a #Demand they join Entente
-		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_ENT }
-					has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_RETREAT }
-				}
-			}
-		}
-		PAN = {
-			country_event = { id = panama_events.7 days = 1 }
-		}
-	}
-	option = {
-		log = "[GetLogInfo]: event panama_events.99 option panama_events.99.b"
-		name = panama_events.99.b #Demand they hand over the canal
-		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_CAN }
-					has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_RETREAT }
-				}
-			}
-		}
-		PAN = {
-			country_event = { id = panama_events.6 days = 1 }
-		}
-	}
-	option = {
-		log = "[GetLogInfo]: event panama_events.99 option panama_events.99.c"
-		name = panama_events.99.c #Leave them alone - CAN gets extra PP and stability
-		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_CAN }
-					has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_ENT }
-					has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_WAR }
-				}
-			}
-		}
-		add_political_power = 20
-		add_stability = 0.025
-		PAN = {
-			hidden_effect = { complete_national_focus = PAN_stand_alone }
-			activate_targeted_decision = { target = COS decision = PAN_pressure_coto_2 }
-		}
-	}
-}
-
-country_event = { ####US reaction to canal seized
-	id = panama_events.100
-	title = panama_events.100.t
-	desc = panama_events.100.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.100 option panama_events.100.a"
-		name = panama_events.100.a #Oof
-		add_political_power = -10
-	}
-}
-
-country_event = { ####PAN says yes - CAN event
-	id = panama_events.101
-	title = panama_events.101.t
-	desc = panama_events.101.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.101 option panama_events.101.a"
-		name = panama_events.101.a #yeeeeee
-	}
-}
-
-country_event = { ####Panama says NO - CAN event
-	id = panama_events.102
-	title = panama_events.102.t
-	desc = panama_events.102.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.102 option panama_events.102.a"
-		name = panama_events.102.a #WAAAAAAAAAAAAAAAAAAAAAR
-		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 0
-				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_RETREAT }
-			}
-		}
-		PAN = {
-			country_event = { id = panama_events.8 days = 1 }
-		}
-		declare_war_on = {
-			target = PAN
-			type = annex_everything
-		}
-		hidden_effect = {
-			PAN = { set_country_flag = PAN_war_with_can }
-			COS = { country_event = { id = costa_rica_events.128 days = 15 } }
-		}
-	}
-	option = {
-		log = "[GetLogInfo]: event panama_events.102 option panama_events.102.b"
-		name = panama_events.102.b #Do nothing
-		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 0
-				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_WAR }
-			}
-		}
-		add_political_power = -10
-		PAN = {
-			country_event = { id = panama_events.106 days = 1 }
-			set_country_flag = PAN_no_war_with_can
-		}
-	}
-	after = {
-		hidden_effect = {
-			news_event = { id = panama_events.108 days = 2 }
-		}
-	}
-}
-
-country_event = { ####We survived 180 days - let's propose a peace
-	id = panama_events.103
-	title = panama_events.103.t
-	desc = panama_events.103.d
-
-	trigger = {
-		has_war_with = ENT
-		is_valid_peace_target = yes
-		ENT = { is_valid_peace_target = yes }
-	}
-
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.103 option panama_events.103.a"
-		name = panama_events.103.a #Propose a peace
-		ENT = {
-			country_event = { id = panama_events.104 days = 1 }
-		}
-	}
-}
-
-country_event = { ####Panama proposes peace - CAN event
-	id = panama_events.104
-	title = panama_events.104.t
-	desc = panama_events.104.d
-
-	trigger = {
-		has_war_with = FROM
-		is_valid_peace_target = yes
-		FROM = { is_valid_peace_target = yes }
-	}
-
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.104 option panama_events.104.a"
-		name = panama_events.104.a #ok sure - this does the peace
-		PAN = {
-			country_event = { id = panama_events.105 days = 1 }
-			white_peace_with_ROOT = yes
-		}
-	}
-	option = {
-		log = "[GetLogInfo]: event panama_events.104 option panama_events.104.b"
-		name = panama_events.104.b #not until we reach Panama City xd - ai wont do this ever
-		ai_chance = { base = 0 }
-		add_political_power = -50
-	}
-}
-
-country_event = { ####Yay peace - this does NOT do the peace
-	id = panama_events.105
-	title = panama_events.105.t
-	desc = panama_events.105.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.105 option panama_events.105.a"
-		name = panama_events.105.a #Yay peace
-		add_political_power = 35
-		activate_targeted_decision = { target = COS decision = PAN_pressure_coto_2 }
-	}
-}
-
-country_event = { ####CAN stands down - yeah boiiiiiiiiiiii
-	id = panama_events.106
-	title = panama_events.106.t
-	desc = panama_events.106.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.106 option panama_events.106.a"
-		name = panama_events.106.a #Yay peace
-		add_political_power = 35
-		activate_targeted_decision = { target = COS decision = PAN_pressure_coto_2 }
-	}
-}
-
-country_event = { ####PAN renounces Monroe Doctrine - US event
-	id = panama_events.107
-	title = panama_events.107.t
-	desc = panama_events.107.d
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.107 option panama_events.107.a"
-		name = panama_events.107.a #A shame.
-	}
-}
-
 country_event = { ####PAN pressures Coto in '36 - COS event
 	id = panama_events.30
 	title = panama_events.30.t
@@ -1837,68 +1477,6 @@ country_event = { ####Coto Region overview - pre coto chain above
 	}
 }
 
-country_event = { ####PAN investments event
-	id = panama_events.35
-	title = panama_events.35.t
-	desc = panama_events.35.d
-
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.35 option panama_events.35.a"
-		name = panama_events.35.a #Ok
-		ai_chance = { base = 100 }
-		add_political_power = 30
-		add_timed_idea = {
-			idea = PAN_outside_investing
-			days = 30
-		}
-		PAN = { country_event = { id = panama_events.36 days = 1 } }
-	}
-	option = {
-		log = "[GetLogInfo]: event panama_events.35 option panama_events.35.b"
-		name = panama_events.35.b #No
-		ai_chance = { base = 0 }
-		PAN = { country_event = { id = panama_events.37 days = 1 } }
-	}
-}
-
-country_event = { ####Country says yes to $$$
-	id = panama_events.36
-	title = panama_events.36.t
-	desc = panama_events.36.d
-
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.36 option panama_events.36.a"
-		name = panama_events.36.a #Yay
-		if = {
-			limit = { has_idea = PAN_profit }
-			swap_ideas = {
-				remove_idea = PAN_profit
-				add_idea = PAN_profit2
-			}
-		}
-		else = {
-			add_ideas = PAN_profit
-		}
-	}
-}
-
-country_event = { ####Country says no to $$$
-	id = panama_events.37
-	title = panama_events.37.t
-	desc = panama_events.37.d
-
-	is_triggered_only = yes
-
-	option = {
-		log = "[GetLogInfo]: event panama_events.37 option panama_events.37.a"
-		name = panama_events.37.a #Oof
-	}
-}
-
 country_event = { ####USA to the rescue! - We did it! - USA Event
 	id = panama_events.40
 	title = panama_events.40.t
@@ -1913,116 +1491,218 @@ country_event = { ####USA to the rescue! - We did it! - USA Event
 	}
 }
 
-#Panama Canal Crisis
-news_event = {
-	id = panama_events.108
-	immediate = { log = "[GetLogInfo]: event panama_events.108" }
-	title = panama_events.108.t
-	picture = news_event_PAN_canal
-	major = yes
+country_event = { ####USA starts collapsing
+	id = panama_events.100
+	title = panama_events.100.t
+	desc = panama_events.100.d
+
 	is_triggered_only = yes
 
-	show_major = {
-		OR = {
-			regional_america_news = yes
-			is_in_faction_with = ENT
-		}
+	option = {
+		log = "[GetLogInfo]: event panama_events.100 option panama_events.100.a"
+		name = panama_events.100.a #Uh oh
 	}
+}
 
-	trigger = { wants_world_news = yes }
+country_event = { ####Taking the canal
+	id = panama_events.101
+	title = panama_events.101.t
+	desc = panama_events.101.d
 
-	desc = { #Panama joins entente, peace
-		text = panama_events.108.d.joincan
-		trigger = {
-			PAN = {
-				is_in_faction_with = CAN
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event panama_events.101 option panama_events.101.a"
+		name = panama_events.101.a #Not too bad
+		complete_national_focus = PAN_return_of_the_canal
+		transfer_state = 685
+		if = {
+			limit = { USA = { controls_state = 361 } }
+			custom_effect_tooltip = tooltip_white_line
+			USA = { country_event = panama_events.102 }
+		}
+		if = {
+			limit = { has_idea = CEN_monroe_doctrine }
+			custom_effect_tooltip = tooltip_white_line
+			remove_ideas = CEN_monroe_doctrine
+		}
+		custom_effect_tooltip = tooltip_white_line
+		if = {
+			limit = { has_idea = PAN_economic_depression }
+			swap_ideas = {
+				add_idea = PAN_economic_recession_3
+				remove_idea = PAN_economic_depression
 			}
 		}
-	}
-
-	desc = { #War
-		text = panama_events.108.d.war
-		trigger = {
-			PAN = {
-				has_country_flag = PAN_war_with_can
-			}
+		else = {
+			add_ideas = PAN_economic_recession_2
 		}
-	}
-
-	desc = { #Canada backs down
-		text = panama_events.108.d.canbackdown
-		trigger = {
-			PAN = {
-				has_country_flag = PAN_no_war_with_can
-			}
-		}
-	}
-
-	desc = { #Canada demands canal, peace
-		text = panama_events.108.d.demandcanpeace
-		trigger = {
-			PAN = {
-				has_country_flag = PAN_give_up_canal
-			}
-		}
-	}
-
-	option = { #The balance of power is at stake.
-		name = panama_events.108.a
-		trigger = {
-			NOT = {
-				is_in_faction_with = CAN
-				tag = PAN
-			}
-		}
-	}
-
-	option = { #The canal is ours!
-		name = panama_events.108.b
-		trigger = {
-			tag = PAN
-			PAN = {
-				owns_state = 685
-			}
-		}
-	}
-
-	option = { #They made the right choice.
-		name = panama_events.108.c
-		trigger = {
-			OR = {
-				CAN = { owns_state = 685 }
-				PAN = {
-					owns_state = 685
-					is_in_faction_with = CAN
-				}
-			}
-			is_in_faction_with = CAN
-			NOT = { TAG = PAN }
-		}
-	}
-
-	option = { #Damn them!
-		name = panama_events.108.d
-		trigger = {
-			OR = {
-				AND = {
-					PAN = {
-						owns_state = 685
-						NOT = { is_in_faction_with = CAN }
-					}
-					is_in_faction_with = CAN
-				}
-				AND = {
-					tag = PAN
-					NOT = {
-						PAN = {
-							owns_state = 685
-						}
-					}
-				}
-			}
+		hidden_effect = {
+			country_event = { id = panama_events.103 days = 5 }
 		}
 	}
 }
 
+country_event = { ####USA responce to the canal
+	id = panama_events.102
+	title = panama_events.102.t
+	desc = panama_events.102.d
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event panama_events.102 option panama_events.102.a"
+		name = panama_events.102.a #Damn them
+		add_opinion_modifier = {
+			target = PAN
+			modifier = KR_diplomatic_row
+		}
+	}
+}
+
+country_event = { ####Join the entente?
+	id = panama_events.103
+	title = panama_events.103.t
+	desc = panama_events.103.d
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event panama_events.103 option panama_events.103.a"
+		name = panama_events.103.a #Ask Canada
+		trigger = {
+			country_exists = ENT
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PAN_forpol option = PAN_FORPOL_NEUT }
+			}
+		}
+		ENT = { country_event = { id = panama_events.104 days = 2 } }
+		custom_effect_tooltip = if_they_accept_tt
+		event_option_tooltip = panama_events.105.a
+	}
+	option = {
+		log = "[GetLogInfo]: event panama_events.103 option panama_events.103.b"
+		name = panama_events.103.b #Better not
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PAN_forpol option = PAN_FORPOL_ENT }
+			}
+		}
+		complete_national_focus = PAN_stand_alone
+		custom_effect_tooltip = tooltip_white_line
+		activate_targeted_decision = { target = COS decision = PAN_pressure_coto_2 }
+	}
+}
+
+country_event = { ####Let panama into the entente?
+	id = panama_events.104
+	title = panama_events.104.t
+	desc = panama_events.104.d
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event panama_events.104 option panama_events.104.a"
+		name = panama_events.104.a #Sure
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PAN_forpol option = PAN_FORPOL_NEUT }
+			}
+		}
+		effect_tooltip = { add_to_faction = PAN }
+		hidden_effect = {
+			PAN = { country_event = { id = panama_events.105 days = 2 } }
+		}
+	}
+	option = {
+		log = "[GetLogInfo]: event panama_events.104 option panama_events.104.b"
+		name = panama_events.104.b #Nah
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				has_game_rule = { rule = PAN_forpol option = PAN_FORPOL_NEUT }
+			}
+		}
+		hidden_effect = {
+			PAN = { country_event = { id = panama_events.106 days = 2 } }
+		}
+	}
+}
+
+country_event = { ####Canada let us in
+	id = panama_events.105
+	title = panama_events.105.t
+	desc = panama_events.105.d
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event panama_events.105 option panama_events.105.a"
+		name = panama_events.105.a #Great
+		ENT = {
+			add_to_faction = PAN
+		}
+		complete_national_focus = PAN_entente_support
+	}
+}
+
+country_event = { ####Canada refuses
+	id = panama_events.106
+	title = panama_events.106.t
+	desc = panama_events.106.d
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event panama_events.106 option panama_events.106.a"
+		name = panama_events.106.a #We didn't need them
+		complete_national_focus = PAN_stand_alone
+		custom_effect_tooltip = tooltip_white_line
+		activate_targeted_decision = { target = COS decision = PAN_pressure_coto_2 }
+	}
+}
+
+country_event = { ####American Civil War over, no more economic issues
+	id = panama_events.107
+	title = panama_events.107.t
+	desc = panama_events.107.d
+
+	trigger = {
+		OR = {
+			has_idea = PAN_economic_recession_3
+			has_idea = PAN_economic_recession_2
+			has_idea = PAN_economic_recession_1
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event panama_events.107 option panama_events.107.a"
+		name = panama_events.107.a #Woho
+		if = {
+			limit = { has_idea = PAN_economic_recession_3 }
+			swap_ideas = {
+				add_idea = PAN_economic_depression
+				remove_idea = PAN_economic_recession_3
+			}
+		}
+		else_if = {
+			limit = { has_idea = PAN_economic_recession_2 }
+			remove_ideas = PAN_economic_recession_2
+		}
+		else_if = {
+			limit = { has_idea = PAN_economic_recession_1 }
+			remove_ideas = PAN_economic_recession_1
+		}
+	}
+}

@@ -2929,16 +2929,16 @@ country_event = {
 			limit = {
 				YUN_GXC_war_lose_guizhou_trigger = yes
 			}
-			1051 = {
+			603 = {
+				#Anshun
+				controller = {
+					transfer_state = 603
+				}
+			}
+			603 = {
 				#Guiyang
 				controller = {
 					transfer_state = 1051
-				}
-			}
-			1051 = {
-				#Zunyi
-				controller = {
-					transfer_state = 603
 				}
 			}
 		}
@@ -7811,7 +7811,7 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = {
-					owns_state = 1051 #Guiyang
+					owns_state = 603 #Guiyang
 				}
 				country_event = { id = YUN.midgame.732 days = 160 random_days = 40 } #The Situation in Guizhou
 			}
@@ -12735,7 +12735,7 @@ country_event = { #Lushan Conference
 		ROOT = {
 			OR = {
 				owns_state = 1044 #Nanchang
-				owns_state = 1051 #Guiyang
+				owns_state = 603 #Guiyang
 			}
 			has_war_with = JAP
 		}

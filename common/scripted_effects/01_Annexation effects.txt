@@ -514,7 +514,7 @@ determine_chinese_ally = {
 #					OR = {
 #						has_socialist_government = yes
 #						AND = {
-#							tag = INC
+#							tag = VIN
 #							has_government = social_democrat
 #						}
 #					}
@@ -671,7 +671,7 @@ determine_chinese_ally = {
 #			}
 #			else_if = {
 #				limit = {
-#					tag = INC
+#					tag = VIN
 #					has_authdem_or_pataut_government = yes
 #				}
 #				if = {
@@ -1909,136 +1909,16 @@ annexations_reset_italian_tags = {
 			add_core_of = SRI
 		}
 	}
-	if = {
-		limit = { NOT = { country_exists = ITA } }
-		ITA = {
-			ITA_remove_monarchy = yes
-			drop_cosmetic_tag = yes
-			clear_cores_of_tag_if_possible = yes
-		}
-	}
-	if = {
-		limit = { NOT = { country_exists = LOM } }
-		LOM = {
-			clr_country_flag = italian_unifier
-			drop_cosmetic_tag = yes
-			if = {
-				limit = { has_character = ITA_marcello_visconti_di_modrone }
-				ITA_marcello_visconti_di_modrone = {
-					set_character_name = ITA_marcello_visconti_di_modrone
-					remove_all_country_leader_roles = yes
-					add_country_leader_role = {
-						country_leader = {
-							desc = ITA_marcello_visconti_di_modrone_leader_desc
-							ideology = authoritarian_democrat_subtype
-						}
-						promote_leader = yes
-					}
-				}
+	every_collection_element = {
+		input = {
+			input = collection:italian_countries
+			operators = {
+				limit = { exists = no }
 			}
-			clear_cores_of_tag_if_possible = yes
 		}
-	}
-	if = {
-		limit = { NOT = { country_exists = VNC } }
-		VNC = {
-			clr_country_flag = italian_unifier
-			if = {
-				limit = { NOT = { has_character = VNC_giuseppe_volpi } }
-				VNC_giuseppe_volpi = {
-					set_nationality = PREV
-					set_character_as_republican = yes
-					remove_country_leader_role_paternal_autocrat = yes
-					add_country_leader_role = {
-						country_leader = {
-							desc = VNC_giuseppe_volpi_leader_desc
-							ideology = paternal_autocrat_subtype
-						}
-						promote_leader = yes
-					}
-				}
-			}
-			drop_cosmetic_tag = yes
-			clear_cores_of_tag_if_possible = yes
-		}
-	}
-	if = {
-		limit = { NOT = { country_exists = SRI } }
-		SRI = {
-			drop_cosmetic_tag = yes
-			clear_cores_of_tag_if_possible = yes
-		}
-	}
-	if = {
-		limit = { NOT = { country_exists = EMI } }
-		EMI = {
-			clr_country_flag = italian_unifier
-			if = {
-				limit = { has_character = EMI_roberto_este }
-				EMI_roberto_este = {
-					set_character_name = EMI_roberto_este
-					remove_all_country_leader_roles = yes
-					retire = yes
-				}
-			}
-			if = {
-				limit = { has_character = EMI_elia_borbone }
-				EMI_elia_borbone = {
-					set_character_name = EMI_elia_borbone
-					remove_all_country_leader_roles = yes
-					retire = yes
-				}
-			}
-			drop_cosmetic_tag = yes
-			clear_cores_of_tag_if_possible = yes
-		}
-	}
-	if = {
-		limit = { NOT = { country_exists = TUS } }
-		TUS = {
-			clr_country_flag = italian_unifier
-			if = {
-				limit = { has_character = ITA_pietro_ferdinando }
-				ITA_pietro_ferdinando = {
-					set_character_name = ITA_pietro_ferdinando
-					remove_all_country_leader_roles = yes
-					retire = yes
-				}
-			}
-			drop_cosmetic_tag = yes
-			clear_cores_of_tag_if_possible = yes
-		}
-	}
-	if = {
-		limit = { NOT = { country_exists = SRD } }
-		SRD = {
-			SRD_restore_amedeo = yes
-			clr_country_flag = italian_unifier
-			drop_cosmetic_tag = yes
-			clear_cores_of_tag_if_possible = yes
-		}
-	}
-	if = {
-		limit = { NOT = { country_exists = PAP } }
-		PAP = {
-			if = {
-				limit = { has_idea = PAP_exiled_holy_see }
-				remove_ideas = PAP_exiled_holy_see
-			}
-			clr_country_flag = italian_unifier
-			drop_cosmetic_tag = yes
-			clear_cores_of_tag_if_possible = yes
-		}
-	}
-	if = {
-		limit = { NOT = { country_exists = SIC } }
-		SIC = {
-			clr_country_flag = italian_unifier
-			clr_country_flag = SIC_confed
-			clr_country_flag = SIC_empire
-			drop_cosmetic_tag = yes
-			clear_cores_of_tag_if_possible = yes
-		}
+		italy_reset_tag_situation = yes
+		drop_cosmetic_tag = yes
+		clear_cores_of_tag_if_possible = yes
 	}
 }
 
@@ -2061,28 +1941,7 @@ annexations_release_italy = {
 	var:tag_to_release = {
 		set_country_flag = italian_unifier
 		italy_set_rome_as_capital = yes
-		if = {
-			limit = { original_tag = ITA }
-			if = {
-				limit = { has_variable = ITA_release_as_federation }
-				ITA_release_as_federation = yes
-			}
-			else = {
-				ITA_release_as_republic = yes
-			}
-		}
-		else_if = {
-			limit = { original_tag = SRD }
-			set_cosmetic_tag = SRD_ITA
-			if = {
-				limit = { NOT = { has_completed_focus = SRD_return_to_the_mainland } }
-				unlock_national_focus = SRD_return_to_the_mainland
-			}
-			if = {
-				limit = { NOT = { has_completed_focus = SRD_italia_riunita } }
-				complete_national_focus = SRD_italia_riunita
-			}
-		}
+		italy_tag_specific_effects_when_released_as_unified = yes
 	}
 	hidden_effect = {
 		every_collection_element = {
@@ -2092,6 +1951,8 @@ annexations_release_italy = {
 					limit = { exists = no }
 				}
 			}
+			italy_reset_tag_situation = yes
+			drop_cosmetic_tag = yes
 			clear_cores_of_tag_if_possible = yes
 		}
 	}

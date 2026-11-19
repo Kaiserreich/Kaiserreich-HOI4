@@ -2153,12 +2153,6 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = GetVictoryPointName_1319
-	text = {
-		localization_key = VICTORY_POINTS_1319
-	}
-}
-defined_text = {
 	name = GetVictoryPointName_1323
 	text = {
 		localization_key = VICTORY_POINTS_1323
@@ -2525,10 +2519,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = VICTORY_POINTS_1605_VIETNAMESE
 	}
@@ -5186,10 +5177,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = VICTORY_POINTS_4075_VIETNAMESE
 	}
@@ -5367,10 +5355,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = VICTORY_POINTS_4119_VIETNAMESE
 	}
@@ -5712,6 +5697,12 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = GetVictoryPointName_4325
+	text = {
+		localization_key = VICTORY_POINTS_4325
+	}
+}
+defined_text = {
 	name = GetVictoryPointName_4328
 	text = {
 		localization_key = VICTORY_POINTS_4328
@@ -5810,10 +5801,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = VICTORY_POINTS_4379_VIETNAMESE
 	}
@@ -5857,10 +5845,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = VICTORY_POINTS_4401_VIETNAMESE
 	}
@@ -6049,6 +6034,14 @@ defined_text = {
 }
 defined_text = {
 	name = GetVictoryPointName_4558
+	text = {
+		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
+		localization_key = VICTORY_POINTS_4558
+	}
+	text = {
+		trigger = { is_farsi_speaking_tag = yes }
+		localization_key = VICTORY_POINTS_4558_FARSI
+	}
 	text = {
 		localization_key = VICTORY_POINTS_4558
 	}
@@ -9694,6 +9687,12 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = GetVictoryPointName_7446
+	text = {
+		localization_key = VICTORY_POINTS_7446
+	}
+}
+defined_text = {
 	name = GetVictoryPointName_7476
 	text = {
 		localization_key = VICTORY_POINTS_7476
@@ -9742,6 +9741,12 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = GetVictoryPointName_7549
+	text = {
+		localization_key = VICTORY_POINTS_7549
+	}
+}
+defined_text = {
 	name = GetVictoryPointName_7552
 	text = {
 		localization_key = VICTORY_POINTS_7552
@@ -9771,12 +9776,6 @@ defined_text = {
 	name = GetVictoryPointName_7566
 	text = {
 		localization_key = VICTORY_POINTS_7566
-	}
-}
-defined_text = {
-	name = GetVictoryPointName_7577
-	text = {
-		localization_key = VICTORY_POINTS_7577
 	}
 }
 defined_text = {
@@ -10322,12 +10321,7 @@ defined_text = {
 		localization_key = VICTORY_POINTS_7960
 	}
 	text = {
-		trigger = {
-			OR = {
-				is_arab_tag = yes
-				is_turkish_tag = yes
-			}
-		}
+		trigger = { is_turkish_tag = yes }
 		localization_key = VICTORY_POINTS_7960_ARABIC
 	}
 	text = {
@@ -10659,13 +10653,12 @@ defined_text = {
 		localization_key = VICTORY_POINTS_8098
 	}
 	text = {
-		trigger = {
-			OR = {
-				is_farsi_speaking_tag = yes
-				is_indo_aryan_speaking_tag = yes
-			}
-		}
+		trigger = { is_indo_aryan_speaking_tag = yes }
 		localization_key = VICTORY_POINTS_8098_INDIAN
+	}
+	text = {
+		trigger = { is_farsi_speaking_tag = yes }
+		localization_key = VICTORY_POINTS_8098_FARSI
 	}
 	text = {
 		localization_key = VICTORY_POINTS_8098
@@ -10698,12 +10691,13 @@ defined_text = {
 		localization_key = VICTORY_POINTS_8117
 	}
 	text = {
-		trigger = { is_farsi_speaking_tag = yes }
+		trigger = {
+			OR = {
+				is_farsi_speaking_tag = yes
+				original_tag = ASY
+			}
+		}
 		localization_key = VICTORY_POINTS_8117_FARSI
-	}
-	text = {
-		trigger = { original_tag = ASY }
-		localization_key = VICTORY_POINTS_8117_SYRIAC #Shīrāz
 	}
 	text = {
 		localization_key = VICTORY_POINTS_8117
@@ -13595,10 +13589,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = VICTORY_POINTS_10309_VIETNAMESE
 	}
@@ -14001,6 +13992,12 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = GetVictoryPointName_10616
+	text = {
+		localization_key = VICTORY_POINTS_10616
+	}
+}
+defined_text = {
 	name = GetVictoryPointName_10627
 	text = {
 		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
@@ -14180,12 +14177,6 @@ defined_text = {
 	}
 	text = {
 		localization_key = VICTORY_POINTS_10760
-	}
-}
-defined_text = {
-	name = GetVictoryPointName_10763
-	text = {
-		localization_key = VICTORY_POINTS_10763
 	}
 }
 defined_text = {
@@ -17384,10 +17375,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = VICTORY_POINTS_12133_VIETNAMESE
 	}
@@ -18587,20 +18575,6 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = GetVictoryPointName_12885
-	text = {
-		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
-		localization_key = VICTORY_POINTS_12885 #Cayenne
-	}
-	text = {
-		trigger = { is_portuguese_tag = yes }
-		localization_key = VICTORY_POINTS_12885_PORTUGUESE #Caiena
-	}
-	text = {
-		localization_key = VICTORY_POINTS_12885 #Cayenne
-	}
-}
-defined_text = {
 	name = GetVictoryPointName_12891
 	text = {
 		localization_key = VICTORY_POINTS_12891
@@ -18963,6 +18937,12 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = GetVictoryPointName_13085
+	text = {
+		localization_key = VICTORY_POINTS_13085
+	}
+}
+defined_text = {
 	name = GetVictoryPointName_13087
 	text = {
 		localization_key = VICTORY_POINTS_13087
@@ -19206,6 +19186,20 @@ defined_text = {
 	}
 	text = {
 		localization_key = VICTORY_POINTS_13390 #Qiemo
+	}
+}
+defined_text = {
+	name = GetVictoryPointName_13417
+	text = {
+		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
+		localization_key = VICTORY_POINTS_13417 #Cayenne
+	}
+	text = {
+		trigger = { is_portuguese_tag = yes }
+		localization_key = VICTORY_POINTS_13417_PORTUGUESE #Caiena
+	}
+	text = {
+		localization_key = VICTORY_POINTS_13417 #Cayenne
 	}
 }
 defined_text = {

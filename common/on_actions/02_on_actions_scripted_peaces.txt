@@ -1,0 +1,179 @@
+on_actions = {
+	#FROM is country getting invited.
+	on_offer_join_faction = {
+		effect = {
+			### CORE ###
+			FROM = { update_scripted_peace_main_target = yes }
+		}
+	}
+
+	# FROM = faction leader
+	on_leave_faction = {
+		effect = {
+			### CORE ###
+			update_scripted_peace_main_target = yes
+		}
+	}
+
+	# temp var old_ideology_token is available for effects
+	on_ruling_party_change = {
+		effect = {
+			### CORE ###
+			update_scripted_peace_main_target = yes
+		}
+	}
+
+	# ROOT is the new faction leader FROM is the old faction leader
+	on_assume_faction_leadership = {
+		effect = {
+			### CORE ###
+			every_faction_member = { update_scripted_peace_main_target = yes }
+
+			every_other_country = { #switch targets for faction peaces when appropriate
+				limit = {
+					is_faction_leader = yes
+					scope:faction = { has_variable = faction_peace_trigger_@FROM }
+				}
+				scope:faction = {
+					set_variable = { faction_peace_trigger_@ROOT = faction_peace_trigger_@FROM }
+					clear_variable = faction_peace_trigger_@FROM
+				}
+				for_each_loop = { #to switch the value without shifting indices
+					array = possible_scripted_peaces
+					if = {
+						limit = { check_variable = { v = FROM } }
+						set_variable = { possible_scripted_peaces^i = ROOT }
+					}
+				}
+			}
+		}
+	}
+
+	#ROOT = attacking side
+	#FROM = defending side
+	#fired when two countries end up at war with each other (on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first)
+	on_war_relation_added = {
+		effect = {
+			### CORE ###
+			if = {
+				limit = {
+					is_faction_leader = yes
+					scope:faction = {
+						has_variable = faction_peace_trigger_@FROM
+						NOT = { is_in_array = { possible_scripted_peaces = FROM } }
+					}
+				}
+				scope:faction = {
+					add_to_array = { possible_scripted_peaces = FROM }
+				}
+			}
+			if = {
+				limit = {
+					has_variable = scripted_peace_trigger_@FROM
+					NOT = { is_in_array = { possible_scripted_peaces = FROM } }
+				}
+				add_to_array = { possible_scripted_peaces = FROM }
+			}
+			FROM = {
+				if = {
+					limit = {
+						is_faction_leader = yes
+						scope:faction = {
+							has_variable = faction_peace_trigger_@ROOT
+							NOT = { is_in_array = { possible_scripted_peaces = ROOT } }
+						}
+					}
+					scope:faction = {
+						add_to_array = { possible_scripted_peaces = ROOT }
+					}
+				}
+				if = {
+					limit = {
+						has_variable = scripted_peace_trigger_@ROOT
+						NOT = { is_in_array = { possible_scripted_peaces = ROOT } }
+					}
+					add_to_array = { possible_scripted_peaces = ROOT }
+				}
+			}
+		}
+	}
+
+	on_peaceconference_ended = {
+		effect = {
+			### CORE ###
+			if = {
+				limit = {
+					has_variable = scripted_peace_trigger_@FROM
+					is_in_array = { possible_scripted_peaces = FROM }
+				}
+				remove_from_array = { possible_scripted_peaces = FROM }
+			}
+			if = {
+				limit = {
+					is_faction_leader = yes
+					scope:faction = {
+						has_variable = faction_peace_trigger_@FROM
+						is_in_array = { possible_scripted_peaces = FROM }
+					}
+				}
+				scope:faction = {
+					remove_from_array = { possible_scripted_peaces = FROM }
+				}
+			}
+			FROM = {
+				if = {
+					limit = {
+						has_variable = scripted_peace_trigger_@ROOT
+						is_in_array = { possible_scripted_peaces = ROOT }
+					}
+					remove_from_array = { possible_scripted_peaces = ROOT }
+				}
+				if = {
+					limit = {
+						is_faction_leader = yes
+						scope:faction = {
+							has_variable = faction_peace_trigger_@ROOT
+							is_in_array = { possible_scripted_peaces = ROOT }
+						}
+					}
+					scope:faction = {
+						remove_from_array = { possible_scripted_peaces = ROOT }
+					}
+				}
+			}
+		}
+	}
+
+	#ROOT is winner #FROM gets annexed - For civil wars on_civil_war_end is also fired
+	on_annex = {
+		effect = {
+			FROM = { clear_scripted_peace_data = yes }
+		}
+	}
+
+	on_peace = {
+		effect = {
+			clear_scripted_peace_data = yes
+			if = {
+				limit = { is_faction_leader = yes }
+				scope:faction = { clear_scripted_peace_data = yes }
+			}
+		}
+	}
+
+	on_startup = {
+		effect = {
+			### COUNTRY-SPECIFIC ###
+			INT = {
+				scope:faction = {
+					set_variable = { faction_peace_trigger_@GER = token:treaty_of_london_trigger }
+				}
+			}
+			GER = {
+				scope:faction = {
+					set_variable = { faction_peace_trigger_@INT = token:treaty_of_london_trigger }
+				}
+			}
+		}
+	}
+}

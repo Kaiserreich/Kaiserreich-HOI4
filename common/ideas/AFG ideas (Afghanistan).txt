@@ -2573,6 +2573,61 @@ ideas = {
 				defense_bonus_against = 0.05
 			}
 		}
+		AFG_slaying_giants_combat = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_slaying_giants_combat" }
+			name = AFG_slaying_giants
+			picture = SWI_spirit_of_helvetia_aggressive_war
+			allowed = { always = no }
+			available = {
+				is_in_faction = no
+			}
+			modifier = {
+				army_attack_against_major_factor = 0.1
+				army_defence_against_major_factor = 0.1
+			}
+		}
+		AFG_slaying_giants_equipment = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_slaying_giants_equipment" }
+			name = AFG_slaying_giants
+			picture = SWI_spirit_of_helvetia_aggressive_war
+			allowed = { always = no }
+			available = {
+				is_in_faction = no
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				artillery_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				anti_air_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				anti_tank_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+		}
+		AFG_slaying_giants_industry = {
+			on_add = { log = "[GetLogRoot]: add idea AFG_slaying_giants_industry" }
+			name = AFG_slaying_giants
+			picture = SWI_spirit_of_helvetia_aggressive_war
+			allowed = { always = no }
+			available = {
+				is_in_faction = no
+			}
+			modifier = {
+				country_resource_steel = 8
+				country_resource_tungsten = 8
+				country_resource_aluminium = 4
+				production_lack_of_resource_penalty_factor = -0.2
+			}
+		}
 	}
 
 	# Industrial Concerns #

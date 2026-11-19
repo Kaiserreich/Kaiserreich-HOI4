@@ -939,7 +939,6 @@ country_event = { #The Crisis in Turkestan
 		TRK = { country_event = { id = afghanistan_events.30 days = 5 } }
 		custom_effect_tooltip = tooltip_white_line
 		activate_targeted_decision = { target = AFG decision = AFG_escalate_intervention_in_central_asia }
-		set_country_flag = AFG_aided_TRK_flag
 	}
 	option = { #We must help the Russians maintain order.
 		log = "[GetLogInfo]: event afghanistan_events.29 option afghanistan_events.29.b"
@@ -3147,114 +3146,7 @@ country_event = { # Those Left Standing
 
 	is_triggered_only = yes
 
-	immediate = {
-		if = { #Done to prioritise specific countries first, with human players always getting preference
-			limit = {
-				HND = {
-					has_completed_focus = HND_unite_india
-					is_subject = no
-				}
-				NOT = {
-					RUS = {
-						has_socialist_government = yes
-						is_subject = no
-						is_ai = no
-					}
-					PER = {
-						has_socialist_government = yes
-						is_subject = no
-						is_ai = no
-					}
-					AND = {
-						CHN = {
-							has_socialist_government = yes
-							is_subject = no
-							is_ai = no
-						}
-						has_global_flag = china_united
-					}
-					any_home_area_neighbor_country = {
-						is_ally_with = INT
-						is_ai = no
-					}
-				}
-			}
-			HND = { save_event_target_as = AFG_potential_socialist_overlord }
-		}
-		else_if = {
-			limit = {
-				RUS = {
-					has_socialist_government = yes
-					is_subject = no
-				}
-				NOT = {
-					PER = {
-						has_socialist_government = yes
-						is_subject = no
-						is_ai = no
-					}
-					AND = {
-						CHN = {
-							has_socialist_government = yes
-							is_subject = no
-							is_ai = no
-						}
-						has_global_flag = china_united
-					}
-					any_home_area_neighbor_country = {
-						is_ally_with = INT
-						is_ai = no
-					}
-				}
-			}
-			RUS = { save_event_target_as = AFG_potential_socialist_overlord }
-		}
-		else_if = {
-			limit = {
-				PER = {
-					has_socialist_government = yes
-					is_subject = no
-				}
-				NOT = {
-					AND = {
-						CHN = {
-							has_socialist_government = yes
-							is_subject = no
-							is_ai = no
-						}
-						has_global_flag = china_united
-					}
-					any_home_area_neighbor_country = {
-						is_ally_with = INT
-						is_ai = no
-					}
-				}
-			}
-			PER = { save_event_target_as = AFG_potential_socialist_overlord }
-		}
-		else_if = {
-			limit = {
-				CHN = {
-					has_socialist_government = yes
-					is_subject = no
-				}
-				has_global_flag = china_united
-				NOT = {
-					any_home_area_neighbor_country = {
-						is_ally_with = INT
-						is_ai = no
-					}
-				}
-			}
-			CHN = { save_event_target_as = AFG_potential_socialist_overlord }
-		}
-		else_if = {
-			limit = {
-				any_home_area_neighbor_country = { is_ally_with = INT }
-			}
-			INT = { save_event_target_as = AFG_potential_socialist_overlord }
-		}
-	}
+	immediate = { AFG_find_socialist_overlord = yes }
 
 	option = { #The Khans are the only legitimate power left in Afghanistan.
 		log = "[GetLogInfo]: event afghanistan_events.456 option afghanistan_events.456.a"
@@ -3264,27 +3156,155 @@ country_event = { # Those Left Standing
 			modifier = {
 				factor = 0
 				has_country_flag = AFG_soc_republic_ai
-				has_event_target = AFG_potential_socialist_overlord
+				AFG_has_potential_socialist_overlord = yes
 			}
 		}
 		AFG_republic_aia_setup_effect = yes
 		complete_national_focus = AFG_consolidation_of_the_republic
 		hidden_effect = { news_event = afghanistan_civil_war_events.108 }
 	}
-	option = { #Perhaps OVERLORD would help set up a socialist state.
+	option = { #Perhaps HND would help set up a socialist state.
 		log = "[GetLogInfo]: event afghanistan_events.456 option afghanistan_events.456.b"
 		name = afghanistan_events.456.b
-		trigger = { has_event_target = AFG_potential_socialist_overlord }
+		trigger = { HND = { AFG_is_potential_socialist_overlord = yes } }
 		ai_chance = {
 			base = 100
 			modifier = {
 				factor = 0
 				has_country_flag = AFG_dem_republic_ai
 			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = HND } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_IND } }
+				NOT = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						HND = { is_in_faction_with = INT }
+						AFG_has_INT_potential_overlord = no
+					}
+				}
+			}
 		}
-		event_target:AFG_potential_socialist_overlord = {
-			country_event = { id = afghanistan_events.457 days = 2 }
+		HND = { country_event = { id = afghanistan_events.457 days = 2 } }
+	}
+	option = { #Perhaps RUS would help set up a socialist state.
+		log = "[GetLogInfo]: event afghanistan_events.456 option afghanistan_events.456.c"
+		name = afghanistan_events.456.c
+		trigger = { RUS = { AFG_is_potential_socialist_overlord = yes } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_dem_republic_ai
+			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = RUS } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_SOC_RUS } }
+				NOT = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						RUS = { is_in_faction_with = INT }
+						AFG_has_INT_potential_overlord = no
+					}
+				}
+			}
 		}
+		RUS = { country_event = { id = afghanistan_events.457 days = 2 } }
+	}
+	option = { #Perhaps PER would help set up a socialist state.
+		log = "[GetLogInfo]: event afghanistan_events.456 option afghanistan_events.456.e"
+		name = afghanistan_events.456.e
+		trigger = { PER = { AFG_is_potential_socialist_overlord = yes } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_dem_republic_ai
+			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = PER } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_PER } }
+				NOT = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						PER = { is_in_faction_with = INT }
+						AFG_has_INT_potential_overlord = no
+					}
+				}
+			}
+		}
+		PER = { country_event = { id = afghanistan_events.457 days = 2 } }
+	}
+	option = { #Perhaps CHN would help set up a socialist state.
+		log = "[GetLogInfo]: event afghanistan_events.456 option afghanistan_events.456.f"
+		name = afghanistan_events.456.f
+		trigger = { CHN = { AFG_is_potential_socialist_overlord = yes } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_dem_republic_ai
+			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = CHN } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_CHN } }
+				NOT = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						CHN = { is_in_faction_with = INT }
+						AFG_has_INT_potential_overlord = no
+					}
+				}
+			}
+		}
+		CHN = { country_event = { id = afghanistan_events.457 days = 2 } }
+	}
+	option = { #Perhaps INT would help set up a socialist state.
+		log = "[GetLogInfo]: event afghanistan_events.456 option afghanistan_events.456.g"
+		name = afghanistan_events.456.g
+		trigger = { AFG_has_INT_potential_overlord = yes }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_dem_republic_ai
+			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = INT } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT } }
+			}
+		}
+		INT = { country_event = { id = afghanistan_events.457 days = 2 } }
 	}
 }
 
@@ -3299,6 +3319,34 @@ country_event = { # An Appeal by Afghan Socialists
 	option = { #Send them the support they need.
 		log = "[GetLogInfo]: event afghanistan_events.457 option afghanistan_events.457.a"
 		name = afghanistan_events.457.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_SOC_RUS }
+						NOT = { tag = RUS }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_IND }
+						NOT = { tag = HND }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_PER }
+						NOT = { tag = PER }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_CHN }
+						NOT = { tag = CHN }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						NOT = { is_in_faction_with = INT }
+					}
+				}
+			}
+		}
 		effect_tooltip = {
 			set_temp_variable = { target = AFG }
 			puppet_country_without_changing_government = yes
@@ -3310,8 +3358,36 @@ country_event = { # An Appeal by Afghan Socialists
 	option = { #Its not worth the effort, they won't last a week regardless.
 		log = "[GetLogInfo]: event afghanistan_events.457 option afghanistan_events.457.b"
 		name = afghanistan_events.457.b
-		ai_chance = { base = 0 }
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				OR = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_SOC_RUS }
+						NOT = { tag = RUS }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_IND }
+						NOT = { tag = HND }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_PER }
+						NOT = { tag = PER }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_CHN }
+						NOT = { tag = CHN }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						NOT = { is_in_faction_with = INT }
+					}
+				}
+			}
+		}
 		hidden_effect = {
+			set_country_flag = AFG_declined_socialist_backing
 			AFG = { country_event = afghanistan_events.459 }
 		}
 	}
@@ -3335,6 +3411,7 @@ country_event = { # OVERLORD agrees to aid us
 		complete_national_focus = AFG_consolidation_of_the_republic
 		set_country_flag = AFG_naturally_went_socialist_flag
 		hidden_effect = { news_event = afghanistan_civil_war_events.109 }
+		AFG_clear_socialist_overlord_flags = yes
 	}
 }
 
@@ -3346,11 +3423,190 @@ country_event = { # OVERLORD refuses to aid us
 
 	is_triggered_only = yes
 
+	immediate = { AFG_find_socialist_overlord = yes }
+
 	option = { #Let us turn power over to the Khans then.
 		log = "[GetLogInfo]: event afghanistan_events.459 option afghanistan_events.459.a"
 		name = afghanistan_events.459.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_game_rule = { rule = AFG_path option = AFG_PATH_RADSOC }
+						AFG_has_potential_socialist_overlord = yes
+						has_event_target = AFG_potential_socialist_overlord
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_SOC_RUS }
+						RUS = { AFG_is_potential_socialist_overlord = yes }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_IND }
+						HND = { AFG_is_potential_socialist_overlord = yes }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_PER }
+						PER = { AFG_is_potential_socialist_overlord = yes }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_CHN }
+						CHN = { AFG_is_potential_socialist_overlord = yes }
+					}
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						any_home_area_neighbor_country = { AFG_is_potential_socialist_overlord = yes }
+					}
+				}
+			}
+		}
 		AFG_republic_aia_setup_effect = yes
 		complete_national_focus = AFG_consolidation_of_the_republic
+		AFG_clear_socialist_overlord_flags = yes
+	}
+	option = { #We shall turn to HND for aid instead.
+		log = "[GetLogInfo]: event afghanistan_events.459 option afghanistan_events.456.b"
+		name = afghanistan_events.456.b
+		trigger = { HND = { AFG_is_potential_socialist_overlord = yes } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_dem_republic_ai
+			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = HND } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_IND } }
+				NOT = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						HND = { is_in_faction_with = INT }
+						AFG_has_INT_potential_overlord = no
+					}
+				}
+			}
+		}
+		HND = { country_event = { id = afghanistan_events.457 days = 2 } }
+	}
+	option = { #We shall turn to RUS for aid instead.
+		log = "[GetLogInfo]: event afghanistan_events.459 option afghanistan_events.456.c"
+		name = afghanistan_events.456.c
+		trigger = { RUS = { AFG_is_potential_socialist_overlord = yes } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_dem_republic_ai
+			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = RUS } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_SOC_RUS } }
+				NOT = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						RUS = { is_in_faction_with = INT }
+						AFG_has_INT_potential_overlord = no
+					}
+				}
+			}
+		}
+		RUS = { country_event = { id = afghanistan_events.457 days = 2 } }
+	}
+	option = { #We shall turn to PER for aid instead.
+		log = "[GetLogInfo]: event afghanistan_events.459 option afghanistan_events.456.e"
+		name = afghanistan_events.456.e
+		trigger = { PER = { AFG_is_potential_socialist_overlord = yes } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_dem_republic_ai
+			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = PER } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_PER } }
+				NOT = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						PER = { is_in_faction_with = INT }
+						AFG_has_INT_potential_overlord = no
+					}
+				}
+			}
+		}
+		PER = { country_event = { id = afghanistan_events.457 days = 2 } }
+	}
+	option = { #We shall turn to CHN for aid instead.
+		log = "[GetLogInfo]: event afghanistan_events.459 option afghanistan_events.456.f"
+		name = afghanistan_events.456.f
+		trigger = { CHN = { AFG_is_potential_socialist_overlord = yes } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_dem_republic_ai
+			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = CHN } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_CHN } }
+				NOT = {
+					AND = {
+						has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT }
+						CHN = { is_in_faction_with = INT }
+						AFG_has_INT_potential_overlord = no
+					}
+				}
+			}
+		}
+		CHN = { country_event = { id = afghanistan_events.457 days = 2 } }
+	}
+	option = { #We shall turn to INT for aid instead.
+		log = "[GetLogInfo]: event afghanistan_events.459 option afghanistan_events.456.b"
+		name = afghanistan_events.456.b
+		trigger = { AFG_has_INT_potential_overlord = yes }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_country_flag = AFG_dem_republic_ai
+			}
+			modifier = {
+				factor = 0
+				has_event_target = AFG_potential_socialist_overlord
+				NOT = { event_target:AFG_potential_socialist_overlord = { tag = INT } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = AFG_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_INT } }
+			}
+		}
+		INT = { country_event = { id = afghanistan_events.457 days = 2 } }
 	}
 }
 
@@ -6240,7 +6496,7 @@ country_event = { #Amanullah Declares Plans for a European Tour
 	title = afghanistan_civil_war_events.1.t
 	desc = afghanistan_civil_war_events.1.d
 	picture = GFX_report_event_AFG_amanullah_1
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #I'm sure things will be fine.
@@ -6255,7 +6511,7 @@ country_event = { #King Finalises Plans with Advisors
 	title = afghanistan_civil_war_events.2.t
 	desc = afghanistan_civil_war_events.2.d
 	picture = GFX_report_event_AFG_amanullah_3
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #Don't forget to pack enough hats!
@@ -6269,7 +6525,7 @@ country_event = { #Amanullah Departs
 	title = afghanistan_civil_war_events.3.t
 	desc = afghanistan_civil_war_events.3.d
 	picture = GFX_report_event_AFG_warrior_prince
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #The Crown Prince will safeguard the realm.
@@ -6287,7 +6543,7 @@ country_event = { #Unrest in the North
 	title = afghanistan_civil_war_events.4.t
 	desc = afghanistan_civil_war_events.4.d
 	picture = GFX_report_event_AFG_irregulars_4
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #Vermin always acts brave when you have your back turned.
@@ -6300,7 +6556,7 @@ country_event = { #A Warm Welcome in Berlin
 	title = afghanistan_civil_war_events.5.t
 	desc = afghanistan_civil_war_events.5.d
 	picture = GFX_report_event_AFG_amanullah_4
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #Those new buildings give wonderous inspiration for Herat...
@@ -6313,7 +6569,7 @@ country_event = { #Bandits Muster in the North
 	title = afghanistan_civil_war_events.6.t
 	desc = afghanistan_civil_war_events.6.d
 	picture = GFX_report_event_AFG_irregulars_5
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #This is starting to get serious.
@@ -6326,7 +6582,7 @@ country_event = { #Kunduz Taken by Saqqawists
 	title = afghanistan_civil_war_events.7.t
 	desc = afghanistan_civil_war_events.7.d
 	picture = GFX_report_event_AFG_irregulars_1
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #The Warrior Prince shall save the nation!
@@ -6341,7 +6597,7 @@ country_event = { #Disaster in Baghlan
 	title = afghanistan_civil_war_events.8.t
 	desc = afghanistan_civil_war_events.8.d
 	picture = GFX_report_event_AFG_warrior_prince
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #Someone save us from these savages!
@@ -6357,7 +6613,7 @@ country_event = { #The Sack of Darulaman
 	title = afghanistan_civil_war_events.9.t
 	desc = afghanistan_civil_war_events.9.d
 	picture = GFX_report_event_AFG_darulaman_palace
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #Years of effort, burnt away in one night...
@@ -6420,7 +6676,7 @@ country_event = { #Nadir Reorganises in the West
 	title = afghanistan_civil_war_events.10.t
 	desc = afghanistan_civil_war_events.10.d
 	picture = GFX_report_event_AFG_nadir_khan_4
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #Nadir is our last hope.
@@ -6433,7 +6689,7 @@ country_event = { #News Reaches Amanullah
 	title = afghanistan_civil_war_events.11.t
 	desc = afghanistan_civil_war_events.11.d
 	picture = GFX_report_event_AFG_amanullah_1
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #They did what to my city? And to my son?!
@@ -6446,7 +6702,7 @@ country_event = { #The March to Kabul
 	title = afghanistan_civil_war_events.12.t
 	desc = afghanistan_civil_war_events.12.d
 	picture = GFX_report_event_AFG_kabul_3
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #The occupying scum will be given no quarter.
@@ -6459,7 +6715,7 @@ country_event = { #The Nation Reclaimed
 	title = afghanistan_civil_war_events.13.t
 	desc = afghanistan_civil_war_events.13.d
 	picture = GFX_report_event_AFG_arg_citadel_1
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #I want their Emir's head on a pike by morning.
@@ -6477,7 +6733,7 @@ country_event = { #Nadir Takes the Crown
 	title = afghanistan_civil_war_events.14.t
 	desc = afghanistan_civil_war_events.14.d
 	picture = GFX_report_event_AFG_nadir_khan_1
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #Amanullah won't be happy to hear this...
@@ -6490,7 +6746,7 @@ country_event = { #A Carriage of Curses
 	title = afghanistan_civil_war_events.15.t
 	desc = afghanistan_civil_war_events.15.d
 	picture = GFX_report_event_AFG_train
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	option = { #I doubt this will end with calm discussion.
@@ -6503,7 +6759,7 @@ country_event = { #The Afghan Civil War
 	title = afghanistan_civil_war_events.16.t
 	desc = afghanistan_civil_war_events.16.d
 	picture = GFX_report_event_AFG_arg_citadel_2
-
+	trigger = { is_subject = no }
 	is_triggered_only = yes
 
 	immediate = {
@@ -8971,6 +9227,22 @@ country_event = { #India Surrenders!
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					FROM = { is_indian_unifier_tag = no }
+				}
+				FROM = {
+					random_allied_country = {
+						limit = { is_indian_unifier_tag = yes }
+						save_event_target_as = india_target
+					}
+				}
+			}
+		}
+	}
+
 	option = { #A Great Victory for the Fortress of Islam!
 		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.20 option afghanistan_foreign_policy_events.20.a"
 		name = afghanistan_foreign_policy_events.20.a
@@ -9043,6 +9315,24 @@ country_event = { #India Surrenders!
 			}
 			white_peace_with_ROOT = yes
 			clr_country_flag = AFG_in_peace_negotiations
+		}
+		every_owned_state = {
+			limit = {
+				is_on_continent = india
+				NOT = {
+					state = 444 #Baluchistan
+					state = 445 #Quetta
+					state = 442 #Peshawar
+					state = 443 #Sind
+				}
+			}
+			if = {
+				limit = {
+					FROM = { is_indian_unifier_tag = yes }
+				}
+				transfer_state_to = FROM
+			}
+			else = { transfer_state_to = event_target:india_target }
 		}
 	}
 }
@@ -9259,6 +9549,31 @@ country_event = { #Russia Refuses to Surrender.
 		name = afghanistan_foreign_policy_events.24.a
 		add_war_support = 0.05
 		clr_country_flag = AFG_in_peace_negotiations
+	}
+}
+country_event = { #Defending Against the Onslaught
+	id = afghanistan_foreign_policy_events.25
+	title = afghanistan_foreign_policy_events.25.t
+	desc = afghanistan_foreign_policy_events.25.d
+	picture = GFX_report_event_AFG_officers_2
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #We will show them the folly of fighting back!
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.25 option afghanistan_foreign_policy_events.25.a"
+		name = afghanistan_foreign_policy_events.25.a
+		add_ideas = AFG_slaying_giants_combat
+	}
+	option = { #War must be won on the home front, focus on gun production.
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.25 option afghanistan_foreign_policy_events.25.b"
+		name = afghanistan_foreign_policy_events.25.b
+		add_ideas = AFG_slaying_giants_equipment
+	}
+	option = { #We must squeeze out every last resource we can.
+		log = "[GetLogInfo]: event afghanistan_foreign_policy_events.25 option afghanistan_foreign_policy_events.25.c"
+		name = afghanistan_foreign_policy_events.25.c
+		add_ideas = AFG_slaying_giants_industry
 	}
 }
 

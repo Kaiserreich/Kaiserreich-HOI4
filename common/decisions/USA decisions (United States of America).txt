@@ -1099,6 +1099,7 @@ USA_reconstruction_decisions = {# Reconstruction Stuff
 		}
 
 		visible = {
+			NOT = { HAW = { is_subject_of = ROOT } }
 			629 = { is_owned_by = FROM } #Hawaii
 			NOT = { has_war_with = FROM }
 			is_subject = no
@@ -1242,36 +1243,36 @@ USA_reconstruction_decisions = {# Reconstruction Stuff
 		fixed_random_seed = no
 	}
 
-	WCA_protect_hawaii = {
+	WCA_future_of_hawaii = {
 		icon = generic_political_discourse
 		allowed = { original_tag = WCA }
 		available = {
 			is_subject = no
-			NOT = { is_in_faction_with = HAW }
+			HAW = {
+				is_subject_of = ROOT
+				all_owned_state = { is_fully_controlled_by = HAW }
+			}
 		}
 		visible = {
-			797 = { is_owned_and_controlled_by = ROOT }
+			has_global_flag = USA_civil_war_over_flag
 			HAW = {
 				exists = yes
-				is_in_faction = no
 				has_socialist_government = yes
-				is_subject = no
-				has_war = no
+				is_subject_of = ROOT
 			}
 		}
 		fire_only_once = yes
 		cost = 0
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_war = yes
-			}
-		}
+		ai_will_do = { factor = 1000 }
 		complete_effect = {
-			log = "[GetLogRoot]: Decision complete WCA_protect_hawaii"
-			effect_tooltip = { give_guarantee = HAW }
-			HAW = { country_event = { id = america_workers_congress_events.103 days = 1 } }
+			log = "[GetLogRoot]: Decision complete WCA_future_of_hawaii"
+			if = {
+				limit = {
+					HAW = { is_ai = no }
+				}
+				HAW = { country_event = { id = america_workers_congress_events.103 days = 1 } }
+			}
+			else = { country_event = america_workers_congress_events.103 }
 		}
 		fixed_random_seed = no
 	}

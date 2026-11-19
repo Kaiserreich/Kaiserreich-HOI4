@@ -1,4 +1,185 @@
 characters = {
+	#######################
+	### Country Leaders ###
+	#######################
+	VIN_pham_van_dong = {
+		name = VIN_pham_van_dong
+		portraits = {
+			civilian = {
+				large = GFX_portrait_VIN_pham_van_dong_civilian_large
+				small = GFX_portrait_VIN_pham_van_dong_civilian_small
+			}
+		}
+		country_leader = {
+			desc = VIN_pham_van_dong_leader_desc
+			ideology = totalist_subtype
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = VIN_pham_van_dong_advisor
+			available = { is_country_leader = no }
+			traits = { KR_silent_workhorse }
+		}
+	}
+	VIN_ta_thu_thau = {
+		name = VIN_ta_thu_thau
+		portraits = {
+			civilian = {
+				large = GFX_portrait_VIN_ta_thu_thau_civilian_large
+			}
+		}
+		country_leader = {
+			desc = VIN_ta_thu_thau_leader_desc
+			ideology = syndicalist_subtype
+		}
+	}
+	VIN_vo_nguyen_giap = {
+		name = VIN_vo_nguyen_giap
+		portraits = {
+			army = {
+				large = GFX_portrait_VIN_vo_nguyen_giap_army_large
+				small = GFX_portrait_VIN_vo_nguyen_giap_army_small
+			}
+		}
+		country_leader = {
+			desc = VIN_vo_nguyen_giap_leader_desc
+			ideology = syndicalist_subtype
+		}
+		country_leader = {
+			desc = VIN_vo_nguyen_giap_leader_desc
+			ideology = radical_socialist_subtype
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = VIN_vo_nguyen_giap_army_chief
+			desc = VIN_vo_nguyen_giap_leader_desc
+			available = {
+				not_already_hired_except_as = army_chief
+				is_country_leader = no
+			}
+			traits = { KR_army_chief_organisational_2 }
+			cost = 100
+		}
+		advisor = {
+			slot = high_command
+			idea_token = VIN_vo_nguyen_giap_high_command
+			desc = VIN_vo_nguyen_giap_leader_desc
+			ledger = army
+			available = {
+				not_already_hired_except_as = high_command
+				is_country_leader = no
+			}
+			traits = { KR_MHC_army_regrouping_3 }
+			cost = 200
+		}
+		corps_commander = {
+			desc = VIN_vo_nguyen_giap_leader_desc
+			traits = { brilliant_strategist trickster organizer }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+			visible = { #TODO: revert when bug with country_leader variable is fixed
+				has_character_flag = show_unit_leader_role
+			}
+		}
+	}
+	VIN_nguyen_an_ninh = {
+		name = VIN_nguyen_an_ninh
+		portraits = {
+			civilian = {
+				large = GFX_portrait_VIN_nguyen_an_ninh_civilian_large
+			}
+		}
+		country_leader = {
+			desc = VIN_nguyen_an_ninh_leader_desc
+			ideology = radical_socialist_subtype
+		}
+		country_leader = {
+			desc = VIN_nguyen_an_ninh_leader_desc
+			ideology = social_democrat_subtype #If VNQDD takes over
+		}
+	}
+	VIN_nguyen_thai_hoc = {
+		name = VIN_nguyen_thai_hoc
+		portraits = {
+			civilian = {
+				large = GFX_portrait_VIN_nguyen_thai_hoc_civilian_large
+			}
+		}
+		country_leader = {
+			desc = VIN_nguyen_thai_hoc_leader_desc
+			ideology = radical_socialist_subtype
+		}
+		country_leader = {
+			desc = VIN_nguyen_thai_hoc_leader_desc
+			ideology = social_democrat_subtype
+		}
+	}
+	VIN_bui_quang_chieu = {
+		name = VIN_bui_quang_chieu
+		portraits = {
+			civilian = {
+				large = GFX_portrait_VIN_bui_quang_chieu_civilian_large
+			}
+		}
+		country_leader = {
+			desc = VIN_bui_quang_chieu_leader_desc
+			ideology = social_liberal_subtype
+		}
+		country_leader = {
+			desc = VIN_bui_quang_chieu_leader_desc
+			ideology = market_liberal_subtype
+		}
+		country_leader = {
+			desc = VIN_bui_quang_chieu_leader_desc
+			ideology = social_conservative_subtype
+		}
+	}
+	VIN_truong_tu_anh = {
+		name = VIN_truong_tu_anh
+		portraits = {
+			civilian = {
+				large = GFX_portrait_VIN_truong_tu_anh_civilian_large
+			}
+		}
+		country_leader = {
+			desc = VIN_truong_tu_anh_leader_desc
+			ideology = authoritarian_democrat_subtype
+		}
+		country_leader = {
+			desc = VIN_truong_tu_anh_leader_desc
+			ideology = paternal_autocrat_subtype
+		}
+		country_leader = {
+			desc = VIN_truong_tu_anh_leader_desc
+			ideology = national_populist_subtype
+		}
+	}
+	VIN_pho_duc_chinh = {
+		name = VIN_pho_duc_chinh
+		portraits = {
+			civilian = {
+				large = GFX_portrait_VIN_pho_duc_chinh_civilian_large
+			}
+		}
+		country_leader = {
+			desc = VIN_pho_duc_chinh_leader_desc
+			ideology = radical_socialist_subtype #LKMT Puppet Leader
+			traits = { VIN_power_and_virtue }
+		}
+		country_leader = {
+			desc = VIN_pho_duc_chinh_leader_desc
+			ideology = social_democrat_subtype #LKMT Puppet Leader
+			traits = { VIN_power_and_virtue }
+		}
+		country_leader = {
+			desc = VIN_pho_duc_chinh_leader_desc
+			ideology = authoritarian_democrat_subtype #RKMT Puppet Leader
+			traits = { VIN_power_and_virtue }
+		}
+	}
 	VIN_le_duc_tho = {
 		name = VIN_le_duc_tho
 		portraits = {
@@ -30,104 +211,118 @@ characters = {
 				large = GFX_portrait_VIN_bao_dai_civilian_large
 			}
 		}
-		country_leader = {
-			desc = VIN_bao_dai_leader_desc
-			ideology = social_liberal_subtype
-		}
-		country_leader = {
-			desc = VIN_bao_dai_leader_desc
-			ideology = market_liberal_subtype
-		}
-		country_leader = {
-			desc = VIN_bao_dai_leader_desc
-			ideology = social_conservative_subtype
-		}
-		country_leader = {
-			desc = VIN_bao_dai_leader_desc
-			ideology = authoritarian_democrat_subtype
-		}
-		country_leader = {
-			desc = VIN_bao_dai_leader_desc
-			ideology = paternal_autocrat_subtype
-		}
 	}
-	VIN_ngo_din_diem = {
-		name = VIN_ngo_din_diem
-		portraits = {
-			civilian = {
-				large = GFX_portrait_VIN_ngo_din_diem_civilian_large
-			}
-		}
-		country_leader = {
-			desc = VIN_ngo_din_diem_leader_desc
-			ideology = authoritarian_democrat_subtype
-		}
-	}
-	VIN_cuong_de = {
-		name = VIN_cuong_de
-		portraits = {
-			civilian = {
-				large = GFX_portrait_VIN_cuong_de_civilian_large
-			}
-		}
-		country_leader = {
-			desc = VIN_cuong_de_leader_desc
-			ideology = paternal_autocrat_subtype
-		}
-	}
-	VIN_pham_cong_tac = {
-		name = VIN_pham_cong_tac
-		portraits = {
-			civilian = {
-				large = GFX_portrait_VIN_pham_cong_tac_civilian_large
-			}
-		}
-		country_leader = {
-			desc = VIN_pham_cong_tac_leader_desc
-			ideology = national_populist_subtype
-		}
-	}
-	VIN_nguyen_van_hinh = {
-		name = VIN_nguyen_van_hinh
+	################
+	### Generals ###
+	################
+	VIN_chu_van_tan = {
+		name = VIN_chu_van_tan
 		portraits = {
 			army = {
-				small = GFX_portrait_VIN_nguyen_van_hinh_army_small
-				large = GFX_portrait_VIN_nguyen_van_hinh_army_large
+				small = GFX_portrait_VIN_chu_van_tan_army_small
+				large = GFX_portrait_VIN_chu_van_tan_army_large
 			}
 		}
-		field_marshal = {
-			desc = VIN_nguyen_van_hinh_commander_desc
-			traits = { aggressive_assaulter }
-			skill = 3
-			attack_skill = 3
+		corps_commander = {
+			desc = VIN_chu_van_tan_high_command_desc
+			traits = { infantry_officer infantry_leader }
+			skill = 2
+			attack_skill = 1
 			defense_skill = 2
-			planning_skill = 3
-			logistics_skill = 2
+			planning_skill = 1
+			logistics_skill = 3
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = VIN_chu_van_tan_advisor
+			desc = VIN_chu_van_tan_high_command_desc
+			available = { not_already_hired_except_as = political_advisor }
+			traits = { KR_reformist_soldier }
+		}
+		advisor = {
+			slot = high_command
+			idea_token = VIN_chu_van_tan_high_command
+			ledger = army
+			available = { not_already_hired_except_as = high_command }
+			traits = { KR_MHC_infantry_1 }
 		}
 	}
-	VIN_duong_van_minh = {
-		name = VIN_duong_van_minh
+	VIN_tran_thu_binh = {
+		name = VIN_tran_thu_binh
 		portraits = {
 			army = {
-				small = GFX_portrait_VIN_duong_van_minh_army_small
-				large = GFX_portrait_VIN_duong_van_minh_army_large
+				small = GFX_portrait_VIN_tran_thu_binh_army_small
+				large = GFX_portrait_VIN_tran_thu_binh_army_large
 			}
 		}
-		field_marshal = {
-			desc = VIN_duong_van_minh_high_command_desc
-			traits = { organisational_leader }
+		corps_commander = {
+			desc = VIN_tran_thu_binh_commander_desc
+			traits = { trickster }
 			skill = 2
 			attack_skill = 1
 			defense_skill = 1
 			planning_skill = 2
 			logistics_skill = 3
 		}
+	}
+	VIN_van_tien_dung = {
+		name = VIN_van_tien_dung
+		portraits = {
+			army = {
+				small = GFX_portrait_VIN_van_tien_dung_army_small
+				large = GFX_portrait_VIN_van_tien_dung_army_large
+			}
+		}
+		corps_commander = {
+			desc = VIN_van_tien_dung_commander_desc
+			traits = { media_personality skilled_staffer }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 1
+			planning_skill = 4
+			logistics_skill = 2
+		}
+	}
+	VIN_nguyen_son = {
+		name = VIN_nguyen_son
+		portraits = {
+			army = {
+				small = GFX_portrait_VIN_nguyen_son_army_small
+				large = GFX_portrait_VIN_nguyen_son_army_large
+			}
+		}
+		corps_commander = {
+			desc = VIN_nguyen_son_commander_desc
+			traits = { career_officer infantry_leader hill_fighter }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 1
+		}
+	}
+	VIN_nguyen_chi_thanh = {
+		name = VIN_nguyen_chi_thanh
+		portraits = {
+			army = {
+				small = GFX_portrait_VIN_nguyen_chi_thanh_army_small
+				large = GFX_portrait_VIN_nguyen_chi_thanh_army_large
+			}
+		}
+		corps_commander = {
+			desc = VIN_nguyen_chi_thanh_high_command_desc
+			traits = { inflexible_strategist infantry_officer commando }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 4
+		}
 		advisor = {
 			slot = high_command
-			idea_token = VIN_duong_van_minh_high_command
+			idea_token = VIN_nguyen_chi_thanh_high_command
 			ledger = army
-			traits = { KR_MHC_infantry_2 }
-			cost = 100
+			traits = { KR_MHC_army_logistics_1 }
 		}
 	}
 	VIN_le_van_ty = {
@@ -153,69 +348,71 @@ characters = {
 			cost = 100
 		}
 	}
-	VIN_tran_quang_vinh = {
-		name = VIN_tran_quang_vinh
+	VIN_nguyen_binh = {
+		name = VIN_nguyen_binh
 		portraits = {
 			army = {
-				small = GFX_portrait_VIN_tran_quang_vinh_army_small
-				large = GFX_portrait_VIN_tran_quang_vinh_army_large
+				small = GFX_portrait_VIN_nguyen_binh_army_small
+				large = GFX_portrait_VIN_nguyen_binh_army_large
 			}
 		}
+		country_leader = {
+			desc = VIN_nguyen_binh_leader_desc
+			ideology = totalist_subtype #LKMT Puppet Leader
+		}
 		corps_commander = {
-			desc = VIN_tran_quang_vinh_commander_desc
-			traits = { organizer }
-			skill = 2
-			attack_skill = 1
+			desc = VIN_nguyen_binh_army_chief_desc
+			traits = { trickster commando }
+			skill = 3
+			attack_skill = 3
 			defense_skill = 2
-			planning_skill = 1
+			planning_skill = 2
 			logistics_skill = 3
 		}
 		advisor = {
-			slot = political_advisor
-			idea_token = VIN_tran_quang_vinh_advisor
-			desc = VIN_tran_quang_vinh_commander_desc
-			available = {
-				not_already_hired_except_as = political_advisor
-			}
-			traits = { KR_mixed_economy_proponent }
-		}
-		advisor = {
 			slot = army_chief
-			idea_token = VIN_tran_quang_vinh_army_chief
-			available = {
-				not_already_hired_except_as = army_chief
-			}
-			traits = { KR_army_chief_planning_1 }
+			idea_token = VIN_nguyen_binh_army_chief
+			traits = { KR_army_chief_morale_3 }
+			cost = 200
 		}
 	}
-	VIN_le_quang_vinh = {
-		name = VIN_le_quang_vinh
+
+	################
+	### Admirals ###
+	################
+	VIN_ta_xuan_thu = {
+		name = VIN_ta_xuan_thu
 		portraits = {
 			army = {
-				small = GFX_portrait_VIN_le_quang_vinh_army_small
-				large = GFX_portrait_VIN_le_quang_vinh_army_large
-			}
-		}
-		corps_commander = {
-			desc = VIN_le_quang_vinh_commander_desc
-			traits = { politically_connected }
-			skill = 2
-			attack_skill = 1
-			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 2
-		}
-	}
-	VIN_le_quang_my = {
-		name = VIN_le_quang_my
-		portraits = {
-			army = {
-				small = GFX_portrait_VIN_le_quang_my_army_small
-				large = GFX_portrait_VIN_le_quang_my_army_large
+				small = GFX_portrait_VIN_ta_xuan_thu_army_small
+				large = GFX_portrait_VIN_ta_xuan_thu_army_large
 			}
 		}
 		navy_leader = {
-			desc = VIN_le_quang_my_navy_chief_desc
+			desc = VIN_ta_xuan_thu_high_command_desc
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			maneuvering_skill = 1
+			coordination_skill = 1
+		}
+		advisor = {
+			slot = high_command
+			idea_token = VIN_ta_xuan_thu_high_command
+			ledger = navy
+			traits = { KR_MHC_submarine_1 }
+		}
+	}
+	VIN_tran_van_giang = {
+		name = VIN_tran_van_giang
+		portraits = {
+			army = {
+				small = GFX_portrait_VIN_tran_van_giang_army_small
+				large = GFX_portrait_VIN_tran_van_giang_army_large
+			}
+		}
+		navy_leader = {
+			desc = VIN_tran_van_giang_navy_chief_desc
 			skill = 1
 			attack_skill = 1
 			defense_skill = 1
@@ -224,28 +421,135 @@ characters = {
 		}
 		advisor = {
 			slot = navy_chief
-			idea_token = VIN_le_quang_my_navy_chief
-			traits = { KR_navy_chief_commerce_raiding_1 }
+			idea_token = VIN_tran_van_giang_navy_chief
+			traits = { KR_navy_chief_manoeuvre_1 }
 		}
 	}
-	VIN_tran_van_chon = {
-		name = VIN_tran_van_chon
+	VIN_tran_van_don = {
+		name = VIN_tran_van_don
 		portraits = {
 			army = {
-				small = GFX_portrait_VIN_tran_van_chon_army_small
-				large = GFX_portrait_VIN_tran_van_chon_army_large
+				large = GFX_portrait_VIN_tran_van_don_army_large
+				small = GFX_portrait_VIN_tran_van_don_army_small
 			}
 		}
-		navy_leader = {
-			desc = VIN_tran_van_chon_admiral_desc
-			skill = 1
-			attack_skill = 1
+		corps_commander = {
+			desc = VIN_tran_van_don_high_command_desc
+			skill = 2
+			attack_skill = 2
 			defense_skill = 1
-			maneuvering_skill = 1
-			coordination_skill = 1
+			planning_skill = 3
+			logistics_skill = 1
+		}
+		advisor = {
+			slot = high_command
+			idea_token = VIN_tran_van_don_high_command
+			ledger = army
+			traits = { KR_MHC_commando_1 }
 		}
 	}
-	# Advisors
+
+	################
+	### Advisors ###
+	################
+	VIN_hoang_van_hoan = {
+		name = VIN_hoang_van_hoan
+		portraits = {
+			civilian = {
+				small = GFX_portrait_VIN_hoang_van_hoan_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = VIN_hoang_van_hoan_advisor
+			traits = { KR_ideological_crusader }
+		}
+	}
+
+	VIN_le_hong_phong = {
+		name = VIN_le_hong_phong
+		portraits = {
+			civilian = {
+				small = GFX_portrait_VIN_le_hong_phong_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = VIN_le_hong_phong_advisor
+			traits = { KR_crime_fighter }
+		}
+	}
+
+	VIN_nguyen_duy_thai = {
+		name = VIN_nguyen_duy_thai
+		portraits = {
+			civilian = {
+				small = GFX_portrait_VIN_nguyen_duy_thai_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = VIN_nguyen_duy_thai_advisor
+			traits = { KR_ambitious_engineer }
+		}
+	}
+
+	VIN_nguyen_phan_chanh = {
+		name = VIN_nguyen_phan_chanh
+		portraits = {
+			civilian = {
+				small = GFX_portrait_VIN_nguyen_phan_chanh_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = VIN_nguyen_phan_chanh_advisor
+			traits = { KR_efficient_propagandist }
+		}
+	}
+
+	VIN_nguyen_van_tao = {
+		name = VIN_nguyen_van_tao
+		portraits = {
+			civilian = {
+				small = GFX_portrait_VIN_nguyen_van_tao_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = VIN_nguyen_van_tao_advisor
+			traits = { KR_industrialiser }
+		}
+	}
+
+	VIN_ta_quang_buu = {
+		name = VIN_ta_quang_buu
+		portraits = {
+			civilian = {
+				small = GFX_portrait_VIN_ta_quang_buu_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = VIN_ta_quang_buu_advisor
+			traits = { KR_industrial_chemist }
+		}
+	}
+
+	VIN_nguyen_thi_nam = {
+		name = VIN_nguyen_thi_nam
+		portraits = {
+			civilian = {
+				small = GFX_portrait_VIN_nguyen_thi_nam_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = VIN_nguyen_thi_nam_advisor
+			traits = { VIN_rent_maintained_egalitarian }
+		}
+	}
+
 	VIN_nguyen_ton_hoan = {
 		name = VIN_nguyen_ton_hoan
 		portraits = {
@@ -288,16 +592,16 @@ characters = {
 		}
 	}
 
-	VIN_ngo_dinh_can = {
-		name = VIN_ngo_dinh_can
+	VIN_tran_quoc_hoan = {
+		name = VIN_tran_quoc_hoan
 		portraits = {
 			civilian = {
-				small = GFX_portrait_VIN_ngo_dinh_can_civilian_small
+				small = GFX_portrait_VIN_tran_quoc_hoan_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = VIN_ngo_dinh_can_advisor
+			idea_token = VIN_tran_quoc_hoan_advisor
 			allowed = {
 				has_dlc_lar = yes
 			}
@@ -308,69 +612,71 @@ characters = {
 		}
 	}
 
-	VIN_ngo_dinh_thuc = {
-		name = VIN_ngo_dinh_thuc
-		portraits = {
-			civilian = {
-				small = GFX_portrait_VIN_ngo_dinh_thuc_civilian_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = VIN_ngo_dinh_thuc_advisor
-			traits = { KR_spiritual_leader }
-		}
-	}
-
-	VIN_ha_thuc_ky = {
-		name = VIN_ha_thuc_ky
-		portraits = {
-			civilian = {
-				small = GFX_portrait_VIN_ha_thuc_ky_civilian_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = VIN_ha_thuc_ky_advisor
-			traits = { KR_brilliant_lawyer }
-		}
-	}
-
-	VIN_nguyen_giac_ngo = {
-		name = VIN_nguyen_giac_ngo
+	VIN_truong_boi_cong = {
+		name = VIN_truong_boi_cong
 		portraits = {
 			army = {
-				small = GFX_portrait_VIN_nguyen_giac_ngo_army_small
-			}
-		}
-		advisor = {
-			slot = high_command
-			idea_token = VIN_nguyen_giac_ngo_high_command
-			ledger = army
-			traits = { KR_MHC_concealment_1 }
-		}
-	}
-
-	VIN_le_van_vien = {
-		name = VIN_le_van_vien
-		portraits = {
-			army = {
-				small = GFX_portrait_VIN_le_van_vien_army_small
+				small = GFX_portrait_VIN_truong_boi_cong_army_small
 			}
 		}
 		advisor = {
 			slot = army_chief
-			idea_token = VIN_le_van_vien_army_chief
+			idea_token = VIN_truong_boi_cong_army_chief
 			available = { not_already_hired_except_as = army_chief }
-			traits = { KR_army_chief_planning_1 }
+			traits = { KR_army_chief_drill_2 }
+			cost = 100
 		}
 		advisor = {
 			slot = high_command
-			idea_token = VIN_le_van_vien_high_command
+			idea_token = VIN_truong_boi_cong_high_command
+			desc = VIN_truong_boi_cong_army_chief_desc
 			ledger = army
 			available = { not_already_hired_except_as = high_command }
-			traits = { KR_MHC_army_logistics_2 }
+			traits = { KR_MHC_infantry_2 }
 			cost = 100
+		}
+	}
+	VIN_nguyen_van_hinh = {
+		name = VIN_nguyen_van_hinh
+		portraits = {
+			army = {
+				small = GFX_portrait_VIN_nguyen_van_hinh_army_small
+			}
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = VIN_nguyen_van_hinh_air_chief
+			traits = { KR_air_chief_reform_1 }
+			cost = 50
+		}
+	}
+
+	VIN_nguyen_bat_phat = {
+		name = VIN_nguyen_bat_phat
+		portraits = {
+			army = {
+				small = GFX_portrait_VIN_nguyen_bat_phat_army_small
+			}
+		}
+		advisor = {
+			slot = navy_chief
+			idea_token = VIN_nguyen_bat_phat_navy_chief
+			traits = { KR_navy_chief_commerce_raiding_1 }
+		}
+	}
+
+	VIN_tran_van_tra = {
+		name = VIN_tran_van_tra
+		portraits = {
+			army = {
+				small = GFX_portrait_VIN_tran_van_tra_army_small
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = VIN_tran_van_tra_high_command
+			ledger = army
+			traits = { KR_MHC_concealment_1 }
 		}
 	}
 
@@ -382,10 +688,11 @@ characters = {
 			}
 		}
 		advisor = {
-			slot = high_command
-			idea_token = VIN_vuong_thua_vu_high_command
+			slot = theorist
+			idea_token = VIN_vuong_thua_vu_theorist
 			ledger = army
-			traits = { KR_MHC_army_regrouping_1 }
+			traits = { KR_military_theorist }
+			cost = 100
 		}
 	}
 }

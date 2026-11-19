@@ -1,0 +1,17 @@
+update_scripted_peace_main_target = {
+	if = {
+		limit = { is_in_faction = yes }
+		scope:faction = { set_variable = { PREV.scripted_peace_main_target = THIS } }
+	}
+	else_if = {
+		limit = { is_subject = yes }
+		set_variable = { scripted_peace_main_target = overlord }
+	}
+	else = {
+		set_variable = { scripted_peace_main_target = THIS }
+	}
+}
+
+clear_scripted_peace_data = {
+	clear_array = possible_scripted_peaces
+}

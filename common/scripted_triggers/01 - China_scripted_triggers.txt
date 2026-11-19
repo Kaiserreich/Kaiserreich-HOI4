@@ -835,12 +835,9 @@ KMT_FROM_has_compatible_government_trigger = {
 	}
 	else_if = {
 		limit = {
-			OR = {
-				original_tag = VIN
-				original_tag = INC
-			}
+			original_tag = VIN
 		}
-		INC_has_VNQDD_government_trigger = yes
+		VIN_has_VNQDD_government_trigger = yes
 	}
 	#Middle East
 	else_if = {

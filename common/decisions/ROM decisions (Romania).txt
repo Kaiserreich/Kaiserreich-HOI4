@@ -2454,7 +2454,7 @@ ROM_foreign_policy = {
 				is_subject = yes
 				NOT = { FROM = { owns_state = 84 } }
 				has_war_with = BUL
-				has_country_flag = balkan_war_loss_temp_flag
+				hidden_trigger = { has_country_flag = balkan_war_loss_temp_flag }
 				has_country_flag = ROM_defeated_by_bulgaria
 			}
 		}
@@ -2530,7 +2530,7 @@ ROM_foreign_policy = {
 					}
 				}
 				has_war_with = BUL
-				has_country_flag = balkan_war_loss_temp_flag
+				hidden_trigger = { has_country_flag = balkan_war_loss_temp_flag }
 				has_country_flag = ROM_defeated_by_bulgaria
 				is_subject = yes
 			}
@@ -3747,11 +3747,8 @@ political_actions = {
 		allowed = { always = no }
 
 		available = {
-			ROM = {
-				has_completed_focus = ROM_renew_pride
-				NOT = { has_completed_focus = ROM_second_legionary_victory }
-			}
-			ITA = { has_completed_focus = ITA_destroy_austrian_influence }
+			has_completed_focus = ROM_renew_pride
+			FROM = { capital_scope = { state = 2 } } #Latium == unified
 			SER = {
 				any_owned_state = {
 					OR = {
@@ -3765,10 +3762,11 @@ political_actions = {
 
 		visible = {
 			has_government = national_populist
+			NOT = { has_completed_focus = ROM_second_legionary_victory }
 			is_subject = no
 			FROM = {
-				is_subject = no
 				has_government = national_populist
+				is_subject = no
 			}
 		}
 

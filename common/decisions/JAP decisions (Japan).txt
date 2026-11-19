@@ -3144,7 +3144,7 @@ JAP_co_prosperity_decisions = {
 			factor = 10
 			modifier = {
 				factor = 0
-				INC = { exists = no }
+				VIN = { exists = no }
 				FROM = {
 					tag = SIA
 					num_divisions < 31
@@ -3186,7 +3186,7 @@ JAP_co_prosperity_decisions = {
 		cost = 25
 		fire_only_once = no
 
-		targets = { ANQ AST BRM CAM CEY ETS MAN GXC HAW INC INS KAC KOR LAO LEC MAL MON NZL PHI PNG SAR SHA SHX SIA SHD SZC TIB FER XSM VIN NEP AFG KAZ TRK BUK KHI }
+		targets = { ANQ AST BRM CAM CEY ETS MAN GXC HAW INS KAC KOR LAO LEC MAL MON NZL PHI PNG SAR SHA SHX SIA SHD SZC TIB FER XSM VIN NEP AFG KAZ TRK BUK KHI }
 		target_array = subjects
 		target_array = faction_members
 		target_array = global.indian_tags_array
@@ -4684,9 +4684,9 @@ JAP_foreign_policy_decisions = {
 			}
 			modifier = {
 				factor = 0
-				FROM = { tag = INC }
-				INC = { is_in_faction = no }
-				NOT = { has_game_rule = { rule = INC_forpol option = DEFAULT } }
+				FROM = { tag = VIN }
+				VIN = { is_in_faction = no }
+				NOT = { has_game_rule = { rule = VIN_forpol option = DEFAULT } }
 			}
 		}
 

@@ -154,10 +154,10 @@ can_release_685 = { #Panama Canal
 	ROOT = {
 		OR = {
 			is_subject = yes
-			304 = { is_claim_or_core_of_ROOT = yes } #Panama
+			304 = { is_claim_or_core_of_ROOT = yes } #Eastern Panama
 			annexations_AI_wants_to_own_panama_canal = yes
 			annexations_major_can_annex_strategic_territories = yes
-			304 = { #Panama
+			304 = { #Eastern Panama
 				annexations_state_owner_is_valid_grant_target = yes
 				owner = { ROOT_can_grant_land_ignore_ideology = yes }
 			}
@@ -233,7 +233,7 @@ should_release_mexico_first = {
 should_release_panama_first = {
 	OR = {
 		country_exists = PAN
-		304 = { annexations_state_has_valid_annexation = no } #Panama
+		304 = { annexations_state_has_valid_annexation = no } #Eastern Panama
 	}
 }
 

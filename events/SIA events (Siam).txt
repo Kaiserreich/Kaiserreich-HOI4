@@ -1073,8 +1073,8 @@ country_event = { # Civil War Ends
 		hidden_effect = {
 			news_event = siam_events.207
 			if = {
-				limit = { country_exists = INC } # If INC exists
-				INC = { country_event = { id = siam_events.51 days = 3 random_days = 2 } }
+				limit = { country_exists = VIN } # If VIN exists
+				VIN = { country_event = { id = siam_events.51 days = 3 random_days = 2 } }
 			}
 		}
 		if = {
@@ -3792,8 +3792,7 @@ country_event = { #Unconditional Surrender Goes into Effect
 			### deal with the Indochinese puppets
 			if = {
 				limit = {
-					any_country_of = {
-						target = { INC GEA }
+					GEA = {
 						has_war_with = ROOT
 						has_country_flag = SIA_accepts_peace
 					}
@@ -3966,32 +3965,12 @@ country_event = { #Unconditional Surrender Goes into Effect
 						OR = {
 							is_core_of = VIN
 							is_claimed_by = VIN
-							is_vietnam = yes
-						}
-					}
-					transfer_state_to = VIN
-				}
-			}
-
-			### Indochinese claims
-			if = {
-				limit = {
-					INC = {
-						has_war_with = ROOT
-						has_country_flag = SIA_accepts_peace
-					}
-				}
-				every_owned_state = {
-					limit = {
-						OR = {
-							is_core_of = INC
-							is_claimed_by = INC
 							region = 196 #Indochina
 							state = 825 #Battambang
 							state = 882 #Samabuli
 						}
 					}
-					transfer_state_to = INC
+					transfer_state_to = VIN
 				}
 			}
 
@@ -4346,8 +4325,8 @@ country_event = { #Unconditional Surrender Goes into Effect
 				}
 				### Surrender any Indochinese territories
 				if = {
-					limit = { is_ally_with = INC }
-					set_temp_variable = { target = INC }
+					limit = { is_ally_with = VIN }
+					set_temp_variable = { target = VIN }
 					every_owned_state = {
 						limit = {
 							OR = {

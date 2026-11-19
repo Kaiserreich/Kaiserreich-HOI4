@@ -20,6 +20,20 @@ LIB_puppet_setup = {
 				long_name = LIB_authoritarian_democrat_party_long
 			}
 		}
+		if = {
+			limit = {
+				is_subject_of = NFA
+				NFA = { has_government = national_populist }
+			}
+			set_politics = {
+				ruling_party = paternal_autocrat
+				elections_allowed = no
+			}
+			set_political_party = {
+				ideology = paternal_autocrat
+				popularity = 60
+			}
+		}
 		remove_ideas = {
 			LIB_massive_debt
 			LIB_massive_debt_1

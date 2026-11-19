@@ -49,6 +49,9 @@ USA_initial_events = {
 		LEC = {
 			country_event = { id = legation_cities_american_events.9 days = 4 }
 		}
+		PAN = {
+			country_event = { id = panama_events.100 days = 4 }
+		}
 		USA = {
 			if = {
 				limit = { has_country_flag = USA_ACW_austerity_rejected }
@@ -893,12 +896,8 @@ USA_civil_war_begins = {
 
 			# ACW related events for non-US nations
 			PAN = {
-				country_event = { id = panama_events.5 days = 2 }
+				country_event = { id = panama_events.101 days = 7 }
 				remove_targeted_decision = { target = COS decision = PAN_pressure_coto_36 }
-				if = {
-					limit = { has_idea = CEN_monroe_doctrine }
-					activate_targeted_decision = { target = USA decision = PAN_remove_monroe }
-				}
 			}
 			COS = {
 				country_event = { id = costa_rica_events.23 days = 5 random_days = 15 }
@@ -1104,6 +1103,9 @@ USA_civil_war_ends = {
 					activate_targeted_decision = { target = ROOT decision = CENmil_request_foreign_protection }
 					clr_country_flag = CENmil_foreign_policy_open
 				}
+			}
+			PAN = {
+				country_event = { id = panama_events.107 days = 7 }
 			}
 
 			#Power Projection event for Russia

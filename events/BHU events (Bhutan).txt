@@ -1636,6 +1636,9 @@ country_event = {
 	option = { # Offer protection
 		log = "[GetLogInfo]: event bhutan_events.723 option bhutan_events.723.b"
 		name = bhutan_events.723.b
+		trigger = {
+			NOT = { is_ally_with = INT }
+		}
 		ai_chance = {
 			base = 25
 			modifier = {

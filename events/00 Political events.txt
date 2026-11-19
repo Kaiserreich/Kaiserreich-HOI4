@@ -67,9 +67,7 @@ country_event = { #Country requests to join faction
 		if = {
 			limit = {
 				tag = SRD
-				FROM = {
-					tag = ITA
-				}
+				FROM = { tag = ITA }
 			}
 			custom_effect_tooltip = ITA_warning_switch1
 		}
@@ -95,96 +93,12 @@ country_event = { #FROM accepts
 		log = "[GetLogInfo]: event generic_events.11 option generic_events.11.a"
 		name = generic_events.11.a
 		set_temp_variable = { new_faction_leader = FROM }
+
 		AUS_flag_country_as_austrian_ally = yes
-		if = {
-			limit = {
-				FROM = { tag = ENT }
-				tag = ITA
-				has_government = national_populist
-				is_monarchy = no
-			}
-			custom_effect_tooltip = ITA_restore_monarchy_umberto_tt
-			hidden_effect = {
-				set_cosmetic_tag = ITA_kingdom
-				SRD = {
-					SRD_umberto_carignano = {
-						set_nationality = ITA
-						set_character_name = SRD_umberto_carignano_regnal
-						add_country_leader_role = {
-							country_leader = {
-								desc = ITA_umberto_natpop_king_leader_desc
-								ideology = national_populist_subtype
-								traits = { GBR_popular_figurehead }
-							}
-							promote_leader = yes
-						}
-					}
-					SRD_amedeo_aosta = {
-						set_nationality = ITA
-						set_character_name = SRD_amedeo_aosta_not_king
-					}
-					SRD_adalberto_genova = {
-						set_nationality = ITA
-					}
-					SRD_aimone_aosta = {
-						set_nationality = ITA
-					}
-				}
-				if = {
-					limit = {
-						has_character = ITA_costanzo_ciano
-					}
-					activate_advisor = ITA_costanzo_ciano_sic
-				}
-				else = {
-					activate_advisor = ITA_gian_galeazzo_ciano_sic
-				}
-				mark_focus_tree_layout_dirty = yes
-			}
-		}
-		else_if = {
-			limit = {
-				FROM = { is_ally_with = GER }
-				tag = PER
-				is_faction_leader = yes
-			}
-			hidden_effect = {
-				FROM = { save_event_target_as = future_persian_faction_leader }
-				every_allied_country = {
-					limit = { is_subject = no }
-					if = {
-						limit = {
-							OR = {
-								has_socialist_government = yes
-								AND = {
-									tag = ARM
-									has_country_leader = { character = ARM_garegin_nzhdeh }
-								}
-							}
-						}
-						country_event = persia_events.123
-					}
-					else = {
-						country_event = persia_events.125
-					}
-				}
-				dismantle_faction = yes
-			}
-		}
-		if = { #Add BUL to the array if they are added to the BPL later through BUL_path_to_peace
-			limit = {
-				FROM = { tag = BPL }
-				tag = BUL
-				SER = { #SER has already done the Second Belgrade Congress event chain.
-					OR = {
-						has_country_flag = SER_war_against_austria
-						has_country_flag = SER_diplomacy_with_austria
-					}
-				}
-			}
-			add_to_array = { SER.SER_will_attack_austria = ROOT }
-			set_country_flag = SER_will_attack_austria
-		}
+		ITA_restore_savoyard_monarchy_umberto = yes
+		PER_dismantle_golestan_pact_when_joining_germany = yes
+		SER_add_bulgaria_to_austrian_war_ally_list = yes
+
 		FROM = { add_to_faction = ROOT }
 	}
 }
@@ -225,51 +139,14 @@ country_event = { #Faction leader accepts (for new member)
 	option = {
 		log = "[GetLogInfo]: event generic_events.13 option generic_events.13.a"
 		name = generic_events.13.a
-		set_temp_variable = { new_faction_leader = event_target:negotiator }
+		set_temp_variable = { new_faction_leader = var:event_target:negotiator.faction_leader }
+
 		AUS_flag_country_as_austrian_ally = yes
-		if = {
-			limit = {
-				event_target:negotiator = {
-					tag = SRD
-				}
-				tag = ITA
-				has_government = national_populist
-				is_monarchy = no
-			}
-			custom_effect_tooltip = ITA_restore_monarchy_amedeo_tt
-			hidden_effect = {
-				set_cosmetic_tag = ITA_kingdom
-				SRD = {
-					SRD_umberto_carignano = {
-						set_nationality = ITA
-					}
-					SRD_amedeo_aosta = {
-						set_nationality = ITA
-						promote_character = national_populist_subtype
-					}
-					SRD_adalberto_genova = {
-						set_nationality = ITA
-					}
-					SRD_aimone_aosta = {
-						set_nationality = ITA
-					}
-				}
-				if = {
-					limit = {
-						has_character = ITA_costanzo_ciano
-					}
-					activate_advisor = ITA_costanzo_ciano_sic
-				}
-				else = {
-					activate_advisor = ITA_gian_galeazzo_ciano_sic
-				}
-				mark_focus_tree_layout_dirty = yes
-			}
-			event_target:negotiator = {
-				ITA_join_with_empire = yes
-			}
-		}
-		FROM = { add_to_faction = ROOT }
+		ITA_restore_savoyard_monarchy_umberto = yes
+		PER_dismantle_golestan_pact_when_joining_germany = yes
+		SER_add_bulgaria_to_austrian_war_ally_list = yes
+
+		var:new_faction_leader = { add_to_faction = ROOT }
 	}
 }
 
@@ -451,6 +328,12 @@ country_event = { #Country is invited to faction
 					has_game_rule = { rule = BRA_forpol option = DEFAULT }
 				}
 			}
+			modifier = {
+				factor = 0
+				tag = AFG
+				AFG_aia_republic = yes
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_GER } }
+			}
 		}
 		effect_tooltip = {
 			if = {
@@ -557,6 +440,12 @@ country_event = { #Country is invited to faction
 					limit = { tag = BRA }
 					has_game_rule = { rule = BRA_forpol option = DEFAULT }
 				}
+			}
+			modifier = {
+				add = 100
+				tag = AFG
+				AFG_aia_republic = yes
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_GER } }
 			}
 		}
 		FROM = { country_event = generic_events.20 }

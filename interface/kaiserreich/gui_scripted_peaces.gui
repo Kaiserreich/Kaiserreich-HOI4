@@ -1,0 +1,49 @@
+@entry_width = 57
+@entry_height = 76
+
+guitypes = {
+	containerWindowType = {
+		name = "scripted_peaces_container"
+		position = { x = 13 y = -215 }
+		size = { width = 64 height = 77 }
+
+		gridboxtype = {
+			name = "scripted_peaces_grid"
+			position = { x = 0 y = 0 }
+			size = { width = 100%% height = 100%% }
+			slotsize = { width = @entry_width height = @entry_height }
+			max_slots_horizontal = 1
+			format = "LOWER_LEFT"
+		}
+	}
+
+	# this entry is used to populate countries_list_grid
+	containerWindowType = {
+		name = "scripted_peace_entry"
+		size = { width = @entry_width height = @entry_height }
+
+		iconType = {
+			name = "bg_icon"
+			spriteType = "GFX_diplo_war_large_icon"
+			position = { x = 0 y = 0 }
+			pdx_tooltip = scripted_peace_title
+			pdx_tooltip_delayed = scripted_peace_desc
+		}
+
+		iconType = {
+			name = "target_flag"
+			position = { x = 6 y = 20 }
+			quadTextureSprite ="GFX_flag_small2"
+			pdx_tooltip = scripted_peace_title
+			pdx_tooltip_delayed = scripted_peace_desc
+		}
+
+		buttonType = {
+			name = "scripted_peace_button"
+			position = { x = 2 y = 16 }
+			quadTextureSprite ="GFX_diplo_countrylist_flag_frame"
+			pdx_tooltip = scripted_peace_title
+			pdx_tooltip_delayed = scripted_peace_desc
+		}
+	}
+}

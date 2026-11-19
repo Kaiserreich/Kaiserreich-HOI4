@@ -128,7 +128,7 @@ country_event = { #Fate of America
 				every_character = {
 					limit = { has_trait = USA_shadow_president }
 					set_temp_variable = { trait_token = token:USA_shadow_president }
-					add_trait_to_all_country_leader_roles = yes
+					remove_trait_from_all_country_leader_roles = yes
 				}
 			}
 		}
@@ -1381,8 +1381,6 @@ country_event = { #Fate of Panama
 				remove_claim_by = PAN
 			}
 			PAN = {
-				remove_targeted_decision = { target = USA decision = PAN_seize_canal }
-				remove_targeted_decision = { target = USA decision = PAN_remove_monroe }
 				remove_targeted_decision = { target = COS decision = PAN_pressure_coto_36 }
 				remove_targeted_decision = { target = COS decision = PAN_pressure_coto_2 }
 			}
@@ -7907,7 +7905,7 @@ country_event = { #Fate of the Panama Canal
 		if = {
 			limit = {
 				OR = {
-					304 = { is_claim_or_core_of_ROOT = yes } #Panama
+					304 = { is_claim_or_core_of_ROOT = yes } #Eastern Panama
 					annexations_AI_wants_to_own_panama_canal = yes
 				}
 			}
@@ -7920,7 +7918,7 @@ country_event = { #Fate of the Panama Canal
 		}
 		if = {
 			limit = {
-				304 = { #Panama
+				304 = { #Eastern Panama
 					annexations_state_owner_is_valid_grant_target = yes
 					owner = { ROOT_can_grant_land_ignore_ideology = yes }
 				}

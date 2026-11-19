@@ -417,7 +417,8 @@ country_event = { # get support from europe
 		log = "[GetLogInfo]: event CHI.earlygame.102 option CHI.earlygame.102.a"
 		name = CHI.earlygame.102.a
 		ai_chance = { base = 30 }
-		add_political_power = -35
+		army_experience = -10
+		add_political_power = -20
 		CHI = {
 			effect_tooltip = {
 				CHI_send_advisors_and_guns_effect = yes
@@ -434,7 +435,7 @@ country_event = { # get support from europe
 		log = "[GetLogInfo]: event CHI.earlygame.102 option CHI.earlygame.102.b"
 		name = CHI.earlygame.102.b
 		ai_chance = { base = 70 }
-		add_political_power = -25
+		army_experience = -10
 		CHI = {
 			effect_tooltip = {
 				CHI_send_advisors_only_effect = yes
@@ -3989,7 +3990,7 @@ country_event = { #Weapons for the Indochinese Revolution
 	id = CHI.midgame.222
 	title = CHI.midgame.222.t
 	desc = CHI.midgame.222.d
-	picture = GFX_report_event_INC_logistics
+	picture = GFX_report_event_VIN_logistics
 
 	is_triggered_only = yes #Triggered by focus CHI_reinforce_foreign_ministry
 
@@ -4001,7 +4002,7 @@ country_event = { #Weapons for the Indochinese Revolution
 			type = infantry_equipment
 			amount = -500
 		}
-		INC = {
+		VIN = {
 			country_event = { id = CHI.midgame.223 days = 15 } #Smuggled Supplies from China
 		}
 		reverse_add_opinion_modifier = {
@@ -4011,8 +4012,8 @@ country_event = { #Weapons for the Indochinese Revolution
 		if = {
 			limit = {
 				NOT = {
-					CHI_support_INC_guangzhou_supply_base_trigger = yes
-					CHI_support_INC_dali_supply_base_trigger = yes
+					CHI_support_VIN_guangzhou_supply_base_trigger = yes
+					CHI_support_VIN_dali_supply_base_trigger = yes
 				}
 			}
 			custom_effect_tooltip = CHI_support_inc_blocade_tt
@@ -4024,8 +4025,8 @@ country_event = { #Weapons for the Indochinese Revolution
 		ai_chance = { base = 45 }
 		trigger = {
 			OR = {
-				CHI_support_INC_guangzhou_supply_base_trigger = yes
-				CHI_support_INC_dali_supply_base_trigger = yes
+				CHI_support_VIN_guangzhou_supply_base_trigger = yes
+				CHI_support_VIN_dali_supply_base_trigger = yes
 			}
 			has_equipment = { infantry_equipment > 999 }
 		}
@@ -4033,7 +4034,7 @@ country_event = { #Weapons for the Indochinese Revolution
 			type = infantry_equipment
 			amount = -1000
 		}
-		INC = {
+		VIN = {
 			country_event = { id = CHI.midgame.224 days = 15 } #Heavy shipment from China
 		}
 		reverse_add_opinion_modifier = {
@@ -4046,8 +4047,8 @@ country_event = { #Weapons for the Indochinese Revolution
 		name = CHI.midgame.222.c #Authorise sending heavy equipment.
 		ai_chance = { base = 20 }
 		trigger = {
-			CHI_support_INC_guangzhou_supply_base_trigger = yes
-			CHI_support_INC_dali_supply_base_trigger = yes
+			CHI_support_VIN_guangzhou_supply_base_trigger = yes
+			CHI_support_VIN_dali_supply_base_trigger = yes
 			has_equipment = { infantry_equipment > 999 }
 			has_equipment = { artillery_equipment > 49 }
 			has_equipment = { support_equipment > 49 }
@@ -4064,7 +4065,7 @@ country_event = { #Weapons for the Indochinese Revolution
 			type = support_equipment
 			amount = -50
 		}
-		INC = {
+		VIN = {
 			set_country_flag = CHI_sent_aid_shipment_large
 			country_event = { id = CHI.midgame.224 days = 15 } #Heavy shipment from China
 		}
@@ -4077,7 +4078,7 @@ country_event = { #Weapons for the Indochinese Revolution
 		log = "[GetLogInfo]: event CHI.midgame.222 option CHI.midgame.222.e"
 		name = CHI.midgame.222.e #We must await a better opportunity
 		ai_chance = { base = 0 }
-		clr_country_flag = CHI_supported_INC_flag
+		clr_country_flag = CHI_supported_VIN_flag
 	}
 }
 
@@ -4099,8 +4100,8 @@ country_event = { #Smuggled Supplies from China
 			limit = {
 				CHI = {
 					NOT = {
-						CHI_support_INC_guangzhou_supply_base_trigger = yes
-						CHI_support_INC_dali_supply_base_trigger = yes
+						CHI_support_VIN_guangzhou_supply_base_trigger = yes
+						CHI_support_VIN_dali_supply_base_trigger = yes
 					}
 				}
 			}
@@ -6509,7 +6510,7 @@ country_event = { #Liu Shaoqi in Fujian
 	id = CHI.lategame.050
 	title = CHI.lategame.050.t
 	desc = CHI.lategame.050.d
-	picture = GFX_report_event_INC_farmers
+	picture = GFX_report_event_VIN_farmers
 
 	is_triggered_only = yes
 	trigger = { CHI_is_phase_four_trigger = no } #Make sure powerstruggle is still active
@@ -11787,7 +11788,7 @@ country_event = { #The Bintang Tiga Army
 	id = CHI.lategame.641
 	title = CHI.lategame.641.t
 	desc = CHI.lategame.641.d
-	picture = GFX_report_event_INC_femalevc2
+	picture = GFX_report_event_VIN_femalevc2
 
 	is_triggered_only = yes #Triggered by decision
 
@@ -11813,7 +11814,7 @@ country_event = { #The Liberation of Indochina
 	id = CHI.lategame.642
 	title = CHI.lategame.642.t
 	desc = CHI.lategame.642.d
-	picture = GFX_report_event_INC_vietcong
+	picture = GFX_report_event_VIN_vietcong
 
 	is_triggered_only = yes #Triggered by decision
 
@@ -11826,7 +11827,6 @@ country_event = { #The Liberation of Indochina
 					limit = {
 						NOT = { is_core_of = PREV }
 						OR = {
-							is_core_of = INC
 							is_core_of = VIN
 							is_core_of = CAM
 							is_core_of = LAO

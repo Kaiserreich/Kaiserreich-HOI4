@@ -445,7 +445,12 @@ country_event = { # Dualism ends (Liberals victorious)
 
 	immediate = {
 		hidden_effect = {
+			set_stability = 0.3
 			remove_ideas = BAT_dualism
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.1
+			}
 			if = {
 				limit = { NOT = { has_idea = BAT_forest_brothers } }
 				set_variable = { country_guide_page_count = 1 }

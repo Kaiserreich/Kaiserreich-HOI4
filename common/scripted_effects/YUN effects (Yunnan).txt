@@ -2435,7 +2435,7 @@ YUN_isolation_effect = {
 		1051 = {
 			add_building_construction = {
 				type = bunker
-				province = 1184
+				province = 1884
 				level = 1
 				instant_build = yes
 			}
@@ -2526,8 +2526,8 @@ YUN_transition_economy_effect = {
 				}
 			}
 			if = {
-				limit = { controls_state = 1051 } #Guiyang
-				1051 = {
+				limit = { controls_state = 603 } #Guiyang
+				603 = {
 					add_dynamic_modifier = {
 						modifier = YUN_phase3_econ_tree_reward_state_modifier
 					}
@@ -2914,7 +2914,7 @@ YUN_KMT_hu_hanmin_crisis_PP_penalty_effect = {
 YUN_KMT_hu_hanmin_crisis_STB_penalty_effect = {
 	set_temp_variable = {
 		YUN_KMT_hu_hanmin_crisis_STB_penalty_temp_var = {
-			value = YUN_CCC_aligned_delegates_variable #So from 0-502
+			value = YUN_PSC_aligned_delegates_variable #So from 0-502
 			divide = -1004 #Getting a fraction out of 502, so 0 to 1 + #Will get you a number between 0 and 0.25. Assuming you had maybe 10%? Seats (so 50), that's 5% stability penalty.
 		}
 	}
@@ -3982,7 +3982,7 @@ YUN_modernising_china_effect = {
 			value = party_popularity@market_liberal
 			add = party_popularity@social_conservative
 			add = party_popularity@authoritarian_democrat
-			multiply = 5 #Party Pop ranges from 0-1. Multiply it by ten so range is 0-10
+			multiply = 10 #Party Pop ranges from 0-1. Multiply it by ten so range is 0-10
 			clamp = { min = 0 max = 10 }
 			round = yes
 		}
@@ -4033,7 +4033,7 @@ YUN_third_way_economics_effect = {
 			value = party_popularity@social_democrat
 			add = party_popularity@social_liberal
 			add = party_popularity@national_populist
-			multiply = 5 #Party Pop ranges from 0-1. Multiply it by ten so range is 0-10
+			multiply = 10 #Party Pop ranges from 0-1. Multiply it by ten so range is 0-10
 			clamp = { min = 0 max = 10 }
 			round = yes
 		}

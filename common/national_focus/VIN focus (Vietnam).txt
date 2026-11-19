@@ -1,0 +1,4433 @@
+###########################
+# Indochina Focus Tree
+# By Vietcongtrap
+###########################
+
+focus_tree = {
+	id = KR_Vietnam
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = VIN
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 3400 y = 400 }
+
+	focus = {
+		id = VIN_Revolutionary_Provisional_Government
+		icon = GFX_goal_red_star_green_wreath
+		cost = 1
+
+		x = 4
+		y = 0
+
+		bypass = {
+			is_subject = yes
+		}
+
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Revolutionary_Provisional_Government"
+			country_event = indochina_events.2
+		}
+	}
+
+	focus = {
+		id = VIN_Break_the_Chain
+		icon = GFX_goal_revolution
+		cost = 3
+
+		relative_position_id = VIN_Revolutionary_Provisional_Government
+		x = -4
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Revolutionary_Provisional_Government
+		}
+		mutually_exclusive = {
+			focus = VIN_Incorporate_Administration
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Break_the_Chain"
+			add_war_support = 0.05
+			add_political_power = -25
+			add_popularity = {
+				ideology = syndicalist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.05
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 35
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = VIN_path option = VIN_PATH_TOTALIST }
+					has_game_rule = { rule = VIN_path option = VIN_PATH_VNQDD_RADSOC }
+					has_game_rule = { rule = VIN_path option = VIN_PATH_AUTDEM }
+					has_game_rule = { rule = VIN_path option = VIN_PATH_PATAUT }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Incorporate_Administration
+		icon = GFX_goal_civil_service
+		cost = 8
+
+		relative_position_id = VIN_Revolutionary_Provisional_Government
+		x = -2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Revolutionary_Provisional_Government
+		}
+		mutually_exclusive = {
+			focus = VIN_Break_the_Chain
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Incorporate_Administration"
+			add_stability = 0.1
+			add_political_power = 25
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.05
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 35
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = VIN_path option = VIN_PATH_SYNDIE }
+					has_game_rule = { rule = VIN_path option = VIN_PATH_ASPIRATION_RADSOC }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Anti_Infiltration_Campaign
+		icon = GFX_goal_step_on_skull
+		cost = 3
+
+		relative_position_id = VIN_Break_the_Chain
+		x = 1
+		y = 1
+
+		bypass = {
+			is_subject = yes
+		}
+
+		prerequisite = {
+			focus = VIN_Incorporate_Administration
+			focus = VIN_Break_the_Chain
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Anti_Infiltration_Campaign"
+			country_event = indochina_events.3
+		}
+		ai_will_do = { factor = 50 }
+	}
+
+	focus = {
+		id = VIN_Extensive_Mobilization
+		icon = GFX_focus_YUG_pan_slavic_congress
+		cost = 3
+
+		relative_position_id = VIN_Anti_Infiltration_Campaign
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Anti_Infiltration_Campaign
+		}
+		available = {
+			has_war = yes
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Extensive_Mobilization"
+			if = {
+				limit = {
+					has_idea = scraping_the_barrel
+				}
+				add_manpower = 400000
+			}
+			if = {
+				limit = {
+					has_idea = all_adults_serve
+				}
+				add_ideas = scraping_the_barrel
+			}
+			if = {
+				limit = {
+					has_idea = service_by_requirement
+				}
+				add_ideas = all_adults_serve
+			}
+			if = {
+				limit = {
+					has_idea = extensive_conscription
+				}
+				add_ideas = service_by_requirement
+			}
+
+			if = {
+				limit = {
+					OR = {
+						has_idea = volunteer_only
+						has_idea = disarmed_nation
+						has_idea = limited_conscription
+					}
+				}
+				add_ideas = extensive_conscription
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_manpower > 200000
+			}
+			modifier = {
+				factor = 2
+				has_manpower < 100000
+			}
+			modifier = {
+				factor = 100
+				has_manpower < 10000
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Land_Reform
+		icon = GFX_goal_agrarian_reform
+		cost = 5
+
+		relative_position_id = VIN_Revolutionary_Provisional_Government
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Revolutionary_Provisional_Government
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Land_Reform"
+			if = {
+				limit = { is_subject = no }
+				country_event = { id = indochina_events.4 days = 1 }
+			}
+			if = {
+				limit = {
+					has_idea = VIN_apathetic_people_idea_3
+				}
+				remove_ideas = VIN_apathetic_people_idea_3
+			}
+			if = {
+				limit = {
+					has_idea = VIN_apathetic_people_idea_2
+				}
+				swap_ideas = {
+					remove_idea = VIN_apathetic_people_idea_2
+					add_idea = VIN_apathetic_people_idea_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = VIN_apathetic_people_idea_1
+				}
+				swap_ideas = {
+					remove_idea = VIN_apathetic_people_idea_1
+					add_idea = VIN_apathetic_people_idea_2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 50 }
+	}
+
+	focus = {
+		id = VIN_War_Economy
+		icon = GFX_goal_production
+		cost = 5
+
+		relative_position_id = VIN_Land_Reform
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Land_Reform
+		}
+		prerequisite = {
+			focus = VIN_Education_Reform
+		}
+		select_effect = {
+			log = "[GetLogRoot]: Select Focus VIN_War_Economy"
+			hidden_effect = { country_event = { id = indochina_events.12 days = 8 } }
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_War_Economy"
+			if = {
+				limit = {
+					has_idea = civilian_economy
+				}
+				add_ideas = low_economic_mobilisation
+			}
+			if = {
+				limit = {
+					has_idea = low_economic_mobilisation
+				}
+				add_ideas = partial_economic_mobilisation
+			}
+
+			if = {
+				limit = {
+					has_idea = partial_economic_mobilisation
+				}
+				add_ideas = war_economy
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 50 }
+	}
+
+	focus = {
+		id = VIN_Education_Reform
+		icon = GFX_focus_generic_military_academy
+		cost = 3
+
+		relative_position_id = VIN_Revolutionary_Provisional_Government
+		x = 2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Revolutionary_Provisional_Government
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Education_Reform"
+			add_ideas = VIN_Edu_Reform_idea_1
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+		ai_will_do = { factor = 50 }
+	}
+
+	focus = {
+		id = VIN_Literacy_Campaign
+		icon = GFX_goal_generic_forceful_treaty
+		cost = 8
+
+		relative_position_id = VIN_Education_Reform
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = VIN_Education_Reform
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Literacy_Campaign"
+			swap_ideas = {
+				remove_idea = VIN_Edu_Reform_idea_1
+				add_idea = VIN_Edu_Reform_idea_2
+			}
+			if = {
+				limit = {
+					has_idea = VIN_apathetic_people_idea_3
+				}
+				remove_ideas = VIN_apathetic_people_idea_3
+			}
+			if = {
+				limit = {
+					has_idea = VIN_apathetic_people_idea_2
+				}
+				swap_ideas = {
+					remove_idea = VIN_apathetic_people_idea_2
+					add_idea = VIN_apathetic_people_idea_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = VIN_apathetic_people_idea_1
+				}
+				swap_ideas = {
+					remove_idea = VIN_apathetic_people_idea_1
+					add_idea = VIN_apathetic_people_idea_2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 27 }
+	}
+
+	focus = {
+		id = VIN_Journey_to_the_West
+		icon = GFX_focus_generic_socialist_science
+		cost = 8
+
+		relative_position_id = VIN_Literacy_Campaign
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Literacy_Campaign
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Journey_to_the_West"
+			add_research_slot_until_five = yes
+			hidden_effect = {
+				country_event = { id = indochina_events.94 days = 180 }
+				country_event = { id = indochina_events.87 days = 120 random_days = 240 }
+				country_event = { id = indochina_events.95 days = 60 random_days = 120 }
+				country_event = { id = indochina_events.98 days = 180 random_days = 360 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 80 }
+	}
+
+	focus = {
+		id = VIN_National_Assembly
+		icon = GFX_goal_red_star_gold_wreath
+		cost = 8
+
+		relative_position_id = VIN_War_Economy
+		x = -2
+		y = 3
+
+		prerequisite = {
+			focus = VIN_War_Economy
+		}
+		prerequisite = {
+			focus = VIN_Anti_Infiltration_Campaign
+		}
+
+		select_effect = {
+			log = "[GetLogRoot]: Select Focus VIN_National_Assembly"
+			hidden_effect = { country_event = { id = indochina_events.20 days = 8 } }
+		}
+
+		bypass = {
+			is_subject = yes
+		}
+
+		bypass_effect = {
+			hidden_effect = {
+				default_party_popularity_PP_gain = yes
+				set_country_flag = VIN_national_assembly
+				if = {
+					limit = {
+						has_idea = VIN_apathetic_people_idea_3
+					}
+					remove_ideas = VIN_apathetic_people_idea_3
+				}
+				if = {
+					limit = {
+						has_idea = VIN_apathetic_people_idea_2
+					}
+					swap_ideas = {
+						remove_idea = VIN_apathetic_people_idea_2
+						add_idea = VIN_apathetic_people_idea_3
+					}
+				}
+				if = {
+					limit = {
+						has_idea = VIN_apathetic_people_idea_1
+					}
+					swap_ideas = {
+						remove_idea = VIN_apathetic_people_idea_1
+						add_idea = VIN_apathetic_people_idea_2
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_war = no
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_National_Assembly"
+			set_country_flag = VIN_national_assembly
+			default_party_popularity_PP_gain = yes
+			country_event = indochina_events.6
+			if = {
+				limit = {
+					has_idea = VIN_apathetic_people_idea_3
+				}
+				remove_ideas = VIN_apathetic_people_idea_3
+			}
+			if = {
+				limit = {
+					has_idea = VIN_apathetic_people_idea_2
+				}
+				swap_ideas = {
+					remove_idea = VIN_apathetic_people_idea_2
+					add_idea = VIN_apathetic_people_idea_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = VIN_apathetic_people_idea_1
+				}
+				swap_ideas = {
+					remove_idea = VIN_apathetic_people_idea_1
+					add_idea = VIN_apathetic_people_idea_2
+				}
+			}
+
+			hidden_effect = {
+				country_event = { id = indochina_events.25 days = 1825 } #next election in five years
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+
+	focus = {
+		id = VIN_Anarchist_Revolution
+		icon = GFX_goal_ideology_radical_socialist
+		cost = 1
+
+		relative_position_id = VIN_National_Assembly
+		x = -3
+		y = 1
+
+		prerequisite = {
+			focus = VIN_National_Assembly
+		}
+
+		available = {
+			has_country_leader = { character = VIN_nguyen_an_ninh }
+			has_completed_focus = VIN_Unification
+			custom_override_tooltip = {
+				tooltip = VIN_national_assembly_tooltip
+				has_country_flag = VIN_national_assembly
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Anarchist_Revolution"
+			custom_effect_tooltip = unlock_focuses
+		}
+		ai_will_do = { factor = 100 }
+	}
+
+	focus = {
+		id = VIN_Expand_the_Societies
+		icon = GFX_goal_LIB_Syndicalist_Rally
+		cost = 8
+
+		relative_position_id = VIN_Anarchist_Revolution
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Anarchist_Revolution
+		}
+		available = {
+			has_country_leader = { character = VIN_nguyen_an_ninh }
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Expand_the_Societies"
+			add_political_power = 100
+			add_stability = 0.05
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.1
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Revolutionary_Spontaneity
+		icon = GFX_focus_prc_agrarian_socialism
+		cost = 8
+
+		relative_position_id = VIN_Expand_the_Societies
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Expand_the_Societies
+		}
+		available = {
+			has_country_leader = { character = VIN_nguyen_an_ninh }
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_rev_spontaneity_idea
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Revolutionary_Spontaneity"
+			add_research_slot_until_five = yes
+			add_ideas = VIN_rev_spontaneity_idea
+			hidden_effect = {
+				country_event = { id = indochina_events.87 days = 120 random_days = 240 }
+				country_event = { id = indochina_events.95 days = 60 random_days = 120 }
+				country_event = { id = indochina_events.98 days = 180 random_days = 360 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Freedom_of_thought
+		icon = GFX_focus_AUS_agriculture
+		cost = 8
+
+		relative_position_id = VIN_Revolutionary_Spontaneity
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Revolutionary_Spontaneity
+		}
+		mutually_exclusive = {
+			focus = VIN_Modernist_Culture
+		}
+		available = {
+			has_country_leader = { character = VIN_nguyen_an_ninh }
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_secret_societies_idea_B_1
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Freedom_of_thought"
+			add_ideas = VIN_secret_societies_idea_B_1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Ruralism
+		icon = GFX_goal_generic_rice_field
+		cost = 8
+
+		relative_position_id = VIN_Freedom_of_thought
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Freedom_of_thought
+		}
+		available = {
+			has_country_leader = { character = VIN_nguyen_an_ninh }
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_secret_societies_idea_B_2
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Ruralism"
+			swap_ideas = {
+				remove_idea = VIN_secret_societies_idea_B_1
+				add_idea = VIN_secret_societies_idea_B_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Modernist_Culture
+		icon = GFX_goal_art_avantgarde
+		cost = 8
+
+		relative_position_id = VIN_Revolutionary_Spontaneity
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Revolutionary_Spontaneity
+		}
+		mutually_exclusive = {
+			focus = VIN_Freedom_of_thought
+		}
+		available = {
+			num_of_factories > 15
+			has_country_leader = { character = VIN_nguyen_an_ninh }
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_secret_societies_idea_A_1
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Modernist_Culture"
+			add_ideas = VIN_secret_societies_idea_A_1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Break_the_Patriarchy
+		icon = GFX_focus_generic_female_rights
+		cost = 8
+
+		relative_position_id = VIN_Modernist_Culture
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Modernist_Culture
+		}
+		available = {
+			has_country_leader = { character = VIN_nguyen_an_ninh }
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_secret_societies_idea_A_2
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Break_the_Patriarchy"
+
+			custom_effect_tooltip = VIN_Women_Liberation
+			set_country_flag = VIN_Women_Liberation
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = -0.1
+			}
+			swap_ideas = {
+				remove_idea = VIN_secret_societies_idea_A_1
+				add_idea = VIN_secret_societies_idea_A_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Personality_Revolution
+		icon = GFX_goal_generic_council
+		cost = 8
+
+		relative_position_id = VIN_Ruralism
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Ruralism
+			focus = VIN_Break_the_Patriarchy
+		}
+		available = {
+			has_country_leader = { character = VIN_nguyen_an_ninh }
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_rev_spontaneity_idea_2
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Personality_Revolution"
+			swap_ideas = {
+				remove_idea = VIN_rev_spontaneity_idea
+				add_idea = VIN_rev_spontaneity_idea_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+
+	focus = {
+		id = VIN_Syndicalist_Revolution
+		icon = GFX_goal_ideology_syndicalist
+		cost = 1
+
+		relative_position_id = VIN_National_Assembly
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_National_Assembly
+		}
+		available = {
+			has_government = syndicalist
+			has_completed_focus = VIN_Unification
+			custom_override_tooltip = {
+				tooltip = VIN_national_assembly_tooltip
+				has_country_flag = VIN_national_assembly
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Syndicalist_Revolution"
+			custom_effect_tooltip = unlock_focuses
+		}
+		ai_will_do = { factor = 100 }
+	}
+
+	focus = {
+		id = VIN_Expand_Civilian_Industry
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 8
+
+		relative_position_id = VIN_Syndicalist_Revolution
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Syndicalist_Revolution
+		}
+		available = {
+			has_government = syndicalist
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Expand_Civilian_Industry"
+			286 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Unionization
+		icon = GFX_goal_syndicalist_industry
+		cost = 8
+
+		relative_position_id = VIN_Expand_Civilian_Industry
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Expand_Civilian_Industry
+		}
+		available = {
+			has_government = syndicalist
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Trade_Unionism_idea_1
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Unionization"
+			add_stability = 0.05
+			add_ideas = VIN_Trade_Unionism_idea_1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Rural_Cooperatives
+		icon = GFX_goal_commune_politics
+		cost = 8
+
+		relative_position_id = VIN_Syndicalist_Revolution
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Syndicalist_Revolution
+		}
+		available = {
+			has_government = syndicalist
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Rural_Cooperatives"
+			VIN = {
+				every_owned_state = {
+					increase_state_category_by_one_level = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Industrial_Enlightenment
+		icon = GFX_goal_generic_soviet_construction
+		cost = 8
+
+		relative_position_id = VIN_Rural_Cooperatives
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Rural_Cooperatives
+		}
+		available = {
+			has_government = syndicalist
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Industrial_Enlightenment"
+			add_research_slot_until_five = yes
+			hidden_effect = {
+				country_event = { id = indochina_events.87 days = 120 random_days = 240 }
+				country_event = { id = indochina_events.95 days = 60 random_days = 120 }
+				country_event = { id = indochina_events.98 days = 180 random_days = 360 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 70 }
+	}
+
+	focus = {
+		id = VIN_Le_Militant
+		icon = GFX_goal_HOL_military_union
+		cost = 8
+
+		relative_position_id = VIN_Unionization
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Unionization
+		}
+		prerequisite = {
+			focus = VIN_Industrial_Enlightenment
+		}
+
+		available = {
+			num_of_factories > 15
+			has_government = syndicalist
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Trade_Unionism_idea_2
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Le_Militant"
+			swap_ideas = {
+				remove_idea = VIN_Trade_Unionism_idea_1
+				add_idea = VIN_Trade_Unionism_idea_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Vanguardist_Revolution
+		icon = GFX_goal_ideology_totalist
+		cost = 1
+
+		relative_position_id = VIN_National_Assembly
+		x = 4
+		y = 1
+
+		prerequisite = {
+			focus = VIN_National_Assembly
+		}
+
+		available = {
+			has_government = totalist
+			has_completed_focus = VIN_Unification
+			custom_override_tooltip = {
+				tooltip = VIN_national_assembly_tooltip
+				has_country_flag = VIN_national_assembly
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Vanguardist_Revolution"
+			custom_effect_tooltip = unlock_focuses
+		}
+		ai_will_do = { factor = 100 }
+	}
+
+	focus = {
+		id = VIN_Urbanization_Effort
+		icon = GFX_goal_plantation_grants
+		cost = 8
+
+		relative_position_id = VIN_Vanguardist_Revolution
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Vanguardist_Revolution
+		}
+		mutually_exclusive = {
+			focus = VIN_Parallel_Administration
+		}
+		available = {
+			has_government = totalist
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Urbanization_Effort"
+			286 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Proletarian_Culture
+		icon = GFX_goal_national_mobilization
+		cost = 8
+
+		relative_position_id = VIN_Urbanization_Effort
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Urbanization_Effort
+		}
+		available = {
+			has_government = totalist
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Peoples_Soviet_idea_1
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Proletarian_Culture"
+			add_research_slot_until_five = yes
+			add_ideas = VIN_Peoples_Soviet_idea_1
+			hidden_effect = {
+				country_event = { id = indochina_events.87 days = 120 random_days = 240 }
+				country_event = { id = indochina_events.95 days = 60 random_days = 120 }
+				country_event = { id = indochina_events.98 days = 180 random_days = 360 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Workers_Council
+		icon = GFX_goal_HOL_council_communism
+		cost = 8
+
+		relative_position_id = VIN_Proletarian_Culture
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Proletarian_Culture
+		}
+
+		available = {
+			has_government = totalist
+			num_of_factories > 15
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Peoples_Soviet_idea_2
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Workers_Council"
+			swap_ideas = {
+				remove_idea = VIN_Peoples_Soviet_idea_1
+				add_idea = VIN_Peoples_Soviet_idea_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Parallel_Administration
+		icon = GFX_focus_generic_soviet_politics
+		cost = 8
+
+		relative_position_id = VIN_Vanguardist_Revolution
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Vanguardist_Revolution
+		}
+		mutually_exclusive = {
+			focus = VIN_Urbanization_Effort
+		}
+		available = {
+			has_government = totalist
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Partys_Soviet_idea_1
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Parallel_Administration"
+			add_ideas = VIN_Partys_Soviet_idea_1
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 20 }
+	}
+
+	focus = {
+		id = VIN_Empower_the_CGT
+		icon = GFX_goal_generic_soviet_construction
+		cost = 8
+
+		relative_position_id = VIN_Le_Militant
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Le_Militant
+		}
+		mutually_exclusive = {
+			focus = VIN_La_Lutte
+		}
+		available = {
+			num_of_factories > 20
+			has_government = syndicalist
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Trade_Unionism_idea_3
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Empower_the_CGT"
+			set_country_flag = VIN_dissolve_assembly
+			add_popularity = {
+				ideology = syndicalist
+				popularity = 0.2
+			}
+			custom_effect_tooltip = VIN_Empower_the_CGT_tt
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = VIN_Trade_Unionism_idea_2
+					add_idea = VIN_Trade_Unionism_idea_3
+				}
+			}
+			country_event = { id = indochina_events.30 days = 10 }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_La_Lutte
+		icon = GFX_focus_HOL_deal_with_left
+		cost = 8
+
+		relative_position_id = VIN_Le_Militant
+		x = 2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Workers_Council
+			focus = VIN_Le_Militant
+			focus = VIN_Modernist_Culture
+		}
+		mutually_exclusive = {
+			focus = VIN_Empower_the_CGT
+			focus = VIN_Democratic_Centralism
+		}
+		available = {
+			syndicalist > 0.25
+			totalist > 0.25
+			radical_socialist > 0.25
+			has_socialist_government = yes
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Left_Unity_idea
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_La_Lutte"
+			add_ideas = VIN_Left_Unity_idea
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 600 }
+	}
+
+	focus = {
+		id = VIN_Democratic_Centralism
+		icon = GFX_focus_generic_join_comintern
+		cost = 8
+
+		relative_position_id = VIN_Workers_Council
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Police_State
+			focus = VIN_Workers_Council
+		}
+		mutually_exclusive = {
+			focus = VIN_La_Lutte
+		}
+		available = {
+			has_government = totalist
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Democratic_Centralism_idea
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Democratic_Centralism"
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.2
+			}
+			set_party_name = { ideology = totalist long_name = VIN_Bolshie_long name = VIN_Bolshie }
+			set_country_flag = VIN_democractic_centralist_assembly
+			add_ideas = VIN_Democratic_Centralism_idea
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+
+	focus = {
+		id = VIN_the_Legacy_of_Ho_Chi_Minh
+		icon = GFX_HND_invite_ho_chi_minh
+		cost = 8
+
+		relative_position_id = VIN_La_Lutte
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_La_Lutte
+		}
+		available = {
+			has_socialist_government = yes
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Left_Unity_idea_1
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_the_Legacy_of_Ho_Chi_Minh"
+			swap_ideas = {
+				remove_idea = VIN_Left_Unity_idea
+				add_idea = VIN_Left_Unity_idea_1
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 600 }
+	}
+
+	focus = {
+		id = VIN_Police_State
+		icon = GFX_goal_shadow_government
+		cost = 8
+
+		relative_position_id = VIN_Parallel_Administration
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = VIN_Heavy_Industry_Cult
+		}
+		prerequisite = {
+			focus = VIN_Parallel_Administration
+		}
+		available = {
+			has_government = totalist
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Partys_Soviet_idea_2_lar
+				remove_ideas = VIN_Partys_Soviet_idea_2
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Police_State"
+			if = {
+				limit = { has_dlc_lar = yes }
+				swap_ideas = {
+					remove_idea = VIN_Partys_Soviet_idea_1
+					add_idea = VIN_Partys_Soviet_idea_2_lar
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = VIN_Partys_Soviet_idea_1
+					add_idea = VIN_Partys_Soviet_idea_2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_STABILITY }
+	}
+
+	focus = {
+		id = VIN_Nationalist_Revolution
+		icon = GFX_goal_ideology_paternal_autocrat
+		cost = 1
+
+		relative_position_id = VIN_National_Assembly
+		x = 8
+		y = 1
+
+		prerequisite = {
+			focus = VIN_National_Assembly
+		}
+		available = {
+			OR = {
+				VIN_has_VNQDD_government_trigger = yes
+				VIN_has_VNQDD_government_trigger = no
+			}
+			has_completed_focus = VIN_Unification
+			custom_override_tooltip = {
+				tooltip = VIN_national_assembly_tooltip
+				has_country_flag = VIN_national_assembly
+			}
+		}
+
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Nationalist_Revolution"
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+
+	focus = {
+		id = VIN_Political_Tutelage
+		icon = GFX_focus_generic_strike_at_democracy2
+		cost = 8
+
+		relative_position_id = VIN_Nationalist_Revolution
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Nationalist_Revolution
+		}
+		mutually_exclusive = {
+			focus = VIN_Caravelle_Manifesto
+		}
+		available = {
+			OR = {
+				VIN_has_VNQDD_government_trigger = yes
+				has_socialist_government = no
+			}
+		}
+		select_effect = {
+			log = "[GetLogRoot]: Select Focus VIN_Political_Tutelage"
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Political_Tutelage"
+			add_popularity = {
+				ideology = syndicalist
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = totalist
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.05
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = { rule = VIN_path option = VIN_PATH_AUTDEM }
+					has_game_rule = { rule = VIN_path option = VIN_PATH_PATAUT }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Caravelle_Manifesto
+		icon = GFX_goal_ideology_social_democrat
+		cost = 8
+
+		relative_position_id = VIN_Nationalist_Revolution
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Nationalist_Revolution
+		}
+		mutually_exclusive = {
+			focus = VIN_Political_Tutelage
+		}
+		available = {
+			OR = {
+				VIN_has_VNQDD_government_trigger = yes
+				has_socialist_government = no
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Caravelle_Manifesto"
+			add_political_power = 25
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = VIN_path option = VIN_PATH_AUTDEM }
+					has_game_rule = { rule = VIN_path option = VIN_PATH_PATAUT }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_State_Corporatism
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 8
+
+		relative_position_id = VIN_Political_Tutelage
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Caravelle_Manifesto
+			focus = VIN_Political_Tutelage
+		}
+		mutually_exclusive = {
+			focus = VIN_Heavy_Industry_Cult
+			focus = VIN_Encourage_Entrepreneurship
+		}
+		available = {
+			VIN_has_VNQDD_government_trigger = yes
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_State_Corporatism"
+			add_research_slot_until_five = yes
+			827 = { increase_state_category_by_one_level = yes }
+			hidden_effect = {
+				country_event = { id = indochina_events.87 days = 120 random_days = 240 }
+				country_event = { id = indochina_events.95 days = 60 random_days = 120 }
+				country_event = { id = indochina_events.98 days = 180 random_days = 360 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Encourage_Entrepreneurship
+		icon = GFX_focus_generic_the_giant_wakes
+		cost = 8
+
+		relative_position_id = VIN_Caravelle_Manifesto
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Caravelle_Manifesto
+		}
+		mutually_exclusive = {
+			focus = VIN_State_Corporatism
+		}
+		available = {
+			OR = {
+				VIN_has_VNQDD_government_trigger = yes
+				has_socialist_government = no
+			}
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Encourage_Entrepreneurship_idea
+			}
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Encourage_Entrepreneurship"
+			add_research_slot_until_five = yes
+			add_ideas = VIN_Encourage_Entrepreneurship_idea
+			hidden_effect = {
+				country_event = { id = indochina_events.87 days = 120 random_days = 240 }
+				country_event = { id = indochina_events.95 days = 60 random_days = 120 }
+				country_event = { id = indochina_events.98 days = 180 random_days = 360 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Greater_Harmony
+		icon = GFX_goal_generic_national_unity
+		cost = 8
+
+		relative_position_id = VIN_State_Corporatism
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_State_Corporatism
+			focus = VIN_Encourage_Entrepreneurship
+		}
+		mutually_exclusive = {
+			focus = VIN_Militarist_Ethos
+		}
+		ai_will_do = { factor = 10 }
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Greater_Harmony_idea
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Greater_Harmony"
+			add_ideas = VIN_Greater_Harmony_idea
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Embrace_Indochina
+		icon = GFX_focus_generic_concessions
+		cost = 8
+
+		relative_position_id = VIN_Greater_Harmony
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Militarist_Ethos
+			focus = VIN_Greater_Harmony
+		}
+
+		available = {
+			VIN_has_VNQDD_government_trigger = yes
+		}
+		mutually_exclusive = {
+			focus = VIN_Vietnamisation
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Embrace_Indochina"
+			set_party_name = { ideology = radical_socialist long_name = VIN_DDQDD_long name = VIN_DDQDD }
+			if = {
+				limit = { has_authoritarian_government = yes }
+				set_party_name = { ideology = authoritarian_democrat long_name = VIN_DDQDD_long name = VIN_DDQDD }
+				set_party_name = { ideology = paternal_autocrat long_name = VIN_DDQDD_long name = VIN_DDQDD }
+			}
+			if = {
+				limit = {
+					NOT = { has_cosmetic_tag = VIN_indochina }
+					NOT = { has_cosmetic_tag = VIN_VNQDD_indochina }
+					NOT = { has_cosmetic_tag = VIN_DAI }
+				}
+				if = {
+					limit = { has_cosmetic_tag = VIN_VNQDD }
+					set_cosmetic_tag = VIN_VNQDD_indochina
+				}
+				else = {
+					set_cosmetic_tag = VIN_indochina
+				}
+				set_country_flag = VIN_is_indochina
+			}
+			every_state = {
+				limit = {
+					OR = {
+						region = 196 #Indochina
+						is_core_of = CAM
+						is_core_of = Lao
+					}
+					NOT = {
+						is_core_of = ROOT
+						is_claimed_by = ROOT
+					}
+				}
+				add_claim_by = ROOT
+			}
+			if = {
+				limit = { has_authoritarian_government = yes }
+				custom_effect_tooltip = tooltip_white_line
+				CAM = { enable_country_integration_50_compliance = yes }
+				LAO = { enable_country_integration_50_compliance = yes }
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Heavy_Industry_Cult
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 8
+
+		relative_position_id = VIN_Political_Tutelage
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Parallel_Administration
+			focus = VIN_Political_Tutelage
+		}
+		mutually_exclusive = {
+			focus = VIN_State_Corporatism
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Heavy_Industry_Cult"
+			add_research_slot_until_five = yes
+			random_owned_controlled_state = {
+				prioritize = { 286 }
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = { building = arms_factory size > 0 include_locked = yes }
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				country_event = { id = indochina_events.87 days = 120 random_days = 240 }
+				country_event = { id = indochina_events.95 days = 60 random_days = 120 }
+				country_event = { id = indochina_events.98 days = 180 random_days = 360 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 100 }
+	}
+
+	focus = {
+		id = VIN_Militarist_Ethos
+		icon = GFX_goal_conscription
+		cost = 8
+
+		relative_position_id = VIN_Heavy_Industry_Cult
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Heavy_Industry_Cult
+			focus = VIN_State_Corporatism
+		}
+		mutually_exclusive = {
+			focus = VIN_Greater_Harmony
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_Militarism_idea
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Militarist_Ethos"
+			add_ideas = VIN_Militarism_idea
+			hidden_effect = {
+				country_event = { id = indochina_events.81 days = 61 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ANNEXATION FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Vietnamisation
+		icon = GFX_goal_generic_propaganda
+		cost = 8
+
+		relative_position_id = VIN_Militarist_Ethos
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Militarist_Ethos
+			focus = VIN_Greater_Harmony
+		}
+		mutually_exclusive = {
+			focus = VIN_Embrace_Indochina
+		}
+		available = {
+			VIN_has_VNQDD_government_trigger = yes
+			is_subject = no
+			NOT = { has_completed_focus = VIN_Peninsular_Direction }
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = radical_socialist
+					has_game_rule = { rule = VIN_path option = VIN_PATH_VNQDD_RADSOC }
+				}
+			}
+		}
+		on_uncomplete = {
+			hidden_effect = {
+				remove_ideas = VIN_DAI_VIET_SPIRIT
+				remove_targeted_decision = { target = VIN decision = VIN_declare_dai_viet_decision }
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Vietnamisation"
+			set_party_name = { ideology = radical_socialist long_name = VIN_DVQDD_long name = VIN_DVQDD }
+			if = {
+				limit = { has_authoritarian_government = yes }
+				set_party_name = { ideology = authoritarian_democrat long_name = VIN_DVQDD_long name = VIN_DVQDD }
+				set_party_name = { ideology = paternal_autocrat long_name = VIN_DVQDD_long name = VIN_DVQDD }
+			}
+			add_ideas = VIN_DAI_VIET_SPIRIT
+			activate_targeted_decision = { target = VIN decision = VIN_declare_dai_viet_decision }
+			if = {
+				limit = { has_country_flag = VIN_form_khmer_issarak }
+				delete_unit_template_and_units = { division_template = "Khmer Issarak" }
+				clr_country_flag = VIN_form_khmer_issarak
+			}
+			if = {
+				limit = { has_country_flag = VIN_form_pathet_lao }
+				delete_unit_template_and_units = { division_template = "Pathet Lao" }
+				clr_country_flag = VIN_form_pathet_lao
+			}
+			if = {
+				limit = { has_country_flag = VIN_form_seri_thai }
+				delete_unit_template_and_units = { division_template = "Seri Thai" }
+				clr_country_flag = VIN_form_seri_thai
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+
+	focus = {
+		id = VIN_General_Van_Tien_Dungs_Reform
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 8
+
+		x = 13
+		y = 0
+
+		mutually_exclusive = {
+			focus = VIN_General_Nguyen_Chi_Thanhs_Reform
+		}
+		available = {
+			has_army_experience > 10
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_General_Van_Tien_Dungs_Reform"
+			remove_ideas = VIN_poor_army_idea_1
+			if = {
+				limit = { has_land_grand_doctrine = no }
+				custom_effect_tooltip = tooltip_white_line
+				set_grand_doctrine = grand_battleplan
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Infiltration_Tactics
+		icon = GFX_focus_prc_infiltration
+		cost = 8
+
+		relative_position_id = VIN_General_Van_Tien_Dungs_Reform
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_General_Van_Tien_Dungs_Reform
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Infiltration_Tactics"
+			if = {
+				limit = { NOT = { has_subdoctrine_in_track = operations } }
+				set_sub_doctrine = infiltration_tactics
+			}
+			else = {
+				add_daily_mastery = {
+					name = VIN_Guerilla_Tactics
+					amount = 1
+					days = 100
+					track = operations
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_The_Night_Belongs_to_Us
+		icon = GFX_goal_enlist_the_police
+		cost = 8
+
+		relative_position_id = VIN_Infiltration_Tactics
+		x = -2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Infiltration_Tactics
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_The_Night_Belongs_to_Us"
+			add_ideas = VIN_The_Night_Belongs_to_Us_idea
+		}
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Concerntrated_Offensive
+		icon = GFX_goal_army_guy_2
+		cost = 5
+
+		relative_position_id = VIN_Infiltration_Tactics
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Infiltration_Tactics
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Concerntrated_Offensive"
+			swap_ideas = {
+				remove_idea = VIN_Guerilla_Tradition
+				add_idea = VIN_Guerilla_Tradition_c
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESISTANCE FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Motorized_Assault
+		icon = GFX_goal_generic_army_motorized
+		cost = 8
+
+		relative_position_id = VIN_Concerntrated_Offensive
+		x = -2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Concerntrated_Offensive
+		}
+		mutually_exclusive = {
+			focus = VIN_Commando_Assault
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Motorized_Assault"
+			add_tech_bonus = {
+				name = VIN_Motorized_Assault
+				bonus = 1
+				uses = 1
+				category = motorized_equipment
+				category = cat_mechanized_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_General_Nguyen_Chi_Thanhs_Reform
+		icon = GFX_goal_generic_army_mass_assault
+		cost = 8
+
+		x = 23
+		y = 0
+
+		mutually_exclusive = {
+			focus = VIN_General_Van_Tien_Dungs_Reform
+		}
+		available = {
+			has_army_experience > 10
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_General_Nguyen_Chi_Thanhs_Reform"
+			remove_ideas = VIN_poor_army_idea_1
+			if = {
+				limit = { has_land_grand_doctrine = no }
+				custom_effect_tooltip = tooltip_white_line
+				set_grand_doctrine = mass_assault
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 90 }
+	}
+
+	focus = {
+		id = VIN_Commando_Assault
+		icon = GFX_goal_generic_special_forces
+		cost = 8
+
+		relative_position_id = VIN_Concerntrated_Offensive
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Concerntrated_Offensive
+		}
+		mutually_exclusive = {
+			focus = VIN_Motorized_Assault
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Commando_Assault"
+			add_tech_bonus = {
+				name = VIN_Commando_Assault
+				bonus = 1
+				uses = 1
+				category = mountaineers_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_General_Offensive_General_Uprising
+		icon = GFX_goal_conspiracy
+		cost = 8
+
+		relative_position_id = VIN_Motorized_Assault
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Motorized_Assault
+			focus = VIN_Commando_Assault
+		}
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_General_Offensive_General_Uprising"
+			army_experience = 50
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Logistic_Centralization
+		icon = GFX_goal_national_arsenal
+		cost = 8
+
+		relative_position_id = VIN_General_Van_Tien_Dungs_Reform
+		x = 5
+		y = 1
+
+		prerequisite = {
+			focus = VIN_General_Van_Tien_Dungs_Reform
+			focus = VIN_General_Nguyen_Chi_Thanhs_Reform
+		}
+		ai_will_do = { factor = 25 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Logistic_Centralization"
+			add_tech_bonus = {
+				name = VIN_Logistic_Centralization
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Tunnel_Network
+		icon = GFX_goal_generic_construction2
+		cost = 8
+
+		relative_position_id = VIN_Logistic_Centralization
+		x = -2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Logistic_Centralization
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Tunnel_Network"
+			add_ideas = VIN_Tunnel_idea_1
+		}
+		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+
+	focus = {
+		id = VIN_Ho_Chi_Minh_Trail
+		icon = GFX_goal_generic_seize_railway
+		cost = 8
+
+		relative_position_id = VIN_Tunnel_Network
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Tunnel_Network
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Ho_Chi_Minh_Trail"
+			swap_ideas = {
+				remove_idea = VIN_Tunnel_idea_1
+				add_idea = VIN_Tunnel_idea_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+
+	focus = {
+		id = VIN_Rifle_Standardization
+		icon = GFX_VIN_army
+		cost = 8
+
+		relative_position_id = VIN_Logistic_Centralization
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Logistic_Centralization
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Rifle_Standardization"
+			add_tech_bonus = {
+				name = VIN_Rifle_Standardization
+				bonus = 1
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Artillery_Effort
+		icon = GFX_goal_generic_army_artillery2
+		cost = 8
+
+		relative_position_id = VIN_Rifle_Standardization
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Rifle_Standardization
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Artillery_Effort"
+			add_tech_bonus = {
+				name = VIN_Artillery_Effort
+				bonus = 1
+				uses = 1
+				category = artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Armored_unit_Experiment
+		icon = GFX_goal_generic_army_tanks
+		cost = 8
+
+		relative_position_id = VIN_Artillery_Effort
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Artillery_Effort
+		}
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Armored_unit_Experiment"
+			add_tech_bonus = {
+				name = VIN_Armored_unit_Experiment
+				bonus = 1
+				uses = 1
+				category = cat_light_armor
+				category = cat_medium_armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Specialized_Support_Unit
+		icon = GFX_goal_bicycle_infantry
+		cost = 8
+
+		relative_position_id = VIN_Rifle_Standardization
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Rifle_Standardization
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Specialized_Support_Unit"
+			add_tech_bonus = {
+				name = VIN_Specialized_Support_Unit
+				bonus = 1
+				uses = 1
+				category = support_tech
+			}
+			custom_effect_tooltip = tooltip_white_line
+			enable_tech_bicycle_battalion = yes
+			custom_effect_tooltip = tooltip_white_line
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Bo binh Xe dap"
+					LINE_1 = { localization_key = line_battalion_tt NAME = bicycle_battalion ICON = GFX_unit_bicycle_battalion_icon_small COUNT = 9 }
+				}
+				if = {
+					limit = { has_template = "Bo binh Xe dap" }
+					delete_unit_template_and_units = { division_template = "Bo binh Xe dap" disband = yes } #no cheating
+				}
+				division_template = {
+					name = "Bo binh Xe dap"
+					division_names_group = VIN_INF_01
+					regiments = {
+						bicycle_battalion = { x = 0 y = 0 }
+						bicycle_battalion = { x = 0 y = 1 }
+						bicycle_battalion = { x = 0 y = 2 }
+						bicycle_battalion = { x = 1 y = 0 }
+						bicycle_battalion = { x = 1 y = 1 }
+						bicycle_battalion = { x = 1 y = 2 }
+						bicycle_battalion = { x = 2 y = 0 }
+						bicycle_battalion = { x = 2 y = 1 }
+						bicycle_battalion = { x = 2 y = 2 }
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Sapper_Tactics
+		icon = GFX_goal_NOR_secret_police
+		cost = 8
+
+		relative_position_id = VIN_Specialized_Support_Unit
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Specialized_Support_Unit
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Sapper_Tactics"
+			enable_tech_improved_recon_units = yes
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Youth_Shock_Brigade
+		icon = GFX_goal_forced_inf
+		cost = 8
+
+		relative_position_id = VIN_Logistic_Centralization
+		x = 2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Logistic_Centralization
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Youth_Shock_Brigade"
+			add_ideas = VIN_Youth_Shock_Brigade_idea
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+
+	focus = {
+		id = VIN_Extensive_Women_Service
+		icon = GFX_VIN_female_soldiers
+		cost = 8
+
+		relative_position_id = VIN_Youth_Shock_Brigade
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Youth_Shock_Brigade
+		}
+		available = {
+			custom_override_tooltip = {
+				tooltip = VIN_Women_Liberation
+				has_country_flag = VIN_Women_Liberation
+			}
+		}
+		ai_will_do = { factor = 35 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Extensive_Women_Service"
+			set_rule = {
+				can_generate_female_aces = yes
+			}
+			swap_ideas = {
+				remove_idea = VIN_Youth_Shock_Brigade_idea
+				add_idea = VIN_Youth_Shock_Brigade_idea_x
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
+	}
+
+	focus = {
+		id = VIN_Guerilla_Tactics
+		icon = GFX_SIA_jungletraining
+		cost = 8
+
+		relative_position_id = VIN_General_Nguyen_Chi_Thanhs_Reform
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_General_Nguyen_Chi_Thanhs_Reform
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Guerilla_Tactics"
+			if = {
+				limit = { NOT = { has_subdoctrine_in_track = operations } }
+				set_sub_doctrine = guerilla_war
+			}
+			else = {
+				add_daily_mastery = {
+					name = VIN_Guerilla_Tactics
+					amount = 1
+					days = 100
+					track = operations
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Ambush_Focus
+		icon = GFX_goal_generic_more_territorial_claims
+		cost = 8
+
+		relative_position_id = VIN_Guerilla_Tactics
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Guerilla_Tactics
+		}
+		mutually_exclusive = {
+			focus = VIN_Harassment_Focus
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Ambush_Focus"
+			swap_ideas = {
+				remove_idea = VIN_Guerilla_Tradition
+				add_idea = VIN_Guerilla_Tradition_b
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESISTANCE FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Harassment_Focus
+		icon = GFX_goal_generic_major_war
+		cost = 8
+
+		relative_position_id = VIN_Guerilla_Tactics
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Guerilla_Tactics
+		}
+		mutually_exclusive = {
+			focus = VIN_Ambush_Focus
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Harassment_Focus"
+			swap_ideas = {
+				remove_idea = VIN_Guerilla_Tradition
+				add_idea = VIN_Guerilla_Tradition_a
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESISTANCE FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 6
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+			modifier = {
+				factor = 3
+				date > 1937.6.1
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Main_Force_Buildup
+		icon = GFX_goal_mass_concentration_of_army
+		cost = 8
+
+		relative_position_id = VIN_Ambush_Focus
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Ambush_Focus
+			focus = VIN_Harassment_Focus
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Main_Force_Buildup"
+			add_tech_bonus = {
+				name = VIN_Main_Force_Buildup
+				bonus = 1
+				uses = 1
+				category = support_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 12
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_The_Tiger_and_the_Elephant
+		icon = GFX_goal_leopardo_government
+		cost = 8
+
+		relative_position_id = VIN_Main_Force_Buildup
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Main_Force_Buildup
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_The_Tiger_and_the_Elephant"
+			add_ideas = VIN_Tiger_and_Elephant_idea
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Mobile_Warfare
+		icon = GFX_human_tsunami
+		cost = 8
+
+		relative_position_id = VIN_Main_Force_Buildup
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Main_Force_Buildup
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Mobile_Warfare"
+			army_experience = 50
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Unification
+		icon = GFX_HND_indochina_revolution
+		cost = 5
+
+		relative_position_id = VIN_National_Assembly
+		x = 19
+		y = 1
+
+		prerequisite = {
+			focus = VIN_National_Assembly
+		}
+		available = {
+			NOT = { has_war_with = GEA }
+			controls_state = 286
+			controls_state = 827
+			controls_state = 857
+			controls_state = 671
+		}
+		ai_will_do = { factor = 90 }
+		select_effect = {
+			log = "[GetLogRoot]: Select Focus VIN_Unification"
+			hidden_effect = { country_event = { id = indochina_events.15 days = 14 } }
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Unification"
+			add_stability = 0.1
+			if = {
+				limit = { has_template = "Dan quan Du kich" }
+				delete_unit_template_and_units = { division_template = "Dan quan Du kich" }
+			}
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+
+	focus = {
+		id = VIN_Industrial_Effort
+		icon = GFX_goal_generic_production2
+		cost = 8
+
+		relative_position_id = VIN_Unification
+		x = -4
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Unification
+		}
+		ai_will_do = { factor = 25 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Industrial_Effort"
+			add_tech_bonus = {
+				name = VIN_Industrial_Effort
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Self_Reliance
+		icon = GFX_goal_generic_demand_territory
+		cost = 8
+
+		relative_position_id = VIN_Industrial_Effort
+		x = -2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Industrial_Effort
+		}
+		mutually_exclusive = {
+			focus = VIN_International_Devision_of_Labor
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Self_Reliance"
+			add_tech_bonus = {
+				name = VIN_Self_Reliance
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_International_Devision_of_Labor
+		icon = GFX_goal_FRA_Internationale_Congress
+		cost = 8
+
+		relative_position_id = VIN_Industrial_Effort
+		x = 2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Industrial_Effort
+		}
+		mutually_exclusive = {
+			focus = VIN_Self_Reliance
+		}
+		available = {
+			has_socialist_government = yes
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_International_Devision_of_Labor"
+			add_ideas = VIN_International_Devision_of_Labor_idea
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 20 }
+	}
+
+	focus = {
+		id = VIN_Transindochinese_Railway_Resconstruction
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 8
+
+		relative_position_id = VIN_Self_Reliance
+		x = 2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Self_Reliance
+			focus = VIN_International_Devision_of_Labor
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Transindochinese_Railway_Resconstruction"
+			build_railway = {
+				level = 2
+				start_province = 4401
+				target_province = 4075
+			}
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 20
+				producer = FRA
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Hydraulic_Ambition
+		icon = GFX_goal_dam
+		cost = 8
+
+		relative_position_id = VIN_Transindochinese_Railway_Resconstruction
+		x = -1
+		y = 1
+
+		available = {
+			has_full_control_of_state = 671
+		}
+		prerequisite = {
+			focus = VIN_Transindochinese_Railway_Resconstruction
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Hydraulic_Ambition"
+			671 = {
+				increase_state_category_by_one_level = yes
+				custom_effect_tooltip = tooltip_white_line
+				add_building_construction = {
+					type = dam
+					level = 1
+					province = 12075
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = {
+				localization_key = building_state_modifier|dam
+				INDENT = "    "
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_resource = {
+				type = aluminium
+				amount = 9
+				state = 671
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Port_Expansion
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 8
+
+		relative_position_id = VIN_Transindochinese_Railway_Resconstruction
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Transindochinese_Railway_Resconstruction
+		}
+		ai_will_do = { factor = 6 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Port_Expansion"
+			671 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					province = 4119
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Develop_Cambodia
+		icon = GFX_goal_KTG_Rubber_Farming
+		cost = 10
+
+		relative_position_id = VIN_Port_Expansion
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Port_Expansion
+			focus = VIN_Hydraulic_Ambition
+		}
+		available = {
+			owns_state = 750
+			750 = { is_core_of = ROOT }
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Develop_Cambodia"
+			add_resource = {
+				type = rubber
+				amount = 12
+				state = 750
+			}
+			750 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			826 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			825 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Develops_Laos
+		icon = GFX_goal_SZC_dujiangyan_irrigation_system
+		cost = 5
+
+		relative_position_id = VIN_Hydraulic_Ambition
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Hydraulic_Ambition
+			focus = VIN_Port_Expansion
+		}
+		available = {
+			controls_state = 670
+			670 = { is_core_of = ROOT }
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Develops_Laos"
+			670 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Rice_and_Rubber
+		icon = GFX_focus_generic_rubber
+		cost = 8
+
+		relative_position_id = VIN_International_Devision_of_Labor
+		x = 2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_International_Devision_of_Labor
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Rice_and_Rubber"
+			add_resource = {
+				type = rubber
+				amount = 19
+				state = 856
+			}
+			add_resource = {
+				type = rubber
+				amount = 8
+				state = 286
+			}
+			add_resource = {
+				type = rubber
+				amount = 12
+				state = 827
+			}
+			856 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Invite_International_Experts
+		icon = GFX_generic_medium_industry
+		cost = 8
+
+		relative_position_id = VIN_International_Devision_of_Labor
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_International_Devision_of_Labor
+		}
+		ai_will_do = { factor = 40 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Invite_International_Experts"
+			add_tech_bonus = {
+				name = VIN_Invite_International_Experts
+				bonus = 1
+				uses = 1
+				category = electronics
+			}
+			add_one_random_military_factory = yes
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Coal_and_Steel
+		icon = GFX_focus_generic_steel
+		cost = 8
+
+		relative_position_id = VIN_Self_Reliance
+		x = -2
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Self_Reliance
+		}
+		ai_will_do = { factor = 25 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Coal_and_Steel"
+			add_resource = {
+				type = coal
+				amount = 6
+				state = 671
+			}
+			add_resource = {
+				type = steel
+				amount = 8
+				state = 671
+			}
+			671 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Local_Initiative
+		icon = GFX_goal_economic_control
+		cost = 8
+
+		relative_position_id = VIN_Self_Reliance
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Self_Reliance
+		}
+		ai_will_do = { factor = 40 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Local_Initiative"
+			add_tech_bonus = {
+				name = VIN_Local_Initiative
+				bonus = 0.20
+				uses = 1
+				category = industry
+			}
+			add_one_random_military_factory = yes
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Light_Industry_Development
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 8
+
+		relative_position_id = VIN_Invite_International_Experts
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Rice_and_Rubber
+		}
+		prerequisite = {
+			focus = VIN_Invite_International_Experts
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Light_Industry_Development"
+			swap_ideas = {
+				remove_idea = VIN_International_Devision_of_Labor_idea
+				add_idea = VIN_International_Devision_of_Labor_idea_2
+			}
+			286 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Export_Oriented_Industrialization
+		icon = GFX_goal_generic_shipyard
+		cost = 15
+
+		relative_position_id = VIN_Light_Industry_Development
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Light_Industry_Development
+		}
+		prerequisite = {
+			focus = VIN_Port_Expansion
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Export_Oriented_Industrialization"
+			286 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			856 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			671 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Price_Scissors
+		icon = GFX_goal_state_economy
+		cost = 8
+
+		relative_position_id = VIN_Coal_and_Steel
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Coal_and_Steel
+		}
+		prerequisite = {
+			focus = VIN_Local_Initiative
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Price_Scissors"
+			add_ideas = VIN_Self_Reliance_idea_2
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Industrial_Autarky
+		icon = GFX_goal_Schelle
+		cost = 15
+
+		relative_position_id = VIN_Price_Scissors
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Price_Scissors
+		}
+		prerequisite = {
+			focus = VIN_Hydraulic_Ambition
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Industrial_Autarky"
+			286 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			671 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			286 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Cam_Ranh_Bay_Expansion
+		icon = GFX_VIN_navy
+		cost = 8
+
+		x = 27
+		y = 0
+
+		ai_will_do = { factor = 1 }
+		available = {
+			controls_state = 827
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Cam_Ranh_Bay_Expansion"
+			navy_experience = 50
+			827 = {
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					province = 10162
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Submarine_Research
+		icon = GFX_goal_generic_navy_submarine
+		cost = 8
+
+		relative_position_id = VIN_Cam_Ranh_Bay_Expansion
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Cam_Ranh_Bay_Expansion
+		}
+		mutually_exclusive = {
+			focus = VIN_Screen_Ships_Research
+		}
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Submarine_Research"
+			add_tech_bonus = {
+				name = VIN_Submarine_Research
+				bonus = 1
+				uses = 1
+				category = ss_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Screen_Ships_Research
+		icon = GFX_goal_generic_navy_battleship
+		cost = 8
+
+		relative_position_id = VIN_Cam_Ranh_Bay_Expansion
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Cam_Ranh_Bay_Expansion
+		}
+		mutually_exclusive = {
+			focus = VIN_Submarine_Research
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Screen_Ships_Research"
+			add_tech_bonus = {
+				name = VIN_Screen_Ships_Research
+				bonus = 1
+				uses = 1
+				category = dd_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Expand_BaSon_Navalshipyard
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 8
+
+		relative_position_id = VIN_Submarine_Research
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Submarine_Research
+			focus = VIN_Screen_Ships_Research
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Expand_BaSon_Navalshipyard"
+			286 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = VIN_Doctrine_Effort
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 8
+
+		relative_position_id = VIN_Expand_BaSon_Navalshipyard
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Expand_BaSon_Navalshipyard
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Doctrine_Effort"
+			if = {
+				limit = { has_naval_grand_doctrine = no }
+				set_grand_doctrine = new_convoy_raiding
+			}
+			else_if = {
+				limit = { has_all_naval_subdoctrines_in_track = no }
+				add_doctrine_cost_reduction = {
+					name = VIN_Doctrine_Effort
+					cost_reduction = 0.5
+					uses = 1
+					category = naval_doctrine
+				}
+				add_mastery_bonus = {
+					name = VIN_Doctrine_Effort
+					bonus = 0.1
+					days = 365
+					folder = naval
+				}
+			}
+			else = {
+				add_mastery_bonus = {
+					name = VIN_Doctrine_Effort
+					bonus = 0.2
+					days = 240
+					folder = naval
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Air_Defence_Air_Force
+		icon = GFX_VIN_airforce
+		cost = 8
+
+		x = 31
+		y = 0
+
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Air_Defence_Air_Force"
+			add_doctrine_cost_reduction = {
+				name = VIN_Air_Defence_Air_Force
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_INDUSTRY FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+
+	focus = {
+		id = VIN_Flak_Buildup
+		icon = GFX_goal_anti_air
+		cost = 8
+
+		relative_position_id = VIN_Air_Defence_Air_Force
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Air_Defence_Air_Force
+		}
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Flak_Buildup"
+			if = {
+				limit = { has_tech = interwar_antiair }
+				add_tech_bonus = {
+					name = VIN_Flak_Buildup
+					bonus = 2
+					uses = 1
+					category = cat_anti_air
+				}
+				else = {
+					set_technology = { interwar_antiair = 1 }
+				}
+			}
+			286 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+			}
+			671 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Radar_Effort
+		icon = GFX_goal_generic_radar
+		cost = 8
+
+		relative_position_id = VIN_Flak_Buildup
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Flak_Buildup
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Radar_Effort"
+			if = {
+				limit = { NOT = { is_special_project_completed = sp:sp_air_radar } }
+				complete_special_project = sp:sp_air_radar
+			}
+			else = {
+				add_tech_bonus = {
+					name = VIN_Radar_Effort
+					bonus = 1
+					uses = 1
+					category = radar_tech
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 286 } #Cochinchina
+				limit = {
+					is_core_of = ROOT
+					has_maximum_radar_station_level = no
+					impassable = no
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Peoples_Air_Defence
+		icon = GFX_focus_generic_air_defense2
+		cost = 8
+
+		relative_position_id = VIN_Radar_Effort
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Radar_Effort
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Peoples_Air_Defence"
+			286 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+			671 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = VIN_Peoples_Air_Defence
+				bonus = 2
+				uses = 1
+				category = cat_anti_air
+			}
+			add_ideas = VIN_Peoples_Air_Defence_idea
+		}
+		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Buy_Interceptors
+		icon = GFX_goal_air_red
+		cost = 8
+
+		relative_position_id = VIN_Air_Defence_Air_Force
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Air_Defence_Air_Force
+		}
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Buy_Interceptors"
+			add_tech_bonus = {
+				name = VIN_Buy_Interceptors
+				bonus = 0.75
+				uses = 2
+				category = light_fighter
+			}
+			if = {
+				limit = { has_dlc_bba = yes }
+				create_equipment_variant = {
+					name = "D.510"
+					type = small_plane_airframe_0
+					modules = {
+						fixed_main_weapon_slot = light_mg_2x
+						fixed_auxiliary_weapon_slot_1 = light_mg_2x
+						engine_type_slot = engine_2_1x
+						special_type_slot_1 = empty
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Airforce_Modernization
+		icon = GFX_goal_generic_air_doctrine
+		cost = 8
+
+		relative_position_id = VIN_Buy_Interceptors
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Buy_Interceptors
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Airforce_Modernization"
+			air_experience = 50
+		}
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+
+	focus = {
+		id = VIN_Active_Air_Defence
+		icon = GFX_focus_generic_air_defense
+		cost = 8
+
+		relative_position_id = VIN_Airforce_Modernization
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Airforce_Modernization
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Active_Air_Defence"
+			286 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			671 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			827 = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			857 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			856 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_tech_bonus = {
+				name = VIN_Active_Air_Defence
+				bonus = 1
+				uses = 1
+				category = air_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = VIN_Guerilla_In_the_Air
+		icon = GFX_goal_generic_air_CAS_new
+		cost = 8
+
+		relative_position_id = VIN_Peoples_Air_Defence
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Active_Air_Defence
+		}
+		prerequisite = {
+			focus = VIN_Peoples_Air_Defence
+		}
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Guerilla_In_the_Air"
+			add_ideas = VIN_Guerilla_In_the_Air_idea
+		}
+		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+
+	focus = {
+		id = VIN_An_International_Revolutionary_Outpost
+		icon = GFX_VIN_Indochina_Internationale_Outpost
+		cost = 3
+
+		relative_position_id = VIN_Unification
+		x = 5
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Unification
+		}
+		available = {
+			has_socialist_government = yes
+			is_subject = no
+			has_war = no
+		}
+		mutually_exclusive = {
+			focus = VIN_Rising_Dragon
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_An_International_Revolutionary_Outpost"
+			add_war_support = -0.05
+			# Bonus Rep to Socialist tags
+			every_other_country = {
+				display_individual_scopes = yes
+				limit = { has_socialist_government = yes }
+				add_opinion_modifier = { target = ROOT modifier = KR_approves_of_govt }
+			}
+
+			# Non-Socialist tags
+			every_other_country = {
+				display_individual_scopes = yes
+				limit = {
+					has_socialist_government = no
+					OR = {
+						is_major = yes
+						num_subjects > 1
+						AND = {
+							is_in_faction = yes
+							faction_leader = {
+								has_socialist_government = no
+								is_actual_major = yes
+							}
+						}
+					}
+				}
+				add_opinion_modifier = { target = ROOT modifier = KR_hates_govt }
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 150 }
+	}
+
+	focus = {
+		id = VIN_Rising_Dragon
+		icon = GFX_VIN_Rising_Dragon
+		cost = 3
+
+		relative_position_id = VIN_An_International_Revolutionary_Outpost
+		x = 6
+		y = 0
+
+		prerequisite = {
+			focus = VIN_Unification
+		}
+		available = {
+			has_war = no
+			is_subject = no
+		}
+		mutually_exclusive = {
+			focus = VIN_An_International_Revolutionary_Outpost
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Rising_Dragon"
+			add_war_support = 0.05
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 80 }
+	}
+
+	focus = {
+		id = VIN_Beyond_Indochina
+		icon = GFX_goal_generic_globe
+		cost = 3
+
+		relative_position_id = VIN_An_International_Revolutionary_Outpost
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_An_International_Revolutionary_Outpost
+			focus = VIN_Rising_Dragon
+		}
+		available = {
+			is_subject = no
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Beyond_Indochina"
+			add_political_power = 25
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_INT }
+				is_in_faction = no
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Special_Relationship_With_France
+		icon = {
+			GFX_goal_comfrance_alternate = {
+				FRA = { has_cosmetic_tag = FRA_alternate }
+			}
+			GFX_goal_comfrance_red = {
+				FRA = { has_cosmetic_tag = FRA_red }
+			}
+			GFX_goal_comfrance_neosocialist = {
+				FRA = { has_cosmetic_tag = FRA_neosocialist }
+			}
+			GFX_goal_comfrance_sorelian = {
+				FRA = { has_cosmetic_tag = FRA_sorelian }
+			}
+			GFX_goal_comfrance = yes
+		}
+		dynamic = yes
+		cost = 8
+
+		relative_position_id = VIN_Beyond_Indochina
+		x = -3
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Beyond_Indochina
+		}
+		available = {
+			OR = {
+				has_completed_focus = VIN_An_International_Revolutionary_Outpost
+				is_in_faction_with = FRA
+			}
+			is_subject = no
+			has_socialist_government = yes
+			country_exists = FRA
+			NOT = { has_war_with = FRA }
+			FRA = { has_socialist_government = yes }
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Special_Relationship_With_France"
+			FRA = { country_event = indochina_events.156 }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 100
+				FRA = { is_ai = no }
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Strengthen_Our_Tie_with_Calcutta
+		icon = GFX_goal_india_commune
+		cost = 5
+
+		relative_position_id = VIN_Beyond_Indochina
+		x = -1
+		y = 1
+
+		available = {
+			has_socialist_government = yes
+			is_subject = no
+			HND = {
+				has_socialist_government = yes
+				exists = yes
+				is_subject = no
+			}
+		}
+		prerequisite = {
+			focus = VIN_Beyond_Indochina
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 100
+				HND = { is_ai = no }
+				OR = {
+					has_game_rule = { rule = VIN_forpol option = DEFAULT }
+					has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_HND }
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = VIN_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_HND } }
+				is_in_faction = no
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Strengthen_Our_Tie_with_Calcutta"
+			HND = { country_event = indochina_events.162 }
+		}
+	}
+
+	focus = {
+		id = VIN_Seek_Support_From_Japan
+		icon = GFX_goal_japan
+		cost = 5
+
+		relative_position_id = VIN_Beyond_Indochina
+		x = 3
+		y = 1
+
+		available = {
+			country_exists = JAP
+			NOT = {
+				has_war_with = JAP
+			}
+			has_socialist_government = no
+			is_subject = no
+		}
+		prerequisite = {
+			focus = VIN_Beyond_Indochina
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 100
+				JAP = { is_ai = no }
+				OR = {
+					has_game_rule = { rule = VIN_forpol option = DEFAULT }
+					has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_JAP }
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = VIN_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_JAP } }
+				is_in_faction = no
+			}
+		}
+		mutually_exclusive = {
+			focus = VIN_Commit_to_Chinese_Revolution
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Seek_Support_From_Japan"
+			JAP = { country_event = indochina_events.165 }
+		}
+	}
+
+	focus = {
+		id = VIN_Join_Co_Prosperity_Sphere
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		cost = 5
+
+		relative_position_id = VIN_Seek_Support_From_Japan
+		x = 0
+		y = 1
+
+		available = {
+			country_exists = JAP
+			threat > 0.5
+			is_in_faction = no
+			is_subject = no
+			NOT = { has_war_with = JAP }
+			at_peace_or_same_enemies_as_JAP = yes
+			NOT = { any_owned_state = { is_core_of = JAP } }
+			JAP = { is_faction_leader = yes }
+			has_socialist_government = no
+			VIN_has_VNQDD_government_trigger = yes
+		}
+		prerequisite = {
+			focus = VIN_Seek_Support_From_Japan
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Join_Co_Prosperity_Sphere"
+			JAP = { country_event = indochina_events.150 }
+		}
+	}
+
+	focus = {
+		id = VIN_Commit_to_Chinese_Revolution
+		icon = GFX_focus_chi_cooperation_with_the_nationalists
+		cost = 5
+
+		relative_position_id = VIN_Beyond_Indochina
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Beyond_Indochina
+		}
+		available = {
+			country_exists = CHI
+			is_in_faction = no
+			is_subject = no
+			has_war = no
+			NOT = { any_owned_state = { is_core_of = CHI } }
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 100
+				CHN = { is_ai = no }
+				OR = {
+					has_game_rule = { rule = VIN_forpol option = DEFAULT }
+					has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_CHN }
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = VIN_forpol option = DEFAULT } }
+				NOT = { has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_CHN } }
+				is_in_faction = no
+			}
+		}
+		mutually_exclusive = {
+			focus = VIN_Seek_Support_From_Japan
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Commit_to_Chinese_Revolution"
+			CHI = { country_event = indochina_events.168 }
+		}
+	}
+
+	focus = {
+		id = VIN_Mission_of_General_Nguyen_Son
+		icon = GFX_focus_generic_military_mission
+		cost = 5
+
+		relative_position_id = VIN_Commit_to_Chinese_Revolution
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Commit_to_Chinese_Revolution
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 100
+				CHI = {
+					NOT = {
+						is_ai = yes
+					}
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Mission_of_General_Nguyen_Son"
+			CHI = { country_event = indochina_events.169 }
+		}
+	}
+
+	focus = {
+		id = VIN_Comrade_Plus_Brother
+		icon = GFX_goal_china_deal
+		cost = 5
+
+		relative_position_id = VIN_Mission_of_General_Nguyen_Son
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Mission_of_General_Nguyen_Son
+		}
+		#mutually_exclusive = {
+		#	focus = VIN_Our_Most_Dangerous_Enemy
+		#}
+		available = {
+			country_exists = CHI
+			CHI = {
+				OR = {
+					is_faction_leader = yes
+					hidden_trigger = { is_in_faction = yes }
+				}
+				hidden_trigger = {
+					has_completed_focus = KMT_lead_the_liberation_of_asia
+					is_subject = no
+				}
+			}
+			threat > 0.5
+			is_in_faction = no
+			is_subject = no
+			NOT = { has_war_with = CHI }
+			at_peace_or_same_enemies_as_CHI = yes
+			NOT = { any_owned_state = { is_core_of = CHI } }
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 100
+				CHI = { is_ai = no }
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Comrade_Plus_Brother"
+			unlock_decision_tooltip = Join_CHIs_faction_decision
+			#CHI = { country_event = indochina_events.150 }
+		}
+	}
+
+	focus = {
+		id = VIN_Peninsular_Direction
+		icon = GFX_VIN_Indochina_Crosshair
+		cost = 3
+
+		relative_position_id = VIN_Rising_Dragon
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Rising_Dragon
+			focus = VIN_An_International_Revolutionary_Outpost
+		}
+		available = {
+			is_subject = no
+			has_authoritarian_government = no
+			NOT = {
+				has_completed_focus = VIN_Vietnamisation
+			}
+		}
+		bypass = {
+			AND = {
+				has_socialist_government = yes
+				has_completed_focus = VIN_Embrace_Indochina
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Peninsular_Direction"
+			if = {
+				limit = {
+					NOT = { has_cosmetic_tag = VIN_indochina }
+					NOT = { has_cosmetic_tag = VIN_VNQDD_indochina }
+					NOT = { has_cosmetic_tag = VIN_DAI }
+				}
+				if = {
+					limit = { has_cosmetic_tag = VIN_VNQDD }
+					set_cosmetic_tag = VIN_VNQDD_indochina
+				}
+				else = {
+					set_cosmetic_tag = VIN_indochina
+				}
+				set_country_flag = VIN_is_indochina
+			}
+			every_state = {
+				limit = {
+					OR = {
+						region = 196 #Indochina
+						is_core_of = CAM
+						is_core_of = Lao
+					}
+					NOT = {
+						is_core_of = ROOT
+						is_claimed_by = ROOT
+					}
+				}
+				add_claim_by = ROOT
+			}
+			add_political_power = 25
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 140
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = VIN_path option = VIN_PATH_AUTDEM }
+					has_game_rule = { rule = VIN_path option = VIN_PATH_PATAUT }
+					AND = {
+						NOT = { has_game_rule = { rule = VIN_forpol option = DEFAULT } }
+						NOT = { has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_INT } }
+						is_in_faction = no
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_Cooperate_with_Siam
+		icon = GFX_goal_flag_siam
+		cost = 3
+
+		relative_position_id = VIN_Peninsular_Direction
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = VIN_Peninsular_Direction
+		}
+		mutually_exclusive = {
+			focus = VIN_Destabilise_Siam
+		}
+		available = {
+			is_subject = no
+			country_exists = SIA
+			SIA = {
+				is_subject = no
+				has_socialist_government = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Cooperate_with_Siam"
+			SIA = { country_event = indochina_events.152 }
+		}
+		ai_will_do = { factor = 10 }
+	}
+
+	focus = {
+		id = VIN_Cooperate_with_Burma
+		icon = GFX_goal_burma
+		cost = 3
+
+		relative_position_id = VIN_Peninsular_Direction
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Peninsular_Direction
+		}
+		available = {
+			is_subject = no
+			country_exists = BRM
+			BRM = {
+				is_subject = no
+				has_socialist_government = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Cooperate_with_Burma"
+			BRM = { country_event = indochina_events.152 }
+		}
+		ai_will_do = { factor = 100 }
+	}
+
+	focus = {
+		id = VIN_Training_Cambodian_Revolutionaries
+		icon = GFX_focus_generic_commonwealth_build_infantry
+		cost = 10
+
+		relative_position_id = VIN_Peninsular_Direction
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Peninsular_Direction
+		}
+		available = {
+			OR = {
+				has_socialist_government = yes
+				has_completed_focus = VIN_Embrace_Indochina
+			}
+			is_subject = no
+			any_owned_state = { is_core_of = CAM }
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Training_Cambodian_Revolutionaries"
+			CAM = { enable_country_integration_50_compliance = yes }
+			824 = { # Rayong
+				add_claim_of_ROOT = yes
+				enable_state_integration_80_compliance = yes
+			}
+			if = {
+				limit = { has_country_flag = VIN_form_khmer_issarak }
+				delete_unit_template_and_units = { division_template = "Khmer Issarak" }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_create_division_template
+						NAME = "Khmer Issarak"
+						LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 10 }
+					}
+					division_template = {
+						name = "Khmer Issarak"
+						priority = 2
+						division_names_group = VIN_INF_02
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 826 }
+					limit = { valid_state_for_spawning_friendly_unit = yes }
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_spawn_units
+							COUNT = 2
+							TYPE = "Khmer Issarak"
+						}
+						create_unit = {
+							division = "name = \"Khmer Issarak 1st Division\" division_template = \"Khmer Issarak\" start_experience_factor = 0.4"
+							owner = ROOT
+						}
+						create_unit = {
+							division = "name = \"Khmer Issarak 2nd Division\" division_template = \"Khmer Issarak\" start_experience_factor = 0.4"
+							owner = ROOT
+						}
+					}
+				}
+				clr_country_flag = VIN_form_khmer_issarak
+			}
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 9 }
+	}
+
+	focus = {
+		id = VIN_Training_Laoitian_Revolutionaries
+		icon = GFX_focus_generic_commonwealth_build_infantry
+		cost = 10
+
+		relative_position_id = VIN_Peninsular_Direction
+		x = 3
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Peninsular_Direction
+		}
+		available = {
+			OR = {
+				has_socialist_government = yes
+				has_completed_focus = VIN_Embrace_Indochina
+			}
+			is_subject = no
+			any_owned_state = { is_core_of = LAO }
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Training_Laoitian_Revolutionaries"
+			LAO = { enable_country_integration_50_compliance = yes }
+			823 = { # Isan
+				add_claim_of_ROOT = yes
+				enable_state_integration_80_compliance = yes
+			}
+			if = {
+				limit = { has_country_flag = VIN_form_pathet_lao }
+				delete_unit_template_and_units = { division_template = "Pathet Lao" }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_create_division_template
+						NAME = "Pathet Lao"
+						LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 10 }
+					}
+					division_template = {
+						name = "Pathet Lao"
+						priority = 2
+						division_names_group = VIN_INF_03
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 670 }
+					limit = { valid_state_for_spawning_friendly_unit = yes }
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_spawn_units
+							COUNT = 2
+							TYPE = "Pathet Lao"
+						}
+						create_unit = {
+							division = "name = \"Pathet Lao 1st Division\" division_template = \"Pathet Lao\" start_experience_factor = 0.4"
+							owner = ROOT
+						}
+						create_unit = {
+							division = "name = \"Pathet Lao 2nd Division\" division_template = \"Pathet Lao\" start_experience_factor = 0.4"
+							owner = ROOT
+						}
+					}
+				}
+				clr_country_flag = VIN_form_pathet_lao
+			}
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 9 }
+	}
+
+	focus = {
+		id = VIN_Destabilise_Siam
+		icon = GFX_SIA_Crown_Abolishment
+		cost = 5
+
+		relative_position_id = VIN_Training_Cambodian_Revolutionaries
+		x = 1
+		y = 1
+
+		available = {
+			is_subject = no
+			country_exists = SIA
+			NOT = { is_ally_with = SIA }
+			SIA = { has_socialist_government = no }
+		}
+		prerequisite = {
+			focus = VIN_Training_Cambodian_Revolutionaries
+			focus = VIN_Training_Laoitian_Revolutionaries
+		}
+		mutually_exclusive = {
+			focus = VIN_Cooperate_with_Siam
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Destabilise_Siam"
+			custom_effect_tooltip = VIN_Siam_Uprising_tooltip
+			SIA = {
+				country_event = { id = indochina_events.154 days = 2 }
+			}
+			if = {
+				limit = { has_country_flag = VIN_form_seri_thai }
+				delete_unit_template_and_units = { division_template = "Seri Thai" }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_create_division_template
+						NAME = "Seri Thai"
+						LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 10 }
+						SUPPORT_1 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+						SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+					}
+					division_template = {
+						name = "Seri Thai"
+						priority = 2
+						division_names_group = VIN_INF_04
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+						}
+						support = {
+							artillery = { x = 0 y = 0 }
+							engineer = { x = 0 y = 1 }
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 286 }
+					limit = { valid_state_for_spawning_friendly_unit = yes }
+					custom_override_tooltip = {
+						tooltip = {
+							localization_key = tooltip_spawn_unit
+							TYPE = "Seri Thai"
+						}
+						create_unit = {
+							division = "name = \"Seri Thai Liberation Division'\" division_template = \"Seri Thai\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
+							owner = ROOT
+						}
+					}
+				}
+				clr_country_flag = VIN_form_seri_thai
+			}
+		}
+		ai_will_do = { factor = 9 }
+	}
+
+	focus = {
+		id = VIN_Challenge_Siamese_Hegemony
+		icon = YUN_GFX_Goal_The_Siamese_Threat
+		cost = 5
+
+		relative_position_id = VIN_Destabilise_Siam
+		x = 0
+		y = 1
+
+		available = {
+			is_subject = no
+			can_declare_war_on = SIA
+			NOT = { has_non_aggression_pact_with = SIA }
+			NOT = { has_guaranteed = SIA }
+			OR = {
+				has_socialist_government = no
+				SIA = { has_socialist_government = no }
+			}
+		}
+
+		bypass = {
+			OR = {
+				is_subject = yes
+				NOT = { country_exists = SIA }
+				is_ally_with = SIA
+				AND = {
+					has_socialist_government = yes
+					SIA = { has_socialist_government = yes }
+				}
+			}
+		}
+
+		will_lead_to_war_with = SIA
+
+		prerequisite = {
+			focus = VIN_Destabilise_Siam
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					country_is_in_dangerous_war = yes
+					SIA = { default_attack_AI_trigger = yes }
+					SIA = { dont_start_major_faction_wars = yes }
+				}
+			}
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Challenge_Siamese_Hegemony"
+			create_wargoal = {
+				target = SIA
+				type = annex_everything
+			}
+			if = {
+				limit = { SIA = { has_civil_war = yes } }
+				every_country_with_original_tag = {
+					original_tag_to_check = SIA
+					display_individual_scopes = yes
+					limit = {
+						ROOT = { can_declare_war_on = PREV }
+						is_dynamic_country = yes
+						civilwar_target = SIA
+					}
+					ROOT = {
+						create_wargoal = {
+							target = PREV
+							type = annex_everything
+						}
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+
+	focus = {
+		id = VIN_Ask_For_Membership
+		icon = GFX_focus_HOL_deal_with_left
+		cost = 5
+
+		relative_position_id = VIN_Special_Relationship_With_France
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Special_Relationship_With_France
+		}
+		available = {
+			is_subject = no
+			has_socialist_government = yes
+			INT = { is_economic_sphere_leader = yes }
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Ask_For_Membership"
+			add_political_power = 100
+			FRA_add_to_phalanstere = yes
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 100 }
+	}
+
+	focus = {
+		id = VIN_Join_East_Syndicalist_Faction
+		icon = GFX_goal_red_star_dove
+		cost = 5
+
+		relative_position_id = VIN_Strengthen_Our_Tie_with_Calcutta
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = VIN_Strengthen_Our_Tie_with_Calcutta
+		}
+		available = {
+			has_socialist_government = yes
+			is_in_faction = no
+			is_subject = no
+			at_peace_or_same_enemies_as_HND = yes
+			NOT = { any_owned_state = { is_core_of = HND } }
+			HND = {
+				exists = yes
+				has_socialist_government = yes
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 100
+				HND = { is_ai = no }
+				OR = {
+					has_game_rule = { rule = VIN_forpol option = DEFAULT }
+					has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_HND }
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Join_East_Syndicalist_Faction"
+			unlock_decision_tooltip = Join_HNDs_faction_decision
+		}
+	}
+
+	focus = {
+		id = VIN_Our_International_Obligation
+		icon = GFX_goal_FRA_french_revanchism
+		cost = 8
+
+		relative_position_id = VIN_An_International_Revolutionary_Outpost
+		x = 3
+		y = 1
+
+		prerequisite = {
+			focus = VIN_An_International_Revolutionary_Outpost
+			focus = VIN_Rising_Dragon
+		}
+		available = {
+			has_socialist_government = yes
+			is_in_faction = no
+			is_subject = no
+			country_exists = INT
+			NOT = { has_war_with = INT }
+			at_peace_or_same_enemies_as_INT = yes
+			OR = {
+				INT = { has_war_with = GER }
+				NOT = { country_exists = GER }
+			}
+		}
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_INT } }
+				country_exists = HND
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = VIN_path option = VIN_PATH_AUTDEM }
+					has_game_rule = { rule = VIN_path option = VIN_PATH_PATAUT }
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_INT } }
+				asian_tag_can_join_int = no
+			}
+		}
+		will_lead_to_war_with = GEA
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed VIN_Our_International_Obligation"
+			INT = { country_event = indochina_events.150 }
+		}
+	}
+}
+

@@ -7,7 +7,7 @@ foreign_politics = {
 			OR = {
 				tag = ARM
 				tag = BRM #Since they don't have a focus tree they unlock this decision via event burma_events.6 option a
-				tag = INC
+				tag = VIN
 				tag = INS
 				tag = PER
 				tag = PHI #Becomes visible if PHI went Independent Foreign Policy and is Socialist
@@ -36,8 +36,8 @@ foreign_politics = {
 				has_socialist_government = yes
 			}
 			else_if = {
-				limit = { tag = INC }
-				has_completed_focus = INC_Join_East_Syndicalist_Faction
+				limit = { tag = VIN }
+				has_completed_focus = VIN_Join_East_Syndicalist_Faction
 			}
 			else_if = {
 				limit = { tag = INS }
@@ -152,14 +152,14 @@ foreign_politics = {
 						}
 					}
 					AND = {
-						tag = INC
+						tag = VIN
 						OR = {
 							AND = {
-								has_game_rule = { rule = INC_forpol option = INC_FORPOL_INT }
+								has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_INT }
 								NOT = { HND = { is_in_faction_with = INT } }
 							}
 							AND = {
-								has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
+								has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_CHN }
 								NOT = { HND = { is_in_faction_with = CHN } }
 							}
 						}

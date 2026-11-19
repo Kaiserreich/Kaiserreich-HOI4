@@ -176,6 +176,14 @@ add_ai_strategy = {
 	value = 1
 }
 
+AUS = {
+	set_autonomy = {
+		target = ROOT
+		autonomy_state = autonomous_puppet
+	}
+	remove_from_faction = ROOT
+}
+
 set_politics = {
 	ruling_party = social_liberal
 	last_election = "1932.05.01"
@@ -319,8 +327,8 @@ ROOT = { italy_enable_integration = yes }
 ################
 ### Variants ###
 ################
-ITA_create_early_armor_variants = yes
-ITA_create_basic_armor_variants = yes
+italy_create_early_armor_variants = yes
+italy_create_basic_armor_variants = yes
 
 if = {
 	limit = { has_dlc_bba = yes }

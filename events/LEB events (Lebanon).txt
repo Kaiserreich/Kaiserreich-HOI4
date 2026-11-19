@@ -109,13 +109,8 @@ country_event = { #The Provisional Parliament demands Fouad Chehab Step Down
 			base = 1
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = LEB_path option = LEB_PATH_MARLIB }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_NATPOP }
-				}
+				NOT = { has_game_rule = { rule = LEB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_AUTDEM } }
 			}
 		}
 		add_stability = 0.05
@@ -262,13 +257,8 @@ country_event = { #Marada Demand Seats
 			base = 1
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = LEB_path option = LEB_PATH_MARLIB }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_AUTDEM }
-				}
+				NOT = { has_game_rule = { rule = LEB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_NATPOP } }
 			}
 		}
 		LEB_corruption_increase = yes
@@ -336,7 +326,10 @@ country_event = { #The New Constitution
 					OR = {
 						national_populist > 0.35
 						has_country_leader = { character = LEB_fouad_chehab }
-						has_game_rule = { rule = LEB_path option = LEB_PATH_NATPOP }
+						AND = {
+							is_ai = yes
+							has_game_rule = { rule = LEB_path option = LEB_PATH_NATPOP }
+						}
 					}
 				}
 				country_event = { id = lebanon_events.10 days = 7 }
@@ -526,10 +519,9 @@ country_event = { #The Year Elections
 			base = 1
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = LEB_path option = LEB_PATH_MARLIB }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB }
-				}
+				NOT = { has_game_rule = { rule = LEB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ } }
 			}
 		}
 		add_popularity = {
@@ -566,11 +558,8 @@ country_event = { #The Year Elections
 			base = 1
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB }
-				}
+				NOT = { has_game_rule = { rule = LEB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_MARLIB } }
 			}
 		}
 		add_popularity = {
@@ -608,11 +597,9 @@ country_event = { #The Year Elections
 			base = 1
 			modifier = {
 				factor = 0
-				OR = {
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_MARLIB }
-				}
+				NOT = { has_game_rule = { rule = LEB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB_EGY } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB_IRQ } }
 			}
 		}
 		add_popularity = {
@@ -815,11 +802,10 @@ country_event = { # New Elections
 		ai_chance = {
 			base = 33
 			modifier = {
-				OR = {
-					has_game_rule = { rule = LEB_path option = LEB_PATH_MARLIB }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB }
-				}
 				factor = 0
+				NOT = { has_game_rule = { rule = LEB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ } }
 			}
 		}
 		add_popularity = {
@@ -836,20 +822,17 @@ country_event = { # New Elections
 	option = {
 		log = "[GetLogInfo]: event lebanon_events.22 option lebanon_events.22.b"
 		name = lebanon_events.22.b
-		ai_chance = {
-			base = 33
-			modifier = {
-				OR = {
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ }
-				}
-				factor = 0
-			}
-		}
 		trigger = {
 			NOT = {
 				has_idea = LEB_corruption_level_5
+			}
+		}
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = LEB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_MARLIB } }
 			}
 		}
 		add_popularity = {
@@ -866,22 +849,20 @@ country_event = { # New Elections
 	option = {
 		log = "[GetLogInfo]: event lebanon_events.22 option lebanon_events.22.c"
 		name = lebanon_events.22.c
-		ai_chance = {
-			base = 33
-			modifier = {
-				OR = {
-					has_game_rule = { rule = LEB_path option = LEB_PATH_MARLIB }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY }
-					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ }
-				}
-				factor = 0
-			}
-		}
 		trigger = {
 			NOT = {
 				has_idea = LEB_corruption_level_4
 				has_idea = LEB_corruption_level_5
 				has_completed_focus = LEB_the_national_pact
+			}
+		}
+		ai_chance = {
+			base = 33
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = LEB_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB_EGY } }
+				NOT = { has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB_IRQ } }
 			}
 		}
 		add_popularity = {

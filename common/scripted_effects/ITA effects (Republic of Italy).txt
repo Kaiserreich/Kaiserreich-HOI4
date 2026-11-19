@@ -1,0 +1,372 @@
+ITA_ANI_events = {
+	hidden_effect = {
+		country_event = { id = italy_events.62 days = 5 random_days = 15 }
+		country_event = { id = italy_events.63 days = 120 random_days = 150 }
+		country_event = { id = italy_events.64 days = 120 random_days = 150 }
+		country_event = { id = italy_events.65 days = 120 random_days = 150 }
+		country_event = { id = italy_events.66 days = 120 random_days = 150 }
+		country_event = { id = italy_events.67 days = 120 random_days = 150 }
+	}
+}
+
+ITA_restore_savoyard_monarchy = {
+	if = {
+		limit = {
+			tag = ITA
+			has_government = national_populist
+			is_monarchy = no
+			FROM = { tag = SRD }
+		}
+		custom_effect_tooltip = ITA_restore_monarchy_amedeo_tt
+		hidden_effect = {
+			set_cosmetic_tag = ITA_kingdom
+			SRD = {
+				SRD_amedeo_aosta = {
+					set_nationality = ROOT
+					promote_character = national_populist_subtype
+				}
+				SRD_umberto_carignano = { set_nationality = ROOT }
+				SRD_adalberto_genova = { set_nationality = ROOT }
+				SRD_aimone_aosta = { set_nationality = ROOT }
+			}
+			if = {
+				limit = { has_character = ITA_costanzo_ciano }
+				activate_advisor = ITA_costanzo_ciano_sic
+			}
+			else = {
+				activate_advisor = ITA_gian_galeazzo_ciano_sic
+			}
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+}
+
+ITA_restore_savoyard_monarchy_umberto = { #for use in generic_events.11 and 13
+	if = {
+		limit = {
+			tag = ITA
+			has_government = national_populist
+			is_monarchy = no
+			var:new_faction_leader = { is_ally_with = ENT }
+		}
+		custom_effect_tooltip = ITA_restore_monarchy_umberto_tt
+		hidden_effect = {
+			set_cosmetic_tag = ITA_kingdom
+			SRD = {
+				SRD_umberto_carignano = {
+					set_nationality = ROOT
+					set_character_name = SRD_umberto_carignano_regnal
+					add_country_leader_role = {
+						country_leader = {
+							desc = ITA_umberto_natpop_king_leader_desc
+							ideology = national_populist_subtype
+							traits = { GBR_popular_figurehead }
+						}
+						promote_leader = yes
+					}
+				}
+				SRD_amedeo_aosta = {
+					set_nationality = ROOT
+					set_character_name = SRD_amedeo_aosta_not_king
+				}
+				SRD_adalberto_genova = { set_nationality = ROOT }
+				SRD_aimone_aosta = { set_nationality = ROOT }
+			}
+			if = {
+				limit = { has_character = ITA_costanzo_ciano }
+				activate_advisor = ITA_costanzo_ciano_sic
+			}
+			else = {
+				activate_advisor = ITA_gian_galeazzo_ciano_sic
+			}
+			mark_focus_tree_layout_dirty = yes
+		}
+		if = {
+			limit = { has_event_target = negotiator }
+			event_target:negotiator = { italy_peaceful_unification_effect = yes }
+		}
+	}
+}
+
+ITA_release_as_republic = {
+	hidden_effect = {
+		remove_ideas = ITA_federation_transition
+		remove_ideas = ITA_federation_secure
+		if = {
+			limit = { has_government = national_populist }
+			if = {
+				limit = { has_completed_focus = ITA_centralized_power }
+				remove_ideas = ITA_republic_federation
+				remove_ideas = ITA_republic_unitary
+			}
+			else_if = {
+				limit = { has_completed_focus = ITA_destroy_austrian_influence }
+				add_ideas = ITA_republic_unitary
+			}
+			else = {
+				add_ideas = ITA_republic_federation
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_completed_focus = ITA_a_stable_italy }
+				NOT = { has_completed_focus = ITA_stable_democracy }
+			}
+			add_ideas = ITA_republic_federation
+		}
+		italy_set_rome_as_capital = yes
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+ITA_release_as_federation = {
+	hidden_effect = {
+		set_cosmetic_tag = ITA_federation
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = no
+			name = ITA_authoritarian_democrat_federation_party
+			long_name = ITA_authoritarian_democrat_federation_party_long
+		}
+		set_political_party = {
+			ideology = authoritarian_democrat
+			popularity = 60
+		}
+		if = {
+			limit = {
+				ROOT = { AUS_is_led_by_habsburgs = yes }
+				ITA_pietro_ferdinando = {
+					OR = {
+						is_country_leader = no
+						is_retired = yes
+					}
+				}
+			}
+			ITA_pietro_ferdinando = {
+				set_nationality = PREV
+				set_character_name = ITA_pietro_ferdinando
+				remove_all_country_leader_roles = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = ITA_pietro_ferdinando_leader_desc
+						ideology = authoritarian_democrat_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		else = {
+			ITA_marcello_visconti_di_modrone = {
+				set_nationality = PREV
+				set_character_name = ITA_marcello_visconti_di_modrone
+				remove_all_country_leader_roles = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = ITA_marcello_visconti_di_modrone_leader_desc
+						ideology = authoritarian_democrat_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		remove_ideas = ITA_republic_federation
+		if = {
+			limit = { has_completed_focus = ITA_stable_institutions }
+			add_ideas = ITA_federation_secure
+		}
+		else = {
+			add_ideas = ITA_federation_transition
+		}
+		italy_set_rome_as_capital = yes
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+ITA_remove_monarchy = {
+	if = {
+		limit = {
+			OR = {
+				has_cosmetic_tag = ITA_kingdom
+				has_cosmetic_tag = ITA_federation
+			}
+		}
+		drop_cosmetic_tag = yes
+	}
+	if = {
+		limit = { has_character = ITA_pietro_ferdinando }
+		ITA_pietro_ferdinando = {
+			effect_tooltip = { retire = yes }
+			hidden_effect = {
+				remove_all_country_leader_roles = yes
+				set_nationality = TUS
+			}
+		}
+	}
+	if = {
+		limit = { has_character = ITA_marcello_visconti_di_modrone }
+		ITA_marcello_visconti_di_modrone = {
+			effect_tooltip = { retire = yes }
+			hidden_effect = {
+				remove_all_country_leader_roles = yes
+				set_nationality = LOM
+			}
+		}
+	}
+	if = {
+		limit = { has_character = VNC_giuseppe_volpi }
+		VNC_giuseppe_volpi = {
+			effect_tooltip = { retire = yes }
+			hidden_effect = {
+				remove_all_country_leader_roles = yes
+				set_nationality = VNC
+				add_country_leader_role = {
+					country_leader = {
+						desc = VNC_giuseppe_volpi_leader_desc
+						ideology = paternal_autocrat_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_character = SRD_amedeo_aosta }
+		SRD_amedeo_aosta = {
+			hidden_effect = { remove_all_country_leader_roles = yes }
+			retire = yes
+		}
+	}
+	if = {
+		limit = { has_character = SRD_adalberto_genova }
+		SRD_adalberto_genova = { retire = yes }
+	}
+	if = {
+		limit = { has_character = SRD_aimone_aosta }
+		SRD_aimone_aosta = { retire = yes }
+	}
+	if = {
+		limit = { has_character = SRD_umberto_carignano }
+		SRD_umberto_carignano = { retire = yes }
+	}
+}
+
+ITA_spawn_venetian_revolt = {
+	add_political_power = -100
+	hidden_effect = {
+		every_core_state = { add_core_of = VNC }
+	}
+	160 = { #Venetia
+		set_demilitarized_zone = no
+		teleport_armies = {
+			limit = { NOT = { is_ally_with = VNC } }
+			to_state = 759
+		}
+		transfer_state_to = VNC
+	}
+	transfer_navy = { target = VNC }
+	send_equipment_fraction = { target = VNC value = 0.35 }
+	every_navy_leader = {
+		limit = { has_character_flag = ITA_venetian_admiral }
+		set_nationality = VNC
+	}
+	declare_war_on = {
+		target = VNC
+		type = annex_everything
+	}
+	hidden_effect = {
+		VNC = {
+			set_country_flag = VNC_fought_revolt
+			set_country_flag = VNC_republican_revolt
+			add_political_power = 100
+			add_war_support = 0.3
+			transfer_technology = yes
+			if = {
+				limit = { italy_balance_has_broken = no }
+				add_ideas = VNC_italy_balance_idea
+			}
+			add_ideas = {
+				ITA_austrian_influence
+				extensive_conscription
+				ITA_increase_limit_idea
+				VNC_military_confusion
+			}
+			ITA_spawn_splinter_units = yes
+			division_template = {
+				name = "Volontari della Libertà"
+				division_names_group = VNC_MIL_01
+				regiments = {
+					irregular_infantry = { x = 0 y = 0 }
+					irregular_infantry = { x = 0 y = 1 }
+					irregular_infantry = { x = 1 y = 0 }
+					irregular_infantry = { x = 1 y = 1 }
+					irregular_infantry = { x = 1 y = 2 }
+				}
+				is_locked = yes
+				template_counter = 68
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Volontari della Libertà 'Venezia'\" division_template = \"Volontari della Libertà\" start_experience_factor = 0.1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Volontari della Libertà 'Padova'\" division_template = \"Volontari della Libertà\" start_experience_factor = 0.1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Volontari della Libertà 'Vicenza'\" division_template = \"Volontari della Libertà\" start_experience_factor = 0.1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Volontari della Libertà 'Treviso'\" division_template = \"Volontari della Libertà\" start_experience_factor = 0.1"
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Volontari della Libertà 'Bravisima'\" division_template = \"Volontari della Libertà\" start_experience_factor = 0.1"
+					owner = PREV
+				}
+			}
+			add_equipment_production = {
+				equipment = {
+					type = infantry_equipment_1
+				}
+				requested_factories = 2
+				progress = 0.82
+				efficiency = 100
+			}
+			add_equipment_production = {
+				equipment = {
+					type = artillery_equipment_1
+				}
+				progress = 0.83
+				efficiency = 100
+			}
+			unit_limit_calculation_effect = yes
+			activate_mission = VNC_war_with_ita1
+			activate_mission = VNC_war_with_ita2
+		}
+	}
+	hidden_effect = {
+		add_ideas = ITA_increase_limit_idea
+		unit_limit_calculation_effect = yes
+		SIC = { activate_targeted_decision = { decision = SRD_attack_italy target = VNC } }
+		SRD = { activate_targeted_decision = { decision = SRD_attack_italy target = VNC } }
+		AUS = { country_event = italy_events.57 }
+		news_event = { id = italy_events.204 days = 2 }
+	}
+}
+
+ITA_spawn_splinter_units = {
+	capital_scope = {
+		create_unit = {
+			division = "division_template = \"Divisione Alpina\" start_experience_factor = 0.5"
+			owner = PREV
+			count = 2
+		}
+		create_unit = {
+			division = "division_template = \"Divisione Fanteria\" start_experience_factor = 0.3"
+			owner = PREV
+			count = 3
+		}
+	}
+}

@@ -1983,6 +1983,7 @@ AFG_crossroads_of_civilisation_decisions = {
 				add_ideas = AFG_northern_volunteers_rus
 				set_temp_variable = { AFG_foreign_influence_change = 1 }
 				AFG_change_influence_RUS = yes
+				clr_country_flag = AFG_aided_RUS_flag
 			}
 			else = {
 				add_ideas = AFG_northern_volunteers_trk
@@ -3630,24 +3631,25 @@ foreign_politics = {
 				limit = {
 					is_ai = no
 					AFG_backer_faction_blocked = yes
+					FROM = { has_socialist_government = no }
 				}
 				if = {
 					limit = {
-						OR = {
-							AND = {
-								var:AFG_amanullah_backer = { tag = FROM }
-								FROM = { has_socialist_government = no }
-								AFG_is_seraj = yes
-							}
-							AND = {
-								var:AFG_nadir_backer = { tag = FROM }
-								FROM = { has_socialist_government = no }
-								AFG_is_telai = yes
-							}
-						}
+						var:AFG_amanullah_backer = { is_in_faction_with = FROM }
+						AFG_is_seraj = yes
 					}
 					custom_override_tooltip = {
-						tooltip = AFG_backer_faction_only_tt
+						tooltip = AFG_amanullah_backer_only_tt
+						always = yes
+					}
+				}
+				else_if = {
+					limit = {
+						var:AFG_nadir_backer = { is_in_faction_with = FROM }
+						AFG_is_telai = yes
+					}
+					custom_override_tooltip = {
+						tooltip = AFG_nadir_backer_only_tt
 						always = yes
 					}
 				}
@@ -3727,6 +3729,14 @@ foreign_politics = {
 			modifier = {
 				factor = 0
 				has_country_flag = AFG_neutral_ai
+			}
+			modifier = {
+				factor = 0
+				AFG_aia_republic = yes
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_JAP } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_RUS } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_GER } }
+				NOT = { has_game_rule = { rule = AFG_forpol option = AFG_FORPOL_OTT } }
 			}
 			modifier = {
 				factor = 0
@@ -4143,18 +4153,23 @@ political_actions = {
 			443 = { is_fully_controlled_by = ROOT } #Sind
 			if = {
 				limit = {
-					FROM = {
-						is_in_faction = yes
-						faction_leader = {
-							1042 = { is_owned_by_PREV_or_subject = yes } #Badakhshan
-							804 = { is_owned_by_PREV_or_subject = yes } #Pamir
+					FROM = { is_in_faction = yes }
+					var:1042.owner = { #Badakhshan
+						OR = {
+							tag = FROM.faction_leader
+							is_subject_of = FROM.faction_leader
+						}
+					}
+					var:804.owner = { #Pamir
+						OR = {
+							tag = FROM.faction_leader
+							is_subject_of = FROM.faction_leader
 						}
 					}
 				}
 				1042 = { is_fully_controlled_by = ROOT } #Badakhshan
 				804 = { is_fully_controlled_by = ROOT } #Pamir
 			}
-			NOT = { owns_state = 891 } # West Punjab
 			NOT = { has_country_flag = AFG_in_peace_negotiations }
 		}
 
@@ -4214,6 +4229,20 @@ political_actions = {
 			}
 			else = {
 				FROM = { country_event = afghanistan_foreign_policy_events.19 }
+			}
+			if = {
+				limit = {
+					any_owned_state = {
+						is_on_continent = india
+						NOT = {
+							state = 444 #Baluchistan
+							state = 445 #Quetta
+							state = 442 #Peshawar
+							state = 443 #Sind
+						}
+					}
+				}
+				custom_effect_tooltip = AFG_india_war_return_states_tt
 			}
 		}
 		fixed_random_seed = no

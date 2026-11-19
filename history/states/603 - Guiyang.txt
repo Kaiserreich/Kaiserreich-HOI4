@@ -1,0 +1,32 @@
+state = {
+	id = 603
+	name = "STATE_603"
+	manpower = 3479800
+	state_category = two
+	local_supplies = 1.0
+
+	resources = {
+		tungsten = 9
+		coal = 1 #Mostly pity coal but represents the combined coal production of Guizhou and Yunnan. Removed one coal from Liaoning.
+	}
+
+	history = {
+		owner = YUN
+		add_core_of = YUN
+		add_claim_by = HNN
+		add_to_array = { state_victory_points = 4325 } #Zunyi
+		add_to_array = { state_victory_points = 10616 } #Guiyang
+		victory_points = { 4325 3 } #POP 1 + STRAT 1 + POL 0 = SIG 2
+		victory_points = { 10616 15 } #POP 2 + STRAT 2 + POL 1 = SIG 5
+		buildings = {
+			infrastructure = 2
+			industrial_complex = 1
+			arms_factory = 1 #Guiyang Arsenal
+		}
+	}
+
+	provinces = {
+		1010 4325 4532 8095 9939 10616 10763
+	}
+}
+

@@ -2568,24 +2568,6 @@ RUS_fighter = {
 		factor = 0
 	}
 
-	early_fighter_outdated = { #R-5
-		name = "R-5"
-		priority = {
-			factor = 0
-		}
-		target_variant = {
-			match_value = 1000
-			type = small_plane_airframe_0
-			modules = {
-				fixed_main_weapon_slot = light_mg_2x #1 aviation Maxim
-				fixed_auxiliary_weapon_slot_1 = recon_camera
-				engine_type_slot = engine_1_1x #1 M-17
-				special_type_slot_1 = lmg_defense_turret #paired DA in second seat
-				special_type_slot_2 = non_strategic_materials_small #represent simple design
-			}
-		}
-	}
-
 	early_fighter_early = { #I-5
 		name = "I-5"
 		priority = {
@@ -2595,7 +2577,7 @@ RUS_fighter = {
 			match_value = 1000
 			type = small_plane_airframe_0
 			modules = {
-				fixed_main_weapon_slot = light_mg_4x #4 aviation Maxim
+				fixed_main_weapon_slot = light_mg_2x #2 aviation Maxim
 				fixed_auxiliary_weapon_slot_1 = empty
 				engine_type_slot = engine_1_1x #1 M-22
 				special_type_slot_1 = empty
@@ -2603,7 +2585,7 @@ RUS_fighter = {
 		}
 	}
 
-	early_fighter_default_1 = { #I-15
+	early_fighter_default = { #I-15
 		name = "I-15"
 		priority = {
 			factor = 0
@@ -2620,7 +2602,7 @@ RUS_fighter = {
 		}
 	}
 
-	early_fighter_default_2 = { #I-15bis
+	early_fighter_bomber_default_2 = { #I-15bis
 		name = "I-15bis"
 		priority = {
 			factor = 0
@@ -2631,7 +2613,7 @@ RUS_fighter = {
 			modules = {
 				fixed_main_weapon_slot = light_mg_4x #4 aviation maxim
 				fixed_auxiliary_weapon_slot_1 = bomb_locks #150 kgs
-				engine_type_slot = engine_2_1x #1 M-25
+				engine_type_slot = engine_1_1x #1 M-25
 				special_type_slot_1 = empty
 			}
 		}
@@ -2664,8 +2646,25 @@ RUS_fighter = {
 			type = small_plane_airframe_0
 			modules = {
 				fixed_main_weapon_slot = light_mg_2x #2 ShKAS
-				fixed_auxiliary_weapon_slot_1 = bomb_locks #50 kgs
-				engine_type_slot = engine_2_1x #1 M-25
+				fixed_auxiliary_weapon_slot_1 = empty
+				engine_type_slot = engine_1_1x #1 M-25
+				special_type_slot_1 = lmg_defense_turret #1 ShKAS
+			}
+		}
+	}
+
+	early_fighter_bomber = { #Di-6Sh
+		name = "DI-6Sh"
+		priority = {
+			factor = 0
+		}
+		target_variant = {
+			match_value = 1000
+			type = small_plane_airframe_0
+			modules = {
+				fixed_main_weapon_slot = light_mg_4x #6 aviation Maxim
+				fixed_auxiliary_weapon_slot_1 = bomb_locks #80 kgs
+				engine_type_slot = engine_1_1x #1 M-25
 				special_type_slot_1 = lmg_defense_turret #1 ShKAS
 			}
 		}
@@ -3328,7 +3327,25 @@ RUS_cas = {
 		}
 	}
 
-	early_cas_default = { #R-5Sh
+	early_cas_default = { #R-5
+		name = "R-5"
+		priority = {
+			factor = 0
+		}
+		target_variant = {
+			match_value = 1000
+			type = small_plane_cas_airframe_0
+			modules = {
+				fixed_main_weapon_slot = bomb_locks
+				fixed_auxiliary_weapon_slot_1 = empty
+				engine_type_slot = engine_1_1x #1 M-17
+				special_type_slot_1 = lmg_defense_turret #paired DA in second seat
+				special_type_slot_2 = empty
+			}
+		}
+	}
+
+	early_cas_specialized = { #R-5Sh
 		name = "R-5Sh"
 		priority = {
 			factor = 0
@@ -3341,24 +3358,6 @@ RUS_cas = {
 				fixed_auxiliary_weapon_slot_1 = light_mg_4x #4 aviation Maxim
 				engine_type_slot = engine_1_1x #1 M-17
 				special_type_slot_1 = lmg_defense_turret #paired DA in second seat
-				special_type_slot_2 = non_strategic_materials_small #represent simple design
-			}
-		}
-	}
-
-	early_cas_good = { #Di-6Sh
-		name = "DI-6Sh"
-		priority = {
-			factor = 0
-		}
-		target_variant = {
-			match_value = 1000
-			type = small_plane_cas_airframe_0
-			modules = {
-				fixed_main_weapon_slot = bomb_locks #80 kgs
-				fixed_auxiliary_weapon_slot_1 = light_mg_4x #6 aviation Maxim
-				engine_type_slot = engine_2_1x #1 M-25
-				special_type_slot_1 = lmg_defense_turret #1 ShKAS
 			}
 		}
 	}
@@ -3598,10 +3597,9 @@ RUS_naval_bomber = {
 			type = small_plane_naval_bomber_airframe_0
 			modules = {
 				fixed_main_weapon_slot = torpedo_mounting #gameplay adjusted - Russian torpedoes are heavy and basically start from torpedo_mounting_2
-				fixed_auxiliary_weapon_slot_1 = light_mg_2x #1 aviation Maxim
+				fixed_auxiliary_weapon_slot_1 = empty
 				engine_type_slot = engine_1_1x #1 M-17
 				special_type_slot_1 = empty #removed paired DA
-				special_type_slot_2 = non_strategic_materials_small #represent simple design
 			}
 		}
 	}
@@ -3616,10 +3614,8 @@ RUS_naval_bomber = {
 			type = small_plane_naval_bomber_airframe_1
 			modules = {
 				fixed_main_weapon_slot = torpedo_mounting #gameplay adjusted - Russian torpedoes are heavy and basically start from torpedo_mounting_2
-				fixed_auxiliary_weapon_slot_1 = light_mg_4x #4 ShKAS - gameplay adjusted
 				engine_type_slot = engine_2_1x #1 M-62
 				special_type_slot_1 = lmg_defense_turret #1 ShKAS in second seat
-				special_type_slot_2 = armor_plate_small #armored plates in important places
 			}
 		}
 	}
@@ -4151,9 +4147,8 @@ RUS_tactical_bomber = {
 			match_value = 2000
 			type = medium_plane_airframe_0
 			modules = {
-				fixed_main_weapon_slot = light_mg_2x #1 DA machine gun
-				fixed_auxiliary_weapon_slot_1 = medium_bomb_bay #500 kgs
-				fixed_auxiliary_weapon_slot_2 = empty #Bombers cannot have recon role
+				fixed_main_weapon_slot = medium_bomb_bay #500 kgs
+				fixed_auxiliary_weapon_slot_1 = empty
 				engine_type_slot = engine_1_2x #2 M-17
 				special_type_slot_1 = lmg_defense_turret_2x #2 turrets with 2 DA machine guns in each
 			}
@@ -4174,7 +4169,6 @@ RUS_tactical_bomber = {
 				engine_type_slot = engine_1_2x #1 M-34
 				special_type_slot_1 = flying_boat_medium
 				special_type_slot_2 = lmg_defense_turret #2 DA/ShKAS machine guns
-				special_type_slot_2 = lmg_defense_turret #1 DA/ShKAS machine gun
 			}
 		}
 	}
@@ -4189,8 +4183,6 @@ RUS_tactical_bomber = {
 			type = medium_plane_airframe_1
 			modules = {
 				fixed_main_weapon_slot = medium_bomb_bay #600 kg
-				fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks #1000 kgs
-				fixed_auxiliary_weapon_slot_2 = empty
 				engine_type_slot = engine_2_2x #2 M-103
 				special_type_slot_1 = lmg_defense_turret_2x #2 turrets with 2 ShKAS machine guns in each
 			}
@@ -4211,7 +4203,6 @@ RUS_tactical_bomber = {
 				fixed_auxiliary_weapon_slot_2 = empty
 				engine_type_slot = engine_2_2x #2 M-86
 				special_type_slot_1 = lmg_defense_turret #2 turrets with 2 and 1 ShKAS machine guns - gameplay adjusted
-				special_type_slot_2 = fuel_tanks_medium #big unpractical fuel tanks
 			}
 		}
 	}
@@ -5066,7 +5057,8 @@ RUS_strategic_bomber = {
 				engine_type_slot = engine_2_6x #6 M-34FN + 2 on roof
 				special_type_slot_1 = lmg_defense_turret_2x #2 turrets with 2 DA machine guns in each
 				special_type_slot_2 = lmg_defense_turret_2x #2 turrets with 2 ShKAS machine guns in each
-				special_type_slot_3 = hmg_defense_turret_2x #2 turrets with Oerlikon cannons in each
+				special_type_slot_3 = lmg_defense_turret_2x #2 adjusted Oerlikon Cannons
+				special_type_slot_4 = lmg_defense_turret_2x #2 adjusted Oerlikon Cannons
 			}
 		}
 	}
@@ -5294,11 +5286,11 @@ RUS_maritime_patrol = {
 				fixed_auxiliary_weapon_slot_1 = torpedo_mounting #up to 4 torpedoes - gameplay adjusted
 				fixed_auxiliary_weapon_slot_2 = torpedo_mounting #up to 4 torpedoes - gameplay adjusted
 				fixed_auxiliary_weapon_slot_3 = large_bomb_bay
-				engine_type_slot = engine_2_6x #6 M-34R
+				engine_type_slot = engine_2_6x #6 M-34R, adjusted or else it doesn't really fly
 				special_type_slot_1 = flying_boat_large
 				special_type_slot_2 = lmg_defense_turret_2x #2 turrets with 2 DA machine guns in each
 				special_type_slot_3 = lmg_defense_turret_2x #2 turrets with 2 ShKAS machine guns in each
-				special_type_slot_4 = hmg_defense_turret_2x #2 turrets with Oerlikon cannons in each
+				special_type_slot_4 = lmg_defense_turret_2x #2 turrets with Oerlikon cannons - adjusted
 			}
 		}
 	}

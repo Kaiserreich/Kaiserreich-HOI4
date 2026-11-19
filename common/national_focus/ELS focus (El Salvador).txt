@@ -513,9 +513,23 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ELS_eliminating_socialists"
 			add_timed_idea = { idea = ELS_cleanse_gommies days = 180 }
-			swap_ideas = {
-				remove_idea = ELS_memories_32
-				add_idea = ELS_memories_32_part_2
+			if = {
+				limit = {
+					OR = {
+						is_subject = no
+						has_idea = ELS_memories_32
+					}
+				}
+				swap_ideas = {
+					remove_idea = ELS_memories_32
+					add_idea = ELS_memories_32_part_2
+				}
+			}
+			else = {
+				add_popularity = {
+					ideology = social_democrat
+					popularity = -0.07
+				}
 			}
 			hidden_effect = {
 				add_to_variable = { central_america_political_foci_count = 1 }
@@ -543,8 +557,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ELS_loyal_military_board"
-			add_stability = 0.10
-			add_war_support = 0.10
+			add_stability = 0.1
+			add_war_support = 0.1
 			hidden_effect = {
 				add_to_variable = { central_america_political_foci_count = 1 }
 			}
@@ -591,6 +605,10 @@ focus_tree = {
 		available = {
 			has_dictatorship_government = yes
 		}
+		bypass = {
+			NOT = { has_idea = ELS_memories_32_part_2 }
+		}
+
 		ai_will_do = { factor = 1000 }
 		prerequisite = {
 			focus = ELS_militarization
@@ -667,10 +685,20 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ELS_revolutionary_ideals"
 			custom_effect_tooltip = unlock_focuses
-			hidden_effect = {
-				country_event = { id = el_salvador_events.4 days = 2 }
+			effect_tooltip = {
+				remove_ideas = ELS_memories_32
 			}
-			remove_ideas = ELS_memories_32
+			hidden_effect = {
+				remove_ideas = {
+					ELS_memories_32
+					ELS_memories_32_part_2
+					ELS_memories_32_part_3
+				}
+				if = {
+					limit = { is_subject = no }
+					country_event = { id = el_salvador_events.4 days = 2 }
+				}
+			}
 		}
 	}
 
@@ -825,6 +853,13 @@ focus_tree = {
 		available = {
 			has_government = syndicalist
 		}
+		bypass = {
+			NOT = {
+				has_idea = ELS_unruly_military2
+				has_idea = ELS_unruly_military
+			}
+		}
+
 		ai_will_do = { factor = 5000 }
 		prerequisite = {
 			focus = ELS_social_ideal
@@ -833,23 +868,18 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ELS_snapping_military"
 			if = {
-				limit = {
-					has_idea = ELS_unruly_military
-				}
-				remove_ideas = ELS_unruly_military
-				custom_effect_tooltip = tooltip_white_line
-			}
-			if = {
-				limit = {
-					has_idea = ELS_unruly_military2
-				}
+				limit = { has_idea = ELS_unruly_military2 }
 				remove_ideas = ELS_unruly_military2
 				custom_effect_tooltip = tooltip_white_line
 			}
+			else = {
+				remove_ideas = ELS_unruly_military
+				custom_effect_tooltip = tooltip_white_line
+			}
 			add_timed_idea = { idea = ELS_military_purge days = 60 }
-			custom_effect_tooltip = tooltip_white_line
 			if = {
 				limit = { has_character = ELS_salvador_castaneda_castro }
+				custom_effect_tooltip = tooltip_white_line
 				retire_character = ELS_salvador_castaneda_castro
 			}
 			hidden_effect = {
@@ -952,6 +982,9 @@ focus_tree = {
 
 		available = {
 			has_government = social_democrat
+		}
+		bypass = {
+			is_subject = yes
 		}
 
 		ai_will_do = { factor = 5000 }
@@ -1103,6 +1136,9 @@ focus_tree = {
 		available = {
 			has_soclib_or_socdem_government = yes
 		}
+		bypass = {
+			NOT = { has_idea = ELS_unruly_military2 }
+		}
 
 		ai_will_do = { factor = 5000 }
 		prerequisite = {
@@ -1181,7 +1217,7 @@ focus_tree = {
 
 	focus = {
 		id = ELS_establish_middle_class
-		icon = GFX_goal_ANQ_convince_intellectuals
+		icon = GFX_focus_generic_university_2
 		cost = 7
 
 		relative_position_id = ELS_37_revolution

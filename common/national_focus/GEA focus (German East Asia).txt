@@ -2487,7 +2487,7 @@ focus_tree = {
 				}
 				else = {
 					custom_effect_tooltip = reduce_10_guerilla_tooltip
-					add_to_variable = { INC.guerilla_activity = -10 }
+					add_to_variable = { VIN.guerilla_activity = -10 }
 					671 = { #Tonkin
 						custom_override_tooltip = {
 							add_building_construction = {
@@ -2992,10 +2992,6 @@ focus_tree = {
 				has_war = yes
 			}
 			modifier = {
-				factor = 100
-				has_game_rule = { rule = INC_revolt option = INC_REVOLT_VIN }
-			}
-			modifier = {
 				factor = 0
 				has_game_rule = { rule = GEA_path option = GEA_PATH_AUTDEM }
 			}
@@ -3066,10 +3062,6 @@ focus_tree = {
 			modifier = {
 				factor = 0.25
 				has_war = yes
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = { rule = INC_revolt option = INC_REVOLT_VIN }
 			}
 		}
 
@@ -3670,7 +3662,6 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					OR = {
-						is_core_of = INC
 						is_core_of = VIN
 						is_core_of = CAM
 						is_core_of = LAO

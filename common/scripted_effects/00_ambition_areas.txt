@@ -1072,21 +1072,6 @@ create_ambition_areas = {
 		}
 		set_variable = { ambition_area_@IVO = 1 }
 	}
-	# INC = Indochina
-	if = {
-		limit = {
-			OR = {
-				is_core_of = INC
-				is_claimed_by = INC
-				### Truly the 'Indochinese Union' if Burma isn't Syndie ###
-				region = 196 # Indochina Proper
-				region = 142 # Siam
-				region = 194 # Malay Peninsular
-				is_burma = yes
-			}
-		}
-		set_variable = { ambition_area_@INC = 1 }
-	}
 	# INS = Indonesia
 	if = {
 		limit = {

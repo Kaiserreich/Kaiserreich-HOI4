@@ -1170,6 +1170,17 @@ CEN_MIO_size_and_funds_transfer = {
 	clear_array = PREV.current_mio_funds
 }
 
+CEN_reset_capital_victory_points = {
+	# Reset all Central American Capital VPs to their default values when CEN gets annexed
+	hidden_effect = {
+		313 = { set_victory_points = { province = 10886 value = 10 } } #Guatemala City
+		314 = { set_victory_points = { province = 12823 value = 10 } } #San Salvador
+		312 = { set_victory_points = { province = 13207 value = 6 } } #Tegucigalpa
+		317 = { set_victory_points = { province = 13437 value = 5 } } #Managua
+		316 = { set_victory_points = { province = 13087 value = 8 } } #San José
+	}
+}
+
 CEN_reset_ideas = {
 	load_focus_tree = generic_focus
 	drop_cosmetic_tag = yes
@@ -1812,6 +1823,18 @@ CEN_belize_scripted_peace_effect = {
 			}
 			311 = { transfer_state_to = PREV } # Belize
 		}
+		if = {
+			limit = {
+				1126 = { is_claim_or_core_of_PREV = yes }
+				var:304.owner = {
+					is_ally_with = event_target:CEN_scripted_peace_target
+					has_capitulated = no
+					owns_state = 1126
+				}
+				controls_state = 1126 # Western Panama
+			}
+			1126 = { transfer_state_to = PREV } # Western Panama
+		}
 		## If Panama Canal is controlled by CEN and owned by IMP, USA, etc., give to CEN
 		if = {
 			limit = {
@@ -2450,6 +2473,141 @@ ELS_puppet_setup = {
 			popularity = 60
 		}
 		set_country_flag = ELS_labour_victory_flag
+	}
+
+	if = {
+		limit = { has_completed_focus = ELS_vanguard_stands }
+		if = {
+			limit = { has_completed_focus = ELS_pro_patria_stands }
+			if = {
+				limit = { has_completed_focus = ELS_expand_military_youth }
+				uncomplete_national_focus = {
+					focus = ELS_expand_military_youth
+					uncomplete_children = yes
+				}
+				remove_ideas = {
+					ELS_propatriaholds
+					ELS_propatriaholds2
+					ELS_propatriaholds3
+					ELS_propatriaholds4
+					ELS_propatriaholds5
+					ELS_militirazation2_right
+				}
+			}
+			if = {
+				limit = { has_government = paternal_autocrat }
+				complete_national_focus = ELS_new_guard
+				uncomplete_national_focus = { focus = ELS_pro_patria_stands }
+			}
+			else = {
+				uncomplete_national_focus = {
+					focus = ELS_vanguard_stands
+					uncomplete_children = yes
+				}
+				remove_ideas = {
+					ELS_cleanse_gommies
+					ELS_militirazation1
+					ELS_militirazation15
+				}
+			}
+		}
+		else_if = {
+			limit = { NOT = { has_government = paternal_autocrat } }
+			uncomplete_national_focus = {
+				focus = ELS_vanguard_stands
+				uncomplete_children = yes
+			}
+			remove_ideas = {
+				ELS_new_guard1
+				ELS_new_guard2
+				ELS_new_guard3
+				ELS_new_guard4
+				ELS_new_guard5
+				ELS_cleanse_gommies
+				ELS_militirazation1
+				ELS_militirazation15
+				ELS_militirazation2_left
+			}
+		}
+	}
+	else_if = {
+		limit = { has_government = paternal_autocrat }
+		complete_national_focus = ELS_vanguard_stands
+		complete_national_focus = ELS_new_guard
+	}
+	if = {
+		limit = { has_completed_focus = ELS_revolutionary_ideals }
+		if = {
+			limit = {
+				has_completed_focus = ELS_social_ideal
+				NOT = { has_government = syndicalist }
+			}
+			uncomplete_national_focus = {
+				focus = ELS_social_ideal
+				uncomplete_children = yes
+			}
+			remove_ideas = {
+				ELS_classless_society
+				ELS_native_rights_for_all
+				ELS_divided_no_more
+				ELS_no_censorship
+				ELS_military_purge
+			}
+		}
+		if = {
+			limit = { has_completed_focus = ELS_presidency_restoration }
+			if = {
+				limit = { has_government = social_democrat }
+				if = {
+					limit = { has_completed_focus = ELS_national_liberal_comeback }
+					uncomplete_national_focus = {
+						focus = ELS_national_liberal_comeback
+						uncomplete_children = yes
+					}
+					remove_ideas = {
+						ELS_democratic_salvador2
+						ELS_democratic_salvador3right
+					}
+					add_ideas = ELS_democratic_salvador
+				}
+				else_if = {
+					limit = { has_completed_focus = ELS_military_back }
+					uncomplete_national_focus = {
+						focus = ELS_military_back
+						uncomplete_children = yes
+					}
+					remove_ideas = {
+						ELS_remade_constitution
+						ELS_remade_constitution2
+					}
+					add_ideas = ELS_democratic_salvador
+				}
+			}
+			else = {
+				uncomplete_national_focus = {
+					focus = ELS_presidency_restoration
+					uncomplete_children = yes
+				}
+				remove_ideas = {
+					ELS_democratic_salvador
+					ELS_unruly_military
+					ELS_unruly_military2
+					ELS_democratic_salvador2
+					ELS_democratic_salvador3left
+					ELS_democratic_salvador3right
+					ELS_remade_constitution
+					ELS_remade_constitution2
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = { NOT = { has_government = paternal_autocrat } }
+		complete_national_focus = ELS_revolutionary_ideals
+		if = {
+			limit = { has_government = social_democrat }
+			unlock_national_focus = ELS_presidency_restoration
+		}
 	}
 }
 
@@ -3319,6 +3477,36 @@ PAN_transfer_characters = {
 	PAN_roberto_francisco_chiari_remon = {
 		set_character_flag = PAN_character
 		set_nationality = CEN
+	}
+}
+
+PAN_lower_economic_debuff = {
+	if = {
+		limit = { has_idea = PAN_economic_depression }
+		remove_ideas = PAN_economic_depression
+	}
+	else_if = {
+		limit = { has_idea = PAN_economic_recession_3 }
+		swap_ideas = {
+			add_idea = PAN_economic_recession_2
+			remove_idea = PAN_economic_recession_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = PAN_economic_recession_2 }
+		swap_ideas = {
+			add_idea = PAN_economic_recession_1
+			remove_idea = PAN_economic_recession_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = PAN_economic_recession_1 }
+		remove_ideas = PAN_economic_recession_1
+	}
+	else = {
+		effect_tooltip = {
+			remove_ideas = PAN_economic_depression
+		}
 	}
 }
 

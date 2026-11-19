@@ -486,9 +486,12 @@ JAP_no_naval_invasion = {
 						days < 90
 					}
 				}
-				any_enemy_country = {
-					is_chinese_tag = yes
-					num_divisions > JAP.num_divisions
+				AND = {
+					any_enemy_country = {
+						is_chinese_tag = yes
+						check_variable = { num_divisions > JAP.num_divisions }
+					}
+					check_variable = { JAP.num_divisions < 121 }
 				}
 				any_allied_country = {
 					is_chinese_tag = yes

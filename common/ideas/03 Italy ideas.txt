@@ -1,0 +1,500 @@
+
+ideas = {
+	industrial_concern = {
+		agip = {
+			on_add = { log = "[GetLogRoot]: add idea agip" }
+			picture = ITA_agip
+			allowed = { is_playable_italian_tag = yes }
+			traits = { chemical_producer }
+			modifier = {
+				country_resource_oil = 10
+				production_oil_factor = 0.1
+			}
+			research_bonus = {
+				synth_resources = 0.15
+			}
+		}
+		italian_state_railways = {
+			on_add = { log = "[GetLogRoot]: add idea italian_state_railways" }
+			picture = ITA_ferrovie_dello_stato_italiane
+			allowed = { is_playable_italian_tag = yes }
+			traits = { railroad_company }
+			modifier = {
+				production_speed_rail_way_factor = 0.15
+				production_speed_supply_node_factor = 0.15
+			}
+			equipment_bonus = {
+				train_equipment = {
+					instant = yes
+					build_cost_ic = -0.25
+					armor_value = 0.1
+				}
+			}
+		}
+		danieli = {
+			on_add = { log = "[GetLogRoot]: add idea danieli" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				160 = { owner = { is_ally_with = ROOT } } #Venetia
+			}
+			traits = { industrial_manufacturer }
+			modifier = {
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+			}
+			research_bonus = {
+				industry = 0.15
+			}
+		}
+		italcementi = {
+			on_add = { log = "[GetLogRoot]: add idea italcementi" }
+			picture = ITA_italcementi
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				158 = { owner = { is_ally_with = ROOT } } #Piedmont
+			}
+			traits = { construction_company }
+			modifier = {
+				production_speed_buildings_factor = 0.05
+			}
+			research_bonus = {
+				construction_tech = 0.15
+			}
+		}
+		astaldi = {
+			on_add = { log = "[GetLogRoot]: add idea astaldi" }
+			picture = ITA_astaldi
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				2 = { owner = { is_ally_with = ROOT } } #Latium
+			}
+			traits = { construction_company }
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_dockyard_factor = 0.1
+			}
+			research_bonus = {
+				construction_tech = 0.15
+			}
+		}
+		ansaldo = {
+			on_add = { log = "[GetLogRoot]: add idea ansaldo" }
+			picture = AUS_ansaldo
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				if = {
+					limit = { original_tag = SRD }
+					has_completed_focus = SRD_ansaldo_contracts
+				}
+				else_if = {
+					limit = { has_dlc_aat = no }
+					has_idea = ansaldo_artillery
+					has_idea = ansaldo_tanks
+				}
+				else = {
+					mio:ITALY_ansaldo_tank_organisation = { has_mio_size > 4 }
+				}
+			}
+			traits = { industrial_conglomerate }
+			modifier = {
+				min_export = 0.15
+				political_power_factor = -0.05
+				production_speed_buildings_factor = 0.05
+				production_factory_max_efficiency_factor = 0.15
+			}
+		}
+		ducati = {
+			on_add = { log = "[GetLogRoot]: add idea ducati" }
+			picture = ITA_ducati_energia
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				838 = { owner = { is_ally_with = ROOT } } #Liguria
+			}
+			traits = { electronics_manufacturer }
+			modifier = {
+				recon_factor = 0.05
+				coordination_bonus = 0.1
+			}
+			research_bonus = {
+				electronics = 0.15
+			}
+		}
+		ilva = {
+			on_add = { log = "[GetLogRoot]: add idea ilva" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				162 = { owner = { is_ally_with = ROOT } } #Tuscany
+			}
+			traits = { steelworks }
+			modifier = {
+				country_resource_steel = 12
+				local_resources_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.15
+			}
+			research_bonus = {
+				excavation_tech = 0.15
+			}
+		}
+		edison = {
+			on_add = { log = "[GetLogRoot]: add idea edison" }
+			picture = generic_energy_concern #TEMP
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				159 = { owner = { is_ally_with = ROOT } } #Lombardy
+			}
+			traits = { energy_company }
+			modifier = {
+				land_reinforce_rate = 0.05
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		societa_meridionale_elettricita = {
+			on_add = { log = "[GetLogRoot]: add idea societa_meridionale_elettricita" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				117 = { owner = { is_ally_with = ROOT } } #Campania
+			}
+			traits = { energy_company }
+			modifier = {
+				consumer_goods_factor = -0.15
+			}
+		}
+	}
+
+	materiel_manufacturer = {
+		designer = yes
+
+		beretta = {
+			on_add = { log = "[GetLogRoot]: add idea beretta" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				159 = { owner = { is_ally_with = ROOT } } #Lombardy
+			}
+			traits = { infantry_equipment_manufacturer_quality }
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+		}
+		armiguerra = {
+			on_add = { log = "[GetLogRoot]: add idea armiguerra" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				838 = { owner = { is_ally_with = ROOT } } #Liguria
+			}
+			traits = { infantry_equipment_manufacturer_offence }
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+		}
+		fabbrica_darmi_torre_annunziata = {
+			on_add = { log = "[GetLogRoot]: add idea fabbrica_darmi_torre_annunziata" }
+			picture = generic_infantry_equipment_manufacturer_3
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				117 = { owner = { is_ally_with = ROOT } } #Campania
+			}
+			traits = { infantry_equipment_manufacturer_cheap }
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+		}
+
+		breda = {
+			on_add = { log = "[GetLogRoot]: add idea breda" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				159 = { owner = { is_ally_with = ROOT } } #Lombardy
+			}
+			traits = { support_equipment_manufacturer }
+			research_bonus = {
+				support_tech = 0.15
+			}
+		}
+
+		ansaldo_artillery = {
+			on_add = { log = "[GetLogRoot]: add idea ansaldo_artillery" }
+			picture = AUS_ansaldo
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				838 = { owner = { is_ally_with = ROOT } } #Liguria
+			}
+			traits = { artillery_equipment_manufacturer_cheap }
+			research_bonus = {
+				artillery = 0.15
+			}
+		}
+		acciaierie_di_terni = {
+			on_add = { log = "[GetLogRoot]: add idea acciaierie_di_terni" }
+			picture = ITA_terni_industria_ed_elettricita
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				1005 = { owner = { is_ally_with = ROOT } } #Umbria
+			}
+			traits = { artillery_equipment_manufacturer_defence }
+			research_bonus = {
+				artillery = 0.15
+			}
+		}
+
+		fiat_motorised = {
+			on_add = { log = "[GetLogRoot]: add idea fiat_motorised" }
+			name = fiat
+			picture = fiat
+			allowed = {
+				is_playable_italian_tag = yes
+				NOT = { original_tag = SRD } #has custom version with different triggers
+			}
+			available = {
+				158 = { owner = { is_ally_with = ROOT } } #Piedmont
+			}
+			traits = { motorised_equipment_manufacturer }
+			research_bonus = {
+				motorized_equipment = 0.15
+			}
+		}
+		officine_meccaniche = {
+			on_add = { log = "[GetLogRoot]: add idea officine_meccaniche" }
+			picture = ITA_officine_meccaniche
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				159 = { owner = { is_ally_with = ROOT } } #Lombardy
+			}
+			traits = { mechanised_equipment_manufacturer_cheap }
+			research_bonus = {
+				motorized_equipment = 0.15
+			}
+		}
+		lancia = {
+			on_add = { log = "[GetLogRoot]: add idea lancia" }
+			allowed = {
+				is_playable_italian_tag = yes
+				has_dlc_lar = yes
+			}
+			available = {
+				158 = { owner = { is_ally_with = ROOT } } #Piedmont
+			}
+			traits = { armored_car_manufacturer }
+			research_bonus = {
+				armor = 0.15
+			}
+		}
+	}
+
+	tank_manufacturer = {
+		designer = yes
+
+		fiat = {
+			on_add = { log = "[GetLogRoot]: add idea fiat" }
+			allowed = {
+				is_playable_italian_tag = yes
+				NOT = { original_tag = SRD } #has custom version with different triggers
+			}
+			available = {
+				158 = { owner = { is_ally_with = ROOT } } #Piedmont
+			}
+			traits = { mobile_tank_manufacturer }
+			research_bonus = {
+				armor = 0.15
+			}
+		}
+		ansaldo_tanks = {
+			on_add = { log = "[GetLogRoot]: add idea ansaldo_tanks" }
+			picture = AUS_ansaldo
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				838 = { owner = { is_ally_with = ROOT } } #Liguria
+			}
+			traits = { general_tank_manufacturer }
+			research_bonus = {
+				armor = 0.15
+			}
+		}
+	}
+
+	naval_manufacturer = {
+		designer = yes
+
+		stabilimento_tecnico_triestino_italy = {
+			on_add = { log = "[GetLogRoot]: add idea stabilimento_tecnico_triestino_italy" }
+			name = stabilimento_tecnico_triestino
+			picture = AUS_stabilimento_tecnico_triestino
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				488 = { owner = { is_ally_with = ROOT } } #Trieste
+			}
+			traits = {
+				task_force_ship_manufacturer
+			}
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+		cantieri_navali_riuniti = {
+			on_add = { log = "[GetLogRoot]: add idea cantieri_navali_riuniti" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				838 = { owner = { is_ally_with = ROOT } } #Liguria
+			}
+			traits = { escort_ship_manufacturer }
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+		cantieri_navali_livorno = {
+			on_add = { log = "[GetLogRoot]: add idea cantieri_navali_livorno" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				162 = { owner = { is_ally_with = ROOT } } #Tuscany
+			}
+			traits = { battle_line_ship_manufacturer }
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+		cantiere_navale_ancona = {
+			on_add = { log = "[GetLogRoot]: add idea cantiere_navale_ancona" }
+			picture = ITA_cantera_navale_di_ancona
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				157 = { owner = { is_ally_with = ROOT } } #Marches
+			}
+			traits = { raider_ship_manufacturer }
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+		stabilimenti_navali_meccanici_napoletani = {
+			on_add = { log = "[GetLogRoot]: add idea stabilimenti_navali_meccanici_napoletani" }
+			picture = ITA_navalmeccanica
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				117 = { owner = { is_ally_with = ROOT } } #Campania
+			}
+			traits = { refurbishment_repair_dockyard }
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+		cantieri_navali_tosi_di_taranto = {
+			on_add = { log = "[GetLogRoot]: add idea cantieri_navali_tosi_di_taranto" }
+			picture = ITA_cantieri_navali_tosi
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				837 = { owner = { is_ally_with = ROOT } } #Apulia
+			}
+			traits = { submarine_manufacturer }
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+		arsenale_venezia = {
+			on_add = { log = "[GetLogRoot]: add idea arsenale_venezia" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				160 = { owner = { is_ally_with = ROOT } } #Venetia
+			}
+			traits = { small_fleet_manufacturer }
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+	}
+
+	aircraft_manufacturer = {
+		designer = yes
+
+		macchi = {
+			on_add = { log = "[GetLogRoot]: add idea macchi" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				159 = { owner = { is_ally_with = ROOT } } #Lombardy
+			}
+			traits = { light_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		savoia_marchetti = {
+			on_add = { log = "[GetLogRoot]: add idea savoia_marchetti" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				159 = { owner = { is_ally_with = ROOT } } #Lombardy
+			}
+			traits = { multi_role_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		caproni = {
+			on_add = { log = "[GetLogRoot]: add idea caproni" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				159 = { owner = { is_ally_with = ROOT } } #Lombardy
+			}
+			traits = { cas_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		piaggio = {
+			on_add = { log = "[GetLogRoot]: add idea piaggio" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				838 = { owner = { is_ally_with = ROOT } } #Liguria
+			}
+			traits = { heavy_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		imam = {
+			on_add = { log = "[GetLogRoot]: add idea imam" }
+			picture = ITA_imam
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				117 = { owner = { is_ally_with = ROOT } } #Campania
+			}
+			traits = { naval_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		fiat_aviazione = {
+			on_add = { log = "[GetLogRoot]: add idea fiat_aviazione" }
+			picture = ITA_fiat_aviazione
+			allowed = {
+				is_playable_italian_tag = yes
+				NOT = { original_tag = SRD } #has custom version with different triggers
+			}
+			available = {
+				158 = { owner = { is_ally_with = ROOT } } #Piedmont
+			}
+			traits = { range_focused_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		reggiane = {
+			on_add = { log = "[GetLogRoot]: add idea reggiane" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				1004 = { owner = { is_ally_with = ROOT } } #Emilia
+			}
+			traits = { high_agility_fighter_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		cmasa = {
+			on_add = { log = "[GetLogRoot]: add idea cmasa" }
+			allowed = { is_playable_italian_tag = yes }
+			available = {
+				162 = { owner = { is_ally_with = ROOT } } #Tuscany
+			}
+			traits = { medium_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+	}
+}

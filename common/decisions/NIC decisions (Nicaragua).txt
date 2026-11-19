@@ -260,6 +260,7 @@ NIC_spreading_revolution_decisions = {
 			custom_effect_tooltip = NIC_government_distrusted
 			set_country_flag = NIC_government_distrusted_flag
 			hidden_effect = {
+				HON = { set_truce = { target = ROOT days = 90 } }
 				if = {
 					limit = { has_government = social_liberal }
 					country_event = { id = nicaragua_events.44 days = 14 }

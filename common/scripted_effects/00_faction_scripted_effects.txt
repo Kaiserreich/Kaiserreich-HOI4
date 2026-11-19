@@ -153,3 +153,12 @@ apply_former_faction_attributes = {
 	}
 	clear_array = former_faction_attributes
 }
+
+#scope:faction does not allow accessing its variables through direct scoping, so this serves as a workaround
+set_faction_id_variable = {
+	scope:faction = { set_variable = { PREV.faction_var = THIS } }
+}
+
+clear_faction_id_variable = {
+	clear_variable = faction_var
+}

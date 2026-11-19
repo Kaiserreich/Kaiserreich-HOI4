@@ -1,0 +1,13 @@
+VIN_has_VNQDD_government_trigger = {
+	OR = {
+		has_country_leader = { character = VIN_nguyen_thai_hoc }
+		has_country_leader = { character = VIN_nguyen_binh }
+		has_country_leader = { character = VIN_pho_duc_chinh }
+	}
+}
+
+VIN_can_form_indochina = {
+	NOT = { tag = INC }
+	NOT = { has_cosmetic_tag = VIN_DAI }
+	is_monarchy = no
+}

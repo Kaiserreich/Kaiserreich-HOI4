@@ -589,12 +589,16 @@ irregulars = {
 			factor = 200
 			OR = {
 				tag = CHI
-				tag = GXC
 				tag = ANQ
 				tag = QIE
 				tag = SHD
 				tag = SZC
 			}
+		}
+		modifier = {
+			factor = 200
+			tag = GXC
+			check_variable = { num_battalions_with_type@militia < num_of_military_factories }
 		}
 	}
 
@@ -665,6 +669,14 @@ peoples_war = {
 		modifier = {
 			factor = 2
 			is_major = no
+		}
+		modifier = {
+			factor = 200
+			OR = {
+				tag = SHX
+				tag = GXC
+			}
+			check_variable = { num_battalions_with_type@militia > num_of_military_factories }
 		}
 	}
 

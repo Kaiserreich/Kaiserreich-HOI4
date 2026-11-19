@@ -194,7 +194,7 @@ on_actions = {
 					#Minor Small Arms Arsenals
 					597 = { CHN_setup_minor_small_arms_arsenal_decision_effect = yes } #Jinan
 					605 = { CHN_setup_minor_small_arms_arsenal_decision_effect = yes } #Chengdu
-					1051 = { CHN_setup_minor_small_arms_arsenal_decision_effect = yes } #Guiyang
+					603 = { CHN_setup_minor_small_arms_arsenal_decision_effect = yes } #Guiyang
 					594 = { CHN_setup_minor_small_arms_arsenal_decision_effect = yes } #Nanning
 					#Minor Support Equipment Arsenals
 					325 = { CHN_setup_minor_support_equipment_arsenal_decision_effect = yes } #Yunnan
@@ -446,9 +446,9 @@ on_actions = {
 				set_variable = { 1015.chinese_province_state = THIS } #Ya'an
 			}
 
-			1051 = { #Guizhou Province guizhou_province_state
-				set_variable = { 603.chinese_province_state = THIS } #Qiangzhong
-				set_variable = { 1051.chinese_province_state = THIS } #Guiyang
+			603 = { #Guizhou Province guizhou_province_state
+				set_variable = { 603.chinese_province_state = THIS } #Guiyang
+				set_variable = { 1051.chinese_province_state = THIS } #Anshun
 				set_variable = { 1052.chinese_province_state = THIS } #Kaili
 			}
 
@@ -483,6 +483,7 @@ on_actions = {
 
 			886 = { #Jilin Province jilin_province_state
 				set_variable = { 717.chinese_province_state = THIS } #Hejiang
+				set_variable = { 885.chinese_province_state = THIS } #Songjiang
 				set_variable = { 886.chinese_province_state = THIS } #Jilin
 				set_variable = { 408.chinese_province_state = THIS } #Vladivostok
 				set_variable = { 409.chinese_province_state = THIS } #Khabarovsk
@@ -494,7 +495,6 @@ on_actions = {
 				set_variable = { 714.chinese_province_state = THIS } #Qiqihar
 				set_variable = { 883.chinese_province_state = THIS } #Aigun
 				set_variable = { 884.chinese_province_state = THIS } #Hulunbuir
-				set_variable = { 885.chinese_province_state = THIS } #Songjiang
 				set_variable = { 560.chinese_province_state = THIS } #Nikolayevsk
 				set_variable = { 561.chinese_province_state = THIS } #Amur
 				set_variable = { 657.chinese_province_state = THIS } #Blagoveshchensk
@@ -2354,7 +2354,7 @@ on_actions = {
 								#Guangzhou/Guangdong is already covered above
 								state = 594 #Nanning - Guangxi
 								state = 602 #Changsha - Hunan
-								state = 1051 #Guiyang - Guizhou
+								state = 603 #Guiyang - Guizhou
 								state = 325 #Kunming - Yunnan
 								#Chengdu - Sichuan gonna lump with Chongqing
 								state = 283 #Langzhou - Gansu - going to give the Ma's a pity province
@@ -2438,7 +2438,7 @@ on_actions = {
 								#Guangzhou/Guangdong is already covered above
 								state = 594 #Nanning - Guangxi
 								state = 602 #Changsha - Hunan
-								state = 1051 #Guiyang - Guizhou
+								state = 603 #Guiyang - Guizhou
 								state = 325 #Kunming - Yunnan
 								#Chengdu - Sichuan gonna lump with Chongqing
 								state = 283 #Langzhou - Gansu - going to give the Ma's a pity province
@@ -2659,7 +2659,7 @@ on_actions = {
 								524 #Taipei - Taiwan Province
 								610 #Rehe - Rehe Province
 								716 #Shenyang - Fengtian Province
-								885 #Harbin - Heilongjiang Province
+								714 #Qiqihar - Heilongjiang Province
 								886 #Jilin - Jilin Province
 
 								#Northern China
@@ -2685,7 +2685,7 @@ on_actions = {
 								594 #Nanning - Guangxi Province
 								602 #Changsha - Hunan Province
 								605 #Chengdu - Sichuan Province
-								1051 #Guiyang - Guizhou Province
+								603 #Guiyang - Guizhou Province
 
 								#Western China
 								283 #Lanzhou - Gansu Province
@@ -2721,7 +2721,7 @@ on_actions = {
 								524 #Taipei - Taiwan Province
 								610 #Rehe - Rehe Province
 								716 #Shenyang - Fengtian Province
-								885 #Harbin - Heilongjiang Province
+								714 #Qiqihar - Heilongjiang Province
 								886 #Jilin - Jilin Province
 
 								#Northern China
@@ -2747,7 +2747,7 @@ on_actions = {
 								594 #Nanning - Guangxi Province
 								602 #Changsha - Hunan Province
 								605 #Chengdu - Sichuan Province
-								1051 #Guiyang - Guizhou Province
+								603 #Guiyang - Guizhou Province
 
 								#Western China
 								283 #Lanzhou - Gansu Province

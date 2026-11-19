@@ -411,8 +411,9 @@ focus_tree = {
 			hidden_effect = {
 				PAN = { remove_ideas = COS_CEN_ties_3 }
 			}
-			304 = { remove_claim_and_add_core_of_ROOT = yes }
+			1126 = { remove_claim_and_add_core_of_ROOT = yes }
 			685 = { remove_claim_and_add_core_of_ROOT = yes }
+			304 = { remove_claim_and_add_core_of_ROOT = yes }
 			custom_effect_tooltip = characters_will_be_recruited
 			PAN = {
 				character_list_tooltip = {
@@ -2000,12 +2001,16 @@ focus_tree = {
 				add_state_claim = 316 #Costa Rica
 			}
 			if = {
-				limit = { 304 = { is_claim_or_core_of_ROOT = no } }
-				add_state_claim = 304 #Panama
+				limit = { 1126 = { is_claim_or_core_of_ROOT = no } }
+				add_state_claim = 1126 #Western Panama
 			}
 			if = {
 				limit = { 685 = { is_claim_or_core_of_ROOT = no } }
 				add_state_claim = 685 #Panama Canal
+			}
+			if = {
+				limit = { 304 = { is_claim_or_core_of_ROOT = no } }
+				add_state_claim = 304 #Eastern Panama
 			}
 			custom_effect_tooltip = CEN_foreign_expansion_tooltip
 		}

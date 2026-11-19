@@ -33,20 +33,20 @@ on_actions = {
 				input = collection:italian_countries
 				if = {
 					limit = { NOT = { tag = SIC } }
-					activate_targeted_decision = { decision = SIC_develop_campania_steel_mines target = 117 }
-					activate_targeted_decision = { decision = SIC_develop_campania_aluminium_mines target = 117 }
+					activate_targeted_decision = { decision = italy_develop_campania_steel_mines target = 117 }
+					activate_targeted_decision = { decision = italy_develop_campania_aluminium_mines target = 117 }
 				}
 				if = {
 					limit = { NOT = { tag = SRD } }
-					activate_targeted_decision = { decision = SRD_develop_cagliari_coal_mines target = 114 }
+					activate_targeted_decision = { decision = italy_develop_cagliari_coal_mines target = 114 }
 				}
 				if = {
 					limit = { NOT = { tag = LOM } }
-					activate_targeted_decision = { decision = LOM_develop_lombardy_coal_mines target = 159 }
+					activate_targeted_decision = { decision = italy_develop_lombardy_coal_mines target = 159 }
 				}
 				if = {
 					limit = { NOT = { tag = TUS } }
-					activate_targeted_decision = { decision = TUS_develop_tuscany_coal_mines target = 162 }
+					activate_targeted_decision = { decision = italy_develop_tuscany_coal_mines target = 162 }
 				}
 			}
 

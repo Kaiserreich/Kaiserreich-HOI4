@@ -64,7 +64,10 @@ on_actions = {
 						country_event = { id = YUN.lategame.400 days = 3 } #The Northern Expedition Avenged
 					}
 					else_if = {
-						limit = { tag = UPC }
+						limit = {
+							tag = UPC
+							NOT = { has_country_flag = YUN_UPC_satellite_narrative_flag }
+						}
 						country_event = { id = YUN.lategame.600 days = 3 } #Cai E’s Crusade Completed
 					}
 					else_if = {

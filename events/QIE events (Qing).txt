@@ -3514,8 +3514,7 @@ country_event = {
 			remove_idea = QIE_legitimacy_of_the_monarchy
 			add_idea = QIE_legitimacy_of_the_republic_1
 		}
-		effect_tooltip = { set_cosmetic_tag = QIE }
-		drop_cosmetic_tag = yes
+		set_cosmetic_tag = QIE_government
 		promote_character = {
 			character = QIE_wu_peifu
 			ideology = authoritarian_democrat_subtype
@@ -4176,8 +4175,7 @@ country_event = {
 			add_idea = QIE_legitimacy_of_the_republic_1
 		}
 		add_political_power = 15
-		effect_tooltip = { set_cosmetic_tag = QIE }
-		drop_cosmetic_tag = yes #back to zhili clique
+		set_cosmetic_tag = QIE_government
 		promote_character = {
 			character = QIE_wu_peifu
 			ideology = authoritarian_democrat_subtype
@@ -5544,7 +5542,6 @@ country_event = { #inaugurating the new government
 	option = {
 		log = "[GetLogInfo]: event qing_focus_events.9 option qing_focus_events.9.a"
 		name = qing_focus_events.9.a #excellent!
-		set_cosmetic_tag = QIE_government
 		set_politics = {
 			ruling_party = authoritarian_democrat
 		}

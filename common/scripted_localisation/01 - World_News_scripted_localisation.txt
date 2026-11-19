@@ -398,3 +398,207 @@ defined_text = {
 		localization_key = "GFX_news_event_CHN_entente_peace"
 	}
 }
+
+defined_text = { # this scripted loc concerns the capture of central morocco, and the various statuses it can have
+	name = city_capture_events_313_imperial_cities_captured
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 10070 # Rabat
+				NOT = {
+					controls_province = 11987 # Fez
+					controls_province = 7100 # Meknes
+					controls_province = 4108 # Marrakesh
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_rabat
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 10070 # Rabat
+				controls_province = 4108 # Marrakesh
+				NOT = {
+					controls_province = 11987 # Fez
+					controls_province = 7100 # Meknes
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_rabat_marrakesh
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 11987 # Fez
+				NOT = {
+					controls_province = 10070 # Rabat
+					controls_province = 4108 # Marrakesh
+					controls_province = 7100 # Meknes
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_fez
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 11987 # Fez
+				controls_province = 4108 # Marrakesh
+				NOT = {
+					controls_province = 10070 # Rabat
+					controls_province = 7100 # Meknes
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_fez_marrakesh
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 7100 # Meknes
+				NOT = {
+					controls_province = 10070 # Rabat
+					controls_province = 11987 # Fez
+					controls_province = 4108 # Marrakesh
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_meknes
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 7100 # Meknes
+				controls_province = 4108 # Marrakesh
+				NOT = {
+					controls_province = 10070 # Rabat
+					controls_province = 11987 # Fez
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_meknes_marrakesh
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 10070 # Rabat
+				controls_province = 7100 # Meknes
+				NOT = {
+					controls_province = 4108 # Marrakesh
+					controls_province = 11987 # Fez
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_rabat_meknes
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 10070 # Rabat
+				controls_province = 7100 # Meknes
+				controls_province = 4108 # Marrakesh
+				NOT = {
+					controls_province = 11987 # Fez
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_rabat_meknes_marrakesh
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 10070 # Rabat
+				controls_province = 11987 # Fez
+				NOT = {
+					controls_province = 7100 # Meknes
+					controls_province = 4108 # Marrakesh
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_rabat_fez
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 10070 # Rabat
+				controls_province = 11987 # Fez
+				controls_province = 4108 # Marrakesh
+				NOT = {
+					controls_province = 7100 # Meknes
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_rabat_fez_marrakesh
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 11987 # Fez
+				controls_province = 7100 # Meknes
+				NOT = {
+					controls_province = 10070 # Rabat
+					controls_province = 4108 # Marrakesh
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_fez_meknes
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 11987 # Fez
+				controls_province = 7100 # Meknes
+				controls_province = 4108 # Marrakesh
+				NOT = {
+					controls_province = 10070 # Rabat
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_fez_meknes_marrakesh
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 10070 # Rabat
+				controls_province = 11987 # Fez
+				controls_province = 7100 # Meknes
+				NOT = {
+					controls_province = 4108 # Marrakesh
+				}
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_rabat_fez_meknes
+	}
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 10070 # Rabat
+				controls_province = 11987 # Fez
+				controls_province = 7100 # Meknes
+				controls_province = 4108 # Marrakesh
+			}
+		}
+		localization_key = city_capture_events_313_imperial_cities_captured_rabat_fez_meknes_marrakesh
+	}
+}
+
+defined_text = { # this scripted loc concerns the capture of casablanca within city_capture_events.313
+	name = city_capture_events_313_casablanca_captured
+	text = {
+		trigger = {
+			FROM = {
+				controls_province = 7069 # Casablanca
+			}
+		}
+		localization_key = city_capture_events_313_casablanca_captured_yes
+	}
+	text = {
+		trigger = {
+			FROM = {
+				NOT = { controls_province = 7069 } # Casablanca
+			}
+		}
+		localization_key = city_capture_events_313_casablanca_captured_no
+	}
+}

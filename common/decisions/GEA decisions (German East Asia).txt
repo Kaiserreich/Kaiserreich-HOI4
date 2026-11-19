@@ -10,7 +10,7 @@ GEA_indochina_war_decisions = {
 			original_tag = GEA
 		}
 		visible = {
-			INC = { has_idea = INC_internationale_support }
+			VIN = { has_idea = VIN_internationale_support }
 		}
 
 		cost = 0
@@ -20,7 +20,7 @@ GEA_indochina_war_decisions = {
 		ai_will_do = { factor = 100 }
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GEA_start_naval_blockade"
-			INC = { country_event = { id = indochina_events.5 days = 3 } }
+			VIN = { country_event = { id = indochina_events.5 days = 3 } }
 		}
 		fixed_random_seed = no
 	}
@@ -39,7 +39,7 @@ GEA_indochina_war_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete GEA_shelling_on_Saigon"
 			add_war_support = 0.03
-			INC = { country_event = indochina_events.80 }
+			VIN = { country_event = indochina_events.80 }
 		}
 		fixed_random_seed = no
 	}
@@ -53,7 +53,7 @@ GEA_indochina_war_decisions = {
 			divisions_in_state = { state = 671 size > 2 }
 		}
 		visible = {
-			check_variable = { INC.guerilla_activity > 10 }
+			check_variable = { VIN.guerilla_activity > 10 }
 		}
 
 		highlight_states = {
@@ -94,7 +94,7 @@ GEA_indochina_war_decisions = {
 
 		cancel_trigger = {
 			divisions_in_state = { state = 671 size < 3 }
-			NOT = { has_war_with = INC }
+			NOT = { has_war_with = VIN }
 		}
 
 		highlight_states = {
@@ -110,7 +110,7 @@ GEA_indochina_war_decisions = {
 		timeout_effect = {
 			log = "[GetLogRoot]: Decision timeout GEA_maintain_Tonkin_control"
 			custom_effect_tooltip = reduce_10_guerilla_tooltip
-			add_to_variable = { INC.guerilla_activity = -10 }
+			add_to_variable = { VIN.guerilla_activity = -10 }
 		}
 		fixed_random_seed = no
 	}
@@ -121,7 +121,7 @@ GEA_indochina_war_decisions = {
 			has_equipment = { infantry_equipment > 250 }
 		}
 		visible = {
-			check_variable = { INC.guerilla_activity > 10 }
+			check_variable = { VIN.guerilla_activity > 10 }
 		}
 
 		cost = 25
@@ -145,7 +145,7 @@ GEA_indochina_war_decisions = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove GEA_reinforce_police"
 			custom_effect_tooltip = reduce_10_guerilla_tooltip
-			add_to_variable = { INC.guerilla_activity = -10 }
+			add_to_variable = { VIN.guerilla_activity = -10 }
 		}
 		fixed_random_seed = no
 	}
@@ -183,7 +183,7 @@ GEA_indochina_war_decisions = {
 				amount = 10
 			}
 			custom_effect_tooltip = reduce_10_guerilla_tooltip
-			add_to_variable = { INC.guerilla_activity = -10 }
+			add_to_variable = { VIN.guerilla_activity = -10 }
 		}
 		fixed_random_seed = no
 	}
@@ -490,7 +490,7 @@ GEA_colonial_decisions = {
 		}
 
 		visible = {
-			NOT = { country_exists = INC }
+			NOT = { country_exists = VIN }
 			owns_state = 286
 			owns_state = 671
 			owns_state = 827
@@ -559,7 +559,7 @@ GEA_colonial_decisions = {
 		}
 
 		visible = {
-			NOT = { country_exists = INC }
+			NOT = { country_exists = VIN }
 			owns_state = 286
 			owns_state = 671
 			owns_state = 827

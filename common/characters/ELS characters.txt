@@ -13,7 +13,7 @@ characters = {
 		}
 		field_marshal = {
 			desc = ELS_agustin_farabundo_marti_high_command_desc
-			traits = { war_hero trickster inspirational_leader guerilla_fighter }
+			traits = { war_hero commando inspirational_leader }
 			skill = 2
 			attack_skill = 2
 			defense_skill = 2
@@ -42,7 +42,7 @@ characters = {
 		}
 		corps_commander = {
 			desc = ELS_feliciano_ama_commander_desc
-			traits = { war_hero }
+			traits = { light_infantry_officer war_hero }
 			skill = 1
 			attack_skill = 1
 			defense_skill = 1
@@ -88,10 +88,10 @@ characters = {
 		}
 		corps_commander = {
 			desc = ELS_salvador_castaneda_castro_army_chief_desc
-			traits = { infantry_officer hidden_sympathies }
+			traits = { career_officer infantry_officer hidden_sympathies }
 			skill = 2
-			attack_skill = 2
-			defense_skill = 1
+			attack_skill = 1
+			defense_skill = 2
 			planning_skill = 3
 			logistics_skill = 1
 		}
@@ -120,8 +120,8 @@ characters = {
 			skill = 2
 			attack_skill = 1
 			defense_skill = 3
-			planning_skill = 1
-			logistics_skill = 2
+			planning_skill = 2
+			logistics_skill = 1
 		}
 	}
 	ELS_maximiliano_hernandez_martinez = {
@@ -138,12 +138,12 @@ characters = {
 		}
 		field_marshal = {
 			desc = ELS_maximiliano_hernandez_martinez_commander_desc
-			traits = { inflexible_strategist harsh_leader infantry_officer }
+			traits = { politically_connected inflexible_strategist harsh_leader infantry_officer }
 			skill = 2
 			attack_skill = 1
 			defense_skill = 2
-			planning_skill = 1
-			logistics_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
 		}
 	}
 	ELS_andres_ignacio_menendez = {
@@ -156,18 +156,97 @@ characters = {
 		}
 		corps_commander = {
 			desc = ELS_andres_ignacio_menendez_commander_desc
-			traits = { career_officer trait_cautious }
+			traits = { trait_cautious }
 			skill = 2
 			attack_skill = 1
 			defense_skill = 2
-			planning_skill = 1
-			logistics_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
 		}
 		advisor = {
 			slot = political_advisor
 			idea_token = ELS_andres_ignacio_menendez_advisor
 			desc = ELS_andres_ignacio_menendez_commander_desc
 			traits = { KR_old_general }
+		}
+	}
+	ELS_jose_asensio_menendez = {
+		name = ELS_jose_asensio_menendez
+		portraits = {
+			army = {
+				small = GFX_portrait_ELS_jose_asensio_menendez_army_small
+				large = GFX_portrait_ELS_jose_asensio_menendez_army_large
+			}
+		}
+		corps_commander = {
+			desc = ELS_jose_asensio_menendez_army_chief_desc
+			traits = { career_officer infantry_officer hidden_sympathies }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 1
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = ELS_jose_asensio_menendez_advisor
+			desc = ELS_jose_asensio_menendez_army_chief_desc
+			available = {
+				has_democratic_government = yes
+				not_already_hired_except_as = political_advisor
+			}
+			traits = { KR_reformist_soldier }
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = ELS_jose_asensio_menendez_army_chief
+			available = {
+				not_already_hired_except_as = army_chief
+			}
+			traits = { KR_army_chief_organisational_2 }
+			cost = 100
+		}
+	}
+	ELS_alfonso_marroquin_calvo = {
+		name = ELS_alfonso_marroquin_calvo
+		portraits = {
+			army = {
+				small = GFX_portrait_ELS_alfonso_marroquin_calvo_army_small
+				large = GFX_portrait_ELS_alfonso_marroquin_calvo_army_large
+			}
+		}
+		corps_commander = {
+			desc = ELS_alfonso_marroquin_calvo_army_chief_desc
+			traits = { organizer hidden_sympathies }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 1
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = ELS_alfonso_marroquin_calvo_army_chief
+			available = {
+				if = {
+					limit = { tag = ELS }
+					not_already_hired_except_as = army_chief
+				}
+			}
+			traits = { KR_army_chief_drill_2 }
+			cost = 100
+		}
+		advisor = {
+			slot = theorist
+			idea_token = ELS_alfonso_marroquin_calvo_theorist
+			desc = ELS_alfonso_marroquin_calvo_army_chief_desc
+			ledger = army
+			available = {
+				not_already_hired_except_as = theorist
+			}
+			visible = { tag = ELS }
+			traits = { KR_military_theorist }
+			cost = 100
 		}
 	}
 	ELS_jose_castellanos_contreras = {
@@ -180,12 +259,12 @@ characters = {
 		}
 		corps_commander = {
 			desc = ELS_jose_castellanos_contreras_high_command_desc
-			traits = { career_officer artillery_specialist }
+			traits = { artillery_specialist }
 			skill = 2
 			attack_skill = 2
-			defense_skill = 2
+			defense_skill = 1
 			planning_skill = 2
-			logistics_skill = 1
+			logistics_skill = 2
 		}
 		advisor = {
 			slot = high_command
@@ -505,34 +584,6 @@ characters = {
 		}
 	}
 
-	ELS_jose_asensio_menendez = {
-		name = ELS_jose_asensio_menendez
-		portraits = {
-			army = {
-				small = GFX_portrait_ELS_jose_asensio_menendez_army_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = ELS_jose_asensio_menendez_advisor
-			desc = ELS_jose_asensio_menendez_army_chief_desc
-			available = {
-				has_democratic_government = yes
-				not_already_hired_except_as = political_advisor
-			}
-			traits = { KR_reformist_soldier }
-		}
-		advisor = {
-			slot = army_chief
-			idea_token = ELS_jose_asensio_menendez_army_chief
-			available = {
-				not_already_hired_except_as = army_chief
-			}
-			traits = { KR_army_chief_organisational_2 }
-			cost = 100
-		}
-	}
-
 	ELS_alberto_gomez_zarate = {
 		name = ELS_alberto_gomez_zarate
 		portraits = {
@@ -599,39 +650,6 @@ characters = {
 				has_intelligence_agency = yes
 			}
 			traits = { KR_head_of_intelligence }
-		}
-	}
-
-	ELS_alfonso_marroquin_calvo = {
-		name = ELS_alfonso_marroquin_calvo
-		portraits = {
-			army = {
-				small = GFX_Portrait_ELS_alfonso_marroquin_calvo_army_small
-			}
-		}
-		advisor = {
-			slot = army_chief
-			idea_token = ELS_alfonso_marroquin_calvo_army_chief
-			available = {
-				if = {
-					limit = { tag = ELS }
-					not_already_hired_except_as = army_chief
-				}
-			}
-			traits = { KR_army_chief_drill_2 }
-			cost = 100
-		}
-		advisor = {
-			slot = theorist
-			idea_token = ELS_alfonso_marroquin_calvo_theorist
-			desc = ELS_alfonso_marroquin_calvo_army_chief_desc
-			ledger = army
-			available = {
-				not_already_hired_except_as = theorist
-			}
-			visible = { tag = ELS }
-			traits = { KR_military_theorist }
-			cost = 100
 		}
 	}
 

@@ -1023,7 +1023,10 @@ GRE_regaining_greece = {
 			if = {
 				limit = {
 					is_in_faction = yes
-					faction_leader = { is_actual_major = yes }
+					faction_leader = {
+						is_actual_major = yes
+						NOT = { tag = BPL }
+					}
 				}
 				has_global_flag = second_weltkrieg_has_ended
 			}
@@ -1053,7 +1056,12 @@ GRE_regaining_greece = {
 				NOT = { FROM = { any_owned_state = { is_claim_or_core_of_ROOT = yes } } }
 				AND = {
 					is_in_faction = yes
-					hidden_trigger = { faction_leader = { is_actual_major = yes } }
+					hidden_trigger = {
+						faction_leader = {
+							is_actual_major = yes
+							NOT = { tag = BPL }
+						}
+					}
 					second_weltkrieg_has_begun = no
 				}
 			}

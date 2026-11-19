@@ -905,8 +905,9 @@ guiTypes = {
 		iconType = {
 			name = kr_logo
 			quadTextureSprite = "GFX_KR_logo"
-			position = { x = 612  y = 222 }
+			position = { x = 612  y = 182 }
 			centerPosition = yes
+			alwaystransparent = yes
 		}
 
 		instantTextBoxType = {
@@ -931,6 +932,18 @@ guiTypes = {
 			maxHeight = 95
 			format = centre
 			hide = yes
+		}
+
+		buttonType = {
+			name = "patch_notes_button"
+			quadTextureSprite = "GFX_button_148x34"
+			position = { x = 540  y = 234 }
+
+			font = "hoi_16mbs"
+			text = "patch_notes_button_text"
+
+			## update version number each patch
+			web_link = "https://kaiserreich.wiki/Patch_Notes:Kaiserreich_HOI4_Patch_1.7.1"
 		}
 
 		containerWindowType = {

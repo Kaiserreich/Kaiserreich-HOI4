@@ -14544,7 +14544,7 @@ focus_tree = {
 				}
 				add_to_variable = {
 					GER_military_faction_strength = {
-						value = `10
+						value = 10
 						clamp = { min = { value = GER_military_faction_strength multiply = -1 } max = { value = 100 subtract = GER_military_faction_strength } }
 					}
 					tooltip = GER_faction_strength_increase
@@ -21114,17 +21114,17 @@ focus_tree = {
 		available = {
 			336 = { owner = { is_ally_with = ROOT } } #Singapore
 		}
-		will_lead_to_war_with = INC
+		will_lead_to_war_with = VIN
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed GER_new_chinese_policy"
 			unlock_decision_tooltip = GER_sino_german_cooperation
 			if = {
 				limit = {
-					country_exists = INC
+					country_exists = VIN
 					has_soclib_or_socdem_government = no
-					INC = { has_socialist_government = yes }
+					VIN = { has_socialist_government = yes }
 				}
-				activate_targeted_decision = { decision = GER_destroy_INC target = INC }
+				activate_targeted_decision = { decision = GER_destroy_VIN target = VIN }
 			}
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }

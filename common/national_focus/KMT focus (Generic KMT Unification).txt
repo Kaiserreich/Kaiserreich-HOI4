@@ -1937,7 +1937,6 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed KMT_liberate_southeast_asia"
 		activate_targeted_decision = { target = GEA decision = KMT_liberation_war_decision }
-		activate_targeted_decision = { target = INC decision = KMT_liberation_war_decision }
 		activate_targeted_decision = { target = VIN decision = KMT_liberation_war_decision }
 		activate_targeted_decision = { target = LAO decision = KMT_liberation_war_decision }
 		activate_targeted_decision = { target = CAM decision = KMT_liberation_war_decision }
@@ -1990,7 +1989,6 @@ shared_focus = {
 			limit = {
 				var:827.owner = {
 					NOT = {
-						tag = INC
 						tag = VIN
 						tag = ROOT
 						tag = GEA
@@ -2165,14 +2163,9 @@ shared_focus = {
 				KOR = { is_ally_with = ROOT }
 				JAP = { is_ally_with = ROOT }
 				PHI = { is_ally_with = ROOT }
-				OR = {
-					AND = {
-						VIN = { is_ally_with = ROOT }
-						CAM = { is_ally_with = ROOT }
-						LAO = { is_ally_with = ROOT }
-					}
-					INC = { is_ally_with = ROOT }
-				}
+				286 = { is_owned_by_ROOT_or_ally = yes } #Cochinchina
+				670 = { is_owned_by_ROOT_or_ally = yes } #Laos
+				750 = { is_owned_by_ROOT_or_ally = yes } #Phnom Penh
 				408 = { is_owned_by_ROOT_or_ally = yes } #Vladivostok
 				336 = { is_owned_by_ROOT_or_ally = yes } #Singapore
 			}
@@ -2235,14 +2228,9 @@ shared_focus = {
 				KOR = { is_ally_with = ROOT }
 				JAP = { is_ally_with = ROOT }
 				PHI = { is_ally_with = ROOT }
-				OR = {
-					AND = {
-						VIN = { is_ally_with = ROOT }
-						CAM = { is_ally_with = ROOT }
-						LAO = { is_ally_with = ROOT }
-					}
-					INC = { is_ally_with = ROOT }
-				}
+				286 = { is_owned_by_ROOT_or_ally = yes } #Cochinchina
+				670 = { is_owned_by_ROOT_or_ally = yes } #Laos
+				750 = { is_owned_by_ROOT_or_ally = yes } #Phnom Penh
 				408 = { is_owned_by_ROOT_or_ally = yes } #Vladivostok
 				336 = { is_owned_by_ROOT_or_ally = yes } #Singapore
 			}

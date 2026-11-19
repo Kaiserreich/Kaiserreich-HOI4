@@ -430,6 +430,7 @@ country_event = { #Fifth Decision A: Completely centralized Capital election
 			popularity = 0.01
 		}
 		set_capital = { state = 313 remember_old_capital = no }
+		add_victory_points = { province = 10886 value = 5 } #Guatemala City
 	}
 	option = { #El Salvador
 		log = "[GetLogInfo]: event central_america_democratic_events.11 option central_america_democratic_events.11.b"
@@ -448,6 +449,7 @@ country_event = { #Fifth Decision A: Completely centralized Capital election
 			popularity = 0.01
 		}
 		set_capital = { state = 314 remember_old_capital = no }
+		add_victory_points = { province = 12823 value = 5 } #San Salvador
 	}
 	option = { #Tegucigalpa
 		log = "[GetLogInfo]: event central_america_democratic_events.11 option central_america_democratic_events.11.c"
@@ -466,6 +468,7 @@ country_event = { #Fifth Decision A: Completely centralized Capital election
 			popularity = 0.015
 		}
 		set_capital = { state = 312 remember_old_capital = no }
+		add_victory_points = { province = 13207 value = 4 } #Tegucigalpa
 	}
 	option = { #Managua
 		log = "[GetLogInfo]: event central_america_democratic_events.11 option central_america_democratic_events.11.e"
@@ -484,6 +487,7 @@ country_event = { #Fifth Decision A: Completely centralized Capital election
 			popularity = 0.015
 		}
 		set_capital = { state = 317 remember_old_capital = no }
+		add_victory_points = { province = 13437 value = 5 } #Managua
 	}
 	after = {
 		country_event = { id = central_america_democratic_events.15 days = 3 }
@@ -510,6 +514,7 @@ country_event = { #Fifth Decision B: Executive Capital election
 			popularity = 0.01
 		}
 		set_capital = { state = 313 remember_old_capital = no }
+		add_victory_points = { province = 10886 value = 5 } #Guatemala City
 		clr_country_flag = CEN_Guatemala_chosen
 	}
 	option = { #El Salvador
@@ -525,6 +530,7 @@ country_event = { #Fifth Decision B: Executive Capital election
 			popularity = 0.01
 		}
 		set_capital = { state = 314 remember_old_capital = no }
+		add_victory_points = { province = 12823 value = 5 } #San Salvador
 		clr_country_flag = CEN_San_Salvador_chosen
 	}
 	option = { #Tegucigalpa
@@ -540,6 +546,7 @@ country_event = { #Fifth Decision B: Executive Capital election
 			popularity = 0.015
 		}
 		set_capital = { state = 312 remember_old_capital = no }
+		add_victory_points = { province = 13207 value = 4 } #Tegucigalpa
 		clr_country_flag = CEN_Tegucigalpa_chosen
 	}
 	option = { #Managua
@@ -555,6 +562,7 @@ country_event = { #Fifth Decision B: Executive Capital election
 			popularity = 0.02
 		}
 		set_capital = { state = 317 remember_old_capital = no }
+		add_victory_points = { province = 13437 value = 5 } #Managua
 		clr_country_flag = CEN_Managua_chosen
 	}
 	after = {
@@ -1594,7 +1602,7 @@ country_event = { #Central America requests our integration
 			base = 100
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_ENT }
+				has_game_rule = { rule = PAN_forpol option = PAN_FORPOL_ENT }
 				NOT = {
 					has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
 					CEN = {
@@ -1622,7 +1630,7 @@ country_event = { #Central America requests our integration
 			base = 0
 			modifier = {
 				add = 100
-				has_game_rule = { rule = PAN_crisis option = PAN_CRISIS_ENT }
+				has_game_rule = { rule = PAN_forpol option = PAN_FORPOL_ENT }
 				NOT = {
 					has_game_rule = { rule = CEN_dem_forpol option = CEN_DEM_FORPOL_ENT }
 					CEN = {
@@ -1693,12 +1701,16 @@ country_event = { #Panama refuses to join
 		name = central_america_democratic_events.41.b
 		ai_chance = { base = 0 }
 		if = {
-			limit = { 304 = { is_claim_or_core_of_ROOT = no } }
-			add_state_claim = 304 #Panama
+			limit = { 1126 = { is_claim_or_core_of_ROOT = no } }
+			add_state_claim = 1126 #Western Panama
 		}
 		if = {
 			limit = { 685 = { is_claim_or_core_of_ROOT = no } }
 			add_state_claim = 685 #Panama Canal
+		}
+		if = {
+			limit = { 304 = { is_claim_or_core_of_ROOT = no } }
+			add_state_claim = 304 #Eastern Panama
 		}
 		create_wargoal = {
 			type = annex_everything
@@ -2008,7 +2020,11 @@ country_event = { #Goals of our land reform
 			activate_targeted_decision = { target = 312 decision = CENdem_moderate_land_reform_decision }
 			activate_targeted_decision = { target = 317 decision = CENdem_moderate_land_reform_decision }
 			activate_targeted_decision = { target = 316 decision = CENdem_moderate_land_reform_decision }
-			activate_targeted_decision = { target = 304 decision = CENdem_moderate_land_reform_decision }
+			if = {
+				limit = { owns_state = 304 }
+				activate_targeted_decision = { target = 304 decision = CENdem_moderate_land_reform_decision }
+			}
+			else = { activate_targeted_decision = { target = 1126 decision = CENdem_moderate_land_reform_decision } }
 		}
 	}
 
@@ -2027,7 +2043,11 @@ country_event = { #Goals of our land reform
 			activate_targeted_decision = { target = 312 decision = CENdem_radical_land_reform_decision }
 			activate_targeted_decision = { target = 317 decision = CENdem_radical_land_reform_decision }
 			activate_targeted_decision = { target = 316 decision = CENdem_radical_land_reform_decision }
-			activate_targeted_decision = { target = 304 decision = CENdem_radical_land_reform_decision }
+			if = {
+				limit = { owns_state = 304 }
+				activate_targeted_decision = { target = 304 decision = CENdem_radical_land_reform_decision }
+			}
+			else = { activate_targeted_decision = { target = 1126 decision = CENdem_radical_land_reform_decision } }
 		}
 	}
 }

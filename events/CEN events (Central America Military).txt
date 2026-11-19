@@ -652,6 +652,7 @@ country_event = { # Congress Voted
 		if = { #Moves capital to Managua
 			limit = { owns_state = 317 }
 			set_capital = { state = 317 remember_old_capital = no }
+			add_victory_points = { province = 13437 value = 5 } #Managua
 		}
 	}
 	option = { # PatAuth win
@@ -673,6 +674,7 @@ country_event = { # Congress Voted
 		if = { #Moves capital to Ciudad de Guatemala
 			limit = { owns_state = 313 }
 			set_capital = { state = 313 remember_old_capital = no }
+			add_victory_points = { province = 10886 value = 5 } #Guatemala City
 		}
 	}
 	option = { # NatPop win
@@ -694,6 +696,7 @@ country_event = { # Congress Voted
 		if = { #Moves capital to San Salvador
 			limit = { owns_state = 314 }
 			set_capital = { state = 314 remember_old_capital = no }
+			add_victory_points = { province = 12823 value = 5 } #San Salvador
 		}
 	}
 
@@ -716,6 +719,7 @@ country_event = { # Congress Voted
 		if = { #Moves capital to Managua
 			limit = { owns_state = 317 }
 			set_capital = { state = 317 remember_old_capital = no }
+			add_victory_points = { province = 13437 value = 5 } #Managua
 		}
 		hidden_effect = {
 			set_country_flag = CENmil_autdem_coallition
@@ -740,6 +744,7 @@ country_event = { # Congress Voted
 		if = { #Moves capital to Ciudad de Guatemala
 			limit = { owns_state = 313 }
 			set_capital = { state = 313 remember_old_capital = no }
+			add_victory_points = { province = 10886 value = 5 } #Guatemala City
 		}
 		hidden_effect = {
 			set_country_flag = CENmil_pataut_coallition
@@ -765,6 +770,7 @@ country_event = { # Congress Voted
 		if = { #Moves capital to San Salvador
 			limit = { owns_state = 314 }
 			set_capital = { state = 314 remember_old_capital = no }
+			add_victory_points = { province = 12823 value = 5 } #San Salvador
 		}
 		hidden_effect = {
 			set_country_flag = CENmil_natpop_coallition
@@ -1693,13 +1699,21 @@ country_event = { ### Going to the Canal
 	desc = {
 		text = central_america_dictatorship_events.229.d.panama.exists
 		trigger = {
-			country_exists = PAN
+			PAN = { owns_state = 1126 } # Western Panama
+			NOT = {
+				has_war_with = PAN
+				has_subject = PAN
+			}
 		}
 	}
 	desc = {
 		text = central_america_dictatorship_events.229.d.panama.no.exists
 		trigger = {
-			NOT = { country_exists = PAN }
+			OR = {
+				PAN = { NOT = { owns_state = 1126 } } # Western Panama
+				has_war_with = PAN
+				has_subject = PAN
+			}
 		}
 	}
 
@@ -1710,7 +1724,7 @@ country_event = { ### Going to the Canal
 		log = "[GetLogInfo]: event central_america_dictatorship_events.229 option central_america_dictatorship_events.229.a"
 		name = central_america_dictatorship_events.229.a
 		trigger = {
-			304 = { is_owned_by_ROOT_or_subject = yes }
+			1126 = { is_owned_by_ROOT_or_subject = yes }
 		}
 		set_country_flag = CENmil_clarified_rail_5_flag
 	}
@@ -1718,7 +1732,7 @@ country_event = { ### Going to the Canal
 		log = "[GetLogInfo]: event central_america_dictatorship_events.229 option central_america_dictatorship_events.229.b"
 		name = central_america_dictatorship_events.229.b
 		trigger = {
-			country_exists = PAN
+			PAN = { owns_state = 1126 } # Western Panama
 			NOT = {
 				has_war_with = PAN
 				has_subject = PAN
@@ -1730,7 +1744,7 @@ country_event = { ### Going to the Canal
 		log = "[GetLogInfo]: event central_america_dictatorship_events.229 option central_america_dictatorship_events.229.c"
 		name = central_america_dictatorship_events.229.c
 		trigger = {
-			304 = { is_owned_by_ROOT_or_subject = no }
+			1126 = { is_owned_by_ROOT_or_subject = no }
 		}
 		ai_chance = { base = 0 }
 		custom_effect_tooltip = cenmil_wait_tt
@@ -1854,7 +1868,7 @@ country_event = { ### yay we have pan
 	trigger = {
 		tag = CEN
 		has_country_flag = cenmil_wait_railway_panama
-		304 = {
+		1126 = {
 			OR = {
 				is_owned_by = CEN
 				owner = { is_subject_of = CEN }
@@ -1874,7 +1888,7 @@ country_event = { ### yay we have pan
 		log = "[GetLogInfo]: event central_america_dictatorship_events.234 option central_america_dictatorship_events.234.b"
 		name = central_america_dictatorship_events.234.b
 		ai_chance = { base = 0 }
-		304 = {
+		1126 = {
 			add_building_construction = {
 				type = infrastructure
 				level = 1

@@ -4102,12 +4102,8 @@ country_event = { #Fate of Vietnam
 	immediate = {
 		hidden_effect = {
 			if = {
-				limit = { NOT = { country_exists = INC } }
+				limit = { NOT = { country_exists = VIN } }
 				clr_global_flag = GEA_Indochina_Uprising_Fired
-				INC = {
-					drop_cosmetic_tag = yes
-					clear_cores_of_tag_if_possible = yes
-				}
 			}
 			every_state = {
 				if = {
@@ -4119,7 +4115,13 @@ country_event = { #Fate of Vietnam
 				}
 				remove_claim_by = VIN
 			}
-			VIN = { drop_cosmetic_tag = yes }
+			VIN = {
+				drop_cosmetic_tag = yes
+				clr_country_flag = VIN_is_indochina
+				VIN_remove_monarchy = yes
+				LAO = { disable_country_integration = yes }
+				CAM = { disable_country_integration = yes }
+			}
 			if = {
 				limit = {
 					OR = {
@@ -4134,9 +4136,9 @@ country_event = { #Fate of Vietnam
 		}
 	}
 
-	option = { #Puppet Vietnam
-		log = "[GetLogInfo]: event annexation_events.3023 option annexation_events.3023.a"
-		name = annexation_events.3023.a
+	option = { #Republican Vietnam
+		log = "[GetLogInfo]: event annexation_events.3023 option annexation_events.3023.vietnam_republic"
+		name = annexation_events.3023.vietnam_republic
 		trigger = {
 			is_subject = no
 		}
@@ -4158,32 +4160,61 @@ country_event = { #Fate of Vietnam
 				factor = 0
 				annexations_AI_give_to_france_instead = yes
 			}
+			modifier = {
+				factor = 0
+				is_monarchy = yes
+			}
 		}
 		set_temp_variable = { tag_to_release = VIN }
 		release_targeted_tag = yes
 		custom_effect_tooltip = tooltip_white_line
-		INC = {
-			if = {
-				limit = {
-					exists = yes
-					has_socialist_government = yes
-					NOT = { has_completed_focus = INC_Unification }
-				}
-				if = {
-					limit = { is_subject = yes }
-					overlord = { country_event = { id = indochina_events.1955 hours = 8 } }
-				}
-				else = {
-					country_event = { id = indochina_events.1955 hours = 8 }
-				}
+		var:tag_to_release = { VIN_puppet_setup = yes }
+	}
+
+	option = { #Empire of Vietnam
+		log = "[GetLogInfo]: event annexation_events.3023 option annexation_events.3023.vietnam_empire"
+		name = annexation_events.3023.vietnam_empire
+		trigger = {
+			is_subject = no
+			has_socialist_government = no
+			NOT = {
+				tag = RKT
+				tag = LKT
 			}
 		}
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				OR = {
+					annexations_can_annex = yes
+					original_tag = CAM
+					original_tag = SIA
+				}
+			}
+			modifier = {
+				factor = 0
+				has_subject = event_target:german_east_asia
+			}
+			modifier = {
+				factor = 0
+				annexations_AI_give_to_france_instead = yes
+			}
+			modifier = {
+				factor = 0
+				is_monarchy = no
+			}
+		}
+		set_temp_variable = { tag_to_release = VIN }
+		release_targeted_tag = yes
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { release_monarchy = 1 }
 		var:tag_to_release = { VIN_puppet_setup = yes }
 	}
 
 	option = { #Puppet Indochina
-		log = "[GetLogInfo]: event annexation_events.3023 option annexation_events.3023.b"
-		name = annexation_events.3023.b
+		log = "[GetLogInfo]: event annexation_events.3023 option annexation_events.3023.vietnam_indochina"
+		name = annexation_events.3023.vietnam_indochina
 		trigger = {
 			670 = { is_valid_annexation_state = yes } #Laos
 			any_state_of = {
@@ -4207,14 +4238,19 @@ country_event = { #Fate of Vietnam
 				factor = 0
 				has_subject = event_target:german_east_asia
 			}
+			modifier = {
+				factor = 0
+				is_monarchy = yes
+			}
 		}
 		every_state = {
 			limit = { region = 196 } #Indochina
-			add_core_of = INC
+			add_core_of = VIN
 		}
-		set_temp_variable = { tag_to_release = INC }
+		set_temp_variable = { tag_to_release = VIN }
 		release_targeted_tag = yes
-		var:tag_to_release = { INC_puppet_setup = yes }
+		set_temp_variable = { release_indochina = 1 }
+		var:tag_to_release = { VIN_puppet_setup = yes }
 	}
 
 	option = { #give it to France
@@ -4406,7 +4442,7 @@ country_event = { #Fate of Laos
 			if = {
 				limit = {
 					OR = {
-						original_tag = INC
+						original_tag = VIN
 						original_tag = SIA
 						AND = {
 							original_tag = GEA
@@ -4421,8 +4457,8 @@ country_event = { #Fate of Laos
 				save_event_target_as = can_annex
 			}
 			if = {
-				limit = { INC = { ROOT_can_grant_land = yes } }
-				INC = { save_event_target_as = indochina add_to_array = { ROOT.potential_grant_targets = THIS } }
+				limit = { VIN = { ROOT_can_grant_land = yes } }
+				VIN = { save_event_target_as = vietnam add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 			670 = { #Laos
 				random_neighbor_state = {
@@ -4463,11 +4499,11 @@ country_event = { #Fate of Laos
 			}
 			modifier = {
 				factor = 0
-				has_event_target = indochina
+				has_event_target = vietnam
 				OR = {
 					is_major = no
-					is_ally_with = event_target:indochina
-					event_target:indochina = { has_socialist_government = yes }
+					is_ally_with = event_target:vietnam
+					event_target:vietnam = { has_socialist_government = yes }
 				}
 			}
 			modifier = {
@@ -4479,11 +4515,11 @@ country_event = { #Fate of Laos
 		release_targeted_tag = yes
 	}
 
-	option = { #give to INC
-		log = "[GetLogInfo]: event annexation_events.3024 option annexation_events.asia.give_to_inc"
-		name = annexation_events.asia.give_to_inc
+	option = { #give to VIN
+		log = "[GetLogInfo]: event annexation_events.3024 option annexation_events.asia.give_to_vin"
+		name = annexation_events.asia.give_to_vin
 		trigger = {
-			has_event_target = indochina
+			has_event_target = vietnam
 		}
 		ai_chance = {
 			base = 60
@@ -4498,7 +4534,7 @@ country_event = { #Fate of Laos
 			modifier = {
 				factor = 0
 				is_major = yes
-				NOT = { is_ally_with = event_target:indochina }
+				NOT = { is_ally_with = event_target:vietnam }
 				has_socialist_government = no
 			}
 			modifier = {
@@ -4507,10 +4543,10 @@ country_event = { #Fate of Laos
 			}
 			modifier = {
 				factor = 0.1
-				event_target:indochina = { is_subject = yes }
+				event_target:vietnam = { is_subject = yes }
 			}
 		}
-		set_temp_variable = { tag_to_release = event_target:indochina }
+		set_temp_variable = { tag_to_release = event_target:vietnam }
 		LAO = { set_transfer_target_cores = yes }
 		transfer_targeted_territory = yes
 	}
@@ -4601,6 +4637,24 @@ country_event = { #Fate of Laos
 			limit = { original_tag = NFA }
 			NFA_Resistance_Policy_on_colony_states = yes
 		}
+		else_if = {
+			limit = {
+				original_tag = VIN
+				owns_state = 826 #Stung Treng
+				VIN_can_form_indochina = yes
+				is_subject = yes
+			}
+			if = {
+				limit = { has_cosmetic_tag = VIN_VNQDD }
+				set_cosmetic_tag = VIN_VNQDD_indochina
+			}
+			else = {
+				set_cosmetic_tag = VIN_indochina
+			}
+			set_country_flag = VIN_is_indochina
+			LAO = { enable_country_integration = yes }
+			CAM = { enable_country_integration = yes }
+		}
 	}
 
 	option = { #Cancel
@@ -4642,7 +4696,7 @@ country_event = { #Fate of Cambodia
 				limit = {
 					OR = {
 						original_tag = SIA
-						original_tag = INC
+						original_tag = VIN
 						original_tag = GEA
 						annexations_france_can_annex_overseas = yes
 					}
@@ -4650,8 +4704,8 @@ country_event = { #Fate of Cambodia
 				save_event_target_as = can_annex
 			}
 			if = {
-				limit = { INC = { ROOT_can_grant_land = yes } }
-				INC = { save_event_target_as = indochina add_to_array = { ROOT.potential_grant_targets = THIS } }
+				limit = { VIN = { ROOT_can_grant_land = yes } }
+				VIN = { save_event_target_as = vietnam add_to_array = { ROOT.potential_grant_targets = THIS } }
 			}
 			annexations_create_france_event_target = yes
 			annexations_create_german_east_asia_event_target = yes
@@ -4678,11 +4732,11 @@ country_event = { #Fate of Cambodia
 			}
 			modifier = {
 				factor = 0
-				has_event_target = indochina
+				has_event_target = vietnam
 				OR = {
 					is_major = no
-					is_ally_with = event_target:indochina
-					event_target:indochina = { has_socialist_government = yes }
+					is_ally_with = event_target:vietnam
+					event_target:vietnam = { has_socialist_government = yes }
 				}
 			}
 			modifier = {
@@ -4713,10 +4767,10 @@ country_event = { #Fate of Cambodia
 			}
 			modifier = {
 				factor = 0
-				has_event_target = indochina
+				has_event_target = vietnam
 				OR = {
 					is_major = no
-					is_ally_with = event_target:indochina
+					is_ally_with = event_target:vietnam
 				}
 			}
 			modifier = {
@@ -4748,10 +4802,10 @@ country_event = { #Fate of Cambodia
 			}
 			modifier = {
 				factor = 0
-				has_event_target = indochina
+				has_event_target = vietnam
 				OR = {
 					is_major = no
-					is_ally_with = event_target:indochina
+					is_ally_with = event_target:vietnam
 				}
 			}
 			modifier = {
@@ -4764,11 +4818,11 @@ country_event = { #Fate of Cambodia
 		var:tag_to_release = { CAM_create_norodom_leaders = yes }
 	}
 
-	option = { #give to INC
-		log = "[GetLogInfo]: event annexation_events.3025 option annexation_events.asia.give_to_inc"
-		name = annexation_events.asia.give_to_inc
+	option = { #give to VIN
+		log = "[GetLogInfo]: event annexation_events.3025 option annexation_events.asia.give_to_vin"
+		name = annexation_events.asia.give_to_vin
 		trigger = {
-			has_event_target = indochina
+			has_event_target = vietnam
 		}
 		ai_chance = {
 			base = 60
@@ -4783,7 +4837,7 @@ country_event = { #Fate of Cambodia
 			modifier = {
 				factor = 0
 				is_major = yes
-				NOT = { is_ally_with = event_target:indochina }
+				NOT = { is_ally_with = event_target:vietnam }
 				has_socialist_government = no
 			}
 			modifier = {
@@ -4792,10 +4846,10 @@ country_event = { #Fate of Cambodia
 			}
 			modifier = {
 				factor = 0.1
-				event_target:indochina = { is_subject = yes }
+				event_target:vietnam = { is_subject = yes }
 			}
 		}
-		set_temp_variable = { tag_to_release = event_target:indochina }
+		set_temp_variable = { tag_to_release = event_target:vietnam }
 		CAM = { set_transfer_target_cores = yes }
 		transfer_targeted_territory = yes
 	}
@@ -4897,6 +4951,24 @@ country_event = { #Fate of Cambodia
 		if = {
 			limit = { original_tag = NFA }
 			NFA_Resistance_Policy_on_colony_states = yes
+		}
+		else_if = {
+			limit = {
+				original_tag = VIN
+				owns_state = 670 #Laos
+				VIN_can_form_indochina = yes
+				is_subject = yes
+			}
+			if = {
+				limit = { has_cosmetic_tag = VIN_VNQDD }
+				set_cosmetic_tag = VIN_VNQDD_indochina
+			}
+			else = {
+				set_cosmetic_tag = VIN_indochina
+			}
+			set_country_flag = VIN_is_indochina
+			LAO = { enable_country_integration = yes }
+			CAM = { enable_country_integration = yes }
 		}
 	}
 
@@ -14020,6 +14092,24 @@ country_event = { #Fate of Stung Treng
 		826 = { #Stung Treng
 			add_claim_of_ROOT = yes
 			add_resistance = 20
+		}
+		if = {
+			limit = {
+				original_tag = VIN
+				owns_state = 670 #Laos
+				VIN_can_form_indochina = yes
+				is_subject = yes
+			}
+			if = {
+				limit = { has_cosmetic_tag = VIN_VNQDD }
+				set_cosmetic_tag = VIN_VNQDD_indochina
+			}
+			else = {
+				set_cosmetic_tag = VIN_indochina
+			}
+			set_country_flag = VIN_is_indochina
+			LAO = { enable_country_integration = yes }
+			CAM = { enable_country_integration = yes }
 		}
 	}
 

@@ -309,21 +309,20 @@ country_event = { # Capital of America
 		log = "[GetLogInfo]: event america_peoples_government_events.7 option america_peoples_government_events.7.b"
 		name = america_peoples_government_events.7.b
 		ai_chance = { base = 15 }
-		custom_effect_tooltip = APG_move_capital_baton_rouge
 		hidden_effect = {
 			set_victory_points = { province = 1453 value = 12 } #Baton Rouge
-			random_owned_controlled_state = {
-				ROOT = { set_capital = { state = PREV remember_old_capital = no } } #workaround for a GFX bug when changing with VP is the capital in the same state
-			}
-			set_capital = { state = 371 remember_old_capital = no }
 		}
+		set_capital = { state = 371 remember_old_capital = no }
 	}
 	option = { # Baton Rouge
 		log = "[GetLogInfo]: event america_peoples_government_events.7 option america_peoples_government_events.7.c"
 		name = america_peoples_government_events.7.c
 		ai_chance = { base = 15 }
 		set_country_flag = APG_baton_rouge_kept
-		set_capital = { state = 371 remember_old_capital = no }
+		custom_effect_tooltip = APG_move_capital_baton_rouge
+		hidden_effect = {
+			set_capital = { state = 371 remember_old_capital = no }
+		}
 	}
 	option = { # Saint Louis
 		log = "[GetLogInfo]: event america_peoples_government_events.7 option america_peoples_government_events.7.e"

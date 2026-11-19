@@ -100,6 +100,7 @@ country_event = { # An Unexpected Announcement
 
 	immediate = {
 		hidden_effect = {
+			add_ideas = LEP_low_level_unrest
 			country_event = { id = league_collapse_events.4 days = 2 } # Unrest Spreads
 			QIE = { #QIE reaction
 				country_event = { id = league_collapse_flavour_events.1 days = 3 }
@@ -114,7 +115,9 @@ country_event = { # An Unexpected Announcement
 	option = { # An unpleasant surprise...
 		log = "[GetLogInfo]: event league_collapse_events.3 option league_collapse_events.3.a"
 		name = league_collapse_events.3.a
-		add_ideas = LEP_low_level_unrest
+		effect_tooltip = {
+			add_ideas = LEP_low_level_unrest
+		}
 	}
 }
 
@@ -259,6 +262,11 @@ country_event = { # Reports from North and South
 
 	immediate = {
 		hidden_effect = {
+			swap_ideas = {
+				remove_idea = LEP_Low_Level_Unrest
+				add_idea = LEP_Spreading_Unrest
+			}
+			add_ideas = LEP_Crippled_Industry3
 			country_event = { id = league_collapse_events.9 days = 2 } # A Telegram from Beijing
 		}
 	}
@@ -287,11 +295,13 @@ country_event = { # Reports from North and South
 				damage = 0.15
 			}
 		}
-		swap_ideas = {
-			remove_idea = LEP_Low_Level_Unrest
-			add_idea = LEP_Spreading_Unrest
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = LEP_Low_Level_Unrest
+				add_idea = LEP_Spreading_Unrest
+			}
+			add_ideas = LEP_Crippled_Industry3
 		}
-		add_ideas = LEP_Crippled_Industry3
 	}
 }
 
@@ -1100,6 +1110,14 @@ country_event = { # Riots reach the Marshal's Palace
 
 	immediate = {
 		hidden_effect = {
+			swap_ideas = {
+				remove_idea = LEP_Spreading_Unrest
+				add_idea = LEP_anti-concessions_movement
+			}
+			swap_ideas = {
+				remove_idea = LEP_Crippled_Industry2
+				add_idea = LEP_Crippled_Industry1
+			}
 			QIE = { country_event = { id = league_collapse_events.57 days = 1 } } # The Illusion Shatters
 		}
 	}
@@ -1119,13 +1137,15 @@ country_event = { # Riots reach the Marshal's Palace
 				delete_unit_template_and_units = { division_template = "Nanjing Paobing Zhen" }
 			}
 		}
-		swap_ideas = {
-			remove_idea = LEP_Spreading_Unrest
-			add_idea = LEP_anti-concessions_movement
-		}
-		swap_ideas = {
-			remove_idea = LEP_Crippled_Industry2
-			add_idea = LEP_Crippled_Industry1
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = LEP_Spreading_Unrest
+				add_idea = LEP_anti-concessions_movement
+			}
+			swap_ideas = {
+				remove_idea = LEP_Crippled_Industry2
+				add_idea = LEP_Crippled_Industry1
+			}
 		}
 		#custom_effect_tooltip = LEP_lost_contact_governors
 		#custom_effect_tooltip = LEP_zhou_disappears
@@ -1273,6 +1293,10 @@ country_event = { # General Qi Assumes Control
 
 	immediate = {
 		hidden_effect = {
+			swap_ideas = {
+				remove_idea = LEP_Crippled_Industry1
+				add_idea = LEP_Crippled_Industry
+			}
 			retire_character = LEP_sun_chuanfang
 			LEP_qi_xieyuan = {
 				promote_leader = yes
@@ -1340,9 +1364,11 @@ country_event = { # General Qi Assumes Control
 		}
 		complete_national_focus = LEP_qi_rules_nanjing
 		activate_advisor = LEP_tian_wenbing_sic
-		swap_ideas = {
-			remove_idea = LEP_Crippled_Industry1
-			add_idea = LEP_Crippled_Industry
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = LEP_Crippled_Industry1
+				add_idea = LEP_Crippled_Industry
+			}
 		}
 		add_ideas = LEP_Questionable_Authority
 	}

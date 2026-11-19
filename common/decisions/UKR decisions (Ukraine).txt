@@ -8988,11 +8988,11 @@ UKR_black_sea_doctrine = {
 				set_variable = { UKR_bsd_consumer_goods = 0 }
 				set_variable = { UKR_bsd_factory_output = 0 }
 				add_ideas = UKR_black_sea_member_idea
-				mark_focus_tree_layout_dirty = yes
 			}
-			UKR_update_military = yes
 			set_temp_variable = { target = AUS }
 			clear_all_relations_with_TARGET = yes
+			clr_country_flag = AUS_former_faction_member
+			every_subject_country = { clr_country_flag = AUS_former_faction_member }
 			set_temp_variable = { target = GER }
 			clear_all_relations_with_TARGET = yes
 			MIE_remove_from_intermarium = yes
@@ -9003,6 +9003,7 @@ UKR_black_sea_doctrine = {
 				}
 				white_peace_with_ROOT = yes
 			}
+			UKR_update_military = yes
 			create_faction_from_template = { template = faction_template_generic name = black_sea_union }
 			set_country_flag = UKR_bsd_started #Remove after annexation
 			custom_effect_tooltip = BSD_start_tt

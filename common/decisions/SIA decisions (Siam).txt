@@ -740,15 +740,15 @@ political_actions = {
 					FROM = { default_attack_AI_trigger = yes }
 					AND = {
 						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_CHN }
-						has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
+						has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_CHN }
 					}
 					AND = {
 						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_HND }
-						has_game_rule = { rule = INC_forpol option = INC_FORPOL_HND }
+						has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_HND }
 					}
 					AND = {
 						has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_INT }
-						has_game_rule = { rule = INC_forpol option = INC_FORPOL_INT }
+						has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_INT }
 					}
 				}
 			}
@@ -1695,6 +1695,11 @@ SIA_diplomatic_matters_category = {
 				factor = 0
 				NOT = { has_game_rule = { rule = SIA_forpol option = DEFAULT } }
 				NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_INT } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = SIA_forpol option = SIA_FORPOL_INT } }
+				asian_tag_can_join_int = no
 			}
 		}
 

@@ -1334,7 +1334,7 @@ focus_tree = {
 
 	focus = {
 		id = SRD_italia_riunita
-		icon = GFX_SRD_united
+		icon = GFX_ITA_united
 		cost = 6
 
 		relative_position_id = SRD_return_to_the_mainland
@@ -1383,6 +1383,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed SRD_italia_riunita"
 			log = "KR_Event_Logging;Sardinia UNIFIES ITALY"
+			set_country_flag = italy_has_reunited_italy
 			add_political_power = 250
 			italy_break_balance = yes
 			custom_effect_tooltip = tooltip_white_line
@@ -1473,7 +1474,7 @@ focus_tree = {
 				}
 			}
 			hidden_effect = {
-				set_country_flag = ITA_united_italia
+				set_country_flag = italy_has_reunited_italy
 				if = {
 					limit = { is_subject = no }
 					news_event = sardinia_events.46

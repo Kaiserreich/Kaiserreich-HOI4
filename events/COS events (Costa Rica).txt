@@ -1016,21 +1016,6 @@ country_event = { #CAN/GER response to the border conflict
 		log = "[GetLogInfo]: event costa_rica_events.31 option costa_rica_events.31.b"
 		ai_chance = { base = 20 }
 		name = costa_rica_events.31.b
-		trigger = {
-			NOT = {
-				AND = {
-					COS = {
-						OR = {
-							is_guaranteed_by = CAN
-							is_in_faction_with = CAN
-						}
-					}
-					PAN = {
-						has_country_flag = PAN_canada_accepted
-					}
-				}
-			}
-		}
 		PAN = {
 			country_event = { id = costa_rica_events.44 days = 2 }
 		}
@@ -1087,21 +1072,6 @@ country_event = { #Panama reacts to mediation
 			}
 		}
 		name = costa_rica_events.32.c
-		trigger = {
-			NOT = {
-				AND = {
-					COS = {
-						OR = {
-							is_guaranteed_by = CAN
-							is_in_faction_with = CAN
-						}
-					}
-					PAN = {
-						has_country_flag = PAN_canada_accepted
-					}
-				}
-			}
-		}
 		if = {
 			limit = { is_in_faction = yes }
 			leave_faction = yes
@@ -1170,21 +1140,6 @@ country_event = { #Panama demands monetary compensation
 	option = { #We don't negotiate with these villains
 		log = "[GetLogInfo]: event costa_rica_events.35 option costa_rica_events.35.b"
 		ai_chance = { base = 80 }
-		trigger = {
-			NOT = {
-				AND = {
-					COS = {
-						OR = {
-							is_guaranteed_by = CAN
-							is_in_faction_with = CAN
-						}
-					}
-					PAN = {
-						has_country_flag = PAN_canada_accepted
-					}
-				}
-			}
-		}
 		name = costa_rica_events.35.b
 		COS = {
 			country_event = { id = costa_rica_events.39 days = 2 }
@@ -1221,21 +1176,6 @@ country_event = { #Panama demands monetary compensation (COS reaction)
 	option = { #We don't negotiate with these villains
 		log = "[GetLogInfo]: event costa_rica_events.36 option costa_rica_events.36.b"
 		ai_chance = { base = 80 }
-		trigger = {
-			NOT = {
-				AND = {
-					COS = {
-						OR = {
-							is_guaranteed_by = CAN
-							is_in_faction_with = CAN
-						}
-					}
-					PAN = {
-						has_country_flag = PAN_canada_accepted
-					}
-				}
-			}
-		}
 		name = costa_rica_events.36.b
 		FROM = {
 			country_event = { id = costa_rica_events.43 days = 2 }
@@ -2934,7 +2874,7 @@ country_event = { #Costa Rica wins Coto
 		PAN = {
 			OR = {
 				surrender_progress > 0.8
-				NOT = { controls_province = 13683 }
+				NOT = { controls_state = 1126 } # Western Panama
 			}
 			is_subject = no
 		}
@@ -3237,148 +3177,6 @@ country_event = { #Countries in Ferrer's cool kids club
 		FROM = {
 			country_event = costa_rica_events.121
 		}
-	}
-}
-
-country_event = { #Offering a hand? (Invasion of Panama)
-	id = costa_rica_events.128
-	title = costa_rica_events.128.t
-	desc = costa_rica_events.128.d
-
-	fire_only_once = yes
-	is_triggered_only = yes
-	trigger = {
-		tag = COS
-		has_war = no
-		CAN = {
-			is_faction_leader = yes
-			has_war_with = PAN
-		}
-	}
-
-	option = { #YES
-		log = "[GetLogInfo]: event costa_rica_events.128 option costa_rica_events.128.a"
-		ai_chance = {
-			base = 100
-			modifier = {
-				factor = 0
-				has_game_rule = { rule = COS_path option = COS_PATH_SYNDIE }
-			}
-			modifier = {
-				factor = 0
-				NOT = { has_game_rule = { rule = COS_forpol option = DEFAULT } }
-				NOT = { has_game_rule = { rule = COS_forpol option = COS_FORPOL_ENT } }
-			}
-		}
-		name = costa_rica_events.128.a
-		CAN = {
-			country_event = costa_rica_events.129
-		}
-	}
-	option = { #NO
-		log = "[GetLogInfo]: event costa_rica_events.128 option costa_rica_events.128.b"
-		ai_chance = {
-			base = 0
-			modifier = {
-				add = 100
-				has_game_rule = { rule = COS_path option = COS_PATH_SYNDIE }
-			}
-			modifier = {
-				add = 100
-				NOT = { has_game_rule = { rule = COS_forpol option = DEFAULT } }
-				NOT = { has_game_rule = { rule = COS_forpol option = COS_FORPOL_ENT } }
-			}
-		}
-		name = costa_rica_events.128.b
-	}
-}
-
-country_event = { #Offering a hand? (Invasion of Panama)
-	id = costa_rica_events.129
-	title = costa_rica_events.129.t
-	desc = costa_rica_events.129.d
-
-	fire_only_once = yes
-
-	is_triggered_only = yes
-
-	option = { #YES
-		log = "[GetLogInfo]: event costa_rica_events.129 option costa_rica_events.129.a"
-		ai_chance = {
-			base = 100
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = { rule = COS_path option = COS_PATH_SYNDIE }
-					has_game_rule = { rule = COS_forpol option = COS_FORPOL_GER }
-				}
-			}
-		}
-		name = costa_rica_events.129.a
-		COS = {
-			country_event = costa_rica_events.130
-			add_to_war = {
-				targeted_alliance = CAN
-				enemy = PAN
-				hostility_reason = asked_to_join
-			}
-			give_military_access = CAN
-			if = {
-				limit = {
-					is_in_faction = no
-				}
-				CAN = {
-					add_to_faction = COS
-				}
-			}
-		}
-	}
-	option = { #NO
-		log = "[GetLogInfo]: event costa_rica_events.129 option costa_rica_events.129.b"
-		ai_chance = {
-			base = 0
-			modifier = {
-				add = 100
-				OR = {
-					has_game_rule = { rule = COS_path option = COS_PATH_SYNDIE }
-					has_game_rule = { rule = COS_forpol option = COS_FORPOL_GER }
-				}
-			}
-		}
-		name = costa_rica_events.129.b
-		COS = {
-			country_event = costa_rica_events.131
-		}
-	}
-}
-
-country_event = { #You have my axe (Invasion of Panama)
-	id = costa_rica_events.130
-	title = costa_rica_events.130.t
-	desc = costa_rica_events.130.d
-
-	fire_only_once = yes
-
-	is_triggered_only = yes
-
-	option = { #YES
-		log = "[GetLogInfo]: event costa_rica_events.130 option costa_rica_events.130.a"
-		name = costa_rica_events.130.a
-	}
-}
-
-country_event = { #Canada says no
-	id = costa_rica_events.131
-	title = costa_rica_events.131.t
-	desc = costa_rica_events.131.d
-
-	fire_only_once = yes
-
-	is_triggered_only = yes
-
-	option = { #YES
-		log = "[GetLogInfo]: event costa_rica_events.131 option costa_rica_events.131.a"
-		name = costa_rica_events.131.a
 	}
 }
 

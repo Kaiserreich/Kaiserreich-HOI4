@@ -71,7 +71,7 @@ disable_country_integration = {
 	hidden_effect = {
 		every_core_state = {
 			limit = { has_variable = can_integrate_@PREV.PREV }
-			clear_variable = PREV.can_integrate_@PREV.PREV
+			clear_variable = can_integrate_@PREV.PREV
 			if = {
 				limit = { is_controlled_by = PREV.PREV }
 				clear_state_integration_resistance = yes

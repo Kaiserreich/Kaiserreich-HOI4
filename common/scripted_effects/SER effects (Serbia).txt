@@ -1756,3 +1756,20 @@ SER_set_pc_expenditure_zero_target = {
 		var:checked_ethnicity = { set_variable = { ROOT.YUG_pc_expenditure_@THIS = 0 } }
 	}
 }
+
+SER_add_bulgaria_to_austrian_war_ally_list = { #for use in generic_events.11 and 13
+	if = {
+		limit = {
+			tag = BUL
+			var:new_faction_leader = { tag = BPL }
+			SER = { #SER has already done the Second Belgrade Congress event chain.
+				OR = {
+					has_country_flag = SER_war_against_austria
+					has_country_flag = SER_diplomacy_with_austria
+				}
+			}
+		}
+		add_to_array = { SER.SER_will_attack_austria = ROOT }
+		set_country_flag = SER_will_attack_austria
+	}
+}

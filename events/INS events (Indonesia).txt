@@ -3765,18 +3765,18 @@ country_event = { #Tan Malaka returns
 	is_triggered_only = yes
 
 	trigger = {
-		INC = { has_character = INS_tan_malaka }
+		VIN = { has_character = INS_tan_malaka }
 	}
 
 	option = { #Of course, we can use all help!
 		log = "[GetLogInfo]: event indonesia_events.116 option indonesia_events.116.a"
 		name = indonesia_events.116.a
 		if = {
-			limit = { country_exists = INC }
-			INC = { country_event = indonesia_events.117 }
+			limit = { country_exists = VIN }
+			VIN = { country_event = indonesia_events.117 }
 		}
 		else = {
-			INC = {
+			VIN = {
 				INS_tan_malaka = {
 					set_nationality = ROOT
 					hidden_effect = { promote_character = radical_socialist_subtype }

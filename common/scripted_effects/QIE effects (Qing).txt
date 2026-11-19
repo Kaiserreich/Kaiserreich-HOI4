@@ -512,7 +512,12 @@ QIE_zhili_clique_flees = {
 			if = {
 				limit = { country_exists = LEP }
 				every_unit_leader = {
-					limit = { has_character_flag = SZC_armament_leader }
+					limit = {
+						OR = {
+							has_character_flag = SZC_armament_leader
+							has_character_flag = SZC_accelerated_yang_leader
+						}
+					}
 					set_nationality = LEP
 					if = {
 						limit = { is_character = SZC_yang_sen }
@@ -522,7 +527,12 @@ QIE_zhili_clique_flees = {
 			}
 			else = {
 				every_unit_leader = {
-					limit = { has_character_flag = SZC_armament_leader }
+					limit = {
+						OR = {
+							has_character_flag = SZC_armament_leader
+							has_character_flag = SZC_accelerated_yang_leader
+						}
+					}
 					retire = yes
 				}
 			}
@@ -652,6 +662,10 @@ QIE_zhili_clique_flees = {
 		QIE_wu_yulin = { retire = yes }
 		QIE_du_xigui = { retire = yes }
 		QIE_li_jichen = { retire = yes }
+		if = {
+			limit = { has_character = SZC_zhao_ronghua }
+			SZC_zhao_ronghua = { retire = yes }
+		}
 	}
 }
 

@@ -12,7 +12,7 @@ focus_tree = {
 	default = no
 	continuous_focus_position = { x = 225 y = 900 }
 
-	shared_focus = PAN_canal_in_crisis
+	shared_focus = PAN_return_of_the_canal
 	shared_focus = PAN_protect_interests
 	shared_focus = PAN_defend_our_homeland
 	shared_focus = PAN_invest_in_industry
@@ -116,8 +116,11 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed PAN_clear_new_land"
 			add_ideas = PAN_land_clearing
-			304 = {
-				add_extra_state_shared_building_slots = 2
+			custom_effect_tooltip = tooltip_white_line
+			random_owned_controlled_state = {
+				prioritize = { 1126 } #Western Panama
+				limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } }
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
 					level = 1
@@ -145,14 +148,17 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed PAN_industrial_projects"
-			304 = {
-				add_extra_state_shared_building_slots = 2
+			random_owned_controlled_state = {
+				prioritize = { 304 } #Eastern Panama
+				limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } }
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
+			custom_effect_tooltip = tooltip_white_line
 			country_event = panama_events.27
 			custom_effect_tooltip = tooltip_event_allows_choice
 			custom_effect_tooltip = tooltip_event_choice_option_1
@@ -305,11 +311,33 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed PAN_export_economy"
-			304 = {
-				add_extra_state_shared_building_slots = 2
+			random_owned_controlled_state = {
+				prioritize = { 1126 } #Western Panama
+				limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } }
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
-					level = 2
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 685 } #Panama Canal
+				limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 304 } #Eastern Panama
+				limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
 					instant_build = yes
 				}
 			}

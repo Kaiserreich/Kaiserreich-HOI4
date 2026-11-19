@@ -1,0 +1,121 @@
+treaty_of_london_trigger = {
+	hidden_trigger = {
+		tooltip_evaluation = no_eval
+		original_tag = GER
+		has_war_with = INT
+		is_faction_leader = yes
+	}
+	GER = { surrender_progress < 0.20 } #scoped for tooltip
+	custom_override_tooltip = {
+		tooltip = {
+			localization_key = tooltip_triggers_with_header
+			HEADER = {
+				localization_key = string_concatenation
+				ONE = {
+					localization_key = tooltip_yellow_text
+					TEXT = "[INT.GetFactionName]"
+				}
+				SEPARATOR = ": "
+				TWO = {
+					localization_key = tooltip_yellow_text
+					TEXT = TRIGGER_FACTION_LEADER
+				}
+			}
+			TRIGGERS = {
+				localization_key = tooltip_indented_trigger
+				INDENT = single_indent
+				ITEM = {
+					localization_key = tooltip_trigger_header
+					HEADER = TRIGGER_OR_STARTS
+				}
+				NEXT_ITEM = {
+					localization_key = tooltip_indented_trigger
+					INDENT = double_indent
+					ITEM = {
+						localization_key = ORIGINAL_TAG_IS
+						COUNTRY = "[ENG.GetNameWithFlag]"
+					}
+					NEXT_ITEM = {
+						localization_key = tooltip_indented_trigger
+						INDENT = double_indent
+						ITEM = is_in_europe_NOT
+						NEXT_ITEM = {
+							localization_key = tooltip_indented_trigger
+							INDENT = single_indent
+							ITEM = {
+								localization_key = TRIGGER_LESS_THAN_X_SURRENDER_PROGRESS
+								PERCENTAGE = "10%"
+							}
+						}
+					}
+				}
+			}
+		}
+		INT = {
+			surrender_progress < 0.1
+			is_faction_leader = yes
+			OR = {
+				original_tag = ENG
+				is_in_europe = no
+			}
+		}
+	}
+	if = {
+		limit = { INT = { original_tag = ENG } }
+		GER = {
+			naval_strength_ratio = {
+				tag = ENG
+				ratio < 1.0
+			}
+		}
+	}
+	else_if = {
+		limit = { INT = { is_ally_with = ENG } }
+		ENG = {
+			OR = {
+				has_capitulated = yes
+				NOT = { any_home_area_neighbor_country = { has_war_with = ENG } } #being invaded
+			}
+		}
+	}
+	INT = {
+		all_allied_country = {
+			OR = {
+				is_in_europe = no
+				has_capitulated = yes
+				capital_scope = { is_island_region = yes }
+			}
+		}
+	}
+
+	RUS = {
+		OR = {
+			has_capitulated = yes
+			NOT = { has_war_with = PREV }
+		}
+	}
+
+	#Germany shouldn't abandon Entente if Halifax has succeeded and Canada is okay
+	OR = {
+		custom_override_tooltip = {
+			tooltip = CAN_halifax_conference_failed
+			NOT = { has_global_flag = GER_stay_out_france_uk }
+		}
+		custom_override_tooltip = {
+			tooltip = {
+				localization_key = TRIGGER_HAS_NOT_FACTION_TEMPLATE
+				COUNTRY = "[ENG.GetNameWithFlag]"
+				FACTION = faction_third_internationale
+			}
+			NOT = { ENG = { is_ally_with = INT } }
+		}
+		custom_override_tooltip = {
+			tooltip = {
+				localization_key = TRIGGER_HAS_NOT_FACTION_TEMPLATE
+				COUNTRY = "[IMP.GetNameWithFlag]"
+				FACTION = faction_entente
+			}
+			NOT = { IMP = { is_ally_with = ENT } }
+		}
+	}
+}

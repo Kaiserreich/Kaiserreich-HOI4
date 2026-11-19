@@ -2528,10 +2528,18 @@ country_event = {
 				election_frequency = 60
 				elections_allowed = yes
 			}
-			promote_character = CAN_louis_st_laurent
+			if = {
+				limit = { is_monarchy = no }
+				promote_character = CAN_louis_st_laurent
+			}
+			else = {
+				CAN_add_louis_st_laurent_sic = yes
+				hidden_effect = {
+					CAN_thomas_crerar = { remove_country_leader_role_social_liberal = yes }
+				}
+			}
 			set_temp_variable = { coalition_partner_var = token:market_liberal }
 			add_to_coalition = yes
-			CAN_add_louis_st_laurent_sic = yes
 		}
 		add_popularity = { ideology = social_liberal popularity = 0.20 }
 		if = {
@@ -7038,6 +7046,7 @@ country_event = {
 		effect_tooltip = { set_cosmetic_tag = CAN }
 		hidden_effect = {
 			CAN_create_republic = yes
+			CAN_add_correct_second_in_command = yes
 			news_event = { id = canada_events.316 days = 1 }
 		}
 	}

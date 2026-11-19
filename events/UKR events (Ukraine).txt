@@ -1434,6 +1434,14 @@ country_event = { #Death of Pavlo Skoropadskyi
 			UKR_pavlo_skoropadskyi = { kill_character = yes }
 			promote_character = {
 				character = UKR_danylo_skoropadskyi
+				ideology = social_liberal_subtype
+			}
+			promote_character = {
+				character = UKR_danylo_skoropadskyi
+				ideology = market_liberal
+			}
+			promote_character = {
+				character = UKR_danylo_skoropadskyi
 				ideology = social_conservative_subtype
 			}
 			promote_character = {
@@ -8875,6 +8883,8 @@ country_event = {
 	after = {
 		hidden_effect = {
 			country_event = { id = ukraine_events.68 days = 365 } #Pavlo Dies, Danylo Succeeds
+			country_event = { id = ukraine_coalition_events.73 days = 1460 } #Elections again
+
 		}
 	}
 }
@@ -21767,7 +21777,10 @@ country_event = { # Focus (Khvyliovyi) - VAPLITE
 			if = {
 				limit = {
 					OR = {
-						country_exists = INC
+						AND = {
+							country_exists = VIN
+							VIN = { has_socialist_government = yes }
+						}
 						country_exists = CHI
 					}
 				}

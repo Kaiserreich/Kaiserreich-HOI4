@@ -61,7 +61,6 @@ foreign_politics = {
 			#Continental SEA (West to East)
 			activate_targeted_decision = { target = BRM decision = china_invite_countries_to_faction }
 			activate_targeted_decision = { target = SIA decision = china_invite_countries_to_faction }
-			activate_targeted_decision = { target = INC decision = china_invite_countries_to_faction }
 			activate_targeted_decision = { target = VIN decision = china_invite_countries_to_faction }
 			activate_targeted_decision = { target = LAO decision = china_invite_countries_to_faction }
 			activate_targeted_decision = { target = CAM decision = china_invite_countries_to_faction }
@@ -1768,20 +1767,6 @@ UPC_road_to_unification_decision_category = {
 UPC_enthusiasm_decision_category = {
 	UPC_challenge_the_UPC_decision = {
 		allowed = { is_chinese_or_potential_chinese_tag = yes }
-		available = {
-			if = {
-				limit = { tag = GXC }
-			}
-			else_if = {
-				limit = { tag = YUN }
-			}
-			else_if = {
-				limit = { tag = SZC }
-			}
-			else_if = {
-				limit = { tag = HNN }
-			}
-		}
 		icon = GFX_decision_UPC_PIP_flag
 		visible = {
 			is_subject_of = UPC

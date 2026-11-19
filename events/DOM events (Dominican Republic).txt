@@ -597,8 +597,15 @@ country_event = { #Formalizing Regime
 		add_stability = -0.03
 		add_political_power = 30
 		set_country_flag = DOM_kept_puppet_pres
-		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
-		add_to_coalition = yes
+		if = {
+			limit = { has_government = paternal_autocrat }
+			set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+			add_to_coalition = yes
+		}
+		else = {
+			set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+			add_to_coalition = yes
+		}
 	}
 
 	option = { #Push for Trujillo now

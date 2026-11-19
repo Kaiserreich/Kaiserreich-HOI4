@@ -1,23 +1,26 @@
 ### in state scope
 is_island_region = {
-	OR = {
-		is_one_state_island = yes
-		is_great_britain = yes
-		is_ireland = yes
-		region = 36 #Greenland
-		region = 53 #Caribbean Sea
-		region = 76 #East China Sea
-		region = 91 #Arafura & Banda Seas
-		region = 93 #Java & Flores Seas
-		region = 154 #Eastern Japan
-		region = 158 #Sunda Islands
-		region = 159 #Borneo
-		region = 160 #Philippines
-		region = 167 #New Guinea
-		region = 169 #Tyrhennian Sea
-		region = 192 #Sumatra
-		region = 273 #Western Japan
-		is_on_continent = australia
+	custom_override_tooltip = {
+		tooltip = is_island_region
+		OR = {
+			is_one_state_island = yes
+			is_great_britain = yes
+			is_ireland = yes
+			region = 36 #Greenland
+			region = 53 #Caribbean Sea
+			region = 76 #East China Sea
+			region = 91 #Arafura & Banda Seas
+			region = 93 #Java & Flores Seas
+			region = 154 #Eastern Japan
+			region = 158 #Sunda Islands
+			region = 159 #Borneo
+			region = 160 #Philippines
+			region = 167 #New Guinea
+			region = 169 #Tyrhennian Sea
+			region = 192 #Sumatra
+			region = 273 #Western Japan
+			is_on_continent = australia
+		}
 	}
 }
 
@@ -883,8 +886,9 @@ is_costa_rica = {
 
 is_panama = {
 	OR = {
-		state = 304 #Panama
+		state = 304 #Eastern Panama
 		state = 685 #Panama Canal
+		state = 1126 #Western Panama
 	}
 }
 
@@ -1529,51 +1533,87 @@ is_south_africa = {
 # the following triggers will check if the country in scope is on a particular continent
 # note that these are continents as per the game - asia and middle-east are considered separate continents
 is_in_asia = {
-	has_country_flag = is_in_asia
+	custom_override_tooltip = {
+		tooltip = is_in_asia
+		has_country_flag = is_in_asia
+	}
 }
 
 is_in_india = {
-	has_country_flag = is_in_india
+	custom_override_tooltip = {
+		tooltip = is_in_india
+		has_country_flag = is_in_india
+	}
 }
 
 is_in_europe = {
-	has_country_flag = is_in_europe
+	custom_override_tooltip = {
+		tooltip = is_in_europe
+		has_country_flag = is_in_europe
+	}
 }
 
 is_in_africa = {
-	has_country_flag = is_in_africa
+	custom_override_tooltip = {
+		tooltip = is_in_africa
+		has_country_flag = is_in_africa
+	}
 }
 
 is_in_north_africa = {
-	has_country_flag = is_in_north_africa
+	custom_override_tooltip = {
+		tooltip = is_in_north_africa
+		has_country_flag = is_in_north_africa
+	}
 }
 
 is_in_north_america = {
-	has_country_flag = is_in_north_america
+	custom_override_tooltip = {
+		tooltip = is_in_north_america
+		has_country_flag = is_in_north_america
+	}
 }
 
 is_in_central_america = {
-	has_country_flag = is_in_central_america
+	custom_override_tooltip = {
+		tooltip = is_in_central_america
+		has_country_flag = is_in_central_america
+	}
 }
 
 is_in_caribbean = {
-	has_country_flag = is_in_caribbean
+	custom_override_tooltip = {
+		tooltip = is_in_caribbean
+		has_country_flag = is_in_caribbean
+	}
 }
 
 is_in_south_america = {
-	has_country_flag = is_in_south_america
+	custom_override_tooltip = {
+		tooltip = is_in_south_america
+		has_country_flag = is_in_south_america
+	}
 }
 
 is_in_americas = {
-	has_country_flag = is_in_americas
+	custom_override_tooltip = {
+		tooltip = is_in_americas
+		has_country_flag = is_in_americas
+	}
 }
 
 is_in_middle_east = {
-	has_country_flag = is_in_middle_east
+	custom_override_tooltip = {
+		tooltip = is_in_middle_east
+		has_country_flag = is_in_middle_east
+	}
 }
 
 is_in_australia = {
-	has_country_flag = is_in_oceania
+	custom_override_tooltip = {
+		tooltip = is_in_oceania
+		has_country_flag = is_in_oceania
+	}
 }
 
 # checks whether the country in scope is in the same continent as PREV (the country running the event)

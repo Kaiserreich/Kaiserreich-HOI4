@@ -22,7 +22,6 @@ GXC_research_gun_1 = {
 		value = 10000
 	}
 }
-
 GXC_infantry_equipment_modernisation = {
 	allowed = {
 		original_tag = GXC
@@ -47,43 +46,7 @@ GXC_infantry_equipment_modernisation = {
 		value = 20000
 	}
 }
-
-GXC_buffer_against_japanese_invasion = {
-	allowed = {
-		original_tag = GXC
-	}
-	enable = {
-		JAP = {
-			is_ai = no
-			has_war_with = GXC
-		}
-		surrender_progress < 0.2
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = put_unit_buffers
-
-		states = {
-			592
-			593
-		}
-
-		ratio = 0.15
-
-		area = asia
-
-		subtract_invasions_from_need = no
-		subtract_fronts_from_need = no
-	}
-
-	ai_strategy = {
-		type = garrison
-		value = 25
-	}
-}
-
-GXC_army_composition = {
+GXC_army_composition_normal = {
 	allowed = { original_tag = GXC }
 	enable = {
 		OR = {
@@ -91,6 +54,7 @@ GXC_army_composition = {
 			date < 1941.1.1
 		}
 		num_divisions < 50
+		NOT = { has_completed_focus = GXC_embrace_the_guangxi_style }
 	}
 	abort_when_not_enabled = yes
 
@@ -112,7 +76,50 @@ GXC_army_composition = {
 		value = 25
 	}
 }
+GXC_army_composition_militia = {
+	allowed = { original_tag = GXC }
+	enable = {
+		has_completed_focus = GXC_embrace_the_guangxi_style
+	}
+	abort_when_not_enabled = yes
 
+	ai_strategy = {
+		type = role_ratio
+		id = militia
+		value = 200
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = light_infantry
+		value = 100
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = -100
+	}
+
+}
+GXC_army_composition_militia_final = {
+	allowed = { original_tag = GXC }
+	enable = {
+		has_completed_focus = GXC_chinese_warfare_revitalised
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = role_ratio
+		id = militia
+		value = 200
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = -200
+	}
+}
 GXC_prepare_for_SCW_YUN = {
 	allowed = { original_tag = GXC }
 	enable = {
@@ -133,7 +140,6 @@ GXC_prepare_for_SCW_YUN = {
 		value = 500
 	}
 }
-
 GXC_prepare_for_SCW_HNN = {
 	allowed = { original_tag = GXC }
 	enable = {
@@ -155,6 +161,44 @@ GXC_prepare_for_SCW_HNN = {
 	}
 }
 
+GXC_buffer_against_japanese_invasion = {
+	allowed = {
+		original_tag = GXC
+	}
+	enable = {
+		JAP = {
+			OR = {
+				has_naval_invasion_against_state = 592
+				has_naval_invasion_against_state = 593
+			}
+		}
+		has_war_with = JAP
+		surrender_progress < 0.2
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = put_unit_buffers
+
+		states = {
+			592
+			593
+		}
+
+		ratio = 0.20
+
+		area = asia
+
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = no
+	}
+
+	ai_strategy = {
+		type = garrison
+		value = 25
+	}
+}
+
 GXC_last_stand_of_guangzhou = {
 	allowed = {
 		original_tag = GXC
@@ -162,6 +206,8 @@ GXC_last_stand_of_guangzhou = {
 	enable = {
 		592 = { is_controlled_by = GXC }
 		any_enemy_country = { is_ai = no }
+		has_war_support > 0.50
+		num_divisions < 20
 		NOT = {
 			num_subjects > 0
 			is_subject = yes

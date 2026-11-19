@@ -1,0 +1,898 @@
+italy_foreign_policy_decisions = {
+	SRI_join_the_intl = {
+		icon = generic_political_discourse
+		allowed = { tag = SRI }
+
+		available = {
+			italy_balance_has_broken = yes
+			OR = {
+				second_weltkrieg_has_begun = yes
+				at_peace_or_same_enemies_as_FROM = yes
+			}
+		}
+
+		visible = {
+			is_in_faction = no
+			has_socialist_government = yes
+			NOT = { has_country_flag = SRI_refused_intl_membership }
+			FROM = {
+				has_socialist_government = yes
+				is_faction_leader = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		targets = { INT }
+		target_trigger = {
+			NOT = { has_country_flag = SRI_refused_intl_membership }
+			FROM = {
+				has_socialist_government = yes
+				is_faction_leader = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_war = no
+				FROM = { surrender_progress > 0.3 }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = { flag = ITA_recent_peace days < 30 }
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = { flag = second_weltkrieg_has_started days < 30 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete SRI_join_the_intl"
+			italy_break_balance = yes
+			FROM = { country_event = socialist_italy_events.129 }
+		}
+		fixed_random_seed = no
+	}
+}
+
+italy_risorgimento_decisions = {
+	SRI_rally_supporters = {
+		icon = generic_civil_support
+		allowed = { tag = SRI }
+		available = {
+			has_capitulated = no
+			ITA = {
+				has_capitulated = no
+				controls_state = 159
+				controls_state = 759
+			}
+		}
+
+		visible = {
+			has_war_with = ITA
+			NOT = { has_country_flag = SRI_rallied_supporters }
+			ITA = {
+				owns_state = 159
+				owns_state = 160
+			}
+		}
+
+		cancel_trigger = {
+			OR = {
+				has_capitulated = yes
+				NOT = { has_war_with = ITA }
+				NOT = {
+					159 = { is_controlled_by = ITA }
+					759 = { is_controlled_by = ITA }
+				}
+			}
+		}
+
+		fire_only_once = no
+		cost = 100
+		days_remove = 30
+		priority = 5
+
+		ai_will_do = { factor = 10000 }
+
+		cancel_effect = {
+			log = "[GetLogRoot]: Decision cancel SRI_rally_supporters"
+			add_political_power = 100
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove SRI_rally_supporters"
+			set_country_flag = SRI_rallied_supporters
+			add_manpower = 60000
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 }
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Partigiani"
+					LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 4 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
+				}
+				if = {
+					limit = { has_template = "Partigiani" }
+					delete_unit_template_and_units = { division_template = "Partigiani" disband = yes } #no cheating
+				}
+				division_template = {
+					name = "Partigiani"
+					division_names_group = SRI_GAR_01
+					is_locked = yes
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+					}
+					support = {
+						recon = { x = 0 y = 0 }
+					}
+					template_counter = 68
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Fanteria Partigiana"
+					LINE_1 = { localization_key = line_battalion_tt NAME = infantry ICON = GFX_unit_infantry_icon_small COUNT = 9 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
+				}
+				if = {
+					limit = { has_template = "Fanteria Partigiana" }
+					delete_unit_template_and_units = { division_template = "Fanteria Partigiana" disband = yes } #no cheating
+				}
+				division_template = {
+					name = "Fanteria Partigiana"
+					division_names_group = SRI_INF_01
+					is_locked = yes
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+					}
+					support = {
+						recon = { x = 0 y = 0 }
+					}
+					template_counter = 92
+				}
+			}
+			159 = { #Lombardy
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Fanteria Partigiana"
+					}
+					create_unit = {
+						division = "name = \"1i Partigiano Sindacalisti\" division_template = \"Fanteria Partigiana\" start_experience_factor = 0.3"
+						allow_spawning_on_enemy_provs = yes
+						prioritize_location = 11587
+						owner = PREV
+					}
+				}
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Partigiani"
+					}
+					create_unit = {
+						division = "name = \"3i Partigiano Sindacalisti\" division_template = \"Partigiani\" start_experience_factor = 0.3"
+						allow_spawning_on_enemy_provs = yes
+						prioritize_location = 11587
+						owner = PREV
+					}
+				}
+			}
+			759 = { #Friuli
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Partigiani"
+					}
+					create_unit = {
+						division = "name = \"2i Partigiani Sindacalisti\" division_template = \"Partigiani\" start_experience_factor = 0.3"
+						allow_spawning_on_enemy_provs = yes
+						prioritize_location = 6656
+						owner = PREV
+					}
+				}
+			}
+			ITA = { country_event = socialist_italy_events.126 }
+		}
+		fixed_random_seed = no
+	}
+
+	SRI_attack_italy = {
+		name = attack_country
+		desc = SRI_attack_italy_desc
+		icon = generic_prepare_civil_war
+
+		allowed = { tag = SRI }
+
+		available = {
+			has_completed_focus = SRI_risorgimento
+		}
+
+		visible = {
+			can_declare_war_on = FROM
+			is_subject = no
+			FROM = {
+				if = {
+					limit = { tag = VNC }
+					NOT = { ITA = { has_active_mission = ITA_war_with_venice1 } }
+				}
+			}
+		}
+
+		targets = { ITA SIC SRD PAP VNC EMI TUS LOM }
+
+		target_trigger = {
+			can_declare_war_on = FROM
+			is_subject = no
+		}
+
+		cost = 0
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				country_is_in_dangerous_war = yes
+			}
+			modifier = {
+				factor = 0
+				FROM = { default_attack_AI_trigger = yes }
+			}
+			modifier = {
+				factor = 0
+				second_weltkrieg_has_begun = no
+				FROM = {
+					OR = {
+						is_in_faction = yes
+						AND = {
+							is_subject = yes
+							overlord = { is_italian_tag = no }
+						}
+						AND = {
+							has_guarantor = yes
+							any_collection_element = {
+								collection = collection:guarantors
+								is_italian_tag = no
+							}
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = { original_tag = SRD }
+				any_neighbor_country = {
+					is_italian_tag = yes
+					has_capitulated = no
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { is_owner_neighbor_of = FROM }
+				naval_strength_ratio = { tag = FROM ratio < 0.6 }
+			}
+			modifier = {
+				factor = 5
+				FROM = { original_tag = LOM }
+			}
+			modifier = {
+				factor = 3
+				FROM = { original_tag = VNC }
+			}
+			modifier = {
+				factor = 3
+				FROM = { original_tag = SIC }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { original_tag = PAP }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { original_tag = SRD }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete SRI_attack_italy"
+			add_war_support = 0.10
+			declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}
+			italy_add_reunification_wars_threat = yes
+		}
+		fixed_random_seed = no
+	}
+
+	SRI_unite_italia = {
+		name = ITA_unite_italy
+		desc = SRI_unite_italia_desc
+		icon = italy_flag
+		allowed = { original_tag = SRI }
+		available = {
+			OR = {
+				NOT = { country_exists = ITA }
+				ITA = { has_capitulated = yes }
+			}
+			OR = {
+				NOT = { country_exists = SIC }
+				SIC = { has_capitulated = yes }
+			}
+			any_state_of = {
+				count = 6
+				target = { 2 117 158 159 160 161 162 } #Latium, Campania, Piedmont, Lombardy, Venice, Romagna, Tuscany
+				is_owned_and_controlled_by_ROOT_or_subject = yes
+			}
+		}
+		fire_only_once = yes
+		cost = 0
+		ai_will_do = { factor = 100 }
+		priority = 100
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete SRI_unite_italia"
+			if = {
+				limit = { italy_balance_has_broken = no }
+				log = "KR_Event_Logging;Socialist Republic of Italy, on its own UNIFIES ITALY"
+			}
+			else = {
+				log = "KR_Event_Logging;Socialist Republic of Italy, with INT aid UNIFIES ITALY"
+			}
+			FROM = { italy_break_balance = yes }
+			set_country_flag = italy_has_reunited_italy
+			add_political_power = 250
+			if = {
+				limit = { owns_state = 2 }
+				set_capital = { state = 2 remember_old_capital = no }
+			}
+			country_event = socialist_italy_events.40
+			hidden_effect = {
+				set_cosmetic_tag = SRI_italy
+				news_event = { id = socialist_italy_events.201 days = 1 }
+				SWI = { country_event = { id = switzerland_events.211 days = 4 random_days = 8 } } #Campione
+				country_event = { id = socialist_italy_events.77 days = 30 random_days = 270 }
+				country_event = { id = socialist_italy_events.22 days = 30 random_days = 60 }
+				country_event = { id = socialist_italy_events.86 days = 30 random_days = 30 }
+				ROM = {
+					if = {
+						limit = { has_country_flag = ROM_cantacuzino_in_ani }
+						country_event = { id = romania_events.53 days = 14 } #Volunteers return
+					}
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+}
+
+FRA_internationale_category = {
+	INT_invite_SRI = {
+		icon = generic_political_discourse
+
+		available = {
+			italy_balance_has_broken = yes
+			set_temp_variable = { target = ROOT }
+			OR = {
+				second_weltkrieg_has_begun = yes
+				FROM = { at_peace_or_same_enemies_as_ROOT = yes }
+			}
+		}
+
+		visible = {
+			is_faction_leader = yes
+			has_socialist_government = yes
+			tag = INT
+			FROM = {
+				has_socialist_government = yes
+				is_in_faction = no
+				is_subject = no
+				has_capitulated = no
+				NOT = { has_country_flag = SRI_refused_intl_membership }
+			}
+		}
+
+		targets = { SRI }
+		target_root_trigger = { is_faction_leader = yes }
+		target_trigger = {
+			FROM = {
+				has_socialist_government = yes
+				is_in_faction = no
+				is_subject = no
+				has_capitulated = no
+				NOT = { has_country_flag = SRI_refused_intl_membership }
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				SRI = { has_country_flag = { flag = ITA_recent_peace days < 30 } }
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = { flag = second_weltkrieg_has_started days < 30 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete INT_invite_SRI"
+			FROM = {
+				italy_break_balance = yes
+				country_event = socialist_italy_events.128
+			}
+		}
+		fixed_random_seed = no
+	}
+}
+
+SRI_balance_of_power_category = {
+	SRI_abuse_the_presidency_bop_decision = {
+		icon = generic_political_address
+		custom_cost_trigger = {
+			has_stability > 0.05
+		}
+		custom_cost_text = stability5
+		allowed = { always = no }
+		days_re_enable = 180
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete SRI_abuse_the_presidency_bop_decision"
+			add_political_power = 50
+			hidden_effect = {
+				add_stability = -0.05
+			}
+			add_power_balance_value = {
+				id = SRI_power_balance
+				value = 0.15
+			}
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 100
+				OR = {
+					AND = {
+						OR = {
+							has_game_rule = { rule = SRI_path option = SRI_PATH_SALVEMINI_RADSOC }
+							has_game_rule = { rule = SRI_path option = SRI_PATH_LUSSU_RADSOC }
+							has_country_flag = SRI_radsoc_ai
+						}
+						is_power_balance_in_range = { id = SRI_power_balance range < SRI_radsoc_side }
+					}
+					AND = {
+						OR = {
+							has_game_rule = { rule = SRI_path option = SRI_PATH_DE_AMBRIS_TOTALIST }
+							has_game_rule = { rule = SRI_path option = SRI_PATH_MUSSOLINI_TOTALIST }
+							has_game_rule = { rule = SRI_path option = SRI_PATH_TOGLIATTI_TOTALIST }
+							has_country_flag = SRI_totalist_ai
+						}
+						is_power_balance_in_range = { id = SRI_power_balance range < SRI_bop_totalist_in_control_side }
+					}
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+	SRI_launch_strike_bop_decision = {
+		icon = generic_political_rally
+		custom_cost_trigger = {
+			has_war_support > 0.10
+		}
+		custom_cost_text = war_support10
+		allowed = { always = no }
+		days_re_enable = 180
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete SRI_launch_strike_bop_decision"
+			hidden_effect = {
+				add_war_support = -0.10
+			}
+			add_power_balance_value = {
+				id = SRI_power_balance
+				value = -0.15
+			}
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 100
+				OR = {
+					AND = {
+						OR = {
+							has_game_rule = { rule = SRI_path option = SRI_PATH_SALVEMINI_RADSOC }
+							has_game_rule = { rule = SRI_path option = SRI_PATH_LUSSU_RADSOC }
+							has_country_flag = SRI_radsoc_ai
+						}
+						is_power_balance_in_range = { id = SRI_power_balance range > SRI_radsoc_side }
+					}
+					AND = {
+						OR = {
+							has_game_rule = { rule = SRI_path option = SRI_PATH_VITTORIO_SYNDIE }
+							has_game_rule = { rule = SRI_path option = SRI_PATH_MESCHI_SYNDIE }
+							has_game_rule = { rule = SRI_path option = SRI_PATH_NENNI_SYNDIE }
+							has_country_flag = SRI_syndicalist_ai
+						}
+						is_power_balance_in_range = { id = SRI_power_balance range > SRI_bop_syndie_in_control_side }
+					}
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+	SRI_let_blackshirts_loose_bop_decision = {
+		icon = eng_blackshirt_march
+		custom_cost_text = SRI_CP_30_PP_10
+		allowed = { always = no }
+		ai_hint_pp_cost = 10
+		custom_cost_trigger = {
+			NOT = { command_power < 30 }
+			NOT = { has_political_power < 10 }
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = doing_bonus_decision
+				}
+			}
+		}
+		days_remove = 180
+		modifier = {
+			political_power_factor = 0.1
+			stability_weekly = -0.001
+			power_balance_weekly = 0.01
+			weekly_manpower = 100
+			army_core_defence_factor = 0.05
+			army_core_attack_factor = 0.05
+			army_org_regain = 0.1
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete SRI_let_blackshirts_loose_bop_decision"
+			set_country_flag = doing_bonus_decision
+			hidden_effect = {
+				add_command_power = -30
+				add_political_power = -10
+			}
+		}
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove SRI_let_blackshirts_loose_bop_decision"
+			clr_country_flag = doing_bonus_decision
+		}
+		ai_will_do = {
+			factor = 10000
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = SRI_path option = SRI_PATH_VITTORIO_SYNDIE }
+					has_game_rule = { rule = SRI_path option = SRI_PATH_MESCHI_SYNDIE }
+					has_game_rule = { rule = SRI_path option = SRI_PATH_NENNI_SYNDIE }
+					has_country_flag = SRI_syndicalist_ai
+					AND = {
+						OR = {
+							has_game_rule = { rule = SRI_path option = SRI_PATH_SALVEMINI_RADSOC }
+							has_game_rule = { rule = SRI_path option = SRI_PATH_LUSSU_RADSOC }
+							has_country_flag = SRI_radsoc_ai
+						}
+						is_power_balance_in_range = { id = SRI_power_balance range > SRI_bop_syndie_in_control_side }
+					}
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+	SRI_negotiate_with_factory_cooperatives = {
+		cost = 20
+		icon = eng_trade_unions_support
+		allowed = { always = no }
+		days_remove = 180
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = doing_bonus_decision
+				}
+			}
+		}
+		modifier = {
+			power_balance_weekly = -0.01
+			war_support_weekly = -0.001
+			production_factory_max_efficiency_factor = 0.1
+			consumer_goods_factor = -0.15
+			industrial_capacity_factory = 0.1
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete SRI_negotiate_with_factory_cooperatives"
+			set_country_flag = doing_bonus_decision
+		}
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove SRI_negotiate_with_factory_cooperatives"
+			clr_country_flag = doing_bonus_decision
+		}
+		ai_will_do = {
+			factor = 10000
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = SRI_path option = SRI_PATH_DE_AMBRIS_TOTALIST }
+					has_game_rule = { rule = SRI_path option = SRI_PATH_MUSSOLINI_TOTALIST }
+					has_game_rule = { rule = SRI_path option = SRI_PATH_TOGLIATTI_TOTALIST }
+					has_country_flag = SRI_totalist_ai
+					AND = {
+						OR = {
+							has_game_rule = { rule = SRI_path option = SRI_PATH_SALVEMINI_RADSOC }
+							has_game_rule = { rule = SRI_path option = SRI_PATH_LUSSU_RADSOC }
+							has_country_flag = SRI_radsoc_ai
+						}
+						is_power_balance_in_range = { id = SRI_power_balance range < SRI_bop_totalist_in_control_side }
+					}
+				}
+			}
+		}
+		fixed_random_seed = no
+	}
+}
+
+crisis = {
+	SRI_massive_protests_mission = {
+		icon = generic_political_rally
+
+		allowed = { always = no }
+
+		available = {
+			focus_progress = { focus = SRI_leggi_fascistissime progress > 0 }
+		}
+
+		cancel_trigger = {
+			if = {
+				limit = { is_ai = yes }
+				OR = {
+					NOT = { has_government = totalist }
+					has_game_rule = { rule = SRI_path option = SRI_PATH_DE_AMBRIS_TOTALIST }
+					has_game_rule = { rule = SRI_path option = SRI_PATH_MUSSOLINI_TOTALIST }
+					has_game_rule = { rule = SRI_path option = SRI_PATH_TOGLIATTI_TOTALIST }
+					has_country_flag = SRI_totalist_ai
+				}
+			}
+			else = {
+				NOT = { has_government = totalist }
+			}
+		}
+
+		is_good = no
+		fire_only_once = yes
+		days_mission_timeout = 70
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout SRI_massive_protests_mission"
+			country_event = socialist_italy_events.45
+		}
+		fixed_random_seed = no
+	}
+	SRI_chetnik_operations = {
+		icon = generic_military
+
+		allowed = { always = no }
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				NOT = {
+					has_idea = SRI_fmc_idea_1
+					has_idea = SRI_fmc_idea_2
+					has_idea = SRI_fmc_idea_3
+				}
+			}
+		}
+
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 30
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout SRI_chetnik_operations"
+			activate_mission = SRI_chetnik_operations
+			random_list = {
+				10 = {
+					modifier = {
+						add = 10
+						has_war = yes
+					}
+					modifier = {
+						add = 10
+						has_country_flag = { flag = SRI_fmc_attacks value > 1 }
+					}
+					modifier = {
+						add = 10
+						has_country_flag = { flag = SRI_fmc_attacks value > 2 }
+					}
+					modifier = {
+						add = 10
+						has_country_flag = { flag = SRI_fmc_attacks value > 3 }
+					}
+					modifier = {
+						add = 10
+						has_country_flag = { flag = SRI_fmc_attacks value > 4 }
+					}
+					modifier = {
+						add = 10
+						has_country_flag = { flag = SRI_fmc_attacks value > 5 }
+					}
+					modifier = {
+						add = 10
+						has_country_flag = { flag = SRI_fmc_attacks value > 6 }
+					}
+					modifier = {
+						add = 10
+						has_country_flag = { flag = SRI_fmc_attacks value > 7 }
+					}
+					modifier = {
+						add = 10
+						has_country_flag = { flag = SRI_fmc_attacks value > 8 }
+					}
+					if = {
+						limit = { has_idea = SRI_fmc_idea_1 }
+						country_event = socialist_italy_events.29
+					}
+					else_if = {
+						limit = { has_idea = SRI_fmc_idea_2 }
+						country_event = socialist_italy_events.30
+					}
+				}
+				90 = {
+					modifier = {
+						add = -10
+						has_war = yes
+					}
+					modifier = {
+						add = -10
+						has_country_flag = { flag = SRI_fmc_attacks value > 1 }
+					}
+					modifier = {
+						add = -10
+						has_country_flag = { flag = SRI_fmc_attacks value > 2 }
+					}
+					modifier = {
+						add = -10
+						has_country_flag = { flag = SRI_fmc_attacks value > 3 }
+					}
+					modifier = {
+						add = -10
+						has_country_flag = { flag = SRI_fmc_attacks value > 4 }
+					}
+					modifier = {
+						add = -10
+						has_country_flag = { flag = SRI_fmc_attacks value > 5 }
+					}
+					modifier = {
+						add = -10
+						has_country_flag = { flag = SRI_fmc_attacks value > 6 }
+					}
+					modifier = {
+						add = -10
+						has_country_flag = { flag = SRI_fmc_attacks value > 7 }
+					}
+					modifier = {
+						add = -10
+						has_country_flag = { flag = SRI_fmc_attacks value > 8 }
+					}
+					country_event = socialist_italy_events.23
+					custom_effect_tooltip = SRI_expand_police_operations_tt
+					modify_country_flag = { flag = SRI_fmc_attacks value = 1 }
+				}
+			}
+		}
+	}
+	SRI_chetniks_on_the_move = {
+		icon = generic_military
+
+		allowed = { always = no }
+
+		cancel_trigger = {
+			hidden_trigger = {
+				NOT = {
+					has_idea = SRI_fmc_idea_1
+					has_idea = SRI_fmc_idea_2
+					has_idea = SRI_fmc_idea_3
+				}
+			}
+		}
+
+		cost = 50
+		days_mission_timeout = 45
+		days_remove = SRI_chetniks_on_the_move_days?0
+		selectable_mission = yes
+		is_good = no
+
+		ai_will_do = { factor = 10000 }
+
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete SRI_chetniks_on_the_move"
+			hidden_effect = {
+				set_variable = { SRI_chetniks_on_the_move_days = days_mission_timeout@SRI_chetniks_on_the_move }
+				activate_mission = SRI_chetniks_on_the_move
+			}
+		}
+
+		timeout_effect = {
+			log = "[GetLogRoot]: Decision timeout SRI_chetniks_on_the_move"
+			activate_mission = SRI_chetniks_on_the_move
+			custom_effect_tooltip = SRI_expand_police_operations_opposite_tt
+			modify_country_flag = { flag = SRI_fmc_attacks value = -1 }
+		}
+
+		remove_effect = {
+			log = "[GetLogRoot]: Decision remove SRI_chetniks_on_the_move"
+			activate_mission = SRI_chetniks_on_the_move
+		}
+		fixed_random_seed = no
+	}
+	SRI_leave_an_opening_dec = {
+		icon = generic_military
+
+		allowed = { always = no }
+		custom_cost_trigger = {
+			has_stability > 0.10
+		}
+		custom_cost_text = stability10
+		days_re_enable = 30
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete SRI_leave_an_opening_dec"
+			hidden_effect = {
+				add_stability = -0.10
+			}
+			add_days_mission_timeout = {
+				mission = SRI_chetnik_operations
+				days = -15
+			}
+		}
+		ai_will_do = { factor = 0 }
+		fixed_random_seed = no
+	}
+	SRI_expand_police_operations = {
+		icon = generic_military
+
+		allowed = { always = no }
+
+		ai_hint_pp_cost = 20
+		custom_cost_text = CP_80_PP_20
+		custom_cost_trigger = {
+			NOT = { command_power < 80 }
+			NOT = { has_political_power < 20 }
+		}
+		complete_effect = {
+			log = "[GetLogRoot]: Decision complete SRI_expand_police_operations"
+			hidden_effect = {
+				add_command_power = -80
+				add_political_power = -20
+			}
+			custom_effect_tooltip = SRI_expand_police_operations_tt
+			modify_country_flag = { flag = SRI_fmc_attacks value = 1 }
+		}
+		days_re_enable = 30
+		ai_will_do = { factor = 50000 }
+		fixed_random_seed = no
+	}
+}

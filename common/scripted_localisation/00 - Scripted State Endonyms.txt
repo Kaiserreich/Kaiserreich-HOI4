@@ -3238,10 +3238,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = STATE_286_VIETNAMESE #Sai Gon
 	}
@@ -3449,14 +3446,14 @@ defined_text = {
 	name = GetStateName_304
 	text = {
 		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
-		localization_key = STATE_304 #Panamá
+		localization_key = STATE_304 # East Panamá
 	}
 	text = {
 		trigger = { is_spanish_speaking_tag = yes }
-		localization_key = STATE_304_SPANISH #Panamá
+		localization_key = STATE_304_SPANISH #Panamá Oriental
 	}
 	text = {
-		localization_key = STATE_304 #Panama
+		localization_key = STATE_304 #Eastern Panama
 	}
 }
 defined_text = {
@@ -3492,7 +3489,7 @@ defined_text = {
 defined_text = {
 	name = GetStateName_310
 	text = {
-		localization_key = "[GetVictoryPointName_12885]"
+		localization_key = "[GetVictoryPointName_13417]"
 	}
 }
 defined_text = {
@@ -3618,7 +3615,7 @@ defined_text = {
 defined_text = {
 	name = GetStateName_325
 	text = {
-		localization_key = "[GetVictoryPointName_1319]"
+		localization_key = "[GetVictoryPointName_7446]"
 	}
 }
 defined_text = {
@@ -4663,6 +4660,14 @@ defined_text = {
 		localization_key = STATE_444_INDIAN #Balochistan
 	}
 	text = {
+		trigger = { original_tag = AFG }
+		localization_key = STATE_444_DARI
+	}
+	text = {
+		trigger = { original_tag = PER }
+		localization_key = STATE_444_FARSI
+	}
+	text = {
 		localization_key = STATE_444 #Baluchistan
 	}
 }
@@ -5313,7 +5318,7 @@ defined_text = {
 defined_text = {
 	name = GetStateName_521
 	text = {
-		localization_key = STATE_521 #Southern Queensland
+		localization_key = STATE_521 #South Queensland
 	}
 }
 defined_text = {
@@ -6142,7 +6147,7 @@ defined_text = {
 defined_text = {
 	name = GetStateName_603
 	text = {
-		localization_key = "[GetVictoryPointName_10763]"
+		localization_key = "[GetVictoryPointName_10616]"
 	}
 }
 defined_text = {
@@ -7039,10 +7044,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = STATE_671_VIETNAMESE
 	}
@@ -8894,10 +8896,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = STATE_827_VIETNAMESE #Trung Ky
 	}
@@ -9225,10 +9224,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = STATE_856_VIETNAMESE #Tây Nam Bô
 	}
@@ -9244,10 +9240,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			OR = {
-				original_tag = INC
-				original_tag = VIN
-			}
+			original_tag = VIN
 		}
 		localization_key = STATE_857_VIETNAMESE
 	}
@@ -10838,7 +10831,7 @@ defined_text = {
 defined_text = {
 	name = GetStateName_987
 	text = {
-		localization_key = STATE_987 #Kimberly
+		localization_key = STATE_987 #Kimberley
 	}
 }
 defined_text = {
@@ -11609,16 +11602,17 @@ defined_text = {
 		localization_key = STATE_1042 #Badakshan
 	}
 	text = {
-		trigger = { is_central_asian_tag = yes }
+		trigger = {
+			OR = {
+				is_central_asian_tag = yes
+				is_farsi_speaking_tag = yes
+			}
+		}
 		localization_key = STATE_1042_CENTRAL_ASIAN #Badakhshān
 	}
 	text = {
 		trigger = { is_chinese_tag = yes }
 		localization_key = STATE_1042_CHINESE #Badaheshang
-	}
-	text = {
-		trigger = { is_farsi_speaking_tag = yes }
-		localization_key = STATE_1042_FARSI #Badaxšân
 	}
 	text = {
 		localization_key = STATE_1042 #Badakshan
@@ -11689,7 +11683,7 @@ defined_text = {
 defined_text = {
 	name = GetStateName_1052
 	text = {
-		localization_key = "[GetVictoryPointName_7577]"
+		localization_key = "[GetVictoryPointName_7549]"
 	}
 }
 defined_text = {
@@ -12438,5 +12432,19 @@ defined_text = {
 	}
 	text = {
 		localization_key = STATE_1125 #Slavonia
+	}
+}
+defined_text = {
+	name = GetStateName_1126
+	text = {
+		trigger = { NOT = { has_global_flag = allowrenaming_flag } }
+		localization_key = STATE_1126 #West Panamá
+	}
+	text = {
+		trigger = { is_spanish_speaking_tag = yes }
+		localization_key = STATE_1126_SPANISH #Panamá Occidental
+	}
+	text = {
+		localization_key = STATE_1126 #Western Panama
 	}
 }

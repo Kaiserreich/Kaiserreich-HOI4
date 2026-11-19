@@ -76,6 +76,35 @@ GXC_block_war_with_beijing = {
 	}
 }
 
+GXC_phase_one_plan = {
+	name = "GXC_phase_one_plan"
+	desc = ""
+
+	allowed = {
+		original_tag = GXC
+	}
+	enable = {
+		GXC_is_phase_1_trigger = yes
+	}
+	abort_when_not_enabled = yes
+
+	ai_national_focuses = {
+		GXC_lessons_of_the_german_advisory_mission
+		GXC_tighten_the_noose_on_militarism
+		GXC_initiate_economic_stabilisation
+		GXC_from_flanders_fields_to_guangxis_mountains
+		GXC_bail_out_failing_industries
+		GXC_begin_the_yuegui_three_year_plan
+		GXC_rural_educational_effort
+		GXC_expand_guangdong_university
+		GXC_pare_military_spending
+		GXC_consolidate_the_regional_auxiliaries
+	}
+	weight = {
+		factor = 1.0
+	}
+}
+
 GXC_strategy_plan_federalist = {
 	name = "GXC_starting_plan_federalist"
 	desc = ""
@@ -111,6 +140,7 @@ GXC_strategy_plan_federalist = {
 		CHN_for_the_evolution_of_humanity_focus
 		CHN_forging_a_great_commercial_circle_focus
 		GXC_integrate_provincial_security_forces
+		GXC_bail_out_failing_industries
 		UPC_a_new_directorate_of_rehabilitation
 		GXC_initiate_economic_stabilisation
 		UPC_topple_beiyang
@@ -122,9 +152,6 @@ GXC_strategy_plan_federalist = {
 		GXC_from_flanders_fields_to_guangxis_mountains
 		GXC_tighten_the_noose_on_militarism
 		GXC_consolidate_the_regional_auxiliaries
-		GXC_insistence_upon_the_stiff_arm
-		GXC_blockhouse_tactics
-		GXC_adopt_battlefield_radios
 		GXC_the_national_unity_cabinet
 		GXC_the_second_return_to_canton
 		GXC_rein_in_expenditures
@@ -155,8 +182,6 @@ GXC_strategy_plan_federalist = {
 		GXC_regional_fiscal_independence
 		GXC_laying_down_the_law_in_liangguang
 		GXC_intermixing_of_triad_and_tiandihui
-		GXC_bail_out_failing_industries
-		GXC_pare_military_spending
 		GXC_laying_down_the_law_in_liangguang
 		UPC_balancing_freedom_and_authority
 		GXC_intermixing_of_triad_and_tiandihui
@@ -210,11 +235,9 @@ GXC_strategy_plan_RKMT = {
 
 	ai_national_focuses = {
 		GXC_integrate_provincial_security_forces
+		GXC_bail_out_failing_industries
 		GXC_avenge_the_northern_expedition
-		GXC_seize_the_guofus_capital
-		GXC_pacify_the_interior
 		GXC_initiate_economic_stabilisation
-		GXC_begin_national_reconstruction
 		GXC_assert_authority_over_guangxi
 		GXC_consolidate_the_unions
 		GXC_expand_the_national_sun_yat_sen_university
@@ -225,7 +248,6 @@ GXC_strategy_plan_RKMT = {
 		GXC_from_flanders_fields_to_guangxis_mountains
 		GXC_tighten_the_noose_on_militarism
 		GXC_consolidate_the_regional_auxiliaries
-		GXC_insistence_upon_the_stiff_arm
 		GXC_cradle_of_the_national_revolution
 		GXC_intensify_propaganda_efforts
 		GXC_kuomintang_united_front
@@ -237,11 +259,16 @@ GXC_strategy_plan_RKMT = {
 		GXC_integrate_the_baojia
 		GXC_the_necessary_sin
 		GXC_begin_the_yuegui_three_year_plan
+		GXC_embrace_the_guangxi_style
+		GXC_unify_the_volunteer_and_conscription_system
+		GXC_merge_army_and_militia
+		GXC_pacify_the_interior
 		GXC_rural_educational_effort
 		GXC_expand_guangdong_university
 		GXC_harness_southern_industrial_might
 		GXC_promote_pearl_river_trade
 		GXC_the_good_earth
+		GXC_from_a_budding_flower_may_ferocity_grow
 		GXC_addressing_the_urban_plight
 		GXC_develop_guangdongs_rails
 		GXC_domestic_textile_industries
@@ -249,7 +276,20 @@ GXC_strategy_plan_RKMT = {
 		GXC_nationalise_foreign_assets
 		GXC_mobilise_the_guangzhou_syndicates
 		GXC_regional_fiscal_independence
-		GXC_legacy_of_whampoa
+		GXC_threefold_self_reliance_policy
+		GXC_chinas_sparta
+		GXC_seize_the_guofus_capital
+		GXC_mobilisation_of_the_masses
+		GXC_good_iron_for_nails_good_men_serve_the_army
+		GXC_heart_of_the_soldier
+		GXC_citizen_soldier_unification
+		GXC_understanding_of_the_land
+		GXC_encapsulating_the_warrior_society
+		GXC_guangxi_tactics
+		GXC_unified_militia_framework
+		GXC_preparing_for_the_great_bloodletting
+		GXC_chinese_warfare_revitalised
+		GXC_begin_national_reconstruction
 		GXC_bail_out_failing_industries
 		GXC_primacy_of_the_southern_piedmont
 		GXC_cementing_dangguo
@@ -284,7 +324,7 @@ GXC_strategy_plan_LKMT = {
 
 	ai_national_focuses = {
 		GXC_integrate_provincial_security_forces
-		GXC_seize_the_guofus_capital
+		GXC_bail_out_failing_industries
 		GXC_pacify_the_interior
 		GXC_avenge_the_northern_expedition
 		GXC_initiate_economic_stabilisation
@@ -292,7 +332,6 @@ GXC_strategy_plan_LKMT = {
 		GXC_from_flanders_fields_to_guangxis_mountains
 		GXC_tighten_the_noose_on_militarism
 		GXC_consolidate_the_regional_auxiliaries
-		GXC_insistence_upon_the_stiff_arm
 		GXC_cradle_of_the_national_revolution
 		GXC_intensify_propaganda_efforts
 		GXC_kuomintang_united_front
@@ -302,20 +341,22 @@ GXC_strategy_plan_LKMT = {
 		GXC_local_government_initiatives
 		GXC_return_of_the_moscow_committee
 		GXC_integrate_provincial_security_forces
+		GXC_integrate_the_baojia
+		GXC_the_necessary_sin
+		GXC_embrace_the_guangxi_style
 		GXC_bail_out_failing_industries
-		GXC_pare_military_spending
 		GXC_invite_mmic_advisors
 		GXC_rally_the_intellegentsia
 		GXC_bolster_the_nanjing_government
-		GXC_legacy_of_whampoa
-		GXC_integrate_the_baojia
-		GXC_the_necessary_sin
+		GXC_unify_the_volunteer_and_conscription_system
+		GXC_merge_army_and_militia
 		GXC_begin_the_yuegui_three_year_plan
 		GXC_rural_educational_effort
 		GXC_expand_guangdong_university
 		GXC_harness_southern_industrial_might
 		GXC_promote_pearl_river_trade
 		GXC_the_good_earth
+		GXC_from_a_budding_flower_may_ferocity_grow
 		GXC_addressing_the_urban_plight
 		GXC_develop_guangdongs_rails
 		GXC_domestic_textile_industries
@@ -325,6 +366,18 @@ GXC_strategy_plan_LKMT = {
 		GXC_regional_fiscal_independence
 		GXC_primacy_of_the_southern_piedmont
 		GXC_threefold_self_reliance_policy
+		GXC_chinas_sparta
+		GXC_seize_the_guofus_capital
+		GXC_mobilisation_of_the_masses
+		GXC_good_iron_for_nails_good_men_serve_the_army
+		GXC_heart_of_the_soldier
+		GXC_citizen_soldier_unification
+		GXC_understanding_of_the_land
+		GXC_encapsulating_the_warrior_society
+		GXC_guangxi_tactics
+		GXC_unified_militia_framework
+		GXC_preparing_for_the_great_bloodletting
+		GXC_chinese_warfare_revitalised
 		GXC_a_piece_in_chinese_unification
 		GXC_funding_the_gui_jun_accelerated_school
 		GXC_establishing_our_own_domain
@@ -357,38 +410,42 @@ GXC_strategy_plan_regionalist = {
 	enable = {
 		has_completed_focus = GXC_heirs_of_lu_rongting
 	}
-	abort = {
-		is_subject = yes
-	}
+	abort_when_not_enabled = yes
 
 	ai_national_focuses = {
-		GXC_integrate_provincial_security_forces
-		GXC_seize_the_guofus_capital
+		UPC_a_new_directorate_of_rehabilitation
+		GXC_initiate_economic_stabilisation
+		UPC_topple_beiyang
+		UPC_smash_the_league
+		UPC_fight_for_the_interior
 		GXC_pacify_the_interior
 		GXC_avenge_the_northern_expedition
+		GXC_integrate_provincial_security_forces
+		GXC_bail_out_failing_industries
 		GXC_initiate_economic_stabilisation
 		GXC_lessons_of_the_german_advisory_mission
 		GXC_from_flanders_fields_to_guangxis_mountains
 		GXC_tighten_the_noose_on_militarism
 		GXC_consolidate_the_regional_auxiliaries
-		GXC_insistence_upon_the_stiff_arm
 		GXC_heirs_of_lu_rongting
 		GXC_approaching_the_yue_clique
 		GXC_putting_down_the_spectre_of_1927
 		GXC_salutations_to_the_kingmakers
-		GXC_bail_out_failing_industries
-		GXC_pare_military_spending
 		GXC_five_races_of_many_cultures
 		GXC_begin_the_yuegui_three_year_plan
 		GXC_integrate_the_baojia
 		GXC_the_necessary_sin
 		GXC_legacy_of_the_cohong
 		GXC_nine_charitable_halls
+		GXC_embrace_the_guangxi_style
+		GXC_unify_the_volunteer_and_conscription_system
+		GXC_merge_army_and_militia
 		GXC_rural_educational_effort
 		GXC_expand_guangdong_university
 		GXC_harness_southern_industrial_might
 		GXC_promote_pearl_river_trade
 		GXC_the_good_earth
+		GXC_from_a_budding_flower_may_ferocity_grow
 		GXC_addressing_the_urban_plight
 		GXC_develop_guangdongs_rails
 		GXC_domestic_textile_industries
@@ -397,8 +454,18 @@ GXC_strategy_plan_regionalist = {
 		GXC_mobilise_the_guangzhou_syndicates
 		GXC_regional_fiscal_independence
 		GXC_primacy_of_the_southern_piedmont
-		GXC_building_the_eliteheer
-		GXC_song_and_dance_of_the_military_confucius
+		GXC_threefold_self_reliance_policy
+		GXC_chinas_sparta
+		GXC_mobilisation_of_the_masses
+		GXC_good_iron_for_nails_good_men_serve_the_army
+		GXC_heart_of_the_soldier
+		GXC_citizen_soldier_unification
+		GXC_understanding_of_the_land
+		GXC_encapsulating_the_warrior_society
+		GXC_guangxi_tactics
+		GXC_unified_militia_framework
+		GXC_preparing_for_the_great_bloodletting
+		GXC_chinese_warfare_revitalised
 		GXC_the_south_submits
 		GXC_blending_confucianism_and_progress
 		GXC_relief_of_the_rurals

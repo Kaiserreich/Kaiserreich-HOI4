@@ -489,7 +489,7 @@ CEN_land_reform = {
 		allowed = { tag = CEN }
 
 		available = {
-			owns_state = 304
+			owns_state = 1126
 		}
 
 		visible = {
@@ -505,19 +505,8 @@ CEN_land_reform = {
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove CEN_land_reform_in_panama"
 			if = {
-				limit = { 304 = { has_state_category = five } }
-				304 = {
-					add_extra_state_shared_building_slots = 2
-					if = {
-						limit = { has_resistance = yes }
-						add_compliance = 5
-					}
-				}
-			}
-			else_if = {
-				limit = { 304 = { has_state_category = four } }
-				304 = {
-					increase_state_category_by_one_level = yes
+				limit = { 1126 = { has_state_category = five } }
+				1126 = {
 					add_extra_state_shared_building_slots = 1
 					if = {
 						limit = { has_resistance = yes }
@@ -526,13 +515,38 @@ CEN_land_reform = {
 				}
 			}
 			else = {
-				304 = {
-					increase_state_category_by_two_levels = yes
+				1126 = {
+					increase_state_category_by_one_level = yes
 					if = {
 						limit = { has_resistance = yes }
 						add_compliance = 5
 					}
 				}
+			}
+			if = {
+				limit = { owns_state = 304 } #Eastern Panama
+				if = {
+					limit = { 304 = { has_state_category = five } }
+					304 = {
+						add_extra_state_shared_building_slots = 1
+						if = {
+							limit = { has_resistance = yes }
+							add_compliance = 5
+						}
+					}
+				}
+				else = {
+					304 = {
+						increase_state_category_by_one_level = yes
+						if = {
+							limit = { has_resistance = yes }
+							add_compliance = 5
+						}
+					}
+				}
+			}
+			else = {
+				1126 = { add_extra_state_shared_building_slots = 1 }
 			}
 		}
 		fixed_random_seed = no
@@ -925,6 +939,7 @@ CEN_infrastructure_projects = {
 
 		available = {
 			owns_state = 316
+			owns_state = 1126
 			owns_state = 304
 			num_of_civilian_factories_available_for_projects > 1
 		}
@@ -952,9 +967,15 @@ CEN_infrastructure_projects = {
 				fallback = yes
 				path = { 13437 13439 13092 13680 13678 12878 13676 13684 7809 4624 13682 13725 7617 13681 7630 }
 				start_province = 13437
-				target_province = 13690
+				target_province = 13681
 			}
 			316 = {
+				if = {
+					limit = { has_resistance = yes }
+					add_compliance = 5
+				}
+			}
+			1126 = {
 				if = {
 					limit = { has_resistance = yes }
 					add_compliance = 5
@@ -1029,7 +1050,7 @@ CEN_infrastructure_projects = {
 		allowed = { tag = CEN }
 
 		available = {
-			owns_state = 304
+			owns_state = 1126
 			custom_override_tooltip = {
 				tooltip = { localization_key = has_completed_decision DECISION = CEN_extent_road_south }
 				has_country_flag = CEN_expanded_road_south
@@ -1053,9 +1074,8 @@ CEN_infrastructure_projects = {
 
 		remove_effect = {
 			log = "[GetLogRoot]: Decision remove CEN_infra_project_in_panama"
-			304 = {
-				custom_effect_tooltip = tooltip_line_break
-				add_extra_state_shared_building_slots = 2
+			1126 = {
+				add_extra_state_shared_building_slots = 1
 				if = {
 					limit = { free_building_slots = { building = infrastructure size > 0 } }
 					add_building_construction = {
@@ -1074,6 +1094,31 @@ CEN_infrastructure_projects = {
 				if = {
 					limit = { has_resistance = yes }
 					add_compliance = 5
+				}
+			}
+			if = {
+				limit = { owns_state = 304 }
+				304 = {
+					add_extra_state_shared_building_slots = 1
+					if = {
+						limit = { free_building_slots = { building = infrastructure size > 0 } }
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+					else = {
+						add_dynamic_modifier = {
+							modifier = generic_development_efforts_modifier
+							days = 180
+							scope = ROOT
+						}
+					}
+					if = {
+						limit = { has_resistance = yes }
+						add_compliance = 5
+					}
 				}
 			}
 		}
@@ -1734,12 +1779,16 @@ CEN_expanding_socialism_in_central_america = {
 			setup_decision_attack_AI = yes
 			FROM = { country_event = central_america_socialist_events.027 }	#warning event
 			if = {
-				limit = { 304 = { is_claim_or_core_of_ROOT = no } }
-				add_state_claim = 304 #Panama
+				limit = { 1126 = { is_claim_or_core_of_ROOT = no } }
+				add_state_claim = 1126 #Western Panama
 			}
 			if = {
 				limit = { 685 = { is_claim_or_core_of_ROOT = no } }
 				add_state_claim = 685 #Panama Canal
+			}
+			if = {
+				limit = { 304 = { is_claim_or_core_of_ROOT = no } }
+				add_state_claim = 304 #Eastern Panama
 			}
 			set_country_flag = { flag = CEN_ongoing_diplomatic_efforts days = 25 value = 1 }
 		}
@@ -1884,7 +1933,7 @@ CEN_expanding_socialism_in_central_america = {
 			}
 			modifier = {
 				factor = 0
-				304 = { NOT = { is_owned_by = CEN } }
+				1126 = { NOT = { is_owned_by = CEN } }
 			}
 		}
 

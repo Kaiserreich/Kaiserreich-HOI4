@@ -1704,17 +1704,17 @@ country_event = { #Informing of yes - faction leader wants them to join
 				has_country_flag = SIC_confed
 				FROM = { tag = ITA }
 			}
-			FROM = { ITA_italy_join_with_confed = yes }
+			FROM = { SIC_italian_republic_joins_confederation = yes }
 		}
 		else_if = {
 			limit = {
 				has_country_flag = SIC_confed
 			}
-			FROM = { ITA_notitaly_join_with_confed = yes }
+			FROM = { SIC_country_joins_confederation = yes }
 		}
 		else = {
 			ITA_restore_savoyard_monarchy = yes
-			FROM = { ITA_join_with_empire = yes }
+			FROM = { italy_peaceful_unification_effect = yes }
 		}
 
 		##TODO: add news event
@@ -1992,16 +1992,16 @@ country_event = { #They have decided to proceed even if uniter won't join
 			FROM = {
 				if = {
 					limit = { tag = ITA }
-					ITA_italy_join_with_confed = yes
+					SIC_italian_republic_joins_confederation = yes
 				}
 				else = {
-					ITA_notitaly_join_with_confed = yes
+					SIC_country_joins_confederation = yes
 				}
 			}
 		}
 		else = {
 			ITA_restore_savoyard_monarchy = yes
-			FROM = { ITA_join_with_empire = yes }
+			FROM = { italy_peaceful_unification_effect = yes }
 		}
 
 		##TODO: add news event
@@ -2194,16 +2194,16 @@ country_event = { #They have decided to proceed even if faction leader disapprov
 			FROM = {
 				if = {
 					limit = { tag = ITA }
-					ITA_italy_join_with_confed = yes
+					SIC_italian_republic_joins_confederation = yes
 				}
 				else = {
-					ITA_notitaly_join_with_confed = yes
+					SIC_country_joins_confederation = yes
 				}
 			}
 		}
 		else = {
 			ITA_restore_savoyard_monarchy = yes
-			FROM = { ITA_join_with_empire = yes }
+			FROM = { italy_peaceful_unification_effect = yes }
 		}
 
 		##TODO: add news event
@@ -2279,16 +2279,16 @@ country_event = { #Informing them of full agreement
 			FROM = {
 				if = {
 					limit = { tag = ITA }
-					ITA_italy_join_with_confed = yes
+					SIC_italian_republic_joins_confederation = yes
 				}
 				else = {
-					ITA_notitaly_join_with_confed = yes
+					SIC_country_joins_confederation = yes
 				}
 			}
 		}
 		else = {
 			ITA_restore_savoyard_monarchy = yes
-			FROM = { ITA_join_with_empire = yes }
+			FROM = { italy_peaceful_unification_effect = yes }
 		}
 
 		##TODO: add news event
@@ -2437,7 +2437,7 @@ country_event = { #Our italian overlord decides to join the new italy. What do w
 			hidden_effect = { remove_claim_by = event_target:uniter }
 		}
 		set_temp_variable = { ITA_general_transfer_target = event_target:uniter }
-		Italy_general_transfer_effect = yes
+		italy_general_transfer_effect = yes
 		event_target:uniter = {
 			annex_country = { target = ROOT transfer_troops = yes }
 			change_tag_from = ROOT

@@ -324,6 +324,7 @@ country_event = { # the Hawaiian Revolution
 			complete_national_focus = HAW_revolution_succeeds
 			country_event = { id = hawaii_events.62 days = 360 random_days = 10 }
 			country_event = { id = hawaii_events.63 days = 85 random_days = 10 }
+			country_event = { id = hawaii_events.65 days = 5 }
 			activate_targeted_decision = { target = CHI decision = Join_CHIs_faction_decision }
 		}
 	}
@@ -987,6 +988,43 @@ country_event = { # Elections of the General Secretary
 			ruling_party = radical_socialist
 			election_frequency = 48
 			elections_allowed = yes
+		}
+	}
+}
+country_event = { # Our Comrades in Chicago
+	id = hawaii_events.65
+	title = hawaii_events.65.t
+	desc = hawaii_events.65.d
+	picture = GFX_report_event_USA_reed
+
+	is_triggered_only = yes
+
+	option = { # We stand united!
+		log = "[GetLogInfo]: event hawaii_events.65 option hawaii_events.65.a"
+		name = hawaii_events.65.a
+		WCA = {
+			set_temp_variable = { target = HAW }
+			puppet_country_without_changing_government = yes
+			country_event = { id = hawaii_events.66 days = 3 }
+		}
+	}
+}
+country_event = { # Revolutionaries Secure Hawaii
+	id = hawaii_events.66
+	title = hawaii_events.66.t
+	desc = hawaii_events.66.d
+	picture = GFX_report_event_WIF_Palms
+
+	is_triggered_only = yes
+
+	option = { # No! You knew what you signed up for.
+		log = "[GetLogInfo]: event hawaii_events.66 option hawaii_events.66.a"
+		name = hawaii_events.66.a
+		effect_tooltip = {
+			WCA = {
+				set_temp_variable = { target = HAW }
+				puppet_country_without_changing_government = yes
+			}
 		}
 	}
 }

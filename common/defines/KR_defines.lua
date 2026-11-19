@@ -10,8 +10,8 @@ NDefines.NCareerProfile.MOD_STATISTICS_GROUP = "kaiserreich_career_profile"
 NDefines.NCareerProfile.MOD_STATISTICS_GROUP_NAME = "KAISERREICH_CAREER_PROFILE"
 
 -- Game
-NDefines.NGame.SAVE_VERSION = 170											-- Vanilla is 30
-NDefines.NGame.MINOR_SAVE_VERSION = 170										-- Vanilla is 1
+NDefines.NGame.SAVE_VERSION = 171											-- Vanilla is 30
+NDefines.NGame.MINOR_SAVE_VERSION = 171										-- Vanilla is 1
 NDefines.NGame.END_DATE = "1959.1.1.1"										-- Vanilla is 1949.1.1.1
 NDefines.NGame.HANDS_OFF_START_TAG = "BHU"									-- Vanilla is URG
 NDefines.NGame.DECISION_ALERT_TIMEOUT_DAYS = 60								-- Vanilla is 30
@@ -188,6 +188,8 @@ NDefines.NAI.AREA_DEFENSE_SETTING_FACILITY = false							-- Vanilla is false
 
 -- Naval AI
 NDefines.NAI.MAX_FULLY_TRAINED_SHIP_RATIO_FOR_TRAINING = 0.99				-- Vanilla is 0.7
+NDefines.NAI.NAVAL_MISSION_PATROL_NEAR_CONTROLLED = 0					-- Vanilla is 140
+NDefines.NAI.NAVAL_MISSION_PATROL_NEAR_OWNED = 400					-- Vanilla is 500
 
 -- Production AI
 NDefines.NAI.REFIT_SHIP_PERCENTAGE_OF_FORCES = 0.25							-- Vanilla is 0.1

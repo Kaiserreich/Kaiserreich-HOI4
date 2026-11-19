@@ -379,8 +379,9 @@ propaganda_efforts = {
 				has_war_support < 0.3
 			}
 			modifier = {
-				add = 201 #ie; consider prio idea
+				add = 40
 				has_war = yes
+				has_war_support < 0.5
 				has_casualties_war_support < -0.25
 			}
 			modifier = {
@@ -438,7 +439,7 @@ propaganda_efforts = {
 				has_war_support < 0.3
 			}
 			modifier = {
-				add = 201 #ie; consider prio idea
+				add = 100
 				has_war = yes
 				has_convoys_war_support < -0.29
 			}
@@ -497,7 +498,7 @@ propaganda_efforts = {
 				has_war_support < 0.35
 			}
 			modifier = {
-				add = 201 #ie; consider prio idea
+				add = 40 #ie; consider prio idea
 				has_war = yes
 				has_bombing_war_support < -0.20
 			}
@@ -531,8 +532,17 @@ propaganda_efforts = {
 		ai_will_do = {
 			base = 1
 			modifier = {
-				add = 200
-				has_war_support < 0.6
+				add = 100
+				OR = {
+					AND = {
+						has_war_support > 0.45
+						has_war_support < 0.5
+					}
+					AND = {
+						has_war_support > 0.55
+						has_war_support < 0.6
+					}
+				}
 			}
 		}
 	}
@@ -559,7 +569,7 @@ propaganda_efforts = {
 		ai_will_do = {
 			base = 1
 			modifier = {
-				add = 200
+				add = 100
 				has_war_support < 0.6
 			}
 		}

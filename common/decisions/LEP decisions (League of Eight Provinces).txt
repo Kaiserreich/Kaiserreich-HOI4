@@ -807,11 +807,6 @@ LEP_governor_replace_decisions = {
 
 		allowed = { always = no }
 
-		visible = {
-			NOT = { has_character = LEP_chen_yi }
-			has_character = LEP_shangguan_yunxiang
-		}
-
 		fire_only_once = yes
 		cost = 25
 		days_remove = 15
@@ -823,6 +818,9 @@ LEP_governor_replace_decisions = {
 			add_stability = 0.02
 			add_war_support = 0.02
 			set_country_flag = LEP_zhejiang_gov_done
+			custom_effect_tooltip = tooltip_white_line
+			remove_targeted_decision = { target = THIS decision = LEP_send_chen_yi_back_to_zhejiang_decision }
+			remove_targeted_decision = { target = THIS decision = LEP_new_governor_zhejiang_decision }
 		}
 		fixed_random_seed = no
 	}
@@ -830,11 +828,6 @@ LEP_governor_replace_decisions = {
 		icon = decision_generic_political_discourse
 
 		allowed = { always = no }
-
-		visible = {
-			NOT = { has_character = LEP_shangguan_yunxiang }
-			has_character = LEP_chen_yi
-		}
 
 		fire_only_once = yes
 		cost = 25
@@ -847,6 +840,9 @@ LEP_governor_replace_decisions = {
 			add_stability = 0.02
 			add_war_support = 0.02
 			set_country_flag = LEP_zhejiang_gov_done
+			custom_effect_tooltip = tooltip_white_line
+			remove_targeted_decision = { target = THIS decision = LEP_send_shangguan_back_to_zhejiang_decision }
+			remove_targeted_decision = { target = THIS decision = LEP_new_governor_zhejiang_decision }
 		}
 		fixed_random_seed = no
 	}
@@ -854,11 +850,6 @@ LEP_governor_replace_decisions = {
 		icon = decision_generic_political_discourse
 
 		allowed = { always = no }
-
-		visible = {
-			NOT = { has_character = LEP_chen_yi }
-			NOT = { has_character = LEP_shangguan_yunxiang }
-		}
 
 		fire_only_once = yes
 		cost = 25
@@ -868,6 +859,9 @@ LEP_governor_replace_decisions = {
 		complete_effect = {
 			log = "[GetLogRoot]: Decision complete LEP_new_governor_zhejiang_decision"
 			country_event = league_events.114
+			custom_effect_tooltip = tooltip_white_line
+			remove_targeted_decision = { target = THIS decision = LEP_send_shangguan_back_to_zhejiang_decision }
+			remove_targeted_decision = { target = THIS decision = LEP_send_chen_yi_back_to_zhejiang_decision }
 		}
 		fixed_random_seed = no
 	}

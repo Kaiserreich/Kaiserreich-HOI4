@@ -1632,6 +1632,18 @@ focus_tree = {
 				idea = DOM_ex_uno_plura_idea
 				days = 720
 			}
+			if = {
+				limit = { NOT = { HAI = { has_completed_focus = HAI_mission_to_ottawa } } }
+				set_country_flag = DOM_can_join_entente
+			}
+			if = {
+				limit = { NOT = { HAI = { has_completed_focus = HAI_mission_to_berlin } } }
+				set_country_flag = DOM_can_join_reichspakt
+			}
+			effect_tooltip = {
+				activate_targeted_decision = { target = ENT decision = DOM_join_entente }
+				activate_targeted_decision = { target = GER decision = DOM_join_reichspakt }
+			}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY }
 	}
@@ -1766,6 +1778,18 @@ focus_tree = {
 			add_timed_idea = {
 				idea = DOM_el_jefe_idea
 				days = 720
+			}
+			if = {
+				limit = { NOT = { HAI = { has_completed_focus = HAI_mission_to_ottawa } } }
+				set_country_flag = DOM_can_join_entente
+			}
+			if = {
+				limit = { NOT = { HAI = { has_completed_focus = HAI_mission_to_berlin } } }
+				set_country_flag = DOM_can_join_reichspakt
+			}
+			effect_tooltip = {
+				activate_targeted_decision = { target = ENT decision = DOM_join_entente }
+				activate_targeted_decision = { target = GER decision = DOM_join_reichspakt }
 			}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY }

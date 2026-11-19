@@ -1307,25 +1307,25 @@ ideas = {
 			on_add = {
 				log = "[GetLogRoot]: add idea YUN_support_inc_idea"
 				add_relation_modifier = {
-					target = INC
+					target = VIN
 					modifier = volunteer_limit_plus_two
 				}
-				INC = { save_event_target_as = volunteer_target }
+				VIN = { save_event_target_as = volunteer_target }
 				send_volunteers_to_TARGET = yes
 			}
 			on_remove = {
 				log = "[GetDateText]: [Root.GetName]: remove idea YUN_support_inc_idea"
 				remove_relation_modifier = {
-					target = INC
+					target = VIN
 					modifier = volunteer_limit_plus_two
 				}
-				INC = { save_event_target_as = volunteer_target }
+				VIN = { save_event_target_as = volunteer_target }
 				clear_volunteers_to_TARGET = yes
 			}
 			picture = YUN_multicultural_unity_idea
 			allowed = { always = no }
 			available = {
-				INC = {
+				VIN = {
 					has_war_with = GEA
 					NOT = { has_war_with = ROOT }
 				}
@@ -4145,7 +4145,7 @@ ideas = {
 					}
 					has_country_flag = KUM_is_chinese_tag
 				}
-				owns_state = 603 #Zunyi
+				owns_state = 603 #Guiyang
 			}
 			traits = {
 				infantry_equipment_manufacturer_defence

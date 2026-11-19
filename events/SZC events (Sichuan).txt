@@ -626,10 +626,14 @@ country_event = { #Accelerated Department + armamant Flees Sichuan (QIE->ANQ->LE
 		if = {
 			limit = { tag = QIE }
 			every_unit_leader = {
-				limit = { has_character_flag = SZC_armament_leader }
+				limit = {
+					OR = {
+						has_character_flag = SZC_armament_leader
+						has_character_flag = SZC_accelerated_yang_leader
+					}
+				}
 				set_character_flag = QIE_zhili_leader
 			}
-			SZC_zhao_ronghua = { set_character_flag = QIE_zhili_leader }
 		}
 	}
 	option = {

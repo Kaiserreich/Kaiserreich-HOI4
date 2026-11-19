@@ -353,3 +353,35 @@ PER_puppet_KUR = {
 		}
 	}
 }
+
+PER_dismantle_golestan_pact_when_joining_germany = { #for use in generic_events.11 and 13
+	if = {
+		limit = {
+			tag = PER
+			is_faction_leader = yes
+			var:new_faction_leader = { original_tag = GER }
+		}
+		hidden_effect = {
+			var:new_faction_leader = { save_event_target_as = future_persian_faction_leader }
+			every_allied_country = {
+				limit = { is_subject = no }
+				if = {
+					limit = {
+						OR = {
+							has_socialist_government = yes
+							AND = {
+								original_tag = ARM
+								has_country_leader = { character = ARM_garegin_nzhdeh }
+							}
+						}
+					}
+					country_event = persia_events.123
+				}
+				else = {
+					country_event = persia_events.125
+				}
+			}
+			dismantle_faction = yes
+		}
+	}
+}

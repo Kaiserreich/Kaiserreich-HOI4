@@ -1,32 +1,35 @@
 instant_effect = {
 	create_equipment_variant = {
 		name = "Do 23"
+		show_position = no
 		type = medium_plane_airframe_0
 		modules = {
-			fixed_main_weapon_slot = medium_bomb_bay
+			fixed_main_weapon_slot = medium_bomb_bay		# 1000kg bomb bay
 			fixed_auxiliary_weapon_slot_1 = empty
 			fixed_auxiliary_weapon_slot_2 = empty
 			fixed_auxiliary_weapon_slot_3 = empty
 			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
+			special_type_slot_1 = lmg_defense_turret_2x		# 3 x 7.92 mm MG
 			special_type_slot_2 = empty
 			special_type_slot_3 = empty
 			special_type_slot_4 = empty
 		}
-		icon = "GFX_GER_iw_medium_airframe_medium"
+		icon = "GFX_GER_medium_0_do23_medium"
 	}
 	create_equipment_variant = {
-		name = "Do 17"
+		name = "He 50"
+		show_position = no
 		type = small_plane_cas_airframe_0
 		modules = {
-			fixed_main_weapon_slot = small_bomb_bay
-			engine_type_slot = engine_1_2x
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_1_1x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_GER_CAS1_medium"
+		icon = "GFX_GER_small_0_he50_medium"
 	}
 	create_equipment_variant = {
 		name = "Ff 68"
+		show_position = no
 		type = small_plane_airframe_0
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
@@ -34,7 +37,19 @@ instant_effect = {
 			engine_type_slot = engine_1_1x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_GER_iw_small_airframe_medium"
+		icon = "GFX_UKR_early_fighter_alt_medium"
+	}
+	create_equipment_variant = {
+		name = "Hr-2"
+		show_position = no
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = empty
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		icon = "GFX_UKR_early_fighter_medium"
 	}
 }
 
@@ -54,15 +69,25 @@ air_wings = {
 		}
 		small_plane_airframe_0 = {
 			owner = "UKR"
-			amount = 100
+			amount = 60
 			creator = "GER"
 			version_name = "Ff 68"
 		}
+		small_plane_airframe_0 = {
+			owner = "UKR"
+			amount = 40
+			version_name = "Hr-2" #Homegrown production
+		}
 		small_plane_cas_airframe_1 = {
 			owner = "UKR"
-			amount = 60
+			amount = 40
 			creator = "GER"
 			version_name = "Ju 87"
+		}
+		small_plane_cas_airframe_0 = {
+			owner = "UKR"
+			amount = 20
+			version_name = "He 50" #License built
 		}
 		medium_plane_airframe_0 = {
 			owner = "UKR"

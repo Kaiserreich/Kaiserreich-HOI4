@@ -857,7 +857,7 @@ focus_tree = {
 
 	focus = {
 		id = HOL_nationalist_renaissance
-		icon = GFX_goal_liberty
+		icon = GFX_goal_netherlands
 		cost = 5
 
 		relative_position_id = HOL_reijnders_putsch
@@ -3475,47 +3475,39 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed HOL_finish_national_assembly"
 			add_stability = 0.2
 			remove_ideas = HOL_idea_instability
-			custom_effect_tooltip = HOL_merge_syndie_ideas
+			custom_effect_tooltip = HOL_merge_some_ideas
 			hidden_effect = {
 				if = {
-					limit = {
-						has_idea = HOL_idea_market_socialism
+					limit = { has_idea = HOL_idea_democratic_workplace }
+					remove_ideas = {
+						HOL_idea_democratic_workplace
+						HOL_idea_market_socialism
 					}
-					remove_ideas = HOL_idea_market_socialism
-					swap_ideas = {
-						remove_idea = HOL_idea_democratic_workplace
-						add_idea = HOL_idea_democratic_workplace_final
+					add_ideas = HOL_idea_democratic_workplace_final
+				}
+				else_if = {
+					limit = { has_idea = HOL_Proletarian_humanism_idea }
+					remove_ideas = {
+						HOL_Proletarian_humanism_idea
+						HOL_Rebuild_The_Bureaucracy_idea
 					}
-					else_if = {
-						limit = {
-							has_idea = HOL_Rebuild_The_Bureaucracy_idea
-						}
-						remove_ideas = HOL_Rebuild_The_Bureaucracy_idea
-						swap_ideas = {
-							remove_idea = HOL_Industrial_Dem_idea
-							add_idea = HOL_Industrial_Dem_idea_final
-						}
+					add_ideas = HOL_Proletarian_humanism_idea_final
+				}
+				else_if = {
+					limit = { has_idea = HOL_Industrial_Dem_idea }
+					remove_ideas = {
+						HOL_Industrial_Dem_idea
+						HOL_Rebuild_The_Bureaucracy_idea
 					}
-					else_if = {
-						limit = {
-							has_idea = HOL_Rebuild_The_Bureaucracy_idea
-						}
-						remove_ideas = HOL_Rebuild_The_Bureaucracy_idea
-						swap_ideas = {
-							remove_idea = HOL_Proletarian_humanism_idea
-							add_idea = HOL_Proletarian_humanism_idea_final
-						}
+					add_ideas = HOL_Industrial_Dem_idea_final
+				}
+				else_if = {
+					limit = { has_idea = HOL_rev_vanguard_idea }
+					remove_ideas = {
+						HOL_rev_vanguard_idea
+						HOL_war_communism
 					}
-					else_if = {
-						limit = {
-							has_idea = HOL_war_communism
-						}
-						remove_ideas = HOL_war_communism
-						swap_ideas = {
-							remove_idea = HOL_rev_vanguard_idea
-							add_idea = HOL_rev_vanguard_idea_final
-						}
-					}
+					add_ideas = HOL_rev_vanguard_idea_final
 				}
 			}
 		}

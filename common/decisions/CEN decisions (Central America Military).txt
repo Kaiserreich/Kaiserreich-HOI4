@@ -725,7 +725,7 @@ CENmil_infrastructure_decisions = {
 					NOT = { has_war_with = PAN }
 				}
 				AND = {
-					304 = { is_owned_by_ROOT_or_subject = yes }
+					1126 = { is_owned_by_ROOT_or_subject = yes }
 					has_country_flag = CENmil_clarified_rail_5_flag
 				}
 			}
@@ -746,7 +746,7 @@ CENmil_infrastructure_decisions = {
 					instant_build = yes
 				}
 			}
-			304 = { #Panama
+			1126 = { #Western Panama
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -895,7 +895,7 @@ CENmil_infrastructure_decisions = {
 				has_country_flag = CENmil_permission_rail_4_flag
 			}
 			OR = {
-				304 = { is_owned_by_ROOT_or_subject = yes }
+				1126 = { is_owned_by_ROOT_or_subject = yes }
 				has_country_flag = CENmil_permission_rail_5_flag
 			}
 		}
@@ -912,7 +912,7 @@ CENmil_infrastructure_decisions = {
 					instant_build = yes
 				}
 			}
-			304 = { #Panama
+			1126 = { #Western Panama
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -1437,12 +1437,16 @@ CENmil_restoring_the_old_union_decisions = {
 			setup_decision_attack_AI = yes
 			FROM = { country_event = central_america_dictatorship_events.308 }	#warning event
 			if = {
-				limit = { 304 = { is_claim_or_core_of_ROOT = no } }
-				add_state_claim = 304 #Panama
+				limit = { 1126 = { is_claim_or_core_of_ROOT = no } }
+				add_state_claim = 1126 #Western Panama
 			}
 			if = {
 				limit = { 685 = { is_claim_or_core_of_ROOT = no } }
 				add_state_claim = 685 #Panama Canal
+			}
+			if = {
+				limit = { 304 = { is_claim_or_core_of_ROOT = no } }
+				add_state_claim = 304 #Eastern Panama
 			}
 			set_country_flag = { flag = CEN_ongoing_diplomatic_efforts days = 25 value = 1 }
 		}

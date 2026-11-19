@@ -109,18 +109,30 @@
  AFG_BUK_dynasty_name: "Darwazi Dynasty" #Used in secret focus
 
 ### Country Names ###
- AFG: "Republic of Afghanistan"
+ AFG: "Afghanistan"
  AFG_ADJ: "Afghan"
- AFG_DEF: "the Republic of Afghanistan"
- AFG_authoritarian_democrat_DEF: "the Republican State of Afghanistan"
- AFG_paternal_autocrat_DEF: "the Republican State of Afghanistan"
- AFG_national_populist_DEF: "the Republican State of Afghanistan"
+ AFG_DEF: "Afghanistan"
+
  AFG_totalist: "Socialist Republic of Afghanistan"
  AFG_totalist_DEF: "the Socialist Republic of Afghanistan"
  AFG_syndicalist: "$AFG_totalist$"
  AFG_syndicalist_DEF: "$AFG_totalist_DEF$"
  AFG_radical_socialist: "$AFG_totalist$"
  AFG_radical_socialist_DEF: "$AFG_totalist_DEF$"
+ AFG_social_democrat: "Republic of Afghanistan"
+ AFG_social_democrat_DEF: "the Republican State of Afghanistan"
+ AFG_social_liberal: "$AFG_social_democrat$"
+ AFG_social_liberal_DEF: "$AFG_social_democrat_DEF$"
+ AFG_market_liberal: "$AFG_social_democrat$"
+ AFG_market_liberal_DEF: "$AFG_social_democrat_DEF$"
+ AFG_social_conservative: "$AFG_social_democrat$"
+ AFG_social_conservative_DEF: "$AFG_social_democrat_DEF$"
+ AFG_authoritarian_democrat: "$AFG_social_democrat$"
+ AFG_authoritarian_democrat_DEF: "$AFG_social_democrat_DEF$"
+ AFG_paternal_autocrat: "$AFG_social_democrat$"
+ AFG_paternal_autocrat_DEF: "$AFG_social_democrat_DEF$"
+ AFG_national_populist: "$AFG_social_democrat$"
+ AFG_national_populist_DEF: "$AFG_social_democrat_DEF$"
 
  AFG_aryana: "Republic of Aryana"
  AFG_aryana_ADJ: "Aryan"
@@ -353,7 +365,9 @@
  AFG_received_support_from_backer_flag: "[FROM.GetNameDef] has chosen to send us support."
  AFG_reaching_out_to_backer_flag: "Has recently negotiated with [FROM.GetNameDef]."
  AFG_backer_faction_blocked_tt: "§Y[ROOT.GetNameWithFlag]§! did §Rnot§! gain too much influence from their backer in the §YAfghan Civil War§!"
- AFG_backer_faction_only_tt: "§Y[ROOT.GetNameWithFlag]§! gained too much influence from §Y[FROM.GetNameDef]§! in the §YAfghan Civil War§!"
+ AFG_backer_faction_only: "§Y[ROOT.GetNameWithFlag]§! gained too much influence from"
+ AFG_amanullah_backer_only_tt: "$AFG_backer_faction_only$ §Y[?AFG_amanullah_backer.GetNameDef]§! in the §YAfghan Civil War§!"
+ AFG_nadir_backer_only_tt: "$AFG_backer_faction_only$ §Y[?AFG_nadir_backer.GetNameDef]§! in the §YAfghan Civil War§!"
 
  AFG_civil_war_nadir_attack_tt: "Forces loyal to §zNadir§! will launch an attack."
  AFG_civil_war_amanullah_attack_tt: "Forces loyal to §fAmanullah§! will launch an attack."
@@ -436,6 +450,7 @@
  AFG_champion_of_islam_khiva_tt: "§YEvery State in Khiva§!: is owned by §Y[AFG.GetNameDef]§! or our subject"
  AFG_champion_of_islam_turkestan_tt: "§YEvery State in Turkestan§!: is owned by §Y[AFG.GetNameDef]§! or our subject"
  AFG_champion_of_islam_kazakhstan_tt: "§YEvery State in Kazakhstan§!: is owned by §Y[AFG.GetNameDef]§! or our subject"
+ AFG_war_on_our_own_terms_tt: "§CThe selected spirit will be removed if a faction is joined.§!"
 
  AFG_aia_india_negotiations_over_flag: "The focus §Y$AFG_detente_with_india$§! has been completed and negotiations have concluded."
  AFG_aia_india_negotiations_failed_flag: "Negotiations over [442.GetName] have failed."
@@ -444,6 +459,7 @@
 
  AFG_india_war_tracker_flag: "The war against India began:"
  AFG_india_war_only_one_government_tt: "There is a single Indian government remaining."
+ AFG_india_war_return_states_tt: "§RWe will return all non-claimed Indian states if a deal is reached.§!"
  AFG_russia_war_tracker_flag: "The war against Russia began:"
  AFG_enemy_lost_flag: "Has surrendered to the [AFG.GetAdjective]s."
 
@@ -691,7 +707,7 @@
  AFG_drive_saqqawists_from_the_north: "Drive Saqqawists from the North"
  AFG_drive_saqqawists_from_the_north_desc: "Even after the Saqqawists were shattered, many of the movement fled north, where sympathies for the bandits remains high. We must comb through the north and put down these rabid dogs before they can rebuild their strength."
  AFG_destroy_saqqawist_holdouts_in_the_south: "Destroy Saqqawist Holdouts in the South"
- AFG_destroy_saqqawist_holdouts_in_the_south_desc: "THere are still villages and areas of our country garrisoned by Saqqawist remnants. Wiping out these occupiers will deliver a message to our people that we are in control, and will suffer no rebellion."
+ AFG_destroy_saqqawist_holdouts_in_the_south_desc: "There are still villages and areas of our country garrisoned by Saqqawist remnants. Wiping out these occupiers will deliver a message to our people that we are in control, and will suffer no rebellion."
  AFG_purge_the_palace: "Purge the Palace"
  AFG_purge_the_palace_desc: "Amanullah's ambitions of westernisation were not his own, but the result of perfidious westernisers residing in his own palace. To set the country on the right path, we must first show the people that the sacrilegious western syncophants have been dealt with."
  AFG_repeal_the_tazkera: "Repeal the Tazkera"
@@ -847,6 +863,9 @@
 
  AFG_conscription_exemptions_granted: "Conscription Exemptions Granted"
  AFG_conscription_exemptions_granted_desc: "[AFG.GetNameDefCap]'s seizure of the region of [443.Getname] was primarily motivated by desire for coastal access, with little regard for those living there. In response to protests by the local inhabitants, the [AFG.GetAdjective] state has chosen to exempt the region from conscription, reflecting the government's priorities for the area."
+
+ AFG_slaying_giants: "Slaying Giants"
+ AFG_slaying_giants_desc: "Believing that none would realistically come to its aid, [ROOT.GetNameDef] has decided to focus on securing what it believes to be its rightful territory without outside support. Significant efforts are being directed to ensure that even at its great disadvantage, it might still triumph as the underdog."
 
  AFG_remove_pashtunistan_reformist_modifier_decision: "[AFG_remove_pashtunistan_reformist_decision_text]"
  AFG_remove_pashtunistan_traditionalist_modifier_decision: "[AFG_remove_pashtunistan_traditionalist_decision_text]"
@@ -1252,8 +1271,8 @@
  AFG_assurances_to_afghan_minorities_desc: "For too long Afghanistan has relied upon the suppression of local cultures and peoples, as a consequence of royal authority and then Pashtun nationalism. In building of a new Afghanistan, we must do what we can to ensure that Afghanistan is welcome to all, regardless of tribe, language or culture."
  AFG_establish_a_universal_schooling_system: "Establish a Universal Schooling System"
  AFG_establish_a_universal_schooling_system_desc: "For many in Afghanistan, an education is a privilege, rather than a fundamental right available to all. Those deprived of education can hardly be expected to rise above their lowly stations, and will simply accept the mediocracies and injustices of their lives. A national education system, available to every Afghan no matter their station, must therefore be one of the government's upmost priorities."
- AFG_adaption_of_the_frontiers_systems: "Adaption of the Frontier's Systems"
- AFG_adaption_of_the_frontiers_systems_desc: "The frontier's democratic experiment created a political ecosystem inside the kingdom, where suffrage was without question, plurality was the norm, and freedom ruled the streets. Truly, it was a shining example of what Afghanistan could be. We must do what we can to adapt the laws, practices and electoral systems the frontier nurtured to the rest of the nation."
+ AFG_adaptation_of_the_frontiers_systems: "Adaptation of the Frontier's Systems"
+ AFG_adaptation_of_the_frontiers_systems_desc: "The frontier's democratic experiment created a political ecosystem inside the kingdom, where suffrage was without question, plurality was the norm, and freedom ruled the streets. Truly, it was a shining example of what Afghanistan could be. We must do what we can to adapt the laws, practices and electoral systems the frontier nurtured to the rest of the nation."
  AFG_nurture_afghan_democracy: "Nurture Afghan Democracy"
  AFG_nurture_afghan_democracy_desc: "Centuries of autocratic rule have been undone in a fraction of the time; Afghanistan needs to heal, lest the nation falls to authoritarianism once more. However, it is possible to ensure Afghanistan remains democratic without harming our democracy: let us pluralise the political system, and give our people a chance to govern themselves, and strengthen against those who say they cannot."
  AFG_the_fight_against_feuds: "The Fight Against Feuds"
@@ -1312,6 +1331,8 @@
  AFG_detente_with_india_desc: "Violence has never been the answer, a principle both the AIA and many of the Indian people hold firm in, despite the sins of our predecessors defining our relationship through it. It is time now to reach across to the Indians and peacefully resolve our lingering disputes with them, seeking harmony and the recognition of continued Pashtun unity and dispelling any lingering ideas of irredentist reconquest of the Frontier."
  AFG_liberating_the_colonised_pashtuns: "Liberating the Colonised Pashtuns"
  AFG_liberating_the_colonised_pashtuns_desc: "Our efforts in returning our Pashtun brothers and sisters into the fold of our nation is not yet finished: to the east and south many of our fellow Pashtuns, the Balochs especially, lay under Indian oppression. To the north, former Afghan lands remain apart from us, having been stolen from us as part the Russo-British Great Game, and even to the west more Pashtuns languish under [PER.GetAdjective] rule. It is our duty to see to their liberation!"
+ AFG_war_on_our_own_terms: "War on Our Own Terms"
+ AFG_war_on_our_own_terms_desc: "It may be foolish to attempt to liberate our lands from the giants around us without the backing of a great power or two, yet we are left with little choice as they are too busy bickering amongst themselves. Skill is however all that it takes to fell a giant, and the [ROOT.GetAdjective] people are such Davids."
  AFG_the_conquest_of_karachi: "The Conquest of Karachi"
  AFG_the_conquest_of_karachi_desc: "For the first time in history, Afghanistan is no longer a landlocked nation. Our acquisition of Karachi has given us a port city, and with it innumerous benefits. We must do what we can to integrate these territories into our nation, and ensure a connection to the ocean that will last centuries!"
  AFG_lay_the_first_brick: "Lay the First Brick"
@@ -1872,7 +1893,11 @@
  afghanistan_events.456.t: "Those Left Standing"
  afghanistan_events.456.d: "Leadership of Afghanistan has been nothing short of a game of musical chairs over the last few months. Amanullah, then Nadir, then Momand, and now Popalzai is the man in the high chair tasked with successfully keeping it away from the reactionaries now that men with greater ideals have earned their shot at uplifting the nation. It is very important that we act as fast as we can, for schemers such as the Mojadidi family and the exiled royals eye [AFG.Capital.GetCapitalVictoryPointName] like predators waiting for their prey to fall asleep.\n\nGhaffar Khan and Khan Sahib are the most well known men on our side of the equation, and perhaps the most stabilising choice to form a proper government with. Handing them the reins of power shall still place Afghanistan in the capable leadership of men whose vision of Afghanistan is not entirely alien or far off from Popalzai's own dreams. Alternatively however, if we had a foreign benefactor to support us, perhaps Popalzai could finally see the chance to transform Afghanistan into a socialist republic, loyal to Allah and to the principles of Islam, and untainted and untethered by the crooked whims of reactionary Mullahs."
  afghanistan_events.456.a: "The Khans are the only legitimate power left in Afghanistan."
- afghanistan_events.456.b: "Perhaps [AFG_potential_socialist_overlord.GetNameDef] would help set up a socialist state."
+ afghanistan_events.456.b: "We need look no further than [HND.GetNameDef]."
+ afghanistan_events.456.c: "[RUS.GetNameDefCap] is the obvious choice of benefactor."
+ afghanistan_events.456.e: "Our brothers in [PER.GetNameDef] shall aid us."
+ afghanistan_events.456.f: "[CHN.GetNameDefCap] seems destined to lead eastern socialism."
+ afghanistan_events.456.g: "We must turn to [INT.GetNameDef] to lead the way."
 
  afghanistan_events.457.t: "An Appeal by Afghan Socialists"
  afghanistan_events.457.d: "An interesting situation previously thought impossible has occurred in Afghanistan. The seemingly never-ending chaos they have been experiencing may perhaps finally be at an end, with socialist militants led by Abdur Rahim Popalzai being the latest force to take control of [AFG.Capital.GetCapitalVictoryPointName]. Although supposedly loyal to the moderate regional government in Afghanistan's Frontier region, Popalzai has reached out to our government rather than handing power over to his allies.\n\nIn his appeal, the man known as the \"Marxist Maulana\" has requested our aid in establishing a socialist government, following his party's brand of Islamic Socialism. In order to undertake such a monumental effort in such a backwards nation, he needs plenty of support, and being acutely aware of this he has approached us with urgent requests for aid and support to sustain and entrench his regime. This is a rather excellent opportunity to extend and deepen our influence in the region, but it is also a question of whether or not Afghanistan may be more practical as a neutral buffer state against the other powers on their border."
@@ -1886,6 +1911,7 @@
  afghanistan_events.459.t: "[FROM.GetNameDefCap] Refuses to Aid Us"
  afghanistan_events.459.d: "Tragically, [FROM.GetNameDef] doesn't see the value in helping us set up a socialist government in Afghanistan and seeing to the liberation of Muslim workers and peasants from capitalist tyranny. Alas, without the proper support, there's no chance we'd last longer than the previous rulers to inherit [AFG.Capital.GetCapitalVictoryPointName] after the fall of Amanullah.\n\nBeing as Ghaffar Khan already seems to expect us to hand over the reins of power, and he is certainly a more widely appealing and popular leader than Popalzai is, the Marxist Maulana has begun making preparations for an orderly transfer of power."
  afghanistan_events.459.a: "Let us turn power over to the Khans then."
+ afghanistan_events.459.b: "We shall turn to [AFG_potential_socialist_overlord.GetNameDef] for aid instead."
 
  afghanistan_events.460.t: "Founding the People's Party"
  afghanistan_events.460.d: "It seems that at last the marshal has enforced his grip over all of Afghanistan, with his PM having worked over the past weeks to lay out the foundations for the new Azadist government.\n\nThe time for rule through military might alone is quickly coming to an end, and as such plans to reform the Azadist powerbase into a more civilian focused political party have been put into place. Rather than simply ruling with the army's iron fist, the nation shall be governed by the People's Party, who shall truly represent the will of every Pashtun, whether at home or languishing under foreign occupation."
@@ -2785,6 +2811,12 @@
  afghanistan_foreign_policy_events.24.d: "Despite the overwhelming strength and might of our men, it seems our foe has not yet been deterred. They have chosen to continue to fight, a choice that will soon spell their doom."
  afghanistan_foreign_policy_events.24.a: "I hear Moscow is nice this time of year, perhaps we'll visit..."
 
+ afghanistan_foreign_policy_events.25.t: "Defending Against the Onslaught"
+ afghanistan_foreign_policy_events.25.d: "Reclaiming our rightful lands from the occupiers around us would be a hard task even with allies to back us, going alone might as well be impossible. Yet it is that impossible situation we now find ourselves in, with there being little faith in the great powers being willing or able to even send troops to our aid in our isolated position. It is obvious we will need to specialise our efforts to get the edge, but exactly how is the question."
+ afghanistan_foreign_policy_events.25.a: "We will show them the folly of fighting back!"
+ afghanistan_foreign_policy_events.25.b: "War must be won on the home front, focus on gun production."
+ afghanistan_foreign_policy_events.25.c: "We must squeeze out every last resource we can."
+
 ### Pathing events ###
  afghanistan_events.9000.t: "AI path choosing"
  afghanistan_events.9000.d: "This is how the AI chooses which ruler wins the Afghan Civil War"
@@ -2833,7 +2865,7 @@
  AFG_inayatullah_khan_leader_desc: "§YBorn:§! §LOctober 1888, in Kabul, Kabul Vilayet, Emirate of Afghanistan§!\n§YBackground:§! §LThe brother of the late Amanullah Khan now sits upon a throne he never wanted. When his father Habibullah Khan was assassinated in 1919 whilst on a hunting trip, Inayatullah had foregone his claim to the throne in favour of his uncle, Nasrullah Khan, who would only hold power for a week before abdicating in favour of Habibullah's third son Amanullah Khan after it became clear that the ambitious conspirator was preparing to take the throne anyway. All the same as Nasrullah's takeover, Inayatullah had no intention to contest Amanullah's coronation either, appraising the throne as an inevitable death sentence he did not want to subject himself to.\n\nAvoidance of the throne aside, Inayatullah remained involved in politics during the reigns of his father and younger brother, and would enjoy dressing in extravagant Western-style suits as he lived a comfortable life under the auspices of Amanullah. He would not imagine the carnage that would ensue after Amanullah's 1938 tour in Europe and the subsequent burning of Darulaman and death of the Crown Prince. Laying low as Mohammad Nadir Shah proclaimed himself King of Afghanistan in an effort to usurp the throne, Inayatullah would see his brother retake the country and at that point had believed the troubles were over.\n\nAmanullah's tactical pivot to the right in an effort to rebuild his image with conservatives would lead to much trifling among the Reformist establishment that he had cultivated up to that point. The impending showdown would not come to pass quite as anyone had expected, as Amanullah was shot dead by an unknown assailant within the palace. Awoken from his slumber to learn of his brother's death, Inayatullah was rushed to his coronation despite rumours that he had been involved in a conspiracy by the Reformists to take the throne from his brother. Now, as he grants amnesty to the modernisers that Amanullah had already begun to scapegoat, he intends to take a backseat for the remainder of his time as King, reforming Afghanistan into a true constitutional monarchy where the running of the nation is relegated to people who have the ambition to lead.§!"
  AFG_inayatullah_khan_advisor_desc: "§YBorn:§! §LOctober 1888, in Kabul, Kabul Vilayet, Emirate of Afghanistan§!\n§YBackground:§! §LFor many years Inayatullah Khan has been in the shadow of his brother Amanullah, yet it is a position in which he is comfortable. When his father Habibullah Khan was assassinated in 1919 whilst on a hunting trip, Inayatullah was expected by many to take the throne. Instead he surrendered his claim to the throne in favour of his uncle, Nasrullah Khan, who however would only hold power for a week before abdicating after a coup by Habibullah's third son Amanullah Khan. All the same as Nasrullah's takeover, Inayatullah had no intention to contest Amanullah's coronation either, appraising the throne as an inevitable death sentence he did not want to subject himself to.\n\nAvoidance of the throne aside, Inayatullah has not shied away from politics, and has become quite a part of the nation's liberal elite. He has also similarly not shied away from having a strong public image, enjoying to dress in extravagant Western-style suits, and promoting their adoption alongside his brother. Although such excess has its detractors, prince Inayatullah's level headed nature and idealism has left many to wonder how Afghanistan may have looked if he hadn't declined the crown.§!"
  AFG_mohammad_ghobar: "Ghulam Mohammad Ghobar"
- AFG_mohammad_ghobar_leader_desc: "§YBorn:§! §L1897, in Kabul, Kabul Vilayet, Emirate of Afghanistan§!\n§YBackground:§! §LA young Ghulam Mohammad Ghobar spent much of his time not in his birthplace of Kabul, but in the southern regions of Kandahar and Herat where his native language of Persian was spoken. Growing up with a fiercely intellectually curious mind, with the support of his family Ghobar entered the literary field and soon became an accomplished poet and writer. An initial support of Amanullah's fervent modernism, Ghobar served as chief of police in Kabul from 1920-1921 and as editor of the Afghan Star newspaper at the same time. A few years later, he entered the diplomatic service, all the while promoting translinguistic and transethnic Afghan unity.\n\nThe period of enlightenment that sustained Ghobar's good graces with the government ended towards the end of the decade, as Amanullah Khan began to further involve business magnates and monopolies in his government. His dissidence against this course of action earned him the enmity of the King and enduring a subsequent stint in prison, after which he was subject to continual persecution. Despite this, he would remain involved in several literary societies and through his political journalism espouse social-democratic views.\n\nHaving witnessed his homeland tear itself apart, from Purdil Khan to Nadir Shah and Amanullah Khan to Mohammad Gul Khan Momand; his distress would see relief when Abdur Rahim Popalzai would personally contact him to serve as President of a socialist republic, aiming to moderate its public image. Dutifully accepting the obligation to restore stability to Afghanistan under the auspices of progress, he has been more than willing to accept Popalzai's radical agenda, wishing to put the nation and its people first despite ideological disagreements.§!"
+ AFG_mohammad_ghobar_leader_desc: "§YBorn:§! §L1897, in Kabul, Kabul Vilayet, Emirate of Afghanistan§!\n§YBackground:§! §LA young Ghulam Mohammad Ghobar spent much of his time not in his birthplace of Kabul, but in the southern regions of Kandahar and Herat where his native language of Persian was spoken. Growing up with a fiercely intellectually curious mind, with the support of his family Ghobar entered the literary field and soon became an accomplished poet and writer. An initial supporter of Amanullah's fervent modernism, Ghobar served as chief of police in Kabul from 1920-1921 and as editor of the Afghan Star newspaper at the same time. A few years later, he entered the diplomatic service, all the while promoting translinguistic and transethnic Afghan unity.\n\nThe period of enlightenment that sustained Ghobar's good graces with the government ended towards the end of the decade, as Amanullah Khan began to further involve business magnates and monopolies in his government. His dissidence against this course of action earned him the enmity of the King and enduring a subsequent stint in prison, after which he was subject to continual persecution. Despite this, he would remain involved in several literary societies and through his political journalism espouse social-democratic views.\n\nHaving witnessed his homeland tear itself apart, from Purdil Khan to Nadir Shah and Amanullah Khan to Mohammad Gul Khan Momand; his distress would see relief when Abdur Rahim Popalzai would personally contact him to serve as President of a socialist republic, aiming to moderate its public image. Dutifully accepting the obligation to restore stability to Afghanistan under the auspices of progress, he has been more than willing to accept Popalzai's radical agenda, wishing to put the nation and its people first despite ideological disagreements.§!"
  AFG_abdul_hai_habibi: "Abdul Hai Habibi"
  AFG_abdul_hai_habibi_leader_desc: "§YBorn:§! §L1910, in Kandahar, Kandahar Vilayet, Emirate of Afghanistan§!\n§YBackground:§! §LBorn to an enslaved Hazara mother and a Kakar Pashtun father, Habibi's early life was fraught with troubles. Despite the early death of his father during his childhood, Habibi diligently studied at the mosques of Kandahar and attended schooling at the Shalamar Primary School at age 11. Four years later, he graduated and became a teacher in the same school at the young age of 15. Continuing his studies, he spent much of the 20s learning Mathematics, Islamic Philosophy, Journalism and the discipline of History. In 1927 he became deputy editor of the Toloo-e Afghan newspaper and later the chief editor in 1931.\n\nHis political thought would evolve into a blend of Western-style Liberalism and Pashtun Nationalism, becoming one of the primary intellectual figures associated with Amanullah Khan's Reformist allies. With the political landscape in Afghanistan entering flux as the 1930s progressed, Habibi formed the Tehrik-i-Naujawanan Baidar (Movement of Enlightened Youth), a political party which shall serve as the vehicle of Habibi's political thought. Now that he has found himself in a position of political power, it is expected that he will feverishly pursue his agenda in an effort to pull Afghanistan into the modern age alongside other contemporary nation-states.§!"
  AFG_abdul_hai_habibi_advisor_desc: "§YBorn:§! §L1910, in Kandahar, Kandahar Vilayet, Emirate of Afghanistan§!\n§YBackground:§! §LBorn to an enslaved Hazara mother and a Kakar Pashtun father, Habibi's early life was fraught with troubles. Despite the early death of his father during his childhood, Habibi diligently studied at the mosques of Kandahar and attended schooling at the Shalamar Primary School at age 11. Four years later, he graduated and became a teacher in the same school at the young age of 15. Continuing his studies, he spent much of the 20s learning Mathematics, Islamic Philosophy, Journalism and the discipline of History. In 1927 he became deputy editor of the Toloo-e Afghan newspaper and later the chief editor in 1931.\n\nHis political thought would evolve into a blend of Western-style Liberalism and Pashtun Nationalism, becoming one of the primary intellectual figures associated with Amanullah Khan's Reformist allies. Aiming to find himself in government, he hopes to fervently push his agenda in an effort to pull Afghanistan into the modern age alongside other contemporary nation-states.§!"

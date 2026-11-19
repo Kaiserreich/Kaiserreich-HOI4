@@ -19639,17 +19639,7 @@ country_event = { #Fate of Lombardy
 		159 = { remove_claim_and_add_core_of_target = yes } #Lombardy
 		release_targeted_tag = yes
 		hidden_effect = {
-			var:tag_to_release = { LOM_create_marcello_visconti = yes }
-			ITA = {
-				every_character = {
-					limit = { has_character_flag = ITA_lombard_leader }
-					set_nationality = var:tag_to_release
-					if = {
-						limit = { can_be_country_leader = yes }
-						promote_character = yes
-					}
-				}
-			}
+			var:tag_to_release = { LOM_release_as_duchy = yes }
 		}
 	}
 
@@ -19665,37 +19655,7 @@ country_event = { #Fate of Lombardy
 		159 = { remove_claim_and_add_core_of_target = yes } #Lombardy
 		release_targeted_tag = yes
 		hidden_effect = {
-			var:tag_to_release = {
-				if = {
-					limit = { has_government = authoritarian_democrat }
-					set_politics = {
-						ruling_party = social_liberal
-						elections_allowed = no
-					}
-					set_political_party = { ideology = social_liberal popularity = 60 }
-				}
-			}
-			ITA = {
-				every_character = {
-					limit = { has_character_flag = ITA_lombard_leader }
-					set_nationality = var:tag_to_release
-					if = {
-						limit = { can_be_country_leader = yes }
-						promote_character = yes
-					}
-				}
-				ITA_marcello_visconti_di_modrone = {
-					set_nationality = var:tag_to_release
-					remove_all_country_leader_roles = yes
-					add_country_leader_role = {
-						country_leader = {
-							desc = ITA_marcello_visconti_di_modrone_leader_desc
-							ideology = authoritarian_democrat_subtype
-						}
-						promote_leader = yes
-					}
-				}
-			}
+			var:tag_to_release = { LOM_release_as_republic = yes }
 		}
 	}
 
@@ -20136,14 +20096,7 @@ country_event = { #Fate of Tuscany
 		name = annexation_events.1098.a
 		trigger = {
 			annexations_can_release_italian_splinters = yes
-			ITA = {
-				ITA_pietro_ferdinando = {
-					OR = {
-						is_country_leader = no
-						is_retired = yes
-					}
-				}
-			}
+			TUS_pietro_ferdinando_already_a_leader = no
 		}
 		ai_chance = { base = 0 }
 		set_temp_variable = { tag_to_release = TUS }

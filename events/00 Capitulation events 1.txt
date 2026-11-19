@@ -880,52 +880,7 @@ country_event = { # GER: peace with INT?
 	}
 
 	trigger = {
-		original_tag = GER
-		has_war_with = INT
-		surrender_progress < 0.20
-		is_faction_leader = yes
-		INT = {
-			surrender_progress < 0.1
-			is_faction_leader = yes
-			OR = {
-				original_tag = ENG
-				is_in_europe = no
-			}
-			if = {
-				limit = { original_tag = ENG }
-				naval_strength_ratio = {
-					tag = ROOT
-					ratio > 0.9
-				}
-			}
-			else_if = {
-				limit = { is_ally_with = ENG }
-				ENG = {
-					OR = {
-						has_capitulated = yes
-						NOT = { any_home_area_neighbor_country = { has_war_with = PREV } } #being invaded
-					}
-				}
-			}
-			NOT = {
-				any_allied_country = {
-					is_in_europe = yes
-					has_capitulated = no
-					NOT = { original_tag = ENG }
-					NOT = { original_tag = ICE }
-					NOT = { original_tag = IRE }
-				}
-			}
-		}
-		OR = {
-			NOT = { has_global_flag = GER_stay_out_france_uk } #Germany shouldn't abandon Entente if Halifax has succeeded and Canada is okay
-			NOT = { ENG = { is_ally_with = INT } }
-			NOT = { IMP = { is_ally_with = ENT } }
-		}
-		OR = {
-			NOT = { has_war_with = RUS }
-			RUS = { has_capitulated = yes }
-		}
+		treaty_of_london_trigger = yes
 	}
 
 	mean_time_to_happen = {

@@ -28,6 +28,33 @@ SP_create_variant_based_on_country_assault_engineer = {
 			model = GER_assault_engineer_entity
 		}
 	}
+	else_if = { #Co-Prosperity Sphere tags use the camo-less (CPS) Japanese icons
+		limit = {
+			OR = {
+				original_tag = CAM
+				original_tag = FNG
+				original_tag = INS
+				original_tag = KOR
+				original_tag = LAO
+				original_tag = MAL
+			}
+		}
+		create_equipment_variant = {
+			name = "Type 97 Chi-Yu"
+			show_position = no
+			type = armored_support_vehicle_1
+			parent_version = 0
+			mark_older_equipment_obsolete = yes
+			upgrades = {
+				tank_reliability_upgrade = 0
+				tank_engine_upgrade = 1
+				tank_armor_upgrade = 1
+				tank_gun_upgrade = 1
+			}
+			icon = "GFX_CPS_armored_support_vehicle_medium"
+			model = JAP_assault_engineer_entity
+		}
+	}
 	else_if = {
 		limit = {
 			OR = {
@@ -238,6 +265,54 @@ SP_create_variant_based_on_country_armored_engineer = {
 			model = GER_armored_engineer_entity
 		}
 	}
+	else_if = { #Co-Prosperity Sphere tags use the camo-less (CPS) Japanese icons
+		limit = {
+			OR = {
+				original_tag = CAM
+				original_tag = FNG
+				original_tag = INS
+				original_tag = KOR
+				original_tag = LAO
+				original_tag = MAL
+			}
+		}
+		create_equipment_variant = {
+			name = "Sōkō Sagyō Ki"
+			show_position = no
+			type = armored_support_vehicle_1
+			parent_version = 0
+			upgrades = {
+				tank_reliability_upgrade = 1
+				tank_engine_upgrade = 1
+				tank_armor_upgrade = 1
+				tank_gun_upgrade = 1
+			}
+			icon = "GFX_CPS_armored_support_vehicle_crossing_medium"
+			model = armored_engineer_entity #no Japanese bridge layer model
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				original_tag = JAP
+				is_in_faction_with = JAP
+			}
+		}
+		create_equipment_variant = {
+			name = "Sōkō Sagyō Ki"
+			show_position = no
+			type = armored_support_vehicle_1
+			parent_version = 0
+			upgrades = {
+				tank_reliability_upgrade = 1
+				tank_engine_upgrade = 1
+				tank_armor_upgrade = 1
+				tank_gun_upgrade = 1
+			}
+			icon = "GFX_JAP_armored_support_vehicle_crossing_medium"
+			model = armored_engineer_entity #no Japanese bridge layer model
+		}
+	}
 	else_if = {
 		limit = {
 			OR = {
@@ -379,6 +454,32 @@ SP_create_variant_based_on_country_armored_maintenance = {
 			model = GER_armored_maintenance_entity
 		}
 	}
+	else_if = { #Co-Prosperity Sphere tags use the camo-less (CPS) Japanese icons
+		limit = {
+			OR = {
+				original_tag = CAM
+				original_tag = FNG
+				original_tag = INS
+				original_tag = KOR
+				original_tag = LAO
+				original_tag = MAL
+			}
+		}
+		create_equipment_variant = {
+			name = "Type 97 Se-Ri"
+			show_position = no
+			type = armored_support_vehicle_1
+			parent_version = 0
+			upgrades = {
+				tank_reliability_upgrade = 0
+				tank_engine_upgrade = 1
+				tank_armor_upgrade = 2
+				tank_gun_upgrade = 2
+			}
+			icon = "GFX_CPS_armored_support_vehicle_recovery_medium"
+			model = JAP_armored_maintenance_entity
+		}
+	}
 	else_if = {
 		limit = {
 			OR = {
@@ -387,7 +488,7 @@ SP_create_variant_based_on_country_armored_maintenance = {
 			}
 		}
 		create_equipment_variant = {
-			name = "Sōkō Sagyō Ki"
+			name = "Type 97 Se-Ri"
 			show_position = no
 			type = armored_support_vehicle_1
 			parent_version = 0
@@ -559,6 +660,32 @@ SP_create_variant_based_on_country_armored_signal = {
 			}
 			icon = "GFX_ITA_armored_support_vehicle_command_medium"
 			model = ITA_armored_signal_entity
+		}
+	}
+	else_if = { #Co-Prosperity Sphere tags use the camo-less (CPS) Japanese icons
+		limit = {
+			OR = {
+				original_tag = CAM
+				original_tag = FNG
+				original_tag = INS
+				original_tag = KOR
+				original_tag = LAO
+				original_tag = MAL
+			}
+		}
+		create_equipment_variant = {
+			name = "Type 97 Shi-Ki"
+			show_position = no
+			type = armored_support_vehicle_1
+			parent_version = 0
+			upgrades = {
+				tank_reliability_upgrade = 1
+				tank_engine_upgrade = 2
+				tank_armor_upgrade = 2
+				tank_gun_upgrade = 1
+			}
+			icon = "GFX_CPS_armored_support_vehicle_command_medium"
+			model = JAP_armored_signal_entity
 		}
 	}
 	else_if = {

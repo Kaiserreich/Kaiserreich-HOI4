@@ -232,11 +232,18 @@ country_event = { #The Campaign begins in Hengyang
 			}
 		}
 		custom_effect_tooltip = HNN_election_as_zhao_tt
-		HNN_zhao_pop_effect = yes
 		hidden_effect = {
 			activate_targeted_decision = { target = THIS decision = HNN_add_zhao_votes }
 			activate_targeted_decision = { target = THIS decision = HNN_remove_tang_votes }
 			activate_targeted_decision = { target = THIS decision = HNN_remove_chen_votes }
+			if = {
+				limit = { is_ai = no }
+				random_list = {
+					33 = { activate_mission = HNN_kmt_campaign_zhao }
+					33 = { activate_mission = HNN_kmt_campaign_tang }
+					33 = { activate_mission = HNN_kmt_campaign_cheng }
+				}
+			}
 		}
 	}
 
@@ -250,7 +257,6 @@ country_event = { #The Campaign begins in Hengyang
 			}
 		}
 		custom_effect_tooltip = HNN_election_as_kmt_tt
-		HNN_zhao_pop_effect = yes
 		set_country_flag = HNN_election_as_kmt
 		hidden_effect = {
 			activate_targeted_decision = { target = THIS decision = HNN_add_tang_votes }
@@ -258,13 +264,6 @@ country_event = { #The Campaign begins in Hengyang
 			activate_targeted_decision = { target = THIS decision = HNN_remove_tang_votes }
 			activate_targeted_decision = { target = THIS decision = HNN_remove_chen_votes }
 			activate_targeted_decision = { target = THIS decision = HNN_remove_zhao_votes }
-		}
-	}
-
-	after = {
-		country_event = hunan_election_events.6
-		hidden_effect = {
-			country_event = { id = hunan_election_events.7 days = 6 }
 			if = {
 				limit = { is_ai = no }
 				random_list = {
@@ -273,6 +272,14 @@ country_event = { #The Campaign begins in Hengyang
 					33 = { activate_mission = HNN_zhao_campaign_cheng }
 				}
 			}
+		}
+	}
+
+	after = {
+		HNN_zhao_pop_effect = yes
+		country_event = hunan_election_events.6
+		hidden_effect = {
+			country_event = { id = hunan_election_events.7 days = 6 }
 		}
 	}
 }

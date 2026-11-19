@@ -13264,10 +13264,12 @@ country_event = { #The National Army and the Nationalist Party
 				country_event = { id = korea_events.7 days = 7 }
 			}
 			if = {
-				limit = { has_subject = INC }
-				INC = {
-					INC_puppet_setup = yes
+				limit = { has_subject = VIN }
+				if = {
+					limit = { country_exists = INC }
+					set_temp_variable = { release_indochina = 1 }
 				}
+				VIN = { VIN_puppet_setup = yes }
 			}
 		}
 	}

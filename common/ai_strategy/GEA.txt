@@ -22,19 +22,19 @@ GEA_invade_indochina = {
 		original_tag = GEA
 	}
 	enable = {
-		has_war_with = INC
+		has_war_with = VIN
 		has_defensive_war = no #== not attacked by Japan
 	}
 	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = invade
-		id = INC
+		id = VIN
 		value = 10 #just enough to overcome the AI's reluctance to invade when directly bordering an enemy
 	}
 	ai_strategy = {
 		type = invasion_unit_request
-		tag = INC
+		tag = VIN
 		value = 10
 	}
 }
@@ -44,7 +44,7 @@ GEA_crush_guerilla_holdout = {
 		original_tag = GEA
 	}
 	enable = {
-		has_war_with = INC
+		has_war_with = VIN
 		has_defensive_war = no #== not attacked by Japan
 		controls_state = 286 #Cochinchina
 		has_full_control_of_state = 671 #Tonkin
@@ -53,17 +53,17 @@ GEA_crush_guerilla_holdout = {
 
 	ai_strategy = {
 		type = conquer
-		id = INC
+		id = VIN
 		value = 400
 	}
 	ai_strategy = {
 		type = front_unit_request
-		tag = INC
+		tag = VIN
 		value = 60
 	}
 	ai_strategy = {
 		type = front_control
-		tag = INC
+		tag = VIN
 		ordertype = front
 		execution_type = rush_weak
 		execute_order = yes
@@ -176,7 +176,7 @@ GEA_ignore_indochina = {
 		SIA = { is_in_faction_with = JAP }
 		NOT = {
 			AND = {
-				has_war_with = INC
+				has_war_with = VIN
 				NOT = { has_war_with = JAP }
 			}
 		}

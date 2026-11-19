@@ -486,7 +486,7 @@ focus_tree = {
 
 	focus = {
 		id = INS_islam_nusantara
-		icon = GFX_goal_liberty
+		icon = GFX_goal_Fight_for_Freedom
 		cost = 8
 
 		x = 4
@@ -1095,6 +1095,11 @@ focus_tree = {
 				factor = 0
 				NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_INT } }
 				country_exists = HND
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = INS_forpol option = INS_FORPOL_INT } }
+				asian_tag_can_join_int = no
 			}
 		}
 

@@ -3126,21 +3126,49 @@ country_event = { # France refuses
 	}
 }
 
-country_event = { # America protects Hawaii
+country_event = { # The Future of Hawaii
 	id = america_workers_congress_events.103
 	title = america_workers_congress_events.103.t
-	desc = america_workers_congress_events.103.d
+	desc = {
+		text = america_workers_congress_events.103.d.wca
+		trigger = { original_tag = WCA }
+	}
+	desc = {
+		text = america_workers_congress_events.103.d.haw
+		trigger = { original_tag = HAW }
+	}
 	picture = GFX_report_event_WIF_Palms
 
 	is_triggered_only = yes
 
-	option = { # Thank you America
+	option = { #Full reintegration is the best approach.
 		log = "[GetLogInfo]: event america_workers_congress_events.103 option america_workers_congress_events.103.a"
 		name = america_workers_congress_events.103.a
-		add_political_power = 50
-		WCA = {
-			give_guarantee = HAW
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				is_ai = no
+				original_tag = HAW
+			}
+			WCA = { change_tag_from = ROOT }
 		}
+		hidden_effect = {
+			HAW = {
+				every_owned_state = { add_core_of = WCA }
+			}
+		}
+		WCA = {
+			annex_country = {
+				target = HAW
+				transfer_troops = yes
+			}
+		}
+	}
+	option = { #Hawaiian self governance should continue.
+		log = "[GetLogInfo]: event america_workers_congress_events.103 option america_workers_congress_events.103.b"
+		name = america_workers_congress_events.103.b
+		ai_chance = { base = 0 }
+		add_political_power = 25
 	}
 }
 

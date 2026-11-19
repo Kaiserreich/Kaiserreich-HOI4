@@ -276,7 +276,10 @@ foreign_politics = {
 			factor = 100
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ }
+				OR = {
+					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_IRQ }
+					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB_IRQ }
+				}
 				IRQ = {
 					exists = yes
 					is_subject = no
@@ -314,10 +317,11 @@ foreign_politics = {
 			factor = 100
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY }
-				EGY = {
-					is_faction_leader = yes
+				OR = {
+					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCCON_EGY }
+					has_game_rule = { rule = LEB_path option = LEB_PATH_SOCLIB_EGY }
 				}
+				EGY = { is_faction_leader = yes }
 			}
 		}
 		complete_effect = {

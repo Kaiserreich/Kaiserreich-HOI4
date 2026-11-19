@@ -1,0 +1,127 @@
+LOM_create_marcello_visconti = {
+	if = {
+		limit = { has_completed_focus = LOM_crown_king }
+		if = {
+			limit = {
+				OR = {
+					has_cosmetic_tag = LOM_ITA
+					has_cosmetic_tag = LOM_ITA_federation
+				}
+			}
+			set_cosmetic_tag = LOM_ITA_kingdom
+		}
+		else_if = {
+			limit = { has_cosmetic_tag = LOM_duchy }
+			set_cosmetic_tag = LOM_kingdom
+		}
+	}
+	else_if = {
+		limit = { has_cosmetic_tag = LOM_ITA }
+		set_cosmetic_tag = LOM_ITA_federation
+	}
+	else = {
+		set_cosmetic_tag = LOM_duchy
+	}
+	ITA = {
+		ITA_marcello_visconti_di_modrone = {
+			hidden_effect = { set_nationality = PREV.PREV }
+			set_character_name = LOM_marcello_visconti_regnal
+			character_becomes_leader_of_ruling_party_effect_tooltip = yes
+			hidden_effect = {
+				remove_all_country_leader_roles = yes
+				add_country_leader_role = {
+					country_leader = {
+						desc = ITA_marcello_visconti_di_modrone_leader_desc
+						ideology = social_democrat_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = ITA_marcello_visconti_di_modrone_leader_desc
+						ideology = social_liberal_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = ITA_marcello_visconti_di_modrone_leader_desc
+						ideology = market_liberal_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = ITA_marcello_visconti_di_modrone_leader_desc
+						ideology = social_conservative_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = ITA_marcello_visconti_di_modrone_leader_desc
+						ideology = authoritarian_democrat_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = ITA_marcello_visconti_di_modrone_leader_desc
+						ideology = paternal_autocrat_subtype
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					country_leader = {
+						desc = ITA_marcello_visconti_di_modrone_leader_desc
+						ideology = national_populist_subtype
+					}
+					promote_leader = yes
+				}
+			}
+		}
+	}
+}
+
+LOM_move_all_leaders = {
+	ITA = {
+		every_character = {
+			limit = { has_character_flag = ITA_lombard_leader }
+			set_nationality = PREV.PREV
+			if = {
+				limit = { can_be_country_leader = yes }
+				promote_character = yes
+			}
+		}
+	}
+}
+
+LOM_release_as_duchy = {
+	LOM_move_all_leaders = yes
+	LOM_create_marcello_visconti = yes
+}
+
+LOM_release_as_republic = {
+	ITA = {
+		ITA_marcello_visconti_di_modrone = {
+			set_nationality = var:tag_to_release
+			remove_all_country_leader_roles = yes
+			add_country_leader_role = {
+				country_leader = {
+					desc = ITA_marcello_visconti_di_modrone_leader_desc
+					ideology = authoritarian_democrat_subtype
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	LOM_move_all_leaders = yes
+	if = {
+		limit = { has_government = authoritarian_democrat }
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = no
+		}
+		set_political_party = { ideology = social_liberal popularity = 60 }
+	}
+}

@@ -367,6 +367,11 @@ country_event = {
 				NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_CHN } }
 				NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_NEUT } }
 			}
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = BRM_forpol option = BRM_FORPOL_INT } }
+				asian_tag_can_join_int = no
+			}
 		}
 		INT = {
 			country_event = { id = burma_events.8 days = 4 }

@@ -57,7 +57,7 @@ focus_tree = {
 
 	focus = {# Protect Democracy
 		id = ITA_protect_democracy
-		icon = GFX_goal_liberty
+		icon = GFX_focus_ARG_defense_and_democracy
 		cost = 7
 
 		relative_position_id = ITA_social_liberal_victory
@@ -811,7 +811,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed ITA_italian_liberation"
 			add_ideas = ITA_italian_liberation_idea
 			if = {
-				limit = { NOT = { has_country_flag = ITA_united_italia } }
+				limit = { italy_country_has_reunited_italy = no }
 				custom_effect_tooltip = tooltip_white_line
 				increase_conscription = yes
 				increase_economic_mobilisation = yes
@@ -831,7 +831,7 @@ focus_tree = {
 
 		available = {
 			has_government = national_populist
-			has_country_flag = ITA_united_italia
+			italy_country_has_reunited_italy = yes
 			controls_all_owned_states = yes
 		}
 		prerequisite = {
@@ -1519,7 +1519,7 @@ focus_tree = {
 		x = 0
 		y = 4
 
-		available = { has_country_flag = ITA_united_italia }
+		available = { italy_country_has_reunited_italy = yes }
 		prerequisite = {
 			focus = ITA_create_theistituto_luce
 		}
@@ -1635,7 +1635,7 @@ focus_tree = {
 		x = 3
 		y = 5
 
-		available = { has_country_flag = ITA_united_italia }
+		available = { italy_country_has_reunited_italy = yes }
 		prerequisite = {
 			focus = ITA_market_protection
 		}
@@ -1681,7 +1681,7 @@ focus_tree = {
 		x = 0
 		y = 5
 
-		available = { has_country_flag = ITA_united_italia }
+		available = { italy_country_has_reunited_italy = yes }
 		prerequisite = {
 			focus = ITA_economic_planning
 		}
@@ -1912,7 +1912,7 @@ focus_tree = {
 		y = 5
 
 		available = {
-			has_country_flag = ITA_united_italia
+			italy_country_has_reunited_italy = yes
 		}
 		prerequisite = {
 			focus = ITA_economic_planning
@@ -2132,7 +2132,7 @@ focus_tree = {
 		x = 0
 		y = 2
 
-		available = { has_country_flag = ITA_united_italia }
+		available = { italy_country_has_reunited_italy = yes }
 		prerequisite = { focus = ITA_unification }
 		ai_will_do = { factor = 100 }
 		completion_reward = {
@@ -2173,7 +2173,7 @@ focus_tree = {
 		ai_will_do = { factor = 50 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ITA_naples_officers"
-			ITA_recruit_sicilian_generals = yes
+			italy_recruit_sicilian_generals = yes
 		}
 	}
 
@@ -2273,7 +2273,7 @@ focus_tree = {
 		ai_will_do = { factor = 50 }
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed ITA_sardinian_officers"
-			ITA_recruit_sardinian_generals = yes
+			italy_recruit_sardinian_generals = yes
 		}
 	}
 

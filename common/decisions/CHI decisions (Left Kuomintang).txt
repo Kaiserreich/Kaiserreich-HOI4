@@ -28,8 +28,7 @@ foreign_politics = {
 			OR = {
 				tag = ARM
 				tag = BRM #Since they don't have a focus tree they unlock this decision via event burma_events.6 option c
-				tag = HAW #Since they don't decide foreign policy via focus they unlock this decision via event hawaii_events.9 option a
-				tag = INC
+				tag = VIN
 				tag = INS
 				tag = PHI #Becomes visible if PHI went Independent Foreign Policy and is Socialist
 				tag = SIA
@@ -43,9 +42,9 @@ foreign_politics = {
 				PER = { is_in_faction_with = CHI } #ARM should be able to join if PER is in the faction
 			}
 			else_if = {
-				limit = { tag = INC }
+				limit = { tag = VIN }
 				OR = {
-					has_completed_focus = INC_Comrade_Plus_Brother
+					has_completed_focus = VIN_Comrade_Plus_Brother
 					AND = {
 						HND = { exists = no } #ESU is deader than disco
 						INT = { exists = no } #No help from INT either
@@ -81,9 +80,9 @@ foreign_politics = {
 			has_socialist_government = yes
 			if = {
 				limit = {
-					tag = INC
+					tag = VIN
 				}
-				INC_has_VNQDD_government_trigger = yes
+				VIN_has_VNQDD_government_trigger = yes
 			}
 			is_subject = no
 			is_in_faction = no
@@ -110,9 +109,9 @@ foreign_politics = {
 			has_socialist_government = yes
 			if = {
 				limit = {
-					tag = INC
+					tag = VIN
 				}
-				INC_has_VNQDD_government_trigger = yes
+				VIN_has_VNQDD_government_trigger = yes
 			}
 			is_subject = no
 			is_in_faction = no
@@ -175,19 +174,14 @@ foreign_politics = {
 						}
 					}
 					AND = {
-						tag = HAW
-						NOT = { has_game_rule = { rule = HAW_forpol option = DEFAULT } }
-						NOT = { has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN } }
-					}
-					AND = {
-						tag = INC
+						tag = VIN
 						OR = {
 							AND = {
-								has_game_rule = { rule = INC_forpol option = INC_FORPOL_INT }
+								has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_INT }
 								NOT = { CHI = { is_in_faction_with = INT } }
 							}
 							AND = {
-								has_game_rule = { rule = INC_forpol option = INC_FORPOL_HND }
+								has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_HND }
 								NOT = { CHI = { is_in_faction_with = CHI } }
 							}
 						}
@@ -385,25 +379,15 @@ foreign_politics = {
 						}
 					}
 					AND = {
-						tag = HAW
+						tag = VIN
 						OR = {
-							has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_CHN }
+							has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_CHN }
 							AND = {
-								has_game_rule = { rule = HAW_forpol option = HAW_FORPOL_INT }
-								CHI = { is_in_faction_with = INT }
-							}
-						}
-					}
-					AND = {
-						tag = INC
-						OR = {
-							has_game_rule = { rule = INC_forpol option = INC_FORPOL_CHN }
-							AND = {
-								has_game_rule = { rule = INC_forpol option = INC_FORPOL_HND }
+								has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_HND }
 								CHI = { is_in_faction_with = HND }
 							}
 							AND = {
-								has_game_rule = { rule = INC_forpol option = INC_FORPOL_INT }
+								has_game_rule = { rule = VIN_forpol option = VIN_FORPOL_INT }
 								CHI = { is_in_faction_with = INT }
 							}
 						}
@@ -1155,10 +1139,10 @@ CHI_military_expeditions_category = {
 				}
 			}
 			else_if = {
-				limit = { FROM = { check_variable = { chinese_province_state = 1051.id } } } #Guiyang
+				limit = { FROM = { check_variable = { chinese_province_state = 603.id } } } #Guiyang
 				ROOT = {
 					every_owned_state = {
-						limit = { check_variable = { chinese_province_state = 1051.id } }
+						limit = { check_variable = { chinese_province_state = 603.id } }
 						add_dynamic_modifier = {
 							modifier = CHI_local_democratic_elections
 							scope = THIS
@@ -1415,11 +1399,11 @@ KMT_liberation_of_asia_category = {
 		allowed = { tag = CHI }
 		visible = {
 			has_completed_focus = CHI_reinforce_foreign_ministry
-			INC = {
+			VIN = {
 				has_war_with = GEA
 				NOT = { has_war_with = CHI }
 			}
-			NOT = { has_country_flag = CHI_supported_INC_flag }
+			NOT = { has_country_flag = CHI_supported_VIN_flag }
 		}
 		cancel_if_not_visible = yes
 		fire_only_once = no
@@ -1434,7 +1418,7 @@ KMT_liberation_of_asia_category = {
 			log = "[GetLogRoot]: Decision complete CHI_support_the_revolution_in_indochina_decision"
 			country_event = CHI.midgame.222 #Weapons for the Indochinese Revolution
 			custom_effect_tooltip = CHI_support_revolution_options_tt
-			set_country_flag = CHI_supported_INC_flag
+			set_country_flag = CHI_supported_VIN_flag
 		}
 		fixed_random_seed = no
 	}
@@ -1605,7 +1589,7 @@ KMT_liberation_of_asia_category = {
 		fixed_random_seed = no
 	}
 
-	CHI_INC_liberation_army_decision = {
+	CHI_VIN_liberation_army_decision = {
 		allowed = { tag = CHI }
 		visible = {
 			CHI_chen_youren = { is_political_advisor = yes }
@@ -1640,7 +1624,7 @@ KMT_liberation_of_asia_category = {
 		}
 		custom_cost_text = 1000_guns
 		complete_effect = {
-			log = "[GetLogRoot]: Decision complete CHI_INC_liberation_army_decision"
+			log = "[GetLogRoot]: Decision complete CHI_VIN_liberation_army_decision"
 			hidden_effect = {
 				add_equipment_to_stockpile = {
 					type = infantry_equipment
@@ -1649,7 +1633,7 @@ KMT_liberation_of_asia_category = {
 			}
 		}
 		cancel_effect = {
-			log = "[GetLogRoot]: Decision cancel CHI_INC_liberation_army_decision"
+			log = "[GetLogRoot]: Decision cancel CHI_VIN_liberation_army_decision"
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
 				amount = 1000
@@ -1658,8 +1642,8 @@ KMT_liberation_of_asia_category = {
 		}
 
 		remove_effect = {
-			log = "[GetLogRoot]: Decision remove CHI_INC_liberation_army_decision"
-			INC = {
+			log = "[GetLogRoot]: Decision remove CHI_VIN_liberation_army_decision"
+			VIN = {
 				every_core_state = {
 					limit = { is_controlled_by = CHI }
 					add_compliance = 30

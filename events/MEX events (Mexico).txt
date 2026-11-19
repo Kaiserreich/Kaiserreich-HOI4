@@ -2232,19 +2232,29 @@ country_event = { # GER offers peace
 		}
 		if = {
 			limit = { PAN = { is_ally_with = FROM } }
-			PAN = {
-				if = {
-					limit = { is_subject = yes }
-					overlord = {
-						set_autonomy = {
-							target = PREV
-							autonomy_state = autonomy_free
+			if = {
+				limit = { PAN = { has_capitulated = yes } }
+				PAN = {
+					if = {
+						limit = { is_subject = yes }
+						overlord = {
+							set_autonomy = {
+								target = PREV
+								autonomy_state = autonomy_free
+							}
 						}
 					}
+					if = {
+						limit = { is_in_faction_with = FROM }
+						leave_faction = yes
+					}
 				}
-				if = {
-					limit = { is_in_faction_with = FROM }
-					leave_faction = yes
+				else_if = {
+					limit = {
+						1126 = { is_claim_or_core_of_PREV = yes }
+						is_ally_with = 1126.controller
+					}
+					1126 = { transfer_state_to = ROOT } # Western Panama
 				}
 			}
 		}

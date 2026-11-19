@@ -1045,7 +1045,7 @@ focus_tree = {
 				activate_targeted_decision = { target = 594 decision = GXC_recruit_militias } #Nanning
 				activate_targeted_decision = { target = 592 decision = GXC_recruit_militias } #Guangzhou
 				activate_targeted_decision = { target = 325 decision = GXC_recruit_militias } #Kunming
-				activate_targeted_decision = { target = 1051 decision = GXC_recruit_militias } #Guizhou
+				activate_targeted_decision = { target = 603 decision = GXC_recruit_militias } #Guizhou
 				activate_targeted_decision = { target = 602 decision = GXC_recruit_militias } #Hunan
 				activate_targeted_decision = { target = 605 decision = GXC_recruit_militias } #Sichuan
 				activate_targeted_decision = { target = 283 decision = GXC_recruit_militias } #Gansu
@@ -3010,7 +3010,7 @@ focus_tree = {
 				}
 			}
 		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
 
 ### Agriculture
@@ -3337,11 +3337,11 @@ focus_tree = {
 				816 = { increase_state_category_by_one_level = yes }
 			}
 			if = {
-				limit = { owns_state = 1051 } #Guiyang
+				limit = { owns_state = 1051 } #Anshun
 				1051 = { increase_state_category_by_one_level = yes }
 			}
 			if = {
-				limit = { owns_state = 603 } #Zunyi
+				limit = { owns_state = 603 } #Guiyang
 				603 = { increase_state_category_by_one_level = yes }
 			}
 			if = {
@@ -3801,8 +3801,8 @@ focus_tree = {
 				}
 			}
 			if = {
-				limit = { 603 = { is_owned_and_controlled_by = ROOT } }
-				603 = {
+				limit = { 1051 = { is_owned_and_controlled_by = ROOT } }
+				1051 = {
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = industrial_complex
@@ -4125,8 +4125,8 @@ focus_tree = {
 			custom_effect_tooltip = GXC_expanded_tt
 			custom_effect_tooltip = tooltip_white_line
 			if = {
-				limit = { owns_state = 1051 } #Guiyang
-				1051 = {
+				limit = { owns_state = 603 } #Guiyang
+				603 = {
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
@@ -4344,8 +4344,8 @@ focus_tree = {
 			custom_effect_tooltip = GXC_expanded_tt
 			custom_effect_tooltip = tooltip_white_line
 			if = {
-				limit = { owns_state = 1051 } #Guiyang
-				1051 = {
+				limit = { owns_state = 603 } #Guiyang
+				603 = {
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
@@ -5890,7 +5890,7 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			china_add_research_slots = yes
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
 	}
 
 ###- Regional Military Tree -###
@@ -9916,7 +9916,7 @@ focus_tree = {
 						check_variable = { chinese_province_state = 594.id }
 						check_variable = { chinese_province_state = 325.id }
 						check_variable = { chinese_province_state = 605.id }
-						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 603.id }
 						check_variable = { chinese_province_state = 607.id }
 						check_variable = { chinese_province_state = 600.id }
 						check_variable = { chinese_province_state = 595.id }
@@ -10045,7 +10045,7 @@ focus_tree = {
 				activate_targeted_decision = { target = 594 decision = GXC_mass_collectivisation } #Nanning
 				activate_targeted_decision = { target = 592 decision = GXC_mass_collectivisation } #Guangzhou
 				activate_targeted_decision = { target = 325 decision = GXC_mass_collectivisation } #Kunming
-				activate_targeted_decision = { target = 1051 decision = GXC_mass_collectivisation } #Guizhou
+				activate_targeted_decision = { target = 603 decision = GXC_mass_collectivisation } #Guizhou
 				activate_targeted_decision = { target = 602 decision = GXC_mass_collectivisation } #Hunan
 				activate_targeted_decision = { target = 605 decision = GXC_mass_collectivisation } #Sichuan
 				activate_targeted_decision = { target = 283 decision = GXC_mass_collectivisation } #Gansu
@@ -10096,7 +10096,7 @@ focus_tree = {
 						check_variable = { chinese_province_state = 594.id }
 						check_variable = { chinese_province_state = 325.id }
 						check_variable = { chinese_province_state = 605.id }
-						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 603.id }
 						check_variable = { chinese_province_state = 607.id }
 						check_variable = { chinese_province_state = 600.id }
 						check_variable = { chinese_province_state = 595.id }
@@ -13643,7 +13643,7 @@ focus_tree = {
 					OR = {
 						check_variable = { chinese_province_state = 594.id }
 						check_variable = { chinese_province_state = 325.id }
-						check_variable = { chinese_province_state = 1051.id }
+						check_variable = { chinese_province_state = 603.id }
 						check_variable = { chinese_province_state = 595.id }
 					}
 				}
@@ -21840,7 +21840,7 @@ focus_tree = {
 				activate_targeted_decision = { target = 594 decision = GXC_chinese_wehrstaat_decision } #Nanning
 				activate_targeted_decision = { target = 592 decision = GXC_chinese_wehrstaat_decision } #Guangzhou
 				activate_targeted_decision = { target = 325 decision = GXC_chinese_wehrstaat_decision } #Kunming
-				activate_targeted_decision = { target = 1051 decision = GXC_chinese_wehrstaat_decision } #Guizhou
+				activate_targeted_decision = { target = 603 decision = GXC_chinese_wehrstaat_decision } #Guizhou
 				activate_targeted_decision = { target = 602 decision = GXC_chinese_wehrstaat_decision } #Hunan
 				activate_targeted_decision = { target = 605 decision = GXC_chinese_wehrstaat_decision } #Sichuan
 				activate_targeted_decision = { target = 283 decision = GXC_chinese_wehrstaat_decision } #Gansu

@@ -1486,9 +1486,9 @@ news_event = {
 		}
 	}
 	desc = {
-		text = city_capture_events.270.d.inc
+		text = city_capture_events.270.d.vin
 		trigger = {
-			FROM = { tag = INC }
+			FROM = { tag = VIN }
 		}
 	}
 	desc = {
@@ -1511,7 +1511,7 @@ news_event = {
 					tag = GEA
 				}
 				NOT = {
-					tag = INC
+					tag = VIN
 				}
 				NOT = {
 					tag = BRM
@@ -4380,6 +4380,48 @@ news_event = {
 
 	option = {
 		name = city_capture_events.312.c
+		trigger = {
+			NOT = {
+				tag = FROM.FROM
+				tag = FROM
+			}
+		}
+	}
+}
+
+# The Fall of Central Morocco
+news_event = {
+	id = city_capture_events.313
+	immediate = { log = "[GetLogInfo]: event city_capture_events.313" }
+	title = city_capture_events.313.t
+	desc = city_capture_events.313.desc
+	picture = GFX_news_event_capture_casablanca
+
+	major = yes
+	is_triggered_only = yes
+
+	trigger = { wants_world_news = yes } #Global news event
+
+	immediate = {
+		event_target:fallen_state = { set_state_flag = city_has_fallen_once }
+	}
+
+	option = { # The last time this happened, a Sultan was overthrown!
+		name = city_capture_events.313.a
+		trigger = {
+			tag = FROM.FROM
+		}
+	}
+
+	option = { # With this victory, the Maghreb's fate is sealed.
+		name = city_capture_events.313.b
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { # Just like 1907.
+		name = city_capture_events.313.c
 		trigger = {
 			NOT = {
 				tag = FROM.FROM

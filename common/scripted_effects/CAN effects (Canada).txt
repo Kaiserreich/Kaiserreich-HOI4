@@ -1232,6 +1232,9 @@ CAN_add_conservative_second_in_command = {
 				activate_advisor = CAN_john_bracken_sic
 			}
 		}
+		else = {
+			activate_advisor = CAN_canadian_parliament_sic
+		}
 	}
 	hidden_effect = {
 		if = {
@@ -1257,6 +1260,9 @@ CAN_add_conservative_second_in_command = {
 				}
 				activate_advisor = CAN_john_bracken_sic
 			}
+		}
+		else = {
+			activate_advisor = CAN_canadian_parliament_sic
 		}
 	}
 }
@@ -1304,9 +1310,6 @@ CAN_add_correct_second_in_command = {
 		else_if = {
 			limit = { has_government = social_conservative }
 			CAN_add_conservative_second_in_command = yes
-			else = {
-				activate_advisor = CAN_canadian_parliament_sic
-			}
 		}
 		else_if = {
 			limit = {

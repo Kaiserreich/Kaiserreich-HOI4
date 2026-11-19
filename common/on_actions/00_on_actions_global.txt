@@ -275,9 +275,12 @@ on_actions = {
 		effect = {
 			log = "=== MOD VERSION ==="
 			log = KR_CURRENT_VERSION
-			set_global_flag = KR_CURRENT_VERSION_1.7
+			set_global_flag = KR_CURRENT_VERSION_1.7.1
 			every_possible_country = {
 				limit = { NOT = { tag = event_target:system } }
+
+				#Scripted Peace Main Target setup
+				update_scripted_peace_main_target = yes
 
 				#Opinion Modifiers Setup
 				every_possible_country = {
@@ -482,6 +485,12 @@ on_actions = {
 				force_disable_resistance = { occupied = MAF } #resistance should come from African tags
 				force_disable_resistance = { occupied = GEA } #resistance should come from SEA tags or China
 				force_disable_resistance = { occupied = DEI } #resistance should come from Indonesia
+			}
+
+			#Faction Id Vars (for easier variable access)
+			every_country = {
+				limit = { is_in_faction = yes }
+				set_faction_id_variable = yes
 			}
 
 			#Faction Embargoes
@@ -1800,6 +1809,14 @@ on_actions = {
 	on_leave_faction = {
 		effect = {
 			log = "on_leave_faction [GetLogRoot] [GetLogFrom]"
+			if = {
+				limit = { is_in_faction = yes }
+				set_faction_id_variable = yes
+			}
+			else = {
+				clear_faction_id_variable = yes
+
+			}
 		}
 	}
 
@@ -2082,6 +2099,7 @@ on_actions = {
 		effect = {
 			log = "on_offer_join_faction [GetLogRoot] [GetLogFrom]"
 			FROM = {
+				set_faction_id_variable = yes
 				#clear any embargoes
 				every_allied_country = {
 					clear_embargo_PREV = yes

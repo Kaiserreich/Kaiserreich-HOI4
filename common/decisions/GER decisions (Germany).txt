@@ -821,7 +821,7 @@ foreign_politics = {
 		visible = {
 			country_exists = GEA
 			GEA = {
-				has_war_with = INC
+				has_war_with = VIN
 			}
 		}
 		fire_only_once = yes
@@ -3028,7 +3028,7 @@ foreign_politics = {
 		}
 		fixed_random_seed = no
 	}
-	GER_destroy_INC = {
+	GER_destroy_VIN = {
 		icon = GFX_decision_generic_tank
 
 		allowed = { always = no } #activated by effect
@@ -3079,18 +3079,18 @@ foreign_politics = {
 		}
 
 		cancel_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision cancel GER_destroy_INC"
+			log = "[GetLogRoot][GetLogFrom]: Decision cancel GER_destroy_VIN"
 			clear_decision_attack_AI = yes
 		}
 
 		complete_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision complete GER_destroy_INC"
+			log = "[GetLogRoot][GetLogFrom]: Decision complete GER_destroy_VIN"
 			setup_decision_attack_AI = yes
 			FROM = { incoming_war_notification_effect = yes }
 		}
 
 		remove_effect = {
-			log = "[GetLogRoot][GetLogFrom]: Decision remove GER_destroy_INC"
+			log = "[GetLogRoot][GetLogFrom]: Decision remove GER_destroy_VIN"
 			clear_decision_attack_AI = yes
 			declare_war_on = {
 				target = FROM

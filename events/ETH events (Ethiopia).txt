@@ -1331,8 +1331,8 @@ country_event = { # Eritrean Revolt
 			news_event = { id = ethiopia_events.34 days = 1 }
 			ERI = {
 				division_template = {
-					name = "Infanterie-Division"
-					division_names_group = ITAL_INF_01
+					name = "Infantry Division"
+					division_names_group = ERI_INF_01
 					regiments = {
 						infantry = { x = 0 y = 0 }
 						infantry = { x = 0 y = 1 }
@@ -1347,7 +1347,7 @@ country_event = { # Eritrean Revolt
 				}
 				division_template = {
 					name = "Tribal Militia"
-					division_names_group = ITAL_MIL_01
+					division_names_group = ERI_MIL_01
 					regiments = {
 						irregular_infantry = { x = 0 y = 0 }
 						irregular_infantry = { x = 0 y = 1 }
@@ -1358,13 +1358,13 @@ country_event = { # Eritrean Revolt
 				}
 				550 = { #Eritrea
 					create_unit = {
-						division = "division_template = \"Infanterie-Division\" start_experience_factor = 0.1 start_equipment_factor = 0.2"
+						division = "division_template = \"Infantry Division\" start_experience_factor = 0.1 start_equipment_factor = 0.2"
 						allow_spawning_on_enemy_provs = yes
 						prioritize_location = 12766
 						owner = PREV
 					}
 					create_unit = {
-						division = "division_template = \"Infanterie-Division\" start_experience_factor = 0.1 start_equipment_factor = 0.2"
+						division = "division_template = \"Infantry Division\" start_experience_factor = 0.1 start_equipment_factor = 0.2"
 						allow_spawning_on_enemy_provs = yes
 						prioritize_location = 8043
 						owner = PREV

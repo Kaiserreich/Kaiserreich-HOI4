@@ -1,0 +1,800 @@
+GEA_spawn_indochinese_revolt = {
+	set_global_flag = GEA_Indochina_Uprising_Fired
+	#needed for kill yunnan focus
+	set_global_flag = GEA_Indochina_Uprising_Fired_for_real
+
+	add_to_variable = { VIN.guerilla_activity = 20 }
+
+	every_owned_state = {
+		limit = { region = 196 } #Indochina
+		add_core_of = VIN
+		remove_core_of = ROOT
+		add_claim_by = ROOT
+		start_state_integration_resistance = yes
+	}
+	VIN = {
+		if = {
+			limit = { has_global_flag = GEA_Martial_Law_NOT_Declared }
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 800
+				producer = GER
+			}
+		}
+
+		if = {
+			limit = { has_global_flag = VIN_HND_Help }
+			add_manpower = 20000
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = 300
+				producer = HND
+			}
+		}
+
+		### Templates ###
+		division_template = {
+			name = "Linh Tap"	# Indochinese Rifle
+			division_names_group = VIN_MLT_01
+			is_locked = yes
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Dan quan Du kich"	# Guerilla Militia; Small Militia Division
+			division_names_group = VIN_MLT_01
+			is_locked = yes
+			regiments = {
+				militia = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 0 y = 2 }
+				militia = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+				militia = { x = 1 y = 2 }
+				militia = { x = 2 y = 0 }
+				militia = { x = 2 y = 1 }
+				militia = { x = 2 y = 2 }
+			}
+		}
+
+		### States ###
+		if = {
+			limit = { 286 = { is_owned_and_controlled_by = ROOT } } #Cochinchina
+			286 = {
+				teleport_armies = {
+					limit = { is_ally_with = ROOT }
+					to_state = PREV.capital
+				}
+				transfer_state_to = VIN
+			}
+		}
+		if = {
+			limit = { 856 = { is_owned_and_controlled_by = ROOT } } #Mekong Delta
+			856 = {
+				teleport_armies = {
+					limit = { is_ally_with = ROOT }
+					to_state = PREV.capital
+				}
+				transfer_state_to = VIN
+			}
+		}
+
+		### War ###
+		ROOT = {
+			declare_war_on = {
+				target = PREV
+				type = annex_everything
+			}
+		}
+
+		### Provinces ###
+		if = {
+			limit = { 827 = { is_owned_and_controlled_by = ROOT } }
+			set_province_controller = 1400
+			set_province_controller = 1605
+			set_province_controller = 7271
+			set_province_controller = 12204
+		}
+
+		### Units ###
+		random_owned_controlled_state = {
+			prioritize = { 286 }
+			create_unit = {
+				division = "name = \"Lu doan 1 Linh kho do Nam ky\" division_template = \"Linh Tap\" start_experience_factor = 0.5"
+				prioritize_location = 4401
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Lu doan 2 Linh kho do Nam ky\" division_template = \"Linh Tap\" start_experience_factor = 0.5"
+				prioritize_location = 4401
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Lu doan 3 Linh kho do Nam ky\" division_template = \"Linh Tap\" start_experience_factor = 0.5"
+				prioritize_location = 4401
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Lu doan 4 Linh kho do Nam ky\" division_template = \"Linh Tap\" start_experience_factor = 0.5"
+				prioritize_location = 4401
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Giai phong quan Sai Gon\" division_template = \"Bo doi Dia phuong\" start_experience_factor = 0.4"
+				prioritize_location = 4401
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Giai phong quan Cho Lon\" division_template = \"Bo doi Dia phuong\" start_experience_factor = 0.2"
+				prioritize_location = 4401
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Dan quan Long An\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+				prioritize_location = 10261
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+		}
+		random_owned_controlled_state = {
+			prioritize = { 856 }
+			create_unit = {
+				division = "name = \"Giai phong quan Can Tho\" division_template = \"Bo doi Dia phuong\" start_experience_factor = 0.2"
+				prioritize_location = 12133
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Giai phong quan Lam Dong\" division_template = \"Bo doi Dia phuong\" start_experience_factor = 0.2"
+				prioritize_location = 4223
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Dan quan Ca Mau\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+				prioritize_location = 4341
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Dan quan My Tho\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+				prioritize_location = 1423
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"Dan quan Cao Lanh\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+				prioritize_location = 1396
+				owner = VIN
+				allow_spawning_on_enemy_provs = yes
+			}
+		}
+		if = {
+			limit = { 827 = { is_owned_and_controlled_by = ROOT } }
+			827 = {
+				create_unit = {
+					division = "name = \"Dan quan Ben Tre\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+					prioritize_location = 12204
+					owner = VIN
+					allow_spawning_on_enemy_provs = yes
+				}
+				create_unit = {
+					division = "name = \"Dan quan Binh Dinh\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+					prioritize_location = 7271
+					owner = VIN
+					allow_spawning_on_enemy_provs = yes
+				}
+				create_unit = {
+					division = "name = \"Dan quan Tay Nguyen\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+					prioritize_location = 1400
+					owner = VIN
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+		else = {
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Dan quan Ben Tre\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+					owner = VIN
+					allow_spawning_on_enemy_provs = yes
+				}
+				create_unit = {
+					division = "name = \"Dan quan Binh Dinh\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+					owner = VIN
+					allow_spawning_on_enemy_provs = yes
+				}
+				create_unit = {
+					division = "name = \"Dan quan Tay Nguyen\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+					owner = VIN
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+
+		if = { #The rebellion of local guards
+			limit = { NOT = { has_global_flag = GEA_Bao_Dai_Reform_Success } }
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 500
+				producer = GER
+			}
+			division_template = {
+				name = "Quan Bao an"	# Police Division
+				division_names_group = VIN_MLT_01
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+				template_counter = 68
+			}
+			random_owned_controlled_state = {
+				prioritize = { 286 }
+				create_unit = {
+					division = "name = \"Quan Bao an Cho Lon\" division_template = \"Quan Bao an\" start_experience_factor = 0.2"
+					prioritize_location = 12150
+					owner = VIN
+					allow_spawning_on_enemy_provs = yes
+				}
+				create_unit = {
+					division = "name = \"Quan Bao an Nam Bo\" division_template = \"Quan Bao an\" start_experience_factor = 0.2"
+					prioritize_location = 7347
+					owner = VIN
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+			if = {
+				limit = { 827 = { is_owned_and_controlled_by = ROOT } }
+				827 = {
+					create_unit = {
+						division = "name = \"Quan Bao an Da Lat\" division_template = \"Quan Bao an\" start_experience_factor = 0.2"
+						prioritize_location = 1605
+						owner = VIN
+						allow_spawning_on_enemy_provs = yes
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Quan Bao an Da Lat\" division_template = \"Quan Bao an\" start_experience_factor = 0.2"
+						prioritize_location = 1605
+						owner = VIN
+						allow_spawning_on_enemy_provs = yes
+					}
+				}
+			}
+		}
+
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 2000
+			producer = GER
+		}
+
+		if = {
+			limit = { NOT = { country_exists = INS } }
+			country_event = { id = indonesia_events.115 days = 10 random_days = 20 } #Tan Malaka arrives
+		}
+		set_capital = { state = 286 remember_old_capital = no }
+	}
+
+	### Events ###
+	if = {
+		limit = { has_global_flag = GEA_Bao_Dai_Reform_Success }
+		country_event = { id = german_east_asia_events.25 days = 3 }
+	}
+	GER = { country_event = { id = germany_flavour_events.3 days = 3 } } #The Indochina Debate
+	LEP = { country_event = { id = league_german_influence_events.51 days = 7 } }
+}
+
+VIN_spawn_tet_offensive = {
+	if = {
+		limit = { NOT = { has_template = "Dan quan Du kich" } }
+		division_template = {
+			name = "Dan quan Du kich"	# Guerilla Militia; Small Militia Division
+			division_names_group = VIN_MLT_01
+			is_locked = yes
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+			}
+			template_counter = 68
+		}
+	}
+	671 = {
+		create_unit = {
+			division = "name = \"Dan quan Dien Bien'\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+			prioritize_location = 4529
+			owner = VIN
+			allow_spawning_on_enemy_provs = yes
+		}
+		create_unit = {
+			division = "name = \"Dan quan Viet Bac'\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+			prioritize_location = 7093
+			owner = VIN
+			allow_spawning_on_enemy_provs = yes
+		}
+		create_unit = {
+			division = "name = \"Dac cong Hai Phong'\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+			prioritize_location = 4119
+			owner = VIN
+			allow_spawning_on_enemy_provs = yes
+		}
+		create_unit = {
+			division = "name = \"Dan quan Nghe Tinh'\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+			prioritize_location = 10016
+			owner = VIN
+			allow_spawning_on_enemy_provs = yes
+		}
+		create_unit = {
+			division = "name = \"Khoi nghia quan'\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+			prioritize_location = 12075
+			owner = VIN
+			allow_spawning_on_enemy_provs = yes
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = VIN_base_viet_bac
+			857 = {
+				is_owned_by = GEA
+				OR = {
+					is_controlled_by = GEA
+					is_controlled_by = ROOT
+				}
+			}
+		}
+		set_temp_variable = { target = ROOT }
+		857 = { #Dong Bac
+			transfer_state_during_war = yes
+			if = {
+				limit = { check_variable = { VIN.guerilla_activity > 60 } }
+				create_unit = {
+					division = "name = \"Vietcong guerilla'\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+					owner = VIN
+					count = 5
+				}
+				create_unit = {
+					division = "name = \"Vietcong guerilla'\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+					owner = VIN
+					count = 2
+				}
+			}
+		}
+	}
+}
+
+VIN_setup_VNQDD_government_effect = {
+	hidden_effect = {
+		if = {
+			limit = { tag = INC }
+			set_cosmetic_tag = VIN_VNQDD_indochina
+		}
+		else = {
+			set_cosmetic_tag = VIN_VNQDD
+		}
+		get_current_popularities = yes
+		set_popularities = {
+			totalist = original_popularities^0
+			syndicalist = original_popularities^1
+			radical_socialist = original_popularities^3 #intentionally swapped with SocDem
+			social_democrat = original_popularities^2 #intentionally swapped with RadSoc
+			social_liberal = original_popularities^4
+			market_liberal = original_popularities^5
+			social_conservative = original_popularities^6
+			authoritarian_democrat = original_popularities^7
+			paternal_autocrat = original_popularities^8
+			national_populist = original_popularities^9
+		}
+		clear_array = original_popularities
+		promote_character = {
+			character = VIN_nguyen_an_ninh
+			ideology = social_democrat_subtype
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = VIN_radical_socialist_party_long
+			name = VIN_radical_socialist_party
+		}
+	}
+	promote_character = {
+		character = VIN_nguyen_thai_hoc
+		ideology = radical_socialist_subtype
+	}
+	set_party_name = {
+		ideology = radical_socialist
+		long_name = VIN_social_democrat_party_long
+		name = VIN_social_democrat_party
+	}
+	set_politics = {
+		ruling_party = radical_socialist
+	}
+}
+
+VIN_remove_VNQDD_government_effect = {
+	hidden_effect = {
+		if = {
+			limit = { tag = INC }
+			set_cosmetic_tag = VIN_indochina
+		}
+		else = {
+			drop_cosmetic_tag = yes
+		}
+		save_current_party_popularities = yes
+		#Flip Soc Dem and Rad Soc Popularities
+		set_popularities = {
+			totalist = saved_popularities^0
+			syndicalist = saved_popularities^1
+			radical_socialist = saved_popularities^3
+			social_democrat = saved_popularities^2
+			social_liberal = saved_popularities^4
+			market_liberal = saved_popularities^5
+			social_conservative = saved_popularities^6
+			authoritarian_democrat = saved_popularities^7
+			paternal_autocrat = saved_popularities^8
+			national_populist = saved_popularities^9
+		}
+		promote_character = {
+			character = VIN_nguyen_thai_hoc
+			ideology = social_democrat_subtype
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = VIN_social_democrat_party_long
+			name = VIN_social_democrat_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = VIN_authoritarian_democrat_party_long
+			name = VIN_authoritarian_democrat_party
+		}
+	}
+	promote_character = {
+		character = VIN_nguyen_an_ninh
+		ideology = radical_socialist_subtype
+	}
+	set_party_name = {
+		ideology = radical_socialist
+		long_name = VIN_radical_socialist_party_long
+		name = VIN_radical_socialist_party
+	}
+}
+
+VIN_create_monarchy = {
+	if = {
+		limit = { VIN = { VIN_bao_dai = { is_dead = no } } }
+		VIN = {
+			set_cosmetic_tag = VIN_empire
+			VIN_bao_dai = {
+				character_becomes_leader_of_ruling_party_effect_tooltip = yes
+				hidden_effect = {
+					set_nationality = PREV.PREV
+					remove_all_country_leader_roles = yes
+					add_country_leader_role = {
+						country_leader = {
+							desc = VIN_bao_dai_leader_desc
+							ideology = social_democrat_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = VIN_bao_dai_leader_desc
+							ideology = social_liberal_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = VIN_bao_dai_leader_desc
+							ideology = market_liberal_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = VIN_bao_dai_leader_desc
+							ideology = social_conservative_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = VIN_bao_dai_leader_desc
+							ideology = authoritarian_democrat_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = VIN_bao_dai_leader_desc
+							ideology = paternal_autocrat_subtype
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						country_leader = {
+							desc = VIN_bao_dai_leader_desc
+							ideology = national_populist_subtype
+						}
+						promote_leader = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+VIN_remove_monarchy = {
+	if = {
+		limit = { has_character = VIN_bao_dai }
+		VIN_bao_dai = {
+			hidden_effect = {
+				remove_all_country_leader_roles = yes
+				retire = yes
+			}
+		}
+	}
+}
+
+VIN_puppet_setup = {
+	hidden_effect = {
+		if = {
+			limit = {
+				PREV = {
+					OR = {
+						tag = RKT
+						tag = LKT
+					}
+				}
+			}
+			if = {
+				limit = { has_variable = release_indochina }
+				set_country_flag = VIN_is_indochina
+				set_cosmetic_tag = VIN_VNQDD_indochina
+			}
+			else = {
+				set_cosmetic_tag = VIN_VNQDD
+			}
+			VIN_nguyen_binh = {
+				set_nationality = PREV
+				promote_character = totalist_subtype
+			}
+			VIN_pho_duc_chinh = {
+				set_nationality = PREV
+				promote_character = radical_socialist_subtype
+				promote_character = social_democrat_subtype
+				promote_character = authoritarian_democrat_subtype
+			}
+			set_party_name = {
+				ideology = totalist
+				name = VIN_social_democrat_party
+				long_name = VIN_social_democrat_party_long
+			}
+			set_party_name = {
+				ideology = radical_socialist
+				name = VIN_social_democrat_party
+				long_name = VIN_social_democrat_party_long
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = VIN_social_democrat_party
+				long_name = VIN_social_democrat_party_long
+			}
+			if = {
+				limit = { PREV = { tag = LKT } }
+				set_politics = {
+					ruling_party = radical_socialist
+					elections_allowed = no
+				}
+				set_popularities = {
+					totalist = 15
+					radical_socialist = 40
+					syndicalist = 5
+					social_democrat = 15
+					social_liberal = 10
+					market_liberal = 0
+					social_conservative = 0
+					authoritarian_democrat = 10
+					paternal_autocrat = 5
+					national_populist = 0
+				}
+			}
+			if = {
+				limit = { PREV = { tag = RKT } }
+				set_politics = {
+					ruling_party = authoritarian_democrat
+					elections_allowed = no
+				}
+				set_popularities = {
+					totalist = 10
+					radical_socialist = 15
+					syndicalist = 5
+					social_democrat = 10
+					social_liberal = 5
+					market_liberal = 0
+					social_conservative = 0
+					authoritarian_democrat = 30
+					paternal_autocrat = 15
+					national_populist = 10
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = { has_variable = release_indochina }
+				set_country_flag = VIN_is_indochina
+				set_cosmetic_tag = VIN_indochina
+			}
+			if = {
+				limit = { has_variable = release_monarchy }
+				VIN_create_monarchy = yes
+			}
+			else = {
+				VIN_nguyen_thai_hoc = { promote_character = social_democrat_subtype }
+			}
+			VIN_pham_van_dong = { promote_character = totalist_subtype }
+			if = {
+				limit = { has_character = VIN_nguyen_an_ninh }
+				VIN_nguyen_an_ninh = { promote_character = radical_socialist_subtype }
+			}
+			else = {
+				VIN_nguyen_thai_hoc = { promote_character = radical_socialist_subtype }
+			}
+			set_party_name = {
+				ideology = totalist
+				name = VIN_totalist_party
+				long_name = VIN_totalist_party_long
+			}
+			set_party_name = {
+				ideology = radical_socialist
+				name = VIN_radical_socialist_party
+				long_name = VIN_radical_socialist_party_long
+			}
+		}
+		if = {
+			limit = {
+				has_country_leader = { character = VIN_nguyen_an_ninh }
+				NOT = { has_completed_focus = VIN_Anarchist_Revolution }
+			}
+			unlock_national_focus = VIN_Anarchist_Revolution
+			if = {
+				limit = { has_completed_focus = VIN_Syndicalist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Syndicalist_Revolution
+					uncomplete_children = yes
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = VIN_Vanguardist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Vanguardist_Revolution
+					uncomplete_children = yes
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = VIN_Nationalist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Nationalist_Revolution
+					uncomplete_children = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_government = syndicalist
+				NOT = { has_completed_focus = VIN_Syndicalist_Revolution }
+			}
+			unlock_national_focus = VIN_Syndicalist_Revolution
+			if = {
+				limit = { has_completed_focus = VIN_Anarchist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Anarchist_Revolution
+					uncomplete_children = yes
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = VIN_Vanguardist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Vanguardist_Revolution
+					uncomplete_children = yes
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = VIN_Nationalist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Nationalist_Revolution
+					uncomplete_children = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_government = totalist
+				NOT = { has_completed_focus = VIN_Vanguardist_Revolution }
+			}
+			unlock_national_focus = VIN_Vanguardist_Revolution
+			if = {
+				limit = { has_completed_focus = VIN_Anarchist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Anarchist_Revolution
+					uncomplete_children = yes
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = VIN_Syndicalist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Syndicalist_Revolution
+					uncomplete_children = yes
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = VIN_Nationalist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Nationalist_Revolution
+					uncomplete_children = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_socialist_government = no
+					PREV = {
+						OR = {
+							tag = RKT
+							tag = LKT
+						}
+					}
+				}
+				NOT = { has_completed_focus = VIN_Nationalist_Revolution }
+			}
+			unlock_national_focus = VIN_Nationalist_Revolution
+			if = {
+				limit = { has_completed_focus = VIN_Anarchist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Anarchist_Revolution
+					uncomplete_children = yes
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = VIN_Syndicalist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Syndicalist_Revolution
+					uncomplete_children = yes
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = VIN_Vanguardist_Revolution }
+				uncomplete_national_focus = {
+					focus = VIN_Vanguardist_Revolution
+					uncomplete_children = yes
+				}
+			}
+		}
+	}
+}

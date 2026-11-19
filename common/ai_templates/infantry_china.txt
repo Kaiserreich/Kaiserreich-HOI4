@@ -2,6 +2,97 @@
 #	INFANTRY ROLE - default
 ######################
 
+militia_infantry_china = {
+	available_for = {
+		GXC SHX
+	}
+
+	role = militia
+
+	upgrade_prio = {
+		base = 100
+		modifier = {
+			factor = 0
+			NOT = {
+				has_completed_focus = GXC_embrace_the_guangxi_style
+				has_completed_focus = SHX_mobilisation
+			}
+		}
+	}
+
+	militia_china_1 = {
+		upgrade_prio = {
+			base = 10
+		}
+
+		can_upgrade_in_field = {
+			AI_trigger_can_upgrade_in_field = yes
+		}
+
+		target_template = {
+			regiments = {
+				militia = 9
+			}
+
+			regimental_support = {
+				field_guns = 3
+			}
+
+			support = {
+				artillery = 1
+			}
+		}
+	}
+
+	militia_china_2 = {
+		upgrade_prio = {
+			base = 10
+			modifier = {
+				factor = 0
+				num_of_military_factories < 20
+			}
+			modifier = {
+				add = 10
+				num_of_military_factories > 49
+			}
+			modifier = {
+				add = 10
+				num_of_military_factories > 49
+			}
+			modifier = {
+				add = 10
+				has_reached_maximum_divisions = yes
+			}
+			modifier = {
+				add = 10
+				has_reached_ninety_percent_of_maximum_divisions = yes
+			}
+		}
+		can_upgrade_in_field = {
+			AI_trigger_can_upgrade_in_field = yes
+		}
+
+		target_template = {
+			regiments = {
+				militia = 18
+			}
+
+			regimental_support = {
+				field_guns = 3
+				anti_air_battery = 2
+			}
+
+			support = {
+				engineer = 1
+				recon = 1
+				artillery = 1
+				field_hospital = 1
+				logistics_company = 1
+			}
+		}
+	}
+}
+
 mass_infantry_china = {				#these units serve purely the role of filling lines
 	available_for = {
 		SHD SZC ANQ CHI

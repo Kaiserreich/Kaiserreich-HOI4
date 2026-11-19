@@ -883,18 +883,6 @@ HAW_forpol = {
 		desc = RULE_OPTION_HAW_FORPOL_ENT_DESC
 		allow_achievements = yes
 	}
-	option = {
-		name = HAW_FORPOL_INT
-		text = RULE_OPTION_HAW_FORPOL_INT
-		desc = RULE_OPTION_HAW_FORPOL_INT_DESC
-		allow_achievements = yes
-	}
-	option = {
-		name = HAW_FORPOL_CHN
-		text = RULE_OPTION_HAW_FORPOL_CHN
-		desc = RULE_OPTION_HAW_FORPOL_CHN_DESC
-		allow_achievements = yes
-	}
 }
 
 MEX_path = {
@@ -1912,37 +1900,25 @@ PAN_path = {
 	}
 }
 
-PAN_crisis = {
-	name = PAN_CRISIS
+PAN_forpol = {
+	name = PAN_FORPOL
 	group = RULE_GROUP_KAISERREICH_RULES_CENTAL_AMERICA_CARIBBEAN
 	default = {
 		name = DEFAULT
-		text = RULE_OPTION_PAN_CRISIS_RANDOM
-		desc = RULE_OPTION_PAN_CRISIS_RANDOM_DESC
+		text = RULE_OPTION_PAN_FORPOL_RANDOM
+		desc = RULE_OPTION_PAN_FORPOL_RANDOM_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = PAN_CRISIS_CAN
-		text = RULE_OPTION_PAN_CRISIS_CAN
-		desc = RULE_OPTION_PAN_CRISIS_CAN_DESC
+		name = PAN_FORPOL_ENT
+		text = RULE_OPTION_PAN_FORPOL_ENT
+		desc = RULE_OPTION_PAN_FORPOL_ENT_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = PAN_CRISIS_ENT
-		text = RULE_OPTION_PAN_CRISIS_ENT
-		desc = RULE_OPTION_PAN_CRISIS_ENT_DESC
-		allow_achievements = yes
-	}
-	option = {
-		name = PAN_CRISIS_RETREAT
-		text = RULE_OPTION_PAN_CRISIS_RETREAT
-		desc = RULE_OPTION_PAN_CRISIS_RETREAT_DESC
-		allow_achievements = yes
-	}
-	option = {
-		name = PAN_CRISIS_WAR
-		text = RULE_OPTION_PAN_CRISIS_WAR
-		desc = RULE_OPTION_PAN_CRISIS_WAR_DESC
+		name = PAN_FORPOL_NEUT
+		text = RULE_OPTION_PAN_FORPOL_NEUT
+		desc = RULE_OPTION_PAN_FORPOL_NEUT_DESC
 		allow_achievements = yes
 	}
 }
@@ -8211,9 +8187,15 @@ LEB_path = {
 		allow_achievements = yes
 	}
 	option = {
-		name = LEB_PATH_SOCLIB
-		text = RULE_OPTION_LEB_PATH_SOCLIB
-		desc = RULE_OPTION_LEB_PATH_SOCLIB_DESC
+		name = LEB_PATH_SOCLIB_EGY
+		text = RULE_OPTION_LEB_PATH_SOCLIB_EGY
+		desc = RULE_OPTION_LEB_PATH_SOCLIB_EGY_DESC
+		allow_achievements = yes
+	}
+	option = {
+		name = LEB_PATH_SOCLIB_IRQ
+		text = RULE_OPTION_LEB_PATH_SOCLIB_IRQ
+		desc = RULE_OPTION_LEB_PATH_SOCLIB_IRQ_DESC
 		allow_achievements = yes
 	}
 	option = {
@@ -10427,6 +10409,30 @@ AFG_forpol = {
 		allow_achievements = yes
 	}
 	option = {
+		name = AFG_FORPOL_SOC_RUS
+		text = RULE_OPTION_AFG_FORPOL_SOC_RUS
+		desc = RULE_OPTION_AFG_FORPOL_SOC_RUS_DESC
+		allow_achievements = yes
+	}
+	option = {
+		name = AFG_FORPOL_PER
+		text = RULE_OPTION_AFG_FORPOL_PER
+		desc = RULE_OPTION_AFG_FORPOL_PER_DESC
+		allow_achievements = yes
+	}
+	option = {
+		name = AFG_FORPOL_CHN
+		text = RULE_OPTION_AFG_FORPOL_CHN
+		desc = RULE_OPTION_AFG_FORPOL_CHN_DESC
+		allow_achievements = yes
+	}
+	option = {
+		name = AFG_FORPOL_INT
+		text = RULE_OPTION_AFG_FORPOL_INT
+		desc = RULE_OPTION_AFG_FORPOL_INT_DESC
+		allow_achievements = yes
+	}
+	option = {
 		name = AFG_FORPOL_NEUT
 		text = RULE_OPTION_AFG_FORPOL_NEUT
 		desc = RULE_OPTION_AFG_FORPOL_NEUT_DESC
@@ -11053,113 +11059,107 @@ GEA_path = {
 	}
 }
 
-INC_revolt = {
-	name = INC_REVOLT
+VIN_revolt = {
+	name = VIN_REVOLT
 	group = RULE_GROUP_KAISERREICH_RULES_SOUTH_ASIA_OCEANIA
 	default = {
 		name = DEFAULT
-		text = RULE_OPTION_INC_REVOLT_RANDOM
-		desc = RULE_OPTION_INC_REVOLT_RANDOM_DESC
+		text = RULE_OPTION_VIN_REVOLT_RANDOM
+		desc = RULE_OPTION_VIN_REVOLT_RANDOM_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_REVOLT_YES
-		text = RULE_OPTION_INC_REVOLT_YES
-		desc = RULE_OPTION_INC_REVOLT_YES_DESC
+		name = VIN_REVOLT_YES
+		text = RULE_OPTION_VIN_REVOLT_YES
+		desc = RULE_OPTION_VIN_REVOLT_YES_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_REVOLT_VIN
-		text = RULE_OPTION_INC_REVOLT_VIN
-		desc = RULE_OPTION_INC_REVOLT_VIN_DESC
-		allow_achievements = yes
-	}
-	option = {
-		name = INC_REVOLT_NO
-		text = RULE_OPTION_INC_REVOLT_NO
-		desc = RULE_OPTION_INC_REVOLT_NO_DESC
+		name = VIN_REVOLT_NO
+		text = RULE_OPTION_VIN_REVOLT_NO
+		desc = RULE_OPTION_VIN_REVOLT_NO_DESC
 		allow_achievements = yes
 	}
 }
 
-INC_path = {
-	name = INC_PATH
+VIN_path = {
+	name = VIN_PATH
 	group = RULE_GROUP_KAISERREICH_RULES_SOUTH_ASIA_OCEANIA
 	default = {
 		name = DEFAULT
-		text = RULE_OPTION_INC_PATH_RANDOM
-		desc = RULE_OPTION_INC_PATH_RANDOM_DESC
+		text = RULE_OPTION_VIN_PATH_RANDOM
+		desc = RULE_OPTION_VIN_PATH_RANDOM_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_PATH_TOTALIST
-		text = RULE_OPTION_INC_PATH_TOTALIST
-		desc = RULE_OPTION_INC_PATH_TOTALIST_DESC
+		name = VIN_PATH_TOTALIST
+		text = RULE_OPTION_VIN_PATH_TOTALIST
+		desc = RULE_OPTION_VIN_PATH_TOTALIST_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_PATH_SYNDIE
-		text = RULE_OPTION_INC_PATH_SYNDIE
-		desc = RULE_OPTION_INC_PATH_SYNDIE_DESC
+		name = VIN_PATH_SYNDIE
+		text = RULE_OPTION_VIN_PATH_SYNDIE
+		desc = RULE_OPTION_VIN_PATH_SYNDIE_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_PATH_ASPIRATION_RADSOC
-		text = RULE_OPTION_INC_PATH_ASPIRATION_RADSOC
-		desc = RULE_OPTION_INC_PATH_ASPIRATION_RADSOC_DESC
+		name = VIN_PATH_ASPIRATION_RADSOC
+		text = RULE_OPTION_VIN_PATH_ASPIRATION_RADSOC
+		desc = RULE_OPTION_VIN_PATH_ASPIRATION_RADSOC_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_PATH_VNQDD_RADSOC
-		text = RULE_OPTION_INC_PATH_VNQDD_RADSOC
-		desc = RULE_OPTION_INC_PATH_VNQDD_RADSOC_DESC
+		name = VIN_PATH_VNQDD_RADSOC
+		text = RULE_OPTION_VIN_PATH_VNQDD_RADSOC
+		desc = RULE_OPTION_VIN_PATH_VNQDD_RADSOC_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_PATH_AUTDEM
-		text = RULE_OPTION_INC_PATH_AUTDEM
-		desc = RULE_OPTION_INC_PATH_AUTDEM_DESC
+		name = VIN_PATH_AUTDEM
+		text = RULE_OPTION_VIN_PATH_AUTDEM
+		desc = RULE_OPTION_VIN_PATH_AUTDEM_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_PATH_PATAUT
-		text = RULE_OPTION_INC_PATH_PATAUT
-		desc = RULE_OPTION_INC_PATH_PATAUT_DESC
+		name = VIN_PATH_PATAUT
+		text = RULE_OPTION_VIN_PATH_PATAUT
+		desc = RULE_OPTION_VIN_PATH_PATAUT_DESC
 		allow_achievements = yes
 	}
 }
 
-INC_forpol = {
-	name = INC_FORPOL
+VIN_forpol = {
+	name = VIN_FORPOL
 	group = RULE_GROUP_KAISERREICH_RULES_SOUTH_ASIA_OCEANIA
 	default = {
 		name = DEFAULT
-		text = RULE_OPTION_INC_FORPOL_RANDOM
-		desc = RULE_OPTION_INC_FORPOL_RANDOM_DESC
+		text = RULE_OPTION_VIN_FORPOL_RANDOM
+		desc = RULE_OPTION_VIN_FORPOL_RANDOM_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_FORPOL_INT
-		text = RULE_OPTION_INC_FORPOL_INT
-		desc = RULE_OPTION_INC_FORPOL_INT_DESC
+		name = VIN_FORPOL_INT
+		text = RULE_OPTION_VIN_FORPOL_INT
+		desc = RULE_OPTION_VIN_FORPOL_INT_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_FORPOL_HND
-		text = RULE_OPTION_INC_FORPOL_HND
-		desc = RULE_OPTION_INC_FORPOL_HND_DESC
+		name = VIN_FORPOL_HND
+		text = RULE_OPTION_VIN_FORPOL_HND
+		desc = RULE_OPTION_VIN_FORPOL_HND_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_FORPOL_JAP
-		text = RULE_OPTION_INC_FORPOL_JAP
-		desc = RULE_OPTION_INC_FORPOL_JAP_DESC
+		name = VIN_FORPOL_JAP
+		text = RULE_OPTION_VIN_FORPOL_JAP
+		desc = RULE_OPTION_VIN_FORPOL_JAP_DESC
 		allow_achievements = yes
 	}
 	option = {
-		name = INC_FORPOL_CHN
-		text = RULE_OPTION_INC_FORPOL_CHN
-		desc = RULE_OPTION_INC_FORPOL_CHN_DESC
+		name = VIN_FORPOL_CHN
+		text = RULE_OPTION_VIN_FORPOL_CHN
+		desc = RULE_OPTION_VIN_FORPOL_CHN_DESC
 		allow_achievements = yes
 	}
 }

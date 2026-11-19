@@ -2738,9 +2738,10 @@ focus_tree = {
 		available = {
 			NOT = { country_exists = PRF }
 			NOT = { country_exists = RAJ }
-			431 = { is_owned_and_controlled_by = ROOT } #West Bengal
-			433 = { is_owned_and_controlled_by = ROOT } #Rajputana
-			427 = { is_owned_and_controlled_by = ROOT } #Hyderabad
+			has_global_flag = india_united
+			NOT = {
+				any_home_area_neighbor_country = { has_war_with = ROOT }
+			}
 		}
 
 		prerequisite = { focus = HND_launch_operation_thunder }
@@ -4333,6 +4334,14 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				india_reconstruction_ongoing = yes
+			}
+			modifier = {
+				factor = 0
+				country_is_in_dangerous_war = yes
+			}
+			modifier = {
+				factor = 0
+				AFG = { has_socialist_government = yes }
 			}
 		}
 

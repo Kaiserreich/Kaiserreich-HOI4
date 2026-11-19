@@ -3320,7 +3320,13 @@ RUS_trade_decisions = {
 				has_opinion = { target = ROOT value > 19 }
 				if = {
 					limit = { is_italian_tag = yes }
-					owns_state = 2 #Rome
+					if = {
+						limit = { tag = PAP }
+						italy_country_has_reunited_italy = yes
+					}
+					else = {
+						owns_state = 2 #Rome
+					}
 				}
 				if = {
 					limit = { tag = NFA }
@@ -3329,7 +3335,7 @@ RUS_trade_decisions = {
 			}
 			NOT = { is_embargoed_by = FROM }
 		}
-		targets = { ITA SIC SRD NFA FRP }
+		targets = { ITA LOM VNC PAP SIC SRD NFA FRP }
 		target_root_trigger = {
 			OR = {
 				has_completed_focus = RUS_trade

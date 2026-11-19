@@ -16,7 +16,7 @@ focus_tree = {
 	default = no
 	continuous_focus_position = { x = 225 y = 900 }
 
-	shared_focus = PAN_canal_in_crisis
+	shared_focus = PAN_return_of_the_canal
 	shared_focus = PAN_protect_interests
 	shared_focus = PAN_defend_our_homeland
 	shared_focus = PAN_invest_in_industry
@@ -245,7 +245,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed PAN_start_recovery"
 			add_ideas = PAN_economic_prosperity
 			custom_effect_tooltip = tooltip_white_line
-			remove_ideas = PAN_economic_depression
+			PAN_lower_economic_debuff = yes
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
 	}
@@ -420,7 +420,7 @@ focus_tree = {
 				add_idea = PAN_liberal_panama
 				remove_idea = PAN_economic_stimulation
 			}
-			remove_ideas = PAN_economic_depression
+			PAN_lower_economic_debuff = yes
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -519,7 +519,7 @@ focus_tree = {
 			}
 			add_ideas = PAN_military_jobs
 			custom_effect_tooltip = tooltip_white_line
-			remove_ideas = PAN_economic_depression
+			PAN_lower_economic_debuff = yes
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
 	}
@@ -655,7 +655,7 @@ focus_tree = {
 			log = "[GetLogRoot]: Focus Completed PAN_create_export_goods"
 			add_ideas = PAN_creating_export_goods
 			custom_effect_tooltip = tooltip_white_line
-			remove_ideas = PAN_economic_depression
+			PAN_lower_economic_debuff = yes
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -783,7 +783,7 @@ focus_tree = {
 }
 
 shared_focus = {
-	id = PAN_canal_in_crisis
+	id = PAN_return_of_the_canal
 	icon = GFX_goal_PAN_canal_in_crisis
 	cost = 0
 
@@ -794,8 +794,7 @@ shared_focus = {
 		hidden_trigger = { always = no }
 	}
 	completion_reward = {
-		log = "[GetLogRoot]: Focus Completed PAN_canal_in_crisis"
-		activate_targeted_decision = { target = USA decision = PAN_seize_canal }
+		log = "[GetLogRoot]: Focus Completed PAN_return_of_the_canal"
 	}
 }
 
@@ -804,12 +803,12 @@ shared_focus = {
 	icon = GFX_GBR_lead_entente
 	cost = 0
 
-	relative_position_id = PAN_canal_in_crisis
+	relative_position_id = PAN_return_of_the_canal
 	x = -1
 	y = 1
 
 	prerequisite = {
-		focus = PAN_canal_in_crisis
+		focus = PAN_return_of_the_canal
 	}
 	available = {
 		hidden_trigger = { always = no }
@@ -824,7 +823,7 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = PAN_request_ship_tech
+	id = PAN_utilise_entente_naval_expertise
 	icon = GFX_goal_generic_naval_destroyer2
 	cost = 8
 
@@ -832,7 +831,7 @@ shared_focus = {
 	x = 0
 	y = 1
 
-	ai_will_do = { factor = 50 }
+	ai_will_do = { factor = 200 }
 	prerequisite = {
 		focus = PAN_entente_support
 	}
@@ -848,15 +847,23 @@ shared_focus = {
 		}
 	}
 	completion_reward = {
-		log = "[GetLogRoot]: Focus Completed PAN_request_ship_tech"
+		log = "[GetLogRoot]: Focus Completed PAN_utilise_entente_naval_expertise"
+		navy_experience = 15
+		add_ideas = PAN_utilising_naval_expertise
 		add_tech_bonus = {
-			name = PAN_request_ship_tech
+			name = PAN_utilise_entente_naval_expertise
 			bonus = 0.5
 			uses = 2
-			category = dd_tech
+			category = ship_modules_tech
+		}
+		add_tech_bonus = {
+			name = PAN_utilise_entente_naval_expertise
+			bonus = 0.5
+			uses = 2
+			category = naval_equipment
 		}
 	}
-	search_filters = { FOCUS_FILTER_RESEARCH }
+	search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 }
 
 shared_focus = {
@@ -868,9 +875,9 @@ shared_focus = {
 	x = 0
 	y = 2
 
-	ai_will_do = { factor = 50 }
+	ai_will_do = { factor = 200 }
 	prerequisite = {
-		focus = PAN_request_ship_tech
+		focus = PAN_utilise_entente_naval_expertise
 	}
 	available = {
 		ENT = {
@@ -885,12 +892,27 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_encourage_entente_trade"
-		every_allied_country = {
-			add_opinion_modifier = { target = PAN modifier = USA_american_trade }
-			reverse_add_opinion_modifier = { target = PAN modifier = USA_american_trade }
-		}
 		add_ideas = PAN_trade_resources
-		activate_targeted_decision = { target = ENT decision = PAN_entente_trade }
+		custom_effect_tooltip = tooltip_white_line
+		if = {
+			limit = { PAN = { is_in_faction_with = ENT } }
+			every_allied_country = {
+				add_opinion_modifier = { target = PAN modifier = USA_american_trade }
+				reverse_add_opinion_modifier = { target = PAN modifier = USA_american_trade }
+			}
+		}
+		else = {
+			every_country = {
+				limit = { is_in_faction_with = ENT }
+				add_opinion_modifier = { target = PAN modifier = USA_american_trade }
+				reverse_add_opinion_modifier = { target = PAN modifier = USA_american_trade }
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { ENT_pp_investment = 50 }
+		CAN_add_iedc_pp = yes
+		add_offsite_building = { type = industrial_complex level = 1 }
+		add_to_variable = { iedc_civ_factories = 1 }
 	}
 	search_filters = { FOCUS_FILTER_INDUSTRY }
 }
@@ -900,12 +922,12 @@ shared_focus = {
 	icon = GFX_goal_army_guy
 	cost = 0
 
-	relative_position_id = PAN_canal_in_crisis
+	relative_position_id = PAN_return_of_the_canal
 	x = 1
 	y = 1
 
 	prerequisite = {
-		focus = PAN_canal_in_crisis
+		focus = PAN_return_of_the_canal
 	}
 	available = {
 		hidden_trigger = { always = no }
@@ -920,118 +942,81 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = PAN_hold_the_canal
+	id = PAN_mobilise_the_population
 	icon = GFX_goal_generic_barricades
-	cost = 5
+	cost = 8
 
 	relative_position_id = PAN_stand_alone
 	x = 0
 	y = 1
 
-	ai_will_do = { factor = 150 }
+	ai_will_do = { factor = 200 }
 	prerequisite = {
 		focus = PAN_stand_alone
 	}
-	bypass = {
-		NOT = {
-			owns_state = 685
-		}
-	}
 	completion_reward = {
-		log = "[GetLogRoot]: Focus Completed PAN_hold_the_canal"
-		685 = {
-			custom_override_tooltip = {
-				add_building_construction = {
-					type = bunker
-					level = 3
-					province = 7617
-					instant_build = yes
-				}
-				tooltip = {
-					localization_key = tooltip_add_building_on_victory_point
-					BUILDING = bunker
-					NUMBER = 3
-					VP = 7617
-				}
-			}
-			custom_override_tooltip = {
-				add_building_construction = {
-					type = coastal_bunker
-					level = 3
-					province = 7617
-					instant_build = yes
-				}
-				tooltip = {
-					localization_key = tooltip_add_building_on_victory_point
-					BUILDING = coastal_bunker
-					NUMBER = 3
-					VP = 7617
-				}
-			}
-		}
+		log = "[GetLogRoot]: Focus Completed PAN_mobilise_the_population"
+		add_ideas = PAN_mobilising_the_population
 	}
-	search_filters = { FOCUS_FILTER_INDUSTRY }
+	search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_ARMY_BONUS }
 }
 
 shared_focus = {
 	id = PAN_fortify_the_coast
 	icon = GFX_focus_generic_coastal_fort
-	cost = 10
+	cost = 7
 
 	relative_position_id = PAN_stand_alone
 	x = 0
 	y = 2
 
-	ai_will_do = { factor = 150 }
+	ai_will_do = { factor = 200 }
 	prerequisite = {
-		focus = PAN_hold_the_canal
+		focus = PAN_mobilise_the_population
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_fortify_the_coast"
-		304 = {
+		every_owned_state = {
+			limit = { is_core_of = PAN }
+			custom_override_tooltip = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					instant_build = yes
+				}
+				tooltip = {
+					localization_key = tooltip_add_building_on_naval_base
+					BUILDING = coastal_bunker
+					NUMBER = 2
+				}
+			}
+		}
+		every_owned_state = {
+			limit = { is_core_of = PAN }
 			custom_override_tooltip = {
 				add_building_construction = {
 					type = bunker
 					level = 1
-					province = 13681
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
 					instant_build = yes
 				}
 				tooltip = {
-					localization_key = tooltip_add_building_on_victory_point
+					localization_key = tooltip_add_building_on_naval_base
 					BUILDING = bunker
 					NUMBER = 1
-					VP = 13681
 				}
-			}
-			custom_override_tooltip = {
-				add_building_construction = {
-					type = coastal_bunker
-					level = 3
-					province = 13681
-					instant_build = yes
-				}
-				tooltip = {
-					localization_key = tooltip_add_building_on_victory_point
-					BUILDING = coastal_bunker
-					NUMBER = 3
-					VP = 13681
-				}
-			}
-			add_building_construction = {
-				type = bunker
-				level = 1
-				province = 7630
-				instant_build = yes
-			}
-			add_building_construction = {
-				type = coastal_bunker
-				level = 3
-				province = 7630
-				instant_build = yes
 			}
 		}
+		add_war_support = 0.1
 	}
-	search_filters = { FOCUS_FILTER_INDUSTRY }
+	search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_WAR_SUPPORT }
 }
 
 shared_focus = {
@@ -1065,7 +1050,9 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_by_air"
-		capital_scope = {
+		random_owned_controlled_state = {
+			prioritize = { 1126 } # Western Panama
+			limit = { free_building_slots = { building = air_base size > 0 } }
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = air_base
@@ -1431,8 +1418,33 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_invest_in_our_planes"
-		add_ideas = PAN_our_own_air_force
-		304 = {
+		if = {
+			limit = { has_completed_focus = PAN_CAS_focus }
+			swap_ideas = {
+				remove_idea = PAN_protecting_our_people
+				add_idea = PAN_our_own_air_force_CAS
+			}
+		}
+		else_if = {
+			limit = { has_completed_focus = PAN_tac_bombing_focus }
+			swap_ideas = {
+				remove_idea = PAN_weather_training
+				add_idea = PAN_our_own_air_force_TAC
+			}
+		}
+		else = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_replace_one_of_two_ideas
+				IDEA1 = PAN_protecting_our_people
+				IDEA2 = PAN_weather_training
+				IDEA3 = PAN_our_own_air_force
+			}
+			custom_effect_tooltip = PAN_aircraft_production_bonus
+			custom_effect_tooltip = tooltip_white_line
+		}
+		random_owned_controlled_state = {
+			prioritize = { 1126 } # Western Panama
+			limit = { free_building_slots = { building = arms_factory size > 0 include_locked = yes } }
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = arms_factory
@@ -1603,7 +1615,10 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_raiding_tactics"
-		add_ideas = PAN_con_raiding_tactics
+		swap_ideas = {
+			add_idea = PAN_con_raiding_tactics
+			remove_idea = PAN_trade_protection_tactics
+		}
 	}
 	search_filters = { FOCUS_FILTER_NAVY_BONUS }
 }
@@ -1674,16 +1689,33 @@ shared_focus = {
 				category = ship_modules_tech
 			}
 		}
+		set_temp_variable = { tech_bonus_count = 2 }
 		if = {
-			limit = { NOT = { has_tech = basic_torpedo } }
-			set_technology = { basic_torpedo = 1 }
+			limit = { NOT = { has_tech = basic_depth_charges } }
+			set_technology = { basic_depth_charges = 1 }
+			add_to_temp_variable = { tech_bonus_count = -1 }
 		}
-		else = {
+		if = {
+			limit = { NOT = { has_tech = sonar } }
+			set_technology = { sonar = 1 }
+			add_to_temp_variable = { tech_bonus_count = -1 }
+		}
+		if = {
+			limit = { check_variable = { tech_bonus_count = 2 } }
+			add_tech_bonus = {
+				name = PAN_escort_fleet
+				bonus = 0.75
+				uses = 2 #doesn't accept variables
+				category = asw_tech
+			}
+		}
+		else_if = {
+			limit = { check_variable = { tech_bonus_count = 1 } }
 			add_tech_bonus = {
 				name = PAN_escort_fleet
 				bonus = 1
-				uses = 1
-				category = cat_torpedoes
+				uses = 1 #doesn't accept variables
+				category = asw_tech
 			}
 		}
 		custom_effect_tooltip = tooltip_white_line
@@ -1695,10 +1727,10 @@ shared_focus = {
 				fixed_ship_battery_slot = ship_light_battery_1
 				fixed_ship_anti_air_slot = empty
 				fixed_ship_fire_control_system_slot = empty
-				fixed_ship_radar_slot = empty
+				fixed_ship_radar_slot = ship_sonar_1
 				fixed_ship_engine_slot = light_ship_engine_1
-				fixed_ship_torpedo_slot = ship_torpedo_1
-				mid_1_custom_slot = empty
+				fixed_ship_torpedo_slot = empty
+				mid_1_custom_slot = ship_depth_charge_1
 				rear_1_custom_slot = empty
 			}
 		}
@@ -1728,7 +1760,10 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_countering_subs"
-		add_ideas = PAN_anti_sub_tactics
+		swap_ideas = {
+			add_idea = PAN_anti_sub_tactics
+			remove_idea = PAN_trade_protection_tactics
+		}
 	}
 	search_filters = { FOCUS_FILTER_NAVY_BONUS }
 }
@@ -1810,8 +1845,38 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_increase_naval_production"
-		add_ideas = PAN_increased_naval_production
-		304 = {
+		if = {
+			limit = { has_completed_focus = PAN_sub_fleet }
+			swap_ideas = {
+				remove_idea = PAN_better_torps
+				add_idea = PAN_start_of_a_new_navy_subs
+			}
+		}
+		else_if = {
+			limit = { has_completed_focus = PAN_escort_fleet }
+			swap_ideas = {
+				remove_idea = PAN_anti_sub_tactics
+				add_idea = PAN_start_of_a_new_navy_escort
+			}
+		}
+		else = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_replace_one_of_two_ideas
+				IDEA1 = PAN_better_torps
+				IDEA2 = PAN_anti_sub_tactics
+				IDEA3 = PAN_start_of_a_new_navy
+			}
+			effect_tooltip = {
+				add_to_temp_variable = {
+					industrial_capacity_dockyard = 0.2
+					tooltip = industrial_capacity_dockyard_tooltip
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+		}
+		random_owned_controlled_state = {
+			prioritize = { 1126 } #Western Panama
+			limit = { free_building_slots = { building = dockyard size > 0 include_locked = yes } }
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = dockyard
@@ -2013,7 +2078,9 @@ shared_focus = {
 				remove_idea = PAN_top_notch_army
 			}
 		}
-		304 = {
+		random_owned_controlled_state = {
+			prioritize = { 304 } #Eastern Panama
+			limit = { free_building_slots = { building = arms_factory size > 0 include_locked = yes } }
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = arms_factory
@@ -2128,7 +2195,9 @@ shared_focus = {
 				remove_idea = PAN_defensive_buildup
 			}
 		}
-		304 = {
+		random_owned_controlled_state = {
+			prioritize = { 1126 } #Western Panama
+			limit = { free_building_slots = { building = arms_factory size > 0 include_locked = yes } }
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = arms_factory
@@ -2168,7 +2237,7 @@ shared_focus = {
 				remove_idea = PAN_defensive_buildup_1_0
 			}
 		}
-		304 = {
+		1126 = {
 			custom_override_tooltip = {
 				add_building_construction = {
 					type = bunker
@@ -2190,16 +2259,30 @@ shared_focus = {
 				add_building_construction = {
 					type = coastal_bunker
 					level = 1
+					province = 13681
 					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_victory_point = yes
-					}
 				}
 				tooltip = {
-					localization_key = tooltip_add_building_on_victory_points
+					localization_key = tooltip_add_building_on_victory_point
 					BUILDING = coastal_bunker
 					NUMBER = 1
+					VP = 13683
+				}
+			}
+		}
+		304 = {
+			custom_override_tooltip = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 1
+					province = 13681
+					instant_build = yes
+				}
+				tooltip = {
+					localization_key = tooltip_add_building_on_victory_point
+					BUILDING = coastal_bunker
+					NUMBER = 1
+					VP = 13681
 				}
 			}
 		}
@@ -2370,7 +2453,9 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_build_new_factories"
-		304 = {
+		random_owned_controlled_state = {
+			prioritize = { 304 } #Eastern Panama
+			limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } }
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
@@ -2397,7 +2482,9 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_military_production"
-		304 = {
+		random_owned_controlled_state = {
+			prioritize = { 304 } #Eastern Panama
+			limit = { free_building_slots = { building = arms_factory size > 0 include_locked = yes } }
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = arms_factory
@@ -2426,7 +2513,14 @@ shared_focus = {
 		log = "[GetLogRoot]: Focus Completed PAN_survey_new_industrial_zones"
 		activate_targeted_decision = { target = PAN decision = PAN_land_development }
 		custom_effect_tooltip = which_has_the_following_effect
-		effect_tooltip = { 304 = { increase_state_category_by_one_level = yes } }
+		if = {
+			limit = { owns_state = 1126 }
+			effect_tooltip = { 1126 = { increase_state_category_by_one_level = yes } }
+		}
+		else = {
+			effect_tooltip = { 304 = { increase_state_category_by_one_level = yes } }
+		}
+
 	}
 	search_filters = { FOCUS_FILTER_INDUSTRY }
 }
@@ -2486,7 +2580,6 @@ shared_focus = {
 		if = {
 			limit = { 685 = { is_owned_by = PAN } }
 			685 = {
-				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -2499,8 +2592,17 @@ shared_focus = {
 			custom_effect_tooltip = tooltip_white_line
 		}
 
+		if = {
+			limit = { owns_state = 1126 }
+			1126 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 		304 = {
-			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = infrastructure
 				level = 1
@@ -2672,12 +2774,24 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_an_agrarian_panama"
-		custom_effect_tooltip = tooltip_merge_national_spirits
-		add_ideas = PAN_an_agrarian_nation
-		hidden_effect = {
-			remove_ideas = {
-				PAN_agriculture_reform_A_III
-				PAN_agriculture_reform_B_III
+		custom_effect_tooltip = {
+			localization_key = tooltip_replace_two_ideas_with_one
+			IDEA1 = PAN_agriculture_reform_A_III
+			IDEA2 = PAN_agriculture_reform_B_III
+			IDEA3 = PAN_an_agrarian_nation
+		}
+		effect_tooltip = {
+			add_to_temp_variable = {
+				monthly_population = 0.3
+				tooltip = monthly_population_tooltip
+			}
+			add_to_temp_variable = {
+				global_building_slots_factor = 0.1
+				tooltip = global_building_slots_factor_tooltip
+			}
+			add_to_temp_variable = {
+				production_speed_buildings_factor = 0.1
+				tooltip = production_speed_buildings_factor_tooltip
 			}
 		}
 		custom_effect_tooltip = tooltip_white_line
@@ -2691,6 +2805,13 @@ shared_focus = {
 			304 = {
 				increase_state_category_by_one_level = yes
 			}
+		}
+		hidden_effect = {
+			remove_ideas = {
+				PAN_agriculture_reform_A_III
+				PAN_agriculture_reform_B_III
+			}
+			add_ideas = PAN_an_agrarian_nation
 		}
 	}
 	search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
@@ -2788,11 +2909,11 @@ shared_focus = {
 	icon = GFX_goal_PAN_COA
 	cost = 10
 
-	relative_position_id = PAN_canal_in_crisis
+	relative_position_id = PAN_return_of_the_canal
 	x = 0
 	y = 4
 
-	ai_will_do = { factor = 100 }
+	ai_will_do = { factor = 300 }
 	prerequisite = {
 		focus = PAN_fortify_the_coast focus = PAN_encourage_entente_trade
 	}
@@ -2812,8 +2933,8 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetLogRoot]: Focus Completed PAN_on_global_stage"
-		activate_targeted_decision = { target = GER decision = PAN_investment_decision }
-		activate_targeted_decision = { target = ENT decision = PAN_investment_decision }
+		activate_targeted_decision = { target = GER decision = PAN_trade_deal_decision }
+		activate_targeted_decision = { target = ENT decision = PAN_trade_deal_decision }
 	}
 }
 

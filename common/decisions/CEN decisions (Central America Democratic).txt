@@ -66,8 +66,15 @@ CEN_foreign_policy_decisions = { # Only used to create the faction, all other de
 					remove_state_claim = 316 #Costa Rica
 				}
 				if = {
+					limit = { NOT = { owns_state = 1126 } }
+					remove_state_claim = 1126 #Western Panama
+				}
+				if = {
 					limit = { NOT = { owns_state = 304 } }
-					remove_state_claim = 304 #Panama
+					remove_state_claim = 304 #Eastern Panama
+				}
+				if = {
+					limit = { NOT = { owns_state = 685 } }
 					remove_state_claim = 685 #Panama Canal
 				}
 			}

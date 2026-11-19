@@ -1,0 +1,45 @@
+scripted_gui = {
+	scripted_peaces_list = {
+		parent_window_name = raid_filter
+		context_type = player_context
+		window_name = "scripted_peaces_container"
+
+		ai_enabled = { always = no }
+
+		dynamic_lists = {
+			scripted_peaces_grid = {
+				array = scripted_peace_main_target:possible_scripted_peaces
+				entry_container = scripted_peace_entry
+				change_scope = yes
+			}
+		}
+
+		triggers = {
+			scripted_peace_button_click_enabled = {
+				hidden_trigger = {
+					always = no #so nothing actually gets checked when the tooltip isn't shown
+
+					var:ROOT.scripted_peace_main_target = {
+						if = {
+							limit = { has_variable = faction_peace_trigger_@PREV }
+							set_temp_variable = { trigger = faction_peace_trigger_@PREV }
+						}
+						else = {
+							set_temp_variable = { trigger = scripted_peace_trigger_@PREV }
+						}
+					}
+				}
+				meta_trigger = {
+					text = { [TRIGGER] = yes }
+					TRIGGER = "[?trigger.GetTokenKey]"
+				}
+			}
+		}
+
+		properties = {
+			target_flag = {
+				image = "[THIS.GetFlag]"
+			}
+		}
+	}
+}

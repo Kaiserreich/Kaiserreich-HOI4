@@ -1,80 +1,162 @@
 capital = 827
-set_research_slots = 1
+set_research_slots = 2
+set_convoys = 20
+set_stability = 0.5
+set_war_support = 0.5
+
+set_technology = {
+	### Infantry ###
+	infantry_weapons = 1
+
+	### Support ###
+	tech_support = 1
+	tech_recon = 1
+	tech_engineers = 1
+
+	### Artillery ###
+	gw_artillery = 1
+
+	### Hidden ###
+	tech_jungle_warfare = 1
+
+	### Trains ###
+	basic_train = 1
+
+	### Navy ###
+
+	early_ship_hull_light = 1
+	basic_naval_mines = 1
+	basic_ship_hull_light = 1
+	early_ship_hull_cruiser = 1
+	basic_ship_hull_cruiser = 1
+
+	## Modules##
+	basic_battery = 1
+	basic_light_battery = 1
+}
+add_equipment_to_stockpile = {
+	type = train_equipment
+	amount = 10
+	producer = GEA
+}
 
 set_politics = {
-	ruling_party = paternal_autocrat
+	ruling_party = radical_socialist
 	last_election = "1888.6.15"
 	election_frequency = 48
 	elections_allowed = no
 }
 
 set_popularities = {
-	totalist = 7
-	radical_socialist = 24
-	syndicalist = 5
-	social_democrat = 18
-	social_liberal = 1
-	market_liberal = 1
-	social_conservative = 11
-	authoritarian_democrat = 11
-	paternal_autocrat = 12
-	national_populist = 10
+	totalist = 18
+	radical_socialist = 40
+	syndicalist = 19
+	social_democrat = 23
+	social_liberal = 0
+	market_liberal = 0
+	social_conservative = 0
+	authoritarian_democrat = 0
+	paternal_autocrat = 0
+	national_populist = 0
 }
 
-### Leader Spam ###
+random_list = {
+	20 = {
+		set_country_flag = VIN_Full_Anarchist
+	}
+	10 = {
+		set_country_flag = VIN_Full_Syndie
+	}
+	30 = {
+		set_country_flag = VIN_Full_Vanguardist
+	}
+	40 = {}
+}
+
+add_ideas = {
+	VIN_Guerilla_Tradition
+	VIN_vietminh
+	VIN_poor_army_idea_1
+	VIN_apathetic_people_idea_1
+}
+
+### Leaders ###
+recruit_character = VIN_pham_van_dong
+recruit_character = VIN_ta_thu_thau
+recruit_character = VIN_nguyen_an_ninh
+recruit_character = VIN_nguyen_thai_hoc
+recruit_character = VIN_pho_duc_chinh
+recruit_character = VIN_bui_quang_chieu
+recruit_character = VIN_truong_tu_anh
 recruit_character = VIN_le_duc_tho
 recruit_character = VIN_bao_dai
-recruit_character = VIN_ngo_din_diem
-recruit_character = VIN_cuong_de
-recruit_character = VIN_pham_cong_tac
 
-### Field Marshals ###
-recruit_character = VIN_nguyen_van_hinh
-recruit_character = VIN_duong_van_minh
-
-### Corps Commanders ###
+### Corps Commanders
+recruit_character = VIN_vo_nguyen_giap
+recruit_character = VIN_chu_van_tan
+recruit_character = VIN_tran_thu_binh
+recruit_character = VIN_van_tien_dung
+recruit_character = VIN_nguyen_son
+recruit_character = VIN_nguyen_chi_thanh
+recruit_character = VIN_nguyen_binh
 recruit_character = VIN_le_van_ty
-recruit_character = VIN_tran_quang_vinh
-recruit_character = VIN_le_quang_vinh
 
 ### Naval Commander ###
-recruit_character = VIN_le_quang_my
-recruit_character = VIN_tran_van_chon
+recruit_character = VIN_ta_xuan_thu
+recruit_character = VIN_tran_van_giang
 
-# Advisors
+### Advisors ###
+recruit_character = VIN_hoang_van_hoan
+recruit_character = VIN_le_hong_phong
+recruit_character = VIN_nguyen_duy_thai
+recruit_character = VIN_nguyen_phan_chanh
+recruit_character = VIN_nguyen_van_tao
+recruit_character = VIN_ta_quang_buu
+recruit_character = VIN_nguyen_thi_nam
+recruit_character = VIN_tran_quoc_hoan
+recruit_character = VIN_tran_van_don
+recruit_character = VIN_truong_boi_cong
+recruit_character = VIN_nguyen_van_hinh
+recruit_character = VIN_tran_van_tra
+recruit_character = VIN_nguyen_bat_phat
+recruit_character = VIN_vuong_thua_vu
 recruit_character = VIN_nguyen_ton_hoan
 recruit_character = VIN_tran_trong_kim
 recruit_character = VIN_hoang_xuan_han
-recruit_character = VIN_ngo_dinh_can
-recruit_character = VIN_ngo_dinh_thuc
-recruit_character = VIN_ha_thuc_ky
-recruit_character = VIN_nguyen_giac_ngo
-recruit_character = VIN_le_van_vien
-recruit_character = VIN_vuong_thua_vu
 
 ### Character Setup ###
-VIN_bao_dai = { set_character_as_monarch = yes }
+#Characters from the original VIN tag used for GEA's puppet
+VIN_bao_dai = {
+	set_character_as_monarch = yes
+	retire = yes
+}
 
 ### Templates ###
 division_template = {
-	name = "Militia Division"
-	division_names_group = VIN_MLT_01
-	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
-	}
-	template_counter = 68
-}
-division_template = {
-	name = "Infanterie Regulares"
+	name = "Su doan Bo binh"		# Main forces; Highly-trained professionals
 	division_names_group = VIN_INF_01
 	regiments = {
 		infantry = { x = 0 y = 0 }
 		infantry = { x = 0 y = 1 }
 		infantry = { x = 0 y = 2 }
-		infantry = { x = 0 y = 3 }
 		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
 	}
+}
+division_template = {
+	name = "Bo doi Dia phuong"	# Regional Force; Standard Militia Division
+	division_names_group = VIN_MLT_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+	template_counter = 68
 }

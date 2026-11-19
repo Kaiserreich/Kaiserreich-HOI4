@@ -273,7 +273,7 @@ country_event = { # BoP ending
 	fire_only_once = yes
 
 	trigger = {
-		has_country_flag = SRI_italy_unified_flag
+		italy_country_has_reunited_italy = yes
 		has_country_flag = SRI_1936_elections_held
 		has_power_balance = {
 			id = SRI_power_balance
@@ -2234,7 +2234,7 @@ country_event = { # The Giro d'Italia is refounded
 
 	trigger = {
 		tag = SRI
-		has_country_flag = SRI_italy_unified_flag
+		italy_country_has_reunited_italy = yes
 		has_war = no
 	}
 
@@ -2261,7 +2261,7 @@ country_event = { # Fausto Coppi wins the Giro D'Italia
 
 	trigger = {
 		tag = SRI
-		has_country_flag = SRI_italy_unified_flag
+		italy_country_has_reunited_italy = yes
 		has_country_flag = SRI_giro_race_founded
 		date > 1940.4.21
 	}
@@ -2715,7 +2715,7 @@ country_event = { # Generic election event for if italy is not united by 1941
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = { has_country_flag = SRI_italy_unified_flag }
+		italy_country_has_reunited_italy = no
 		has_country_flag = SRI_1936_elections_held
 	}
 
@@ -2762,7 +2762,7 @@ country_event = { # Generic postwar syndie election event
 	is_triggered_only = yes
 
 	trigger = {
-		has_country_flag = SRI_italy_unified_flag
+		italy_country_has_reunited_italy = yes
 		has_completed_focus = SRI_the_syndicalist_orthodoxy
 	}
 
@@ -2801,7 +2801,7 @@ country_event = { # Generic postwar radsoc election event (w/o constitutional re
 	is_triggered_only = yes
 
 	trigger = {
-		has_country_flag = SRI_italy_unified_flag
+		italy_country_has_reunited_italy = yes
 		has_completed_focus = SRI_seven_points_manifesto
 		NOT = {
 			has_completed_focus = SRI_constitutional_restoration
@@ -2843,7 +2843,7 @@ country_event = { # Generic postwar radsoc election event (with constitutional r
 	is_triggered_only = yes
 
 	trigger = {
-		has_country_flag = SRI_italy_unified_flag
+		italy_country_has_reunited_italy = yes
 		has_completed_focus = SRI_seven_points_manifesto
 		has_completed_focus = SRI_constitutional_restoration
 	}

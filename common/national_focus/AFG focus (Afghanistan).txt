@@ -3189,7 +3189,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AFG_enforcement_of_ideological_unity"
-			AFG = { set_variable = { generic_raise_support_decision_cost = 50 } }
+			AFG = { set_variable = { generic_raise_support_decision_cost = 75 } }
 			custom_effect_tooltip = {
 				localization_key = reduce_support_decision_cost_tt
 				NUMBER = 50%
@@ -5393,7 +5393,7 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_event_choice_option_1
 			event_option_tooltip = afghanistan_events.356.a
 			if = {
-				limit = { has_completed_focus = AFG_the_gradual_approach }
+				limit = { has_completed_focus = AFG_the_steady_hand }
 				custom_effect_tooltip = tooltip_event_choice_option_2
 				event_option_tooltip = afghanistan_events.356.b
 			}
@@ -5706,7 +5706,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AFG_the_ulema_tribunal"
 			add_popularity = { ideology = social_conservative popularity = 0.025 }
-			AFG = { set_variable = { generic_raise_stability_decision_cost = 75 } }
+			AFG = { set_variable = { generic_raise_stability_decision_cost = 50 } }
 			custom_effect_tooltip = {
 				localization_key = reduce_stability_decision_cost_tt
 				NUMBER = 50%
@@ -6220,12 +6220,12 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed AFG_legitimisation_of_rule"
-			AFG = { set_variable = { generic_raise_support_decision_cost = 50 } }
+			AFG = { set_variable = { generic_raise_support_decision_cost = 75 } }
 			custom_effect_tooltip = {
 				localization_key = reduce_support_decision_cost_tt
 				NUMBER = 50%
 			}
-			AFG = { set_variable = { generic_raise_stability_decision_cost = 75 } }
+			AFG = { set_variable = { generic_raise_stability_decision_cost = 50 } }
 			custom_effect_tooltip = {
 				localization_key = reduce_stability_decision_cost_tt
 				NUMBER = 50%
@@ -6995,7 +6995,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AFG_adaption_of_the_frontiers_systems
+		id = AFG_adaptation_of_the_frontiers_systems
 		icon = GFX_focus_AFG_pashtunistan_referendum
 		cost = 6
 
@@ -7010,7 +7010,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			log = "[GetLogRoot]: Focus Completed AFG_adaption_of_the_frontiers_systems"
+			log = "[GetLogRoot]: Focus Completed AFG_adaptation_of_the_frontiers_systems"
 			swap_ideas = {
 				remove_idea = AFG_reformation_of_the_afghans_1
 				add_idea = AFG_reformation_of_the_afghans_2
@@ -7032,7 +7032,7 @@ focus_tree = {
 		ai_will_do = { factor = 100 }
 
 		prerequisite = {
-			focus = AFG_adaption_of_the_frontiers_systems
+			focus = AFG_adaptation_of_the_frontiers_systems
 		}
 
 		completion_reward = {
@@ -7181,7 +7181,7 @@ focus_tree = {
 		ai_will_do = { factor = 100 }
 
 		prerequisite = {
-			focus = AFG_adaption_of_the_frontiers_systems
+			focus = AFG_adaptation_of_the_frontiers_systems
 		}
 
 		completion_reward = {
@@ -7673,7 +7673,7 @@ focus_tree = {
 					add_idea = AFG_lands_of_villages_tribes_and_faiths_civilian_reformist_2
 				}
 			}
-			AFG = { set_variable = { generic_raise_stability_decision_cost = 75 } }
+			AFG = { set_variable = { generic_raise_stability_decision_cost = 50 } }
 			custom_effect_tooltip = {
 				localization_key = reduce_stability_decision_cost_tt
 				NUMBER = 50%
@@ -7768,6 +7768,9 @@ focus_tree = {
 			}
 			add_stability = -0.05
 			add_one_random_civilian_factory = yes
+			hidden_effect = {
+				country_event = { id = afghanistan_events.618 days = 35 }
+			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -8386,6 +8389,41 @@ focus_tree = {
 	}
 
 	focus = {
+		id = AFG_war_on_our_own_terms
+		icon = GFX_focus_AFG_mountain_training
+		cost = 5
+
+		relative_position_id = AFG_restore_the_foreign_ministry
+		x = 4
+		y = 2
+
+		ai_will_do = { factor = 100 }
+
+		prerequisite = {
+			focus = AFG_liberating_the_colonised_pashtuns
+		}
+		available = {
+			is_subject = no
+			is_in_faction = no
+		}
+
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed AFG_war_on_our_own_terms"
+			custom_effect_tooltip = AFG_war_on_our_own_terms_tt
+			custom_effect_tooltip = tooltip_white_line
+			country_event = afghanistan_foreign_policy_events.25
+			custom_effect_tooltip = tooltip_event_allows_choice
+			custom_effect_tooltip = tooltip_event_choice_option_1
+			event_option_tooltip = afghanistan_foreign_policy_events.25.a
+			custom_effect_tooltip = tooltip_event_choice_option_2
+			event_option_tooltip = afghanistan_foreign_policy_events.25.b
+			custom_effect_tooltip = tooltip_event_choice_option_3
+			event_option_tooltip = afghanistan_foreign_policy_events.25.c
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+
+	focus = {
 		id = AFG_the_conquest_of_karachi
 		icon = GFX_focus_PER_persian_gulf_fleet
 		cost = 5
@@ -8592,6 +8630,10 @@ focus_tree = {
 					country_is_in_dangerous_war = yes
 					var:1042.owner = { dont_start_major_faction_wars = yes }
 					var:1042.owner = { default_attack_AI_trigger = yes }
+					AND = {
+						has_socialist_government = yes
+						var:1042.owner = { has_socialist_government = yes }
+					}
 				}
 			}
 		}
@@ -8686,6 +8728,10 @@ focus_tree = {
 					country_is_in_dangerous_war = yes
 					var:445.owner = { dont_start_major_faction_wars = yes }
 					var:445.owner = { default_attack_AI_trigger = yes }
+					AND = {
+						has_socialist_government = yes
+						var:445.owner = { has_socialist_government = yes }
+					}
 				}
 			}
 		}
@@ -8756,6 +8802,10 @@ focus_tree = {
 					country_is_in_dangerous_war = yes
 					var:410.owner = { dont_start_major_faction_wars = yes }
 					var:410.owner = { default_attack_AI_trigger = yes }
+					AND = {
+						has_socialist_government = yes
+						var:410.owner = { has_socialist_government = yes }
+					}
 				}
 			}
 		}

@@ -374,10 +374,10 @@ on_actions = {
 				else_if = {
 					limit = {
 						FROM.FROM = { state = 827 }
-						ROOT = { original_tag = INC }
+						ROOT = { original_tag = VIN }
 						var:global.province_controllers^4379 = { has_war_with = FROM }
 					}
-					INC = { country_event = indochina_events.97 }
+					VIN = { country_event = indochina_events.97 }
 				}
 				# Dublin
 				else_if = {
@@ -442,6 +442,14 @@ on_actions = {
 						var:global.province_controllers^7011 = { has_war_with = FROM }
 					}
 					news_event = city_capture_events.298
+				}
+				# Central Morocco
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 461 }
+						var:global.province_controllers^10070 = { has_war_with = FROM }
+					}
+					news_event = city_capture_events.313
 				}
 				# Capetown
 				else_if = {
@@ -541,7 +549,7 @@ on_actions = {
 				else_if = {
 					limit = {
 						FROM.FROM = { state = 325 }
-						var:global.province_controllers^1319 = { has_war_with = FROM }
+						var:global.province_controllers^7446 = { has_war_with = FROM }
 					}
 					news_event = city_capture_events.308
 				}

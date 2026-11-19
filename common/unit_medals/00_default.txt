@@ -25,6 +25,130 @@
 @cost = 15
 
 unit_medals = {
+		### ROM
+
+	ROM_military_virtue_medal = { # Medalia Virtutea Militara
+
+		available = {
+			should_have_romanian_medals_trigger = yes
+		}
+
+		frame = 1
+		icon = "GFX_medal_icon_rom"
+
+		cost = 30
+
+		unit_modifiers = {
+			army_morale_factor = 0.1
+			experience_loss_factor = -0.1
+		}
+
+		ship_modifiers = {
+			naval_morale_factor = 0.1
+			experience_gain_navy_unit_factor = 0.05
+		}
+
+		officer_xp = 100
+	}
+
+	ROM_order_of_the_crown = { # Ordinul Coroana Romaniei
+
+		available = {
+			should_have_romanian_medals_trigger = yes
+			is_monarchy = yes
+		}
+
+		frame = 2
+		icon = "GFX_medal_icon_rom"
+
+		cost = 30
+
+		unit_modifiers = {
+			supply_consumption_factor = -0.1
+			army_org_factor = 0.05
+		}
+
+		ship_modifiers = {
+			naval_supply_consumption_factor = -0.1
+			navy_org_factor = 0.05
+		}
+
+		officer_xp = 100
+	}
+
+	ROM_order_of_faithful_service = {  #Historical but can be used if you a republic
+
+		available = {
+			should_have_romanian_medals_trigger = yes
+			is_monarchy = no
+		}
+
+		frame = 3
+		icon = "GFX_medal_icon_rom"
+
+		cost = 30
+
+		unit_modifiers = {
+			supply_consumption_factor = -0.1
+			army_org_factor = 0.05
+		}
+
+		ship_modifiers = {
+			naval_supply_consumption_factor = -0.1
+			navy_org_factor = 0.05
+		}
+
+		officer_xp = 100
+	}
+
+	ROM_order_of_the_star = { # Ordinul Steaua Romaniei
+
+		available = {
+			should_have_romanian_medals_trigger = yes
+		}
+
+		frame = 4
+		icon = "GFX_medal_icon_rom"
+
+		cost = 30
+
+		unit_modifiers = {
+			army_defence_factor = 0.1
+			max_dig_in_factor = 0.1
+		}
+
+		ship_modifiers = {
+			naval_defense_factor = 0.1
+			naval_mines_effect_reduction = 0.1
+		}
+
+		officer_xp = 100
+	}
+
+	ROM_order_of_michael_the_brave = { # Ordinul Mihai Viteazul
+
+		available = {
+			should_have_romanian_medals_trigger = yes
+		}
+
+		frame = 5
+		icon = "GFX_medal_icon_rom"
+
+		cost = 30
+
+		unit_modifiers = {
+			army_attack_factor = 0.1
+			breakthrough_factor = 0.1
+		}
+
+		ship_modifiers = {
+			naval_damage_factor = 0.1
+			naval_critical_score_chance_factor = 0.1
+		}
+
+		officer_xp = 100
+	}
+
 	### NOR
 
 	krigskorset = { #Historical

@@ -1581,15 +1581,18 @@ country_event = {
 	option = { #Ya Osman!
 		log = "[GetLogInfo]: event princely_federation_events.251 option princely_federation_events.251.a"
 		name = princely_federation_events.251.a
+		effect_tooltip = { add_country_leader_trait = PRF_kaisar_i_hind_trait }
+		custom_effect_tooltip = tooltip_white_line
+		set_cosmetic_tag = PRF_empire
 	}
 	option = { #You know, this may be a little bit too pretentious...
 		log = "[GetLogInfo]: event princely_federation_events.251 option princely_federation_events.251.b"
 		name = princely_federation_events.251.b
-	}
-	after = {
 		effect_tooltip = { add_country_leader_trait = PRF_kaisar_i_hind_trait }
 		custom_effect_tooltip = tooltip_white_line
 		set_cosmetic_tag = PRF_empire
+	}
+	after = {
 		hidden_effect = {
 			HYD_osman_ali_khan = {
 				set_character_name = PRF_osman_ali_khan_emperor

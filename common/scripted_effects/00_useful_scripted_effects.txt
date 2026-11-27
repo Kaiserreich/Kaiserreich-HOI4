@@ -1334,6 +1334,16 @@ increase_state_category_by_one_level = {
 		set_state_category = twelve
 		custom_effect_tooltip = increase_state_category_by_one_level_tt
 	}
+	else_if = {
+		limit = { has_state_category = minor_port }
+		set_state_category = port
+		custom_effect_tooltip = increase_state_category_by_one_level_tt
+	}
+	else_if = {
+		limit = { has_state_category = port }
+		set_state_category = major_port
+		custom_effect_tooltip = increase_state_category_by_two_levels_tt
+	}
 	else = {
 		add_extra_state_shared_building_slots = 1
 	}
@@ -1395,6 +1405,16 @@ increase_state_category_by_two_levels = {
 		custom_effect_tooltip = increase_state_category_by_one_level_tt
 		add_extra_state_shared_building_slots = 1
 	}
+	else_if = {
+		limit = { has_state_category = minor_port }
+		set_state_category = major_port
+		custom_effect_tooltip = increase_state_category_by_three_levels_tt
+	}
+	else_if = {
+		limit = { has_state_category = port }
+		set_state_category = major_port
+		custom_effect_tooltip = increase_state_category_by_two_levels_tt
+	}
 	else = {
 		add_extra_state_shared_building_slots = 2
 	}
@@ -1453,6 +1473,16 @@ decrease_state_category_by_one_level = {
 	else_if = {
 		limit = { has_state_category = two }
 		set_state_category = one
+		custom_effect_tooltip = decrease_state_category_by_one_level_tt
+	}
+	else_if = {
+		limit = { has_state_category = major_port }
+		set_state_category = port
+		custom_effect_tooltip = decrease_state_category_by_two_levels_tt
+	}
+	else_if = {
+		limit = { has_state_category = port }
+		set_state_category = minor_port
 		custom_effect_tooltip = decrease_state_category_by_one_level_tt
 	}
 	else = {

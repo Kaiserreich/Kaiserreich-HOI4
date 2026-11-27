@@ -315,13 +315,7 @@ SP_create_variant_based_on_country_armored_engineer = {
 	}
 	else_if = {
 		limit = {
-			OR = {
-				original_tag = ITA
-				original_tag = SRI
-				original_tag = SIC
-				original_tag = SRD
-				original_tag = PAP
-			}
+			is_italian_tag = yes
 		}
 		create_equipment_variant = {
 			name = "L3 Passerella"
@@ -639,13 +633,7 @@ SP_create_variant_based_on_country_armored_signal = {
 	}
 	else_if = {
 		limit = {
-			OR = {
-				original_tag = ITA
-				original_tag = SRI
-				original_tag = SIC
-				original_tag = SRD
-				original_tag = PAP
-			}
+			is_italian_tag = yes
 		}
 		create_equipment_variant = {
 			name = "M41 Carro Comando"
